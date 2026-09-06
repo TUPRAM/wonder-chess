@@ -76,7 +76,7 @@ struct Evidence {
   int64 NormalExpectedSequence = 0;
 };
 TMap<TWeakObjectPtr<AWCMatchController>, Evidence> EvidenceStates;
-TSet<TWeakObjectPtr<AWCMatchController>> RestartedControllers;
+TMap<TWeakObjectPtr<AWCMatchController>, int> RestartedControllers;
 void CaptureAuthoritySeed(Evidence &E, int64 Namespace, wc::Id Seed) {
   if (E.Namespace > 0 && E.Namespace == Namespace && !E.AuthoritySeed.IsSet())
     E.AuthoritySeed = Seed;
@@ -907,13 +907,14 @@ void WCTickVerification(AWCMatchController *P, float Delta) {
   if (!E.Initialized || E.Namespace != Namespace) {
     if (E.Initialized)
       Write(P, E);
-    const wc::Command PreviousOriginal = E.OriginalProbe;
-    const int64 PreviousNamespace = E.Namespace;
+    const wc::Command PreviousOriginal = E.Namespace > 0 ? E.OriginalProbe : E.PriorMatchProbe;
+    const int64 PreviousNamespace = E.Namespace > 0 ? E.Namespace : E.PriorNamespace;
     E = Evidence{};
-    if (AuthorityChecks() && PreviousOriginal.requestId && Namespace > 0) {
+    if (AuthorityChecks() && PreviousOriginal.requestId && PreviousNamespace > 0) {
       E.PriorMatchProbe = PreviousOriginal;
       E.PriorNamespace = PreviousNamespace;
-      E.ProbeStage = -1;
+      if (Namespace > PreviousNamespace)
+        E.ProbeStage = -1;
     }
     E.Initialized = true;
     E.Namespace = Namespace;
@@ -932,7 +933,7 @@ void WCTickVerification(AWCMatchController *P, float Delta) {
     Append(E.Directory / (Prefix(E, P) + TEXT("-frames.csv")),
            TEXT("wall_seconds,phase,round,visible_alive,logical_alive,"
                 "encounters,frame_ms,game_ms,render_"
-                "ms,gpu_ms,gpu_available,public_chars,public_utf8_bytes\n"));
+                "ms,gpu_ms,gpu_available,public_chars,public_utf8_bytes,neutral_round,neutral_live_encounters\n"));
     UE_LOG(LogTemp, Display,
            TEXT("WC_EVIDENCE_SESSION namespace=%lld directory=%s"), Namespace,
            *E.Directory);
@@ -962,7 +963,7 @@ void WCTickVerification(AWCMatchController *P, float Delta) {
   const bool WasAborted = E.Aborted;
   E.Aborted =
       Phase == int(wc::Phase::Aborted) || (Session && Session->bMatchAborted);
-  int Visible = 0, Logical = 0, Encounters = 0;
+  int Visible = 0, Logical = 0, Encounters = 0, NeutralEncounters = 0;
   if (P->Presenter)
     for (const auto &Unit : P->Presenter->VisibleUnits)
       if (Number(Unit->AsObject(), TEXT("hp")) > 0)
@@ -970,8 +971,10 @@ void WCTickVerification(AWCMatchController *P, float Delta) {
   if (P->Public->HasTypedField<EJson::Array>(TEXT("encounters"))) {
     for (const auto &Encounter : P->Public->GetArrayField(TEXT("encounters"))) {
       auto Item = Encounter->AsObject();
-      if (!Boolean(Item, TEXT("complete")))
+      if (!Boolean(Item, TEXT("complete"))) {
         ++Encounters;
+        if (Boolean(Item, TEXT("neutral"))) ++NeutralEncounters;
+      }
       for (const auto &Unit : Item->GetArrayField(TEXT("units")))
         if (Number(Unit->AsObject(), TEXT("hp")) > 0)
           ++Logical;
@@ -1040,9 +1043,10 @@ void WCTickVerification(AWCMatchController *P, float Delta) {
     E.PeakMemory = FMath::Max<uint64>(E.PeakMemory,
                                       FPlatformMemory::GetStats().UsedPhysical);
     E.FrameRows += FString::Printf(
-        TEXT("%.6f,%d,%d,%d,%d,%d,%.6f,%.6f,%.6f,%.6f,%d,%d,%d\n"),
+        TEXT("%.6f,%d,%d,%d,%d,%d,%.6f,%.6f,%.6f,%.6f,%d,%d,%d,%d,%d\n"),
         Now - E.StartWall, Phase, Round, Visible, Logical, Encounters, Frame,
-        Game, Render, GPU, Cycles ? 1 : 0, E.PublicChars, E.PublicUtf8Bytes);
+        Game, Render, GPU, Cycles ? 1 : 0, E.PublicChars, E.PublicUtf8Bytes,
+        Boolean(P->Public, TEXT("neutralRound")) ? 1 : 0, NeutralEncounters);
   }
   if (Now >= E.NextFrameFlush) {
     FlushFrames(P, E);
@@ -1078,20 +1082,23 @@ void WCTickVerification(AWCMatchController *P, float Delta) {
   if (!Exercise || E.Aborted || (Session && Session->IsStartupRouting()))
     return;
   if (E.Complete) {
-    if (FParse::Param(FCommandLine::Get(), TEXT("WCRestartOnce")) &&
+    int RequestedRestarts = FParse::Param(FCommandLine::Get(), TEXT("WCRestartOnce")) ? 1 : 0;
+    FParse::Value(FCommandLine::Get(), TEXT("WCRestartCount="), RequestedRestarts);
+    RequestedRestarts = FMath::Clamp(RequestedRestarts, 0, 2);
+    if (RestartedControllers.FindRef(P) < RequestedRestarts &&
         P->HasAuthority() && P->AssignedSeat == 0 &&
-        !RestartedControllers.Contains(P) && Now - E.CompletedAt >= 2) {
+        Now - E.CompletedAt >= 2) {
       int Humans = 0;
       for (const auto &Seat : P->Public->GetArrayField(TEXT("seats")))
         if (Boolean(Seat->AsObject(), TEXT("human")))
           ++Humans;
-      RestartedControllers.Add(P);
+      const int RestartIndex = ++RestartedControllers.FindOrAdd(P);
       E.RestartRequested = true;
       Write(P, E);
       UE_LOG(LogTemp, Display,
              TEXT("WC_SCRIPTED_RESTART_REQUEST namespace=%lld humans=%d"),
              E.Namespace, Humans);
-      P->ServerStart(Humans, 271828);
+      P->ServerStart(Humans, RestartIndex == 1 ? 271828 : 161803);
     }
     return;
   }
@@ -1108,11 +1115,13 @@ void WCTickVerification(AWCMatchController *P, float Delta) {
     E.NormalAwaiting = false;
   }
   if (AuthorityChecks() && Phase == int(wc::Phase::Combat) &&
-      !E.CombatProbeSent && Now - E.PhaseChangedAt >= .8 &&
+      !E.CombatProbeSent && Round >= 4 && Now - E.PhaseChangedAt >= .05 &&
       P->Private.IsValid() && P->Private->HasField(TEXT("revision"))) {
     E.CombatProbeSent = true;
     E.CombatProbeActive = true;
     SendProbe(P, E);
+    if (E.ReplySerial > E.ProbeReplyAfter)
+      AdvanceProbes(P, E);
     return;
   }
   if (Now < E.NextAction)

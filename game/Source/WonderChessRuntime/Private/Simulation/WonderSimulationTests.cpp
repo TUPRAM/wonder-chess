@@ -2,6 +2,8 @@
 #include "HAL/FileManager.h"
 #include "Misc/AutomationTest.h"
 #include "Misc/FileHelper.h"
+#include "Misc/CommandLine.h"
+#include "Misc/Parse.h"
 #include "Misc/Paths.h"
 #include "Simulation/WonderSimulation.h"
 #include "WCDefinitionRegistry.h"
@@ -18,7 +20,7 @@ bool FWCArithmeticTest::RunTest(const FString &Parameters)
         AddError(Error);
         return false;
     }
-    TestEqual(TEXT("Twelve alpha definitions"), static_cast<int32>(Catalog.units.size()), 12);
+    TestEqual(TEXT("Twenty-four alpha definitions"), static_cast<int32>(Catalog.units.size()), 24);
     TestEqual(TEXT("Physical mitigation"), wc::ResolveDamage(12000, wc::DamageType::Physical, 50, 0),
               wc::Int(8000));
     TestEqual(TEXT("Magic mitigation"), wc::ResolveDamage(12000, wc::DamageType::Magic, 0, 20),
@@ -154,7 +156,9 @@ bool FWCAllBotCombatTest::RunTest(const FString &Parameters)
                                Encounters, Timeouts, Ghosts, static_cast<int>(Match.BotLog().size()), Rejects,
                                Match.Records().back().postHash);
     }
-    const FString Directory = FPaths::ProjectSavedDir() / TEXT("WonderChessEvidence");
+    FString Directory;
+    if (!FParse::Value(FCommandLine::Get(), TEXT("WCEvidenceDir="), Directory))
+        Directory = FPaths::ProjectSavedDir() / TEXT("WonderChessEvidence");
     IFileManager::Get().MakeDirectory(*Directory, true);
     TestTrue(TEXT("Write actual combat tournament CSV"),
              FFileHelper::SaveStringToFile(Csv, *(Directory / TEXT("engine-tournaments.csv"))));

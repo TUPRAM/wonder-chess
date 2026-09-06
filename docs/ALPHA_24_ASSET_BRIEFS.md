@@ -2089,11 +2089,11 @@ Health and basic damage use 1.00/1.80/3.24 star multipliers. Only explicitly aut
 
 **Preferred formation.** Protected backline with range to interrupt a dangerous current target.
 
-**Useful partners.** Rowan or Zura gains the damage-bearing benefit of a Mage pair; Neris contributes the count but her nondamaging active receives no bonus. Liora supplies Elf.
+**Useful partners.** Rowan or Zura completes a Mage pair that amplifies each hero's damage-bearing skill effect. Neris's magic impact gains that bonus once; its stun duration does not. Liora supplies Elf.
 
 **Counterplay.** Several moderate threats reduce the value of locking one target; a flanker can force a poor current target.
 
-**Practical weakness.** Her active deals no damage and has a long cooldown. Mage ability-damage bonus intentionally does not benefit Starbind.
+**Practical weakness.** Her single-target magic impact is modest and has a long cooldown. A target defeated by the impact receives no stun; Mage damage bonuses never extend the control duration.
 
 **Difference from the nearest alternative.** Borin controls a nearby group; Neris interrupts one distant opponent for slightly longer.
 
@@ -2103,7 +2103,7 @@ Health and basic damage use 1.00/1.80/3.24 star multipliers. Only explicitly aut
 
 Idle follows the lens with a small eye-line shift. Basics flick a pale spark. Starbind raises the lens to eye level, aligns both palms and releases one small star toward the target.
 
-**Skill effect:** A pale violet projectile and a geometric ring hovering above the stunned target. No chains, root effect or damage are added.
+**Skill effect:** A pale violet projectile makes one compact magic impact, followed by a geometric ring above the surviving stunned target. Damage and stun share one impact; no chains, root or extra damage packets are added.
 
 **Sound:** A clean glass note with a short crystalline arrival tone. No long loop while the target is stunned.
 

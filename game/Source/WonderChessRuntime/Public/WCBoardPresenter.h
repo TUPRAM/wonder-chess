@@ -28,6 +28,8 @@ private:
   TMap<int64, int64> PreviousActions;
   TMap<int64, FVector> Targets;
   TMap<int64, UStaticMeshComponent *> Highlights;
+  TMap<FString, AActor*> StatusMarkers, Telegraphs;
+  TSet<FString> HeardActions, KnownProjectiles;
   UPROPERTY() TMap<uint32, TObjectPtr<UMaterialInstanceDynamic>> Materials;
   UPROPERTY() TArray<TObjectPtr<UObject>> ResidentAssets;
   UPROPERTY() TObjectPtr<AActor> Camera;
@@ -43,7 +45,12 @@ private:
   };
   TArray<VisualEffect> Effects;
   void SpawnEffect(int32 Kind, int64 Source, int64 Target, int32 Radius = 0,
-                   int32 Column = -1, int32 Row = -1);
+                   int32 Column = -1, int32 Row = -1, const FString& UnitId = FString(), bool Basic = false);
+  AActor* CreateGlyph(int32 Kind, FVector Center, FLinearColor Color, float Duration = 0,
+                      FVector Extent = FVector(24,24,24));
+  AActor* CreateBoundary(int32 Column, int32 Row, int32 Radius, FLinearColor Color, float Duration = 0);
+  void PresentActions(const TArray<TSharedPtr<FJsonValue>>& Actions, int32 Tick);
+  float HeroHeight(int64 Id) const;
   void UpdateEffects(float Delta);
   void SpawnProjectile(FVector Start, FVector End, float Duration,
                        FLinearColor Color, bool Arrow);

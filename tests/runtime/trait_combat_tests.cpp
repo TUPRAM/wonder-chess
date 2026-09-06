@@ -29,10 +29,10 @@ wc::TraitDef Trait(const wc::Catalog& c, const std::string& id) {
     throw std::runtime_error("Unknown trait");
 }
 const wc::CombatUnit& Find(const wc::Combat& c, int side, wc::Id local) {
-    for (const auto& u:c.Units()) if(u.side==side && (u.id & ((wc::Id(1)<<39)-1))==local) return u;
+    for (const auto& u:c.Units()) if(u.side==side && (u.id & ((wc::Id(1)<<20)-1))==local) return u;
     throw std::runtime_error("Missing combat unit");
 }
-auto Stats(const wc::CombatUnit& u) { return std::make_tuple(u.health,u.maxHealth,u.basicDamage,u.armor,u.resistance,u.basicBonus,u.abilityBonus,u.allBonus,u.rateBonus,u.supportBonus,u.cooldownTick); }
+auto Stats(const wc::CombatUnit& u) { return std::make_tuple(u.health,u.maxHealth,u.basicDamage,u.armor,u.resistance,u.basicBonus,u.abilityBonus,u.allBonus,u.rateBonus,u.supportBonus,u.cooldownTick,u.movementBonus); }
 void ExpectedBonus(wc::CombatUnit& u, const wc::TraitDef& t, const wc::Catalog& c) {
     if(t.stat=="max_health_bonus_bp") {
         const auto base=c.units[u.definition].health;
@@ -44,7 +44,9 @@ void ExpectedBonus(wc::CombatUnit& u, const wc::TraitDef& t, const wc::Catalog& 
     else if(t.stat=="basic_damage_bonus_bp") u.basicBonus+=t.value;
     else if(t.stat=="ability_damage_bonus_bp") u.abilityBonus+=t.value;
     else if(t.stat=="support_power_bonus_bp") u.supportBonus+=t.value;
-    else throw std::runtime_error("Uncovered parsed alpha trait statistic");
+    else if(t.stat=="magic_resistance_flat") u.resistance+=t.value;
+    else if(t.stat=="movement_bonus_bp") u.movementBonus+=t.value;
+    else throw std::runtime_error("Uncovered parsed trait statistic");
 }
 void Snapshot(const wc::Catalog& canonical, const wc::TraitDef& t, const std::vector<wc::OwnedUnit>& a,
               const std::vector<wc::OwnedUnit>& b, bool aActive, bool bActive) {
@@ -55,7 +57,7 @@ void Snapshot(const wc::Catalog& canonical, const wc::TraitDef& t, const std::ve
     for(const auto& base:plain.Units()) {
         auto expected=base; const auto& d=canonical.units[base.definition];
         if((base.side ? bActive:aActive) && (d.race==t.id || d.unitClass==t.id)) ExpectedBonus(expected,t,canonical);
-        Check(Stats(Find(actual,base.side,base.id & ((wc::Id(1)<<39)-1)))==Stats(expected),"Exact matching recipient stats with no duplicate or cross-field application");
+        Check(Stats(Find(actual,base.side,base.id & ((wc::Id(1)<<20)-1)))==Stats(expected),"Exact matching recipient stats with no duplicate or cross-field application");
     }
 }
 wc::Catalog Controlled(const wc::Catalog& source) {
@@ -67,7 +69,7 @@ wc::Catalog Controlled(const wc::Catalog& source) {
     return c;
 }
 void Ability(wc::UnitDef& d, wc::Effect effect, wc::Selector selector, wc::Int value, int first=0) {
-    auto& a=d.ability; a.effect=effect; a.selector=selector; a.damageType=wc::DamageType::True;
+    auto& a=d.ability; a.effects.clear(); a.effect=effect; a.selector=selector; a.damageType=wc::DamageType::True;
     a.magnitude={value,value,value}; a.firstCastMs=first; a.castMs=50; a.recoveryMs=50; a.cooldownMs=100000;
     a.durationMs=1000; a.travelMs=0; a.radius=8; a.range=8; a.maxTargets=12; a.allowSelf=true;
 }
@@ -150,8 +152,8 @@ int main() {
     rows<<"case,status,assertions,error\n"; events<<"case,tick,source,target,effect,basic,requested,resolved\n";
     const auto c=FixtureCatalog();
     Case("canonical_alpha_trait_contract",[&]{
-        Check(c.Validate().empty(),"Canonical catalog valid"); Check(c.traits.size()==10,"All ten parsed alpha traits covered");
-        for(const auto& t:c.traits) { Check(t.threshold==2,"Only alpha threshold two parsed"); Check(Members(c,t.id).size()>=2,"Every enabled trait attainable"); }
+        Check(c.Validate().empty(),"Canonical catalog valid"); Check(c.traits.size()==12,"All twelve parsed traits covered");
+        for(const auto& t:c.traits) { Check(t.threshold==2 && t.threshold4==4,"Two and four thresholds parsed"); Check(Members(c,t.id).size()==4,"Every enabled trait has four distinct members"); }
     });
     for(const auto& t:c.traits) {
         const auto members=Members(c,t.id); int other=0;
@@ -162,9 +164,13 @@ int main() {
             Case(t.id+"_duplicate_stars_do_not_count"+suffix,[&]{Snapshot(c,t,{Unit(1,members[0],0,star),Unit(2,members[0],1,star%3+1),Unit(3,other,2,star)},{Unit(100,other,0,star)},false,false);});
             Case(t.id+"_bench_excluded"+suffix,[&]{Snapshot(c,t,{Unit(1,members[0],0,star),Unit(2,members[1],1,star,false),Unit(3,other,2,star)},{Unit(100,members[1],0,star)},false,false);});
         }
+        Case(t.id+"_four_distinct_replace_tier_two",[&]{
+            auto expected=t; expected.value=t.value4;
+            Snapshot(c,expected,{Unit(1,members[0],0),Unit(2,members[1],1),Unit(3,members[2],2),Unit(4,members[3],3),Unit(5,other,4)},{Unit(100,other,0)},true,false);
+        });
         Case(t.id+"_duplicate_recipient_gets_bonus_once",[&]{Snapshot(c,t,{Unit(1,members[0],0),Unit(2,members[1],1),Unit(3,members[0],2),Unit(4,other,3)},{Unit(100,other,0)},true,false);});
         Case(t.id+"_opponent_types_do_not_enable_friendly",[&]{Snapshot(c,t,{Unit(1,members[0],0),Unit(2,other,1)},{Unit(100,members[0],0),Unit(101,members[1],1),Unit(102,other,2)},false,true);});
-        Case(t.id+"_four_instances_do_not_unlock_expansion_tier",[&]{
+        Case(t.id+"_four_instances_three_distinct_keep_tier_two",[&]{
             Snapshot(c,t,{Unit(1,members[0],0),Unit(2,members[1],1),Unit(3,members.back(),2),Unit(4,members[0],3),Unit(5,other,4)},{Unit(100,other,0)},true,false);
         });
     }

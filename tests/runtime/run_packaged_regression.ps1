@@ -1,12 +1,14 @@
 param([Parameter(Mandatory=$true)][string]$ProvenancePath,
-      [Parameter(Mandatory=$true)][string]$EvidenceName)
+      [Parameter(Mandatory=$true)][string]$EvidenceName,
+      [string]$OutputDirectory)
 $ErrorActionPreference = 'Stop'
 $taskRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../..'))
 $manifestPath = [IO.Path]::GetFullPath($ProvenancePath)
 $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
 if ($manifest.package_report.exit_code -ne 0 -or -not $manifest.input_files_stable_during_capture) { throw 'Successful packaging and stable immutable provenance are required' }
 if ($EvidenceName -notmatch '^[a-z0-9-]+$') { throw 'Evidence name must be a simple report directory name' }
-$directory = Join-Path $taskRoot ('reports/WC-360/' + $EvidenceName)
+$directory = if ($OutputDirectory) { [IO.Path]::GetFullPath($OutputDirectory) } else { Join-Path $taskRoot ('reports/WC-360/' + $EvidenceName) }
+if (-not $directory.StartsWith((Join-Path $taskRoot 'reports') + [IO.Path]::DirectorySeparatorChar, [StringComparison]::OrdinalIgnoreCase)) { throw 'Evidence must stay under this workspace reports directory' }
 if (Test-Path -LiteralPath $directory) { throw 'Preserve prior regression evidence; choose a fresh directory' }
 $executable = $manifest.packaged_game_executable
 $recorded = $manifest.files | Where-Object path -eq $executable

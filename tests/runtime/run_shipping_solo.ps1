@@ -2,10 +2,12 @@ param(
     [Parameter(Mandatory=$true)][ValidateSet('normal1080','normal1080-taa','restart')][string]$Mode,
     [Parameter(Mandatory=$true)][string]$ProvenancePath,
     [ValidateRange(1,2147483647)][int]$ExerciseSeed=271828,
-    [ValidateRange(-1,11)][int]$FollowHero=-1,
+    [ValidateRange(-1,23)][int]$FollowHero=-1,
+    [string]$OutputDirectory,
     [ValidatePattern('^[a-zA-Z0-9][a-zA-Z0-9_-]*$')][string]$EvidenceName,
     [ValidateRange(10,3600)][int]$Seconds,
     [ValidateRange(1,100)][int]$SimulationSpeed,
+    [ValidateRange(1,2)][int]$Restarts=1,
     [switch]$NullRHI,
     [switch]$NoAutomaticShots
 )
@@ -22,7 +24,8 @@ if ($manifest.package_report.exit_code -ne 0) { throw 'Manifest does not record 
 $otherGames = @(Get-CimInstance Win32_Process -Filter "Name = 'WonderChess-Win64-Shipping.exe' OR Name = 'WonderChess.exe'" | Where-Object { $_.ExecutablePath -and $_.ExecutablePath.StartsWith($taskRoot, [StringComparison]::OrdinalIgnoreCase) })
 if ($otherGames.Count) { throw 'Another task-owned game is running; preserve it and launch this verification after it exits' }
 $evidenceLabel = if ($EvidenceName) { $EvidenceName } else { 'shipping-' + $Mode }
-$evidenceRoot = Join-Path $taskRoot ('reports/WC-360/' + $evidenceLabel)
+$evidenceRoot = if ($OutputDirectory) { [IO.Path]::GetFullPath($OutputDirectory) } else { Join-Path $taskRoot ('reports/WC-360/' + $evidenceLabel) }
+if (-not $evidenceRoot.StartsWith((Join-Path $taskRoot 'reports') + [IO.Path]::DirectorySeparatorChar, [StringComparison]::OrdinalIgnoreCase)) { throw 'Evidence must stay under this workspace reports directory' }
 if (Test-Path -LiteralPath $evidenceRoot) { throw 'Evidence already exists; preserve it' }
 New-Item -ItemType Directory -Path $evidenceRoot | Out-Null
 $speed = if ($PSBoundParameters.ContainsKey('SimulationSpeed')) { $SimulationSpeed } elseif ($Mode -eq 'restart') { 10 } else { 1 }
@@ -36,7 +39,7 @@ if ($NullRHI) {
 elseif ($NoAutomaticShots) {
     $arguments = @($arguments | Where-Object { $_ -notin @('-WCShots','-WCProjectedBounds') })
 }
-if ($Mode -eq 'restart') { $arguments += @('-WCRestartOnce','-WCAutoStart') }
+if ($Mode -eq 'restart') { $arguments += @("-WCRestartCount=$Restarts",'-WCAutoStart') }
 if ($ExerciseSeed -ne 271828) { $arguments += "-WCExerciseSeed=$ExerciseSeed" }
 if ($FollowHero -ge 0) { $arguments += "-WCFollowHero=$FollowHero" }
 $ambient = @(Get-Process -Name UnrealEditor,blender -ErrorAction SilentlyContinue | Select-Object Id,ProcessName,StartTime,CPU,WorkingSet64)

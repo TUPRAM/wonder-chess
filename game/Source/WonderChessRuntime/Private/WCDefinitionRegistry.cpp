@@ -124,11 +124,11 @@ wc::DamageType DamageType(const FString& Value, const FString& Path)
 
 void VerifyStage(const FString& Directory, const FObject& Manifest, const FObject& Digest)
 {
-    Manifest.Expect(TEXT("schema_version"), TEXT("3.0.0"));
-    Digest.Expect(TEXT("schema_version"), TEXT("3.0.0"));
+    Manifest.Expect(TEXT("schema_version"), TEXT("3.1.0"));
+    Digest.Expect(TEXT("schema_version"), TEXT("3.1.0"));
     Require(Manifest.String(TEXT("catalog_digest")) == Digest.String(TEXT("combined_sha256")), TEXT("Runtime manifest/catalog digest mismatch"));
     const FObject Files = Manifest.Object(TEXT("files"));
-    ExactKeys(Files, {TEXT("asset_manifest.json"),TEXT("bots.json"),TEXT("rules.alpha.json"),TEXT("traits.json"),TEXT("units.json"),TEXT("world.json"),TEXT("locales/en.json"),TEXT("locales/id.json"),TEXT("generated/catalog_digest.json"),TEXT("generated/unreal/DT_Units_Alpha.json"),TEXT("generated/unreal/DT_Abilities_Alpha.json")});
+    ExactKeys(Files, {TEXT("asset_manifest.json"),TEXT("neutrals.json"),TEXT("bots.json"),TEXT("rules.alpha.json"),TEXT("traits.json"),TEXT("units.json"),TEXT("world.json"),TEXT("locales/en.json"),TEXT("locales/id.json"),TEXT("generated/catalog_digest.json"),TEXT("generated/unreal/DT_Units_Alpha.json"),TEXT("generated/unreal/DT_Abilities_Alpha.json")});
     for (const auto& Entry : Files.Value->Values)
     {
         const FObject Metadata = Files.Object(Entry.Key);
@@ -141,7 +141,7 @@ void VerifyStage(const FString& Directory, const FObject& Manifest, const FObjec
         Require(Metadata.String(TEXT("sha256")).Len() == 64, TEXT("Invalid provenance SHA-256: ") + Entry.Key);
     }
     const FObject SourceHashes = Digest.Object(TEXT("source_sha256"));
-    Require(SourceHashes.Value->Values.Num() == 6, TEXT("Catalog must cover six canonical source files"));
+    Require(SourceHashes.Value->Values.Num() == 7, TEXT("Catalog must cover seven canonical source files"));
     for (const auto& Entry : SourceHashes.Value->Values)
     {
         Require(Entry.Key.StartsWith(TEXT("data/")), TEXT("Unexpected canonical digest source"));
@@ -153,11 +153,11 @@ void VerifyStage(const FString& Directory, const FObject& Manifest, const FObjec
 void ParseRules(const FObject& Root, wc::Rules& R)
 {
     ExactKeys(Root, {TEXT("schema_version"),TEXT("balance_version"),TEXT("profile_id"),TEXT("design_status"),TEXT("board"),TEXT("simulation"),TEXT("tournament"),TEXT("economy"),TEXT("alpha_unit_ids"),TEXT("active_trait_thresholds"),TEXT("future_profile"),TEXT("runtime_llm_calls"),TEXT("website_blocks_alpha"),TEXT("status_policies"),TEXT("network")});
-    Root.Expect(TEXT("schema_version"), TEXT("3.0.0"));
-    Root.Expect(TEXT("profile_id"), TEXT("alpha_8seat"));
+    Root.Expect(TEXT("schema_version"), TEXT("3.1.0"));
+    Root.Expect(TEXT("profile_id"), TEXT("alpha_24"));
     Require(!Root.Boolean(TEXT("runtime_llm_calls")) && !Root.Boolean(TEXT("website_blocks_alpha")), TEXT("Unsupported external runtime dependency"));
     const auto& Thresholds = Root.Array(TEXT("active_trait_thresholds"));
-    Require(Thresholds.Num() == 1 && Thresholds[0]->Type == EJson::Number && Thresholds[0]->AsNumber() == 2, TEXT("Only threshold 2 is supported in alpha"));
+    Require(Thresholds.Num() == 2 && Thresholds[0]->Type == EJson::Number && Thresholds[0]->AsNumber() == 2 && Thresholds[1]->Type == EJson::Number && Thresholds[1]->AsNumber() == 4, TEXT("Expected highest eligible 2/4 trait tiers"));
     const FObject Board = Root.Object(TEXT("board"));
     ExactKeys(Board, {TEXT("columns"),TEXT("rows"),TEXT("deployment_rows_per_side"),TEXT("tile_size_cm"),TEXT("neighbor_mode"),TEXT("distance_metric"),TEXT("diagonal_corner_policy")});
     Board.Expect(TEXT("neighbor_mode"), TEXT("eight"));
@@ -186,7 +186,7 @@ void ParseRules(const FObject& Root, wc::Rules& R)
         R.starMultiplierBp[Index] = static_cast<int>(Stars[Index]->AsNumber());
     }
     const FObject Tournament = Root.Object(TEXT("tournament"));
-    ExactKeys(Tournament, {TEXT("seats"),TEXT("default_humans"),TEXT("starting_health"),TEXT("max_rounds"),TEXT("first_preparation_ms"),TEXT("preparation_ms"),TEXT("combat_timeout_ms"),TEXT("settlement_ms"),TEXT("draw_damage"),TEXT("loss_base_by_stage"),TEXT("ghost_wins_count_for_cap"),TEXT("timeout_score"),TEXT("rank_ties")});
+    ExactKeys(Tournament, {TEXT("seats"),TEXT("default_humans"),TEXT("starting_health"),TEXT("max_rounds"),TEXT("first_preparation_ms"),TEXT("preparation_ms"),TEXT("combat_timeout_ms"),TEXT("settlement_ms"),TEXT("draw_damage"),TEXT("loss_base_by_stage"),TEXT("ghost_wins_count_for_cap"),TEXT("timeout_score"),TEXT("rank_ties"),TEXT("neutral_opening_rounds"),TEXT("neutral_every_rounds"),TEXT("neutral_opening_failure_damage"),TEXT("neutral_failure_damage")});
     Tournament.Expect(TEXT("timeout_score"), TEXT("sum_survivor_health_fractions"));
     Tournament.Expect(TEXT("rank_ties"), TEXT("competition_ranking_same_placement"));
     Require(Tournament.Boolean(TEXT("ghost_wins_count_for_cap")), TEXT("Unsupported ghost win policy"));
@@ -199,6 +199,10 @@ void ParseRules(const FObject& Root, wc::Rules& R)
     R.combatTimeoutMs = Tournament.Integer(TEXT("combat_timeout_ms"), 1);
     R.settlementMs = Tournament.Integer(TEXT("settlement_ms"), 1);
     R.drawDamage = Tournament.Integer(TEXT("draw_damage"), 0, 10000);
+    R.neutralOpeningRounds = Tournament.Integer(TEXT("neutral_opening_rounds"), 0, 40);
+    R.neutralEvery = Tournament.Integer(TEXT("neutral_every_rounds"), 1, 40);
+    R.neutralOpeningDamage = Tournament.Integer(TEXT("neutral_opening_failure_damage"), 0, 10000);
+    R.neutralLossDamage = Tournament.Integer(TEXT("neutral_failure_damage"), 0, 10000);
     for (const auto& Item : Tournament.Array(TEXT("loss_base_by_stage")))
     {
         const FObject Stage = AsObject(Item, TEXT("loss_base_by_stage"));
@@ -206,7 +210,7 @@ void ParseRules(const FObject& Root, wc::Rules& R)
         R.lossStages.push_back({static_cast<int>(Stage.Integer(TEXT("start"), 1)),static_cast<int>(Stage.Integer(TEXT("end"), 1)),static_cast<int>(Stage.Integer(TEXT("damage")))});
     }
     const FObject Economy = Root.Object(TEXT("economy"));
-    ExactKeys(Economy, {TEXT("starting_gold"),TEXT("bench_capacity"),TEXT("shop_slots"),TEXT("reroll_cost"),TEXT("base_income"),TEXT("win_income"),TEXT("interest_divisor"),TEXT("interest_cap"),TEXT("interest_snapshot"),TEXT("pool"),TEXT("starting_level"),TEXT("maximum_level"),TEXT("buy_xp_gold"),TEXT("buy_xp_amount"),TEXT("passive_xp"),TEXT("xp_to_next"),TEXT("sell_formula"),TEXT("shop_weights_by_level")});
+    ExactKeys(Economy, {TEXT("starting_gold"),TEXT("bench_capacity"),TEXT("shop_slots"),TEXT("reroll_cost"),TEXT("base_income"),TEXT("win_income"),TEXT("neutral_win_income"),TEXT("interest_divisor"),TEXT("interest_cap"),TEXT("interest_snapshot"),TEXT("pool"),TEXT("starting_level"),TEXT("maximum_level"),TEXT("buy_xp_gold"),TEXT("buy_xp_amount"),TEXT("passive_xp"),TEXT("xp_to_next"),TEXT("sell_formula"),TEXT("shop_weights_by_level")});
     Economy.Expect(TEXT("interest_snapshot"), TEXT("preparation_lock"));
     Economy.Expect(TEXT("pool"), TEXT("independent_with_replacement"));
     Economy.Expect(TEXT("sell_formula"), TEXT("cost_times_3_power_star_minus_1"));
@@ -216,6 +220,7 @@ void ParseRules(const FObject& Root, wc::Rules& R)
     R.rerollCost = Economy.Integer(TEXT("reroll_cost"), 1);
     R.baseIncome = Economy.Integer(TEXT("base_income"));
     R.winIncome = Economy.Integer(TEXT("win_income"));
+    R.neutralWinIncome = Economy.Integer(TEXT("neutral_win_income"));
     R.interestDivisor = Economy.Integer(TEXT("interest_divisor"), 1);
     R.interestCap = Economy.Integer(TEXT("interest_cap"));
     R.startingLevel = Economy.Integer(TEXT("starting_level"), 1, 6);
@@ -242,7 +247,8 @@ void ParseRules(const FObject& Root, wc::Rules& R)
     Status.Expect(TEXT("debuff"), TEXT("same_key_strongest_refresh_attack_rate_only"));
     Status.Expect(TEXT("support_power"), TEXT("heal_shield_and_positive_active_attack_rate_only"));
     const FObject Network = Root.Object(TEXT("network"));
-    ExactKeys(Network, {TEXT("release_test_modes"),TEXT("future_mode"),TEXT("disconnect_policy"),TEXT("host_disconnect"),TEXT("public_snapshot_cadence_ms"),TEXT("bot_public_observation_ms"),TEXT("bot_final_reposition_cutoff_ms")});
+    ExactKeys(Network, {TEXT("protocol_version"),TEXT("release_test_modes"),TEXT("future_mode"),TEXT("disconnect_policy"),TEXT("host_disconnect"),TEXT("public_snapshot_cadence_ms"),TEXT("bot_public_observation_ms"),TEXT("bot_final_reposition_cutoff_ms")});
+    Require(Network.Integer(TEXT("protocol_version")) == 4, TEXT("Unsupported network protocol version"));
     const auto& Modes = Network.Array(TEXT("release_test_modes"));
     Require(Modes.Num() == 3 && Modes[0]->Type == EJson::String && Modes[1]->Type == EJson::String && Modes[2]->Type == EJson::String && Modes[0]->AsString() == TEXT("1H7B") && Modes[1]->AsString() == TEXT("0H8B") && Modes[2]->AsString() == TEXT("2H6B"), TEXT("Release modes must retain 1H7B, 0H8B and 2H6B"));
     Network.Expect(TEXT("disconnect_policy"), TEXT("bot_takeover_until_match_end_no_rejoin_alpha"));
@@ -252,15 +258,25 @@ void ParseRules(const FObject& Root, wc::Rules& R)
     R.botRepositionCutoffMs = Network.Integer(TEXT("bot_final_reposition_cutoff_ms"));
 }
 
-wc::UnitDef ParseUnit(const FObject& Unit, const wc::Rules& Rules)
+wc::UnitDef ParseUnit(const FObject& Unit, const wc::Rules& Rules, bool Neutral = false)
 {
     wc::UnitDef U;
     U.id = Utf8(Unit.String(TEXT("id")));
-    U.name = Utf8(Unit.String(TEXT("name")));
-    U.race = Utf8(Unit.String(TEXT("race")));
-    U.unitClass = Utf8(Unit.String(TEXT("unit_class")));
-    U.cost = Unit.Integer(TEXT("cost"), 1, 3);
-    Unit.Expect(TEXT("production_phase"), TEXT("alpha"));
+    U.displayName = Utf8(Unit.String(TEXT("display_name")));
+    U.name = Neutral ? U.displayName : Utf8(Unit.String(TEXT("name")));
+    if (!Neutral)
+    {
+        U.race = Utf8(Unit.String(TEXT("race")));
+        U.unitClass = Utf8(Unit.String(TEXT("unit_class")));
+        U.cost = Unit.Integer(TEXT("cost"), 1, 3);
+        Unit.Expect(TEXT("production_phase"), TEXT("alpha"));
+        for (const auto& Role : Unit.Array(TEXT("role_tags")))
+        {
+            Require(Role->Type == EJson::String, TEXT("Role tag must be a string"));
+            U.roleTags.push_back(Utf8(Role->AsString()));
+        }
+    }
+    else Require(Unit.Integer(TEXT("footprint_cells")) == 1, TEXT("Neutral footprint must be one cell"));
     const FObject Stats = Unit.Object(TEXT("stats"));
     ExactKeys(Stats, {TEXT("health_cp"),TEXT("attack_damage_cp"),TEXT("attack_rate_milli"),TEXT("attack_range_tiles"),TEXT("physical_armor"),TEXT("magic_resistance"),TEXT("movement_rate_milli"),TEXT("attack_delivery"),TEXT("attack_damage_type"),TEXT("attack_windup_ms"),TEXT("projectile_travel_ms")});
     U.health = Stats.Integer(TEXT("health_cp"), 1, Rules.maxHealth);
@@ -276,51 +292,68 @@ wc::UnitDef ParseUnit(const FObject& Unit, const wc::Rules& Rules)
     const FString AttackDelivery = Stats.String(TEXT("attack_delivery"));
     Require(AttackDelivery == TEXT("melee") || AttackDelivery == TEXT("ranged"), Stats.Path + TEXT(": unsupported attack delivery"));
     Require(AttackDelivery != TEXT("melee") || U.projectileTravelMs == 0, Stats.Path + TEXT(": melee cannot travel as projectile"));
+    if (Neutral && Unit.Field(TEXT("ability"))->Type == EJson::Null)
+    {
+        U.ability.enabled = false;
+        return U;
+    }
     const FObject Ability = Unit.Object(TEXT("ability"));
-    ExactKeys(Ability, {TEXT("id"),TEXT("name"),TEXT("tooltip_en"),TEXT("tooltip_id"),TEXT("effect"),TEXT("target_rule"),TEXT("first_cast_ms"),TEXT("cooldown_ms"),TEXT("cast_ms"),TEXT("duration_ms"),TEXT("radius_tiles"),TEXT("range_tiles"),TEXT("allow_self"),TEXT("recovery_ms"),TEXT("damage_type"),TEXT("max_targets"),TEXT("max_dash_tiles"),TEXT("stat"),TEXT("travel_ms"),TEXT("interrupt_policy"),TEXT("no_target_policy"),TEXT("effect_snapshot"),TEXT("magnitude_unit"),TEXT("magnitude_by_star"),TEXT("delivery")});
+    ExactKeys(Ability, {TEXT("id"),TEXT("name"),TEXT("tooltip_en"),TEXT("tooltip_id"),TEXT("effects"),TEXT("target_rule"),TEXT("first_cast_ms"),TEXT("cooldown_ms"),TEXT("cast_ms"),TEXT("radius_tiles"),TEXT("range_tiles"),TEXT("allow_self"),TEXT("recovery_ms"),TEXT("max_targets"),TEXT("max_dash_tiles"),TEXT("travel_ms"),TEXT("interrupt_policy"),TEXT("no_target_policy"),TEXT("effect_snapshot"),TEXT("delivery")});
     auto& A = U.ability;
     A.id = Utf8(Ability.String(TEXT("id")));
     A.name = Utf8(Ability.String(TEXT("name")));
     Ability.String(TEXT("tooltip_en"));
     Ability.String(TEXT("tooltip_id"));
-    A.effect = EnumValue<wc::Effect>(Ability.String(TEXT("effect")), {{TEXT("damage"),wc::Effect::Damage},{TEXT("heal"),wc::Effect::Heal},{TEXT("shield"),wc::Effect::Shield},{TEXT("stun"),wc::Effect::Stun},{TEXT("dash"),wc::Effect::Dash},{TEXT("stat_modifier"),wc::Effect::StatModifier}}, Ability.Path);
-    A.selector = EnumValue<wc::Selector>(Ability.String(TEXT("target_rule")), {{TEXT("self"),wc::Selector::Self},{TEXT("current_enemy"),wc::Selector::CurrentEnemy},{TEXT("adjacent_enemies"),wc::Selector::AdjacentEnemies},{TEXT("adjacent_allies"),wc::Selector::AdjacentAllies},{TEXT("lowest_health_ally"),wc::Selector::LowestHealthAlly},{TEXT("current_enemy_area"),wc::Selector::CurrentEnemyArea},{TEXT("retreat_from_current_enemy"),wc::Selector::RetreatFromCurrentEnemy},{TEXT("current_enemy_adjacent"),wc::Selector::CurrentEnemyAdjacent},{TEXT("farthest_enemy_adjacent"),wc::Selector::FarthestEnemyAdjacent}}, Ability.Path);
-    const FString AbilityDamageType = Ability.String(TEXT("damage_type"), true);
-    Require((A.effect == wc::Effect::Damage) == !AbilityDamageType.IsEmpty(), Ability.Path + TEXT(": damage type/effect mismatch"));
-    if (!AbilityDamageType.IsEmpty()) A.damageType = DamageType(AbilityDamageType, Ability.Path);
+    A.selector = EnumValue<wc::Selector>(Ability.String(TEXT("target_rule")), {{TEXT("self"),wc::Selector::Self},{TEXT("current_enemy"),wc::Selector::CurrentEnemy},{TEXT("adjacent_enemies"),wc::Selector::AdjacentEnemies},{TEXT("adjacent_allies"),wc::Selector::AdjacentAllies},{TEXT("lowest_health_ally"),wc::Selector::LowestHealthAlly},{TEXT("highest_attack_rate_enemy"),wc::Selector::HighestAttackRateEnemy},{TEXT("current_enemy_area"),wc::Selector::CurrentEnemyArea},{TEXT("retreat_from_current_enemy"),wc::Selector::RetreatFromCurrentEnemy},{TEXT("current_enemy_adjacent"),wc::Selector::CurrentEnemyAdjacent},{TEXT("farthest_enemy_adjacent"),wc::Selector::FarthestEnemyAdjacent}}, Ability.Path);
     A.firstCastMs = Ability.Integer(TEXT("first_cast_ms"));
     A.cooldownMs = Ability.Integer(TEXT("cooldown_ms"), Rules.tickMs);
     A.castMs = Ability.Integer(TEXT("cast_ms"), Rules.tickMs);
     A.recoveryMs = Ability.Integer(TEXT("recovery_ms"));
-    A.durationMs = Ability.Integer(TEXT("duration_ms"));
     A.travelMs = Ability.Integer(TEXT("travel_ms"));
     A.radius = Ability.Integer(TEXT("radius_tiles"), 0, Rules.columns);
     A.range = Ability.Integer(TEXT("range_tiles"), 0, Rules.columns);
     A.maxTargets = Ability.Integer(TEXT("max_targets"), 0, 48);
     A.maxDash = Ability.Integer(TEXT("max_dash_tiles"), 0, Rules.columns);
     A.allowSelf = Ability.Boolean(TEXT("allow_self"));
-    const FString Stat = Ability.String(TEXT("stat"), true);
-    Require(Stat == (A.effect == wc::Effect::StatModifier ? TEXT("attack_rate") : TEXT("")), Ability.Path + TEXT(": unsupported stat modifier"));
     Ability.Expect(TEXT("interrupt_policy"), TEXT("consume_committed_cooldown_cancel_unreleased_effect"));
     Ability.Expect(TEXT("no_target_policy"), TEXT("remain_ready_continue_basics"));
     Ability.Expect(TEXT("effect_snapshot"), TEXT("capture_at_release_except_reserved_dash_destination"));
     const FString Delivery = Ability.String(TEXT("delivery"));
     Require(Delivery == TEXT("instant") || Delivery == TEXT("projectile"), Ability.Path + TEXT(": unsupported ability delivery"));
     Require(Delivery != TEXT("instant") || A.travelMs == 0, Ability.Path + TEXT(": instant delivery cannot have projectile travel"));
-    const FString MagnitudeUnit = Ability.String(TEXT("magnitude_unit"), true);
-    const FString ExpectedMagnitude = A.effect == wc::Effect::StatModifier ? TEXT("basis_points") : (A.effect == wc::Effect::Stun || A.effect == wc::Effect::Dash ? TEXT("") : TEXT("centipoints"));
-    Require(MagnitudeUnit == ExpectedMagnitude, Ability.Path + TEXT(": magnitude unit/effect mismatch"));
-    const auto& Magnitudes = Ability.Array(TEXT("magnitude_by_star"));
-    Require(Magnitudes.Num() == 3, Ability.Path + TEXT(": exactly three authored magnitudes required"));
-    for (int Index = 0; Index < 3; ++Index)
+    const auto& Effects = Ability.Array(TEXT("effects"));
+    Require(Effects.Num() >= 1 && Effects.Num() <= 2, Ability.Path + TEXT(": expected one or two ordered effects"));
+    for (const auto& Value : Effects)
     {
-        Require(Magnitudes[Index]->Type == EJson::Number, Ability.Path + TEXT(": expected numeric magnitude"));
-        const double Magnitude = Magnitudes[Index]->AsNumber();
-        Require(std::isfinite(Magnitude) && std::floor(Magnitude) == Magnitude && Magnitude >= -10000 && Magnitude <= Rules.maxRawDamage, Ability.Path + TEXT(": invalid magnitude"));
-        Require(A.effect == wc::Effect::StatModifier || Magnitude >= 0, Ability.Path + TEXT(": negative non-modifier magnitude"));
-        Require((A.effect != wc::Effect::Dash && A.effect != wc::Effect::Stun) || Magnitude == 0, Ability.Path + TEXT(": dash/stun cannot carry hidden magnitude"));
-        A.magnitude[Index] = static_cast<wc::Int>(Magnitude);
+        const FObject Source = AsObject(Value, Ability.Path + TEXT(".effects"));
+        ExactKeys(Source, {TEXT("effect"),TEXT("damage_type"),TEXT("magnitude_unit"),TEXT("magnitude_by_star"),TEXT("stat"),TEXT("duration_ms")});
+        wc::AbilityEffect Effect;
+        Effect.effect = EnumValue<wc::Effect>(Source.String(TEXT("effect")), {{TEXT("damage"),wc::Effect::Damage},{TEXT("heal"),wc::Effect::Heal},{TEXT("shield"),wc::Effect::Shield},{TEXT("stun"),wc::Effect::Stun},{TEXT("dash"),wc::Effect::Dash},{TEXT("stat_modifier"),wc::Effect::StatModifier}}, Source.Path);
+        const FString Type = Source.String(TEXT("damage_type"), true);
+        Require((Effect.effect == wc::Effect::Damage) == !Type.IsEmpty(), Source.Path + TEXT(": damage type/effect mismatch"));
+        if (!Type.IsEmpty()) Effect.damageType = DamageType(Type, Source.Path);
+        Effect.durationMs = Source.Integer(TEXT("duration_ms"));
+        const FString Stat = Source.String(TEXT("stat"), true);
+        Require(Stat == (Effect.effect == wc::Effect::StatModifier ? TEXT("attack_rate") : TEXT("")), Source.Path + TEXT(": unsupported stat modifier"));
+        const FString Expected = Effect.effect == wc::Effect::StatModifier ? TEXT("basis_points") : (Effect.effect == wc::Effect::Stun || Effect.effect == wc::Effect::Dash ? TEXT("") : TEXT("centipoints"));
+        Require(Source.String(TEXT("magnitude_unit"), true) == Expected, Source.Path + TEXT(": magnitude unit/effect mismatch"));
+        const auto& Magnitudes = Source.Array(TEXT("magnitude_by_star"));
+        Require(Magnitudes.Num() == 3, Source.Path + TEXT(": exactly three authored magnitudes required"));
+        for (int Index = 0; Index < 3; ++Index)
+        {
+            Require(Magnitudes[Index]->Type == EJson::Number, Source.Path + TEXT(": numeric magnitude required"));
+            const double Magnitude = Magnitudes[Index]->AsNumber();
+            Require(std::isfinite(Magnitude) && std::floor(Magnitude) == Magnitude && Magnitude >= -10000 && Magnitude <= Rules.maxRawDamage, Source.Path + TEXT(": invalid magnitude"));
+            Require(Effect.effect == wc::Effect::StatModifier || Magnitude >= 0, Source.Path + TEXT(": negative non-modifier"));
+            Require((Effect.effect != wc::Effect::Dash && Effect.effect != wc::Effect::Stun) || Magnitude == 0, Source.Path + TEXT(": hidden dash/stun magnitude"));
+            Effect.magnitude[Index] = static_cast<wc::Int>(Magnitude);
+        }
+        A.effects.push_back(Effect);
     }
+    A.effect = A.effects.front().effect;
+    A.damageType = A.effects.front().damageType;
+    A.durationMs = A.effects.front().durationMs;
+    A.magnitude = A.effects.front().magnitude;
     return U;
 }
 
@@ -351,8 +384,13 @@ void VerifyRows(const FString& Directory, const TArray<FObject>& Units)
         SeenUnits.Add(Id);
         const FObject& Unit = ById.FindChecked(Id);
         const FObject Stats = Unit.Object(TEXT("stats"));
-        ExactKeys(Row, {TEXT("Name"),TEXT("UnitId"),TEXT("DisplayName"),TEXT("RaceId"),TEXT("ClassId"),TEXT("AbilityId"),TEXT("Cost"),TEXT("HealthCp"),TEXT("AttackDamageCp"),TEXT("AttackRateMilli"),TEXT("AttackRangeTiles"),TEXT("PhysicalArmor"),TEXT("MagicResistance"),TEXT("MovementRateMilli"),TEXT("AttackDelivery"),TEXT("AttackDamageType"),TEXT("AttackWindupMs"),TEXT("ProjectileTravelMs"),TEXT("ProductionPhase")});
-        for (const auto& Key : {std::pair{TEXT("Name"),TEXT("id")}, {TEXT("UnitId"),TEXT("id")}, {TEXT("DisplayName"),TEXT("name")}, {TEXT("RaceId"),TEXT("race")}, {TEXT("ClassId"),TEXT("unit_class")}, {TEXT("ProductionPhase"),TEXT("production_phase")}}) SameString(Row, Key.first, Unit, Key.second);
+        ExactKeys(Row, {TEXT("Name"),TEXT("UnitId"),TEXT("DisplayName"),TEXT("LoreName"),TEXT("RoleTags"),TEXT("RaceId"),TEXT("ClassId"),TEXT("AbilityId"),TEXT("Cost"),TEXT("HealthCp"),TEXT("AttackDamageCp"),TEXT("AttackRateMilli"),TEXT("AttackRangeTiles"),TEXT("PhysicalArmor"),TEXT("MagicResistance"),TEXT("MovementRateMilli"),TEXT("AttackDelivery"),TEXT("AttackDamageType"),TEXT("AttackWindupMs"),TEXT("ProjectileTravelMs"),TEXT("ProductionPhase")});
+        for (const auto& Key : {std::pair{TEXT("Name"),TEXT("id")}, {TEXT("UnitId"),TEXT("id")}, {TEXT("DisplayName"),TEXT("display_name")}, {TEXT("LoreName"),TEXT("name")}, {TEXT("RaceId"),TEXT("race")}, {TEXT("ClassId"),TEXT("unit_class")}, {TEXT("ProductionPhase"),TEXT("production_phase")}}) SameString(Row, Key.first, Unit, Key.second);
+        const auto& RoleRows = Row.Array(TEXT("RoleTags"));
+        const auto& RoleSource = Unit.Array(TEXT("role_tags"));
+        Require(RoleRows.Num() == RoleSource.Num(), TEXT("Generated role count mismatch"));
+        for (int32 Role = 0; Role < RoleRows.Num(); ++Role)
+            Require(RoleRows[Role]->Type == EJson::String && RoleRows[Role]->AsString() == RoleSource[Role]->AsString(), TEXT("Generated role differs from source"));
         SameString(Row,TEXT("AbilityId"),Unit.Object(TEXT("ability")),TEXT("id"));
         SameNumber(Row,TEXT("Cost"),Unit,TEXT("cost"));
         for (const auto& Key : {std::pair{TEXT("HealthCp"),TEXT("health_cp")}, {TEXT("AttackDamageCp"),TEXT("attack_damage_cp")}, {TEXT("AttackRateMilli"),TEXT("attack_rate_milli")}, {TEXT("AttackRangeTiles"),TEXT("attack_range_tiles")}, {TEXT("PhysicalArmor"),TEXT("physical_armor")}, {TEXT("MagicResistance"),TEXT("magic_resistance")}, {TEXT("MovementRateMilli"),TEXT("movement_rate_milli")}, {TEXT("AttackWindupMs"),TEXT("attack_windup_ms")}, {TEXT("ProjectileTravelMs"),TEXT("projectile_travel_ms")}}) SameNumber(Row,Key.first,Stats,Key.second);
@@ -367,12 +405,23 @@ void VerifyRows(const FString& Directory, const TArray<FObject>& Units)
         Require(Unit && !SeenAbilities.Contains(Id), TEXT("Unknown/duplicate alpha ability row: ") + Id);
         SeenAbilities.Add(Id);
         const FObject Ability = Unit->Object(TEXT("ability"));
-        ExactKeys(Row, {TEXT("Name"),TEXT("AbilityId"),TEXT("DisplayName"),TEXT("EffectId"),TEXT("TargetRule"),TEXT("DamageType"),TEXT("MagnitudeUnit"),TEXT("Magnitude1"),TEXT("Magnitude2"),TEXT("Magnitude3"),TEXT("FirstCastMs"),TEXT("CooldownMs"),TEXT("CastMs"),TEXT("RecoveryMs"),TEXT("DurationMs"),TEXT("RangeTiles"),TEXT("RadiusTiles"),TEXT("MaxDashTiles"),TEXT("TravelMs"),TEXT("StatId"),TEXT("AllowSelf"),TEXT("TooltipEn"),TEXT("TooltipId")});
-        for (const auto& Key : {std::pair{TEXT("Name"),TEXT("id")},{TEXT("AbilityId"),TEXT("id")},{TEXT("DisplayName"),TEXT("name")},{TEXT("EffectId"),TEXT("effect")},{TEXT("TargetRule"),TEXT("target_rule")},{TEXT("TooltipEn"),TEXT("tooltip_en")},{TEXT("TooltipId"),TEXT("tooltip_id")}}) SameString(Row,Key.first,Ability,Key.second);
-        for (const auto& Key : {std::pair{TEXT("DamageType"),TEXT("damage_type")},{TEXT("MagnitudeUnit"),TEXT("magnitude_unit")},{TEXT("StatId"),TEXT("stat")}}) SameString(Row,Key.first,Ability,Key.second,true);
-        for (const auto& Key : {std::pair{TEXT("FirstCastMs"),TEXT("first_cast_ms")},{TEXT("CooldownMs"),TEXT("cooldown_ms")},{TEXT("CastMs"),TEXT("cast_ms")},{TEXT("RecoveryMs"),TEXT("recovery_ms")},{TEXT("DurationMs"),TEXT("duration_ms")},{TEXT("RangeTiles"),TEXT("range_tiles")},{TEXT("RadiusTiles"),TEXT("radius_tiles")},{TEXT("MaxDashTiles"),TEXT("max_dash_tiles")},{TEXT("TravelMs"),TEXT("travel_ms")}}) SameNumber(Row,Key.first,Ability,Key.second);
+        ExactKeys(Row, {TEXT("Name"),TEXT("AbilityId"),TEXT("DisplayName"),TEXT("Effects"),TEXT("TargetRule"),TEXT("FirstCastMs"),TEXT("CooldownMs"),TEXT("CastMs"),TEXT("RecoveryMs"),TEXT("RangeTiles"),TEXT("RadiusTiles"),TEXT("MaxTargets"),TEXT("MaxDashTiles"),TEXT("TravelMs"),TEXT("AllowSelf"),TEXT("TooltipEn"),TEXT("TooltipId")});
+        for (const auto& Key : {std::pair{TEXT("Name"),TEXT("id")},{TEXT("AbilityId"),TEXT("id")},{TEXT("DisplayName"),TEXT("name")},{TEXT("TargetRule"),TEXT("target_rule")},{TEXT("TooltipEn"),TEXT("tooltip_en")},{TEXT("TooltipId"),TEXT("tooltip_id")}}) SameString(Row,Key.first,Ability,Key.second);
+        for (const auto& Key : {std::pair{TEXT("FirstCastMs"),TEXT("first_cast_ms")},{TEXT("CooldownMs"),TEXT("cooldown_ms")},{TEXT("CastMs"),TEXT("cast_ms")},{TEXT("RecoveryMs"),TEXT("recovery_ms")},{TEXT("RangeTiles"),TEXT("range_tiles")},{TEXT("RadiusTiles"),TEXT("radius_tiles")},{TEXT("MaxTargets"),TEXT("max_targets")},{TEXT("MaxDashTiles"),TEXT("max_dash_tiles")},{TEXT("TravelMs"),TEXT("travel_ms")}}) SameNumber(Row,Key.first,Ability,Key.second);
         Require(Row.Boolean(TEXT("AllowSelf")) == Ability.Boolean(TEXT("allow_self")), TEXT("Generated allow_self mismatch"));
-        for (int32 Star = 0; Star < 3; ++Star) Require(Row.Integer(TEXT("Magnitude") + FString::FromInt(Star+1), -10000) == Ability.Array(TEXT("magnitude_by_star"))[Star]->AsNumber(), TEXT("Generated ability magnitude mismatch"));
+        const auto& Effects = Ability.Array(TEXT("effects"));
+        const auto& Rows = Row.Array(TEXT("Effects"));
+        Require(Effects.Num() == Rows.Num(), TEXT("Generated effect count mismatch"));
+        for (int32 Index = 0; Index < Effects.Num(); ++Index)
+        {
+            const FObject Source = AsObject(Effects[Index], TEXT("source_effect"));
+            const FObject Effect = AsObject(Rows[Index], TEXT("generated_effect"));
+            ExactKeys(Effect, {TEXT("EffectId"),TEXT("DamageType"),TEXT("MagnitudeUnit"),TEXT("Magnitude1"),TEXT("Magnitude2"),TEXT("Magnitude3"),TEXT("DurationMs"),TEXT("StatId")});
+            SameString(Effect,TEXT("EffectId"),Source,TEXT("effect"));
+            for (const auto& Key : {std::pair{TEXT("DamageType"),TEXT("damage_type")},{TEXT("MagnitudeUnit"),TEXT("magnitude_unit")},{TEXT("StatId"),TEXT("stat")}}) SameString(Effect,Key.first,Source,Key.second,true);
+            SameNumber(Effect,TEXT("DurationMs"),Source,TEXT("duration_ms"));
+            for (int32 Star = 0; Star < 3; ++Star) Require(Effect.Integer(TEXT("Magnitude") + FString::FromInt(Star+1), -10000) == Source.Array(TEXT("magnitude_by_star"))[Star]->AsNumber(), TEXT("Generated effect magnitude mismatch"));
+        }
     }
 }
 }
@@ -388,8 +437,11 @@ FString FWCDefinitionText::Localized(const FString& Key, const FString& Language
 FString FWCDefinitionText::AbilityTooltip(const FString& UnitId, const FString& Language) const
 {
     const auto* Unit = Units.Find(UnitId);
+    if (!Unit) Unit = NeutralUnits.Find(UnitId);
     if (!Unit) return FString();
-    const auto Ability = (*Unit)->GetObjectField(TEXT("ability"));
+    const TSharedPtr<FJsonObject>* AbilityValue = nullptr;
+    if (!(*Unit)->TryGetObjectField(TEXT("ability"), AbilityValue)) return Language == TEXT("id") ? TEXT("Serangan biasa saja.") : TEXT("Basic attacks only.");
+    const auto Ability = *AbilityValue;
     return Ability->GetStringField(Language == TEXT("id") ? TEXT("tooltip_id") : TEXT("tooltip_en"));
 }
 
@@ -423,7 +475,7 @@ bool wc::LoadCatalog(Catalog& OutCatalog, FString& Error, FWCDefinitionText* Tex
         const auto& AllUnits = UnitsSource.Array(TEXT("units"));
         const auto& AlphaIds = RulesSource.Array(TEXT("alpha_unit_ids"));
         const auto& ManifestIds = Manifest.Array(TEXT("alpha_unit_ids"));
-        Require(AllUnits.Num() == 24 && AlphaIds.Num() == 12 && ManifestIds.Num() == 12, TEXT("Expected full 24-design catalog and exact twelve-unit alpha"));
+        Require(AllUnits.Num() == 24 && AlphaIds.Num() == 24 && ManifestIds.Num() == 24, TEXT("Expected exact 24-hero playable catalog"));
         TMap<FString, FObject> UnitsById;
         TSet<FString> AbilityIds, SelectedIds;
         for (const auto& Value : AllUnits)
@@ -449,6 +501,54 @@ bool wc::LoadCatalog(Catalog& OutCatalog, FString& Error, FWCDefinitionText* Tex
         }
         for (const auto& Entry : UnitsById) Require((Entry.Value.String(TEXT("production_phase")) == TEXT("alpha")) == SelectedIds.Contains(Entry.Key), TEXT("Production phase disagrees with alpha list"));
         VerifyRows(Directory, Selected);
+        const FObject NeutralsSource = ReadObject(Directory / TEXT("neutrals.json"));
+        NeutralsSource.Expect(TEXT("schema_version"), UTF8_TO_TCHAR(Next.schemaVersion.c_str()));
+        NeutralsSource.Expect(TEXT("balance_version"), UTF8_TO_TCHAR(Next.balanceVersion.c_str()));
+        NextText.Neutrals = NeutralsSource.Value;
+        TMap<FString,int32> NeutralIndices;
+        for (const auto& Value : NeutralsSource.Array(TEXT("creatures")))
+        {
+            const FObject Creature = AsObject(Value, TEXT("neutral_creature"));
+            const FString Id = Creature.String(TEXT("id"));
+            Require(Id.StartsWith(TEXT("wc_n_")) && !NeutralIndices.Contains(Id) && !UnitsById.Contains(Id), TEXT("Invalid/duplicate neutral ID"));
+            NeutralIndices.Add(Id, static_cast<int32>(Next.neutrals.size()));
+            Next.neutrals.push_back(ParseUnit(Creature, Next.rules, true));
+            NextText.NeutralUnits.Add(Id, Creature.Value);
+        }
+        Require(Next.neutrals.size() == 7, TEXT("Expected seven authored neutral archetypes"));
+        TSet<FString> WaveIds;
+        TSet<int32> WaveRounds;
+        for (const auto& Value : NeutralsSource.Array(TEXT("waves")))
+        {
+            const FObject Source = AsObject(Value, TEXT("neutral_wave"));
+            ExactKeys(Source, {TEXT("id"),TEXT("round"),TEXT("display_name"),TEXT("hp_scale_bp"),TEXT("damage_scale_bp"),TEXT("reward_policy"),TEXT("slots")});
+            Source.Expect(TEXT("reward_policy"), TEXT("neutral_standard"));
+            const FString Id = Source.String(TEXT("id"));
+            const int32 Round = Source.Integer(TEXT("round"), 1, Next.rules.maxRounds);
+            Require(!WaveIds.Contains(Id) && !WaveRounds.Contains(Round), TEXT("Duplicate wave ID or round"));
+            WaveIds.Add(Id); WaveRounds.Add(Round);
+            NeutralWave Wave;
+            Wave.id = Utf8(Id); Wave.name = Utf8(Source.String(TEXT("display_name"))); Wave.round = Round;
+            Wave.hpScaleBp = Source.Integer(TEXT("hp_scale_bp"), 1, 100000);
+            Wave.damageScaleBp = Source.Integer(TEXT("damage_scale_bp"), 1, 100000);
+            const auto& Slots = Source.Array(TEXT("slots"));
+            Require(Slots.Num() > 0 && Slots.Num() <= 6, TEXT("Neutral wave requires one to six creatures"));
+            TSet<int32> Cells;
+            for (const auto& SlotValue : Slots)
+            {
+                const FObject Slot = AsObject(SlotValue, TEXT("neutral_slot"));
+                ExactKeys(Slot, {TEXT("creature_id"),TEXT("column"),TEXT("row")});
+                const FString CreatureId = Slot.String(TEXT("creature_id"));
+                Require(NeutralIndices.Contains(CreatureId), TEXT("Wave refers to unknown neutral"));
+                const int32 Column = Slot.Integer(TEXT("column"), 0, Next.rules.columns-1);
+                const int32 Row = Slot.Integer(TEXT("row"), 0, Next.rules.deploymentRows-1);
+                Require(!Cells.Contains(Row*Next.rules.columns+Column), TEXT("Duplicate neutral cell"));
+                Cells.Add(Row*Next.rules.columns+Column);
+                Wave.slots.push_back({NeutralIndices.FindChecked(CreatureId), {Column,Row}});
+            }
+            Next.waves.push_back(Wave);
+        }
+
         TSet<FString> TraitIds;
         for (const auto& Value : TraitsSource.Array(TEXT("traits")))
         {
@@ -467,10 +567,10 @@ bool wc::LoadCatalog(Catalog& OutCatalog, FString& Error, FWCDefinitionText* Tex
             TraitDef T;
             T.id = Utf8(Id);
             T.stat = Utf8(Trait.String(TEXT("stat")));
-            const std::set<std::string> SupportedStats = {"max_health_bonus_bp","attack_rate_bonus_bp","physical_armor_flat","all_damage_bonus_bp","basic_damage_bonus_bp","ability_damage_bonus_bp","support_power_bonus_bp"};
+            const std::set<std::string> SupportedStats = {"max_health_bonus_bp","attack_rate_bonus_bp","physical_armor_flat","all_damage_bonus_bp","basic_damage_bonus_bp","ability_damage_bonus_bp","support_power_bonus_bp","movement_bonus_bp","magic_resistance_flat"};
             Require(SupportedStats.count(T.stat) != 0, TEXT("Unsupported alpha trait statistic"));
             const auto& Tiers = Trait.Array(TEXT("tiers"));
-            bool FoundTier = false;
+            bool FoundTier = false, FoundFourth = false;
             for (const auto& TierValue : Tiers)
             {
                 const FObject Tier = AsObject(TierValue, Trait.Path + TEXT(".tiers"));
@@ -483,11 +583,17 @@ bool wc::LoadCatalog(Catalog& OutCatalog, FString& Error, FWCDefinitionText* Tex
                     T.threshold = Count;
                     T.value = ValueInt;
                 }
+                else if (Count == 4)
+                {
+                    Require(!FoundFourth, TEXT("Duplicate fourth trait threshold"));
+                    FoundFourth = true; T.threshold4 = Count; T.value4 = ValueInt;
+                }
+                else Require(false, TEXT("Unsupported trait threshold"));
             }
-            Require(FoundTier, TEXT("Missing active trait threshold"));
+            Require(FoundTier && FoundFourth, TEXT("Missing active trait threshold"));
             Next.traits.push_back(T);
         }
-        Require(TraitIds.Num() == 12 && Next.traits.size() == 10, TEXT("Expected twelve design traits and ten active alpha traits"));
+        Require(TraitIds.Num() == 12 && Next.traits.size() == 12, TEXT("Expected twelve active race/class traits"));
         TSet<FString> BotIds;
         for (const auto& Value : BotsSource.Array(TEXT("bots")))
         {
@@ -559,11 +665,13 @@ bool FWCCatalogLoadTest::RunTest(const FString& Parameters)
         AddError(Error);
         return false;
     }
-    TestEqual(TEXT("Playable alpha definitions"), static_cast<int32>(Catalog.units.size()), 12);
-    TestEqual(TEXT("Active alpha traits"), static_cast<int32>(Catalog.traits.size()), 10);
+    TestEqual(TEXT("Playable alpha definitions"), static_cast<int32>(Catalog.units.size()), 24);
+    TestEqual(TEXT("Active alpha traits"), static_cast<int32>(Catalog.traits.size()), 12);
+    TestEqual(TEXT("Neutral archetypes"), static_cast<int32>(Catalog.neutrals.size()), 7);
+    TestEqual(TEXT("Authored waves"), static_cast<int32>(Catalog.waves.size()), 11);
     TestEqual(TEXT("Authored bot personas"), static_cast<int32>(Catalog.bots.size()), 7);
     TestEqual(TEXT("Localized English title"), Text.Localized(TEXT("game.title")), FString(TEXT("Wonder Chess")));
-    TestTrue(TEXT("Authored metadata retained for every alpha hero"), Text.Units.Num() == 12);
+    TestTrue(TEXT("Authored metadata retained for every alpha hero"), Text.Units.Num() == 24);
     for (const auto& Unit : Catalog.units)
     {
         TestFalse(TEXT("English tooltip retained"), Text.AbilityTooltip(UTF8_TO_TCHAR(Unit.id.c_str())).IsEmpty());

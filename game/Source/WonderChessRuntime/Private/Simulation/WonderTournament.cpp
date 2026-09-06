@@ -5,6 +5,7 @@
 #include <functional>
 #include <numeric>
 #include <set>
+#include <stdexcept>
 #include <tuple>
 
 namespace wc
@@ -38,6 +39,47 @@ struct Features
 {
     double budget = 0, upgrades = 0, traits = 0, pairs = 0, roles = 0, bench = 0;
 };
+double SkillBudget(const UnitDef &unit, int star, int capacity, const Catalog &catalog)
+{
+    const auto &ability = unit.ability;
+    const int horizon = std::min(20000, catalog.rules.combatTimeoutMs);
+    const int firstRelease = ability.firstCastMs + ability.castMs + ability.travelMs;
+    if (!ability.enabled || firstRelease >= horizon)
+        return 0;
+    // Public authored potential, discounted for interruption, positioning and wasted support.
+    // It influences legal purchases only; every encounter still resolves actual combat.
+    const int casts = 1 + (horizon - firstRelease - 1) /
+                             std::max(catalog.rules.tickMs, ability.cooldownMs);
+    const bool area = ability.selector == Selector::CurrentEnemyArea ||
+                      ability.selector == Selector::AdjacentEnemies ||
+                      ability.selector == Selector::AdjacentAllies;
+    const double recipients = area ? std::min({3, std::max(1, capacity), ability.maxTargets}) : 1;
+    const double basicPerSecond = double(StarValue(unit.attackDamage, star, 0, catalog.rules)) *
+                                  unit.attackRate / 1000.0;
+    double potential = 0;
+    for (const auto &effect : ability.effects)
+    {
+        const double magnitude = double(effect.magnitude[star - 1]);
+        switch (effect.effect)
+        {
+        case Effect::Damage: potential += magnitude * recipients; break;
+        case Effect::Heal:
+        case Effect::Shield: potential += magnitude * recipients * 0.6; break;
+        case Effect::Stun:
+            potential += basicPerSecond * effect.durationMs / 1000.0 * recipients;
+            break;
+        case Effect::StatModifier:
+            potential += basicPerSecond * std::abs(magnitude) / 10000.0 *
+                         effect.durationMs / 1000.0 * recipients;
+            break;
+        case Effect::Dash:
+            potential += basicPerSecond * std::min(2, ability.maxDash) * 0.25;
+            break;
+        }
+    }
+    const double occupied = basicPerSecond * (ability.castMs + ability.recoveryMs) / 1000.0;
+    return std::max(0.0, potential * 0.75 - occupied) * casts / (horizon * 10.0);
+}
 Features Evaluate(const SeatState &s, const Catalog &c, const BotDef &b)
 {
     Features f;
@@ -50,7 +92,8 @@ Features Evaluate(const SeatState &s, const Catalog &c, const BotDef &b)
                         : d.unitClass == "priest" ? b.support
                                                   : b.damage;
         double budget = (double(StarValue(d.health, u.star, 0, c.rules)) / 100000.0 +
-                         double(StarValue(d.attackDamage, u.star, 0, c.rules)) * d.attackRate / 10000000.0) *
+                         double(StarValue(d.attackDamage, u.star, 0, c.rules)) * d.attackRate / 10000000.0 +
+                         SkillBudget(d, u.star, s.level, c)) *
                         weight;
         choices.push_back({budget, &u});
         copies[u.definition] += CountCopies(u.star);
@@ -74,8 +117,11 @@ Features Evaluate(const SeatState &s, const Catalog &c, const BotDef &b)
         damage |= d.unitClass == "ranger" || d.unitClass == "mage" || d.unitClass == "rogue";
     }
     for (const auto &t : c.traits)
-        if (int(counts[t.id].size()) >= t.threshold)
-            f.traits += 1.0 / 6.0;
+    {
+        const int count = int(counts[t.id].size());
+        if (count >= t.threshold4) f.traits += 2.0 / 6.0;
+        else if (count >= t.threshold) f.traits += (count == 3 ? 1.25 : 1.0) / 6.0;
+    }
     for (auto pair : copies)
         f.pairs += std::min(2, pair.second % 3) / 6.0;
     f.roles = (frontline ? 0.6 : 0) + (damage ? 0.3 : 0) + (support ? 0.1 : 0);
@@ -130,7 +176,7 @@ double TacticalScore(const SeatState &seat, const PublicSeat *opponent, const Ca
             for (const auto &enemy : opponent->deployment)
             {
                 closestColumn = std::min(closestColumn, std::abs(unit.cell.column - (7 - enemy.cell.column)));
-                enemyArea |= catalog.units[enemy.definition].ability.selector == Selector::CurrentEnemyArea;
+                enemyArea |= catalog.Definition(enemy.definition, enemy.neutral).ability.selector == Selector::CurrentEnemyArea;
             }
             if (frontline)
                 score += 0.3 / (1 + closestColumn);
@@ -150,10 +196,13 @@ Match::Match(Catalog catalog, Id seed, int humans) : catalog_(std::move(catalog)
 void Match::Restart(Id seed, int humans)
 {
     matchNamespace_ = NextMatchNamespace.fetch_add(1);
+    if (matchNamespace_ >= (Id(1) << 23))
+        throw std::overflow_error("Match namespace exceeds exact snapshot integer range");
     seed_ = seed;
     nextUnit_ = 1;
     nextRequest_ = 1;
     round_ = 0;
+    pvpRoundIndex_ = 0;
     elapsedMs_ = 0;
     accumulatorMs_ = 0;
     previousGhost_ = -1;
@@ -168,6 +217,7 @@ void Match::Restart(Id seed, int humans)
     previousPairs_.clear();
     ghostCounts_.fill(0);
     lastWon_.fill(false);
+    pendingRewards_.fill(0);
     botObserveNextMs_.fill(0);
     botObservationRevision_.fill(0);
     for (auto &observation : botObservations_)
@@ -287,8 +337,8 @@ bool Match::Legal(const SeatState &s) const
     int deployed = 0;
     for (const auto &u : s.roster)
     {
-        if (!ids.insert(u.id).second || u.definition < 0 || u.definition >= int(catalog_.units.size()) ||
-            u.star < 1 || u.star > 3)
+        if (u.id >= (Id(1) << 20) || !ids.insert(u.id).second || u.definition < 0 || u.definition >= int(catalog_.units.size()) ||
+            u.star < 1 || u.star > 3 || u.neutral)
             return false;
         if (u.onBoard)
         {
@@ -495,7 +545,7 @@ void Match::Pair()
                    std::make_tuple(prior(b, recipient), meetings_[Key(b, recipient)],
                                    tie(Id(b + recipient * 8) ^ 0xdefULL));
         });
-        pairs_.push_back({recipient, donor, true});
+        pairs_.push_back({recipient, donor, true, EncounterKind::Ghost, {}});
         ++ghostCounts_[recipient];
         previousGhost_ = recipient;
     }
@@ -559,16 +609,29 @@ void Match::Prepare()
         {
             if (round_ > 1)
             {
-                s.gold += catalog_.rules.baseIncome + (lastWon_[s.id] ? catalog_.rules.winIncome : 0) +
+                s.gold += catalog_.rules.baseIncome + pendingRewards_[s.id] +
                           std::min(catalog_.rules.interestCap, s.lockGold / catalog_.rules.interestDivisor);
                 GainXp(s, catalog_.rules.passiveXp);
+                pendingRewards_[s.id] = 0;
             }
             if (!s.shopLocked || round_ == 1)
                 Refresh(s);
             s.ready = false;
             ++s.revision;
         }
-    Pair();
+    if (NeutralRound())
+    {
+        pairs_.clear();
+        const auto *wave = CurrentWave();
+        if (!wave) { Abort(); return; }
+        for (const auto &s : seats_) if (s.health > 0)
+            pairs_.push_back({s.id, -1, false, EncounterKind::Neutral, wave->id});
+    }
+    else
+    {
+        ++pvpRoundIndex_;
+        Pair();
+    }
 }
 void Match::Lock()
 {
@@ -587,8 +650,28 @@ void Match::Lock()
     {
         auto p = pairs_[i];
         Id encounterId = Id(round_) * 8 + i + 1;
-        encounters_.emplace_back(p, Combat(catalog_, seats_[p.a].roster, seats_[p.b].roster,
-                                           HashValue(seed_ ^ encounterId), encounterId));
+        const Id identityNamespace = (matchNamespace_ << 9) | encounterId;
+        if (p.kind == EncounterKind::Neutral)
+        {
+            const auto *wave = CurrentWave();
+            std::vector<OwnedUnit> neutral;
+            for (std::size_t slot = 0; slot < wave->slots.size(); ++slot)
+            {
+                OwnedUnit unit;
+                unit.id = slot + 1;
+                unit.definition = wave->slots[slot].definition;
+                unit.cell = wave->slots[slot].cell;
+                unit.onBoard = true;
+                unit.neutral = true;
+                unit.hpScaleBp = wave->hpScaleBp;
+                unit.damageScaleBp = wave->damageScaleBp;
+                neutral.push_back(unit);
+            }
+            encounters_.emplace_back(p, Combat(catalog_, seats_[p.a].roster, neutral,
+                                               HashValue(seed_ ^ encounterId), identityNamespace));
+        }
+        else encounters_.emplace_back(p, Combat(catalog_, seats_[p.a].roster, seats_[p.b].roster,
+                                               HashValue(seed_ ^ encounterId), identityNamespace));
     }
 }
 Id Match::StateHash() const
@@ -601,6 +684,7 @@ Id Match::StateHash() const
     };
     text(catalog_.contentDigest);
     add(Id(phase_));
+    add(Id(pvpRoundIndex_));
     add(nextUnit_);
     add(nextRequest_);
     add(Id(remainingMs_));
@@ -612,6 +696,8 @@ Id Match::StateHash() const
         add(Id(s.xp));
         add(Id(s.level));
         add(Id(s.wins));
+        add(Id(s.neutralWins)); add(Id(s.neutralLosses)); add(Id(s.neutralDraws));
+        add(Id(pendingRewards_[s.id]));
         add(Id(s.placement));
         add(Id(s.lockGold));
         add(Id(s.botIndex));
@@ -660,13 +746,15 @@ void Match::Settle()
         return;
     RoundRecord record;
     record.round = round_;
-    record.settlementId = HashValue(seed_ ^ Id(round_));
+    record.pvpRoundIndex = pvpRoundIndex_;
+    record.neutral = NeutralRound();
+    record.settlementId = HashValue(seed_ ^ Id(round_) ^ (matchNamespace_ << 32));
     record.preHash = StateHash();
     record.pairs = pairs_;
     lastWon_.fill(false);
     int base = 0;
     for (const auto &stage : catalog_.rules.lossStages)
-        if (round_ >= stage.start && round_ <= stage.end)
+        if (pvpRoundIndex_ >= stage.start && pvpRoundIndex_ <= stage.end)
             base = stage.damage;
     for (const auto &e : encounters_)
     {
@@ -674,6 +762,8 @@ void Match::Settle()
         record.results.push_back(r);
         EncounterSummary summary;
         summary.pairing = e.pairing;
+        summary.kind = e.kind;
+        summary.sides = e.sides;
         summary.result = r;
         std::map<Id, int> targetSides;
         for (const auto &unit : e.combat.Units())
@@ -689,16 +779,28 @@ void Match::Settle()
         record.encounters.push_back(std::move(summary));
         for (int side = 0; side < 2; ++side)
         {
-            if (e.pairing.ghost && side == 1)
+            if (!e.sides[side].seat || (e.kind == EncounterKind::Ghost && side == 1))
                 continue;
-            int seat = side ? e.pairing.b : e.pairing.a;
+            int seat = *e.sides[side].seat;
             bool win = r.winner == side;
-            lastWon_[seat] = win;
-            if (win)
-                ++seats_[seat].wins;
-            record.damage[seat] = r.winner < 0 ? catalog_.rules.drawDamage
-                                  : win        ? 0
-                                               : base + r.survivors[1 - side];
+            if (e.kind == EncounterKind::Neutral)
+            {
+                if (win) ++seats_[seat].neutralWins;
+                else if (r.winner < 0) ++seats_[seat].neutralDraws;
+                else ++seats_[seat].neutralLosses;
+                pendingRewards_[seat] = win ? catalog_.rules.neutralWinIncome : 0;
+                record.damage[seat] = win ? 0 : round_ <= catalog_.rules.neutralOpeningRounds ?
+                    catalog_.rules.neutralOpeningDamage : catalog_.rules.neutralLossDamage;
+            }
+            else
+            {
+                lastWon_[seat] = win;
+                if (win) ++seats_[seat].wins;
+                pendingRewards_[seat] = win ? catalog_.rules.winIncome : 0;
+                record.damage[seat] = r.winner < 0 ? catalog_.rules.drawDamage
+                                      : win ? 0 : base + r.survivors[1 - side];
+            }
+            record.pendingRewards[seat] = pendingRewards_[seat];
         }
     }
     std::vector<int> eliminated, alive;
@@ -948,6 +1050,18 @@ void Match::BotTurn(int seat)
                 for (const auto &observed : botObservations_[seat])
                     if (observed.id == opponentId)
                         opponent = &observed;
+                PublicSeat neutralPreview;
+                if (const auto *wave = CurrentWave())
+                {
+                    for (const auto &slot : wave->slots)
+                    {
+                        OwnedUnit unit;
+                        unit.definition = slot.definition; unit.cell = slot.cell;
+                        unit.onBoard = true; unit.neutral = true;
+                        neutralPreview.deployment.push_back(unit);
+                    }
+                    opponent = &neutralPreview;
+                }
                 const double current = TacticalScore(s, opponent, catalog_);
                 int considered = 0;
                 for (const auto &unit : s.roster)
@@ -1093,11 +1207,20 @@ std::string Match::InvariantError() const
         std::array<int, 8> exposure{};
         for (const auto &p : pairs_)
         {
-            if (p.a == p.b || seats_[p.a].health <= 0 || seats_[p.b].health <= 0)
-                return "Invalid pairing";
+            if (p.a < 0 || p.a >= int(seats_.size()) || seats_[p.a].health <= 0)
+                return "Invalid encounter owner";
             ++exposure[p.a];
-            if (!p.ghost)
-                ++exposure[p.b];
+            if (p.kind == EncounterKind::Neutral)
+            {
+                if (p.b != -1 || p.ghost || !NeutralRound() || !CurrentWave() || p.waveId != CurrentWave()->id)
+                    return "Invalid neutral ownership";
+            }
+            else
+            {
+                if (p.b < 0 || p.b >= int(seats_.size()) || p.a == p.b || seats_[p.b].health <= 0)
+                    return "Invalid pairing";
+                if (!p.ghost) ++exposure[p.b];
+            }
         }
         for (const auto &s : seats_)
             if (s.health > 0 && exposure[s.id] != 1)

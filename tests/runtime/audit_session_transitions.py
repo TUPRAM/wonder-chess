@@ -34,7 +34,7 @@ def public(session):
     return json.loads(value) if isinstance(value, str) and value else value
 
 
-def restart(first_path: Path, second_path: Path):
+def restart(first_path: Path, second_path: Path, second_will_restart=False):
     first, second = load(first_path), load(second_path)
     a = Audit([first_path, second_path])
     a.check("same_process_and_human_seat", first["process_id"] == second["process_id"]
@@ -44,7 +44,7 @@ def restart(first_path: Path, second_path: Path):
     a.check("both_matches_finished", all(s.get("complete") and not s.get("aborted") for s in (first, second)),
             [{k: s.get(k) for k in ("complete", "aborted", "round")} for s in (first, second)])
     a.check("one_restart_requested", first.get("restart_requested_from_this_match") is True
-            and second.get("restart_requested_from_this_match") is False,
+            and second.get("restart_requested_from_this_match") is second_will_restart,
             [first.get("restart_requested_from_this_match"), second.get("restart_requested_from_this_match")])
     a.check("prior_namespace_recorded", second.get("prior_match_namespace") == first["match_namespace"],
             second.get("prior_match_namespace"))

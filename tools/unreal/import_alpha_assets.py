@@ -1,6 +1,7 @@
 """Import owned Blender exports using the measured UE 5.7 legacy FBX preset."""
 from pathlib import Path
 import json
+import hashlib
 import os
 import unreal
 
@@ -111,12 +112,23 @@ def hero_material(uid, folder, source):
 def main():
     rules=json.loads((ROOT/'data/rules.alpha.json').read_text())
     only=os.environ.get('WC_IMPORT_HERO')
+    if only and set(only.split(',')) - set(rules['alpha_unit_ids']):
+        raise ValueError('Unknown hero selection')
     reports=[]
+    audio_reports=[]
     for uid in rules['alpha_unit_ids']:
         if os.environ.get('WC_IMPORT_AUDIO_ONLY'): continue
         if only and uid not in only.split(','): continue
         source=ROOT/'exports/heroes'/uid
-        if not (source/f'SK_{uid}.fbx').is_file(): continue
+        manifest_path=source/'export_manifest.json'
+        manifest=json.loads(manifest_path.read_text(encoding='utf-8'))
+        if manifest['unit_id'] != uid: raise ValueError('Hero export identity mismatch: '+uid)
+        source_blend=ROOT/'art-source/heroes'/uid/(uid+'.blend')
+        if hashlib.sha256(source_blend.read_bytes()).hexdigest() != manifest['source_sha256']:
+            raise ValueError('Hero source differs from frozen export: '+uid)
+        for filename, digest in manifest['files'].items():
+            if hashlib.sha256((source/filename).read_bytes()).hexdigest() != digest:
+                raise ValueError('Hero export changed: '+uid+'/'+filename)
         folder='/Game/WonderChess/Heroes/'+uid
         material=hero_material(uid,folder,source)
         existing=unreal.load_asset(folder+'/SK_'+uid)
@@ -149,19 +161,22 @@ def main():
         if portrait.is_file(): task(portrait,folder,'T_'+uid+'_Portrait')
         bounds=mesh.get_bounds()
         reports.append({'id':uid,'mesh':mesh.get_path_name(),'skeleton':mesh.skeleton.get_path_name(),'prior_skeleton_existed':prior_skeleton is not None,'prior_skeleton_identity_preserved':prior_skeleton==mesh.skeleton if prior_skeleton else None,'skeleton_saved':True,'reference_pose_refresh_requested':True,'cold_reload_validation':'PENDING_SEPARATE_PROCESS','bounds_extent_cm':[bounds.box_extent.x,bounds.box_extent.y,bounds.box_extent.z],'clips':clips,'lods':lods,'status':'IMPORTED_NOT_VISUALLY_ACCEPTED'})
+        reports[-1].update({'source_revision':manifest.get('source_revision'),'source_sha256':manifest['source_sha256'],'export_manifest_sha256':hashlib.sha256(manifest_path.read_bytes()).hexdigest(),'units_sha256_at_export':manifest.get('units_source_sha256'),'units_sha256_at_import':hashlib.sha256((ROOT/'data/units.json').read_bytes()).hexdigest()})
         unreal.log('WC_HERO_IMPORTED '+uid)
 
-    if not only:
+    if not only or os.environ.get('WC_IMPORT_AUDIO'):
         for path in (ROOT/'exports/audio').glob('*.wav'):
             sounds=task(path,'/Game/WonderChess/Audio',path.stem)
             for sound in sounds:
                 if isinstance(sound,unreal.SoundWave):
                     sound.set_sound_asset_compression_type(unreal.SoundAssetCompressionType.PCM)
-                    library.save_loaded_asset(sound)
+                    if not library.save_loaded_asset(sound): raise RuntimeError('Cannot save audio: '+sound.get_path_name())
+                    audio_reports.append({'path':sound.get_path_name(),'source':str(path.relative_to(ROOT)),'source_sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'duration_seconds':sound.get_editor_property('duration'),'channels':sound.get_editor_property('num_channels'),'compression':'PCM','listening_review':'NOT_RUN'})
 
-    report=ROOT/'reports/WC-330'/('import-'+('audio' if os.environ.get('WC_IMPORT_AUDIO_ONLY') else ('selected' if only and ',' in only else only) or 'alpha')+'.json')
+    report_dir=Path(os.environ.get('WC_EDITOR_REPORT_DIR', str(ROOT/'reports/WC-330'))).resolve()
+    report=report_dir/('import-'+('audio' if os.environ.get('WC_IMPORT_AUDIO_ONLY') else ('selected' if only and ',' in only else only) or 'alpha')+'.json')
     report.parent.mkdir(parents=True,exist_ok=True)
-    report.write_text(json.dumps({'engine':unreal.SystemLibrary.get_engine_version(),'heroes':reports},indent=2)+'\n')
+    report.write_text(json.dumps({'engine':unreal.SystemLibrary.get_engine_version(),'heroes':reports,'audio':audio_reports},indent=2)+'\n')
     unreal.log('WC_ALPHA_IMPORT_COMPLETE '+str(len(reports)))
 
 if __name__ == "__main__": main()

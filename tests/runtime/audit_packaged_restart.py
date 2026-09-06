@@ -21,19 +21,32 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("evidence_directory", type=Path, nargs="?", default=BASE)
     parser.add_argument("--require-seed-summary-parity", action="store_true")
+    parser.add_argument("--expected-restarts", type=int, choices=(1, 2), default=1)
     args = parser.parse_args()
     base = args.evidence_directory.resolve()
-    paths = sorted(base.glob("match-*-session.json"))
-    if len(paths) != 2:
-        raise ValueError(f"Expected exactly two retained match sessions, found {len(paths)}")
-    transition = restart(*paths)
-    checks = list(transition["checks"])
-    inputs = [*paths, base / "launch.json"]
+    all_sessions = sorted(base.glob("match-*-session.json"))
+    paths = [path for path in all_sessions if load(path)["match_namespace"] > 0]
+    pre_match = [path for path in all_sessions if load(path)["match_namespace"] <= 0]
+    if len(paths) != args.expected_restarts + 1:
+        raise ValueError(f"Expected {args.expected_restarts + 1} retained match sessions, found {len(paths)}")
+    checks = []
+    for index, (first, second) in enumerate(zip(paths, paths[1:])):
+        transition = restart(first, second, second_will_restart=index < args.expected_restarts - 1)
+        checks.extend({**check, "check": f"restart_{index + 1}_" + check["check"]} for check in transition["checks"])
+    inputs = [*all_sessions, base / "launch.json"]
     launch = load(inputs[-1])
     summaries = []
 
     def check(name, condition, detail):
         checks.append({"check": name, "status": "PASS" if condition else "FAIL", "detail": detail})
+
+    for path in pre_match:
+        session = load(path)
+        check("pre_match_has_no_tournament", session["match_namespace"] == 0
+              and session["round"] == 0 and session["phase"] == -1
+              and not session.get("complete") and not session.get("actual_accepted_replies"),
+              {"path": path.name, "namespace": session["match_namespace"],
+               "round": session["round"], "phase": session["phase"]})
 
     for path in paths:
         s = load(path)
@@ -56,7 +69,7 @@ def main():
         probes = {p["name"]: p for p in s["command_probes"]}
         required = {"out_of_order_sequence_rejected", "original_idempotent_lock_request", "duplicate_request_applies_once",
                     "changed_payload_same_request_rejected", "stale_revision_rejected", "foreign_unit_sale_rejected", "combat_phase_buy_rejected"}
-        if namespace == 2:
+        if path != paths[0]:
             required.add("previous_match_request_rejected")
         check(label + "all_required_actual_rpc_probes", set(probes) == required and all(p["status"] == "PASS" for p in probes.values()),
               {name: {key: p.get(key) for key in ("status", "accepted", "reply", "request_id")} for name, p in probes.items()})

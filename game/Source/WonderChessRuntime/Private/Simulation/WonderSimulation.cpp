@@ -7,6 +7,7 @@
 #include <numeric>
 #include <set>
 #include <sstream>
+#include <stdexcept>
 #include <tuple>
 
 namespace wc
@@ -109,6 +110,11 @@ int AttackInterval(int rate, int bonusBp, const Rules &r)
                                          r.minAttackRate, r.maxAttackRate);
     return int((1000000 + adjusted * r.tickMs - 1) / (adjusted * r.tickMs));
 }
+int MovementInterval(int baseRate, int bonusBp, const Rules &rules)
+{
+    const Int rate = std::max<Int>(1, HalfUp(Int(baseRate) * std::max(0, 10000 + bonusBp), 10000));
+    return int((1000000 + rate * rules.tickMs - 1) / (rate * rules.tickMs));
+}
 int Distance(Cell a, Cell b)
 {
     return std::max(std::abs(a.column - b.column), std::abs(a.row - b.row));
@@ -135,13 +141,33 @@ int Random::Below(int exclusive)
     } while (value < threshold);
     return int(value % bound);
 }
+int TraitValue(const TraitDef &trait, int count)
+{
+    if (trait.threshold4 > trait.threshold && count >= trait.threshold4 && trait.value4 != 0)
+        return trait.value4;
+    return count >= trait.threshold ? trait.value : 0;
+}
+bool IsNeutralRound(int round, const Rules &rules)
+{
+    return round > 0 && (round <= rules.neutralOpeningRounds ||
+           (rules.neutralEvery > 0 && round % rules.neutralEvery == 0));
+}
+const UnitDef &Catalog::Definition(int index, bool neutral) const
+{
+    return neutral ? neutrals.at(index) : units.at(index);
+}
+const NeutralWave *Catalog::Wave(int round) const
+{
+    for (const auto &wave : waves) if (wave.round == round) return &wave;
+    return nullptr;
+}
 std::string Catalog::Validate() const
 {
     const auto &r = rules;
     if (r.columns != 8 || r.rows != 8 || r.deploymentRows != 4 || r.tickMs != 50 || r.seatCount != 8)
         return "Unsupported board, tick or seat contract";
-    if (units.size() != 12 || bots.size() != 7 || r.benchCapacity != 8 || r.shopSlots != 5)
-        return "Alpha requires twelve units, seven personas, eight bench and five shop slots";
+    if (units.size() != 24 || bots.size() != 7 || r.benchCapacity != 8 || r.shopSlots != 5)
+        return "Update requires twenty-four units, seven personas, eight bench and five shop slots";
     if (r.startingHealth <= 0 || r.maximumLevel > 6 || r.startingLevel < 1 ||
         r.startingLevel > r.maximumLevel || r.interestDivisor <= 0 || r.combatTimeoutMs <= 0 ||
         r.maxRounds <= 0 || r.minAttackRate <= 0 || r.maxAttackRate < r.minAttackRate)
@@ -150,35 +176,81 @@ std::string Catalog::Validate() const
         r.maxArmor < 0 || r.maxArmor > 10000)
         return "Unsafe integer bounds";
     std::set<std::string> ids, abilities;
-    for (const auto &u : units)
+    std::vector<UnitDef> allDefinitions = units;
+    allDefinitions.insert(allDefinitions.end(), neutrals.begin(), neutrals.end());
+    for (const auto &u : allDefinitions)
     {
-        if (!ids.insert(u.id).second || !abilities.insert(u.ability.id).second || u.id.empty() ||
-            u.ability.id.empty())
+        if (!ids.insert(u.id).second || (u.ability.enabled && !abilities.insert(u.ability.id).second) || u.id.empty() ||
+            (u.ability.enabled && u.ability.id.empty()))
             return "Duplicate or empty unit/ability ID";
-        if (u.cost < 1 || u.cost > 3 || u.health <= 0 || u.health > r.maxHealth || u.attackDamage < 0 ||
+        if (u.cost < 0 || u.cost > 3 || u.health <= 0 || u.health > r.maxHealth || u.attackDamage < 0 ||
             u.attackDamage > r.maxRawDamage || u.armor < 0 || u.armor > r.maxArmor || u.resistance < 0 ||
             u.resistance > r.maxArmor || u.attackRate <= 0 || u.movementRate <= 0 || u.range < 1)
             return "Invalid unit numeric field: " + u.id;
         const auto &a = u.ability;
-        if (a.castMs <= 0 || a.cooldownMs <= 0 || a.maxTargets <= 0 || a.maxTargets > 12 ||
-            a.firstCastMs < 0 || a.recoveryMs < 0 || a.travelMs < 0 || a.durationMs < 0 ||
+        if ((a.enabled && (a.castMs <= 0 || a.cooldownMs <= 0 || a.maxTargets <= 0 || a.maxTargets > 12 ||
+            a.firstCastMs < 0 || a.recoveryMs < 0 || a.travelMs < 0 || a.durationMs < 0)) ||
             u.attackWindupMs <= 0)
             return "Invalid ability timing: " + u.id;
         if (Ticks(u.attackWindupMs, r) >= AttackInterval(r.maxAttackRate, 0, r))
             return "Attack windup leaves no recovery at maximum rate: " + u.id;
-        for (auto magnitude : a.magnitude)
+        auto effects = a.effects;
+        if (effects.empty() && a.enabled) effects.push_back({a.effect, a.damageType, a.durationMs, a.magnitude});
+        if (effects.size() > 2 || (effects.size() == 2 &&
+            (effects[0].effect != Effect::Damage || effects[1].effect != Effect::Stun)))
+            return "Unsupported effect list: " + u.id;
+        for (const auto &effect : effects)
         {
-            if (magnitude > r.maxRawDamage || magnitude < -10000)
-                return "Unsafe effect magnitude: " + u.id;
-            if (a.effect != Effect::StatModifier && magnitude < 0)
-                return "Negative non-stat effect magnitude: " + u.id;
-            if ((a.effect == Effect::Dash || a.effect == Effect::Stun) && magnitude != 0)
-                return "Dash and stun cannot carry hidden magnitude: " + u.id;
+            if (effect.durationMs < 0) return "Invalid effect duration: " + u.id;
+            for (auto magnitude : effect.magnitude)
+            {
+                if (magnitude > r.maxRawDamage || magnitude < -10000)
+                    return "Unsafe effect magnitude: " + u.id;
+                if (effect.effect != Effect::StatModifier && magnitude < 0)
+                    return "Negative non-stat effect magnitude: " + u.id;
+                if ((effect.effect == Effect::Dash || effect.effect == Effect::Stun) && magnitude != 0)
+                    return "Dash and stun cannot carry hidden magnitude: " + u.id;
+            }
         }
         for (int star = 1; star <= 3; ++star)
             if (StarValue(u.health, star, 10000, r) > r.maxHealth)
                 return "Derived health exceeds supported bounds";
     }
+    const std::set<std::string> supportedStats{"max_health_bonus_bp", "attack_rate_bonus_bp",
+        "physical_armor_flat", "magic_resistance_flat", "all_damage_bonus_bp", "basic_damage_bonus_bp",
+        "ability_damage_bonus_bp", "support_power_bonus_bp", "movement_bonus_bp"};
+    std::set<std::string> traitIds;
+    for (const auto &trait : traits)
+        if (!traitIds.insert(trait.id).second || !supportedStats.count(trait.stat) ||
+            trait.threshold != 2 || trait.threshold4 != 4 || trait.value < 0 || trait.value4 < 0)
+            return "Invalid trait definition";
+    std::set<int> waveRounds;
+    std::set<std::string> waveIds;
+    for (const auto &wave : waves)
+    {
+        if (!waveRounds.insert(wave.round).second || !waveIds.insert(wave.id).second ||
+            wave.id.empty() || !IsNeutralRound(wave.round, r) || wave.slots.empty() || wave.slots.size() > 6 ||
+            wave.hpScaleBp <= 0 || wave.hpScaleBp > 100000 || wave.damageScaleBp <= 0 || wave.damageScaleBp > 100000)
+            return "Invalid neutral wave";
+        std::set<std::pair<int,int>> cells;
+        for (const auto &slot : wave.slots)
+        {
+            if (slot.definition < 0 || slot.definition >= int(neutrals.size()) || slot.cell.column < 0 ||
+                slot.cell.column >= r.columns || slot.cell.row < 0 || slot.cell.row >= r.deploymentRows ||
+                !cells.insert({slot.cell.column, slot.cell.row}).second) return "Invalid neutral slot";
+            const auto &d = neutrals[slot.definition];
+            if (HalfUp(d.health * wave.hpScaleBp, 10000) > r.maxHealth ||
+                HalfUp(d.attackDamage * wave.damageScaleBp, 10000) > r.maxRawDamage)
+                return "Unsafe scaled neutral stats";
+            for (const auto &effect : d.ability.effects)
+                if (effect.effect == Effect::Damage || effect.effect == Effect::Shield)
+                    for (Int magnitude : effect.magnitude)
+                        if (HalfUp(magnitude * (effect.effect == Effect::Shield ? wave.hpScaleBp : wave.damageScaleBp), 10000) > r.maxRawDamage)
+                            return "Unsafe scaled neutral skill";
+        }
+    }
+    for (int round = 1; round <= r.maxRounds; ++round)
+        if (IsNeutralRound(round, r) && !Wave(round)) return "Missing neutral wave";
     for (int level = r.startingLevel; level <= r.maximumLevel; ++level)
     {
         auto it = r.shopWeights.find(level);
@@ -215,7 +287,7 @@ Combat::Combat(const Catalog &c, const std::vector<OwnedUnit> &a, const std::vec
         const auto &formation = side ? b : a;
         std::map<std::string, std::set<int>> counts;
         for (const auto &o : formation)
-            if (o.onBoard)
+            if (o.onBoard && !o.neutral)
             {
                 const auto &d = c.units[o.definition];
                 counts[d.race].insert(o.definition);
@@ -224,9 +296,15 @@ Combat::Combat(const Catalog &c, const std::vector<OwnedUnit> &a, const std::vec
         for (const auto &o : formation)
             if (o.onBoard)
             {
-                const auto &d = c.units[o.definition];
+                const auto &d = c.Definition(o.definition, o.neutral);
                 CombatUnit u;
-                u.id = (encounterId << 40) | (Id(side) << 39) | o.id;
+                u.neutral = o.neutral;
+                u.hpScaleBp = o.hpScaleBp;
+                u.damageScaleBp = o.damageScaleBp;
+                // 32 encounter bits + 1 side bit + 20 instance bits fit exactly in JSON's 53-bit integer range.
+                if (encounterId >= (Id(1) << 32) || o.id >= (Id(1) << 20))
+                    throw std::overflow_error("Combat identity exceeds exact snapshot integer range");
+                u.id = (encounterId << 21) | (Id(side) << 20) | o.id;
                 u.definition = o.definition;
                 u.side = side;
                 u.star = o.star;
@@ -235,27 +313,30 @@ Combat::Combat(const Catalog &c, const std::vector<OwnedUnit> &a, const std::vec
                 u.resistance = d.resistance;
                 int healthBonus = 0;
                 for (const auto &t : c.traits)
-                    if ((t.id == d.race || t.id == d.unitClass) && int(counts[t.id].size()) >= t.threshold)
+                    if (!o.neutral && (t.id == d.race || t.id == d.unitClass) && TraitValue(t, int(counts[t.id].size())) != 0)
                     {
+                        const int value = TraitValue(t, int(counts[t.id].size()));
                         if (t.stat == "max_health_bonus_bp")
-                            healthBonus += t.value;
+                            healthBonus += value;
                         else if (t.stat == "attack_rate_bonus_bp")
-                            u.rateBonus += t.value;
+                            u.rateBonus += value;
                         else if (t.stat == "physical_armor_flat")
-                            u.armor += t.value;
+                            u.armor += value;
                         else if (t.stat == "magic_resistance_flat")
-                            u.resistance += t.value;
+                            u.resistance += value;
                         else if (t.stat == "all_damage_bonus_bp")
-                            u.allBonus += t.value;
+                            u.allBonus += value;
                         else if (t.stat == "basic_damage_bonus_bp")
-                            u.basicBonus += t.value;
+                            u.basicBonus += value;
                         else if (t.stat == "ability_damage_bonus_bp")
-                            u.abilityBonus += t.value;
+                            u.abilityBonus += value;
                         else if (t.stat == "support_power_bonus_bp")
-                            u.supportBonus += t.value;
+                            u.supportBonus += value;
+                        else if (t.stat == "movement_bonus_bp")
+                            u.movementBonus += value;
                     }
-                u.health = u.maxHealth = StarValue(d.health, o.star, healthBonus, c.rules);
-                u.basicDamage = StarValue(d.attackDamage, o.star, 0, c.rules);
+                u.health = u.maxHealth = StarValue(HalfUp(d.health * o.hpScaleBp, 10000), o.star, healthBonus, c.rules);
+                u.basicDamage = StarValue(HalfUp(d.attackDamage * o.damageScaleBp, 10000), o.star, 0, c.rules);
                 u.cooldownTick = Ticks(d.ability.firstCastMs, c.rules);
                 units_.push_back(u);
             }
@@ -306,7 +387,7 @@ bool Combat::FindPath(int source, int target, Cell &next, int &length) const
         Cell at = queue.front();
         queue.pop_front();
         const int p = index(at);
-        if (Distance(at, enemy.cell) <= catalog_->units[u.definition].range)
+        if (Distance(at, enemy.cell) <= catalog_->Definition(u.definition, u.neutral).range)
         {
             length = dist[p];
             next = u.cell;
@@ -368,6 +449,7 @@ int Combat::ChooseEnemy(int source, Cell &next, int &length) const
 std::vector<int> Combat::Select(int source, const AbilityDef &a) const
 {
     const auto &s = units_[source];
+    const AbilityEffect primary = a.effects.empty() ? AbilityEffect{a.effect,a.damageType,a.durationMs,a.magnitude} : a.effects.front();
     std::vector<int> selected;
     for (int i = 0; i < int(units_.size()); ++i)
     {
@@ -390,19 +472,22 @@ std::vector<int> Combat::Select(int source, const AbilityDef &a) const
         case Selector::AdjacentAllies:
             valid = t.side == s.side && (i != source || a.allowSelf) && Distance(s.cell, t.cell) <= a.radius;
             break;
+        case Selector::HighestAttackRateEnemy:
+            valid = t.side != s.side && Distance(s.cell, t.cell) <= a.range;
+            break;
         case Selector::LowestHealthAlly:
             valid = t.side == s.side && (i != source || a.allowSelf) && Distance(s.cell, t.cell) <= a.range;
             break;
         default:
             break;
         }
-        if (a.effect == Effect::Heal && t.health >= t.maxHealth)
+        if (primary.effect == Effect::Heal && t.health >= t.maxHealth)
             valid = false;
-        if (a.effect == Effect::Shield)
+        if (primary.effect == Effect::Shield)
         {
-            auto magnitude = HalfUp(a.magnitude[s.star - 1] * (10000 + s.supportBonus), 10000);
+            auto magnitude = HalfUp(primary.magnitude[s.star - 1] * (10000 + s.supportBonus), 10000);
             if (magnitude < t.shield ||
-                (magnitude == t.shield && tick_ + Ticks(a.durationMs, catalog_->rules) <= t.shieldExpiry))
+                (magnitude == t.shield && tick_ + Ticks(primary.durationMs, catalog_->rules) <= t.shieldExpiry))
                 valid = false;
         }
         if (valid)
@@ -411,6 +496,17 @@ std::vector<int> Combat::Select(int source, const AbilityDef &a) const
     std::sort(selected.begin(), selected.end(), [&](int x, int y) {
         const auto &l = units_[x];
         const auto &r = units_[y];
+        if (a.selector == Selector::HighestAttackRateEnemy)
+        {
+            auto rate = [&](const CombatUnit &u) {
+                int bonus = u.rateBonus;
+                for (const auto &m : u.modifiers) bonus += int(m.magnitude);
+                return std::clamp<Int>(HalfUp(Int(catalog_->Definition(u.definition, u.neutral).attackRate) *
+                    std::max(0, 10000 + bonus), 10000), catalog_->rules.minAttackRate, catalog_->rules.maxAttackRate);
+            };
+            return std::make_tuple(-rate(l), Distance(s.cell,l.cell), l.id) <
+                   std::make_tuple(-rate(r), Distance(s.cell,r.cell), r.id);
+        }
         if (a.selector == Selector::LowestHealthAlly)
         {
             auto crossA = l.health * r.maxHealth, crossB = r.health * l.maxHealth;
@@ -421,7 +517,7 @@ std::vector<int> Combat::Select(int source, const AbilityDef &a) const
         }
         return std::tie(l.initiative, l.id) < std::tie(r.initiative, r.id);
     });
-    const int max = a.selector == Selector::LowestHealthAlly ? 1 : a.maxTargets;
+    const int max = (a.selector == Selector::LowestHealthAlly || a.selector == Selector::HighestAttackRateEnemy) ? 1 : a.maxTargets;
     if (int(selected.size()) > max)
         selected.resize(max);
     return selected;
@@ -455,7 +551,7 @@ bool Combat::DashLanding(int source, const AbilityDef &a, int &target, Cell &cel
                 continue;
             if (a.selector == Selector::RetreatFromCurrentEnemy)
             {
-                if (separation <= original || separation > catalog_->units[s.definition].range)
+                if (separation <= original || separation > catalog_->Definition(s.definition, s.neutral).range)
                     continue;
             }
             else if (separation != 1 ||
@@ -476,10 +572,10 @@ bool Combat::DashLanding(int source, const AbilityDef &a, int &target, Cell &cel
 bool Combat::CommitAbility(int source)
 {
     auto &s = units_[source];
-    const auto &a = catalog_->units[s.definition].ability;
-    if (tick_ < s.cooldownTick)
+    const auto &a = catalog_->Definition(s.definition, s.neutral).ability;
+    if (!a.enabled || tick_ < s.cooldownTick)
         return false;
-    if (a.effect == Effect::Dash)
+    if ((a.effects.empty() ? a.effect : a.effects.front().effect) == Effect::Dash)
     {
         int target;
         Cell landing;
@@ -497,15 +593,95 @@ bool Combat::CommitAbility(int source)
     s.cooldownTick = tick_ + Ticks(a.cooldownMs, catalog_->rules);
     return true;
 }
+std::vector<VisualAction> Combat::VisualActions() const
+{
+    std::vector<VisualAction> result;
+    auto describe = [&](const CombatUnit& source, bool basic) {
+        VisualAction v;
+        const auto& definition = catalog_->Definition(source.definition, source.neutral);
+        v.source = source.id; v.action = source.actionId;
+        v.definition = source.definition; v.neutral = source.neutral; v.basicAttack = basic;
+        v.origin = v.center = source.cell; v.releaseTick = source.releaseTick;
+        v.impactTick = v.releaseTick + Ticks(basic ? definition.projectileTravelMs : definition.ability.travelMs, catalog_->rules);
+        v.radius = basic ? 0 : definition.ability.radius;
+        v.effect = basic ? Effect::Damage : (definition.ability.effects.empty() ? definition.ability.effect : definition.ability.effects.front().effect);
+        v.damageType = basic ? definition.damageType : (definition.ability.effects.empty() ? definition.ability.damageType : definition.ability.effects.front().damageType);
+        return v;
+    };
+    auto areaRecipients = [&](VisualAction& visual, int side, int maximum) {
+        std::vector<const CombatUnit*> ordered;
+        for (const auto& unit : units_)
+            if (Alive(unit) && unit.side != side && Distance(unit.cell, visual.center) <= visual.radius)
+                ordered.push_back(&unit);
+        std::sort(ordered.begin(), ordered.end(), [](const CombatUnit* a, const CombatUnit* b) { return a->initiative < b->initiative; });
+        for (const auto* unit : ordered)
+            if (int(visual.recipients.size()) < maximum) visual.recipients.push_back(unit->id);
+    };
+    for (const auto& packet : packets_)
+    {
+        if (packet.effectOrder != 0 || packet.due <= tick_) continue;
+        const auto& source = units_[packet.source];
+        auto found = std::find_if(result.begin(), result.end(), [&](const VisualAction& v) { return v.source == source.id && v.action == packet.action; });
+        if (found == result.end())
+        {
+            auto visual = describe(source, packet.basicAttack);
+            visual.action = packet.action; visual.origin = packet.origin; visual.center = packet.center;
+            visual.radius = packet.radius; visual.effect = packet.effect; visual.damageType = packet.damageType;
+            visual.releaseTick = packet.releasedAt; visual.impactTick = packet.due;
+            visual.released = true; visual.provisional = false;
+            visual.fixedArea = packet.area; visual.recipientsProvisional = packet.area;
+            if (packet.area) areaRecipients(visual, source.side, packet.maxTargets);
+            result.push_back(visual); found = result.end() - 1;
+        }
+        if (packet.target >= 0)
+        {
+            const auto target = units_[packet.target].id;
+            if (!found->target) found->target = target;
+            if (std::find(found->recipients.begin(), found->recipients.end(), target) == found->recipients.end())
+                found->recipients.push_back(target);
+        }
+    }
+    for (int i = 0; i < int(units_.size()); ++i)
+    {
+        const auto& source = units_[i];
+        if (!Alive(source) || (source.state != ActionState::AttackWindup && source.state != ActionState::CastWindup)) continue;
+        const bool basic = source.state == ActionState::AttackWindup;
+        auto visual = describe(source, basic);
+        const auto& ability = catalog_->Definition(source.definition, source.neutral).ability;
+        if (basic || visual.effect == Effect::Dash)
+        {
+            if (source.target >= 0 && Alive(units_[source.target]))
+                visual.target = units_[source.target].id;
+            if (visual.effect == Effect::Dash) visual.center = source.destination;
+            if (visual.target) visual.recipients.push_back(visual.target);
+        }
+        else
+        {
+            const auto selected = Select(i, ability);
+            if (!selected.empty()) visual.target = units_[selected.front()].id;
+            visual.fixedArea = ability.selector == Selector::CurrentEnemyArea;
+            if (visual.fixedArea)
+            {
+                visual.center = selected.empty() ? Cell{} : units_[selected.front()].cell;
+                if (!selected.empty()) areaRecipients(visual, source.side, ability.maxTargets);
+            }
+            else for (int target : selected) visual.recipients.push_back(units_[target].id);
+        }
+        result.push_back(visual);
+    }
+    return result;
+}
 void Combat::Release(int source)
 {
     auto &s = units_[source];
-    const auto &d = catalog_->units[s.definition];
+    const auto &d = catalog_->Definition(s.definition, s.neutral);
     const auto &r = catalog_->rules;
     Packet p;
     p.source = source;
     p.action = s.actionId;
     p.due = tick_;
+    p.releasedAt = tick_;
+    p.origin = p.center = s.cell;
     p.key = d.ability.id;
     if (s.state == ActionState::AttackWindup)
     {
@@ -524,7 +700,7 @@ void Combat::Release(int source)
     }
     const auto &a = d.ability;
     s.state = ActionState::CastRecovery;
-    if (a.effect == Effect::Dash)
+    if ((a.effects.empty() ? a.effect : a.effects.front().effect) == Effect::Dash)
     {
         if (s.target >= 0 && Alive(units_[s.target]) && Free(s.destination, source))
         {
@@ -542,33 +718,40 @@ void Combat::Release(int source)
         CancelReservation(source);
         return;
     }
-    p.effect = a.effect;
-    p.damageType = a.damageType;
-    p.radius = a.radius;
-    p.center = s.cell;
-    p.magnitude = a.magnitude[s.star - 1];
-    p.duration = Ticks(a.durationMs, r);
-    p.due += Ticks(a.travelMs, r);
-    p.bonus = s.abilityBonus + s.allBonus;
-    if (a.effect == Effect::Heal || a.effect == Effect::Shield ||
-        (a.effect == Effect::StatModifier && p.magnitude > 0))
-        p.magnitude = HalfUp(p.magnitude * (10000 + s.supportBonus), 10000);
     auto targets = Select(source, a);
-    if (a.selector == Selector::CurrentEnemyArea)
+    if (targets.empty()) return;
+    auto effects = a.effects;
+    if (effects.empty()) effects.push_back({a.effect, a.damageType, a.durationMs, a.magnitude});
+    for (std::size_t order = 0; order < effects.size(); ++order)
     {
-        if (targets.empty())
-            return;
-        p.area = true;
-        p.center = units_[targets.front()].cell;
+        const auto &effect = effects[order];
+        p.effectOrder = int(order);
+        p.effect = effect.effect;
+        p.damageType = effect.damageType;
         p.radius = a.radius;
-        packets_.push_back(p);
-    }
-    else
-        for (int target : targets)
+        p.maxTargets = a.maxTargets;
+        p.center = s.cell;
+        p.magnitude = effect.magnitude[s.star - 1];
+        if (s.neutral && (effect.effect == Effect::Damage || effect.effect == Effect::Shield))
+            p.magnitude = HalfUp(p.magnitude * (effect.effect == Effect::Shield ? s.hpScaleBp : s.damageScaleBp), 10000);
+        p.duration = Ticks(effect.durationMs, r);
+        p.due = tick_ + Ticks(a.travelMs, r);
+        p.bonus = s.abilityBonus + s.allBonus;
+        if (effect.effect == Effect::Heal || effect.effect == Effect::Shield ||
+            (effect.effect == Effect::StatModifier && p.magnitude > 0))
+            p.magnitude = HalfUp(p.magnitude * (10000 + s.supportBonus), 10000);
+        if (a.selector == Selector::CurrentEnemyArea)
+        {
+            p.area = true;
+            p.center = units_[targets.front()].cell;
+            packets_.push_back(p);
+        }
+        else for (int target : targets)
         {
             p.target = target;
             packets_.push_back(p);
         }
+    }
 }
 void Combat::Apply(const Packet &p, int target)
 {
@@ -754,9 +937,9 @@ void Combat::Tick()
                 Release(i);
         }
     std::stable_sort(packets_.begin(), packets_.end(), [&](const Packet &a, const Packet &b) {
-        return std::make_tuple(a.due, units_[a.source].initiative, a.action,
+        return std::make_tuple(a.due, units_[a.source].initiative, a.action, a.effectOrder,
                                a.target < 0 ? -1 : units_[a.target].initiative) <
-               std::make_tuple(b.due, units_[b.source].initiative, b.action,
+               std::make_tuple(b.due, units_[b.source].initiative, b.action, b.effectOrder,
                                b.target < 0 ? -1 : units_[b.target].initiative);
     });
     std::vector<Packet> future;
@@ -769,10 +952,11 @@ void Combat::Tick()
         }
         if (p.area)
         {
+            int applied = 0;
             for (int i : order)
                 if (Alive(units_[i]) && units_[i].side != units_[p.source].side &&
-                    Distance(units_[i].cell, p.center) <= p.radius)
-                    Apply(p, i);
+                    Distance(units_[i].cell, p.center) <= p.radius && applied < p.maxTargets)
+                { Apply(p, i); ++applied; }
         }
         else if (p.target >= 0)
             Apply(p, p.target);
@@ -796,7 +980,7 @@ void Combat::Tick()
         u.target = ChooseEnemy(i, next, length);
         if (CommitAbility(i))
             continue;
-        const auto &d = catalog_->units[u.definition];
+        const auto &d = catalog_->Definition(u.definition, u.neutral);
         if (u.target >= 0 && length == 0)
         {
             int rateBonus = u.rateBonus;
@@ -811,8 +995,7 @@ void Combat::Tick()
         {
             u.state = ActionState::Moving;
             u.destination = next;
-            u.movementTick = tick_ + int((1000000 + Int(d.movementRate) * catalog_->rules.tickMs - 1) /
-                                         (Int(d.movementRate) * catalog_->rules.tickMs));
+            u.movementTick = tick_ + MovementInterval(d.movementRate, u.movementBonus, catalog_->rules);
         }
         else
         {

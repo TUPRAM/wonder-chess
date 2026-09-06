@@ -8,6 +8,7 @@
 #include "Misc/CommandLine.h"
 #include "Misc/Parse.h"
 #include "WCBoardPresenter.h"
+#include "WCFrontEnd.h"
 #include "WCMatchRuntime.h"
 #include "WCNetworkSession.h"
 
@@ -41,6 +42,8 @@ FString Token(const AWCMatchController *P, const FString &Id) {
       {TEXT("elf"), TEXT("Elf"), TEXT("Elf")},
       {TEXT("dwarf"), TEXT("Dwarf"), TEXT("Kurcaci")},
       {TEXT("orc"), TEXT("Orc"), TEXT("Orc")},
+      {TEXT("halfling"), TEXT("Halfling"), TEXT("Halfling")},
+      {TEXT("dragonkin"), TEXT("Dragonkin"), TEXT("Dragonkin")},
       {TEXT("guardian"), TEXT("Guardian"), TEXT("Penjaga")},
       {TEXT("warrior"), TEXT("Warrior"), TEXT("Petarung")},
       {TEXT("ranger"), TEXT("Ranger"), TEXT("Pemanah")},
@@ -69,7 +72,30 @@ FString DamageLabel(const AWCMatchController *P, wc::DamageType Type) {
                                          : T(P, TEXT("True"), TEXT("Murni"));
 }
 
-FString TraitBonus(const AWCMatchController *P, const wc::TraitDef &Trait) {
+FString HeroName(const wc::UnitDef &Unit) {
+  return UTF8_TO_TCHAR((Unit.displayName.empty() ? Unit.name : Unit.displayName).c_str());
+}
+bool NeutralUnit(const TSharedPtr<FJsonObject>& Object) {
+  return Object->HasField(TEXT("neutral")) && Object->GetBoolField(TEXT("neutral"));
+}
+bool MatchesTrait(const wc::UnitDef& Unit, const FString& Trait) {
+  return Trait == UTF8_TO_TCHAR(Unit.race.c_str()) || Trait == UTF8_TO_TCHAR(Unit.unitClass.c_str());
+}
+FString NeutralBehavior(const AWCMatchController* P, const wc::UnitDef& Unit) {
+  if (!Unit.ability.enabled)
+    return Unit.range > 1 ? T(P, TEXT("Ranged attacks"), TEXT("Serangan jarak jauh"))
+                          : T(P, TEXT("Melee attacks"), TEXT("Serangan jarak dekat"));
+  switch (Unit.ability.effect) {
+  case wc::Effect::Shield: return T(P, TEXT("Shields itself"), TEXT("Melindungi diri"));
+  case wc::Effect::Stun: return T(P, TEXT("Stuns adjacent heroes"), TEXT("Melumpuhkan hero di sebelah"));
+  case wc::Effect::Dash: return T(P, TEXT("Dashes toward the farthest hero"), TEXT("Melompat ke hero terjauh"));
+  case wc::Effect::Damage:
+    return Unit.ability.radius > 0 ? T(P, TEXT("Area magic burst"), TEXT("Ledakan sihir area"))
+                                  : T(P, TEXT("Targeted magic bolt"), TEXT("Proyektil sihir bertarget"));
+  default: return T(P, TEXT("Uses an active skill"), TEXT("Menggunakan skill aktif"));
+  }
+}
+FString TraitBonus(const AWCMatchController *P, const wc::TraitDef &Trait, int Count = 2) {
   FString Stat;
   if (Trait.stat == "max_health_bonus_bp")
     Stat = TEXT("HP");
@@ -87,9 +113,12 @@ FString TraitBonus(const AWCMatchController *P, const wc::TraitDef &Trait) {
     Stat = T(P, TEXT("all dmg"), TEXT("semua dmg"));
   else if (Trait.stat == "support_power_bonus_bp")
     Stat = T(P, TEXT("support"), TEXT("bantuan"));
+  else if (Trait.stat == "movement_bonus_bp")
+    Stat = T(P, TEXT("move"), TEXT("gerak"));
+  const int Value = wc::TraitValue(Trait, Count);
   const bool Percent = Trait.stat.find("_bp") != std::string::npos;
-  return Percent ? FString::Printf(TEXT("+%g%% %s"), Trait.value / 100.0, *Stat)
-                 : FString::Printf(TEXT("+%d %s"), Trait.value, *Stat);
+  return Percent ? FString::Printf(TEXT("+%g%% %s"), Value / 100.0, *Stat)
+                 : FString::Printf(TEXT("+%d %s"), Value, *Stat);
 }
 
 FString ReplyText(const AWCMatchController *P, const FString &Reason) {
@@ -243,10 +272,12 @@ FConfirmedFeedback &UpdateConfirmedFeedback(AWCMatchHUD *HUD,
   TArray<FString> Activated;
   for (const auto &Trait : Defs.traits) {
     const FString Id = UTF8_TO_TCHAR(Trait.id.c_str());
-    if (Distinct.FindRef(Id).Num() >= Trait.threshold) {
-      Active.Add(Id);
-      if (!Previous.ActiveTraits.Contains(Id))
-        Activated.Add(Token(P, Id) + TEXT(" ") + TraitBonus(P, Trait));
+    const int Count = Distinct.FindRef(Id).Num();
+    if (Count >= Trait.threshold) {
+      const FString TierId = Id + (Count >= Trait.threshold4 ? TEXT("/4") : TEXT("/2"));
+      Active.Add(TierId);
+      if (!Previous.ActiveTraits.Contains(TierId))
+        Activated.Add(Token(P, Id) + TEXT(" ") + TraitBonus(P, Trait, Count));
     }
   }
   const int CurrentGold = int(P->Private->GetNumberField(TEXT("gold")));
@@ -285,7 +316,7 @@ FConfirmedFeedback &UpdateConfirmedFeedback(AWCMatchHUD *HUD,
       Notice = LocalizedPrintf(
           P, TEXT("%s -> %d stars at %s. Absorbed: %s."),
           TEXT("%s -> bintang %d di %s. Digabung: %s."),
-          UTF8_TO_TCHAR(Defs.units[Upgraded->definition].name.c_str()),
+          *HeroName(Defs.units[Upgraded->definition]),
           Upgraded->star, *UnitLocation(P, *Upgraded),
           *FString::Join(Copies, TEXT(" + ")));
       Previous.HighlightedUnits.Reset();
@@ -296,7 +327,7 @@ FConfirmedFeedback &UpdateConfirmedFeedback(AWCMatchHUD *HUD,
       Notice = LocalizedPrintf(
           P, TEXT("Recruited %s to %s | %d gold paid."),
           TEXT("%s direkrut ke %s | membayar %d emas."),
-          UTF8_TO_TCHAR(Defs.units[Unit.definition].name.c_str()),
+          *HeroName(Defs.units[Unit.definition]),
           *UnitLocation(P, Unit), Previous.Gold - CurrentGold);
       Previous.HighlightedUnits.Reset();
       Previous.HighlightedUnits.Add(int64(Unit.id));
@@ -305,7 +336,7 @@ FConfirmedFeedback &UpdateConfirmedFeedback(AWCMatchHUD *HUD,
       Notice = LocalizedPrintf(
           P, TEXT("Sold %s (%d stars) | %d gold received."),
           TEXT("%s (bintang %d) dijual | menerima %d emas."),
-          UTF8_TO_TCHAR(Defs.units[Removed[0].definition].name.c_str()),
+          *HeroName(Defs.units[Removed[0].definition]),
           Removed[0].star, CurrentGold - Previous.Gold);
       Previous.HighlightedUnits.Reset();
     }
@@ -384,6 +415,7 @@ bool Inspection(AWCMatchController *P, wc::CombatUnit &Unit, bool &IsCombat,
         continue;
       Unit.id = wc::Id(P->InspectedUnitId);
       Unit.definition = int(Json->GetNumberField(TEXT("def")));
+      Unit.neutral = NeutralUnit(Json);
       Unit.star = int(Json->GetNumberField(TEXT("star")));
       Unit.health = wc::Int(Json->GetNumberField(TEXT("hp")));
       Unit.maxHealth = wc::Int(Json->GetNumberField(TEXT("maxHp")));
@@ -397,7 +429,7 @@ bool Inspection(AWCMatchController *P, wc::CombatUnit &Unit, bool &IsCombat,
       Unit.supportBonus = int(Json->GetNumberField(TEXT("supportBonus")));
       Unit.rateBonus = int(Json->GetNumberField(TEXT("effectiveRateBonus")));
       IsDeployed = true;
-      return Unit.definition >= 0 && Unit.definition < int(Defs.units.size()) &&
+      return Unit.definition >= 0 && Unit.definition < int(Unit.neutral ? Defs.neutrals.size() : Defs.units.size()) &&
              Unit.star >= 1 && Unit.star <= 3;
     }
     return false;
@@ -554,6 +586,18 @@ FString AWCMatchHUD::Label(const FString &Key) const {
       return P->Presenter->Metadata.Localized(Key, P->Language);
   return Key;
 }
+void AWCMatchHUD::EndPlay(const EEndPlayReason::Type Reason) {
+  FrontEnd.Reset();
+  Super::EndPlay(Reason);
+}
+bool AWCMatchHUD::BackFromFrontEnd() {
+  if (FrontEnd.IsValid() && FrontEnd->Back()) return true;
+  if (!InspectedTrait.IsEmpty()) {
+    InspectedTrait.Reset();
+    return true;
+  }
+  return false;
+}
 void AWCMatchHUD::DrawHUD() {
   Super::DrawHUD();
   if (!Canvas)
@@ -567,6 +611,16 @@ void AWCMatchHUD::DrawHUD() {
   if (!P)
     return;
   P->RefreshView();
+  if (!bPresentationOptionsRead) {
+    bPresentationOptionsRead = true;
+    FParse::Value(FCommandLine::Get(), TEXT("WCHUDTrait="), InspectedTrait);
+  }
+  if (!FParse::Param(FCommandLine::Get(), TEXT("WCArtReview"))) {
+    if (!FrontEnd)
+      FrontEnd = MakeShared<FWCFrontEnd>();
+    if (FrontEnd->Update(P, [this](const FString& Id) { Action(Id); }))
+      return;
+  }
   auto State = P->Public;
   auto Private = P->Private;
   if (IsSlider(Pressed)) {
@@ -609,7 +663,7 @@ void AWCMatchHUD::DrawHUD() {
   }
   if (FParse::Param(FCommandLine::Get(), TEXT("WCArtReview"))) {
     Box(0, 0, 1920, 84, Navy);
-    Text(TEXT("Unreal asset review - 12 heroes / authored clips"), 40, 26, 1.25,
+    Text(TEXT("Unreal asset review - 24 heroes / authored clips"), 40, 26, 1.25,
          Gold);
     if (P->Presenter) {
       Box(0, 1000, 1920, 80, Navy);
@@ -653,10 +707,10 @@ void AWCMatchHUD::DrawHUD() {
          130, 365, 1.2, Muted);
     Text(TEXT("THE SEVEN-LANTERN TRIALS"), 130, 430, .85, Gold);
     Wrap(T(P,
-           TEXT("Recruit twelve champions. Discover their affinities. Arrange "
+           TEXT("Recruit twenty-four champions. Discover their affinities. Arrange "
                 "your company and face seven persistent rivals in an "
                 "eight-seat tournament."),
-           TEXT("Rekrut dua belas hero. Temukan sinergi mereka. Susun tim dan "
+           TEXT("Rekrut dua puluh empat hero. Temukan sinergi mereka. Susun tim dan "
                 "hadapi tujuh lawan tetap dalam turnamen delapan kursi.")),
          130, 472, 680, 1.1, FLinearColor::White);
     const bool Network = State->GetBoolField(TEXT("network"));
@@ -736,11 +790,17 @@ void AWCMatchHUD::DrawHUD() {
          995, 884, .9, Gold);
   } else {
     const int Round = int(State->GetNumberField(TEXT("round")));
+    const bool NeutralRound = State->HasField(TEXT("neutralRound")) && State->GetBoolField(TEXT("neutralRound"));
+    int NextMonster = Round + 1;
+    while (NextMonster <= Defs.rules.maxRounds && !wc::IsNeutralRound(NextMonster, Defs.rules)) ++NextMonster;
     const int Remaining =
         FMath::CeilToInt(State->GetNumberField(TEXT("remaining")) / 1000.0);
     Box(0, 0, 1920, 110, Navy);
     Text(TEXT("WONDER CHESS"), 34, 24, 1.45, Gold);
-    Text(TEXT("SEVEN-LANTERN COURTYARD"), 35, 63, .75, Muted);
+    FString RoundBanner = NeutralRound ? T(P, TEXT("MONSTERS"), TEXT("MONSTER")) : T(P, TEXT("CAPTAIN DUEL"), TEXT("DUEL KAPTEN"));
+    if (NextMonster <= Defs.rules.maxRounds)
+      RoundBanner += LocalizedPrintf(P, TEXT(" | Next: R%d"), TEXT(" | Berikut: R%d"), NextMonster);
+    Text(RoundBanner, 35, 63, .75, Muted);
     FString PhaseText = Phase == 0   ? Label(TEXT("match.preparation"))
                         : Phase == 1 ? Label(TEXT("match.combat"))
                         : Phase == 2
@@ -790,6 +850,7 @@ void AWCMatchHUD::DrawHUD() {
            1610, 230 + I * 64, .70, Hp > 0 ? Muted : Gold);
     }
     int Opponent = -1;
+    int ObservedSide = Phase == 0 ? 0 : -1;
     bool Ghost = false;
     for (const auto &Pair : State->GetArrayField(TEXT("pairs"))) {
       auto V = Pair->AsObject();
@@ -797,11 +858,13 @@ void AWCMatchHUD::DrawHUD() {
           B = int(V->GetNumberField(TEXT("b")));
       if (A == P->ObservedSeat) {
         Opponent = B;
+        ObservedSide = 0;
         Ghost = V->GetBoolField(TEXT("ghost"));
         break;
       }
       if (B == P->ObservedSeat && !V->GetBoolField(TEXT("ghost"))) {
         Opponent = A;
+        ObservedSide = 1;
         break;
       }
     }
@@ -817,7 +880,16 @@ void AWCMatchHUD::DrawHUD() {
                     : T(P, TEXT("VERSUS  "), TEXT("MELAWAN  "))) +
                  Seats[Opponent]->AsObject()->GetStringField(TEXT("name")),
              980, 135, 1, Gold);
+      else if (NeutralRound && State->HasField(TEXT("wavePreview")))
+        Text(T(P, TEXT("MONSTERS: "), TEXT("MONSTER: ")) +
+             State->GetObjectField(TEXT("wavePreview"))->GetStringField(TEXT("name")), 980, 135, 1, Gold);
     }
+    TSet<int> HighlightContributors;
+    if (!InspectedTrait.IsEmpty() && Seats.IsValidIndex(P->ObservedSeat))
+      for (const auto& Value : Seats[P->ObservedSeat]->AsObject()->GetArrayField(TEXT("units"))) {
+        const int Definition = int(Value->AsObject()->GetNumberField(TEXT("def")));
+        if (Definition >= 0 && Definition < int(Defs.units.size()) && MatchesTrait(Defs.units[Definition], InspectedTrait)) HighlightContributors.Add(Definition);
+      }
     if (P->Presenter) {
       for (const auto &V : P->Presenter->VisibleUnits) {
         auto U = V->AsObject();
@@ -831,8 +903,13 @@ void AWCMatchHUD::DrawHUD() {
         float X = (Screen.X - OffsetX) / Scale,
               Y = (Screen.Y - OffsetY) / Scale;
         int D = int(U->GetNumberField(TEXT("def")));
-        if (D < 0 || D >= int(Defs.units.size()))
+        if (D < 0 || D >= int(NeutralUnit(U) ? Defs.neutrals.size() : Defs.units.size()))
           continue;
+        if (HighlightContributors.Num() >= 2 && !NeutralUnit(U) && ObservedSide >= 0 &&
+            int(U->GetNumberField(TEXT("side"))) == ObservedSide && MatchesTrait(Defs.units[D], InspectedTrait)) {
+          Box(X - 44, Y - 5, 88, 2, Gold);
+          Box(X - 44, Y + 8, 88, 2, Gold);
+        }
         if (U->GetNumberField(TEXT("hp")) > 0) {
           Box(X - 40, Y, 80, 5, FLinearColor(.06, .07, .07));
           Box(X - 40, Y,
@@ -849,7 +926,7 @@ void AWCMatchHUD::DrawHUD() {
                X - 40, Y - 17, .63, Gold);
         if (U->GetNumberField(TEXT("stun")) > 0)
           Text(T(P, TEXT("STUN"), TEXT("LUMPUH")), X - 20, Y + 10, .7, Gold);
-        Text(FString::ChrN(int(U->GetNumberField(TEXT("star"))), TEXT('*')),
+        Text(NeutralUnit(U) ? T(P, TEXT("MONSTER"), TEXT("MONSTER")) : FString::ChrN(int(U->GetNumberField(TEXT("star"))), TEXT('*')),
              X - 10, Y - 30, .8, Gold);
         if (P->SelectedUnit == Id) {
           Box(X - 46, Y + 10, 92, 3, Gold);
@@ -879,6 +956,33 @@ void AWCMatchHUD::DrawHUD() {
                       0);
           }
     }
+    if (Phase == 0 && NeutralRound && State->HasField(TEXT("wavePreview"))) {
+      const auto Wave = State->GetObjectField(TEXT("wavePreview"));
+      TMap<int, int> CreatureCounts;
+      for (const auto& Value : Wave->GetArrayField(TEXT("creatures"))) {
+        const int Definition = int(Value->AsObject()->GetNumberField(TEXT("def")));
+        if (Definition >= 0 && Definition < int(Defs.neutrals.size())) ++CreatureCounts.FindOrAdd(Definition);
+      }
+      TArray<int> Keys; for (const auto& Entry : CreatureCounts) Keys.Add(Entry.Key); Keys.Sort();
+      const float CardWidth = 1200.f / FMath::Max(1, Keys.Num());
+      for (int Index = 0; Index < Keys.Num(); ++Index) {
+        const auto& Unit = Defs.neutrals[Keys[Index]];
+        const float X = 345 + Index * CardWidth;
+        Box(X, 305, CardWidth - 8, 166, Navy);
+        const FString Id = UTF8_TO_TCHAR(Unit.id.c_str());
+        const FString Path = TEXT("/Game/WonderChess/Neutrals/") + Id + TEXT("/T_") + Id + TEXT("_Portrait.T_") + Id + TEXT("_Portrait");
+        if (auto* Texture = LoadObject<UTexture2D>(nullptr, *Path))
+          DrawTextureSimple(Texture, OffsetX + (X + 10) * Scale, OffsetY + 345 * Scale,
+                            66.f / Texture->GetSizeX() * Scale);
+        Text(FString::Printf(TEXT("%d x %s"), CreatureCounts[Keys[Index]], *HeroName(Unit)), X + 12, 319, 1.25, Gold);
+        const auto Health = wc::StarValue(wc::HalfUp(Unit.health * wc::Int(Wave->GetNumberField(TEXT("hpScaleBp"))), 10000), 1, 0, Defs.rules);
+        const auto Damage = wc::StarValue(wc::HalfUp(Unit.attackDamage * wc::Int(Wave->GetNumberField(TEXT("damageScaleBp"))), 10000), 1, 0, Defs.rules);
+        Text(FString::Printf(TEXT("HP %g"), Health / 100.0), X + 86, 344, 1.25);
+        Text(FString::Printf(TEXT("ATK %g"), Damage / 100.0), X + 86, 371, 1.25);
+        Text(LocalizedPrintf(P, TEXT("Range %d tiles"), TEXT("Jangkauan %d petak"), Unit.range), X + 86, 398, 1.25, Muted);
+        Wrap(NeutralBehavior(P, Unit), X + 12, 427, CardWidth - 32, 1.25, Muted);
+      }
+    }
     Box(25, 145, 290, 901, Navy);
     Text(Label(TEXT("ui.synergies")), 45, 164, 1.05, Gold);
     TMap<FString, TSet<int>> Counts;
@@ -896,11 +1000,10 @@ void AWCMatchHUD::DrawHUD() {
       FString Id = UTF8_TO_TCHAR(Trait.id.c_str());
       int N = Counts.Contains(Id) ? Counts[Id].Num() : 0;
       if (N) {
-        Text(FString::Printf(TEXT("%s %d/%d"), *Token(P, Id), N,
-                             Trait.threshold),
-             45, 203 + Line * 21, .69, N >= Trait.threshold ? Gold : Muted);
-        Text(TraitBonus(P, Trait), 172, 203 + Line * 21, .62,
-             N >= Trait.threshold ? Gold : Muted);
+        const float X = 38 + (Line % 2) * 135, Y = 201 + (Line / 2) * 33;
+        Button(TEXT("trait_") + Id, FString::Printf(TEXT("%s %d/%d"), *Token(P, Id), N,
+               N >= Trait.threshold ? Trait.threshold4 : Trait.threshold), X, Y, 129, 29);
+        if (InspectedTrait == Id) Box(X, Y + 26, 129, 3, Teal);
         ++Line;
       }
     }
@@ -913,12 +1016,48 @@ void AWCMatchHUD::DrawHUD() {
            45, 204, 245, .9, Muted);
     wc::CombatUnit Inspected;
     bool IsCombat = false, IsDeployed = false;
-    if (Inspection(P, Inspected, IsCombat, IsDeployed)) {
-      const auto &U = Defs.units[Inspected.definition];
+    if (!InspectedTrait.IsEmpty()) {
+      const wc::TraitDef* Selected = nullptr;
+      for (const auto& Trait : Defs.traits)
+        if (InspectedTrait == UTF8_TO_TCHAR(Trait.id.c_str())) Selected = &Trait;
+      if (Selected) {
+        const int Count = Counts.Contains(InspectedTrait) ? Counts[InspectedTrait].Num() : 0;
+        Text(Token(P, InspectedTrait), 45, 425, 1.5, Gold);
+        for (const auto& Value : P->Presenter->Metadata.Traits->GetArrayField(TEXT("traits"))) {
+          const auto Trait = Value->AsObject();
+          if (Trait->GetStringField(TEXT("id")) == InspectedTrait)
+            Wrap(Trait->GetStringField(TEXT("description")), 45, 464, 245, 1.25, Muted);
+        }
+        Text(TEXT("2: ") + TraitBonus(P, *Selected, 2), 45, 556, 1.25, Count >= 2 ? Gold : Muted);
+        Text(TEXT("4: ") + TraitBonus(P, *Selected, 4), 45, 583, 1.25, Count >= 4 ? Gold : Muted);
+        Text(Count >= 4 ? T(P, TEXT("Highest tier active"), TEXT("Tingkat tertinggi aktif")) :
+             LocalizedPrintf(P, TEXT("Next tier: %d more types"), TEXT("Tingkat berikut: %d jenis lagi"), (Count >= 2 ? 4 : 2) - Count), 45, 616, 1.25, Gold);
+        TArray<FString> Contributors, Recipients;
+        TSet<int> Unique;
+        if (Seats.IsValidIndex(P->ObservedSeat))
+          for (const auto& Value : Seats[P->ObservedSeat]->AsObject()->GetArrayField(TEXT("units"))) {
+            const auto Unit = Value->AsObject();
+            const int Definition = int(Unit->GetNumberField(TEXT("def")));
+            if (Definition < 0 || Definition >= int(Defs.units.size()) || !MatchesTrait(Defs.units[Definition], InspectedTrait)) continue;
+            const FString Name = HeroName(Defs.units[Definition]);
+            if (!Unique.Contains(Definition)) { Unique.Add(Definition); Contributors.Add(Name); }
+            Recipients.Add(Name + FString::ChrN(int(Unit->GetNumberField(TEXT("star"))), TEXT('*')));
+          }
+        Contributors.Sort(); Recipients.Sort();
+        Text(T(P, TEXT("Contributors: distinct types"), TEXT("Kontributor: jenis berbeda")), 45, 658, 1.25, Gold);
+        Wrap(Contributors.IsEmpty() ? T(P, TEXT("None deployed"), TEXT("Belum ditempatkan")) : FString::Join(Contributors, TEXT(", ")), 45, 687, 245, 1.25, FLinearColor::White);
+        Text(T(P, TEXT("Matching deployed copies"), TEXT("Salinan terkait di papan")), 45, 750, 1.25, Gold);
+        Wrap(Recipients.IsEmpty() ? T(P, TEXT("None"), TEXT("Tidak ada")) : FString::Join(Recipients, TEXT(", ")), 45, 779, 245, 1.25, FLinearColor::White);
+        Wrap(Count >= 2 ? T(P, TEXT("All matching copies receive the active tier at combat start. Tier 4 replaces tier 2."), TEXT("Semua salinan terkait mendapat tingkat aktif saat awal pertempuran. Tingkat 4 mengganti tingkat 2.")) :
+             T(P, TEXT("No bonus yet. Bench copies and extra stars do not add contributors."), TEXT("Belum ada bonus. Salinan di bangku dan bintang tambahan tidak menambah kontributor.")), 45, 868, 245, 1.25, Muted);
+        Button(TEXT("trait_close"), T(P, TEXT("Close trait detail"), TEXT("Tutup rincian sinergi")), 40, 982, 265, 48);
+      }
+    } else if (Inspection(P, Inspected, IsCombat, IsDeployed)) {
+      const auto &U = Defs.Definition(Inspected.definition, Inspected.neutral);
       const auto &Skill = U.ability;
       FString Id = UTF8_TO_TCHAR(U.id.c_str());
-      Text(UTF8_TO_TCHAR(U.name.c_str()), 45, 425, .96, Gold);
-      const FString Portrait = TEXT("/Game/WonderChess/Heroes/") + Id +
+      Text(HeroName(U), 45, 425, .96, Gold);
+      const FString Portrait = (Inspected.neutral ? TEXT("/Game/WonderChess/Neutrals/") : TEXT("/Game/WonderChess/Heroes/")) + Id +
                                TEXT("/T_") + Id + TEXT("_Portrait.T_") + Id +
                                TEXT("_Portrait");
       if (auto *Texture = LoadObject<UTexture2D>(nullptr, *Portrait))
@@ -947,7 +1086,7 @@ void AWCMatchHUD::DrawHUD() {
       Text(LocalizedPrintf(P, TEXT("ATK %.2f before defense"),
                            TEXT("ATK %.2f sebelum pertahanan"), Attack / 100.0),
            45, 568, .72);
-      const auto *Authored = P->Presenter->Metadata.Units.Find(Id);
+      const auto *Authored = Inspected.neutral ? P->Presenter->Metadata.NeutralUnits.Find(Id) : P->Presenter->Metadata.Units.Find(Id);
       const FString Delivery =
           Authored ? Token(P, (*Authored)
                                   ->GetObjectField(TEXT("stats"))
@@ -969,9 +1108,10 @@ void AWCMatchHUD::DrawHUD() {
       Text(LocalizedPrintf(P, TEXT("Shield %.2f"), TEXT("Perisai %.2f"),
                            Inspected.shield / 100.0),
            45, 663, .73, Gold);
-      Text(UTF8_TO_TCHAR(Skill.name.c_str()), 45, 696, .82, Gold);
+      Text(Skill.enabled ? UTF8_TO_TCHAR(Skill.name.c_str()) : *T(P, TEXT("Basic attacks only"), TEXT("Hanya serangan dasar")), 45, 696, .82, Gold);
       Wrap(P->Presenter->Metadata.AbilityTooltip(Id, P->Language), 45, 723, 247,
            .73, FLinearColor::White);
+      if (Skill.enabled) {
       wc::Int Power = Skill.magnitude[Inspected.star - 1];
       if (Skill.effect == wc::Effect::Damage)
         Power = wc::ResolveDamage(Power, wc::DamageType::True, 0, 0,
@@ -1002,7 +1142,12 @@ void AWCMatchHUD::DrawHUD() {
                                   : T(P, TEXT("Shield"), TEXT("Perisai"))),
                             Power / 100.0);
       Text(Magnitude, 45, 799, .75, Gold);
-      if (Skill.effect == wc::Effect::Damage)
+      if (Skill.effects.size() > 1 && Skill.effects[1].effect == wc::Effect::Stun)
+        Text(LocalizedPrintf(P, TEXT("Then stun %.2fs if target survives"),
+                             TEXT("Lalu lumpuh %.2fs bila masih hidup"),
+                             Skill.effects[1].durationMs / 1000.0),
+             45, 823, .64, Muted);
+      else if (Skill.effect == wc::Effect::Damage)
         Text(T(P, TEXT("Skill damage before defense"),
                TEXT("Damage skill sebelum pertahanan")),
              45, 823, .64, Muted);
@@ -1027,6 +1172,7 @@ void AWCMatchHUD::DrawHUD() {
                            TEXT("Waktu proyektil %.2fdtk"),
                            Skill.travelMs / 1000.0),
            45, 939, .65, Muted);
+      }
     } else
       Wrap(T(P,
              TEXT("Select any visible champion to inspect its stats and active "
@@ -1073,7 +1219,7 @@ void AWCMatchHUD::DrawHUD() {
         if (Found) {
           int D = int(Found->GetNumberField(TEXT("def")));
           if (D >= 0 && D < int(Defs.units.size())) {
-            Caption = UTF8_TO_TCHAR(Defs.units[D].name.c_str());
+            Caption = HeroName(Defs.units[D]);
             int Space;
             if (Caption.FindChar(TEXT(' '), Space))
               Caption = Caption.Left(Space);
@@ -1117,7 +1263,7 @@ void AWCMatchHUD::DrawHUD() {
         AddHitBox(FVector2D(OffsetX + X * Scale, OffsetY + 905 * Scale),
                   FVector2D(224 * Scale, 90 * Scale),
                   FName(*(TEXT("offer_") + FString::FromInt(I))), true, 10);
-        Wrap(UTF8_TO_TCHAR(U.name.c_str()), X + 74, 912, 142, 1.25, Gold);
+        Wrap(HeroName(U), X + 74, 912, 142, 1.25, Gold);
         Text(Token(P, UTF8_TO_TCHAR(U.race.c_str())) + TEXT(" / ") +
                  Token(P, UTF8_TO_TCHAR(U.unitClass.c_str())),
              X + 74, 966, .68, Muted);
@@ -1220,20 +1366,24 @@ void AWCMatchHUD::DrawHUD() {
       auto SeatName = [&](int Seat) {
         return Seats.IsValidIndex(Seat)
                    ? Seats[Seat]->AsObject()->GetStringField(TEXT("name"))
-                   : FString::Printf(TEXT("%d"), Seat + 1);
+                   : T(P, TEXT("Monsters"), TEXT("Monster"));
       };
       for (int I = 0; I < Fights.Num(); ++I) {
         const auto F = Fights[I]->AsObject();
+        const bool Neutral = NeutralUnit(F);
+        const FString FightLabel = Neutral
+            ? LocalizedPrintf(P, TEXT("%d vs Monsters"), TEXT("%d vs Monster"), int(F->GetNumberField(TEXT("a"))) + 1)
+            : FString::Printf(TEXT("%d vs %d%s"), int(F->GetNumberField(TEXT("a"))) + 1,
+                              int(F->GetNumberField(TEXT("b"))) + 1,
+                              F->GetBoolField(TEXT("ghost")) ? TEXT(" [G]") : TEXT(""));
         Button(TEXT("recapfight_") + FString::FromInt(I),
-               FString::Printf(
-                   TEXT("%d vs %d%s"), int(F->GetNumberField(TEXT("a"))) + 1,
-                   int(F->GetNumberField(TEXT("b"))) + 1,
-                   F->GetBoolField(TEXT("ghost")) ? TEXT(" [G]") : TEXT("")),
-               425 + I * 270, 295, 250, 40);
+               FightLabel, 425 + I * (Fights.Num() > 4 ? 134 : 270), 295,
+               Fights.Num() > 4 ? 128 : 250, 40);
       }
       if (Fights.IsValidIndex(SelectedFight)) {
         const auto F = Fights[SelectedFight]->AsObject();
         const bool Copy = F->GetBoolField(TEXT("ghost"));
+        const bool Neutral = NeutralUnit(F);
         const int Winner = int(F->GetNumberField(TEXT("winner")));
         const int A = int(F->GetNumberField(TEXT("a"))),
                   B = int(F->GetNumberField(TEXT("b")));
@@ -1276,7 +1426,16 @@ void AWCMatchHUD::DrawHUD() {
                                Healing[Side]->AsNumber() / 100.0),
                X, 524, .92);
           FString Formula;
-          if (Copy && Side == 1)
+          if (Neutral && Side == 1)
+            Formula = T(P, TEXT("Neutral creatures have no captain health or economy."), TEXT("Monster tidak memiliki HP kapten atau ekonomi."));
+          else if (Neutral) {
+            Formula = LocalizedPrintf(P, TEXT("Captain loss: %.0f (monster round rule)."),
+                                       TEXT("HP kapten hilang: %.0f (aturan ronde monster)."), CaptainDamage[Side]->AsNumber());
+            const auto& Rewards = Rec->GetArrayField(TEXT("pendingRewards"));
+            if (Winner == 0 && Rewards.IsValidIndex(A) && Rewards[A]->AsNumber() > 0)
+              Formula += LocalizedPrintf(P, TEXT(" +%.0f gold at the next eligible preparation."), TEXT(" +%.0f emas pada persiapan berikutnya yang memenuhi syarat."), Rewards[A]->AsNumber());
+          }
+          else if (Copy && Side == 1)
             Formula =
                 T(P, TEXT("Donor unaffected by this copied fight."),
                   TEXT("Pemilik salinan tidak terpengaruh pertarungan ini."));
@@ -1317,9 +1476,9 @@ void AWCMatchHUD::DrawHUD() {
     if (Phase == 3) {
       HitBoxMap.Reset();
       Focusable.Reset();
-      Box(410, 200, 1090, 530, Navy);
-      Text(T(P, TEXT("THE TRIALS CONCLUDE"), TEXT("TURNAMEN SELESAI")), 475,
-           235, 2, Gold);
+      Box(335, 126, 1220, 920, Navy);
+      Text(T(P, TEXT("THE TRIALS CONCLUDE"), TEXT("TURNAMEN SELESAI")), 375,
+           149, 1.8, Gold);
       Text(
           State->GetBoolField(TEXT("capped"))
               ? T(P,
@@ -1329,21 +1488,49 @@ void AWCMatchHUD::DrawHUD() {
                       "Batas ronde tercapai - peringkat bersama dapat terjadi"))
               : T(P, TEXT("Final tournament standings"),
                   TEXT("Peringkat akhir turnamen")),
-          475, 296, 1, Muted);
-      for (int I = 0; I < Seats.Num(); ++I) {
-        auto S = Seats[I]->AsObject();
-        Text(LocalizedPrintf(P, TEXT("#%d  %s | %d wins"),
-                             TEXT("#%d  %s | %d menang"),
+          375, 190, 1.25, Muted);
+      TArray<int> Order;
+      for (int I = 0; I < Seats.Num(); ++I) Order.Add(I);
+      Order.Sort([&Seats](int A, int B) {
+        const int PA = int(Seats[A]->AsObject()->GetNumberField(TEXT("place")));
+        const int PB = int(Seats[B]->AsObject()->GetNumberField(TEXT("place")));
+        return PA == PB ? A < B : PA < PB;
+      });
+      for (int I = 0; I < Order.Num(); ++I) {
+        auto S = Seats[Order[I]]->AsObject();
+        const float Y = 225 + I * 86;
+        Box(357, Y, 1175, 80, I % 2 ? Panel : FLinearColor(.03, .05, .065, .95));
+        Text(LocalizedPrintf(P, TEXT("#%d  %s | %d captain-duel wins"),
+                             TEXT("#%d  %s | %d kemenangan duel kapten"),
                              int(S->GetNumberField(TEXT("place"))),
                              *S->GetStringField(TEXT("name")),
                              int(S->GetNumberField(TEXT("wins")))),
-             490 + (I / 4) * 485, 355 + (I % 4) * 54, 1);
+             375, Y + 7, 1.25, Gold);
+        TArray<FString> Composition, ActiveTraits;
+        TMap<FString, TSet<int>> FinalCounts;
+        for (const auto& Value : S->GetArrayField(TEXT("units"))) {
+          const auto Unit = Value->AsObject();
+          const int Definition = int(Unit->GetNumberField(TEXT("def")));
+          if (Definition < 0 || Definition >= int(Defs.units.size())) continue;
+          const auto& Hero = Defs.units[Definition];
+          Composition.Add(HeroName(Hero) + FString::ChrN(int(Unit->GetNumberField(TEXT("star"))), TEXT('*')));
+          FinalCounts.FindOrAdd(UTF8_TO_TCHAR(Hero.race.c_str())).Add(Definition);
+          FinalCounts.FindOrAdd(UTF8_TO_TCHAR(Hero.unitClass.c_str())).Add(Definition);
+        }
+        for (const auto& Trait : Defs.traits) {
+          const FString Id = UTF8_TO_TCHAR(Trait.id.c_str());
+          const int Count = FinalCounts.Contains(Id) ? FinalCounts[Id].Num() : 0;
+          if (wc::TraitValue(Trait, Count) != 0)
+            ActiveTraits.Add(Token(P, Id) + FString::Printf(TEXT(" %d"), Count >= Trait.threshold4 ? Trait.threshold4 : Trait.threshold));
+        }
+        Text(Composition.IsEmpty() ? T(P, TEXT("No deployed heroes"), TEXT("Tidak ada hero di papan")) : FString::Join(Composition, TEXT("  ·  ")), 375, Y + 33, 1.25);
+        Text(ActiveTraits.IsEmpty() ? T(P, TEXT("No active synergies"), TEXT("Tidak ada sinergi aktif")) : FString::Join(ActiveTraits, TEXT("  ·  ")), 375, Y + 56, 1.25, Muted);
       }
-      Button(TEXT("restart"), Label(TEXT("match.restart")), 475, 618, 430, 64,
-             P->AssignedSeat <= 0);
+      Button(TEXT("restart"), Label(TEXT("match.restart")), 375, 957, 540, 60,
+             P->AssignedSeat == 0);
       Button(TEXT("menu"),
-             T(P, TEXT("Return to title"), TEXT("Kembali ke judul")), 940, 618,
-             475, 64);
+             T(P, TEXT("Return to title"), TEXT("Kembali ke judul")), 955, 957,
+             540, 60);
     }
   }
   if (!P->Presenter->AssetStatus.IsEmpty()) {
@@ -1526,6 +1713,14 @@ void AWCMatchHUD::Action(const FString &Id) {
   if (!P)
     return;
   auto *Session = Cast<UWCNetworkSession>(P->GetGameInstance());
+  if (Id == TEXT("entryready") || Id == TEXT("entryskip")) {
+    P->ServerEntryReady(Id == TEXT("entryskip"));
+    return;
+  }
+  if (Id == TEXT("entrycancel")) {
+    P->ServerCancelEntry();
+    return;
+  }
   const bool Aborted =
       (Session && Session->bMatchAborted) ||
       (P->Public.IsValid() && int(P->Public->GetNumberField(TEXT("phase"))) ==
@@ -1539,6 +1734,22 @@ void AWCMatchHUD::Action(const FString &Id) {
   if (P->bRecap && Id != TEXT("recap") && !Id.StartsWith(TEXT("recapfight_")) &&
       Id != TEXT("menu") && Id != TEXT("options") && Id != TEXT("quit"))
     return;
+  if (Id == TEXT("trait_close")) { InspectedTrait.Reset(); return; }
+  if (Id.StartsWith(TEXT("trait_"))) {
+    const FString TraitId = Id.Mid(6);
+    if (P->Presenter)
+      for (const auto& Trait : P->Presenter->Definitions.traits)
+        if (TraitId == UTF8_TO_TCHAR(Trait.id.c_str())) {
+          InspectedTrait = InspectedTrait == TraitId ? FString() : TraitId;
+          P->SelectedUnit = 0;
+          UE_LOG(LogTemp, Display, TEXT("WC_HUD_TRAIT_SELECTED trait=%s observed_seat=%d"), *InspectedTrait, P->ObservedSeat);
+          return;
+        }
+    return;
+  }
+  if (Id == TEXT("start") || Id == TEXT("restart") || Id == TEXT("menu") || Id == TEXT("home") || Id.StartsWith(TEXT("scout_")) ||
+      Id.StartsWith(TEXT("inspect_")) || Id.StartsWith(TEXT("unit_")) || Id.StartsWith(TEXT("bench_")) || Id.StartsWith(TEXT("offer_")) || Id.StartsWith(TEXT("buy_")))
+    InspectedTrait.Reset();
   if (Id == TEXT("options")) {
     P->bOptions = !P->bOptions;
     return;
@@ -1592,7 +1803,9 @@ void AWCMatchHUD::Action(const FString &Id) {
     return;
   }
   if (Id == TEXT("join")) {
-    P->ClientTravel(P->JoinAddress + TEXT(":7777"), TRAVEL_Absolute);
+    FString Address;
+    if (UWCNetworkSession::NormalizeJoinAddress(P->JoinAddress, Address))
+      P->ClientTravel(Address, TRAVEL_Absolute);
     return;
   }
   if (Id == TEXT("menu")) {

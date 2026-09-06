@@ -46,6 +46,7 @@ Obj Owned(const wc::OwnedUnit &U) {
   auto O = NewObj();
   O->SetNumberField("id", U.id);
   O->SetNumberField("def", U.definition);
+  O->SetBoolField("neutral", U.neutral);
   O->SetNumberField("star", U.star);
   O->SetBoolField("board", U.onBoard);
   O->SetNumberField("col", U.cell.column);
@@ -58,6 +59,19 @@ Obj Pair(const wc::Pairing &P) {
   O->SetNumberField("a", P.a);
   O->SetNumberField("b", P.b);
   O->SetBoolField("ghost", P.ghost);
+  O->SetBoolField("neutral", P.kind == wc::EncounterKind::Neutral);
+  O->SetStringField("kind", P.kind == wc::EncounterKind::Neutral ? TEXT("neutral") : P.ghost ? TEXT("ghost") : TEXT("pvp"));
+  O->SetStringField("waveId", Str(P.waveId));
+  TArray<Val> Sides;
+  for (int Side = 0; Side < 2; ++Side) {
+    auto Owner = NewObj();
+    const bool Neutral = Side == 1 && P.kind == wc::EncounterKind::Neutral;
+    if (Neutral) Owner->SetField("seat", MakeShared<FJsonValueNull>());
+    else Owner->SetNumberField("seat", Side == 0 ? P.a : P.b);
+    Owner->SetStringField("waveId", Neutral ? Str(P.waveId) : FString());
+    Sides.Add(J(Owner));
+  }
+  O->SetArrayField("sides", Sides);
   return O;
 }
 } // namespace
@@ -102,7 +116,7 @@ void AWCMatchMode::BeginPlay() {
        UGameplayStatics::HasOption(OptionsString, TEXT("WCNewSolo"))) &&
       !(Session && Session->bMatchAborted))
     GetWorldTimerManager().SetTimerForNextTick([this]() {
-      StartTournament(Controllers.Num() ? Controllers[0].Get() : nullptr,
+      RequestEntry(Controllers.Num() ? Controllers[0].Get() : nullptr,
                       RequestedHumans, 314159);
     });
   Publish();
@@ -110,10 +124,9 @@ void AWCMatchMode::BeginPlay() {
 void AWCMatchMode::PostLogin(APlayerController *Player) {
   Super::PostLogin(Player);
   if (auto *P = Cast<AWCMatchController>(Player)) {
-    if (Match || Controllers.Num() >= 2) {
-      P->ClientRejectSession(
-          TEXT("This alpha does not support joining or rejoining a running "
-               "tournament. Create a fresh lobby."));
+    if (Match || Controllers.Num() >= 2 ||
+        (bEntryPending && Controllers.Num() >= RequestedHumans)) {
+      P->ClientRejectSession(TEXT("This session has no open human seat. Create a fresh lobby to join."));
       return;
     }
     P->AssignedSeat = Controllers.Num();
@@ -128,10 +141,42 @@ void AWCMatchMode::Logout(AController *Exiting) {
       UE_LOG(LogTemp, Display, TEXT("WC_BOT_TAKEOVER seat=%d"),
              P->AssignedSeat);
     }
-    if (!Match)
+    if (!Match) {
       Controllers.Remove(P);
+      for (int32 Index = 0; Index < Controllers.Num(); ++Index)
+        if (Controllers[Index].IsValid()) Controllers[Index]->AssignedSeat = Index;
+      if (bEntryPending) CancelEntry(TEXT("A participant disconnected. Start a fresh session."));
+    }
   }
   Super::Logout(Exiting);
+}
+void AWCMatchMode::RequestEntry(AWCMatchController* Requester, int32 Humans, int32 Seed) {
+  if (bEntryPending) return;
+  if ((!Controllers.IsEmpty() && Requester != Controllers[0].Get()) || Humans < 0 || Humans > 2 || !LoadError.IsEmpty()) return;
+  if (Match && Match->CurrentPhase() != wc::Phase::Finished && Match->CurrentPhase() != wc::Phase::Aborted) {
+    if (Requester) Requester->ClientReply(false, TEXT("Finish the current tournament before restarting."));
+    return;
+  }
+  if (Humans < Controllers.Num() && GetNetMode() != NM_Standalone) return;
+  Match.Reset(); LastRecap.Reset(); bPractice = false;
+  RequestedHumans = Humans; EntrySeed = Seed; bEntryPending = true;
+  EntryState = Humans == 2 && Controllers.Num() < 2 ? TEXT("WaitingForPlayers") : TEXT("Loading");
+  EntryDeadline = FPlatformTime::Seconds() + 30.0; IntroductionRemaining = 0;
+  for (auto Weak : Controllers) if (auto* P = Weak.Get()) {
+    P->bEntryReady = Humans <= 1 && P->bCatalogReady;
+    P->bEntrySkip = false;
+  }
+  UE_LOG(LogTemp, Display, TEXT("WC_ENTRY_REQUEST humans=%d seed=%d preparation_started=false"), Humans, Seed);
+  Publish();
+}
+void AWCMatchMode::CancelEntry(const FString& Reason) {
+  bEntryPending = false; EntryState.Reset(); IntroductionRemaining = 0;
+  for (auto Weak : Controllers) if (auto* P = Weak.Get()) {
+    P->bEntryReady = false; P->bEntrySkip = false;
+    if (!Reason.IsEmpty()) P->ClientReply(false, Reason);
+  }
+  UE_LOG(LogTemp, Display, TEXT("WC_ENTRY_CANCEL reason=%s"), *Reason);
+  Publish();
 }
 void AWCMatchMode::StartTournament(AWCMatchController *Requester, int32 Humans,
                                    int32 Seed) {
@@ -166,6 +211,7 @@ void AWCMatchMode::StartTournament(AWCMatchController *Requester, int32 Humans,
     UE_LOG(LogTemp, Error, TEXT("WC_START_FAILED %s"), *LoadError);
     return;
   }
+  bEntryPending = false; EntryState.Reset(); IntroductionRemaining = 0;
   LastLoggedRound = 0;
   MillisecondCarry = 0;
   LastRecap.Reset();
@@ -181,6 +227,31 @@ void AWCMatchMode::StartTournament(AWCMatchController *Requester, int32 Humans,
 }
 void AWCMatchMode::Tick(float Delta) {
   Super::Tick(Delta);
+  if (bEntryPending) {
+    int32 Connected = 0; bool Loaded = true, Ready = true, Skip = true;
+    for (auto Weak : Controllers) if (auto* P = Weak.Get()) {
+      ++Connected; Loaded &= P->bCatalogReady;
+      Ready &= P->bEntryReady; Skip &= P->bEntrySkip;
+    }
+    const bool Enough = Connected >= RequestedHumans;
+    if (FPlatformTime::Seconds() >= EntryDeadline) {
+      CancelEntry(TEXT("Session preparation timed out. Check the connection and try again."));
+    } else if (!Enough || !Loaded || !Ready) {
+      IntroductionRemaining = 0;
+      EntryState = !Enough ? TEXT("WaitingForPlayers") : !Loaded ? TEXT("Loading") : TEXT("Ready");
+    } else if (EntryState == TEXT("Introduction")) {
+      IntroductionRemaining -= Delta;
+      if (Skip || IntroductionRemaining <= 0) {
+        StartTournament(Controllers.Num() ? Controllers[0].Get() : nullptr, RequestedHumans, EntrySeed);
+        if (Match) {
+          UE_LOG(LogTemp, Display, TEXT("WC_ENTRY_COMPLETE all_catalogs_ready=true preparation_elapsed_ms=0"));
+        } else {
+          CancelEntry(TEXT("The session could not start. Return to the lobby and try again."));
+        }
+        return;
+      }
+    } else { EntryState = TEXT("Introduction"); IntroductionRemaining = 3.0; Publish(); }
+  }
   bool Paused = false;
   if (GetNetMode() == NM_Standalone && Controllers.Num() &&
       Controllers[0].IsValid())
@@ -223,6 +294,23 @@ void AWCMatchMode::Tick(float Delta) {
 void AWCMatchMode::Publish() {
   auto O = NewObj();
   O->SetBoolField("practice", bPractice);
+  O->SetStringField("entryState", EntryState);
+  O->SetNumberField("entryRemainingMs", bEntryPending ? FMath::Max(0.0, (EntryState == TEXT("Introduction") ? IntroductionRemaining : EntryDeadline-FPlatformTime::Seconds()) * 1000.0) : 0);
+  O->SetStringField("schemaVersion", Str(Catalog.schemaVersion));
+  O->SetStringField("contentDigest", Str(Catalog.contentDigest));
+  O->SetNumberField("protocolVersion", 4);
+  TArray<Val> Participants;
+  for (int32 Seat = 0; Seat < 8; ++Seat) {
+    auto Participant = NewObj();
+    const bool Human = Seat < RequestedHumans;
+    auto* Controller = Controllers.IsValidIndex(Seat) ? Controllers[Seat].Get() : nullptr;
+    Participant->SetNumberField("seat", Seat);
+    Participant->SetBoolField("bot", !Human);
+    Participant->SetBoolField("ready", !Human || (Controller && Controller->bCatalogReady && Controller->bEntryReady));
+    Participant->SetStringField("name", Human ? FString::Printf(TEXT("Player %d"), Seat+1) : !Catalog.bots.empty() ? Str(Catalog.bots[(Seat-RequestedHumans)%Catalog.bots.size()].label) : TEXT("Bot"));
+    Participants.Add(J(Participant));
+  }
+  O->SetArrayField("entryParticipants", Participants);
   O->SetNumberField("matchNamespace", Match ? Match->Namespace() : 0);
   O->SetStringField("error", LoadError);
   int Connected = 0;
@@ -234,6 +322,21 @@ void AWCMatchMode::Publish() {
   O->SetBoolField("network", GetNetMode() != NM_Standalone);
   O->SetNumberField("phase", Match ? int(Match->CurrentPhase()) : -1);
   O->SetNumberField("round", Match ? Match->Round() : 0);
+  O->SetNumberField("pvpRoundIndex", Match ? Match->PvpRoundIndex() : 0);
+  O->SetBoolField("neutralRound", Match && Match->NeutralRound());
+  if (Match && Match->CurrentWave()) {
+    const auto& Wave = *Match->CurrentWave(); auto Preview = NewObj();
+    Preview->SetStringField("id", Str(Wave.id)); Preview->SetStringField("name", Str(Wave.name));
+    Preview->SetNumberField("hpScaleBp", Wave.hpScaleBp); Preview->SetNumberField("damageScaleBp", Wave.damageScaleBp);
+    TArray<Val> Creatures;
+    for (const auto& Slot : Wave.slots) {
+      auto Creature = NewObj(); Creature->SetNumberField("def", Slot.definition);
+      Creature->SetStringField("name", Str(Catalog.neutrals[Slot.definition].displayName));
+      Creature->SetNumberField("col", Slot.cell.column); Creature->SetNumberField("row", Slot.cell.row);
+      Creatures.Add(J(Creature));
+    }
+    Preview->SetArrayField("creatures", Creatures); O->SetObjectField("wavePreview", Preview);
+  }
   O->SetNumberField("remaining", Match ? Match->RemainingMs() : 0);
   O->SetBoolField("capped", Match && Match->Capped());
   TArray<Val> Seats, Pairs, Encounters;
@@ -271,6 +374,8 @@ void AWCMatchMode::Publish() {
         auto V = NewObj();
         V->SetNumberField("id", U.id);
         V->SetNumberField("def", U.definition);
+        V->SetBoolField("neutral", U.neutral);
+        V->SetNumberField("movementBonus", U.movementBonus);
         V->SetNumberField("star", U.star);
         V->SetNumberField("side", U.side);
         V->SetNumberField("col", U.cell.column);
@@ -306,6 +411,35 @@ void AWCMatchMode::Publish() {
         Units.Add(J(V));
       }
       P->SetArrayField("units", Units);
+      TArray<Val> VisualActions;
+      for (const auto &Action : E.combat.VisualActions()) {
+        auto V = NewObj();
+        V->SetNumberField("source", Action.source);
+        V->SetNumberField("target", Action.target);
+        V->SetNumberField("action", Action.action);
+        V->SetNumberField("definition", Action.definition);
+        V->SetNumberField("radius", Action.radius);
+        V->SetNumberField("releaseTick", Action.releaseTick);
+        V->SetNumberField("impactTick", Action.impactTick);
+        V->SetNumberField("originCol", Action.origin.column);
+        V->SetNumberField("originRow", Action.origin.row);
+        V->SetNumberField("col", Action.center.column);
+        V->SetNumberField("row", Action.center.row);
+        V->SetNumberField("effect", int(Action.effect));
+        V->SetNumberField("damageType", int(Action.damageType));
+        V->SetBoolField("neutral", Action.neutral);
+        V->SetBoolField("basicAttack", Action.basicAttack);
+        V->SetBoolField("released", Action.released);
+        V->SetBoolField("provisional", Action.provisional);
+        V->SetBoolField("recipientsProvisional", Action.recipientsProvisional);
+        V->SetBoolField("fixedArea", Action.fixedArea);
+        TArray<Val> Recipients;
+        for (const auto Recipient : Action.recipients)
+          Recipients.Add(MakeShared<FJsonValueNumber>(double(Recipient)));
+        V->SetArrayField("recipients", Recipients);
+        VisualActions.Add(J(V));
+      }
+      P->SetArrayField("visualActions", VisualActions);
       TArray<Val> Survivors, HealthLoss, Absorbed, Healing, CaptainDamage;
       int64 Loss[2] = {0, 0}, Shield[2] = {0, 0}, Heal[2] = {0, 0};
       TMap<int64, int> Sides;
@@ -321,7 +455,7 @@ void AWCMatchMode::Publish() {
         }
       int StageBase = 0;
       for (const auto &Stage : Catalog.rules.lossStages)
-        if (Match->Round() >= Stage.start && Match->Round() <= Stage.end)
+        if (Match->PvpRoundIndex() >= Stage.start && Match->PvpRoundIndex() <= Stage.end)
           StageBase = Stage.damage;
       for (int Side = 0; Side < 2; ++Side) {
         Survivors.Add(
@@ -332,7 +466,7 @@ void AWCMatchMode::Publish() {
         int Damage = 0;
         if (!Match->Records().empty() &&
             Match->Records().back().round == Match->Round() &&
-            !(E.pairing.ghost && Side == 1))
+            !(Side == 1 && (E.pairing.ghost || E.kind == wc::EncounterKind::Neutral)))
           Damage = Match->Records().back().damage[Side == 0 ? E.pairing.a
                                                             : E.pairing.b];
         CaptainDamage.Add(MakeShared<FJsonValueNumber>(Damage));
@@ -345,11 +479,17 @@ void AWCMatchMode::Publish() {
       P->SetNumberField("stageBase", StageBase);
       TArray<Val> Events;
       const auto &All = E.combat.Events();
-      for (size_t I = All.size() > 12 ? All.size() - 12 : 0; I < All.size();
+      const int EventWindowTicks = FMath::DivideAndRoundUp(2000, Catalog.rules.tickMs);
+      const int EarliestEventTick = E.combat.CurrentTick() - EventWindowTicks;
+      size_t FirstEvent = 0;
+      while (FirstEvent < All.size() && All[FirstEvent].tick < EarliestEventTick) ++FirstEvent;
+      P->SetNumberField("eventWindowStartTick", EarliestEventTick);
+      for (size_t I = FirstEvent; I < All.size();
            ++I) {
         const auto &V = All[I];
         auto VJ = NewObj();
         VJ->SetNumberField("tick", V.tick);
+        VJ->SetNumberField("action", V.action);
         VJ->SetNumberField("effect", int(V.effect));
         VJ->SetNumberField("damageType", int(V.damageType));
         VJ->SetBoolField("basicAttack", V.basicAttack);
@@ -372,6 +512,8 @@ void AWCMatchMode::Publish() {
       const auto &R = Match->Records().back();
       auto Rec = NewObj();
       Rec->SetNumberField("round", R.round);
+      Rec->SetBoolField("neutral", R.neutral);
+      Rec->SetNumberField("pvpRoundIndex", R.pvpRoundIndex);
       auto Numbers = [](const auto &Values) {
         TArray<Val> Result;
         for (auto Value : Values)
@@ -380,9 +522,10 @@ void AWCMatchMode::Publish() {
       };
       Rec->SetArrayField("damage", Numbers(R.damage));
       Rec->SetArrayField("health", Numbers(R.health));
+      Rec->SetArrayField("pendingRewards", Numbers(R.pendingRewards));
       int StageBase = 0;
       for (const auto &Stage : Catalog.rules.lossStages)
-        if (R.round >= Stage.start && R.round <= Stage.end)
+        if (R.pvpRoundIndex >= Stage.start && R.pvpRoundIndex <= Stage.end)
           StageBase = Stage.damage;
       TArray<Val> RecapEncounters;
       for (const auto &Encounter : R.encounters) {
@@ -397,7 +540,7 @@ void AWCMatchMode::Publish() {
         Summary->SetArrayField("healing", Numbers(Encounter.healing));
         const std::array<int, 2> CaptainDamage = {
             R.damage[Encounter.pairing.a],
-            Encounter.pairing.ghost ? 0 : R.damage[Encounter.pairing.b]};
+            (Encounter.pairing.ghost || Encounter.kind == wc::EncounterKind::Neutral) ? 0 : R.damage[Encounter.pairing.b]};
         Summary->SetArrayField("captainDamage", Numbers(CaptainDamage));
         Summary->SetNumberField("stageBase", StageBase);
         RecapEncounters.Add(J(Summary));
@@ -514,7 +657,7 @@ void AWCMatchMode::Regression(int32 Count) {
   };
   for (const FString Name :
        {TEXT("rules.alpha.json"), TEXT("units.json"), TEXT("traits.json"),
-        TEXT("bots.json"), TEXT("world.json")})
+        TEXT("bots.json"), TEXT("world.json"), TEXT("neutrals.json")})
     RecordFile(Name, DataDirectory / Name);
   RecordFile(TEXT("runtime_stage_manifest.json"),
              DataDirectory / TEXT("runtime_stage_manifest.json"));
@@ -554,6 +697,7 @@ void AWCMatchMode::Regression(int32 Count) {
     const double Start = FPlatformTime::Seconds();
     try {
       wc::Match M(Catalog, Seed, 0);
+      Trial->SetNumberField("match_namespace", double(M.Namespace()));
       int Steps = 0, InvariantChecks = 0, LastDeploymentRound = -1;
       struct FUse {
         int UnitRounds = 0, Rounds = 0, MaxStar = 0;
@@ -786,6 +930,7 @@ void AWCMatchController::BeginPlay() {
   Presenter = GetWorld()->SpawnActor<AWCBoardPresenter>();
   Presenter->Controller = this;
   Presenter->Initialize();
+
 }
 void AWCMatchController::SetupInputComponent() {
   Super::SetupInputComponent();
@@ -833,6 +978,7 @@ void AWCMatchController::RaiseFocusedVolume() {
 }
 
 void AWCMatchController::Cancel() {
+  if (auto* H = Cast<AWCMatchHUD>(GetHUD()); H && H->BackFromFrontEnd()) return;
   if (SelectedUnit)
     SelectedUnit = 0;
   else
@@ -917,7 +1063,28 @@ void AWCMatchController::ClientReply_Implementation(bool Accepted,
 }
 void AWCMatchController::ServerStart_Implementation(int32 Humans, int32 Seed) {
   if (auto *M = GetWorld()->GetAuthGameMode<AWCMatchMode>())
-    M->StartTournament(this, Humans, Seed);
+    M->RequestEntry(this, Humans, Seed);
+}
+void AWCMatchController::ServerCatalogReady_Implementation(const FString& Schema, const FString& Digest, int32 Protocol) {
+  auto* M = GetWorld()->GetAuthGameMode<AWCMatchMode>();
+  if (!M || !M->Controllers.Contains(this)) return;
+  if (Protocol != 4 || Schema != Str(M->Catalog.schemaVersion) || Digest != Str(M->Catalog.contentDigest)) {
+    bCatalogReady = false;
+    ClientRejectSession(TEXT("Game data or protocol differs from the host. Use the same Wonder Chess package."));
+    return;
+  }
+  bCatalogReady = true;
+  if (M->bEntryPending && M->RequestedHumans <= 1) bEntryReady = true;
+  M->Publish();
+}
+void AWCMatchController::ServerEntryReady_Implementation(bool bSkip) {
+  auto* M = GetWorld()->GetAuthGameMode<AWCMatchMode>();
+  if (!M || !M->bEntryPending || !bCatalogReady || !M->Controllers.Contains(this)) return;
+  bEntryReady = true; bEntrySkip |= bSkip; M->Publish();
+}
+void AWCMatchController::ServerCancelEntry_Implementation() {
+  auto* M = GetWorld()->GetAuthGameMode<AWCMatchMode>();
+  if (M && M->bEntryPending && M->Controllers.Contains(this)) M->CancelEntry(TEXT("Session preparation cancelled."));
 }
 void AWCMatchController::ServerPractice_Implementation() {
   auto *M = GetWorld()->GetAuthGameMode<AWCMatchMode>();
@@ -1080,7 +1247,15 @@ void AWCMatchController::Tick(float Delta) {
   if (!IsLocalController())
     return;
   RefreshView();
+  if (!bSentCatalogReady && Presenter && !Presenter->Definitions.units.empty() && Public.IsValid() && Public->HasField(TEXT("contentDigest")) && !Public->GetStringField(TEXT("contentDigest")).IsEmpty()) {
+    bSentCatalogReady = true;
+    ServerCatalogReady(Str(Presenter->Definitions.schemaVersion), Str(Presenter->Definitions.contentDigest), 4);
+  }
   SendNextIntent();
+  if (Public.IsValid() && Public->HasField(TEXT("entryState")) &&
+      !Public->GetStringField(TEXT("entryState")).IsEmpty() &&
+      FParse::Param(FCommandLine::Get(), TEXT("WCExercise")))
+    ServerEntryReady(false);
   WCTickVerification(this, Delta);
   if (FPlatformTime::Seconds() > NextMusic &&
       (!IsValid(Music) || !Music->IsPlaying())) {

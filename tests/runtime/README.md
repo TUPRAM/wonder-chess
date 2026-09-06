@@ -5,10 +5,10 @@ This harness compiles the same `WonderSimulation.cpp` and `WonderTournament.cpp`
 From the workspace root on Windows with the installed Visual Studio x64 C++ tools:
 
 ```powershell
-pwsh -NoProfile -File tests/runtime/build_and_run.ps1 -Tournaments 100
+pwsh -NoProfile -File tests/runtime/build_and_run.ps1 -Tournaments 100 -OutputDirectory "C:/Users/iputu/Documents/Wonder Chess/reports/WC-U450/<fresh-UTC-run>/native100"
 ```
 
-Outputs are under `tests/runtime/build/`: the executable, compiler log, execution log, canonical fixture header, per-tournament summary, round economy/settlement rows, preparation-lock roster compositions, normalized bot decision features and accepted replies, and mirror-combat results. Compiler/runtime nonzero status propagates from the script. The build directory is ignored because the header and executable are generated artifacts.
+Outputs use the requested fresh directory: executable, compiler/process/source-hash logs, canonical fixture header, tournament summaries, round settlement/economy rows, preparation-lock compositions, normalized bot decisions and accepted replies, and mirror combats. The historical default is `tests/runtime/build/`; use an explicit new directory to preserve evidence. Compiler/runtime failure propagates from the script.
 
 The harness explicitly uses MSVC `/fp:fast`, matching the installed Unreal 5.7 Development response files. An initial `/fp:precise` run diverged in rare floating-point bot utility decisions (seeds 3 and 46), although the combat arithmetic itself remains integer. Rebuilding the same source with `/fp:fast` reproduced the engine's seed 3 divergence. Replay comparisons must include compiler floating-point options, not merely source and data versions. The runtime catalog digest is the generated canonical digest used by the engine; the generator also logs an independent hash of its four numeric inputs.
 
@@ -25,7 +25,11 @@ The Unreal automation tests are `WonderChess.Runtime.IntegerContracts` and `Wond
 - The runtime's per-match namespace is transport state. It occupies the high revision bits so commands from a prior restart are rejected. Replay debug hashes include logical revision counters but exclude that process-local namespace, allowing seeded result comparison across separate fresh matches. Hashes cover catalog digest, phase, shop and bot RNG state, economy, roster identity/star/location, offers, lock/readiness, pair history and ghost counts. They are debugging fingerprints rather than persisted save/replay files.
 - Profiling fields in `tournaments.csv` describe fixed-step simulation wall time and accumulated unit-state time. They are not render/GPU frame measurements. A timeout is an adjudicated encounter, not a hung combat; its prevalence remains a balance/pace question.
 
-The game must still pass the separate packaged 1H7B and real-process 2H6B, asset, audio, UI, accessibility, performance and human playtest requirements before this runtime work can support an accepted playable-alpha claim.
+The update tests additionally cover all 24 skills at three stars, 2/4 distinct-type traits, Neris effect ordering, Finn/Oren target eligibility, captured visual actions, seven neutral definitions, all eleven waves through round 40, typed ownership, eight isolated fights, once-only rewards, opening/later failures, and restart isolation. Bot purchase tests exercise ordinary shop offers and commands; synthetic catalog variants are explicitly fixtures, not balance evidence. `summarize_update_native.py` reports actual usage and wave outcomes from a run directory.
+
+The game must still pass packaged 1H7B, actual 2H6B on two physical LAN machines, asset/audio/UI/accessibility/performance and human play requirements. Native and packaged headless combat do not establish those gates.
+
+`audit_update_regression.py` binds a 100-tournament packaged run to its immutable archive/provenance and corresponding native fixture/output hashes, checks every recorded settlement/composition/command, and compares process-independent logical hashes. Process-local match namespaces are intentionally different between processes. Old binaries, changed bot policy and changed data need distinct evidence; never relabel an older pass current.
 
 ## Packaged/network evidence reader
 
@@ -54,3 +58,7 @@ python -m unittest discover -s tests/runtime -p 'test_*audit.py' -v
 ```
 
 The transition reader follows retained client match files when automatic menu travel changes the latest namespace. Its checks do not establish visible error messaging or physical-LAN networking. Actual launch procedures and source-verified packet-emulation switches are recorded in `reports/WC-310/runtime/packaged-verification-commands.md`.
+
+For the update's two-restart path use `run_shipping_solo.ps1 -Mode restart -Restarts 2` with current immutable provenance and a fresh output directory, then `audit_packaged_restart.py --expected-restarts 2` against the three actual positive-namespace matches. Namespace-zero lobby records are preserved separately. A scripted human-seat command exercise is not manual play approval.
+
+New frame CSVs record `neutral_round` and `neutral_live_encounters` directly from unfinished encounters. The frame reader reports the eight-live-neutral-fight subset separately from crowded PvP. Older CSVs without these fields cannot prove that subset from round number alone. Missing GPU timing remains unavailable, and screenshot/CPU-skinning audit frames and concurrent Blender workloads must not be promoted into clean performance evidence.

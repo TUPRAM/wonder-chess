@@ -5,6 +5,28 @@
 #include "WCDataRows.generated.h"
 
 USTRUCT(BlueprintType)
+struct FWCAbilityEffect
+{
+    GENERATED_BODY()
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="WonderChess")
+    FName EffectId = NAME_None;
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="WonderChess")
+    FName DamageType = NAME_None;
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="WonderChess")
+    FName MagnitudeUnit = NAME_None;
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="WonderChess")
+    int64 Magnitude1 = 0;
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="WonderChess")
+    int64 Magnitude2 = 0;
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="WonderChess")
+    int64 Magnitude3 = 0;
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="WonderChess")
+    int32 DurationMs = 0;
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="WonderChess")
+    FName StatId = NAME_None;
+};
+
+USTRUCT(BlueprintType)
 struct FWCUnitRow : public FTableRowBase
 {
     GENERATED_BODY()
@@ -12,6 +34,10 @@ struct FWCUnitRow : public FTableRowBase
     FName UnitId = NAME_None;
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="WonderChess")
     FString DisplayName = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="WonderChess")
+    FString LoreName = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="WonderChess")
+    TArray<FName> RoleTags = {};
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="WonderChess")
     FName RaceId = NAME_None;
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="WonderChess")
@@ -55,19 +81,9 @@ struct FWCAbilityRow : public FTableRowBase
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="WonderChess")
     FString DisplayName = TEXT("");
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="WonderChess")
-    FName EffectId = NAME_None;
+    TArray<FWCAbilityEffect> Effects = {};
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="WonderChess")
     FName TargetRule = NAME_None;
-    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="WonderChess")
-    FName DamageType = NAME_None;
-    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="WonderChess")
-    FName MagnitudeUnit = NAME_None;
-    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="WonderChess")
-    int64 Magnitude1 = 0;
-    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="WonderChess")
-    int64 Magnitude2 = 0;
-    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="WonderChess")
-    int64 Magnitude3 = 0;
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="WonderChess")
     int32 FirstCastMs = 0;
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="WonderChess")
@@ -77,17 +93,15 @@ struct FWCAbilityRow : public FTableRowBase
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="WonderChess")
     int32 RecoveryMs = 0;
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="WonderChess")
-    int32 DurationMs = 0;
-    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="WonderChess")
     int32 RangeTiles = 0;
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="WonderChess")
     int32 RadiusTiles = 0;
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="WonderChess")
+    int32 MaxTargets = 0;
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="WonderChess")
     int32 MaxDashTiles = 0;
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="WonderChess")
     int32 TravelMs = 0;
-    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="WonderChess")
-    FName StatId = NAME_None;
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="WonderChess")
     bool AllowSelf = false;
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="WonderChess")

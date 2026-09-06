@@ -18,7 +18,7 @@ wc::OwnedUnit Unit(wc::Id id, int definition, int x, int y, int star = 1) {
     wc::OwnedUnit u; u.id = id; u.definition = definition; u.cell = {x, y}; u.star = star; u.onBoard = true; return u;
 }
 const wc::CombatUnit& Find(const wc::Combat& combat, wc::Id localId) {
-    for (const auto& u : combat.Units()) if ((u.id & ((wc::Id(1) << 39) - 1)) == localId) return u;
+    for (const auto& u : combat.Units()) if ((u.id & ((wc::Id(1) << 20) - 1)) == localId) return u;
     throw std::runtime_error("Missing fixture unit");
 }
 void Capture(const wc::Combat& combat) {
@@ -50,6 +50,7 @@ wc::Catalog Controlled(const wc::Catalog& canonical) {
 }
 void Ability(wc::UnitDef& unit, wc::Effect effect, wc::Selector selector, wc::Int magnitude, int duration = 1000) {
     auto& a = unit.ability;
+    a.effects.clear();
     a.effect = effect; a.selector = selector; a.magnitude = {magnitude, magnitude, magnitude};
     a.firstCastMs = 0; a.castMs = 50; a.cooldownMs = 100000; a.recoveryMs = 50;
     a.durationMs = duration; a.travelMs = 0; a.radius = 1; a.range = 8; a.maxTargets = 12; a.allowSelf = false;

@@ -187,63 +187,9 @@ def measure(path):
 
 
 def main():
-    units_path, rules_path = ROOT / "data/units.json", ROOT / "data/rules.alpha.json"
-    units = {u["id"]: u for u in json.loads(units_path.read_text(encoding="utf-8"))["units"]}
-    alpha = json.loads(rules_path.read_text(encoding="utf-8"))["alpha_unit_ids"]
-    if len(alpha) != 12 or set(alpha) != set(RECIPES):
-        raise RuntimeError("Recipes must match the exact canonical alpha roster")
-    expected_names = {"S_WC_" + uid + "_active.wav" for uid in alpha}
-    protected = {p.name: digest(p) for p in OUT.glob("*.wav") if p.name not in expected_names}
-    OUT.mkdir(parents=True, exist_ok=True)
-    REPORT.parent.mkdir(parents=True, exist_ok=True)
-    result = {"status": "STARTED", "generated_utc": datetime.now(timezone.utc).isoformat(),
-              "python": sys.version, "generator": "tools/audio/hero_variants.py",
-              "generator_sha256": digest(Path(__file__)), "units_sha256": digest(units_path),
-              "rules_sha256": digest(rules_path), "external_samples": False, "recorded_voices": False,
-              "generation": "Original deterministic additive/modal, filtered-noise and Karplus-Strong synthesis",
-              "seed": "First eight SHA256 bytes of unit id interpreted little-endian",
-              "measurement_boundary": "PCM duration/RMS/peak/DC/clipping, not perceptual loudness or final mix acceptance",
-              "runtime_playback": "One active variant per confirmed observed action; use runtime voice limits and effects volume",
-              "unreal_import": "NOT_RUN", "listening_review": "NOT_RUN", "records": []}
-    REPORT.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
-    for uid in alpha:
-        unit = units[uid]
-        dossier = ROOT / "docs/heroes" / (uid + ".md")
-        cue = unit["art"]["audio"]
-        if "**Sound:** " + cue not in dossier.read_text(encoding="utf-8"):
-            raise RuntimeError("Dossier/canonical audio cue mismatch: " + uid)
-        filename = "S_WC_" + uid + "_active.wav"
-        path = OUT / filename
-        pcm = synthesize(uid)
-        if pcm != synthesize(uid):
-            raise RuntimeError("Nondeterministic synthesis: " + uid)
-        with wave.open(str(path), "wb") as stream:
-            stream.setparams((1, 2, RATE, len(pcm) // 2, "NONE", "not compressed"))
-            stream.writeframes(pcm)
-        metrics = measure(path)
-        if metrics["clipped_samples"] or metrics["first_sample"] or metrics["last_sample"]:
-            raise RuntimeError("Clip/edge validation failed: " + uid)
-        if not (.25 <= metrics["duration_seconds"] <= 1.5 and .005 < metrics["rms_linear"] < .1):
-            raise RuntimeError("Duration or level outside intended small-cue limits: " + uid)
-        result["records"].append({"unit_id": uid, "name": unit["name"], "ability": unit["ability"]["name"],
-                                  "dossier": str(dossier.relative_to(ROOT)), "dossier_sha256": digest(dossier),
-                                  "authored_sound_cue": cue, "synthesis_mapping": RECIPES[uid][3],
-                                  "file": str(path.relative_to(ROOT)), "sha256": digest(path), **metrics})
-    after = {p.name: digest(p) for p in OUT.glob("*.wav") if p.name not in expected_names}
-    if protected != after:
-        raise RuntimeError("Existing shared audio changed while variants were generated")
-    if len({record["sha256"] for record in result["records"]}) != 12:
-        raise RuntimeError("Variant files are not distinct")
-    result["shared_wavs_preserved"] = protected
-    result["checks"] = {"exact_alpha_12": True, "deterministic_pcm_repeated": True,
-                        "distinct_sha256": True, "zero_clipped_samples": True,
-                        "zero_edge_samples": True, "shared_wavs_unchanged": True}
-    result["status"] = "GENERATED_AND_PCM_CHECKED"
-    REPORT.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
-    print("WC_HERO_AUDIO_PCM_PASS " + json.dumps({"variants": len(alpha), "preserved_shared_wavs": len(protected),
-          "clipped_samples": sum(r["clipped_samples"] for r in result["records"]),
-          "duration_range": [min(r["duration_seconds"] for r in result["records"]), max(r["duration_seconds"] for r in result["records"])],
-          "report": str(REPORT)}))
+    # Keep the original twelve synthesis functions stable; the current entry covers all24.
+    from update_variants import main as update_main
+    update_main()
 
 
 if __name__ == "__main__":

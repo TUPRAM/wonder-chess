@@ -28,7 +28,12 @@ def summarize(session_path):
                "combat_frames": [r for r in rows if r["phase"] == 1],
                "twelve_visible_combatants": [r for r in rows if r["phase"] == 1 and r["visible_alive"] >= 12],
                "twelve_visible_and_four_live_encounters": [r for r in rows if r["phase"] == 1
-                                                            and r["visible_alive"] >= 12 and r["encounters"] == 4]}
+                                                            and r["visible_alive"] >= 12 and r["encounters"] == 4],
+               "eight_live_neutral_encounters": [r for r in rows if r["phase"] == 1
+                                                  and r.get("neutral_round") == 1 and r.get("neutral_live_encounters") == 8],
+               "twelve_visible_and_eight_live_neutral_encounters": [r for r in rows if r["phase"] == 1
+                                                  and r["visible_alive"] >= 12 and r.get("neutral_round") == 1
+                                                  and r.get("neutral_live_encounters") == 8]}
     result = {"boundary": "Observed instrumented viewport timings; GPU zero samples omitted as unavailable. No inferred hardware or FPS.",
               "hardware_and_settings": {k: session.get(k) for k in
                                         ("cpu", "active_rhi_adapter", "primary_gpu_reported_by_os", "engine", "rhi",
@@ -42,6 +47,8 @@ def summarize(session_path):
     for path in [session_path, frame_path]:
         result["inputs"].append({"path": str(path.resolve()), "sha256": hashlib.sha256(path.read_bytes()).hexdigest()})
     result["required_busy_load_status"] = "OBSERVED" if subsets["twelve_visible_and_four_live_encounters"] else "NOT_RUN"
+    result["eight_neutral_encounters_status"] = "OBSERVED" if subsets["eight_live_neutral_encounters"] else "NOT_RUN"
+    result["neutral_instrumentation_available"] = bool(rows) and "neutral_live_encounters" in rows[0]
     result["viewport_1080p_observed"] = session.get("resolution_x") == 1920 and session.get("resolution_y") == 1080
     return result
 

@@ -2,6 +2,7 @@
 #include <array>
 #include <cstdint>
 #include <map>
+#include <optional>
 #include <string>
 #include <utility>
 #include <vector>
@@ -41,6 +42,7 @@ enum class Selector
     AdjacentEnemies,
     AdjacentAllies,
     LowestHealthAlly,
+    HighestAttackRateEnemy,
     CurrentEnemyArea,
     RetreatFromCurrentEnemy,
     CurrentEnemyAdjacent,
@@ -76,6 +78,13 @@ enum class CommandType
     Move,
     Ready
 };
+struct AbilityEffect
+{
+    Effect effect = Effect::Damage;
+    DamageType damageType = DamageType::Physical;
+    int durationMs = 0;
+    std::array<Int, 3> magnitude{};
+};
 struct AbilityDef
 {
     std::string id, name;
@@ -86,6 +95,8 @@ struct AbilityDef
     int radius = 0, range = 0, maxTargets = 0, maxDash = 0;
     bool allowSelf = false;
     std::array<Int, 3> magnitude{};
+    bool enabled = true;
+    std::vector<AbilityEffect> effects;
 };
 struct UnitDef
 {
@@ -96,12 +107,16 @@ struct UnitDef
         projectileTravelMs = 0;
     DamageType damageType = DamageType::Physical;
     AbilityDef ability;
+    std::string displayName;
+    std::vector<std::string> roleTags;
 };
 struct TraitDef
 {
     std::string id, stat;
     int threshold = 0, value = 0;
+    int threshold4 = 4, value4 = 0;
 };
+int TraitValue(const TraitDef &trait, int distinctCount);
 struct BotDef
 {
     std::string id, label;
@@ -127,6 +142,19 @@ struct Rules
     std::map<int, int> xpToNext;
     std::map<int, std::array<int, 3>> shopWeights;
     int botObservationMs = 0, botRepositionCutoffMs = 0;
+    int neutralOpeningRounds = 3, neutralEvery = 5, neutralWinIncome = 2,
+        neutralLossDamage = 2, neutralOpeningDamage = 0;
+};
+struct NeutralSlot
+{
+    int definition = -1;
+    Cell cell;
+};
+struct NeutralWave
+{
+    std::string id, name;
+    int round = 0, hpScaleBp = 10000, damageScaleBp = 10000;
+    std::vector<NeutralSlot> slots;
 };
 struct Catalog
 {
@@ -135,12 +163,18 @@ struct Catalog
     std::vector<UnitDef> units;
     std::vector<TraitDef> traits;
     std::vector<BotDef> bots;
+    std::vector<UnitDef> neutrals;
+    std::vector<NeutralWave> waves;
+    const UnitDef &Definition(int index, bool neutral = false) const;
+    const NeutralWave *Wave(int round) const;
     std::string Validate() const;
 };
+bool IsNeutralRound(int round, const Rules &rules);
 Int HalfUp(Int numerator, Int denominator);
 Int ResolveDamage(Int raw, DamageType type, int armor, int resistance, int bonusBp = 0);
 Int StarValue(Int base, int star, int bonusBp, const Rules &rules);
 int AttackInterval(int baseRate, int bonusBp, const Rules &rules);
+int MovementInterval(int baseRate, int bonusBp, const Rules &rules);
 int Distance(Cell a, Cell b);
 Cell EncounterCell(Cell local, int side, const Rules &rules);
 struct Random
@@ -156,6 +190,8 @@ struct OwnedUnit
     bool onBoard = false;
     Cell cell;
     int bench = -1;
+    bool neutral = false;
+    int hpScaleBp = 10000, damageScaleBp = 10000;
 };
 struct Command
 {
@@ -181,6 +217,7 @@ struct SeatState
     std::vector<int> shop;
     std::vector<OwnedUnit> roster;
     Random shopRng, botRng;
+    int neutralWins = 0, neutralLosses = 0, neutralDraws = 0;
 };
 struct PublicSeat
 {
@@ -189,10 +226,18 @@ struct PublicSeat
     std::string label;
     std::vector<OwnedUnit> deployment;
 };
+enum class EncounterKind { Pvp, Ghost, Neutral };
+struct EncounterSide
+{
+    std::optional<int> seat;
+    std::string waveId;
+};
 struct Pairing
 {
     int a = -1, b = -1;
     bool ghost = false;
+    EncounterKind kind = EncounterKind::Pvp;
+    std::string waveId;
 };
 struct Modifier
 {
@@ -214,6 +259,8 @@ struct CombatUnit
     std::string shieldKey;
     ActionState state = ActionState::Idle;
     std::vector<Modifier> modifiers;
+    bool neutral = false;
+    int movementBonus = 0, hpScaleBp = 10000, damageScaleBp = 10000;
 };
 struct CombatEvent
 {
@@ -232,6 +279,17 @@ struct CombatResult
     bool complete = false, timeout = false;
     int winner = -1, ticks = 0;
     std::array<int, 2> survivors{};
+};
+struct VisualAction
+{
+    Id source = 0, target = 0, action = 0;
+    int definition = -1, radius = 0, releaseTick = 0, impactTick = 0;
+    Cell origin, center;
+    Effect effect = Effect::Damage;
+    DamageType damageType = DamageType::Physical;
+    bool neutral = false, basicAttack = false, released = false, provisional = true,
+         recipientsProvisional = true, fixedArea = false;
+    std::vector<Id> recipients;
 };
 class Combat
 {
@@ -256,19 +314,21 @@ class Combat
         return tick_;
     }
     std::string InvariantError() const;
+    std::vector<VisualAction> VisualActions() const;
 
   private:
     struct Packet
     {
-        int due = 0, source = -1, target = -1, radius = 0, duration = 0;
+        int due = 0, releasedAt = 0, source = -1, target = -1, radius = 0, duration = 0;
         Id action = 0;
         Effect effect = Effect::Damage;
         DamageType damageType = DamageType::Physical;
         Int magnitude = 0;
         int bonus = 0;
-        Cell center;
+        Cell center, origin;
         bool area = false, basicAttack = false;
         std::string key;
+        int effectOrder = 0, maxTargets = 12;
     };
     const Catalog *catalog_;
     std::vector<CombatUnit> units_;
@@ -293,8 +353,13 @@ struct Encounter
 {
     Pairing pairing;
     Combat combat;
-    Encounter(Pairing p, Combat c) : pairing(p), combat(std::move(c))
+    EncounterKind kind = EncounterKind::Pvp;
+    std::array<EncounterSide, 2> sides;
+    Encounter(Pairing p, Combat c) : pairing(p), combat(std::move(c)), kind(p.kind)
     {
+        sides[0].seat = p.a;
+        if (p.kind == EncounterKind::Neutral) sides[1].waveId = p.waveId;
+        else sides[1].seat = p.b;
     }
 };
 struct BotDecision
@@ -312,15 +377,19 @@ struct EncounterSummary
     Pairing pairing;
     CombatResult result;
     std::array<Int, 2> healthLoss{}, absorbed{}, healing{};
+    EncounterKind kind = EncounterKind::Pvp;
+    std::array<EncounterSide, 2> sides;
 };
 struct RoundRecord
 {
-    int round = 0;
+    int round = 0, pvpRoundIndex = 0;
     Id settlementId = 0, preHash = 0, postHash = 0;
     std::vector<Pairing> pairs;
     std::vector<CombatResult> results;
     std::vector<EncounterSummary> encounters;
     std::array<int, 8> damage{}, gold{}, health{}, placement{}, wins{};
+    std::array<int, 8> pendingRewards{};
+    bool neutral = false;
 };
 class Match
 {
@@ -364,6 +433,9 @@ class Match
     {
         return round_;
     }
+    int PvpRoundIndex() const { return pvpRoundIndex_; }
+    bool NeutralRound() const { return IsNeutralRound(round_, catalog_.rules); }
+    const NeutralWave *CurrentWave() const { return catalog_.Wave(round_); }
     int RemainingMs() const
     {
         return remainingMs_;
@@ -395,6 +467,7 @@ class Match
     Catalog catalog_;
     Id seed_ = 0, nextUnit_ = 1, nextRequest_ = 1, matchNamespace_ = 0;
     int round_ = 0, remainingMs_ = 0, elapsedMs_ = 0, accumulatorMs_ = 0, previousGhost_ = -1;
+    int pvpRoundIndex_ = 0;
     Phase phase_ = Phase::Preparation;
     bool capped_ = false;
     std::vector<SeatState> seats_;
@@ -410,6 +483,7 @@ class Match
     std::array<Id, 8> botObservationRevision_{};
     std::array<std::vector<PublicSeat>, 8> botObservations_;
     std::array<bool, 8> lastWon_{};
+    std::array<int, 8> pendingRewards_{};
     void Refresh(SeatState &seat);
     void GainXp(SeatState &seat, int xp);
     bool ApplyCommand(SeatState &seat, const Command &command, Id &nextUnit, std::string &reason);

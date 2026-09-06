@@ -1,16 +1,17 @@
+param([string]$OutputDirectory = "")
 $ErrorActionPreference = 'Stop'
 $projectRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../..'))
-$reportRoot = Join-Path $projectRoot 'reports/WC-310/runtime/targeted-native'
+$reportRoot = if ($OutputDirectory) { [IO.Path]::GetFullPath($OutputDirectory) } else { Join-Path $projectRoot 'reports/WC-310/runtime/targeted-native' }
 $outputRoot = Join-Path $reportRoot 'build'
 New-Item -ItemType Directory -Force -Path $outputRoot | Out-Null
-& python (Join-Path $PSScriptRoot 'generate_catalog_fixture.py')
+& python (Join-Path $PSScriptRoot 'generate_catalog_fixture.py') --output-dir $outputRoot
 if ($LASTEXITCODE -ne 0) { throw 'Canonical fixture generation failed' }
 $vswhere = 'C:/Program Files (x86)/Microsoft Visual Studio/Installer/vswhere.exe'
 $vsRoot = & $vswhere -latest -products '*' -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath
 if (-not $vsRoot) { throw 'MSVC x64 compiler not installed' }
 $vcvars = Join-Path $vsRoot 'VC/Auxiliary/Build/vcvars64.bat'
 $includeRoot = Join-Path $projectRoot 'game/Source/WonderChessRuntime/Public'
-$fixtureRoot = Join-Path $PSScriptRoot 'build'
+$fixtureRoot = $outputRoot
 $combat = Join-Path $projectRoot 'game/Source/WonderChessRuntime/Private/Simulation/WonderSimulation.cpp'
 $testSource = Join-Path $PSScriptRoot 'targeted_combat_tests.cpp'
 $executable = Join-Path $outputRoot 'targeted_combat_tests.exe'

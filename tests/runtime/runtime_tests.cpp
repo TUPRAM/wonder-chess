@@ -185,7 +185,7 @@ void MergesAndEconomy(const wc::Catalog &canonical)
           "Next preparation uses snapshotted interest and no loss bonus");
     Check(lock.Seats()[0].xp == canonical.rules.passiveXp, "Survivor receives passive XP");
 }
-void EffectFixtures(const wc::Catalog &canonical)
+void EffectFixtures(const wc::Catalog &canonical, int star)
 {
     auto c = canonical;
     for (auto &u : c.units)
@@ -200,7 +200,7 @@ void EffectFixtures(const wc::Catalog &canonical)
     {
         auto local = c;
         local.units[def].ability = canonical.units[def].ability;
-        std::vector<wc::OwnedUnit> a{Unit(1, def, 3, def == 11 ? 0 : 3), Unit(2, 1, 2, 3)};
+        std::vector<wc::OwnedUnit> a{Unit(1, def, 3, def == 11 ? 0 : 3, star), Unit(2, 1, 2, 3)};
         std::vector<wc::OwnedUnit> b{Unit(3, 0, 4, 3), Unit(4, 3, 3, 3)};
         wc::Combat combat(local, a, b, 123 + def);
         RunCombat(combat);
@@ -210,11 +210,14 @@ void EffectFixtures(const wc::Catalog &canonical)
             if (e.source == 1)
             {
                 const auto& d = canonical.units[def];
-                Check(e.damageType == (e.basicAttack ? d.damageType : d.ability.damageType),
+                const bool declared = std::any_of(d.ability.effects.begin(), d.ability.effects.end(),
+                    [&](const wc::AbilityEffect &fx) { return fx.effect == e.effect && fx.damageType == e.damageType; });
+                Check(e.basicAttack ? e.damageType == d.damageType : declared ||
+                      (d.ability.effects.empty() && e.damageType == d.ability.damageType),
                       "Released event carries its actual basic or skill damage type");
                 Check(e.radius == (e.basicAttack ? 0 : d.ability.radius),
                       "Released event carries actual authored radius");
-                Check(e.effect == (e.basicAttack ? wc::Effect::Damage : d.ability.effect),
+                Check(e.basicAttack ? e.effect == wc::Effect::Damage : declared || e.effect == d.ability.effect,
                       "Event distinguishes basic attack from authored skill");
             }
             if (e.source == 1 && !e.basicAttack && e.effect == canonical.units[def].ability.effect && e.action > 0 &&
@@ -249,8 +252,9 @@ void AllEmpty(const wc::Catalog &canonical)
     auto c = canonical;
     c.rules.startingGold = 0;
     c.rules.startingHealth = 2;
+    c.rules.baseIncome = 0; c.rules.passiveXp = 0;
     wc::Match m(c, 987, 0);
-    for (int i = 0; i < 2000 && m.CurrentPhase() != wc::Phase::Finished; ++i)
+    for (int i = 0; i < 5000 && m.CurrentPhase() != wc::Phase::Finished; ++i)
         m.Tick(50);
     Check(m.CurrentPhase() == wc::Phase::Finished, "Zero survivors finishes");
     for (const auto &s : m.Seats())
@@ -260,6 +264,7 @@ void AllEmpty(const wc::Catalog &canonical)
 void OrderingAndRestart(const wc::Catalog &canonical)
 {
     auto c = canonical;
+    for (auto &u : c.units) u.ability.effects.clear();
     c.traits.clear();
     for (auto &unit : c.units)
     {
@@ -281,6 +286,7 @@ void OrderingAndRestart(const wc::Catalog &canonical)
     shield.health = 100000;
     shield.attackDamage = 0;
     shield.ability = canonical.units[0].ability;
+    shield.ability.effects.clear();
     shield.ability.firstCastMs = 0;
     shield.ability.castMs = 50;
     shield.ability.durationMs = 100;
@@ -415,10 +421,14 @@ void Tournament(const wc::Catalog &c, int count)
               "bot_rejects,ghosts,final_hash,idle_unit_ms,stunned_unit_ms\n";
     std::ofstream rounds("round-economy.csv"), compositions("compositions.csv"),
         decisions("bot-decisions.csv");
-    rounds << "seed,round,seat,health,gold,damage,wins,placement,settlement_id,pre_hash,post_hash\n";
+    rounds << "seed,round,seat,health,gold,damage,wins,placement,settlement_id,pre_hash,post_hash,pvp_round_index,neutral,pending_reward\n";
     compositions << "seed,round,seat,level,gold,unit_id,definition,star,on_board,column,row,bench\n";
     decisions << "seed,round,seat,observation_revision,action,score,deployment_gain,upgrade_gain,trait_gain,"
                  "role_gain,pair_gain,gold_spent,interest_loss,bench_pressure,accepted,gold_after\n";
+    std::ofstream outcomes("encounter-outcomes.csv"), skills("ability-coverage.csv"), tiers("trait-coverage.csv");
+    outcomes << "seed,round,pvp_round_index,kind,wave_id,seat_a,seat_b,winner,ticks,timeout,survivors_a,survivors_b\n";
+    skills << "seed,round,definition,star,effect,events\n";
+    tiers << "seed,round,seat,trait,count,value\n";
     std::set<int> activeCounts;
     int timeoutTotal = 0, eventTotal = 0, ghostTotal = 0;
     for (int seed = 0; seed < count; ++seed)
@@ -428,7 +438,7 @@ void Tournament(const wc::Catalog &c, int count)
         int events = 0, oldRecords = 0, capturedRound = 0;
         std::int64_t idleUnitMs = 0, stunnedUnitMs = 0;
         while (m.CurrentPhase() != wc::Phase::Finished && m.CurrentPhase() != wc::Phase::Aborted &&
-               m.ElapsedMs() < 2000000)
+               m.ElapsedMs() < 4000000)
         {
             m.Tick(50);
             Check(m.InvariantError().empty(), "Tournament invariant");
@@ -469,7 +479,32 @@ void Tournament(const wc::Catalog &c, int count)
             {
                 CheckEncounterSummaries(m);
                 for (const auto &e : m.Encounters())
+                {
                     events += int(e.combat.Events().size());
+                    const auto &result=e.combat.Result();
+                    outcomes << seed+1 << ',' << m.Round() << ',' << m.PvpRoundIndex() << ',' << int(e.kind)
+                        << ',' << e.pairing.waveId << ',' << e.pairing.a << ',' << e.pairing.b << ',' << result.winner
+                        << ',' << result.ticks << ',' << result.timeout << ',' << result.survivors[0] << ',' << result.survivors[1] << '\n';
+                    std::map<std::tuple<std::string,int,int>,int> counts;
+                    for (const auto &unit:e.combat.Units())
+                        for (const auto &event:e.combat.Events())
+                            if (event.source==unit.id && !event.basicAttack)
+                                ++counts[{c.Definition(unit.definition,unit.neutral).id,unit.star,int(event.effect)}];
+                    for(const auto &entry:counts) skills << seed+1 << ',' << m.Round() << ',' << std::get<0>(entry.first)
+                        << ',' << std::get<1>(entry.first) << ',' << std::get<2>(entry.first) << ',' << entry.second << '\n';
+                }
+                for(const auto &seat:m.Seats())
+                {
+                    std::map<std::string,std::set<int>> counts;
+                    for(const auto &unit:seat.roster) if(unit.onBoard)
+                    {
+                        counts[c.units[unit.definition].race].insert(unit.definition);
+                        counts[c.units[unit.definition].unitClass].insert(unit.definition);
+                    }
+                    for(const auto &trait:c.traits) if(!counts[trait.id].empty())
+                        tiers << seed+1 << ',' << m.Round() << ',' << seat.id << ',' << trait.id << ','
+                            << counts[trait.id].size() << ',' << wc::TraitValue(trait,int(counts[trait.id].size())) << '\n';
+                }
                 oldRecords = int(m.Records().size());
             }
         }
@@ -482,7 +517,7 @@ void Tournament(const wc::Catalog &c, int count)
                 rounds << seed + 1 << ',' << r.round << ',' << seat << ',' << r.health[seat] << ','
                        << r.gold[seat] << ',' << r.damage[seat] << ',' << r.wins[seat] << ','
                        << r.placement[seat] << ',' << r.settlementId << ',' << r.preHash << ',' << r.postHash
-                       << '\n';
+                       << ',' << r.pvpRoundIndex << ',' << r.neutral << ',' << r.pendingRewards[seat] << '\n';
             for (const auto &result : r.results)
             {
                 ++encounters;
@@ -552,6 +587,7 @@ void Tournament(const wc::Catalog &c, int count)
         for (int active = 2; active <= 8; ++active)
             Check(activeCounts.count(active) > 0, "All active-seat counts exercised by actual tournaments");
 }
+#include "update_contract_tests.h"
 } // namespace
 int main(int argc, char **argv)
 {
@@ -561,7 +597,11 @@ int main(int argc, char **argv)
         Numeric(catalog);
         Commands(catalog);
         MergesAndEconomy(catalog);
-        EffectFixtures(catalog);
+        for (int star = 1; star <= 3; ++star) EffectFixtures(catalog, star);
+        UpdatedSkills(catalog);
+        UpdatedVisualActions(catalog);
+        UpdatedTournament(catalog);
+        UpdatedBotSkillPurchases(catalog);
         AllEmpty(catalog);
         OrderingAndRestart(catalog);
         RetainedRecapAcrossHitch(catalog);

@@ -9,6 +9,7 @@
 #include "WCMatchRuntime.generated.h"
 
 class AWCBoardPresenter;
+class FWCFrontEnd;
 class UAudioComponent;
 class USoundConcurrency;
 
@@ -35,6 +36,10 @@ public:
                     int32 Row);
   UFUNCTION(Server, Reliable) void ServerStart(int32 Humans, int32 Seed);
   UFUNCTION(Server, Reliable) void ServerPractice();
+  UFUNCTION(Server, Reliable) void ServerCatalogReady(const FString& Schema, const FString& Digest, int32 Protocol);
+  UFUNCTION(Server, Reliable) void ServerEntryReady(bool bSkip);
+  UFUNCTION(Server, Reliable) void ServerCancelEntry();
+  bool bCatalogReady = false, bEntryReady = false, bEntrySkip = false;
   UFUNCTION(Client, Reliable) void ClientPrivateState(const FString &Json);
   UFUNCTION(Client, Reliable)
   void ClientReply(bool Accepted, const FString &Reason);
@@ -79,6 +84,7 @@ private:
   };
   TArray<QueuedIntent> IntentQueue;
   bool bCommandPending = false;
+  bool bSentCatalogReady = false;
   int64 PendingSequence = 0, PendingRevision = 0;
   wc::CommandType PendingType = wc::CommandType::Ready;
   void SendNextIntent();
@@ -99,6 +105,12 @@ public:
   virtual void PostLogin(APlayerController *Player) override;
   virtual void Logout(AController *Exiting) override;
   void StartTournament(AWCMatchController *Requester, int32 Humans, int32 Seed);
+  void RequestEntry(AWCMatchController* Requester, int32 Humans, int32 Seed);
+  void CancelEntry(const FString& Reason);
+  bool bEntryPending = false;
+  FString EntryState;
+  int32 EntrySeed = 0;
+  double EntryDeadline = 0, IntroductionRemaining = 0;
   void Publish();
   void Regression(int32 Count);
   TUniquePtr<wc::Match> Match;
@@ -119,13 +131,18 @@ class WONDERCHESSRUNTIME_API AWCMatchHUD : public AHUD {
   GENERATED_BODY()
 public:
   virtual void DrawHUD() override;
+  virtual void EndPlay(const EEndPlayReason::Type Reason) override;
   virtual void NotifyHitBoxClick(FName Box) override;
   virtual void NotifyHitBoxRelease(FName Box) override;
   void CycleFocus();
   void ActivateFocus();
   void AdjustFocusedVolume(float Delta);
+  bool BackFromFrontEnd();
 
 private:
+  TSharedPtr<FWCFrontEnd> FrontEnd;
+  FString InspectedTrait;
+  bool bPresentationOptionsRead = false;
   FString Focused;
   TArray<FString> Focusable;
   float Scale = 1, OffsetX = 0, OffsetY = 0;

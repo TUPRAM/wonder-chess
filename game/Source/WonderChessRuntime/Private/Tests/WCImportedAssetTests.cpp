@@ -33,8 +33,9 @@ void WriteReport(const Object &Report) {
   FString Text;
   FJsonSerializer::Serialize(Report.ToSharedRef(),
                              TJsonWriterFactory<>::Create(&Text));
-  const FString Directory =
-      FPaths::ProjectSavedDir() / TEXT("WonderChessEvidence");
+  FString Directory;
+  if (!FParse::Value(FCommandLine::Get(), TEXT("WCEvidenceDir="), Directory))
+    Directory = FPaths::ProjectSavedDir() / TEXT("WonderChessEvidence");
   IFileManager::Get().MakeDirectory(*Directory, true);
   FFileHelper::SaveStringToFile(Text,
                                 *(Directory / TEXT("imported-assets.json")));
@@ -51,7 +52,7 @@ bool FWCImportedAssetContracts::RunTest(const FString &Parameters) {
   FParse::Value(FCommandLine::Get(), TEXT("WCAssetFolder="), FolderOverride);
   if (!FolderOverride.IsEmpty() && OnlyUnit.IsEmpty()) {
     AddError(TEXT("WCAssetFolder requires WCAssetOnly so a probe cannot mix "
-                  "twelve heroes in one folder."));
+                  "multiple heroes in one folder."));
     return false;
   }
   wc::Catalog Catalog;
@@ -421,13 +422,13 @@ bool FWCImportedAssetContracts::RunTest(const FString &Parameters) {
     }
     Hero->SetArrayField(TEXT("clips"), Clips);
   }
-  const int ExpectedHeroes = OnlyUnit.IsEmpty() ? 12 : 1;
+  const int ExpectedHeroes = OnlyUnit.IsEmpty() ? int(Catalog.units.size()) : 1;
   TestEqual(TEXT("All selected skeletal meshes loaded"), LoadedMeshes,
             ExpectedHeroes);
   TestEqual(TEXT("All selected hero animation references loaded"),
             AnimationReferences, ExpectedHeroes * 7);
   TestEqual(TEXT("Expected declared rig families"), Families.Num(),
-            OnlyUnit.IsEmpty() ? 4 : 1);
+            OnlyUnit.IsEmpty() ? 6 : 1);
   Report->SetNumberField(TEXT("loaded_meshes"), LoadedMeshes);
   Report->SetNumberField(TEXT("animation_references"), AnimationReferences);
   Report->SetNumberField(TEXT("unique_animation_assets"),

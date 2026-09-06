@@ -68,6 +68,21 @@ class TransitionReaderTests(unittest.TestCase):
                                    prior_match_namespace=1, restart_requested_from_this_match=False)
             self.assertEqual(restart(first, second)["status"], "INCOMPLETE")
 
+    def test_two_restarts_require_each_real_transition_and_final_stop(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            first = write_session(root, 100, 0, complete=True, restart_requested_from_this_match=True)
+            second = write_session(root, 100, 0, namespace=2, complete=True,
+                                   prior_match_namespace=1, restart_requested_from_this_match=True,
+                                   command_probes=[{"name": "previous_match_request_rejected", "status": "PASS"}])
+            third = write_session(root, 100, 0, namespace=3, complete=True,
+                                  prior_match_namespace=2, restart_requested_from_this_match=False,
+                                  command_probes=[{"name": "previous_match_request_rejected", "status": "PASS"}])
+            self.assertEqual(restart(first, second, second_will_restart=True)["status"], "PASS")
+            self.assertEqual(restart(second, third)["status"], "PASS")
+            self.assertEqual(restart(first, second)["status"], "FAIL")
+            self.assertEqual(restart(first, third)["status"], "FAIL")
+
 
 if __name__ == "__main__":
     unittest.main()
