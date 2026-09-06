@@ -1,5 +1,7 @@
 # Wonder Chess — 24-hero update design
 
+**Adopted for execution on 6 September 2026.** The user's implementation request authorizes these explicit v3 amendments. The following preparation status is historical; it does not negate current implementation. Consult `reports/implementation_state.json` for completed checkpoints and open gates. Canonical schema 3.1.0 / profile `alpha_24` implements the data migration; a source or early-package pass is not final playable/art acceptance.
+
 Status: **IMPLEMENTATION PLAN PREPARED; GAME CHANGES NOT IMPLEMENTED BY THIS TASK.** Date: 6 September 2026. Scope decisions explicitly confirmed by the user: all 24 authored heroes become fully playable; weapons/armor improve visually; no combat-item inventory. The user also requested clearer names, better race/class synergies, skills and character presentation, monster rounds, a graphical lobby, matchmaking transition and full hero gallery.
 
 ## Authority and adoption

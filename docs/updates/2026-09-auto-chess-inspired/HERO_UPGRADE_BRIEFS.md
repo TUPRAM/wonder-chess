@@ -1,5 +1,7 @@
 # Wonder Chess — 24 hero upgrade briefs
 
+**Execution note:** all 24 briefs were adopted by the user on 6 September 2026. Their production requirements remain active; the original preparation status below is provenance. Current full dossiers and the asset brief are generated from canonical data, including Neris's damage-then-stun correction. Individual source/export/import/visual acceptance is tracked separately in the current implementation state; no hero is finished merely because its data or mesh exists.
+
 Status: **planning proposal, 2026-09-06; no character, balance, animation or runtime edits performed by this document.**
 
 The user selected **all 24 existing heroes as fully playable content for this update**, with **visual weapons and armor only**. The original twelve remain the first production wave because they already have authored models, imported animation and packaged evidence. The other twelve become full production obligations in this update; they are not merely gallery previews. This explicitly expands the old v3 twelve-hero delivery scope. Keep the original identities and stable IDs, and migrate the canonical profile, generated documents, runtime adapters, bot policies and tests together when implementation begins.

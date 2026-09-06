@@ -1,5 +1,7 @@
 # Original monster-round design and authoring inputs
 
+**Execution note, 6 September 2026:** the schedule, seven archetypes and eleven wave lineups are implemented in the actual C++ resolver and canonical `data/neutrals.json`. The table below preserves the initial proposals. HP/damage factors were subsequently measured and changed under balance `alpha_24_v0.4.1`; see `reports/WC-U450/20260906T134242Z/tuning-adoption/adoption.json` and the current implementation state for fresh runs. Do not overwrite measured canonical factors with this historical table. Balance, visual, listening and performance acceptance remain open.
+
 Status: **PROPOSED, NOT IMPLEMENTED OR BALANCED.** This document supplies concrete starting inputs for the runtime owner to migrate into canonical neutral schemas/data. It is not a second runtime configuration. Do not read Markdown tables from the game or hand-copy the numbers into multiple widgets.
 
 ## Purpose and schedule

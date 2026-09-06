@@ -1,5 +1,7 @@
 # Wonder Chess update: systems migration proposal
 
+**Execution note:** the user adopted this migration on 6 September 2026. The starting-point inventory below is retained history. The current C++ core, canonical data, generated catalog and meaningful fixtures implement the migration; inspect `reports/implementation_state.json` and fresh run evidence instead of treating the original constraints as current blockers. Numeric tuning and its current digest are owned by canonical data.
+
 Status: prepared for discussion and later implementation, 6 September 2026. This file does not change live rules, generated data, assets or release acceptance. The user selected **all 24 authored heroes fully playable** and **visual equipment only**. There is no item inventory, item stat system, equipment loot or equipment purchase in this update.
 
 When the accompanying implementation prompt is adopted, migrate the selected v3 restrictions explicitly: twelve playable heroes become 24; four active races become six; tier two becomes tiers two and four; the all-PvP schedule gains monster rounds. Preserve the original Unreal deliverable, eight persistent competitors, real off-screen combat, original world and characters, legal bot commands, information boundaries and actual packaged verification. All new numbers below are proposed starting values, not balanced results.

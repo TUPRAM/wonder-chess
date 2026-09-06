@@ -1,5 +1,7 @@
 # Wonder Chess — the 24-hero update package
 
+**Execution amendment, 6 September 2026:** the user has adopted this package and implementation is in progress in the existing Unreal project. Preparation statements below describe the retained planning task. Current source/data/evidence status lives in [implementation_state.json](../../../reports/implementation_state.json); the active contracts and canonical data have been migrated. The early package and current source have distinct hashes and incomplete acceptance gates. Initial numeric proposals remain recorded here for provenance; measured tuning in canonical data takes precedence over the original proposed numbers.
+
 **Prepared for implementation, 6 September 2026.** This task discussed and prepared the update; it did not modify the running game, canonical balance, generated dossiers or production art. The user explicitly selected **24 fully playable heroes** and **visual weapons/armor only, without an item inventory**. Monster rounds, a graphical lobby and matchmaking-to-board transition, a full hero gallery, clearer names/synergies and improved character presentation are required parts of the requested update.
 
 ## Read and execute
