@@ -1,0 +1,115 @@
+{
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "pitch": {
+      "type": "string"
+    },
+    "tournament_explanation": {
+      "type": "string"
+    },
+    "antagonist": {
+      "type": "string"
+    },
+    "regions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "location": {
+            "type": "string"
+          },
+          "map_xy": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "neighbors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "capital": {
+            "type": "string"
+          },
+          "landmark": {
+            "type": "string"
+          },
+          "everyday_place": {
+            "type": "string"
+          },
+          "look": {
+            "type": "string"
+          },
+          "culture": {
+            "type": "string"
+          },
+          "stake": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "location",
+          "map_xy",
+          "neighbors",
+          "capital",
+          "landmark",
+          "everyday_place",
+          "look",
+          "culture",
+          "stake"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "factions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "purpose": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "purpose"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "name",
+    "status",
+    "pitch",
+    "tournament_explanation",
+    "antagonist",
+    "regions",
+    "factions"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

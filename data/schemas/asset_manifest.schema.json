@@ -1,0 +1,74 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "unit_id": {
+            "type": "string"
+          },
+          "phase": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "paths": {
+            "type": "object",
+            "properties": {
+              "blender": {
+                "type": "string"
+              },
+              "mesh_fbx": {
+                "type": "string"
+              },
+              "unreal_folder": {
+                "type": "string"
+              },
+              "portrait": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "blender",
+              "mesh_fbx",
+              "unreal_folder",
+              "portrait"
+            ],
+            "additionalProperties": false
+          },
+          "license_status": {
+            "type": "string"
+          },
+          "concept_status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "unit_id",
+          "phase",
+          "status",
+          "paths",
+          "license_status",
+          "concept_status"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "source",
+    "entries"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

@@ -1,0 +1,89 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "traits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "stat": {
+            "type": "string"
+          },
+          "magnitude_unit": {
+            "type": "string"
+          },
+          "tiers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "value": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "count",
+                "value"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "recipients": {
+            "type": "string"
+          },
+          "count_rule": {
+            "type": "string"
+          },
+          "higher_tier": {
+            "type": "string"
+          },
+          "activation": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "alpha_enabled": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "name",
+          "stat",
+          "magnitude_unit",
+          "tiers",
+          "recipients",
+          "count_rule",
+          "higher_tier",
+          "activation",
+          "description",
+          "alpha_enabled"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "traits"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

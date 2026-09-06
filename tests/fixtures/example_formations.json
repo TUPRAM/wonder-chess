@@ -1,0 +1,254 @@
+[
+  {
+    "id": "hearthline",
+    "title": "Hearthline",
+    "hypothesis": "Protect two Rangers with two Guardians and two Priests. This activates many bonuses but lacks broad area damage.",
+    "tradeoff": "Against a grouped army, replacing a Priest with Rowan gains area damage but removes Priest 2. Test rather than assume the extra traits are superior.",
+    "active_traits": [
+      "dwarf",
+      "elf",
+      "guardian",
+      "human",
+      "priest",
+      "ranger"
+    ],
+    "formation": [
+      {
+        "unit_id": "wc_u_human_guardian",
+        "star": 1,
+        "cell": [
+          2,
+          3
+        ]
+      },
+      {
+        "unit_id": "wc_u_human_priest",
+        "star": 1,
+        "cell": [
+          2,
+          1
+        ]
+      },
+      {
+        "unit_id": "wc_u_elf_ranger",
+        "star": 1,
+        "cell": [
+          1,
+          0
+        ]
+      },
+      {
+        "unit_id": "wc_u_elf_priest",
+        "star": 1,
+        "cell": [
+          4,
+          1
+        ]
+      },
+      {
+        "unit_id": "wc_u_dwarf_guardian",
+        "star": 1,
+        "cell": [
+          5,
+          3
+        ]
+      },
+      {
+        "unit_id": "wc_u_dwarf_ranger",
+        "star": 1,
+        "cell": [
+          6,
+          0
+        ]
+      }
+    ]
+  },
+  {
+    "id": "stormwall",
+    "title": "Stormwall",
+    "hypothesis": "A durable melee line gives two Mages time to damage clustered formations. There is no healer.",
+    "tradeoff": "Retreating Rangers and separated units reduce area value; swapping one melee unit for mobility sacrifices a completed class or race bonus.",
+    "active_traits": [
+      "dwarf",
+      "guardian",
+      "human",
+      "mage",
+      "orc",
+      "warrior"
+    ],
+    "formation": [
+      {
+        "unit_id": "wc_u_human_guardian",
+        "star": 1,
+        "cell": [
+          1,
+          3
+        ]
+      },
+      {
+        "unit_id": "wc_u_human_mage",
+        "star": 1,
+        "cell": [
+          2,
+          0
+        ]
+      },
+      {
+        "unit_id": "wc_u_dwarf_guardian",
+        "star": 1,
+        "cell": [
+          6,
+          3
+        ]
+      },
+      {
+        "unit_id": "wc_u_dwarf_warrior",
+        "star": 1,
+        "cell": [
+          3,
+          3
+        ]
+      },
+      {
+        "unit_id": "wc_u_orc_warrior",
+        "star": 1,
+        "cell": [
+          4,
+          3
+        ]
+      },
+      {
+        "unit_id": "wc_u_orc_mage",
+        "star": 1,
+        "cell": [
+          5,
+          0
+        ]
+      }
+    ]
+  },
+  {
+    "id": "twilight_raid",
+    "title": "Twilight Raid",
+    "hypothesis": "Two Rogues pressure vulnerable units while a Ranger and Mage attack from range. The first contact is fragile.",
+    "tradeoff": "Guardians stationed near the rear can absorb arrival pressure. Consider a Guardian swap even when it costs Elf/Orc overlap; trait quantity alone is not team quality.",
+    "active_traits": [
+      "elf",
+      "orc",
+      "rogue"
+    ],
+    "formation": [
+      {
+        "unit_id": "wc_u_elf_ranger",
+        "star": 1,
+        "cell": [
+          1,
+          0
+        ]
+      },
+      {
+        "unit_id": "wc_u_elf_priest",
+        "star": 1,
+        "cell": [
+          2,
+          1
+        ]
+      },
+      {
+        "unit_id": "wc_u_elf_rogue",
+        "star": 1,
+        "cell": [
+          0,
+          2
+        ]
+      },
+      {
+        "unit_id": "wc_u_orc_warrior",
+        "star": 1,
+        "cell": [
+          4,
+          3
+        ]
+      },
+      {
+        "unit_id": "wc_u_orc_mage",
+        "star": 1,
+        "cell": [
+          6,
+          0
+        ]
+      },
+      {
+        "unit_id": "wc_u_orc_rogue",
+        "star": 1,
+        "cell": [
+          7,
+          2
+        ]
+      }
+    ]
+  },
+  {
+    "id": "backline_watch",
+    "title": "Backline Watch",
+    "hypothesis": "One Guardian, two Priests, two Rogues and an area Mage trade frontline durability for sustain and disruption.",
+    "tradeoff": "There is only one dedicated Defender. Replacing a Rogue with Borin improves the line and activates Guardian 2, but loses Rogue 2 and one race pairing.",
+    "active_traits": [
+      "elf",
+      "human",
+      "orc",
+      "priest",
+      "rogue"
+    ],
+    "formation": [
+      {
+        "unit_id": "wc_u_human_guardian",
+        "star": 1,
+        "cell": [
+          3,
+          3
+        ]
+      },
+      {
+        "unit_id": "wc_u_human_priest",
+        "star": 1,
+        "cell": [
+          3,
+          1
+        ]
+      },
+      {
+        "unit_id": "wc_u_elf_priest",
+        "star": 1,
+        "cell": [
+          4,
+          1
+        ]
+      },
+      {
+        "unit_id": "wc_u_elf_rogue",
+        "star": 1,
+        "cell": [
+          1,
+          2
+        ]
+      },
+      {
+        "unit_id": "wc_u_orc_mage",
+        "star": 1,
+        "cell": [
+          6,
+          0
+        ]
+      },
+      {
+        "unit_id": "wc_u_orc_rogue",
+        "star": 1,
+        "cell": [
+          6,
+          2
+        ]
+      }
+    ]
+  }
+]

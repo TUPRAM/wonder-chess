@@ -1,0 +1,50 @@
+{
+  "generated_utc": "2026-09-06T04:46:04.110254+00:00",
+  "system": "Linux",
+  "machine": "x86_64",
+  "python_version": "3.13.5",
+  "tools": {
+    "python": {
+      "status": "located_execution_unverified",
+      "executable_basename": "python",
+      "probe_exit_code": 0,
+      "version_output": "Python 3.13.5"
+    },
+    "git": {
+      "status": "located_execution_unverified",
+      "executable_basename": "git",
+      "probe_exit_code": 0,
+      "version_output": "git version 2.47.3"
+    },
+    "cpp_compiler": {
+      "status": "located_execution_unverified",
+      "executable_basename": "g++"
+    },
+    "blender": {
+      "status": "not_located",
+      "executable_basename": null
+    },
+    "unreal_editor": {
+      "status": "not_located",
+      "executable_basename": null
+    },
+    "unreal_uat": {
+      "status": "not_located",
+      "executable_basename": null
+    },
+    "powershell": {
+      "status": "not_located",
+      "executable_basename": null
+    }
+  },
+  "claims": {
+    "blender_execution_verified": false,
+    "unreal_execution_verified": false,
+    "windows_package_verified": false
+  },
+  "notes": [
+    "Not located does not prove software is absent from every disk location.",
+    "Set explicit environment paths locally; this script deliberately does not scan private directories.",
+    "Compiler and editor presence does not establish compatible SDKs or successful builds."
+  ]
+}

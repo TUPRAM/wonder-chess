@@ -1,0 +1,485 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "balance_version": {
+      "type": "string"
+    },
+    "profile_id": {
+      "type": "string"
+    },
+    "design_status": {
+      "type": "string"
+    },
+    "board": {
+      "type": "object",
+      "properties": {
+        "columns": {
+          "type": "integer"
+        },
+        "rows": {
+          "type": "integer"
+        },
+        "deployment_rows_per_side": {
+          "type": "integer"
+        },
+        "tile_size_cm": {
+          "type": "integer"
+        },
+        "neighbor_mode": {
+          "type": "string"
+        },
+        "distance_metric": {
+          "type": "string"
+        },
+        "diagonal_corner_policy": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "columns",
+        "rows",
+        "deployment_rows_per_side",
+        "tile_size_cm",
+        "neighbor_mode",
+        "distance_metric",
+        "diagonal_corner_policy"
+      ],
+      "additionalProperties": false
+    },
+    "simulation": {
+      "type": "object",
+      "properties": {
+        "tick_ms": {
+          "type": "integer"
+        },
+        "health_scale": {
+          "type": "integer"
+        },
+        "basis_scale": {
+          "type": "integer"
+        },
+        "rate_scale": {
+          "type": "integer"
+        },
+        "rounding": {
+          "type": "string"
+        },
+        "star_multiplier_bp": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "min_attack_rate_milli": {
+          "type": "integer"
+        },
+        "max_attack_rate_milli": {
+          "type": "integer"
+        },
+        "max_health_cp": {
+          "type": "integer"
+        },
+        "max_armor": {
+          "type": "integer"
+        },
+        "max_raw_damage_cp": {
+          "type": "integer"
+        },
+        "simultaneous_semantics": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "tick_ms",
+        "health_scale",
+        "basis_scale",
+        "rate_scale",
+        "rounding",
+        "star_multiplier_bp",
+        "min_attack_rate_milli",
+        "max_attack_rate_milli",
+        "max_health_cp",
+        "max_armor",
+        "max_raw_damage_cp",
+        "simultaneous_semantics"
+      ],
+      "additionalProperties": false
+    },
+    "tournament": {
+      "type": "object",
+      "properties": {
+        "seats": {
+          "type": "integer"
+        },
+        "default_humans": {
+          "type": "integer"
+        },
+        "starting_health": {
+          "type": "integer"
+        },
+        "max_rounds": {
+          "type": "integer"
+        },
+        "first_preparation_ms": {
+          "type": "integer"
+        },
+        "preparation_ms": {
+          "type": "integer"
+        },
+        "combat_timeout_ms": {
+          "type": "integer"
+        },
+        "settlement_ms": {
+          "type": "integer"
+        },
+        "draw_damage": {
+          "type": "integer"
+        },
+        "loss_base_by_stage": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "start": {
+                "type": "integer"
+              },
+              "end": {
+                "type": "integer"
+              },
+              "damage": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "start",
+              "end",
+              "damage"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "ghost_wins_count_for_cap": {
+          "type": "boolean"
+        },
+        "timeout_score": {
+          "type": "string"
+        },
+        "rank_ties": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "seats",
+        "default_humans",
+        "starting_health",
+        "max_rounds",
+        "first_preparation_ms",
+        "preparation_ms",
+        "combat_timeout_ms",
+        "settlement_ms",
+        "draw_damage",
+        "loss_base_by_stage",
+        "ghost_wins_count_for_cap",
+        "timeout_score",
+        "rank_ties"
+      ],
+      "additionalProperties": false
+    },
+    "economy": {
+      "type": "object",
+      "properties": {
+        "starting_gold": {
+          "type": "integer"
+        },
+        "bench_capacity": {
+          "type": "integer"
+        },
+        "shop_slots": {
+          "type": "integer"
+        },
+        "reroll_cost": {
+          "type": "integer"
+        },
+        "base_income": {
+          "type": "integer"
+        },
+        "win_income": {
+          "type": "integer"
+        },
+        "interest_divisor": {
+          "type": "integer"
+        },
+        "interest_cap": {
+          "type": "integer"
+        },
+        "interest_snapshot": {
+          "type": "string"
+        },
+        "pool": {
+          "type": "string"
+        },
+        "starting_level": {
+          "type": "integer"
+        },
+        "maximum_level": {
+          "type": "integer"
+        },
+        "buy_xp_gold": {
+          "type": "integer"
+        },
+        "buy_xp_amount": {
+          "type": "integer"
+        },
+        "passive_xp": {
+          "type": "integer"
+        },
+        "xp_to_next": {
+          "type": "object",
+          "properties": {
+            "3": {
+              "type": "integer"
+            },
+            "4": {
+              "type": "integer"
+            },
+            "5": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "3",
+            "4",
+            "5"
+          ],
+          "additionalProperties": false
+        },
+        "sell_formula": {
+          "type": "string"
+        },
+        "shop_weights_by_level": {
+          "type": "object",
+          "properties": {
+            "3": {
+              "type": "object",
+              "properties": {
+                "1": {
+                  "type": "integer"
+                },
+                "2": {
+                  "type": "integer"
+                },
+                "3": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "1",
+                "2",
+                "3"
+              ],
+              "additionalProperties": false
+            },
+            "4": {
+              "type": "object",
+              "properties": {
+                "1": {
+                  "type": "integer"
+                },
+                "2": {
+                  "type": "integer"
+                },
+                "3": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "1",
+                "2",
+                "3"
+              ],
+              "additionalProperties": false
+            },
+            "5": {
+              "type": "object",
+              "properties": {
+                "1": {
+                  "type": "integer"
+                },
+                "2": {
+                  "type": "integer"
+                },
+                "3": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "1",
+                "2",
+                "3"
+              ],
+              "additionalProperties": false
+            },
+            "6": {
+              "type": "object",
+              "properties": {
+                "1": {
+                  "type": "integer"
+                },
+                "2": {
+                  "type": "integer"
+                },
+                "3": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "1",
+                "2",
+                "3"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "starting_gold",
+        "bench_capacity",
+        "shop_slots",
+        "reroll_cost",
+        "base_income",
+        "win_income",
+        "interest_divisor",
+        "interest_cap",
+        "interest_snapshot",
+        "pool",
+        "starting_level",
+        "maximum_level",
+        "buy_xp_gold",
+        "buy_xp_amount",
+        "passive_xp",
+        "xp_to_next",
+        "sell_formula",
+        "shop_weights_by_level"
+      ],
+      "additionalProperties": false
+    },
+    "alpha_unit_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "active_trait_thresholds": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      }
+    },
+    "future_profile": {
+      "type": "string"
+    },
+    "runtime_llm_calls": {
+      "type": "boolean"
+    },
+    "website_blocks_alpha": {
+      "type": "boolean"
+    },
+    "status_policies": {
+      "type": "object",
+      "properties": {
+        "shield": {
+          "type": "string"
+        },
+        "stun": {
+          "type": "string"
+        },
+        "buff": {
+          "type": "string"
+        },
+        "debuff": {
+          "type": "string"
+        },
+        "support_power": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "shield",
+        "stun",
+        "buff",
+        "debuff",
+        "support_power"
+      ],
+      "additionalProperties": false
+    },
+    "network": {
+      "type": "object",
+      "properties": {
+        "release_test_modes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "future_mode": {
+          "type": "string"
+        },
+        "disconnect_policy": {
+          "type": "string"
+        },
+        "host_disconnect": {
+          "type": "string"
+        },
+        "public_snapshot_cadence_ms": {
+          "type": "integer"
+        },
+        "bot_public_observation_ms": {
+          "type": "integer"
+        },
+        "bot_final_reposition_cutoff_ms": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "release_test_modes",
+        "future_mode",
+        "disconnect_policy",
+        "host_disconnect",
+        "public_snapshot_cadence_ms",
+        "bot_public_observation_ms",
+        "bot_final_reposition_cutoff_ms"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "balance_version",
+    "profile_id",
+    "design_status",
+    "board",
+    "simulation",
+    "tournament",
+    "economy",
+    "alpha_unit_ids",
+    "active_trait_thresholds",
+    "future_profile",
+    "runtime_llm_calls",
+    "website_blocks_alpha",
+    "status_policies",
+    "network"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

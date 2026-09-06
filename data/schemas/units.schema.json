@@ -1,0 +1,611 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "3.0.0"
+    },
+    "balance_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "units": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^wc_u_[a-z]+_[a-z]+$"
+          },
+          "slug": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "race": {
+            "enum": [
+              "human",
+              "elf",
+              "dwarf",
+              "orc",
+              "halfling",
+              "dragonkin"
+            ]
+          },
+          "unit_class": {
+            "enum": [
+              "guardian",
+              "warrior",
+              "ranger",
+              "rogue",
+              "mage",
+              "priest"
+            ]
+          },
+          "region": {
+            "type": "string",
+            "minLength": 1
+          },
+          "faction": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "cost": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 3
+          },
+          "rarity": {
+            "type": "string",
+            "minLength": 1
+          },
+          "production_phase": {
+            "enum": [
+              "alpha",
+              "expansion"
+            ]
+          },
+          "implementation_status": {
+            "type": "string",
+            "minLength": 1
+          },
+          "height_m": {
+            "type": "number",
+            "minimum": 0
+          },
+          "rig_family": {
+            "type": "string",
+            "minLength": 1
+          },
+          "stats": {
+            "type": "object",
+            "properties": {
+              "health_cp": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 100000000
+              },
+              "attack_damage_cp": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "attack_rate_milli": {
+                "type": "integer",
+                "minimum": 250,
+                "maximum": 2500
+              },
+              "attack_range_tiles": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 8
+              },
+              "physical_armor": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "magic_resistance": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "movement_rate_milli": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "attack_delivery": {
+                "enum": [
+                  "melee",
+                  "ranged"
+                ]
+              },
+              "attack_damage_type": {
+                "enum": [
+                  "physical",
+                  "magic",
+                  "true"
+                ]
+              },
+              "attack_windup_ms": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "projectile_travel_ms": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "health_cp",
+              "attack_damage_cp",
+              "attack_rate_milli",
+              "attack_range_tiles",
+              "physical_armor",
+              "magic_resistance",
+              "movement_rate_milli",
+              "attack_delivery",
+              "attack_damage_type",
+              "attack_windup_ms",
+              "projectile_travel_ms"
+            ],
+            "additionalProperties": false
+          },
+          "ability": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "tooltip_en": {
+                "type": "string",
+                "minLength": 1
+              },
+              "effect": {
+                "enum": [
+                  "damage",
+                  "heal",
+                  "shield",
+                  "stun",
+                  "dash",
+                  "stat_modifier"
+                ]
+              },
+              "target_rule": {
+                "enum": [
+                  "adjacent_allies",
+                  "adjacent_enemies",
+                  "current_enemy",
+                  "current_enemy_adjacent",
+                  "current_enemy_area",
+                  "farthest_enemy_adjacent",
+                  "lowest_health_ally",
+                  "retreat_from_current_enemy",
+                  "self"
+                ]
+              },
+              "first_cast_ms": {
+                "type": "integer",
+                "minimum": 0,
+                "multipleOf": 50
+              },
+              "cooldown_ms": {
+                "type": "integer",
+                "minimum": 50,
+                "multipleOf": 50
+              },
+              "cast_ms": {
+                "type": "integer",
+                "minimum": 0,
+                "multipleOf": 50
+              },
+              "duration_ms": {
+                "type": "integer",
+                "minimum": 0,
+                "multipleOf": 50
+              },
+              "radius_tiles": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "range_tiles": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "allow_self": {
+                "type": "boolean"
+              },
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "recovery_ms": {
+                "type": "integer",
+                "minimum": 0,
+                "multipleOf": 50
+              },
+              "damage_type": {
+                "enum": [
+                  "physical",
+                  "magic",
+                  "true",
+                  null
+                ]
+              },
+              "max_targets": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "max_dash_tiles": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "stat": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "travel_ms": {
+                "type": "integer",
+                "minimum": 0,
+                "multipleOf": 50
+              },
+              "interrupt_policy": {
+                "type": "string",
+                "minLength": 1
+              },
+              "no_target_policy": {
+                "type": "string",
+                "minLength": 1
+              },
+              "effect_snapshot": {
+                "type": "string",
+                "minLength": 1
+              },
+              "magnitude_unit": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "magnitude_by_star": {
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                },
+                "minItems": 3,
+                "maxItems": 3
+              },
+              "delivery": {
+                "type": "string",
+                "minLength": 1
+              },
+              "tooltip_id": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "name",
+              "tooltip_en",
+              "effect",
+              "target_rule",
+              "first_cast_ms",
+              "cooldown_ms",
+              "cast_ms",
+              "duration_ms",
+              "radius_tiles",
+              "range_tiles",
+              "allow_self",
+              "id",
+              "recovery_ms",
+              "damage_type",
+              "max_targets",
+              "max_dash_tiles",
+              "stat",
+              "travel_ms",
+              "interrupt_policy",
+              "no_target_policy",
+              "effect_snapshot",
+              "magnitude_unit",
+              "magnitude_by_star",
+              "delivery",
+              "tooltip_id"
+            ],
+            "additionalProperties": false
+          },
+          "art": {
+            "type": "object",
+            "properties": {
+              "silhouette": {
+                "type": "string",
+                "minLength": 35
+              },
+              "face": {
+                "type": "string",
+                "minLength": 35
+              },
+              "costume": {
+                "type": "string",
+                "minLength": 35
+              },
+              "palette": {
+                "type": "string",
+                "minLength": 35
+              },
+              "equipment": {
+                "type": "string",
+                "minLength": 35
+              },
+              "signature": {
+                "type": "string",
+                "minLength": 35
+              },
+              "materials": {
+                "type": "string",
+                "minLength": 35
+              },
+              "back": {
+                "type": "string",
+                "minLength": 35
+              },
+              "animation": {
+                "type": "string",
+                "minLength": 35
+              },
+              "vfx": {
+                "type": "string",
+                "minLength": 35
+              },
+              "audio": {
+                "type": "string",
+                "minLength": 35
+              },
+              "risk": {
+                "type": "string",
+                "minLength": 35
+              }
+            },
+            "required": [
+              "silhouette",
+              "face",
+              "costume",
+              "palette",
+              "equipment",
+              "signature",
+              "materials",
+              "back",
+              "animation",
+              "vfx",
+              "audio",
+              "risk"
+            ],
+            "additionalProperties": false
+          },
+          "biography": {
+            "type": "string",
+            "minLength": 100
+          },
+          "tactics": {
+            "type": "object",
+            "properties": {
+              "placement": {
+                "type": "string",
+                "minLength": 1
+              },
+              "partner": {
+                "type": "string",
+                "minLength": 1
+              },
+              "counter": {
+                "type": "string",
+                "minLength": 1
+              },
+              "weakness": {
+                "type": "string",
+                "minLength": 1
+              },
+              "contrast": {
+                "type": "string",
+                "minLength": 1
+              },
+              "test": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "placement",
+              "partner",
+              "counter",
+              "weakness",
+              "contrast",
+              "test"
+            ],
+            "additionalProperties": false
+          },
+          "localization_status": {
+            "type": "string",
+            "minLength": 1
+          },
+          "asset_paths": {
+            "type": "object",
+            "properties": {
+              "blender": {
+                "type": "string",
+                "minLength": 1
+              },
+              "mesh_fbx": {
+                "type": "string",
+                "minLength": 1
+              },
+              "unreal_folder": {
+                "type": "string",
+                "minLength": 1
+              },
+              "portrait": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "blender",
+              "mesh_fbx",
+              "unreal_folder",
+              "portrait"
+            ],
+            "additionalProperties": false
+          },
+          "animation_contract": {
+            "type": "object",
+            "properties": {
+              "fps": {
+                "type": "number",
+                "minimum": 0
+              },
+              "in_place": {
+                "type": "boolean"
+              },
+              "required_clips": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 1
+              },
+              "root_bone": {
+                "type": "string",
+                "minLength": 1
+              },
+              "root_motion": {
+                "type": "boolean"
+              },
+              "socket_names": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 1
+              },
+              "deformation_review_required": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "fps",
+              "in_place",
+              "required_clips",
+              "root_bone",
+              "root_motion",
+              "socket_names",
+              "deformation_review_required"
+            ],
+            "additionalProperties": false
+          },
+          "art_budget": {
+            "type": "object",
+            "properties": {
+              "lod0_triangles_max": {
+                "type": "number",
+                "minimum": 0
+              },
+              "material_slots_max": {
+                "type": "number",
+                "minimum": 0
+              },
+              "texture_size_default": {
+                "type": "number",
+                "minimum": 0
+              },
+              "deform_bones_target_max": {
+                "type": "number",
+                "minimum": 0
+              },
+              "skin_influences_max": {
+                "type": "number",
+                "minimum": 0
+              },
+              "lod1_target_ratio": {
+                "type": "number",
+                "minimum": 0
+              },
+              "lod2_target_ratio": {
+                "type": "number",
+                "minimum": 0
+              },
+              "budget_status": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "lod0_triangles_max",
+              "material_slots_max",
+              "texture_size_default",
+              "deform_bones_target_max",
+              "skin_influences_max",
+              "lod1_target_ratio",
+              "lod2_target_ratio",
+              "budget_status"
+            ],
+            "additionalProperties": false
+          },
+          "model_sheet_prompt": {
+            "type": "string",
+            "minLength": 100
+          }
+        },
+        "required": [
+          "id",
+          "slug",
+          "name",
+          "title",
+          "race",
+          "unit_class",
+          "region",
+          "faction",
+          "role",
+          "cost",
+          "rarity",
+          "production_phase",
+          "implementation_status",
+          "height_m",
+          "rig_family",
+          "stats",
+          "ability",
+          "art",
+          "biography",
+          "tactics",
+          "localization_status",
+          "asset_paths",
+          "animation_contract",
+          "art_budget",
+          "model_sheet_prompt"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 24,
+      "maxItems": 24
+    }
+  },
+  "required": [
+    "schema_version",
+    "balance_version",
+    "units"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Wonder Chess 24-unit authored catalog v3"
+}

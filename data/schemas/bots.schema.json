@@ -1,0 +1,98 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "bots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "focus": {
+            "type": "string"
+          },
+          "weights": {
+            "type": "object",
+            "properties": {
+              "frontline": {
+                "type": "number"
+              },
+              "damage": {
+                "type": "number"
+              },
+              "support": {
+                "type": "number"
+              },
+              "upgrade": {
+                "type": "number"
+              },
+              "synergy": {
+                "type": "number"
+              },
+              "level": {
+                "type": "number"
+              },
+              "save": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "frontline",
+              "damage",
+              "support",
+              "upgrade",
+              "synergy",
+              "level",
+              "save"
+            ],
+            "additionalProperties": false
+          },
+          "decision_interval_ms": {
+            "type": "integer"
+          },
+          "public_observation_ms": {
+            "type": "integer"
+          },
+          "max_commands_per_preparation": {
+            "type": "integer"
+          },
+          "max_paid_rerolls_per_preparation": {
+            "type": "integer"
+          },
+          "noise_bp": {
+            "type": "integer"
+          },
+          "honesty": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "focus",
+          "weights",
+          "decision_interval_ms",
+          "public_observation_ms",
+          "max_commands_per_preparation",
+          "max_paid_rerolls_per_preparation",
+          "noise_bp",
+          "honesty"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "bots"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}
