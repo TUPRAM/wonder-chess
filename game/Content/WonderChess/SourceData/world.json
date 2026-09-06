@@ -1,0 +1,159 @@
+{
+  "name": "Aurelune",
+  "status": "original_proposed_fiction_not_existing_game_lore",
+  "pitch": "Recruit heroes from a hopeful fantasy world, form alliances through race and class, and outplay seven rival captains on a magical board.",
+  "tournament_explanation": "The Dawn Compact runs enchanted field trials to prepare mixed teams for the encroaching Hollow Court. Arena manifestations dissolve safely when defeated; competitive matches are training contests, not the entire war. Duplicate recruits and star upgrades are explicit game abstractions rather than a cloning economy.",
+  "antagonist": "The Hollow Court is a supernatural host crossing damaged wards beyond Cindercrest. Its leaders seek control of the old beacon network. Playable peoples are not inherently aligned with it; the threat is an organization and its choices, not a race.",
+  "regions": [
+    {
+      "id": "brighthaven",
+      "name": "Brighthaven Vale",
+      "location": "central southwest",
+      "map_xy": [
+        0.4,
+        0.65
+      ],
+      "neighbors": [
+        "thistlewood",
+        "stoneveil",
+        "willowrun"
+      ],
+      "capital": "Sunbridge",
+      "landmark": "The Seven-Lantern Courtyard",
+      "everyday_place": "The Copper Kettle tavern",
+      "look": "Warm limestone, blue roofs, hanging gardens, oak beams and sunlit market cloth.",
+      "culture": "Patrol captains, farmers, students and traveling craftspeople negotiate common road duties.",
+      "stake": "Keep bridges and market routes open so the alliance can supply distant settlements."
+    },
+    {
+      "id": "thistlewood",
+      "name": "Thistlewood Reach",
+      "location": "northwest",
+      "map_xy": [
+        0.22,
+        0.3
+      ],
+      "neighbors": [
+        "brighthaven",
+        "stoneveil"
+      ],
+      "capital": "Moonbough",
+      "landmark": "The Listening Observatory",
+      "everyday_place": "A canopy tea garden serving visitors from several peoples",
+      "look": "Ancient broadleaf trunks, curved wooden galleries, turquoise ponds and restrained luminous flowers.",
+      "culture": "Forest stewardship and public songs carry local histories; visitors trade and learn rather than being automatically excluded.",
+      "stake": "Preserve the forest road and understand the changes in the night sky."
+    },
+    {
+      "id": "stoneveil",
+      "name": "Stoneveil Deeps",
+      "location": "north central under the mountains",
+      "map_xy": [
+        0.47,
+        0.28
+      ],
+      "neighbors": [
+        "thistlewood",
+        "brighthaven",
+        "stormstep"
+      ],
+      "capital": "Hearthhall",
+      "landmark": "The Bell Bridge",
+      "everyday_place": "Orla’s shared hall and open workshops",
+      "look": "Large stone vaults, amber furnace windows, bronze railings and cultivated subterranean gardens.",
+      "culture": "Craft guilds judge useful work and reliable public infrastructure; residents include migrants and travelers.",
+      "stake": "Repair the old routes and send dependable materials to the frontier."
+    },
+    {
+      "id": "stormstep",
+      "name": "Stormstep Highlands",
+      "location": "northeast",
+      "map_xy": [
+        0.7,
+        0.25
+      ],
+      "neighbors": [
+        "stoneveil",
+        "cindercrest",
+        "willowrun"
+      ],
+      "capital": "Highpass",
+      "landmark": "The Wind Stair",
+      "everyday_place": "Caravan courtyards with woven awnings",
+      "look": "Sun-ochre stone, grassy terraces, broad geometric textiles and clear mountain skies.",
+      "culture": "Caravan communities cooperate across long distances and treat navigation and mutual aid as serious skills.",
+      "stake": "Prevent isolation when dangerous weather and hostile incursions close the passes."
+    },
+    {
+      "id": "willowrun",
+      "name": "Willowrun Rivers",
+      "location": "south central",
+      "map_xy": [
+        0.58,
+        0.78
+      ],
+      "neighbors": [
+        "brighthaven",
+        "stormstep",
+        "cindercrest"
+      ],
+      "capital": "Orchard Bend",
+      "landmark": "The Floating Festival Walk",
+      "everyday_place": "Riverside bakeries, gardens and boat markets",
+      "look": "Warm plaster, green orchards, colorful cloth, waterwheels and low welcoming bridges.",
+      "culture": "Traveling festivals, agriculture and trade connect the wider world rather than making this region merely comic relief.",
+      "stake": "Maintain food and communications without losing the everyday pleasures the coalition protects."
+    },
+    {
+      "id": "cindercrest",
+      "name": "Cindercrest Heights",
+      "location": "east",
+      "map_xy": [
+        0.86,
+        0.5
+      ],
+      "neighbors": [
+        "stormstep",
+        "willowrun"
+      ],
+      "capital": "Beacon Rest",
+      "landmark": "The First Lantern Spire",
+      "everyday_place": "Terraced gardens and map rooms beside the beacons",
+      "look": "Pale mountain rock, teal banners, golden beacon housings and prismatic old ruins.",
+      "culture": "Beacon keepers and travelers exchange maps, astronomy and maintenance duties.",
+      "stake": "Seal damaged wards without surrendering the frontier or treating outsiders as enemies."
+    }
+  ],
+  "factions": [
+    {
+      "id": "dawn_compact",
+      "name": "Dawn Compact",
+      "purpose": "Coordinate training, relief and joint defense."
+    },
+    {
+      "id": "greenward_circle",
+      "name": "Greenward Circle",
+      "purpose": "Maintain forest routes, observatories and shared knowledge."
+    },
+    {
+      "id": "hearthwright_union",
+      "name": "Hearthwright Union",
+      "purpose": "Provide reliable craft, safe halls and infrastructure."
+    },
+    {
+      "id": "highland_watch",
+      "name": "Highland Watch",
+      "purpose": "Guide and defend caravans across the passes."
+    },
+    {
+      "id": "wayfarer_fellowship",
+      "name": "Wayfarer Fellowship",
+      "purpose": "Keep trade, food and ordinary community life connected."
+    },
+    {
+      "id": "skyward_conclave",
+      "name": "Skyward Conclave",
+      "purpose": "Care for the beacon network and study the breach."
+    }
+  ]
+}

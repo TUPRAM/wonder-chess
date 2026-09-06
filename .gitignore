@@ -2,11 +2,17 @@
 .venv/
 __pycache__/
 *.py[cod]
+# Blender automatic save backups stay local; named revisions remain versioned.
+*.blend1
+# FBX exporter texture sidecars duplicate the versioned source texture maps.
+/exports/**/*.fbm/
+/exports/arena/*.001.png
 # Unreal generated caches; do NOT ignore Content or ArtSource
 /game/Binaries/
 /game/Intermediate/
 /game/Saved/
 /game/DerivedDataCache/
+/game/Build/Windows/FileOpenOrder/
 # Local builds and tool configuration
 /builds/
 .env

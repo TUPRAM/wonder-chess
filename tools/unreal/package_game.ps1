@@ -1,6 +1,6 @@
 <#
-Inspect before use. Authored scaffold: NOT executed in PowerShell/Unreal in this kit.
-Requires a verified Windows Unreal installation and compatible build tools.
+Build, cook and archive using the verified installed Windows Unreal toolchain.
+Includes the engine-supplied runtime redistributables without executing them.
 Example: ./tools/unreal/package_game.ps1 -ProjectFile ./game/WonderChess.uproject -ArchiveDirectory ./builds/Win64
 #>
 [CmdletBinding()]
@@ -28,7 +28,7 @@ $LogPath = Join-Path $Logs "package-$Configuration-$Stamp.log"
 $Arguments = @(
     'BuildCookRun', "-project=$Project", '-noP4', '-platform=Win64',
     "-clientconfig=$Configuration", '-build', '-cook', '-stage', '-pak',
-    '-archive', "-archivedirectory=$Archive", '-utf8output'
+    '-archive', "-archivedirectory=$Archive", '-prereqs', '-utf8output', '-ubtargs=-NoHotReloadFromIDE'
 )
 # Confirm these flags using the installed AutomationTool before relying on the wrapper.
 & $UatScript @Arguments 2>&1 | Tee-Object -FilePath $LogPath

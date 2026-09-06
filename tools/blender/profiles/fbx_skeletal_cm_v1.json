@@ -1,0 +1,43 @@
+{
+  "calibration_status": "measured_pass",
+  "scope": "Ada reference skeleton and Idle sampled in Unreal; complete roster imports and animation review remain required",
+  "blender_version": "5.1.1",
+  "unreal_version": "5.7.4-51494982+++UE5+Release-5.7",
+  "source": {"unit_scale_m": 1, "forward": "+Y", "up": "+Z", "disk_sources_unchanged": true},
+  "normalization": {
+    "method": "temporary independent object/data/action copies",
+    "mesh_vertex_multiplier": 100,
+    "armature_rest_translation_multiplier": 100,
+    "animation_location_curve_multiplier": 100,
+    "object_scale": [1, 1, 1],
+    "export_scene_scale_length": 0.01
+  },
+  "operator": {
+    "use_selection": true, "global_scale": 1, "apply_unit_scale": true,
+    "apply_scale_options": "FBX_SCALE_UNITS", "axis_forward": "-Y", "axis_up": "Z",
+    "use_mesh_modifiers": true, "mesh_smooth_type": "FACE", "use_tspace": false,
+    "add_leaf_bones": false, "use_armature_deform_only": true,
+    "bake_anim_use_all_bones": true, "bake_anim_use_nla_strips": false,
+    "bake_anim_use_all_actions": false, "bake_anim_force_startend_keying": true,
+    "bake_anim_step": 1, "bake_anim_simplify_factor": 0,
+    "path_mode": "COPY", "embed_textures": false
+  },
+  "unreal_import": {
+    "importer": "legacy FBX",
+    "convert_scene": true, "convert_scene_unit": true, "force_front_x_axis": false,
+    "import_rotation_named_yaw_degrees": 90, "preserve_local_transform": false,
+    "import_uniform_scale": 1
+  },
+  "reference_measurements": {
+    "root_scale": 1, "head_world_height_cm": 154.7,
+    "toe_minus_foot_forward_cm": 21.84, "forward_axis": "+X",
+    "cast_origin_world_x_cm": 29.12,
+    "reference_and_sampled_root_transforms_match": true
+  },
+  "evidence": [
+    "reports/WC-330/import-probe/normalized_cm-results.json",
+    "reports/WC-330/import-probe/forward_cm-results.json",
+    "reports/WC-330/normalized-cm-copy-trial.log"
+  ],
+  "not_proven": ["all 84 production animation imports", "final visual acceptance", "runtime performance"]
+}

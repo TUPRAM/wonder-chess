@@ -1,0 +1,71 @@
+{
+  "status": "created_in_blender_not_imported_in_unreal",
+  "blender_version": "5.1.1",
+  "source_unit": "meter",
+  "source_forward": "+Y",
+  "fps": 60,
+  "output_name": "WC_Calibration.blend",
+  "objects": [
+    {
+      "name": "CAL_Cube_1m",
+      "type": "MESH",
+      "dimensions_m": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "CAL_Tile_2m",
+      "type": "MESH",
+      "dimensions_m": [
+        2.0,
+        2.0,
+        0.2
+      ]
+    },
+    {
+      "name": "CAL_ForwardY_Shaft",
+      "type": "MESH",
+      "dimensions_m": [
+        0.12,
+        0.9,
+        0.12
+      ]
+    },
+    {
+      "name": "CAL_ForwardY_Tip",
+      "type": "MESH",
+      "dimensions_m": [
+        0.36,
+        0.35,
+        0.36
+      ]
+    },
+    {
+      "name": "CAL_Rig",
+      "type": "ARMATURE",
+      "dimensions_m": [
+        0.0,
+        0.0,
+        1.2
+      ]
+    },
+    {
+      "name": "CAL_AnimatedProbe",
+      "type": "MESH",
+      "dimensions_m": [
+        0.3,
+        0.3,
+        1.0
+      ]
+    }
+  ],
+  "required_engine_checks": [
+    "cube=100cm",
+    "tile=200cm",
+    "arrow=+X",
+    "root scale is stable",
+    "animation changes pose, not size"
+  ]
+}
