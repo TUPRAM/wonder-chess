@@ -1,13 +1,13 @@
 {
-  "status": "authored_rendered_normalized_exported_pending_current_engine_and_visual_acceptance",
+  "status": "update24_refined_rendered_exported_pending_Unreal_reimport_and_visual_acceptance",
   "unit_id": "wc_u_human_mage",
   "name": "Rowan Emberwick",
   "blender_version": "5.1.1",
-  "source_revision": 6,
+  "source_revision": 7,
   "height_m": 1.78,
-  "source_sha256": "14c67dcabacbf2c3d7639b8859bc07e9cdda68028657f2272f11289129b4a27a",
+  "source_sha256": "56428ea56b53d9b72df070ce0a4ab8ac87ce790175b12defc0f0d3111c5bf264",
   "author_script_sha256": "474d9d165ca7a0c2134197c379978f59d2af9baf475bbcd0970fd97febd0a4da",
-  "units_source_sha256": "1a93bfb07bd93ace4d5eb740864e26c69765a5ebb9b87885c1d3d40c772cd9e8",
+  "units_source_sha256": "ebd8f5f2fc2b889683566d1913e2c29d90ac9d041d47a231038c497e7a29865f",
   "rig_family": "humanoid_standard",
   "rig_revision": "WC_family_v1",
   "bones": 27,
@@ -17,7 +17,7 @@
   "source_forward": "+Y",
   "source_up": "+Z",
   "unit_scale_m": 1,
-  "fbx_profile": "tools\\blender\\profiles\\fbx_skeletal_cm_v1.json",
+  "fbx_profile": "tools/blender/profiles/fbx_skeletal_cm_v1.json",
   "engine_calibration": [
     "reports/WC-330/import-probe/normalized_cm-results.json",
     "reports/WC-330/import-probe/forward_cm-results.json",
@@ -67,7 +67,7 @@
         46
       ],
       "release_frame": 28,
-      "support_hand_bake_samples": 16,
+      "support_hand_bake_samples": 46,
       "maximum_support_reach_clamp_m": 0
     },
     "Hit": {
@@ -106,13 +106,13 @@
       "lod": 1,
       "triangles": 2085,
       "ratio_target": 0.5,
-      "visual_acceptance": "pending"
+      "visual_acceptance": "pending current Unreal review"
     },
     {
       "lod": 2,
       "triangles": 1042,
       "ratio_target": 0.25,
-      "visual_acceptance": "pending"
+      "visual_acceptance": "pending current Unreal review"
     }
   ],
   "source_brief": {
@@ -130,39 +130,43 @@
     "risk": "The orb must be driven by a socket/presentation component, not physics. Camera brightness must not erase the unit or neighboring health bars."
   },
   "files": {
-    "AN_wc_u_human_mage_Active.fbx": "b679afad5bf297e01a357cce5bf093bf28c4ed23faafd4dc75a07f481f9eeb5b",
-    "AN_wc_u_human_mage_Attack.fbx": "1978b758dee4d454dbf134ba8104eaee25b11aa6c3984564a1b4db68608dd54e",
-    "AN_wc_u_human_mage_Defeat.fbx": "10c52a5c88bc55096787d8f5b6cd24056d8ba3c3a287d1f866579ba32ea2974e",
-    "AN_wc_u_human_mage_Hit.fbx": "44e074d668e10a381266d8fd4d164e3859da501efb503d6130c4be0a0c9adbef",
-    "AN_wc_u_human_mage_Idle.fbx": "125314f0b4e9ae1dd1f25cac36fbb0212d1e44d845f7673ba5ec5d1cfe67eb87",
-    "AN_wc_u_human_mage_Move.fbx": "f079b273125ca25a9e03f649a98a3227cdbad09c0c405f7d02178778f8b02229",
-    "AN_wc_u_human_mage_Victory.fbx": "394d3ff553b4157cfcc822d3c9f9aef2ab18a0024addffa179610cc4b98213d6",
-    "portrait.png": "3732a1c9ddaa43fb0a0112441efd9a37c54cd4e0b4c11808dac93ba9036c043a",
-    "SK_wc_u_human_mage.fbx": "da16e2f810cc737571e276f9abae4f17e7f0df43eb67f62120d217672396782d",
-    "SK_wc_u_human_mage_LOD1.fbx": "161100a53e91044c61f7333a914b1d99c15ff7da795a84e5c9256cd65b5b7f15",
-    "SK_wc_u_human_mage_LOD2.fbx": "3c9190299e10e4a8d03aa0a4e636b20daeefbc9a37abcfb2dbf792b9b6bb944b",
+    "AN_wc_u_human_mage_Active.fbx": "347990adf6c112c1d74904b46d8ca20747cb0d55a77e9d7b062ad7d15a6becba",
+    "AN_wc_u_human_mage_Attack.fbx": "a85783f1cc6dcd6211bbcd4a047701716d7117eb6f8356f3ddb6bccbf071cf6f",
+    "AN_wc_u_human_mage_Defeat.fbx": "28db0460d5972bf3934fbf8f12e92b4456ea793af7929a1f4ad1772b2dd8b22c",
+    "AN_wc_u_human_mage_Hit.fbx": "65f97b7f9525bbf00590fa360d4b32d570301ca037a3c18029cdff45fffd6d05",
+    "AN_wc_u_human_mage_Idle.fbx": "e50a7d22f99562e877fc860638ee3b0c5c0c9f71e026654bb0b808859267cc4b",
+    "AN_wc_u_human_mage_Move.fbx": "63c3885c305dc2739b67584f85616938f50c7bd98892bc860c592f501f7280de",
+    "AN_wc_u_human_mage_Victory.fbx": "f772e346467fc6577f55884ddc47a97dadeae44929958e3c3ec31629f2e943fb",
+    "portrait.png": "db1039d15faddae4dcd69f8af922df5f9438db021fd652b0a5b782b6379e9cf7",
+    "SK_wc_u_human_mage.fbx": "ed33aec1a60aa395d5dd73e29f16ca155cde0466bc34b752f688d7fe4d59b07b",
+    "SK_wc_u_human_mage_LOD1.fbx": "5b39d5326bffeae56cc4185c5293ff1dc93019d6e92e100f3d206a8a84780d16",
+    "SK_wc_u_human_mage_LOD2.fbx": "5ffece69cffa8e708394ff2d02f2ebea477bf5f57c483e55e10b082e0d0c8a15",
     "T_wc_u_human_mage_BaseColor.png": "92303641f550c56f83d03e4de333d996d64419ae3fc014fda689bc8b6d47595b",
     "T_wc_u_human_mage_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
     "T_wc_u_human_mage_ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c"
   },
   "open_reviews": [
-    "Unreal scale and facing",
-    "all continuous animation deformation",
-    "source revision reimport",
-    "crowded-board readability",
-    "LOD1/LOD2",
-    "effects and sound integration"
+    "Current Unreal source revision/reimport",
+    "Continuous in-engine seven-clip review",
+    "Crowded-board shield occlusion",
+    "LOD silhouette review",
+    "Skill release/audio alignment",
+    "Final facial and costume art acceptance"
   ],
   "normalized_export_revision": 1,
   "normalized_exporter_sha256": "ac2b263a2491f2cf991065e749926b5549ddc81e73c814fb9958e424b6d23bc6",
   "normalized_reexport_script_sha256": "c1176dfe4526f36b767e3427383e70c3e174b2d62b36ac1a9562f5d8d7ffb99b",
   "exported_coordinate_units": "centimeters: temporary geometry, rest translation and animation location values multiplied by100; authoring source remains meters",
-  "geometry_source_revision": 4,
-  "animation_revision": 6,
+  "geometry_source_revision": 7,
+  "animation_revision": 7,
   "animation_refinement_script_sha256": "883991d592dfb18f4fd3e85b04583782ea411a21426c8921c13966d8bcd16f40",
   "animation_pose_script_sha256": "e43d6c05800e8b6dccbcd697d7cc9664b61d73f7012cac75ef98183e709d47b9",
   "animation_author_script_sha256": "ddaed7bb350bafb94c1743bc31c4b613524f971af01a5611835402590d8ae6f0",
   "animation_contact_script_sha256": "c36f8064fa5ab7ff136c399c68c7b012b5987234734aca0580bede3483017c1a",
   "animation_normalizer_sha256": "13646d355744f5293d573816e5cd54459cf88f3b647c6c2a22aa61ae29200779",
-  "animation_evidence": "reports\\WC-330\\animation-refinement\\wc_u_human_mage"
+  "animation_evidence": "reports\\WC-330\\animation-refinement\\wc_u_human_mage",
+  "update_refinement_script_sha256": "6f028fc1e77f86479e657e29464201cb71761da5dc9dc2ff885901cc8848c71d",
+  "update_export_script_sha256": "4d9ec9f5747367743efd1f44f653f2e95f7ebdeb061aa1a62351dc774ecd82bf",
+  "update_refinement_evidence": "reports/WC-U440/20260906T133433Z/rowan/refinement-v3",
+  "animation_update_evidence": "reports/WC-U440/20260906T133433Z/rowan/refinement-v3"
 }

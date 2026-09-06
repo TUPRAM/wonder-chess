@@ -1,13 +1,13 @@
 {
-  "status": "authored_rendered_normalized_exported_pending_current_engine_and_visual_acceptance",
+  "status": "update24_motion_refined_exported_pending_Unreal_reimport_and_visual_acceptance",
   "unit_id": "wc_u_human_guardian",
   "name": "Ada Brightshield",
   "blender_version": "5.1.1",
-  "source_revision": 6,
+  "source_revision": 8,
   "height_m": 1.82,
-  "source_sha256": "3de6908b826241c9794b911d8569be28cc3cdf2932a51527f80e6e53a2aadb58",
+  "source_sha256": "70f97a1d00555cbee1c8bb42b7e6797936e02d1e6167ec16163e94744aeaa2a6",
   "author_script_sha256": "474d9d165ca7a0c2134197c379978f59d2af9baf475bbcd0970fd97febd0a4da",
-  "units_source_sha256": "1a93bfb07bd93ace4d5eb740864e26c69765a5ebb9b87885c1d3d40c772cd9e8",
+  "units_source_sha256": "d824b02b11fb7607656fcc37389ff93015fa064f67175fa07e772f151179ff99",
   "rig_family": "humanoid_standard",
   "rig_revision": "WC_family_v1",
   "bones": 27,
@@ -17,7 +17,7 @@
   "source_forward": "+Y",
   "source_up": "+Z",
   "unit_scale_m": 1,
-  "fbx_profile": "tools\\blender\\profiles\\fbx_skeletal_cm_v1.json",
+  "fbx_profile": "tools/blender/profiles/fbx_skeletal_cm_v1.json",
   "engine_calibration": [
     "reports/WC-330/import-probe/normalized_cm-results.json",
     "reports/WC-330/import-probe/forward_cm-results.json",
@@ -57,8 +57,10 @@
         40
       ],
       "release_frame": 16,
-      "support_hand_bake_samples": 0,
-      "maximum_support_reach_clamp_m": 0
+      "support_hand_bake_samples": 14,
+      "maximum_support_reach_clamp_m": 0,
+      "sampled_width_m": 1.6944987773895264,
+      "minimum_eye_above_shield_m": 0.17307162284851074
     },
     "Active": {
       "action": "AN_wc_u_human_guardian_Active",
@@ -78,7 +80,9 @@
       ],
       "release_frame": null,
       "support_hand_bake_samples": 9,
-      "maximum_support_reach_clamp_m": 0
+      "maximum_support_reach_clamp_m": 0.00644206684694959,
+      "sampled_width_m": 1.6139345169067383,
+      "minimum_eye_above_shield_m": 0.1326993703842163
     },
     "Defeat": {
       "action": "AN_wc_u_human_guardian_Defeat",
@@ -97,8 +101,10 @@
         91
       ],
       "release_frame": null,
-      "support_hand_bake_samples": 0,
-      "maximum_support_reach_clamp_m": 0
+      "support_hand_bake_samples": 31,
+      "maximum_support_reach_clamp_m": 0,
+      "sampled_width_m": 1.5995298624038696,
+      "minimum_eye_above_shield_m": 0.0803227424621582
     }
   },
   "lods": [
@@ -106,13 +112,13 @@
       "lod": 1,
       "triangles": 2379,
       "ratio_target": 0.5,
-      "visual_acceptance": "pending"
+      "visual_acceptance": "pending current Unreal review"
     },
     {
       "lod": 2,
-      "triangles": 1190,
+      "triangles": 1189,
       "ratio_target": 0.25,
-      "visual_acceptance": "pending"
+      "visual_acceptance": "pending current Unreal review"
     }
   ],
   "source_brief": {
@@ -130,39 +136,44 @@
     "risk": "Shield/forearm intersections during attack recovery are the main deformation risk. Test full left-arm elevation and adjacent-hero visibility."
   },
   "files": {
-    "AN_wc_u_human_guardian_Active.fbx": "8fa51161a87ab387b48d89e045776d389e30a055f671ccc948ef89589175a3a2",
-    "AN_wc_u_human_guardian_Attack.fbx": "78defeadc79e045a2c2281f7dc46245a1d15720913c19fec908839610d2d57c2",
-    "AN_wc_u_human_guardian_Defeat.fbx": "bc21f5e20b4dc3fc4ea3e12c49f892f83e8236313c2eb9a19ef164bfff44de05",
-    "AN_wc_u_human_guardian_Hit.fbx": "486933f13eb842f97f39761940cbd7ff8c7ece112314eca2abf6ac8717c051cb",
-    "AN_wc_u_human_guardian_Idle.fbx": "93d91e6bf9d6d4d2957a4a8794290f0af3106adc326f9935c22b309aabb6ae29",
-    "AN_wc_u_human_guardian_Move.fbx": "936f42b975dd2ad58b774b2e55f2495ad201fc1de07f962d042d43c78f6d9cc2",
-    "AN_wc_u_human_guardian_Victory.fbx": "0631230b88cda1f74d78fa8bb1799c5a3380f6e7f2ed58bb6ddcac5ebfdacb76",
-    "portrait.png": "a3726d6efa2cfdace5805f1ab86be47baf43935beed11b9d79fa1b6b58338969",
-    "SK_wc_u_human_guardian.fbx": "419f786511ee502362ee5af58ca201d219c7729ac573bc7a48bf2d7ce85ed2f2",
-    "SK_wc_u_human_guardian_LOD1.fbx": "6d73b6f819dd50df1107e1aa9af5333bc67556415c0eebc4e1eefbf859950ac3",
-    "SK_wc_u_human_guardian_LOD2.fbx": "0600931e5d1f0358b1f3db2ecbbcf466e893bf972b1bd2e92b5fa1f1389938b9",
+    "AN_wc_u_human_guardian_Active.fbx": "a2d8e190ba5306ec870eed1c89155a8eeec51723123b6cd873044408c967e4f8",
+    "AN_wc_u_human_guardian_Attack.fbx": "b8e36b773cc67d19cabee43e1f79d8cfd4e3aafab1719b042eda2378bf9f83b5",
+    "AN_wc_u_human_guardian_Defeat.fbx": "7034282ec95afbdbe454433ee21366ca953491c45cc8433e7dea944749b18eb2",
+    "AN_wc_u_human_guardian_Hit.fbx": "f28175eb85e236e9c9625eeb8967f5c847c3bf8707c06acd0c7ac6682dd4ea16",
+    "AN_wc_u_human_guardian_Idle.fbx": "b0ba7adb9b78a5e524e5bf52997ad9b36584836c1ad3fb6a5f9ec24baac34f3a",
+    "AN_wc_u_human_guardian_Move.fbx": "4f32b92df1d382188e7e8528e345b0aa17b7954e82e7558fe7b8f2e18edb3f86",
+    "AN_wc_u_human_guardian_Victory.fbx": "aa55fbd1785838393a0084e06de0472f973d8bc1fbc8fd8298e26beb27cd0128",
+    "portrait.png": "05885dbcc09b22906c23a4d14c41f5a7f3558069812ba67974536aae5afd6741",
+    "SK_wc_u_human_guardian.fbx": "167329ea34bb9e89ae465aefe4ebac28dd729808663a976a9fb85865c387ecaa",
+    "SK_wc_u_human_guardian_LOD1.fbx": "f60e092ccb28c73f77e499a082e99c8aa0d8a47c1cdb1e629b2783525d197ad1",
+    "SK_wc_u_human_guardian_LOD2.fbx": "3c3936d19cff3c7e8b9fe3213592983628dfd481453ad191b9bcef89de0d4297",
     "T_wc_u_human_guardian_BaseColor.png": "304909f4c0fa012dcc73149629aa3ee34f768f7f6ba8e1ac83cc6d000b2d0847",
     "T_wc_u_human_guardian_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
     "T_wc_u_human_guardian_ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c"
   },
   "open_reviews": [
-    "Unreal scale and facing",
-    "all continuous animation deformation",
-    "source revision reimport",
-    "crowded-board readability",
-    "LOD1/LOD2",
-    "effects and sound integration"
+    "Current Unreal source revision/reimport",
+    "Continuous in-engine seven-clip review",
+    "Crowded-board shield occlusion",
+    "LOD silhouette review",
+    "Skill release/audio alignment",
+    "Final facial and costume art acceptance"
   ],
   "normalized_export_revision": 1,
   "normalized_exporter_sha256": "ac2b263a2491f2cf991065e749926b5549ddc81e73c814fb9958e424b6d23bc6",
   "normalized_reexport_script_sha256": "c1176dfe4526f36b767e3427383e70c3e174b2d62b36ac1a9562f5d8d7ffb99b",
   "exported_coordinate_units": "centimeters: temporary geometry, rest translation and animation location values multiplied by100; authoring source remains meters",
-  "geometry_source_revision": 4,
-  "animation_revision": 6,
+  "geometry_source_revision": 7,
+  "animation_revision": 8,
   "animation_refinement_script_sha256": "883991d592dfb18f4fd3e85b04583782ea411a21426c8921c13966d8bcd16f40",
   "animation_pose_script_sha256": "e43d6c05800e8b6dccbcd697d7cc9664b61d73f7012cac75ef98183e709d47b9",
   "animation_author_script_sha256": "ddaed7bb350bafb94c1743bc31c4b613524f971af01a5611835402590d8ae6f0",
   "animation_contact_script_sha256": "c36f8064fa5ab7ff136c399c68c7b012b5987234734aca0580bede3483017c1a",
   "animation_normalizer_sha256": "13646d355744f5293d573816e5cd54459cf88f3b647c6c2a22aa61ae29200779",
-  "animation_evidence": "reports\\WC-330\\animation-refinement\\wc_u_human_guardian"
+  "animation_evidence": "reports\\WC-330\\animation-refinement\\wc_u_human_guardian",
+  "update_refinement_script_sha256": "c640e13cc328c7251bdbc695922c8bb9dfbcd909b3774c254d6811baffdc339e",
+  "update_refinement_evidence": "reports/WC-U440/20260906T130945Z/ada/refinement-v3",
+  "animation_update_script_sha256": "ce3f112cd1ffee39e3ef4e5c8efc0954ef90b26d7369423bbf923eb75c582400",
+  "animation_update_export_script_sha256": "85a7a0321c425832987089f1c17ad3fb0338632129146bdbc0a24950e4a5a803",
+  "animation_update_evidence": "reports/WC-U440/20260906T130945Z/ada/action-trial"
 }

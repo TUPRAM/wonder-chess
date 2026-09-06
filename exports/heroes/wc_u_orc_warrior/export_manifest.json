@@ -1,23 +1,23 @@
 {
-  "status": "authored_rendered_normalized_exported_pending_current_engine_and_visual_acceptance",
+  "status": "update24_refined_rendered_exported_pending_Unreal_reimport_and_visual_acceptance",
   "unit_id": "wc_u_orc_warrior",
   "name": "Rok Sunward",
   "blender_version": "5.1.1",
-  "source_revision": 6,
+  "source_revision": 7,
   "height_m": 2.04,
-  "source_sha256": "8796d4453fb7f184b7c24e70b9f2a2c6bd287ec584c4c4f95d845c0961cc28aa",
+  "source_sha256": "9209f6b12f35fca71340688227570cea39e2868483d85741176b297ad4698f0a",
   "author_script_sha256": "474d9d165ca7a0c2134197c379978f59d2af9baf475bbcd0970fd97febd0a4da",
-  "units_source_sha256": "1a93bfb07bd93ace4d5eb740864e26c69765a5ebb9b87885c1d3d40c772cd9e8",
+  "units_source_sha256": "fd6d831113261dd984f3d2430236c06eda4a9f4e7f9e30a404a76f418fa953b0",
   "rig_family": "humanoid_broad",
   "rig_revision": "WC_family_v1",
   "bones": 27,
-  "triangles": 3090,
+  "triangles": 5462,
   "materials": 1,
   "fps": 60,
   "source_forward": "+Y",
   "source_up": "+Z",
   "unit_scale_m": 1,
-  "fbx_profile": "tools\\blender\\profiles\\fbx_skeletal_cm_v1.json",
+  "fbx_profile": "tools/blender/profiles/fbx_skeletal_cm_v1.json",
   "engine_calibration": [
     "reports/WC-330/import-probe/normalized_cm-results.json",
     "reports/WC-330/import-probe/forward_cm-results.json",
@@ -104,15 +104,15 @@
   "lods": [
     {
       "lod": 1,
-      "triangles": 1544,
+      "triangles": 2731,
       "ratio_target": 0.5,
-      "visual_acceptance": "pending"
+      "visual_acceptance": "pending current Unreal review"
     },
     {
       "lod": 2,
-      "triangles": 772,
+      "triangles": 1364,
       "ratio_target": 0.25,
-      "visual_acceptance": "pending"
+      "visual_acceptance": "pending current Unreal review"
     }
   ],
   "source_brief": {
@@ -130,39 +130,44 @@
     "risk": "Large proportions need a broad rig variant rather than scaling a human mesh uniformly. Keep hands and axe away from face during tempo changes."
   },
   "files": {
-    "AN_wc_u_orc_warrior_Active.fbx": "d98b6e9f6a1c98a11119025d2e46350dfd26baa3d1bdf76d1abdd66b325e2453",
-    "AN_wc_u_orc_warrior_Attack.fbx": "c65cf2825f2051f14f8a5037b01fae9d81304db332dda438c09dc91bed4d7fa4",
-    "AN_wc_u_orc_warrior_Defeat.fbx": "b1327f071de7ea7475da4003a5e5fcdaf8772b69850a63cea5f3f44eda8096dd",
-    "AN_wc_u_orc_warrior_Hit.fbx": "2268bfcfc025d2fccc20cd30322a3d493272672e0861ae5c012c347755b93781",
-    "AN_wc_u_orc_warrior_Idle.fbx": "e469fa76df8ae994f80aba01b0c0e56ca416197242a508e6e37542b6b470850a",
-    "AN_wc_u_orc_warrior_Move.fbx": "936b8b21c81de2f5625ed6c4d19ad17f5d2a79254d438dc93d6d4bd709f36f54",
-    "AN_wc_u_orc_warrior_Victory.fbx": "37f520342fbbf487265d86ce3c9e0920e47d46398b3028e805136596072953e1",
-    "portrait.png": "e0e958f0763b2a246b9c6c94dbed0ecf1a6aa1e7c50d884c3f41642424ae9188",
-    "SK_wc_u_orc_warrior.fbx": "f7a2160d4935888383fc80f1d48d2c111211190a8ddfd7a10b39d61c46e2c458",
-    "SK_wc_u_orc_warrior_LOD1.fbx": "0b1ae255f65bb90b3edbef09a7034744b4c9d357ef607ee2265df12ce486949f",
-    "SK_wc_u_orc_warrior_LOD2.fbx": "78af2fe24bd0e1337f8383d28bb5d1c8a28cc313e103629c47979ea9a9c2444d",
+    "AN_wc_u_orc_warrior_Active.fbx": "2707aec5e74ad689eaaaee5baf9365225cf3c214c176f6a61c14132a0172685c",
+    "AN_wc_u_orc_warrior_Attack.fbx": "66b724525e8973bd7d96fb72d7795f91d41b30c802b355a86ae92e44a56fb6a5",
+    "AN_wc_u_orc_warrior_Defeat.fbx": "0b1240178ffb5747ecb78078b99385766f6ec0fdcef9ae47c604e9448f7df228",
+    "AN_wc_u_orc_warrior_Hit.fbx": "d38bb09c1a7caadc587da811f9241dbc04beb1a84bd3db87ce5867251f22a8b4",
+    "AN_wc_u_orc_warrior_Idle.fbx": "375a05ce17ae391ed51318162293c782fa0b4ee9fcd524f7de83c60d70c57ef2",
+    "AN_wc_u_orc_warrior_Move.fbx": "731cedea8177054f9b39d8612b88cfa9ccf6ece990c16b9b9e081b9437eb65c8",
+    "AN_wc_u_orc_warrior_Victory.fbx": "cc46c64dd617a5b2fb1dd3953a0d7e3e45f3754e2e3db01f7f1ec0f77d5dd513",
+    "portrait.png": "281af461a9c18d09cab44a51362496b546684ceba157e76fe4c2c83f86e07bb2",
+    "SK_wc_u_orc_warrior.fbx": "96acb34240d2c34d1b417259534e10eaa84216b2061a0d6a6d19cf239289ec62",
+    "SK_wc_u_orc_warrior_LOD1.fbx": "b6b5527456c209b4cf43275abc7b330eec803622329e63913ecdc33ac2437502",
+    "SK_wc_u_orc_warrior_LOD2.fbx": "f1b7d95c335ccbfbc1d99f6c006e7426ddeb348957c190fa4aec35bc477f7fb9",
     "T_wc_u_orc_warrior_BaseColor.png": "1ef9487f9dfbef26be690963133dce8e0d01fc75604b582707a75365e1bf3338",
     "T_wc_u_orc_warrior_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
     "T_wc_u_orc_warrior_ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c"
   },
   "open_reviews": [
-    "Unreal scale and facing",
-    "all continuous animation deformation",
-    "source revision reimport",
-    "crowded-board readability",
-    "LOD1/LOD2",
-    "effects and sound integration"
+    "Current Unreal source revision and reimport",
+    "Continuous in-engine seven-clip review",
+    "Crowded-board weapon and costume readability",
+    "LOD silhouette review",
+    "Skill release and audio alignment",
+    "Final facial and costume art acceptance"
   ],
   "normalized_export_revision": 1,
   "normalized_exporter_sha256": "ac2b263a2491f2cf991065e749926b5549ddc81e73c814fb9958e424b6d23bc6",
   "normalized_reexport_script_sha256": "c1176dfe4526f36b767e3427383e70c3e174b2d62b36ac1a9562f5d8d7ffb99b",
   "exported_coordinate_units": "centimeters: temporary geometry, rest translation and animation location values multiplied by100; authoring source remains meters",
-  "geometry_source_revision": 4,
+  "geometry_source_revision": 7,
   "animation_revision": 6,
   "animation_refinement_script_sha256": "883991d592dfb18f4fd3e85b04583782ea411a21426c8921c13966d8bcd16f40",
   "animation_pose_script_sha256": "e43d6c05800e8b6dccbcd697d7cc9664b61d73f7012cac75ef98183e709d47b9",
   "animation_author_script_sha256": "ddaed7bb350bafb94c1743bc31c4b613524f971af01a5611835402590d8ae6f0",
   "animation_contact_script_sha256": "c36f8064fa5ab7ff136c399c68c7b012b5987234734aca0580bede3483017c1a",
   "animation_normalizer_sha256": "13646d355744f5293d573816e5cd54459cf88f3b647c6c2a22aa61ae29200779",
-  "animation_evidence": "reports\\WC-330\\animation-refinement\\wc_u_orc_warrior"
+  "animation_evidence": "reports\\WC-330\\animation-refinement\\wc_u_orc_warrior",
+  "update_refinement_script_sha256": "ebf2a136bf2f62a9442f7c1de1679f2306afa457e183d63471e2ff325f7aa55b",
+  "update_export_script_sha256": "4d9ec9f5747367743efd1f44f653f2e95f7ebdeb061aa1a62351dc774ecd82bf",
+  "update_refinement_evidence": "reports/WC-U440/20260906T141653Z-orcs/rok-candidate02/workbench-review",
+  "geometry_review_evidence": "reports/WC-U440/20260906T141653Z-orcs/rok-candidate02/workbench-review",
+  "animation_update_changes": []
 }

@@ -1,17 +1,17 @@
 {
-  "status": "authored_exported_rendered_pending_engine_and_visual_acceptance",
+  "status": "update24_refined_rendered_exported_pending_Unreal_reimport_and_visual_acceptance",
   "unit_id": "wc_u_elf_ranger",
   "name": "Liora Leafstep",
   "blender_version": "5.1.1",
-  "source_revision": 6,
+  "source_revision": 7,
   "height_m": 1.88,
-  "source_sha256": "db1897185aa6d56056c8ed16a600f6174272aaaeb65f283809e172111b638b03",
+  "source_sha256": "fb25bd84e170137f6cfeca90e4c5c21714c0f7be743f1e972292d85b98fbaeba",
   "author_script_sha256": "f2fcf648f49acc28b85dcec4eb755f8d8122bc97f7dfef52e54ffc35bc973175",
-  "units_source_sha256": "1a93bfb07bd93ace4d5eb740864e26c69765a5ebb9b87885c1d3d40c772cd9e8",
+  "units_source_sha256": "ebd8f5f2fc2b889683566d1913e2c29d90ac9d041d47a231038c497e7a29865f",
   "rig_family": "humanoid_slender",
   "rig_revision": "WC_family_v1",
   "bones": 27,
-  "triangles": 3136,
+  "triangles": 3772,
   "materials": 1,
   "fps": 60,
   "source_forward": "+Y",
@@ -106,15 +106,15 @@
   "lods": [
     {
       "lod": 1,
-      "triangles": 1567,
+      "triangles": 1885,
       "ratio_target": 0.5,
-      "visual_acceptance": "pending"
+      "visual_acceptance": "pending current Unreal review"
     },
     {
       "lod": 2,
-      "triangles": 784,
+      "triangles": 942,
       "ratio_target": 0.25,
-      "visual_acceptance": "pending"
+      "visual_acceptance": "pending current Unreal review"
     }
   ],
   "source_brief": {
@@ -132,35 +132,38 @@
     "risk": "Foot sliding during the dash is acceptable only within the deliberate magical slide, not normal walking. Reserved tile and displayed landing must agree."
   },
   "files": {
-    "AN_wc_u_elf_ranger_Active.fbx": "f3db1664c26ffc3ae1c6ce1400120ddeddde2a92c1d1cd6f0d8e84eaa9641bb5",
-    "AN_wc_u_elf_ranger_Attack.fbx": "b562d6b4e51877425940e946b0c93fd81ecd9cfc7096e15f5575e39471325b12",
-    "AN_wc_u_elf_ranger_Defeat.fbx": "c3345121b183fe3eab3110085580d6a9efd7393f5a64a7fb89459dc66e4e68c7",
-    "AN_wc_u_elf_ranger_Hit.fbx": "16991dc4447320f7c9f81ba1f6b0c1b530fb7890599695ec2570c960273db800",
-    "AN_wc_u_elf_ranger_Idle.fbx": "68de6797fa96924082722a18d52c6285bb8e8058d3d4dd10f265ea1d4e1710a0",
-    "AN_wc_u_elf_ranger_Move.fbx": "51465a45db95df37e2be99c61d7756ddbdc18ff1a7ce031dca2db6ed140d3ffb",
-    "AN_wc_u_elf_ranger_Victory.fbx": "06c970e3802a2362d2c6c2e4cd3015fbf490f774e35b5bb78e5b2f7debe1936e",
-    "portrait.png": "cf298bbe2b154256cf218eb8c937e42301ca6463a7b3d79b257fe5d0302fadbd",
-    "SK_wc_u_elf_ranger.fbx": "1558ca1816d30b268f753f5a3a0f08b6d9916dd4c25e57f2573d200d6f4d3395",
-    "SK_wc_u_elf_ranger_LOD1.fbx": "dcf0308425d65cf1e200752551c56b67868199c5d2d4b8077c38f2b2ec51d3de",
-    "SK_wc_u_elf_ranger_LOD2.fbx": "16190cb5e60ef5d091d7080409847faa227db2d9549058e16c89d9f9b72cb6b8",
+    "AN_wc_u_elf_ranger_Active.fbx": "e8435989e367c695e2a092052c7eb800be9a0ce68f949bb1f548c1a4242ec792",
+    "AN_wc_u_elf_ranger_Attack.fbx": "8cc94a5f3d3e4999a404ae12d5105341afce018c1774e6437f32f10e7a780b0b",
+    "AN_wc_u_elf_ranger_Defeat.fbx": "376acdd2f8f12ec20846a1809319e81e432a0ec6887f4f914f3db0185033e927",
+    "AN_wc_u_elf_ranger_Hit.fbx": "a134506de85874f18956f98fa5b6959748767176135759f6fb69c9e1bd41bf41",
+    "AN_wc_u_elf_ranger_Idle.fbx": "8858b960b833202026af0ec8401da13027c23a345e736c0e87161748e6ad8a05",
+    "AN_wc_u_elf_ranger_Move.fbx": "fd16eae5e03a1999608f69637a360b2f3e0c5fe0df50895a8a9128f1e2cb838a",
+    "AN_wc_u_elf_ranger_Victory.fbx": "575a5e0ab4b8659f4c80fa34bd7dc1c959deb8acced16121956694dc1aad944e",
+    "portrait.png": "4dfd8d548b329bef330bfbc06280848924427eb4bdfa34d480d01bd08c0cc2b0",
+    "SK_wc_u_elf_ranger.fbx": "1b64de0dcbeae3c94bdbd6ec8ac1fc7580247797c3e3e535f6026f880a7eb8a0",
+    "SK_wc_u_elf_ranger_LOD1.fbx": "e0b2f063cbdc669d85e73eace262c8cb9210df452c1740f66b29521427daf20d",
+    "SK_wc_u_elf_ranger_LOD2.fbx": "e2f9c9ec1f96a8f60518777180d826289be32811509e2761e580552d9d40da0f",
     "T_wc_u_elf_ranger_BaseColor.png": "db270d53e03fb44b1c8b0d28dae50de370a3c2faddc49edf4f7cacd6131cab54",
     "T_wc_u_elf_ranger_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
     "T_wc_u_elf_ranger_ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c"
   },
   "open_reviews": [
-    "Unreal scale and facing",
-    "all continuous animation deformation",
-    "source revision reimport",
-    "crowded-board readability",
-    "LOD1/LOD2",
-    "effects and sound integration"
+    "Current Unreal source revision/reimport",
+    "Continuous in-engine seven-clip review",
+    "Crowded-board shield occlusion",
+    "LOD silhouette review",
+    "Skill release/audio alignment",
+    "Final facial and costume art acceptance"
   ],
-  "geometry_source_revision": 5,
+  "geometry_source_revision": 7,
   "animation_revision": 6,
   "animation_refinement_script_sha256": "883991d592dfb18f4fd3e85b04583782ea411a21426c8921c13966d8bcd16f40",
   "animation_pose_script_sha256": "e43d6c05800e8b6dccbcd697d7cc9664b61d73f7012cac75ef98183e709d47b9",
   "animation_author_script_sha256": "ddaed7bb350bafb94c1743bc31c4b613524f971af01a5611835402590d8ae6f0",
   "animation_contact_script_sha256": "c36f8064fa5ab7ff136c399c68c7b012b5987234734aca0580bede3483017c1a",
   "animation_normalizer_sha256": "13646d355744f5293d573816e5cd54459cf88f3b647c6c2a22aa61ae29200779",
-  "animation_evidence": "reports\\WC-330\\animation-refinement\\wc_u_elf_ranger"
+  "animation_evidence": "reports\\WC-330\\animation-refinement\\wc_u_elf_ranger",
+  "update_refinement_script_sha256": "7dd0586a9587409c67e55387a0df93d26f3231427a501be7f9cc65b111d18ec3",
+  "update_export_script_sha256": "4d9ec9f5747367743efd1f44f653f2e95f7ebdeb061aa1a62351dc774ecd82bf",
+  "update_refinement_evidence": "reports/WC-U440/20260906T133433Z/wc_u_elf_ranger/refinement-v1"
 }

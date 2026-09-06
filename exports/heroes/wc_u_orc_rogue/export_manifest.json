@@ -1,23 +1,23 @@
 {
-  "status": "authored_rendered_normalized_exported_pending_current_engine_and_visual_acceptance",
+  "status": "update24_refined_rendered_exported_pending_Unreal_reimport_and_visual_acceptance",
   "unit_id": "wc_u_orc_rogue",
   "name": "Kesh Quickwind",
   "blender_version": "5.1.1",
-  "source_revision": 6,
+  "source_revision": 7,
   "height_m": 1.93,
-  "source_sha256": "0321b5bbee557efa140d87a16dfdb6ebd12db7a6a1d79572d6661c13f450b05e",
+  "source_sha256": "9377fd6ea70ef5a8c376cbf7e83363a5c5f8e8c0f97b88508eb1623a80b2019a",
   "author_script_sha256": "474d9d165ca7a0c2134197c379978f59d2af9baf475bbcd0970fd97febd0a4da",
-  "units_source_sha256": "1a93bfb07bd93ace4d5eb740864e26c69765a5ebb9b87885c1d3d40c772cd9e8",
+  "units_source_sha256": "fd6d831113261dd984f3d2430236c06eda4a9f4e7f9e30a404a76f418fa953b0",
   "rig_family": "humanoid_broad",
   "rig_revision": "WC_family_v1",
   "bones": 27,
-  "triangles": 3422,
+  "triangles": 3798,
   "materials": 1,
   "fps": 60,
   "source_forward": "+Y",
   "source_up": "+Z",
   "unit_scale_m": 1,
-  "fbx_profile": "tools\\blender\\profiles\\fbx_skeletal_cm_v1.json",
+  "fbx_profile": "tools/blender/profiles/fbx_skeletal_cm_v1.json",
   "engine_calibration": [
     "reports/WC-330/import-probe/normalized_cm-results.json",
     "reports/WC-330/import-probe/forward_cm-results.json",
@@ -48,7 +48,14 @@
       ],
       "release_frame": null,
       "support_hand_bake_samples": 0,
-      "maximum_support_reach_clamp_m": 0
+      "maximum_support_reach_clamp_m": 0,
+      "measured_support_correction": {
+        "clip": "Move",
+        "kind": "Measured pelvis support correction",
+        "frames_baked": 61,
+        "maximum_lift_m": 0.006230668768286705,
+        "previous_minimum_mesh_z_m": -0.004230668768286705
+      }
     },
     "Attack": {
       "action": "AN_wc_u_orc_rogue_Attack",
@@ -104,15 +111,15 @@
   "lods": [
     {
       "lod": 1,
-      "triangles": 1710,
+      "triangles": 1899,
       "ratio_target": 0.5,
-      "visual_acceptance": "pending"
+      "visual_acceptance": "pending current Unreal review"
     },
     {
       "lod": 2,
-      "triangles": 854,
+      "triangles": 948,
       "ratio_target": 0.25,
-      "visual_acceptance": "pending"
+      "visual_acceptance": "pending current Unreal review"
     }
   ],
   "source_brief": {
@@ -130,39 +137,53 @@
     "risk": "The landing must reduce distance to the current target; otherwise a ready skill could loop without tactical purpose. Test same-tick target movement and blocked cells."
   },
   "files": {
-    "AN_wc_u_orc_rogue_Active.fbx": "e2e9e0bc480720b02f7a3be8fca73942f86a2057468209050ddbfc87029e6eee",
-    "AN_wc_u_orc_rogue_Attack.fbx": "087f13e44edba1cedfcca22545ddd892f0063ecc379184bf01c1b6d76953a56a",
-    "AN_wc_u_orc_rogue_Defeat.fbx": "a62e5037ad33332f5f12977ee05398f5f3b763f2485268cac222d73a4bb2b0a8",
-    "AN_wc_u_orc_rogue_Hit.fbx": "1f07e3df6a86793cef4a0f40c07fd8962a21c243de49634ab8f333e714232c1c",
-    "AN_wc_u_orc_rogue_Idle.fbx": "6f65dc83d6c5db1789c2b9e1585626daccb6b50555248851d70a5ebc2bfeb5c2",
-    "AN_wc_u_orc_rogue_Move.fbx": "74601112b9bd855304317ac89bad17450140308595ba415df21d91e4db6db295",
-    "AN_wc_u_orc_rogue_Victory.fbx": "22fc79f643db3211320cced0725e138c20bb6721a6c5be11f57b1cc52ea03f69",
-    "portrait.png": "859ae4b02d3693b2d8d48d30c5dfc78abe1fc0afd8a117384b16047563d5e562",
-    "SK_wc_u_orc_rogue.fbx": "973694245ea75b90e8f1e1c127a18e01b2d0e883a2ed9e21d310ef0c16b86537",
-    "SK_wc_u_orc_rogue_LOD1.fbx": "56cd4868e8b3910bcd64553a1db5f14f77b27b8f65b104e205f54aa283f30172",
-    "SK_wc_u_orc_rogue_LOD2.fbx": "140490c4c6702edfa45cff91b3c38c1d9113ad6d5fcd39d8feac721eb4ce9000",
+    "AN_wc_u_orc_rogue_Active.fbx": "e235ec1c8915d4e2eb5b4ea9ed0bf4968317f5a9e700a15f148c57ed25632492",
+    "AN_wc_u_orc_rogue_Attack.fbx": "48505c38108a13ac47fdf7c7044d81725f933a72b078b165dc2b3a64124d12fa",
+    "AN_wc_u_orc_rogue_Defeat.fbx": "b1acc1ef785f8579ed73c0f250529d05d2d5e7c46ecc1ddef6343f3fe9520231",
+    "AN_wc_u_orc_rogue_Hit.fbx": "27b9dbe34b26a3385c275f165327b75ff2ccc3cd64fb57306180acafdd2fa63d",
+    "AN_wc_u_orc_rogue_Idle.fbx": "9108dc67cc57d169963f4e07e42e8d227c8bda03f723ac847425c63757ce2077",
+    "AN_wc_u_orc_rogue_Move.fbx": "8b520d1c3a0a02b6d96ad3ae86a149bd852cb3f2dfc4288ef28da061543fa359",
+    "AN_wc_u_orc_rogue_Victory.fbx": "e0565eac967d9c1664c16a2106dd8333deff3556f6dc7e05aa9f067115c3e1bf",
+    "portrait.png": "ca1d3a41a208f67a0a673b210fad661a585754497ae9dbed7fbb3a3cf9c27cb6",
+    "SK_wc_u_orc_rogue.fbx": "1a5efb88a91e6754be1e57bbfdfdbd46d5617acfdfec8429fc87b74ff573a289",
+    "SK_wc_u_orc_rogue_LOD1.fbx": "28f3874c6eebda8fd2c84cb94e98c94673986b61fa89026cdb310acb46bf92fc",
+    "SK_wc_u_orc_rogue_LOD2.fbx": "ab3f2699934a2768365869bf9509360597486a41226c822cc7294c0b9b8679fd",
     "T_wc_u_orc_rogue_BaseColor.png": "caf58f62eb930c8af50300eebae6291fe741c866401c31b13a65204a42af1b36",
     "T_wc_u_orc_rogue_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
     "T_wc_u_orc_rogue_ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c"
   },
   "open_reviews": [
-    "Unreal scale and facing",
-    "all continuous animation deformation",
-    "source revision reimport",
-    "crowded-board readability",
-    "LOD1/LOD2",
-    "effects and sound integration"
+    "Current Unreal source revision and reimport",
+    "Continuous in-engine seven-clip review",
+    "Crowded-board weapon and costume readability",
+    "LOD silhouette review",
+    "Skill release and audio alignment",
+    "Final facial and costume art acceptance"
   ],
   "normalized_export_revision": 1,
   "normalized_exporter_sha256": "ac2b263a2491f2cf991065e749926b5549ddc81e73c814fb9958e424b6d23bc6",
   "normalized_reexport_script_sha256": "c1176dfe4526f36b767e3427383e70c3e174b2d62b36ac1a9562f5d8d7ffb99b",
   "exported_coordinate_units": "centimeters: temporary geometry, rest translation and animation location values multiplied by100; authoring source remains meters",
-  "geometry_source_revision": 4,
-  "animation_revision": 6,
+  "geometry_source_revision": 7,
+  "animation_revision": 7,
   "animation_refinement_script_sha256": "883991d592dfb18f4fd3e85b04583782ea411a21426c8921c13966d8bcd16f40",
   "animation_pose_script_sha256": "e43d6c05800e8b6dccbcd697d7cc9664b61d73f7012cac75ef98183e709d47b9",
   "animation_author_script_sha256": "ddaed7bb350bafb94c1743bc31c4b613524f971af01a5611835402590d8ae6f0",
   "animation_contact_script_sha256": "c36f8064fa5ab7ff136c399c68c7b012b5987234734aca0580bede3483017c1a",
   "animation_normalizer_sha256": "13646d355744f5293d573816e5cd54459cf88f3b647c6c2a22aa61ae29200779",
-  "animation_evidence": "reports\\WC-330\\animation-refinement\\wc_u_orc_rogue"
+  "animation_evidence": "reports\\WC-330\\animation-refinement\\wc_u_orc_rogue",
+  "update_refinement_script_sha256": "ebf2a136bf2f62a9442f7c1de1679f2306afa457e183d63471e2ff325f7aa55b",
+  "update_export_script_sha256": "4d9ec9f5747367743efd1f44f653f2e95f7ebdeb061aa1a62351dc774ecd82bf",
+  "update_refinement_evidence": "reports/WC-U440/20260906T141653Z-orcs/kesh-contact03/workbench-review",
+  "geometry_review_evidence": "reports/WC-U440/20260906T141653Z-orcs/kesh-contact03/workbench-review",
+  "animation_update_changes": [
+    {
+      "clip": "Move",
+      "kind": "Measured pelvis support correction",
+      "frames_baked": 61,
+      "maximum_lift_m": 0.006230668768286705,
+      "previous_minimum_mesh_z_m": -0.004230668768286705
+    }
+  ],
+  "animation_update_script_sha256": "20c5af5ba4ff786d0ee5ae0f1f46f46c096c7bae4a14d5d9ef1c873826087281"
 }

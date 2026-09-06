@@ -1,17 +1,17 @@
 {
-  "status": "authored_exported_rendered_pending_engine_and_visual_acceptance",
+  "status": "update24_refined_rendered_exported_pending_Unreal_reimport_and_visual_acceptance",
   "unit_id": "wc_u_elf_priest",
   "name": "Elin Moonsong",
   "blender_version": "5.1.1",
-  "source_revision": 6,
+  "source_revision": 7,
   "height_m": 1.85,
-  "source_sha256": "40d4bceb9aec0cdf3122f5d88ab089e856b3fac63416a4c2f2b5d3e4af96c241",
+  "source_sha256": "e22559354256c1061b6ae48d3e4dcdd8fc926ec5398e3808ba77e80ad158b4ef",
   "author_script_sha256": "f2fcf648f49acc28b85dcec4eb755f8d8122bc97f7dfef52e54ffc35bc973175",
-  "units_source_sha256": "1a93bfb07bd93ace4d5eb740864e26c69765a5ebb9b87885c1d3d40c772cd9e8",
+  "units_source_sha256": "fd6d831113261dd984f3d2430236c06eda4a9f4e7f9e30a404a76f418fa953b0",
   "rig_family": "humanoid_slender",
   "rig_revision": "WC_family_v1",
   "bones": 27,
-  "triangles": 4582,
+  "triangles": 5034,
   "materials": 1,
   "fps": 60,
   "source_forward": "+Y",
@@ -59,7 +59,7 @@
         43
       ],
       "release_frame": 19,
-      "support_hand_bake_samples": 15,
+      "support_hand_bake_samples": 43,
       "maximum_support_reach_clamp_m": 0
     },
     "Active": {
@@ -69,7 +69,7 @@
         40
       ],
       "release_frame": 22,
-      "support_hand_bake_samples": 14,
+      "support_hand_bake_samples": 40,
       "maximum_support_reach_clamp_m": 0
     },
     "Hit": {
@@ -106,15 +106,15 @@
   "lods": [
     {
       "lod": 1,
-      "triangles": 2291,
+      "triangles": 2517,
       "ratio_target": 0.5,
-      "visual_acceptance": "pending"
+      "visual_acceptance": "pending current Unreal review"
     },
     {
       "lod": 2,
-      "triangles": 1144,
+      "triangles": 1258,
       "ratio_target": 0.25,
-      "visual_acceptance": "pending"
+      "visual_acceptance": "pending current Unreal review"
     }
   ],
   "source_brief": {
@@ -132,35 +132,39 @@
     "risk": "String geometry and hands can shimmer or intersect. Simplify the finger action and let the chord\u2019s full-body gesture carry readability."
   },
   "files": {
-    "AN_wc_u_elf_priest_Active.fbx": "de49effe63ec9cbff260d00c09e9f3c2c37332c3befbb6f4cf86cce2aa5d3b6c",
-    "AN_wc_u_elf_priest_Attack.fbx": "3f66f86a191a976bd38674e4b9107db36618bdc9ec00178902220f375ac302e4",
-    "AN_wc_u_elf_priest_Defeat.fbx": "4c387e2cdf36a07c98f60c8754aeed72966196137e6729684e0e283486403295",
-    "AN_wc_u_elf_priest_Hit.fbx": "43db0f9e957f42ebc9f59e4820067a3cb951647e6b3a6af80f309f8888ddd171",
-    "AN_wc_u_elf_priest_Idle.fbx": "c2a22764a375a8f05428b968b3ac9bc3d52700b999b24c5c9a9b1ec4d9578f6a",
-    "AN_wc_u_elf_priest_Move.fbx": "36431c6266661295a516d93f7caddf93d95fc64784ee56b02c3818ead92e7306",
-    "AN_wc_u_elf_priest_Victory.fbx": "508d0ab7254e96ebb5bbb17f5137bf83a1fc463732ce5d446726e71d6458fb87",
-    "portrait.png": "57049a9cceb2a70e7ecc16f47ae38572668fb0621776d2982e0e5507b510db3b",
-    "SK_wc_u_elf_priest.fbx": "4705f46c09ccb7054baf758dc798558722dc1d4402933667f4869157555d0afa",
-    "SK_wc_u_elf_priest_LOD1.fbx": "9469d7f7c972e89ee5fce583a569c6d3e0e4b0c1e820808c4fad51bd63b4f400",
-    "SK_wc_u_elf_priest_LOD2.fbx": "1a6f1214b3da4d8ccf0836661bf18ab54ab61ebf5d974d56967ff071b01b2c1e",
+    "AN_wc_u_elf_priest_Active.fbx": "bbca0e76f3478cd99099d2c800bc96e934bb44bf764e62aac093f262f731aaca",
+    "AN_wc_u_elf_priest_Attack.fbx": "869e3fdc33e4e97283e57b546ceeb0f6bb8f6ae7f46a2360fe415b7629a3a79c",
+    "AN_wc_u_elf_priest_Defeat.fbx": "05e255cb14a9c193e5066bbbb88bb4c23964d5c8925698dfde7c8ac6c9926dfe",
+    "AN_wc_u_elf_priest_Hit.fbx": "abeafecc1773d2acec5133a1946f213809a7da735c6174bd170f74c87648733f",
+    "AN_wc_u_elf_priest_Idle.fbx": "d1aaeae29ac6773289f74178e994d556ce887ddff23a1fc1fec65bd9a3cde243",
+    "AN_wc_u_elf_priest_Move.fbx": "62eab07cf7e705d77f7717630fb4ed6c8963454514b1d7c4a9fe3f71286d0ebd",
+    "AN_wc_u_elf_priest_Victory.fbx": "57e3a0a16805ee2441e8bf7305984917236ddbe683aad4e5600db45e183c55cb",
+    "portrait.png": "cd6e8f1c6069b8588223c25fe344d0e1d4a3f4bf3090a9b1f58c23ec2e440f77",
+    "SK_wc_u_elf_priest.fbx": "de4bc8deccf4304ff8451420e3fe6fdf020b225a3212543a66967529ed58b63c",
+    "SK_wc_u_elf_priest_LOD1.fbx": "52bbb71ac792a9f7b353286167b35707d14aa9212c5715eebaea3e793c20edaa",
+    "SK_wc_u_elf_priest_LOD2.fbx": "7e9a1c75574ab04fdf95b608ddb41a71e3884e13b7c4084dae8129e6dcf250a7",
     "T_wc_u_elf_priest_BaseColor.png": "501b780dbf0ce7327ed88fa87fc16a1ae23fcbddc4229475d58673c2728b9151",
     "T_wc_u_elf_priest_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
     "T_wc_u_elf_priest_ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c"
   },
   "open_reviews": [
-    "Unreal scale and facing",
-    "all continuous animation deformation",
-    "source revision reimport",
-    "crowded-board readability",
-    "LOD1/LOD2",
-    "effects and sound integration"
+    "Current Unreal source revision/reimport",
+    "Continuous in-engine seven-clip review",
+    "Crowded-board shield occlusion",
+    "LOD silhouette review",
+    "Skill release/audio alignment",
+    "Final facial and costume art acceptance"
   ],
-  "geometry_source_revision": 5,
-  "animation_revision": 6,
+  "geometry_source_revision": 7,
+  "animation_revision": 7,
   "animation_refinement_script_sha256": "883991d592dfb18f4fd3e85b04583782ea411a21426c8921c13966d8bcd16f40",
   "animation_pose_script_sha256": "e43d6c05800e8b6dccbcd697d7cc9664b61d73f7012cac75ef98183e709d47b9",
   "animation_author_script_sha256": "ddaed7bb350bafb94c1743bc31c4b613524f971af01a5611835402590d8ae6f0",
   "animation_contact_script_sha256": "c36f8064fa5ab7ff136c399c68c7b012b5987234734aca0580bede3483017c1a",
   "animation_normalizer_sha256": "13646d355744f5293d573816e5cd54459cf88f3b647c6c2a22aa61ae29200779",
-  "animation_evidence": "reports\\WC-330\\animation-refinement\\wc_u_elf_priest"
+  "animation_evidence": "reports\\WC-330\\animation-refinement\\wc_u_elf_priest",
+  "update_refinement_script_sha256": "7dd0586a9587409c67e55387a0df93d26f3231427a501be7f9cc65b111d18ec3",
+  "update_export_script_sha256": "4d9ec9f5747367743efd1f44f653f2e95f7ebdeb061aa1a62351dc774ecd82bf",
+  "update_refinement_evidence": "reports/WC-U440/20260906T133433Z/wc_u_elf_priest/refinement-v6",
+  "animation_update_evidence": "reports/WC-U440/20260906T133433Z/wc_u_elf_priest/refinement-v6"
 }

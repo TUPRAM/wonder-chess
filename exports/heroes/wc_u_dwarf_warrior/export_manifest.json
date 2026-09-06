@@ -1,23 +1,23 @@
 {
-  "status": "authored_rendered_normalized_exported_pending_current_engine_and_visual_acceptance",
+  "status": "update24_refined_rendered_exported_pending_Unreal_reimport_and_visual_acceptance",
   "unit_id": "wc_u_dwarf_warrior",
   "name": "Dagna Anvilheart",
   "blender_version": "5.1.1",
-  "source_revision": 6,
+  "source_revision": 7,
   "height_m": 1.42,
-  "source_sha256": "00864608c68fe67c7dd07eb8e1134812831d5940bb1d85ef4a3cf13cd63a8c8a",
+  "source_sha256": "7e3ccf5bb7eddbd15e321188599f40db8bcb823c6b4217d04053577dff754067",
   "author_script_sha256": "474d9d165ca7a0c2134197c379978f59d2af9baf475bbcd0970fd97febd0a4da",
-  "units_source_sha256": "1a93bfb07bd93ace4d5eb740864e26c69765a5ebb9b87885c1d3d40c772cd9e8",
+  "units_source_sha256": "fd6d831113261dd984f3d2430236c06eda4a9f4e7f9e30a404a76f418fa953b0",
   "rig_family": "humanoid_stocky",
   "rig_revision": "WC_family_v1",
   "bones": 27,
-  "triangles": 3696,
+  "triangles": 4176,
   "materials": 1,
   "fps": 60,
   "source_forward": "+Y",
   "source_up": "+Z",
   "unit_scale_m": 1,
-  "fbx_profile": "tools\\blender\\profiles\\fbx_skeletal_cm_v1.json",
+  "fbx_profile": "tools/blender/profiles/fbx_skeletal_cm_v1.json",
   "engine_calibration": [
     "reports/WC-330/import-probe/normalized_cm-results.json",
     "reports/WC-330/import-probe/forward_cm-results.json",
@@ -57,8 +57,8 @@
         46
       ],
       "release_frame": 22,
-      "support_hand_bake_samples": 16,
-      "maximum_support_reach_clamp_m": 0.010370028020803557
+      "support_hand_bake_samples": 46,
+      "maximum_support_reach_clamp_m": 0.012135449989906677
     },
     "Active": {
       "action": "AN_wc_u_dwarf_warrior_Active",
@@ -67,8 +67,8 @@
         43
       ],
       "release_frame": 25,
-      "support_hand_bake_samples": 15,
-      "maximum_support_reach_clamp_m": 0.010370028020803557
+      "support_hand_bake_samples": 43,
+      "maximum_support_reach_clamp_m": 0.019484123152522903
     },
     "Hit": {
       "action": "AN_wc_u_dwarf_warrior_Hit",
@@ -104,15 +104,15 @@
   "lods": [
     {
       "lod": 1,
-      "triangles": 1847,
+      "triangles": 2088,
       "ratio_target": 0.5,
-      "visual_acceptance": "pending"
+      "visual_acceptance": "pending current Unreal review"
     },
     {
       "lod": 2,
-      "triangles": 924,
+      "triangles": 1043,
       "ratio_target": 0.25,
-      "visual_acceptance": "pending"
+      "visual_acceptance": "pending current Unreal review"
     }
   ],
   "source_brief": {
@@ -130,39 +130,43 @@
     "risk": "The sweep must not imply a larger hit radius than the data. Avoid excessive root rotation that changes gameplay facing or shifts the feet."
   },
   "files": {
-    "AN_wc_u_dwarf_warrior_Active.fbx": "96b93e4696576e232f930562fdf99b719c94f06d5b2103f33f45906c6875aefe",
-    "AN_wc_u_dwarf_warrior_Attack.fbx": "339b0f66aa0b0639c07df2071654f1305e2301e42444c2918c46bd16829b3199",
-    "AN_wc_u_dwarf_warrior_Defeat.fbx": "0fa165e30cbee9a231041c22bdf7985606953a2e6946652502fa12ab77c29c82",
-    "AN_wc_u_dwarf_warrior_Hit.fbx": "97daac58d639f0cd5646132c8c14f2c4e757dfea2c2246164a6f72e5e3ef0b4f",
-    "AN_wc_u_dwarf_warrior_Idle.fbx": "12e37b2eb28f663b398e1c3b80270aa2b876d9855454eda71934ecb3395af4a7",
-    "AN_wc_u_dwarf_warrior_Move.fbx": "1f468ec57effb1057ff51d8859e015c60068c7bdfae2cc643b38aa8770d9bddc",
-    "AN_wc_u_dwarf_warrior_Victory.fbx": "7cd20456859327860dda8a2322eeca8a7795a9f024f9f0d7778af1fb910cd90b",
-    "portrait.png": "4d315c05ad82a33c669793d17e35be72719765b67e108b18fb1011779243ea63",
-    "SK_wc_u_dwarf_warrior.fbx": "2b86aee98e7a02cd483100625019bd88b10402df25c62303fbeab8ef56b35e75",
-    "SK_wc_u_dwarf_warrior_LOD1.fbx": "b472d068d6f14745d233297649434a191dd792972f60e9986a662d7c3185baec",
-    "SK_wc_u_dwarf_warrior_LOD2.fbx": "4c386f2bbadc0ef0e2ca5cfa5dab9caa8ed10893248e58d0a97f3d3b6e48836f",
+    "AN_wc_u_dwarf_warrior_Active.fbx": "50abd52a263e3ae9b0f737bd1b0c1a250b9b0d9e8dce54e27c378f01eb5fbb83",
+    "AN_wc_u_dwarf_warrior_Attack.fbx": "6487eba0421c17bb077b14ced23c444cbce5ea08a28454e26defa455ba5d6403",
+    "AN_wc_u_dwarf_warrior_Defeat.fbx": "aa4deefc3dab1254d4133bd396b238d68f459cf832be6a6bc3648015efa2c2de",
+    "AN_wc_u_dwarf_warrior_Hit.fbx": "a43b4b50a6ea17b60dd51d9dbd1748394c27aec06013dff759f08c5433907d89",
+    "AN_wc_u_dwarf_warrior_Idle.fbx": "e6bc06395c3e08d5ea32b6e73b3f98946c8913f7429b138018ddc38655eeacd6",
+    "AN_wc_u_dwarf_warrior_Move.fbx": "7d23e06d4c89b11ca9324e216faad396d3410bd4cb32ba1da8d504dfdc5ba66d",
+    "AN_wc_u_dwarf_warrior_Victory.fbx": "718706bf23188c64b6e23722e42bf1618e581b9b1d334185ac37944354c96e98",
+    "portrait.png": "bc4c5cdbf16b2b3a019ca197c36466f6320e5240c87336eebce0bcdbbe930ae0",
+    "SK_wc_u_dwarf_warrior.fbx": "8a4542b30ec9c6ec6b50058e4a16971e21889021477604f249f830377a56dd64",
+    "SK_wc_u_dwarf_warrior_LOD1.fbx": "961ffa2c8bec24e0451ad937819a61593622f6f6a64595ce87e9dfcaee07b4be",
+    "SK_wc_u_dwarf_warrior_LOD2.fbx": "150bf1a316701249f92bbfb0fba579f2aed0a1bda73a47cf07db32e0a138e0a5",
     "T_wc_u_dwarf_warrior_BaseColor.png": "1b1f9100d0d2e83348a72256fad5fc24e05e2626b1481fea65d8add3b31c40fd",
     "T_wc_u_dwarf_warrior_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
     "T_wc_u_dwarf_warrior_ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c"
   },
   "open_reviews": [
-    "Unreal scale and facing",
-    "all continuous animation deformation",
-    "source revision reimport",
-    "crowded-board readability",
-    "LOD1/LOD2",
-    "effects and sound integration"
+    "Current Unreal source revision/reimport",
+    "Continuous in-engine seven-clip review",
+    "Crowded-board shield occlusion",
+    "LOD silhouette review",
+    "Skill release/audio alignment",
+    "Final facial and costume art acceptance"
   ],
   "normalized_export_revision": 1,
   "normalized_exporter_sha256": "ac2b263a2491f2cf991065e749926b5549ddc81e73c814fb9958e424b6d23bc6",
   "normalized_reexport_script_sha256": "c1176dfe4526f36b767e3427383e70c3e174b2d62b36ac1a9562f5d8d7ffb99b",
   "exported_coordinate_units": "centimeters: temporary geometry, rest translation and animation location values multiplied by100; authoring source remains meters",
-  "geometry_source_revision": 4,
-  "animation_revision": 6,
+  "geometry_source_revision": 7,
+  "animation_revision": 7,
   "animation_refinement_script_sha256": "883991d592dfb18f4fd3e85b04583782ea411a21426c8921c13966d8bcd16f40",
   "animation_pose_script_sha256": "e43d6c05800e8b6dccbcd697d7cc9664b61d73f7012cac75ef98183e709d47b9",
   "animation_author_script_sha256": "ddaed7bb350bafb94c1743bc31c4b613524f971af01a5611835402590d8ae6f0",
   "animation_contact_script_sha256": "c36f8064fa5ab7ff136c399c68c7b012b5987234734aca0580bede3483017c1a",
   "animation_normalizer_sha256": "13646d355744f5293d573816e5cd54459cf88f3b647c6c2a22aa61ae29200779",
-  "animation_evidence": "reports\\WC-330\\animation-refinement\\wc_u_dwarf_warrior"
+  "animation_evidence": "reports\\WC-330\\animation-refinement\\wc_u_dwarf_warrior",
+  "update_refinement_script_sha256": "34ceb31fe2678c447205cc740f906a47d0e74941105cac74431fefb1aa159064",
+  "update_export_script_sha256": "4d9ec9f5747367743efd1f44f653f2e95f7ebdeb061aa1a62351dc774ecd82bf",
+  "update_refinement_evidence": "reports/WC-U440/20260906T141605Z/dwarves/wc_u_dwarf_warrior",
+  "animation_update_evidence": "reports/WC-U440/20260906T141605Z/dwarves/wc_u_dwarf_warrior"
 }

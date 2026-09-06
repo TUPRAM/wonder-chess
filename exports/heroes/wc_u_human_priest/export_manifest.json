@@ -1,23 +1,23 @@
 {
-  "status": "authored_rendered_normalized_exported_pending_current_engine_and_visual_acceptance",
+  "status": "update24_refined_rendered_exported_pending_Unreal_reimport_and_visual_acceptance",
   "unit_id": "wc_u_human_priest",
   "name": "Mira Dawnwell",
   "blender_version": "5.1.1",
-  "source_revision": 6,
+  "source_revision": 7,
   "height_m": 1.7,
-  "source_sha256": "9d1e892baa97851c0da287be5d14c7d428d70c6dc76f3f841d3204133fc77d77",
+  "source_sha256": "37f7fe2548f0ddf11ae9d12d478cefbf433cdff31e2b1ffd995d201bafe92581",
   "author_script_sha256": "474d9d165ca7a0c2134197c379978f59d2af9baf475bbcd0970fd97febd0a4da",
-  "units_source_sha256": "1a93bfb07bd93ace4d5eb740864e26c69765a5ebb9b87885c1d3d40c772cd9e8",
+  "units_source_sha256": "ebd8f5f2fc2b889683566d1913e2c29d90ac9d041d47a231038c497e7a29865f",
   "rig_family": "humanoid_standard",
   "rig_revision": "WC_family_v1",
   "bones": 27,
-  "triangles": 3714,
+  "triangles": 4212,
   "materials": 1,
   "fps": 60,
   "source_forward": "+Y",
   "source_up": "+Z",
   "unit_scale_m": 1,
-  "fbx_profile": "tools\\blender\\profiles\\fbx_skeletal_cm_v1.json",
+  "fbx_profile": "tools/blender/profiles/fbx_skeletal_cm_v1.json",
   "engine_calibration": [
     "reports/WC-330/import-probe/normalized_cm-results.json",
     "reports/WC-330/import-probe/forward_cm-results.json",
@@ -67,7 +67,7 @@
         40
       ],
       "release_frame": 22,
-      "support_hand_bake_samples": 14,
+      "support_hand_bake_samples": 40,
       "maximum_support_reach_clamp_m": 0
     },
     "Hit": {
@@ -77,8 +77,8 @@
         25
       ],
       "release_frame": null,
-      "support_hand_bake_samples": 9,
-      "maximum_support_reach_clamp_m": 0
+      "support_hand_bake_samples": 25,
+      "maximum_support_reach_clamp_m": 0.005434517232271063
     },
     "Defeat": {
       "action": "AN_wc_u_human_priest_Defeat",
@@ -97,22 +97,22 @@
         91
       ],
       "release_frame": null,
-      "support_hand_bake_samples": 31,
+      "support_hand_bake_samples": 91,
       "maximum_support_reach_clamp_m": 0
     }
   },
   "lods": [
     {
       "lod": 1,
-      "triangles": 1857,
+      "triangles": 2105,
       "ratio_target": 0.5,
-      "visual_acceptance": "pending"
+      "visual_acceptance": "pending current Unreal review"
     },
     {
       "lod": 2,
-      "triangles": 928,
+      "triangles": 1052,
       "ratio_target": 0.25,
-      "visual_acceptance": "pending"
+      "visual_acceptance": "pending current Unreal review"
     }
   ],
   "source_brief": {
@@ -130,39 +130,43 @@
     "risk": "The circular staff opening must remain readable at distance; overly thin geometry will vanish. Mend must remain distinct from a shield bubble."
   },
   "files": {
-    "AN_wc_u_human_priest_Active.fbx": "3b5929486bdab25046eb76fa6f4db58278c787247706743d34586ee79d9a121a",
-    "AN_wc_u_human_priest_Attack.fbx": "1d45adb629fbf8f760b8000dfed21c8057db0ffaa068cba90218fa1a9cceb371",
-    "AN_wc_u_human_priest_Defeat.fbx": "49725aec868517dfb6103c1eeea6bb26c0a00f482d29e1624bfcba232da163de",
-    "AN_wc_u_human_priest_Hit.fbx": "dc968ba35272e5825f38ebd7ca6d09cd8b70a8cc120240b7a3456bf2101d9d8d",
-    "AN_wc_u_human_priest_Idle.fbx": "c2f2f2a4ca5f76e8b212ad44b0aaa149d3947da72f49c0304d283f2e3cd1a37b",
-    "AN_wc_u_human_priest_Move.fbx": "1a9bb8efbcaa894470c05b111a56218371d6ad69ba721fff1ba353d75d25930c",
-    "AN_wc_u_human_priest_Victory.fbx": "a6e8fcc34fb6455806e37f4c72acc7909b689dc9bbc2d6b3c248ade61438ed22",
-    "portrait.png": "e4aeb9c43b50c42711099c68b4ce251b02eeb1532422e383ce973b995c3d20f6",
-    "SK_wc_u_human_priest.fbx": "251ca0cc911d08eceefe72217bffa68b1ef0b2b84f90bebaf1b1cf45ec30a146",
-    "SK_wc_u_human_priest_LOD1.fbx": "8e3e2e769cb185860fb9339e3f66950aa10e24399c10aeff88596092607dd44e",
-    "SK_wc_u_human_priest_LOD2.fbx": "c373f8f9da46e5d3eb9f304a24dc07f9161bf3a2ca43d27ed9780db739d34dd8",
+    "AN_wc_u_human_priest_Active.fbx": "92c5410626d5f788e622ddd9fb9bc1e76814be307926a4bdf4adf0908eb32f4c",
+    "AN_wc_u_human_priest_Attack.fbx": "277e020556d0c1353f22b3e01ed22a20c339bd2eb4681196f731ea5a4e81a9fa",
+    "AN_wc_u_human_priest_Defeat.fbx": "9401412a85dd83bfdf9e2359152db5a59c57b2f253c151c99c77a41506fa8700",
+    "AN_wc_u_human_priest_Hit.fbx": "1c7179651747da1eb4f1ae419a9198ca2e25d2fd9dc4cceb74a821504cae32dd",
+    "AN_wc_u_human_priest_Idle.fbx": "11d7b84fa16e28fed4cc1a520349aad599b5d6861b927aada3126abeb15febe5",
+    "AN_wc_u_human_priest_Move.fbx": "7c6358c47c2eba79367b71d5a132a81e516e0fd12fa5eec8b010237ccb9bcab8",
+    "AN_wc_u_human_priest_Victory.fbx": "988ba3250331951b09fcacad1e08ddc2e4ebcfd438ec8181c227fb91bde5cca3",
+    "portrait.png": "6fea6e701fd1098414f0a11b85efdf567542f7aea41f3627e8b4c519b0758768",
+    "SK_wc_u_human_priest.fbx": "dad59e01e61fadcf8c5c41d803ebba67b0dc5036e045b1b4125c89dd77d9985e",
+    "SK_wc_u_human_priest_LOD1.fbx": "18930e2eb373f902e4615dd26269e3ea0df15f822938e7287396c420d40b1fa4",
+    "SK_wc_u_human_priest_LOD2.fbx": "8ab5b5d83b60f66edc62157c178ce891975987db1f99aa5e85dafb0af78f2c11",
     "T_wc_u_human_priest_BaseColor.png": "2ba21c5b52d6b920ad57a8eabbe03ccb601b097a81bc997892b908fbd77ac221",
     "T_wc_u_human_priest_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
     "T_wc_u_human_priest_ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c"
   },
   "open_reviews": [
-    "Unreal scale and facing",
-    "all continuous animation deformation",
-    "source revision reimport",
-    "crowded-board readability",
-    "LOD1/LOD2",
-    "effects and sound integration"
+    "Current Unreal source revision/reimport",
+    "Continuous in-engine seven-clip review",
+    "Crowded-board shield occlusion",
+    "LOD silhouette review",
+    "Skill release/audio alignment",
+    "Final facial and costume art acceptance"
   ],
   "normalized_export_revision": 1,
   "normalized_exporter_sha256": "ac2b263a2491f2cf991065e749926b5549ddc81e73c814fb9958e424b6d23bc6",
   "normalized_reexport_script_sha256": "c1176dfe4526f36b767e3427383e70c3e174b2d62b36ac1a9562f5d8d7ffb99b",
   "exported_coordinate_units": "centimeters: temporary geometry, rest translation and animation location values multiplied by100; authoring source remains meters",
-  "geometry_source_revision": 4,
-  "animation_revision": 6,
+  "geometry_source_revision": 7,
+  "animation_revision": 7,
   "animation_refinement_script_sha256": "883991d592dfb18f4fd3e85b04583782ea411a21426c8921c13966d8bcd16f40",
   "animation_pose_script_sha256": "e43d6c05800e8b6dccbcd697d7cc9664b61d73f7012cac75ef98183e709d47b9",
   "animation_author_script_sha256": "ddaed7bb350bafb94c1743bc31c4b613524f971af01a5611835402590d8ae6f0",
   "animation_contact_script_sha256": "c36f8064fa5ab7ff136c399c68c7b012b5987234734aca0580bede3483017c1a",
   "animation_normalizer_sha256": "13646d355744f5293d573816e5cd54459cf88f3b647c6c2a22aa61ae29200779",
-  "animation_evidence": "reports\\WC-330\\animation-refinement\\wc_u_human_priest"
+  "animation_evidence": "reports\\WC-330\\animation-refinement\\wc_u_human_priest",
+  "update_refinement_script_sha256": "197382e89b39d4f9aa762d399e2686ccbd245278b622ce48f751d3f9e6d266f1",
+  "update_export_script_sha256": "101e740bba49f977eaaf88cc1e88f7bb0bbe35c29aa7a23ad11b7b881a9fe0f4",
+  "update_refinement_evidence": "reports/WC-U440/20260906T133433Z/mira/refinement-v7",
+  "animation_update_evidence": "reports/WC-U440/20260906T133433Z/mira/refinement-v7"
 }

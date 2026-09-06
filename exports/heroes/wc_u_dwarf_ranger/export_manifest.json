@@ -1,17 +1,17 @@
 {
-  "status": "authored_exported_rendered_pending_engine_and_visual_acceptance",
+  "status": "update24_refined_rendered_exported_pending_Unreal_reimport_and_visual_acceptance",
   "unit_id": "wc_u_dwarf_ranger",
   "name": "Tessa Brassbolt",
   "blender_version": "5.1.1",
-  "source_revision": 6,
+  "source_revision": 7,
   "height_m": 1.32,
-  "source_sha256": "5b707b064f5b97ed20f63472de1194c24074bd6247c360ca776d410a0744298c",
+  "source_sha256": "52b60c6e6a753e5d29fdf466b41f99b986323b400366fb46abc6308ce121ecf1",
   "author_script_sha256": "f2fcf648f49acc28b85dcec4eb755f8d8122bc97f7dfef52e54ffc35bc973175",
-  "units_source_sha256": "1a93bfb07bd93ace4d5eb740864e26c69765a5ebb9b87885c1d3d40c772cd9e8",
+  "units_source_sha256": "fd6d831113261dd984f3d2430236c06eda4a9f4e7f9e30a404a76f418fa953b0",
   "rig_family": "humanoid_stocky",
   "rig_revision": "WC_family_v1",
   "bones": 27,
-  "triangles": 4020,
+  "triangles": 4748,
   "materials": 1,
   "fps": 60,
   "source_forward": "+Y",
@@ -59,7 +59,7 @@
         43
       ],
       "release_frame": 19,
-      "support_hand_bake_samples": 15,
+      "support_hand_bake_samples": 43,
       "maximum_support_reach_clamp_m": 0
     },
     "Active": {
@@ -69,8 +69,8 @@
         40
       ],
       "release_frame": 22,
-      "support_hand_bake_samples": 14,
-      "maximum_support_reach_clamp_m": 0.00337336341110267
+      "support_hand_bake_samples": 40,
+      "maximum_support_reach_clamp_m": 0
     },
     "Hit": {
       "action": "AN_wc_u_dwarf_ranger_Hit",
@@ -106,15 +106,15 @@
   "lods": [
     {
       "lod": 1,
-      "triangles": 2009,
+      "triangles": 2373,
       "ratio_target": 0.5,
-      "visual_acceptance": "pending"
+      "visual_acceptance": "pending current Unreal review"
     },
     {
       "lod": 2,
-      "triangles": 1005,
+      "triangles": 1187,
       "ratio_target": 0.25,
-      "visual_acceptance": "pending"
+      "visual_acceptance": "pending current Unreal review"
     }
   ],
   "source_brief": {
@@ -132,35 +132,39 @@
     "risk": "The wide prop can overlap neighboring units. Use its lowered rest pose outside windup and a close-to-body turn pose."
   },
   "files": {
-    "AN_wc_u_dwarf_ranger_Active.fbx": "9ae78ebfde9247d0fc2b3edcc19d74771ed49e7636dae1bb3abbfd9caec3d1a0",
-    "AN_wc_u_dwarf_ranger_Attack.fbx": "40eca64e85e928ad40885b08a55ae6a95d3bdd1949568b61d2c9d2fa3175ba22",
-    "AN_wc_u_dwarf_ranger_Defeat.fbx": "04d4ce127ab81c25b8ebba6ba16ccbf2cd73ce9d8b4443c38aa4e31938219c63",
-    "AN_wc_u_dwarf_ranger_Hit.fbx": "df2dab4bfd81ac213388f561b50f5e5d458a35f53fbb3d221608f7ae34e3fcf4",
-    "AN_wc_u_dwarf_ranger_Idle.fbx": "610fb3cebe67a76529dd8463ae3db9a2c3a6a74756b17421736b597a4e8fa80a",
-    "AN_wc_u_dwarf_ranger_Move.fbx": "97fdd0030217e4655006ba6aa3ef721db31d49db2c474e472a3d6dbcae2a9980",
-    "AN_wc_u_dwarf_ranger_Victory.fbx": "5fb2a5d65ce78edbb17757602d0e95b291ba2b37b21ee20c1be54c5af188477f",
-    "portrait.png": "4d76fe44382573ea9505dd6f36a0c0592d25ac3ea1df22dcbc4467d8e51aaadc",
-    "SK_wc_u_dwarf_ranger.fbx": "713770e483fcafd3138d9dd6f1a66bab6cb9f3a4666e02651e89044c4ebfa381",
-    "SK_wc_u_dwarf_ranger_LOD1.fbx": "586475c07425f5a8614bbeadb01a5bc6087735ac50d5e1238bc82a6c9b6a0640",
-    "SK_wc_u_dwarf_ranger_LOD2.fbx": "89ec8ad8d0cc2cf8327bcb4adeda9138b649531db7a1083d820854b0a5bc6dd3",
+    "AN_wc_u_dwarf_ranger_Active.fbx": "ddea257662200aa474bc6b1d30e45dc706a26868f602aa2861a583389669d19f",
+    "AN_wc_u_dwarf_ranger_Attack.fbx": "11f9c4208931f8f7b65a744901852ea5df056d322b69adb96170099fc5d3fd05",
+    "AN_wc_u_dwarf_ranger_Defeat.fbx": "be3068567d71017087d6cea68bbe69ce12e7ee9de45ff7a6b7a7818548a10dd4",
+    "AN_wc_u_dwarf_ranger_Hit.fbx": "5547639039c391c33f1bcf454725f9d2269c5c127019ecfb2a4035bdd2e64187",
+    "AN_wc_u_dwarf_ranger_Idle.fbx": "33494f10f3826d84b98b020c8c24d2b62924dadb105843e08a2361d76d708dea",
+    "AN_wc_u_dwarf_ranger_Move.fbx": "760ed663268e5c22c415a58013beba41e1a0d07465d4d1ff7ef388984f7fb402",
+    "AN_wc_u_dwarf_ranger_Victory.fbx": "535c282a0e19c4852a5c7d0f6c72c5043eac4f959603b2ec5266c1ce63bc8155",
+    "portrait.png": "8d88a90a8bbeb5c5b5b7e29d381b5b20ee01fee7d8d57ac9d6fba95c31fcd109",
+    "SK_wc_u_dwarf_ranger.fbx": "fe1c41ed1ffd8f954c227fc0e888dd767bdf5c4878c87c2359564dfe2eb719e0",
+    "SK_wc_u_dwarf_ranger_LOD1.fbx": "278680fdc3d4edf9c47063c1295965a2e50bed54a85e934fec7c89b48b5e2d5d",
+    "SK_wc_u_dwarf_ranger_LOD2.fbx": "a4ffb37c4695e6c74736f814481617b273b5ecabe5ae2c2189ac708e28575a13",
     "T_wc_u_dwarf_ranger_BaseColor.png": "3c0e220e25413f7ad641da7b96c4a38f0010239b1bf8b51c0a45b4f1b78fc5c2",
     "T_wc_u_dwarf_ranger_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
     "T_wc_u_dwarf_ranger_ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c"
   },
   "open_reviews": [
-    "Unreal scale and facing",
-    "all continuous animation deformation",
-    "source revision reimport",
-    "crowded-board readability",
-    "LOD1/LOD2",
-    "effects and sound integration"
+    "Current Unreal source revision/reimport",
+    "Continuous in-engine seven-clip review",
+    "Crowded-board shield occlusion",
+    "LOD silhouette review",
+    "Skill release/audio alignment",
+    "Final facial and costume art acceptance"
   ],
-  "geometry_source_revision": 5,
-  "animation_revision": 6,
+  "geometry_source_revision": 7,
+  "animation_revision": 7,
   "animation_refinement_script_sha256": "883991d592dfb18f4fd3e85b04583782ea411a21426c8921c13966d8bcd16f40",
   "animation_pose_script_sha256": "e43d6c05800e8b6dccbcd697d7cc9664b61d73f7012cac75ef98183e709d47b9",
   "animation_author_script_sha256": "ddaed7bb350bafb94c1743bc31c4b613524f971af01a5611835402590d8ae6f0",
   "animation_contact_script_sha256": "c36f8064fa5ab7ff136c399c68c7b012b5987234734aca0580bede3483017c1a",
   "animation_normalizer_sha256": "13646d355744f5293d573816e5cd54459cf88f3b647c6c2a22aa61ae29200779",
-  "animation_evidence": "reports\\WC-330\\animation-refinement\\wc_u_dwarf_ranger"
+  "animation_evidence": "reports\\WC-330\\animation-refinement\\wc_u_dwarf_ranger",
+  "update_refinement_script_sha256": "34ceb31fe2678c447205cc740f906a47d0e74941105cac74431fefb1aa159064",
+  "update_export_script_sha256": "4d9ec9f5747367743efd1f44f653f2e95f7ebdeb061aa1a62351dc774ecd82bf",
+  "update_refinement_evidence": "reports/WC-U440/20260906T141605Z/dwarves/wc_u_dwarf_ranger",
+  "animation_update_evidence": "reports/WC-U440/20260906T141605Z/dwarves/wc_u_dwarf_ranger"
 }
