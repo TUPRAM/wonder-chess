@@ -1,0 +1,27 @@
+# Initial implementation prompt
+
+Copy the text below into the next implementation task in this same Wonder Chess workspace.
+
+---
+
+Execute the Wonder Chess 24-hero update in the existing repository at `C:\Users\iputu\Documents\Wonder Chess`. Adopt `docs/updates/2026-09-auto-chess-inspired/MASTER_UPDATE.md` and its linked implementation package. This authorizes implementation of the prepared update end-to-end. Read AGENTS.md, START_HERE.md, the current release handoff and implementation state, then the update README, master, systems migration, hero briefs, monster waves, front-end/gallery specification and implementation sequence.
+
+Preserve genuine existing Wonder Chess source, imported art, animation, calibration and package evidence. Continue the current C++ Unreal project; do not create a replacement project or read/copy/modify VEILMARK. Treat Auto Chess captures and user screenshots as functional/visual reference, using original Aurelune characters, artwork, text, effects and audio. Do not build a website or browser game.
+
+The adopted scope is 24 fully playable authored heroes; short first names in the shop/HUD with full gallery identities; six races and six classes with the highest eligible 2/4 synergy tier; individually specified skill improvements; distinct faces, models, visual weapons/armor, materials, portraits, LODs, seven clips per hero and matching VFX/audio. Equipment is cosmetic: no item inventory, stat gear, item drops, talent/relic system or monetization. Preserve stable IDs and use canonical data and generated derivatives consistently.
+
+Implement a graphical 3D Brighthaven lobby and a gallery for all 24 heroes, with filters, grid/showcase views, real 3D model detail, star-dependent stats, skills, synergies, tactics and story. Implement truthful Solo bot preparation and actual LAN connection/readiness, followed by a bounded skippable transition before the initial preparation timer and then the real tournament. Do not simulate online matchmaking with fabricated humans.
+
+Monster rounds are 1, 2, 3 and every positive multiple of 5; all other valid rounds are PvP. Adopt the proposed 40-round cap and original wave definitions, real per-seat neutral combat, typed ownership, a separate PvP index/history, and once-only settlement/rewards. Keep 60 starting HP, the current level 3–6 progression, six deployment slots, economy and clocks as the initial tuning baseline. A neutral win rewards +2 gold at the next eligible preparation. Normal passive XP applies once, with no extra XP. Opening neutral losses/draws cause no captain damage; later losses/draws cause 2. All new numbers are tuning inputs; measure and version deliberate changes.
+
+Keep 1H7B, 0H8B and actual 2H6B on the same authoritative rules. Bots retain their state and use legal commands and public information only. Every off-screen fight, including eight concurrent neutral encounters, must run actual combat. Preserve private shops/benches/gold, deterministic ordering, idempotent transactions, elimination, spectating, capped outcomes and clean restart.
+
+First inspect real installed tool paths/versions and run supplied baseline validators into fresh logs. Follow WC-U400 through WC-U460 with explicit ownership. Adopt the affected v3 contract/schema changes coherently, then implement → compile/execute → inspect → fix. Package a minimal updated slice early; refine Ada and the lobby/gallery in Unreal, then complete all existing and new heroes in the specified batches. Reuse working rigs/import paths and prove source-to-Unreal reimport. Passing an intermediate checkpoint is not an instruction to stop while independent implementation remains possible.
+
+Use fresh task/run evidence destinations; inspect existing runner defaults before executing so old evidence is never overwritten. Do not let workers concurrently edit canonical data, shared maps/rigs/materials or the same binary. Use scoped commits. Do not purchase, publish/upload, install untrusted helpers, change broad security permissions or download unlicensed assets.
+
+Verify a full packaged 1H7B match, elimination/spectating and two restarts; at least 100 actual-combat 0H8B tournaments with all 24 heroes and required skill/trait/wave coverage; and 2H6B on two physical LAN machines, plus command/privacy/disconnect tests. Two processes on one PC are useful preliminary evidence, not a physical LAN pass. Review all 168 hero/clip combinations continuously, all gallery entries at 720p/1080p, real skill synchronization and audio. Measure CPU/GPU frame times, memory and hitches on named hardware for the lobby/gallery, crowded PvP and eight simultaneous neutral fights.
+
+If Blender, Unreal, compiler, native input or a second machine is unavailable, report the precise blocker, complete independent work and leave an exact resumable handoff. Do not claim unexecuted tooling, screenshots, tests, balance, completed heroes or playability. Do not seek repeated approval for this already specified scope.
+
+Final handoff: actual packaged executable path, launch instructions and hashes; source/data paths and versions; a completed-asset matrix and defects for all 24 heroes and seven neutral archetypes; lobby/gallery/transition evidence; 1H7B/2H6B and all-bot results; frame-time measurements on named hardware; passed/failed/not-run tests and the next concrete action for any open gate. A source dump or generated documents alone is not completion.

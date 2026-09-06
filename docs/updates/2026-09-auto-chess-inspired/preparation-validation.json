@@ -1,0 +1,419 @@
+{
+  "status": "PASS_PREPARATION_CHECKS_ONLY",
+  "verified_utc": "2026-09-06T12:38:50.823478+00:00",
+  "baseline_source_commit": "5a496a7e96162c1af15bddbbc1d83e988cc128a0",
+  "scope": "Prepared implementation specifications only; canonical data, runtime, generated content and production art unchanged.",
+  "tools_used": {
+    "python_version": "3.11.8",
+    "python_executable": "C:\\Users\\iputu\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+    "git_version": "git version 2.53.0.windows.2"
+  },
+  "baseline_validators": [
+    {
+      "command": "python tools/validate_kit.py",
+      "exit_code": 0,
+      "status": "PASS",
+      "count": 438,
+      "log": "validation/validate-kit.log",
+      "log_sha256": "ddcc8446c84ba1d44e77de7aa687e292fb62d1d4e22b8b594780d625ea0ec383",
+      "boundary": "Executed earlier in this preparation task against the unchanged existing v3 baseline; does not verify proposed game changes."
+    },
+    {
+      "command": "python -m unittest discover -s tests -v",
+      "exit_code": 0,
+      "status": "PASS",
+      "count": 63,
+      "log": "validation/reference-tests.log",
+      "log_sha256": "a3a6eb52624b16198f431fa770bd579bf15cadba078ecd42603569aa4f86e845",
+      "boundary": "Executed earlier in this preparation task against the unchanged existing v3 baseline; does not verify proposed game changes."
+    },
+    {
+      "command": "python tools/build_documents.py --check",
+      "exit_code": 0,
+      "status": "PASS",
+      "count": 27,
+      "log": "validation/documents-check.log",
+      "log_sha256": "ef9e72e4d4612381f86bed94c94ec502a5f2b27ee68d72ab3191b7a78c43f54a",
+      "boundary": "Executed earlier in this preparation task against the unchanged existing v3 baseline; does not verify proposed game changes."
+    },
+    {
+      "command": "python tools/compile_catalog.py --check",
+      "exit_code": 0,
+      "status": "PASS",
+      "count": 6,
+      "log": "validation/catalog-check.log",
+      "log_sha256": "5829a87dba4c6928fea135d328bce026d66fab616676a42b011c3a84556b773a",
+      "boundary": "Executed earlier in this preparation task against the unchanged existing v3 baseline; does not verify proposed game changes."
+    }
+  ],
+  "document_checks": {
+    "local_links_checked": 39,
+    "all_local_links_resolve": true,
+    "hero_briefs": 24,
+    "stable_ids_match_canonical": true,
+    "unique_proposed_short_names": 24,
+    "race_membership": {
+      "dragonkin": 4,
+      "dwarf": 4,
+      "elf": 4,
+      "halfling": 4,
+      "human": 4,
+      "orc": 4
+    },
+    "class_membership": {
+      "guardian": 4,
+      "mage": 4,
+      "priest": 4,
+      "ranger": 4,
+      "rogue": 4,
+      "warrior": 4
+    },
+    "neutral_archetypes": 7,
+    "neutral_rounds_through_40": [
+      1,
+      2,
+      3,
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40
+    ],
+    "pvp_rounds_through_40": 29,
+    "waves": [
+      {
+        "round": 1,
+        "name": "Garden stirrings",
+        "creatures": 2,
+        "cells": [
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            3
+          ]
+        ]
+      },
+      {
+        "round": 2,
+        "name": "Thorn watch",
+        "creatures": 2,
+        "cells": [
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            1
+          ]
+        ]
+      },
+      {
+        "round": 3,
+        "name": "Lantern sparks",
+        "creatures": 3,
+        "cells": [
+          [
+            2,
+            3
+          ],
+          [
+            5,
+            3
+          ],
+          [
+            3,
+            1
+          ]
+        ]
+      },
+      {
+        "round": 5,
+        "name": "Stone shell",
+        "creatures": 3,
+        "cells": [
+          [
+            3,
+            3
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            5,
+            1
+          ]
+        ]
+      },
+      {
+        "round": 10,
+        "name": "Prowler path",
+        "creatures": 4,
+        "cells": [
+          [
+            3,
+            3
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            6,
+            2
+          ],
+          [
+            3,
+            0
+          ]
+        ]
+      },
+      {
+        "round": 15,
+        "name": "Bell ward",
+        "creatures": 4,
+        "cells": [
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            6,
+            1
+          ]
+        ]
+      },
+      {
+        "round": 20,
+        "name": "Broken beacon",
+        "creatures": 3,
+        "cells": [
+          [
+            3,
+            1
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            5,
+            3
+          ]
+        ]
+      },
+      {
+        "round": 25,
+        "name": "Garden siege",
+        "creatures": 5,
+        "cells": [
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            6,
+            2
+          ],
+          [
+            2,
+            0
+          ]
+        ]
+      },
+      {
+        "round": 30,
+        "name": "Twin ward",
+        "creatures": 5,
+        "cells": [
+          [
+            2,
+            3
+          ],
+          [
+            5,
+            3
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            6,
+            1
+          ],
+          [
+            3,
+            0
+          ]
+        ]
+      },
+      {
+        "round": 35,
+        "name": "Beacon breach",
+        "creatures": 5,
+        "cells": [
+          [
+            3,
+            1
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            5,
+            3
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            6,
+            2
+          ]
+        ]
+      },
+      {
+        "round": 40,
+        "name": "Final ward",
+        "creatures": 6,
+        "cells": [
+          [
+            3,
+            0
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            5,
+            3
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            6,
+            2
+          ],
+          [
+            4,
+            1
+          ]
+        ]
+      }
+    ],
+    "wave_cells_unique_legal": true,
+    "playthrough_shots_covered_by_decisions": 93,
+    "existing_gallery_images_present": 93,
+    "prior_implementation_state_fields_preserved": true,
+    "tracked_runtime_canonical_and_art_files_unchanged": true
+  },
+  "reference_images": [
+    {
+      "id": "REF-001",
+      "file": "reference-images/REF-001-lobby-gallery-entry.png",
+      "sha256": "e8f67ecfeea686b74eed1365f3f9e0e284461aa9e54b9bdf10f8e9efb1ab300f",
+      "bytes": 2942862,
+      "width": 1907,
+      "height": 1046,
+      "original_identical": true,
+      "git_ignored": true
+    },
+    {
+      "id": "REF-002",
+      "file": "reference-images/REF-002-hero-gallery.png",
+      "sha256": "a4741f2a648a19c5b5340e6857739bfca9a71a0c5966203e5474e79a08b0cc67",
+      "bytes": 1135496,
+      "width": 1919,
+      "height": 1079,
+      "original_identical": true,
+      "git_ignored": true
+    },
+    {
+      "id": "REF-003",
+      "file": "reference-images/REF-003-hero-stats-ability.png",
+      "sha256": "cf7ef16fa78b5b9e93019baacc426d611b2c7f79915c32f9114df367feabb9cb",
+      "bytes": 711042,
+      "width": 1919,
+      "height": 1079,
+      "original_identical": true,
+      "git_ignored": true
+    },
+    {
+      "id": "REF-004",
+      "file": "reference-images/REF-004-hero-synergy.png",
+      "sha256": "d0c9a178da22dbe27c43a49083ab0a75c16238333a2ab3507ba337eba4b5894f",
+      "bytes": 661029,
+      "width": 1919,
+      "height": 1079,
+      "original_identical": true,
+      "git_ignored": true
+    }
+  ],
+  "canonical_sha256": {
+    "data/units.json": "1a93bfb07bd93ace4d5eb740864e26c69765a5ebb9b87885c1d3d40c772cd9e8",
+    "data/rules.alpha.json": "6c7eefa224c242f0aa9d105d91cb252bd89cbfc3775b87c1974eab30c57b30d8",
+    "data/traits.json": "ba71d85cd836e0005d9e7d812be2a1a8d8bbb96428eff69208b6c144767f7e07",
+    "data/world.json": "a73167d7fcd30bc6385da83ccdeb8d1562695b8b682d4bd34c36f2b5c51e3f8d",
+    "data/bots.json": "01206e18d2965f52f26a4606a77a9c080f97f80ad9c06b00ba9b2cbef42d4f95"
+  },
+  "document_sha256": {
+    "FRONTEND_AND_GALLERY.md": "053986225cad41879a4e57ccdc35b164815d52ac3bd4842b8d09dbee11c03e3e",
+    "HERO_UPGRADE_BRIEFS.md": "2f3ab0800359cc6852f38968d6e57004e498d8c9e370ac2e095d8b3e2392c8c9",
+    "IMPLEMENTATION_SEQUENCE.md": "dd3c45ff70f1cb0bae3c335218821b8f223fe813d4b8925648d85d08f4edebd9",
+    "INITIAL_IMPLEMENTATION_PROMPT.md": "cd511c4e0f6bef1aeb3e97d05f6c6b41bec020917337a9d8b263ca66e978003d",
+    "MASTER_UPDATE.md": "fd77310ba0e14935a6d52463b639ea2d83dd7326d060fb84ee528dcd3a665a73",
+    "MONSTER_WAVES.md": "e2264c899c4cec91adb06883b38439b05b0067a33dce4b4bbd80a830e7d4aafb",
+    "README.md": "800415bae97388d42ed640b26b8ccdb06c21a45d71e48f585cee132bbe10bd31",
+    "REFERENCE_DECISIONS.md": "d530dbbd4e8f2126196021be05524b9c6786dedaddfde27480ce866b3598fbb7",
+    "SYSTEMS_MIGRATION.md": "a12b7062b7a4c8359ccf92bb4fc8878133fde8c0ff7dd3d42dcbc72d82046ab1"
+  },
+  "reference_index_sha256": "a24e77b2bc521a224ad4eb7a4f2810c0bb0d677a4ce81d5d793ac1342a6cff95",
+  "independent_review": "Completed. Scope, source mappings, hero coverage, neutral ownership/waves, authority, evidence preservation and cross-document consistency reviewed; reported issues corrected.",
+  "not_run_for_this_update": [
+    "Unreal compilation and packaging",
+    "Blender asset creation/export",
+    "Unreal asset import",
+    "Packaged 1H7B match",
+    "Actual 2H6B physical LAN match",
+    "100 actual-combat 0H8B tournaments for the 24-hero update",
+    "Continuous 168 hero/clip review",
+    "New audio listening review",
+    "Hardware frame-time and memory profiling"
+  ],
+  "limitations": [
+    "All new mechanics, art and UI are unimplemented proposals.",
+    "Baseline Python validators are narrow specification/reference checks, not completed gameplay logic.",
+    "Monster statistics, 40-round cap and reward values are uncalibrated implementation inputs.",
+    "Existing candidate results remain historical evidence for their own source/data revision.",
+    "Four reference PNGs and prior gameplay images are local research files, excluded from Git and not licensed game assets."
+  ]
+}
