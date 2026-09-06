@@ -1,42 +1,75 @@
 {
   "kit_version": "3.0",
-  "scope": "specification_and_reference_helpers",
-  "actual_game_status": "NOT_IMPLEMENTED",
+  "scope": "native_windows_unreal_candidate_delivered_manual_and_continuous_acceptance_blocked",
+  "actual_game_status": "PACKAGED_FUNCTIONAL_AND_MEASURED_PASS_MANUAL_RESUME_BLOCKED_BY_NATIVE_TARGET_UNAVAILABLE",
   "tasks": {
     "WC-300": {
-      "status": "NOT_RUN",
-      "evidence": [],
-      "title": "Toolchain and first package"
+      "status": "PASS_MINIMAL_PACKAGE",
+      "title": "Toolchain and first package",
+      "evidence": [
+        "reports/WC-300/environment-native.json",
+        "reports/WC-300/build-and-package-no-hotreload.log",
+        "reports/WC-300/launch-evidence.md"
+      ]
     },
     "WC-310": {
-      "status": "NOT_RUN",
-      "evidence": [],
-      "title": "Eight-seat game and rules"
+      "status": "PASS_8_UNREAL_TESTS_138_TRAIT_GROUPS_100_REAL_COMBAT_TOURNAMENTS",
+      "title": "Combat and eight-seat runtime",
+      "evidence": [
+        "reports/WC-360/alpha-candidate-automation/index.json",
+        "reports/WC-310/runtime/trait-native/validation.json",
+        "reports/WC-310/runtime/targeted-native/validation.json"
+      ]
     },
     "WC-320": {
-      "status": "NOT_RUN",
-      "evidence": [],
-      "title": "Reference hero and arena proof"
+      "status": "PASS_100_PACKAGED_COMBAT_REGRESSION",
+      "title": "Tournament and persistent bot policies",
+      "evidence": [
+        "reports/WC-360/alpha-candidate-regression/regression.json",
+        "reports/WC-360/100-engine-matches.json"
+      ]
     },
     "WC-330": {
-      "status": "NOT_RUN",
-      "evidence": [],
-      "title": "Twelve coherent playable heroes"
+      "status": "PASS_CALIBRATION_AND_ISOLATED_COSTUME_REIMPORT_COLD_LOAD_SAMPLED_POSES",
+      "title": "Ada and calibration/courtyard",
+      "evidence": [
+        "reports/WC-330/calibration-unreal.json",
+        "reports/WC-330/ada-costume-roundtrip/run_v2-summary.md",
+        "reports/WC-330/unreal-visual-review-revision6.md"
+      ]
     },
     "WC-340": {
-      "status": "NOT_RUN",
-      "evidence": [],
-      "title": "Player experience and bot quality"
+      "status": "TWELVE_ORIGINAL_HEROES_84_CLIPS_SAMPLED_ALL_12_LIVE_REVIEW_PASS_CONTINUOUS_PRESENTATION_OPEN",
+      "title": "Remaining eleven authored heroes",
+      "evidence": [
+        "reports/WC-330/hero-readiness-matrix.json",
+        "reports/WC-330/84-clip-review.md",
+        "reports/WC-330/shipping-normal1080-taa-review.json"
+      ]
     },
     "WC-350": {
-      "status": "NOT_RUN",
-      "evidence": [],
-      "title": "Two humans plus six bots"
+      "status": "FINAL_SHIPPING_2H6B_47_AND_RESTART_36_PASS_MANUAL_BLOCKED",
+      "title": "Player experience and network integration",
+      "evidence": [
+        "reports/WC-360/alpha-candidate-network/audit/network-analysis.json",
+        "reports/WC-360/alpha-candidate-restart/functional-audit/audit.json",
+        "reports/WC-360/native-taa-disconnect",
+        "reports/WC-360/shipping-manual-recheck/blocked.json"
+      ]
     },
     "WC-360": {
-      "status": "NOT_RUN",
-      "evidence": [],
-      "title": "Packaged alpha verification and handoff"
+      "status": "PACKAGED_FUNCTIONAL_AND_PERFORMANCE_MEASURED_MANUAL_AND_CONTINUOUS_ACCEPTANCE_OPEN",
+      "title": "Packaged alpha verification and handoff",
+      "evidence": [
+        "reports/WC-360/alpha-candidate-provenance.json",
+        "reports/WC-360/alpha-candidate-final-byte-audit.json",
+        "reports/WC-360/100-engine-matches.json",
+        "reports/WC-360/alpha-candidate-restart/functional-audit/audit.json",
+        "reports/WC-360/alpha-candidate-network/audit/network-analysis.json",
+        "reports/WC-360/alpha-candidate-normal1080/frame-analysis.json",
+        "reports/WC-360/alpha-candidate-manual/blocked.json",
+        "reports/RELEASE_HANDOFF.md"
+      ]
     }
   },
   "design_roster": {
@@ -45,11 +78,60 @@
   },
   "alpha_roster": {
     "count": 12,
-    "assets_status": "NOT_CREATED",
-    "runtime_status": "NOT_IMPLEMENTED"
+    "assets_status": "TWELVE_ORIGINAL_MODELS_84_COLD_VALIDATED_CLIPS_252_SAMPLED_VISIBLE_POSES_REVIEWED",
+    "runtime_status": "ALL_TWELVE_COMBAT_DEFINITIONS_EXECUTED_IN_ENGINE"
   },
   "warnings": [
-    "A successful kit validator is not an engine build.",
-    "No .blend, .uasset, .umap or executable is supplied."
-  ]
+    "Final Shipping completed 100 real all-bot tournaments, with zero failed or unresolved fights and zero rejected bot commands. Actual inner process exit 0; batch time 49.827053 seconds. This headless run is not rendering or performance evidence.",
+    "Final Shipping completed a two-process loopback 2H6B tournament at round 23: 47 checks passed. Both bootstrap exits were 0; observed inner-process exits have uncaptured/UNKNOWN codes. Two physical PCs were not tested.",
+    "Final Shipping completed two rendered scripted 1H7B matches, rounds 23 and 20, with human elimination and bot continuation. Restart audit passed 36 checks and actual process exit 0. Cached seed summaries now agree with snapshots: 314159 and 271828.",
+    "The 22 client-loss/late-join and 16 host-loss checks passed on the preceding native-TAA binary. The final change only corrected evidence seed bookkeeping; network and game core files remain byte-identical. Those disconnect executions are not relabeled as runs of the final binary.",
+    "All ten active alpha traits passed 138 native groups, 2289 assertions and 266 actual Combat constructions. Stars 1-3 cover snapshot recipients; controlled impact cases use star 1. Actual rate-bonus attack intervals and unchanged skill cooldowns were verified separately.",
+    "All twelve heroes now have reviewed living active-recovery images; the final package also supplied reviewed crowded images. Continuous animation/effect timing and human audio audition remain unverified. One approximately 3-pixel conservative Rok safe-margin excursion is retained without claiming visible occlusion.",
+    "Final measured busy frame p95 is 16.667002 ms and p99 is 16.727901 ms. Eight busy frames exceeded 33.33 ms, none exceeded 100 ms; the full capture contains one frame over 100 ms. These observations are not a guarantee of smooth 60 FPS on every frame or other hardware.",
+    "The user explicitly authorized dismissing Windows Security. Computer Use rejected the Cancel click because PickerHost owns the dialog, then reported no targetable PickerHost windows. The current obstacle is tool targeting, not lack of authorization. Fresh final game bootstrap55768/inner55080 is left open pending the user clicking Cancel; no successful permission action or security setting change occurred."
+  ],
+  "updated_utc": "2026-09-06T09:04:48.4050474Z",
+  "task_numbering_authority": "docs/MASTER_IMPLEMENTATION_v3.md; legacy task-card numbering is retained in source kit and differs from master sequence",
+  "delivery": {
+    "package_launcher": "builds/WonderChess-Alpha-Candidate/Windows/WonderChess.exe",
+    "inner_executable_sha256": "b3114876d3d75e6d89677f42b2a6117b5989ba8dfe91d4f50ef50e965a2103ac",
+    "tested_provenance": "reports/WC-360/alpha-candidate-provenance.json",
+    "acceptance": "CANDIDATE_NOT_FINAL_PLAYABLE_OR_PRESENTABLE_ACCEPTANCE",
+    "source_checkpoint": "67c165b66af5b1c0132c275b1613b7482b2acf8b",
+    "tested_provenance_sha256": "89d6e2129cf28e491fb69d9d2fb2c68f2f50e0562dcdbc792322c2fe04786415",
+    "packaged_payload_bytes": 592741060,
+    "packaged_payload_files": 31,
+    "final_byte_audit": "reports/WC-360/alpha-candidate-final-byte-audit.json",
+    "remaining_task_game_processes": 2,
+    "manual_resume": "reports/WC-360/alpha-candidate-manual-resume/attempt.json"
+  },
+  "performance": {
+    "status": "PASS_MEASURED_WITH_RETAINED_HITCHES",
+    "evidence": "reports/WC-360/alpha-candidate-normal1080/frame-analysis.json",
+    "cpu": "AMD Ryzen 7 6800H",
+    "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU, 6144 MiB",
+    "driver": "580.88",
+    "system_ram_bytes": 16312393728,
+    "resolution": [
+      1920,
+      1080
+    ],
+    "rhi": "D3D11",
+    "anti_aliasing": "native TAA, method 2, 100 percent screen scale",
+    "simulation_speed": 1,
+    "window_style": "Hidden",
+    "automatic_screenshots": false,
+    "required_busy_frames": 1551,
+    "frame_p50_ms": 16.6668,
+    "frame_p95_ms": 16.667002,
+    "frame_p99_ms": 16.727901,
+    "busy_frames_over_33_33_ms": 8,
+    "busy_frames_over_100_ms": 0,
+    "all_frames": 35455,
+    "all_frames_over_100_ms": 1,
+    "peak_process_physical_bytes": 414691328,
+    "inner_exit_code": 0,
+    "boundary": "Bounded 600-second rendered viewport observation ended during round13; not a whole-match, foreground interactive, physical two-PC or clean-machine test. Separate final rendered runs completed two tournaments."
+  }
 }

@@ -1,0 +1,142 @@
+{
+  "utc": "2026-09-06T07:03:17.131955+00:00",
+  "status": "PASS",
+  "boundary": "Standalone MSVC /fp:fast actual simulation, not yet the recompiled Unreal automation or packaged candidate6. Wall-clock timings intentionally excluded from semantic parity.",
+  "assertions": 2664928,
+  "tournaments": 100,
+  "encounters": 7118,
+  "effect_events": 1390777,
+  "timeouts": 1437,
+  "ghosts": 524,
+  "bot_commands": 69656,
+  "bot_rejects": 0,
+  "comparisons": {
+    "tournaments.csv": {
+      "prior_rows": 100,
+      "new_rows": 100,
+      "compared_fields": [
+        "seed",
+        "rounds",
+        "simulated_ms",
+        "winner_seats",
+        "timeouts",
+        "encounters",
+        "combat_events",
+        "bot_commands",
+        "bot_rejects",
+        "ghosts",
+        "final_hash",
+        "idle_unit_ms",
+        "stunned_unit_ms"
+      ],
+      "mismatch_rows": [],
+      "mismatch_count": 0,
+      "status": "PASS"
+    },
+    "round-economy.csv": {
+      "prior_rows": 17728,
+      "new_rows": 17728,
+      "compared_fields": [
+        "seed",
+        "round",
+        "seat",
+        "health",
+        "gold",
+        "damage",
+        "wins",
+        "placement",
+        "settlement_id",
+        "pre_hash",
+        "post_hash"
+      ],
+      "mismatch_rows": [],
+      "mismatch_count": 0,
+      "status": "PASS"
+    },
+    "compositions.csv": {
+      "prior_rows": 156965,
+      "new_rows": 156965,
+      "compared_fields": [
+        "seed",
+        "round",
+        "seat",
+        "level",
+        "gold",
+        "unit_id",
+        "definition",
+        "star",
+        "on_board",
+        "column",
+        "row",
+        "bench"
+      ],
+      "mismatch_rows": [],
+      "mismatch_count": 0,
+      "status": "PASS"
+    },
+    "bot-decisions.csv": {
+      "prior_rows": 69656,
+      "new_rows": 69656,
+      "compared_fields": [
+        "seed",
+        "round",
+        "seat",
+        "observation_revision",
+        "action",
+        "score",
+        "deployment_gain",
+        "upgrade_gain",
+        "trait_gain",
+        "role_gain",
+        "pair_gain",
+        "gold_spent",
+        "interest_loss",
+        "bench_pressure",
+        "accepted",
+        "gold_after"
+      ],
+      "mismatch_rows": [],
+      "mismatch_count": 0,
+      "status": "PASS"
+    },
+    "mirror-combats.csv": {
+      "prior_rows": 32,
+      "new_rows": 32,
+      "compared_fields": [
+        "seed",
+        "original_winner",
+        "swapped_winner",
+        "original_ticks",
+        "swapped_ticks",
+        "team_outcome_changed"
+      ],
+      "mismatch_rows": [],
+      "mismatch_count": 0,
+      "status": "PASS"
+    }
+  },
+  "prior_archive_sha256": "a2e7d0a0e04483e153a95907e2ab966c94330fe83c3163cc3fab73d8644215d0",
+  "archive_sha256": "4c00bb9c2c7fd6e6d11d4bdbbdae852a1a164ff59de95bdfbb3fd0b78a75d786",
+  "source": [
+    {
+      "path": "game\\Source\\WonderChessRuntime\\Public\\Simulation\\WonderSimulation.h",
+      "sha256": "86444d44ce05abf811bafa06deb63a7577ea1fba4fb66a19450a208a3f8b916a"
+    },
+    {
+      "path": "game\\Source\\WonderChessRuntime\\Private\\Simulation\\WonderSimulation.cpp",
+      "sha256": "96019f1f3d5b34fc0e79674c958b01551c28d73643c0fd81850322eb2b87988e"
+    },
+    {
+      "path": "game\\Source\\WonderChessRuntime\\Private\\Simulation\\WonderTournament.cpp",
+      "sha256": "6e4457fc042eb33738e645e27a06ad6fe28bdcd44b701a3a8036b09412881909"
+    },
+    {
+      "path": "game\\Source\\WonderChessRuntime\\Private\\Simulation\\WonderSimulationTests.cpp",
+      "sha256": "bcc3d0d1c9757fa69c40d4b0020a614e36a60c679009e5c69fe75a87d8218014"
+    },
+    {
+      "path": "tests\\runtime\\runtime_tests.cpp",
+      "sha256": "fa66c0bf622ae0f3635816c756e30cbff89d6f05c8f229f07f76d6e52535283e"
+    }
+  ]
+}

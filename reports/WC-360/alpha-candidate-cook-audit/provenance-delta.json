@@ -1,0 +1,31 @@
+{
+  "utc": "2026-09-06T08:41:37.113538+00:00",
+  "status": "CAPTURED_IDENTITY_DELTA_RUNTIME_ACCEPTANCE_SEPARATE",
+  "baseline_manifest": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\native-taa-provenance.json",
+  "baseline_sha256": "260eada0b2ecaaab3b6efa78d7d7b958dc19fd26b9f0ca81da6d387d86c9102a",
+  "candidate_manifest": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\alpha-candidate-provenance.json",
+  "candidate_sha256": "89d6e2129cf28e491fb69d9d2fb2c68f2f50e0562dcdbc792322c2fe04786415",
+  "compared_groups": [
+    "authoring_and_build_tools",
+    "canonical_data",
+    "game_config",
+    "game_content",
+    "game_source",
+    "staged_source_data"
+  ],
+  "changed": [
+    {
+      "path": "game/Source/WonderChessRuntime/Private/WCVerification.cpp",
+      "before_sha256": "b3f7a689b53c67f65641220339b090a3a6b661d91039f226935b1c19427a668d",
+      "after_sha256": "86be419a9c02aacb827cc02b892e27c7fa408f8b3c2938c009a77e8ae782510b"
+    },
+    {
+      "path": "tools/unreal/launch_alpha.ps1",
+      "before_sha256": "b799395cfc22b2496cac179a1d3cb5ff4c56bdb68fc70fa49a736518de39224c",
+      "after_sha256": "acb9b1fc9cd8df0b213da871417c50b94feae1178ba09711e80356b989ca10f1"
+    }
+  ],
+  "added": [],
+  "removed": [],
+  "boundary": "Identity comparison of captured source/config/content/canonical/tools only. Tests/docs use their own execution/source records."
+}

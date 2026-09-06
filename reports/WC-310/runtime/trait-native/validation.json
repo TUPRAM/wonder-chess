@@ -1,0 +1,973 @@
+{
+  "status": "PASS",
+  "utc": "2026-09-06T08:36:27.299975+00:00",
+  "native_results": {
+    "cases": 138,
+    "failed": 0,
+    "assertions": 2289,
+    "combat_constructions": 266,
+    "content_digest": "3154592665ce21dc65e5afb06f3769655c8be9ec4157fa6779427c8b8fcc092f"
+  },
+  "process": {
+    "started_utc": "2026-09-06T08:36:02.9610650Z",
+    "ended_utc": "2026-09-06T08:36:14.3437676Z",
+    "compile_exit": 0,
+    "process_exit": 0,
+    "executable": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-310\\runtime\\trait-native\\build\\trait_combat_tests.exe",
+    "executable_sha256": "f34db415ffbaa950af28f622c8415fb8729d22a7bc8cf876fafd336f60f488c8",
+    "source_sha256": "7b3cd3e3aee0ecaa7293feb8f65a5bd4d32005aa54611fbd79f5da2092fa6e38",
+    "core_sha256": "96019f1f3d5b34fc0e79674c958b01551c28d73643c0fd81850322eb2b87988e"
+  },
+  "audit_checks": {
+    "compile_exit0": true,
+    "actual_native_process_exit0": true,
+    "all_reported_cases_pass": true,
+    "reported_case_count_reconciles": true,
+    "reported_assertions_reconcile": true,
+    "all_ten_active_traits_have_twelve_boundary_groups": true,
+    "actual_damage_and_support_impacts_recorded": true
+  },
+  "trait_groups": {
+    "human": 12,
+    "elf": 12,
+    "dwarf": 12,
+    "orc": 12,
+    "guardian": 12,
+    "warrior": 12,
+    "ranger": 12,
+    "rogue": 12,
+    "mage": 12,
+    "priest": 12
+  },
+  "impact_rows": 263,
+  "impact_rows_by_effect": {
+    "0": 242,
+    "1": 6,
+    "2": 6,
+    "5": 9
+  },
+  "boundary": "Compiled native MSVC executable invokes the actual production wc::Combat implementation. It is focused RULE-02 fixture evidence, not a new packaged/Unreal run, rendered effect review or balance acceptance. Snapshot groups isolate one parsed canonical trait at a time while preserving authored hero identities and values; overlap groups use the full catalog. Damage/support groups keep canonical trait identities/values but use explicitly controlled timing, damage, range, defense and ability selectors to expose source/recipient errors.",
+  "scope": "Ten active alpha traits, threshold two only; snapshot recipient statistics at all three stars; distinct deployed types; duplicates across stars; bench exclusion; opposing-side separation; matching recipients; repeated recipients receive one bonus; four instances do not enable the disabled expansion tier. Star-one controlled actual impacts check Orc, Warrior, Ranger, Mage and Priest bonus categories, additive overlapping bonuses, no receiver-side support reapplication, no Orc/Mage support amplification and no Priest amplification of negative modifiers. Paired Elf/Rogue/combined traces check exact basic release intervals and repeated unchanged authored ability cooldown/release intervals.",
+  "not_tested": [
+    "Expansion threshold-four profiles or disabled halfling/dragonkin traits",
+    "Live Unreal animation/audio/visual trait feedback",
+    "All possible formations or a solved balance metagame"
+  ],
+  "cases": [
+    {
+      "case": "canonical_alpha_trait_contract",
+      "status": "PASS",
+      "assertions": "22",
+      "error": ""
+    },
+    {
+      "case": "human_two_distinct_matching_only_star1",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "human_duplicate_stars_do_not_count_star1",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "human_bench_excluded_star1",
+      "status": "PASS",
+      "assertions": "5",
+      "error": ""
+    },
+    {
+      "case": "human_two_distinct_matching_only_star2",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "human_duplicate_stars_do_not_count_star2",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "human_bench_excluded_star2",
+      "status": "PASS",
+      "assertions": "5",
+      "error": ""
+    },
+    {
+      "case": "human_two_distinct_matching_only_star3",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "human_duplicate_stars_do_not_count_star3",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "human_bench_excluded_star3",
+      "status": "PASS",
+      "assertions": "5",
+      "error": ""
+    },
+    {
+      "case": "human_duplicate_recipient_gets_bonus_once",
+      "status": "PASS",
+      "assertions": "7",
+      "error": ""
+    },
+    {
+      "case": "human_opponent_types_do_not_enable_friendly",
+      "status": "PASS",
+      "assertions": "7",
+      "error": ""
+    },
+    {
+      "case": "human_four_instances_do_not_unlock_expansion_tier",
+      "status": "PASS",
+      "assertions": "8",
+      "error": ""
+    },
+    {
+      "case": "elf_two_distinct_matching_only_star1",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "elf_duplicate_stars_do_not_count_star1",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "elf_bench_excluded_star1",
+      "status": "PASS",
+      "assertions": "5",
+      "error": ""
+    },
+    {
+      "case": "elf_two_distinct_matching_only_star2",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "elf_duplicate_stars_do_not_count_star2",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "elf_bench_excluded_star2",
+      "status": "PASS",
+      "assertions": "5",
+      "error": ""
+    },
+    {
+      "case": "elf_two_distinct_matching_only_star3",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "elf_duplicate_stars_do_not_count_star3",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "elf_bench_excluded_star3",
+      "status": "PASS",
+      "assertions": "5",
+      "error": ""
+    },
+    {
+      "case": "elf_duplicate_recipient_gets_bonus_once",
+      "status": "PASS",
+      "assertions": "7",
+      "error": ""
+    },
+    {
+      "case": "elf_opponent_types_do_not_enable_friendly",
+      "status": "PASS",
+      "assertions": "7",
+      "error": ""
+    },
+    {
+      "case": "elf_four_instances_do_not_unlock_expansion_tier",
+      "status": "PASS",
+      "assertions": "8",
+      "error": ""
+    },
+    {
+      "case": "dwarf_two_distinct_matching_only_star1",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "dwarf_duplicate_stars_do_not_count_star1",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "dwarf_bench_excluded_star1",
+      "status": "PASS",
+      "assertions": "5",
+      "error": ""
+    },
+    {
+      "case": "dwarf_two_distinct_matching_only_star2",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "dwarf_duplicate_stars_do_not_count_star2",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "dwarf_bench_excluded_star2",
+      "status": "PASS",
+      "assertions": "5",
+      "error": ""
+    },
+    {
+      "case": "dwarf_two_distinct_matching_only_star3",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "dwarf_duplicate_stars_do_not_count_star3",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "dwarf_bench_excluded_star3",
+      "status": "PASS",
+      "assertions": "5",
+      "error": ""
+    },
+    {
+      "case": "dwarf_duplicate_recipient_gets_bonus_once",
+      "status": "PASS",
+      "assertions": "7",
+      "error": ""
+    },
+    {
+      "case": "dwarf_opponent_types_do_not_enable_friendly",
+      "status": "PASS",
+      "assertions": "7",
+      "error": ""
+    },
+    {
+      "case": "dwarf_four_instances_do_not_unlock_expansion_tier",
+      "status": "PASS",
+      "assertions": "8",
+      "error": ""
+    },
+    {
+      "case": "orc_two_distinct_matching_only_star1",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "orc_duplicate_stars_do_not_count_star1",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "orc_bench_excluded_star1",
+      "status": "PASS",
+      "assertions": "5",
+      "error": ""
+    },
+    {
+      "case": "orc_two_distinct_matching_only_star2",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "orc_duplicate_stars_do_not_count_star2",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "orc_bench_excluded_star2",
+      "status": "PASS",
+      "assertions": "5",
+      "error": ""
+    },
+    {
+      "case": "orc_two_distinct_matching_only_star3",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "orc_duplicate_stars_do_not_count_star3",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "orc_bench_excluded_star3",
+      "status": "PASS",
+      "assertions": "5",
+      "error": ""
+    },
+    {
+      "case": "orc_duplicate_recipient_gets_bonus_once",
+      "status": "PASS",
+      "assertions": "7",
+      "error": ""
+    },
+    {
+      "case": "orc_opponent_types_do_not_enable_friendly",
+      "status": "PASS",
+      "assertions": "7",
+      "error": ""
+    },
+    {
+      "case": "orc_four_instances_do_not_unlock_expansion_tier",
+      "status": "PASS",
+      "assertions": "8",
+      "error": ""
+    },
+    {
+      "case": "guardian_two_distinct_matching_only_star1",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "guardian_duplicate_stars_do_not_count_star1",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "guardian_bench_excluded_star1",
+      "status": "PASS",
+      "assertions": "5",
+      "error": ""
+    },
+    {
+      "case": "guardian_two_distinct_matching_only_star2",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "guardian_duplicate_stars_do_not_count_star2",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "guardian_bench_excluded_star2",
+      "status": "PASS",
+      "assertions": "5",
+      "error": ""
+    },
+    {
+      "case": "guardian_two_distinct_matching_only_star3",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "guardian_duplicate_stars_do_not_count_star3",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "guardian_bench_excluded_star3",
+      "status": "PASS",
+      "assertions": "5",
+      "error": ""
+    },
+    {
+      "case": "guardian_duplicate_recipient_gets_bonus_once",
+      "status": "PASS",
+      "assertions": "7",
+      "error": ""
+    },
+    {
+      "case": "guardian_opponent_types_do_not_enable_friendly",
+      "status": "PASS",
+      "assertions": "7",
+      "error": ""
+    },
+    {
+      "case": "guardian_four_instances_do_not_unlock_expansion_tier",
+      "status": "PASS",
+      "assertions": "8",
+      "error": ""
+    },
+    {
+      "case": "warrior_two_distinct_matching_only_star1",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "warrior_duplicate_stars_do_not_count_star1",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "warrior_bench_excluded_star1",
+      "status": "PASS",
+      "assertions": "5",
+      "error": ""
+    },
+    {
+      "case": "warrior_two_distinct_matching_only_star2",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "warrior_duplicate_stars_do_not_count_star2",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "warrior_bench_excluded_star2",
+      "status": "PASS",
+      "assertions": "5",
+      "error": ""
+    },
+    {
+      "case": "warrior_two_distinct_matching_only_star3",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "warrior_duplicate_stars_do_not_count_star3",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "warrior_bench_excluded_star3",
+      "status": "PASS",
+      "assertions": "5",
+      "error": ""
+    },
+    {
+      "case": "warrior_duplicate_recipient_gets_bonus_once",
+      "status": "PASS",
+      "assertions": "7",
+      "error": ""
+    },
+    {
+      "case": "warrior_opponent_types_do_not_enable_friendly",
+      "status": "PASS",
+      "assertions": "7",
+      "error": ""
+    },
+    {
+      "case": "warrior_four_instances_do_not_unlock_expansion_tier",
+      "status": "PASS",
+      "assertions": "8",
+      "error": ""
+    },
+    {
+      "case": "ranger_two_distinct_matching_only_star1",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "ranger_duplicate_stars_do_not_count_star1",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "ranger_bench_excluded_star1",
+      "status": "PASS",
+      "assertions": "5",
+      "error": ""
+    },
+    {
+      "case": "ranger_two_distinct_matching_only_star2",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "ranger_duplicate_stars_do_not_count_star2",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "ranger_bench_excluded_star2",
+      "status": "PASS",
+      "assertions": "5",
+      "error": ""
+    },
+    {
+      "case": "ranger_two_distinct_matching_only_star3",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "ranger_duplicate_stars_do_not_count_star3",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "ranger_bench_excluded_star3",
+      "status": "PASS",
+      "assertions": "5",
+      "error": ""
+    },
+    {
+      "case": "ranger_duplicate_recipient_gets_bonus_once",
+      "status": "PASS",
+      "assertions": "7",
+      "error": ""
+    },
+    {
+      "case": "ranger_opponent_types_do_not_enable_friendly",
+      "status": "PASS",
+      "assertions": "7",
+      "error": ""
+    },
+    {
+      "case": "ranger_four_instances_do_not_unlock_expansion_tier",
+      "status": "PASS",
+      "assertions": "8",
+      "error": ""
+    },
+    {
+      "case": "rogue_two_distinct_matching_only_star1",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "rogue_duplicate_stars_do_not_count_star1",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "rogue_bench_excluded_star1",
+      "status": "PASS",
+      "assertions": "5",
+      "error": ""
+    },
+    {
+      "case": "rogue_two_distinct_matching_only_star2",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "rogue_duplicate_stars_do_not_count_star2",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "rogue_bench_excluded_star2",
+      "status": "PASS",
+      "assertions": "5",
+      "error": ""
+    },
+    {
+      "case": "rogue_two_distinct_matching_only_star3",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "rogue_duplicate_stars_do_not_count_star3",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "rogue_bench_excluded_star3",
+      "status": "PASS",
+      "assertions": "5",
+      "error": ""
+    },
+    {
+      "case": "rogue_duplicate_recipient_gets_bonus_once",
+      "status": "PASS",
+      "assertions": "7",
+      "error": ""
+    },
+    {
+      "case": "rogue_opponent_types_do_not_enable_friendly",
+      "status": "PASS",
+      "assertions": "7",
+      "error": ""
+    },
+    {
+      "case": "rogue_four_instances_do_not_unlock_expansion_tier",
+      "status": "PASS",
+      "assertions": "8",
+      "error": ""
+    },
+    {
+      "case": "mage_two_distinct_matching_only_star1",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "mage_duplicate_stars_do_not_count_star1",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "mage_bench_excluded_star1",
+      "status": "PASS",
+      "assertions": "5",
+      "error": ""
+    },
+    {
+      "case": "mage_two_distinct_matching_only_star2",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "mage_duplicate_stars_do_not_count_star2",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "mage_bench_excluded_star2",
+      "status": "PASS",
+      "assertions": "5",
+      "error": ""
+    },
+    {
+      "case": "mage_two_distinct_matching_only_star3",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "mage_duplicate_stars_do_not_count_star3",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "mage_bench_excluded_star3",
+      "status": "PASS",
+      "assertions": "5",
+      "error": ""
+    },
+    {
+      "case": "mage_duplicate_recipient_gets_bonus_once",
+      "status": "PASS",
+      "assertions": "7",
+      "error": ""
+    },
+    {
+      "case": "mage_opponent_types_do_not_enable_friendly",
+      "status": "PASS",
+      "assertions": "7",
+      "error": ""
+    },
+    {
+      "case": "mage_four_instances_do_not_unlock_expansion_tier",
+      "status": "PASS",
+      "assertions": "8",
+      "error": ""
+    },
+    {
+      "case": "priest_two_distinct_matching_only_star1",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "priest_duplicate_stars_do_not_count_star1",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "priest_bench_excluded_star1",
+      "status": "PASS",
+      "assertions": "5",
+      "error": ""
+    },
+    {
+      "case": "priest_two_distinct_matching_only_star2",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "priest_duplicate_stars_do_not_count_star2",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "priest_bench_excluded_star2",
+      "status": "PASS",
+      "assertions": "5",
+      "error": ""
+    },
+    {
+      "case": "priest_two_distinct_matching_only_star3",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "priest_duplicate_stars_do_not_count_star3",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "priest_bench_excluded_star3",
+      "status": "PASS",
+      "assertions": "5",
+      "error": ""
+    },
+    {
+      "case": "priest_duplicate_recipient_gets_bonus_once",
+      "status": "PASS",
+      "assertions": "7",
+      "error": ""
+    },
+    {
+      "case": "priest_opponent_types_do_not_enable_friendly",
+      "status": "PASS",
+      "assertions": "7",
+      "error": ""
+    },
+    {
+      "case": "priest_four_instances_do_not_unlock_expansion_tier",
+      "status": "PASS",
+      "assertions": "8",
+      "error": ""
+    },
+    {
+      "case": "overlapping_dwarf_guardian_armor_additive",
+      "status": "PASS",
+      "assertions": "3",
+      "error": ""
+    },
+    {
+      "case": "overlapping_elf_rogue_rate_additive",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "orc_basic_and_skill_once",
+      "status": "PASS",
+      "assertions": "39",
+      "error": ""
+    },
+    {
+      "case": "warrior_basic_only_once",
+      "status": "PASS",
+      "assertions": "39",
+      "error": ""
+    },
+    {
+      "case": "ranger_basic_only_once",
+      "status": "PASS",
+      "assertions": "39",
+      "error": ""
+    },
+    {
+      "case": "mage_skill_only_once",
+      "status": "PASS",
+      "assertions": "39",
+      "error": ""
+    },
+    {
+      "case": "orc_mage_direct_bonuses_add_not_multiply",
+      "status": "PASS",
+      "assertions": "39",
+      "error": ""
+    },
+    {
+      "case": "priest_support_once_effect1",
+      "status": "PASS",
+      "assertions": "39",
+      "error": ""
+    },
+    {
+      "case": "orc_mage_do_not_boost_support_effect1",
+      "status": "PASS",
+      "assertions": "39",
+      "error": ""
+    },
+    {
+      "case": "priest_support_once_effect2",
+      "status": "PASS",
+      "assertions": "39",
+      "error": ""
+    },
+    {
+      "case": "orc_mage_do_not_boost_support_effect2",
+      "status": "PASS",
+      "assertions": "39",
+      "error": ""
+    },
+    {
+      "case": "priest_support_once_effect5",
+      "status": "PASS",
+      "assertions": "39",
+      "error": ""
+    },
+    {
+      "case": "orc_mage_do_not_boost_support_effect5",
+      "status": "PASS",
+      "assertions": "39",
+      "error": ""
+    },
+    {
+      "case": "priest_does_not_boost_negative_modifier",
+      "status": "PASS",
+      "assertions": "39",
+      "error": ""
+    },
+    {
+      "case": "elf_actual_attack_and_ability_timing",
+      "status": "PASS",
+      "assertions": "353",
+      "error": ""
+    },
+    {
+      "case": "rogue_actual_attack_and_ability_timing",
+      "status": "PASS",
+      "assertions": "353",
+      "error": ""
+    },
+    {
+      "case": "elf_rogue_actual_attack_and_ability_timing",
+      "status": "PASS",
+      "assertions": "354",
+      "error": ""
+    }
+  ],
+  "inputs": [
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-310\\runtime\\trait-native\\build\\summary.json",
+      "sha256": "242538d5a826da8f34cbc0478ea46ca6c146c4a8cc4620dbd024904b7743a622",
+      "bytes": 155
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-310\\runtime\\trait-native\\build\\process.json",
+      "sha256": "5f8207d3cf1cb92d664b19e9c3c09fe36caa8b726613491052d6025672f517d2",
+      "bytes": 546
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-310\\runtime\\trait-native\\build\\trait-cases.csv",
+      "sha256": "749567c370ac2726c3ea9a3852248eb8d15edb0dabb9913d91e98b877ce97fb1",
+      "bytes": 6485
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-310\\runtime\\trait-native\\build\\trait-events.csv",
+      "sha256": "154e1a25ade8fc478fa234d42071c56cbfc8dc0d161f7cc73330367d7beeb124",
+      "bytes": 16904
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-310\\runtime\\trait-native\\build\\compile.log",
+      "sha256": "0258f396f5ba8fa8202202daf8d952763c503da2a5994ee8e80bc1b1b3d1aa5c",
+      "bytes": 365
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-310\\runtime\\trait-native\\build\\run.log",
+      "sha256": "9c2c3b749bc76417dd2e59e36311b024b8b200916a9af5786486b5fe8eec4aaf",
+      "bytes": 48
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-310\\runtime\\trait-native\\build\\trait_combat_tests.exe",
+      "sha256": "f34db415ffbaa950af28f622c8415fb8729d22a7bc8cf876fafd336f60f488c8",
+      "bytes": 403968
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\tests\\runtime\\trait_combat_tests.cpp",
+      "sha256": "7b3cd3e3aee0ecaa7293feb8f65a5bd4d32005aa54611fbd79f5da2092fa6e38",
+      "bytes": 14335
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\tests\\runtime\\run_trait_combat.ps1",
+      "sha256": "a2d0b869cf81d4b1f511f35764d40ca57546820710603757cdb1bc111944a309",
+      "bytes": 2371
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\tests\\runtime\\build\\CatalogFixture.h",
+      "sha256": "fc0ba787a619f56a31ffc7d1991e15facf7e4e3b81bf03f33fe96a19b4c0796b",
+      "bytes": 15336
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\tests\\runtime\\generate_catalog_fixture.py",
+      "sha256": "927331d778c9adaf531b09954c6debc74c0680eb77e06788cbf40c124408311d",
+      "bytes": 6324
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Public\\Simulation\\WonderSimulation.h",
+      "sha256": "86444d44ce05abf811bafa06deb63a7577ea1fba4fb66a19450a208a3f8b916a",
+      "bytes": 11270
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Simulation\\WonderSimulation.cpp",
+      "sha256": "96019f1f3d5b34fc0e79674c958b01551c28d73643c0fd81850322eb2b87988e",
+      "bytes": 31614
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\data\\traits.json",
+      "sha256": "ba71d85cd836e0005d9e7d812be2a1a8d8bbb96428eff69208b6c144767f7e07",
+      "bytes": 7244
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\data\\units.json",
+      "sha256": "1a93bfb07bd93ace4d5eb740864e26c69765a5ebb9b87885c1d3d40c772cd9e8",
+      "bytes": 176393
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\data\\rules.alpha.json",
+      "sha256": "6c7eefa224c242f0aa9d105d91cb252bd89cbfc3775b87c1974eab30c57b30d8",
+      "bytes": 3608
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\generated\\catalog_digest.json",
+      "sha256": "0b9f6fecfbe32be44085968b777d0d2ac22b4d307c3a19dee5d81f875e8c1d59",
+      "bytes": 744
+    }
+  ]
+}

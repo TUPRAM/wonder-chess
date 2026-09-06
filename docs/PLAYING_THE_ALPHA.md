@@ -6,9 +6,9 @@ You are one captain in an eight-seat tournament. Buy heroes, arrange your format
 
 Open `WonderChess.exe` at the top of the delivered Windows package folder. Keep its adjacent folders and files together.
 
-**Packaged launcher:** `builds/WonderChess-NativeTAA-Candidate/Windows/WonderChess.exe`. The accompanying handoff records the actual gameplay checks and remaining issues for this candidate. Manual acceptance remains incomplete; the package is not an accepted final alpha.
+**Packaged launcher:** `builds/WonderChess-Alpha-Candidate/Windows/WonderChess.exe`. The accompanying handoff records the actual gameplay checks and remaining issues for this candidate. Manual acceptance remains incomplete; the package is not an accepted final alpha.
 
-Unreal Editor, Blender and Visual Studio are not needed to run the packaged game. If Windows reports missing Microsoft Visual C++ runtime components, the package includes Microsoft's installer at `Windows/Engine/Extras/Redist/en-us/vc_redist.x64.exe` (relative to `builds/WonderChess-NativeTAA-Candidate`). Run that installer when needed, then launch the game again. The installer was included and its signature checked; installer execution and launch on a clean Windows machine have not been verified.
+Unreal Editor, Blender and Visual Studio are not needed to run the packaged game. If Windows reports missing Microsoft Visual C++ runtime components, the package includes Microsoft's installer at `Windows/Engine/Extras/Redist/en-us/vc_redist.x64.exe` (relative to `builds/WonderChess-Alpha-Candidate`). Run that installer when needed, then launch the game again. The installer was included and its signature checked; installer execution and launch on a clean Windows machine have not been verified.
 
 Select **Play Bot Tournament** for one human and seven persistent bots. The title lobby lists the bots and their policies. **How to play** opens a short introduction; it is optional.
 

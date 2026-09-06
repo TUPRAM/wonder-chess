@@ -60,6 +60,8 @@ def audit(base):
         screenshots = sorted(path.parent.glob("*.png"))
         skill_metadata = list(path.parent.glob("*-skill-shots.jsonl"))
         skill_requests = [json.loads(line) for source in skill_metadata for line in source.read_text(encoding="utf-8-sig").splitlines() if line.strip()]
+        terminal_path = path.parent / "session.json"
+        terminal = paired.load(terminal_path)
         result = {"role": role, **{key: session.get(key) for key in ("process_id", "seat", "network_mode", "authority_process", "match_namespace", "phase", "round", "complete", "aborted", "intent_requests", "actual_accepted_replies", "actual_rejected_replies", "simulation_speed_multiplier", "resolution_x", "resolution_y", "max_living_visible_units", "max_living_logical_units", "max_simultaneous_encounters", "observed_seat", "music_component_playing", "music_volume")},
                   "first_observed_utc": snapshots[0]["utc"], "first_results_utc": next(row["utc"] for row in snapshots if row["phase"] == 3),
                   "last_observed_utc": snapshots[-1]["utc"], "snapshot_count": len(snapshots), "combat_rounds": combat_rounds, "recap_rounds": recap_rounds,
@@ -71,9 +73,11 @@ def audit(base):
                   "final_standings": [{key: seat[key] for key in ("id", "name", "human", "health", "wins", "place")} for seat in public["seats"]],
                   "screenshot_count": len(screenshots), "skill_screenshot_requests": skill_requests,
                   "screenshot_boundary": "Actual files and runtime capture metadata only. Visual, animation, release-timing and human-audition acceptance require independent inspection.",
+                  "terminal_process_snapshot": {key: terminal.get(key) for key in ("utc", "process_id", "match_namespace", "phase", "round", "complete", "aborted", "host_disconnected", "network_error", "network_error_detail")},
+                  "terminal_snapshot_boundary": "The completed match namespace is audited above. The latest process snapshot can be a subsequent menu after the host's planned process exit; it does not overwrite the retained completed tournament.",
                   "profiling": frame_summary}
         results.append(result)
-        inputs += [fingerprint(source) for source in [path, snapshot_path, commands_path] + skill_metadata]
+        inputs += [fingerprint(source) for source in [path, snapshot_path, commands_path, terminal_path] + skill_metadata]
     lifecycle_complete = trial.get("status") == "PROCESSES_EXITED_AUDIT_REQUIRED"
     lifecycle = []
     for process in trial["processes"]:
@@ -101,11 +105,14 @@ def audit(base):
                          "The preserved earlier Shipping trial failed before client launch because positional startup URLs were disabled; this is a separate build and separate run."]}
     (output / "network-analysis.json").write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     lines = ["# Actual routed Shipping two-process network check", "", f"Functional received-state/RPC audit: **{final_status}**. Process lifecycle complete: **{lifecycle_complete}**.", "", result["boundary"], "",
-             f"The paired reader completed {len(comparison['checks'])} checks with status {comparison['status']}. UDP{trial['port']} was verified on the host's actual Shipping process before starting the client. Executable hashes still match the immutable startup-fixed provenance.", ""]
+             f"The paired reader completed {len(comparison['checks'])} checks with status {comparison['status']}. UDP{trial['port']} was verified on the host's actual Shipping process before starting the client. Executable hashes still match the bound immutable provenance.", ""]
     for session in results:
         lines += [f"- {session['role']}: PID{session['process_id']}, seat{session['seat']}, network mode{session['network_mode']}; completed round{session['round']}. All combat rounds observed: {session['combat_rounds']}.",
                   f"- {session['role']}: {session['actual_accepted_replies']} accepted / {session['actual_rejected_replies']} rejected actual replies; probes {session['probes']}.",
                   f"- {session['role']}: maximum actual public JSON {session['public_payload']['public_json_chars_max']} characters / {session['public_payload']['public_json_utf8_bytes_max']} UTF8 bytes; {len(session['stale_retained_recaps'])} stale retained recaps."]
+        terminal = session["terminal_process_snapshot"]
+        if terminal["match_namespace"] != session["match_namespace"]:
+            lines.append(f"- {session['role']}: latest process snapshot subsequently returned to namespace{terminal['match_namespace']} / phase{terminal['phase']}, aborted={terminal['aborted']}, after the host's planned exit. Completed round{session['round']} results remain retained in the audited match namespace. The current error message is recorded exactly in network-analysis.json.")
     lines += ["", "Both engine log oversized-bunch/error counts are **NOT_RUN**, not zero. Shipping provides received-state, real-RPC, frame and screenshot evidence through the game's explicit verification writer.", "", str(result["profiling_confounders"]),
               "The optional concurrency.json inventory records any additional actual concurrent functional processes, including a root-owned restart run when present.", "", "## Limits", ""]
     lines += ["- " + value for value in result["limits"]]

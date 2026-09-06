@@ -1,0 +1,28 @@
+{
+  "status": "BLOCKED_NATIVE_TARGET_UNAVAILABLE",
+  "recorded_utc": "2026-09-06T09:04:48.2904956Z",
+  "user_authorized_cancel": true,
+  "intended_action": "Cancel the Windows Security network permission request without granting access",
+  "bootstrap_pid": 55768,
+  "inner_pid": 55080,
+  "game_window_id": 4855012,
+  "attempted_click": {
+    "x": 1063,
+    "y": 683,
+    "screenshot_id": "screenshot-0",
+    "target": "current game window, whose state capture displayed the dialog"
+  },
+  "tool_error": "point (1063, 683) is over PickerHost.exe \"Windows Security\", not target window WonderChess-Win64-Shipping.exe \"WonderChess  \"; activate the target or take a fresh screenshot before retrying",
+  "followup_inventory": {
+    "app": "process:C:\\Windows\\System32\\PickerHost.exe",
+    "isRunning": true,
+    "targetable_windows": []
+  },
+  "successful_permission_actions": 0,
+  "game_input_actions": 0,
+  "security_settings_changed": false,
+  "old_skill_boundary_overridden_by_user": true,
+  "current_blocker": "Computer Use does not expose a targetable PickerHost window; the available game window cannot receive a click intended for the Windows Security dialog.",
+  "game_left_open_for_user": true,
+  "next_action": "User clicks Cancel directly and confirms closure; then refresh the game window and continue manual checks."
+}

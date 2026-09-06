@@ -1,0 +1,53 @@
+{
+  "status": "EXITED_AUDIT_REQUIRED",
+  "mode": "normal1080-taa",
+  "started_utc": "2026-09-06T08:46:42.5933135Z",
+  "executable": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Alpha-Candidate\\Windows\\WonderChess\\Binaries\\Win64\\WonderChess-Win64-Shipping.exe",
+  "executable_sha256": "b3114876d3d75e6d89677f42b2a6117b5989ba8dfe91d4f50ef50e965a2103ac",
+  "working_directory": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Alpha-Candidate\\Windows",
+  "arguments": [
+    "WonderChess",
+    "-windowed",
+    "-ResX=1920",
+    "-ResY=1080",
+    "-ForceRes",
+    "-dx11",
+    "-WCExercise",
+    "-WCAuthorityChecks",
+    "-WCProfile",
+    "-WCFast=1",
+    "-WCExitAfter=600",
+    "-WCEvidenceDir=\"C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\alpha-candidate-normal1080\"",
+    "-WCExerciseSeed=49",
+    "-WCFollowHero=10"
+  ],
+  "provenance_path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\alpha-candidate-provenance.json",
+  "provenance_sha256": "89d6e2129cf28e491fb69d9d2fb2c68f2f50e0562dcdbc792322c2fe04786415",
+  "ambient_editor_processes": [
+    {
+      "Id": 29288,
+      "ProcessName": "blender",
+      "StartTime": "2026-09-06T12:14:06.8863542+08:00",
+      "CPU": 264.28125,
+      "WorkingSet64": 20860928
+    },
+    {
+      "Id": 38828,
+      "ProcessName": "UnrealEditor",
+      "StartTime": "2026-09-06T13:03:33.2593469+08:00",
+      "CPU": 5029.21875,
+      "WorkingSet64": 215474176
+    }
+  ],
+  "other_task_games_before_launch": 0,
+  "process_id": 52460,
+  "exit_code": 0,
+  "window_style": "Hidden",
+  "null_rhi": false,
+  "simulation_speed": 1,
+  "bounded_seconds": 600,
+  "automatic_screenshots": false,
+  "projected_bounds": false,
+  "boundary": "Actual rendered Shipping process with scripted player commands, public-state, command and frame CSV instrumentation. Automatic PNG capture and projected-bounds sampling are disabled. This is measured performance evidence, not manual usability or audio audition; comparisons against other binaries do not establish a same-binary causal A/B result.",
+  "ended_utc": "2026-09-06T08:56:43.8677424Z"
+}

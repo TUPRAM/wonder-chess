@@ -1,0 +1,2286 @@
+{
+  "status": "TWELVE_AUTHORED_IMPORTED_SAMPLED_REVIEWED_PENDING_FINAL_GAMEPLAY_ART_ACCEPTANCE",
+  "updated_utc": "2026-09-06T08:46:40.141829+00:00",
+  "owner": "art",
+  "source_blender": "5.1.1",
+  "reviewed_unreal": "5.7.4-51494982+++UE5+Release-5.7",
+  "canonical_units_sha256": "1a93bfb07bd93ace4d5eb740864e26c69765a5ebb9b87885c1d3d40c772cd9e8",
+  "canonical_alpha_rules_sha256": "6c7eefa224c242f0aa9d105d91cb252bd89cbfc3775b87c1974eab30c57b30d8",
+  "heroes": [
+    {
+      "unit_id": "wc_u_human_guardian",
+      "name": "Ada Brightshield",
+      "source_revision": 6,
+      "geometry_revision": 4,
+      "source": "art-source/heroes/wc_u_human_guardian/wc_u_human_guardian.blend",
+      "source_sha256": "3de6908b826241c9794b911d8569be28cc3cdf2932a51527f80e6e53a2aadb58",
+      "export_manifest": "exports/heroes/wc_u_human_guardian/export_manifest.json",
+      "export_manifest_sha256": "34b7555858b76da0e8faee87437f2a34fd18bf881d31d801325b6ecc61c5b7b4",
+      "rig_family": "humanoid_standard",
+      "bones": 27,
+      "triangles_lod0": 4760,
+      "material_slots": 1,
+      "model_matched_portrait": "exports/heroes/wc_u_human_guardian/portrait.png",
+      "stages": {
+        "brief": "AUTHORED_CANONICAL_DOSSIER",
+        "model": "AUTHORED_EXECUTED",
+        "rig": "SOURCE_INVARIANTS_PASS",
+        "animation": "SEVEN_CLIPS_EXPORTED_SOURCE_CHECKS_PASS",
+        "imported": "SEVEN_CLIPS_VISIBLE_IN_UNREAL_REVIEW",
+        "sampled_visual_review": "PASS_BOUNDED_POSE_REVIEW",
+        "crowded_gameplay_review": "REVIEWED_PACKAGED_NORMAL_SPEED_1080P_TAA_SAMPLES",
+        "skill_behavior": "INTEGRATION_LANE_EVIDENCE_REQUIRED",
+        "packaged_presentation": "VISIBLE_IN_ACTUAL_SHIPPING_NORMAL_SPEED_1080P_TAA",
+        "accepted": "PENDING_FINAL_CROWDED_AND_GAMEPLAY_GATES",
+        "costume_reimport": "PASS_ISOLATED_CHANGED_SOURCE_SAME_ASSET_REIMPORT_AND_COLD_REFERENCES"
+      },
+      "clips": [
+        {
+          "clip": "Idle",
+          "export": "exports/heroes/wc_u_human_guardian/AN_wc_u_human_guardian_Idle.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-00.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-01.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-02.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Move",
+          "export": "exports/heroes/wc_u_human_guardian/AN_wc_u_human_guardian_Move.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-03.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-04.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-05.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Attack",
+          "export": "exports/heroes/wc_u_human_guardian/AN_wc_u_human_guardian_Attack.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-06.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-07.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-08.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Active",
+          "export": "exports/heroes/wc_u_human_guardian/AN_wc_u_human_guardian_Active.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-09.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-10.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-11.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Hit",
+          "export": "exports/heroes/wc_u_human_guardian/AN_wc_u_human_guardian_Hit.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-12.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-13.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-14.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Defeat",
+          "export": "exports/heroes/wc_u_human_guardian/AN_wc_u_human_guardian_Defeat.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-15.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-16.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-17.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Victory",
+          "export": "exports/heroes/wc_u_human_guardian/AN_wc_u_human_guardian_Victory.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-18.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-19.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-20.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        }
+      ],
+      "source_evidence": [
+        "reports/WC-330/animation-refinement-production.json",
+        "reports/WC-330/export-integrity.json",
+        "reports/WC-330/rest-skeleton-parity.json"
+      ],
+      "visual_evidence": [
+        "reports/WC-330/unreal-visual-review-revision6.md",
+        "reports/WC-330/unreal-visual-review-revision6-evidence.json"
+      ],
+      "known_limits": [
+        "Angular sleeve and elbow creases at deep bends",
+        "Fine face and hand detail may be unresolved at full-board scale",
+        "Current1080p crowd and complete normal-speed skill presentation remain pending"
+      ],
+      "crowded_720p_evidence": [
+        "reports/WC-330/packaged-candidate6-network720/host-round-08.png",
+        "reports/WC-330/packaged-candidate6-network720/client-round-08.png"
+      ],
+      "crowd_review_report": "reports/WC-330/packaged-candidate6-network720-review.md",
+      "active_recovery_720p": {
+        "status": "ACTUAL_PACKAGED_RECOVERY_STILLS_REVIEWED",
+        "screenshots": [
+          "reports/WC-330/shipping-routed-skills720/host-active-def-00.png",
+          "reports/WC-330/shipping-routed-skills720/client-active-def-00.png"
+        ],
+        "report": "reports/WC-330/shipping-routed-skills720-review.md",
+        "complete_effect_and_timing_acceptance": false
+      },
+      "active_recovery_1080p": {
+        "status": "REVIEWED_ACTUAL_NORMAL_SPEED_CAPTURE_NOT_CONTINUOUS_TIMING_PASS",
+        "image": "reports/WC-330/shipping-normal1080/match-1-seat-0-pid-44708-active-def-0.png",
+        "report": "reports/WC-330/shipping-normal1080-review.md"
+      },
+      "active_recovery_1080p_taa": {
+        "status": "REVIEWED_POSITIVE_HP_ACTUAL_NORMAL_SPEED_TAA_STILL",
+        "image": "reports/WC-360/shipping-normal1080-taa/match-1-seat-0-pid-49972-active-def-0.png",
+        "sha256": "27f1fe6e3b8f534fd07c4543eb1fe9a306448f7e6ec381df3d876b2359fbf2f2",
+        "report": "reports/WC-330/shipping-normal1080-taa-review.md"
+      }
+    },
+    {
+      "unit_id": "wc_u_human_priest",
+      "name": "Mira Dawnwell",
+      "source_revision": 6,
+      "geometry_revision": 4,
+      "source": "art-source/heroes/wc_u_human_priest/wc_u_human_priest.blend",
+      "source_sha256": "9d1e892baa97851c0da287be5d14c7d428d70c6dc76f3f841d3204133fc77d77",
+      "export_manifest": "exports/heroes/wc_u_human_priest/export_manifest.json",
+      "export_manifest_sha256": "6a9369890f1b7578bcd17e916eabe8beb4cdd915fd9e57a6ea8da13f1775f1fe",
+      "rig_family": "humanoid_standard",
+      "bones": 27,
+      "triangles_lod0": 3714,
+      "material_slots": 1,
+      "model_matched_portrait": "exports/heroes/wc_u_human_priest/portrait.png",
+      "stages": {
+        "brief": "AUTHORED_CANONICAL_DOSSIER",
+        "model": "AUTHORED_EXECUTED",
+        "rig": "SOURCE_INVARIANTS_PASS",
+        "animation": "SEVEN_CLIPS_EXPORTED_SOURCE_CHECKS_PASS",
+        "imported": "SEVEN_CLIPS_VISIBLE_IN_UNREAL_REVIEW",
+        "sampled_visual_review": "PASS_BOUNDED_POSE_REVIEW",
+        "crowded_gameplay_review": "REVIEWED_PACKAGED_NORMAL_SPEED_1080P_TAA_SAMPLES",
+        "skill_behavior": "INTEGRATION_LANE_EVIDENCE_REQUIRED",
+        "packaged_presentation": "VISIBLE_IN_ACTUAL_SHIPPING_NORMAL_SPEED_1080P_TAA",
+        "accepted": "PENDING_FINAL_CROWDED_AND_GAMEPLAY_GATES"
+      },
+      "clips": [
+        {
+          "clip": "Idle",
+          "export": "exports/heroes/wc_u_human_priest/AN_wc_u_human_priest_Idle.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-00.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-01.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-02.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Move",
+          "export": "exports/heroes/wc_u_human_priest/AN_wc_u_human_priest_Move.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-03.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-04.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-05.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Attack",
+          "export": "exports/heroes/wc_u_human_priest/AN_wc_u_human_priest_Attack.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-06.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-07.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-08.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Active",
+          "export": "exports/heroes/wc_u_human_priest/AN_wc_u_human_priest_Active.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-09.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-10.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-11.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Hit",
+          "export": "exports/heroes/wc_u_human_priest/AN_wc_u_human_priest_Hit.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-12.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-13.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-14.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Defeat",
+          "export": "exports/heroes/wc_u_human_priest/AN_wc_u_human_priest_Defeat.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-15.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-16.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-17.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Victory",
+          "export": "exports/heroes/wc_u_human_priest/AN_wc_u_human_priest_Victory.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-18.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-19.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-20.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        }
+      ],
+      "source_evidence": [
+        "reports/WC-330/animation-refinement-production.json",
+        "reports/WC-330/export-integrity.json",
+        "reports/WC-330/rest-skeleton-parity.json"
+      ],
+      "visual_evidence": [
+        "reports/WC-330/unreal-visual-review-revision6.md",
+        "reports/WC-330/unreal-visual-review-revision6-evidence.json"
+      ],
+      "known_limits": [
+        "Angular sleeve and elbow creases at deep bends",
+        "Fine face and hand detail may be unresolved at full-board scale",
+        "Current1080p crowd and complete normal-speed skill presentation remain pending"
+      ],
+      "crowded_720p_evidence": [
+        "reports/WC-330/packaged-candidate6-network720/client-round-12.png"
+      ],
+      "crowd_review_report": "reports/WC-330/packaged-candidate6-network720-review.md",
+      "active_recovery_720p": {
+        "status": "ACTUAL_PACKAGED_RECOVERY_STILLS_REVIEWED",
+        "screenshots": [
+          "reports/WC-330/shipping-routed-skills720/host-active-def-01.png",
+          "reports/WC-330/shipping-routed-skills720/client-active-def-01.png"
+        ],
+        "report": "reports/WC-330/shipping-routed-skills720-review.md",
+        "complete_effect_and_timing_acceptance": false
+      },
+      "active_recovery_1080p": {
+        "status": "REVIEWED_ACTUAL_NORMAL_SPEED_CAPTURE_NOT_CONTINUOUS_TIMING_PASS",
+        "image": "reports/WC-330/shipping-normal1080/match-1-seat-0-pid-44708-active-def-1.png",
+        "report": "reports/WC-330/shipping-normal1080-review.md"
+      },
+      "active_recovery_1080p_taa": {
+        "status": "REVIEWED_POSITIVE_HP_ACTUAL_NORMAL_SPEED_TAA_STILL",
+        "image": "reports/WC-360/shipping-normal1080-taa/match-1-seat-0-pid-49972-active-def-1.png",
+        "sha256": "96c5613a9eafd1c5b948b24e7b83059ccf6c1f0c45bb4b50e0b14d861e583dc2",
+        "report": "reports/WC-330/shipping-normal1080-taa-review.md"
+      }
+    },
+    {
+      "unit_id": "wc_u_human_mage",
+      "name": "Rowan Emberwick",
+      "source_revision": 6,
+      "geometry_revision": 4,
+      "source": "art-source/heroes/wc_u_human_mage/wc_u_human_mage.blend",
+      "source_sha256": "14c67dcabacbf2c3d7639b8859bc07e9cdda68028657f2272f11289129b4a27a",
+      "export_manifest": "exports/heroes/wc_u_human_mage/export_manifest.json",
+      "export_manifest_sha256": "ba3effdb849f4219c19c0d44d067172149b3608dca133b50b6accf2652b26033",
+      "rig_family": "humanoid_standard",
+      "bones": 27,
+      "triangles_lod0": 4170,
+      "material_slots": 1,
+      "model_matched_portrait": "exports/heroes/wc_u_human_mage/portrait.png",
+      "stages": {
+        "brief": "AUTHORED_CANONICAL_DOSSIER",
+        "model": "AUTHORED_EXECUTED",
+        "rig": "SOURCE_INVARIANTS_PASS",
+        "animation": "SEVEN_CLIPS_EXPORTED_SOURCE_CHECKS_PASS",
+        "imported": "SEVEN_CLIPS_VISIBLE_IN_UNREAL_REVIEW",
+        "sampled_visual_review": "PASS_BOUNDED_POSE_REVIEW",
+        "crowded_gameplay_review": "REVIEWED_PACKAGED_NORMAL_SPEED_1080P_TAA_SAMPLES",
+        "skill_behavior": "INTEGRATION_LANE_EVIDENCE_REQUIRED",
+        "packaged_presentation": "VISIBLE_IN_ACTUAL_SHIPPING_NORMAL_SPEED_1080P_TAA",
+        "accepted": "PENDING_FINAL_CROWDED_AND_GAMEPLAY_GATES"
+      },
+      "clips": [
+        {
+          "clip": "Idle",
+          "export": "exports/heroes/wc_u_human_mage/AN_wc_u_human_mage_Idle.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-00.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-01.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-02.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Move",
+          "export": "exports/heroes/wc_u_human_mage/AN_wc_u_human_mage_Move.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-03.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-04.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-05.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Attack",
+          "export": "exports/heroes/wc_u_human_mage/AN_wc_u_human_mage_Attack.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-06.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-07.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-08.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Active",
+          "export": "exports/heroes/wc_u_human_mage/AN_wc_u_human_mage_Active.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-09.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-10.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-11.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Hit",
+          "export": "exports/heroes/wc_u_human_mage/AN_wc_u_human_mage_Hit.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-12.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-13.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-14.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Defeat",
+          "export": "exports/heroes/wc_u_human_mage/AN_wc_u_human_mage_Defeat.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-15.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-16.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-17.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Victory",
+          "export": "exports/heroes/wc_u_human_mage/AN_wc_u_human_mage_Victory.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-18.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-19.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-20.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        }
+      ],
+      "source_evidence": [
+        "reports/WC-330/animation-refinement-production.json",
+        "reports/WC-330/export-integrity.json",
+        "reports/WC-330/rest-skeleton-parity.json"
+      ],
+      "visual_evidence": [
+        "reports/WC-330/unreal-visual-review-revision6.md",
+        "reports/WC-330/unreal-visual-review-revision6-evidence.json"
+      ],
+      "known_limits": [
+        "Angular sleeve and elbow creases at deep bends",
+        "Fine face and hand detail may be unresolved at full-board scale",
+        "Current1080p crowd and complete normal-speed skill presentation remain pending"
+      ],
+      "crowded_720p_evidence": [
+        "reports/WC-330/packaged-candidate6-network720/host-round-08.png"
+      ],
+      "crowd_review_report": "reports/WC-330/packaged-candidate6-network720-review.md",
+      "active_recovery_720p": {
+        "status": "ACTUAL_PACKAGED_RECOVERY_STILLS_REVIEWED",
+        "screenshots": [
+          "reports/WC-330/shipping-routed-skills720/host-active-def-02.png",
+          "reports/WC-330/shipping-routed-skills720/client-active-def-02.png"
+        ],
+        "report": "reports/WC-330/shipping-routed-skills720-review.md",
+        "complete_effect_and_timing_acceptance": false
+      },
+      "active_recovery_1080p": {
+        "status": "REVIEWED_ACTUAL_NORMAL_SPEED_CAPTURE_NOT_CONTINUOUS_TIMING_PASS",
+        "image": "reports/WC-330/shipping-normal1080/match-1-seat-0-pid-44708-active-def-2.png",
+        "report": "reports/WC-330/shipping-normal1080-review.md"
+      },
+      "active_recovery_1080p_taa": {
+        "status": "REVIEWED_POSITIVE_HP_ACTUAL_NORMAL_SPEED_TAA_STILL",
+        "image": "reports/WC-360/shipping-normal1080-taa/match-1-seat-0-pid-49972-active-def-2.png",
+        "sha256": "4a15beb3153acd14e8a8367a359e3a801936583c545282f317a3b2ac7c2c47e4",
+        "report": "reports/WC-330/shipping-normal1080-taa-review.md"
+      }
+    },
+    {
+      "unit_id": "wc_u_elf_ranger",
+      "name": "Liora Leafstep",
+      "source_revision": 6,
+      "geometry_revision": 5,
+      "source": "art-source/heroes/wc_u_elf_ranger/wc_u_elf_ranger.blend",
+      "source_sha256": "db1897185aa6d56056c8ed16a600f6174272aaaeb65f283809e172111b638b03",
+      "export_manifest": "exports/heroes/wc_u_elf_ranger/export_manifest.json",
+      "export_manifest_sha256": "435378c1e256c31fe8629fe133b11a53f949e41e6913a8eb7bed941711f5e892",
+      "rig_family": "humanoid_slender",
+      "bones": 27,
+      "triangles_lod0": 3136,
+      "material_slots": 1,
+      "model_matched_portrait": "exports/heroes/wc_u_elf_ranger/portrait.png",
+      "stages": {
+        "brief": "AUTHORED_CANONICAL_DOSSIER",
+        "model": "AUTHORED_EXECUTED",
+        "rig": "SOURCE_INVARIANTS_PASS",
+        "animation": "SEVEN_CLIPS_EXPORTED_SOURCE_CHECKS_PASS",
+        "imported": "SEVEN_CLIPS_VISIBLE_IN_UNREAL_REVIEW",
+        "sampled_visual_review": "PASS_BOUNDED_POSE_REVIEW",
+        "crowded_gameplay_review": "REVIEWED_PACKAGED_NORMAL_SPEED_1080P_TAA_SAMPLES",
+        "skill_behavior": "INTEGRATION_LANE_EVIDENCE_REQUIRED",
+        "packaged_presentation": "VISIBLE_IN_ACTUAL_SHIPPING_NORMAL_SPEED_1080P_TAA",
+        "accepted": "PENDING_FINAL_CROWDED_AND_GAMEPLAY_GATES"
+      },
+      "clips": [
+        {
+          "clip": "Idle",
+          "export": "exports/heroes/wc_u_elf_ranger/AN_wc_u_elf_ranger_Idle.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-00.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-01.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-02.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Move",
+          "export": "exports/heroes/wc_u_elf_ranger/AN_wc_u_elf_ranger_Move.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-03.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-04.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-05.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Attack",
+          "export": "exports/heroes/wc_u_elf_ranger/AN_wc_u_elf_ranger_Attack.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-06.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-07.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-08.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Active",
+          "export": "exports/heroes/wc_u_elf_ranger/AN_wc_u_elf_ranger_Active.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-09.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-10.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-11.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Hit",
+          "export": "exports/heroes/wc_u_elf_ranger/AN_wc_u_elf_ranger_Hit.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-12.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-13.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-14.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Defeat",
+          "export": "exports/heroes/wc_u_elf_ranger/AN_wc_u_elf_ranger_Defeat.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-15.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-16.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-17.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Victory",
+          "export": "exports/heroes/wc_u_elf_ranger/AN_wc_u_elf_ranger_Victory.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-18.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-19.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-20.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        }
+      ],
+      "source_evidence": [
+        "reports/WC-330/animation-refinement-production.json",
+        "reports/WC-330/export-integrity.json",
+        "reports/WC-330/rest-skeleton-parity.json"
+      ],
+      "visual_evidence": [
+        "reports/WC-330/unreal-visual-review-revision6.md",
+        "reports/WC-330/unreal-visual-review-revision6-evidence.json"
+      ],
+      "known_limits": [
+        "Angular sleeve and elbow creases at deep bends",
+        "Fine face and hand detail may be unresolved at full-board scale",
+        "Current1080p crowd and complete normal-speed skill presentation remain pending"
+      ],
+      "crowded_720p_evidence": [
+        "reports/WC-330/packaged-candidate6-network720/host-round-05.png",
+        "reports/WC-330/packaged-candidate6-network720/host-round-08.png",
+        "reports/WC-330/packaged-candidate6-network720/host-round-10.png"
+      ],
+      "crowd_review_report": "reports/WC-330/packaged-candidate6-network720-review.md",
+      "active_recovery_720p": {
+        "status": "ACTUAL_PACKAGED_RECOVERY_STILLS_REVIEWED",
+        "screenshots": [
+          "reports/WC-330/shipping-routed-skills720/host-active-def-03.png",
+          "reports/WC-330/shipping-routed-skills720/client-active-def-03.png"
+        ],
+        "report": "reports/WC-330/shipping-routed-skills720-review.md",
+        "complete_effect_and_timing_acceptance": false
+      },
+      "active_recovery_1080p": {
+        "status": "REVIEWED_ACTUAL_NORMAL_SPEED_CAPTURE_NOT_CONTINUOUS_TIMING_PASS",
+        "image": "reports/WC-330/shipping-normal1080/match-1-seat-0-pid-44708-active-def-3.png",
+        "report": "reports/WC-330/shipping-normal1080-review.md"
+      },
+      "active_recovery_1080p_taa": {
+        "status": "REVIEWED_POSITIVE_HP_ACTUAL_NORMAL_SPEED_TAA_STILL",
+        "image": "reports/WC-360/shipping-normal1080-taa/match-1-seat-0-pid-49972-active-def-3.png",
+        "sha256": "c1c8482cfddcd467819fe773f72e5dff7ac1233b0cd62664fb70717871aaa036",
+        "report": "reports/WC-330/shipping-normal1080-taa-review.md"
+      }
+    },
+    {
+      "unit_id": "wc_u_elf_priest",
+      "name": "Elin Moonsong",
+      "source_revision": 6,
+      "geometry_revision": 5,
+      "source": "art-source/heroes/wc_u_elf_priest/wc_u_elf_priest.blend",
+      "source_sha256": "40d4bceb9aec0cdf3122f5d88ab089e856b3fac63416a4c2f2b5d3e4af96c241",
+      "export_manifest": "exports/heroes/wc_u_elf_priest/export_manifest.json",
+      "export_manifest_sha256": "fb3aa05b74574284f3a2ffb11f7789926080c30073ee88e0494287ee85ee3f29",
+      "rig_family": "humanoid_slender",
+      "bones": 27,
+      "triangles_lod0": 4582,
+      "material_slots": 1,
+      "model_matched_portrait": "exports/heroes/wc_u_elf_priest/portrait.png",
+      "stages": {
+        "brief": "AUTHORED_CANONICAL_DOSSIER",
+        "model": "AUTHORED_EXECUTED",
+        "rig": "SOURCE_INVARIANTS_PASS",
+        "animation": "SEVEN_CLIPS_EXPORTED_SOURCE_CHECKS_PASS",
+        "imported": "SEVEN_CLIPS_VISIBLE_IN_UNREAL_REVIEW",
+        "sampled_visual_review": "PASS_BOUNDED_POSE_REVIEW",
+        "crowded_gameplay_review": "REVIEWED_PACKAGED_NORMAL_SPEED_1080P_TAA_SAMPLES",
+        "skill_behavior": "INTEGRATION_LANE_EVIDENCE_REQUIRED",
+        "packaged_presentation": "VISIBLE_IN_ACTUAL_SHIPPING_NORMAL_SPEED_1080P_TAA",
+        "accepted": "PENDING_FINAL_CROWDED_AND_GAMEPLAY_GATES"
+      },
+      "clips": [
+        {
+          "clip": "Idle",
+          "export": "exports/heroes/wc_u_elf_priest/AN_wc_u_elf_priest_Idle.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-00.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-01.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-02.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Move",
+          "export": "exports/heroes/wc_u_elf_priest/AN_wc_u_elf_priest_Move.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-03.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-04.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-05.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Attack",
+          "export": "exports/heroes/wc_u_elf_priest/AN_wc_u_elf_priest_Attack.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-06.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-07.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-08.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Active",
+          "export": "exports/heroes/wc_u_elf_priest/AN_wc_u_elf_priest_Active.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-09.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-10.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-11.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Hit",
+          "export": "exports/heroes/wc_u_elf_priest/AN_wc_u_elf_priest_Hit.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-12.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-13.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-14.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Defeat",
+          "export": "exports/heroes/wc_u_elf_priest/AN_wc_u_elf_priest_Defeat.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-15.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-16.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-17.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Victory",
+          "export": "exports/heroes/wc_u_elf_priest/AN_wc_u_elf_priest_Victory.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-18.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-19.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-20.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        }
+      ],
+      "source_evidence": [
+        "reports/WC-330/animation-refinement-production.json",
+        "reports/WC-330/export-integrity.json",
+        "reports/WC-330/rest-skeleton-parity.json"
+      ],
+      "visual_evidence": [
+        "reports/WC-330/unreal-visual-review-revision6.md",
+        "reports/WC-330/unreal-visual-review-revision6-evidence.json"
+      ],
+      "known_limits": [
+        "Angular sleeve and elbow creases at deep bends",
+        "Fine face and hand detail may be unresolved at full-board scale",
+        "Current1080p crowd and complete normal-speed skill presentation remain pending"
+      ],
+      "crowded_720p_evidence": [
+        "reports/WC-330/packaged-candidate6-network720/host-round-05.png",
+        "reports/WC-330/packaged-candidate6-network720/host-round-08.png",
+        "reports/WC-330/packaged-candidate6-network720/host-round-10.png"
+      ],
+      "crowd_review_report": "reports/WC-330/packaged-candidate6-network720-review.md",
+      "active_recovery_720p": {
+        "status": "ACTUAL_PACKAGED_RECOVERY_STILLS_REVIEWED",
+        "screenshots": [
+          "reports/WC-330/shipping-routed-skills720/host-active-def-04.png",
+          "reports/WC-330/shipping-routed-skills720/client-active-def-04.png"
+        ],
+        "report": "reports/WC-330/shipping-routed-skills720-review.md",
+        "complete_effect_and_timing_acceptance": false
+      },
+      "active_recovery_1080p": {
+        "status": "REVIEWED_ACTUAL_NORMAL_SPEED_CAPTURE_NOT_CONTINUOUS_TIMING_PASS",
+        "image": "reports/WC-330/shipping-normal1080/match-1-seat-0-pid-44708-active-def-4.png",
+        "report": "reports/WC-330/shipping-normal1080-review.md"
+      },
+      "active_recovery_1080p_taa": {
+        "status": "REVIEWED_POSITIVE_HP_ACTUAL_NORMAL_SPEED_TAA_STILL",
+        "image": "reports/WC-360/shipping-normal1080-taa/match-1-seat-0-pid-49972-active-def-4.png",
+        "sha256": "f4d52378655dab629018baf486176e86e3b1334128ba20e3222393a0d004235d",
+        "report": "reports/WC-330/shipping-normal1080-taa-review.md"
+      }
+    },
+    {
+      "unit_id": "wc_u_elf_rogue",
+      "name": "Sylas Duskrun",
+      "source_revision": 6,
+      "geometry_revision": 4,
+      "source": "art-source/heroes/wc_u_elf_rogue/wc_u_elf_rogue.blend",
+      "source_sha256": "95caa91648c81f11ea379501822ec8d60501479c8abc0c00ce2382886b1564a5",
+      "export_manifest": "exports/heroes/wc_u_elf_rogue/export_manifest.json",
+      "export_manifest_sha256": "5365e3f0ff820ef00c93d149cd70b9e24316f07f3824dade40579e9f9e27be41",
+      "rig_family": "humanoid_slender",
+      "bones": 27,
+      "triangles_lod0": 3218,
+      "material_slots": 1,
+      "model_matched_portrait": "exports/heroes/wc_u_elf_rogue/portrait.png",
+      "stages": {
+        "brief": "AUTHORED_CANONICAL_DOSSIER",
+        "model": "AUTHORED_EXECUTED",
+        "rig": "SOURCE_INVARIANTS_PASS",
+        "animation": "SEVEN_CLIPS_EXPORTED_SOURCE_CHECKS_PASS",
+        "imported": "SEVEN_CLIPS_VISIBLE_IN_UNREAL_REVIEW",
+        "sampled_visual_review": "PASS_BOUNDED_POSE_REVIEW",
+        "crowded_gameplay_review": "REVIEWED_PACKAGED_NORMAL_SPEED_1080P_TAA_SAMPLES",
+        "skill_behavior": "INTEGRATION_LANE_EVIDENCE_REQUIRED",
+        "packaged_presentation": "VISIBLE_IN_ACTUAL_SHIPPING_NORMAL_SPEED_1080P_TAA",
+        "accepted": "PENDING_FINAL_CROWDED_AND_GAMEPLAY_GATES"
+      },
+      "clips": [
+        {
+          "clip": "Idle",
+          "export": "exports/heroes/wc_u_elf_rogue/AN_wc_u_elf_rogue_Idle.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-00.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-01.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-02.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Move",
+          "export": "exports/heroes/wc_u_elf_rogue/AN_wc_u_elf_rogue_Move.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-03.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-04.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-05.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Attack",
+          "export": "exports/heroes/wc_u_elf_rogue/AN_wc_u_elf_rogue_Attack.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-06.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-07.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-08.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Active",
+          "export": "exports/heroes/wc_u_elf_rogue/AN_wc_u_elf_rogue_Active.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-09.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-10.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-11.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Hit",
+          "export": "exports/heroes/wc_u_elf_rogue/AN_wc_u_elf_rogue_Hit.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-12.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-13.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-14.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Defeat",
+          "export": "exports/heroes/wc_u_elf_rogue/AN_wc_u_elf_rogue_Defeat.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-15.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-16.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-17.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Victory",
+          "export": "exports/heroes/wc_u_elf_rogue/AN_wc_u_elf_rogue_Victory.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-18.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-19.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-20.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        }
+      ],
+      "source_evidence": [
+        "reports/WC-330/animation-refinement-production.json",
+        "reports/WC-330/export-integrity.json",
+        "reports/WC-330/rest-skeleton-parity.json"
+      ],
+      "visual_evidence": [
+        "reports/WC-330/unreal-visual-review-revision6.md",
+        "reports/WC-330/unreal-visual-review-revision6-evidence.json"
+      ],
+      "known_limits": [
+        "Angular sleeve and elbow creases at deep bends",
+        "Fine face and hand detail may be unresolved at full-board scale",
+        "Current1080p crowd and complete normal-speed skill presentation remain pending"
+      ],
+      "crowded_720p_evidence": [
+        "reports/WC-330/packaged-candidate6-network720/host-round-05.png",
+        "reports/WC-330/packaged-candidate6-network720/client-round-08.png"
+      ],
+      "crowd_review_report": "reports/WC-330/packaged-candidate6-network720-review.md",
+      "active_recovery_720p": {
+        "status": "ACTUAL_PACKAGED_RECOVERY_STILLS_REVIEWED",
+        "screenshots": [
+          "reports/WC-330/shipping-routed-skills720/host-active-def-05.png",
+          "reports/WC-330/shipping-routed-skills720/client-active-def-05.png"
+        ],
+        "report": "reports/WC-330/shipping-routed-skills720-review.md",
+        "complete_effect_and_timing_acceptance": false
+      },
+      "active_recovery_1080p": {
+        "status": "REVIEWED_ACTUAL_NORMAL_SPEED_CAPTURE_NOT_CONTINUOUS_TIMING_PASS",
+        "image": "reports/WC-330/shipping-normal1080/match-1-seat-0-pid-44708-active-def-5.png",
+        "report": "reports/WC-330/shipping-normal1080-review.md"
+      },
+      "active_recovery_1080p_taa": {
+        "status": "REVIEWED_POSITIVE_HP_ACTUAL_NORMAL_SPEED_TAA_STILL",
+        "image": "reports/WC-360/shipping-normal1080-taa/match-1-seat-0-pid-49972-active-def-5.png",
+        "sha256": "323b70e4722b7e5add1010cb3145760a9bc7fb433e88bc9c17345ef18f89a8cc",
+        "report": "reports/WC-330/shipping-normal1080-taa-review.md"
+      }
+    },
+    {
+      "unit_id": "wc_u_dwarf_guardian",
+      "name": "Borin Stonebell",
+      "source_revision": 6,
+      "geometry_revision": 4,
+      "source": "art-source/heroes/wc_u_dwarf_guardian/wc_u_dwarf_guardian.blend",
+      "source_sha256": "62cc289918ba5156b758da40aa6cb8d4cf5f68136ac9ebd0d76862bb7d24e5ac",
+      "export_manifest": "exports/heroes/wc_u_dwarf_guardian/export_manifest.json",
+      "export_manifest_sha256": "e9611378dabcb575152a760748e5eee98ee181eecda6b098e750afde0a4fc927",
+      "rig_family": "humanoid_stocky",
+      "bones": 27,
+      "triangles_lod0": 3306,
+      "material_slots": 1,
+      "model_matched_portrait": "exports/heroes/wc_u_dwarf_guardian/portrait.png",
+      "stages": {
+        "brief": "AUTHORED_CANONICAL_DOSSIER",
+        "model": "AUTHORED_EXECUTED",
+        "rig": "SOURCE_INVARIANTS_PASS",
+        "animation": "SEVEN_CLIPS_EXPORTED_SOURCE_CHECKS_PASS",
+        "imported": "SEVEN_CLIPS_VISIBLE_IN_UNREAL_REVIEW",
+        "sampled_visual_review": "PASS_BOUNDED_POSE_REVIEW",
+        "crowded_gameplay_review": "REVIEWED_PACKAGED_NORMAL_SPEED_1080P_TAA_SAMPLES",
+        "skill_behavior": "INTEGRATION_LANE_EVIDENCE_REQUIRED",
+        "packaged_presentation": "VISIBLE_IN_ACTUAL_SHIPPING_NORMAL_SPEED_1080P_TAA",
+        "accepted": "PENDING_FINAL_CROWDED_AND_GAMEPLAY_GATES"
+      },
+      "clips": [
+        {
+          "clip": "Idle",
+          "export": "exports/heroes/wc_u_dwarf_guardian/AN_wc_u_dwarf_guardian_Idle.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-00.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-01.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-02.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Move",
+          "export": "exports/heroes/wc_u_dwarf_guardian/AN_wc_u_dwarf_guardian_Move.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-03.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-04.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-05.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Attack",
+          "export": "exports/heroes/wc_u_dwarf_guardian/AN_wc_u_dwarf_guardian_Attack.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-06.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-07.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-08.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Active",
+          "export": "exports/heroes/wc_u_dwarf_guardian/AN_wc_u_dwarf_guardian_Active.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-09.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-10.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-11.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Hit",
+          "export": "exports/heroes/wc_u_dwarf_guardian/AN_wc_u_dwarf_guardian_Hit.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-12.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-13.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-14.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Defeat",
+          "export": "exports/heroes/wc_u_dwarf_guardian/AN_wc_u_dwarf_guardian_Defeat.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-15.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-16.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-17.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Victory",
+          "export": "exports/heroes/wc_u_dwarf_guardian/AN_wc_u_dwarf_guardian_Victory.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-18.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-19.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-20.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        }
+      ],
+      "source_evidence": [
+        "reports/WC-330/animation-refinement-production.json",
+        "reports/WC-330/export-integrity.json",
+        "reports/WC-330/rest-skeleton-parity.json"
+      ],
+      "visual_evidence": [
+        "reports/WC-330/unreal-visual-review-revision6.md",
+        "reports/WC-330/unreal-visual-review-revision6-evidence.json"
+      ],
+      "known_limits": [
+        "Angular sleeve and elbow creases at deep bends",
+        "Fine face and hand detail may be unresolved at full-board scale",
+        "Current1080p crowd and complete normal-speed skill presentation remain pending"
+      ],
+      "crowded_720p_evidence": [
+        "reports/WC-330/packaged-candidate6-network720/host-round-08.png",
+        "reports/WC-330/packaged-candidate6-network720/client-round-08.png"
+      ],
+      "crowd_review_report": "reports/WC-330/packaged-candidate6-network720-review.md",
+      "active_recovery_720p": {
+        "status": "ACTUAL_PACKAGED_RECOVERY_STILLS_REVIEWED",
+        "screenshots": [
+          "reports/WC-330/shipping-routed-skills720/host-active-def-06.png",
+          "reports/WC-330/shipping-routed-skills720/client-active-def-06.png"
+        ],
+        "report": "reports/WC-330/shipping-routed-skills720-review.md",
+        "complete_effect_and_timing_acceptance": false
+      },
+      "active_recovery_1080p": {
+        "status": "REVIEWED_ACTUAL_NORMAL_SPEED_CAPTURE_NOT_CONTINUOUS_TIMING_PASS",
+        "image": "reports/WC-330/shipping-normal1080/match-1-seat-0-pid-44708-active-def-6.png",
+        "report": "reports/WC-330/shipping-normal1080-review.md"
+      },
+      "active_recovery_1080p_taa": {
+        "status": "REVIEWED_POSITIVE_HP_ACTUAL_NORMAL_SPEED_TAA_STILL",
+        "image": "reports/WC-360/shipping-normal1080-taa/match-1-seat-0-pid-49972-active-def-6.png",
+        "sha256": "8ab929903ab6f1dd2afe1b5a5d8ccc6f9ef77e121e2fa65476662446221bc5ff",
+        "report": "reports/WC-330/shipping-normal1080-taa-review.md"
+      }
+    },
+    {
+      "unit_id": "wc_u_dwarf_ranger",
+      "name": "Tessa Brassbolt",
+      "source_revision": 6,
+      "geometry_revision": 5,
+      "source": "art-source/heroes/wc_u_dwarf_ranger/wc_u_dwarf_ranger.blend",
+      "source_sha256": "5b707b064f5b97ed20f63472de1194c24074bd6247c360ca776d410a0744298c",
+      "export_manifest": "exports/heroes/wc_u_dwarf_ranger/export_manifest.json",
+      "export_manifest_sha256": "2387ef3ddf3900a89565f51b613661f71bcb37f063dd6f2e051e7c8b637aedcc",
+      "rig_family": "humanoid_stocky",
+      "bones": 27,
+      "triangles_lod0": 4020,
+      "material_slots": 1,
+      "model_matched_portrait": "exports/heroes/wc_u_dwarf_ranger/portrait.png",
+      "stages": {
+        "brief": "AUTHORED_CANONICAL_DOSSIER",
+        "model": "AUTHORED_EXECUTED",
+        "rig": "SOURCE_INVARIANTS_PASS",
+        "animation": "SEVEN_CLIPS_EXPORTED_SOURCE_CHECKS_PASS",
+        "imported": "SEVEN_CLIPS_VISIBLE_IN_UNREAL_REVIEW",
+        "sampled_visual_review": "PASS_BOUNDED_POSE_REVIEW",
+        "crowded_gameplay_review": "REVIEWED_PACKAGED_NORMAL_SPEED_1080P_TAA_SAMPLES",
+        "skill_behavior": "INTEGRATION_LANE_EVIDENCE_REQUIRED",
+        "packaged_presentation": "VISIBLE_IN_ACTUAL_SHIPPING_NORMAL_SPEED_1080P_TAA",
+        "accepted": "PENDING_FINAL_CROWDED_AND_GAMEPLAY_GATES"
+      },
+      "clips": [
+        {
+          "clip": "Idle",
+          "export": "exports/heroes/wc_u_dwarf_ranger/AN_wc_u_dwarf_ranger_Idle.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-00.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-01.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-02.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Move",
+          "export": "exports/heroes/wc_u_dwarf_ranger/AN_wc_u_dwarf_ranger_Move.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-03.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-04.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-05.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Attack",
+          "export": "exports/heroes/wc_u_dwarf_ranger/AN_wc_u_dwarf_ranger_Attack.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-06.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-07.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-08.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Active",
+          "export": "exports/heroes/wc_u_dwarf_ranger/AN_wc_u_dwarf_ranger_Active.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-09.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-10.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-11.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Hit",
+          "export": "exports/heroes/wc_u_dwarf_ranger/AN_wc_u_dwarf_ranger_Hit.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-12.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-13.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-14.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Defeat",
+          "export": "exports/heroes/wc_u_dwarf_ranger/AN_wc_u_dwarf_ranger_Defeat.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-15.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-16.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-17.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Victory",
+          "export": "exports/heroes/wc_u_dwarf_ranger/AN_wc_u_dwarf_ranger_Victory.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-18.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-19.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-20.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        }
+      ],
+      "source_evidence": [
+        "reports/WC-330/animation-refinement-production.json",
+        "reports/WC-330/export-integrity.json",
+        "reports/WC-330/rest-skeleton-parity.json"
+      ],
+      "visual_evidence": [
+        "reports/WC-330/unreal-visual-review-revision6.md",
+        "reports/WC-330/unreal-visual-review-revision6-evidence.json"
+      ],
+      "known_limits": [
+        "Angular sleeve and elbow creases at deep bends",
+        "Fine face and hand detail may be unresolved at full-board scale",
+        "Current1080p crowd and complete normal-speed skill presentation remain pending"
+      ],
+      "crowded_720p_evidence": [
+        "reports/WC-330/packaged-candidate6-network720/host-round-08.png",
+        "reports/WC-330/packaged-candidate6-network720/client-round-08.png"
+      ],
+      "crowd_review_report": "reports/WC-330/packaged-candidate6-network720-review.md",
+      "active_recovery_720p": {
+        "status": "ACTUAL_PACKAGED_RECOVERY_STILLS_REVIEWED",
+        "screenshots": [
+          "reports/WC-330/shipping-routed-skills720/host-active-def-07.png",
+          "reports/WC-330/shipping-routed-skills720/client-active-def-07.png"
+        ],
+        "report": "reports/WC-330/shipping-routed-skills720-review.md",
+        "complete_effect_and_timing_acceptance": false
+      },
+      "active_recovery_1080p": {
+        "status": "REVIEWED_ACTUAL_NORMAL_SPEED_CAPTURE_NOT_CONTINUOUS_TIMING_PASS",
+        "image": "reports/WC-330/shipping-normal1080/match-1-seat-0-pid-44708-active-def-7.png",
+        "report": "reports/WC-330/shipping-normal1080-review.md"
+      },
+      "active_recovery_1080p_taa": {
+        "status": "REVIEWED_POSITIVE_HP_ACTUAL_NORMAL_SPEED_TAA_STILL",
+        "image": "reports/WC-360/shipping-normal1080-taa/match-1-seat-0-pid-49972-active-def-7.png",
+        "sha256": "4f3bd450bc9057d6964661c6e1f7057996fad962946f85e08a3b107b931508eb",
+        "report": "reports/WC-330/shipping-normal1080-taa-review.md"
+      }
+    },
+    {
+      "unit_id": "wc_u_dwarf_warrior",
+      "name": "Dagna Anvilheart",
+      "source_revision": 6,
+      "geometry_revision": 4,
+      "source": "art-source/heroes/wc_u_dwarf_warrior/wc_u_dwarf_warrior.blend",
+      "source_sha256": "00864608c68fe67c7dd07eb8e1134812831d5940bb1d85ef4a3cf13cd63a8c8a",
+      "export_manifest": "exports/heroes/wc_u_dwarf_warrior/export_manifest.json",
+      "export_manifest_sha256": "ea05b38aa1502eacc03730c8ae19d3bb8e259d9ed5a6e9d656cf017424c28879",
+      "rig_family": "humanoid_stocky",
+      "bones": 27,
+      "triangles_lod0": 3696,
+      "material_slots": 1,
+      "model_matched_portrait": "exports/heroes/wc_u_dwarf_warrior/portrait.png",
+      "stages": {
+        "brief": "AUTHORED_CANONICAL_DOSSIER",
+        "model": "AUTHORED_EXECUTED",
+        "rig": "SOURCE_INVARIANTS_PASS",
+        "animation": "SEVEN_CLIPS_EXPORTED_SOURCE_CHECKS_PASS",
+        "imported": "SEVEN_CLIPS_VISIBLE_IN_UNREAL_REVIEW",
+        "sampled_visual_review": "PASS_BOUNDED_POSE_REVIEW",
+        "crowded_gameplay_review": "REVIEWED_PACKAGED_NORMAL_SPEED_1080P_TAA_SAMPLES",
+        "skill_behavior": "INTEGRATION_LANE_EVIDENCE_REQUIRED",
+        "packaged_presentation": "VISIBLE_IN_ACTUAL_SHIPPING_NORMAL_SPEED_1080P_TAA",
+        "accepted": "PENDING_FINAL_CROWDED_AND_GAMEPLAY_GATES"
+      },
+      "clips": [
+        {
+          "clip": "Idle",
+          "export": "exports/heroes/wc_u_dwarf_warrior/AN_wc_u_dwarf_warrior_Idle.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-00.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-01.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-02.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Move",
+          "export": "exports/heroes/wc_u_dwarf_warrior/AN_wc_u_dwarf_warrior_Move.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-03.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-04.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-05.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Attack",
+          "export": "exports/heroes/wc_u_dwarf_warrior/AN_wc_u_dwarf_warrior_Attack.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-06.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-07.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-08.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Active",
+          "export": "exports/heroes/wc_u_dwarf_warrior/AN_wc_u_dwarf_warrior_Active.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-09.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-10.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-11.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Hit",
+          "export": "exports/heroes/wc_u_dwarf_warrior/AN_wc_u_dwarf_warrior_Hit.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-12.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-13.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-14.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Defeat",
+          "export": "exports/heroes/wc_u_dwarf_warrior/AN_wc_u_dwarf_warrior_Defeat.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-15.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-16.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-17.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Victory",
+          "export": "exports/heroes/wc_u_dwarf_warrior/AN_wc_u_dwarf_warrior_Victory.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-18.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-19.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-20.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        }
+      ],
+      "source_evidence": [
+        "reports/WC-330/animation-refinement-production.json",
+        "reports/WC-330/export-integrity.json",
+        "reports/WC-330/rest-skeleton-parity.json"
+      ],
+      "visual_evidence": [
+        "reports/WC-330/unreal-visual-review-revision6.md",
+        "reports/WC-330/unreal-visual-review-revision6-evidence.json"
+      ],
+      "known_limits": [
+        "Angular sleeve and elbow creases at deep bends",
+        "Fine face and hand detail may be unresolved at full-board scale",
+        "Current1080p crowd and complete normal-speed skill presentation remain pending"
+      ],
+      "crowded_720p_evidence": [
+        "reports/WC-330/packaged-candidate6-network720/host-round-05.png",
+        "reports/WC-330/packaged-candidate6-network720/client-round-08.png"
+      ],
+      "crowd_review_report": "reports/WC-330/packaged-candidate6-network720-review.md",
+      "active_recovery_720p": {
+        "status": "ACTUAL_PACKAGED_RECOVERY_STILLS_REVIEWED",
+        "screenshots": [
+          "reports/WC-330/shipping-routed-skills720/host-active-def-08.png",
+          "reports/WC-330/shipping-routed-skills720/client-active-def-08.png"
+        ],
+        "report": "reports/WC-330/shipping-routed-skills720-review.md",
+        "complete_effect_and_timing_acceptance": false
+      },
+      "active_recovery_1080p": {
+        "status": "REVIEWED_ACTUAL_NORMAL_SPEED_CAPTURE_NOT_CONTINUOUS_TIMING_PASS",
+        "image": "reports/WC-330/shipping-normal1080/match-1-seat-0-pid-44708-active-def-8.png",
+        "report": "reports/WC-330/shipping-normal1080-review.md"
+      },
+      "active_recovery_1080p_taa": {
+        "status": "REVIEWED_POSITIVE_HP_ACTUAL_NORMAL_SPEED_TAA_STILL",
+        "image": "reports/WC-360/shipping-normal1080-taa/match-1-seat-0-pid-49972-active-def-8.png",
+        "sha256": "d3030a1b6a72a90346f92f23f713b5775d7fe8184e65ce52a35718734e09ee71",
+        "report": "reports/WC-330/shipping-normal1080-taa-review.md"
+      }
+    },
+    {
+      "unit_id": "wc_u_orc_warrior",
+      "name": "Rok Sunward",
+      "source_revision": 6,
+      "geometry_revision": 4,
+      "source": "art-source/heroes/wc_u_orc_warrior/wc_u_orc_warrior.blend",
+      "source_sha256": "8796d4453fb7f184b7c24e70b9f2a2c6bd287ec584c4c4f95d845c0961cc28aa",
+      "export_manifest": "exports/heroes/wc_u_orc_warrior/export_manifest.json",
+      "export_manifest_sha256": "abdb7d0073849d8d2da77ee21b895cd8c45676cbead40924c5c405c48b3572d7",
+      "rig_family": "humanoid_broad",
+      "bones": 27,
+      "triangles_lod0": 3090,
+      "material_slots": 1,
+      "model_matched_portrait": "exports/heroes/wc_u_orc_warrior/portrait.png",
+      "stages": {
+        "brief": "AUTHORED_CANONICAL_DOSSIER",
+        "model": "AUTHORED_EXECUTED",
+        "rig": "SOURCE_INVARIANTS_PASS",
+        "animation": "SEVEN_CLIPS_EXPORTED_SOURCE_CHECKS_PASS",
+        "imported": "SEVEN_CLIPS_VISIBLE_IN_UNREAL_REVIEW",
+        "sampled_visual_review": "PASS_BOUNDED_POSE_REVIEW",
+        "crowded_gameplay_review": "REVIEWED_PACKAGED_NORMAL_SPEED_1080P_TAA_SAMPLES",
+        "skill_behavior": "INTEGRATION_LANE_EVIDENCE_REQUIRED",
+        "packaged_presentation": "VISIBLE_IN_ACTUAL_SHIPPING_NORMAL_SPEED_1080P_TAA",
+        "accepted": "PENDING_FINAL_CROWDED_AND_GAMEPLAY_GATES"
+      },
+      "clips": [
+        {
+          "clip": "Idle",
+          "export": "exports/heroes/wc_u_orc_warrior/AN_wc_u_orc_warrior_Idle.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-00.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-01.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-02.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Move",
+          "export": "exports/heroes/wc_u_orc_warrior/AN_wc_u_orc_warrior_Move.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-03.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-04.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-05.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Attack",
+          "export": "exports/heroes/wc_u_orc_warrior/AN_wc_u_orc_warrior_Attack.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-06.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-07.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-08.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Active",
+          "export": "exports/heroes/wc_u_orc_warrior/AN_wc_u_orc_warrior_Active.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-09.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-10.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-11.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Hit",
+          "export": "exports/heroes/wc_u_orc_warrior/AN_wc_u_orc_warrior_Hit.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-12.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-13.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-14.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Defeat",
+          "export": "exports/heroes/wc_u_orc_warrior/AN_wc_u_orc_warrior_Defeat.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-15.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-16.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-17.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Victory",
+          "export": "exports/heroes/wc_u_orc_warrior/AN_wc_u_orc_warrior_Victory.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-18.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-19.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-20.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        }
+      ],
+      "source_evidence": [
+        "reports/WC-330/animation-refinement-production.json",
+        "reports/WC-330/export-integrity.json",
+        "reports/WC-330/rest-skeleton-parity.json"
+      ],
+      "visual_evidence": [
+        "reports/WC-330/unreal-visual-review-revision6.md",
+        "reports/WC-330/unreal-visual-review-revision6-evidence.json"
+      ],
+      "known_limits": [
+        "Angular sleeve and elbow creases at deep bends",
+        "Fine face and hand detail may be unresolved at full-board scale",
+        "Current1080p crowd and complete normal-speed skill presentation remain pending"
+      ],
+      "crowded_720p_evidence": [
+        "reports/WC-330/packaged-candidate6-network720/host-round-08.png",
+        "reports/WC-330/packaged-candidate6-network720/client-round-08.png"
+      ],
+      "crowd_review_report": "reports/WC-330/packaged-candidate6-network720-review.md",
+      "active_recovery_720p": {
+        "status": "ACTUAL_PACKAGED_RECOVERY_STILLS_REVIEWED",
+        "screenshots": [
+          "reports/WC-330/shipping-routed-skills720/host-active-def-09.png",
+          "reports/WC-330/shipping-routed-skills720/client-active-def-09.png"
+        ],
+        "report": "reports/WC-330/shipping-routed-skills720-review.md",
+        "complete_effect_and_timing_acceptance": false
+      },
+      "active_recovery_1080p": {
+        "status": "REVIEWED_ACTUAL_NORMAL_SPEED_CAPTURE_NOT_CONTINUOUS_TIMING_PASS",
+        "image": "reports/WC-330/shipping-normal1080/match-1-seat-0-pid-44708-active-def-9.png",
+        "report": "reports/WC-330/shipping-normal1080-review.md"
+      },
+      "active_recovery_1080p_taa": {
+        "status": "REVIEWED_POSITIVE_HP_ACTUAL_NORMAL_SPEED_TAA_STILL",
+        "image": "reports/WC-360/shipping-normal1080-taa/match-1-seat-0-pid-49972-active-def-9.png",
+        "sha256": "5c59db847081e95650c8907edb03924f83de397561803f1a4a48a68c9a1a9b91",
+        "report": "reports/WC-330/shipping-normal1080-taa-review.md"
+      }
+    },
+    {
+      "unit_id": "wc_u_orc_mage",
+      "name": "Zura Stormcall",
+      "source_revision": 6,
+      "geometry_revision": 4,
+      "source": "art-source/heroes/wc_u_orc_mage/wc_u_orc_mage.blend",
+      "source_sha256": "edcc7d6230aba0d311d9bdb93a3720e850eabd952a8b50a9515aed0d4e905ca9",
+      "export_manifest": "exports/heroes/wc_u_orc_mage/export_manifest.json",
+      "export_manifest_sha256": "bd92e0d671b81b284f5e67617174a9e4564441bba1e6e99e49251a21e985df2c",
+      "rig_family": "humanoid_broad",
+      "bones": 27,
+      "triangles_lod0": 5416,
+      "material_slots": 1,
+      "model_matched_portrait": "exports/heroes/wc_u_orc_mage/portrait.png",
+      "stages": {
+        "brief": "AUTHORED_CANONICAL_DOSSIER",
+        "model": "AUTHORED_EXECUTED",
+        "rig": "SOURCE_INVARIANTS_PASS",
+        "animation": "SEVEN_CLIPS_EXPORTED_SOURCE_CHECKS_PASS",
+        "imported": "SEVEN_CLIPS_VISIBLE_IN_UNREAL_REVIEW",
+        "sampled_visual_review": "PASS_BOUNDED_POSE_REVIEW",
+        "crowded_gameplay_review": "REVIEWED_PACKAGED_NORMAL_SPEED_1080P_TAA_SAMPLES",
+        "skill_behavior": "INTEGRATION_LANE_EVIDENCE_REQUIRED",
+        "packaged_presentation": "VISIBLE_IN_ACTUAL_SHIPPING_NORMAL_SPEED_1080P_TAA",
+        "accepted": "PENDING_FINAL_CROWDED_AND_GAMEPLAY_GATES"
+      },
+      "clips": [
+        {
+          "clip": "Idle",
+          "export": "exports/heroes/wc_u_orc_mage/AN_wc_u_orc_mage_Idle.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-00.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-01.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-02.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Move",
+          "export": "exports/heroes/wc_u_orc_mage/AN_wc_u_orc_mage_Move.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-03.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-04.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-05.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Attack",
+          "export": "exports/heroes/wc_u_orc_mage/AN_wc_u_orc_mage_Attack.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-06.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-07.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-08.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Active",
+          "export": "exports/heroes/wc_u_orc_mage/AN_wc_u_orc_mage_Active.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-09.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-10.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-11.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Hit",
+          "export": "exports/heroes/wc_u_orc_mage/AN_wc_u_orc_mage_Hit.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-12.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-13.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-14.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Defeat",
+          "export": "exports/heroes/wc_u_orc_mage/AN_wc_u_orc_mage_Defeat.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-15.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-16.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-17.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Victory",
+          "export": "exports/heroes/wc_u_orc_mage/AN_wc_u_orc_mage_Victory.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-18.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-19.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-20.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        }
+      ],
+      "source_evidence": [
+        "reports/WC-330/animation-refinement-production.json",
+        "reports/WC-330/export-integrity.json",
+        "reports/WC-330/rest-skeleton-parity.json"
+      ],
+      "visual_evidence": [
+        "reports/WC-330/unreal-visual-review-revision6.md",
+        "reports/WC-330/unreal-visual-review-revision6-evidence.json"
+      ],
+      "known_limits": [
+        "Angular sleeve and elbow creases at deep bends",
+        "Fine face and hand detail may be unresolved at full-board scale",
+        "Current1080p crowd and complete normal-speed skill presentation remain pending"
+      ],
+      "crowded_720p_evidence": [],
+      "crowd_review_report": "reports/WC-330/packaged-candidate6-network720-review.md",
+      "active_recovery_720p": {
+        "status": "NO_CAPTURE_FOR_THIS_DEFINITION",
+        "screenshots": [],
+        "report": "reports/WC-330/shipping-routed-skills720-review.md",
+        "complete_effect_and_timing_acceptance": false
+      },
+      "active_recovery_1080p": {
+        "status": "PREVIOUS_GAP_CLOSED_BY_NORMAL_TAA_RUN",
+        "report": "reports/WC-330/shipping-normal1080-taa-review.md"
+      },
+      "active_recovery_1080p_taa": {
+        "status": "REVIEWED_POSITIVE_HP_ACTUAL_NORMAL_SPEED_TAA_STILL",
+        "image": "reports/WC-360/shipping-normal1080-taa/match-1-seat-0-pid-49972-active-def-10.png",
+        "sha256": "4c8208a59b41f6b80e7b81a9ac9fb01978004f98df8b66c5b245c1e50d276536",
+        "report": "reports/WC-330/shipping-normal1080-taa-review.md"
+      },
+      "crowded_1080p_taa_evidence": [
+        "reports/WC-360/shipping-normal1080-taa/match-1-seat-0-pid-49972-phase-1-round-7.png",
+        "reports/WC-360/shipping-normal1080-taa/match-1-seat-0-pid-49972-phase-1-round-12.png"
+      ],
+      "final_candidate_active_recovery": {
+        "image": "reports/WC-360/alpha-candidate-restart/match-1-seat-0-pid-53152-active-def-10.png",
+        "status": "REVIEWED_ACTUAL_FINAL_PACKAGE_10X_STILL",
+        "report": "reports/WC-330/shipping-normal1080-taa-review.md"
+      }
+    },
+    {
+      "unit_id": "wc_u_orc_rogue",
+      "name": "Kesh Quickwind",
+      "source_revision": 6,
+      "geometry_revision": 4,
+      "source": "art-source/heroes/wc_u_orc_rogue/wc_u_orc_rogue.blend",
+      "source_sha256": "0321b5bbee557efa140d87a16dfdb6ebd12db7a6a1d79572d6661c13f450b05e",
+      "export_manifest": "exports/heroes/wc_u_orc_rogue/export_manifest.json",
+      "export_manifest_sha256": "ecfd09cd412db31af4115b2f4d8685397fa0f67d9f561b1d3e6fb35c0a66ca84",
+      "rig_family": "humanoid_broad",
+      "bones": 27,
+      "triangles_lod0": 3422,
+      "material_slots": 1,
+      "model_matched_portrait": "exports/heroes/wc_u_orc_rogue/portrait.png",
+      "stages": {
+        "brief": "AUTHORED_CANONICAL_DOSSIER",
+        "model": "AUTHORED_EXECUTED",
+        "rig": "SOURCE_INVARIANTS_PASS",
+        "animation": "SEVEN_CLIPS_EXPORTED_SOURCE_CHECKS_PASS",
+        "imported": "SEVEN_CLIPS_VISIBLE_IN_UNREAL_REVIEW",
+        "sampled_visual_review": "PASS_BOUNDED_POSE_REVIEW",
+        "crowded_gameplay_review": "REVIEWED_PACKAGED_NORMAL_SPEED_1080P_TAA_SAMPLES",
+        "skill_behavior": "INTEGRATION_LANE_EVIDENCE_REQUIRED",
+        "packaged_presentation": "VISIBLE_IN_ACTUAL_SHIPPING_NORMAL_SPEED_1080P_TAA",
+        "accepted": "PENDING_FINAL_CROWDED_AND_GAMEPLAY_GATES"
+      },
+      "clips": [
+        {
+          "clip": "Idle",
+          "export": "exports/heroes/wc_u_orc_rogue/AN_wc_u_orc_rogue_Idle.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-00.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-01.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-02.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Move",
+          "export": "exports/heroes/wc_u_orc_rogue/AN_wc_u_orc_rogue_Move.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-03.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-04.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-05.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Attack",
+          "export": "exports/heroes/wc_u_orc_rogue/AN_wc_u_orc_rogue_Attack.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-06.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-07.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-08.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Active",
+          "export": "exports/heroes/wc_u_orc_rogue/AN_wc_u_orc_rogue_Active.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-09.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-10.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-11.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Hit",
+          "export": "exports/heroes/wc_u_orc_rogue/AN_wc_u_orc_rogue_Hit.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-12.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-13.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-14.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Defeat",
+          "export": "exports/heroes/wc_u_orc_rogue/AN_wc_u_orc_rogue_Defeat.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-15.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-16.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-17.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        },
+        {
+          "clip": "Victory",
+          "export": "exports/heroes/wc_u_orc_rogue/AN_wc_u_orc_rogue_Victory.fbx",
+          "unreal_sampled_review": "PASS_BOUNDED_POSE_REVIEW",
+          "normalized_positions": [
+            0.2,
+            0.52,
+            0.88
+          ],
+          "screenshot_files": [
+            "reports/WC-330/unreal-art-review-revision6/pose-18.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-19.png",
+            "reports/WC-330/unreal-art-review-revision6/pose-20.png"
+          ],
+          "continuous_runtime_playback": "NOT_CERTIFIED_BY_ART_REVIEW",
+          "exact_gameplay_release": "NOT_CERTIFIED_BY_THREE_FRACTION_SAMPLES"
+        }
+      ],
+      "source_evidence": [
+        "reports/WC-330/animation-refinement-production.json",
+        "reports/WC-330/export-integrity.json",
+        "reports/WC-330/rest-skeleton-parity.json"
+      ],
+      "visual_evidence": [
+        "reports/WC-330/unreal-visual-review-revision6.md",
+        "reports/WC-330/unreal-visual-review-revision6-evidence.json"
+      ],
+      "known_limits": [
+        "Angular sleeve and elbow creases at deep bends",
+        "Fine face and hand detail may be unresolved at full-board scale",
+        "Current1080p crowd and complete normal-speed skill presentation remain pending"
+      ],
+      "crowded_720p_evidence": [
+        "reports/WC-330/packaged-candidate6-network720/host-round-08.png",
+        "reports/WC-330/packaged-candidate6-network720/client-round-08.png"
+      ],
+      "crowd_review_report": "reports/WC-330/packaged-candidate6-network720-review.md",
+      "active_recovery_720p": {
+        "status": "ACTUAL_PACKAGED_RECOVERY_STILLS_REVIEWED",
+        "screenshots": [
+          "reports/WC-330/shipping-routed-skills720/host-active-def-11.png"
+        ],
+        "report": "reports/WC-330/shipping-routed-skills720-review.md",
+        "complete_effect_and_timing_acceptance": false
+      },
+      "active_recovery_1080p": {
+        "status": "REVIEWED_ACTUAL_NORMAL_SPEED_CAPTURE_NOT_CONTINUOUS_TIMING_PASS",
+        "image": "reports/WC-330/shipping-normal1080/match-1-seat-0-pid-44708-active-def-11.png",
+        "report": "reports/WC-330/shipping-normal1080-review.md"
+      },
+      "active_recovery_1080p_taa": {
+        "status": "REVIEWED_POSITIVE_HP_ACTUAL_NORMAL_SPEED_TAA_STILL",
+        "image": "reports/WC-360/shipping-normal1080-taa/match-1-seat-0-pid-49972-active-def-11.png",
+        "sha256": "41eff295c4bff315d238dbabed6991660db6e727dbea3a332dc99b2202154789",
+        "report": "reports/WC-330/shipping-normal1080-taa-review.md"
+      }
+    }
+  ],
+  "accepted_count": 0,
+  "pending_final_gate_count": 12,
+  "note": "A bounded sampled pose pass is not finished hero, skill, crowd, package or performance acceptance. Read per-stage evidence.",
+  "crowded_720p_reviewed_hero_count": 11,
+  "packaged_720p_layout_defects": [
+    {
+      "severity": "P2",
+      "description": "Elimination notice covers lower board rows and a living foreground unit",
+      "evidence": "reports/WC-330/packaged-candidate6-network720/host-round-12.png",
+      "fix_verification": "VISUALLY_VERIFIED_IN_SHIPPING_SOLO_PIXELS_ROUNDS11_TO14",
+      "fixed_evidence": "reports/WC-330/shipping-spectator-fix-review.md",
+      "network_or_match_acceptance": "NOT_CLAIMED"
+    }
+  ],
+  "normal1080_reviewed_hero_count": 12,
+  "normal1080_taa_reviewed_hero_count": 12,
+  "ada_costume_reimport": {
+    "status": "PASS_ISOLATED_SOURCE_COSTUME_CHANGE_REIMPORT_AND_COLD_REFERENCES",
+    "import_report": "reports/WC-330/ada-costume-roundtrip/run_v2-import.json",
+    "import_sha256": "f08a2b61b194b2470102e5c64dd6f1eaadc941957acc0f7708471478ffc163c3",
+    "cold_report": "reports/WC-330/ada-costume-roundtrip/run_v2-cold.json",
+    "cold_sha256": "9ea53472982d5f0e950da6959fe3aa5b76b962ab405391496b569e5bcb76353a",
+    "lod0_render_vertices_before": 8317,
+    "lod0_render_vertices_after": 8493,
+    "placed_actor_clip_references": 7,
+    "production_content_preserved": true,
+    "production_costume_appearance_changed": false,
+    "boundary": "Isolated uncooked source/mesh/map drill using production material/Skeleton/seven animation references; current packaged appearance remains production revision6."
+  }
+}
