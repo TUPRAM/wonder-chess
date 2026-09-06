@@ -2,14 +2,14 @@
 
 **First deliverable: a presentable, packaged Windows auto-battler with one human and seven persistent bots.**
 
-This kit supplies the active implementation specification, all 24 character designs, the twelve-hero alpha subset, numerical source data, Blender/Unreal task briefs, and executable reference checks. It is not a finished game and does not contain completed `.blend`, `.uasset`, `.umap` or playable `.exe` files.
+This repository contains the original kit and subsequent authored assets, Unreal source and a packaged twelve-hero candidate. Read `reports/RELEASE_HANDOFF.md` and `reports/implementation_state.json` for actual evidence and open gates. The user adopted the 24-hero update on 2026-09-06; its implementation package is `docs/updates/2026-09-auto-chess-inspired/README.md`. Historical kit-only statements do not erase real progress.
 
 ## Use this package
 
-1. Extract the ZIP, then open the extracted folder that directly contains `AGENTS.md` as a new `wonder-chess` workspace (rename that folder if needed). Do not place it inside VEILMARK. Keep the original folder structure, especially `data`, `docs`, `tools`, `tests`, and `.agents`.
+1. Resume this existing Wonder Chess workspace and `game/WonderChess.uproject`. Preserve source, imported art and prior evidence; do not extract a replacement checkout or access VEILMARK.
 2. Open that directory in a Codex environment that can actually execute the locally installed Blender, Unreal Editor and Windows C++ build tools. A remote Linux environment without those tools can validate data, but cannot certify the Windows game or its imported art.
-3. Give Codex the contents of `FIRST_MESSAGE_TO_CODEX.md`. It directs Codex through the whole playable-alpha assignment, not a website-first bootstrap task.
-4. The active specification is `docs/MASTER_IMPLEMENTATION_v3.md`. Earlier v2 and discussion briefs are source history, not competing instructions. The old project remains untouched.
+3. Execute the adopted `docs/updates/2026-09-auto-chess-inspired/INITIAL_IMPLEMENTATION_PROMPT.md` and WC-U400–460 sequence. The original FIRST_MESSAGE_TO_CODEX is historical bootstrap context.
+4. The active specification is `docs/MASTER_IMPLEMENTATION_v3.md` with the explicitly adopted 24-hero update package. Earlier v2 and discussion briefs are source history, not competing instructions. The old project remains untouched.
 5. Run `python tools/validate_kit.py`, `python -m unittest discover -s tests -v`, `python tools/build_documents.py --check`, and `python tools/compile_catalog.py --check` as baseline checks. A successful baseline validates this handoff, not a game build.
 
 For a clean Python environment, create a project-local virtual environment and install `requirements-tools.txt` there before validation. The reference tests themselves use the standard library; schema validation additionally uses the pinned `jsonschema` package. Do not modify global Python or editor-managed packages.
@@ -22,7 +22,7 @@ For a clean Python environment, create a project-local virtual environment and i
 | `docs/GAME_RULES.md` | Combat, economy, movement, upgrade and status contracts |
 | `docs/TOURNAMENT_AND_BOTS.md` | Eight seats, pairing, ghosts, settlement and legal bot decisions |
 | `docs/CHARACTER_BIBLE_24.md` | Complete human-readable roster, including art and all numerical skills |
-| `docs/ALPHA_12_ASSET_BRIEFS.md` | The twelve heroes to actually model and implement first |
+| `docs/ALPHA_24_ASSET_BRIEFS.md` | All 24 playable heroes; preserve the existing twelve and complete the other twelve |
 | `docs/BLENDER_PRODUCTION.md` | Art direction, rig/export/calibration/reimport process |
 | `docs/UNREAL_IMPLEMENTATION.md` | Runtime architecture, content import, networking, cooking and packaging |
 | `docs/UI_AUDIO_AND_ONBOARDING.md` | In-game experience; no website dependency |
@@ -33,7 +33,7 @@ For a clean Python environment, create a project-local virtual environment and i
 
 ## Scope that must not drift
 
-Twelve playable heroes, four active races, six active classes, two-unit trait thresholds; one arena; eight-seat tournament; no real-money system, loot boxes, website-first work, hidden bot advantages or runtime language-model calls. All 24 designs are supplied, but twelve expansion heroes are excluded from the alpha shop and asset gate. Artwork and combat behavior must match the records.
+Twenty-four playable heroes, six races, six classes and highest eligible two-/four-member trait tiers; one arena; eight-seat tournament; monsters on rounds 1–3 and every positive multiple of five; a graphical lobby and full hero gallery. No item inventory, real-money system, hidden bot advantage or runtime language-model call. Artwork and combat behavior must match canonical records. Numeric update inputs require actual play and performance measurements.
 
 ## What the provided tools establish
 

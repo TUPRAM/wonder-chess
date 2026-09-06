@@ -99,6 +99,9 @@
         ],
         "additionalProperties": false
       }
+    },
+    "schema_version": {
+      "const": "3.1.0"
     }
   },
   "required": [
@@ -108,7 +111,8 @@
     "tournament_explanation",
     "antagonist",
     "regions",
-    "factions"
+    "factions",
+    "schema_version"
   ],
   "additionalProperties": false,
   "$schema": "https://json-schema.org/draft/2020-12/schema"

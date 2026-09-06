@@ -1,8 +1,10 @@
 # Orla Hearthglow — The Hallkeeper
 
-**Dwarf · Priest · Support · EXPANSION**
+**Dwarf · Priest · Support · ALPHA**
 
-Stable identity: `wc_u_dwarf_priest`. Cost: **2 gold**. Rarity label: **Uncommon**, separate from star level. Status: designed, not modeled or implemented by this kit. All combat values are provisional prototype inputs.
+Stable identity: `wc_u_dwarf_priest`. Cost: **2 gold**. Rarity label: **Uncommon**, separate from star level. Production and verification status is recorded separately in reports/implementation_state.json; this generated dossier does not certify an asset or build. All combat values are provisional prototype inputs.
+
+Quick display name: **Orla**. Informational roles: Healer. Role tags provide no additional synergy.
 
 ## Character and world
 
@@ -65,7 +67,7 @@ Nominal basic-attack DPS at one star: **25.20**, before mitigation, movement, st
 
 ## One active skill
 
-### Hearth Pulse
+### Hearth Glow
 
 **Player tooltip:** Heals herself and adjacent allies.
 
@@ -75,11 +77,11 @@ Nominal basic-attack DPS at one star: **25.20**, before mitigation, movement, st
 |---|---|
 | Stable ability ID | `wc_a_dwarf_priest` |
 | Effect / target selector | `heal` / `adjacent_allies` |
-| One / two / three star magnitude | 125 / 225 / 405 |
+| One / two / three star magnitude | heal: 125 / 225 / 405 |
 | Damage type | Not damaging |
 | First-cast delay / cooldown | 3 s / 8 s |
 | Windup / recovery | 0.35 s / 0.3 s |
-| Effect duration | 0 s |
+| Effect duration | 0.0 s |
 | Skill reach / area radius | 1 / 1 tiles |
 | Can include self | True |
 | Max dash distance | 0 tiles |

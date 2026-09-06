@@ -2,7 +2,7 @@
   "type": "object",
   "properties": {
     "schema_version": {
-      "const": "3.0.0"
+      "const": "3.1.0"
     },
     "balance_version": {
       "type": "string",
@@ -71,10 +71,7 @@
             "minLength": 1
           },
           "production_phase": {
-            "enum": [
-              "alpha",
-              "expansion"
-            ]
+            "const": "alpha"
           },
           "implementation_status": {
             "type": "string",
@@ -98,7 +95,8 @@
               },
               "attack_damage_cp": {
                 "type": "integer",
-                "minimum": 0
+                "minimum": 0,
+                "maximum": 10000000
               },
               "attack_rate_milli": {
                 "type": "integer",
@@ -112,15 +110,18 @@
               },
               "physical_armor": {
                 "type": "integer",
-                "minimum": 0
+                "minimum": 0,
+                "maximum": 10000
               },
               "magic_resistance": {
                 "type": "integer",
-                "minimum": 0
+                "minimum": 0,
+                "maximum": 10000
               },
               "movement_rate_milli": {
                 "type": "integer",
-                "minimum": 0
+                "minimum": 1,
+                "maximum": 10000
               },
               "attack_delivery": {
                 "enum": [
@@ -137,11 +138,15 @@
               },
               "attack_windup_ms": {
                 "type": "integer",
-                "minimum": 0
+                "minimum": 50,
+                "maximum": 350,
+                "multipleOf": 50
               },
               "projectile_travel_ms": {
                 "type": "integer",
-                "minimum": 0
+                "minimum": 0,
+                "maximum": 10000,
+                "multipleOf": 50
               }
             },
             "required": [
@@ -170,16 +175,6 @@
                 "type": "string",
                 "minLength": 1
               },
-              "effect": {
-                "enum": [
-                  "damage",
-                  "heal",
-                  "shield",
-                  "stun",
-                  "dash",
-                  "stat_modifier"
-                ]
-              },
               "target_rule": {
                 "enum": [
                   "adjacent_allies",
@@ -190,36 +185,37 @@
                   "farthest_enemy_adjacent",
                   "lowest_health_ally",
                   "retreat_from_current_enemy",
-                  "self"
+                  "self",
+                  "highest_attack_rate_enemy"
                 ]
               },
               "first_cast_ms": {
                 "type": "integer",
                 "minimum": 0,
-                "multipleOf": 50
+                "multipleOf": 50,
+                "maximum": 60000
               },
               "cooldown_ms": {
                 "type": "integer",
                 "minimum": 50,
-                "multipleOf": 50
+                "multipleOf": 50,
+                "maximum": 60000
               },
               "cast_ms": {
                 "type": "integer",
-                "minimum": 0,
-                "multipleOf": 50
-              },
-              "duration_ms": {
-                "type": "integer",
-                "minimum": 0,
-                "multipleOf": 50
+                "minimum": 50,
+                "multipleOf": 50,
+                "maximum": 10000
               },
               "radius_tiles": {
                 "type": "integer",
-                "minimum": 0
+                "minimum": 0,
+                "maximum": 8
               },
               "range_tiles": {
                 "type": "integer",
-                "minimum": 0
+                "minimum": 0,
+                "maximum": 8
               },
               "allow_self": {
                 "type": "boolean"
@@ -230,97 +226,133 @@
               },
               "recovery_ms": {
                 "type": "integer",
-                "minimum": 0,
-                "multipleOf": 50
-              },
-              "damage_type": {
-                "enum": [
-                  "physical",
-                  "magic",
-                  "true",
-                  null
-                ]
+                "minimum": 50,
+                "multipleOf": 50,
+                "maximum": 10000
               },
               "max_targets": {
                 "type": "integer",
-                "minimum": 0
+                "minimum": 1,
+                "maximum": 12
               },
               "max_dash_tiles": {
                 "type": "integer",
-                "minimum": 0
-              },
-              "stat": {
-                "type": [
-                  "string",
-                  "null"
-                ]
+                "minimum": 0,
+                "maximum": 8
               },
               "travel_ms": {
                 "type": "integer",
                 "minimum": 0,
-                "multipleOf": 50
+                "multipleOf": 50,
+                "maximum": 10000
               },
               "interrupt_policy": {
-                "type": "string",
-                "minLength": 1
+                "const": "consume_committed_cooldown_cancel_unreleased_effect"
               },
               "no_target_policy": {
-                "type": "string",
-                "minLength": 1
+                "const": "remain_ready_continue_basics"
               },
               "effect_snapshot": {
-                "type": "string",
-                "minLength": 1
-              },
-              "magnitude_unit": {
-                "type": [
-                  "string",
-                  "null"
-                ]
-              },
-              "magnitude_by_star": {
-                "type": "array",
-                "items": {
-                  "type": "integer"
-                },
-                "minItems": 3,
-                "maxItems": 3
+                "const": "capture_at_release_except_reserved_dash_destination"
               },
               "delivery": {
-                "type": "string",
-                "minLength": 1
+                "enum": [
+                  "instant",
+                  "projectile"
+                ]
               },
               "tooltip_id": {
                 "type": "string",
                 "minLength": 1
+              },
+              "effects": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 2,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "effect": {
+                      "enum": [
+                        "damage",
+                        "heal",
+                        "shield",
+                        "stun",
+                        "dash",
+                        "stat_modifier"
+                      ]
+                    },
+                    "damage_type": {
+                      "enum": [
+                        "physical",
+                        "magic",
+                        "true",
+                        null
+                      ]
+                    },
+                    "magnitude_unit": {
+                      "enum": [
+                        null,
+                        "basis_points",
+                        "centipoints"
+                      ]
+                    },
+                    "magnitude_by_star": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "minimum": -10000,
+                        "maximum": 10000000
+                      },
+                      "minItems": 3,
+                      "maxItems": 3
+                    },
+                    "stat": {
+                      "enum": [
+                        null,
+                        "attack_rate"
+                      ]
+                    },
+                    "duration_ms": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "multipleOf": 50,
+                      "maximum": 60000
+                    }
+                  },
+                  "required": [
+                    "effect",
+                    "damage_type",
+                    "magnitude_unit",
+                    "magnitude_by_star",
+                    "stat",
+                    "duration_ms"
+                  ],
+                  "additionalProperties": false
+                }
               }
             },
             "required": [
               "name",
               "tooltip_en",
-              "effect",
               "target_rule",
               "first_cast_ms",
               "cooldown_ms",
               "cast_ms",
-              "duration_ms",
               "radius_tiles",
               "range_tiles",
               "allow_self",
               "id",
               "recovery_ms",
-              "damage_type",
               "max_targets",
               "max_dash_tiles",
-              "stat",
               "travel_ms",
               "interrupt_policy",
               "no_target_policy",
               "effect_snapshot",
-              "magnitude_unit",
-              "magnitude_by_star",
               "delivery",
-              "tooltip_id"
+              "tooltip_id",
+              "effects"
             ],
             "additionalProperties": false
           },
@@ -565,6 +597,28 @@
           "model_sheet_prompt": {
             "type": "string",
             "minLength": 100
+          },
+          "display_name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 24
+          },
+          "role_tags": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 2,
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "tank",
+                "melee",
+                "ranged",
+                "caster",
+                "support",
+                "healer",
+                "control"
+              ]
+            }
           }
         },
         "required": [
@@ -592,7 +646,9 @@
           "asset_paths",
           "animation_contract",
           "art_budget",
-          "model_sheet_prompt"
+          "model_sheet_prompt",
+          "display_name",
+          "role_tags"
         ],
         "additionalProperties": false
       },
@@ -607,5 +663,5 @@
   ],
   "additionalProperties": false,
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Wonder Chess 24-unit authored catalog v3"
+  "title": "Wonder Chess 24 playable heroes schema 3.1"
 }

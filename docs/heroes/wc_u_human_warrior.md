@@ -1,8 +1,10 @@
 # Cass Vale — The Banner Captain
 
-**Human · Warrior · Melee damage · EXPANSION**
+**Human · Warrior · Melee damage · ALPHA**
 
-Stable identity: `wc_u_human_warrior`. Cost: **2 gold**. Rarity label: **Uncommon**, separate from star level. Status: designed, not modeled or implemented by this kit. All combat values are provisional prototype inputs.
+Stable identity: `wc_u_human_warrior`. Cost: **2 gold**. Rarity label: **Uncommon**, separate from star level. Production and verification status is recorded separately in reports/implementation_state.json; this generated dossier does not certify an asset or build. All combat values are provisional prototype inputs.
+
+Quick display name: **Cass**. Informational roles: Melee. Role tags provide no additional synergy.
 
 ## Character and world
 
@@ -65,7 +67,7 @@ Nominal basic-attack DPS at one star: **57.60**, before mitigation, movement, st
 
 ## One active skill
 
-### Resolute Strike
+### Firm Strike
 
 **Player tooltip:** Delivers a stronger physical hit to the current target.
 
@@ -75,11 +77,11 @@ Nominal basic-attack DPS at one star: **57.60**, before mitigation, movement, st
 |---|---|
 | Stable ability ID | `wc_a_human_warrior` |
 | Effect / target selector | `damage` / `current_enemy` |
-| One / two / three star magnitude | 180 / 324 / 583 |
+| One / two / three star magnitude | damage: 180 / 324 / 583 |
 | Damage type | physical |
 | First-cast delay / cooldown | 3 s / 7.5 s |
 | Windup / recovery | 0.35 s / 0.3 s |
-| Effect duration | 0 s |
+| Effect duration | 0.0 s |
 | Skill reach / area radius | 1 / 0 tiles |
 | Can include self | False |
 | Max dash distance | 0 tiles |

@@ -1,15 +1,17 @@
 # Wonder Chess — Master Implementation v3
 ## A playable-first eight-seat auto-battler
 
+**Adopted update, 2026-09-06:** the user authorized the 24-hero implementation package in `updates/2026-09-auto-chess-inspired/README.md`. Execute WC-U400–460. This document incorporates its explicit amendments; unchanged v3 rules and prior evidence remain in force.
+
 **Authority:** Active project specification, replacing website-first v2 sequencing and the proposed decision brief. The user requested an enhanced implementation handoff after selecting Wonder Chess and one human plus seven bots. New character names, art, values and precise engineering choices in this kit are original proposed implementation inputs—not claims that prior sources already contained them or that gameplay is balanced.
 
 ## 1. The deliverable
 
-Create an original, presentable Windows Unreal game in a fresh project. One human competes with seven persistent bots through simultaneous pairwise team battles. Twelve heroes can be recruited, upgraded, positioned and inspected. A complete tournament reaches standings, elimination, spectating, final results and a clean restart. It launches without Unreal Editor, Blender, Codex, a web server or an AI service.
+Continue the existing original Windows Unreal project. One human competes with seven persistent bots through simultaneous pairwise team battles and isolated neutral encounters. All 24 authored heroes can be recruited, upgraded, positioned and inspected. A complete tournament reaches standings, elimination, spectating, final results and a clean restart. It launches without Unreal Editor, Blender, Codex, a web server or an AI service.
 
 “First implementation” means one coherent assignment pursued through internal build/test/fix checkpoints. It does not mean one blind generation, and it does not justify pretending missing tools ran. Do not stop at a plan or a single static battle while permitted integration work remains.
 
-The website and twenty-four production models are explicitly not prerequisites. All twenty-four design records are already supplied. Complete the twelve approved alpha assets and their game behavior first. The six old diagnostic heroes remain a testing fixture, not the whole playable roster.
+All 24 production heroes are now required. Preserve and refine the existing twelve before completing the additional twelve in the adopted batch order. A website is not a deliverable; old diagnostic subsets remain fixtures rather than acceptance of the full roster.
 
 ## 2. Identity and world
 
@@ -25,12 +27,12 @@ Keep the lore optional. Players learn “shield,” “stun,” “heal” and �
 |---|---|
 | Modes | 1H7B play, 0H8B automated combat, 2H6B actual network validation |
 | Tournament | Eight seats, live pairing, odd-count ghost policy, round settlement, elimination and rank ties |
-| Battlefield | One 8×8 board per encounter; four pairwise simulations at eight active seats |
-| Content | Twelve heroes, four active races, six classes, one active skill each |
-| Traits | Two distinct deployed unit types; only matching recipients; snapshotted at combat start |
+| Battlefield | One 8×8 board per encounter; four PvP simulations or eight isolated neutral simulations at eight active seats |
+| Content | Twenty-four heroes, six active races, six classes, one active skill each; seven separate neutral archetypes |
+| Traits | Highest eligible tier at two/four distinct deployed types; matching recipients; combat-start snapshot |
 | Economy | Independent shops, three costs, reroll, lock, buy XP, interest, merge, sale |
-| Presentation | One polished courtyard, twelve intentional silhouettes, seven clips per hero, model-matched portraits, VFX/SFX |
-| Interface | Menu/lobby, preparation/combat HUD, shop, bench, tooltips, scout, standings, recap, spectate, results, restart |
+| Presentation | One polished courtyard, 24 intentional silhouettes, seven clips per hero, model-matched portraits, VFX/SFX |
+| Interface | Graphical lobby, truthful session setup/readiness/transition, full hero gallery, preparation/combat HUD, shop, bench, tooltips, scout, standings, recap, spectate, results, restart |
 | Language | Data-driven English and Indonesian core UI, draft translation review |
 | Distribution | Windows package and real launch evidence |
 
@@ -38,7 +40,7 @@ No open world, account backend, ranked service, paid random rewards, shared-pool
 
 ## 4. Source of truth and precedence
 
-`data/units.json` is editable character/numeric source. `data/rules.alpha.json` is the active numeric profile. `data/traits.json` carries both alpha and design-only future thresholds. `data/world.json` and `data/bots.json` carry world and bot authoring inputs. Dossiers and Unreal rows are generated derivatives.
+`data/units.json` is editable character/numeric source. `data/rules.alpha.json` is the active numeric profile. `data/traits.json` carries the active two-/four-member tiers. `data/neutrals.json` carries the seven original creatures and eleven waves through the adopted starting cap of 40. `data/world.json` and `data/bots.json` carry world and bot authoring inputs. Dossiers and Unreal rows are generated derivatives.
 
 Narrative rules live in `GAME_RULES.md` and `TOURNAMENT_AND_BOTS.md`. A discrepancy between narrative and data is a defect: record and resolve it with tests, not an excuse to silently choose whichever is convenient. Required product behavior in this master outranks task convenience. Actual higher-priority workspace/security instructions still apply.
 
@@ -54,7 +56,7 @@ Every hero must read at the locked gameplay camera in a twelve-unit encounter. S
 
 ## 6. What “good gameplay” must demonstrate
 
-The twelve-unit roster supports several viable formation hypotheses. It does not prove balance. Test protection against flank pressure, grouping against area magic, burst against shields, sustain against sustained attacks, and leveling versus duplicate hunting. Elin’s positive buff is included in Priest support potency so her class bonus has a defined effect; this is an explicit v3 refinement.
+The 24-hero roster supports several viable formation hypotheses. It does not prove balance. Test protection against flank pressure, grouping against area magic, burst against shields, sustain against sustained attacks, and leveling versus duplicate hunting. Elin’s positive buff is included in Priest support potency so her class bonus has a defined effect; this is an explicit v3 refinement.
 
 No one composition should be selected as “best” by assertion. Log battles and compare equal investment as well as equal stars. Show why an action failed, what an upgrade consumed, which trait activated and how health was lost. Players must be able to scout and make a meaningful change before the next round.
 
@@ -88,7 +90,7 @@ Tools require scoped input/output paths and nonzero errors. Never clear an unrel
 
 ## 9. Acceptance and honest handoff
 
-The delivered game must complete full 1H7B tournaments, allow early elimination and spectating, and restart without stale state. All twelve units must be accessible under normal progression, have their defined behavior and required presentation, and be represented accurately in UI.
+The delivered game must complete full 1H7B tournaments, allow early elimination and spectating, and restart without stale state. All 24 heroes must be accessible under normal progression, have their defined behavior and required presentation, and be represented accurately in UI.
 
 At least 100 actual eight-bot **combat** matches must run in the eventual engine build. Record seeds, build/data hashes, failures, unresolved combats, durations and results. Reference pairing tests supplied in this kit are not those matches. Also run 2H6B with two real network instances, private-state checks, invalid-command tests and documented disconnect behavior.
 

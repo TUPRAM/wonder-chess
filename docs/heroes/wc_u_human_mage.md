@@ -2,7 +2,9 @@
 
 **Human · Mage · Spell damage · ALPHA**
 
-Stable identity: `wc_u_human_mage`. Cost: **2 gold**. Rarity label: **Uncommon**, separate from star level. Status: designed, not modeled or implemented by this kit. All combat values are provisional prototype inputs.
+Stable identity: `wc_u_human_mage`. Cost: **2 gold**. Rarity label: **Uncommon**, separate from star level. Production and verification status is recorded separately in reports/implementation_state.json; this generated dossier does not certify an asset or build. All combat values are provisional prototype inputs.
+
+Quick display name: **Rowan**. Informational roles: Caster. Role tags provide no additional synergy.
 
 ## Character and world
 
@@ -65,7 +67,7 @@ Nominal basic-attack DPS at one star: **31.50**, before mitigation, movement, st
 
 ## One active skill
 
-### Ember Orb
+### Ember Burst
 
 **Player tooltip:** Damages enemies around the target’s captured location.
 
@@ -75,11 +77,11 @@ Nominal basic-attack DPS at one star: **31.50**, before mitigation, movement, st
 |---|---|
 | Stable ability ID | `wc_a_human_mage` |
 | Effect / target selector | `damage` / `current_enemy_area` |
-| One / two / three star magnitude | 150 / 270 / 486 |
+| One / two / three star magnitude | damage: 150 / 270 / 486 |
 | Damage type | magic |
 | First-cast delay / cooldown | 3.5 s / 8 s |
 | Windup / recovery | 0.45 s / 0.3 s |
-| Effect duration | 0 s |
+| Effect duration | 0.0 s |
 | Skill reach / area radius | 4 / 1 tiles |
 | Can include self | False |
 | Max dash distance | 0 tiles |

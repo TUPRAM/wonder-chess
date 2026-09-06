@@ -2,7 +2,7 @@
 
 ## 1. Project and build first
 
-Create a fresh C++ project at `game/WonderChess.uproject`. Discover installed engine version, compatible Visual Studio/build tools, Windows SDK and executable paths. Use a known working configuration in that environment; do not require the newest release or silently upgrade a project. Record versions in `reports/environment.json`.
+Resume the existing C++ project at `game/WonderChess.uproject`, preserving imported content and prior package evidence. Discover installed engine version, compatible Visual Studio/build tools, Windows SDK and executable paths. Use a known working configuration in that environment; do not require the newest release or silently upgrade a project. Record versions in `reports/environment.json`.
 
 Package a minimal menu/map early, launch it outside the editor and capture its log. This validates the actual toolchain before costly art work. A project that plays only in-editor has not passed package acceptance. Python and editor modules must not enter the shipping runtime dependency chain. Technical references: Epic’s packaging, Python editor and gameplay framework documentation in the source log.
 
@@ -32,7 +32,7 @@ Names are suggested; ownership boundaries are required. Do not put the entire ga
 
 ## 3. Data integration
 
-Compile `generated/unreal/WCDataRows.h` in the appropriate public module location before importing its matching JSON rows. Keep field/property names exact. `DT_Units_Alpha.json` and `DT_Abilities_Alpha.json` contain twelve records each. The design24 files are reference content and must not automatically expand the alpha shop or asset cook list.
+Compile `generated/unreal/WCDataRows.h` in the appropriate public module location before importing its matching JSON rows. Keep field/property names exact. `DT_Units_Alpha.json` and `DT_Abilities_Alpha.json` now represent all 24 selected playable heroes. Migrate canonical schemas, ordered ability effects, neutral source data and digest/staged adapters together; the design24 derivatives are not a separate runtime authority.
 
 Canonical text data is outside `Content`; imported `.uasset` DataTables and `UPrimaryDataAsset` presentation definitions live under `/Game/WonderChess/Data` and `/Game/WonderChess/Heroes`. A unit row references stable ability ID, not a guessed display name. A presentation asset references mesh, AnimBP, montage/clip set, materials, portrait and effect/audio assets. Keep numeric balance in generated tables, not duplicated in those presentation assets.
 
@@ -66,13 +66,13 @@ The listen-server path is enough for the early 2H6B check; it is not hosted prod
 
 Use reliable RPCs for discrete economic/placement commands with authenticated owner, command ID, sequence and phase/revision checks. Avoid one RPC for every visual interpolation step. Replicate combat state snapshots/events at a measured cadence sufficient for twelve visible combatants; reconstruction must handle joining the observation of an already-running encounter. Dropped cosmetic events cannot change outcomes.
 
-The first twelve hero skills need no complex distributed lockstep. Server authoritative outcomes are the chosen model. Cross-platform deterministic replay is not assumed. Fixed integer calculations and seeded ordering help reproduction, but record the tested compiler/platform/build boundary.
+The 24 hero skills need no complex distributed lockstep. Server authoritative outcomes are the chosen model. Cross-platform deterministic replay is not assumed. Fixed integer calculations and seeded ordering help reproduction, but record the tested compiler/platform/build boundary.
 
 For non-host disconnect: server installs a bot command source preserving the seat; rejoin is unsupported in the alpha. Host disconnect: explicit aborted match, no winner or misleading placement. No host migration or account reconnect promises. Test duplicate requests, stale phase, out-of-order sequences, disconnected spectators and invalid seat access.
 
 ## 7. Visual presentation
 
-Rebuild only the selected encounter’s full visual actors. Maintain an actor pool or bounded spawn/despawn strategy after profiling. At eight seats there are up to 48 logical combat units, but normally at most twelve hero visuals in the inspected encounter. Scouting preparation may use frozen public formation views; it must not spawn private bench units or alter active combat.
+Rebuild only the selected encounter’s full visual actors. Maintain an actor pool or bounded spawn/despawn strategy after profiling. At eight seats there are up to 48 hero combat units during paired PvP, or 48 heroes plus up to 48 neutral creatures in eight isolated monster encounters. Normally at most twelve combatants are visualized in the selected encounter; all unobserved combat still executes. Scouting preparation may use frozen public formation views; it must not spawn private bench units or alter active combat.
 
 Use one hero master material and constrained instances. Keep Lumen, Nanite, expensive translucency and complex shadows optional rather than required for the art style. Select a scalable baseline first, and measure GPU/CPU costs before enabling enhancements. Small animated heroes do not automatically benefit from every advanced rendering feature.
 

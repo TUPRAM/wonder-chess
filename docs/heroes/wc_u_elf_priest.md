@@ -2,7 +2,9 @@
 
 **Elf · Priest · Support · ALPHA**
 
-Stable identity: `wc_u_elf_priest`. Cost: **2 gold**. Rarity label: **Uncommon**, separate from star level. Status: designed, not modeled or implemented by this kit. All combat values are provisional prototype inputs.
+Stable identity: `wc_u_elf_priest`. Cost: **2 gold**. Rarity label: **Uncommon**, separate from star level. Production and verification status is recorded separately in reports/implementation_state.json; this generated dossier does not certify an asset or build. All combat values are provisional prototype inputs.
+
+Quick display name: **Elin**. Informational roles: Support. Role tags provide no additional synergy.
 
 ## Character and world
 
@@ -65,7 +67,7 @@ Nominal basic-attack DPS at one star: **28.00**, before mitigation, movement, st
 
 ## One active skill
 
-### Quickening Song
+### Quick Song
 
 **Player tooltip:** Temporarily increases nearby allies’ attack speed.
 
@@ -75,11 +77,11 @@ Nominal basic-attack DPS at one star: **28.00**, before mitigation, movement, st
 |---|---|
 | Stable ability ID | `wc_a_elf_priest` |
 | Effect / target selector | `stat_modifier` / `adjacent_allies` |
-| One / two / three star magnitude | 20% / 25% / 30% |
+| One / two / three star magnitude | stat_modifier: 20% / 25% / 30% |
 | Damage type | Not damaging |
 | First-cast delay / cooldown | 2.5 s / 9 s |
 | Windup / recovery | 0.35 s / 0.3 s |
-| Effect duration | 3 s |
+| Effect duration | 3.0 s |
 | Skill reach / area radius | 1 / 1 tiles |
 | Can include self | True |
 | Max dash distance | 0 tiles |

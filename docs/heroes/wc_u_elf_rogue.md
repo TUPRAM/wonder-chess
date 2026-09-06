@@ -2,7 +2,9 @@
 
 **Elf · Rogue · Disruption · ALPHA**
 
-Stable identity: `wc_u_elf_rogue`. Cost: **3 gold**. Rarity label: **Rare**, separate from star level. Status: designed, not modeled or implemented by this kit. All combat values are provisional prototype inputs.
+Stable identity: `wc_u_elf_rogue`. Cost: **3 gold**. Rarity label: **Rare**, separate from star level. Production and verification status is recorded separately in reports/implementation_state.json; this generated dossier does not certify an asset or build. All combat values are provisional prototype inputs.
+
+Quick display name: **Sylas**. Informational roles: Control. Role tags provide no additional synergy.
 
 ## Character and world
 
@@ -65,7 +67,7 @@ Nominal basic-attack DPS at one star: **77.70**, before mitigation, movement, st
 
 ## One active skill
 
-### Backline Dash
+### Backline Leap
 
 **Player tooltip:** Dashes beside the farthest enemy when a landing tile is free.
 
@@ -75,11 +77,11 @@ Nominal basic-attack DPS at one star: **77.70**, before mitigation, movement, st
 |---|---|
 | Stable ability ID | `wc_a_elf_rogue` |
 | Effect / target selector | `dash` / `farthest_enemy_adjacent` |
-| One / two / three star magnitude | Not applicable / Not applicable / Not applicable |
+| One / two / three star magnitude | dash: Not applicable / Not applicable / Not applicable |
 | Damage type | Not damaging |
 | First-cast delay / cooldown | 1 s / 8.5 s |
 | Windup / recovery | 0.2 s / 0.15 s |
-| Effect duration | 0 s |
+| Effect duration | 0.0 s |
 | Skill reach / area radius | 8 / 0 tiles |
 | Can include self | False |
 | Max dash distance | 7 tiles |

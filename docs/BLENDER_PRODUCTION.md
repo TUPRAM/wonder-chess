@@ -2,11 +2,11 @@
 
 ## 1. Art target
 
-Make stylized, warm high-fantasy tabletop champions with deliberate silhouettes and readable surfaces, not photorealistic miniatures or generic recolored mannequins. The reference view is an oblique strategy camera showing the whole eight-by-eight arena; close-up beauty renders are supplemental. Use the exact per-hero art fields in `ALPHA_12_ASSET_BRIEFS.md` and canonical JSON.
+Make stylized, warm high-fantasy tabletop champions with deliberate silhouettes and readable surfaces, not photorealistic miniatures or generic recolored mannequins. The reference view is an oblique strategy camera showing the whole eight-by-eight arena; close-up beauty renders are supplemental. Use the exact per-hero art fields in `ALPHA_24_ASSET_BRIEFS.md` and canonical JSON.
 
 Reference arena: **The Seven-Lantern Courtyard**, Brighthaven. Warm limestone playing surface, blue-roofed distant buildings, oak trim, a few flags and potted plants, and a low wall separating spectators’ implied world from the board. Keep the background quieter than the heroes. No full crowd, dynamic rain, cloth simulation or large fog volume in the alpha.
 
-The playable character package is twelve alpha heroes. Halflings, Dragonkin and the other expansion slots remain complete briefs; do not spend alpha production on them. The core rig task must support Humans, Elves, Dwarves and Orcs through validated families, not one uniform scaling operation.
+The adopted playable package contains all 24 heroes and seven original neutral archetypes. Preserve existing Human/Elf/Dwarf/Orc assets, refine Ada first, then complete the existing twelve, four additions, and validated Halfling/Dragonkin family pilots followed by their batches. Use the individual update briefs; uniform scaling of a human body cannot certify a new family.
 
 ## 2. Camera and scale before detail
 
@@ -50,7 +50,7 @@ In-place movement; no root-motion gameplay. Ordinary walk playback may adapt to 
 
 For dash, use a short directional movement pose while the presentation interpolates the authoritative move. No teleport smoke that conceals an incorrect destination. Healing and shield animations must be distinguishable. Area effects require a visible range edge. Defeat is non-graphic and clears visual targeting promptly; a staged dissolve does not delay logical elimination.
 
-Stars use UI pips and restrained trim/glow, not separate bodies. Animation sharing is allowed only after every hero/clip pair is reviewed, including the 84 alpha hero-clip combinations. This count is an acceptance matrix, not 84 necessarily unique animation files.
+Stars use UI pips and restrained trim/glow, not separate bodies. Animation sharing is allowed only after every hero/clip pair is reviewed, including all 168 hero/clip combinations. This is an acceptance matrix, not necessarily 168 unique animation files. Neutrals require their separate applicable clip set and continuous review.
 
 ## 7. Arena kit
 

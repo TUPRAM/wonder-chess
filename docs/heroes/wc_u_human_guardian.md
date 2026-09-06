@@ -2,7 +2,9 @@
 
 **Human · Guardian · Defender · ALPHA**
 
-Stable identity: `wc_u_human_guardian`. Cost: **1 gold**. Rarity label: **Common**, separate from star level. Status: designed, not modeled or implemented by this kit. All combat values are provisional prototype inputs.
+Stable identity: `wc_u_human_guardian`. Cost: **1 gold**. Rarity label: **Common**, separate from star level. Production and verification status is recorded separately in reports/implementation_state.json; this generated dossier does not certify an asset or build. All combat values are provisional prototype inputs.
+
+Quick display name: **Ada**. Informational roles: Tank. Role tags provide no additional synergy.
 
 ## Character and world
 
@@ -65,7 +67,7 @@ Nominal basic-attack DPS at one star: **33.60**, before mitigation, movement, st
 
 ## One active skill
 
-### Sunward Guard
+### Sun Guard
 
 **Player tooltip:** Gains a shield for three seconds.
 
@@ -75,11 +77,11 @@ Nominal basic-attack DPS at one star: **33.60**, before mitigation, movement, st
 |---|---|
 | Stable ability ID | `wc_a_human_guardian` |
 | Effect / target selector | `shield` / `self` |
-| One / two / three star magnitude | 200 / 360 / 648 |
+| One / two / three star magnitude | shield: 200 / 360 / 648 |
 | Damage type | Not damaging |
 | First-cast delay / cooldown | 2 s / 8 s |
 | Windup / recovery | 0.3 s / 0.3 s |
-| Effect duration | 3 s |
+| Effect duration | 3.0 s |
 | Skill reach / area radius | 0 / 0 tiles |
 | Can include self | True |
 | Max dash distance | 0 tiles |

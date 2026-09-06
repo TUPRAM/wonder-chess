@@ -2,7 +2,9 @@
 
 **Dwarf · Warrior · Melee damage · ALPHA**
 
-Stable identity: `wc_u_dwarf_warrior`. Cost: **2 gold**. Rarity label: **Uncommon**, separate from star level. Status: designed, not modeled or implemented by this kit. All combat values are provisional prototype inputs.
+Stable identity: `wc_u_dwarf_warrior`. Cost: **2 gold**. Rarity label: **Uncommon**, separate from star level. Production and verification status is recorded separately in reports/implementation_state.json; this generated dossier does not certify an asset or build. All combat values are provisional prototype inputs.
+
+Quick display name: **Dagna**. Informational roles: Melee. Role tags provide no additional synergy.
 
 ## Character and world
 
@@ -65,7 +67,7 @@ Nominal basic-attack DPS at one star: **56.00**, before mitigation, movement, st
 
 ## One active skill
 
-### Anvil Sweep
+### Hammer Sweep
 
 **Player tooltip:** Damages all adjacent enemies.
 
@@ -75,11 +77,11 @@ Nominal basic-attack DPS at one star: **56.00**, before mitigation, movement, st
 |---|---|
 | Stable ability ID | `wc_a_dwarf_warrior` |
 | Effect / target selector | `damage` / `adjacent_enemies` |
-| One / two / three star magnitude | 140 / 252 / 454 |
+| One / two / three star magnitude | damage: 140 / 252 / 454 |
 | Damage type | physical |
 | First-cast delay / cooldown | 3.5 s / 8 s |
 | Windup / recovery | 0.4 s / 0.3 s |
-| Effect duration | 0 s |
+| Effect duration | 0.0 s |
 | Skill reach / area radius | 1 / 1 tiles |
 | Can include self | False |
 | Max dash distance | 0 tiles |

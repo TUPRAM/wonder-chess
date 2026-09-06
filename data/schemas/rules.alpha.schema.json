@@ -2,7 +2,7 @@
   "type": "object",
   "properties": {
     "schema_version": {
-      "type": "string"
+      "const": "3.1.0"
     },
     "balance_version": {
       "type": "string"
@@ -121,7 +121,9 @@
           "type": "integer"
         },
         "max_rounds": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 40
         },
         "first_preparation_ms": {
           "type": "integer"
@@ -169,6 +171,26 @@
         },
         "rank_ties": {
           "type": "string"
+        },
+        "neutral_opening_rounds": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 40
+        },
+        "neutral_every_rounds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 40
+        },
+        "neutral_opening_failure_damage": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 60
+        },
+        "neutral_failure_damage": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 60
         }
       },
       "required": [
@@ -184,7 +206,11 @@
         "loss_base_by_stage",
         "ghost_wins_count_for_cap",
         "timeout_score",
-        "rank_ties"
+        "rank_ties",
+        "neutral_opening_rounds",
+        "neutral_every_rounds",
+        "neutral_opening_failure_damage",
+        "neutral_failure_damage"
       ],
       "additionalProperties": false
     },
@@ -350,6 +376,11 @@
             "6"
           ],
           "additionalProperties": false
+        },
+        "neutral_win_income": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
         }
       },
       "required": [
@@ -370,7 +401,8 @@
         "passive_xp",
         "xp_to_next",
         "sell_formula",
-        "shop_weights_by_level"
+        "shop_weights_by_level",
+        "neutral_win_income"
       ],
       "additionalProperties": false
     },
@@ -378,13 +410,16 @@
       "type": "array",
       "items": {
         "type": "string"
-      }
+      },
+      "minItems": 24,
+      "maxItems": 24,
+      "uniqueItems": true
     },
     "active_trait_thresholds": {
-      "type": "array",
-      "items": {
-        "type": "integer"
-      }
+      "const": [
+        2,
+        4
+      ]
     },
     "future_profile": {
       "type": "string"
@@ -449,6 +484,9 @@
         },
         "bot_final_reposition_cutoff_ms": {
           "type": "integer"
+        },
+        "protocol_version": {
+          "const": 4
         }
       },
       "required": [
@@ -458,7 +496,8 @@
         "host_disconnect",
         "public_snapshot_cadence_ms",
         "bot_public_observation_ms",
-        "bot_final_reposition_cutoff_ms"
+        "bot_final_reposition_cutoff_ms",
+        "protocol_version"
       ],
       "additionalProperties": false
     }

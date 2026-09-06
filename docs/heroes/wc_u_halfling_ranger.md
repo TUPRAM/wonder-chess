@@ -1,8 +1,10 @@
 # Finn Thistlearrow — The River Lookout
 
-**Halfling · Ranger · Ranged damage · EXPANSION**
+**Halfling · Ranger · Ranged damage · ALPHA**
 
-Stable identity: `wc_u_halfling_ranger`. Cost: **1 gold**. Rarity label: **Common**, separate from star level. Status: designed, not modeled or implemented by this kit. All combat values are provisional prototype inputs.
+Stable identity: `wc_u_halfling_ranger`. Cost: **1 gold**. Rarity label: **Common**, separate from star level. Production and verification status is recorded separately in reports/implementation_state.json; this generated dossier does not certify an asset or build. All combat values are provisional prototype inputs.
+
+Quick display name: **Finn**. Informational roles: Ranged. Role tags provide no additional synergy.
 
 ## Character and world
 
@@ -67,19 +69,19 @@ Nominal basic-attack DPS at one star: **49.00**, before mitigation, movement, st
 
 ### Dulling Shot
 
-**Player tooltip:** Reduces the current target’s attack speed for three seconds.
+**Player tooltip:** Reduce the basic attack rate of the in-range enemy with the highest current attack rate. Ties prefer the nearer enemy, then stable identity. Movement and skill cooldowns are unchanged.
 
-**Indonesian draft:** Mengurangi kecepatan serang sasaran untuk sementara.
+**Indonesian draft:** Kurangi laju serangan dasar musuh dalam jangkauan dengan laju serangan tertinggi saat ini. Jika sama, pilih yang terdekat, lalu identitas tetap. Gerakan dan jeda skill tidak berubah.
 
 | Contract field | Value |
 |---|---|
 | Stable ability ID | `wc_a_halfling_ranger` |
-| Effect / target selector | `stat_modifier` / `current_enemy` |
-| One / two / three star magnitude | -20% / -25% / -30% |
+| Effect / target selector | `stat_modifier` / `highest_attack_rate_enemy` |
+| One / two / three star magnitude | stat_modifier: -20% / -25% / -30% |
 | Damage type | Not damaging |
 | First-cast delay / cooldown | 2.5 s / 8 s |
 | Windup / recovery | 0.3 s / 0.3 s |
-| Effect duration | 3 s |
+| Effect duration | 3.0 s |
 | Skill reach / area radius | 4 / 0 tiles |
 | Can include self | False |
 | Max dash distance | 0 tiles |

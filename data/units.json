@@ -1,6 +1,6 @@
 {
-  "schema_version": "3.0.0",
-  "balance_version": "alpha_8seat_v0.3.0",
+  "schema_version": "3.1.0",
+  "balance_version": "alpha_24_v0.4.1",
   "units": [
     {
       "id": "wc_u_human_guardian",
@@ -32,35 +32,39 @@
         "projectile_travel_ms": 0
       },
       "ability": {
-        "name": "Sunward Guard",
+        "name": "Sun Guard",
         "tooltip_en": "Gains a shield for three seconds.",
-        "effect": "shield",
         "target_rule": "self",
         "first_cast_ms": 2000,
         "cooldown_ms": 8000,
         "cast_ms": 300,
-        "duration_ms": 3000,
         "radius_tiles": 0,
         "range_tiles": 0,
         "allow_self": true,
         "id": "wc_a_human_guardian",
         "recovery_ms": 300,
-        "damage_type": null,
         "max_targets": 12,
         "max_dash_tiles": 0,
-        "stat": null,
         "travel_ms": 0,
         "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
         "no_target_policy": "remain_ready_continue_basics",
         "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
-        "magnitude_unit": "centipoints",
-        "magnitude_by_star": [
-          20000,
-          36000,
-          64800
-        ],
         "delivery": "instant",
-        "tooltip_id": "Memberikan perisai sementara kepada diri sendiri."
+        "tooltip_id": "Memberikan perisai sementara kepada diri sendiri.",
+        "effects": [
+          {
+            "effect": "shield",
+            "damage_type": null,
+            "magnitude_unit": "centipoints",
+            "magnitude_by_star": [
+              20000,
+              36000,
+              64800
+            ],
+            "stat": null,
+            "duration_ms": 3000
+          }
+        ]
       },
       "art": {
         "silhouette": "A broad inverted-triangle shoulder line over a compact waist, anchored by an oversized rounded kite shield on the left. The shield rises to eyebrow height when guarding, but stays below her eyes at rest.",
@@ -124,7 +128,11 @@
         "lod2_target_ratio": 0.25,
         "budget_status": "unprofiled_starting_target"
       },
-      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Ada Brightshield, The Gatekeeper. Human Guardian, adult character, height 1.82 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A broad inverted-triangle shoulder line over a compact waist, anchored by an oversized rounded kite shield on the left. The shield rises to eyebrow height when guarding, but stays below her eyes at rest. Warm brown skin, square brows, dark eyes and a short black braid tucked behind the neck. Her calm, alert expression is readable without exaggerated facial animation. An ivory quilted coat sits under simplified steel breast and shoulder plates. A split navy tabard ends above the knees, leaving the leg silhouettes clear. Heavy boots and broad bracers make her planted stance apparent. Left-hand kite shield with a raised rising-sun disk; short, broad fantasy sword in the right hand. Build the emblem as shallow geometry with a baked bevel, not dense engraving. Palette: Navy #25466B; ivory #E9E2CD; brushed steel #9EAAB5; restrained gold #C7A25B. Gold covers only the shield crest and two fasteners. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images."
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Ada Brightshield, The Gatekeeper. Human Guardian, adult character, height 1.82 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A broad inverted-triangle shoulder line over a compact waist, anchored by an oversized rounded kite shield on the left. The shield rises to eyebrow height when guarding, but stays below her eyes at rest. Warm brown skin, square brows, dark eyes and a short black braid tucked behind the neck. Her calm, alert expression is readable without exaggerated facial animation. An ivory quilted coat sits under simplified steel breast and shoulder plates. A split navy tabard ends above the knees, leaving the leg silhouettes clear. Heavy boots and broad bracers make her planted stance apparent. Left-hand kite shield with a raised rising-sun disk; short, broad fantasy sword in the right hand. Build the emblem as shallow geometry with a baked bevel, not dense engraving. Palette: Navy #25466B; ivory #E9E2CD; brushed steel #9EAAB5; restrained gold #C7A25B. Gold covers only the shield crest and two fasteners. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Ada",
+      "role_tags": [
+        "tank"
+      ]
     },
     {
       "id": "wc_u_human_priest",
@@ -158,33 +166,37 @@
       "ability": {
         "name": "Mend",
         "tooltip_en": "Heals the ally with the lowest health percentage.",
-        "effect": "heal",
         "target_rule": "lowest_health_ally",
         "first_cast_ms": 3000,
         "cooldown_ms": 7000,
         "cast_ms": 350,
-        "duration_ms": 0,
         "radius_tiles": 0,
         "range_tiles": 8,
         "allow_self": true,
         "id": "wc_a_human_priest",
         "recovery_ms": 300,
-        "damage_type": null,
         "max_targets": 12,
         "max_dash_tiles": 0,
-        "stat": null,
         "travel_ms": 0,
         "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
         "no_target_policy": "remain_ready_continue_basics",
         "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
-        "magnitude_unit": "centipoints",
-        "magnitude_by_star": [
-          18000,
-          32400,
-          58300
-        ],
         "delivery": "instant",
-        "tooltip_id": "Memulihkan kesehatan sekutu dengan persentase kesehatan terendah."
+        "tooltip_id": "Memulihkan kesehatan sekutu dengan persentase kesehatan terendah.",
+        "effects": [
+          {
+            "effect": "heal",
+            "damage_type": null,
+            "magnitude_unit": "centipoints",
+            "magnitude_by_star": [
+              18000,
+              32400,
+              58300
+            ],
+            "stat": null,
+            "duration_ms": 0
+          }
+        ]
       },
       "art": {
         "silhouette": "A bell-shaped short coat and a high open staff loop, balanced by a small medicine satchel. Her upper body stays narrower than a Guardian, with the staff serving as the long vertical accent.",
@@ -248,7 +260,11 @@
         "lod2_target_ratio": 0.25,
         "budget_status": "unprofiled_starting_target"
       },
-      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Mira Dawnwell, The Roadside Healer. Human Priest, adult character, height 1.7 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A bell-shaped short coat and a high open staff loop, balanced by a small medicine satchel. Her upper body stays narrower than a Guardian, with the staff serving as the long vertical accent. Olive skin, hazel eyes, dark auburn hair in a loose bun, and a practical, attentive expression. A fabric headband frames her face without hiding it. Cream wool layers under a coral traveling mantle; the mantle is cut at the elbows for clean arm animation. Fitted trousers and walking boots replace a floor-length robe. A polished wood staff ending in an open circular lantern and a square leather satchel with two large clasps. Small bottle shapes remain abstract accessories, never gameplay consumables. Palette: Cream #F0E6CC; coral #CF7067; muted teal #538E8D; warm brass #BC9B58. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images."
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Mira Dawnwell, The Roadside Healer. Human Priest, adult character, height 1.7 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A bell-shaped short coat and a high open staff loop, balanced by a small medicine satchel. Her upper body stays narrower than a Guardian, with the staff serving as the long vertical accent. Olive skin, hazel eyes, dark auburn hair in a loose bun, and a practical, attentive expression. A fabric headband frames her face without hiding it. Cream wool layers under a coral traveling mantle; the mantle is cut at the elbows for clean arm animation. Fitted trousers and walking boots replace a floor-length robe. A polished wood staff ending in an open circular lantern and a square leather satchel with two large clasps. Small bottle shapes remain abstract accessories, never gameplay consumables. Palette: Cream #F0E6CC; coral #CF7067; muted teal #538E8D; warm brass #BC9B58. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Mira",
+      "role_tags": [
+        "healer"
+      ]
     },
     {
       "id": "wc_u_human_mage",
@@ -280,35 +296,39 @@
         "projectile_travel_ms": 150
       },
       "ability": {
-        "name": "Ember Orb",
+        "name": "Ember Burst",
         "tooltip_en": "Damages enemies around the target’s captured location.",
-        "effect": "damage",
         "target_rule": "current_enemy_area",
         "first_cast_ms": 3500,
         "cooldown_ms": 8000,
         "cast_ms": 450,
-        "duration_ms": 0,
         "radius_tiles": 1,
         "range_tiles": 4,
-        "damage_type": "magic",
         "travel_ms": 250,
         "id": "wc_a_human_mage",
         "recovery_ms": 300,
         "max_targets": 12,
         "allow_self": false,
         "max_dash_tiles": 0,
-        "stat": null,
         "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
         "no_target_policy": "remain_ready_continue_basics",
         "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
-        "magnitude_unit": "centipoints",
-        "magnitude_by_star": [
-          15000,
-          27000,
-          48600
-        ],
         "delivery": "projectile",
-        "tooltip_id": "Memberikan kerusakan sihir kepada musuh di area sasaran."
+        "tooltip_id": "Memberikan kerusakan sihir kepada musuh di area sasaran.",
+        "effects": [
+          {
+            "effect": "damage",
+            "damage_type": "magic",
+            "magnitude_unit": "centipoints",
+            "magnitude_by_star": [
+              15000,
+              27000,
+              48600
+            ],
+            "stat": null,
+            "duration_ms": 0
+          }
+        ]
       },
       "art": {
         "silhouette": "An angular, high folded collar above a tapered traveling coat, with a large open orb frame held beside the right shoulder. Broad sleeve cuffs distinguish him from staff-bearing Priests.",
@@ -372,7 +392,11 @@
         "lod2_target_ratio": 0.25,
         "budget_status": "unprofiled_starting_target"
       },
-      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Rowan Emberwick, The Hearth Scholar. Human Mage, adult character, height 1.78 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. An angular, high folded collar above a tapered traveling coat, with a large open orb frame held beside the right shoulder. Broad sleeve cuffs distinguish him from staff-bearing Priests. Copper-brown skin, round spectacles with thick readable rims, charcoal curls and an inquisitive half-smile. Use painted eyes rather than separate transparent lenses in the first pass. Indigo scholar’s coat over an amber vest, reinforced fabric cuffs and calf-high boots. The coat splits into two stiff tails at the hips; no cloth simulation is required. A hovering presentation-only ember orb inside a hand-held bronze bracket; a closed book fixed to the belt. The orb is not a summoned combat unit. Palette: Indigo #494774; amber #E2A148; parchment #E7D9B4; coal #38333E. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images."
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Rowan Emberwick, The Hearth Scholar. Human Mage, adult character, height 1.78 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. An angular, high folded collar above a tapered traveling coat, with a large open orb frame held beside the right shoulder. Broad sleeve cuffs distinguish him from staff-bearing Priests. Copper-brown skin, round spectacles with thick readable rims, charcoal curls and an inquisitive half-smile. Use painted eyes rather than separate transparent lenses in the first pass. Indigo scholar’s coat over an amber vest, reinforced fabric cuffs and calf-high boots. The coat splits into two stiff tails at the hips; no cloth simulation is required. A hovering presentation-only ember orb inside a hand-held bronze bracket; a closed book fixed to the belt. The orb is not a summoned combat unit. Palette: Indigo #494774; amber #E2A148; parchment #E7D9B4; coal #38333E. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Rowan",
+      "role_tags": [
+        "caster"
+      ]
     },
     {
       "id": "wc_u_elf_ranger",
@@ -406,33 +430,37 @@
       "ability": {
         "name": "Leafstep",
         "tooltip_en": "Dashes away from her target while keeping it in range.",
-        "effect": "dash",
         "target_rule": "retreat_from_current_enemy",
         "first_cast_ms": 2000,
         "cooldown_ms": 7500,
         "cast_ms": 200,
-        "duration_ms": 0,
         "radius_tiles": 0,
         "range_tiles": 4,
         "max_dash_tiles": 2,
         "recovery_ms": 150,
         "id": "wc_a_elf_ranger",
-        "damage_type": null,
         "max_targets": 12,
         "allow_self": false,
-        "stat": null,
         "travel_ms": 0,
         "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
         "no_target_policy": "remain_ready_continue_basics",
         "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
-        "magnitude_unit": null,
-        "magnitude_by_star": [
-          0,
-          0,
-          0
-        ],
         "delivery": "instant",
-        "tooltip_id": "Melakukan dash menjauh dari sasaran sambil tetap dalam jangkauan serang."
+        "tooltip_id": "Melakukan dash menjauh dari sasaran sambil tetap dalam jangkauan serang.",
+        "effects": [
+          {
+            "effect": "dash",
+            "damage_type": null,
+            "magnitude_unit": null,
+            "magnitude_by_star": [
+              0,
+              0,
+              0
+            ],
+            "stat": null,
+            "duration_ms": 0
+          }
+        ]
       },
       "art": {
         "silhouette": "A light forward-leaning profile, long crescent bow and three short leaflike cloak panels. The cloak stops above the knees, revealing long, narrow leg shapes.",
@@ -496,7 +524,11 @@
         "lod2_target_ratio": 0.25,
         "budget_status": "unprofiled_starting_target"
       },
-      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Liora Leafstep, The Canopy Scout. Elf Ranger, adult character, height 1.88 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A light forward-leaning profile, long crescent bow and three short leaflike cloak panels. The cloak stops above the knees, revealing long, narrow leg shapes. Golden-brown skin, gray-green eyes, swept-back pointed ears and pale brown hair tied into a short fan. Her gaze is alert rather than severe. Moss fabric over fitted leather shoulder protection, a single pale scarf and flexible boots. The bow-side shoulder stays clear; no oversized pauldron blocks the draw. A stylized crescent bow with broad flattened limbs and a slim back quiver. The bowstring is simplified geometry that can be hidden at distant LODs. Palette: Moss #647A4B; pale mint #B7CBB0; chestnut #765641; warm linen #DACCAB. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images."
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Liora Leafstep, The Canopy Scout. Elf Ranger, adult character, height 1.88 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A light forward-leaning profile, long crescent bow and three short leaflike cloak panels. The cloak stops above the knees, revealing long, narrow leg shapes. Golden-brown skin, gray-green eyes, swept-back pointed ears and pale brown hair tied into a short fan. Her gaze is alert rather than severe. Moss fabric over fitted leather shoulder protection, a single pale scarf and flexible boots. The bow-side shoulder stays clear; no oversized pauldron blocks the draw. A stylized crescent bow with broad flattened limbs and a slim back quiver. The bowstring is simplified geometry that can be hidden at distant LODs. Palette: Moss #647A4B; pale mint #B7CBB0; chestnut #765641; warm linen #DACCAB. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Liora",
+      "role_tags": [
+        "ranged"
+      ]
     },
     {
       "id": "wc_u_elf_priest",
@@ -528,35 +560,39 @@
         "projectile_travel_ms": 150
       },
       "ability": {
-        "name": "Quickening Song",
+        "name": "Quick Song",
         "tooltip_en": "Temporarily increases nearby allies’ attack speed.",
-        "effect": "stat_modifier",
         "target_rule": "adjacent_allies",
         "first_cast_ms": 2500,
         "cooldown_ms": 9000,
         "cast_ms": 350,
-        "duration_ms": 3000,
         "radius_tiles": 1,
         "range_tiles": 1,
-        "stat": "attack_rate",
         "allow_self": true,
         "id": "wc_a_elf_priest",
         "recovery_ms": 300,
-        "damage_type": null,
         "max_targets": 12,
         "max_dash_tiles": 0,
         "travel_ms": 0,
         "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
         "no_target_policy": "remain_ready_continue_basics",
         "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
-        "magnitude_unit": "basis_points",
-        "magnitude_by_star": [
-          2000,
-          2500,
-          3000
-        ],
         "delivery": "instant",
-        "tooltip_id": "Meningkatkan kecepatan serang diri sendiri dan sekutu bersebelahan untuk sementara."
+        "tooltip_id": "Meningkatkan kecepatan serang diri sendiri dan sekutu bersebelahan untuk sementara.",
+        "effects": [
+          {
+            "effect": "stat_modifier",
+            "damage_type": null,
+            "magnitude_unit": "basis_points",
+            "magnitude_by_star": [
+              2000,
+              2500,
+              3000
+            ],
+            "stat": "attack_rate",
+            "duration_ms": 3000
+          }
+        ]
       },
       "art": {
         "silhouette": "An upright pear-shaped silhouette with an open half-moon harp framing one shoulder. Layered petal-shaped sleeves form large, separated planes rather than many small leaves.",
@@ -620,7 +656,11 @@
         "lod2_target_ratio": 0.25,
         "budget_status": "unprofiled_starting_target"
       },
-      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Elin Moonsong, The Grove Cantor. Elf Priest, adult character, height 1.85 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. An upright pear-shaped silhouette with an open half-moon harp framing one shoulder. Layered petal-shaped sleeves form large, separated planes rather than many small leaves. Deep umber skin, pale blue eyes and silver hair in a compact crown braid. Pointed ears remain visible on both sides of the harp. Blue-green tunic with ivory sleeve ends, a short overlapping overskirt and practical fitted boots. Silver trim follows one large curved line across the torso. A compact crescent harp held close to the torso, with only a few thick stylized strings. A small charm at the waist marks her order without introducing a resource. Palette: Deep teal #337A80; moon ivory #E3E8DD; blue-gray #6E86A0; silver #B6C7C9. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images."
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Elin Moonsong, The Grove Cantor. Elf Priest, adult character, height 1.85 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. An upright pear-shaped silhouette with an open half-moon harp framing one shoulder. Layered petal-shaped sleeves form large, separated planes rather than many small leaves. Deep umber skin, pale blue eyes and silver hair in a compact crown braid. Pointed ears remain visible on both sides of the harp. Blue-green tunic with ivory sleeve ends, a short overlapping overskirt and practical fitted boots. Silver trim follows one large curved line across the torso. A compact crescent harp held close to the torso, with only a few thick stylized strings. A small charm at the waist marks her order without introducing a resource. Palette: Deep teal #337A80; moon ivory #E3E8DD; blue-gray #6E86A0; silver #B6C7C9. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Elin",
+      "role_tags": [
+        "support"
+      ]
     },
     {
       "id": "wc_u_elf_rogue",
@@ -652,35 +692,39 @@
         "projectile_travel_ms": 0
       },
       "ability": {
-        "name": "Backline Dash",
+        "name": "Backline Leap",
         "tooltip_en": "Dashes beside the farthest enemy when a landing tile is free.",
-        "effect": "dash",
         "target_rule": "farthest_enemy_adjacent",
         "first_cast_ms": 1000,
         "cooldown_ms": 8500,
         "cast_ms": 200,
-        "duration_ms": 0,
         "radius_tiles": 0,
         "range_tiles": 8,
         "max_dash_tiles": 7,
         "recovery_ms": 150,
         "id": "wc_a_elf_rogue",
-        "damage_type": null,
         "max_targets": 12,
         "allow_self": false,
-        "stat": null,
         "travel_ms": 0,
         "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
         "no_target_policy": "remain_ready_continue_basics",
         "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
-        "magnitude_unit": null,
-        "magnitude_by_star": [
-          0,
-          0,
-          0
-        ],
         "delivery": "instant",
-        "tooltip_id": "Melakukan dash ke petak kosong di samping musuh terjauh."
+        "tooltip_id": "Melakukan dash ke petak kosong di samping musuh terjauh.",
+        "effects": [
+          {
+            "effect": "dash",
+            "damage_type": null,
+            "magnitude_unit": null,
+            "magnitude_by_star": [
+              0,
+              0,
+              0
+            ],
+            "stat": null,
+            "duration_ms": 0
+          }
+        ]
       },
       "art": {
         "silhouette": "A low asymmetrical stance with a short diagonal mantle, one raised scarf end and paired curved fantasy blades. His shoulders form a compact wedge rather than a broad warrior line.",
@@ -744,7 +788,11 @@
         "lod2_target_ratio": 0.25,
         "budget_status": "unprofiled_starting_target"
       },
-      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Sylas Duskrun, The Lantern Runner. Elf Rogue, adult character, height 1.9 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A low asymmetrical stance with a short diagonal mantle, one raised scarf end and paired curved fantasy blades. His shoulders form a compact wedge rather than a broad warrior line. Light bronze skin, dark hair swept to one side and narrow amber eyes. Keep the lower face visible, with no full mask that resembles a different character identity. Dusk-blue leather panels over pale gray cloth, light knee guards and a cross-body courier strap. The mantle covers only the left shoulder and ends at the waist. Two short stylized curved blades and a small shielded courier lantern fixed to the belt. The lantern is a visual cue, not a source of stealth or detection gameplay. Palette: Dusk blue #3B4E6B; fog gray #BAC5CC; muted violet #786A8C; lantern amber #D2A35D. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images."
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Sylas Duskrun, The Lantern Runner. Elf Rogue, adult character, height 1.9 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A low asymmetrical stance with a short diagonal mantle, one raised scarf end and paired curved fantasy blades. His shoulders form a compact wedge rather than a broad warrior line. Light bronze skin, dark hair swept to one side and narrow amber eyes. Keep the lower face visible, with no full mask that resembles a different character identity. Dusk-blue leather panels over pale gray cloth, light knee guards and a cross-body courier strap. The mantle covers only the left shoulder and ends at the waist. Two short stylized curved blades and a small shielded courier lantern fixed to the belt. The lantern is a visual cue, not a source of stealth or detection gameplay. Palette: Dusk blue #3B4E6B; fog gray #BAC5CC; muted violet #786A8C; lantern amber #D2A35D. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Sylas",
+      "role_tags": [
+        "control"
+      ]
     },
     {
       "id": "wc_u_dwarf_guardian",
@@ -778,33 +826,37 @@
       "ability": {
         "name": "Bell Stomp",
         "tooltip_en": "Stuns adjacent enemies for one second.",
-        "effect": "stun",
         "target_rule": "adjacent_enemies",
         "first_cast_ms": 3000,
         "cooldown_ms": 8500,
         "cast_ms": 400,
-        "duration_ms": 1000,
         "radius_tiles": 1,
         "range_tiles": 1,
         "id": "wc_a_dwarf_guardian",
         "recovery_ms": 300,
-        "damage_type": null,
         "max_targets": 12,
         "allow_self": false,
         "max_dash_tiles": 0,
-        "stat": null,
         "travel_ms": 0,
         "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
         "no_target_policy": "remain_ready_continue_basics",
         "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
-        "magnitude_unit": null,
-        "magnitude_by_star": [
-          0,
-          0,
-          0
-        ],
         "delivery": "instant",
-        "tooltip_id": "Melumpuhkan sementara musuh di petak bersebelahan."
+        "tooltip_id": "Melumpuhkan sementara musuh di petak bersebelahan.",
+        "effects": [
+          {
+            "effect": "stun",
+            "damage_type": null,
+            "magnitude_unit": null,
+            "magnitude_by_star": [
+              0,
+              0,
+              0
+            ],
+            "stat": null,
+            "duration_ms": 1000
+          }
+        ]
       },
       "art": {
         "silhouette": "A compact rectangular torso beneath a domed helmet, with wide rounded shoulder plates and an oversized bell-headed hammer. Short legs stay separated enough to read during motion.",
@@ -868,7 +920,11 @@
         "lod2_target_ratio": 0.25,
         "budget_status": "unprofiled_starting_target"
       },
-      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Borin Stonebell, The Bridge Sentinel. Dwarf Guardian, adult character, height 1.38 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A compact rectangular torso beneath a domed helmet, with wide rounded shoulder plates and an oversized bell-headed hammer. Short legs stay separated enough to read during motion. Ruddy tan skin, large brown brows and a thick brown beard divided into two broad braids. A hinged-looking open helmet never hides the eyes. Slate plate over a moss-green padded coat, heavy riveted boots and a wide belt with a single square buckle. Avoid dozens of small rivets; bake secondary details. A two-handed fantasy hammer shaped like a solid bell housing. Its broad rim helps the stomp animation read without an actual moving bell interior. Palette: Slate #697A88; moss #6B7750; muted bronze #A58354; warm beard brown #76533A. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images."
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Borin Stonebell, The Bridge Sentinel. Dwarf Guardian, adult character, height 1.38 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A compact rectangular torso beneath a domed helmet, with wide rounded shoulder plates and an oversized bell-headed hammer. Short legs stay separated enough to read during motion. Ruddy tan skin, large brown brows and a thick brown beard divided into two broad braids. A hinged-looking open helmet never hides the eyes. Slate plate over a moss-green padded coat, heavy riveted boots and a wide belt with a single square buckle. Avoid dozens of small rivets; bake secondary details. A two-handed fantasy hammer shaped like a solid bell housing. Its broad rim helps the stomp animation read without an actual moving bell interior. Palette: Slate #697A88; moss #6B7750; muted bronze #A58354; warm beard brown #76533A. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Borin",
+      "role_tags": [
+        "tank"
+      ]
     },
     {
       "id": "wc_u_dwarf_ranger",
@@ -902,33 +958,37 @@
       "ability": {
         "name": "Heavy Bolt",
         "tooltip_en": "Fires a stronger physical shot at her current target.",
-        "effect": "damage",
         "target_rule": "current_enemy",
         "first_cast_ms": 2500,
         "cooldown_ms": 6500,
         "cast_ms": 350,
-        "duration_ms": 0,
         "radius_tiles": 0,
         "range_tiles": 4,
-        "damage_type": "physical",
         "travel_ms": 150,
         "id": "wc_a_dwarf_ranger",
         "recovery_ms": 300,
         "max_targets": 12,
         "allow_self": false,
         "max_dash_tiles": 0,
-        "stat": null,
         "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
         "no_target_policy": "remain_ready_continue_basics",
         "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
-        "magnitude_unit": "centipoints",
-        "magnitude_by_star": [
-          17000,
-          30600,
-          55100
-        ],
         "delivery": "projectile",
-        "tooltip_id": "Memberikan kerusakan fisik kepada sasaran saat ini."
+        "tooltip_id": "Memberikan kerusakan fisik kepada sasaran saat ini.",
+        "effects": [
+          {
+            "effect": "damage",
+            "damage_type": "physical",
+            "magnitude_unit": "centipoints",
+            "magnitude_by_star": [
+              17000,
+              30600,
+              55100
+            ],
+            "stat": null,
+            "duration_ms": 0
+          }
+        ]
       },
       "art": {
         "silhouette": "A compact upright body with a wide horizontal crossbow and a high single-lens goggle shape above the forehead. A short jacket flares just enough to contrast with the weapon bar.",
@@ -992,7 +1052,11 @@
         "lod2_target_ratio": 0.25,
         "budget_status": "unprofiled_starting_target"
       },
-      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Tessa Brassbolt, The Clockwork Marksman. Dwarf Ranger, adult character, height 1.32 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A compact upright body with a wide horizontal crossbow and a high single-lens goggle shape above the forehead. A short jacket flares just enough to contrast with the weapon bar. Freckled medium-brown skin, dark eyes, cropped copper hair and a confident grin. Goggles sit above the eyes during normal play so expressions remain visible. Mustard work jacket over charcoal padding, leather forearm guards, sturdy trousers and broad boots. A few oversized straps suggest workshop practicality. A broad stylized crank crossbow with exaggerated fantasy housing and a circular side wheel. It is a game prop, not a functional construction plan; mechanisms remain decorative. Palette: Mustard #C5A04B; charcoal #404851; copper #B67B55; pale linen #D9CDAF. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images."
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Tessa Brassbolt, The Clockwork Marksman. Dwarf Ranger, adult character, height 1.32 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A compact upright body with a wide horizontal crossbow and a high single-lens goggle shape above the forehead. A short jacket flares just enough to contrast with the weapon bar. Freckled medium-brown skin, dark eyes, cropped copper hair and a confident grin. Goggles sit above the eyes during normal play so expressions remain visible. Mustard work jacket over charcoal padding, leather forearm guards, sturdy trousers and broad boots. A few oversized straps suggest workshop practicality. A broad stylized crank crossbow with exaggerated fantasy housing and a circular side wheel. It is a game prop, not a functional construction plan; mechanisms remain decorative. Palette: Mustard #C5A04B; charcoal #404851; copper #B67B55; pale linen #D9CDAF. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Tessa",
+      "role_tags": [
+        "ranged"
+      ]
     },
     {
       "id": "wc_u_dwarf_warrior",
@@ -1024,35 +1088,39 @@
         "projectile_travel_ms": 0
       },
       "ability": {
-        "name": "Anvil Sweep",
+        "name": "Hammer Sweep",
         "tooltip_en": "Damages all adjacent enemies.",
-        "effect": "damage",
         "target_rule": "adjacent_enemies",
         "first_cast_ms": 3500,
         "cooldown_ms": 8000,
         "cast_ms": 400,
-        "duration_ms": 0,
         "radius_tiles": 1,
         "range_tiles": 1,
-        "damage_type": "physical",
         "id": "wc_a_dwarf_warrior",
         "recovery_ms": 300,
         "max_targets": 12,
         "allow_self": false,
         "max_dash_tiles": 0,
-        "stat": null,
         "travel_ms": 0,
         "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
         "no_target_policy": "remain_ready_continue_basics",
         "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
-        "magnitude_unit": "centipoints",
-        "magnitude_by_star": [
-          14000,
-          25200,
-          45400
-        ],
         "delivery": "instant",
-        "tooltip_id": "Memberikan kerusakan fisik kepada musuh di area sasaran."
+        "tooltip_id": "Memberikan kerusakan fisik kepada musuh di area sasaran.",
+        "effects": [
+          {
+            "effect": "damage",
+            "damage_type": "physical",
+            "magnitude_unit": "centipoints",
+            "magnitude_by_star": [
+              14000,
+              25200,
+              45400
+            ],
+            "stat": null,
+            "duration_ms": 0
+          }
+        ]
       },
       "art": {
         "silhouette": "A broad low center of gravity, square apron panels and a single large two-handed hammer held across the body. One uncovered upper sleeve breaks the armored outline without exposing a vulnerable-looking costume.",
@@ -1116,7 +1184,11 @@
         "lod2_target_ratio": 0.25,
         "budget_status": "unprofiled_starting_target"
       },
-      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Dagna Anvilheart, The Hall Champion. Dwarf Warrior, adult character, height 1.42 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A broad low center of gravity, square apron panels and a single large two-handed hammer held across the body. One uncovered upper sleeve breaks the armored outline without exposing a vulnerable-looking costume. Deep brown skin, bright gray eyes and black hair in a thick high braid coiled at the back. A stern resting expression softens during the victory pose. Red workshop coat beneath segmented shoulder armor, a short split leather apron and heavy wrapped boots. Metal is limited to the shoulders, wrists and tool head. A blocky fantasy forge hammer with a large beveled face and short decorative rune strip. The tool reads from shape rather than detailed mechanical parts. Palette: Brick red #A64E45; soot #4A4343; honey leather #A67E4B; steel #AAB2B7. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images."
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Dagna Anvilheart, The Hall Champion. Dwarf Warrior, adult character, height 1.42 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A broad low center of gravity, square apron panels and a single large two-handed hammer held across the body. One uncovered upper sleeve breaks the armored outline without exposing a vulnerable-looking costume. Deep brown skin, bright gray eyes and black hair in a thick high braid coiled at the back. A stern resting expression softens during the victory pose. Red workshop coat beneath segmented shoulder armor, a short split leather apron and heavy wrapped boots. Metal is limited to the shoulders, wrists and tool head. A blocky fantasy forge hammer with a large beveled face and short decorative rune strip. The tool reads from shape rather than detailed mechanical parts. Palette: Brick red #A64E45; soot #4A4343; honey leather #A67E4B; steel #AAB2B7. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Dagna",
+      "role_tags": [
+        "melee"
+      ]
     },
     {
       "id": "wc_u_orc_warrior",
@@ -1148,35 +1220,39 @@
         "projectile_travel_ms": 0
       },
       "ability": {
-        "name": "Battle Tempo",
+        "name": "Battle Rhythm",
         "tooltip_en": "Temporarily increases his attack speed.",
-        "effect": "stat_modifier",
         "target_rule": "self",
         "first_cast_ms": 2500,
         "cooldown_ms": 8500,
         "cast_ms": 250,
-        "duration_ms": 3000,
         "radius_tiles": 0,
         "range_tiles": 0,
-        "stat": "attack_rate",
         "allow_self": true,
         "id": "wc_a_orc_warrior",
         "recovery_ms": 300,
-        "damage_type": null,
         "max_targets": 12,
         "max_dash_tiles": 0,
         "travel_ms": 0,
         "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
         "no_target_policy": "remain_ready_continue_basics",
         "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
-        "magnitude_unit": "basis_points",
-        "magnitude_by_star": [
-          3000,
-          3500,
-          4000
-        ],
         "delivery": "instant",
-        "tooltip_id": "Meningkatkan kecepatan serang diri sendiri untuk sementara."
+        "tooltip_id": "Meningkatkan kecepatan serang diri sendiri untuk sementara.",
+        "effects": [
+          {
+            "effect": "stat_modifier",
+            "damage_type": null,
+            "magnitude_unit": "basis_points",
+            "magnitude_by_star": [
+              3000,
+              3500,
+              4000
+            ],
+            "stat": "attack_rate",
+            "duration_ms": 3000
+          }
+        ]
       },
       "art": {
         "silhouette": "A tall broad-shouldered figure with a short circular shoulder mantle, compact fantasy axe and a visibly open stance. The weapon and torso create a diagonal, not Dagna’s horizontal bar.",
@@ -1240,7 +1316,11 @@
         "lod2_target_ratio": 0.25,
         "budget_status": "unprofiled_starting_target"
       },
-      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Rok Sunward, The Pass Champion. Orc Warrior, adult character, height 2.04 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A tall broad-shouldered figure with a short circular shoulder mantle, compact fantasy axe and a visibly open stance. The weapon and torso create a diagonal, not Dagna’s horizontal bar. Olive-green skin, small rounded tusks, warm amber eyes and black hair tied in a short topknot. Keep the expression determined but friendly, avoiding a permanent snarl. Sun-ochre woven mantle over brown padded armor, a red waist sash and practical high boots. The armor uses clean geometric plates with broad woven bands. A single broad stylized axe carried one-handed, with an open off-hand for balance. Its proportions communicate fantasy rather than realistic manufacturing. Palette: Ochre #CAA454; red earth #A95E4D; dark leather #5E5040; muted green skin #6E8260. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images."
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Rok Sunward, The Pass Champion. Orc Warrior, adult character, height 2.04 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A tall broad-shouldered figure with a short circular shoulder mantle, compact fantasy axe and a visibly open stance. The weapon and torso create a diagonal, not Dagna’s horizontal bar. Olive-green skin, small rounded tusks, warm amber eyes and black hair tied in a short topknot. Keep the expression determined but friendly, avoiding a permanent snarl. Sun-ochre woven mantle over brown padded armor, a red waist sash and practical high boots. The armor uses clean geometric plates with broad woven bands. A single broad stylized axe carried one-handed, with an open off-hand for balance. Its proportions communicate fantasy rather than realistic manufacturing. Palette: Ochre #CAA454; red earth #A95E4D; dark leather #5E5040; muted green skin #6E8260. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Rok",
+      "role_tags": [
+        "melee"
+      ]
     },
     {
       "id": "wc_u_orc_mage",
@@ -1274,33 +1354,37 @@
       "ability": {
         "name": "Storm Ring",
         "tooltip_en": "Strikes enemies around a captured enemy location with magic.",
-        "effect": "damage",
         "target_rule": "current_enemy_area",
         "first_cast_ms": 4000,
         "cooldown_ms": 10000,
         "cast_ms": 600,
-        "duration_ms": 0,
         "radius_tiles": 2,
         "range_tiles": 4,
-        "damage_type": "magic",
         "travel_ms": 300,
         "id": "wc_a_orc_mage",
         "recovery_ms": 300,
         "max_targets": 12,
         "allow_self": false,
         "max_dash_tiles": 0,
-        "stat": null,
         "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
         "no_target_policy": "remain_ready_continue_basics",
         "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
-        "magnitude_unit": "centipoints",
-        "magnitude_by_star": [
-          19000,
-          34200,
-          61600
-        ],
         "delivery": "projectile",
-        "tooltip_id": "Memberikan kerusakan sihir kepada musuh di area sasaran."
+        "tooltip_id": "Memberikan kerusakan sihir kepada musuh di area sasaran.",
+        "effects": [
+          {
+            "effect": "damage",
+            "damage_type": "magic",
+            "magnitude_unit": "centipoints",
+            "magnitude_by_star": [
+              19000,
+              34200,
+              61600
+            ],
+            "stat": null,
+            "duration_ms": 0
+          }
+        ]
       },
       "art": {
         "silhouette": "A tall stable stance beneath two broad crescent shoulder cloths, with a forked staff held outward. Her costume forms layered triangles rather than a conventional pointed wizard hat.",
@@ -1364,7 +1448,11 @@
         "lod2_target_ratio": 0.25,
         "budget_status": "unprofiled_starting_target"
       },
-      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Zura Stormcall, The Sky Listener. Orc Mage, adult character, height 1.97 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A tall stable stance beneath two broad crescent shoulder cloths, with a forked staff held outward. Her costume forms layered triangles rather than a conventional pointed wizard hat. Sage-green skin, silver-gray eyes, modest tusks and dark hair braided into three thick sections. A calm upward gaze suggests listening to the weather. Storm-blue layered coat, pale wool collar, russet belt and wrapped boots. Fabric panels end above the ankles and open around the knees for movement. A tall wooden staff with an open fork framing a small floating sky stone. No hanging chains that require physical simulation. Palette: Storm blue #4A638D; cloud gray #CBD3DA; russet #A7664D; silver #A9B8C4. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images."
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Zura Stormcall, The Sky Listener. Orc Mage, adult character, height 1.97 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A tall stable stance beneath two broad crescent shoulder cloths, with a forked staff held outward. Her costume forms layered triangles rather than a conventional pointed wizard hat. Sage-green skin, silver-gray eyes, modest tusks and dark hair braided into three thick sections. A calm upward gaze suggests listening to the weather. Storm-blue layered coat, pale wool collar, russet belt and wrapped boots. Fabric panels end above the ankles and open around the knees for movement. A tall wooden staff with an open fork framing a small floating sky stone. No hanging chains that require physical simulation. Palette: Storm blue #4A638D; cloud gray #CBD3DA; russet #A7664D; silver #A9B8C4. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Zura",
+      "role_tags": [
+        "caster"
+      ]
     },
     {
       "id": "wc_u_orc_rogue",
@@ -1396,35 +1484,39 @@
         "projectile_travel_ms": 0
       },
       "ability": {
-        "name": "Closing Dash",
+        "name": "Quickstep",
         "tooltip_en": "Dashes beside the current target within three tiles.",
-        "effect": "dash",
         "target_rule": "current_enemy_adjacent",
         "first_cast_ms": 1500,
         "cooldown_ms": 6500,
         "cast_ms": 200,
-        "duration_ms": 0,
         "radius_tiles": 0,
         "range_tiles": 4,
         "max_dash_tiles": 3,
         "recovery_ms": 150,
         "id": "wc_a_orc_rogue",
-        "damage_type": null,
         "max_targets": 12,
         "allow_self": false,
-        "stat": null,
         "travel_ms": 0,
         "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
         "no_target_policy": "remain_ready_continue_basics",
         "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
-        "magnitude_unit": null,
-        "magnitude_by_star": [
-          0,
-          0,
-          0
-        ],
         "delivery": "instant",
-        "tooltip_id": "Melakukan dash ke petak kosong di samping sasaran saat ini."
+        "tooltip_id": "Melakukan dash ke petak kosong di samping sasaran saat ini.",
+        "effects": [
+          {
+            "effect": "dash",
+            "damage_type": null,
+            "magnitude_unit": null,
+            "magnitude_by_star": [
+              0,
+              0,
+              0
+            ],
+            "stat": null,
+            "duration_ms": 0
+          }
+        ]
       },
       "art": {
         "silhouette": "A narrow athletic wedge with a high scarf loop, short rounded shoulder guards and two compact hooked fantasy blades. The overall shape is tall and light rather than Rok’s broad mantle.",
@@ -1488,7 +1580,11 @@
         "lod2_target_ratio": 0.25,
         "budget_status": "unprofiled_starting_target"
       },
-      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Kesh Quickwind, The Ridge Courier. Orc Rogue, adult character, height 1.93 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A narrow athletic wedge with a high scarf loop, short rounded shoulder guards and two compact hooked fantasy blades. The overall shape is tall and light rather than Rok’s broad mantle. Muted jade skin, brown eyes, small tusks and cropped dark hair with a pale cloth tie. An easy grin distinguishes him from a stereotypically menacing Rogue. Turquoise courier jacket over charcoal cloth, a tan diagonal sash and light wrapped boots. Large route-marker patches replace armor clutter. Two short rounded fantasy blades and a flat map case on the hip. Keep the implements stylized and visually simpler than Sylas’s curves. Palette: Turquoise #408E91; tan #C1A477; charcoal #3D4C4E; muted jade #708D72. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images."
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Kesh Quickwind, The Ridge Courier. Orc Rogue, adult character, height 1.93 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A narrow athletic wedge with a high scarf loop, short rounded shoulder guards and two compact hooked fantasy blades. The overall shape is tall and light rather than Rok’s broad mantle. Muted jade skin, brown eyes, small tusks and cropped dark hair with a pale cloth tie. An easy grin distinguishes him from a stereotypically menacing Rogue. Turquoise courier jacket over charcoal cloth, a tan diagonal sash and light wrapped boots. Large route-marker patches replace armor clutter. Two short rounded fantasy blades and a flat map case on the hip. Keep the implements stylized and visually simpler than Sylas’s curves. Palette: Turquoise #408E91; tan #C1A477; charcoal #3D4C4E; muted jade #708D72. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Kesh",
+      "role_tags": [
+        "control"
+      ]
     },
     {
       "id": "wc_u_human_warrior",
@@ -1502,7 +1598,7 @@
       "role": "Melee damage",
       "cost": 2,
       "rarity": "Uncommon",
-      "production_phase": "expansion",
+      "production_phase": "alpha",
       "implementation_status": "designed_not_built",
       "height_m": 1.86,
       "rig_family": "humanoid_standard",
@@ -1520,35 +1616,39 @@
         "projectile_travel_ms": 0
       },
       "ability": {
-        "name": "Resolute Strike",
+        "name": "Firm Strike",
         "tooltip_en": "Delivers a stronger physical hit to the current target.",
-        "effect": "damage",
         "target_rule": "current_enemy",
         "first_cast_ms": 3000,
         "cooldown_ms": 7500,
         "cast_ms": 350,
-        "duration_ms": 0,
         "radius_tiles": 0,
         "range_tiles": 1,
-        "damage_type": "physical",
         "id": "wc_a_human_warrior",
         "recovery_ms": 300,
         "max_targets": 12,
         "allow_self": false,
         "max_dash_tiles": 0,
-        "stat": null,
         "travel_ms": 0,
         "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
         "no_target_policy": "remain_ready_continue_basics",
         "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
-        "magnitude_unit": "centipoints",
-        "magnitude_by_star": [
-          18000,
-          32400,
-          58300
-        ],
         "delivery": "instant",
-        "tooltip_id": "Memberikan kerusakan fisik kepada sasaran saat ini."
+        "tooltip_id": "Memberikan kerusakan fisik kepada sasaran saat ini.",
+        "effects": [
+          {
+            "effect": "damage",
+            "damage_type": "physical",
+            "magnitude_unit": "centipoints",
+            "magnitude_by_star": [
+              18000,
+              32400,
+              58300
+            ],
+            "stat": null,
+            "duration_ms": 0
+          }
+        ]
       },
       "art": {
         "silhouette": "A tall upright figure with one squared shoulder plate and a long, broad fantasy blade held diagonally downward. A short rectangular back-banner creates a distinctive vertical behind the head.",
@@ -1612,7 +1712,11 @@
         "lod2_target_ratio": 0.25,
         "budget_status": "unprofiled_starting_target"
       },
-      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Cass Vale, The Banner Captain. Human Warrior, adult character, height 1.86 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A tall upright figure with one squared shoulder plate and a long, broad fantasy blade held diagonally downward. A short rectangular back-banner creates a distinctive vertical behind the head. Medium-brown skin, close-cropped dark hair, brown eyes and a composed, focused expression. A pale eyebrow streak is a natural hair accent rather than an injury story. Deep red fitted coat under partial silver plate, broad belt, cream trousers and knee boots. The asymmetric armor leaves a clear leading and trailing side. Broad two-handed fantasy blade and a short banner fixed to a rigid back bracket. The banner is cosmetic; no area buff or faction system is implied. Palette: Crimson #A4464D; cream #E3D7BA; silver #A6B5BF; midnight #344155. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images."
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Cass Vale, The Banner Captain. Human Warrior, adult character, height 1.86 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A tall upright figure with one squared shoulder plate and a long, broad fantasy blade held diagonally downward. A short rectangular back-banner creates a distinctive vertical behind the head. Medium-brown skin, close-cropped dark hair, brown eyes and a composed, focused expression. A pale eyebrow streak is a natural hair accent rather than an injury story. Deep red fitted coat under partial silver plate, broad belt, cream trousers and knee boots. The asymmetric armor leaves a clear leading and trailing side. Broad two-handed fantasy blade and a short banner fixed to a rigid back bracket. The banner is cosmetic; no area buff or faction system is implied. Palette: Crimson #A4464D; cream #E3D7BA; silver #A6B5BF; midnight #344155. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Cass",
+      "role_tags": [
+        "melee"
+      ]
     },
     {
       "id": "wc_u_elf_mage",
@@ -1626,7 +1730,7 @@
       "role": "Spell damage",
       "cost": 3,
       "rarity": "Rare",
-      "production_phase": "expansion",
+      "production_phase": "alpha",
       "implementation_status": "designed_not_built",
       "height_m": 1.91,
       "rig_family": "humanoid_slender",
@@ -1645,34 +1749,50 @@
       },
       "ability": {
         "name": "Starbind",
-        "tooltip_en": "Stuns the current target for one and a quarter seconds.",
-        "effect": "stun",
+        "tooltip_en": "Deal 60 / 108 / 194.4 magic damage to the current enemy, then stun it for 1.25 seconds if it survives. Mage bonuses affect damage only.",
         "target_rule": "current_enemy",
         "first_cast_ms": 3500,
         "cooldown_ms": 9500,
         "cast_ms": 400,
-        "duration_ms": 1250,
         "radius_tiles": 0,
         "range_tiles": 4,
         "travel_ms": 200,
         "id": "wc_a_elf_mage",
         "recovery_ms": 300,
-        "damage_type": null,
         "max_targets": 12,
         "allow_self": false,
         "max_dash_tiles": 0,
-        "stat": null,
         "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
         "no_target_policy": "remain_ready_continue_basics",
         "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
-        "magnitude_unit": null,
-        "magnitude_by_star": [
-          0,
-          0,
-          0
-        ],
         "delivery": "projectile",
-        "tooltip_id": "Melumpuhkan sementara sasaran saat ini."
+        "tooltip_id": "Berikan 60 / 108 / 194,4 kerusakan sihir kepada musuh saat ini, lalu buatnya tertegun selama 1,25 detik jika bertahan. Bonus Mage hanya meningkatkan kerusakan.",
+        "effects": [
+          {
+            "effect": "damage",
+            "damage_type": "magic",
+            "magnitude_unit": "centipoints",
+            "magnitude_by_star": [
+              6000,
+              10800,
+              19440
+            ],
+            "stat": null,
+            "duration_ms": 0
+          },
+          {
+            "effect": "stun",
+            "damage_type": null,
+            "magnitude_unit": null,
+            "magnitude_by_star": [
+              0,
+              0,
+              0
+            ],
+            "stat": null,
+            "duration_ms": 1250
+          }
+        ]
       },
       "art": {
         "silhouette": "A narrow column of layered robes topped by a wide broken-circle headpiece. A small star-lens disk rests in the open left hand instead of a long staff.",
@@ -1736,7 +1856,11 @@
         "lod2_target_ratio": 0.25,
         "budget_status": "unprofiled_starting_target"
       },
-      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Neris Starbloom, The Observatory Keeper. Elf Mage, adult character, height 1.91 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A narrow column of layered robes topped by a wide broken-circle headpiece. A small star-lens disk rests in the open left hand instead of a long staff. Cool brown skin, pale violet eyes and midnight-blue hair braided into a smooth low knot. Long ears extend beneath the open headpiece. Violet coat over pale blue layered cloth, a fitted waist sash and short split lower panels. The headpiece is one bold arc, not a crown of many spikes. A palm-sized star-lens in a thick silver ring and a flat chart case at the hip. Presentation magic is anchored to hand sockets. Palette: Violet #7465A5; pale blue #B4CADD; midnight #3E4166; pearl #E0E3D9. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images."
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Neris Starbloom, The Observatory Keeper. Elf Mage, adult character, height 1.91 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A narrow column of layered robes topped by a wide broken-circle headpiece. A small star-lens disk rests in the open left hand instead of a long staff. Cool brown skin, pale violet eyes and midnight-blue hair braided into a smooth low knot. Long ears extend beneath the open headpiece. Violet coat over pale blue layered cloth, a fitted waist sash and short split lower panels. The headpiece is one bold arc, not a crown of many spikes. A palm-sized star-lens in a thick silver ring and a flat chart case at the hip. Presentation magic is anchored to hand sockets. Palette: Violet #7465A5; pale blue #B4CADD; midnight #3E4166; pearl #E0E3D9. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Neris",
+      "role_tags": [
+        "control"
+      ]
     },
     {
       "id": "wc_u_dwarf_priest",
@@ -1750,7 +1874,7 @@
       "role": "Support",
       "cost": 2,
       "rarity": "Uncommon",
-      "production_phase": "expansion",
+      "production_phase": "alpha",
       "implementation_status": "designed_not_built",
       "height_m": 1.3,
       "rig_family": "humanoid_stocky",
@@ -1768,35 +1892,39 @@
         "projectile_travel_ms": 150
       },
       "ability": {
-        "name": "Hearth Pulse",
+        "name": "Hearth Glow",
         "tooltip_en": "Heals herself and adjacent allies.",
-        "effect": "heal",
         "target_rule": "adjacent_allies",
         "first_cast_ms": 3000,
         "cooldown_ms": 8000,
         "cast_ms": 350,
-        "duration_ms": 0,
         "radius_tiles": 1,
         "range_tiles": 1,
         "allow_self": true,
         "id": "wc_a_dwarf_priest",
         "recovery_ms": 300,
-        "damage_type": null,
         "max_targets": 12,
         "max_dash_tiles": 0,
-        "stat": null,
         "travel_ms": 0,
         "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
         "no_target_policy": "remain_ready_continue_basics",
         "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
-        "magnitude_unit": "centipoints",
-        "magnitude_by_star": [
-          12500,
-          22500,
-          40500
-        ],
         "delivery": "instant",
-        "tooltip_id": "Memulihkan kesehatan diri sendiri dan sekutu di petak bersebelahan."
+        "tooltip_id": "Memulihkan kesehatan diri sendiri dan sekutu di petak bersebelahan.",
+        "effects": [
+          {
+            "effect": "heal",
+            "damage_type": null,
+            "magnitude_unit": "centipoints",
+            "magnitude_by_star": [
+              12500,
+              22500,
+              40500
+            ],
+            "stat": null,
+            "duration_ms": 0
+          }
+        ]
       },
       "art": {
         "silhouette": "A broad rounded coat, low lantern held at the chest and a soft arch-shaped head covering. Her gentle oval outline contrasts with Borin’s rectangular armor.",
@@ -1860,7 +1988,11 @@
         "lod2_target_ratio": 0.25,
         "budget_status": "unprofiled_starting_target"
       },
-      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Orla Hearthglow, The Hallkeeper. Dwarf Priest, adult character, height 1.3 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A broad rounded coat, low lantern held at the chest and a soft arch-shaped head covering. Her gentle oval outline contrasts with Borin’s rectangular armor. Warm dark skin, lively brown eyes and silver hair arranged in two thick side braids. Her smile is restrained and dependable. Rust-red wool coat over cream cloth, a wide woven apron panel, short gloves and practical boots. The head covering is a padded travel hood, not a rigid helmet. A squat octagonal lantern carried on a short handle and a small folded cloth pouch. The lantern’s heavy silhouette stays visible even when unlit. Palette: Rust #AC6653; oatmeal #DCCEAF; forest #586B57; warm brass #BDA061. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images."
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Orla Hearthglow, The Hallkeeper. Dwarf Priest, adult character, height 1.3 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A broad rounded coat, low lantern held at the chest and a soft arch-shaped head covering. Her gentle oval outline contrasts with Borin’s rectangular armor. Warm dark skin, lively brown eyes and silver hair arranged in two thick side braids. Her smile is restrained and dependable. Rust-red wool coat over cream cloth, a wide woven apron panel, short gloves and practical boots. The head covering is a padded travel hood, not a rigid helmet. A squat octagonal lantern carried on a short handle and a small folded cloth pouch. The lantern’s heavy silhouette stays visible even when unlit. Palette: Rust #AC6653; oatmeal #DCCEAF; forest #586B57; warm brass #BDA061. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Orla",
+      "role_tags": [
+        "healer"
+      ]
     },
     {
       "id": "wc_u_orc_guardian",
@@ -1874,7 +2006,7 @@
       "role": "Defender",
       "cost": 2,
       "rarity": "Uncommon",
-      "production_phase": "expansion",
+      "production_phase": "alpha",
       "implementation_status": "designed_not_built",
       "height_m": 2.0,
       "rig_family": "humanoid_broad",
@@ -1894,33 +2026,37 @@
       "ability": {
         "name": "Shared Guard",
         "tooltip_en": "Shields herself and adjacent allies for three seconds.",
-        "effect": "shield",
         "target_rule": "adjacent_allies",
         "first_cast_ms": 2500,
         "cooldown_ms": 9500,
         "cast_ms": 350,
-        "duration_ms": 3000,
         "radius_tiles": 1,
         "range_tiles": 1,
         "allow_self": true,
         "id": "wc_a_orc_guardian",
         "recovery_ms": 300,
-        "damage_type": null,
         "max_targets": 12,
         "max_dash_tiles": 0,
-        "stat": null,
         "travel_ms": 0,
         "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
         "no_target_policy": "remain_ready_continue_basics",
         "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
-        "magnitude_unit": "centipoints",
-        "magnitude_by_star": [
-          14000,
-          25200,
-          45400
-        ],
         "delivery": "instant",
-        "tooltip_id": "Memberikan perisai sementara kepada diri sendiri dan sekutu bersebelahan."
+        "tooltip_id": "Memberikan perisai sementara kepada diri sendiri dan sekutu bersebelahan.",
+        "effects": [
+          {
+            "effect": "shield",
+            "damage_type": null,
+            "magnitude_unit": "centipoints",
+            "magnitude_by_star": [
+              14000,
+              25200,
+              45400
+            ],
+            "stat": null,
+            "duration_ms": 3000
+          }
+        ]
       },
       "art": {
         "silhouette": "A wide arch formed by two high shoulder guards and a tall rectangular shield with a rounded top. The lower body remains a stable trapezoid.",
@@ -1984,7 +2120,11 @@
         "lod2_target_ratio": 0.25,
         "budget_status": "unprofiled_starting_target"
       },
-      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Tala Ironroot, The Caravan Wall. Orc Guardian, adult character, height 2.0 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A wide arch formed by two high shoulder guards and a tall rectangular shield with a rounded top. The lower body remains a stable trapezoid. Deep moss-green skin, warm brown eyes, small tusks and tightly braided dark hair. Her expression is attentive rather than aggressive. Layered leather-and-bronze armor, a pale ochre shoulder wrap, a blue woven sash and thick boots. Broad woven patterns identify her caravan community. A broad fantasy tower shield and a short ceremonial mace. The shield carries a simple interlocking-road emblem with no dense carving. Palette: Bronze #AC8658; ochre #D1B576; deep blue #405E78; moss #60765A. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images."
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Tala Ironroot, The Caravan Wall. Orc Guardian, adult character, height 2.0 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A wide arch formed by two high shoulder guards and a tall rectangular shield with a rounded top. The lower body remains a stable trapezoid. Deep moss-green skin, warm brown eyes, small tusks and tightly braided dark hair. Her expression is attentive rather than aggressive. Layered leather-and-bronze armor, a pale ochre shoulder wrap, a blue woven sash and thick boots. Broad woven patterns identify her caravan community. A broad fantasy tower shield and a short ceremonial mace. The shield carries a simple interlocking-road emblem with no dense carving. Palette: Bronze #AC8658; ochre #D1B576; deep blue #405E78; moss #60765A. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Tala",
+      "role_tags": [
+        "tank"
+      ]
     },
     {
       "id": "wc_u_halfling_warrior",
@@ -1998,7 +2138,7 @@
       "role": "Melee damage",
       "cost": 1,
       "rarity": "Common",
-      "production_phase": "expansion",
+      "production_phase": "alpha",
       "implementation_status": "designed_not_built",
       "height_m": 1.12,
       "rig_family": "humanoid_small",
@@ -2018,33 +2158,37 @@
       "ability": {
         "name": "Stout Heart",
         "tooltip_en": "Gains a temporary personal shield.",
-        "effect": "shield",
         "target_rule": "self",
         "first_cast_ms": 2000,
         "cooldown_ms": 7500,
         "cast_ms": 250,
-        "duration_ms": 2500,
         "radius_tiles": 0,
         "range_tiles": 0,
         "allow_self": true,
         "id": "wc_a_halfling_warrior",
         "recovery_ms": 300,
-        "damage_type": null,
         "max_targets": 12,
         "max_dash_tiles": 0,
-        "stat": null,
         "travel_ms": 0,
         "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
         "no_target_policy": "remain_ready_continue_basics",
         "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
-        "magnitude_unit": "centipoints",
-        "magnitude_by_star": [
-          15000,
-          27000,
-          48600
-        ],
         "delivery": "instant",
-        "tooltip_id": "Memberikan perisai sementara kepada diri sendiri."
+        "tooltip_id": "Memberikan perisai sementara kepada diri sendiri.",
+        "effects": [
+          {
+            "effect": "shield",
+            "damage_type": null,
+            "magnitude_unit": "centipoints",
+            "magnitude_by_star": [
+              15000,
+              27000,
+              48600
+            ],
+            "stat": null,
+            "duration_ms": 2500
+          }
+        ]
       },
       "art": {
         "silhouette": "A small broad stance with a large round wooden buckler and an upright leaf-shaped fantasy club. An oversized short scarf forms a clear horizontal at the neck.",
@@ -2108,7 +2252,11 @@
         "lod2_target_ratio": 0.25,
         "budget_status": "unprofiled_starting_target"
       },
-      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Pippa Oakstride, The Orchard Defender. Halfling Warrior, adult character, height 1.12 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A small broad stance with a large round wooden buckler and an upright leaf-shaped fantasy club. An oversized short scarf forms a clear horizontal at the neck. Light brown skin, freckled cheeks, bright hazel eyes and dense chestnut curls. Keep the face friendly and visibly adult. Apple-green quilted jacket, ochre trousers, a red neck scarf and broad walking boots. Outfit proportions emphasize capable mobility, not toy-like baby features. Round orchard-mark buckler and short stylized wooden club reinforced with decorative bronze bands. Both are exaggerated fantasy props. Palette: Apple green #7A985A; ochre #BE9A59; berry red #A85251; walnut #73553B. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images."
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Pippa Oakstride, The Orchard Defender. Halfling Warrior, adult character, height 1.12 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A small broad stance with a large round wooden buckler and an upright leaf-shaped fantasy club. An oversized short scarf forms a clear horizontal at the neck. Light brown skin, freckled cheeks, bright hazel eyes and dense chestnut curls. Keep the face friendly and visibly adult. Apple-green quilted jacket, ochre trousers, a red neck scarf and broad walking boots. Outfit proportions emphasize capable mobility, not toy-like baby features. Round orchard-mark buckler and short stylized wooden club reinforced with decorative bronze bands. Both are exaggerated fantasy props. Palette: Apple green #7A985A; ochre #BE9A59; berry red #A85251; walnut #73553B. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Pippa",
+      "role_tags": [
+        "melee"
+      ]
     },
     {
       "id": "wc_u_halfling_ranger",
@@ -2122,7 +2270,7 @@
       "role": "Ranged damage",
       "cost": 1,
       "rarity": "Common",
-      "production_phase": "expansion",
+      "production_phase": "alpha",
       "implementation_status": "designed_not_built",
       "height_m": 1.08,
       "rig_family": "humanoid_small",
@@ -2141,34 +2289,38 @@
       },
       "ability": {
         "name": "Dulling Shot",
-        "tooltip_en": "Reduces the current target’s attack speed for three seconds.",
-        "effect": "stat_modifier",
-        "target_rule": "current_enemy",
+        "tooltip_en": "Reduce the basic attack rate of the in-range enemy with the highest current attack rate. Ties prefer the nearer enemy, then stable identity. Movement and skill cooldowns are unchanged.",
+        "target_rule": "highest_attack_rate_enemy",
         "first_cast_ms": 2500,
         "cooldown_ms": 8000,
         "cast_ms": 300,
-        "duration_ms": 3000,
         "radius_tiles": 0,
         "range_tiles": 4,
-        "stat": "attack_rate",
         "travel_ms": 150,
         "id": "wc_a_halfling_ranger",
         "recovery_ms": 300,
-        "damage_type": null,
         "max_targets": 12,
         "allow_self": false,
         "max_dash_tiles": 0,
         "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
         "no_target_policy": "remain_ready_continue_basics",
         "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
-        "magnitude_unit": "basis_points",
-        "magnitude_by_star": [
-          -2000,
-          -2500,
-          -3000
-        ],
         "delivery": "projectile",
-        "tooltip_id": "Mengurangi kecepatan serang sasaran untuk sementara."
+        "tooltip_id": "Kurangi laju serangan dasar musuh dalam jangkauan dengan laju serangan tertinggi saat ini. Jika sama, pilih yang terdekat, lalu identitas tetap. Gerakan dan jeda skill tidak berubah.",
+        "effects": [
+          {
+            "effect": "stat_modifier",
+            "damage_type": null,
+            "magnitude_unit": "basis_points",
+            "magnitude_by_star": [
+              -2000,
+              -2500,
+              -3000
+            ],
+            "stat": "attack_rate",
+            "duration_ms": 3000
+          }
+        ]
       },
       "art": {
         "silhouette": "A small narrow body beneath a broad folded brim and a long simple bow carried upright. A narrow shoulder cape makes a triangular rear profile.",
@@ -2232,7 +2384,11 @@
         "lod2_target_ratio": 0.25,
         "budget_status": "unprofiled_starting_target"
       },
-      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Finn Thistlearrow, The River Lookout. Halfling Ranger, adult character, height 1.08 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A small narrow body beneath a broad folded brim and a long simple bow carried upright. A narrow shoulder cape makes a triangular rear profile. Tan skin, dark eyes, sandy curls and a thoughtful expression. The hat brim tilts upward enough not to hide his eyes. River-blue vest over cream sleeves, moss trousers, a short cape and simple boots. One broad belt pouch breaks the symmetrical torso. A slim fantasy bow and a compact quiver worn at the side. Keep the active projectile visibly magical instead of suggesting a real substance. Palette: River blue #58899C; cream #E4DABC; moss #6F8158; warm brown #866243. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images."
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Finn Thistlearrow, The River Lookout. Halfling Ranger, adult character, height 1.08 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A small narrow body beneath a broad folded brim and a long simple bow carried upright. A narrow shoulder cape makes a triangular rear profile. Tan skin, dark eyes, sandy curls and a thoughtful expression. The hat brim tilts upward enough not to hide his eyes. River-blue vest over cream sleeves, moss trousers, a short cape and simple boots. One broad belt pouch breaks the symmetrical torso. A slim fantasy bow and a compact quiver worn at the side. Keep the active projectile visibly magical instead of suggesting a real substance. Palette: River blue #58899C; cream #E4DABC; moss #6F8158; warm brown #866243. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Finn",
+      "role_tags": [
+        "ranged"
+      ]
     },
     {
       "id": "wc_u_halfling_rogue",
@@ -2246,7 +2402,7 @@
       "role": "Disruption",
       "cost": 2,
       "rarity": "Uncommon",
-      "production_phase": "expansion",
+      "production_phase": "alpha",
       "implementation_status": "designed_not_built",
       "height_m": 1.1,
       "rig_family": "humanoid_small",
@@ -2266,33 +2422,37 @@
       "ability": {
         "name": "Quick Feint",
         "tooltip_en": "Stuns the current target for one second.",
-        "effect": "stun",
         "target_rule": "current_enemy",
         "first_cast_ms": 2000,
         "cooldown_ms": 7500,
         "cast_ms": 200,
-        "duration_ms": 1000,
         "radius_tiles": 0,
         "range_tiles": 1,
         "id": "wc_a_halfling_rogue",
         "recovery_ms": 300,
-        "damage_type": null,
         "max_targets": 12,
         "allow_self": false,
         "max_dash_tiles": 0,
-        "stat": null,
         "travel_ms": 0,
         "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
         "no_target_policy": "remain_ready_continue_basics",
         "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
-        "magnitude_unit": null,
-        "magnitude_by_star": [
-          0,
-          0,
-          0
-        ],
         "delivery": "instant",
-        "tooltip_id": "Melumpuhkan sementara sasaran saat ini."
+        "tooltip_id": "Melumpuhkan sementara sasaran saat ini.",
+        "effects": [
+          {
+            "effect": "stun",
+            "damage_type": null,
+            "magnitude_unit": null,
+            "magnitude_by_star": [
+              0,
+              0,
+              0
+            ],
+            "stat": null,
+            "duration_ms": 1000
+          }
+        ]
       },
       "art": {
         "silhouette": "A compact side-on stance with a short diamond-shaped cape and a high swept hair tuft. Two flat fanlike fantasy batons form a clear paired shape.",
@@ -2356,7 +2516,11 @@
         "lod2_target_ratio": 0.25,
         "budget_status": "unprofiled_starting_target"
       },
-      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Nella Quickpocket, The Festival Scout. Halfling Rogue, adult character, height 1.1 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A compact side-on stance with a short diamond-shaped cape and a high swept hair tuft. Two flat fanlike fantasy batons form a clear paired shape. Rich brown skin, green-brown eyes and dark curls clipped at the sides. Her expression is mischievous without a villainous mask. Plum festival jacket, pale shirt, teal waist cord and sturdy close-fitting trousers. Small stitched stars appear only on one large lapel. Paired short fanlike fantasy batons and a flat messenger pouch. Do not include lockpicking gear or realistic criminal instruction props. Palette: Plum #785B83; teal #548B89; parchment #E1D4BB; dark cocoa #594838. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images."
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Nella Quickpocket, The Festival Scout. Halfling Rogue, adult character, height 1.1 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A compact side-on stance with a short diamond-shaped cape and a high swept hair tuft. Two flat fanlike fantasy batons form a clear paired shape. Rich brown skin, green-brown eyes and dark curls clipped at the sides. Her expression is mischievous without a villainous mask. Plum festival jacket, pale shirt, teal waist cord and sturdy close-fitting trousers. Small stitched stars appear only on one large lapel. Paired short fanlike fantasy batons and a flat messenger pouch. Do not include lockpicking gear or realistic criminal instruction props. Palette: Plum #785B83; teal #548B89; parchment #E1D4BB; dark cocoa #594838. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Nella",
+      "role_tags": [
+        "control"
+      ]
     },
     {
       "id": "wc_u_halfling_mage",
@@ -2370,7 +2534,7 @@
       "role": "Spell damage",
       "cost": 2,
       "rarity": "Uncommon",
-      "production_phase": "expansion",
+      "production_phase": "alpha",
       "implementation_status": "designed_not_built",
       "height_m": 1.14,
       "rig_family": "humanoid_small",
@@ -2390,33 +2554,37 @@
       "ability": {
         "name": "Mist Pop",
         "tooltip_en": "Bursts magic around the target’s captured location.",
-        "effect": "damage",
         "target_rule": "current_enemy_area",
         "first_cast_ms": 3000,
         "cooldown_ms": 7000,
         "cast_ms": 350,
-        "duration_ms": 0,
         "radius_tiles": 1,
         "range_tiles": 4,
-        "damage_type": "magic",
         "travel_ms": 200,
         "id": "wc_a_halfling_mage",
         "recovery_ms": 300,
         "max_targets": 12,
         "allow_self": false,
         "max_dash_tiles": 0,
-        "stat": null,
         "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
         "no_target_policy": "remain_ready_continue_basics",
         "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
-        "magnitude_unit": "centipoints",
-        "magnitude_by_star": [
-          13500,
-          24300,
-          43700
-        ],
         "delivery": "projectile",
-        "tooltip_id": "Memberikan kerusakan sihir kepada musuh di area sasaran."
+        "tooltip_id": "Memberikan kerusakan sihir kepada musuh di area sasaran.",
+        "effects": [
+          {
+            "effect": "damage",
+            "damage_type": "magic",
+            "magnitude_unit": "centipoints",
+            "magnitude_by_star": [
+              13500,
+              24300,
+              43700
+            ],
+            "stat": null,
+            "duration_ms": 0
+          }
+        ]
       },
       "art": {
         "silhouette": "A round short travel coat, large upturned collar and a thick spiral-topped wand. A small rigid umbrella disk folded against the back adds a distinctive rounded shape.",
@@ -2480,7 +2648,11 @@
         "lod2_target_ratio": 0.25,
         "budget_status": "unprofiled_starting_target"
       },
-      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Milo Mistwhistle, The Weather Tinkerer. Halfling Mage, adult character, height 1.14 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A round short travel coat, large upturned collar and a thick spiral-topped wand. A small rigid umbrella disk folded against the back adds a distinctive rounded shape. Warm tan skin, gray eyes, a small dark mustache and wavy brown hair. Clearly adult proportions and expression; no oversized infant features. Sky-blue raincoat, cream collar, copper belt buckle and dark boots. Sleeves are wide but stop at the wrists for clean hand animation. A thick spiral fantasy wand and a collapsed decorative umbrella disk. The disk is not a shield or movement device. Palette: Sky blue #77AFC2; cream #EAE0C7; copper #B78258; slate #566477. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images."
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Milo Mistwhistle, The Weather Tinkerer. Halfling Mage, adult character, height 1.14 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A round short travel coat, large upturned collar and a thick spiral-topped wand. A small rigid umbrella disk folded against the back adds a distinctive rounded shape. Warm tan skin, gray eyes, a small dark mustache and wavy brown hair. Clearly adult proportions and expression; no oversized infant features. Sky-blue raincoat, cream collar, copper belt buckle and dark boots. Sleeves are wide but stop at the wrists for clean hand animation. A thick spiral fantasy wand and a collapsed decorative umbrella disk. The disk is not a shield or movement device. Palette: Sky blue #77AFC2; cream #EAE0C7; copper #B78258; slate #566477. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Milo",
+      "role_tags": [
+        "caster"
+      ]
     },
     {
       "id": "wc_u_dragonkin_guardian",
@@ -2494,7 +2666,7 @@
       "role": "Defender",
       "cost": 3,
       "rarity": "Rare",
-      "production_phase": "expansion",
+      "production_phase": "alpha",
       "implementation_status": "designed_not_built",
       "height_m": 2.08,
       "rig_family": "humanoid_draconic",
@@ -2512,35 +2684,39 @@
         "projectile_travel_ms": 0
       },
       "ability": {
-        "name": "Beacon Guard",
+        "name": "Beacon Shield",
         "tooltip_en": "Gains a strong shield for three seconds.",
-        "effect": "shield",
         "target_rule": "self",
         "first_cast_ms": 2500,
         "cooldown_ms": 9000,
         "cast_ms": 350,
-        "duration_ms": 3000,
         "radius_tiles": 0,
         "range_tiles": 0,
         "allow_self": true,
         "id": "wc_a_dragonkin_guardian",
         "recovery_ms": 300,
-        "damage_type": null,
         "max_targets": 12,
         "max_dash_tiles": 0,
-        "stat": null,
         "travel_ms": 0,
         "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
         "no_target_policy": "remain_ready_continue_basics",
         "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
-        "magnitude_unit": "centipoints",
-        "magnitude_by_star": [
-          24000,
-          43200,
-          77800
-        ],
         "delivery": "instant",
-        "tooltip_id": "Memberikan perisai sementara kepada diri sendiri."
+        "tooltip_id": "Memberikan perisai sementara kepada diri sendiri.",
+        "effects": [
+          {
+            "effect": "shield",
+            "damage_type": null,
+            "magnitude_unit": "centipoints",
+            "magnitude_by_star": [
+              24000,
+              43200,
+              77800
+            ],
+            "stat": null,
+            "duration_ms": 3000
+          }
+        ]
       },
       "art": {
         "silhouette": "A tall broad chest, short swept-back horns and an upright oval shield. A compact crest rises behind the forehead without adding wings or a tail.",
@@ -2604,7 +2780,11 @@
         "lod2_target_ratio": 0.25,
         "budget_status": "unprofiled_starting_target"
       },
-      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Sora Dawnscale, The Beacon Sentinel. Dragonkin Guardian, adult character, height 2.08 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A tall broad chest, short swept-back horns and an upright oval shield. A compact crest rises behind the forehead without adding wings or a tail. Pearl-gold scales, deep amber eyes and a short rounded muzzle. Keep the mouth closed at rest and use a calm expression, not a permanent display of teeth. White-and-blue ceremonial armor with broad articulated panels, a short tabard and armored boots built around plantigrade feet. An oval fantasy shield with a single beacon gem and a short ceremonial mace. The gem is cosmetic outside the shield cast. Palette: Pearl #E0D8C1; royal blue #486A9A; gold #C4A367; dark slate #4D5B67. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images."
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Sora Dawnscale, The Beacon Sentinel. Dragonkin Guardian, adult character, height 2.08 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A tall broad chest, short swept-back horns and an upright oval shield. A compact crest rises behind the forehead without adding wings or a tail. Pearl-gold scales, deep amber eyes and a short rounded muzzle. Keep the mouth closed at rest and use a calm expression, not a permanent display of teeth. White-and-blue ceremonial armor with broad articulated panels, a short tabard and armored boots built around plantigrade feet. An oval fantasy shield with a single beacon gem and a short ceremonial mace. The gem is cosmetic outside the shield cast. Palette: Pearl #E0D8C1; royal blue #486A9A; gold #C4A367; dark slate #4D5B67. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Sora",
+      "role_tags": [
+        "tank"
+      ]
     },
     {
       "id": "wc_u_dragonkin_ranger",
@@ -2618,7 +2798,7 @@
       "role": "Ranged damage",
       "cost": 2,
       "rarity": "Uncommon",
-      "production_phase": "expansion",
+      "production_phase": "alpha",
       "implementation_status": "designed_not_built",
       "height_m": 1.98,
       "rig_family": "humanoid_draconic",
@@ -2638,33 +2818,37 @@
       "ability": {
         "name": "Prism Shot",
         "tooltip_en": "Fires a stronger magic shot at the current target.",
-        "effect": "damage",
         "target_rule": "current_enemy",
         "first_cast_ms": 3000,
         "cooldown_ms": 7500,
         "cast_ms": 350,
-        "duration_ms": 0,
         "radius_tiles": 0,
         "range_tiles": 4,
-        "damage_type": "magic",
         "travel_ms": 150,
         "id": "wc_a_dragonkin_ranger",
         "recovery_ms": 300,
         "max_targets": 12,
         "allow_self": false,
         "max_dash_tiles": 0,
-        "stat": null,
         "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
         "no_target_policy": "remain_ready_continue_basics",
         "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
-        "magnitude_unit": "centipoints",
-        "magnitude_by_star": [
-          16000,
-          28800,
-          51800
-        ],
         "delivery": "projectile",
-        "tooltip_id": "Memberikan kerusakan sihir kepada sasaran saat ini."
+        "tooltip_id": "Memberikan kerusakan sihir kepada sasaran saat ini.",
+        "effects": [
+          {
+            "effect": "damage",
+            "damage_type": "magic",
+            "magnitude_unit": "centipoints",
+            "magnitude_by_star": [
+              16000,
+              28800,
+              51800
+            ],
+            "stat": null,
+            "duration_ms": 0
+          }
+        ]
       },
       "art": {
         "silhouette": "A long narrow torso with a broad prismatic bow and two short outward horn fins. A split short cloak creates a forked shape without actual wings.",
@@ -2728,7 +2912,11 @@
         "lod2_target_ratio": 0.25,
         "budget_status": "unprofiled_starting_target"
       },
-      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Varek Prismshot, The Glasswing Archer. Dragonkin Ranger, adult character, height 1.98 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A long narrow torso with a broad prismatic bow and two short outward horn fins. A split short cloak creates a forked shape without actual wings. Blue-gray scales, pale gold eyes and a short angular muzzle. Horn fins are blunt and clearly part of the head rather than a wearable crown. Dark blue fitted ranger coat, ivory shoulder panels, silver belt and practical boots. The cloak ends at the hips. A stylized bow with broad translucent-looking but opaque shaded crystal facets. Keep its central grip readable and its mechanics decorative. Palette: Blue gray #7996AC; deep blue #3F567A; ivory #E6DFC9; prism cyan #8BC9CA. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images."
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Varek Prismshot, The Glasswing Archer. Dragonkin Ranger, adult character, height 1.98 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A long narrow torso with a broad prismatic bow and two short outward horn fins. A split short cloak creates a forked shape without actual wings. Blue-gray scales, pale gold eyes and a short angular muzzle. Horn fins are blunt and clearly part of the head rather than a wearable crown. Dark blue fitted ranger coat, ivory shoulder panels, silver belt and practical boots. The cloak ends at the hips. A stylized bow with broad translucent-looking but opaque shaded crystal facets. Keep its central grip readable and its mechanics decorative. Palette: Blue gray #7996AC; deep blue #3F567A; ivory #E6DFC9; prism cyan #8BC9CA. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Varek",
+      "role_tags": [
+        "ranged"
+      ]
     },
     {
       "id": "wc_u_dragonkin_rogue",
@@ -2742,7 +2930,7 @@
       "role": "Disruption",
       "cost": 3,
       "rarity": "Rare",
-      "production_phase": "expansion",
+      "production_phase": "alpha",
       "implementation_status": "designed_not_built",
       "height_m": 1.89,
       "rig_family": "humanoid_draconic",
@@ -2762,33 +2950,37 @@
       "ability": {
         "name": "Prism Cut",
         "tooltip_en": "Deals a small true-damage hit to the current target.",
-        "effect": "damage",
         "target_rule": "current_enemy",
         "first_cast_ms": 2500,
         "cooldown_ms": 8000,
         "cast_ms": 250,
-        "duration_ms": 0,
         "radius_tiles": 0,
         "range_tiles": 1,
-        "damage_type": "true",
         "id": "wc_a_dragonkin_rogue",
         "recovery_ms": 300,
         "max_targets": 12,
         "allow_self": false,
         "max_dash_tiles": 0,
-        "stat": null,
         "travel_ms": 0,
         "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
         "no_target_policy": "remain_ready_continue_basics",
         "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
-        "magnitude_unit": "centipoints",
-        "magnitude_by_star": [
-          10000,
-          18000,
-          32400
-        ],
         "delivery": "instant",
-        "tooltip_id": "Memberikan kerusakan murni kepada sasaran saat ini."
+        "tooltip_id": "Memberikan kerusakan murni kepada sasaran saat ini.",
+        "effects": [
+          {
+            "effect": "damage",
+            "damage_type": "true",
+            "magnitude_unit": "centipoints",
+            "magnitude_by_star": [
+              10000,
+              18000,
+              32400
+            ],
+            "stat": null,
+            "duration_ms": 0
+          }
+        ]
       },
       "art": {
         "silhouette": "A slim low stance with a short swept neck crest, one long diagonal sash and paired broad crescent fantasy blades. The outline stays compact rather than spiky.",
@@ -2852,7 +3044,11 @@
         "lod2_target_ratio": 0.25,
         "budget_status": "unprofiled_starting_target"
       },
-      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Iri Cinderstep, The Quiet Spark. Dragonkin Rogue, adult character, height 1.89 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A slim low stance with a short swept neck crest, one long diagonal sash and paired broad crescent fantasy blades. The outline stays compact rather than spiky. Muted copper scales, dark violet eyes and a short soft-edged muzzle. Two small backward horns sit close to the skull. Charcoal traveling jacket with coral lining, short layered hip panels and light boots. Leave elbow and knee shapes visible for agile poses. Paired fantasy crescent blades with small pale inset gems. The true-damage fantasy comes from a brief magical effect, not realistic cutting detail. Palette: Copper #AF7C60; charcoal #454552; coral #CB7B6B; muted violet #837B9E. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images."
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Iri Cinderstep, The Quiet Spark. Dragonkin Rogue, adult character, height 1.89 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A slim low stance with a short swept neck crest, one long diagonal sash and paired broad crescent fantasy blades. The outline stays compact rather than spiky. Muted copper scales, dark violet eyes and a short soft-edged muzzle. Two small backward horns sit close to the skull. Charcoal traveling jacket with coral lining, short layered hip panels and light boots. Leave elbow and knee shapes visible for agile poses. Paired fantasy crescent blades with small pale inset gems. The true-damage fantasy comes from a brief magical effect, not realistic cutting detail. Palette: Copper #AF7C60; charcoal #454552; coral #CB7B6B; muted violet #837B9E. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Iri",
+      "role_tags": [
+        "control"
+      ]
     },
     {
       "id": "wc_u_dragonkin_priest",
@@ -2866,7 +3062,7 @@
       "role": "Support",
       "cost": 2,
       "rarity": "Uncommon",
-      "production_phase": "expansion",
+      "production_phase": "alpha",
       "implementation_status": "designed_not_built",
       "height_m": 2.02,
       "rig_family": "humanoid_draconic",
@@ -2884,35 +3080,39 @@
         "projectile_travel_ms": 150
       },
       "ability": {
-        "name": "Skyward Ward",
-        "tooltip_en": "Shields the ally with the lowest health percentage for three seconds.",
-        "effect": "shield",
+        "name": "Sky Ward",
+        "tooltip_en": "Shield the lowest-health eligible ally in range, including self. Skip an ally whose existing shield would reject the ward; remain ready when no ally can benefit.",
         "target_rule": "lowest_health_ally",
         "first_cast_ms": 2500,
         "cooldown_ms": 8000,
         "cast_ms": 350,
-        "duration_ms": 3000,
         "radius_tiles": 0,
         "range_tiles": 8,
         "allow_self": true,
         "id": "wc_a_dragonkin_priest",
         "recovery_ms": 300,
-        "damage_type": null,
         "max_targets": 12,
         "max_dash_tiles": 0,
-        "stat": null,
         "travel_ms": 0,
         "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
         "no_target_policy": "remain_ready_continue_basics",
         "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
-        "magnitude_unit": "centipoints",
-        "magnitude_by_star": [
-          19000,
-          34200,
-          61600
-        ],
         "delivery": "instant",
-        "tooltip_id": "Memberikan perisai sementara kepada sekutu dengan persentase kesehatan terendah."
+        "tooltip_id": "Lindungi sekutu yang memenuhi syarat dengan persentase kesehatan terendah dalam jangkauan, termasuk diri sendiri. Lewati perisai yang akan menolak perlindungan ini; tetap siap jika tidak ada penerima yang mendapat manfaat.",
+        "effects": [
+          {
+            "effect": "shield",
+            "damage_type": null,
+            "magnitude_unit": "centipoints",
+            "magnitude_by_star": [
+              19000,
+              34200,
+              61600
+            ],
+            "stat": null,
+            "duration_ms": 3000
+          }
+        ]
       },
       "art": {
         "silhouette": "A tall narrow silhouette framed by a short mantle and a large open lantern staff. Two rounded swept horns form an unobtrusive arch above the head.",
@@ -2976,7 +3176,11 @@
         "lod2_target_ratio": 0.25,
         "budget_status": "unprofiled_starting_target"
       },
-      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Oren Skyward, The Beacon Keeper. Dragonkin Priest, adult character, height 2.02 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A tall narrow silhouette framed by a short mantle and a large open lantern staff. Two rounded swept horns form an unobtrusive arch above the head. Pale moss-gray scales, warm gold eyes and a short rounded muzzle. The face should appear attentive and scholarly rather than ferocious. White traveling robes with deep teal panels, short gold-edged mantle and fitted lower-leg wraps. Split robe panels stop above the ankles. A long staff with an open hexagonal lantern frame and a small sealed map case. No books float as independent actors. Palette: White linen #E5E2D3; teal #3E7F83; moss gray #92A69D; pale gold #C4AC72. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images."
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Oren Skyward, The Beacon Keeper. Dragonkin Priest, adult character, height 2.02 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A tall narrow silhouette framed by a short mantle and a large open lantern staff. Two rounded swept horns form an unobtrusive arch above the head. Pale moss-gray scales, warm gold eyes and a short rounded muzzle. The face should appear attentive and scholarly rather than ferocious. White traveling robes with deep teal panels, short gold-edged mantle and fitted lower-leg wraps. Split robe panels stop above the ankles. A long staff with an open hexagonal lantern frame and a small sealed map case. No books float as independent actors. Palette: White linen #E5E2D3; teal #3E7F83; moss gray #92A69D; pale gold #C4AC72. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Oren",
+      "role_tags": [
+        "support"
+      ]
     }
   ]
 }

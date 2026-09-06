@@ -4,7 +4,7 @@
 
 Create eight stable seat IDs at lobby start. Each seat owns health, gold, XP, level, shop offers, roster instances, bench locations, preparation formation, round results, placement and a controller binding. Human and bot bindings submit the same command types. A bot is not an enemy-wave generator. Do not rebuild its roster from an arbitrary difficulty score every round.
 
-At eight active seats, run four pairwise encounters, each with up to twelve deployed combatants. Each side receives a battle copy of its owned deployment with trait-derived maximum health initialized, timers reset and no inherited combat wounds. After settlement, restore the persistent roster/positions rather than copying combat movement back into the bench or preparation formation.
+At eight active seats, PvP rounds run four pairwise encounters, each with up to twelve deployed combatants. Monster rounds 1–3 and every positive multiple of five run eight isolated real encounters, one per living seat, against the same public authored wave. Neutral sides have explicit wave ownership and no tournament seat/economy. Preserve PvP pairing and ghost history through monster rounds. Each side receives a battle copy of its owned deployment with trait-derived maximum health initialized, timers reset and no inherited combat wounds. After settlement, restore the persistent roster/positions rather than copying combat movement back into the bench or preparation formation.
 
 Simulate every encounter with the actual combat engine. Team-power evaluation may help a bot choose actions, but cannot determine off-screen wins. Render only the inspected encounter where practical. Visibility, animation and sound must not consume combat random numbers or advance state.
 
@@ -28,13 +28,13 @@ Settlement waits until all encounters finish or reach hard timeout, not until th
 
 ## 4. Results and placement
 
-A non-draw loser takes stage base (2 in rounds 1–6, 4 in 7–12, 6 in 13–24) plus the count of surviving enemy units. Ignore star in player damage. A draw gives both real participants two damage; in a ghost draw only the recipient takes it. The donor never receives a second result. Winner loses no health. Empty versus empty draws immediately; empty versus nonempty is an ordinary loss with survivors counted.
+A non-draw loser takes stage base (2 in PvP indices 1–6, 4 in 7–12, 6 in 13 onward) plus the count of surviving enemy units. Ignore star in player damage. A draw gives both real participants two damage; in a ghost draw only the recipient takes it. The donor never receives a second result. Winner loses no health. Empty versus empty draws immediately; empty versus nonempty is an ordinary loss with survivors counted.
 
 Timeout compares the exact sum of each survivor’s current/max health fraction, ignoring shields. Larger sum wins; equal score draws. The score weights living units rather than raw health. This is a provisional choice to test, not a claim of ideal competitive fairness. Use rational/integer comparison carefully; overflow must be bounded or use an audited wider representation.
 
 Compute all health changes into one pending settlement, including negative raw health. Rank newly eliminated seats by higher raw post-damage health, then higher cumulative fight wins; ties share placement. Start their placement at surviving count plus one. Use competition ranks (for example 5,5,7), never silently use seat ID to choose a winner. Persist earlier-round placements; a later survivor outranks already eliminated seats.
 
-If one active seat remains, it takes first. If zero remain after simultaneous settlement, the tied final group can share first under the same elimination keys; do not hang waiting for a survivor. At round 24, remaining seats rank by positive health then wins with exact ties shared. Label this result capped adjudication, not a final combat win. After finish, no income, passive XP or shop reroll occurs.
+If one active seat remains, it takes first. If zero remain after simultaneous settlement, the tied final group can share first under the same elimination keys; do not hang waiting for a survivor. At the adopted initial cap of round 40, settle the neutral round and all eliminations first; remaining seats rank by positive health then wins with exact ties shared. Label this result capped adjudication, not a final combat win. After finish, no income, passive XP or shop reroll occurs.
 
 Record settlement ID and apply once. Retries or duplicate encounter callbacks return the existing settlement result. Save pre/post hashes for debugging. Restart creates fresh seat IDs or a fresh match namespace, RNG streams, command caches, subscriptions, camera state and UI selections; no lingering actors or persistent buffs.
 
@@ -59,7 +59,7 @@ Every 700 ms in preparation, or in equivalent discrete fast-forward test steps:
 
 ### Initial feature definitions
 
-Use normalized features in [-1,1] before persona weights. Start with: change in deployable fixed-star stat budget / expected team budget; increase in completed upgrade copies / 9; change in active two-unit traits / 6; capped useful duplicate progress / 6; frontline coverage improvement (zero-to-one frontline is more valuable than third-to-fourth); ranged/spell/support balance; and match-health urgency. Keep raw stat budget separate from outcome claims.
+Use normalized features in [-1,1] before persona weights. Start with: change in deployable fixed-star stat budget / expected team budget; increase in completed upgrade copies / 9; change in actual highest-tier active traits / 6; capped useful duplicate progress / 6; frontline coverage improvement (zero-to-one frontline is more valuable than third-to-fourth); ranged/spell/support balance; and match-health urgency. Keep raw stat budget separate from outcome claims.
 
 A proposed score is `3*deployment_gain + 2*upgrade_gain + 1.5*trait_gain + 1*role_coverage + 0.6*useful_pair_gain - 1.0*gold_fraction_spent - 0.8*interest_loss - 0.6*bench_pressure`, then apply the corresponding persona weights and bounded seed noise. The exact coefficients are tunable prototype values. Normalize each term and log it; do not mix health points, percentage values and gold directly into an arbitrary sum.
 
@@ -73,10 +73,16 @@ Separate `SeatState` from `HumanCommandSource` and `BotCommandSource`. A server-
 
 For the 2H6B alpha test, a disconnected non-host human becomes a bot for the rest of that match. Preserve all resources and roster; show a takeover label. Rejoining that seat is not supported in the alpha and must be rejected clearly. Host disconnect aborts the match with no winner; no host migration is claimed. A later dedicated-server/rejoin design is separate.
 
-One process running eight bot policies is not an eight-human network test. Required 2H6B evidence includes distinct processes, accepted/rejected commands, phase locking, simulated latency/loss where tooling permits, owner-private information inspection and host/client disconnect paths.
+One process running eight bot policies is not a human network test. Final 2H6B acceptance requires two physical LAN machines; two processes on one PC are explicitly preliminary evidence. Required 2H6B evidence includes distinct processes, accepted/rejected commands, phase locking, simulated latency/loss where tooling permits, owner-private information inspection and host/client disconnect paths.
 
 ## 8. Regression scenarios
 
 Test 8,7,6,5,4,3,2 active seats; no self-pair; every real seat exactly once; donor unaffected by clone; deterministic pairing replay; repeat minimization; ghost assignment history; ties; simultaneous multiple eliminations; zero survivors; cap; empty formations; winner dies to an already released projectile; restart; early human elimination and continued bot tournament.
 
 The supplied Python tests exercise pairing/settlement with synthetic provided outcomes. They explicitly do not satisfy the required 100 actual engine combat tournaments. During engine tests capture composition, gold curves, placement distribution, ghost exposure, timeout rate, bot rejects, action counts, battlefield idle time and match duration. Human playtests remain necessary for enjoyment and clarity.
+
+## Adopted neutral settlement and entry
+
+Keep absolute round and PvP-round index separate. A neutral victory does not increment competitive wins; record neutral wins/losses/draws separately. Opening neutral failures cause zero captain damage; later failures/draws cause two. After once-only outcome application, simultaneous elimination and finish/cap checks, eligible survivors entering the next preparation receive normal base income, locked interest and passive XP once, plus neutral win income of two instead of the PvP win bonus of one. Final/eliminated seats receive no next-round income. There is no item reward or manual pickup. Restart clears indices, neutral copies and pending rewards.
+
+Graphical lobby/loading/readiness and the skippable bounded introduction precede the first preparation clock. A slow LAN client cannot begin buying early or stop the server indefinitely. Cancellation before commitment returns to setup and clears the pending session. The systems migration specification owns detailed edge cases and required tests.

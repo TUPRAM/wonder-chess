@@ -2,7 +2,9 @@
 
 **Orc · Warrior · Melee damage · ALPHA**
 
-Stable identity: `wc_u_orc_warrior`. Cost: **1 gold**. Rarity label: **Common**, separate from star level. Status: designed, not modeled or implemented by this kit. All combat values are provisional prototype inputs.
+Stable identity: `wc_u_orc_warrior`. Cost: **1 gold**. Rarity label: **Common**, separate from star level. Production and verification status is recorded separately in reports/implementation_state.json; this generated dossier does not certify an asset or build. All combat values are provisional prototype inputs.
+
+Quick display name: **Rok**. Informational roles: Melee. Role tags provide no additional synergy.
 
 ## Character and world
 
@@ -65,7 +67,7 @@ Nominal basic-attack DPS at one star: **54.40**, before mitigation, movement, st
 
 ## One active skill
 
-### Battle Tempo
+### Battle Rhythm
 
 **Player tooltip:** Temporarily increases his attack speed.
 
@@ -75,11 +77,11 @@ Nominal basic-attack DPS at one star: **54.40**, before mitigation, movement, st
 |---|---|
 | Stable ability ID | `wc_a_orc_warrior` |
 | Effect / target selector | `stat_modifier` / `self` |
-| One / two / three star magnitude | 30% / 35% / 40% |
+| One / two / three star magnitude | stat_modifier: 30% / 35% / 40% |
 | Damage type | Not damaging |
 | First-cast delay / cooldown | 2.5 s / 8.5 s |
 | Windup / recovery | 0.25 s / 0.3 s |
-| Effect duration | 3 s |
+| Effect duration | 3.0 s |
 | Skill reach / area radius | 0 / 0 tiles |
 | Can include self | True |
 | Max dash distance | 0 tiles |

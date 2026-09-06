@@ -1,34 +1,7 @@
-# Wonder Chess — Complete Character Bible v3
-All 24 heroes are fully described. All 24 are selected by the adopted playable profile. Selection is an implementation obligation, not proof of finished assets or a verified game. Numbers are prototype values, not validated balance.
-## Master roster
-| Hero | Race | Class | Cost | Phase | Active skill |
-|---|---|---|---:|---|---|
-| Ada Brightshield | human | guardian | 1 | alpha | Sun Guard |
-| Mira Dawnwell | human | priest | 1 | alpha | Mend |
-| Rowan Emberwick | human | mage | 2 | alpha | Ember Burst |
-| Liora Leafstep | elf | ranger | 1 | alpha | Leafstep |
-| Elin Moonsong | elf | priest | 2 | alpha | Quick Song |
-| Sylas Duskrun | elf | rogue | 3 | alpha | Backline Leap |
-| Borin Stonebell | dwarf | guardian | 1 | alpha | Bell Stomp |
-| Tessa Brassbolt | dwarf | ranger | 2 | alpha | Heavy Bolt |
-| Dagna Anvilheart | dwarf | warrior | 2 | alpha | Hammer Sweep |
-| Rok Sunward | orc | warrior | 1 | alpha | Battle Rhythm |
-| Zura Stormcall | orc | mage | 3 | alpha | Storm Ring |
-| Kesh Quickwind | orc | rogue | 2 | alpha | Quickstep |
-| Cass Vale | human | warrior | 2 | alpha | Firm Strike |
-| Neris Starbloom | elf | mage | 3 | alpha | Starbind |
-| Orla Hearthglow | dwarf | priest | 2 | alpha | Hearth Glow |
-| Tala Ironroot | orc | guardian | 2 | alpha | Shared Guard |
-| Pippa Oakstride | halfling | warrior | 1 | alpha | Stout Heart |
-| Finn Thistlearrow | halfling | ranger | 1 | alpha | Dulling Shot |
-| Nella Quickpocket | halfling | rogue | 2 | alpha | Quick Feint |
-| Milo Mistwhistle | halfling | mage | 2 | alpha | Mist Pop |
-| Sora Dawnscale | dragonkin | guardian | 3 | alpha | Beacon Shield |
-| Varek Prismshot | dragonkin | ranger | 2 | alpha | Prism Shot |
-| Iri Cinderstep | dragonkin | rogue | 3 | alpha | Prism Cut |
-| Oren Skyward | dragonkin | priest | 2 | alpha | Sky Ward |
+# Wonder Chess — Twenty-four Alpha Hero Asset Briefs
 
----
+Use the per-hero art, animation and numerical contracts below alongside BLENDER_PRODUCTION.md. No model or render is included in this document.
+
 # Ada Brightshield — The Gatekeeper
 
 **Human · Guardian · Defender · ALPHA**
@@ -180,7 +153,6 @@ Original Wonder Chess high-fantasy character production sheet for Ada Brightshie
 Silhouette passes at 96-pixel preview; costume agrees across all views; all seven clips reviewed; no required missing textures; no unexplained import scale compensation; effect matches declared reach and damage type; portrait agrees with the modeled hero; crowded-board test passes; source revision/reimport is demonstrated. A Python exit code alone does not approve the art.
 
 Canonical source: `data/units.json`. Regenerate this dossier with `python tools/build_documents.py` after data edits. Do not hand-edit a stat table and leave the JSON unchanged.
-
 
 ---
 # Mira Dawnwell — The Roadside Healer
@@ -335,7 +307,6 @@ Silhouette passes at 96-pixel preview; costume agrees across all views; all seve
 
 Canonical source: `data/units.json`. Regenerate this dossier with `python tools/build_documents.py` after data edits. Do not hand-edit a stat table and leave the JSON unchanged.
 
-
 ---
 # Rowan Emberwick — The Hearth Scholar
 
@@ -488,7 +459,6 @@ Original Wonder Chess high-fantasy character production sheet for Rowan Emberwic
 Silhouette passes at 96-pixel preview; costume agrees across all views; all seven clips reviewed; no required missing textures; no unexplained import scale compensation; effect matches declared reach and damage type; portrait agrees with the modeled hero; crowded-board test passes; source revision/reimport is demonstrated. A Python exit code alone does not approve the art.
 
 Canonical source: `data/units.json`. Regenerate this dossier with `python tools/build_documents.py` after data edits. Do not hand-edit a stat table and leave the JSON unchanged.
-
 
 ---
 # Liora Leafstep — The Canopy Scout
@@ -643,7 +613,6 @@ Silhouette passes at 96-pixel preview; costume agrees across all views; all seve
 
 Canonical source: `data/units.json`. Regenerate this dossier with `python tools/build_documents.py` after data edits. Do not hand-edit a stat table and leave the JSON unchanged.
 
-
 ---
 # Elin Moonsong — The Grove Cantor
 
@@ -796,7 +765,6 @@ Original Wonder Chess high-fantasy character production sheet for Elin Moonsong,
 Silhouette passes at 96-pixel preview; costume agrees across all views; all seven clips reviewed; no required missing textures; no unexplained import scale compensation; effect matches declared reach and damage type; portrait agrees with the modeled hero; crowded-board test passes; source revision/reimport is demonstrated. A Python exit code alone does not approve the art.
 
 Canonical source: `data/units.json`. Regenerate this dossier with `python tools/build_documents.py` after data edits. Do not hand-edit a stat table and leave the JSON unchanged.
-
 
 ---
 # Sylas Duskrun — The Lantern Runner
@@ -951,7 +919,6 @@ Silhouette passes at 96-pixel preview; costume agrees across all views; all seve
 
 Canonical source: `data/units.json`. Regenerate this dossier with `python tools/build_documents.py` after data edits. Do not hand-edit a stat table and leave the JSON unchanged.
 
-
 ---
 # Borin Stonebell — The Bridge Sentinel
 
@@ -1104,7 +1071,6 @@ Original Wonder Chess high-fantasy character production sheet for Borin Stonebel
 Silhouette passes at 96-pixel preview; costume agrees across all views; all seven clips reviewed; no required missing textures; no unexplained import scale compensation; effect matches declared reach and damage type; portrait agrees with the modeled hero; crowded-board test passes; source revision/reimport is demonstrated. A Python exit code alone does not approve the art.
 
 Canonical source: `data/units.json`. Regenerate this dossier with `python tools/build_documents.py` after data edits. Do not hand-edit a stat table and leave the JSON unchanged.
-
 
 ---
 # Tessa Brassbolt — The Clockwork Marksman
@@ -1259,7 +1225,6 @@ Silhouette passes at 96-pixel preview; costume agrees across all views; all seve
 
 Canonical source: `data/units.json`. Regenerate this dossier with `python tools/build_documents.py` after data edits. Do not hand-edit a stat table and leave the JSON unchanged.
 
-
 ---
 # Dagna Anvilheart — The Hall Champion
 
@@ -1412,7 +1377,6 @@ Original Wonder Chess high-fantasy character production sheet for Dagna Anvilhea
 Silhouette passes at 96-pixel preview; costume agrees across all views; all seven clips reviewed; no required missing textures; no unexplained import scale compensation; effect matches declared reach and damage type; portrait agrees with the modeled hero; crowded-board test passes; source revision/reimport is demonstrated. A Python exit code alone does not approve the art.
 
 Canonical source: `data/units.json`. Regenerate this dossier with `python tools/build_documents.py` after data edits. Do not hand-edit a stat table and leave the JSON unchanged.
-
 
 ---
 # Rok Sunward — The Pass Champion
@@ -1567,7 +1531,6 @@ Silhouette passes at 96-pixel preview; costume agrees across all views; all seve
 
 Canonical source: `data/units.json`. Regenerate this dossier with `python tools/build_documents.py` after data edits. Do not hand-edit a stat table and leave the JSON unchanged.
 
-
 ---
 # Zura Stormcall — The Sky Listener
 
@@ -1720,7 +1683,6 @@ Original Wonder Chess high-fantasy character production sheet for Zura Stormcall
 Silhouette passes at 96-pixel preview; costume agrees across all views; all seven clips reviewed; no required missing textures; no unexplained import scale compensation; effect matches declared reach and damage type; portrait agrees with the modeled hero; crowded-board test passes; source revision/reimport is demonstrated. A Python exit code alone does not approve the art.
 
 Canonical source: `data/units.json`. Regenerate this dossier with `python tools/build_documents.py` after data edits. Do not hand-edit a stat table and leave the JSON unchanged.
-
 
 ---
 # Kesh Quickwind — The Ridge Courier
@@ -1875,7 +1837,6 @@ Silhouette passes at 96-pixel preview; costume agrees across all views; all seve
 
 Canonical source: `data/units.json`. Regenerate this dossier with `python tools/build_documents.py` after data edits. Do not hand-edit a stat table and leave the JSON unchanged.
 
-
 ---
 # Cass Vale — The Banner Captain
 
@@ -2028,7 +1989,6 @@ Original Wonder Chess high-fantasy character production sheet for Cass Vale, The
 Silhouette passes at 96-pixel preview; costume agrees across all views; all seven clips reviewed; no required missing textures; no unexplained import scale compensation; effect matches declared reach and damage type; portrait agrees with the modeled hero; crowded-board test passes; source revision/reimport is demonstrated. A Python exit code alone does not approve the art.
 
 Canonical source: `data/units.json`. Regenerate this dossier with `python tools/build_documents.py` after data edits. Do not hand-edit a stat table and leave the JSON unchanged.
-
 
 ---
 # Neris Starbloom — The Observatory Keeper
@@ -2183,7 +2143,6 @@ Silhouette passes at 96-pixel preview; costume agrees across all views; all seve
 
 Canonical source: `data/units.json`. Regenerate this dossier with `python tools/build_documents.py` after data edits. Do not hand-edit a stat table and leave the JSON unchanged.
 
-
 ---
 # Orla Hearthglow — The Hallkeeper
 
@@ -2336,7 +2295,6 @@ Original Wonder Chess high-fantasy character production sheet for Orla Hearthglo
 Silhouette passes at 96-pixel preview; costume agrees across all views; all seven clips reviewed; no required missing textures; no unexplained import scale compensation; effect matches declared reach and damage type; portrait agrees with the modeled hero; crowded-board test passes; source revision/reimport is demonstrated. A Python exit code alone does not approve the art.
 
 Canonical source: `data/units.json`. Regenerate this dossier with `python tools/build_documents.py` after data edits. Do not hand-edit a stat table and leave the JSON unchanged.
-
 
 ---
 # Tala Ironroot — The Caravan Wall
@@ -2491,7 +2449,6 @@ Silhouette passes at 96-pixel preview; costume agrees across all views; all seve
 
 Canonical source: `data/units.json`. Regenerate this dossier with `python tools/build_documents.py` after data edits. Do not hand-edit a stat table and leave the JSON unchanged.
 
-
 ---
 # Pippa Oakstride — The Orchard Defender
 
@@ -2644,7 +2601,6 @@ Original Wonder Chess high-fantasy character production sheet for Pippa Oakstrid
 Silhouette passes at 96-pixel preview; costume agrees across all views; all seven clips reviewed; no required missing textures; no unexplained import scale compensation; effect matches declared reach and damage type; portrait agrees with the modeled hero; crowded-board test passes; source revision/reimport is demonstrated. A Python exit code alone does not approve the art.
 
 Canonical source: `data/units.json`. Regenerate this dossier with `python tools/build_documents.py` after data edits. Do not hand-edit a stat table and leave the JSON unchanged.
-
 
 ---
 # Finn Thistlearrow — The River Lookout
@@ -2799,7 +2755,6 @@ Silhouette passes at 96-pixel preview; costume agrees across all views; all seve
 
 Canonical source: `data/units.json`. Regenerate this dossier with `python tools/build_documents.py` after data edits. Do not hand-edit a stat table and leave the JSON unchanged.
 
-
 ---
 # Nella Quickpocket — The Festival Scout
 
@@ -2952,7 +2907,6 @@ Original Wonder Chess high-fantasy character production sheet for Nella Quickpoc
 Silhouette passes at 96-pixel preview; costume agrees across all views; all seven clips reviewed; no required missing textures; no unexplained import scale compensation; effect matches declared reach and damage type; portrait agrees with the modeled hero; crowded-board test passes; source revision/reimport is demonstrated. A Python exit code alone does not approve the art.
 
 Canonical source: `data/units.json`. Regenerate this dossier with `python tools/build_documents.py` after data edits. Do not hand-edit a stat table and leave the JSON unchanged.
-
 
 ---
 # Milo Mistwhistle — The Weather Tinkerer
@@ -3107,7 +3061,6 @@ Silhouette passes at 96-pixel preview; costume agrees across all views; all seve
 
 Canonical source: `data/units.json`. Regenerate this dossier with `python tools/build_documents.py` after data edits. Do not hand-edit a stat table and leave the JSON unchanged.
 
-
 ---
 # Sora Dawnscale — The Beacon Sentinel
 
@@ -3260,7 +3213,6 @@ Original Wonder Chess high-fantasy character production sheet for Sora Dawnscale
 Silhouette passes at 96-pixel preview; costume agrees across all views; all seven clips reviewed; no required missing textures; no unexplained import scale compensation; effect matches declared reach and damage type; portrait agrees with the modeled hero; crowded-board test passes; source revision/reimport is demonstrated. A Python exit code alone does not approve the art.
 
 Canonical source: `data/units.json`. Regenerate this dossier with `python tools/build_documents.py` after data edits. Do not hand-edit a stat table and leave the JSON unchanged.
-
 
 ---
 # Varek Prismshot — The Glasswing Archer
@@ -3415,7 +3367,6 @@ Silhouette passes at 96-pixel preview; costume agrees across all views; all seve
 
 Canonical source: `data/units.json`. Regenerate this dossier with `python tools/build_documents.py` after data edits. Do not hand-edit a stat table and leave the JSON unchanged.
 
-
 ---
 # Iri Cinderstep — The Quiet Spark
 
@@ -3569,7 +3520,6 @@ Silhouette passes at 96-pixel preview; costume agrees across all views; all seve
 
 Canonical source: `data/units.json`. Regenerate this dossier with `python tools/build_documents.py` after data edits. Do not hand-edit a stat table and leave the JSON unchanged.
 
-
 ---
 # Oren Skyward — The Beacon Keeper
 
@@ -3722,4 +3672,3 @@ Original Wonder Chess high-fantasy character production sheet for Oren Skyward, 
 Silhouette passes at 96-pixel preview; costume agrees across all views; all seven clips reviewed; no required missing textures; no unexplained import scale compensation; effect matches declared reach and damage type; portrait agrees with the modeled hero; crowded-board test passes; source revision/reimport is demonstrated. A Python exit code alone does not approve the art.
 
 Canonical source: `data/units.json`. Regenerate this dossier with `python tools/build_documents.py` after data edits. Do not hand-edit a stat table and leave the JSON unchanged.
-

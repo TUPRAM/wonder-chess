@@ -40,3 +40,7 @@ Reference links are for Codex to re-check against the actual installed version. 
 ## Evidence boundaries
 
 This session had ordinary Python and a C++ compiler available. Blender, Unreal Editor and PowerShell were not available on PATH. The package validation report records exactly what was executed. No `.blend` files, original model renders, imported `.uasset` files, compiled Unreal module, network sessions, complete combat simulations or playable `.exe` were created or tested here. The purpose is a detailed, executable handoff to the environment with those applications.
+
+## 2026-09-06 — adopted 24-hero update
+
+The user explicitly adopted `updates/2026-09-auto-chess-inspired/README.md` and authorized WC-U400–460 end-to-end. Active scope is 24 playable heroes, six races/classes, highest 2/4 tiers, original neutral rounds, graphical lobby and full hero gallery; equipment remains visual only. Canonical schema is 3.1.0, balance alpha_24_v0.4.0 and protocol 4. Numbers remain calibration inputs. Baseline execution and tool probes are retained under `reports/WC-U400/20260906T125729Z`; current execution status belongs to implementation_state and fresh task evidence, not the unchanged historical release handoff.

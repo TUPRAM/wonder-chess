@@ -2,7 +2,9 @@
 
 **Dwarf · Ranger · Ranged damage · ALPHA**
 
-Stable identity: `wc_u_dwarf_ranger`. Cost: **2 gold**. Rarity label: **Uncommon**, separate from star level. Status: designed, not modeled or implemented by this kit. All combat values are provisional prototype inputs.
+Stable identity: `wc_u_dwarf_ranger`. Cost: **2 gold**. Rarity label: **Uncommon**, separate from star level. Production and verification status is recorded separately in reports/implementation_state.json; this generated dossier does not certify an asset or build. All combat values are provisional prototype inputs.
+
+Quick display name: **Tessa**. Informational roles: Ranged. Role tags provide no additional synergy.
 
 ## Character and world
 
@@ -75,11 +77,11 @@ Nominal basic-attack DPS at one star: **54.40**, before mitigation, movement, st
 |---|---|
 | Stable ability ID | `wc_a_dwarf_ranger` |
 | Effect / target selector | `damage` / `current_enemy` |
-| One / two / three star magnitude | 170 / 306 / 551 |
+| One / two / three star magnitude | damage: 170 / 306 / 551 |
 | Damage type | physical |
 | First-cast delay / cooldown | 2.5 s / 6.5 s |
 | Windup / recovery | 0.35 s / 0.3 s |
-| Effect duration | 0 s |
+| Effect duration | 0.0 s |
 | Skill reach / area radius | 4 / 0 tiles |
 | Can include self | False |
 | Max dash distance | 0 tiles |

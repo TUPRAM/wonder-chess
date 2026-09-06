@@ -1,8 +1,10 @@
 # Oren Skyward — The Beacon Keeper
 
-**Dragonkin · Priest · Support · EXPANSION**
+**Dragonkin · Priest · Support · ALPHA**
 
-Stable identity: `wc_u_dragonkin_priest`. Cost: **2 gold**. Rarity label: **Uncommon**, separate from star level. Status: designed, not modeled or implemented by this kit. All combat values are provisional prototype inputs.
+Stable identity: `wc_u_dragonkin_priest`. Cost: **2 gold**. Rarity label: **Uncommon**, separate from star level. Production and verification status is recorded separately in reports/implementation_state.json; this generated dossier does not certify an asset or build. All combat values are provisional prototype inputs.
+
+Quick display name: **Oren**. Informational roles: Support. Role tags provide no additional synergy.
 
 ## Character and world
 
@@ -65,21 +67,21 @@ Nominal basic-attack DPS at one star: **28.50**, before mitigation, movement, st
 
 ## One active skill
 
-### Skyward Ward
+### Sky Ward
 
-**Player tooltip:** Shields the ally with the lowest health percentage for three seconds.
+**Player tooltip:** Shield the lowest-health eligible ally in range, including self. Skip an ally whose existing shield would reject the ward; remain ready when no ally can benefit.
 
-**Indonesian draft:** Memberikan perisai sementara kepada sekutu dengan persentase kesehatan terendah.
+**Indonesian draft:** Lindungi sekutu yang memenuhi syarat dengan persentase kesehatan terendah dalam jangkauan, termasuk diri sendiri. Lewati perisai yang akan menolak perlindungan ini; tetap siap jika tidak ada penerima yang mendapat manfaat.
 
 | Contract field | Value |
 |---|---|
 | Stable ability ID | `wc_a_dragonkin_priest` |
 | Effect / target selector | `shield` / `lowest_health_ally` |
-| One / two / three star magnitude | 190 / 342 / 616 |
+| One / two / three star magnitude | shield: 190 / 342 / 616 |
 | Damage type | Not damaging |
 | First-cast delay / cooldown | 2.5 s / 8 s |
 | Windup / recovery | 0.35 s / 0.3 s |
-| Effect duration | 3 s |
+| Effect duration | 3.0 s |
 | Skill reach / area radius | 8 / 0 tiles |
 | Can include self | True |
 | Max dash distance | 0 tiles |

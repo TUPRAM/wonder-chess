@@ -2,18 +2,18 @@
 
 ## Scope of the included report
 
-`reports/KIT_VALIDATION.md` reports checks performed on this specification/data/tooling package. It is not evidence that Blender assets, Unreal code, complete bot battles or networking already work. `reports/implementation_state.json` starts game/art/package gates as NOT_RUN. Do not replace those states with green flags based on Python tests alone.
+`reports/KIT_VALIDATION.md` reports checks performed on this specification/data/tooling package. It is not evidence that Blender assets, Unreal code, complete bot battles or networking already work. `reports/implementation_state.json` records actual prior execution and open gates; new update gates need fresh evidence for their own revision. Do not replace those states with green flags based on Python tests alone.
 
 ## Required test matrix
 
 | ID | Scenario | Required result |
 |---|---|---|
-| DATA-01 | Full roster and alpha subset | 24 unique records; six races/classes each represented four times; alpha is exactly 12 with 4×3 race and 6×2 class coverage |
+| DATA-01 | Full roster and alpha subset | 24 unique records; six races/classes each represented four times; playable selection is exactly 24 with 6×4 race and 6×4 class coverage; seven separate neutrals and complete reachable waves |
 | DATA-02 | Authoring completeness | Art, biography, tactics, effect/timing/scaling, outputs and animation contract for every hero |
 | DATA-03 | Profile validation | Valid IDs/timings, shop weights sum to 100%, enabled tiers nonempty, alpha excludes expansion |
 | DATA-04 | Derivative parity | Dossiers, Unreal rows and content hashes match source |
 | RULE-01 | Numeric fixtures | Exact centipoint and rate results; same outputs in Unreal |
-| RULE-02 | Trait effects | Unique deployed types only; matching recipients; alpha threshold two; no duplicate bonus application |
+| RULE-02 | Trait effects | Unique deployed types only; matching recipients; highest eligible threshold two/four replaces lower; no duplicate bonus application |
 | RULE-03 | Shield/heal/stun | Correct replacement, expiry tick, overflow, caps and interrupt/release ordering |
 | RULE-04 | Movement/dash | No duplicate occupation, leaked reservation, invalid corner step or secret dash damage |
 | ECON-01 | Full bench purchase | Valid merge succeeds atomically; invalid purchase preserves gold/offers/roster |
@@ -29,7 +29,7 @@
 | BOT-03 | Policy budget | Bounded actions/rerolls, diverse preferences, sensible holds; frequent rejected/no-op actions flagged |
 | ART-01 | Calibration | Meter/cell/forward/root/feet measured in actual Unreal |
 | ART-02 | Reference hero | Ada complete and readable, seven clips, portrait, shield and reimport evidence |
-| ART-03 | Alpha roster | Twelve distinct silhouettes, 84 reviewed hero/clip combinations, correct effects and no missing maps |
+| ART-03 | Alpha roster | 24 distinct silhouettes, 168 continuously reviewed hero/clip combinations, correct effects and no missing maps |
 | ART-04 | Reimport | Changed source asset preserves material, skeleton, animation and placed actor references |
 | UI-01 | Full journey | Menu→lobby→tournament→results→restart, drag and click alternatives |
 | UI-02 | Information | Actual stats/traits, private-state separation, correct recap and ghost labels |
@@ -55,7 +55,7 @@ Required review questions: Can a new player identify team ownership, frontline v
 
 ## Performance and packaging
 
-Name CPU/GPU/RAM, display resolution, engine build, graphics settings, driver where relevant and tested scene. Measure frame-time percentiles and hitches with twelve visible combatants and all four simulations. No assumed 60 FPS from a polygon count. Test a cold package launch, settings persistence and at least one full tournament outside the source directory. No physical mobile claim from desktop emulation.
+Name CPU/GPU/RAM, display resolution, engine build, graphics settings, driver where relevant and tested scene. Measure frame-time percentiles and hitches with twelve visible combatants, all four PvP simulations, all eight neutral simulations, lobby and gallery. No assumed 60 FPS from a polygon count. Test a cold package launch, settings persistence and at least one full tournament outside the source directory. No physical mobile claim from desktop emulation.
 
 ## Severity and release rule
 

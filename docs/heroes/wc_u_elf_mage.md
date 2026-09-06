@@ -1,8 +1,10 @@
 # Neris Starbloom — The Observatory Keeper
 
-**Elf · Mage · Spell damage · EXPANSION**
+**Elf · Mage · Spell damage · ALPHA**
 
-Stable identity: `wc_u_elf_mage`. Cost: **3 gold**. Rarity label: **Rare**, separate from star level. Status: designed, not modeled or implemented by this kit. All combat values are provisional prototype inputs.
+Stable identity: `wc_u_elf_mage`. Cost: **3 gold**. Rarity label: **Rare**, separate from star level. Production and verification status is recorded separately in reports/implementation_state.json; this generated dossier does not certify an asset or build. All combat values are provisional prototype inputs.
+
+Quick display name: **Neris**. Informational roles: Control. Role tags provide no additional synergy.
 
 ## Character and world
 
@@ -67,24 +69,24 @@ Nominal basic-attack DPS at one star: **36.00**, before mitigation, movement, st
 
 ### Starbind
 
-**Player tooltip:** Stuns the current target for one and a quarter seconds.
+**Player tooltip:** Deal 60 / 108 / 194.4 magic damage to the current enemy, then stun it for 1.25 seconds if it survives. Mage bonuses affect damage only.
 
-**Indonesian draft:** Melumpuhkan sementara sasaran saat ini.
+**Indonesian draft:** Berikan 60 / 108 / 194,4 kerusakan sihir kepada musuh saat ini, lalu buatnya tertegun selama 1,25 detik jika bertahan. Bonus Mage hanya meningkatkan kerusakan.
 
 | Contract field | Value |
 |---|---|
 | Stable ability ID | `wc_a_elf_mage` |
-| Effect / target selector | `stun` / `current_enemy` |
-| One / two / three star magnitude | Not applicable / Not applicable / Not applicable |
-| Damage type | Not damaging |
+| Effect / target selector | `damage then stun` / `current_enemy` |
+| One / two / three star magnitude | damage: 60 / 108 / 194.4; stun: Not applicable / Not applicable / Not applicable |
+| Damage type | magic; Not damaging |
 | First-cast delay / cooldown | 3.5 s / 9.5 s |
 | Windup / recovery | 0.4 s / 0.3 s |
-| Effect duration | 1.25 s |
+| Effect duration | 0.0 s; 1.25 s |
 | Skill reach / area radius | 4 / 0 tiles |
 | Can include self | False |
 | Max dash distance | 0 tiles |
 | Projectile travel | 200 ms |
-| Affected stat | Not applicable |
+| Affected stat | Not applicable; Not applicable |
 
 Cooldown starts at successful cast commitment. An interrupted committed cast keeps its cooldown; an unavailable target leaves the ability ready and allows ordinary behavior. Area centers and area recipients are captured at release. Targeted projectiles keep their target ID but never retarget a defeated unit. Dash landing is reserved at commitment and validated before movement. See the rules contract for same-tick ordering, shield replacement and refresh semantics.
 

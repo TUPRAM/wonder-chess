@@ -92,7 +92,7 @@ class TraitAndGridTests(unittest.TestCase):
  def test_four_tier_replaces(self):
   ids=[u['id'] for u in CATALOG.values() if u['race']=='human']
   self.assertEqual(active_traits(ids,CATALOG,TRAITS,(2,4))['human'],2000)
- def test_alpha_ignores_four(self):
+ def test_legacy_v3_threshold_fixture_ignores_four(self):
   ids=[u['id'] for u in CATALOG.values() if u['race']=='human']
   self.assertEqual(active_traits(ids,CATALOG,TRAITS,(2,))['human'],1000)
  def test_retreat_valid(self):
@@ -134,8 +134,8 @@ class PairAndSettlementTests(unittest.TestCase):
  def test_elimination_order(self):
   s=settle_supplied_results({0:1,1:2,2:20,3:20},{},{0:('loss',2),1:('loss',2),2:('win',0),3:('win',0)},1)
   self.assertEqual(s['new_placements'],{1:3,0:4});self.assertFalse(s['finished'])
- def test_cap_shared_first(self):
-  s=settle_supplied_results({0:50,1:50},{0:2,1:2},{0:('draw',0),1:('draw',0)},24)
+ def test_legacy_v3_cap_shared_first(self):
+  s=settle_supplied_results({0:50,1:50},{0:2,1:2},{0:('draw',0),1:('draw',0)},24,max_rounds=24)
   self.assertTrue(s['finished']);self.assertEqual(s['new_placements'],{0:1,1:1})
  def test_missing_outcome_rejected(self):
   with self.assertRaises(ValueError):settle_supplied_results({0:50,1:50},{},{0:('win',0)},1)
@@ -162,4 +162,3 @@ class FormationFixtureTests(unittest.TestCase):
                 for label in (unit['race'], unit['unit_class']):
                     counts[label] = counts.get(label, 0) + 1
             self.assertEqual(sorted(k for k,v in counts.items() if v >= 2), example['active_traits'])
-

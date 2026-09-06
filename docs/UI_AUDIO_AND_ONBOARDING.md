@@ -57,3 +57,7 @@ Keep effects brief and grounded in declared mechanics. Rowan’s cloud does not 
 `data/locales/en.json` and `id.json` seed core labels. Translations are draft, not certified. Keep proper names stable; translate meaningful class/race/skill explanations through keyed data. Perform native-language review before marketing claims or a public release. Do not equate Indonesian with every Southeast Asian language.
 
 Keyboard focus must be visible; controls need readable text, good contrast and non-color identification. Provide drag alternatives, minimum touch-friendly sizing and scalable HUD at 1280×720. This prepares later mobile evaluation but does not establish Android performance or usability. Test on an actual physical device before promising a mobile build.
+
+## Adopted lobby and full gallery update
+
+The user-adopted `updates/2026-09-auto-chess-inspired/FRONTEND_AND_GALLERY.md` specifies the original Brighthaven 3D lobby, truthful Solo/LAN loading and readiness, a bounded skippable introduction before the first timer, and all 24 heroes in a native grid/showcase/detail gallery. Implement its filters, star/evaluator parity, Skill/Synergies/Tactics/Story tabs, short names, long-text scrolling and real model/animation controls. Role tags explain tactics; race/class highest 2/4 tiers are the only composition bonuses. Equipment is visual only. Extend audio to all authored heroes and seven neutral archetypes, then actually audition synchronization, voice limits, sliders and loops. No screenshot or generated wave proves listening quality.

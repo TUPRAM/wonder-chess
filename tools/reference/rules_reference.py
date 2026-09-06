@@ -91,7 +91,7 @@ def trait_counts(unit_ids: Iterable[str], catalog: Mapping[str,dict]) -> dict[st
 
 
 def active_traits(unit_ids: Iterable[str], catalog: Mapping[str,dict],
-                  traits: Sequence[dict], thresholds: tuple[int,...]=(2,)) -> dict[str,int]:
+                  traits: Sequence[dict], thresholds: tuple[int,...]=(2,4)) -> dict[str,int]:
     c=trait_counts(unit_ids,catalog);result={}
     for t in traits:
         eligible=[x for x in t['tiers'] if x['count'] in thresholds and c.get(t['id'],0)>=x['count']]
@@ -100,16 +100,45 @@ def active_traits(unit_ids: Iterable[str], catalog: Mapping[str,dict],
     return result
 
 
-def income(lock_gold: int, won: bool, continues: bool=True) -> int:
+def income(lock_gold: int, won: bool, continues: bool=True, *, neutral: bool=False) -> int:
     if lock_gold<0:
         raise ValueError('negative gold')
-    return 5+int(won)+min(3,lock_gold//10) if continues else 0
+    return 5+(2 if neutral else 1)*int(won)+min(3,lock_gold//10) if continues else 0
 
 
 def player_damage(round_no: int, enemy_survivors: int, draw: bool=False) -> int:
-    if not 1<=round_no<=24 or not 0<=enemy_survivors<=6:
+    """PvP-index stage fixture; calendar rounds must not be passed after neutrals."""
+    if not 1<=round_no<=40 or not 0<=enemy_survivors<=6:
         raise ValueError('invalid result')
     return 2 if draw else (2 if round_no<=6 else 4 if round_no<=12 else 6)+enemy_survivors
+
+
+def is_neutral_round(round_no: int, opening_rounds: int=3, every: int=5) -> bool:
+    if round_no<1 or opening_rounds<0 or every<1:
+        raise ValueError('invalid round schedule')
+    return round_no<=opening_rounds or round_no%every==0
+
+
+def wave_for_round(round_no: int, waves: Sequence[dict]) -> dict:
+    """Explicit lookup never fabricates a wave for a later unconfigured profile."""
+    if round_no<1:raise ValueError('invalid round')
+    found=[wave for wave in waves if wave['round']==round_no]
+    if len(found)!=1:raise ValueError('exactly one authored wave is required')
+    return found[0]
+
+
+def scaled_neutral_definition(creature: dict, wave: dict) -> dict:
+    """Pure authoring fixture: isolated copy, wave factors once, no star growth."""
+    hp_factor=wave['hp_scale_bp'];damage_factor=wave['damage_scale_bp']
+    if hp_factor<=0 or damage_factor<=0:raise ValueError('nonpositive wave scale')
+    result=copy.deepcopy(creature);stats=result['stats']
+    stats['health_cp']=rounded_ratio(stats['health_cp']*hp_factor,10000)
+    stats['attack_damage_cp']=rounded_ratio(stats['attack_damage_cp']*damage_factor,10000)
+    if result['ability']:
+        for effect in result['ability']['effects']:
+            factor=hp_factor if effect['effect']=='shield' else damage_factor if effect['effect']=='damage' else 10000
+            effect['magnitude_by_star']=[rounded_ratio(value*factor,10000) if value>=0 else -rounded_ratio(-value*factor,10000) for value in effect['magnitude_by_star']]
+    return result
 
 
 def advance_xp(level: int, xp: int, added: int) -> tuple[int,int]:
@@ -241,24 +270,33 @@ def rank_groups(items:Mapping[int,tuple],start_place:int=1)->dict[int,int]:
     return out
 
 
-def settle_supplied_results(health:Mapping[int,int],wins:Mapping[int,int],outcomes:Mapping[int,tuple[str,int]],round_no:int)->dict:
+def settle_supplied_results(health:Mapping[int,int],wins:Mapping[int,int],outcomes:Mapping[int,tuple[str,int]],round_no:int,
+                            *,encounter_kind:str='pvp',pvp_index:int|None=None,max_rounds:int=40)->dict:
     """One independently supplied result per real active seat. Ghost donor's second
     appearance is deliberately absent. No combat or full tournament is simulated.
+    The default PvP kind keeps direct old-profile fixture calls explicit; the
+    production tournament owns schedule resolution and duplicate-settlement guards.
     """
     if set(health)!=set(outcomes) or any(h<=0 for h in health.values()):
         raise ValueError('one result required per living real seat')
+    if not 1<=round_no<=max_rounds or max_rounds>40 or encounter_kind not in ('pvp','neutral'):
+        raise ValueError('invalid settlement round or kind')
+    if encounter_kind=='neutral' and not is_neutral_round(round_no):
+        raise ValueError('neutral result outside configured schedule')
     raw={};new_wins=dict(wins)
     for s,hp in health.items():
         outcome,survivors=outcomes[s]
         if outcome not in ('win','loss','draw') or not 0<=survivors<=6:raise ValueError('bad outcome')
-        delta=0 if outcome=='win' else player_damage(round_no,survivors,outcome=='draw')
+        delta=0 if outcome=='win' else (0 if round_no<=3 else 2) if encounter_kind=='neutral' else player_damage(pvp_index or round_no,survivors,outcome=='draw')
         raw[s]=hp-delta
-        new_wins[s]=new_wins.get(s,0)+int(outcome=='win')
+        new_wins[s]=new_wins.get(s,0)+int(outcome=='win' and encounter_kind=='pvp')
     alive=[s for s,hp in raw.items() if hp>0];dead=[s for s in raw if s not in alive]
     placements=rank_groups({s:(raw[s],new_wins[s]) for s in dead},len(alive)+1)
-    if len(alive)<=1 or round_no==24:
+    finished=len(alive)<=1 or round_no==max_rounds
+    if finished:
         placements.update(rank_groups({s:(raw[s],new_wins[s]) for s in alive},1))
-    return {'health':{s:max(0,h) for s,h in raw.items()},'raw_health':raw,'wins':new_wins,'new_placements':placements,'active':alive,'finished':len(alive)<=1 or round_no==24}
+    pending={s:(2 if encounter_kind=='neutral' else 1) if s in alive and not finished and outcomes[s][0]=='win' else 0 for s in health}
+    return {'health':{s:max(0,h) for s,h in raw.items()},'raw_health':raw,'wins':new_wins,'new_placements':placements,'active':alive,'finished':finished,'pending_victory_income':pending}
 
 
 def retreat_destination(origin:tuple[int,int],target:tuple[int,int],occupied:set[tuple[int,int]],
