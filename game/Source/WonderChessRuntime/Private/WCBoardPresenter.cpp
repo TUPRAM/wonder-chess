@@ -73,6 +73,7 @@ void AWCBoardPresenter::Prop(const FString &Asset, FVector Location,
                              FVector Scale, FLinearColor Color,
                              FRotator Rotation) {
   auto *A = GetWorld()->SpawnActor<AStaticMeshActor>(Location, Rotation);
+  A->Tags.Add(TEXT("WCBoardEnvironment"));
   auto *C = A->GetStaticMeshComponent();
   C->SetMobility(EComponentMobility::Movable);
   auto *Mesh = LoadObject<UStaticMesh>(nullptr, *Asset);

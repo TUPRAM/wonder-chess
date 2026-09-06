@@ -13,6 +13,7 @@ Build `WonderChessEditor Win64 Development` through the installed engine's `Engi
 - `import_data_tables` imports unit/ability tables and reads every reflected field back. UE 5.7.4 required the process-scoped `DataTableJSON.ExportUsingPropertyVisitor 0` workaround. The importer parses legacy nested struct text through the compiled reflected type and compares normalized values. Failed attempts remain in WC-U410 evidence.
 - `import_alpha_assets` validates source/manifest hashes before importing. `WC_IMPORT_HERO=wc_u_human_guardian` selects one published hero; comma-separated IDs select a handed-off batch. Unknown IDs or missing exports fail. Existing skeletons are retained. `WC_IMPORT_AUDIO=1` adds authored WAVs; `WC_IMPORT_AUDIO_ONLY=1` selects only audio.
 - `import_neutral_assets` imports the seven original neutral exports. Their rig contracts and optional active clips differ from hero requirements.
+- `import_lobby_assets` imports the hash-bound original Brighthaven approach and six modules, checks centimeter bounds and three combined LODs, and preserves the shared surface material. `create_lobby_sky` authors its original unlit horizon/zenith gradient. Both require actual composition review after execution.
 
 Imports use the measured legacy FBX route. Blender/Unreal units and orientations differ; validate imported bounds, LODs, bones, materials and clips after a fresh editor load.
 

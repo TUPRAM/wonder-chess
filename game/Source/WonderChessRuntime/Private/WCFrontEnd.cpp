@@ -560,18 +560,22 @@ TSharedRef<SWidget> FWCFrontEnd::PreviewControls() {
   auto Clips = SNew(SWrapBox).UseAllottedSize(true).InnerSlotPadding(FVector2D(5, 5));
   for (const FString Clip : {TEXT("Idle"), TEXT("Move"), TEXT("Attack"), TEXT("Active"), TEXT("Hit"), TEXT("Defeat"), TEXT("Victory")})
     Clips->AddSlot()[Button(Clip == TEXT("Active") ? Local(TEXT("Skill"), TEXT("Skill")) : Clip,
-        [this, Clip] { if (Scene.IsValid()) { Scene->PlayClip(Clip, false); Scene->SetTurntable(false); bTurntable = false; Rebuild(); } }, true,
+        [this, Clip] { if (Scene.IsValid() && Controller.IsValid()) { Scene->PlayClip(Clip, Controller->bReducedMotion); Scene->SetTurntable(false); bTurntable = false; Rebuild(); } }, true,
         Scene.IsValid() && Scene->SelectedClip == Clip)];
   auto Rotation = SNew(SWrapBox).UseAllottedSize(true).InnerSlotPadding(FVector2D(5, 5));
   Rotation->AddSlot()[Button(TEXT("↶ 30°"), [this] { if (Scene.IsValid()) Scene->RotateHero(-30); })];
   Rotation->AddSlot()[Button(TEXT("↷ 30°"), [this] { if (Scene.IsValid()) Scene->RotateHero(30); })];
   Rotation->AddSlot()[Button(Local(TEXT("Reset view"), TEXT("Atur ulang")), [this] { if (Scene.IsValid()) Scene->ResetView(); })];
-  Rotation->AddSlot()[Button(Local(bTurntable ? TEXT("Stop rotation") : TEXT("Turntable"), bTurntable ? TEXT("Hentikan rotasi") : TEXT("Putar model")), [this] {
-    bTurntable = !bTurntable; if (Scene.IsValid()) Scene->SetTurntable(bTurntable); Rebuild();
+  Rotation->AddSlot()[Button(Controller->bReducedMotion ? Local(TEXT("Rotation off"), TEXT("Rotasi mati")) :
+      Local(bTurntable ? TEXT("Stop rotation") : TEXT("Turntable"), bTurntable ? TEXT("Hentikan rotasi") : TEXT("Putar model")), [this] {
+    bTurntable = Controller.IsValid() && !Controller->bReducedMotion && !bTurntable;
+    if (Scene.IsValid()) Scene->SetTurntable(bTurntable); Rebuild();
   }, !Controller->bReducedMotion)];
   return SNew(SBorder).BorderImage(FAppStyle::GetBrush(TEXT("WhiteBrush"))).BorderBackgroundColor(Ink).Padding(14)
     [SNew(SVerticalBox)
-      + SVerticalBox::Slot().AutoHeight()[Copy(Local(TEXT("Model preview · no match changes"), TEXT("Pratinjau model · tidak mengubah pertandingan")), 16, true)]
+      + SVerticalBox::Slot().AutoHeight()[Copy(Controller->bReducedMotion ?
+          Local(TEXT("Reduced motion · choose a still pose"), TEXT("Gerakan terbatas · pilih pose diam")) :
+          Local(TEXT("Model preview · no match changes"), TEXT("Pratinjau model · tidak mengubah pertandingan")), 16, true)]
       + SVerticalBox::Slot().AutoHeight().Padding(0, 8)[Clips]
       + SVerticalBox::Slot().AutoHeight()[Rotation]
       + SVerticalBox::Slot().AutoHeight().Padding(0, 8, 0, 0)[SNew(STextBlock)
@@ -777,11 +781,15 @@ TSharedRef<SWidget> FWCFrontEnd::Settings() {
       Controller->bReducedMotion ? TEXT("Gerakan terbatas: aktif") : TEXT("Gerakan terbatas: nonaktif")), [this] {
     Controller->bReducedMotion = !Controller->bReducedMotion;
     Controller->SaveOptions();
+    if (Controller->bReducedMotion) {
+      bTurntable = false;
+      if (Scene.IsValid()) Scene->SetTurntable(false);
+    }
     if (Scene.IsValid()) Scene->ShowHero(SelectedId, Star, Controller->bReducedMotion);
     Rebuild();
   })];
   Content->AddSlot().AutoHeight().Padding(0, 10)[Button(Local(TEXT("Toggle window / fullscreen"), TEXT("Ubah jendela / layar penuh")), [this] { Dispatch(TEXT("window")); })];
-  Content->AddSlot().AutoHeight().Padding(0, 15)[Copy(Local(TEXT("Settings are saved locally. Reduced motion stops automatic rotation and idle playback; an animation button explicitly plays its clip."), TEXT("Pengaturan disimpan lokal. Gerakan terbatas menghentikan rotasi otomatis dan animasi diam; tombol animasi tetap dapat memutar klip.")), 18)];
+  Content->AddSlot().AutoHeight().Padding(0, 15)[Copy(Local(TEXT("Settings are saved locally. Reduced motion holds each selected animation at its first pose and disables automatic rotation. Step rotation and reset remain available."), TEXT("Pengaturan disimpan lokal. Gerakan terbatas menahan setiap animasi pada pose awal dan menonaktifkan rotasi otomatis. Rotasi bertahap dan atur ulang tetap tersedia.")), 18)];
   return SNew(SHorizontalBox)
     + SHorizontalBox::Slot().FillWidth(.5f)
       [SNew(SBorder).BorderImage(FAppStyle::GetBrush(TEXT("WhiteBrush"))).BorderBackgroundColor(Ink).Padding(30)

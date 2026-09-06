@@ -3,6 +3,8 @@
 #include "WCBoardPresenter.h"
 #include "WCMatchRuntime.h"
 #include "Animation/AnimSequence.h"
+#include "Animation/AnimSingleNodeInstance.h"
+#include "Components/SkeletalMeshComponent.h"
 #include "Dom/JsonObject.h"
 #include "Engine/SkeletalMesh.h"
 #include "Engine/Texture2D.h"
@@ -40,7 +42,7 @@ void FWCFrontEnd::InitializeAudit() {
   Star = FMath::Clamp(Star, 1, 3);
   if (Scene.IsValid()) {
     Scene->ShowHero(SelectedId, Star, Controller->bReducedMotion);
-    if (!Clip.IsEmpty()) Scene->PlayClip(Clip, false);
+    if (!Clip.IsEmpty()) Scene->PlayClip(Clip, Controller->bReducedMotion);
   }
   if (!bAudit) return;
   AuditAt = FPlatformTime::Seconds() + 4;
@@ -57,6 +59,7 @@ void FWCFrontEnd::InitializeAudit() {
   AuditReport->SetStringField(TEXT("content_digest"), UTF8_TO_TCHAR(Controller->Presenter->Definitions.contentDigest.c_str()));
   AuditReport->SetArrayField(TEXT("checks"), {});
   AuditReport->SetArrayField(TEXT("screenshots"), {});
+  AuditReport->SetBoolField(TEXT("original_reduced_motion"), Controller->bReducedMotion);
   UE_LOG(LogTemp, Display, TEXT("WC_FRONTEND_AUDIT_STARTED directory=%s"), *AuditDirectory);
 }
 
@@ -182,6 +185,52 @@ void FWCFrontEnd::AuditCapture(const FString& Name) {
 
 void FWCFrontEnd::TickAudit() {
   if (!bAudit || bAuditFinished || !Controller.IsValid() || FPlatformTime::Seconds() < AuditAt || GFrameCounter < AuditFrameAt) return;
+  auto Preview = [this]() -> USkeletalMeshComponent* {
+    return Scene.IsValid() ? Scene->FindComponentByClass<USkeletalMeshComponent>() : nullptr;
+  };
+  auto ReducedLabel = [this]() {
+    return Local(Controller->bReducedMotion ? TEXT("Reduced motion: on") : TEXT("Reduced motion: off"),
+                 Controller->bReducedMotion ? TEXT("Gerakan terbatas: aktif") : TEXT("Gerakan terbatas: nonaktif"));
+  };
+  if ((AuditStage >= 25 && AuditStage <= 38) || (AuditStage >= 40 && AuditStage <= 53)) {
+    const bool Reduced = AuditStage < 40;
+    const int32 Step = AuditStage++ - (Reduced ? 25 : 40);
+    const TCHAR* Clips[] = {TEXT("Idle"), TEXT("Move"), TEXT("Attack"), TEXT("Active"), TEXT("Hit"), TEXT("Defeat"), TEXT("Victory")};
+    const FString Clip = Clips[Step / 2];
+    const auto Motion = AuditReport->GetObjectField(TEXT("reduced_motion_audit"));
+    if (Step % 2 == 0) {
+      const bool Activated = AuditKey(Clip == TEXT("Active") ? Local(TEXT("Skill"), TEXT("Skill")) : Clip);
+      auto* Mesh = Preview();
+      auto* Instance = Mesh ? Mesh->GetSingleNodeInstance() : nullptr;
+      auto* Asset = Instance ? Instance->GetCurrentAsset() : nullptr;
+      const FString ExpectedAsset = TEXT("AN_wc_u_human_guardian_") + Clip;
+      AuditCheck(Clip + (Reduced ? TEXT(" reduced Slate selection") : TEXT(" playback Slate selection")),
+          Activated && Asset && Asset->GetName() == ExpectedAsset && Scene->SelectedClip == Clip &&
+          Controller->bReducedMotion == Reduced && Mesh->bPauseAnims == Reduced,
+          TEXT("Focused native Slate Enter; actual single-node asset and pause state inspected."));
+      Motion->SetNumberField(TEXT("sample_position"), Mesh ? Mesh->GetPosition() : -1);
+      Motion->SetNumberField(TEXT("sample_yaw"), Mesh ? Mesh->GetRelativeRotation().Yaw : 0);
+      Motion->SetNumberField(TEXT("sample_started"), FPlatformTime::Seconds());
+      AuditAt = FPlatformTime::Seconds() + (Reduced ? .25 : .137);
+      AuditFrameAt = GFrameCounter + 3;
+    } else {
+      const auto* Mesh = Preview();
+      const double Start = Motion->GetNumberField(TEXT("sample_position"));
+      const double Position = Mesh ? Mesh->GetPosition() : -1;
+      const double Elapsed = FPlatformTime::Seconds() - Motion->GetNumberField(TEXT("sample_started"));
+      const double YawDelta = Mesh ? FMath::Abs(FMath::FindDeltaAngleDegrees(
+          float(Motion->GetNumberField(TEXT("sample_yaw"))), Mesh->GetRelativeRotation().Yaw)) : 360;
+      const bool PositionPass = Reduced ? FMath::Abs(Position - Start) < .0001 && FMath::Abs(Position) < .0001 : FMath::Abs(Position - Start) > .0001;
+      AuditCheck(Clip + (Reduced ? TEXT(" holds first pose across ticks") : TEXT(" advances across ticks")),
+          Mesh && Mesh->GetSingleNodeInstance() && Mesh->bPauseAnims == Reduced && Start >= 0 && PositionPass,
+          FString::Printf(TEXT("position_before=%.6f position_after=%.6f elapsed_seconds=%.3f"), Start, Position, Elapsed));
+      AuditCheck(Clip + (Reduced ? TEXT(" reduced rotation stable") : TEXT(" playback leaves turntable off")),
+          Mesh && !bTurntable && YawDelta < .001,
+          FString::Printf(TEXT("yaw_delta_degrees=%.6f elapsed_seconds=%.3f"), YawDelta, Elapsed));
+      AuditAt = FPlatformTime::Seconds() + .03;
+    }
+    return;
+  }
   if (AuditStage == 17 && FParse::Param(FCommandLine::Get(), TEXT("WCFrontEndAllHeroes"))) {
     const auto& Roster = Controller->Presenter->Definitions.units;
     if (AuditRosterStage < int32(Roster.size()) * 4) {
@@ -211,6 +260,7 @@ void FWCFrontEnd::TickAudit() {
       Page = EPage::Lobby; Rebuild();
       break;
     case 1:
+      AuditCheck(TEXT("Original Brighthaven approach mesh loaded"), Scene.IsValid() && Scene->bApproachImported);
       AuditCapture(TEXT("lobby"));
       break;
     case 2:
@@ -306,6 +356,68 @@ void FWCFrontEnd::TickAudit() {
       if (auto* Mode = Controller->GetWorld()->GetAuthGameMode<AWCMatchMode>())
         AuditCheck(TEXT("Cancel introduction leaves no match"), !Mode->bEntryPending && !Mode->Match);
       break;
+    case 23: {
+      const auto Motion = MakeShared<FJsonObject>();
+      Motion->SetStringField(TEXT("method"), TEXT("Settings and clip controls: focused Slate Enter. Actual skeletal single-node position and component yaw sampled across rendered ticks. Hero selection uses the existing view model."));
+      AuditReport->SetObjectField(TEXT("reduced_motion_audit"), Motion);
+      Select(TEXT("wc_u_human_guardian"));
+      AuditCheck(TEXT("Slate opens Settings for motion audit"), AuditKey(Local(TEXT("Settings"), TEXT("Pengaturan"))) && Page == EPage::Settings);
+      if (Controller->bReducedMotion)
+        AuditCheck(TEXT("Slate prepares unrestricted motion"), AuditKey(ReducedLabel()) && !Controller->bReducedMotion);
+      Select(TEXT("wc_u_human_guardian"));
+      if (bTurntable) AuditKey(Local(TEXT("Stop rotation"), TEXT("Hentikan rotasi")));
+      AuditCheck(TEXT("Slate enables turntable before reduced motion"), AuditKey(Local(TEXT("Turntable"), TEXT("Putar model"))) && bTurntable);
+      const auto* Mesh = Preview();
+      Motion->SetNumberField(TEXT("rotation_started_yaw"), Mesh ? Mesh->GetRelativeRotation().Yaw : 0);
+      Motion->SetNumberField(TEXT("rotation_started_at"), FPlatformTime::Seconds());
+      AuditAt = FPlatformTime::Seconds() + .5;
+      AuditFrameAt = GFrameCounter + 3;
+      break;
+    }
+    case 24: {
+      const auto Motion = AuditReport->GetObjectField(TEXT("reduced_motion_audit"));
+      const auto* Mesh = Preview();
+      const double Delta = Mesh ? FMath::Abs(FMath::FindDeltaAngleDegrees(float(Motion->GetNumberField(TEXT("rotation_started_yaw"))), Mesh->GetRelativeRotation().Yaw)) : 0;
+      AuditCheck(TEXT("Enabled turntable actually rotates"), Mesh && Delta > .1,
+          FString::Printf(TEXT("yaw_delta_degrees=%.6f elapsed_seconds=%.3f"), Delta, FPlatformTime::Seconds() - Motion->GetNumberField(TEXT("rotation_started_at"))));
+      AuditCheck(TEXT("Slate enables reduced motion in Settings"), AuditKey(Local(TEXT("Settings"), TEXT("Pengaturan"))) &&
+          Page == EPage::Settings && AuditKey(ReducedLabel()) && Controller->bReducedMotion && !bTurntable);
+      Select(TEXT("wc_u_human_guardian"));
+      const auto Rotation = Buttons.FindRef(Local(TEXT("Rotation off"), TEXT("Rotasi mati"))).Pin();
+      AuditCheck(TEXT("Reduced turntable control disabled"), Rotation && !Rotation->IsEnabled() &&
+          !AuditKey(Local(TEXT("Rotation off"), TEXT("Rotasi mati"))) && !bTurntable);
+      AuditAt = FPlatformTime::Seconds() + .03;
+      break;
+    }
+    case 39:
+      AuditCheck(TEXT("Slate disables reduced motion in Settings"), AuditKey(Local(TEXT("Settings"), TEXT("Pengaturan"))) &&
+          Page == EPage::Settings && AuditKey(ReducedLabel()) && !Controller->bReducedMotion && !bTurntable);
+      Select(TEXT("wc_u_human_guardian"));
+      AuditAt = FPlatformTime::Seconds() + .03;
+      break;
+    case 54: {
+      const auto* Mesh = Preview();
+      const auto Motion = AuditReport->GetObjectField(TEXT("reduced_motion_audit"));
+      Motion->SetNumberField(TEXT("rotation_stopped_yaw"), Mesh ? Mesh->GetRelativeRotation().Yaw : 0);
+      Motion->SetNumberField(TEXT("rotation_stopped_at"), FPlatformTime::Seconds());
+      AuditAt = FPlatformTime::Seconds() + .5;
+      AuditFrameAt = GFrameCounter + 3;
+      break;
+    }
+    case 55: {
+      const auto* Mesh = Preview();
+      const auto Motion = AuditReport->GetObjectField(TEXT("reduced_motion_audit"));
+      const double Delta = Mesh ? FMath::Abs(FMath::FindDeltaAngleDegrees(float(Motion->GetNumberField(TEXT("rotation_stopped_yaw"))), Mesh->GetRelativeRotation().Yaw)) : 360;
+      AuditCheck(TEXT("Turntable remains off after motion is restored"), Mesh && !bTurntable && Delta < .001,
+          FString::Printf(TEXT("yaw_delta_degrees=%.6f elapsed_seconds=%.3f"), Delta, FPlatformTime::Seconds() - Motion->GetNumberField(TEXT("rotation_stopped_at"))));
+      const bool Original = AuditReport->GetBoolField(TEXT("original_reduced_motion"));
+      const bool Opened = AuditKey(Local(TEXT("Settings"), TEXT("Pengaturan"))) && Page == EPage::Settings;
+      const bool Restored = Controller->bReducedMotion == Original || (Opened && AuditKey(ReducedLabel()) && Controller->bReducedMotion == Original);
+      AuditCheck(TEXT("Original reduced-motion preference restored through Slate"), Opened && Restored);
+      Motion->SetBoolField(TEXT("original_preference_restored"), Restored);
+      AuditAt = FPlatformTime::Seconds() + .03;
+      break;
+    }
     default:
       FinishAudit();
       break;
@@ -313,6 +425,13 @@ void FWCFrontEnd::TickAudit() {
 }
 
 void FWCFrontEnd::FinishAudit() {
+  const bool OriginalMotion = AuditReport->GetBoolField(TEXT("original_reduced_motion"));
+  if (Controller->bReducedMotion != OriginalMotion) {
+    AuditCheck(TEXT("Original motion preference needed fallback restoration"), false,
+        TEXT("Slate restoration did not complete; restoring the saved option directly to avoid leaving audit changes."));
+    Controller->bReducedMotion = OriginalMotion;
+    Controller->SaveOptions();
+  }
   int Failures = 0;
   for (const auto& Check : AuditReport->GetArrayField(TEXT("checks")))
     if (!Check->AsObject()->GetBoolField(TEXT("pass"))) ++Failures;

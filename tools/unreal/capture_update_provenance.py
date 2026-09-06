@@ -191,7 +191,15 @@ def main():
                                         "source_sha256": source["sha256"], "export_files": sorted(manifest["files"]),
                                         "canonical_neutrals_sha256_at_export": manifest.get("canonical_source_sha256"),
                                         "matches": True})
-        for name in ("arena", "effects"):
+        lobby = read_json(ROOT / "exports/lobby/lobby_manifest.json")
+        lobby_source = capture(scoped(lobby["source"], ROOT / "art-source/lobby"), "authored_lobby_source")
+        if lobby_source["sha256"] != lobby["source_sha256"]:
+            raise ValueError("Lobby source differs from export manifest")
+        for name, expected in lobby["files"].items():
+            row = capture(scoped(ROOT / "exports/lobby" / name, ROOT / "exports/lobby"), "authored_lobby_export")
+            if row["sha256"] != expected:
+                raise ValueError("Lobby export differs from manifest: " + name)
+        for name in ("arena", "effects", "lobby"):
             tree(ROOT / "exports" / name, "authored_" + name + "_exports")
             for path in sorted((ROOT / "art-source" / name).glob("*.blend")):
                 capture(path, "authored_" + name + "_source")

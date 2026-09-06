@@ -93,6 +93,7 @@ struct VerificationOptions {
   bool SeedSupplied = false, SeedValid = true, HeroSupplied = false,
        HeroValid = true;
 };
+constexpr int32 VerificationHeroCount = 24;
 bool BoundedDecimal(const FString &Text, int32 Minimum, int32 Maximum,
                     int32 &Result) {
   if (Text.IsEmpty() || Text.Len() > 10)
@@ -126,13 +127,18 @@ const VerificationOptions &Options() {
         FParse::Param(FCommandLine::Get(), TEXT("WCFollowHero"));
     if (Result.HeroSupplied)
       Result.HeroValid =
-          BoundedDecimal(Result.RequestedHero, 0, 11, Result.Hero);
+          BoundedDecimal(Result.RequestedHero, 0, VerificationHeroCount - 1, Result.Hero);
     return Result;
   }();
   return Parsed;
 }
 bool AuthorityChecks() {
   return FParse::Param(FCommandLine::Get(), TEXT("WCAuthorityChecks"));
+}
+int RequestedRestartCount() {
+  int Count = FParse::Param(FCommandLine::Get(), TEXT("WCRestartOnce")) ? 1 : 0;
+  FParse::Value(FCommandLine::Get(), TEXT("WCRestartCount="), Count);
+  return FMath::Clamp(Count, 0, 2);
 }
 int PreparationProbeCount() { return AuthorityChecks() ? 6 : 4; }
 double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
@@ -184,14 +190,17 @@ Object BaseRecord(const Evidence &E, const AWCMatchController *P) {
   Json->SetNumberField(TEXT("exercise_seed_effective_initial"),
                        Configuration.Seed);
   Json->SetNumberField(TEXT("exercise_seed_restart"), 271828);
+  Json->SetNumberField(TEXT("exercise_seed_restart_second"), 161803);
+  Json->SetNumberField(TEXT("restart_count_requested"), RequestedRestartCount());
   WriteAuthoritySeed(Json, E);
   Json->SetStringField(
       TEXT("exercise_seed_boundary"),
       TEXT("Initial scripted ServerStart accepts decimal seeds 1-2147483647; "
            "absent or invalid values use271828. Actual match seed is recorded "
            "only where the authoritative Match is available and cached for "
-           "that namespace. Restart retains "
-           "the existing271828 seed."));
+           "that namespace. The first restart uses271828 and the second "
+           "restart uses161803. WCAutoStart initializes314159 independently "
+           "of the scripted-start seed override."));
   Json->SetStringField(TEXT("follow_hero_requested"),
                        Configuration.RequestedHero);
   Json->SetBoolField(TEXT("follow_hero_override_present"),
@@ -488,7 +497,7 @@ void Write(AWCMatchController *P, Evidence &E) {
   Json->SetBoolField(TEXT("restart_requested_from_this_match"),
                      E.RestartRequested);
   Json->SetBoolField(TEXT("restart_once_enabled"),
-                     FParse::Param(FCommandLine::Get(), TEXT("WCRestartOnce")));
+                     RequestedRestartCount() == 1);
   int SimulationSpeed = 1;
   FParse::Value(FCommandLine::Get(), TEXT("WCFast="), SimulationSpeed);
   Json->SetNumberField(TEXT("simulation_speed_multiplier"),
@@ -1082,9 +1091,7 @@ void WCTickVerification(AWCMatchController *P, float Delta) {
   if (!Exercise || E.Aborted || (Session && Session->IsStartupRouting()))
     return;
   if (E.Complete) {
-    int RequestedRestarts = FParse::Param(FCommandLine::Get(), TEXT("WCRestartOnce")) ? 1 : 0;
-    FParse::Value(FCommandLine::Get(), TEXT("WCRestartCount="), RequestedRestarts);
-    RequestedRestarts = FMath::Clamp(RequestedRestarts, 0, 2);
+    const int RequestedRestarts = RequestedRestartCount();
     if (RestartedControllers.FindRef(P) < RequestedRestarts &&
         P->HasAuthority() && P->AssignedSeat == 0 &&
         Now - E.CompletedAt >= 2) {
@@ -1245,6 +1252,19 @@ bool FWCVerificationNamespaceSeedTest::RunTest(const FString &) {
   WriteAuthoritySeed(Json, Menu);
   TestTrue(TEXT("Menu does not claim a match seed"),
            Json->HasTypedField<EJson::Null>(TEXT("match_seed_authority")));
+  Evidence Third;
+  Third.Namespace = 3;
+  CaptureAuthoritySeed(Third, 3, 161803);
+  CaptureAuthoritySeed(Third, 2, 271828);
+  WriteAuthoritySeed(Json, Third);
+  TestEqual(TEXT("Second restart retains its distinct third-match seed"),
+            Json->GetNumberField(TEXT("match_seed_authority")), 161803.0);
+  int32 Hero = -1;
+  TestTrue(TEXT("FollowHero accepts new roster final definition"),
+           BoundedDecimal(TEXT("23"), 0, VerificationHeroCount - 1, Hero));
+  TestEqual(TEXT("New final definition is retained"), Hero, 23);
+  TestFalse(TEXT("FollowHero rejects a definition outside the current24"),
+            BoundedDecimal(TEXT("24"), 0, VerificationHeroCount - 1, Hero));
   return true;
 }
 #endif

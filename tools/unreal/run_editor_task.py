@@ -8,7 +8,7 @@ import unreal
 
 root=Path(unreal.Paths.project_dir()).resolve().parent
 name=os.environ.get('WC_EDITOR_TASK','')
-allowed={'import_arena','import_alpha_assets','import_data_tables','import_neutral_assets'}
+allowed={'import_arena','import_alpha_assets','import_data_tables','import_neutral_assets','import_lobby_assets','create_lobby_sky'}
 if name not in allowed: raise RuntimeError('Select one known WC_EDITOR_TASK')
 report={'task':name,'success':False,'engine':unreal.SystemLibrary.get_engine_version()}
 try:

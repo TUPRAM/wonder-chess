@@ -9,8 +9,10 @@
 #include "Components/StaticMeshComponent.h"
 #include "Engine/SkeletalMesh.h"
 #include "Engine/StaticMesh.h"
+#include "Materials/MaterialInterface.h"
 #include "Engine/Engine.h"
 #include "Engine/GameViewportClient.h"
+#include "EngineUtils.h"
 #include "Dom/JsonObject.h"
 #include "SkeletalRenderPublic.h"
 #include "WCMatchRuntime.h"
@@ -32,8 +34,8 @@ AWCFrontEndScene::AWCFrontEndScene() {
 }
 
 UStaticMeshComponent* AWCFrontEndScene::AddProp(const TCHAR* Name, FVector Position,
-                              FVector Scale, FRotator RotationValue) {
-  const FString Path = FString(TEXT("/Game/WonderChess/Arena/")) + Name + TEXT(".") + Name;
+                              FVector Scale, FRotator RotationValue, const TCHAR* Folder) {
+  const FString Path = FString(TEXT("/Game/WonderChess/")) + Folder + TEXT("/") + Name + TEXT(".") + Name;
   auto* Mesh = LoadObject<UStaticMesh>(nullptr, *Path);
   if (!Mesh) {
     AssetMessage += FString::Printf(TEXT("Missing courtyard asset: %s. "), Name);
@@ -53,8 +55,19 @@ UStaticMeshComponent* AWCFrontEndScene::AddProp(const TCHAR* Name, FVector Posit
 void AWCFrontEndScene::Initialize(AWCMatchController* OwnerController) {
   Controller = OwnerController;
   PreviousCamera = OwnerController->GetViewTarget();
+  SetArenaVisible(false);
   // Separate from the active arena; previews cannot overlap selectable cells.
   SetActorLocation(FVector(3400, 0, 0));
+  bApproachImported = LoadObject<UStaticMesh>(nullptr,
+      TEXT("/Game/WonderChess/Lobby/SM_WC_BrighthavenApproach.SM_WC_BrighthavenApproach")) != nullptr;
+  if (bApproachImported) {
+    const FVector VillageOffset(-640, 640, -40);
+    for (const TCHAR* Module : {TEXT("SM_WC_ApproachWestHouse"), TEXT("SM_WC_ApproachEastHouse"),
+         TEXT("SM_WC_ApproachGardenArch"), TEXT("SM_WC_ApproachBeacon"), TEXT("SM_WC_ApproachGardenWalls")})
+      AddProp(Module, VillageOffset, FVector(.5f), FRotator(0, -45, 0), TEXT("Lobby"));
+    AddProp(TEXT("SM_WC_ApproachPlatform"), FVector::ZeroVector, FVector(1.6f, 1.6f, 1), FRotator(0, -45, 0), TEXT("Lobby"));
+    Floor = AddProp(TEXT("SM_WC_Tile"), FVector::ZeroVector);
+  } else {
   AddProp(TEXT("SM_WC_CourtyardFoundation"), FVector(0, 0, 23), FVector(.6f, .6f, 1));
   for (int Row = -1; Row <= 1; ++Row) for (int Column = -1; Column <= 1; ++Column) {
     auto* Tile = AddProp((Row + Column) % 2 ? TEXT("SM_WC_TileAlt") : TEXT("SM_WC_Tile"), FVector(Row * 200, Column * 200, 0));
@@ -72,6 +85,20 @@ void AWCFrontEndScene::Initialize(AWCMatchController* OwnerController) {
     AddProp(TEXT("SM_WC_Flagpole"), FVector(-370, Side * 560, 0), FVector(1.1f));
     AddProp(TEXT("SM_WC_Banner"), FVector(-370, Side * 560, 0), FVector(1.1f));
   }
+  }
+  auto* SkyMaterial = LoadObject<UMaterialInterface>(nullptr,
+      TEXT("/Game/WonderChess/Lobby/M_WC_BrighthavenSky.M_WC_BrighthavenSky"));
+  auto* SkyMesh = LoadObject<UStaticMesh>(nullptr, TEXT("/Engine/BasicShapes/Sphere.Sphere"));
+  if (SkyMaterial && SkyMesh) {
+    auto* Sky = NewObject<UStaticMeshComponent>(this);
+    Sky->SetupAttachment(RootComponent);
+    Sky->SetStaticMesh(SkyMesh);
+    Sky->SetMaterial(0, SkyMaterial);
+    Sky->SetRelativeScale3D(FVector(180));
+    Sky->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+    Sky->SetCastShadow(false);
+    Sky->RegisterComponent();
+  } else AssetMessage += TEXT("The original Brighthaven sky material is missing. ");
   auto* Fill = NewObject<UPointLightComponent>(this);
   Fill->SetupAttachment(RootComponent);
   Fill->SetRelativeLocation(FVector(150, -160, 280));
@@ -193,6 +220,21 @@ void AWCFrontEndScene::FitPreview() {
 }
 
 void AWCFrontEndScene::SetTurntable(bool Enabled) { bTurntable = Enabled; }
+void AWCFrontEndScene::SetArenaVisible(bool Visible) {
+  if (!Controller.IsValid()) return;
+  if (Visible) {
+    for (const auto& Actor : HiddenArenaActors)
+      if (Actor.IsValid()) Controller->HiddenActors.Remove(Actor.Get());
+    HiddenArenaActors.Reset();
+  } else {
+    for (TActorIterator<AActor> It(GetWorld()); It; ++It)
+      if ((It->ActorHasTag(TEXT("WCArena")) || It->ActorHasTag(TEXT("WCBoardEnvironment"))) &&
+          !Controller->HiddenActors.Contains(*It)) {
+        Controller->HiddenActors.Add(*It);
+        HiddenArenaActors.Add(*It);
+      }
+  }
+}
 void AWCFrontEndScene::TransitionToArena(float Duration, bool ReducedMotion) {
   if (!Controller.IsValid() || !PreviousCamera.IsValid()) return;
   bTurntable = false;
@@ -208,6 +250,7 @@ void AWCFrontEndScene::Tick(float DeltaSeconds) {
   if (TransitionStage && Controller.IsValid()) {
     TransitionClock += DeltaSeconds;
     if (TransitionStage == 1 && TransitionClock >= FadeSeconds) {
+      SetArenaVisible(true);
       if (PreviousCamera.IsValid()) Controller->SetViewTarget(PreviousCamera.Get());
       if (Controller->PlayerCameraManager)
         Controller->PlayerCameraManager->StartCameraFade(1.f, 0.f, FadeSeconds, FLinearColor::Black, false, false);
@@ -219,12 +262,14 @@ void AWCFrontEndScene::Tick(float DeltaSeconds) {
     RotateHero(DeltaSeconds * 18.f);
 }
 void AWCFrontEndScene::RestoreCamera() {
+  SetArenaVisible(true);
   if (!Controller.IsValid()) return;
   if (Controller->PlayerCameraManager) Controller->PlayerCameraManager->StopCameraFade();
   if (PreviousCamera.IsValid() && (Controller->GetViewTarget() == this || TransitionStage)) Controller->SetViewTarget(PreviousCamera.Get());
   TransitionStage = 0;
 }
 void AWCFrontEndScene::RestorePreview() {
+  SetArenaVisible(false);
   TransitionStage = 0;
   if (!Controller.IsValid()) return;
   if (Controller->PlayerCameraManager) Controller->PlayerCameraManager->StopCameraFade();

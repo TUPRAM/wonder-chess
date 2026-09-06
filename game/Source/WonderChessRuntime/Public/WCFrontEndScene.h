@@ -29,16 +29,18 @@ public:
   virtual void Tick(float DeltaSeconds) override;
   FString AssetMessage;
   FString SelectedClip = TEXT("Idle");
+  bool bApproachImported = false;
 
 private:
   UStaticMeshComponent* AddProp(const TCHAR* Name, FVector Position, FVector Scale = FVector(1),
-               FRotator Rotation = FRotator::ZeroRotator);
+               FRotator Rotation = FRotator::ZeroRotator, const TCHAR* Folder = TEXT("Arena"));
   UPROPERTY() TObjectPtr<UCameraComponent> Camera;
   UPROPERTY() TObjectPtr<USkeletalMeshComponent> Hero;
   UPROPERTY() TObjectPtr<UStaticMeshComponent> Floor;
   UPROPERTY() TArray<TObjectPtr<UObject>> ResidentAssets;
   TWeakObjectPtr<AWCMatchController> Controller;
   TWeakObjectPtr<AActor> PreviousCamera;
+  TArray<TWeakObjectPtr<AActor>> HiddenArenaActors;
   FString HeroId;
   float Rotation = -45.f;
   bool bTurntable = false;
@@ -46,4 +48,5 @@ private:
   int32 TransitionStage = 0;
   float TransitionClock = 0, FadeSeconds = .18f;
   void FitPreview();
+  void SetArenaVisible(bool Visible);
 };
