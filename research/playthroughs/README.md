@@ -1,18 +1,19 @@
 # Reference game playthroughs
 
-Private, local observation of games played through Computer Use, to inform original Wonder Chess design. This is research, not Wonder Chess release verification. The next session is **one Dota Auto Chess match**, estimated by the user at about 40 minutes. Preparation is complete when the workspace and evidence workflow are ready; no match has started.
+Private, local observation of games played through Computer Use, to inform original Wonder Chess design. This is research, not Wonder Chess release verification. The first session is **completed**: one standalone Auto Chess (Epic) Casual Solo match, first place of eight in round 42, approximately 48 min 40 sec observed duration, with 93 original screenshots. The user requested Dota Auto Chess; the actual opened client and shared-input limits are recorded explicitly.
 
-## Next run
+## Completed first run
 
 - [Execution plan](DOTA_AUTO_CHESS_RUN_PLAN.md)
 - [Session record](runs/next-dota-auto-chess/session.json): scope, actual start/end times, mode, result, tool checks and interruptions.
 - [Observation log](runs/next-dota-auto-chess/observations.csv): visible facts, actions, reasoning, outcomes and screenshot references.
+- [Full photo gallery](runs/next-dota-auto-chess/gallery.md) and [archive verification](runs/next-dota-auto-chess/verification.json).
 - [Design findings](runs/next-dota-auto-chess/findings.md): a short illustrated debrief and proposed Wonder Chess experiments.
 - `runs/next-dota-auto-chess/screenshots/raw/`: original Computer Use captures.
 - `runs/next-dota-auto-chess/screenshots/annotated/`: optional clearly labeled derivatives; retain originals.
 - `runs/next-dota-auto-chess/screenshots/index.jsonl`: one provenance entry per saved original image.
 
-`next-dota-auto-chess` is a reserved run folder. Keep its stable path for the first session; set its actual timestamps when play begins. Create a fresh `YYYY-MM-DD_HHMMSS_dota-auto-chess` folder for later matches. Never reset or reuse a populated session as a new match. Notes and the screenshot index are versioned; raw images, derivatives and optional video stay local and are ignored by Git. Original game imagery is private reference material, not an asset source for Wonder Chess or permission to publish it.
+`next-dota-auto-chess` is now the populated, completed first-session folder. Its legacy name is retained for stable references. Create a fresh `YYYY-MM-DD_HHMMSS_dota-auto-chess` folder for later matches. Never reset or reuse a populated session as a new match. Notes and the screenshot index are versioned; raw images, derivatives and optional video stay local and are ignored by Git. Original game imagery is private reference material, not an asset source for Wonder Chess or permission to publish it.
 
 Update session status as work actually happens: `PLANNED` → `PREFLIGHT` → `IN_PROGRESS` → `COMPLETED`, or `PARTIAL` / `BLOCKED` with the exact reason. Record the played-match endpoint separately from `tournament_end_observed`. A loss can be a completed playthrough; an interrupted input session must not be recorded as a completed match. Retain prior notes and interruption timestamps when resuming.
 
@@ -62,4 +63,4 @@ nodeRepl.write(JSON.stringify(await playthroughEvidence.saveCapture({
 
 Replace null context only when observed. If the state contains multiple screenshots, inspect them and pass the intended `screenshotIndex` explicitly. The helper refuses stale-directory overwrites, unsupported image signatures and malformed data. It writes original PNG/JPEG bytes with an exclusive filename and appends the actual time, source window, capture ID, dimensions when provided, byte count and SHA256 to `screenshots/index.jsonl`. One operator owns each run; do not save concurrently.
 
-The file-writing helper passed [ten local checks](preparation-check.json) with synthetic image fixtures, which are not game evidence. Actual Dota capture/export, controls, installed game version, accessible mode and continuous play remain **NOT_RUN** until the next session's preflight. No external game screenshots have been recorded in this prepared folder.
+The file-writing helper passed [ten local checks](preparation-check.json) with synthetic image fixtures, which are not game evidence. Actual standalone Auto Chess capture/export, native input and one match were executed;93 original images are retained locally. Dota 2 workshop play, game-version identification, continuous recording, audio review and reference-game frame-time measurements were not performed. See the completed session and verification record.

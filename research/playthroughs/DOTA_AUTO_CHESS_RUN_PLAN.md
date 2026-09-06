@@ -1,6 +1,8 @@
-# Dota Auto Chess — next-run playthrough plan
+# Dota Auto Chess — original plan and execution note
 
-**Status: preparation only. No game has been launched, queued or played for this plan.** On the next requested execution turn, play one actual complete match of Dota Auto Chess through Computer Use and extract a few evidence-backed design lessons for Wonder Chess. Approximately 40 minutes is a planning estimate, not a timer that ends a live match. Installation state, supported modes, rules and controls must be verified from the actual application rather than assumed here.
+**Execution update, 6 September 2026:** one match completed in the standalone Auto Chess client opened by the user, through Epic, after its identity was disclosed. Result: first of eight, round 42, approximately 48 min 40 sec. See [findings](runs/next-dota-auto-chess/findings.md), [gallery](runs/next-dota-auto-chess/gallery.md) and [session](runs/next-dota-auto-chess/session.json). The historical preparation plan below remains for provenance; its not-yet-run inventory statements describe preparation, not current execution.
+
+**Original preparation plan:** On the next requested execution turn, play one actual complete match of Dota Auto Chess through Computer Use and extract a few evidence-backed design lessons for Wonder Chess. Approximately 40 minutes is a planning estimate, not a timer that ends a live match. Installation state, supported modes, rules and controls must be verified from the actual application rather than assumed here.
 
 Use `research/playthroughs/runs/next-dota-auto-chess/` for the root-owned run manifest, observation CSV, screenshots and findings. The root's README/templates own filenames and field definitions; do not create a competing schema. Keep Wonder Chess source, assets, canonical data, balance and existing acceptance evidence unchanged.
 

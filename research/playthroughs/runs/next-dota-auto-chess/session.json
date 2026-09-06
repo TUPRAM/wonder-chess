@@ -1,41 +1,108 @@
 {
   "session_id": "next-dota-auto-chess",
-  "game": "Dota Auto Chess",
+  "game": "Auto Chess (standalone Epic Games client)",
   "purpose": "One Computer Use playthrough for original Wonder Chess design observations",
-  "status": "PLANNED",
+  "status": "COMPLETED",
   "prepared_utc": "2026-09-06T11:01:00Z",
-  "scope_this_turn": "Prepare repository and plan; do not launch or queue a match",
+  "scope_this_turn": "Play one match in the client opened by the user; gather visual/gameplay inspiration",
   "expected_match_minutes": 40,
-  "duration_basis": "User estimate; not a stop timer",
+  "duration_basis": "Wall time from first observed round1 preparation to first observed final elimination; not the game internal clock; includes observation gaps.",
   "desired_match_count": 1,
-  "actual_started_utc": null,
-  "actual_ended_utc": null,
-  "actual_duration_seconds": null,
-  "mode": null,
+  "actual_started_utc": "2026-09-06T11:12:11.613Z",
+  "actual_ended_utc": "2026-09-06T12:00:51.549Z",
+  "actual_duration_seconds": 2920,
+  "mode": "Casual (Solo), visible selection",
   "game_version": null,
   "match_id": null,
-  "target_window": null,
-  "resolution": null,
-  "result": null,
+  "target_window": {
+    "app": "process:C:\\Program Files\\Epic Games\\AutoChess\\ACPhoenix.exe",
+    "id": 461424,
+    "title": "ACPhoenix"
+  },
+  "resolution": [
+    1920,
+    1080
+  ],
+  "result": "1st place of 8; XALMON; 90 HP at final victory",
   "elimination_round": null,
-  "final_round": null,
-  "tournament_end_observed": false,
-  "player_control": "Computer Use, next run only",
+  "final_round": 42,
+  "tournament_end_observed": true,
+  "player_control": "Shared session: Computer Use actions, detected user inputs, pre-enabled Auto Deploy and Auto Star Up. Unobserved actions are not attributed to the agent.",
   "preflight": {
-    "native_tool_inventory": "READ_ONLY_PASS: Steam entry returned; no Dota-specific entry or Steam/Dota targetable window returned",
-    "installation_status": "NOT_VERIFIED: inventory absence does not prove the game is absent",
-    "game_access_and_mode": "NOT_RUN",
-    "live_capture_export": "NOT_RUN",
-    "live_input_and_latency": "NOT_RUN",
+    "native_tool_inventory": "PASS: ACPhoenix targetable window",
+    "installation_status": "PASS: running standalone client at C:/Program Files/Epic Games/AutoChess/ACPhoenix.exe; Dota 2 installation not assessed",
+    "game_access_and_mode": "PASS: standalone Auto Chess lobby with Casual (Solo)",
+    "live_capture_export": "PASS: original JPEG captures and index saved",
+    "live_input_and_latency": "PASS: mode panel opened and confirmed back to lobby",
     "audio_observation": "NOT_RUN: do not infer heard audio from images"
   },
-  "screenshot_target": "Approximately 20-35 event-driven images, flexible; gameplay first",
+  "screenshot_target": "Event-driven actual captures; final count recorded at closeout.",
   "screenshots_index": "screenshots/index.jsonl",
   "observations": "observations.csv",
   "findings": "findings.md",
-  "interruptions": [],
+  "interruptions": [
+    {
+      "utc": "2026-09-06T11:19:54.929Z",
+      "round": 9,
+      "kind": "unexpected-loading-screen",
+      "detail": "After common chest Consume attempt, next state showed same eight-seat loading screen at87percent; cause unknown.",
+      "recovered_utc": "2026-09-06T11:20:07.066Z",
+      "recovery": "Returned to same round9 with HP95,Gold50 and five pieces"
+    },
+    {
+      "kind": "observation-gap",
+      "last_observed_round": 32,
+      "resumed_round": 37,
+      "resumed_utc": "2026-09-06T11:54:09.341Z",
+      "detail": "User continue and stale screenshot ID required fresh capture; rounds33-36 and intervening upgrades unobserved."
+    },
+    {
+      "kind": "observation-gap",
+      "last_observed_round": 38,
+      "resumed_round": 40,
+      "resumed_utc": "2026-09-06T11:57:35.000Z",
+      "detail": "Round39, level11 acquisition and lineup change unobserved."
+    },
+    {
+      "kind": "user-input-detected",
+      "round": 42,
+      "refreshed_utc": "2026-09-06T11:59:55.715Z",
+      "detail": "B action rejected after detected user input; inspection subsequently showed equipment changes not sent by agent."
+    }
+  ],
   "limitations": [
-    "One qualitative match cannot establish balance or general win rates.",
-    "No game action or Dota screenshot was performed during preparation."
-  ]
+    "Actual client was standalone Auto Chess via Epic, not the requested Dota Auto Chess; identity disclosed during the session.",
+    "Single qualitative Casual Solo match; opponent human/bot identity and skill unknown.",
+    "Shared input and pre-enabled assistance prevent attribution of every purchase, move, upgrade or win to the agent.",
+    "Still-image sampling with gaps; no continuous recording, audio assessment, frame-time capture or hardware benchmark.",
+    "Drag attempts did not verify equip or move; keyboard W did verify swaps. Equipment became visible later after user input.",
+    "Game version not observed; result identifier U3bFxQ is visible but its kind is unverified. No reproducible balance experiment.",
+    "Private local game screenshots are reference evidence, not Wonder Chess production assets or release acceptance."
+  ],
+  "original_requested_game": "Dota Auto Chess",
+  "research_started_utc": "2026-09-06T11:11:22.425Z",
+  "queue_started_utc": "2026-09-06T11:11:44.947Z",
+  "start_boundary": "First observed round-1 preparation; loading completed between captures",
+  "end_evidence": [
+    "SHOT-086",
+    "SHOT-087"
+  ],
+  "post_match_state": "Returned to Casual (Solo) lobby; game left open; no second match started.",
+  "post_match_utc": "2026-09-06T12:03:05.472Z",
+  "results_display": {
+    "win_loss": "38-4",
+    "gold_column": 549,
+    "gold_meaning": "Not explained in observed UI; not remaining gold.",
+    "identifier": "U3bFxQ",
+    "identifier_kind": "Unknown; not assigned as match_id"
+  },
+  "screenshot_count": 93,
+  "observation_count": 25,
+  "capture_dimensions": {
+    "1920x1080": 6,
+    "1918x1080": 87
+  },
+  "image_bytes": 26380242,
+  "archive_verification": "verification.json",
+  "gallery": "gallery.md"
 }

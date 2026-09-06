@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "recorded_utc": "2026-09-06T12:07:32.503Z",
+  "boundary": "Archive integrity and references only; not game balance, audio, performance or Wonder Chess release verification.",
+  "checks": [
+    {
+      "name": "Original JPEG signatures, byte counts, dimensions and SHA256 reconcile",
+      "checked": 93,
+      "status": "PASS"
+    },
+    {
+      "name": "Markdown local links and embedded image destinations resolve",
+      "checked": 132,
+      "status": "PASS"
+    },
+    {
+      "name": "CSV parsed with PowerShell Import-Csv; unique observation IDs and valid screenshot references",
+      "rows": 25,
+      "unique_ids": 25,
+      "screenshot_references": 58,
+      "status": "PASS"
+    },
+    {
+      "name": "Session JSON parse and completed result fields",
+      "status": "PASS"
+    },
+    {
+      "name": "git diff --check for scoped research and state changes",
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "screenshots": {
+    "records": 93,
+    "unique_ids": 93,
+    "unique_files": 93,
+    "unique_hashes": 93,
+    "total_bytes": 26380242,
+    "dimensions": {
+      "1920x1080": 6,
+      "1918x1080": 87
+    }
+  },
+  "json_session": "COMPLETED",
+  "initial_check_note": "Initial link pass ran before verification.json existed; one README link was temporarily unresolved. Rechecked after writing the record; resolved.",
+  "not_run": [
+    "Audio review",
+    "Continuous video or animation timing",
+    "Reference-game performance benchmark",
+    "Controlled balance experiment",
+    "Dota2 workshop play",
+    "Wonder Chess release tests for this research-only change"
+  ]
+}
