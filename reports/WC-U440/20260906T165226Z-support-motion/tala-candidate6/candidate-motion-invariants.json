@@ -1,0 +1,72 @@
+{
+  "status": "sampled_motion_invariants_passed",
+  "unit_id": "wc_u_orc_guardian",
+  "blender_version": "5.1.1",
+  "sampling": "actual deformed mesh every 3 frames at 60fps",
+  "clips": [
+    {
+      "clip": "Idle",
+      "samples": 41,
+      "minimum_support_sole_z_m": 0.016000045463442802,
+      "maximum_support_sole_z_m": 0.016000045463442802,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 1.1920928955078125e-07
+    },
+    {
+      "clip": "Move",
+      "samples": 21,
+      "minimum_support_sole_z_m": 0.0021305419504642487,
+      "maximum_support_sole_z_m": 0.016000045463442802,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 1.1920928955078125e-07
+    },
+    {
+      "clip": "Attack",
+      "samples": 14,
+      "minimum_support_sole_z_m": 0.016000045463442802,
+      "maximum_support_sole_z_m": 0.016000045463442802,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 1.1920928955078125e-07
+    },
+    {
+      "clip": "Active",
+      "samples": 14,
+      "minimum_support_sole_z_m": 0.018000001087784767,
+      "maximum_support_sole_z_m": 0.01800018548965454,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 1.1920928955078125e-07
+    },
+    {
+      "clip": "Hit",
+      "samples": 9,
+      "minimum_support_sole_z_m": 0.016000045463442802,
+      "maximum_support_sole_z_m": 0.016000045463442802,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 1.1920928955078125e-07
+    },
+    {
+      "clip": "Defeat",
+      "samples": 21,
+      "minimum_support_sole_z_m": 0.015999849885702133,
+      "maximum_support_sole_z_m": 0.016000092029571533,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 1.1920928955078125e-07
+    },
+    {
+      "clip": "Victory",
+      "samples": 31,
+      "minimum_support_sole_z_m": 0.016000045463442802,
+      "maximum_support_sole_z_m": 0.016000045463442802,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 1.1920928955078125e-07
+    }
+  ],
+  "errors": [],
+  "not_checked": [
+    "continuous visual quality",
+    "weapon/costume clipping",
+    "semantic gesture review",
+    "Unreal retarget/import",
+    "runtime move-speed synchronization"
+  ]
+}

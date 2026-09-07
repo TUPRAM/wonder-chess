@@ -1,0 +1,13 @@
+"""Render only changed clips while preserving explicit source/action provenance."""
+import argparse,hashlib,json,sys
+from pathlib import Path
+import bpy
+from mathutils import Vector
+ROOT=Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT/'tools/blender'))
+from refine_update_ada import action_curve_digest,use_clip
+p=argparse.ArgumentParser();p.add_argument('--unit',required=True);p.add_argument('--clips',nargs='+',required=True);p.add_argument('--report',type=Path,required=True);a=p.parse_args(sys.argv[sys.argv.index('--')+1:]);report=a.report.resolve();report.mkdir(parents=True,exist_ok=False);uid=a.unit;folder=ROOT/f'exports/heroes/{uid}';source=ROOT/f'art-source/heroes/{uid}/{uid}.blend';m=json.loads((folder/'export_manifest.json').read_text());assert hashlib.sha256(source.read_bytes()).hexdigest()==m['source_sha256'];(report/'executed-renderer.py').write_bytes(Path(__file__).read_bytes());bpy.ops.wm.open_mainfile(filepath=str(source));scene=bpy.context.scene;arm=bpy.data.objects['Armature'];h=m['height_m'];scene.render.resolution_x=scene.render.resolution_y=384;scene.render.resolution_percentage=100;scene.cycles.samples=4;scene.camera.data.ortho_scale=h*1.60;scene.camera.location=(h*1.6,h*2.8,h*1.55);scene.camera.rotation_euler=(Vector((0,0,h*.54))-scene.camera.location).to_track_quat('-Z','Y').to_euler();rows=[]
+for clip in a.clips:
+    spec=m['clips'][clip];out=report/'motion-frames'/clip;out.mkdir(parents=True,exist_ok=False);frames=list(range(spec['frames'][0],spec['frames'][1],3))
+    for index,frame in enumerate(frames):use_clip(arm,clip,frame,unit_id=uid);scene.render.filepath=str(out/f'{index:04d}.png');bpy.ops.render.render(write_still=True)
+    rows.append({'clip':clip,'source_fps':60,'sample_step_frames':3,'playback_fps':20,'duration_ms':(spec['frames'][1]-spec['frames'][0])*1000//60,'frame_count':len(frames),'source_frames':frames,'frames_directory':str(out),'action_sha256':action_curve_digest(bpy.data.actions[spec['action']]),'animation_FBX_sha256':m['files'][spec['action']+'.fbx']})
+assert hashlib.sha256(source.read_bytes()).hexdigest()==m['source_sha256'];(report/'motion-sequences.json').write_text(json.dumps({'status':'ACTUAL_SELECTED_SAVED_SOURCE_RENDER_SEQUENCES','unit_id':uid,'source_sha256':m['source_sha256'],'source_revision':m['source_revision'],'geometry_revision':m['geometry_source_revision'],'animation_revision':m['animation_revision'],'clips':rows,'limits':['20Hz samples of actual60fps source, not continuous visual approval','Unchanged clips retain separate source/action/FBX provenance; this file does not claim they were rerendered']},indent=2)+'\n');print('WC_SELECTED_SOURCE_MOTION_RENDERED',uid)

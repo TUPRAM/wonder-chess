@@ -1,0 +1,213 @@
+00:02.079  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_dragonkin_ranger\wc_u_dragonkin_ranger.blend"
+{
+  "status": "structural_checks_passed_visual_review_required",
+  "blender_version": "5.1.1",
+  "collection": "EXPORT",
+  "evaluated_triangle_total": 5508,
+  "objects": [
+    {
+      "name": "Armature",
+      "type": "ARMATURE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.8055139780044556,
+        0.4950000047683716,
+        2.1126601696014404
+      ],
+      "roots": [
+        "root"
+      ],
+      "deform_bones": 27
+    },
+    {
+      "name": "SK_wc_u_dragonkin_ranger",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.2405095100402832,
+        0.7828269004821777,
+        1.9582202434539795
+      ],
+      "evaluated_triangles": 5508,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "not_checked": [
+    "appearance",
+    "deformation across all clips",
+    "UV overlap appropriateness",
+    "normal-map convention",
+    "Unreal import",
+    "LOD silhouette",
+    "gameplay readability"
+  ]
+}
+{
+  "status": "structural_checks_passed_visual_review_required",
+  "blender_version": "5.1.1",
+  "collection": "LOD_SOURCE",
+  "evaluated_triangle_total": 4130,
+  "objects": [
+    {
+      "name": "SK_wc_u_dragonkin_ranger_LOD1",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.2405095100402832,
+        0.7788370847702026,
+        1.958889365196228
+      ],
+      "evaluated_triangles": 2753,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    },
+    {
+      "name": "SK_wc_u_dragonkin_ranger_LOD2",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.2367444038391113,
+        0.7748183012008667,
+        1.958990454673767
+      ],
+      "evaluated_triangles": 1377,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "not_checked": [
+    "appearance",
+    "deformation across all clips",
+    "UV overlap appropriateness",
+    "normal-map convention",
+    "Unreal import",
+    "LOD silhouette",
+    "gameplay readability"
+  ]
+}
+{
+  "status": "sampled_motion_invariants_passed",
+  "unit_id": "wc_u_dragonkin_ranger",
+  "blender_version": "5.1.1",
+  "sampling": "actual deformed mesh every 3 frames at 60fps",
+  "clips": [
+    {
+      "clip": "Idle",
+      "samples": 41,
+      "minimum_support_sole_z_m": 0.0019798381254076958,
+      "maximum_support_sole_z_m": 0.0019798381254076958,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Move",
+      "samples": 21,
+      "minimum_support_sole_z_m": 0.0019797731656581163,
+      "maximum_support_sole_z_m": 0.001979849301278591,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Attack",
+      "samples": 15,
+      "minimum_support_sole_z_m": 0.0019798381254076958,
+      "maximum_support_sole_z_m": 0.0019798381254076958,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Active",
+      "samples": 14,
+      "minimum_support_sole_z_m": 0.0019798381254076958,
+      "maximum_support_sole_z_m": 0.0019798381254076958,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Hit",
+      "samples": 9,
+      "minimum_support_sole_z_m": 0.0019797710701823235,
+      "maximum_support_sole_z_m": 0.0019798718858510256,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Defeat",
+      "samples": 21,
+      "minimum_support_sole_z_m": 0.001979765249416232,
+      "maximum_support_sole_z_m": 0.001979870954528451,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Victory",
+      "samples": 31,
+      "minimum_support_sole_z_m": 0.0019798381254076958,
+      "maximum_support_sole_z_m": 0.0019798381254076958,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    }
+  ],
+  "errors": [],
+  "not_checked": [
+    "continuous visual quality",
+    "weapon/costume clipping",
+    "semantic gesture review",
+    "Unreal retarget/import",
+    "runtime move-speed synchronization"
+  ]
+}
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+WC_NEW_HERO_READBACK_PASS {"status": "PASS_SAVED_SOURCE_SKIN_MOTION_AND_MESH_FBX_READBACK", "unit_id": "wc_u_dragonkin_ranger", "source_sha256": "11612805eeaf3bbf647a650fa3d6de26ab23390674f12e8eea8ac465488505f8", "manifest_sha256": "f49ffd940fe4f3536e461ac7579de20cd6b897bda20b28a5601aaceecc63f9ba", "source_revision": 2, "geometry_revision": 2, "animation_revision": 2, "blender_version": "5.1.1", "files_verified": 14, "source_clips_verified": 7, "mesh_fbx_readbacks": [{"mesh_suffix": "", "dimensions_m": [1.8808239102363586, 0.6524100303649902, 1.9740601249504834], "triangles": 5508, "bones": 27, "materials": 1, "uv_layers": 1, "weighted_vertices": 3114}, {"mesh_suffix": "_LOD1", "dimensions_m": [1.8808239102363586, 0.6524100303649902, 1.974729246692732], "triangles": 2753, "bones": 27, "materials": 1, "uv_layers": 1, "weighted_vertices": 1612}, {"mesh_suffix": "_LOD2", "dimensions_m": [1.8759000897407532, 0.6476901471614838, 1.974830379593186], "triangles": 1377, "bones": 27, "materials": 1, "uv_layers": 1, "weighted_vertices": 875}], "animation_fbx_import_verified": false, "Unreal_import_verified": false, "final_art_accepted": false}
+00:04.204  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_dragonkin_ranger\wc_u_dragonkin_ranger.blend"
+00:05.625  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T171747Z\dragonkin-remaining\varek-readback\silhouette96-front.png'
+00:05.657  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T171747Z\dragonkin-remaining\varek-readback\silhouette96-game-angle.png'
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+WC_DRAGONKIN_READBACK {"status": "PASS_ACTUAL_BLENDER_FBX_AND_VIDEO_READBACK", "unit_id": "wc_u_dragonkin_ranger", "source_revision": 2, "source_sha256": "11612805eeaf3bbf647a650fa3d6de26ab23390674f12e8eea8ac465488505f8", "export_manifest_sha256": "f49ffd940fe4f3536e461ac7579de20cd6b897bda20b28a5601aaceecc63f9ba", "blender_version": "5.1.1", "recorded_frames": 442, "recorded_seconds": 7.366666666666666, "rig_revision": "WC_humanoid_draconic_v1", "source_modified": false, "Unreal_import_verified": false, "continuous_visual_approval": false, "finished_art_accepted": false, "silhouettes": [{"view": "front", "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T171747Z\\dragonkin-remaining\\varek-readback\\silhouette96-front.png", "sha256": "c6217e8f13f5db91c8862ea63931bd0bb6ef8904249245bf647cd29503bd17ff", "dark_pixels": 864, "light_pixels": 8071}, {"view": "game-angle", "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T171747Z\\dragonkin-remaining\\varek-readback\\silhouette96-game-angle.png", "sha256": "c18a359b406ae600a2f229d5afb74ddf98f583d88007d9809302a638d36af331", "dark_pixels": 739, "light_pixels": 8286}], "semantic_geometry": {"continuous_gesture_quality_approved": false, "nock_maximum_hand_gap_m": 1.4901161193847656e-07, "draw_range_m": {"Attack": 0.15840016305446625, "Active": 0.15840010344982147}, "source_frames_checked": 442}, "preserved": null, "verification_script_sha256": "c497efd951e8ba6c798912e61e92bc0d8cc17da0ffe1baefa6774da9a4f26e72"}
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

@@ -1,0 +1,12 @@
+00:02.687  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_elf_mage\wc_u_elf_mage.blend"
+00:02.844  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_orc_guardian\wc_u_orc_guardian.blend"
+Traceback (most recent call last):
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\inspect_support_pose_contacts.py", line 20, in <module>
+    shield=[i for i in groups if 'weapon_l' in groups[i]];mace=[i for i in groups if 'weapon_r' in groups[i]];target={i for i in groups if groups[i]&{'weapon_l','lowerarm_l'}};polys=[list(poly.vertices) for poly in mesh.polygons if all(i in target for i in poly.vertices)];tree=BVHTree.FromPolygons(points,polys);nearest=min(tree.find_nearest(points[i])[3] for i in mace);row.update({'shield_minimum_z_m':min(points[i].z for i in shield),'mace_to_shield_or_left_forearm_surface_minimum_m':nearest});(OUT/'partial-contact-measurements.json').write_text(json.dumps(records+[row],indent=2)+'\n');assert -.003<row['shield_minimum_z_m']<.025,row
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'unit_id': 'wc_u_orc_guardian', 'source_sha256': 'f29b6477d9ef7d7ebb502eb94faf4a325f213eb30e334e6de227747cab9c5763', 'release_frame': 22, 'shield_minimum_z_m': -0.020000100135803223, 'mace_to_shield_or_left_forearm_surface_minimum_m': 0.005070917773991823}
+
+Error: script failed, file: 'C:/Users/iputu/Documents/Wonder Chess/tools/blender/inspect_support_pose_contacts.py', exiting.
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

@@ -1,0 +1,104 @@
+00:02.141  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_dragonkin_guardian\wc_u_dragonkin_guardian.blend"
+Traceback (most recent call last):
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\verify_update_dragonkin.py", line 27, in <module>
+    runpy.run_path(str(ROOT/'tools/blender/verify_new_family_hero.py'),run_name='__main__')
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\verify_new_family_hero.py", line 13, in <module>
+    sys.argv=['inspect_scene.py','--','--collection',collection,'--require-skin','--output',str(report/(collection+'-inspection.json'))];runpy.run_path(str(ROOT/'tools/blender/inspect_scene.py'),run_name='__main__')
+                                                                                                                                         ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\inspect_scene.py", line 94, in <module>
+    main()
+    ~~~~^^
+{
+  "status": "structural_checks_passed_visual_review_required",
+  "blender_version": "5.1.1",
+  "collection": "EXPORT",
+  "evaluated_triangle_total": 8474,
+  "objects": [
+    {
+      "name": "Armature",
+      "type": "ARMATURE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\inspect_scene.py", line 90, in main
+      ],
+      "dimensions": [
+        1.35426926612854,
+    raise RuntimeError('Structural validation failed; see report')
+        0.5199999809265137,
+RuntimeError: Structural validation failed; see report
+        2.223520040512085
+      ],
+      "roots": [
+        "root"
+      ],
+      "deform_bones": 27
+    },
+    {
+      "name": "SK_wc_u_dragonkin_guardian",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.5239979028701782,
+        0.8974425196647644,
+        2.0612800121307373
+      ],
+      "evaluated_triangles": 8474,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "not_checked": [
+    "appearance",
+    "deformation across all clips",
+    "UV overlap appropriateness",
+    "normal-map convention",
+    "Unreal import",
+    "LOD silhouette",
+    "gameplay readability"
+  ]
+}
+{
+  "status": "failed",
+  "blender_version": "5.1.1",
+  "collection": "LOD_SOURCE",
+  "evaluated_triangle_total": 0,
+  "objects": [],
+  "errors": [
+    "Collection contains no meshes"
+  ],
+  "warnings": [],
+  "not_checked": [
+    "appearance",
+    "deformation across all clips",
+    "UV overlap appropriateness",
+    "normal-map convention",
+    "Unreal import",
+    "LOD silhouette",
+    "gameplay readability"
+  ]
+}
+
+Error: script failed, file: 'tools/blender/verify_update_dragonkin.py', exiting.
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

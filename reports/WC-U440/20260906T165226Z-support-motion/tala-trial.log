@@ -1,0 +1,20 @@
+00:02.406  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_orc_guardian\wc_u_orc_guardian.blend"
+00:07.984  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\tala-candidate5\before-Active-front.png'
+00:13.015  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\tala-candidate5\before-Active-side.png'
+00:17.562  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\tala-candidate5\before-Active-three-quarter.png'
+00:22.047  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\tala-candidate5\before-Hit-front.png'
+00:26.172  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\tala-candidate5\before-Hit-side.png'
+00:30.375  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\tala-candidate5\before-Hit-three-quarter.png'
+Traceback (most recent call last):
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\refine_neris_tala_motion.py", line 93, in <module>
+    p=argparse.ArgumentParser();p.add_argument('--unit',choices=['wc_u_elf_mage','wc_u_orc_guardian'],required=True);p.add_argument('--report',type=Path,required=True);p.add_argument('--clips',nargs='+',required=True);a=p.parse_args(sys.argv[sys.argv.index('--')+1:]);candidate(a.unit,a.report.resolve(),a.clips)
+                                                                                                                                                                                                                                                                            ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\refine_neris_tala_motion.py", line 91, in candidate
+    assert max(reach.values())<.005,reach
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'Active': 0.1595116522001705, 'Hit': 0}
+
+Error: script failed, file: 'C:/Users/iputu/Documents/Wonder Chess/tools/blender/refine_neris_tala_motion.py', exiting.
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

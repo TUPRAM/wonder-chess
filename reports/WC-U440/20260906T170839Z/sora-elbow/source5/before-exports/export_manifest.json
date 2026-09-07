@@ -1,0 +1,159 @@
+{
+  "status": "AUTHORED_EXPORTED_BLENDER_EXECUTED_ENGINE_AND_VISUAL_ACCEPTANCE_OPEN",
+  "unit_id": "wc_u_dragonkin_guardian",
+  "name": "Sora Dawnscale",
+  "blender_version": "5.1.1",
+  "source_revision": 4,
+  "geometry_revision": 4,
+  "geometry_source_revision": 4,
+  "animation_revision": 3,
+  "source_sha256": "0bf136fb315a037b4f6a1486e6eeaec525cb9d6bdfd62c50459f989ed2b4af66",
+  "author_script_sha256": "f7aee2e337210d1c2832000235c0bb4f2a418ffab1a0e1f45204ac1818c4057e",
+  "family_helper_sha256": "0c97e8b48605fbd6e9872bda51347e745151b08bfb103adf3d27f23f6bdfe815",
+  "prepared_helper_sha256": "acd09bdce12dded42d1b716af7fed35b9bc47618e3a099213f1405ebc4d6bae4",
+  "units_source_sha256": "7dbf08ec21daef3c63c4e6cfd1302b508b44df771ee91322f50a95fe9dc31e05",
+  "height_m": 2.08,
+  "rig_family": "humanoid_draconic",
+  "rig_revision": "WC_humanoid_draconic_v1",
+  "bones": 27,
+  "triangles": 8474,
+  "materials": 1,
+  "fps": 60,
+  "source_forward": "+Y",
+  "source_up": "+Z",
+  "unit_scale_m": 1,
+  "fbx_profile": "tools/blender/profiles/fbx_skeletal_cm_v1.json",
+  "normalized_export_revision": 1,
+  "normalized_exporter_sha256": "13646d355744f5293d573816e5cd54459cf88f3b647c6c2a22aa61ae29200779",
+  "exported_coordinate_units": "centimeters in independent temporary copies; source metres",
+  "engine_calibration": [
+    "reports/WC-U440/20260906T170048Z/sora-engine-pilot"
+  ],
+  "textures": {
+    "BaseColor": "sRGB",
+    "Normal": "linear tangent; shallow low-frequency scale swatch",
+    "ORM": "linear R occlusion, G roughness, B metallic"
+  },
+  "clips": {
+    "Idle": {
+      "frames": [
+        1,
+        121
+      ],
+      "release_frame": null,
+      "action": "AN_wc_u_dragonkin_guardian_Idle"
+    },
+    "Move": {
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "action": "AN_wc_u_dragonkin_guardian_Move"
+    },
+    "Attack": {
+      "frames": [
+        1,
+        40
+      ],
+      "release_frame": 16,
+      "action": "AN_wc_u_dragonkin_guardian_Attack"
+    },
+    "Active": {
+      "frames": [
+        1,
+        40
+      ],
+      "release_frame": 22,
+      "action": "AN_wc_u_dragonkin_guardian_Active"
+    },
+    "Hit": {
+      "frames": [
+        1,
+        25
+      ],
+      "release_frame": null,
+      "action": "AN_wc_u_dragonkin_guardian_Hit"
+    },
+    "Defeat": {
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "action": "AN_wc_u_dragonkin_guardian_Defeat"
+    },
+    "Victory": {
+      "frames": [
+        1,
+        91
+      ],
+      "release_frame": null,
+      "action": "AN_wc_u_dragonkin_guardian_Victory"
+    }
+  },
+  "lods": [
+    {
+      "lod": 1,
+      "triangles": 4235,
+      "ratio_target": 0.5,
+      "visual_acceptance": "pending",
+      "mesh_validation_changed": true,
+      "removed_invalid_triangles": 1,
+      "explicit_triangulation": true,
+      "removed_degenerate_faces": 0
+    },
+    {
+      "lod": 2,
+      "triangles": 2095,
+      "ratio_target": 0.25,
+      "visual_acceptance": "pending",
+      "mesh_validation_changed": true,
+      "removed_invalid_triangles": 22,
+      "explicit_triangulation": true,
+      "removed_degenerate_faces": 0
+    }
+  ],
+  "source_brief": {
+    "silhouette": "A tall broad chest, short swept-back horns and an upright oval shield. A compact crest rises behind the forehead without adding wings or a tail.",
+    "face": "Pearl-gold scales, deep amber eyes and a short rounded muzzle. Keep the mouth closed at rest and use a calm expression, not a permanent display of teeth.",
+    "costume": "White-and-blue ceremonial armor with broad articulated panels, a short tabard and armored boots built around plantigrade feet.",
+    "palette": "Pearl #E0D8C1; royal blue #486A9A; gold #C4A367; dark slate #4D5B67.",
+    "equipment": "An oval fantasy shield with a single beacon gem and a short ceremonial mace. The gem is cosmetic outside the shield cast.",
+    "signature": "Swept horns, oval beacon shield and pale armored torso.",
+    "materials": "Matte scale normals at low frequency, brushed armor and one gem emissive mask. Do not model every scale.",
+    "back": "A short raised neck crest ends above the shoulders. No wings, tail or dangling cloth; clear shoulders make retargeting manageable.",
+    "animation": "Idle stands tall with the shield close. Walk uses slow deliberate steps. Basics strike compactly. The active angles the shield upward and lights the beacon disk before a protective shell forms.",
+    "vfx": "A pale-gold shield outline with a small vertical glint, never a full-screen column of light.",
+    "audio": "Low resonant chime and a measured armor movement; no roaring requirement.",
+    "risk": "Muzzle, neck crest and shoulder plates need a draconic rig review. Do not force a human head mesh under a scale texture."
+  },
+  "equipment": "Visual only; oval beacon shield and short ceremonial mace, fixed decorative gem",
+  "files": {
+    "AN_wc_u_dragonkin_guardian_Active.fbx": "31c487669c5a4b2e0f672bc9e1d4489f35806ca53fdeac3fd306f084b8d73c72",
+    "AN_wc_u_dragonkin_guardian_Attack.fbx": "fa84d2ab6e294ef179d9afdcceffeb1b65c5b3ed9f0f6f104cd0b98c851eb60d",
+    "AN_wc_u_dragonkin_guardian_Defeat.fbx": "c49e856b204c48ded55bc97c604b79ebec1961083d36dc7a57c1d4e4fe38ef1c",
+    "AN_wc_u_dragonkin_guardian_Hit.fbx": "a44c970e865e055ff632e31fffc75b2e95aa8522c617e11f730bb80853e719d3",
+    "AN_wc_u_dragonkin_guardian_Idle.fbx": "66ca435099f80533a71aae8402962f537e84f7d3da24164dc480a5efb22881ae",
+    "AN_wc_u_dragonkin_guardian_Move.fbx": "febb0891896fbddcc47f9e78e6a238749d33c2eb549ef40088bad8cd842e0272",
+    "AN_wc_u_dragonkin_guardian_Victory.fbx": "f8c5132340187c6dbe904c6d65aa02afbd0b95df23846765b7153bba5892f245",
+    "portrait.png": "482a7487f79470fa027d78b1687d6f7f2dbf77b57845475200e0a5825448cb91",
+    "SK_wc_u_dragonkin_guardian.fbx": "38230ec17766621ae7554c6a514bec7a72866184b1f46e571a809c32a79fbc0c",
+    "SK_wc_u_dragonkin_guardian_LOD1.fbx": "ecd68ae466e30b314188e7d22667c0a878f6031c0d804db35aa0586aebd32fa8",
+    "SK_wc_u_dragonkin_guardian_LOD2.fbx": "5882f8a091fb64f2f81f2cb2a6c4485a7b7e9d86cea84138f6b1f4236f637871",
+    "T_wc_u_dragonkin_guardian_BaseColor.png": "49a60627766f33924f22c748824f294051f8739de1582578d7e995e80d354982",
+    "T_wc_u_dragonkin_guardian_Normal.png": "9b1e3a02793a9f7be8a8b08675e7c8f12d5bb2800bc67586648b5cfe6134581b",
+    "T_wc_u_dragonkin_guardian_ORM.png": "7e903ad703779054cca3c7fbf375ece72757c4a4ff58014141937a1dc2197d20"
+  },
+  "report_directory": "reports\\WC-U440\\20260906T170437Z\\sora-elbow\\source4",
+  "open_reviews": [
+    "continuous seven-clip visual quality",
+    "muzzle crest armor and weapon clearance",
+    "crowded game-camera identity",
+    "actual Unreal family calibration/import/reimport",
+    "LOD silhouettes",
+    "effects/audio synchronization"
+  ],
+  "refinement_script_sha256": "ef8079e71f31ba6fe2e3cb3c58989af56bcc52474fd1eb9df6ab780ae23f11be",
+  "refinement_source_before_sha256": "595788dd19cf4d35b53565189a31c147ebb5c6e0b390838ee6e32fbf3bc3439a"
+}

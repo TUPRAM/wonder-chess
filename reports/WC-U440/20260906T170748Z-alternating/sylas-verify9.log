@@ -1,0 +1,202 @@
+00:02.437  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_elf_rogue\wc_u_elf_rogue.blend"
+{
+  "status": "structural_checks_passed_visual_review_required",
+  "blender_version": "5.1.1",
+  "collection": "EXPORT",
+  "evaluated_triangle_total": 3566,
+  "objects": [
+    {
+      "name": "Armature",
+      "type": "ARMATURE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.194295883178711,
+        0.4749999940395355,
+        2.0425000190734863
+      ],
+      "roots": [
+        "root"
+      ],
+      "deform_bones": 27
+    },
+    {
+      "name": "SK_wc_u_elf_rogue",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.422235131263733,
+        0.648342490196228,
+        1.8904999494552612
+      ],
+      "evaluated_triangles": 3566,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "not_checked": [
+    "appearance",
+    "deformation across all clips",
+    "UV overlap appropriateness",
+    "normal-map convention",
+    "Unreal import",
+    "LOD silhouette",
+    "gameplay readability"
+  ]
+}
+{
+  "status": "structural_checks_passed_visual_review_required",
+  "blender_version": "5.1.1",
+  "collection": "LOD_SOURCE",
+  "evaluated_triangle_total": 2663,
+  "objects": [
+    {
+      "name": "SK_wc_u_elf_rogue_LOD1",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.4157416820526123,
+        0.6443649530410767,
+        1.8911939859390259
+      ],
+      "evaluated_triangles": 1779,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    },
+    {
+      "name": "SK_wc_u_elf_rogue_LOD2",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.4157416820526123,
+        0.6456118226051331,
+        1.8912434577941895
+      ],
+      "evaluated_triangles": 884,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "not_checked": [
+    "appearance",
+    "deformation across all clips",
+    "UV overlap appropriateness",
+    "normal-map convention",
+    "Unreal import",
+    "LOD silhouette",
+    "gameplay readability"
+  ]
+}
+{
+  "status": "sampled_motion_invariants_passed",
+  "unit_id": "wc_u_elf_rogue",
+  "blender_version": "5.1.1",
+  "sampling": "actual deformed mesh every 3 frames at 60fps",
+  "clips": [
+    {
+      "clip": "Idle",
+      "samples": 41,
+      "minimum_support_sole_z_m": 0.017099998891353607,
+      "maximum_support_sole_z_m": 0.017099998891353607,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 4.172325134277344e-07
+    },
+    {
+      "clip": "Move",
+      "samples": 21,
+      "minimum_support_sole_z_m": -0.0025624800473451614,
+      "maximum_support_sole_z_m": 0.017100045457482338,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 4.172325134277344e-07
+    },
+    {
+      "clip": "Attack",
+      "samples": 27,
+      "minimum_support_sole_z_m": 0.017099998891353607,
+      "maximum_support_sole_z_m": 0.017099998891353607,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 4.172325134277344e-07
+    },
+    {
+      "clip": "Active",
+      "samples": 11,
+      "minimum_support_sole_z_m": 0.017099998891353607,
+      "maximum_support_sole_z_m": 0.017100006341934204,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 4.172325134277344e-07
+    },
+    {
+      "clip": "Hit",
+      "samples": 9,
+      "minimum_support_sole_z_m": 0.017099998891353607,
+      "maximum_support_sole_z_m": 0.017099998891353607,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 4.172325134277344e-07
+    },
+    {
+      "clip": "Defeat",
+      "samples": 21,
+      "minimum_support_sole_z_m": 0.017099885269999504,
+      "maximum_support_sole_z_m": 0.01710003800690174,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 4.172325134277344e-07
+    },
+    {
+      "clip": "Victory",
+      "samples": 31,
+      "minimum_support_sole_z_m": 0.017099998891353607,
+      "maximum_support_sole_z_m": 0.017099998891353607,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 4.172325134277344e-07
+    }
+  ],
+  "errors": [],
+  "not_checked": [
+    "continuous visual quality",
+    "weapon/costume clipping",
+    "semantic gesture review",
+    "Unreal retarget/import",
+    "runtime move-speed synchronization"
+  ]
+}
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+WC_NEW_HERO_READBACK_PASS {"status": "PASS_SAVED_SOURCE_SKIN_MOTION_AND_MESH_FBX_READBACK", "unit_id": "wc_u_elf_rogue", "source_sha256": "b50a0d636498476ffcdc32624f7a3c844e60f0df38ad6d9f93bda2d0e8840ecd", "manifest_sha256": "95c9e622e734a83003dbfbb32214a862905f6c199a67122ca9fca2102d1c46cb", "source_revision": 9, "geometry_revision": 8, "animation_revision": 8, "blender_version": "5.1.1", "files_verified": 14, "source_clips_verified": 7, "mesh_fbx_readbacks": [{"mesh_suffix": "", "dimensions_m": [1.3817395567893982, 0.5794999599456787, 1.8904999289661646], "triangles": 3566, "bones": 27, "materials": 1, "uv_layers": 1, "weighted_vertices": 1906}, {"mesh_suffix": "_LOD1", "dimensions_m": [1.3737724423408508, 0.5755224525928497, 1.8911938462406397], "triangles": 1779, "bones": 27, "materials": 1, "uv_layers": 1, "weighted_vertices": 1009}, {"mesh_suffix": "_LOD2", "dimensions_m": [1.3737724423408508, 0.5721343755722046, 1.8912433553487062], "triangles": 884, "bones": 27, "materials": 1, "uv_layers": 1, "weighted_vertices": 559}], "animation_fbx_import_verified": false, "Unreal_import_verified": false, "final_art_accepted": false}
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

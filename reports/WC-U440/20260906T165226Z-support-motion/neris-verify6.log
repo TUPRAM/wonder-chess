@@ -1,0 +1,356 @@
+00:02.078  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_elf_mage\wc_u_elf_mage.blend"
+{
+  "status": "structural_checks_passed_visual_review_required",
+  "blender_version": "5.1.1",
+  "collection": "EXPORT",
+  "evaluated_triangle_total": 7570,
+  "objects": [
+    {
+      "name": "Armature",
+      "type": "ARMATURE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.085276484489441,
+        0.4791606068611145,
+        2.0532498359680176
+      ],
+      "roots": [
+        "root"
+      ],
+      "deform_bones": 27
+    },
+    {
+      "name": "SK_wc_u_elf_mage",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.1690194606781006,
+        0.653406023979187,
+        2.0074098110198975
+      ],
+      "evaluated_triangles": 7570,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "not_checked": [
+    "appearance",
+    "deformation across all clips",
+    "UV overlap appropriateness",
+    "normal-map convention",
+    "Unreal import",
+    "LOD silhouette",
+    "gameplay readability"
+  ]
+}
+{
+  "status": "structural_checks_passed_visual_review_required",
+  "blender_version": "5.1.1",
+  "collection": "LOD_SOURCE",
+  "evaluated_triangle_total": 5674,
+  "objects": [
+    {
+      "name": "SK_wc_u_elf_mage_LOD1",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.1697914600372314,
+        0.6533958315849304,
+        2.007249116897583
+      ],
+      "evaluated_triangles": 3784,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    },
+    {
+      "name": "SK_wc_u_elf_mage_LOD2",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.1682844161987305,
+        0.6511374115943909,
+        2.01031494140625
+      ],
+      "evaluated_triangles": 1890,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "not_checked": [
+    "appearance",
+    "deformation across all clips",
+    "UV overlap appropriateness",
+    "normal-map convention",
+    "Unreal import",
+    "LOD silhouette",
+    "gameplay readability"
+  ]
+}
+{
+  "status": "sampled_motion_invariants_passed",
+  "unit_id": "wc_u_elf_mage",
+  "blender_version": "5.1.1",
+  "sampling": "actual deformed mesh every 3 frames at 60fps",
+  "clips": [
+    {
+      "clip": "Idle",
+      "samples": 41,
+      "minimum_support_sole_z_m": 0.015279988758265972,
+      "maximum_support_sole_z_m": 0.015279988758265972,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Move",
+      "samples": 21,
+      "minimum_support_sole_z_m": 0.0020346054807305336,
+      "maximum_support_sole_z_m": 0.015279988758265972,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Attack",
+      "samples": 15,
+      "minimum_support_sole_z_m": 0.015279988758265972,
+      "maximum_support_sole_z_m": 0.015279988758265972,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Active",
+      "samples": 15,
+      "minimum_support_sole_z_m": 0.015279988758265972,
+      "maximum_support_sole_z_m": 0.015279988758265972,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Hit",
+      "samples": 9,
+      "minimum_support_sole_z_m": 0.015279988758265972,
+      "maximum_support_sole_z_m": 0.015279988758265972,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Defeat",
+      "samples": 21,
+      "minimum_support_sole_z_m": 0.015280003659427166,
+      "maximum_support_sole_z_m": 0.015280145220458508,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Victory",
+      "samples": 31,
+      "minimum_support_sole_z_m": 0.015279988758265972,
+      "maximum_support_sole_z_m": 0.015279988758265972,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    }
+  ],
+  "errors": [],
+  "not_checked": [
+    "continuous visual quality",
+    "weapon/costume clipping",
+    "semantic gesture review",
+    "Unreal retarget/import",
+    "runtime move-speed synchronization"
+  ]
+}
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+WC_NEW_HERO_READBACK_PASS {"status": "PASS_SAVED_SOURCE_SKIN_MOTION_AND_MESH_FBX_READBACK", "unit_id": "wc_u_elf_mage", "source_sha256": "4b720642a245f81aaae9f3786628ba78d298e1a096a9c7744921cff117a01506", "manifest_sha256": "419ddd03539895759cf1729267232955871596cf66d79b1b92b591b69f310c7c", "source_revision": 6, "geometry_revision": 5, "animation_revision": 2, "blender_version": "5.1.1", "files_verified": 14, "source_clips_verified": 7, "mesh_fbx_readbacks": [{"mesh_suffix": "", "dimensions_m": [1.3767737746238708, 0.5181681662797928, 2.007410056889057], "triangles": 7570, "bones": 27, "materials": 1, "uv_layers": 1, "weighted_vertices": 4120}, {"mesh_suffix": "_LOD1", "dimensions_m": [1.3767737746238708, 0.5181579738855362, 2.0072493627667427], "triangles": 3784, "bones": 27, "materials": 1, "uv_layers": 1, "weighted_vertices": 2114}, {"mesh_suffix": "_LOD2", "dimensions_m": [1.3767737746238708, 0.5257900953292847, 2.010315258987248], "triangles": 1890, "bones": 27, "materials": 1, "uv_layers": 1, "weighted_vertices": 1131}], "animation_fbx_import_verified": false, "Unreal_import_verified": false, "final_art_accepted": false}
+00:03.109  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_elf_mage\wc_u_elf_mage.blend"
+00:05.703  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0000.png'
+00:08.047  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0001.png'
+00:10.484  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0002.png'
+00:12.828  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0003.png'
+00:15.031  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0004.png'
+00:17.219  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0005.png'
+00:19.391  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0006.png'
+00:21.578  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0007.png'
+00:23.828  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0008.png'
+00:25.984  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0009.png'
+00:28.234  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0010.png'
+00:30.469  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0011.png'
+00:32.609  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0012.png'
+00:34.734  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0013.png'
+00:37.031  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0014.png'
+00:39.328  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0015.png'
+00:41.625  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0016.png'
+00:43.984  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0017.png'
+00:46.281  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0018.png'
+00:48.609  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0019.png'
+00:50.797  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0020.png'
+00:52.984  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0021.png'
+00:55.297  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0022.png'
+00:57.578  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0023.png'
+00:59.953  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0024.png'
+01:02.375  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0025.png'
+01:05.047  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0026.png'
+01:07.875  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0027.png'
+01:10.359  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0028.png'
+01:12.906  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0029.png'
+01:15.625  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0030.png'
+01:18.250  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0031.png'
+01:20.656  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0032.png'
+01:23.109  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0033.png'
+01:25.922  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0034.png'
+01:28.516  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0035.png'
+01:30.969  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0036.png'
+01:33.406  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0037.png'
+01:36.203  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0038.png'
+01:38.563  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Idle\0039.png'
+WC_NEW_HERO_CLIP_RENDERED wc_u_elf_mage Idle
+01:41.078  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Move\0000.png'
+01:43.859  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Move\0001.png'
+01:46.500  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Move\0002.png'
+01:48.922  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Move\0003.png'
+01:51.500  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Move\0004.png'
+01:54.250  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Move\0005.png'
+01:56.875  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Move\0006.png'
+01:59.281  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Move\0007.png'
+02:02.047  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Move\0008.png'
+02:04.781  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Move\0009.png'
+02:07.375  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Move\0010.png'
+02:10.031  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Move\0011.png'
+02:12.656  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Move\0012.png'
+02:15.266  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Move\0013.png'
+02:17.828  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Move\0014.png'
+02:20.500  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Move\0015.png'
+02:23.219  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Move\0016.png'
+02:25.984  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Move\0017.png'
+02:28.828  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Move\0018.png'
+02:31.719  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Move\0019.png'
+WC_NEW_HERO_CLIP_RENDERED wc_u_elf_mage Move
+02:34.563  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Attack\0000.png'
+02:37.406  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Attack\0001.png'
+02:40.219  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Attack\0002.png'
+02:42.797  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Attack\0003.png'
+02:45.328  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Attack\0004.png'
+02:47.766  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Attack\0005.png'
+02:50.250  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Attack\0006.png'
+02:52.797  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Attack\0007.png'
+02:55.391  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Attack\0008.png'
+02:57.922  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Attack\0009.png'
+03:00.500  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Attack\0010.png'
+03:03.000  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Attack\0011.png'
+03:05.547  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Attack\0012.png'
+03:08.141  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Attack\0013.png'
+WC_NEW_HERO_CLIP_RENDERED wc_u_elf_mage Attack
+03:10.563  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Active\0000.png'
+03:13.125  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Active\0001.png'
+03:15.656  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Active\0002.png'
+03:18.203  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Active\0003.png'
+03:20.797  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Active\0004.png'
+03:23.375  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Active\0005.png'
+03:25.953  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Active\0006.png'
+03:28.594  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Active\0007.png'
+03:31.141  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Active\0008.png'
+03:33.594  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Active\0009.png'
+03:36.094  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Active\0010.png'
+03:38.500  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Active\0011.png'
+03:41.094  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Active\0012.png'
+03:43.844  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Active\0013.png'
+WC_NEW_HERO_CLIP_RENDERED wc_u_elf_mage Active
+03:46.453  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Hit\0000.png'
+03:49.078  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Hit\0001.png'
+03:51.719  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Hit\0002.png'
+03:54.359  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Hit\0003.png'
+03:57.031  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Hit\0004.png'
+03:59.844  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Hit\0005.png'
+04:02.563  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Hit\0006.png'
+04:05.156  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Hit\0007.png'
+WC_NEW_HERO_CLIP_RENDERED wc_u_elf_mage Hit
+04:07.781  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Defeat\0000.png'
+04:10.328  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Defeat\0001.png'
+04:13.047  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Defeat\0002.png'
+04:15.625  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Defeat\0003.png'
+04:18.172  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Defeat\0004.png'
+04:20.734  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Defeat\0005.png'
+04:23.266  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Defeat\0006.png'
+04:25.891  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Defeat\0007.png'
+04:28.391  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Defeat\0008.png'
+04:31.000  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Defeat\0009.png'
+04:33.547  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Defeat\0010.png'
+04:36.016  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Defeat\0011.png'
+04:38.578  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Defeat\0012.png'
+04:41.141  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Defeat\0013.png'
+04:43.734  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Defeat\0014.png'
+04:46.156  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Defeat\0015.png'
+04:48.656  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Defeat\0016.png'
+04:51.156  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Defeat\0017.png'
+04:53.734  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Defeat\0018.png'
+04:56.313  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Defeat\0019.png'
+WC_NEW_HERO_CLIP_RENDERED wc_u_elf_mage Defeat
+04:58.922  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Victory\0000.png'
+05:01.484  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Victory\0001.png'
+05:04.156  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Victory\0002.png'
+05:06.875  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Victory\0003.png'
+05:09.531  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Victory\0004.png'
+05:12.453  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Victory\0005.png'
+05:15.266  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Victory\0006.png'
+05:17.938  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Victory\0007.png'
+05:20.750  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Victory\0008.png'
+05:23.781  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Victory\0009.png'
+05:26.563  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Victory\0010.png'
+05:29.234  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Victory\0011.png'
+05:32.156  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Victory\0012.png'
+05:35.047  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Victory\0013.png'
+05:37.813  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Victory\0014.png'
+05:40.531  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Victory\0015.png'
+05:43.625  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Victory\0016.png'
+05:46.563  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Victory\0017.png'
+05:49.656  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Victory\0018.png'
+05:52.813  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Victory\0019.png'
+05:55.938  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Victory\0020.png'
+05:59.188  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Victory\0021.png'
+06:02.594  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Victory\0022.png'
+06:06.094  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Victory\0023.png'
+06:09.219  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Victory\0024.png'
+06:12.594  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Victory\0025.png'
+06:16.000  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Victory\0026.png'
+06:19.516  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Victory\0027.png'
+06:23.203  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Victory\0028.png'
+06:26.734  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T165226Z-support-motion\neris-verified6\motion-frames\Victory\0029.png'
+WC_NEW_HERO_CLIP_RENDERED wc_u_elf_mage Victory
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit
