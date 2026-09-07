@@ -1,0 +1,30 @@
+Traceback (most recent call last):
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\author_update_four.py", line 283, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\author_update_four.py", line 267, in main
+    clips,reach=bake_actions(u,arm,out);action=bpy.data.actions[clips['Idle']['action']];arm.animation_data.action=action;arm.animation_data.action_slot=action.slots[0];scene.frame_set(1);camera=setup_render(u['height_m']);scene.cycles.samples=12;camera.data.ortho_scale=u['height_m']*1.45
+                ~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\author_update_four.py", line 245, in bake_actions
+    if limit>.025:raise RuntimeError('Reach clamp '+clip+' '+str(limit))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Reach clamp Idle 0.24962391321627342
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_warrior\\SK_wc_u_human_warrior.fbx'
+(bpy.data.armatures['WC_humanoid_standard_v1.001'], 'POSE')
+export finished in 0.1003 sec.
+Info: Applied modifier was not first, result may not be as expected
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_warrior\\SK_wc_u_human_warrior_LOD1.fbx'
+(bpy.data.armatures['WC_humanoid_standard_v1.001'], 'POSE')
+export finished in 0.0350 sec.
+Info: Applied modifier was not first, result may not be as expected
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_warrior\\SK_wc_u_human_warrior_LOD2.fbx'
+(bpy.data.armatures['WC_humanoid_standard_v1.001'], 'POSE')
+export finished in 0.0313 sec.
+
+Error: script failed, file: 'tools/blender/author_update_four.py', exiting.
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

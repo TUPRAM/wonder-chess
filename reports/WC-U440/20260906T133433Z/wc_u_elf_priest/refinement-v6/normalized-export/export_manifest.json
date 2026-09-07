@@ -1,0 +1,170 @@
+{
+  "status": "update24_refined_rendered_exported_pending_Unreal_reimport_and_visual_acceptance",
+  "unit_id": "wc_u_elf_priest",
+  "name": "Elin Moonsong",
+  "blender_version": "5.1.1",
+  "source_revision": 7,
+  "height_m": 1.85,
+  "source_sha256": "e22559354256c1061b6ae48d3e4dcdd8fc926ec5398e3808ba77e80ad158b4ef",
+  "author_script_sha256": "f2fcf648f49acc28b85dcec4eb755f8d8122bc97f7dfef52e54ffc35bc973175",
+  "units_source_sha256": "fd6d831113261dd984f3d2430236c06eda4a9f4e7f9e30a404a76f418fa953b0",
+  "rig_family": "humanoid_slender",
+  "rig_revision": "WC_family_v1",
+  "bones": 27,
+  "triangles": 5034,
+  "materials": 1,
+  "fps": 60,
+  "source_forward": "+Y",
+  "source_up": "+Z",
+  "unit_scale_m": 1,
+  "fbx_profile": "tools/blender/profiles/fbx_skeletal_cm_v1.json",
+  "normalized_export_revision": 1,
+  "normalized_exporter_sha256": "13646d355744f5293d573816e5cd54459cf88f3b647c6c2a22aa61ae29200779",
+  "exported_coordinate_units": "centimeters in temporary independent copies; authoring source remains meters",
+  "engine_calibration": [
+    "reports/WC-330/import-probe/forward_cm-results.json",
+    "reports/WC-330/import-probe/all7-comparison.json"
+  ],
+  "textures": {
+    "BaseColor": "sRGB",
+    "Normal": "linear, tangent +Y, flat normal surface; geometric bevels",
+    "ORM": "linear R=occlusion G=roughness B=metallic"
+  },
+  "equipment": "weighted within the skeletal mesh; socket bones also available",
+  "clips": {
+    "Idle": {
+      "action": "AN_wc_u_elf_priest_Idle",
+      "frames": [
+        1,
+        121
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 41,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Move": {
+      "action": "AN_wc_u_elf_priest_Move",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 21,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Attack": {
+      "action": "AN_wc_u_elf_priest_Attack",
+      "frames": [
+        1,
+        43
+      ],
+      "release_frame": 19,
+      "support_hand_bake_samples": 43,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Active": {
+      "action": "AN_wc_u_elf_priest_Active",
+      "frames": [
+        1,
+        40
+      ],
+      "release_frame": 22,
+      "support_hand_bake_samples": 40,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Hit": {
+      "action": "AN_wc_u_elf_priest_Hit",
+      "frames": [
+        1,
+        25
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 9,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Defeat": {
+      "action": "AN_wc_u_elf_priest_Defeat",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 21,
+      "maximum_support_reach_clamp_m": 0.00028460050523726466
+    },
+    "Victory": {
+      "action": "AN_wc_u_elf_priest_Victory",
+      "frames": [
+        1,
+        91
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 31,
+      "maximum_support_reach_clamp_m": 0
+    }
+  },
+  "lods": [
+    {
+      "lod": 1,
+      "triangles": 2517,
+      "ratio_target": 0.5,
+      "visual_acceptance": "pending current Unreal review"
+    },
+    {
+      "lod": 2,
+      "triangles": 1258,
+      "ratio_target": 0.25,
+      "visual_acceptance": "pending current Unreal review"
+    }
+  ],
+  "source_brief": {
+    "silhouette": "An upright pear-shaped silhouette with an open half-moon harp framing one shoulder. Layered petal-shaped sleeves form large, separated planes rather than many small leaves.",
+    "face": "Deep umber skin, pale blue eyes and silver hair in a compact crown braid. Pointed ears remain visible on both sides of the harp.",
+    "costume": "Blue-green tunic with ivory sleeve ends, a short overlapping overskirt and practical fitted boots. Silver trim follows one large curved line across the torso.",
+    "palette": "Deep teal #337A80; moon ivory #E3E8DD; blue-gray #6E86A0; silver #B6C7C9.",
+    "equipment": "A compact crescent harp held close to the torso, with only a few thick stylized strings. A small charm at the waist marks her order without introducing a resource.",
+    "signature": "Open crescent harp, crown braid, and layered pale sleeve ends.",
+    "materials": "Smooth cloth with sparse brocade normals, brushed silver and a faint cool glow on the harp rim. Do not use constantly glowing eyes.",
+    "back": "Short robe panels leave the legs visible; a braided cord forms a clean circle high on the back. The harp must not clip through the spine during turning.",
+    "animation": "Idle shifts a hand over the harp. Basic attacks pluck a single note. The active plants both feet and plays a broad chord, opening the elbows so the cast silhouette differs from an attack.",
+    "vfx": "A low teal ring outlines affected adjacent cells, then small wing-shaped chevrons appear briefly over recipients. No continuous aura tick; recipients are snapshotted at release.",
+    "audio": "One clear string note for basics and a restrained three-note chord for the skill. Separate the buff sound from Mira\u2019s healing bell.",
+    "risk": "String geometry and hands can shimmer or intersect. Simplify the finger action and let the chord\u2019s full-body gesture carry readability."
+  },
+  "files": {
+    "AN_wc_u_elf_priest_Active.fbx": "bbca0e76f3478cd99099d2c800bc96e934bb44bf764e62aac093f262f731aaca",
+    "AN_wc_u_elf_priest_Attack.fbx": "869e3fdc33e4e97283e57b546ceeb0f6bb8f6ae7f46a2360fe415b7629a3a79c",
+    "AN_wc_u_elf_priest_Defeat.fbx": "05e255cb14a9c193e5066bbbb88bb4c23964d5c8925698dfde7c8ac6c9926dfe",
+    "AN_wc_u_elf_priest_Hit.fbx": "abeafecc1773d2acec5133a1946f213809a7da735c6174bd170f74c87648733f",
+    "AN_wc_u_elf_priest_Idle.fbx": "d1aaeae29ac6773289f74178e994d556ce887ddff23a1fc1fec65bd9a3cde243",
+    "AN_wc_u_elf_priest_Move.fbx": "62eab07cf7e705d77f7717630fb4ed6c8963454514b1d7c4a9fe3f71286d0ebd",
+    "AN_wc_u_elf_priest_Victory.fbx": "57e3a0a16805ee2441e8bf7305984917236ddbe683aad4e5600db45e183c55cb",
+    "portrait.png": "cd6e8f1c6069b8588223c25fe344d0e1d4a3f4bf3090a9b1f58c23ec2e440f77",
+    "SK_wc_u_elf_priest.fbx": "de4bc8deccf4304ff8451420e3fe6fdf020b225a3212543a66967529ed58b63c",
+    "SK_wc_u_elf_priest_LOD1.fbx": "52bbb71ac792a9f7b353286167b35707d14aa9212c5715eebaea3e793c20edaa",
+    "SK_wc_u_elf_priest_LOD2.fbx": "7e9a1c75574ab04fdf95b608ddb41a71e3884e13b7c4084dae8129e6dcf250a7",
+    "T_wc_u_elf_priest_BaseColor.png": "501b780dbf0ce7327ed88fa87fc16a1ae23fcbddc4229475d58673c2728b9151",
+    "T_wc_u_elf_priest_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
+    "T_wc_u_elf_priest_ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c"
+  },
+  "open_reviews": [
+    "Current Unreal source revision/reimport",
+    "Continuous in-engine seven-clip review",
+    "Crowded-board shield occlusion",
+    "LOD silhouette review",
+    "Skill release/audio alignment",
+    "Final facial and costume art acceptance"
+  ],
+  "geometry_source_revision": 7,
+  "animation_revision": 7,
+  "animation_refinement_script_sha256": "883991d592dfb18f4fd3e85b04583782ea411a21426c8921c13966d8bcd16f40",
+  "animation_pose_script_sha256": "e43d6c05800e8b6dccbcd697d7cc9664b61d73f7012cac75ef98183e709d47b9",
+  "animation_author_script_sha256": "ddaed7bb350bafb94c1743bc31c4b613524f971af01a5611835402590d8ae6f0",
+  "animation_contact_script_sha256": "c36f8064fa5ab7ff136c399c68c7b012b5987234734aca0580bede3483017c1a",
+  "animation_normalizer_sha256": "13646d355744f5293d573816e5cd54459cf88f3b647c6c2a22aa61ae29200779",
+  "animation_evidence": "reports\\WC-330\\animation-refinement\\wc_u_elf_priest",
+  "update_refinement_script_sha256": "7dd0586a9587409c67e55387a0df93d26f3231427a501be7f9cc65b111d18ec3",
+  "update_export_script_sha256": "4d9ec9f5747367743efd1f44f653f2e95f7ebdeb061aa1a62351dc774ecd82bf",
+  "update_refinement_evidence": "reports/WC-U440/20260906T133433Z/wc_u_elf_priest/refinement-v6",
+  "animation_update_evidence": "reports/WC-U440/20260906T133433Z/wc_u_elf_priest/refinement-v6"
+}

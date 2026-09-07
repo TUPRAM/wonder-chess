@@ -1,0 +1,19 @@
+00:02.562  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T133433Z\mira\refinement-v7\mira-update24-revision7.blend"
+Traceback (most recent call last):
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\export_refined_hero.py", line 20, in <module>
+    export_revision(out,args.unit,args.refinement_script.resolve())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\refine_update_ada.py", line 373, in export_revision
+    use_clip(arm,'Idle')
+    ~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\refine_update_ada.py", line 99, in use_clip
+    action = bpy.data.actions[f'AN_{UID}_{clip}']
+             ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+KeyError: 'bpy_prop_collection[key]: key "AN_wc_u_human_guardian_Idle" not found'
+Info: Applied modifier was not first, result may not be as expected
+Info: Applied modifier was not first, result may not be as expected
+
+Error: script failed, file: 'tools/blender/export_refined_hero.py', exiting.
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

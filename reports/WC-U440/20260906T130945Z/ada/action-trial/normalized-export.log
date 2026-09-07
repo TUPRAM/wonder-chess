@@ -1,0 +1,28 @@
+00:03.703  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_human_guardian\wc_u_human_guardian.blend"
+00:04.094  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T130945Z\ada\action-trial\ada-action-revision8-trial.blend"
+Traceback (most recent call last):
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\refine_update_ada.py", line 557, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\refine_update_ada.py", line 532, in main
+    export_action_revision(args.output)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\refine_update_ada.py", line 486, in export_action_revision
+    animation_update_evidence=out.relative_to(ROOT).as_posix())
+                              ~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Program Files\Blender Foundation\Blender 5.1\5.1\python\Lib\pathlib\_local.py", line 385, in relative_to
+    raise ValueError(f"{str(self)!r} is not in the subpath of {str(other)!r}")
+ValueError: 'reports\\WC-U440\\20260906T130945Z\\ada\\action-trial' is not in the subpath of 'C:\\Users\\iputu\\Documents\\Wonder Chess'
+Info: Saved as "wc_u_human_guardian_revision8.blend"
+
+FBX export starting... 'reports\\WC-U440\\20260906T130945Z\\ada\\action-trial\\normalized-export\\AN_wc_u_human_guardian_Attack.fbx'
+export finished in 0.1061 sec.
+
+FBX export starting... 'reports\\WC-U440\\20260906T130945Z\\ada\\action-trial\\normalized-export\\AN_wc_u_human_guardian_Hit.fbx'
+export finished in 0.0891 sec.
+
+FBX export starting... 'reports\\WC-U440\\20260906T130945Z\\ada\\action-trial\\normalized-export\\AN_wc_u_human_guardian_Victory.fbx'
+export finished in 0.1724 sec.
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

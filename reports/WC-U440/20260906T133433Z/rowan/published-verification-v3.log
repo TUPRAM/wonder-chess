@@ -1,0 +1,199 @@
+00:02.312  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_human_mage\wc_u_human_mage.blend"
+{
+  "status": "structural_checks_passed_visual_review_required",
+  "blender_version": "5.1.1",
+  "collection": "EXPORT",
+  "evaluated_triangle_total": 4170,
+  "objects": [
+    {
+      "name": "Armature",
+      "type": "ARMATURE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.2078666687011719,
+        0.44499993324279785,
+        1.9135000705718994
+      ],
+      "roots": [
+        "root"
+      ],
+      "deform_bones": 27
+    },
+    {
+      "name": "SK_wc_u_human_mage",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.36899733543396,
+        0.5206953287124634,
+        1.7710998058319092
+      ],
+      "evaluated_triangles": 4170,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "not_checked": [
+    "appearance",
+    "deformation across all clips",
+    "UV overlap appropriateness",
+    "normal-map convention",
+    "Unreal import",
+    "LOD silhouette",
+    "gameplay readability"
+  ]
+}
+{
+  "status": "structural_checks_passed_visual_review_required",
+  "blender_version": "5.1.1",
+  "collection": "LOD_SOURCE",
+  "evaluated_triangle_total": 3127,
+  "objects": [
+    {
+      "name": "SK_wc_u_human_mage_LOD1",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.36899733543396,
+        0.5206953287124634,
+        1.7717500925064087
+      ],
+      "evaluated_triangles": 2085,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    },
+    {
+      "name": "SK_wc_u_human_mage_LOD2",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.354625940322876,
+        0.513221025466919,
+        1.771802544593811
+      ],
+      "evaluated_triangles": 1042,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "not_checked": [
+    "appearance",
+    "deformation across all clips",
+    "UV overlap appropriateness",
+    "normal-map convention",
+    "Unreal import",
+    "LOD silhouette",
+    "gameplay readability"
+  ]
+}
+{
+  "status": "sampled_motion_invariants_passed",
+  "unit_id": "wc_u_human_mage",
+  "blender_version": "5.1.1",
+  "sampling": "actual deformed mesh every 3 frames at 60fps",
+  "clips": [
+    {
+      "clip": "Idle",
+      "samples": 41,
+      "minimum_support_sole_z_m": 0.016019994392991066,
+      "maximum_support_sole_z_m": 0.016019994392991066,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Move",
+      "samples": 21,
+      "minimum_support_sole_z_m": 0.00367613323032856,
+      "maximum_support_sole_z_m": 0.016019994392991066,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Attack",
+      "samples": 15,
+      "minimum_support_sole_z_m": 0.016019994392991066,
+      "maximum_support_sole_z_m": 0.016019994392991066,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Active",
+      "samples": 16,
+      "minimum_support_sole_z_m": 0.016019994392991066,
+      "maximum_support_sole_z_m": 0.016019994392991066,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Hit",
+      "samples": 9,
+      "minimum_support_sole_z_m": 0.016019994392991066,
+      "maximum_support_sole_z_m": 0.016019994392991066,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Defeat",
+      "samples": 21,
+      "minimum_support_sole_z_m": 0.016019858419895172,
+      "maximum_support_sole_z_m": 0.0160200297832489,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Victory",
+      "samples": 31,
+      "minimum_support_sole_z_m": 0.016019994392991066,
+      "maximum_support_sole_z_m": 0.016019994392991066,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    }
+  ],
+  "errors": [],
+  "not_checked": [
+    "continuous visual quality",
+    "weapon/costume clipping",
+    "semantic gesture review",
+    "Unreal retarget/import",
+    "runtime move-speed synchronization"
+  ]
+}
+WC_REFINED_HERO_PUBLISHED_CHECKS_PASS {"status": "PUBLISHED_SOURCE_EXPORT_AND_MOTION_CHECKS_PASS", "unit_id": "wc_u_human_mage", "blender_version": "5.1.1", "source_revision": 7, "geometry_revision": 7, "animation_revision": 7, "source_sha256": "56428ea56b53d9b72df070ce0a4ab8ac87ce790175b12defc0f0d3111c5bf264", "manifest_sha256": "aa5baa01a2b7c4c5e5440910517218bb84a6f7f2b24137bbac259bdf8271933d", "export_files_verified": 14, "triangles": 4170, "lods": [{"lod": 1, "triangles": 2085, "ratio_target": 0.5, "visual_acceptance": "pending current Unreal review"}, {"lod": 2, "triangles": 1042, "ratio_target": 0.25, "visual_acceptance": "pending current Unreal review"}], "modified_clips": ["Active"], "Unreal_reimport_verified": false, "final_art_accepted": false}
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

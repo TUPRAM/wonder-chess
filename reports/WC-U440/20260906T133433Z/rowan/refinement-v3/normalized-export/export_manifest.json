@@ -1,0 +1,172 @@
+{
+  "status": "update24_refined_rendered_exported_pending_Unreal_reimport_and_visual_acceptance",
+  "unit_id": "wc_u_human_mage",
+  "name": "Rowan Emberwick",
+  "blender_version": "5.1.1",
+  "source_revision": 7,
+  "height_m": 1.78,
+  "source_sha256": "56428ea56b53d9b72df070ce0a4ab8ac87ce790175b12defc0f0d3111c5bf264",
+  "author_script_sha256": "474d9d165ca7a0c2134197c379978f59d2af9baf475bbcd0970fd97febd0a4da",
+  "units_source_sha256": "ebd8f5f2fc2b889683566d1913e2c29d90ac9d041d47a231038c497e7a29865f",
+  "rig_family": "humanoid_standard",
+  "rig_revision": "WC_family_v1",
+  "bones": 27,
+  "triangles": 4170,
+  "materials": 1,
+  "fps": 60,
+  "source_forward": "+Y",
+  "source_up": "+Z",
+  "unit_scale_m": 1,
+  "fbx_profile": "tools/blender/profiles/fbx_skeletal_cm_v1.json",
+  "engine_calibration": [
+    "reports/WC-330/import-probe/normalized_cm-results.json",
+    "reports/WC-330/import-probe/forward_cm-results.json",
+    "reports/WC-330/normalized-cm-copy-trial.log"
+  ],
+  "textures": {
+    "BaseColor": "sRGB",
+    "Normal": "linear, tangent +Y, flat normal surface; geometric bevels",
+    "ORM": "linear R=occlusion G=roughness B=metallic"
+  },
+  "equipment": "weighted within the skeletal mesh; socket bones also available",
+  "clips": {
+    "Idle": {
+      "action": "AN_wc_u_human_mage_Idle",
+      "frames": [
+        1,
+        121
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Move": {
+      "action": "AN_wc_u_human_mage_Move",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Attack": {
+      "action": "AN_wc_u_human_mage_Attack",
+      "frames": [
+        1,
+        43
+      ],
+      "release_frame": 19,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Active": {
+      "action": "AN_wc_u_human_mage_Active",
+      "frames": [
+        1,
+        46
+      ],
+      "release_frame": 28,
+      "support_hand_bake_samples": 46,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Hit": {
+      "action": "AN_wc_u_human_mage_Hit",
+      "frames": [
+        1,
+        25
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 9,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Defeat": {
+      "action": "AN_wc_u_human_mage_Defeat",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 21,
+      "maximum_support_reach_clamp_m": 0.015295136272477583
+    },
+    "Victory": {
+      "action": "AN_wc_u_human_mage_Victory",
+      "frames": [
+        1,
+        91
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 31,
+      "maximum_support_reach_clamp_m": 0
+    }
+  },
+  "lods": [
+    {
+      "lod": 1,
+      "triangles": 2085,
+      "ratio_target": 0.5,
+      "visual_acceptance": "pending current Unreal review"
+    },
+    {
+      "lod": 2,
+      "triangles": 1042,
+      "ratio_target": 0.25,
+      "visual_acceptance": "pending current Unreal review"
+    }
+  ],
+  "source_brief": {
+    "silhouette": "An angular, high folded collar above a tapered traveling coat, with a large open orb frame held beside the right shoulder. Broad sleeve cuffs distinguish him from staff-bearing Priests.",
+    "face": "Copper-brown skin, round spectacles with thick readable rims, charcoal curls and an inquisitive half-smile. Use painted eyes rather than separate transparent lenses in the first pass.",
+    "costume": "Indigo scholar\u2019s coat over an amber vest, reinforced fabric cuffs and calf-high boots. The coat splits into two stiff tails at the hips; no cloth simulation is required.",
+    "palette": "Indigo #494774; amber #E2A148; parchment #E7D9B4; coal #38333E.",
+    "equipment": "A hovering presentation-only ember orb inside a hand-held bronze bracket; a closed book fixed to the belt. The orb is not a summoned combat unit.",
+    "signature": "High folded collar, round spectacles, and bright orb within an asymmetrical frame.",
+    "materials": "Matte wool with broad color planes, worn bronze and a bounded emissive core. Reserve flame transparency for the brief active.",
+    "back": "Two coat tails form an inverted V, and a stitched star diagram sits high on the shoulders. The closed book does not intersect the thighs while walking.",
+    "animation": "Idle balances the orb with a restrained wrist movement. Move with compact forward steps. Basics flick a small spark. The active draws both hands inward then pushes the orb toward its captured ground location.",
+    "vfx": "A small amber projectile expands into a low circular burst at the captured cell. Mark the radius briefly on the ground; no lingering fire damage exists.",
+    "audio": "A brief rising furnace note followed by a soft magical pop; omit crackling loops once the burst resolves.",
+    "risk": "The orb must be driven by a socket/presentation component, not physics. Camera brightness must not erase the unit or neighboring health bars."
+  },
+  "files": {
+    "AN_wc_u_human_mage_Active.fbx": "347990adf6c112c1d74904b46d8ca20747cb0d55a77e9d7b062ad7d15a6becba",
+    "AN_wc_u_human_mage_Attack.fbx": "a85783f1cc6dcd6211bbcd4a047701716d7117eb6f8356f3ddb6bccbf071cf6f",
+    "AN_wc_u_human_mage_Defeat.fbx": "28db0460d5972bf3934fbf8f12e92b4456ea793af7929a1f4ad1772b2dd8b22c",
+    "AN_wc_u_human_mage_Hit.fbx": "65f97b7f9525bbf00590fa360d4b32d570301ca037a3c18029cdff45fffd6d05",
+    "AN_wc_u_human_mage_Idle.fbx": "e50a7d22f99562e877fc860638ee3b0c5c0c9f71e026654bb0b808859267cc4b",
+    "AN_wc_u_human_mage_Move.fbx": "63c3885c305dc2739b67584f85616938f50c7bd98892bc860c592f501f7280de",
+    "AN_wc_u_human_mage_Victory.fbx": "f772e346467fc6577f55884ddc47a97dadeae44929958e3c3ec31629f2e943fb",
+    "portrait.png": "db1039d15faddae4dcd69f8af922df5f9438db021fd652b0a5b782b6379e9cf7",
+    "SK_wc_u_human_mage.fbx": "ed33aec1a60aa395d5dd73e29f16ca155cde0466bc34b752f688d7fe4d59b07b",
+    "SK_wc_u_human_mage_LOD1.fbx": "5b39d5326bffeae56cc4185c5293ff1dc93019d6e92e100f3d206a8a84780d16",
+    "SK_wc_u_human_mage_LOD2.fbx": "5ffece69cffa8e708394ff2d02f2ebea477bf5f57c483e55e10b082e0d0c8a15",
+    "T_wc_u_human_mage_BaseColor.png": "92303641f550c56f83d03e4de333d996d64419ae3fc014fda689bc8b6d47595b",
+    "T_wc_u_human_mage_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
+    "T_wc_u_human_mage_ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c"
+  },
+  "open_reviews": [
+    "Current Unreal source revision/reimport",
+    "Continuous in-engine seven-clip review",
+    "Crowded-board shield occlusion",
+    "LOD silhouette review",
+    "Skill release/audio alignment",
+    "Final facial and costume art acceptance"
+  ],
+  "normalized_export_revision": 1,
+  "normalized_exporter_sha256": "ac2b263a2491f2cf991065e749926b5549ddc81e73c814fb9958e424b6d23bc6",
+  "normalized_reexport_script_sha256": "c1176dfe4526f36b767e3427383e70c3e174b2d62b36ac1a9562f5d8d7ffb99b",
+  "exported_coordinate_units": "centimeters: temporary geometry, rest translation and animation location values multiplied by100; authoring source remains meters",
+  "geometry_source_revision": 7,
+  "animation_revision": 7,
+  "animation_refinement_script_sha256": "883991d592dfb18f4fd3e85b04583782ea411a21426c8921c13966d8bcd16f40",
+  "animation_pose_script_sha256": "e43d6c05800e8b6dccbcd697d7cc9664b61d73f7012cac75ef98183e709d47b9",
+  "animation_author_script_sha256": "ddaed7bb350bafb94c1743bc31c4b613524f971af01a5611835402590d8ae6f0",
+  "animation_contact_script_sha256": "c36f8064fa5ab7ff136c399c68c7b012b5987234734aca0580bede3483017c1a",
+  "animation_normalizer_sha256": "13646d355744f5293d573816e5cd54459cf88f3b647c6c2a22aa61ae29200779",
+  "animation_evidence": "reports\\WC-330\\animation-refinement\\wc_u_human_mage",
+  "update_refinement_script_sha256": "6f028fc1e77f86479e657e29464201cb71761da5dc9dc2ff885901cc8848c71d",
+  "update_export_script_sha256": "4d9ec9f5747367743efd1f44f653f2e95f7ebdeb061aa1a62351dc774ecd82bf",
+  "update_refinement_evidence": "reports/WC-U440/20260906T133433Z/rowan/refinement-v3",
+  "animation_update_evidence": "reports/WC-U440/20260906T133433Z/rowan/refinement-v3"
+}

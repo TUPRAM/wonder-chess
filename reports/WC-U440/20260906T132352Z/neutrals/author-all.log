@@ -1,0 +1,49 @@
+00:11.015  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\exports\neutrals\wc_n_sprout\portrait.png'
+00:12.781  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T132352Z\neutrals\wc_n_sprout\front.png'
+00:14.593  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T132352Z\neutrals\wc_n_sprout\side.png'
+00:16.312  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T132352Z\neutrals\wc_n_sprout\back.png'
+Traceback (most recent call last):
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\author_neutrals.py", line 450, in <module>
+    for creature in chosen:author(creature,options)
+                           ~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\author_neutrals.py", line 419, in author
+    if not opt.skip_motion_render:render_motion(arm,clips,report)
+                                  ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\author_neutrals.py", line 377, in render_motion
+    scene.render.image_settings.file_format='FFMPEG';scene.render.image_settings.color_mode='RGB'
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: bpy_struct: item.attr = val: enum "FFMPEG" not found in ('AVIF', 'JPEG', 'OPEN_EXR', 'PNG', 'WEBP', 'BMP', 'CINEON', 'DPX', 'IRIS', 'JPEG2000', 'HDR', 'TARGA', 'TARGA_RAW', 'TIFF')
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\neutrals\\wc_n_sprout\\SK_wc_n_sprout.fbx'
+(bpy.data.armatures['WC_NeutralMechanical_v1.001'], 'POSE')
+export finished in 0.0287 sec.
+Info: Applied modifier was not first, result may not be as expected
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\neutrals\\wc_n_sprout\\SK_wc_n_sprout_LOD1.fbx'
+(bpy.data.armatures['WC_NeutralMechanical_v1.001'], 'POSE')
+export finished in 0.0197 sec.
+Info: Applied modifier was not first, result may not be as expected
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\neutrals\\wc_n_sprout\\SK_wc_n_sprout_LOD2.fbx'
+(bpy.data.armatures['WC_NeutralMechanical_v1.001'], 'POSE')
+export finished in 0.0175 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\neutrals\\wc_n_sprout\\AN_wc_n_sprout_Idle.fbx'
+export finished in 0.0720 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\neutrals\\wc_n_sprout\\AN_wc_n_sprout_Move.fbx'
+export finished in 0.0453 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\neutrals\\wc_n_sprout\\AN_wc_n_sprout_Attack.fbx'
+export finished in 0.0381 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\neutrals\\wc_n_sprout\\AN_wc_n_sprout_Hit.fbx'
+export finished in 0.0276 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\neutrals\\wc_n_sprout\\AN_wc_n_sprout_Defeat.fbx'
+export finished in 0.0403 sec.
+
+Error: script failed, file: 'tools/blender/author_neutrals.py', exiting.
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

@@ -1,0 +1,56 @@
+00:02.469  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T133433Z\mira\refinement-v7\mira-update24-revision7.blend"
+Traceback (most recent call last):
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\export_refined_hero.py", line 20, in <module>
+    export_revision(out,args.unit,args.refinement_script.resolve())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\refine_update_ada.py", line 422, in export_revision
+    shutil.copy2(file,EXPORT/file.name)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Blender Foundation\Blender 5.1\5.1\python\Lib\shutil.py", line 468, in copy2
+    copyfile(src, dst, follow_symlinks=follow_symlinks)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Blender Foundation\Blender 5.1\5.1\python\Lib\shutil.py", line 260, in copyfile
+    with open(src, 'rb') as fsrc:
+         ~~~~^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: 'C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T133433Z\\mira\\refinement-v7\\normalized-export\\SK_wc_u_human_priest.fbm'
+Info: Applied modifier was not first, result may not be as expected
+Info: Applied modifier was not first, result may not be as expected
+Info: Saved as "wc_u_human_priest_revision7.blend"
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T133433Z\\mira\\refinement-v7\\normalized-export\\SK_wc_u_human_priest.fbx'
+(bpy.data.armatures['WC_humanoid_standard_v1.001'], 'POSE')
+export finished in 0.0505 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T133433Z\\mira\\refinement-v7\\normalized-export\\SK_wc_u_human_priest_LOD1.fbx'
+(bpy.data.armatures['WC_humanoid_standard_v1.001'], 'POSE')
+export finished in 0.0368 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T133433Z\\mira\\refinement-v7\\normalized-export\\SK_wc_u_human_priest_LOD2.fbx'
+(bpy.data.armatures['WC_humanoid_standard_v1.001'], 'POSE')
+export finished in 0.0361 sec.
+
+
+Error: script failed, file: 'tools/blender/export_refined_hero.py', exiting.
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T133433Z\\mira\\refinement-v7\\normalized-export\\AN_wc_u_human_priest_Idle.fbx'
+export finished in 0.1907 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T133433Z\\mira\\refinement-v7\\normalized-export\\AN_wc_u_human_priest_Move.fbx'
+export finished in 0.1243 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T133433Z\\mira\\refinement-v7\\normalized-export\\AN_wc_u_human_priest_Attack.fbx'
+export finished in 0.1117 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T133433Z\\mira\\refinement-v7\\normalized-export\\AN_wc_u_human_priest_Active.fbx'
+export finished in 0.0986 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T133433Z\\mira\\refinement-v7\\normalized-export\\AN_wc_u_human_priest_Hit.fbx'
+export finished in 0.0770 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T133433Z\\mira\\refinement-v7\\normalized-export\\AN_wc_u_human_priest_Defeat.fbx'
+export finished in 0.1217 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T133433Z\\mira\\refinement-v7\\normalized-export\\AN_wc_u_human_priest_Victory.fbx'
+export finished in 0.1701 sec.
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

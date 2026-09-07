@@ -1,0 +1,17 @@
+00:03.046  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_human_priest\wc_u_human_priest.blend"
+Traceback (most recent call last):
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\refine_update_mira.py", line 162, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\refine_update_mira.py", line 146, in main
+    if name in ('SK_'+UID,'COSTUME_SK_'+UID): add_back_strap(mesh)
+                                              ~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\refine_update_mira.py", line 95, in add_back_strap
+    for edge in pending.pop().link_edges:
+                ^^^^^^^^^^^^^^^^^^^^^^^^
+ReferenceError: BMesh data of type BMVert has been removed
+
+Error: script failed, file: 'tools/blender/refine_update_mira.py', exiting.
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit
