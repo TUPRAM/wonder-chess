@@ -1,3 +1,5 @@
+> Current 24-hero implementation checkpoint: [UPDATE24_CHECKPOINT_HANDOFF.md](UPDATE24_CHECKPOINT_HANDOFF.md). The historical twelve-hero handoff below is retained unchanged.
+
 # Wonder Chess Windows alpha — release handoff
 
 **A real Unreal Shipping game is packaged and has passed complete functional match checks. Full playable/presentable-alpha acceptance is still open.** The final candidate completed 100 real all-bot tournaments, two rendered 1H7B matches with restart, and one actual two-process 2H6B tournament. Its final normal-speed 1080p measurement without automatic screenshots completed with frame p95 16.667 ms and p99 16.728 ms in the required busy scene. The user subsequently authorized dismissal of the Windows Security dialog and continuation. The attempted Cancel click was rejected because the native tool cannot target the dialog; manual verification is waiting on user dismissal. Full manual UI, continuous animation/effect and auditory acceptance remain open. Human audio audition and continuous animation/effect approval have not been completed.

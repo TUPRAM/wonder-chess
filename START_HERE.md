@@ -2,7 +2,7 @@
 
 **First deliverable: a presentable, packaged Windows auto-battler with one human and seven persistent bots.**
 
-This repository contains the original kit and subsequent authored assets, Unreal source and a packaged twelve-hero candidate. Read `reports/RELEASE_HANDOFF.md` and `reports/implementation_state.json` for actual evidence and open gates. The user adopted the 24-hero update on 2026-09-06; its implementation package is `docs/updates/2026-09-auto-chess-inspired/README.md`. Historical kit-only statements do not erase real progress.
+This repository contains the original kit and subsequent authored assets, Unreal source and a packaged twelve-hero candidate. Read `reports/UPDATE24_CHECKPOINT_HANDOFF.md` and `reports/implementation_state.json` for the current 24-hero checkpoint and open gates. `reports/RELEASE_HANDOFF.md` retains the historical twelve-hero handoff. The user adopted the 24-hero update on 2026-09-06; its implementation package is `docs/updates/2026-09-auto-chess-inspired/README.md`. Historical kit-only statements do not erase real progress.
 
 ## Use this package
 
