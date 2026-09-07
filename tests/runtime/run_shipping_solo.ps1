@@ -12,6 +12,7 @@ param(
     [switch]$NoAutomaticShots
 )
 $ErrorActionPreference = 'Stop'
+. (Join-Path $PSScriptRoot 'packaged_payload.ps1')
 $taskRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../..'))
 $manifestPath = (Resolve-Path -LiteralPath $ProvenancePath).Path
 $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
@@ -21,6 +22,7 @@ $expected = $manifest.files | Where-Object path -eq $executable
 $actualHash = (Get-FileHash -LiteralPath $executable -Algorithm SHA256).Hash.ToLowerInvariant()
 if (-not $expected -or $actualHash -ne $expected.sha256) { throw 'Shipping executable does not match the immutable manifest' }
 if ($manifest.package_report.exit_code -ne 0) { throw 'Manifest does not record successful packaging' }
+$payloadVerification = Test-WCPackagedPayload -Manifest $manifest -PackageRoot $packageRoot
 $otherGames = @(Get-CimInstance Win32_Process -Filter "Name = 'WonderChess-Win64-Shipping.exe' OR Name = 'WonderChess.exe'" | Where-Object { $_.ExecutablePath -and $_.ExecutablePath.StartsWith($taskRoot, [StringComparison]::OrdinalIgnoreCase) })
 if ($otherGames.Count) { throw 'Another task-owned game is running; preserve it and launch this verification after it exits' }
 $evidenceLabel = if ($EvidenceName) { $EvidenceName } else { 'shipping-' + $Mode }
@@ -47,6 +49,7 @@ $record = [ordered]@{
     status='STARTED';mode=$Mode;started_utc=[DateTime]::UtcNow.ToString('o');executable=$executable
     executable_sha256=$actualHash;working_directory=$packageRoot;arguments=$arguments
     provenance_path=$manifestPath;provenance_sha256=(Get-FileHash -LiteralPath $manifestPath -Algorithm SHA256).Hash.ToLowerInvariant()
+    payload_verification=$payloadVerification
     ambient_editor_processes=$ambient;other_task_games_before_launch=0;process_id=$null;exit_code=$null;window_style='Hidden'
     null_rhi=[bool]$NullRHI;simulation_speed=$speed;bounded_seconds=$durationSeconds
     automatic_screenshots=(-not $NullRHI -and -not $NoAutomaticShots);projected_bounds=(-not $NullRHI -and -not $NoAutomaticShots)

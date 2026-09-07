@@ -25,17 +25,17 @@ class FrameEvidenceTests(unittest.TestCase):
             return reader.summarize(session)
 
     def test_neutral_load_requires_eight_unfinished_encounters_and_visible_count_is_separate(self):
-        base = dict(phase=1, round=15, visible_alive=11, encounters=8, frame_ms=17,
+        base = dict(wall_seconds=0.017, phase=1, round=15, visible_alive=11, encounters=8, frame_ms=17,
                     game_ms=4, render_ms=3, gpu_ms=0, gpu_available=0,
                     neutral_round=1, neutral_live_encounters=8)
-        result = self.summarize([base, {**base, 'visible_alive': 12, 'neutral_live_encounters': 7},
-                                 {**base, 'phase': 0, 'visible_alive': 12}])
+        result = self.summarize([base, {**base, 'wall_seconds': 0.034, 'visible_alive': 12, 'neutral_live_encounters': 7},
+                                 {**base, 'wall_seconds': 0.051, 'phase': 0, 'visible_alive': 12}])
         self.assertEqual(result['subsets']['eight_live_neutral_encounters']['frames'], 1)
         self.assertEqual(result['subsets']['twelve_visible_and_eight_live_neutral_encounters']['frames'], 0)
         self.assertEqual(result['subsets']['eight_live_neutral_encounters']['gpu_ms']['status'], 'NOT_RUN')
 
     def test_old_frames_do_not_inherit_neutral_coverage_from_calendar_round(self):
-        result = self.summarize([dict(phase=1, round=15, visible_alive=12, encounters=8,
+        result = self.summarize([dict(wall_seconds=0.017, phase=1, round=15, visible_alive=12, encounters=8,
                                      frame_ms=17, game_ms=4, render_ms=3, gpu_ms=0, gpu_available=0)])
         self.assertFalse(result['neutral_instrumentation_available'])
         self.assertEqual(result['eight_neutral_encounters_status'], 'NOT_RUN')

@@ -248,7 +248,7 @@ void ParseRules(const FObject& Root, wc::Rules& R)
     Status.Expect(TEXT("support_power"), TEXT("heal_shield_and_positive_active_attack_rate_only"));
     const FObject Network = Root.Object(TEXT("network"));
     ExactKeys(Network, {TEXT("protocol_version"),TEXT("release_test_modes"),TEXT("future_mode"),TEXT("disconnect_policy"),TEXT("host_disconnect"),TEXT("public_snapshot_cadence_ms"),TEXT("bot_public_observation_ms"),TEXT("bot_final_reposition_cutoff_ms")});
-    Require(Network.Integer(TEXT("protocol_version")) == 4, TEXT("Unsupported network protocol version"));
+    Require(Network.Integer(TEXT("protocol_version")) == wc::NetworkProtocolVersion, TEXT("Unsupported network protocol version"));
     const auto& Modes = Network.Array(TEXT("release_test_modes"));
     Require(Modes.Num() == 3 && Modes[0]->Type == EJson::String && Modes[1]->Type == EJson::String && Modes[2]->Type == EJson::String && Modes[0]->AsString() == TEXT("1H7B") && Modes[1]->AsString() == TEXT("0H8B") && Modes[2]->AsString() == TEXT("2H6B"), TEXT("Release modes must retain 1H7B, 0H8B and 2H6B"));
     Network.Expect(TEXT("disconnect_policy"), TEXT("bot_takeover_until_match_end_no_rejoin_alpha"));

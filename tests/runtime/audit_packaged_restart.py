@@ -17,6 +17,43 @@ def bind(path):
     return {"path": str(path.resolve()), "sha256": hashlib.sha256(path.read_bytes()).hexdigest(), "bytes": path.stat().st_size}
 
 
+def describe_match(summary):
+    probes = f"{summary['passed_probes']}/{summary['probes']} probes passed"
+    return (f"Namespace {summary['namespace']}: actual seed {summary['actual_authority_seed']}; "
+            f"{summary['rounds']} rounds; human eliminated round {summary['elimination_round']}, "
+            f"place {summary['human_place']}; {summary['accepted_replies']} accepted replies, "
+            f"{summary['deliberate_rejected_replies']} rejected replies; {probes}. "
+            f"Results observed {summary['results_utc']}.")
+
+
+def payload_checks(manifest, launch):
+    """Bind both retained launch preflight and current complete package bytes."""
+    checks = []
+    root = Path(manifest["package_root"]).resolve()
+    payload = [item for item in manifest["files"] if item.get("group") == "packaged_payload"]
+    verified = launch.get("payload_verification", {})
+    declared = verified.get("files", [])
+    expected = {str(Path(item["path"]).resolve()): (item["sha256"], item["bytes"]) for item in payload}
+    captured = {str(Path(item["path"]).resolve()): (item["sha256"], item["bytes"]) for item in declared}
+    def check(name, passed, detail):
+        checks.append({"check": name, "status": "PASS" if passed else "FAIL", "detail": detail})
+    check("complete_payload_preflight_retained", bool(payload) and len(expected) == len(payload)
+          and len(captured) == len(declared) and captured == expected and verified.get("status") == "PASS"
+          and verified.get("file_count") == len(payload) and manifest.get("input_files_stable_during_capture") is True,
+          {"manifested_files": len(payload), "captured_files": len(declared),
+           "legacy_launch_boundary": "UNVERIFIED: no retained payload preflight" if not verified else None})
+    for path, (digest, size) in expected.items():
+        candidate = Path(path)
+        within = candidate.is_relative_to(root)
+        check("payload_file_unchanged", within and candidate.is_file() and candidate.stat().st_size == size
+              and bind(candidate)["sha256"] == digest, path)
+    actual = {str(path.resolve()) for path in root.rglob("*") if path.is_file()
+              and "Saved" not in path.relative_to(root).parts}
+    check("payload_file_membership_unchanged", actual == set(expected),
+          {"missing": sorted(set(expected) - actual), "unexpected": sorted(actual - set(expected))})
+    return checks
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("evidence_directory", type=Path, nargs="?", default=BASE)
@@ -101,10 +138,12 @@ def main():
                           "elimination_round": eliminated["round"] if eliminated else None,
                           "human_place": public["seats"][0]["place"], "accepted_replies": s["actual_accepted_replies"],
                           "deliberate_rejected_replies": s["actual_rejected_replies"], "probes": len(probes),
+                          "passed_probes": sum(p["status"] == "PASS" for p in probes.values()),
                           "standings": [{key: seat[key] for key in ("id", "name", "human", "health", "place", "wins")} for seat in public["seats"]]})
     manifest_path = Path(launch["provenance_path"])
     manifest = load(manifest_path)
     manifest_entry = next(item for item in manifest["files"] if item["path"] == launch["executable"])
+    checks.extend(payload_checks(manifest, launch))
     check("immutable_candidate_binding", bind(manifest_path)["sha256"] == launch["provenance_sha256"]
           and launch["executable_sha256"] == manifest_entry["sha256"],
           {"manifest": str(manifest_path), "manifest_sha256": launch["provenance_sha256"], "inner_sha256": launch["executable_sha256"]})
@@ -114,7 +153,7 @@ def main():
     inputs.append(manifest_path)
     result = {"status": "PASS" if all(c["status"] == "PASS" for c in checks) else "FAIL", "utc": datetime.now(timezone.utc).isoformat(),
               "checks": checks, "matches": summaries, "inputs": [bind(p) for p in dict.fromkeys(inputs)],
-              "boundary": "Two actual complete1H7B namespaces in one Shipping process, using actual scripted controller commands and host restart. Accelerated functional run is not performance or manual usability/audio evidence; exact speed and rendering mode are in the bound launch record. Actual initial seed came from WCAutoStart; restart uses the separately recorded restart seed.",
+              "boundary": f"Audited {len(paths)} retained 1H7B namespaces and {args.expected_restarts} requested restarts in one Shipping process, using actual scripted controller commands. Completion and correctness are established only by the individual checks. Accelerated functional runs do not establish performance or manual usability/audio acceptance; exact speed and rendering mode are in the bound launch record. Actual authority seeds are reported separately for every namespace.",
               "known_evidence_defects": [{"field": "match_seed_authority", "namespace": s["namespace"], "summary": s["summary_authority_seed"],
                                           "all_retained_snapshot_seed": s["actual_authority_seed"],
                                           "reason": "Old namespace final writer consults the replacement authoritative Match. Actual seed comes from internally consistent retained snapshot records."}
@@ -125,10 +164,12 @@ def main():
     (output / "audit.json").write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     lines = ["# Packaged restart functional audit", "", f"**{result['status']}**, {len(checks)} checks.", "", result["boundary"], ""]
     for s in summaries:
-        lines.append(f"- Namespace {s['namespace']}: actual seed {s['actual_authority_seed']}; {s['rounds']} rounds; human eliminated round {s['elimination_round']}, place {s['human_place']}; {s['accepted_replies']} accepted replies, {s['deliberate_rejected_replies']} deliberate rejected replies; all {s['probes']} probes passed. Results observed {s['results_utc']}.")
-    lines.extend(["", f"Direct inner process {launch['process_id']} actually exited {launch['exit_code']} at {launch['ended_utc']}. Both complete namespace transcripts, fresh round-one preparation, revision namespaces, private-state isolation and rejection of an old-match request are retained and hash-bound.", "", "Shipping engine-log checks remain NOT_RUN."])
+        lines.append("- " + describe_match(s))
+    lines.extend(["", f"Direct inner process {launch['process_id']} reports exit {launch['exit_code']} at {launch['ended_utc']}. The audit binds {len(paths)} namespace transcripts and checks completion, fresh round-one preparation, revision namespaces, private-state isolation and old-match request rejection. Overall result: {result['status']}.", "", "Shipping engine-log checks remain NOT_RUN."])
     if result["known_evidence_defects"]:
-        lines.extend(["", "Evidence defect retained: namespace1's final summary seed incorrectly reports the replacement match's271828. Every retained namespace1 snapshot reports314159, and every namespace2 snapshot reports271828. This report derives seeds from those consistent timestamped snapshots; gameplay functional checks remain independently passed."])
+        lines.extend(["", "Seed-summary mismatches are retained below. Their presence is not a passing result; use --require-seed-summary-parity for current builds."])
+        for defect in result["known_evidence_defects"]:
+            lines.append(f"- Namespace {defect['namespace']}: summary {defect['summary']}, retained snapshot seed {defect['all_retained_snapshot_seed']}.")
     (output / "audit.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(json.dumps({"status": result["status"], "checks": len(checks), "matches": [{k: v for k, v in s.items() if k != 'standings'} for s in summaries], "nonpassing": [c for c in checks if c["status"] != "PASS"]}, indent=2))
     raise SystemExit(0 if result["status"] == "PASS" else 1)

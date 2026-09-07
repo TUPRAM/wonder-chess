@@ -5,6 +5,7 @@
 #include <iostream>
 #include <set>
 #include <stdexcept>
+#include <tuple>
 
 namespace
 {
@@ -40,7 +41,46 @@ wc::Reply Send(wc::Match &m, int seat, wc::CommandType type, int slot = -1, wc::
     c.unit = unit;
     c.toBoard = board;
     c.cell = cell;
-    return m.Submit(seat, c);
+    const bool previewable = m.CurrentPhase() == wc::Phase::Preparation && s.health > 0 &&
+        (type == wc::CommandType::Buy || type == wc::CommandType::Move || type == wc::CommandType::Sell);
+    const auto before = s;
+    const auto space = m.Namespace();
+    wc::RosterPreview preview;
+    if (previewable)
+    {
+        preview = wc::PreviewRosterCommand(m.Definitions(), before, c);
+        Check(m.Namespace() == space && s.gold == before.gold && s.revision == before.revision &&
+              s.shop == before.shop && s.roster.size() == before.roster.size() &&
+              s.shopRng.state == before.shopRng.state && s.botRng.state == before.botRng.state,
+              "Inventory preview must not mutate live economy, RNG, namespace or revision");
+    }
+    const auto reply = m.Submit(seat, c);
+    if (previewable)
+    {
+        const auto &actual = m.Seats()[seat];
+        Check(preview.accepted == reply.accepted, "Preview acceptance matches real submitted command");
+        Check(preview.resulting.gold == actual.gold && preview.resulting.shop == actual.shop &&
+              preview.resulting.roster.size() == actual.roster.size(), "Preview economy and roster match authority");
+        wc::Id allocated = 0;
+        for (const auto &u : actual.roster)
+            if (std::none_of(before.roster.begin(), before.roster.end(),
+                             [&](const wc::OwnedUnit &old) { return old.id == u.id; })) allocated = u.id;
+        for (auto expected : preview.resulting.roster)
+        {
+            if (preview.hypotheticalId && expected.id == preview.hypotheticalId) expected.id = allocated;
+            const auto found = std::find_if(actual.roster.begin(), actual.roster.end(),
+                                           [&](const wc::OwnedUnit &u) { return u.id == expected.id; });
+            Check(found != actual.roster.end(), "Preview preserves survivor identities");
+            Check(std::tie(found->definition, found->star, found->onBoard, found->cell.column,
+                           found->cell.row, found->bench) ==
+                  std::tie(expected.definition, expected.star, expected.onBoard, expected.cell.column,
+                           expected.cell.row, expected.bench), "Preview stars and destinations match authority");
+        }
+        if (!reply.accepted)
+            Check(preview.mergeSteps.empty() && preview.hypotheticalId == 0,
+                  "Rejected preview has no fabricated completed merge");
+    }
+    return reply;
 }
 void RunCombat(wc::Combat &combat)
 {
@@ -126,7 +166,20 @@ void MergesAndEconomy(const wc::Catalog &canonical)
     Check(Send(m, 0, wc::CommandType::Move, -1, survivor.id, true, {1, 3}).accepted,
           "Deployed merge survivor");
     for (int i = 1; i < 9; ++i)
-        Check(Send(m, 0, wc::CommandType::Buy, Offer(m, 0)).accepted, "Three-level merge purchase");
+    {
+        const int slot = Offer(m, 0);
+        wc::Command purchase; purchase.type = wc::CommandType::Buy; purchase.slot = slot;
+        const auto projection = wc::PreviewRosterCommand(c, m.Seats()[0], purchase);
+        if (i == 8)
+        {
+            Check(projection.mergeSteps.size() == 2, "Ninth-copy preview explains both cascade steps");
+            Check(projection.mergeSteps[0].fromStar == 1 && projection.mergeSteps[0].toStar == 2 &&
+                  projection.mergeSteps[1].fromStar == 2 && projection.mergeSteps[1].toStar == 3 &&
+                  projection.mergeSteps[1].survivorId == survivor.id,
+                  "Cascade preview preserves deployed survivor and upgrade order");
+        }
+        Check(Send(m, 0, wc::CommandType::Buy, slot).accepted, "Three-level merge purchase");
+    }
     Check(m.Seats()[0].roster.size() == 1, "Nine copies become one instance");
     Check(m.Seats()[0].roster[0].id == survivor.id && m.Seats()[0].roster[0].star == 3 &&
               m.Seats()[0].roster[0].cell == wc::Cell{1, 3},
@@ -184,6 +237,29 @@ void MergesAndEconomy(const wc::Catalog &canonical)
                   std::min(canonical.rules.interestCap, lockGold / canonical.rules.interestDivisor),
           "Next preparation uses snapshotted interest and no loss bonus");
     Check(lock.Seats()[0].xp == canonical.rules.passiveXp, "Survivor receives passive XP");
+}
+void PreviewIsolation(const wc::Catalog &catalog)
+{
+    wc::Match before(catalog, 17, 1);
+    const auto owner = before.Seats()[0];
+    wc::Command buy; buy.type = wc::CommandType::Buy; buy.slot = 0;
+    for (int i = 0; i < 32; ++i)
+        Check(wc::PreviewRosterCommand(catalog, owner, buy).accepted, "Repeated first-buy previews are stable");
+    wc::Match after(catalog, 17, 1);
+    Check(after.Namespace() == before.Namespace() + 1 && after.Seats()[0].shop == owner.shop,
+          "Previews allocate no match namespaces and do not change seeded shops");
+    auto invalid = owner;
+    invalid.shop[0] = int(catalog.units.size());
+    Check(!wc::PreviewRosterCommand(catalog, invalid, buy).accepted,
+          "Malformed private offer is rejected without indexing outside definitions");
+    invalid = owner; invalid.gold = 0;
+    const auto poor = wc::PreviewRosterCommand(catalog, invalid, buy);
+    Check(!poor.accepted && poor.resulting.gold == 0 && poor.resulting.shop == invalid.shop,
+          "Unaffordable preview preserves offers and gold");
+    wc::Command reroll; reroll.type = wc::CommandType::Reroll;
+    const auto unsupported = wc::PreviewRosterCommand(catalog, owner, reroll);
+    Check(!unsupported.accepted && unsupported.resulting.shopRng.state == owner.shopRng.state,
+          "Inventory preview cannot speculate hidden reroll RNG");
 }
 void EffectFixtures(const wc::Catalog &canonical, int star)
 {
@@ -597,6 +673,7 @@ int main(int argc, char **argv)
         Numeric(catalog);
         Commands(catalog);
         MergesAndEconomy(catalog);
+        PreviewIsolation(catalog);
         for (int star = 1; star <= 3; ++star) EffectFixtures(catalog, star);
         UpdatedSkills(catalog);
         UpdatedVisualActions(catalog);

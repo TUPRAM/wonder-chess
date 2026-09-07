@@ -1,7 +1,7 @@
 {
-  "schema_version": "3.0.0",
-  "balance_version": "alpha_8seat_v0.3.0",
-  "profile_id": "alpha_8seat",
+  "schema_version": "3.1.0",
+  "balance_version": "alpha_24_v0.4.1",
+  "profile_id": "alpha_24",
   "design_status": "prototype_unplaytested",
   "board": {
     "columns": 8,
@@ -34,7 +34,7 @@
     "seats": 8,
     "default_humans": 1,
     "starting_health": 60,
-    "max_rounds": 24,
+    "max_rounds": 40,
     "first_preparation_ms": 45000,
     "preparation_ms": 25000,
     "combat_timeout_ms": 40000,
@@ -53,13 +53,17 @@
       },
       {
         "start": 13,
-        "end": 24,
+        "end": 40,
         "damage": 6
       }
     ],
     "ghost_wins_count_for_cap": true,
     "timeout_score": "sum_survivor_health_fractions",
-    "rank_ties": "competition_ranking_same_placement"
+    "rank_ties": "competition_ranking_same_placement",
+    "neutral_opening_rounds": 3,
+    "neutral_every_rounds": 5,
+    "neutral_opening_failure_damage": 0,
+    "neutral_failure_damage": 2
   },
   "economy": {
     "starting_gold": 10,
@@ -104,7 +108,8 @@
         "2": 5000,
         "3": 3000
       }
-    }
+    },
+    "neutral_win_income": 2
   },
   "alpha_unit_ids": [
     "wc_u_human_guardian",
@@ -118,12 +123,25 @@
     "wc_u_dwarf_warrior",
     "wc_u_orc_warrior",
     "wc_u_orc_mage",
-    "wc_u_orc_rogue"
+    "wc_u_orc_rogue",
+    "wc_u_human_warrior",
+    "wc_u_elf_mage",
+    "wc_u_dwarf_priest",
+    "wc_u_orc_guardian",
+    "wc_u_halfling_warrior",
+    "wc_u_halfling_ranger",
+    "wc_u_halfling_rogue",
+    "wc_u_halfling_mage",
+    "wc_u_dragonkin_guardian",
+    "wc_u_dragonkin_ranger",
+    "wc_u_dragonkin_rogue",
+    "wc_u_dragonkin_priest"
   ],
   "active_trait_thresholds": [
-    2
+    2,
+    4
   ],
-  "future_profile": "full_roster_design_only",
+  "future_profile": "future_changes_require_versioned_profile",
   "runtime_llm_calls": false,
   "website_blocks_alpha": false,
   "status_policies": {
@@ -144,6 +162,7 @@
     "host_disconnect": "abort_explicitly_no_host_migration",
     "public_snapshot_cadence_ms": 500,
     "bot_public_observation_ms": 1500,
-    "bot_final_reposition_cutoff_ms": 3000
+    "bot_final_reposition_cutoff_ms": 3000,
+    "protocol_version": 6
   }
 }

@@ -1,7 +1,7 @@
 {
-  "schema_version": "3.0.0",
-  "balance_version": "alpha_8seat_v0.3.0",
-  "catalog_digest": "3154592665ce21dc65e5afb06f3769655c8be9ec4157fa6779427c8b8fcc092f",
+  "schema_version": "3.1.0",
+  "balance_version": "alpha_24_v0.4.1",
+  "catalog_digest": "95509d001ca0e6c55fa64a616df6e2e9a01a3809a9b9c82d9bd0a725dad3a1ec",
   "alpha_unit_ids": [
     "wc_u_human_guardian",
     "wc_u_human_priest",
@@ -14,74 +14,92 @@
     "wc_u_dwarf_warrior",
     "wc_u_orc_warrior",
     "wc_u_orc_mage",
-    "wc_u_orc_rogue"
+    "wc_u_orc_rogue",
+    "wc_u_human_warrior",
+    "wc_u_elf_mage",
+    "wc_u_dwarf_priest",
+    "wc_u_orc_guardian",
+    "wc_u_halfling_warrior",
+    "wc_u_halfling_ranger",
+    "wc_u_halfling_rogue",
+    "wc_u_halfling_mage",
+    "wc_u_dragonkin_guardian",
+    "wc_u_dragonkin_ranger",
+    "wc_u_dragonkin_rogue",
+    "wc_u_dragonkin_priest"
   ],
   "files": {
     "asset_manifest.json": {
       "source": "data/asset_manifest.json",
-      "bytes": 13314,
-      "sha256": "44371927afe23119c27e65530a7a185af8739804d5d115aef0bad482729d789e",
-      "sha1": "349db5477fada6bace80bf9b35aba6149f0f6a20"
+      "bytes": 13584,
+      "sha256": "07cda72611cb78b46f7e50656aa5ba807966cbdd71a64ce507858633c5bb571f",
+      "sha1": "6fb038769ff17fbcb8a6cbc2b995881c627aa332"
     },
     "bots.json": {
       "source": "data/bots.json",
-      "bytes": 3832,
-      "sha256": "01206e18d2965f52f26a4606a77a9c080f97f80ad9c06b00ba9b2cbef42d4f95",
-      "sha1": "3229182a91c99379c7e19331110e09baf92c78fe"
+      "bytes": 3977,
+      "sha256": "8dca6fa22fa3cd370da18c77bf6eb2bb1fd335d837ec4200c5793fe8c2bd675b",
+      "sha1": "89be82a1b02d2d0f6ee936e3b016f5d99df66c56"
     },
     "generated/catalog_digest.json": {
       "source": "generated/catalog_digest.json",
-      "bytes": 744,
-      "sha256": "0b9f6fecfbe32be44085968b777d0d2ac22b4d307c3a19dee5d81f875e8c1d59",
-      "sha1": "d740e5157927c7b4a6517a774afd84f9e7fa8ab5"
+      "bytes": 852,
+      "sha256": "11c1326f03aa309abdddef3b2254f366ab687e94dcd0cdf0d4f7595b0801142a",
+      "sha1": "9811cd0ee39ed54230049372e7ff85e2b9e35317"
     },
     "generated/unreal/DT_Abilities_Alpha.json": {
       "source": "generated/unreal/DT_Abilities_Alpha.json",
-      "bytes": 8414,
-      "sha256": "4683dac17ce8de826123c7b73f1a2d375059cee2c36e836ff1023b289abddd4d",
-      "sha1": "911500c50c7760e091c30c88c5d757147dbdbcbc"
+      "bytes": 20766,
+      "sha256": "b291b4e862dfdc1417f0784f95c9691475e64bd1f370bb13c423a55f02457f38",
+      "sha1": "eb60077b131a79137d2be8dc568753172832c5da"
     },
     "generated/unreal/DT_Units_Alpha.json": {
       "source": "generated/unreal/DT_Units_Alpha.json",
-      "bytes": 6660,
-      "sha256": "558939fb58344864bb9983338a9b2c057c5fa9aa339d0af30169fae62770965a",
-      "sha1": "000460bc943361f8a387776311b8d7b0c83b5102"
+      "bytes": 15598,
+      "sha256": "321c699a82bdaceb18ad84689ef792bed02cfe49666ddd1679d9adbd7a0767b2",
+      "sha1": "553c132512ba7c05c3e38a8bbc8d67f564a28047"
     },
     "locales/en.json": {
       "source": "data/locales/en.json",
-      "bytes": 1764,
-      "sha256": "0a7fca79a1125b1eb8f5853b424028efee7116ff9248bd70dcc2d4fa955de247",
-      "sha1": "c419fb4ecdfb61df666c3237c38d4de8eb503995"
+      "bytes": 3826,
+      "sha256": "384265a2a8135aaea35f43a1a48913b356276a5fde39f6a4595ce18f9ee75ae5",
+      "sha1": "39ed663221ec851c3e276f7ff9439d1a8f6882e0"
     },
     "locales/id.json": {
       "source": "data/locales/id.json",
-      "bytes": 1782,
-      "sha256": "40094e29bd9986668d1181bfc1eb75627d06f5f3b60d4efab11b8de27ac77f1c",
-      "sha1": "a7c987ddf5fd70ae058752672042a62874965624"
+      "bytes": 3890,
+      "sha256": "0e4071ccf38eb62ad98c1d95c1f3cab1e6a10c8c961719d45f95020e04d9731c",
+      "sha1": "f1ab9a115788bb90a598a8bc41a8acce163a8e08"
+    },
+    "neutrals.json": {
+      "source": "data/neutrals.json",
+      "bytes": 21468,
+      "sha256": "66c771c0935e743f1ba4e369f4ad3c8f56b64dee84afc1b4963abde0fdaa63e0",
+      "sha1": "0d574cee7e49eebdc3b0fc95953a7d12debfa9a8"
     },
     "rules.alpha.json": {
       "source": "data/rules.alpha.json",
-      "bytes": 3608,
-      "sha256": "6c7eefa224c242f0aa9d105d91cb252bd89cbfc3775b87c1974eab30c57b30d8",
-      "sha1": "71d5e7bf8b7fcb1aa1c36ffd87a738553d5c8d1f"
+      "bytes": 4311,
+      "sha256": "d28926bf6da7ef9f13528397ee0b182fa249c30a959fab099cb43aef7e57d45f",
+      "sha1": "7f00346d9044f0026e5626c0563100fc1ac7bfc4"
     },
     "traits.json": {
       "source": "data/traits.json",
-      "bytes": 7244,
-      "sha256": "ba71d85cd836e0005d9e7d812be2a1a8d8bbb96428eff69208b6c144767f7e07",
-      "sha1": "2d666fda9f062a285be6050ea12900db8cbeb9d8"
+      "bytes": 7523,
+      "sha256": "102263fc7b73c776b35dc2fffbee0f4805d41b85a935f6b8c0cf2b9d2922525f",
+      "sha1": "a8dfdaa8d0ba2709a7483917d6633aa6f38c638f"
     },
     "units.json": {
       "source": "data/units.json",
-      "bytes": 176393,
-      "sha256": "1a93bfb07bd93ace4d5eb740864e26c69765a5ebb9b87885c1d3d40c772cd9e8",
-      "sha1": "13590f8289231a172c37b579b6a99dccdbda9d98"
+      "bytes": 184836,
+      "sha256": "7dbf08ec21daef3c63c4e6cfd1302b508b44df771ee91322f50a95fe9dc31e05",
+      "sha1": "fd8f941c8b047bc5855e4b3d9b39c0c287660371"
     },
     "world.json": {
       "source": "data/world.json",
-      "bytes": 6131,
-      "sha256": "a73167d7fcd30bc6385da83ccdeb8d1562695b8b682d4bd34c36f2b5c51e3f8d",
-      "sha1": "4f98e3177ce53b6b670a822d850d0c4a57131f62"
+      "bytes": 6320,
+      "sha256": "bfdb3b375068922f68e5ccaa37d333ef26264b25391fa2e4530db83a68a1c044",
+      "sha1": "bbaa52097ff8706b0630a247f3d28101399d005c"
     }
   },
   "evidence": "Byte-identical staging only; Unreal load and packaged use require execution."

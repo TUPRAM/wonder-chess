@@ -1,0 +1,196 @@
+{
+  "status": "AUTHORED_EXPORTED_BLENDER_EXECUTED_ENGINE_AND_VISUAL_ACCEPTANCE_OPEN",
+  "unit_id": "wc_u_halfling_rogue",
+  "name": "Nella Quickpocket",
+  "blender_version": "5.1.1",
+  "source_revision": 5,
+  "geometry_revision": 4,
+  "geometry_source_revision": 4,
+  "animation_revision": 5,
+  "source_sha256": "e36f8f0664c06850d81bf6983825abfe67861a82b64f6836db615eef8ee6add0",
+  "author_script_sha256": "293b19530e389c2bd47495360845dcb56c5f3db6bfae60c159582e26df67a120",
+  "pilot_helper_sha256": "49c0e5845e0323266ec35daa8096b60f41a7426352f0fa672c060d4d543ebf50",
+  "family_helper_sha256": "4311e0b24d57c4b78f47c898fa726e41b240216ca7b543ea24908847eee51b44",
+  "units_source_sha256": "fd6d831113261dd984f3d2430236c06eda4a9f4e7f9e30a404a76f418fa953b0",
+  "height_m": 1.1,
+  "rig_family": "humanoid_small",
+  "rig_revision": "WC_humanoid_small_v1",
+  "bones": 27,
+  "triangles": 6748,
+  "materials": 1,
+  "fps": 60,
+  "source_forward": "+Y",
+  "source_up": "+Z",
+  "unit_scale_m": 1,
+  "fbx_profile": "tools/blender/profiles/fbx_skeletal_cm_v1.json",
+  "normalized_export_revision": 1,
+  "normalized_exporter_sha256": "13646d355744f5293d573816e5cd54459cf88f3b647c6c2a22aa61ae29200779",
+  "exported_coordinate_units": "centimeters in independent temporary copies; source metres",
+  "engine_calibration": [
+    "reports/WC-330/import-probe/forward_cm-results.json",
+    "reports/WC-330/import-probe/all7-comparison.json"
+  ],
+  "textures": {
+    "BaseColor": "sRGB",
+    "Normal": "linear flat tangent +Y; geometric bevels",
+    "ORM": "linear R occlusion, G roughness, B metallic"
+  },
+  "clips": {
+    "Idle": {
+      "frames": [
+        1,
+        121
+      ],
+      "fps": 60,
+      "release_frame": null,
+      "duration_seconds": 2.0,
+      "loop": true,
+      "action": "AN_wc_u_halfling_rogue_Idle"
+    },
+    "Move": {
+      "frames": [
+        1,
+        61
+      ],
+      "fps": 60,
+      "release_frame": null,
+      "duration_seconds": 1.0,
+      "loop": true,
+      "action": "AN_wc_u_halfling_rogue_Move"
+    },
+    "Attack": {
+      "frames": [
+        1,
+        79
+      ],
+      "fps": 60,
+      "release_frame": 16,
+      "duration_seconds": 1.3,
+      "loop": false,
+      "action": "AN_wc_u_halfling_rogue_Attack",
+      "presentation_windows": [
+        {
+          "name": "R",
+          "start_frame": 1,
+          "release_frame": 16,
+          "end_frame": 40
+        },
+        {
+          "name": "L",
+          "start_frame": 40,
+          "release_frame": 55,
+          "end_frame": 79
+        }
+      ]
+    },
+    "Active": {
+      "frames": [
+        1,
+        31
+      ],
+      "fps": 60,
+      "release_frame": 13,
+      "duration_seconds": 0.5,
+      "loop": false,
+      "action": "AN_wc_u_halfling_rogue_Active"
+    },
+    "Hit": {
+      "frames": [
+        1,
+        25
+      ],
+      "fps": 60,
+      "release_frame": null,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "action": "AN_wc_u_halfling_rogue_Hit"
+    },
+    "Defeat": {
+      "frames": [
+        1,
+        61
+      ],
+      "fps": 60,
+      "release_frame": null,
+      "duration_seconds": 1.0,
+      "loop": false,
+      "action": "AN_wc_u_halfling_rogue_Defeat"
+    },
+    "Victory": {
+      "frames": [
+        1,
+        91
+      ],
+      "fps": 60,
+      "release_frame": null,
+      "duration_seconds": 1.5,
+      "loop": false,
+      "action": "AN_wc_u_halfling_rogue_Victory"
+    }
+  },
+  "lods": [
+    {
+      "lod": 1,
+      "triangles": 3373,
+      "ratio_target": 0.5,
+      "visual_acceptance": "pending",
+      "mesh_validation_changed": true,
+      "removed_invalid_triangles": 1,
+      "explicit_triangulation": true,
+      "removed_degenerate_faces": 0
+    },
+    {
+      "lod": 2,
+      "triangles": 1668,
+      "ratio_target": 0.25,
+      "visual_acceptance": "pending",
+      "mesh_validation_changed": true,
+      "removed_invalid_triangles": 19,
+      "explicit_triangulation": true,
+      "removed_degenerate_faces": 0
+    }
+  ],
+  "source_brief": {
+    "silhouette": "A compact side-on stance with a short diamond-shaped cape and a high swept hair tuft. Two flat fanlike fantasy batons form a clear paired shape.",
+    "face": "Rich brown skin, green-brown eyes and dark curls clipped at the sides. Her expression is mischievous without a villainous mask.",
+    "costume": "Plum festival jacket, pale shirt, teal waist cord and sturdy close-fitting trousers. Small stitched stars appear only on one large lapel.",
+    "palette": "Plum #785B83; teal #548B89; parchment #E1D4BB; dark cocoa #594838.",
+    "equipment": "Paired short fanlike fantasy batons and a flat messenger pouch. Do not include lockpicking gear or realistic criminal instruction props.",
+    "signature": "Diamond cape, swept hair tuft and paired broad baton ends.",
+    "materials": "Smooth dyed cloth, matte leather and painted wood with a few metallic accents.",
+    "back": "A single diagonal teal cord crosses the short cape. Pouch placement must not collide with quick turns.",
+    "animation": "Idle rests in a sideways stance. Basics use short alternating taps. The active feints with the off-hand and makes one clear forward gesture; no disappearing body or forced camera cut.",
+    "vfx": "A compact gold star above the target and a faint impact ring, then the shared stun marker. No damage packet.",
+    "audio": "A quick double tap and a short bright bell accent.",
+    "risk": "Fast motion can become unreadable on a small model. Preserve a brief anticipation pose and avoid motion blur as a substitute."
+  },
+  "equipment": "Visual only; paired_fan_batons; diamond_cape_diagonal_teal_cord",
+  "files": {
+    "AN_wc_u_halfling_rogue_Active.fbx": "3fcb651ae920dbfaee80c365203c83e6ae529247b9f32347cb07d12c7d0d4b08",
+    "AN_wc_u_halfling_rogue_Attack.fbx": "71769d0b0b34c1362a84b353f1b34e13725dcf4c09d9299fad6f56f76ac99ea8",
+    "AN_wc_u_halfling_rogue_Defeat.fbx": "9cb09218f44b5a278c03a269f0d2dbdd1af1c84cc116ddfd62c086ee1a9e881a",
+    "AN_wc_u_halfling_rogue_Hit.fbx": "1414df41ad10e39ddf5d4ba931f6444f4ba00f848cea279693cd199fe9541984",
+    "AN_wc_u_halfling_rogue_Idle.fbx": "7d48504045d74d2b4f726e74abc16f620788f46b92ee1c6ab58ee9b0f1eb7891",
+    "AN_wc_u_halfling_rogue_Move.fbx": "e862664d0c9c2e96d67030cae6fe6ef4b71bcbc247f2eb32afff14d808e44788",
+    "AN_wc_u_halfling_rogue_Victory.fbx": "17a82577ff517a9446f1938c97774e27e1dca4d2dc5602bb6ff413c2dae3b151",
+    "portrait.png": "352fc91e6212cf8d42191a4a32f93cffcc79b67e8476482440b5753c06919e27",
+    "SK_wc_u_halfling_rogue.fbx": "36027da93071a3b61545bc5314b0b0393d4633744809de29ac402437b191e6b5",
+    "SK_wc_u_halfling_rogue_LOD1.fbx": "8955135ee953a44f0b40231ad1b1e71a3d062e4d3b325c5b1681559368252754",
+    "SK_wc_u_halfling_rogue_LOD2.fbx": "bc01a15a2608f1865f6f2a5856284fd0f36a4be2cf95a2426695e12ca119084a",
+    "T_wc_u_halfling_rogue_BaseColor.png": "39827d500f06390c3f7e49a3a9a901f042bf02b7ea216939ecbfec6905b62d68",
+    "T_wc_u_halfling_rogue_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
+    "T_wc_u_halfling_rogue_ORM.png": "3ea25ed3e1a6f3c159f74db7d0d9324b7d63f93448e42f1d9112645e19eaa3c7"
+  },
+  "report_directory": "reports\\WC-U440\\20260906T163654Z\\halfling-final-check\\nella",
+  "open_reviews": [
+    "continuous seven-clip visual quality",
+    "hands and weapon contact",
+    "crowded game-camera identity",
+    "actual Unreal import/reimport",
+    "LOD silhouettes",
+    "effects/audio synchronization"
+  ],
+  "alternating_attack_evidence": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260907T165200Z-closeout\\wc_u_halfling_rogue-windows",
+  "alternating_attack_author_sha256": "45fe4e102f60d6ca0de3ee38fe6b39cae66a26f606f75e4a68a951348ed55111",
+  "alternating_attack_publisher_sha256": "45fe4e102f60d6ca0de3ee38fe6b39cae66a26f606f75e4a68a951348ed55111"
+}

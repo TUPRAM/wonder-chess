@@ -221,7 +221,8 @@ void AWCBoardPresenter::Refresh(float Delta) {
   int32 SnapshotTick=0;
   int WinningSide = -2;
   int Round = int(Public->GetNumberField(TEXT("round")));
-  const bool Reconstructing = Round != LastRound || Observed != LastObserved;
+  const int64 MatchNamespace = int64(Public->GetNumberField(TEXT("matchNamespace")));
+  const bool Reconstructing = MatchNamespace != LastMatchNamespace || Round != LastRound || Observed != LastObserved;
   if (Reconstructing) {
     for (auto &Effect : Effects)
       if (IsValid(Effect.Actor))
@@ -231,11 +232,13 @@ void AWCBoardPresenter::Refresh(float Delta) {
     for(auto& Pair:StatusMarkers) if(IsValid(Pair.Value)) Pair.Value->Destroy();
     Telegraphs.Reset(); StatusMarkers.Reset(); HeardActions.Reset(); KnownProjectiles.Reset();
     Targets.Reset();
+    AttackClocks.Reset();
     for (auto &State : PreviousStates)
       State.Value = -1;
     for (auto &Action : PreviousActions)
       Action.Value = -1;
     LastObserved = Observed;
+    LastMatchNamespace = MatchNamespace;
   }
   if (Round != LastRound || Phase != LastPhase) {
     if (Round != LastRound)
@@ -442,6 +445,10 @@ void AWCBoardPresenter::Refresh(float Delta) {
         WinningSide == Side && O->GetNumberField(TEXT("hp")) > 0;
     int64 Action = int64(O->GetNumberField(TEXT("action"))) +
                    (Victorious ? 1000000000 : 0);
+    const bool Attacking = State == int(wc::ActionState::AttackWindup) ||
+                           State == int(wc::ActionState::AttackRecovery);
+    const bool Casting = State == int(wc::ActionState::CastWindup) ||
+                         State == int(wc::ActionState::CastRecovery);
     if (State != PreviousStates[Id] || Action != PreviousActions[Id]) {
       FString Clip = TEXT("Idle");
       bool Loop = true;
@@ -451,10 +458,6 @@ void AWCBoardPresenter::Refresh(float Delta) {
         if (!Reconstructing && State == int(wc::ActionState::Moving))
           Controller->Sound(TEXT("movement"));
       }
-      const bool Attacking = State == int(wc::ActionState::AttackWindup) ||
-                             State == int(wc::ActionState::AttackRecovery);
-      const bool Casting = State == int(wc::ActionState::CastWindup) ||
-                           State == int(wc::ActionState::CastRecovery);
       if (Attacking) {
         Clip = TEXT("Attack");
         Loop = false;
@@ -491,6 +494,16 @@ void AWCBoardPresenter::Refresh(float Delta) {
         if (auto *C = Actor->FindComponentByClass<USkeletalMeshComponent>())
           if (auto *Animation = LoadObject<UAnimSequence>(nullptr, *Path)) {
             C->PlayAnimation(Animation, Loop);
+            if (Clip == TEXT("Attack") && !AttackWindows.Contains(UnitId)) {
+              FAttackWindows Windows;
+              Windows.Status = WCReadAttackWindows(Animation, Definitions.Definition(Def, Neutral).attackWindupMs / 1000.0,
+                                                   Windows.Windows, Windows.Error);
+              if (Windows.Status == EWCAttackWindowStatus::Invalid)
+                UE_LOG(LogTemp, Error, TEXT("WC_ATTACK_WINDOWS_INVALID hero=%s reason=%s"), *UnitId, *Windows.Error);
+              AttackWindows.Add(UnitId, MoveTemp(Windows));
+            }
+            if (Clip == TEXT("Attack") && AttackWindows.FindChecked(UnitId).Status == EWCAttackWindowStatus::Valid)
+              C->AddTickPrerequisiteActor(this);
             if (!Reviewing && !Victorious && (Attacking || Casting) &&
                 O->HasField(TEXT("snapshotTick"))) {
               const int WindupMs = Casting
@@ -513,6 +526,41 @@ void AWCBoardPresenter::Refresh(float Delta) {
       PreviousStates[Id] = State;
       PreviousActions[Id] = Action;
     }
+    if (!Reviewing && !Victorious && Attacking) {
+      const auto* Windows = AttackWindows.Find(UnitId);
+      if (Windows && Windows->Status != EWCAttackWindowStatus::Absent)
+        if (auto* C = Actor->FindComponentByClass<USkeletalMeshComponent>())
+          if (auto* Animation = C->GetSingleNodeInstance()) {
+            // Single-node time is bounded before pose evaluation; never play into the next cut.
+            Animation->SetPlaying(false);
+            double OrdinalValue = 0;
+            const bool HasOrdinal = O->TryGetNumberField(TEXT("basicAttackOrdinal"), OrdinalValue) &&
+                                    FMath::IsFinite(OrdinalValue) && OrdinalValue >= 0 && OrdinalValue <= 9007199254740991.0 &&
+                                    FMath::FloorToDouble(OrdinalValue) == OrdinalValue;
+            if (Windows->Status == EWCAttackWindowStatus::Invalid || !HasOrdinal) {
+              AssetStatus = !HasOrdinal ? TEXT("Missing or invalid basic attack presentation identity") : Windows->Error;
+              Animation->SetPosition(0, false);
+            } else if (OrdinalValue == 0) {
+              Animation->SetPosition(0, false);
+            } else {
+              const int WindupTicks = FMath::DivideAndRoundUp(Definitions.Definition(Def, Neutral).attackWindupMs, Definitions.rules.tickMs);
+              auto& Clock = AttackClocks.FindOrAdd(Id);
+              const bool NewPresentation = Clock.action != uint64(O->GetNumberField(TEXT("action"))) || Clock.ordinal != uint64(OrdinalValue);
+              const bool CrossedRelease = Clock.snapshot < int(O->GetNumberField(TEXT("releaseTick"))) &&
+                                          int(O->GetNumberField(TEXT("snapshotTick"))) >= int(O->GetNumberField(TEXT("releaseTick")));
+              Clock.Update(uint64(O->GetNumberField(TEXT("action"))), uint64(OrdinalValue),
+                           int(O->GetNumberField(TEXT("snapshotTick"))), int(O->GetNumberField(TEXT("releaseTick"))) - WindupTicks,
+                           Definitions.rules.tickMs / 1000.0, Delta);
+              const auto Sample = wc::presentation::SampleAttack(Windows->Windows, Clock.ordinal, Clock.elapsed);
+              Animation->SetPosition(float(Sample.position), false);
+              if ((NewPresentation || CrossedRelease) && FParse::Param(FCommandLine::Get(), TEXT("WCWindowAudit")))
+                UE_LOG(LogTemp, Display, TEXT("WC_ATTACK_WINDOW unit=%lld hero=%s action=%llu ordinal=%llu window=%d snapshot=%d release_tick=%d elapsed=%.6f position=%.6f start=%.6f release=%.6f end=%.6f reconstructed=%d"),
+                       Id, *UnitId, Clock.action, Clock.ordinal, Sample.window, Clock.snapshot, int(O->GetNumberField(TEXT("releaseTick"))),
+                       Clock.elapsed, Sample.position, Windows->Windows[Sample.window].start, Windows->Windows[Sample.window].release,
+                       Windows->Windows[Sample.window].end, Reconstructing ? 1 : 0);
+            }
+          }
+    } else AttackClocks.Remove(Id);
     if (Reviewing)
       if (auto *C = Actor->FindComponentByClass<USkeletalMeshComponent>())
         if (auto *Animation = C->GetSingleNodeInstance()) {
@@ -598,6 +646,7 @@ void AWCBoardPresenter::Refresh(float Delta) {
   for (int64 Id : Remove) {
     Heroes.Remove(Id);
     PreviousActions.Remove(Id);
+    AttackClocks.Remove(Id);
     PreviousStates.Remove(Id);
     Highlights.Remove(Id);
     Targets.Remove(Id);

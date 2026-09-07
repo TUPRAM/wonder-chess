@@ -298,7 +298,7 @@ void AWCMatchMode::Publish() {
   O->SetNumberField("entryRemainingMs", bEntryPending ? FMath::Max(0.0, (EntryState == TEXT("Introduction") ? IntroductionRemaining : EntryDeadline-FPlatformTime::Seconds()) * 1000.0) : 0);
   O->SetStringField("schemaVersion", Str(Catalog.schemaVersion));
   O->SetStringField("contentDigest", Str(Catalog.contentDigest));
-  O->SetNumberField("protocolVersion", 4);
+  O->SetNumberField("protocolVersion", wc::NetworkProtocolVersion);
   TArray<Val> Participants;
   for (int32 Seat = 0; Seat < 8; ++Seat) {
     auto Participant = NewObj();
@@ -404,6 +404,7 @@ void AWCMatchMode::Publish() {
                           : 0);
         V->SetNumberField("shield", U.shield);
         V->SetNumberField("action", U.actionId);
+        V->SetNumberField("basicAttackOrdinal", U.basicAttackOrdinal);
         V->SetNumberField("snapshotTick", E.combat.CurrentTick());
         V->SetNumberField("releaseTick", U.releaseTick);
         V->SetNumberField("stun",
@@ -903,6 +904,8 @@ void AWCMatchMode::Regression(int32 Count) {
 
 AWCMatchController::AWCMatchController() {
   PrimaryActorTick.bCanEverTick = true;
+  // Board and front-end scenes explicitly select their cameras, including after LAN possession.
+  bAutoManageActiveCameraTarget = false;
   bShowMouseCursor = true;
   bEnableClickEvents = true;
 }
@@ -1035,26 +1038,40 @@ void AWCMatchController::ClientPrivateState_Implementation(
     AssignedSeat = int(Private->GetNumberField(TEXT("seat")));
     if (PreviousSeat != AssignedSeat)
       ObservedSeat = FMath::Max(0, AssignedSeat);
-    if (Private->HasField(TEXT("revision")) && bCommandPending) {
-      int64 Revision = int64(Private->GetNumberField(TEXT("revision")));
-      int64 Sequence = int64(Private->GetNumberField(TEXT("sequence")));
-      if (Revision > PendingRevision && Sequence >= PendingSequence)
-        bCommandPending = false;
+    CompleteAcknowledgedIntent();
+    if (SelectedUnit && Private->HasField(TEXT("units"))) {
+      bool StillOwned = false;
+      for (const auto& Value : Private->GetArrayField(TEXT("units")))
+        StillOwned |= int64(Value->AsObject()->GetNumberField(TEXT("id"))) == SelectedUnit;
+      if (!StillOwned) SelectedUnit = 0;
     }
   }
 }
+void AWCMatchController::CompleteAcknowledgedIntent() {
+  if (bCommandPending && bPendingAccepted && Private.IsValid() &&
+      Private->HasField(TEXT("revision")) && Private->HasField(TEXT("sequence")) &&
+      int64(Private->GetNumberField(TEXT("revision"))) > PendingRevision &&
+      int64(Private->GetNumberField(TEXT("sequence"))) >= PendingSequence)
+    bCommandPending = false;
+}
 void AWCMatchController::ClientReply_Implementation(bool Accepted,
-                                                    const FString &Reason) {
-  WCRecordVerificationReply(this, Accepted, Reason);
+                                                    const FString &Reason, int64 Request) {
+  WCRecordVerificationReply(this, Accepted, Reason, Request);
+  UE_LOG(LogTemp, Display,
+         TEXT("WC_COMMAND_REPLY seat=%d accepted=%d reason=%s request=%lld"), AssignedSeat,
+         Accepted, *Reason, Request);
+  if (Request && (!bCommandPending || Request != PendingRequest)) return;
+  if (Request) { LastRepliedRequest = Request; bLastReplyAccepted = Accepted; }
   Message = Reason;
   MessageTime = FPlatformTime::Seconds();
-  UE_LOG(LogTemp, Display,
-         TEXT("WC_COMMAND_REPLY seat=%d accepted=%d reason=%s"), AssignedSeat,
-         Accepted, *Reason);
   if (!Accepted) {
-    bCommandPending = false;
+    if (Request) { bCommandPending = false; bPendingAccepted = false; }
     Sound(TEXT("draw"));
-  } else {
+  } else if (Request) {
+    bPendingAccepted = true;
+    if ((PendingType == wc::CommandType::Move || PendingType == wc::CommandType::Sell) &&
+        SelectedUnit == PendingUnit) SelectedUnit = 0;
+    CompleteAcknowledgedIntent();
     static const TCHAR *Names[] = {
         TEXT("buy"), TEXT("sell"),     TEXT("reroll"), TEXT("ready"),
         TEXT("buy"), TEXT("movement"), TEXT("ready")};
@@ -1068,7 +1085,7 @@ void AWCMatchController::ServerStart_Implementation(int32 Humans, int32 Seed) {
 void AWCMatchController::ServerCatalogReady_Implementation(const FString& Schema, const FString& Digest, int32 Protocol) {
   auto* M = GetWorld()->GetAuthGameMode<AWCMatchMode>();
   if (!M || !M->Controllers.Contains(this)) return;
-  if (Protocol != 4 || Schema != Str(M->Catalog.schemaVersion) || Digest != Str(M->Catalog.contentDigest)) {
+  if (Protocol != 5 || Schema != Str(M->Catalog.schemaVersion) || Digest != Str(M->Catalog.contentDigest)) {
     bCatalogReady = false;
     ClientRejectSession(TEXT("Game data or protocol differs from the host. Use the same Wonder Chess package."));
     return;
@@ -1122,17 +1139,23 @@ void AWCMatchController::ServerIntent_Implementation(int32 Type, int64 Request,
                                                      int64 Revision, int64 Unit,
                                                      int32 Slot, bool ToBoard,
                                                      int32 Column, int32 Row) {
-  auto *M = GetWorld()->GetAuthGameMode<AWCMatchMode>();
-  if (!M || !M->Match)
+  if (!bCatalogReady) {
+    ClientRejectSession(TEXT("Game data has not passed the host compatibility check. Use the same Wonder Chess package."));
     return;
+  }
+  auto *M = GetWorld()->GetAuthGameMode<AWCMatchMode>();
+  if (!M || !M->Match) {
+    ClientReply(false, TEXT("No active tournament accepts this action."), Request);
+    return;
+  }
   if (AssignedSeat < 0 || AssignedSeat >= int(M->Match->Seats().size()) ||
       !M->Match->Seats()[AssignedSeat].human) {
-    ClientReply(false, TEXT("This controller has no active human seat."));
+    ClientReply(false, TEXT("This controller has no active human seat."), Request);
     return;
   }
   if (Type < 0 || Type > int(wc::CommandType::Ready) || Request <= 0 ||
       Sequence < 0 || Revision < 0 || Unit < 0) {
-    ClientReply(false, TEXT("Invalid command payload."));
+    ClientReply(false, TEXT("Invalid command payload."), Request);
     return;
   }
   wc::Command C;
@@ -1146,7 +1169,7 @@ void AWCMatchController::ServerIntent_Implementation(int32 Type, int64 Request,
   C.toBoard = ToBoard;
   C.cell = {Column, Row};
   const auto Reply = M->Match->Submit(AssignedSeat, C);
-  ClientReply(Reply.accepted, Str(Reply.reason));
+  ClientReply(Reply.accepted, Str(Reply.reason), Request);
   M->Publish();
 }
 void AWCMatchController::Intent(wc::CommandType Type, int64 Unit, int32 Slot,
@@ -1186,8 +1209,11 @@ void AWCMatchController::SendNextIntent() {
   PendingSequence = int64(Private->GetNumberField(TEXT("sequence"))) + 1;
   PendingRevision = int64(Private->GetNumberField(TEXT("revision")));
   PendingType = C.Type;
+  PendingUnit = C.Unit;
+  PendingRequest = RequestId++;
+  bPendingAccepted = false;
   bCommandPending = true;
-  ServerIntent(int(C.Type), RequestId++, PendingSequence, PendingRevision,
+  ServerIntent(int(C.Type), PendingRequest, PendingSequence, PendingRevision,
                C.Unit, C.Slot, C.ToBoard, C.Column, C.Row);
 }
 void AWCMatchController::RefreshView() {
@@ -1249,9 +1275,10 @@ void AWCMatchController::Tick(float Delta) {
   RefreshView();
   if (!bSentCatalogReady && Presenter && !Presenter->Definitions.units.empty() && Public.IsValid() && Public->HasField(TEXT("contentDigest")) && !Public->GetStringField(TEXT("contentDigest")).IsEmpty()) {
     bSentCatalogReady = true;
-    ServerCatalogReady(Str(Presenter->Definitions.schemaVersion), Str(Presenter->Definitions.contentDigest), 4);
+    ServerCatalogReady(Str(Presenter->Definitions.schemaVersion), Str(Presenter->Definitions.contentDigest), 5);
   }
   SendNextIntent();
+  WCTickSelectionAudit(this);
   if (Public.IsValid() && Public->HasField(TEXT("entryState")) &&
       !Public->GetStringField(TEXT("entryState")).IsEmpty() &&
       FParse::Param(FCommandLine::Get(), TEXT("WCExercise")))

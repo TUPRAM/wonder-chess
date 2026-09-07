@@ -3521,7 +3521,7 @@ Health and basic damage use 1.00/1.80/3.24 star multipliers. Only explicitly aut
 
 **Practical weakness.** No dash and no area attack; true damage is small and does not bypass shields.
 
-**Difference from the nearest alternative.** Other Rogues reposition or stun; Iri offers a narrow anti-defense damage tool only in the expansion.
+**Difference from the nearest alternative.** Other Rogues reposition or stun; Iri offers a narrow anti-defense damage tool in the full 24-hero alpha.
 
 **Character-specific acceptance test.** True damage bypasses armor/resistance, still applies permitted source bonuses once and is absorbed by shields first.
 
@@ -3545,7 +3545,7 @@ Targets to profile: at most 15,000 LOD0 triangles, 1024-pixel default maps, up t
 
 Sockets: `weapon_r`, `weapon_l`, `cast_origin`, `head_ui`. Inspect shoulder, elbow, hip and knee extremes. Use separate rig proportions where needed; matching bone names is not proof of animation compatibility. Selection uses a stable unit proxy, not detailed prop collision. Team affiliation uses base rings/icons in addition to color, never a complete costume recolor.
 
-**Specific production risk:** True damage can erase defensive choices if overtuned. Its magnitude is deliberately lower than same-tier physical or magic skills and belongs only to expansion.
+**Specific production risk:** True damage can erase defensive choices if overtuned. Its magnitude is deliberately lower than same-tier physical or magic skills; measure durable-target counterplay in the full 24-hero alpha.
 
 Required source/export locations:
 

@@ -26,6 +26,9 @@ public:
   UPROPERTY(BlueprintReadOnly, Category = "WonderChess|Session")
   FString LastNetworkDetail;
 
+  // Retained across travel so a failed connection can be edited and retried.
+  FString LastJoinAddress, LastSessionAction;
+
   UPROPERTY(BlueprintReadOnly, Category = "WonderChess|Session")
   FName LastNetworkErrorKey = NAME_None;
 

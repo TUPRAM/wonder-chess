@@ -1,9 +1,14 @@
 param(
     [Parameter(Mandatory = $true)][ValidateSet('client-loss', 'host-loss')][string]$Mode,
     [Parameter(Mandatory = $true)][string]$ProvenancePath,
-    [string]$EvidenceName = 'shipping-disconnect'
+    [string]$EvidenceName = 'shipping-disconnect',
+    [string]$OutputDirectory,
+    [ValidateRange(30,3600)][int]$HostSeconds,
+    [ValidateRange(15,3600)][int]$ClientSeconds,
+    [ValidateRange(1,20)][int]$SimulationSpeed=1
 )
 $ErrorActionPreference = 'Stop'
+. (Join-Path $PSScriptRoot 'packaged_payload.ps1')
 $taskRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../..'))
 $manifestPath = [IO.Path]::GetFullPath($ProvenancePath)
 $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
@@ -12,10 +17,12 @@ $packageRoot = $manifest.package_root
 $executable = Join-Path $packageRoot 'WonderChess.exe'
 $gameExecutable = Join-Path $packageRoot 'WonderChess/Binaries/Win64/WonderChess-Win64-Shipping.exe'
 if ($EvidenceName -notmatch '^[a-z0-9-]+$') { throw 'Evidence name must be a simple report directory name' }
-$evidenceRoot = Join-Path $taskRoot ('reports/WC-360/' + $EvidenceName + '/' + $Mode)
+$evidenceRoot = if ($OutputDirectory) { [IO.Path]::GetFullPath($OutputDirectory) } else { Join-Path $taskRoot ('reports/WC-360/' + $EvidenceName + '/' + $Mode) }
 $port = if ($Mode -eq 'client-loss') { 7778 } else { 7779 }
-$hostSeconds = if ($Mode -eq 'client-loss') { 100 } else { 35 }
-$clientSeconds = if ($Mode -eq 'client-loss') { 30 } else { 65 }
+if (-not $PSBoundParameters.ContainsKey('HostSeconds')) { $HostSeconds = if ($Mode -eq 'client-loss') { 150 } else { 45 } }
+if (-not $PSBoundParameters.ContainsKey('ClientSeconds')) { $ClientSeconds = if ($Mode -eq 'client-loss') { 45 } else { 100 } }
+if (($Mode -eq 'client-loss' -and $HostSeconds -le $ClientSeconds+35) -or ($Mode -eq 'host-loss' -and $ClientSeconds -le $HostSeconds+15)) { throw 'Surviving process needs enough time to observe loss and the late-join check' }
+if (-not $evidenceRoot.StartsWith((Join-Path $taskRoot 'reports') + [IO.Path]::DirectorySeparatorChar, [StringComparison]::OrdinalIgnoreCase)) { throw 'Evidence must stay under this workspace reports directory' }
 if (Test-Path -LiteralPath $evidenceRoot) { throw "Preserve existing evidence: $evidenceRoot already exists" }
 if (-not (Test-Path -LiteralPath $executable)) { throw 'Verified Shipping executable is absent' }
 $udp = @(Get-NetUDPEndpoint -ErrorAction Stop | Where-Object LocalPort -eq $port)
@@ -28,14 +35,16 @@ foreach ($path in @($executable, $gameExecutable)) {
     if (-not $expected -or $actualHash -ne $expected.sha256) { throw "Shipping executable hash no longer matches immutable manifest: $path" }
     $identities += @{path=$path;sha256=$actualHash}
 }
+$payloadVerification = Test-WCPackagedPayload -Manifest $manifest -PackageRoot $packageRoot
 New-Item -ItemType Directory -Path $evidenceRoot | Out-Null
 $processes = [System.Collections.Generic.List[object]]::new()
 $result = [ordered]@{
     mode = $Mode; port = $port; utc_started = [DateTime]::UtcNow.ToString('o'); status = 'RUNNING'
-    package = $packageRoot; executable_identities = $identities; port_unowned_before_launch = $true
+    package = $packageRoot; executable_identities = $identities; payload_verification = $payloadVerification; port_unowned_before_launch = $true
     provenance_path=$manifestPath; provenance_sha256=(Get-FileHash -LiteralPath $manifestPath -Algorithm SHA256).Hash.ToLowerInvariant()
     startup_flags='Scoped game-owned -WCHost/-WCJoin routing; current PowerShell policy; actual OS UDP listen owner'
-    boundary = 'Actual Shipping packaged local-loopback process lifecycle. Normal simulation speed,1280x720. This functional multi-process run is not uncontended1080p performance acceptance. Shipping UE_LOG checks are unavailable, not zero errors.'
+    boundary = 'Actual Shipping packaged local-loopback process lifecycle. 1280x720 at the explicitly recorded speed. Actual departure phase and neutral/PvP kind are determined from evidence. This functional multi-process run is not uncontended1080p performance acceptance. Shipping UE_LOG checks are unavailable, not zero errors.'
+    simulation_speed=$SimulationSpeed;bounded_host_seconds=$HostSeconds;bounded_client_seconds=$ClientSeconds
     processes = @(); late_join_launched_after_observed_takeover = $false
 }
 
@@ -48,11 +57,12 @@ function Launch-Game([string]$Role, [int]$Seconds) {
     $directory = Join-Path $evidenceRoot $Role
     New-Item -ItemType Directory -Path $directory | Out-Null
     $arguments = @('-unattended', '-nosplash', '-windowed', '-ResX=1280', '-ResY=720', '-ForceRes', '-dx11',
-        '-WCExercise', '-WCAuthorityChecks', '-WCProfile', '-WCShots', '-WCFast=1', "-WCExitAfter=$Seconds",
+        '-WCExercise', '-WCAuthorityChecks', '-WCProfile', '-WCShots', "-WCFast=$SimulationSpeed", "-WCExitAfter=$Seconds",
         ('-WCEvidenceDir="' + $directory + '"'))
     if ($Role -eq 'host') { $arguments += @('-WCHost', "-Port=$port") }
     else { $arguments += "-WCJoin=127.0.0.1:$port" }
     $launched = Start-Process -FilePath $executable -WorkingDirectory $packageRoot -WindowStyle Hidden -PassThru -ArgumentList $arguments
+    $null = $launched.Handle
     $record = [ordered]@{ role = $Role; bootstrap_pid = $launched.Id; utc_launched = [DateTime]::UtcNow.ToString('o')
         executable = $executable; working_directory = $packageRoot; arguments = $arguments; planned_exit_after_seconds = $Seconds
         exit_observed = $false; exit_code = $null }
@@ -85,7 +95,7 @@ try {
     $result.listen_confirmed_utc = [DateTime]::UtcNow.ToString('o')
     Write-Output "Actual Shipping host UDP port $port owned by PID $($result.listen_owner.process_id)"
     Launch-Game 'client' $clientSeconds
-    $deadline = [DateTime]::UtcNow.AddSeconds(135)
+    $deadline = [DateTime]::UtcNow.AddSeconds([Math]::Max($HostSeconds,$ClientSeconds)+60)
     do {
         foreach ($entry in $processes) {
             $entry.Process.Refresh()

@@ -3,9 +3,9 @@
   "unit_id": "wc_u_orc_warrior",
   "name": "Rok Sunward",
   "blender_version": "5.1.1",
-  "source_revision": 7,
+  "source_revision": 8,
   "height_m": 2.04,
-  "source_sha256": "9209f6b12f35fca71340688227570cea39e2868483d85741176b297ad4698f0a",
+  "source_sha256": "eda8e8a562aace20f2264c072ed5346cfa883fdd169a432d151ebcc885b51f95",
   "author_script_sha256": "474d9d165ca7a0c2134197c379978f59d2af9baf475bbcd0970fd97febd0a4da",
   "units_source_sha256": "fd6d831113261dd984f3d2430236c06eda4a9f4e7f9e30a404a76f418fa953b0",
   "rig_family": "humanoid_broad",
@@ -54,11 +54,26 @@
       "action": "AN_wc_u_orc_warrior_Attack",
       "frames": [
         1,
-        46
+        91
       ],
       "release_frame": 22,
       "support_hand_bake_samples": 0,
-      "maximum_support_reach_clamp_m": 0
+      "maximum_support_reach_clamp_m": 0,
+      "presentation_windows": [
+        {
+          "name": "R",
+          "start_frame": 1,
+          "release_frame": 22,
+          "end_frame": 46
+        },
+        {
+          "name": "L",
+          "start_frame": 46,
+          "release_frame": 67,
+          "end_frame": 91
+        }
+      ],
+      "duration_seconds": 1.5
     },
     "Active": {
       "action": "AN_wc_u_orc_warrior_Active",
@@ -131,7 +146,7 @@
   },
   "files": {
     "AN_wc_u_orc_warrior_Active.fbx": "2707aec5e74ad689eaaaee5baf9365225cf3c214c176f6a61c14132a0172685c",
-    "AN_wc_u_orc_warrior_Attack.fbx": "66b724525e8973bd7d96fb72d7795f91d41b30c802b355a86ae92e44a56fb6a5",
+    "AN_wc_u_orc_warrior_Attack.fbx": "19025ff9787279179025bef0eacfd4d3632034454ce81afbe64e27fc36ea7e1a",
     "AN_wc_u_orc_warrior_Defeat.fbx": "0b1240178ffb5747ecb78078b99385766f6ec0fdcef9ae47c604e9448f7df228",
     "AN_wc_u_orc_warrior_Hit.fbx": "d38bb09c1a7caadc587da811f9241dbc04beb1a84bd3db87ce5867251f22a8b4",
     "AN_wc_u_orc_warrior_Idle.fbx": "375a05ce17ae391ed51318162293c782fa0b4ee9fcd524f7de83c60d70c57ef2",
@@ -158,7 +173,7 @@
   "normalized_reexport_script_sha256": "c1176dfe4526f36b767e3427383e70c3e174b2d62b36ac1a9562f5d8d7ffb99b",
   "exported_coordinate_units": "centimeters: temporary geometry, rest translation and animation location values multiplied by100; authoring source remains meters",
   "geometry_source_revision": 7,
-  "animation_revision": 6,
+  "animation_revision": 7,
   "animation_refinement_script_sha256": "883991d592dfb18f4fd3e85b04583782ea411a21426c8921c13966d8bcd16f40",
   "animation_pose_script_sha256": "e43d6c05800e8b6dccbcd697d7cc9664b61d73f7012cac75ef98183e709d47b9",
   "animation_author_script_sha256": "ddaed7bb350bafb94c1743bc31c4b613524f971af01a5611835402590d8ae6f0",
@@ -169,5 +184,8 @@
   "update_export_script_sha256": "4d9ec9f5747367743efd1f44f653f2e95f7ebdeb061aa1a62351dc774ecd82bf",
   "update_refinement_evidence": "reports/WC-U440/20260906T141653Z-orcs/rok-candidate02/workbench-review",
   "geometry_review_evidence": "reports/WC-U440/20260906T141653Z-orcs/rok-candidate02/workbench-review",
-  "animation_update_changes": []
+  "animation_update_changes": [],
+  "alternating_attack_evidence": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T170748Z-alternating\\rok-candidate8",
+  "alternating_attack_author_sha256": "45fe4e102f60d6ca0de3ee38fe6b39cae66a26f606f75e4a68a951348ed55111",
+  "alternating_attack_publisher_sha256": "45fe4e102f60d6ca0de3ee38fe6b39cae66a26f606f75e4a68a951348ed55111"
 }

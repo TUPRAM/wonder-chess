@@ -1,0 +1,179 @@
+{
+  "status": "AUTHORED_EXPORTED_BLENDER_EXECUTED_ENGINE_AND_VISUAL_ACCEPTANCE_OPEN",
+  "unit_id": "wc_u_halfling_mage",
+  "name": "Milo Mistwhistle",
+  "blender_version": "5.1.1",
+  "source_revision": 2,
+  "geometry_revision": 2,
+  "geometry_source_revision": 2,
+  "animation_revision": 2,
+  "source_sha256": "b64ad1262cb15bcb5bde668a4767df6a5cea5111b797c31ae6129a80ba562faf",
+  "author_script_sha256": "01a0c483228d7313d4c1ba270a630155cbaa9fab94e679c45f885eea1737896a",
+  "pilot_helper_sha256": "49c0e5845e0323266ec35daa8096b60f41a7426352f0fa672c060d4d543ebf50",
+  "family_helper_sha256": "4311e0b24d57c4b78f47c898fa726e41b240216ca7b543ea24908847eee51b44",
+  "units_source_sha256": "fd6d831113261dd984f3d2430236c06eda4a9f4e7f9e30a404a76f418fa953b0",
+  "height_m": 1.14,
+  "rig_family": "humanoid_small",
+  "rig_revision": "WC_humanoid_small_v1",
+  "bones": 27,
+  "triangles": 8400,
+  "materials": 1,
+  "fps": 60,
+  "source_forward": "+Y",
+  "source_up": "+Z",
+  "unit_scale_m": 1,
+  "fbx_profile": "tools/blender/profiles/fbx_skeletal_cm_v1.json",
+  "normalized_export_revision": 1,
+  "normalized_exporter_sha256": "13646d355744f5293d573816e5cd54459cf88f3b647c6c2a22aa61ae29200779",
+  "exported_coordinate_units": "centimeters in independent temporary copies; source metres",
+  "engine_calibration": [
+    "reports/WC-330/import-probe/forward_cm-results.json",
+    "reports/WC-330/import-probe/all7-comparison.json"
+  ],
+  "textures": {
+    "BaseColor": "sRGB",
+    "Normal": "linear flat tangent +Y; geometric bevels",
+    "ORM": "linear R occlusion, G roughness, B metallic"
+  },
+  "clips": {
+    "Idle": {
+      "frames": [
+        1,
+        121
+      ],
+      "fps": 60,
+      "release_frame": null,
+      "duration_seconds": 2.0,
+      "loop": true,
+      "action": "AN_wc_u_halfling_mage_Idle"
+    },
+    "Move": {
+      "frames": [
+        1,
+        61
+      ],
+      "fps": 60,
+      "release_frame": null,
+      "duration_seconds": 1.0,
+      "loop": true,
+      "action": "AN_wc_u_halfling_mage_Move"
+    },
+    "Attack": {
+      "frames": [
+        1,
+        43
+      ],
+      "fps": 60,
+      "release_frame": 19,
+      "duration_seconds": 0.7,
+      "loop": false,
+      "action": "AN_wc_u_halfling_mage_Attack"
+    },
+    "Active": {
+      "frames": [
+        1,
+        40
+      ],
+      "fps": 60,
+      "release_frame": 22,
+      "duration_seconds": 0.65,
+      "loop": false,
+      "action": "AN_wc_u_halfling_mage_Active"
+    },
+    "Hit": {
+      "frames": [
+        1,
+        25
+      ],
+      "fps": 60,
+      "release_frame": null,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "action": "AN_wc_u_halfling_mage_Hit"
+    },
+    "Defeat": {
+      "frames": [
+        1,
+        61
+      ],
+      "fps": 60,
+      "release_frame": null,
+      "duration_seconds": 1.0,
+      "loop": false,
+      "action": "AN_wc_u_halfling_mage_Defeat"
+    },
+    "Victory": {
+      "frames": [
+        1,
+        91
+      ],
+      "fps": 60,
+      "release_frame": null,
+      "duration_seconds": 1.5,
+      "loop": false,
+      "action": "AN_wc_u_halfling_mage_Victory"
+    }
+  },
+  "lods": [
+    {
+      "lod": 1,
+      "triangles": 4200,
+      "ratio_target": 0.5,
+      "visual_acceptance": "pending",
+      "mesh_validation_changed": false,
+      "removed_invalid_triangles": 0,
+      "explicit_triangulation": true,
+      "removed_degenerate_faces": 0
+    },
+    {
+      "lod": 2,
+      "triangles": 2083,
+      "ratio_target": 0.25,
+      "visual_acceptance": "pending",
+      "mesh_validation_changed": true,
+      "removed_invalid_triangles": 17,
+      "explicit_triangulation": true,
+      "removed_degenerate_faces": 0
+    }
+  ],
+  "source_brief": {
+    "silhouette": "A round short travel coat, large upturned collar and a thick spiral-topped wand. A small rigid umbrella disk folded against the back adds a distinctive rounded shape.",
+    "face": "Warm tan skin, gray eyes, a small dark mustache and wavy brown hair. Clearly adult proportions and expression; no oversized infant features.",
+    "costume": "Sky-blue raincoat, cream collar, copper belt buckle and dark boots. Sleeves are wide but stop at the wrists for clean hand animation.",
+    "palette": "Sky blue #77AFC2; cream #EAE0C7; copper #B78258; slate #566477.",
+    "equipment": "A thick spiral fantasy wand and a collapsed decorative umbrella disk. The disk is not a shield or movement device.",
+    "signature": "Spiral wand, upturned pale collar and round coat silhouette.",
+    "materials": "Waxed cloth, painted wood and dull copper; use a small bounded emissive spiral rather than transparent mist clothing.",
+    "back": "Umbrella disk is locked to a short bracket, clear of the head. The coat separates into two broad lower panels.",
+    "animation": "Idle balances the wand with a curious head tilt. Basics send a small pale mote. The active makes one circular stir and flicks a cloudlet toward the captured target area.",
+    "vfx": "A small blue-white cloud pops low to the board and vanishes. It does not blind, obscure the camera, slow movement or persist.",
+    "audio": "A soft rising whistle followed by a light magical pop, without a continuous wind loop.",
+    "risk": "Cloud effects can obscure units. Keep opacity low, lifetime short and the gameplay ring more readable than the vapor."
+  },
+  "equipment": "Visual only; spiral_wand; folded_rigid_disk_on_short_fixed_bracket",
+  "files": {
+    "AN_wc_u_halfling_mage_Active.fbx": "563ef513cfe6950b369a21e012170c1753c77cabb7cd5613f6230aa1cbee634a",
+    "AN_wc_u_halfling_mage_Attack.fbx": "d24bf95c8d9662604c1e49acb609ddbdf7d87a3ea097f68189aaf169956a46c4",
+    "AN_wc_u_halfling_mage_Defeat.fbx": "a29e3b1e340fac9e3b023befb2c524a738797b13f3a9dd68fc3abcac8df7c621",
+    "AN_wc_u_halfling_mage_Hit.fbx": "9fadd3365f374d79e504ab1e754dcdc7c88760d807c8e248f4086927c4618e9d",
+    "AN_wc_u_halfling_mage_Idle.fbx": "3df92d0d2c48dbdf544c632ae203ca94c187492e861a6dbb7c1fcd69469e23ef",
+    "AN_wc_u_halfling_mage_Move.fbx": "c02754895af6a024e7731a634fab59b6dd728f7cfa50e1b42cd2e825abee16ae",
+    "AN_wc_u_halfling_mage_Victory.fbx": "6ea0c420e7d7a3a0dafafd47ee40b6afcf639bba1f901efff8c791dda07532f6",
+    "portrait.png": "5cea81abd7a3468997f60e6ee84bda0e5d54dbd695ab04855aacd6dff9faeae7",
+    "SK_wc_u_halfling_mage.fbx": "2d56fa4782ac54e0e6db7097e184d70267ea10a378e3c9857bf20cb57bf0bda6",
+    "SK_wc_u_halfling_mage_LOD1.fbx": "cf9f900c76608c4c66a5f94a98aef9f2cc7a7adcbcc32f0ec73828f0c5da0b02",
+    "SK_wc_u_halfling_mage_LOD2.fbx": "78f840c8a3f7a7b3aaa208683cb5bcbbd1bb5c069126444b86b0ed4bd3747c3d",
+    "T_wc_u_halfling_mage_BaseColor.png": "14cd5acc30717b66985c288c58b2bc467bd82e7980ec2d90f01c2a2b097d38e0",
+    "T_wc_u_halfling_mage_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
+    "T_wc_u_halfling_mage_ORM.png": "3ea25ed3e1a6f3c159f74db7d0d9324b7d63f93448e42f1d9112645e19eaa3c7"
+  },
+  "report_directory": "reports\\WC-U440\\20260906T162841Z\\halfling-face-fit\\milo",
+  "open_reviews": [
+    "continuous seven-clip visual quality",
+    "hands and weapon contact",
+    "crowded game-camera identity",
+    "actual Unreal import/reimport",
+    "LOD silhouettes",
+    "effects/audio synchronization"
+  ]
+}

@@ -1,0 +1,179 @@
+{
+  "status": "AUTHORED_EXPORTED_BLENDER_EXECUTED_ENGINE_AND_VISUAL_ACCEPTANCE_OPEN",
+  "unit_id": "wc_u_halfling_ranger",
+  "name": "Finn Thistlearrow",
+  "blender_version": "5.1.1",
+  "source_revision": 5,
+  "geometry_revision": 5,
+  "geometry_source_revision": 5,
+  "animation_revision": 5,
+  "source_sha256": "3cdc9c6c637a4eef1d0fcb9afead810d4be308364e3a1117278160058be79b7f",
+  "author_script_sha256": "01a0c483228d7313d4c1ba270a630155cbaa9fab94e679c45f885eea1737896a",
+  "pilot_helper_sha256": "49c0e5845e0323266ec35daa8096b60f41a7426352f0fa672c060d4d543ebf50",
+  "family_helper_sha256": "4311e0b24d57c4b78f47c898fa726e41b240216ca7b543ea24908847eee51b44",
+  "units_source_sha256": "fd6d831113261dd984f3d2430236c06eda4a9f4e7f9e30a404a76f418fa953b0",
+  "height_m": 1.08,
+  "rig_family": "humanoid_small",
+  "rig_revision": "WC_humanoid_small_v1",
+  "bones": 27,
+  "triangles": 6996,
+  "materials": 1,
+  "fps": 60,
+  "source_forward": "+Y",
+  "source_up": "+Z",
+  "unit_scale_m": 1,
+  "fbx_profile": "tools/blender/profiles/fbx_skeletal_cm_v1.json",
+  "normalized_export_revision": 1,
+  "normalized_exporter_sha256": "13646d355744f5293d573816e5cd54459cf88f3b647c6c2a22aa61ae29200779",
+  "exported_coordinate_units": "centimeters in independent temporary copies; source metres",
+  "engine_calibration": [
+    "reports/WC-330/import-probe/forward_cm-results.json",
+    "reports/WC-330/import-probe/all7-comparison.json"
+  ],
+  "textures": {
+    "BaseColor": "sRGB",
+    "Normal": "linear flat tangent +Y; geometric bevels",
+    "ORM": "linear R occlusion, G roughness, B metallic"
+  },
+  "clips": {
+    "Idle": {
+      "frames": [
+        1,
+        121
+      ],
+      "fps": 60,
+      "release_frame": null,
+      "duration_seconds": 2.0,
+      "loop": true,
+      "action": "AN_wc_u_halfling_ranger_Idle"
+    },
+    "Move": {
+      "frames": [
+        1,
+        61
+      ],
+      "fps": 60,
+      "release_frame": null,
+      "duration_seconds": 1.0,
+      "loop": true,
+      "action": "AN_wc_u_halfling_ranger_Move"
+    },
+    "Attack": {
+      "frames": [
+        1,
+        43
+      ],
+      "fps": 60,
+      "release_frame": 19,
+      "duration_seconds": 0.7,
+      "loop": false,
+      "action": "AN_wc_u_halfling_ranger_Attack"
+    },
+    "Active": {
+      "frames": [
+        1,
+        37
+      ],
+      "fps": 60,
+      "release_frame": 19,
+      "duration_seconds": 0.6,
+      "loop": false,
+      "action": "AN_wc_u_halfling_ranger_Active"
+    },
+    "Hit": {
+      "frames": [
+        1,
+        25
+      ],
+      "fps": 60,
+      "release_frame": null,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "action": "AN_wc_u_halfling_ranger_Hit"
+    },
+    "Defeat": {
+      "frames": [
+        1,
+        61
+      ],
+      "fps": 60,
+      "release_frame": null,
+      "duration_seconds": 1.0,
+      "loop": false,
+      "action": "AN_wc_u_halfling_ranger_Defeat"
+    },
+    "Victory": {
+      "frames": [
+        1,
+        91
+      ],
+      "fps": 60,
+      "release_frame": null,
+      "duration_seconds": 1.5,
+      "loop": false,
+      "action": "AN_wc_u_halfling_ranger_Victory"
+    }
+  },
+  "lods": [
+    {
+      "lod": 1,
+      "triangles": 3498,
+      "ratio_target": 0.5,
+      "visual_acceptance": "pending",
+      "mesh_validation_changed": false,
+      "removed_invalid_triangles": 0,
+      "explicit_triangulation": true,
+      "removed_degenerate_faces": 0
+    },
+    {
+      "lod": 2,
+      "triangles": 1744,
+      "ratio_target": 0.25,
+      "visual_acceptance": "pending",
+      "mesh_validation_changed": true,
+      "removed_invalid_triangles": 5,
+      "explicit_triangulation": true,
+      "removed_degenerate_faces": 0
+    }
+  ],
+  "source_brief": {
+    "silhouette": "A small narrow body beneath a broad folded brim and a long simple bow carried upright. A narrow shoulder cape makes a triangular rear profile.",
+    "face": "Tan skin, dark eyes, sandy curls and a thoughtful expression. The hat brim tilts upward enough not to hide his eyes.",
+    "costume": "River-blue vest over cream sleeves, moss trousers, a short cape and simple boots. One broad belt pouch breaks the symmetrical torso.",
+    "palette": "River blue #58899C; cream #E4DABC; moss #6F8158; warm brown #866243.",
+    "equipment": "A slim fantasy bow and a compact quiver worn at the side. Keep the active projectile visibly magical instead of suggesting a real substance.",
+    "signature": "Folded brim, upright long bow and blue triangular shoulder cape.",
+    "materials": "Matte cloth, oiled wood and simple leather. No thin transparent feathers on arrows at gameplay distance.",
+    "back": "The cape ends above the waist and leaves the side quiver visible; a stitched river line supplies one large motif.",
+    "animation": "Idle checks the distance under the hat brim. Basics use quick controlled bow draws. The active pauses longer, aims carefully and releases one blue mote-tipped fantasy arrow.",
+    "vfx": "Blue chevrons descend briefly over the target to indicate reduced attack tempo. No movement slow, poison or damage-over-time trail.",
+    "audio": "A clear bow snap followed by a soft descending two-note magical cue.",
+    "risk": "The debuff must remain distinguishable from stun. Do not show immobilizing chains or stop the target\u2019s movement animation."
+  },
+  "equipment": "Visual only; upright_bow; short_triangle_cape_and_side_quiver",
+  "files": {
+    "AN_wc_u_halfling_ranger_Active.fbx": "a34b8c00a65c02e9345d29881dfc9421dfc15488e8fed47b6b4b42499651b3a8",
+    "AN_wc_u_halfling_ranger_Attack.fbx": "3af4dfdc571b754e0bb70f5e819f5e90278ebd2d78ab81e3df9d9fd4570217bd",
+    "AN_wc_u_halfling_ranger_Defeat.fbx": "588131356b7414a1301caaeb4ee033262a9d6e636a5ec8a4f00cd22a9b1190a9",
+    "AN_wc_u_halfling_ranger_Hit.fbx": "03a1172afe27c041ac80c579f298517057866a7ed1bb58f041b2561dc769f1db",
+    "AN_wc_u_halfling_ranger_Idle.fbx": "21d340e2a52227b1b8ba9912bf95dc5d0bdccc6952cd60d757f94960890d7010",
+    "AN_wc_u_halfling_ranger_Move.fbx": "ea2def1bd54bf3a82b5a32c6b7d7bc8caa7ab75066dabb9e00f5d104943ea298",
+    "AN_wc_u_halfling_ranger_Victory.fbx": "7a48322f314118a66c13644f969b74497e4d9fed66bddaaa4d08d8ce53341274",
+    "portrait.png": "6adf48a78fccae0567715bde801d9410a81a3a337c9c48de6b2416947f22a128",
+    "SK_wc_u_halfling_ranger.fbx": "5b5467343d4eafd0c2bf1f71234b6237ecc0e1fc0a1bb116e79a4bcc88487b36",
+    "SK_wc_u_halfling_ranger_LOD1.fbx": "cd62ee9faff0c9de08faa0c84d3d1bca0dfcdae6dd4c096f0877b213836c5e04",
+    "SK_wc_u_halfling_ranger_LOD2.fbx": "537900874ca410e4a7adecd8ef409cc95471f45e90e91427ca2ed02dcf687d65",
+    "T_wc_u_halfling_ranger_BaseColor.png": "35d544be95da55ba1cda99e935ba1903e4577f435ba2358e22a647f651f99ac8",
+    "T_wc_u_halfling_ranger_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
+    "T_wc_u_halfling_ranger_ORM.png": "3ea25ed3e1a6f3c159f74db7d0d9324b7d63f93448e42f1d9112645e19eaa3c7"
+  },
+  "report_directory": "reports\\WC-U440\\20260906T162841Z\\halfling-face-fit\\finn",
+  "open_reviews": [
+    "continuous seven-clip visual quality",
+    "hands and weapon contact",
+    "crowded game-camera identity",
+    "actual Unreal import/reimport",
+    "LOD silhouettes",
+    "effects/audio synchronization"
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "status": "AUTHORED_EXPORTED_BLENDER_EXECUTED_ENGINE_AND_VISUAL_ACCEPTANCE_OPEN",
+  "unit_id": "wc_n_prowler",
+  "name": "Prowler",
+  "blender_version": "5.1.1",
+  "source_revision": 2,
+  "rig_family": "neutral_prowler_mechanical_v1",
+  "rig_bones": [
+    "root",
+    "body",
+    "head",
+    "jaw",
+    "cast_origin",
+    "tail",
+    "leg_0",
+    "leg_1",
+    "leg_2",
+    "leg_3",
+    "head_ui"
+  ],
+  "bones": 11,
+  "height_m": 1.4,
+  "measured_rest_dimensions_m": [
+    0.7744633555412292,
+    2.2530908584594727,
+    1.2808446884155273
+  ],
+  "triangles": 2160,
+  "materials": 1,
+  "fps": 60,
+  "source_forward": "+Y",
+  "source_up": "+Z",
+  "source_unit_scale_m": 1,
+  "fbx_profile": "tools/blender/profiles/fbx_skeletal_cm_v1.json",
+  "source_sha256": "db8a4298db145dadebcdba88462d67f09a0195b1b616a20e8d69d48ee93c081d",
+  "author_script_sha256": "9822989468c951043292dd350a4e0a8f35889a5a0713b8bbde6c8f363b80e226",
+  "canonical_source_sha256": "cebc886e01ead6b6a26b879ec6adb613a94cbb2879eeef440759ec23e619b129",
+  "textures": {
+    "BaseColor": "sRGB",
+    "Normal": "linear tangent +Y flat normal; geometry provides bevels",
+    "ORM": "linear R=AO G=roughness B=metallic"
+  },
+  "clips": {
+    "Idle": {
+      "action": "AN_wc_n_prowler_Idle",
+      "frames": [
+        1,
+        121
+      ],
+      "release_frame": 0,
+      "fps": 60,
+      "loop": true
+    },
+    "Move": {
+      "action": "AN_wc_n_prowler_Move",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": 0,
+      "fps": 60,
+      "loop": true
+    },
+    "Attack": {
+      "action": "AN_wc_n_prowler_Attack",
+      "frames": [
+        1,
+        43
+      ],
+      "release_frame": 16,
+      "fps": 60,
+      "loop": false
+    },
+    "Hit": {
+      "action": "AN_wc_n_prowler_Hit",
+      "frames": [
+        1,
+        25
+      ],
+      "release_frame": 0,
+      "fps": 60,
+      "loop": false
+    },
+    "Defeat": {
+      "action": "AN_wc_n_prowler_Defeat",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": 0,
+      "fps": 60,
+      "loop": false
+    },
+    "Active": {
+      "action": "AN_wc_n_prowler_Active",
+      "frames": [
+        1,
+        43
+      ],
+      "release_frame": 22,
+      "fps": 60,
+      "loop": false
+    }
+  },
+  "lods": [
+    {
+      "lod": 1,
+      "triangles": 1080,
+      "ratio_target": 0.5,
+      "visual_acceptance": "pending"
+    },
+    {
+      "lod": 2,
+      "triangles": 540,
+      "ratio_target": 0.25,
+      "visual_acceptance": "pending"
+    }
+  ],
+  "continuous_recordings": true,
+  "files": {
+    "AN_wc_n_prowler_Active.fbx": "1f995fe8c624a5ce7eff09154ae6794a2ab45aedba00f2edfa398276280fbf08",
+    "AN_wc_n_prowler_Attack.fbx": "4f86101474124c0a47c3faf4fadd0d146d7a4793e7724f8f4285b33aedcbd1c2",
+    "AN_wc_n_prowler_Defeat.fbx": "dc78173d7938a2b36ee345952b29cd450fac4fd7e6957ef19ab04beaccc84f5a",
+    "AN_wc_n_prowler_Hit.fbx": "a458703d32e9b24f95797d9483c0258288df7a2086ca24342a17a5b2d922eeb8",
+    "AN_wc_n_prowler_Idle.fbx": "e14ac83229e27b1c2aa2f75716963c3cae6b15bcdb45c62dab9c50c81847d923",
+    "AN_wc_n_prowler_Move.fbx": "e1ed04c75eacdae597aaef952f9e4dbf9dbde1308cc6d134b18237e90e67e4bb",
+    "portrait.png": "f429934fd045235e3de8612292eda817539ce35ec21d856338d3725abec6b418",
+    "SK_wc_n_prowler.fbx": "adbad57c8497139acfe2c662122c40b2ede04d2caf562ccf3732df9af77d99ab",
+    "SK_wc_n_prowler_LOD1.fbx": "baa2d1b52785faf0405808eb620844a39e947bbb293679639917f92632057b7a",
+    "SK_wc_n_prowler_LOD2.fbx": "91786b0e27b2486311f3c9161e311d1b9d29f01de88c23dcf800813bdbcfa212",
+    "T_wc_n_prowler_BaseColor.png": "94dc4b07bd74af5385b12ce2991ada71899c01c200c15b6f01a3d16cb696bf12",
+    "T_wc_n_prowler_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
+    "T_wc_n_prowler_ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c"
+  },
+  "review_path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T133019Z\\neutrals\\wc_n_prowler",
+  "open_reviews": [
+    "Unreal scale/facing/import",
+    "normal-speed continuous visual acceptance",
+    "LOD silhouettes in game",
+    "effects/audio release alignment",
+    "actual crowded gameplay"
+  ]
+}

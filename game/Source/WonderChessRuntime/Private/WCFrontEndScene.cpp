@@ -118,7 +118,8 @@ void AWCFrontEndScene::Initialize(AWCMatchController* OwnerController) {
   SkySun->SetIntensity(.8f);
   SkySun->SetLightColor(FLinearColor(1, .91f, .77f));
   SkySun->SetAtmosphereSunLight(true);
-  SkySun->SetCastShadows(false);
+  SkySun->SetCastShadows(true);
+  SkySun->SetDynamicShadowDistanceMovableLight(2400.f);
   SkySun->RegisterComponent();
   ResetView();
   OwnerController->SetViewTarget(this);

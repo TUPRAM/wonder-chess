@@ -3,11 +3,13 @@ import argparse
 from collections import Counter
 from datetime import datetime, timezone
 import hashlib
+import ipaddress
 import json
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 
 import audit_network_evidence as paired
 import summarize_frame_evidence as frames
+from audit_shipping_payload import payload_checks, catalog_checks, round_kind
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -16,9 +18,116 @@ def fingerprint(path):
     return {"path": str(path.resolve()), "sha256": hashlib.sha256(path.read_bytes()).hexdigest(), "bytes": path.stat().st_size}
 
 
+def physical_identity_checks(launches, sessions, provenance, provenance_hash):
+    """Bind per-machine records without assuming PIDs are globally unique."""
+    checks = []
+
+    def check(name, passed, detail):
+        checks.append({'check': name, 'status': 'PASS' if passed else 'FAIL', 'detail': detail})
+
+    names = [str(row.get('hardware', {}).get('hostname', '')).strip().casefold() for row in launches]
+    check('physical_distinct_recorded_hostnames', all(names) and len(set(names)) == 2, names)
+    identities = [(name, session.get('process_id')) for name, session in zip(names, sessions)]
+    check('physical_distinct_machine_processes', all(name and isinstance(pid, int) and pid > 0 for name, pid in identities)
+          and len(set(identities)) == 2, identities)
+    root = PureWindowsPath(provenance.get('package_root', ''))
+    expected = {}
+    invalid = []
+    for row in provenance.get('files', []):
+        if row.get('group') != 'packaged_payload':
+            continue
+        try:
+            relative = PureWindowsPath(row['path']).relative_to(root).as_posix().casefold()
+            if '..' in PureWindowsPath(relative).parts or relative in expected:
+                raise ValueError('Duplicate or escaping path')
+            expected[relative] = (row['sha256'], row['bytes'])
+        except (ValueError, KeyError) as error:
+            invalid.append(str(error))
+    check('physical_successful_complete_provenance', bool(expected) and not invalid
+          and provenance.get('configuration') == 'Shipping' and provenance.get('input_files_stable_during_capture') is True
+          and provenance.get('package_report', {}).get('exit_code') == 0, {'files': len(expected), 'errors': invalid})
+    address = launches[0].get('host_address')
+    try:
+        parsed = ipaddress.ip_address(address)
+        private = parsed.version == 4 and any(parsed in ipaddress.ip_network(network) for network in ('10.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16'))
+    except ValueError:
+        private = False
+    check('physical_nonloopback_private_target', private and launches[1].get('host_address') == address
+          and launches[0].get('port') == launches[1].get('port') and isinstance(launches[0].get('port'), int)
+          and 1024 <= launches[0]['port'] <= 65535, {'address': address, 'ports': [row.get('port') for row in launches]})
+    for index, (role, launch, session) in enumerate(zip(('host', 'client'), launches, sessions)):
+        local = {row.get('IPAddress') for row in launch.get('local_ipv4', [])}
+        check(role + '_physical_role_address', launch.get('role') == role and ((address in local) if index == 0 else (address not in local)), sorted(str(x) for x in local))
+        arguments = launch.get('arguments', [])
+        route_valid = ('-WCHost' in arguments and f'-Port={launch.get("port")}' in arguments and not any(value.startswith('-WCJoin') for value in arguments)) if index == 0 else (f'-WCJoin={address}:{launch.get("port")}' in arguments and '-WCHost' not in arguments)
+        check(role + '_physical_route_arguments', route_valid, arguments)
+        check(role + '_physical_session_process_binding', launch.get('process_id') == session.get('process_id')
+              and launch.get('status') == 'EXITED_AUDIT_REQUIRED' and launch.get('exit_code') == 0,
+              {'recorded_pid': launch.get('process_id'), 'session_pid': session.get('process_id'), 'status': launch.get('status'), 'exit': launch.get('exit_code')})
+        check(role + '_physical_manifest_binding', launch.get('provenance_sha256') == provenance_hash
+              and launch.get('catalog_digest') == provenance.get('catalog_digest'), launch.get('provenance_sha256'))
+        for label, field in (('preflight', 'relocated_payload_verification'), ('post_run', 'post_run_relocated_payload_verification')):
+            record = launch.get(field, {})
+            entries = record.get('mapping', [])
+            actual = {str(row.get('relative_path', '')).replace('\\', '/').casefold(): (row.get('expected_sha256'), row.get('expected_bytes')) for row in entries}
+            payload = record.get('payload', {})
+            files = {str(row.get('path', '')).replace('\\', '/').casefold(): (row.get('sha256'), row.get('bytes')) for row in payload.get('files', [])}
+            mapped_files = {str(row.get('current_path', '')).replace('\\', '/').casefold(): (row.get('expected_sha256'), row.get('expected_bytes')) for row in entries}
+            mapping_valid = PureWindowsPath(record.get('original_package_root', '')) == root and all(
+                PureWindowsPath(row.get('original_path', '')) == root / row.get('relative_path', '')
+                and PureWindowsPath(row.get('current_path', '')) == PureWindowsPath(record.get('current_package_root', '')) / row.get('relative_path', '') for row in entries)
+            check(role + '_physical_' + label + '_all_payload_bytes_recorded', record.get('status') == 'PASS' and payload.get('status') == 'PASS'
+                  and mapping_valid and bool(expected) and actual == expected and len(entries) == len(expected) and files == mapped_files
+                  and len(files) == len(expected) and payload.get('file_count') == len(expected),
+                  {'expected_count': len(expected), 'mapping_count': len(entries), 'hashed_count': len(files),
+                   'boundary': 'Launcher-recorded local hashes bound to immutable provenance; reviewer does not assume access to either relocated machine path.'})
+    uuids = [row.get('hardware', {}).get('smbios_uuid_sha256') for row in launches]
+    check('physical_hardware_identity_not_known_duplicate', not all(uuids) or uuids[0] != uuids[1], uuids)
+    listener = launches[0].get('listen_owner') or []
+    check('physical_host_listener_binding', any(row.get('OwningProcess') == sessions[0].get('process_id') and row.get('LocalPort') == launches[0].get('port') for row in listener), listener)
+    return checks
+
+
+def audit_physical(base, provenance_path):
+    """Read copied exports from two PCs; never synthesize a loopback trial file."""
+    candidates = [sorted((base / role).glob(f'match-1-seat-{seat}-*-session.json')) for seat, role in enumerate(('host', 'client'))]
+    if any(len(paths) != 1 for paths in candidates):
+        return {'status': 'INCOMPLETE', 'reason': 'Expected exactly one first-match session in each host/client directory'}
+    output = base / 'physical-audit'
+    if output.exists():
+        raise ValueError('Preserve the existing physical audit; use a fresh review directory')
+    paths = [items[0] for items in candidates]
+    launch_paths = [base / role / 'physical-launch.json' for role in ('host', 'client')]
+    launches, sessions = [paired.load(path) for path in launch_paths], [paired.load(path) for path in paths]
+    provenance = paired.load(provenance_path)
+    identity = physical_identity_checks(launches, sessions, provenance, fingerprint(provenance_path)['sha256'])
+    comparison = paired.audit(*paths, require_complete=True)
+    # Keep the raw lower-level result. Only the new derived physical evaluation
+    # substitutes machine+PID for the same-host PID rule; source exports are read-only.
+    identity_valid = all(row['status'] == 'PASS' for row in identity)
+    combined = [row for row in comparison['checks'] if row['check'] != 'distinct_processes']
+    combined += identity + catalog_checks(list(zip(('host', 'client'), sessions)), provenance)
+    if not identity_valid:
+        combined.append({'check': 'physical_identity_required_for_composite_pid', 'status': 'FAIL', 'detail': 'Recorded physical identity, address and immutable payload bindings must all validate'})
+    statuses = [row['status'] for row in combined]
+    status = 'FAIL' if any(value in ('FAIL', 'FAILED') for value in statuses) else 'INCOMPLETE' if any(value != 'PASS' for value in statuses) else 'PASS'
+    result = {'status': status, 'evidence_kind': 'PHYSICAL_LAN_RECORDED_RECEIVED_STATE_AND_RPC',
+              'boundary': 'Functional audit of recorded two-machine identity, private LAN target, payload bindings, received states and real RPC replies. This does not independently observe two physical devices or certify manual play, graphics, audio or performance.',
+              'physical_device_observation': 'NOT_RUN_BY_ANALYZER', 'physical_lan_release_acceptance': 'REQUIRES_OPERATOR_PHYSICAL_DEVICE_EVIDENCE_AND_RELEASE_REVIEW',
+              'checks': combined, 'raw_same_host_paired_reader': comparison,
+              'inputs': [fingerprint(path) for path in paths + launch_paths + [provenance_path]],
+              'hardware': [row.get('hardware') for row in launches]}
+    output.mkdir()
+    (output / 'physical-network-analysis.json').write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
+    return {'status': status, 'checks': len(combined), 'output': str(output), 'physical_device_observation': 'NOT_RUN_BY_ANALYZER'}
+
+
 def audit(base):
     trial = paired.load(base / "trial.json")
-    paths = [next((base / role).glob(f"match-1-seat-{seat}-*-session.json")) for seat, role in enumerate(("host", "client"))]
+    candidates = [sorted((base / role).glob(f"match-1-seat-{seat}-*-session.json")) for seat, role in enumerate(("host", "client"))]
+    if any(len(paths) != 1 for paths in candidates):
+        return {"status": "INCOMPLETE", "reason": "Expected one retained match-1 session per launched host/client", "candidates": [[str(p) for p in paths] for paths in candidates]}
+    paths = [items[0] for items in candidates]
     sessions = [paired.load(path) for path in paths]
     if not all(session.get("complete") for session in sessions):
         return {"status": "IN_PROGRESS", "sessions": [{key: s.get(key) for key in ("utc", "seat", "phase", "round", "complete", "aborted")} for s in sessions]}
@@ -27,6 +136,9 @@ def audit(base):
     comparison = paired.audit(*paths, require_complete=True)
     (output / "paired-state-audit.json").write_text(json.dumps(comparison, indent=2) + "\n", encoding="utf-8")
     results, inputs, additional = [], [], []
+    provenance, payload = payload_checks(trial)
+    additional.extend(payload)
+    additional.extend(catalog_checks(list(zip(("host", "client"), sessions)), provenance))
 
     def check(name, condition, detail):
         additional.append({"check": name, "status": "PASS" if condition else "FAIL", "detail": detail})
@@ -47,6 +159,11 @@ def audit(base):
               and sum(not row["accepted"] for row in replies) == session["actual_rejected_replies"], len(replies))
         public = json.loads(session["public_snapshot"])
         combat_rounds = sorted({row["round"] for row in snapshots if row["phase"] == 1})
+        neutral_rounds = sorted({row["round"] for row in snapshots if row["phase"] == 1 and row["public"].get("neutralRound") is True})
+        pvp_rounds = sorted({row["round"] for row in snapshots if row["phase"] == 1 and row["public"].get("neutralRound") is False})
+        expected_neutrals = [number for number in range(1, session["round"] + 1) if number <= 3 or number % 5 == 0]
+        check(role + "_neutral_schedule_observed", neutral_rounds == expected_neutrals and set(neutral_rounds) | set(pvp_rounds) == set(combat_rounds),
+              {"actual_neutral_rounds": neutral_rounds, "actual_pvp_rounds": pvp_rounds, "expected_neutral_rounds": expected_neutrals})
         recap_rounds = sorted({row["public"]["recap"]["round"] for row in snapshots if row["public"].get("recap")})
         stale = [{"utc": row["utc"], "round": row["round"], "phase": row["phase"], "recap_round": row["public"]["recap"]["round"]}
                  for row in snapshots if row["public"].get("recap") and row["public"]["recap"]["round"] < row["round"] - (1 if row["phase"] in (0, 1) else 0)]
@@ -65,6 +182,7 @@ def audit(base):
         result = {"role": role, **{key: session.get(key) for key in ("process_id", "seat", "network_mode", "authority_process", "match_namespace", "phase", "round", "complete", "aborted", "intent_requests", "actual_accepted_replies", "actual_rejected_replies", "simulation_speed_multiplier", "resolution_x", "resolution_y", "max_living_visible_units", "max_living_logical_units", "max_simultaneous_encounters", "observed_seat", "music_component_playing", "music_volume")},
                   "first_observed_utc": snapshots[0]["utc"], "first_results_utc": next(row["utc"] for row in snapshots if row["phase"] == 3),
                   "last_observed_utc": snapshots[-1]["utc"], "snapshot_count": len(snapshots), "combat_rounds": combat_rounds, "recap_rounds": recap_rounds,
+                  "neutral_combat_rounds": neutral_rounds, "pvp_combat_rounds": pvp_rounds,
                   "stale_retained_recaps": stale, "actual_reply_reasons": dict(Counter(row["reason"] for row in replies)),
                   "probes": {probe["name"]: probe["status"] for probe in session["command_probes"]},
                   "public_payload": {key: session.get(key) for key in ("public_json_chars_current", "public_json_chars_max", "public_json_utf8_bytes_current", "public_json_utf8_bytes_max", "distinct_public_payload_samples")},
@@ -85,6 +203,8 @@ def audit(base):
     if lifecycle_complete:
         check("both_planned_process_exits_observed", all(row["exit_observed"] for row in lifecycle), lifecycle)
         check("bootstrap_exit_codes_zero", all(row["exit_code"] == 0 for row in lifecycle), lifecycle)
+    else:
+        check("planned_process_lifecycle_finished", False, trial.get("status"))
     final_status = "FAIL" if comparison["status"] == "FAIL" or any(row["status"] == "FAIL" for row in additional) else comparison["status"]
     manifest_path = Path(trial["provenance_path"])
     result = {"status": final_status, "lifecycle_complete": lifecycle_complete, "utc": datetime.now(timezone.utc).isoformat(),
@@ -98,14 +218,14 @@ def audit(base):
               "concurrent_process_inventory_binding": fingerprint(base / "concurrency.json") if (base / "concurrency.json").exists() else None,
               "inputs": inputs,
               "limits": ["Current and maximum public JSON UTF8 byte lengths exclude replication and socket overhead.",
-                         "Both tracked bootstrap processes exited0. Inner process exits were observed but their captured ExitCode values are null/UNKNOWN; bootstrap exit0 is not substituted for an unavailable inner exit code.",
+                         "Lifecycle records distinguish bootstrap and inner process observations. An unavailable inner exit code remains unknown; bootstrap success does not replace it.",
                          "Accepted replies include an intentional idempotent duplicate; they are not a count of distinct mutations.",
                          "Projected skeletal component bounds are conservative geometry, not proof of lack of pixel occlusion or satisfactory hero art.",
                          "Native engine log error and oversized-bunch counts are unavailable for Shipping and remain null/NOT_RUN.",
-                         "The preserved earlier Shipping trial failed before client launch because positional startup URLs were disabled; this is a separate build and separate run."]}
+                         "Prior package evidence is retained separately and does not certify this payload."]}
     (output / "network-analysis.json").write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     lines = ["# Actual routed Shipping two-process network check", "", f"Functional received-state/RPC audit: **{final_status}**. Process lifecycle complete: **{lifecycle_complete}**.", "", result["boundary"], "",
-             f"The paired reader completed {len(comparison['checks'])} checks with status {comparison['status']}. UDP{trial['port']} was verified on the host's actual Shipping process before starting the client. Executable hashes still match the bound immutable provenance.", ""]
+             f"The paired reader completed {len(comparison['checks'])} checks with status {comparison['status']}. Listener ownership and the entire packaged payload have separate checks in network-analysis.json.", ""]
     for session in results:
         lines += [f"- {session['role']}: PID{session['process_id']}, seat{session['seat']}, network mode{session['network_mode']}; completed round{session['round']}. All combat rounds observed: {session['combat_rounds']}.",
                   f"- {session['role']}: {session['actual_accepted_replies']} accepted / {session['actual_rejected_replies']} rejected actual replies; probes {session['probes']}.",
@@ -124,7 +244,11 @@ def audit(base):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("evidence_directory", type=Path)
+    parser.add_argument('--physical', action='store_true', help='Read host/client physical-launch.json instead of a loopback trial')
+    parser.add_argument('--provenance', type=Path, help='Unchanged provenance JSON available on this review machine; required with --physical')
     args = parser.parse_args()
-    result = audit(args.evidence_directory.resolve())
+    if args.physical and not args.provenance:
+        parser.error('--physical requires --provenance')
+    result = audit_physical(args.evidence_directory.resolve(), args.provenance.resolve()) if args.physical else audit(args.evidence_directory.resolve())
     print(json.dumps(result, indent=2))
-    raise SystemExit(0 if result["status"] in {"PASS", "IN_PROGRESS"} else 1)
+    raise SystemExit(0 if result["status"] == "PASS" else 2 if result["status"] == "IN_PROGRESS" else 1)

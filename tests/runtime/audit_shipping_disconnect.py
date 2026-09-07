@@ -6,8 +6,9 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
-from audit_network_evidence import load
+from audit_network_evidence import load, received
 from audit_session_transitions import disconnect
+from audit_shipping_payload import payload_checks, catalog_checks, round_kind
 
 
 def main():
@@ -28,9 +29,15 @@ def main():
           all(p["exit_observed"] and p["exit_code"] == 0 for p in trial["processes"]),
           [{k: p.get(k) for k in ("role", "bootstrap_pid", "exit_observed", "exit_code", "planned_exit_after_seconds")} for p in trial["processes"]])
     host, client = load(host_path), load(client_path)
-    project = Path(__file__).resolve().parents[2]
     provenance_path = Path(trial["provenance_path"])
-    provenance = load(provenance_path)
+    provenance, payload = payload_checks(trial)
+    report['checks'].extend(payload)
+    connected_client = client
+    for retained_path in sorted(client_path.parent.glob('match-*-session.json')):
+        retained = load(retained_path)
+        if retained.get('match_namespace') == host.get('match_namespace') and retained.get('network_mode') == 3:
+            connected_client = retained
+    report['checks'].extend(catalog_checks([('host', host), ('connected_client', connected_client)], provenance))
     inputs.append(provenance_path)
     executable_hashes = []
     identities = {item["path"]: item["sha256"] for item in trial["executable_identities"]}
@@ -50,9 +57,18 @@ def main():
           {"host_complete": host["complete"], "client_complete": client["complete"]})
     if trial["mode"] == "client-loss":
         transitions = [t for t in host["authority_takeover_transitions"] if t["departed_seat"] == 1]
-        check("takeover_during_quiescent_combat", bool(transitions) and all(t["phase"] == 1 and t["status"] == "PASS"
+        check("takeover_resources_have_quiescent_observation", bool(transitions) and all(t["status"] == "PASS"
               and not t["intervening_bot_commands"] for t in transitions),
               [{k: t.get(k) for k in ("phase", "round", "status", "intervening_bot_commands")} for t in transitions])
+        rows, snapshot_path = received(host, host_path)
+        if snapshot_path.exists():
+            inputs.append(snapshot_path)
+        departure = []
+        for event in transitions:
+            observations = [row['public'] for row in rows if row.get('public', {}).get('round') == event.get('round')
+                            and row.get('public', {}).get('phase') == event.get('phase')]
+            departure.append(round_kind(observations[-1] if observations else {'phase': event.get('phase'), 'round': event.get('round')}))
+        report['actual_departure_observations'] = departure
         late_path = directory / "late-join/session.json"
         if late_path.exists():
             late = load(late_path)
@@ -77,12 +93,18 @@ def main():
         else:
             check("late_join_actual_evidence", False, "No late-join session file")
     else:
-        check("host_departed_during_combat", host["phase"] == 1, {"phase": host["phase"], "round": host["round"]})
+        check("host_departed_during_running_tournament", host['phase'] in (0, 1, 2) and host['round'] > 0,
+              {'phase': host['phase'], 'round': host['round']})
+        report['actual_departure_observations'] = [round_kind(json.loads(host['public_snapshot']))]
         public = json.loads(client["public_snapshot"])
         check("aborted_client_did_not_autostart", client["match_namespace"] == 0 and client["intent_requests"] == 0
               and public.get("phase") == -1 and not public.get("seats"),
               {"namespace": client["match_namespace"], "requests": client["intent_requests"], "public": public})
         check("client_planned_exit_after_abort", client["process_exit_requested"] is True, client["process_exit_requested"])
+    report['disconnect_coverage'] = {
+        'neutral_combat_observed': any(row['phase'] == 1 and row['round_kind'] == 'neutral' for row in report['actual_departure_observations']),
+        'pvp_combat_observed': any(row['phase'] == 1 and row['round_kind'] == 'pvp' for row in report['actual_departure_observations']),
+        'boundary': 'Only the recorded phase and replicated round kind are covered. A neutral or preparation departure does not certify PvP combat departure.'}
     logs = {}
     for process in trial["processes"]:
         path = directory / process["role"] / "game.log"

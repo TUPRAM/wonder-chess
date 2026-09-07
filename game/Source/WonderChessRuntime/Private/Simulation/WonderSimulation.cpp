@@ -988,6 +988,7 @@ void Combat::Tick()
                 rateBonus += int(m.magnitude);
             u.state = ActionState::AttackWindup;
             u.actionId = nextAction_++;
+            ++u.basicAttackOrdinal;
             u.releaseTick = tick_ + Ticks(d.attackWindupMs, catalog_->rules);
             u.recoveryTick = tick_ + AttackInterval(d.attackRate, rateBonus, catalog_->rules);
         }

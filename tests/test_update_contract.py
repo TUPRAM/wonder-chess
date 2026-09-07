@@ -31,6 +31,14 @@ NEUTRALS = load('data/neutrals.json')
 
 
 class UpdateSchemaTests(unittest.TestCase):
+    def test_presentation_ordinal_protocol_rejects_other_wire_contracts(self):
+        validator = Draft202012Validator(load('data/schemas/rules.alpha.schema.json'))
+        self.assertTrue(validator.is_valid(RULES))
+        for version in (3, 4, 5, 7):
+            old = copy.deepcopy(RULES)
+            old['network']['protocol_version'] = version
+            self.assertFalse(validator.is_valid(old), version)
+
     def test_all_selected_heroes_and_short_names_are_unique(self):
         self.assertEqual(set(RULES['alpha_unit_ids']), set(CATALOG))
         self.assertEqual(len(RULES['alpha_unit_ids']), 24)

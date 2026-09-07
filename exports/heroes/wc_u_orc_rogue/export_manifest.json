@@ -3,9 +3,9 @@
   "unit_id": "wc_u_orc_rogue",
   "name": "Kesh Quickwind",
   "blender_version": "5.1.1",
-  "source_revision": 7,
+  "source_revision": 9,
   "height_m": 1.93,
-  "source_sha256": "9377fd6ea70ef5a8c376cbf7e83363a5c5f8e8c0f97b88508eb1623a80b2019a",
+  "source_sha256": "002170270eb33e4299d5329c20ae4cb8f58daf5cf578b8436c9018b212e10f04",
   "author_script_sha256": "474d9d165ca7a0c2134197c379978f59d2af9baf475bbcd0970fd97febd0a4da",
   "units_source_sha256": "fd6d831113261dd984f3d2430236c06eda4a9f4e7f9e30a404a76f418fa953b0",
   "rig_family": "humanoid_broad",
@@ -61,11 +61,26 @@
       "action": "AN_wc_u_orc_rogue_Attack",
       "frames": [
         1,
-        40
+        79
       ],
       "release_frame": 16,
       "support_hand_bake_samples": 0,
-      "maximum_support_reach_clamp_m": 0
+      "maximum_support_reach_clamp_m": 0,
+      "presentation_windows": [
+        {
+          "name": "R",
+          "start_frame": 1,
+          "release_frame": 16,
+          "end_frame": 40
+        },
+        {
+          "name": "L",
+          "start_frame": 40,
+          "release_frame": 55,
+          "end_frame": 79
+        }
+      ],
+      "duration_seconds": 1.3
     },
     "Active": {
       "action": "AN_wc_u_orc_rogue_Active",
@@ -111,15 +126,15 @@
   "lods": [
     {
       "lod": 1,
-      "triangles": 1899,
+      "triangles": 1884,
       "ratio_target": 0.5,
-      "visual_acceptance": "pending current Unreal review"
+      "visual_acceptance": "pending"
     },
     {
       "lod": 2,
-      "triangles": 948,
+      "triangles": 932,
       "ratio_target": 0.25,
-      "visual_acceptance": "pending current Unreal review"
+      "visual_acceptance": "pending"
     }
   ],
   "source_brief": {
@@ -138,16 +153,16 @@
   },
   "files": {
     "AN_wc_u_orc_rogue_Active.fbx": "e235ec1c8915d4e2eb5b4ea9ed0bf4968317f5a9e700a15f148c57ed25632492",
-    "AN_wc_u_orc_rogue_Attack.fbx": "48505c38108a13ac47fdf7c7044d81725f933a72b078b165dc2b3a64124d12fa",
+    "AN_wc_u_orc_rogue_Attack.fbx": "038644d13e38b2b9ae39204d9eec6d3268c1986e86e6d7a0417e020229fce8e2",
     "AN_wc_u_orc_rogue_Defeat.fbx": "b1acc1ef785f8579ed73c0f250529d05d2d5e7c46ecc1ddef6343f3fe9520231",
     "AN_wc_u_orc_rogue_Hit.fbx": "27b9dbe34b26a3385c275f165327b75ff2ccc3cd64fb57306180acafdd2fa63d",
     "AN_wc_u_orc_rogue_Idle.fbx": "9108dc67cc57d169963f4e07e42e8d227c8bda03f723ac847425c63757ce2077",
     "AN_wc_u_orc_rogue_Move.fbx": "8b520d1c3a0a02b6d96ad3ae86a149bd852cb3f2dfc4288ef28da061543fa359",
     "AN_wc_u_orc_rogue_Victory.fbx": "e0565eac967d9c1664c16a2106dd8333deff3556f6dc7e05aa9f067115c3e1bf",
-    "portrait.png": "ca1d3a41a208f67a0a673b210fad661a585754497ae9dbed7fbb3a3cf9c27cb6",
-    "SK_wc_u_orc_rogue.fbx": "1a5efb88a91e6754be1e57bbfdfdbd46d5617acfdfec8429fc87b74ff573a289",
-    "SK_wc_u_orc_rogue_LOD1.fbx": "28f3874c6eebda8fd2c84cb94e98c94673986b61fa89026cdb310acb46bf92fc",
-    "SK_wc_u_orc_rogue_LOD2.fbx": "ab3f2699934a2768365869bf9509360597486a41226c822cc7294c0b9b8679fd",
+    "portrait.png": "4a2e0f3c62a357d8e31c4062fb8dc608830c42030eabffe7b5f1ed1fd7e821f6",
+    "SK_wc_u_orc_rogue.fbx": "cbdffde2ef41f683e67320e5af9839704a2ca245bd945cbc61253fab435256d1",
+    "SK_wc_u_orc_rogue_LOD1.fbx": "513311c39e46abd44444e3ff171676ad07cf430fc7b10b2b7ad1effbc08a941a",
+    "SK_wc_u_orc_rogue_LOD2.fbx": "3bc972c490a9d03875d053bb3fdd0f350407dd4cfe3aa599f7a3b32e05e52df8",
     "T_wc_u_orc_rogue_BaseColor.png": "caf58f62eb930c8af50300eebae6291fe741c866401c31b13a65204a42af1b36",
     "T_wc_u_orc_rogue_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
     "T_wc_u_orc_rogue_ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c"
@@ -164,17 +179,17 @@
   "normalized_exporter_sha256": "ac2b263a2491f2cf991065e749926b5549ddc81e73c814fb9958e424b6d23bc6",
   "normalized_reexport_script_sha256": "c1176dfe4526f36b767e3427383e70c3e174b2d62b36ac1a9562f5d8d7ffb99b",
   "exported_coordinate_units": "centimeters: temporary geometry, rest translation and animation location values multiplied by100; authoring source remains meters",
-  "geometry_source_revision": 7,
-  "animation_revision": 7,
+  "geometry_source_revision": 8,
+  "animation_revision": 8,
   "animation_refinement_script_sha256": "883991d592dfb18f4fd3e85b04583782ea411a21426c8921c13966d8bcd16f40",
   "animation_pose_script_sha256": "e43d6c05800e8b6dccbcd697d7cc9664b61d73f7012cac75ef98183e709d47b9",
   "animation_author_script_sha256": "ddaed7bb350bafb94c1743bc31c4b613524f971af01a5611835402590d8ae6f0",
   "animation_contact_script_sha256": "c36f8064fa5ab7ff136c399c68c7b012b5987234734aca0580bede3483017c1a",
   "animation_normalizer_sha256": "13646d355744f5293d573816e5cd54459cf88f3b647c6c2a22aa61ae29200779",
   "animation_evidence": "reports\\WC-330\\animation-refinement\\wc_u_orc_rogue",
-  "update_refinement_script_sha256": "ebf2a136bf2f62a9442f7c1de1679f2306afa457e183d63471e2ff325f7aa55b",
-  "update_export_script_sha256": "4d9ec9f5747367743efd1f44f653f2e95f7ebdeb061aa1a62351dc774ecd82bf",
-  "update_refinement_evidence": "reports/WC-U440/20260906T141653Z-orcs/kesh-contact03/workbench-review",
+  "update_refinement_script_sha256": "0b17b8c1fe6c46481599ed1efe1e5af5acc7ddba3d76e3ded2d18d0293db45c4",
+  "update_export_script_sha256": "0b17b8c1fe6c46481599ed1efe1e5af5acc7ddba3d76e3ded2d18d0293db45c4",
+  "update_refinement_evidence": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T164928Z-kesh-shoulders\\candidate8",
   "geometry_review_evidence": "reports/WC-U440/20260906T141653Z-orcs/kesh-contact03/workbench-review",
   "animation_update_changes": [
     {
@@ -185,5 +200,22 @@
       "previous_minimum_mesh_z_m": -0.004230668768286705
     }
   ],
-  "animation_update_script_sha256": "20c5af5ba4ff786d0ee5ae0f1f46f46c096c7bae4a14d5d9ef1c873826087281"
+  "animation_update_script_sha256": "20c5af5ba4ff786d0ee5ae0f1f46f46c096c7bae4a14d5d9ef1c873826087281",
+  "geometry_revision": 8,
+  "shoulder_repair": {
+    "changed_actions": [],
+    "source_action_hashes": {
+      "AN_wc_u_orc_rogue_Active": "64c34a17d7d62afd9168971f12d5eddd3ea96186d0affb0e3e897154aa3756af",
+      "AN_wc_u_orc_rogue_Attack": "811dabc80495157a7dab855da453a1c11a7468b721e3d5695c8cceff949df4a6",
+      "AN_wc_u_orc_rogue_Defeat": "829d00584da7a0e20f079ffd07316355fe254b56837875248d7864a18008deef",
+      "AN_wc_u_orc_rogue_Hit": "0b5f8ac22ed2e03ab4464118b7ae13b42ab90527ed152ff101b24e5b67a3add5",
+      "AN_wc_u_orc_rogue_Idle": "b2f925947552f4c0e06ae8bbd87adb24661d44fb752c40c170b4b64530fb0d2e",
+      "AN_wc_u_orc_rogue_Move": "ad22e95eede9d1e055cfde9449627339a1e6408bae71c44a26d9efd62f92c20a",
+      "AN_wc_u_orc_rogue_Victory": "81c5b8fc2c873b0fce37b6f223abbf6c3ee3d42feaefb0b4c42f715e31941033"
+    },
+    "boundary": "All7 actions are byte-for-byte equivalent by curve digest; only existing sleeve root coordinates and weights change."
+  },
+  "alternating_attack_evidence": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260907T165200Z-closeout\\wc_u_orc_rogue-windows",
+  "alternating_attack_author_sha256": "45fe4e102f60d6ca0de3ee38fe6b39cae66a26f606f75e4a68a951348ed55111",
+  "alternating_attack_publisher_sha256": "45fe4e102f60d6ca0de3ee38fe6b39cae66a26f606f75e4a68a951348ed55111"
 }

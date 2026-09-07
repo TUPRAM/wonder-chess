@@ -1,0 +1,143 @@
+{
+  "status": "AUTHORED_EXPORTED_BLENDER_EXECUTED_ENGINE_AND_VISUAL_ACCEPTANCE_OPEN",
+  "unit_id": "wc_n_stoneback",
+  "name": "Stoneback",
+  "blender_version": "5.1.1",
+  "source_revision": 3,
+  "rig_family": "neutral_stoneback_mechanical_v1",
+  "rig_bones": [
+    "root",
+    "body",
+    "head",
+    "shell_l",
+    "shell_r",
+    "cast_origin",
+    "leg_0",
+    "leg_1",
+    "leg_2",
+    "leg_3",
+    "head_ui"
+  ],
+  "bones": 11,
+  "height_m": 1.2,
+  "measured_rest_dimensions_m": [
+    1.5199999809265137,
+    2.015949249267578,
+    1.1039303541183472
+  ],
+  "triangles": 1860,
+  "materials": 1,
+  "fps": 60,
+  "source_forward": "+Y",
+  "source_up": "+Z",
+  "source_unit_scale_m": 1,
+  "fbx_profile": "tools/blender/profiles/fbx_skeletal_cm_v1.json",
+  "source_sha256": "49f3b258c728aebd3db46276e68b6771ea0f5001d71f16c77039fa02519ae1ad",
+  "author_script_sha256": "4757b494e16e1c9e1eac530bf60bb4aad343308f2808a5adb82b24ff9fe9af7d",
+  "canonical_source_sha256": "cebc886e01ead6b6a26b879ec6adb613a94cbb2879eeef440759ec23e619b129",
+  "textures": {
+    "BaseColor": "sRGB",
+    "Normal": "linear tangent +Y flat normal; geometry provides bevels",
+    "ORM": "linear R=AO G=roughness B=metallic"
+  },
+  "clips": {
+    "Idle": {
+      "action": "AN_wc_n_stoneback_Idle",
+      "frames": [
+        1,
+        121
+      ],
+      "release_frame": 0,
+      "fps": 60,
+      "loop": true
+    },
+    "Move": {
+      "action": "AN_wc_n_stoneback_Move",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": 0,
+      "fps": 60,
+      "loop": true
+    },
+    "Attack": {
+      "action": "AN_wc_n_stoneback_Attack",
+      "frames": [
+        1,
+        49
+      ],
+      "release_frame": 22,
+      "fps": 60,
+      "loop": false
+    },
+    "Hit": {
+      "action": "AN_wc_n_stoneback_Hit",
+      "frames": [
+        1,
+        25
+      ],
+      "release_frame": 0,
+      "fps": 60,
+      "loop": false
+    },
+    "Defeat": {
+      "action": "AN_wc_n_stoneback_Defeat",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": 0,
+      "fps": 60,
+      "loop": false
+    },
+    "Active": {
+      "action": "AN_wc_n_stoneback_Active",
+      "frames": [
+        1,
+        43
+      ],
+      "release_frame": 22,
+      "fps": 60,
+      "loop": false
+    }
+  },
+  "lods": [
+    {
+      "lod": 1,
+      "triangles": 930,
+      "ratio_target": 0.5,
+      "visual_acceptance": "pending"
+    },
+    {
+      "lod": 2,
+      "triangles": 464,
+      "ratio_target": 0.25,
+      "visual_acceptance": "pending"
+    }
+  ],
+  "continuous_recordings": true,
+  "files": {
+    "AN_wc_n_stoneback_Active.fbx": "9548aae85e4de2e0a1d41ab1f1dbe89daed4b4a9aa7a58bee3611d756abcf04e",
+    "AN_wc_n_stoneback_Attack.fbx": "392c724871e968de3fc93cfb3c74224a324f519e324e497b071494b2ace1d68b",
+    "AN_wc_n_stoneback_Defeat.fbx": "17ca8c208adf80122ac83b7c6d9fa61979548f5f3acc3b6ca6fe2f7e254155f6",
+    "AN_wc_n_stoneback_Hit.fbx": "4dacc3cbfdb5fb79e8a6528b06ddb648235a50cc79c85df4eb19d8c50f936f07",
+    "AN_wc_n_stoneback_Idle.fbx": "60d3601ce19987b273cee08a388780a0f8caabf400142bbc08e2b4fbdcaf89da",
+    "AN_wc_n_stoneback_Move.fbx": "ab57af90b05bfbc6520d8d4864103d2f434166d26746c3b6f26b6389c59a90b2",
+    "portrait.png": "5640238e1f33a849b5bc47c7672de117397c3bae95433c0206b066752824dadd",
+    "SK_wc_n_stoneback.fbx": "d072a21757f24703df0b0dd6c080e8e6d1560bbf127afc8b68ac32fe83486ce9",
+    "SK_wc_n_stoneback_LOD1.fbx": "3fdad513f9c8bce06ecea823042b6d60eb6f4ee11eb6d96a899660ed39b6e52e",
+    "SK_wc_n_stoneback_LOD2.fbx": "28a9d9a968564c3a8836552b0d7fd62d3c0450fc2b0723a23d3e75e52c25e774",
+    "T_wc_n_stoneback_BaseColor.png": "fdc699361fd3176a0f94d0429eabc1d6ff8394a1e5fd2c287280018c7aa5e7bb",
+    "T_wc_n_stoneback_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
+    "T_wc_n_stoneback_ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c"
+  },
+  "review_path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T133400Z\\neutrals\\wc_n_stoneback",
+  "open_reviews": [
+    "Unreal scale/facing/import",
+    "normal-speed continuous visual acceptance",
+    "LOD silhouettes in game",
+    "effects/audio release alignment",
+    "actual crowded gameplay"
+  ]
+}

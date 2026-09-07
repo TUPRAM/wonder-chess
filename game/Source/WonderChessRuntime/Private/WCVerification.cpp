@@ -1,4 +1,5 @@
 #include "WCVerification.h"
+#include "WCAnimationReview.h"
 #include "Components/AudioComponent.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Containers/StringConv.h"
@@ -874,8 +875,17 @@ void DriverIntent(AWCMatchController *P, Evidence &E, wc::CommandType Type,
 }
 } // namespace
 
+bool WCReadVerificationClock(AWCMatchController *P, double &WallSeconds,
+                             FString &FrameCsvPath) {
+  const auto *E = EvidenceStates.Find(P);
+  if (!E || !E->Initialized) return false;
+  WallSeconds = FPlatformTime::Seconds() - E->StartWall;
+  FrameCsvPath = E->Directory / (Prefix(*E, P) + TEXT("-frames.csv"));
+  return true;
+}
+
 void WCRecordVerificationReply(AWCMatchController *P, bool Accepted,
-                               const FString &Reason) {
+                               const FString &Reason, int64 Request) {
   if (!FParse::Param(FCommandLine::Get(), TEXT("WCExercise")) &&
       !FParse::Param(FCommandLine::Get(), TEXT("WCProfile")) &&
       !FParse::Param(FCommandLine::Get(), TEXT("WCShots")))
@@ -895,11 +905,14 @@ void WCRecordVerificationReply(AWCMatchController *P, bool Accepted,
   Json->SetBoolField(TEXT("accepted"), Accepted);
   Json->SetStringField(TEXT("reason"), Reason);
   Json->SetNumberField(TEXT("reply_serial"), E.ReplySerial);
+  Json->SetNumberField(TEXT("request_id"), Request);
+  Json->SetBoolField(TEXT("session_notice"), Request == 0);
   Append(E.Directory / (Prefix(E, P) + TEXT("-commands.jsonl")),
          Encode(Json) + TEXT("\n"));
 }
 
 void WCTickVerification(AWCMatchController *P, float Delta) {
+  WCTickAnimationReview(P);
   const bool Exercise = FParse::Param(FCommandLine::Get(), TEXT("WCExercise"));
   const bool Profile = FParse::Param(FCommandLine::Get(), TEXT("WCProfile"));
   const bool Shots = FParse::Param(FCommandLine::Get(), TEXT("WCShots"));
@@ -942,7 +955,7 @@ void WCTickVerification(AWCMatchController *P, float Delta) {
     Append(E.Directory / (Prefix(E, P) + TEXT("-frames.csv")),
            TEXT("wall_seconds,phase,round,visible_alive,logical_alive,"
                 "encounters,frame_ms,game_ms,render_"
-                "ms,gpu_ms,gpu_available,public_chars,public_utf8_bytes,neutral_round,neutral_live_encounters\n"));
+                "ms,gpu_ms,gpu_available,public_chars,public_utf8_bytes,neutral_round,neutral_live_encounters,frontend_page,frame_counter\n"));
     UE_LOG(LogTemp, Display,
            TEXT("WC_EVIDENCE_SESSION namespace=%lld directory=%s"), Namespace,
            *E.Directory);
@@ -1051,11 +1064,13 @@ void WCTickVerification(AWCMatchController *P, float Delta) {
     }
     E.PeakMemory = FMath::Max<uint64>(E.PeakMemory,
                                       FPlatformMemory::GetStats().UsedPhysical);
+    const auto* HUD = Cast<AWCMatchHUD>(P->GetHUD());
     E.FrameRows += FString::Printf(
-        TEXT("%.6f,%d,%d,%d,%d,%d,%.6f,%.6f,%.6f,%.6f,%d,%d,%d,%d,%d\n"),
+        TEXT("%.6f,%d,%d,%d,%d,%d,%.6f,%.6f,%.6f,%.6f,%d,%d,%d,%d,%d,%s,%llu\n"),
         Now - E.StartWall, Phase, Round, Visible, Logical, Encounters, Frame,
         Game, Render, GPU, Cycles ? 1 : 0, E.PublicChars, E.PublicUtf8Bytes,
-        Boolean(P->Public, TEXT("neutralRound")) ? 1 : 0, NeutralEncounters);
+        Boolean(P->Public, TEXT("neutralRound")) ? 1 : 0, NeutralEncounters,
+        HUD ? HUD->FrontEndPageName() : TEXT("closed"), GFrameCounter);
   }
   if (Now >= E.NextFrameFlush) {
     FlushFrames(P, E);

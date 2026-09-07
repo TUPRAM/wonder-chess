@@ -95,6 +95,30 @@ FString NeutralBehavior(const AWCMatchController* P, const wc::UnitDef& Unit) {
   default: return T(P, TEXT("Uses an active skill"), TEXT("Menggunakan skill aktif"));
   }
 }
+FString SkillTarget(const AWCMatchController* P, const wc::AbilityDef& Skill) {
+  switch (Skill.selector) {
+  case wc::Selector::Self: return T(P, TEXT("Self"), TEXT("Diri sendiri"));
+  case wc::Selector::CurrentEnemy: return T(P, TEXT("Current enemy"), TEXT("Musuh saat ini"));
+  case wc::Selector::AdjacentEnemies: return T(P, TEXT("Adjacent enemies"), TEXT("Musuh bersebelahan"));
+  case wc::Selector::AdjacentAllies:
+    return Skill.allowSelf ? T(P, TEXT("Self and adjacent allies"), TEXT("Diri dan sekutu bersebelahan"))
+                           : T(P, TEXT("Adjacent allies"), TEXT("Sekutu bersebelahan"));
+  case wc::Selector::LowestHealthAlly:
+    return Skill.allowSelf ? T(P, TEXT("Eligible ally with lowest HP %, including self"), TEXT("Sekutu layak dengan % HP terendah, termasuk diri"))
+                           : T(P, TEXT("Eligible ally with lowest HP %"), TEXT("Sekutu layak dengan % HP terendah"));
+  case wc::Selector::HighestAttackRateEnemy:
+    return T(P, TEXT("Enemy with the fastest attacks"), TEXT("Musuh dengan serangan tercepat"));
+  case wc::Selector::CurrentEnemyArea:
+    return T(P, TEXT("Current enemy and nearby enemies"), TEXT("Musuh saat ini dan di sekitarnya"));
+  case wc::Selector::RetreatFromCurrentEnemy:
+    return T(P, TEXT("Retreat from the current enemy"), TEXT("Mundur dari musuh saat ini"));
+  case wc::Selector::CurrentEnemyAdjacent:
+    return T(P, TEXT("Move beside the current enemy"), TEXT("Pindah ke sebelah musuh saat ini"));
+  case wc::Selector::FarthestEnemyAdjacent:
+    return T(P, TEXT("Move beside the farthest enemy"), TEXT("Pindah ke sebelah musuh terjauh"));
+  }
+  return FString();
+}
 FString TraitBonus(const AWCMatchController *P, const wc::TraitDef &Trait, int Count = 2) {
   FString Stat;
   if (Trait.stat == "max_health_bonus_bp")
@@ -392,9 +416,39 @@ wc::OwnedUnit Owned(const TSharedPtr<FJsonObject> &Json) {
   Unit.definition = int(Json->GetNumberField(TEXT("def")));
   Unit.star = int(Json->GetNumberField(TEXT("star")));
   Unit.onBoard = Json->GetBoolField(TEXT("board"));
+  Unit.bench = int(Json->GetNumberField(TEXT("bench")));
   Unit.cell = {int(Json->GetNumberField(TEXT("col"))),
                int(Json->GetNumberField(TEXT("row")))};
   return Unit;
+}
+
+wc::SeatState OwnerSeat(AWCMatchController* Player) {
+  wc::SeatState Seat;
+  if (!Player->Private.IsValid() || !Player->Private->HasField(TEXT("units"))) return Seat;
+  Seat.id = Player->AssignedSeat;
+  Seat.gold = int(Player->Private->GetNumberField(TEXT("gold")));
+  Seat.level = int(Player->Private->GetNumberField(TEXT("level")));
+  Seat.revision = wc::Id(Player->Private->GetNumberField(TEXT("revision")));
+  Seat.sequence = wc::Id(Player->Private->GetNumberField(TEXT("sequence")));
+  for (const auto& Value : Player->Private->GetArrayField(TEXT("units"))) Seat.roster.push_back(Owned(Value->AsObject()));
+  for (const auto& Value : Player->Private->GetArrayField(TEXT("shop"))) Seat.shop.push_back(int(Value->AsNumber()));
+  return Seat;
+}
+const wc::RosterPreview& ShopPreview(AWCMatchHUD* HUD, AWCMatchController* Player, int Slot) {
+  struct Cache { int64 Namespace = -1, Revision = -1; TMap<int, wc::RosterPreview> Offers; };
+  static TMap<TWeakObjectPtr<AWCMatchHUD>, Cache> States;
+  for (auto It = States.CreateIterator(); It; ++It) if (!It.Key().IsValid()) It.RemoveCurrent();
+  auto& State = States.FindOrAdd(TWeakObjectPtr<AWCMatchHUD>(HUD));
+  const int64 Namespace = int64(Player->Public->GetNumberField(TEXT("matchNamespace")));
+  const int64 Revision = int64(Player->Private->GetNumberField(TEXT("revision")));
+  if (State.Namespace != Namespace || State.Revision != Revision) {
+    State.Namespace = Namespace; State.Revision = Revision; State.Offers.Reset();
+  }
+  if (!State.Offers.Contains(Slot)) {
+    wc::Command Command; Command.type = wc::CommandType::Buy; Command.slot = Slot;
+    State.Offers.Add(Slot, wc::PreviewRosterCommand(Player->Presenter->Definitions, OwnerSeat(Player), Command));
+  }
+  return State.Offers[Slot];
 }
 
 bool Inspection(AWCMatchController *P, wc::CombatUnit &Unit, bool &IsCombat,
@@ -484,6 +538,13 @@ bool Inspection(AWCMatchController *P, wc::CombatUnit &Unit, bool &IsCombat,
   return false;
 }
 } // namespace
+const TCHAR* AWCMatchHUD::FrontEndPageName() const {
+  return FrontEnd ? FrontEnd->PageName() : TEXT("closed");
+}
+bool AWCMatchHUD::SelectPreviewForReview(const FString& Id, const FString& Clip) {
+  return FrontEnd && FrontEnd->SelectPreviewForReview(Id, Clip);
+}
+
 void AWCMatchHUD::Text(const FString &V, float X, float Y, float Size,
                        FLinearColor Color) {
   DrawText(V, Color, OffsetX + X * Scale, OffsetY + Y * Scale,
@@ -964,23 +1025,24 @@ void AWCMatchHUD::DrawHUD() {
         if (Definition >= 0 && Definition < int(Defs.neutrals.size())) ++CreatureCounts.FindOrAdd(Definition);
       }
       TArray<int> Keys; for (const auto& Entry : CreatureCounts) Keys.Add(Entry.Key); Keys.Sort();
-      const float CardWidth = 1200.f / FMath::Max(1, Keys.Num());
+      const int Columns = FMath::Clamp(Keys.Num(), 1, 4);
+      const float CardWidth = FMath::Min(390.f, 1200.f / Columns) - 8;
       for (int Index = 0; Index < Keys.Num(); ++Index) {
         const auto& Unit = Defs.neutrals[Keys[Index]];
-        const float X = 345 + Index * CardWidth;
-        Box(X, 305, CardWidth - 8, 166, Navy);
+        const float X = 345 + (Index % Columns) * (CardWidth + 8);
+        const float Y = 305 + (Index / Columns) * 116;
+        Box(X, Y, CardWidth, 108, Navy);
         const FString Id = UTF8_TO_TCHAR(Unit.id.c_str());
         const FString Path = TEXT("/Game/WonderChess/Neutrals/") + Id + TEXT("/T_") + Id + TEXT("_Portrait.T_") + Id + TEXT("_Portrait");
         if (auto* Texture = LoadObject<UTexture2D>(nullptr, *Path))
-          DrawTextureSimple(Texture, OffsetX + (X + 10) * Scale, OffsetY + 345 * Scale,
-                            66.f / Texture->GetSizeX() * Scale);
-        Text(FString::Printf(TEXT("%d x %s"), CreatureCounts[Keys[Index]], *HeroName(Unit)), X + 12, 319, 1.25, Gold);
+          DrawTextureSimple(Texture, OffsetX + (X + 10) * Scale, OffsetY + (Y + 10) * Scale,
+                            52.f / Texture->GetSizeX() * Scale);
+        Text(FString::Printf(TEXT("%d x %s"), CreatureCounts[Keys[Index]], *HeroName(Unit)), X + 72, Y + 10, 1.25, Gold);
         const auto Health = wc::StarValue(wc::HalfUp(Unit.health * wc::Int(Wave->GetNumberField(TEXT("hpScaleBp"))), 10000), 1, 0, Defs.rules);
         const auto Damage = wc::StarValue(wc::HalfUp(Unit.attackDamage * wc::Int(Wave->GetNumberField(TEXT("damageScaleBp"))), 10000), 1, 0, Defs.rules);
-        Text(FString::Printf(TEXT("HP %g"), Health / 100.0), X + 86, 344, 1.25);
-        Text(FString::Printf(TEXT("ATK %g"), Damage / 100.0), X + 86, 371, 1.25);
-        Text(LocalizedPrintf(P, TEXT("Range %d tiles"), TEXT("Jangkauan %d petak"), Unit.range), X + 86, 398, 1.25, Muted);
-        Wrap(NeutralBehavior(P, Unit), X + 12, 427, CardWidth - 32, 1.25, Muted);
+        Text(FString::Printf(TEXT("HP %g  |  ATK %g"), Health / 100.0, Damage / 100.0), X + 72, Y + 34, 1.25);
+        const FString Behavior = LocalizedPrintf(P, TEXT("Range %d tiles · %s"), TEXT("Jarak %d petak · %s"), Unit.range, *NeutralBehavior(P, Unit));
+        Wrap(Behavior, X + 10, Y + 65, CardWidth - 20, 1.25, Muted);
       }
     }
     Box(25, 145, 290, 901, Navy);
@@ -1052,6 +1114,44 @@ void AWCMatchHUD::DrawHUD() {
              T(P, TEXT("No bonus yet. Bench copies and extra stars do not add contributors."), TEXT("Belum ada bonus. Salinan di bangku dan bintang tambahan tidak menambah kontributor.")), 45, 868, 245, 1.25, Muted);
         Button(TEXT("trait_close"), T(P, TEXT("Close trait detail"), TEXT("Tutup rincian sinergi")), 40, 982, 265, 48);
       }
+    } else if (PreviewOffer >= 0 && Private.IsValid() && Private->HasField(TEXT("shop")) &&
+               Phase == 0 && Private->GetArrayField(TEXT("shop")).IsValidIndex(PreviewOffer) &&
+               Private->GetArrayField(TEXT("shop"))[PreviewOffer]->AsNumber() >= 0) {
+      const auto RosterOwner = OwnerSeat(P);
+      const auto& Preview = ShopPreview(this, P, PreviewOffer);
+      const int Definition = RosterOwner.shop[PreviewOffer];
+      Text(HeroName(Defs.units[Definition]), 45, 425, 1.5, Gold);
+      Text(LocalizedPrintf(P, TEXT("Purchase preview · %d gold"), TEXT("Pratinjau beli · %d emas"), Defs.units[Definition].cost), 45, 464, 1.25, Gold);
+      float Y = 510;
+      if (!Preview.accepted) Wrap(ReplyText(P, UTF8_TO_TCHAR(Preview.reason.c_str())), 45, Y, 245, 1.25, Muted);
+      else {
+        wc::Id Survivor = Preview.hypotheticalId;
+        for (const auto& Step : Preview.mergeSteps)
+          if (Step.consumedIds[0] == Survivor || Step.consumedIds[1] == Survivor || Step.survivorId == Survivor) Survivor = Step.survivorId;
+        for (const auto& Unit : Preview.resulting.roster)
+          if (Unit.id == Survivor) {
+            Wrap(LocalizedPrintf(P, TEXT("Result: %d-star %s at %s"), TEXT("Hasil: bintang %d %s di %s"), Unit.star,
+                                 *HeroName(Defs.units[Definition]), *UnitLocation(P, Unit)), 45, Y, 245, 1.25, Gold);
+            Y += 100;
+          }
+        auto Location = [&](wc::Id Id) {
+          if (Id == Preview.hypotheticalId) return T(P, TEXT("new copy"), TEXT("salinan baru"));
+          for (const auto& Unit : RosterOwner.roster) if (Unit.id == Id) return UnitLocation(P, Unit);
+          return T(P, TEXT("previous merge"), TEXT("gabungan sebelumnya"));
+        };
+        for (const auto& Step : Preview.mergeSteps) {
+          Wrap(LocalizedPrintf(P, TEXT("%d → %d stars: %s + %s + %s. Survivor: %s."),
+                               TEXT("Bintang %d → %d: %s + %s + %s. Bertahan: %s."), Step.fromStar, Step.toStar,
+                               *Location(Step.survivorId), *Location(Step.consumedIds[0]), *Location(Step.consumedIds[1]),
+                               *Location(Step.survivorId)), 45, Y, 245, 1.25, FLinearColor::White);
+          Y += 150;
+        }
+        if (Preview.mergeSteps.empty()) Wrap(T(P, TEXT("One copy joins your bench. Collect three matching copies at the same star to upgrade."),
+                                                        TEXT("Satu salinan masuk bangku. Kumpulkan tiga salinan berbintang sama untuk naik tingkat.")), 45, Y, 245, 1.25, Muted);
+        else Wrap(T(P, TEXT("This is a preview. The server confirms the final placement after purchase."),
+                           TEXT("Ini pratinjau. Server mengonfirmasi penempatan akhir setelah pembelian.")), 45, Y, 245, 1.25, Muted);
+      }
+      Button(TEXT("offer_stats"), T(P, TEXT("View skill and stats"), TEXT("Lihat skill dan stat")), 40, 982, 265, 48);
     } else if (Inspection(P, Inspected, IsCombat, IsDeployed)) {
       const auto &U = Defs.Definition(Inspected.definition, Inspected.neutral);
       const auto &Skill = U.ability;
@@ -1105,73 +1205,72 @@ void AWCMatchHUD::DrawHUD() {
                            TEXT("Jarak %d | %.2f serangan/dtk"), U.range,
                            1000.0 / Interval),
            45, 639, .7, Muted);
-      Text(LocalizedPrintf(P, TEXT("Shield %.2f"), TEXT("Perisai %.2f"),
-                           Inspected.shield / 100.0),
-           45, 663, .73, Gold);
-      Text(Skill.enabled ? UTF8_TO_TCHAR(Skill.name.c_str()) : *T(P, TEXT("Basic attacks only"), TEXT("Hanya serangan dasar")), 45, 696, .82, Gold);
-      Wrap(P->Presenter->Metadata.AbilityTooltip(Id, P->Language), 45, 723, 247,
-           .73, FLinearColor::White);
+      if (Inspected.shield > 0)
+        Text(LocalizedPrintf(P, TEXT("Shield %.2f"), TEXT("Perisai %.2f"),
+                             Inspected.shield / 100.0), 45, 663, .73, Gold);
+      float SkillY = Inspected.shield > 0 ? 696.f : 670.f;
+      auto SkillLine = [&](const FString& Value, FLinearColor Color = Muted) {
+        TArray<FString> Words; Value.ParseIntoArrayWS(Words);
+        FString Line;
+        for (const FString& Word : Words) {
+          const FString Candidate = Line.IsEmpty() ? Word : Line + TEXT(" ") + Word;
+          float Width, Height;
+          GetTextSize(Candidate, Width, Height, GEngine->GetMediumFont(), 1.25f);
+          if (Width > 247 && !Line.IsEmpty()) {
+            Text(Line, 45, SkillY, 1.25f, Color); SkillY += 20;
+            Line = Word;
+          } else Line = Candidate;
+        }
+        if (!Line.IsEmpty()) { Text(Line, 45, SkillY, 1.25f, Color); SkillY += 20; }
+        SkillY += 5;
+      };
+      SkillLine(Skill.enabled ? FString(UTF8_TO_TCHAR(Skill.name.c_str())) : T(P, TEXT("Basic attacks only"), TEXT("Hanya serangan dasar")), Gold);
       if (Skill.enabled) {
-      wc::Int Power = Skill.magnitude[Inspected.star - 1];
-      if (Skill.effect == wc::Effect::Damage)
-        Power = wc::ResolveDamage(Power, wc::DamageType::True, 0, 0,
-                                  Inspected.abilityBonus + Inspected.allBonus);
-      else if (Skill.effect == wc::Effect::Heal ||
-               Skill.effect == wc::Effect::Shield ||
-               (Skill.effect == wc::Effect::StatModifier && Power > 0))
-        Power = wc::HalfUp(Power * (10000 + Inspected.supportBonus), 10000);
-      FString Magnitude;
-      if (Skill.effect == wc::Effect::StatModifier)
-        Magnitude =
-            LocalizedPrintf(P, TEXT("Attack rate %+0.2f%%"),
-                            TEXT("Laju serangan %+0.2f%%"), Power / 100.0);
-      else if (Skill.effect == wc::Effect::Stun)
-        Magnitude = T(P, TEXT("Stuns affected enemies"),
-                      TEXT("Melumpuhkan musuh terkena"));
-      else if (Skill.effect == wc::Effect::Dash)
-        Magnitude =
-            LocalizedPrintf(P, TEXT("Dash up to %d cells"),
-                            TEXT("Lari cepat hingga %d petak"), Skill.maxDash);
-      else
-        Magnitude =
-            FString::Printf(TEXT("%s %.2f"),
-                            *(Skill.effect == wc::Effect::Damage
-                                  ? DamageLabel(P, Skill.damageType)
-                              : Skill.effect == wc::Effect::Heal
-                                  ? T(P, TEXT("Heal"), TEXT("Pemulihan"))
-                                  : T(P, TEXT("Shield"), TEXT("Perisai"))),
-                            Power / 100.0);
-      Text(Magnitude, 45, 799, .75, Gold);
-      if (Skill.effects.size() > 1 && Skill.effects[1].effect == wc::Effect::Stun)
-        Text(LocalizedPrintf(P, TEXT("Then stun %.2fs if target survives"),
-                             TEXT("Lalu lumpuh %.2fs bila masih hidup"),
-                             Skill.effects[1].durationMs / 1000.0),
-             45, 823, .64, Muted);
-      else if (Skill.effect == wc::Effect::Damage)
-        Text(T(P, TEXT("Skill damage before defense"),
-               TEXT("Damage skill sebelum pertahanan")),
-             45, 823, .64, Muted);
-      Text(LocalizedPrintf(P, TEXT("Duration %.2fs | Range %d"),
-                           TEXT("Durasi %.2fdtk | Jarak %d"),
-                           Skill.durationMs / 1000.0, Skill.range),
-           45, 847, .68, Muted);
-      Text(LocalizedPrintf(P, TEXT("Radius %d | Max targets %d"),
-                           TEXT("Radius %d | Maks target %d"), Skill.radius,
-                           Skill.maxTargets),
-           45, 870, .68, Muted);
-      Text(LocalizedPrintf(P, TEXT("First %.2fs | Cooldown %.2fs"),
-                           TEXT("Awal %.2fdtk | Jeda %.2fdtk"),
-                           Skill.firstCastMs / 1000.0,
-                           Skill.cooldownMs / 1000.0),
-           45, 893, .65, Muted);
-      Text(LocalizedPrintf(P, TEXT("Cast %.2fs | Recovery %.2fs"),
-                           TEXT("Cast %.2fdtk | Pulih %.2fdtk"),
-                           Skill.castMs / 1000.0, Skill.recoveryMs / 1000.0),
-           45, 916, .65, Muted);
-      Text(LocalizedPrintf(P, TEXT("Travel %.2fs"),
-                           TEXT("Waktu proyektil %.2fdtk"),
-                           Skill.travelMs / 1000.0),
-           45, 939, .65, Muted);
+        for (int Index = 0; Index < int(Skill.effects.size()); ++Index) {
+          const auto& Effect = Skill.effects[Index];
+          wc::Int Power = Effect.magnitude[Inspected.star - 1];
+          if (Effect.effect == wc::Effect::Damage)
+            Power = wc::ResolveDamage(Power, wc::DamageType::True, 0, 0, Inspected.abilityBonus + Inspected.allBonus);
+          else if (Effect.effect == wc::Effect::Heal || Effect.effect == wc::Effect::Shield ||
+                   (Effect.effect == wc::Effect::StatModifier && Power > 0))
+            Power = wc::HalfUp(Power * (10000 + Inspected.supportBonus), 10000);
+          FString Magnitude;
+          if (Effect.effect == wc::Effect::StatModifier)
+            Magnitude = LocalizedPrintf(P, TEXT("Attack rate %+g%%"), TEXT("Laju serangan %+g%%"), Power / 100.0);
+          else if (Effect.effect == wc::Effect::Stun)
+            Magnitude = LocalizedPrintf(P, TEXT("Stun %gs"), TEXT("Lumpuh %gdtk"), Effect.durationMs / 1000.0);
+          else if (Effect.effect == wc::Effect::Dash)
+            Magnitude = LocalizedPrintf(P, TEXT("Dash up to %d tiles"), TEXT("Dash hingga %d petak"), Skill.maxDash);
+          else if (Effect.effect == wc::Effect::Damage)
+            Magnitude = LocalizedPrintf(P, TEXT("%s %g before defense"), TEXT("%s %g sebelum pertahanan"), *DamageLabel(P, Effect.damageType), Power / 100.0);
+          else
+            Magnitude = FString::Printf(TEXT("%s %g HP"),
+                *T(P, Effect.effect == wc::Effect::Heal ? TEXT("Heal") : TEXT("Shield"),
+                      Effect.effect == wc::Effect::Heal ? TEXT("Pulihkan") : TEXT("Perisai")), Power / 100.0);
+          if (Effect.durationMs > 0 && Effect.effect != wc::Effect::Stun)
+            Magnitude += LocalizedPrintf(P, TEXT(" · %gs"), TEXT(" · %gdtk"), Effect.durationMs / 1000.0);
+          if (Index > 0) {
+            Magnitude = T(P, TEXT("Then: "), TEXT("Lalu: ")) + Magnitude;
+            if (Effect.effect == wc::Effect::Stun)
+              Magnitude += T(P, TEXT(" if the target survives"), TEXT(" bila sasaran bertahan"));
+          }
+          SkillLine(Magnitude, Gold);
+        }
+        SkillLine(SkillTarget(P, Skill));
+        if (Skill.range > 0)
+          SkillLine(LocalizedPrintf(P, TEXT("Target range: %d tiles"), TEXT("Jangkauan sasaran: %d petak"), Skill.range));
+        const bool Area = Skill.selector == wc::Selector::AdjacentAllies ||
+                          Skill.selector == wc::Selector::AdjacentEnemies || Skill.selector == wc::Selector::CurrentEnemyArea;
+        if (Area && Skill.radius > 0) {
+          FString AreaText = LocalizedPrintf(P, TEXT("Area radius: %d tiles"), TEXT("Radius area: %d petak"), Skill.radius);
+          if (Skill.maxTargets > 0 && Skill.maxTargets < FMath::Square(2 * Skill.radius + 1))
+            AreaText += LocalizedPrintf(P, TEXT(" · up to %d targets"), TEXT(" · hingga %d sasaran"), Skill.maxTargets);
+          SkillLine(AreaText);
+        }
+        if (Skill.firstCastMs > 0)
+          SkillLine(LocalizedPrintf(P, TEXT("First cast: %gs"), TEXT("Skill pertama: %gdtk"), Skill.firstCastMs / 1000.0));
+        if (Skill.cooldownMs > 0)
+          SkillLine(LocalizedPrintf(P, TEXT("Cooldown: %gs"), TEXT("Jeda skill: %gdtk"), Skill.cooldownMs / 1000.0));
       }
     } else
       Wrap(T(P,
@@ -1267,21 +1366,12 @@ void AWCMatchHUD::DrawHUD() {
         Text(Token(P, UTF8_TO_TCHAR(U.race.c_str())) + TEXT(" / ") +
                  Token(P, UTF8_TO_TCHAR(U.unitClass.c_str())),
              X + 74, 966, .68, Muted);
-        int Copies = 0, TwoStars = 0;
-        for (const auto &V : Private->GetArrayField(TEXT("units"))) {
-          const auto Unit = V->AsObject();
-          if (int(Unit->GetNumberField(TEXT("def"))) == D) {
-            if (Unit->GetNumberField(TEXT("star")) == 1)
-              ++Copies;
-            if (Unit->GetNumberField(TEXT("star")) == 2)
-              ++TwoStars;
-          }
-        }
-        const bool Merge = Copies >= 2,
+        const auto& Preview = ShopPreview(this, P, I);
+        const bool Merge = Preview.accepted && !Preview.mergeSteps.empty(),
                    Full = BenchCount >= Defs.rules.benchCapacity;
         FString Feedback = Merge ? LocalizedPrintf(P, TEXT("MERGE -> %d stars"),
                                                    TEXT("GABUNG -> %d bintang"),
-                                                   TwoStars >= 2 ? 3 : 2)
+                                                   Merge ? Preview.mergeSteps.back().toStar : 1)
                            : Full ? T(P, TEXT("Bench full - no merge"),
                                       TEXT("Bangku penuh - tak bergabung"))
                                   : FString();
@@ -1294,7 +1384,7 @@ void AWCMatchHUD::DrawHUD() {
                FString::Printf(TEXT("%s - %d %s"), *Label(TEXT("shop.buy")),
                                U.cost, *Label(TEXT("ui.gold"))),
                X + 7, 1006, 210, 36,
-               Editable && GoldValue >= U.cost && (!Full || Merge));
+               Editable && Preview.accepted);
       }
       Button(TEXT("reroll"),
              Label(TEXT("shop.reroll"))
@@ -1692,7 +1782,6 @@ void AWCMatchHUD::NotifyHitBoxRelease(FName) {
   if (Y >= 838 && Y <= 886 && X >= 355 && X < 1523) {
     P->Intent(wc::CommandType::Move, P->SelectedUnit,
               FMath::Clamp(int((X - 355) / 146), 0, 7), false);
-    P->SelectedUnit = 0;
     return;
   }
   const auto &Rules = P->Presenter->Definitions.rules;
@@ -1704,7 +1793,6 @@ void AWCMatchHUD::NotifyHitBoxRelease(FName) {
         R = FMath::FloorToInt(Rules.rows / 2.0 - Point.X / Rules.tileSizeCm);
     if (C >= 0 && C < Rules.columns && R >= 0 && R < Rules.deploymentRows) {
       P->Intent(wc::CommandType::Move, P->SelectedUnit, -1, true, C, R);
-      P->SelectedUnit = 0;
     }
   }
 }
@@ -1725,7 +1813,9 @@ void AWCMatchHUD::Action(const FString &Id) {
       (Session && Session->bMatchAborted) ||
       (P->Public.IsValid() && int(P->Public->GetNumberField(TEXT("phase"))) ==
                                   int(wc::Phase::Aborted));
-  if (Aborted && Id != TEXT("menu") && Id != TEXT("quit"))
+  const bool FrontEndFailure = Aborted && P->Public.IsValid() &&
+                              P->Public->GetNumberField(TEXT("phase")) < 0;
+  if (Aborted && !FrontEndFailure && Id != TEXT("menu") && Id != TEXT("quit"))
     return;
   if (P->bOptions && Id != TEXT("options") && Id != TEXT("language") &&
       Id != TEXT("master") && Id != TEXT("music") && Id != TEXT("effects") &&
@@ -1735,6 +1825,7 @@ void AWCMatchHUD::Action(const FString &Id) {
       Id != TEXT("menu") && Id != TEXT("options") && Id != TEXT("quit"))
     return;
   if (Id == TEXT("trait_close")) { InspectedTrait.Reset(); return; }
+  if (Id == TEXT("offer_stats")) { PreviewOffer = -1; return; }
   if (Id.StartsWith(TEXT("trait_"))) {
     const FString TraitId = Id.Mid(6);
     if (P->Presenter)
@@ -1787,6 +1878,7 @@ void AWCMatchHUD::Action(const FString &Id) {
                           Id == TEXT("restart") || Id == TEXT("newsolo") ||
                           Id == TEXT("practice");
   if (NewSession) {
+    PreviewOffer = -1;
     if (Session)
       Session->ClearNetworkFailure();
     P->SelectedUnit = 0;
@@ -1795,6 +1887,15 @@ void AWCMatchHUD::Action(const FString &Id) {
     P->bInspectedCombat = false;
     P->bRecap = false;
     P->bTutorial = false;
+  }
+  if (Session && (Id == TEXT("host") || Id == TEXT("join"))) {
+    Session->LastSessionAction = Id;
+    if (Id == TEXT("join")) Session->LastJoinAddress = P->JoinAddress;
+  }
+  if (FrontEndFailure && Id == TEXT("start")) {
+    UGameplayStatics::OpenLevel(this, TEXT("/Game/WonderChess/Maps/L_WC_Courtyard"),
+                                true, TEXT("WCNewSolo=1"));
+    return;
   }
   if (Id == TEXT("host")) {
     UGameplayStatics::OpenLevel(this,
@@ -1863,6 +1964,7 @@ void AWCMatchHUD::Action(const FString &Id) {
     return;
   }
   if (Id.StartsWith(TEXT("inspect_"))) {
+    PreviewOffer = -1;
     P->SelectedUnit = 0;
     const int64 Selected = FCString::Atoi64(*Id.Mid(8));
     if (P->Presenter)
@@ -1885,6 +1987,7 @@ void AWCMatchHUD::Action(const FString &Id) {
   if (Id.StartsWith(TEXT("offer_")) || Id.StartsWith(TEXT("buy_"))) {
     const bool Buy = Id.StartsWith(TEXT("buy_"));
     int Slot = FCString::Atoi(*Id.Mid(Buy ? 4 : 6));
+    PreviewOffer = Slot;
     const auto &Shop = P->Private->GetArrayField(TEXT("shop"));
     if (Shop.IsValidIndex(Slot)) {
       P->InspectedDefinition = int(Shop[Slot]->AsNumber());
@@ -1897,6 +2000,7 @@ void AWCMatchHUD::Action(const FString &Id) {
     return;
   }
   if (Id.StartsWith(TEXT("bench_")) && !Editable) {
+    PreviewOffer = -1;
     const int Slot = FCString::Atoi(*Id.Mid(6));
     P->SelectedUnit = 0;
     for (const auto &V : P->Private->GetArrayField(TEXT("units"))) {
@@ -1934,7 +2038,6 @@ void AWCMatchHUD::Action(const FString &Id) {
   }
   if (Id == TEXT("sell")) {
     P->Intent(wc::CommandType::Sell, P->SelectedUnit);
-    P->SelectedUnit = 0;
     return;
   }
   if (Id.StartsWith(TEXT("cell_"))) {
@@ -1943,18 +2046,17 @@ void AWCMatchHUD::Action(const FString &Id) {
     if (Fields.Num() == 3 && P->SelectedUnit) {
       P->Intent(wc::CommandType::Move, P->SelectedUnit, -1, true,
                 FCString::Atoi(*Fields[1]), FCString::Atoi(*Fields[2]));
-      P->SelectedUnit = 0;
     }
     return;
   }
   int64 Select = 0;
   if (Id.StartsWith(TEXT("unit_")))
     Select = FCString::Atoi64(*Id.Mid(5));
+  if (Id.StartsWith(TEXT("unit_")) || Id.StartsWith(TEXT("bench_"))) PreviewOffer = -1;
   if (Id.StartsWith(TEXT("bench_"))) {
     int B = FCString::Atoi(*Id.Mid(6));
     if (P->SelectedUnit) {
       P->Intent(wc::CommandType::Move, P->SelectedUnit, B, false);
-      P->SelectedUnit = 0;
       return;
     }
     for (const auto &V : P->Private->GetArrayField(TEXT("units"))) {
@@ -1974,7 +2076,6 @@ void AWCMatchHUD::Action(const FString &Id) {
                     U->GetBoolField(TEXT("board")),
                     int(U->GetNumberField(TEXT("col"))),
                     int(U->GetNumberField(TEXT("row"))));
-          P->SelectedUnit = 0;
         } else
           P->SelectedUnit = Select;
         P->InspectedDefinition = int(U->GetNumberField(TEXT("def")));

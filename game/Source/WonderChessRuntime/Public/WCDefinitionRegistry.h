@@ -16,5 +16,6 @@ struct FWCDefinitionText
 
 namespace wc
 {
+    inline constexpr int32 NetworkProtocolVersion = 6;
     WONDERCHESSRUNTIME_API bool LoadCatalog(Catalog& OutCatalog, FString& Error, FWCDefinitionText* Text = nullptr);
 }

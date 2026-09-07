@@ -16,6 +16,7 @@
 #include "Serialization/JsonSerializer.h"
 #include "SkinnedAssetCompiler.h"
 #include "WCDefinitionRegistry.h"
+#include "WCAttackPresentation.h"
 
 namespace {
 using Object = TSharedPtr<FJsonObject>;
@@ -108,7 +109,7 @@ bool FWCImportedAssetContracts::RunTest(const FString &Parameters) {
       TEXT("animation_duration_policy"),
       TEXT("Idle2s, Move1s, Hit0.4s, Defeat1s, Victory1.5s; "
            "Attack uses current source export preset max(0.6s, authored "
-           "windup+0.4s); Active max(0.5s, authored cast+recovery)."));
+           "windup+0.4s), or the complete validated authored window extent; Active max(0.5s, authored cast+recovery)."));
   TArray<Value> Heroes;
   TSet<FString> Families;
   TSet<UAnimSequence *> UniqueAnimations;
@@ -125,6 +126,11 @@ bool FWCImportedAssetContracts::RunTest(const FString &Parameters) {
     const auto Budget = DefinitionJson->GetObjectField(TEXT("art_budget"));
     const auto Contract =
         DefinitionJson->GetObjectField(TEXT("animation_contract"));
+    TSharedPtr<FJsonObject> ExportManifest;
+    FString ManifestText;
+    const FString ManifestPath = FPaths::ConvertRelativePathToFull(FPaths::ProjectDir() / TEXT("../exports/heroes") / Id / TEXT("export_manifest.json"));
+    if (FFileHelper::LoadFileToString(ManifestText, *ManifestPath))
+      TestTrue(Id + TEXT(" readable source export manifest"), FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(ManifestText), ExportManifest));
     const FString Family = DefinitionJson->GetStringField(TEXT("rig_family"));
     const FString Folder =
         FolderOverride.IsEmpty()
@@ -319,6 +325,8 @@ bool FWCImportedAssetContracts::RunTest(const FString &Parameters) {
                 Animation->HasRootMotion());
       const double Length = Animation->GetPlayLength();
       double ExpectedLength = 0;
+      wc::presentation::AttackWindows Windows;
+      EWCAttackWindowStatus WindowStatus = EWCAttackWindowStatus::Absent;
       if (Clip == TEXT("Idle"))
         ExpectedLength = 2;
       else if (Clip == TEXT("Move") || Clip == TEXT("Defeat"))
@@ -327,8 +335,42 @@ bool FWCImportedAssetContracts::RunTest(const FString &Parameters) {
         ExpectedLength = .4;
       else if (Clip == TEXT("Victory"))
         ExpectedLength = 1.5;
-      else if (Clip == TEXT("Attack"))
+      else if (Clip == TEXT("Attack")) {
         ExpectedLength = FMath::Max(.6, Unit.attackWindupMs / 1000.0 + .4);
+        FString WindowError;
+        WindowStatus = WCReadAttackWindows(Animation, Unit.attackWindupMs / 1000.0, Windows, WindowError);
+        TestTrue(Id + TEXT(" valid optional attack-window metadata: ") + WindowError, WindowStatus != EWCAttackWindowStatus::Invalid);
+        Row->SetStringField(TEXT("attack_window_status"), WindowStatus == EWCAttackWindowStatus::Valid ? TEXT("VALID") : WindowStatus == EWCAttackWindowStatus::Absent ? TEXT("UNMARKED") : TEXT("INVALID"));
+        Row->SetBoolField(TEXT("source_window_contract_available"), ExportManifest.IsValid());
+        if (WindowStatus == EWCAttackWindowStatus::Valid) {
+          ExpectedLength = Windows.back().end;
+          TArray<Value> Markers;
+          for (const auto& Marker : Animation->AuthoredSyncMarkers) if (Marker.MarkerName.ToString().StartsWith(TEXT("WC_Attack_"))) {
+            auto MarkerRow = MakeShared<FJsonObject>();
+            MarkerRow->SetStringField(TEXT("name"), Marker.MarkerName.ToString()); MarkerRow->SetNumberField(TEXT("time"), Marker.Time);
+            Markers.Add(JsonValue(MarkerRow));
+          }
+          Row->SetArrayField(TEXT("attack_window_markers"), Markers);
+        }
+        if (ExportManifest) {
+          const auto AttackSpec = ExportManifest->GetObjectField(TEXT("clips"))->GetObjectField(TEXT("Attack"));
+          const TArray<Value>* SourceWindows = nullptr;
+          const bool RequiredWindows = AttackSpec->TryGetArrayField(TEXT("presentation_windows"), SourceWindows);
+          TestEqual(Id + TEXT(" source and imported attack window presence agree"), WindowStatus == EWCAttackWindowStatus::Valid, RequiredWindows);
+          if (RequiredWindows) {
+            const auto& ClipFrames = AttackSpec->GetArrayField(TEXT("frames"));
+            ExpectedLength = (ClipFrames[1]->AsNumber() - ClipFrames[0]->AsNumber()) / ExportManifest->GetNumberField(TEXT("fps"));
+            if (TestEqual(Id + TEXT(" two source-authored cut windows"), SourceWindows->Num(), 2) && WindowStatus == EWCAttackWindowStatus::Valid)
+              for (int Window = 0; Window < 2; ++Window) {
+                const auto Authored = (*SourceWindows)[Window]->AsObject();
+                const double Fps = ExportManifest->GetNumberField(TEXT("fps")), Start = ClipFrames[0]->AsNumber();
+                TestTrue(Id + TEXT(" imported cut start matches source"), FMath::Abs(Windows[Window].start - (Authored->GetNumberField(TEXT("start_frame")) - Start) / Fps) < .0001);
+                TestTrue(Id + TEXT(" imported cut release matches source"), FMath::Abs(Windows[Window].release - (Authored->GetNumberField(TEXT("release_frame")) - Start) / Fps) < .0001);
+                TestTrue(Id + TEXT(" imported cut end matches source"), FMath::Abs(Windows[Window].end - (Authored->GetNumberField(TEXT("end_frame")) - Start) / Fps) < .0001);
+              }
+          }
+        }
+      }
       else if (Clip == TEXT("Active"))
         ExpectedLength = FMath::Max(
             .5, (Unit.ability.castMs + Unit.ability.recoveryMs) / 1000.0);
@@ -355,6 +397,8 @@ bool FWCImportedAssetContracts::RunTest(const FString &Parameters) {
       TArray<double> Times{0, Length * .25, Length * .5, Length * .75, Length};
       if (Clip == TEXT("Attack"))
         Times.Add(Unit.attackWindupMs / 1000.0);
+      if (WindowStatus == EWCAttackWindowStatus::Valid)
+        for (const auto& Window : Windows) { Times.AddUnique(Window.start); Times.AddUnique(Window.release); Times.AddUnique(Window.end); }
       if (Clip == TEXT("Active"))
         Times.Add(Unit.ability.castMs / 1000.0);
       const auto &SkeletonRef = Skeleton->GetReferenceSkeleton();

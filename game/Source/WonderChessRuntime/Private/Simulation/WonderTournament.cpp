@@ -283,10 +283,12 @@ void Match::GainXp(SeatState &s, int xp)
     if (s.level == r.maximumLevel)
         s.xp = 0;
 }
-void Match::Merge(SeatState &s)
+namespace
+{
+void MergeRoster(const Catalog &catalog, SeatState &s, std::vector<MergeStep> *steps)
 {
     for (int star = 1; star < 3; ++star)
-        for (int definition = 0; definition < int(catalog_.units.size()); ++definition)
+        for (int definition = 0; definition < int(catalog.units.size()); ++definition)
         {
             while (true)
             {
@@ -306,6 +308,7 @@ void Match::Merge(SeatState &s)
                     return rank(a) < rank(b);
                 });
                 Id survivor = group[0].id, remove1 = group[1].id, remove2 = group[2].id;
+                if (steps) steps->push_back({survivor, star, star + 1, {remove1, remove2}});
                 s.roster.erase(
                     std::remove_if(s.roster.begin(), s.roster.end(),
                                    [&](const OwnedUnit &u) { return u.id == remove1 || u.id == remove2; }),
@@ -318,7 +321,7 @@ void Match::Merge(SeatState &s)
     for (auto &u : s.roster)
         if (!u.onBoard && u.bench < 0)
         {
-            for (int slot = 0; slot < catalog_.rules.benchCapacity; ++slot)
+            for (int slot = 0; slot < catalog.rules.benchCapacity; ++slot)
                 if (std::none_of(s.roster.begin(), s.roster.end(),
                                  [&](const OwnedUnit &v) { return !v.onBoard && v.bench == slot; }))
                 {
@@ -327,9 +330,9 @@ void Match::Merge(SeatState &s)
                 }
         }
 }
-bool Match::Legal(const SeatState &s) const
+bool LegalRoster(const Catalog &catalog, const SeatState &s)
 {
-    if (s.gold < 0 || s.level < catalog_.rules.startingLevel || s.level > catalog_.rules.maximumLevel)
+    if (s.gold < 0 || s.level < catalog.rules.startingLevel || s.level > catalog.rules.maximumLevel)
         return false;
     std::set<int> bench;
     std::set<std::pair<int, int>> cells;
@@ -337,34 +340,34 @@ bool Match::Legal(const SeatState &s) const
     int deployed = 0;
     for (const auto &u : s.roster)
     {
-        if (u.id >= (Id(1) << 20) || !ids.insert(u.id).second || u.definition < 0 || u.definition >= int(catalog_.units.size()) ||
+        if (u.id >= (Id(1) << 20) || !ids.insert(u.id).second || u.definition < 0 || u.definition >= int(catalog.units.size()) ||
             u.star < 1 || u.star > 3 || u.neutral)
             return false;
         if (u.onBoard)
         {
             ++deployed;
-            if (u.cell.column < 0 || u.cell.column >= catalog_.rules.columns || u.cell.row < 0 ||
-                u.cell.row >= catalog_.rules.deploymentRows ||
+            if (u.cell.column < 0 || u.cell.column >= catalog.rules.columns || u.cell.row < 0 ||
+                u.cell.row >= catalog.rules.deploymentRows ||
                 !cells.insert({u.cell.column, u.cell.row}).second)
                 return false;
         }
-        else if (u.bench < 0 || u.bench >= catalog_.rules.benchCapacity || !bench.insert(u.bench).second)
+        else if (u.bench < 0 || u.bench >= catalog.rules.benchCapacity || !bench.insert(u.bench).second)
             return false;
     }
     return deployed <= s.level;
 }
-bool Match::ApplyCommand(SeatState &s, const Command &cmd, Id &nextUnit, std::string &reason)
+bool ApplyRosterCommand(const Catalog &catalog, SeatState &s, const Command &cmd, Id &nextUnit,
+                        std::string &reason, std::vector<MergeStep> *steps = nullptr)
 {
-    const auto &r = catalog_.rules;
-    auto reject = [&](const std::string &text) {
-        reason = text;
-        return false;
-    };
+    const auto &r = catalog.rules;
+    auto reject = [&](const std::string &text) { reason = text; return false; };
     if (cmd.type == CommandType::Buy)
     {
         if (cmd.slot < 0 || cmd.slot >= int(s.shop.size()) || s.shop[cmd.slot] < 0)
             return reject("Offer is empty or unavailable");
-        int definition = s.shop[cmd.slot], cost = catalog_.units[definition].cost;
+        int definition = s.shop[cmd.slot];
+        if (definition >= int(catalog.units.size())) return reject("Offer definition is invalid");
+        int cost = catalog.units[definition].cost;
         if (s.gold < cost)
             return reject("Not enough gold");
         OwnedUnit u;
@@ -373,8 +376,8 @@ bool Match::ApplyCommand(SeatState &s, const Command &cmd, Id &nextUnit, std::st
         s.roster.push_back(u);
         s.gold -= cost;
         s.shop[cmd.slot] = -1;
-        Merge(s);
-        if (!Legal(s))
+        MergeRoster(catalog, s, steps);
+        if (!LegalRoster(catalog, s))
             return reject("Bench full; purchase does not resolve into a legal merge");
     }
     else if (cmd.type == CommandType::Sell)
@@ -383,27 +386,8 @@ bool Match::ApplyCommand(SeatState &s, const Command &cmd, Id &nextUnit, std::st
                                [&](const OwnedUnit &u) { return u.id == cmd.unit; });
         if (it == s.roster.end())
             return reject("Unit is not owned");
-        s.gold += catalog_.units[it->definition].cost * CountCopies(it->star);
+        s.gold += catalog.units[it->definition].cost * CountCopies(it->star);
         s.roster.erase(it);
-    }
-    else if (cmd.type == CommandType::Reroll)
-    {
-        if (s.gold < r.rerollCost)
-            return reject("Not enough gold");
-        s.gold -= r.rerollCost;
-        s.shopLocked = false;
-        Refresh(s);
-    }
-    else if (cmd.type == CommandType::ToggleLock)
-        s.shopLocked = !s.shopLocked;
-    else if (cmd.type == CommandType::BuyXp)
-    {
-        if (s.level >= r.maximumLevel)
-            return reject("Already at maximum level");
-        if (s.gold < r.buyXpGold)
-            return reject("Not enough gold");
-        s.gold -= r.buyXpGold;
-        GainXp(s, r.buyXpAmount);
     }
     else if (cmd.type == CommandType::Move)
     {
@@ -432,8 +416,74 @@ bool Match::ApplyCommand(SeatState &s, const Command &cmd, Id &nextUnit, std::st
         it->onBoard = cmd.toBoard;
         it->cell = cmd.toBoard ? cmd.cell : Cell{};
         it->bench = cmd.toBoard ? -1 : cmd.slot;
-        if (!Legal(s))
+        if (!LegalRoster(catalog, s))
             return reject("Move exceeds deployment capacity");
+    }
+    else
+        return reject("This preview supports purchases, placement and sales only");
+    s.ready = false;
+    return true;
+}
+} // namespace
+bool Match::Legal(const SeatState &s) const
+{
+    return LegalRoster(catalog_, s);
+}
+RosterPreview PreviewRosterCommand(const Catalog &catalog, const SeatState &owner, const Command &command)
+{
+    RosterPreview preview;
+    preview.resulting = owner;
+    if (!LegalRoster(catalog, owner))
+    {
+        preview.reason = "Owner roster is unavailable or invalid";
+        return preview;
+    }
+    Id next = 1;
+    for (const auto &u : owner.roster) next = std::max(next, u.id + 1);
+    if (next >= (Id(1) << 20))
+    {
+        preview.reason = "Unit identity space is exhausted";
+        return preview;
+    }
+    preview.hypotheticalId = command.type == CommandType::Buy ? next : 0;
+    preview.accepted = ApplyRosterCommand(catalog, preview.resulting, command, next, preview.reason,
+                                          &preview.mergeSteps);
+    if (!preview.accepted)
+    {
+        preview.resulting = owner;
+        preview.mergeSteps.clear();
+        preview.hypotheticalId = 0;
+    }
+    else preview.reason = "Owner-state preview; final action requires server acceptance";
+    return preview;
+}
+bool Match::ApplyCommand(SeatState &s, const Command &cmd, Id &nextUnit, std::string &reason)
+{
+    const auto &r = catalog_.rules;
+    auto reject = [&](const std::string &text) {
+        reason = text;
+        return false;
+    };
+    if (cmd.type == CommandType::Buy || cmd.type == CommandType::Move || cmd.type == CommandType::Sell)
+        return ApplyRosterCommand(catalog_, s, cmd, nextUnit, reason);
+    else if (cmd.type == CommandType::Reroll)
+    {
+        if (s.gold < r.rerollCost)
+            return reject("Not enough gold");
+        s.gold -= r.rerollCost;
+        s.shopLocked = false;
+        Refresh(s);
+    }
+    else if (cmd.type == CommandType::ToggleLock)
+        s.shopLocked = !s.shopLocked;
+    else if (cmd.type == CommandType::BuyXp)
+    {
+        if (s.level >= r.maximumLevel)
+            return reject("Already at maximum level");
+        if (s.gold < r.buyXpGold)
+            return reject("Not enough gold");
+        s.gold -= r.buyXpGold;
+        GainXp(s, r.buyXpAmount);
     }
     else if (cmd.type == CommandType::Ready)
         s.ready = true;

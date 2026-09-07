@@ -3,9 +3,9 @@
   "unit_id": "wc_u_elf_rogue",
   "name": "Sylas Duskrun",
   "blender_version": "5.1.1",
-  "source_revision": 7,
+  "source_revision": 9,
   "height_m": 1.9,
-  "source_sha256": "048dc037fe76539e9149b6017dda771243e07fdf8fd118f09fe1eeabd1ec446f",
+  "source_sha256": "b50a0d636498476ffcdc32624f7a3c844e60f0df38ad6d9f93bda2d0e8840ecd",
   "author_script_sha256": "474d9d165ca7a0c2134197c379978f59d2af9baf475bbcd0970fd97febd0a4da",
   "units_source_sha256": "fd6d831113261dd984f3d2430236c06eda4a9f4e7f9e30a404a76f418fa953b0",
   "rig_family": "humanoid_slender",
@@ -54,11 +54,26 @@
       "action": "AN_wc_u_elf_rogue_Attack",
       "frames": [
         1,
-        40
+        79
       ],
       "release_frame": 16,
       "support_hand_bake_samples": 0,
-      "maximum_support_reach_clamp_m": 0
+      "maximum_support_reach_clamp_m": 0,
+      "presentation_windows": [
+        {
+          "name": "R",
+          "start_frame": 1,
+          "release_frame": 16,
+          "end_frame": 40
+        },
+        {
+          "name": "L",
+          "start_frame": 40,
+          "release_frame": 55,
+          "end_frame": 79
+        }
+      ],
+      "duration_seconds": 1.3
     },
     "Active": {
       "action": "AN_wc_u_elf_rogue_Active",
@@ -104,15 +119,15 @@
   "lods": [
     {
       "lod": 1,
-      "triangles": 1783,
+      "triangles": 1779,
       "ratio_target": 0.5,
-      "visual_acceptance": "pending current Unreal review"
+      "visual_acceptance": "pending"
     },
     {
       "lod": 2,
-      "triangles": 890,
+      "triangles": 884,
       "ratio_target": 0.25,
-      "visual_acceptance": "pending current Unreal review"
+      "visual_acceptance": "pending"
     }
   ],
   "source_brief": {
@@ -131,16 +146,16 @@
   },
   "files": {
     "AN_wc_u_elf_rogue_Active.fbx": "209a6eb9a52f9facf314b2da3de4a1c4eda41deb598abb2bb345ecd85ae1d82d",
-    "AN_wc_u_elf_rogue_Attack.fbx": "25dd1ac9af0eab1e6c2acef8210a8555229433f68a1389f4b222fe0d106b8128",
+    "AN_wc_u_elf_rogue_Attack.fbx": "2ff47b1777681a775740c6fb9e44f240b67dee220d9aa0797bba00535d086973",
     "AN_wc_u_elf_rogue_Defeat.fbx": "e2013a9fbb7b598fb6cb1fc4113751ed98621794a5abb071a0847c12fb3d1258",
     "AN_wc_u_elf_rogue_Hit.fbx": "943d22b4ce70cd3e37c04bc600b33433c3f0e247588de397108d9d37a12ba0a6",
     "AN_wc_u_elf_rogue_Idle.fbx": "e487fffa9482563d8242d9f7005a79c5e836bca438573e62eeb098110a7eb177",
     "AN_wc_u_elf_rogue_Move.fbx": "3aea71ec04d7d8426902b6be636f126afeb172d4f3677198e1a70a2eb1e2bcfb",
     "AN_wc_u_elf_rogue_Victory.fbx": "6242aee2ad7f9f6bfa75f8300a88e46c0ced484f3d4378dbac344eed9eaf6549",
-    "portrait.png": "464ecf638944ebdb773184ae205644e5e2e0f549aef0bc0a8316952e447a382a",
-    "SK_wc_u_elf_rogue.fbx": "3389fbed79e24fe15bf6cf0565a6e9ec12cff44a8a5dcd90066bd713ae4db2e1",
-    "SK_wc_u_elf_rogue_LOD1.fbx": "34daa20582b41466cf4cbe0a2ecb50cb706a0753f60b6fa6509b3ff578de6605",
-    "SK_wc_u_elf_rogue_LOD2.fbx": "f289df395a7a4def02f88ad95c3e6cff6138054ddbe0363d79f08ee29c9f7f03",
+    "portrait.png": "4407feb269c52e8907edffb5046a4321149693e2f152631be5b1c97023306490",
+    "SK_wc_u_elf_rogue.fbx": "848ab687946ae98bea56796efcfab7bd42ec2c1b17d190ff3e95686ad5e60383",
+    "SK_wc_u_elf_rogue_LOD1.fbx": "f910ac088210b60d4d26493f8ed0fe3959cc08fcec295423b99e3c637d55bb97",
+    "SK_wc_u_elf_rogue_LOD2.fbx": "95ee8604f668b336720f0f5893461b17a72678be4734a1bce35f7aa608e44f62",
     "T_wc_u_elf_rogue_BaseColor.png": "184cb4f61a56454a16bd222ad2eeed7d2e383f31df3fcf7c91fe5b19ad18db77",
     "T_wc_u_elf_rogue_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
     "T_wc_u_elf_rogue_ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c"
@@ -157,15 +172,33 @@
   "normalized_exporter_sha256": "ac2b263a2491f2cf991065e749926b5549ddc81e73c814fb9958e424b6d23bc6",
   "normalized_reexport_script_sha256": "c1176dfe4526f36b767e3427383e70c3e174b2d62b36ac1a9562f5d8d7ffb99b",
   "exported_coordinate_units": "centimeters: temporary geometry, rest translation and animation location values multiplied by100; authoring source remains meters",
-  "geometry_source_revision": 7,
-  "animation_revision": 6,
+  "geometry_source_revision": 8,
+  "animation_revision": 8,
   "animation_refinement_script_sha256": "883991d592dfb18f4fd3e85b04583782ea411a21426c8921c13966d8bcd16f40",
   "animation_pose_script_sha256": "e43d6c05800e8b6dccbcd697d7cc9664b61d73f7012cac75ef98183e709d47b9",
   "animation_author_script_sha256": "ddaed7bb350bafb94c1743bc31c4b613524f971af01a5611835402590d8ae6f0",
   "animation_contact_script_sha256": "c36f8064fa5ab7ff136c399c68c7b012b5987234734aca0580bede3483017c1a",
   "animation_normalizer_sha256": "13646d355744f5293d573816e5cd54459cf88f3b647c6c2a22aa61ae29200779",
   "animation_evidence": "reports\\WC-330\\animation-refinement\\wc_u_elf_rogue",
-  "update_refinement_script_sha256": "7dd0586a9587409c67e55387a0df93d26f3231427a501be7f9cc65b111d18ec3",
-  "update_export_script_sha256": "4d9ec9f5747367743efd1f44f653f2e95f7ebdeb061aa1a62351dc774ecd82bf",
-  "update_refinement_evidence": "reports/WC-U440/20260906T133433Z/wc_u_elf_rogue/refinement-v5"
+  "update_refinement_script_sha256": "e23647d54a9b4f38d8d552c708ae74ed07e7a22fc7b972df43101b3390682678",
+  "update_export_script_sha256": "e23647d54a9b4f38d8d552c708ae74ed07e7a22fc7b972df43101b3390682678",
+  "update_refinement_evidence": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T162705Z-elf-shoulders\\sylas-candidate8-v2",
+  "shoulder_repair": {
+    "changed_actions": [
+      "AN_wc_u_elf_rogue_Attack"
+    ],
+    "source_action_hashes": {
+      "AN_wc_u_elf_rogue_Active": "64c34a17d7d62afd9168971f12d5eddd3ea96186d0affb0e3e897154aa3756af",
+      "AN_wc_u_elf_rogue_Attack": "90367821b3eb02eb1e8bc405645c37e7dd543e895a33fa754ceb4e6c43ad7b1d",
+      "AN_wc_u_elf_rogue_Defeat": "61edd8ebd74d071e59e27e7ff270c295c9c85dc9c69e4ac3c54c1d8b4aa53ae1",
+      "AN_wc_u_elf_rogue_Hit": "0b5f8ac22ed2e03ab4464118b7ae13b42ab90527ed152ff101b24e5b67a3add5",
+      "AN_wc_u_elf_rogue_Idle": "b2f925947552f4c0e06ae8bbd87adb24661d44fb752c40c170b4b64530fb0d2e",
+      "AN_wc_u_elf_rogue_Move": "028dea4784e04a177d0c0d4ba55854561b1a78937f0603d34cf80a09268326e6",
+      "AN_wc_u_elf_rogue_Victory": "81c5b8fc2c873b0fce37b6f223abbf6c3ee3d42feaefb0b4c42f715e31941033"
+    },
+    "boundary": "Left blade now contributes a recovery guard follow-through after existing right-blade release16. One composite Attack cycle, not proven alternating successive combat attacks. No extra damage or notify."
+  },
+  "alternating_attack_evidence": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T170748Z-alternating\\sylas-candidate9",
+  "alternating_attack_author_sha256": "45fe4e102f60d6ca0de3ee38fe6b39cae66a26f606f75e4a68a951348ed55111",
+  "alternating_attack_publisher_sha256": "45fe4e102f60d6ca0de3ee38fe6b39cae66a26f606f75e4a68a951348ed55111"
 }

@@ -188,7 +188,7 @@ These are new production obligations for this update. Their canonical designs al
 
 ### 14. Neris Starbloom → **Neris**
 
-**Stable ID:** `wc_u_elf_mage` · **Elf / Mage / Spell damage** (existing role label is imperfect for a nondamaging active; proposed explanatory role: **Control**).
+**Stable ID:** `wc_u_elf_mage` · **Elf / Mage / Control**. The adopted runtime adds magic damage before the surviving-target stun; the paragraph below retains the original proposal and baseline comparison as preparation history. Current values and behavior come from canonical data and its generated dossier.
 
 **Current skill:** Starbind stuns one current target with no damage. **Proposed skill upgrade:** one projectile hits the current enemy with **magic damage followed by stun if the victim survives**. This gives her Mage class bonus a real damage component while preserving her primary interrupter identity. Proposed initial damage is **6,000 / 10,800 / 19,440 centipoints** at stars 1/2/3, equivalent to **60 / 108 / 194.4 HP** before source bonuses and resistance. These are **unimplemented, unbalanced proposal values**, not canonical stats or accepted outcomes. Keep the authored **1,250 ms stun at every star**, **radius 0**, **range 4 tiles**, **400 ms cast**, **200 ms projectile travel**, **300 ms recovery**, **3,500 ms first cast** and **9,500 ms cooldown** as the initial experiment inputs. Make the target and finite travel explicit; do not add automatic targeting of casting enemies in the first implementation.
 

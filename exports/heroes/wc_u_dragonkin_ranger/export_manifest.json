@@ -1,0 +1,157 @@
+{
+  "status": "AUTHORED_EXPORTED_BLENDER_EXECUTED_ENGINE_AND_VISUAL_ACCEPTANCE_OPEN",
+  "unit_id": "wc_u_dragonkin_ranger",
+  "name": "Varek Prismshot",
+  "blender_version": "5.1.1",
+  "source_revision": 3,
+  "geometry_revision": 3,
+  "geometry_source_revision": 3,
+  "animation_revision": 3,
+  "source_sha256": "d1404700ba838c9c7cdcd7362b83034236055a3542082eb9d14118f724d95217",
+  "author_script_sha256": "681c0f4cc33a436928c0a646651d8e835a4e933e700a2d48e0865c07d0ba9340",
+  "family_helper_sha256": "72102344bf7325489b12f8e3396604bb0b3021dd75a98d05aacdb444d31f55e8",
+  "prepared_helper_sha256": "acd09bdce12dded42d1b716af7fed35b9bc47618e3a099213f1405ebc4d6bae4",
+  "units_source_sha256": "7dbf08ec21daef3c63c4e6cfd1302b508b44df771ee91322f50a95fe9dc31e05",
+  "height_m": 1.98,
+  "rig_family": "humanoid_draconic",
+  "rig_revision": "WC_humanoid_draconic_v1",
+  "bones": 27,
+  "triangles": 5508,
+  "materials": 1,
+  "fps": 60,
+  "source_forward": "+Y",
+  "source_up": "+Z",
+  "unit_scale_m": 1,
+  "fbx_profile": "tools/blender/profiles/fbx_skeletal_cm_v1.json",
+  "normalized_export_revision": 1,
+  "normalized_exporter_sha256": "13646d355744f5293d573816e5cd54459cf88f3b647c6c2a22aa61ae29200779",
+  "exported_coordinate_units": "centimeters in independent temporary copies; source metres",
+  "engine_calibration": [
+    "reports/WC-U440/20260906T170048Z/sora-engine-pilot"
+  ],
+  "textures": {
+    "BaseColor": "sRGB",
+    "Normal": "linear tangent; shallow low-frequency scale swatch",
+    "ORM": "linear R occlusion, G roughness, B metallic"
+  },
+  "clips": {
+    "Idle": {
+      "frames": [
+        1,
+        121
+      ],
+      "release_frame": null,
+      "action": "AN_wc_u_dragonkin_ranger_Idle"
+    },
+    "Move": {
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "action": "AN_wc_u_dragonkin_ranger_Move"
+    },
+    "Attack": {
+      "frames": [
+        1,
+        43
+      ],
+      "release_frame": 19,
+      "action": "AN_wc_u_dragonkin_ranger_Attack"
+    },
+    "Active": {
+      "frames": [
+        1,
+        40
+      ],
+      "release_frame": 22,
+      "action": "AN_wc_u_dragonkin_ranger_Active"
+    },
+    "Hit": {
+      "frames": [
+        1,
+        25
+      ],
+      "release_frame": null,
+      "action": "AN_wc_u_dragonkin_ranger_Hit"
+    },
+    "Defeat": {
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "action": "AN_wc_u_dragonkin_ranger_Defeat"
+    },
+    "Victory": {
+      "frames": [
+        1,
+        91
+      ],
+      "release_frame": null,
+      "action": "AN_wc_u_dragonkin_ranger_Victory"
+    }
+  },
+  "lods": [
+    {
+      "lod": 1,
+      "triangles": 2753,
+      "ratio_target": 0.5,
+      "visual_acceptance": "pending",
+      "mesh_validation_changed": false,
+      "removed_invalid_triangles": 0,
+      "explicit_triangulation": true,
+      "removed_degenerate_faces": 0
+    },
+    {
+      "lod": 2,
+      "triangles": 1377,
+      "ratio_target": 0.25,
+      "visual_acceptance": "pending",
+      "mesh_validation_changed": false,
+      "removed_invalid_triangles": 0,
+      "explicit_triangulation": true,
+      "removed_degenerate_faces": 0
+    }
+  ],
+  "source_brief": {
+    "silhouette": "A long narrow torso with a broad prismatic bow and two short outward horn fins. A split short cloak creates a forked shape without actual wings.",
+    "face": "Blue-gray scales, pale gold eyes and a short angular muzzle. Horn fins are blunt and clearly part of the head rather than a wearable crown.",
+    "costume": "Dark blue fitted ranger coat, ivory shoulder panels, silver belt and practical boots. The cloak ends at the hips.",
+    "palette": "Blue gray #7996AC; deep blue #3F567A; ivory #E6DFC9; prism cyan #8BC9CA.",
+    "equipment": "A stylized bow with broad translucent-looking but opaque shaded crystal facets. Keep its central grip readable and its mechanics decorative.",
+    "signature": "Prismatic horizontal bow, short horn fins and forked cloak.",
+    "materials": "Opaque faceted crystal shader, matte scale surface and soft cloth. Refraction is not required for the crystal look.",
+    "back": "Cloak panels suggest folded wings in outline only; no hidden wing rig or flight ability. A flat quiver sits between them.",
+    "animation": "Idle holds the bow low. Basics release pale magic arrows. The active rotates the bow slightly to align its facets, then fires one clear beamlike projectile with finite travel time.",
+    "vfx": "One narrow cyan projectile and compact prismatic target sparkle. It does not pierce, chain or deal true damage.",
+    "audio": "A crystalline bow note and a short clean impact, mixed below large area spells.",
+    "risk": "Crystal materials can become too bright against snowlike backgrounds. Keep dark facet planes and verify readability without bloom."
+  },
+  "equipment": "Visual only; Broad horizontal opaque prism bow with dark central grip and a readable second-hand draw; hip-length forked cloak and flat rear quiver.",
+  "files": {
+    "AN_wc_u_dragonkin_ranger_Active.fbx": "a45b08ffaba457e9171d1bbf89b244d488dffca3317ab5a96c9050cbcd896088",
+    "AN_wc_u_dragonkin_ranger_Attack.fbx": "87925e6dcacfe6c391bcaf8847ee609104cff74b00ff948e684f12f3724dc160",
+    "AN_wc_u_dragonkin_ranger_Defeat.fbx": "6f44f327259182bb0879be0b85cf8b1c40e7ea4db4a607ce2ca07df1ad6d620f",
+    "AN_wc_u_dragonkin_ranger_Hit.fbx": "7417119fbcd449ef75ed725204fe9f0d12ac2f40b1233a0c0a17fc2233bc44af",
+    "AN_wc_u_dragonkin_ranger_Idle.fbx": "07a19211d508428be2f822009d78091ff154dff38deb0b9b9a8708acf07863b7",
+    "AN_wc_u_dragonkin_ranger_Move.fbx": "fc667f2f0b50a335b52c7ae9cc3fc148e4eed77fe75b10b57e794c4b78496f58",
+    "AN_wc_u_dragonkin_ranger_Victory.fbx": "cf00d5362a5ea60984ff4735e6aa6c2ca28c25c0db23181ed93a3bb028494dec",
+    "portrait.png": "d6a10cee0712c02651da6e51e943da4f339d9e849b5bee5fbf240cb3e5ccc2b0",
+    "SK_wc_u_dragonkin_ranger.fbx": "01ed1c430de067dc18bf0b10028d8afbabd7306ce53af9d6e01d49e6498e7f17",
+    "SK_wc_u_dragonkin_ranger_LOD1.fbx": "ece372c45816ddea282fa039fbd011d176034fd2fc9106b9a6d82fd32e81a020",
+    "SK_wc_u_dragonkin_ranger_LOD2.fbx": "7a3995ce8c15c54ce03f312f69607ed63f8ec6187a655a4f920e291176e55fc9",
+    "T_wc_u_dragonkin_ranger_BaseColor.png": "065a9e7a34bf5053a0d5778350e30304dd09361d161e8e2023b9f85d30bb6499",
+    "T_wc_u_dragonkin_ranger_Normal.png": "9b1e3a02793a9f7be8a8b08675e7c8f12d5bb2800bc67586648b5cfe6134581b",
+    "T_wc_u_dragonkin_ranger_ORM.png": "af9e1d49fbcde6bc1462bb53a19a75bd37507bfd394ae2f2f8de2a9ef10c75d6"
+  },
+  "report_directory": "reports\\WC-U440\\20260906T172031Z\\dragonkin-remaining\\varek",
+  "open_reviews": [
+    "continuous seven-clip visual quality",
+    "muzzle crest armor and weapon clearance",
+    "crowded game-camera identity",
+    "actual Unreal family calibration/import/reimport",
+    "LOD silhouettes",
+    "effects/audio synchronization"
+  ]
+}

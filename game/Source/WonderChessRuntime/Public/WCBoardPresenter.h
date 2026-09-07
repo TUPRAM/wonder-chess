@@ -2,6 +2,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "WCDefinitionRegistry.h"
+#include "WCAttackPresentation.h"
 #include "WCBoardPresenter.generated.h"
 class AWCMatchController;
 class USkeletalMeshComponent;
@@ -26,6 +27,13 @@ public:
 private:
   TMap<int64, int32> PreviousStates;
   TMap<int64, int64> PreviousActions;
+  struct FAttackWindows {
+    EWCAttackWindowStatus Status = EWCAttackWindowStatus::Absent;
+    wc::presentation::AttackWindows Windows;
+    FString Error;
+  };
+  TMap<FString, FAttackWindows> AttackWindows;
+  TMap<int64, wc::presentation::AttackClock> AttackClocks;
   TMap<int64, FVector> Targets;
   TMap<int64, UStaticMeshComponent *> Highlights;
   TMap<FString, AActor*> StatusMarkers, Telegraphs;
@@ -59,6 +67,7 @@ private:
   int32 LastEventTick = -1;
   int32 LastRound = -1, LastPhase = -99;
   int32 LastObserved = -1;
+  int64 LastMatchNamespace = -1;
   float ReviewAge = 0;
   int32 ReviewCapture = -1;
 };

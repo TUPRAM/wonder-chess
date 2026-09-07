@@ -82,6 +82,8 @@ bool UWCNetworkSession::RouteStartup(APlayerController *Controller) {
     Address = URL.ToString();
   }
   bStartupRouting = true;
+  LastSessionAction = Host ? TEXT("host") : TEXT("join");
+  if (!Host) LastJoinAddress = Address;
   const TWeakObjectPtr<APlayerController> Player(Controller);
   Controller->GetWorldTimerManager().SetTimerForNextTick([Player, Address,
                                                           Host]() {
@@ -198,7 +200,12 @@ void UWCNetworkSession::HandleNetworkFailure(UWorld *FailureWorld,
 
   const FString Detail = FString(ENetworkFailure::ToString(FailureType)) +
                          TEXT(": ") + ErrorString;
-  if (IsClient && ConnectionEnded) {
+  const bool PendingConnection = NetDriver && NetDriver->NetDriverName == NAME_PendingNetDriver;
+  if (PendingConnection) {
+    RecordFailure(FailureWorld, false,
+                  TEXT("Could not reach the LAN host. Check the address and that the host is ready, then try again."),
+                  NAME_None, Detail);
+  } else if (IsClient && ConnectionEnded) {
     RecordFailure(
         FailureWorld, true,
         TEXT("The host disconnected. This match ended without a winner."),

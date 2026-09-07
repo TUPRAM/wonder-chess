@@ -42,7 +42,7 @@ public:
   bool bCatalogReady = false, bEntryReady = false, bEntrySkip = false;
   UFUNCTION(Client, Reliable) void ClientPrivateState(const FString &Json);
   UFUNCTION(Client, Reliable)
-  void ClientReply(bool Accepted, const FString &Reason);
+  void ClientReply(bool Accepted, const FString &Reason, int64 Request = 0);
   UFUNCTION(Client, Reliable) void ClientRejectSession(const FString &Reason);
   void Intent(wc::CommandType Type, int64 Unit = 0, int32 Slot = -1,
               bool ToBoard = false, int32 Column = -1, int32 Row = -1);
@@ -64,6 +64,8 @@ public:
   bool bRecap = false;
   bool bOptions = false, bTutorial = false, bReducedMotion = false;
   FString Language = TEXT("en"), Message, PrivateJson, LastPublicJson;
+  int64 LastRepliedRequest = 0;
+  bool bLastReplyAccepted = false;
   FString JoinAddress = TEXT("127.0.0.1");
   float MasterVolume = .6f, MusicVolume = .25f, EffectsVolume = .6f;
   double MessageTime = 0;
@@ -84,10 +86,12 @@ private:
   };
   TArray<QueuedIntent> IntentQueue;
   bool bCommandPending = false;
+  bool bPendingAccepted = false;
   bool bSentCatalogReady = false;
-  int64 PendingSequence = 0, PendingRevision = 0;
+  int64 PendingSequence = 0, PendingRevision = 0, PendingRequest = 0, PendingUnit = 0;
   wc::CommandType PendingType = wc::CommandType::Ready;
   void SendNextIntent();
+  void CompleteAcknowledgedIntent();
   int64 RequestId = 1;
   double NextMusic = 0;
   TMap<FString, double> LastSoundTimes;
@@ -138,9 +142,12 @@ public:
   void ActivateFocus();
   void AdjustFocusedVolume(float Delta);
   bool BackFromFrontEnd();
+  const TCHAR* FrontEndPageName() const;
+  bool SelectPreviewForReview(const FString& Id, const FString& Clip);
 
 private:
   TSharedPtr<FWCFrontEnd> FrontEnd;
+  int32 PreviewOffer = -1;
   FString InspectedTrait;
   bool bPresentationOptionsRead = false;
   FString Focused;
@@ -158,3 +165,5 @@ private:
   FString Pressed;
   FVector2D PressLocation;
 };
+
+void WCTickSelectionAudit(AWCMatchController* Controller);

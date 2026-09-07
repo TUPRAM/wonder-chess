@@ -3,6 +3,7 @@
 #include "WCBoardPresenter.h"
 #include "WCMatchRuntime.h"
 #include "WCNetworkSession.h"
+#include "WCEmblem.h"
 #include "Components/AudioComponent.h"
 #include "Engine/Engine.h"
 #include "Engine/GameViewportClient.h"
@@ -11,6 +12,8 @@
 #include "Framework/Application/SlateApplication.h"
 #include "GameFramework/GameUserSettings.h"
 #include "Misc/ConfigCacheIni.h"
+#include "Misc/CommandLine.h"
+#include "Misc/Parse.h"
 #include "Styling/AppStyle.h"
 #include "Styling/CoreStyle.h"
 #include "Widgets/Images/SImage.h"
@@ -125,20 +128,38 @@ bool FWCFrontEnd::Update(AWCMatchController* Player, TFunction<void(const FStrin
   if (!Player || !Player->Presenter || !Player->Public || !GEngine || !GEngine->GameViewport) {
     Remove(); return false;
   }
+  if (FParse::Param(FCommandLine::Get(), TEXT("WCFrontEndProfile"))) {
+    Controller = Player;
+    TickProfile();
+  }
   if (bAudit && Root) TickAudit();
   const int Phase = int(Number(Player->Public, TEXT("phase")));
   const auto* Session = Player->GetGameInstance<UWCNetworkSession>();
-  if (Phase >= 0 || (Session && Session->bMatchAborted) ||
+  if (Phase >= 0 ||
       !Field(Player->Public, TEXT("error")).IsEmpty() || Player->bTutorial) {
     Remove(); return false;
   }
   Controller = Player;
   Action = MoveTemp(OnAction);
-  const FString NextEntry = Field(Player->Public, TEXT("entryState"));
+  FString NextEntry = Field(Player->Public, TEXT("entryState"));
   const int Connected = int(Number(Player->Public, TEXT("connected")));
   FVector2D Size;
   GEngine->GameViewport->GetViewportSize(Size);
   const int NextColumns = Size.X < 1500 ? 4 : 6;
+  const FString NextError = Session && Session->bMatchAborted ? Session->LastNetworkError : FString();
+  const FString NextDetail = Session && Session->bMatchAborted ? Session->LastNetworkDetail : FString();
+  if (!NextError.IsEmpty()) NextEntry.Reset();
+  const bool ErrorChanged = NextError != NetworkError || NextDetail != NetworkDetail;
+  const bool MessageChanged = PreviousMessage != Player->Message;
+  NetworkError = NextError; NetworkDetail = NextDetail;
+  PreviousMessage = Player->Message;
+  if (ErrorChanged && !NetworkError.IsEmpty()) {
+    bPending = false;
+    Page = EPage::Mode;
+    if (Session && !Session->LastJoinAddress.IsEmpty()) Player->JoinAddress = Session->LastJoinAddress;
+  }
+  if (MessageChanged && Player->Message != TEXT("Accepted") && !Player->Message.IsEmpty() && NextEntry.IsEmpty())
+    bPending = false;
   FString NextParticipants;
   const TArray<TSharedPtr<FJsonValue>>* Participants = nullptr;
   if (Player->Public->TryGetArrayField(TEXT("entryParticipants"), Participants))
@@ -147,7 +168,7 @@ bool FWCFrontEnd::Update(AWCMatchController* Player, TFunction<void(const FStrin
       NextParticipants += Field(Person, TEXT("name")) + (Person->GetBoolField(TEXT("ready")) ? TEXT("/ready;") : TEXT("/waiting;"));
     }
   const bool Changed = EntryState != NextEntry || Connected != PreviousConnected ||
-                       Columns != NextColumns || PreviousLanguage != Player->Language || ParticipantSignature != NextParticipants;
+                       Columns != NextColumns || PreviousLanguage != Player->Language || ParticipantSignature != NextParticipants || ErrorChanged || MessageChanged;
   EntryState = NextEntry;
   PreviousConnected = Connected;
   Columns = NextColumns;
@@ -182,6 +203,7 @@ bool FWCFrontEnd::Update(AWCMatchController* Player, TFunction<void(const FStrin
     bPending = false;
     Rebuild();
   }
+  TickRecoveryAudit();
   return true;
 }
 void FWCFrontEnd::Remove() {
@@ -192,6 +214,17 @@ void FWCFrontEnd::Remove() {
   Scene.Reset();
   Portraits.Reset(); Assets.Reset();
   bPending = false;
+}
+const TCHAR* FWCFrontEnd::PageName() const {
+  if (!Root) return TEXT("closed");
+  switch (Page) {
+    case EPage::Lobby: return TEXT("lobby");
+    case EPage::Mode: return TEXT("mode");
+    case EPage::Gallery: return TEXT("gallery");
+    case EPage::Detail: return TEXT("detail");
+    case EPage::Settings: return TEXT("settings");
+  }
+  return TEXT("unknown");
 }
 bool FWCFrontEnd::Back() {
   if (!Root) return false;
@@ -217,7 +250,7 @@ void FWCFrontEnd::Dispatch(const FString& Id) {
   Rebuild();
 }
 void FWCFrontEnd::SaveShowcase() {
-  if (bAudit) return;
+  if (bAudit || FParse::Param(FCommandLine::Get(), TEXT("WCFrontEndProfile"))) return;
   GConfig->SetString(TEXT("WonderChess"), TEXT("ShowcaseHero"), *SelectedId, GGameUserSettingsIni);
   GConfig->Flush(false, GGameUserSettingsIni);
 }
@@ -236,6 +269,28 @@ void FWCFrontEnd::OpenHero(int32 Index) {
   Star = 1;
   if (Scene.IsValid()) Scene->ShowHero(SelectedId, Star, Controller->bReducedMotion);
   SaveShowcase(); SetPage(EPage::Detail);
+}
+bool FWCFrontEnd::SelectPreviewForReview(const FString& Id, const FString& Clip) {
+  if (!Controller.IsValid() || !Controller->Presenter || !Scene.IsValid() || IsEntry()) return false;
+  const auto& Definitions = Controller->Presenter->Definitions.units;
+  bool Found = false;
+  for (const auto& Definition : Definitions) if (String(Definition.id) == Id) { Found = true; break; }
+  if (!Found) return false;
+  SelectedId = Id;
+  Star = 1;
+  DetailTab = TEXT("Skill");
+  Page = EPage::Detail;
+  bReviewPreview = true;
+  bTurntable = false;
+  Scene->RestorePreview();
+  Scene->ShowHero(SelectedId, Star, false);
+  Scene->SetTurntable(false);
+  const bool Loaded = Scene->PlayClip(Clip, false);
+  Rebuild();
+  return Loaded;
+}
+bool FWCFrontEnd::ReducePreviewMotion() const {
+  return Controller.IsValid() && Controller->bReducedMotion && !bReviewPreview;
 }
 void FWCFrontEnd::ShiftHero(int32 Delta) {
   RefreshResults();
@@ -294,9 +349,9 @@ TSharedRef<SWidget> FWCFrontEnd::Lobby() {
 }
 
 TSharedRef<SWidget> FWCFrontEnd::Mode() {
-  const bool Network = Controller->Public->GetBoolField(TEXT("network"));
+  const bool Network = NetworkError.IsEmpty() && Controller->Public->GetBoolField(TEXT("network"));
   const int Humans = Network ? 2 : 1;
-  const bool CanHost = Controller->AssignedSeat == 0;
+  const bool CanHost = !NetworkError.IsEmpty() || Controller->AssignedSeat == 0;
   auto Rows = SNew(SVerticalBox);
   const TArray<TSharedPtr<FJsonValue>>* Participants = nullptr;
   if (Controller->Public->TryGetArrayField(TEXT("entryParticipants"), Participants) && !Participants->IsEmpty()) {
@@ -304,21 +359,28 @@ TSharedRef<SWidget> FWCFrontEnd::Mode() {
       const auto Person = Value->AsObject();
       const bool Bot = Person->GetBoolField(TEXT("bot"));
       const bool Ready = Person->GetBoolField(TEXT("ready"));
+      const int Seat = int(Number(Person, TEXT("seat")));
+      const bool OpenSeat = !Bot && Network && Seat >= int(Number(Controller->Public, TEXT("connected")));
       const FString Kind = Bot ? TEXT("BOT") : Local(TEXT("Human"), TEXT("Pemain"));
+      const FString Name = OpenSeat ? Local(TEXT("Open LAN seat"), TEXT("Kursi LAN terbuka")) : Field(Person, TEXT("name"));
+      const FString Readiness = !Bot && !IsEntry()
+          ? (OpenSeat ? Local(TEXT("Waiting for connection"), TEXT("Menunggu koneksi"))
+                      : Local(TEXT("Waiting for start"), TEXT("Menunggu mulai")))
+          : Local(Ready ? TEXT("Ready") : TEXT("Loading"), Ready ? TEXT("Siap") : TEXT("Memuat"));
       Rows->AddSlot().AutoHeight().Padding(0, 5)
-        [Copy(FString::Printf(TEXT("%d  %s   ·   %s   ·   %s"), int(Number(Person, TEXT("seat"))) + 1,
-             *Field(Person, TEXT("name")), *Kind,
-             *Local(Ready ? TEXT("Ready") : TEXT("Loading"), Ready ? TEXT("Siap") : TEXT("Memuat"))), 18)];
+        [Copy(FString::Printf(TEXT("%d  %s   ·   %s   ·   %s"), Seat + 1, *Name, *Kind, *Readiness), 18)];
     }
   } else {
     for (int Seat = 0; Seat < 8; ++Seat) {
       FString Label;
-      if (Seat < Humans)
-        Label = FString::Printf(TEXT("%d  %s %d   ·   %s"), Seat + 1,
-            *Local(TEXT("Captain"), TEXT("Kapten")), Seat + 1,
-            *Local(Seat < PreviousConnected ? TEXT("Human connected") : TEXT("Waiting for LAN player"),
-                   Seat < PreviousConnected ? TEXT("Pemain terhubung") : TEXT("Menunggu pemain LAN")));
-      else {
+      if (Seat < Humans) {
+        const bool OpenSeat = Network && Seat >= int(Number(Controller->Public, TEXT("connected")));
+        const FString Name = OpenSeat ? Local(TEXT("Open LAN seat"), TEXT("Kursi LAN terbuka"))
+            : FString::Printf(TEXT("%s %d"), *Local(TEXT("Captain"), TEXT("Kapten")), Seat + 1);
+        Label = FString::Printf(TEXT("%d  %s   ·   %s"), Seat + 1, *Name,
+            *Local(OpenSeat ? TEXT("Waiting for connection") : TEXT("Waiting for start"),
+                   OpenSeat ? TEXT("Menunggu koneksi") : TEXT("Menunggu mulai")));
+      } else {
         const auto& Bots = Controller->Presenter->Definitions.bots;
         const auto& Bot = Bots[(Seat - Humans) % Bots.size()];
         Label = FString::Printf(TEXT("%d  %s   ·   BOT"), Seat + 1, *String(Bot.label));
@@ -339,6 +401,21 @@ TSharedRef<SWidget> FWCFrontEnd::Mode() {
       Network ? Local(TEXT("LAN gathering · two captains"), TEXT("Lobi LAN · dua kapten")) :
                 Local(TEXT("Choose your tournament"), TEXT("Pilih turnamenmu"));
   Controls->AddSlot().AutoHeight().Padding(0, 0, 0, 15)[Copy(Heading, 27, true)];
+  if (!NetworkError.IsEmpty()) {
+    Controls->AddSlot().AutoHeight().Padding(0, 5)[Copy(Local(TEXT("Connection unavailable"), TEXT("Koneksi tidak tersedia")), 22, true)];
+    FString Guidance = NetworkError;
+    if (NetworkError.StartsWith(TEXT("Could not reach the LAN host.")))
+      Guidance = Local(TEXT("The LAN host did not respond. Check its address and make sure its lobby is open."),
+                       TEXT("Host LAN tidak merespons. Periksa alamat dan pastikan lobinya terbuka."));
+    else if (NetworkError.StartsWith(TEXT("The local network host could not start.")))
+      Guidance = Local(TEXT("The LAN host could not start. Try hosting again or choose Solo."),
+                       TEXT("Host LAN belum dapat dimulai. Coba buat lobi lagi atau pilih Solo."));
+    else if (NetworkError.StartsWith(TEXT("The game could not load the requested session.")))
+      Guidance = Local(TEXT("The session could not load. Try joining again or return to Solo."),
+                       TEXT("Sesi belum dapat dimuat. Coba gabung lagi atau kembali ke Solo."));
+    Controls->AddSlot().AutoHeight().Padding(0, 5)[Copy(Guidance, 18)];
+    Controls->AddSlot().AutoHeight().Padding(0, 12)[Copy(Local(TEXT("Edit the address and join again, host a new LAN session, or choose Solo. No tournament is running here."), TEXT("Ubah alamat lalu gabung lagi, buat sesi LAN baru, atau pilih Solo. Tidak ada turnamen aktif di sini.")), 18)];
+  }
   if (IsEntry()) {
     Controls->AddSlot().AutoHeight().Padding(0, 0, 0, 18)[Copy(Local(TEXT("These are the actual participants. Your first preparation begins after the host completes entry."), TEXT("Inilah peserta sebenarnya. Persiapan pertama dimulai setelah host menyelesaikan proses masuk.")), 19)];
     Controls->AddSlot().AutoHeight().Padding(0, 8)[Button(Local(TEXT("Ready to enter"), TEXT("Siap masuk")), [this] { Dispatch(TEXT("entryready")); }, EntryState == TEXT("Ready") || EntryState == TEXT("Loading"), true)];
@@ -458,9 +535,20 @@ TSharedRef<SWidget> FWCFrontEnd::Card(int32 Index, float Width) {
             [SNew(SImage).Image(Portrait(Id))]]
         + SVerticalBox::Slot().AutoHeight()[Copy(ShortName(Text), 20, true)]
         + SVerticalBox::Slot().AutoHeight().Padding(0, 4)[Copy(FString::Printf(TEXT("%d %s · %s"), Definition.cost, *Local(TEXT("gold"), TEXT("emas")), *FString::Join(Roles(Text), TEXT(" / "))), 14)]
-        + SVerticalBox::Slot().AutoHeight()[Copy(Humanize(String(Definition.race)) + TEXT(" · ") + Humanize(String(Definition.unitClass)), 14)]
-        + SVerticalBox::Slot().AutoHeight().Padding(0, 7, 0, 0)[Copy(Field(Text->GetObjectField(TEXT("ability")), TEXT("name")), 15)]
+        + SVerticalBox::Slot().AutoHeight().Padding(0, 4)
+          [SNew(SHorizontalBox)
+            + SHorizontalBox::Slot().FillWidth(1)[EmblemLabel(String(Definition.race), Humanize(String(Definition.race)), 14)]
+            + SHorizontalBox::Slot().FillWidth(1)[EmblemLabel(String(Definition.unitClass), Humanize(String(Definition.unitClass)), 14)]]
+        + SVerticalBox::Slot().AutoHeight().Padding(0, 7, 0, 0)
+          [EmblemLabel(Id, Field(Text->GetObjectField(TEXT("ability")), TEXT("name")), 15)]
+        + SVerticalBox::Slot().AutoHeight().Padding(0, 4, 0, 0)[Copy(Description, 14)]
       ]];
+}
+TSharedRef<SWidget> FWCFrontEnd::EmblemLabel(const FString& Id, const FString& Label, int32 FontSize) {
+  return SNew(SHorizontalBox)
+    + SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center).Padding(0, 0, 7, 0)
+      [SNew(SBox).ToolTipText(FText::FromString(Label))[SNew(SWCEmblem).Id(Id).Size(26)]]
+    + SHorizontalBox::Slot().FillWidth(1).VAlign(VAlign_Center)[Copy(Label, FontSize)];
 }
 void FWCFrontEnd::RefreshGrid() {
   if (!Grid) return;
@@ -560,20 +648,20 @@ TSharedRef<SWidget> FWCFrontEnd::PreviewControls() {
   auto Clips = SNew(SWrapBox).UseAllottedSize(true).InnerSlotPadding(FVector2D(5, 5));
   for (const FString Clip : {TEXT("Idle"), TEXT("Move"), TEXT("Attack"), TEXT("Active"), TEXT("Hit"), TEXT("Defeat"), TEXT("Victory")})
     Clips->AddSlot()[Button(Clip == TEXT("Active") ? Local(TEXT("Skill"), TEXT("Skill")) : Clip,
-        [this, Clip] { if (Scene.IsValid() && Controller.IsValid()) { Scene->PlayClip(Clip, Controller->bReducedMotion); Scene->SetTurntable(false); bTurntable = false; Rebuild(); } }, true,
+        [this, Clip] { if (Scene.IsValid() && Controller.IsValid()) { Scene->PlayClip(Clip, ReducePreviewMotion()); Scene->SetTurntable(false); bTurntable = false; Rebuild(); } }, true,
         Scene.IsValid() && Scene->SelectedClip == Clip)];
   auto Rotation = SNew(SWrapBox).UseAllottedSize(true).InnerSlotPadding(FVector2D(5, 5));
   Rotation->AddSlot()[Button(TEXT("↶ 30°"), [this] { if (Scene.IsValid()) Scene->RotateHero(-30); })];
   Rotation->AddSlot()[Button(TEXT("↷ 30°"), [this] { if (Scene.IsValid()) Scene->RotateHero(30); })];
   Rotation->AddSlot()[Button(Local(TEXT("Reset view"), TEXT("Atur ulang")), [this] { if (Scene.IsValid()) Scene->ResetView(); })];
-  Rotation->AddSlot()[Button(Controller->bReducedMotion ? Local(TEXT("Rotation off"), TEXT("Rotasi mati")) :
+  Rotation->AddSlot()[Button(ReducePreviewMotion() ? Local(TEXT("Rotation off"), TEXT("Rotasi mati")) :
       Local(bTurntable ? TEXT("Stop rotation") : TEXT("Turntable"), bTurntable ? TEXT("Hentikan rotasi") : TEXT("Putar model")), [this] {
-    bTurntable = Controller.IsValid() && !Controller->bReducedMotion && !bTurntable;
+    bTurntable = Controller.IsValid() && !ReducePreviewMotion() && !bTurntable;
     if (Scene.IsValid()) Scene->SetTurntable(bTurntable); Rebuild();
-  }, !Controller->bReducedMotion)];
+  }, !ReducePreviewMotion())];
   return SNew(SBorder).BorderImage(FAppStyle::GetBrush(TEXT("WhiteBrush"))).BorderBackgroundColor(Ink).Padding(14)
     [SNew(SVerticalBox)
-      + SVerticalBox::Slot().AutoHeight()[Copy(Controller->bReducedMotion ?
+      + SVerticalBox::Slot().AutoHeight()[Copy(ReducePreviewMotion() ?
           Local(TEXT("Reduced motion · choose a still pose"), TEXT("Gerakan terbatas · pilih pose diam")) :
           Local(TEXT("Model preview · no match changes"), TEXT("Pratinjau model · tidak mengubah pertandingan")), 16, true)]
       + SVerticalBox::Slot().AutoHeight().Padding(0, 8)[Clips]
@@ -637,7 +725,7 @@ TSharedRef<SWidget> FWCFrontEnd::DetailBody() {
         *Local(TEXT("Armor"), TEXT("Armor")), Definition.armor, *Local(TEXT("points"), TEXT("poin")),
         *Local(TEXT("Magic resistance"), TEXT("Resistansi sihir")), Definition.resistance, *Local(TEXT("points"), TEXT("poin"))));
     const auto SummaryAbility = Text->GetObjectField(TEXT("ability"));
-    Add(Field(SummaryAbility, TEXT("name")), true);
+    Lines->AddSlot().AutoHeight().Padding(0, 0, 8, 13)[EmblemLabel(SelectedId, Field(SummaryAbility, TEXT("name")), 20)];
     Add(Controller->Presenter->Metadata.AbilityTooltip(SelectedId, Controller->Language));
     for (const auto& Value : SummaryAbility->GetArrayField(TEXT("effects"))) {
       const auto Effect = Value->AsObject();
@@ -725,7 +813,8 @@ TSharedRef<SWidget> FWCFrontEnd::DetailBody() {
       for (const auto& Value : Traits) {
         const auto Trait = Value->AsObject();
         if (Field(Trait, TEXT("id")) != Id) continue;
-        Add(Humanize(Id) + TEXT(" · ") + Field(Trait, TEXT("name")), true);
+        Lines->AddSlot().AutoHeight().Padding(0, 0, 8, 13)
+          [EmblemLabel(Id, Humanize(Id) + TEXT(" · ") + Field(Trait, TEXT("name")), 19)];
         Add(Field(Trait, TEXT("description")));
         for (const auto& Level : Trait->GetArrayField(TEXT("tiers"))) {
           const auto Tier = Level->AsObject();
@@ -740,7 +829,14 @@ TSharedRef<SWidget> FWCFrontEnd::DetailBody() {
           const auto& Partner = Catalog.units[Index];
           if (String(Partner.id) == SelectedId || (String(Partner.race) != Id && String(Partner.unitClass) != Id)) continue;
           const auto PartnerText = Controller->Presenter->Metadata.Units.FindRef(String(Partner.id));
-          Partners->AddSlot()[Button(ShortName(PartnerText), [this, Index] { OpenHero(Index); })];
+          Partners->AddSlot()
+            [SNew(SButton).ContentPadding(7).ButtonColorAndOpacity(Teal)
+              .ToolTipText(FText::FromString(ShortName(PartnerText) + TEXT(" · ") + Humanize(Id)))
+              .OnClicked_Lambda([this, Index] { OpenHero(Index); return FReply::Handled(); })
+              [SNew(SHorizontalBox)
+                + SHorizontalBox::Slot().AutoWidth().Padding(0, 0, 8, 0)
+                  [SNew(SBox).WidthOverride(44).HeightOverride(44)[SNew(SImage).Image(Portrait(String(Partner.id)))]]
+                + SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center)[Copy(ShortName(PartnerText), 16)]]];
         }
         Lines->AddSlot().AutoHeight().Padding(0, 0, 0, 20)[Partners];
       }

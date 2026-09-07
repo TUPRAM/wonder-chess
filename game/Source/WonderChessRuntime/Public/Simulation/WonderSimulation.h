@@ -226,6 +226,23 @@ struct PublicSeat
     std::string label;
     std::vector<OwnedUnit> deployment;
 };
+struct MergeStep
+{
+    Id survivorId = 0;
+    int fromStar = 1, toStar = 2;
+    std::array<Id, 2> consumedIds{};
+};
+struct RosterPreview
+{
+    bool accepted = false;
+    std::string reason;
+    SeatState resulting;
+    Id hypotheticalId = 0;
+    std::vector<MergeStep> mergeSteps;
+};
+// Owner-state inventory projection only; authentication, phase and revision stay authoritative.
+// A new unit ID is hypothetical. This never allocates a match namespace or advances RNG.
+RosterPreview PreviewRosterCommand(const Catalog &catalog, const SeatState &owner, const Command &command);
 enum class EncounterKind { Pvp, Ghost, Neutral };
 struct EncounterSide
 {
@@ -248,6 +265,8 @@ struct Modifier
 struct CombatUnit
 {
     Id id = 0, actionId = 0;
+    // Presentation identity only; never consumed by combat decisions or effects.
+    Id basicAttackOrdinal = 0;
     int definition = -1, side = 0, star = 1, initiative = 0, target = -1;
     Cell cell, destination;
     Int health = 0, maxHealth = 0, shield = 0, basicDamage = 0;
@@ -487,7 +506,6 @@ class Match
     void Refresh(SeatState &seat);
     void GainXp(SeatState &seat, int xp);
     bool ApplyCommand(SeatState &seat, const Command &command, Id &nextUnit, std::string &reason);
-    void Merge(SeatState &seat);
     bool Legal(const SeatState &seat) const;
     void Prepare();
     void Pair();

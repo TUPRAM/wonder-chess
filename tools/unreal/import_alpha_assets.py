@@ -3,6 +3,7 @@ from pathlib import Path
 import json
 import hashlib
 import os
+import runpy
 import unreal
 
 ROOT = Path(unreal.Paths.project_dir()).resolve().parent
@@ -10,6 +11,35 @@ unreal.SystemLibrary.execute_console_command(None, "Interchange.FeatureFlags.Imp
 unreal.SystemLibrary.execute_console_command(None, "Interchange.FeatureFlags.Import.Enable 0")
 assets = unreal.AssetToolsHelpers.get_asset_tools()
 library = unreal.EditorAssetLibrary
+window_contract = runpy.run_path(str(ROOT/'tools/unreal/attack_window_contract.py'))
+
+def animation_marker_api():
+    # Installed UCLASS metadata exposes UAnimationBlueprintLibrary as AnimationLibrary.
+    api = unreal.AnimationLibrary
+    for name in ('get_animation_sync_markers', 'remove_animation_sync_markers_by_name',
+                 'is_valid_anim_notify_track_name', 'add_animation_notify_track', 'add_animation_sync_marker'):
+        if not callable(getattr(api, name, None)):
+            raise RuntimeError('Required installed AnimationLibrary API unavailable: '+name)
+    return api
+
+def install_attack_windows(sequence, plan):
+    api = animation_marker_api()
+    # Remove only this owned marker namespace; unrelated sync markers remain intact.
+    previous = api.get_animation_sync_markers(sequence)
+    for name in {str(marker.marker_name) for marker in previous if str(marker.marker_name).startswith(window_contract['PREFIX'])}:
+        api.remove_animation_sync_markers_by_name(sequence, name)
+    if plan:
+        if not api.is_valid_anim_notify_track_name(sequence, window_contract['TRACK']):
+            api.add_animation_notify_track(sequence, window_contract['TRACK'])
+        for name, time in plan['markers'].items():
+            api.add_animation_sync_marker(sequence, name, time, window_contract['TRACK'])
+    actual = [(str(marker.marker_name), float(marker.time)) for marker in api.get_animation_sync_markers(sequence)]
+    checked = window_contract['validate_imported_markers'](plan, float(sequence.sequence_length), actual)
+    # AnimationLibrary sync-marker edits do not mark the package dirty in UE5.7.
+    # Force persistence; the separate cold-load test verifies the serialized markers.
+    if not library.save_loaded_asset(sequence, only_if_is_dirty=False):
+        raise RuntimeError('Cannot persist authored Attack window markers: '+sequence.get_path_name())
+    return checked
 
 def task(filename, destination, name, options=None, factory=None):
     existing = unreal.load_asset(destination + '/' + name)
@@ -109,20 +139,32 @@ def hero_material(uid, folder, source):
     for asset in (base,mask,normal,instance): library.save_loaded_asset(asset)
     return instance
 
+def env_flag(name):
+    value = os.environ.get(name, '').strip().lower()
+    if value in ('', '0', 'false', 'no', 'off'): return False
+    if value in ('1', 'true', 'yes', 'on'): return True
+    raise ValueError('Expected a boolean environment flag: ' + name)
+
+
 def main():
     rules=json.loads((ROOT/'data/rules.alpha.json').read_text())
+    units={unit['id']:unit for unit in json.loads((ROOT/'data/units.json').read_text())['units']}
     only=os.environ.get('WC_IMPORT_HERO')
+    audio_only = env_flag('WC_IMPORT_AUDIO_ONLY')
+    if not audio_only: animation_marker_api()
+    import_audio = audio_only or not only or env_flag('WC_IMPORT_AUDIO')
     if only and set(only.split(',')) - set(rules['alpha_unit_ids']):
         raise ValueError('Unknown hero selection')
     reports=[]
     audio_reports=[]
     for uid in rules['alpha_unit_ids']:
-        if os.environ.get('WC_IMPORT_AUDIO_ONLY'): continue
+        if audio_only: continue
         if only and uid not in only.split(','): continue
         source=ROOT/'exports/heroes'/uid
         manifest_path=source/'export_manifest.json'
         manifest=json.loads(manifest_path.read_text(encoding='utf-8'))
         if manifest['unit_id'] != uid: raise ValueError('Hero export identity mismatch: '+uid)
+        attack_plan=window_contract['attack_window_plan'](manifest['clips']['Attack'],manifest['fps'],units[uid]['stats']['attack_windup_ms'])
         source_blend=ROOT/'art-source/heroes'/uid/(uid+'.blend')
         if hashlib.sha256(source_blend.read_bytes()).hexdigest() != manifest['source_sha256']:
             raise ValueError('Hero source differs from frozen export: '+uid)
@@ -156,7 +198,8 @@ def main():
             animations=[x for x in imported if isinstance(x,unreal.AnimSequence)]
             if len(animations)!=1: raise RuntimeError('Expected one animation '+name)
             sequence=animations[0]
-            clips.append({'name':clip,'path':sequence.get_path_name(),'length':sequence.sequence_length})
+            marker_result=install_attack_windows(sequence,attack_plan) if clip=='Attack' else None
+            clips.append({'name':clip,'path':sequence.get_path_name(),'length':sequence.sequence_length,'attack_window_markers':marker_result})
         portrait=source/'portrait.png'
         if portrait.is_file(): task(portrait,folder,'T_'+uid+'_Portrait')
         bounds=mesh.get_bounds()
@@ -164,7 +207,10 @@ def main():
         reports[-1].update({'source_revision':manifest.get('source_revision'),'source_sha256':manifest['source_sha256'],'export_manifest_sha256':hashlib.sha256(manifest_path.read_bytes()).hexdigest(),'units_sha256_at_export':manifest.get('units_source_sha256'),'units_sha256_at_import':hashlib.sha256((ROOT/'data/units.json').read_bytes()).hexdigest()})
         unreal.log('WC_HERO_IMPORTED '+uid)
 
-    if not only or os.environ.get('WC_IMPORT_AUDIO'):
+    expected_ids = [] if audio_only else [uid for uid in rules['alpha_unit_ids'] if not only or uid in only.split(',')]
+    if [item['id'] for item in reports] != expected_ids:
+        raise RuntimeError('Completed imports do not match the selected heroes')
+    if import_audio:
         for path in (ROOT/'exports/audio').glob('*.wav'):
             sounds=task(path,'/Game/WonderChess/Audio',path.stem)
             for sound in sounds:
@@ -174,9 +220,9 @@ def main():
                     audio_reports.append({'path':sound.get_path_name(),'source':str(path.relative_to(ROOT)),'source_sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'duration_seconds':sound.get_editor_property('duration'),'channels':sound.get_editor_property('num_channels'),'compression':'PCM','listening_review':'NOT_RUN'})
 
     report_dir=Path(os.environ.get('WC_EDITOR_REPORT_DIR', str(ROOT/'reports/WC-330'))).resolve()
-    report=report_dir/('import-'+('audio' if os.environ.get('WC_IMPORT_AUDIO_ONLY') else ('selected' if only and ',' in only else only) or 'alpha')+'.json')
+    report=report_dir/('import-'+('audio' if audio_only else ('selected' if only and ',' in only else only) or 'alpha')+'.json')
     report.parent.mkdir(parents=True,exist_ok=True)
-    report.write_text(json.dumps({'engine':unreal.SystemLibrary.get_engine_version(),'heroes':reports,'audio':audio_reports},indent=2)+'\n')
+    report.write_text(json.dumps({'engine':unreal.SystemLibrary.get_engine_version(),'selected_hero_ids':expected_ids,'audio_only':audio_only,'audio_requested':import_audio,'heroes':reports,'audio':audio_reports},indent=2)+'\n')
     unreal.log('WC_ALPHA_IMPORT_COMPLETE '+str(len(reports)))
 
 if __name__ == "__main__": main()

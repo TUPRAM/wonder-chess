@@ -1,0 +1,133 @@
+{
+  "status": "AUTHORED_EXPORTED_BLENDER_EXECUTED_ENGINE_AND_VISUAL_ACCEPTANCE_OPEN",
+  "unit_id": "wc_n_thorn",
+  "name": "Thorn",
+  "blender_version": "5.1.1",
+  "source_revision": 3,
+  "rig_family": "neutral_thorn_mechanical_v1",
+  "rig_bones": [
+    "root",
+    "body",
+    "head",
+    "petal_l",
+    "petal_r",
+    "launcher",
+    "cast_origin",
+    "leg_0",
+    "leg_1",
+    "leg_2",
+    "leg_3",
+    "head_ui"
+  ],
+  "bones": 12,
+  "height_m": 1.31,
+  "measured_rest_dimensions_m": [
+    1.1211010217666626,
+    1.1324639320373535,
+    1.3771885633468628
+  ],
+  "triangles": 2068,
+  "materials": 1,
+  "fps": 60,
+  "source_forward": "+Y",
+  "source_up": "+Z",
+  "source_unit_scale_m": 1,
+  "fbx_profile": "tools/blender/profiles/fbx_skeletal_cm_v1.json",
+  "source_sha256": "c5f34ae6fce1afff901ef09ff40b343f01bdfdc443cb19ff5fac3901cf212560",
+  "author_script_sha256": "4757b494e16e1c9e1eac530bf60bb4aad343308f2808a5adb82b24ff9fe9af7d",
+  "canonical_source_sha256": "cebc886e01ead6b6a26b879ec6adb613a94cbb2879eeef440759ec23e619b129",
+  "textures": {
+    "BaseColor": "sRGB",
+    "Normal": "linear tangent +Y flat normal; geometry provides bevels",
+    "ORM": "linear R=AO G=roughness B=metallic"
+  },
+  "clips": {
+    "Idle": {
+      "action": "AN_wc_n_thorn_Idle",
+      "frames": [
+        1,
+        121
+      ],
+      "release_frame": 0,
+      "fps": 60,
+      "loop": true
+    },
+    "Move": {
+      "action": "AN_wc_n_thorn_Move",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": 0,
+      "fps": 60,
+      "loop": true
+    },
+    "Attack": {
+      "action": "AN_wc_n_thorn_Attack",
+      "frames": [
+        1,
+        46
+      ],
+      "release_frame": 19,
+      "fps": 60,
+      "loop": false
+    },
+    "Hit": {
+      "action": "AN_wc_n_thorn_Hit",
+      "frames": [
+        1,
+        25
+      ],
+      "release_frame": 0,
+      "fps": 60,
+      "loop": false
+    },
+    "Defeat": {
+      "action": "AN_wc_n_thorn_Defeat",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": 0,
+      "fps": 60,
+      "loop": false
+    }
+  },
+  "lods": [
+    {
+      "lod": 1,
+      "triangles": 1034,
+      "ratio_target": 0.5,
+      "visual_acceptance": "pending"
+    },
+    {
+      "lod": 2,
+      "triangles": 516,
+      "ratio_target": 0.25,
+      "visual_acceptance": "pending"
+    }
+  ],
+  "continuous_recordings": true,
+  "files": {
+    "AN_wc_n_thorn_Attack.fbx": "c845be0f9a1df749aa1f0bfabc3fc46808bad1b62f28b7d2a0126672acdd8552",
+    "AN_wc_n_thorn_Defeat.fbx": "b4fe51d6d55b29792bb51e2a86820e4ccebe82bcad794aa8c26288145fa196d8",
+    "AN_wc_n_thorn_Hit.fbx": "132fa81bc82cba7e0cdab1d16dc5249078d739bb72bad76784a46ba0f468d5a8",
+    "AN_wc_n_thorn_Idle.fbx": "0e995023058bf83971321aed7e9acd1ef2f9791fb6e232293d190d97fa3f9711",
+    "AN_wc_n_thorn_Move.fbx": "433fc346d13ea4f6c52645fc80b6176f00500ceecdd88870646c618750e8efd8",
+    "portrait.png": "b33f9f4aaf16df591ee7516216adc5953833bedd69f381262336fd11ff2a0f94",
+    "SK_wc_n_thorn.fbx": "a208b90f602471f2759b9a07f6bfbdc07b8e4f98406a3c678f4cb5b10f37e077",
+    "SK_wc_n_thorn_LOD1.fbx": "a80b837776cabd5428026e3df1d405907b4dd02cf930837544fd6b5986a8f91f",
+    "SK_wc_n_thorn_LOD2.fbx": "cd76614c982ddf06ab4d019467ffbefbecdc923d21aa4b1371299cf29bb7444c",
+    "T_wc_n_thorn_BaseColor.png": "4745464a4bd4e1d8e76ef4dc183840d48de09e25d5d5fdbddaf767d92242307f",
+    "T_wc_n_thorn_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
+    "T_wc_n_thorn_ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c"
+  },
+  "review_path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T133400Z\\neutrals\\wc_n_thorn",
+  "open_reviews": [
+    "Unreal scale/facing/import",
+    "normal-speed continuous visual acceptance",
+    "LOD silhouettes in game",
+    "effects/audio release alignment",
+    "actual crowded gameplay"
+  ]
+}

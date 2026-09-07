@@ -1,6 +1,11 @@
 param([Parameter(Mandatory=$true)][string]$ProvenancePath,
-      [string]$EvidenceName = 'shipping-network-routed')
+      [string]$EvidenceName = 'shipping-network-routed',
+      [string]$OutputDirectory,
+      [ValidateRange(60,3600)][int]$Seconds=720,
+      [ValidateRange(1,20)][int]$SimulationSpeed=5,
+      [ValidateRange(1024,65535)][int]$Port=7780)
 $ErrorActionPreference = 'Stop'
+. (Join-Path $PSScriptRoot 'packaged_payload.ps1')
 $taskRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../..'))
 $manifestPath = [IO.Path]::GetFullPath($ProvenancePath)
 $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
@@ -9,8 +14,8 @@ $packageRoot = $manifest.package_root
 $executable = Join-Path $packageRoot 'WonderChess.exe'
 $gameExecutable = Join-Path $packageRoot 'WonderChess/Binaries/Win64/WonderChess-Win64-Shipping.exe'
 if ($EvidenceName -notmatch '^[a-z0-9-]+$') { throw 'Evidence name must be a simple report directory name' }
-$evidenceRoot = Join-Path $taskRoot ('reports/WC-360/' + $EvidenceName)
-$port = 7780
+$evidenceRoot = if ($OutputDirectory) { [IO.Path]::GetFullPath($OutputDirectory) } else { Join-Path $taskRoot ('reports/WC-360/' + $EvidenceName) }
+if (-not $evidenceRoot.StartsWith((Join-Path $taskRoot 'reports') + [IO.Path]::DirectorySeparatorChar, [StringComparison]::OrdinalIgnoreCase)) { throw 'Evidence must stay under this workspace reports directory' }
 if (Test-Path -LiteralPath $evidenceRoot) { throw 'Preserve existing Shipping network evidence; directory already exists' }
 $portOwners = @(Get-NetUDPEndpoint -ErrorAction Stop | Where-Object LocalPort -eq $port)
 if ($portOwners.Count) { throw "UDP port $port is already owned" }
@@ -21,14 +26,16 @@ foreach ($path in @($executable, $gameExecutable)) {
     if (-not $expected -or $expected.sha256 -ne $actualHash) { throw "Delivery executable digest mismatch: $path" }
     $identities += @{path=$path;sha256=$actualHash}
 }
+$payloadVerification = Test-WCPackagedPayload -Manifest $manifest -PackageRoot $packageRoot
 New-Item -ItemType Directory -Path $evidenceRoot | Out-Null
 $processes = [System.Collections.Generic.List[object]]::new()
 $result = [ordered]@{utc_started=[DateTime]::UtcNow.ToString('o');status='RUNNING';port=$port;port_unowned_before_launch=$true
     provenance_path=$manifestPath;provenance_sha256=(Get-FileHash -LiteralPath $manifestPath -Algorithm SHA256).Hash.ToLowerInvariant()
-    executable_identities=$identities;processes=@();listen_boundary='Actual OS UDP endpoint ownership, because this Shipping binary does not emit UE_LOG files.'
+    executable_identities=$identities;payload_verification=$payloadVerification;processes=@();listen_boundary='Actual OS UDP endpoint ownership, because this Shipping binary does not emit UE_LOG files.'
     startup_flags='Scoped game-owned -WCHost/-WCJoin routing; no positional Shipping startup URL'
-    profiling_confounders='Root plans a separate headless100 regression during the initial network minute. This functional network run is not an uncontended performance measurement.'
-    boundary='Two real packaged Shipping processes with human controller RPCs over loopback. 1280x720 and simulation speed5; not normal1080p rendering acceptance.'}
+    profiling_confounders='Concurrent workload is recorded at launch. Two rendered processes and automatic captures confound uncontended performance measurement.'
+    simulation_speed=$SimulationSpeed;bounded_host_seconds=$Seconds;ambient_processes=@(Get-Process -Name UnrealEditor,blender -ErrorAction SilentlyContinue | Select-Object Id,ProcessName,CPU,WorkingSet64)
+    boundary='Two real packaged Shipping processes with human controller RPCs over loopback. 1280x720 at the explicitly recorded simulation speed. Scripted controller commands; not physical LAN, manual play, or normal1080p rendering acceptance.'}
 function Save-Trial {
     $result.processes = @($processes | ForEach-Object { $_.Record })
     $result | ConvertTo-Json -Depth 10 | Set-Content -LiteralPath (Join-Path $evidenceRoot 'trial.json') -Encoding utf8
@@ -37,10 +44,11 @@ function Launch-Game([string]$Role,[int]$Seconds) {
     $directory = Join-Path $evidenceRoot $Role
     New-Item -ItemType Directory -Path $directory | Out-Null
     $arguments = @('-windowed','-ResX=1280','-ResY=720','-ForceRes','-dx11','-WCExercise','-WCAuthorityChecks',
-        '-WCProfile','-WCShots','-WCProjectedBounds','-WCFast=5',"-WCExitAfter=$Seconds",('-WCEvidenceDir="'+$directory+'"'))
+        '-WCProfile','-WCShots','-WCProjectedBounds',"-WCFast=$SimulationSpeed","-WCExitAfter=$Seconds",('-WCEvidenceDir="'+$directory+'"'))
     if ($Role -eq 'host') { $arguments += @('-WCHost',"-Port=$port") }
     else { $arguments += "-WCJoin=127.0.0.1:$port" }
     $process = Start-Process -FilePath $executable -WorkingDirectory $packageRoot -WindowStyle Hidden -PassThru -ArgumentList $arguments
+    $null = $process.Handle
     $record = [ordered]@{role=$Role;bootstrap_pid=$process.Id;utc_launched=[DateTime]::UtcNow.ToString('o');arguments=$arguments
         executable=$executable;working_directory=$packageRoot;planned_exit_after_seconds=$Seconds;exit_observed=$false;exit_code=$null}
     $record | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath (Join-Path $directory 'launch.json') -Encoding utf8
@@ -49,7 +57,7 @@ function Launch-Game([string]$Role,[int]$Seconds) {
     Write-Output "$Role launched actual bootstrap PID $($process.Id), planned exit after $Seconds seconds"
 }
 try {
-    Launch-Game 'host' 270
+    Launch-Game 'host' $Seconds
     $listenDeadline = [DateTime]::UtcNow.AddSeconds(35)
     $listenOwner = $null
     while ([DateTime]::UtcNow -lt $listenDeadline) {
@@ -69,13 +77,14 @@ try {
     if (-not $listenOwner) { throw 'No verified actual Shipping host UDP listener within35 seconds' }
     $result.listen_owner = $listenOwner
     $processes[0].InnerProcess = [Diagnostics.Process]::GetProcessById($listenOwner.process_id)
+    $null = $processes[0].InnerProcess.Handle
     $processes[0].Record.inner_pid = $listenOwner.process_id
     $processes[0].Record.inner_exit_observed = $false
     $processes[0].Record.inner_exit_code = $null
     Save-Trial
     Write-Output "Shipping host UDP port $port owned by actual game PID $($listenOwner.process_id)"
-    Launch-Game 'client' 280
-    $deadline = [DateTime]::UtcNow.AddSeconds(310)
+    Launch-Game 'client' ($Seconds+30)
+    $deadline = [DateTime]::UtcNow.AddSeconds($Seconds+90)
     do {
         foreach ($entry in $processes) {
             if (-not $entry.InnerProcess) {
@@ -84,6 +93,7 @@ try {
                 })
                 if ($inner.Count -eq 1) {
                     $entry.InnerProcess = [Diagnostics.Process]::GetProcessById($inner[0].ProcessId)
+                    $null = $entry.InnerProcess.Handle
                     $entry.Record.inner_pid = $inner[0].ProcessId
                     $entry.Record.inner_exit_observed = $false
                     $entry.Record.inner_exit_code = $null
@@ -108,7 +118,7 @@ try {
             }
         }
         Save-Trial
-        $running = @($processes | Where-Object { -not $_.Record.exit_observed })
+        $running = @($processes | Where-Object { -not $_.Record.exit_observed -or ($_.InnerProcess -and -not $_.Record.inner_exit_observed) })
         if ($running.Count) { Start-Sleep -Milliseconds 750 }
     } while ($running.Count -and [DateTime]::UtcNow -lt $deadline)
     if ($running.Count) { throw 'Tracked game has not reached planned exit; retain identity for review' }

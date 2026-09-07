@@ -1,0 +1,141 @@
+{
+  "status": "AUTHORED_EXPORTED_BLENDER_EXECUTED_ENGINE_AND_VISUAL_ACCEPTANCE_OPEN",
+  "unit_id": "wc_n_wisp",
+  "name": "Wisp",
+  "blender_version": "5.1.1",
+  "source_revision": 2,
+  "rig_family": "neutral_wisp_mechanical_v1",
+  "rig_bones": [
+    "root",
+    "body",
+    "core",
+    "cast_origin",
+    "head",
+    "crown",
+    "orbit_l",
+    "orbit_r",
+    "head_ui"
+  ],
+  "bones": 9,
+  "height_m": 1.34,
+  "measured_rest_dimensions_m": [
+    1.0176348686218262,
+    0.5916021466255188,
+    1.1026920080184937
+  ],
+  "triangles": 1820,
+  "materials": 1,
+  "fps": 60,
+  "source_forward": "+Y",
+  "source_up": "+Z",
+  "source_unit_scale_m": 1,
+  "fbx_profile": "tools/blender/profiles/fbx_skeletal_cm_v1.json",
+  "source_sha256": "6b96cb2b214f00584ee4282c4b797a699b61f56b5538b12861ac89c73f746e71",
+  "author_script_sha256": "9822989468c951043292dd350a4e0a8f35889a5a0713b8bbde6c8f363b80e226",
+  "canonical_source_sha256": "cebc886e01ead6b6a26b879ec6adb613a94cbb2879eeef440759ec23e619b129",
+  "textures": {
+    "BaseColor": "sRGB",
+    "Normal": "linear tangent +Y flat normal; geometry provides bevels",
+    "ORM": "linear R=AO G=roughness B=metallic"
+  },
+  "clips": {
+    "Idle": {
+      "action": "AN_wc_n_wisp_Idle",
+      "frames": [
+        1,
+        121
+      ],
+      "release_frame": 0,
+      "fps": 60,
+      "loop": true
+    },
+    "Move": {
+      "action": "AN_wc_n_wisp_Move",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": 0,
+      "fps": 60,
+      "loop": true
+    },
+    "Attack": {
+      "action": "AN_wc_n_wisp_Attack",
+      "frames": [
+        1,
+        46
+      ],
+      "release_frame": 19,
+      "fps": 60,
+      "loop": false
+    },
+    "Hit": {
+      "action": "AN_wc_n_wisp_Hit",
+      "frames": [
+        1,
+        25
+      ],
+      "release_frame": 0,
+      "fps": 60,
+      "loop": false
+    },
+    "Defeat": {
+      "action": "AN_wc_n_wisp_Defeat",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": 0,
+      "fps": 60,
+      "loop": false
+    },
+    "Active": {
+      "action": "AN_wc_n_wisp_Active",
+      "frames": [
+        1,
+        40
+      ],
+      "release_frame": 22,
+      "fps": 60,
+      "loop": false
+    }
+  },
+  "lods": [
+    {
+      "lod": 1,
+      "triangles": 910,
+      "ratio_target": 0.5,
+      "visual_acceptance": "pending"
+    },
+    {
+      "lod": 2,
+      "triangles": 454,
+      "ratio_target": 0.25,
+      "visual_acceptance": "pending"
+    }
+  ],
+  "continuous_recordings": true,
+  "files": {
+    "AN_wc_n_wisp_Active.fbx": "373d4342e0893a66a25a9d8371cd47b7f577b24c6a9e505904266f6633d3dafd",
+    "AN_wc_n_wisp_Attack.fbx": "cbb7db9aa0ff45495c0b2efa3f46708e47522d804526561967022b4f24c908d5",
+    "AN_wc_n_wisp_Defeat.fbx": "595ca8082de4c7bf5d6bae1c8f7320ed7cbae15ae0d2cd4718aa548e76843c46",
+    "AN_wc_n_wisp_Hit.fbx": "9620105a1a53f1197e52f108d344b1eb160a219208d0df15561ccc186d784feb",
+    "AN_wc_n_wisp_Idle.fbx": "58faa9e71f4dbabfc2f6bbd3639b64cf6a107b1f5fc76a6d14ee368788d65a74",
+    "AN_wc_n_wisp_Move.fbx": "0d26a1797cfafc6e40a69bb0a82ef532b80bb3ba437cfcfd3affd79511477d8a",
+    "portrait.png": "1265ed2f7d7ec69c575dac956ee21091a1027c7fd158e3e905e0487c44a00900",
+    "SK_wc_n_wisp.fbx": "60c89e964a94eac18754916dbf324f2276000304313d21e8ea8b61adc5f994b5",
+    "SK_wc_n_wisp_LOD1.fbx": "2723f2e76ed5f8d43f089ef58296b334e3f9430551d829c9195bb01440f5cd2c",
+    "SK_wc_n_wisp_LOD2.fbx": "8f843cfb64fe3d2ccb9f29dec4e97ca7b144c1695dcb4fd8af546adeb6c7c073",
+    "T_wc_n_wisp_BaseColor.png": "5b801580790856ac5b52e2a2ed5f9fbaaa25d825594373863fb96a6da3073270",
+    "T_wc_n_wisp_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
+    "T_wc_n_wisp_ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c"
+  },
+  "review_path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T133019Z\\neutrals\\wc_n_wisp",
+  "open_reviews": [
+    "Unreal scale/facing/import",
+    "normal-speed continuous visual acceptance",
+    "LOD silhouettes in game",
+    "effects/audio release alignment",
+    "actual crowded gameplay"
+  ]
+}

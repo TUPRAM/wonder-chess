@@ -3,9 +3,9 @@
   "unit_id": "wc_u_elf_ranger",
   "name": "Liora Leafstep",
   "blender_version": "5.1.1",
-  "source_revision": 7,
+  "source_revision": 8,
   "height_m": 1.88,
-  "source_sha256": "fb25bd84e170137f6cfeca90e4c5c21714c0f7be743f1e972292d85b98fbaeba",
+  "source_sha256": "06ec80da5d8dacc6bdd87dbe504edc2e7f64560e85529fb7d22c82e127d63d4c",
   "author_script_sha256": "f2fcf648f49acc28b85dcec4eb755f8d8122bc97f7dfef52e54ffc35bc973175",
   "units_source_sha256": "ebd8f5f2fc2b889683566d1913e2c29d90ac9d041d47a231038c497e7a29865f",
   "rig_family": "humanoid_slender",
@@ -108,13 +108,13 @@
       "lod": 1,
       "triangles": 1885,
       "ratio_target": 0.5,
-      "visual_acceptance": "pending current Unreal review"
+      "visual_acceptance": "pending"
     },
     {
       "lod": 2,
-      "triangles": 942,
+      "triangles": 933,
       "ratio_target": 0.25,
-      "visual_acceptance": "pending current Unreal review"
+      "visual_acceptance": "pending"
     }
   ],
   "source_brief": {
@@ -139,10 +139,10 @@
     "AN_wc_u_elf_ranger_Idle.fbx": "8858b960b833202026af0ec8401da13027c23a345e736c0e87161748e6ad8a05",
     "AN_wc_u_elf_ranger_Move.fbx": "fd16eae5e03a1999608f69637a360b2f3e0c5fe0df50895a8a9128f1e2cb838a",
     "AN_wc_u_elf_ranger_Victory.fbx": "575a5e0ab4b8659f4c80fa34bd7dc1c959deb8acced16121956694dc1aad944e",
-    "portrait.png": "4dfd8d548b329bef330bfbc06280848924427eb4bdfa34d480d01bd08c0cc2b0",
-    "SK_wc_u_elf_ranger.fbx": "1b64de0dcbeae3c94bdbd6ec8ac1fc7580247797c3e3e535f6026f880a7eb8a0",
-    "SK_wc_u_elf_ranger_LOD1.fbx": "e0b2f063cbdc669d85e73eace262c8cb9210df452c1740f66b29521427daf20d",
-    "SK_wc_u_elf_ranger_LOD2.fbx": "e2f9c9ec1f96a8f60518777180d826289be32811509e2761e580552d9d40da0f",
+    "portrait.png": "028dc0371aaa58f1a6e2960c48642eac4449fe1c1accfb7fbb4940ef23b51fad",
+    "SK_wc_u_elf_ranger.fbx": "fab1e6efc54fd735356436b487ec248a77012c9055a4d5f65de4bfc4eb88364a",
+    "SK_wc_u_elf_ranger_LOD1.fbx": "699dbf0f2f6a08bcaacd9100640aa3004720e6aac15e7b2e0702ec08c7355313",
+    "SK_wc_u_elf_ranger_LOD2.fbx": "64351878501ed89950d906a327a7bd5238033e8f0bdc9b963da6f3738356cac5",
     "T_wc_u_elf_ranger_BaseColor.png": "db270d53e03fb44b1c8b0d28dae50de370a3c2faddc49edf4f7cacd6131cab54",
     "T_wc_u_elf_ranger_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
     "T_wc_u_elf_ranger_ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c"
@@ -155,7 +155,7 @@
     "Skill release/audio alignment",
     "Final facial and costume art acceptance"
   ],
-  "geometry_source_revision": 7,
+  "geometry_source_revision": 8,
   "animation_revision": 6,
   "animation_refinement_script_sha256": "883991d592dfb18f4fd3e85b04583782ea411a21426c8921c13966d8bcd16f40",
   "animation_pose_script_sha256": "e43d6c05800e8b6dccbcd697d7cc9664b61d73f7012cac75ef98183e709d47b9",
@@ -163,7 +163,20 @@
   "animation_contact_script_sha256": "c36f8064fa5ab7ff136c399c68c7b012b5987234734aca0580bede3483017c1a",
   "animation_normalizer_sha256": "13646d355744f5293d573816e5cd54459cf88f3b647c6c2a22aa61ae29200779",
   "animation_evidence": "reports\\WC-330\\animation-refinement\\wc_u_elf_ranger",
-  "update_refinement_script_sha256": "7dd0586a9587409c67e55387a0df93d26f3231427a501be7f9cc65b111d18ec3",
-  "update_export_script_sha256": "4d9ec9f5747367743efd1f44f653f2e95f7ebdeb061aa1a62351dc774ecd82bf",
-  "update_refinement_evidence": "reports/WC-U440/20260906T133433Z/wc_u_elf_ranger/refinement-v1"
+  "update_refinement_script_sha256": "e23647d54a9b4f38d8d552c708ae74ed07e7a22fc7b972df43101b3390682678",
+  "update_export_script_sha256": "e23647d54a9b4f38d8d552c708ae74ed07e7a22fc7b972df43101b3390682678",
+  "update_refinement_evidence": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T162705Z-elf-shoulders\\liora-candidate8-v2",
+  "shoulder_repair": {
+    "changed_actions": [],
+    "source_action_hashes": {
+      "AN_wc_u_elf_ranger_Active": "f654c65f96420b73f1212d4bb45cf792f0e39d81114555d207839e158b015923",
+      "AN_wc_u_elf_ranger_Attack": "7f03041a2029cb96648c0a53b541f3e893d582e03ee810c6037b0266fa657560",
+      "AN_wc_u_elf_ranger_Defeat": "72552c3b9bdb98c1d6de5014c523b956fe788d8f0b20d51691d26391293663d1",
+      "AN_wc_u_elf_ranger_Hit": "8246e010a9e8f592261dfaa249443146493dd1531e4b1f9bc1f84af01035fc7f",
+      "AN_wc_u_elf_ranger_Idle": "73c46ec6581ec1466c3a52d10114010edd8803ee9a1d965ab380b686319959ff",
+      "AN_wc_u_elf_ranger_Move": "f9efae522adc608876f9edb17638553ab328b348530798ac38bb9e7aece666d6",
+      "AN_wc_u_elf_ranger_Victory": "c1e91ef32d8c5c79b847e3e2d6d3bab38ec21afa3de0648c3f58255a14fccfe2"
+    },
+    "boundary": "Left blade now contributes a recovery guard follow-through after existing right-blade release16. One composite Attack cycle, not proven alternating successive combat attacks. No extra damage or notify."
+  }
 }
