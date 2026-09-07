@@ -1,0 +1,210 @@
+00:02.078  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_halfling_warrior\wc_u_halfling_warrior.blend"
+{
+  "status": "structural_checks_passed_visual_review_required",
+  "blender_version": "5.1.1",
+  "collection": "EXPORT",
+  "evaluated_triangle_total": 10246,
+  "objects": [
+    {
+      "name": "Armature",
+      "type": "ARMATURE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.6733193397521973,
+        0.308004766702652,
+        1.200640082359314
+      ],
+      "roots": [
+        "root"
+      ],
+      "deform_bones": 27
+    },
+    {
+      "name": "SK_wc_u_halfling_warrior",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.7795583009719849,
+        0.3594103455543518,
+        1.1178237199783325
+      ],
+      "evaluated_triangles": 10246,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "not_checked": [
+    "appearance",
+    "deformation across all clips",
+    "UV overlap appropriateness",
+    "normal-map convention",
+    "Unreal import",
+    "LOD silhouette",
+    "gameplay readability"
+  ]
+}
+{
+  "status": "structural_checks_passed_visual_review_required",
+  "blender_version": "5.1.1",
+  "collection": "LOD_SOURCE",
+  "evaluated_triangle_total": 7658,
+  "objects": [
+    {
+      "name": "SK_wc_u_halfling_warrior_LOD1",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.7789350152015686,
+        0.35924285650253296,
+        1.1174168586730957
+      ],
+      "evaluated_triangles": 5118,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    },
+    {
+      "name": "SK_wc_u_halfling_warrior_LOD2",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.7790526747703552,
+        0.35924285650253296,
+        1.1175174713134766
+      ],
+      "evaluated_triangles": 2540,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "not_checked": [
+    "appearance",
+    "deformation across all clips",
+    "UV overlap appropriateness",
+    "normal-map convention",
+    "Unreal import",
+    "LOD silhouette",
+    "gameplay readability"
+  ]
+}
+{
+  "status": "sampled_motion_invariants_passed",
+  "unit_id": "wc_u_halfling_warrior",
+  "blender_version": "5.1.1",
+  "sampling": "actual deformed mesh every 3 frames at 60fps",
+  "clips": [
+    {
+      "clip": "Idle",
+      "samples": 41,
+      "minimum_support_sole_z_m": 1.0191051558194886e-07,
+      "maximum_support_sole_z_m": 1.0191051558194886e-07,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Move",
+      "samples": 21,
+      "minimum_support_sole_z_m": 6.037546285142525e-08,
+      "maximum_support_sole_z_m": 1.427175249091306e-07,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Attack",
+      "samples": 16,
+      "minimum_support_sole_z_m": 1.0191051558194886e-07,
+      "maximum_support_sole_z_m": 1.0191051558194886e-07,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Active",
+      "samples": 12,
+      "minimum_support_sole_z_m": 1.0191051558194886e-07,
+      "maximum_support_sole_z_m": 0.012013362720608711,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Hit",
+      "samples": 9,
+      "minimum_support_sole_z_m": 8.243260651852324e-08,
+      "maximum_support_sole_z_m": 1.3381658447997324e-07,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Defeat",
+      "samples": 21,
+      "minimum_support_sole_z_m": 5.35909023824388e-08,
+      "maximum_support_sole_z_m": 1.2871883825482655e-07,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Victory",
+      "samples": 31,
+      "minimum_support_sole_z_m": 1.0191051558194886e-07,
+      "maximum_support_sole_z_m": 1.0191051558194886e-07,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    }
+  ],
+  "errors": [],
+  "not_checked": [
+    "continuous visual quality",
+    "weapon/costume clipping",
+    "semantic gesture review",
+    "Unreal retarget/import",
+    "runtime move-speed synchronization"
+  ]
+}
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+WC_NEW_HERO_READBACK_PASS {"status": "PASS_SAVED_SOURCE_SKIN_MOTION_AND_MESH_FBX_READBACK", "unit_id": "wc_u_halfling_warrior", "source_sha256": "556a04fe6118487c8cd872e82c0c43bad5724ebbbd4fcfea6345f6adea3bcf22", "manifest_sha256": "c7b2e8a1bec9fc6c6ebb899b6160187665782da4e429e5d7c11dc8238eaf03e3", "source_revision": 7, "geometry_revision": 7, "animation_revision": 7, "blender_version": "5.1.1", "files_verified": 14, "source_clips_verified": 7, "mesh_fbx_readbacks": [{"mesh_suffix": "", "dimensions_m": [0.8343233168125153, 0.2866103947162628, 1.1211838715600946], "triangles": 10246, "bones": 27, "materials": 1, "uv_layers": 1, "weighted_vertices": 5393}, {"mesh_suffix": "_LOD1", "dimensions_m": [0.8343233168125153, 0.2864428758621216, 1.1207770102548578], "triangles": 5118, "bones": 27, "materials": 1, "uv_layers": 1, "weighted_vertices": 2831}, {"mesh_suffix": "_LOD2", "dimensions_m": [0.8324120044708252, 0.2864428758621216, 1.120877620021929], "triangles": 2540, "bones": 27, "materials": 1, "uv_layers": 1, "weighted_vertices": 1550}], "animation_fbx_import_verified": false, "Unreal_import_verified": false, "final_art_accepted": false}
+Traceback (most recent call last):
+  File "C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T160156Z\validate-pippa.py", line 23, in <module>
+    assert action and abs(action.frame_range[0]-1)<.01 and abs(action.frame_range[1]-spec['frames'][1])<.01,(name,action.frame_range[:])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('Idle', (2.0, 122.0))
+FBX version: 7400
+
+Error: script failed, file: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T160156Z\validate-pippa.py', exiting.
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

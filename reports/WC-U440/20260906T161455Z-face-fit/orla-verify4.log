@@ -1,0 +1,355 @@
+00:02.204  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_dwarf_priest\wc_u_dwarf_priest.blend"
+{
+  "status": "structural_checks_passed_visual_review_required",
+  "blender_version": "5.1.1",
+  "collection": "EXPORT",
+  "evaluated_triangle_total": 8606,
+  "objects": [
+    {
+      "name": "Armature",
+      "type": "ARMATURE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.7985707521438599,
+        0.367258757352829,
+        1.3975000381469727
+      ],
+      "roots": [
+        "root"
+      ],
+      "deform_bones": 27
+    },
+    {
+      "name": "SK_wc_u_dwarf_priest",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.9398245811462402,
+        0.5612619519233704,
+        1.3675999641418457
+      ],
+      "evaluated_triangles": 8606,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "not_checked": [
+    "appearance",
+    "deformation across all clips",
+    "UV overlap appropriateness",
+    "normal-map convention",
+    "Unreal import",
+    "LOD silhouette",
+    "gameplay readability"
+  ]
+}
+{
+  "status": "structural_checks_passed_visual_review_required",
+  "blender_version": "5.1.1",
+  "collection": "LOD_SOURCE",
+  "evaluated_triangle_total": 6434,
+  "objects": [
+    {
+      "name": "SK_wc_u_dwarf_priest_LOD1",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.9398629665374756,
+        0.5602304935455322,
+        1.3673691749572754
+      ],
+      "evaluated_triangles": 4295,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    },
+    {
+      "name": "SK_wc_u_dwarf_priest_LOD2",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.9411576986312866,
+        0.5628468990325928,
+        1.3675084114074707
+      ],
+      "evaluated_triangles": 2139,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "not_checked": [
+    "appearance",
+    "deformation across all clips",
+    "UV overlap appropriateness",
+    "normal-map convention",
+    "Unreal import",
+    "LOD silhouette",
+    "gameplay readability"
+  ]
+}
+{
+  "status": "sampled_motion_invariants_passed",
+  "unit_id": "wc_u_dwarf_priest",
+  "blender_version": "5.1.1",
+  "sampling": "actual deformed mesh every 3 frames at 60fps",
+  "clips": [
+    {
+      "clip": "Idle",
+      "samples": 41,
+      "minimum_support_sole_z_m": 0.010400007478892803,
+      "maximum_support_sole_z_m": 0.010400007478892803,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Move",
+      "samples": 21,
+      "minimum_support_sole_z_m": 0.004176173824816942,
+      "maximum_support_sole_z_m": 0.010400007478892803,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Attack",
+      "samples": 15,
+      "minimum_support_sole_z_m": 0.010400007478892803,
+      "maximum_support_sole_z_m": 0.010400007478892803,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Active",
+      "samples": 14,
+      "minimum_support_sole_z_m": 0.010400007478892803,
+      "maximum_support_sole_z_m": 0.010400007478892803,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Hit",
+      "samples": 9,
+      "minimum_support_sole_z_m": 0.010400007478892803,
+      "maximum_support_sole_z_m": 0.010400007478892803,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Defeat",
+      "samples": 21,
+      "minimum_support_sole_z_m": 0.010399884544312954,
+      "maximum_support_sole_z_m": 0.010399977676570415,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Victory",
+      "samples": 31,
+      "minimum_support_sole_z_m": 0.010400007478892803,
+      "maximum_support_sole_z_m": 0.010400007478892803,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    }
+  ],
+  "errors": [],
+  "not_checked": [
+    "continuous visual quality",
+    "weapon/costume clipping",
+    "semantic gesture review",
+    "Unreal retarget/import",
+    "runtime move-speed synchronization"
+  ]
+}
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+WC_NEW_HERO_READBACK_PASS {"status": "PASS_SAVED_SOURCE_SKIN_MOTION_AND_MESH_FBX_READBACK", "unit_id": "wc_u_dwarf_priest", "source_sha256": "160e979c9e5901640b6f977e57daf849aa3ecc8941cd8aefbc5b7bb54648025a", "manifest_sha256": "55089692b66df76607f7c02b2216e2610cb4ec5d8103afe7cd231f22c657d36c", "source_revision": 4, "geometry_revision": 4, "animation_revision": 1, "blender_version": "5.1.1", "files_verified": 14, "source_clips_verified": 7, "mesh_fbx_readbacks": [{"mesh_suffix": "", "dimensions_m": [1.168325662612915, 0.3760728985071182, 1.3676000218838453], "triangles": 8606, "bones": 27, "materials": 1, "uv_layers": 1, "weighted_vertices": 4780}, {"mesh_suffix": "_LOD1", "dimensions_m": [1.168325662612915, 0.3750312626361847, 1.3673691134899855], "triangles": 4295, "bones": 27, "materials": 1, "uv_layers": 1, "weighted_vertices": 2499}, {"mesh_suffix": "_LOD2", "dimensions_m": [1.1658849120140076, 0.37767039239406586, 1.3675083378329873], "triangles": 2139, "bones": 27, "materials": 1, "uv_layers": 1, "weighted_vertices": 1393}], "animation_fbx_import_verified": false, "Unreal_import_verified": false, "final_art_accepted": false}
+00:03.313  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_dwarf_priest\wc_u_dwarf_priest.blend"
+00:06.250  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0000.png'
+00:09.032  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0001.png'
+00:11.797  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0002.png'
+00:14.610  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0003.png'
+00:17.407  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0004.png'
+00:20.204  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0005.png'
+00:23.094  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0006.png'
+00:26.032  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0007.png'
+00:28.860  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0008.png'
+00:34.141  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0009.png'
+00:40.000  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0010.png'
+00:45.563  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0011.png'
+00:50.985  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0012.png'
+00:58.172  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0013.png'
+01:04.860  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0014.png'
+01:10.422  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0015.png'
+01:16.079  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0016.png'
+01:21.063  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0017.png'
+01:25.579  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0018.png'
+01:28.938  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0019.png'
+01:32.219  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0020.png'
+01:35.829  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0021.png'
+01:39.032  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0022.png'
+01:42.141  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0023.png'
+01:45.063  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0024.png'
+01:48.860  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0025.png'
+01:52.188  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0026.png'
+01:55.344  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0027.png'
+01:58.579  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0028.png'
+02:01.922  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0029.png'
+02:07.829  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0030.png'
+02:14.282  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0031.png'
+02:20.360  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0032.png'
+02:26.563  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0033.png'
+02:32.860  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0034.png'
+02:38.844  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0035.png'
+02:43.657  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0036.png'
+02:48.735  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0037.png'
+02:53.813  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0038.png'
+02:58.219  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Idle\0039.png'
+WC_NEW_HERO_CLIP_RENDERED wc_u_dwarf_priest Idle
+03:01.547  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Move\0000.png'
+03:04.563  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Move\0001.png'
+03:07.532  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Move\0002.png'
+03:10.750  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Move\0003.png'
+03:13.813  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Move\0004.png'
+03:16.782  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Move\0005.png'
+03:20.079  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Move\0006.png'
+03:23.157  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Move\0007.png'
+03:26.110  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Move\0008.png'
+03:29.032  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Move\0009.png'
+03:32.500  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Move\0010.png'
+03:37.750  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Move\0011.png'
+03:43.719  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Move\0012.png'
+03:48.610  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Move\0013.png'
+03:53.797  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Move\0014.png'
+03:59.641  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Move\0015.png'
+04:05.875  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Move\0016.png'
+04:11.032  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Move\0017.png'
+04:16.172  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Move\0018.png'
+04:20.907  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Move\0019.png'
+WC_NEW_HERO_CLIP_RENDERED wc_u_dwarf_priest Move
+04:25.500  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Attack\0000.png'
+04:28.719  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Attack\0001.png'
+04:32.000  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Attack\0002.png'
+04:35.297  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Attack\0003.png'
+04:38.500  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Attack\0004.png'
+04:41.625  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Attack\0005.png'
+04:44.766  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Attack\0006.png'
+04:47.766  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Attack\0007.png'
+04:50.704  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Attack\0008.png'
+04:53.782  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Attack\0009.png'
+04:56.844  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Attack\0010.png'
+04:59.704  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Attack\0011.png'
+05:02.579  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Attack\0012.png'
+05:05.422  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Attack\0013.png'
+WC_NEW_HERO_CLIP_RENDERED wc_u_dwarf_priest Attack
+05:08.250  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Active\0000.png'
+05:11.032  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Active\0001.png'
+05:13.938  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Active\0002.png'
+05:16.829  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Active\0003.png'
+05:19.657  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Active\0004.png'
+05:22.344  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Active\0005.png'
+05:25.094  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Active\0006.png'
+05:27.813  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Active\0007.png'
+05:30.547  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Active\0008.png'
+05:33.297  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Active\0009.png'
+05:36.141  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Active\0010.png'
+05:38.938  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Active\0011.png'
+05:41.625  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Active\0012.png'
+WC_NEW_HERO_CLIP_RENDERED wc_u_dwarf_priest Active
+05:44.657  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Hit\0000.png'
+05:48.188  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Hit\0001.png'
+05:51.454  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Hit\0002.png'
+05:54.875  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Hit\0003.png'
+05:58.282  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Hit\0004.png'
+06:02.922  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Hit\0005.png'
+06:07.360  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Hit\0006.png'
+06:10.985  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Hit\0007.png'
+WC_NEW_HERO_CLIP_RENDERED wc_u_dwarf_priest Hit
+06:15.188  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Defeat\0000.png'
+06:19.219  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Defeat\0001.png'
+06:23.782  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Defeat\0002.png'
+06:27.985  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Defeat\0003.png'
+06:32.266  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Defeat\0004.png'
+06:36.719  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Defeat\0005.png'
+06:41.157  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Defeat\0006.png'
+06:45.063  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Defeat\0007.png'
+06:49.047  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Defeat\0008.png'
+06:52.922  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Defeat\0009.png'
+06:56.391  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Defeat\0010.png'
+07:00.454  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Defeat\0011.png'
+07:05.032  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Defeat\0012.png'
+07:08.829  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Defeat\0013.png'
+07:12.157  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Defeat\0014.png'
+07:15.938  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Defeat\0015.png'
+07:19.860  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Defeat\0016.png'
+07:23.204  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Defeat\0017.png'
+07:26.735  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Defeat\0018.png'
+07:30.266  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Defeat\0019.png'
+WC_NEW_HERO_CLIP_RENDERED wc_u_dwarf_priest Defeat
+07:33.907  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Victory\0000.png'
+07:37.469  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Victory\0001.png'
+07:40.875  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Victory\0002.png'
+07:44.344  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Victory\0003.png'
+07:48.000  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Victory\0004.png'
+07:51.454  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Victory\0005.png'
+07:55.016  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Victory\0006.png'
+07:58.563  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Victory\0007.png'
+08:02.063  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Victory\0008.png'
+08:05.391  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Victory\0009.png'
+08:08.750  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Victory\0010.png'
+08:12.032  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Victory\0011.png'
+08:15.532  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Victory\0012.png'
+08:18.782  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Victory\0013.png'
+08:21.875  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Victory\0014.png'
+08:25.079  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Victory\0015.png'
+08:28.454  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Victory\0016.png'
+08:31.907  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Victory\0017.png'
+08:35.250  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Victory\0018.png'
+08:38.375  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Victory\0019.png'
+08:41.500  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Victory\0020.png'
+08:44.891  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Victory\0021.png'
+08:48.141  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Victory\0022.png'
+08:51.032  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Victory\0023.png'
+08:54.063  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Victory\0024.png'
+08:57.235  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Victory\0025.png'
+09:00.719  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Victory\0026.png'
+09:04.391  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Victory\0027.png'
+09:07.547  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Victory\0028.png'
+09:10.688  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T161455Z-face-fit\orla-verified4\motion-frames\Victory\0029.png'
+WC_NEW_HERO_CLIP_RENDERED wc_u_dwarf_priest Victory
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

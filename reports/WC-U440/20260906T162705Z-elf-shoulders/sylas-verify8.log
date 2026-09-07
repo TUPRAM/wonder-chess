@@ -1,0 +1,351 @@
+00:02.125  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_elf_rogue\wc_u_elf_rogue.blend"
+{
+  "status": "structural_checks_passed_visual_review_required",
+  "blender_version": "5.1.1",
+  "collection": "EXPORT",
+  "evaluated_triangle_total": 3566,
+  "objects": [
+    {
+      "name": "Armature",
+      "type": "ARMATURE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.194295883178711,
+        0.4749999940395355,
+        2.0425000190734863
+      ],
+      "roots": [
+        "root"
+      ],
+      "deform_bones": 27
+    },
+    {
+      "name": "SK_wc_u_elf_rogue",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.422235131263733,
+        0.648342490196228,
+        1.8904999494552612
+      ],
+      "evaluated_triangles": 3566,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "not_checked": [
+    "appearance",
+    "deformation across all clips",
+    "UV overlap appropriateness",
+    "normal-map convention",
+    "Unreal import",
+    "LOD silhouette",
+    "gameplay readability"
+  ]
+}
+{
+  "status": "structural_checks_passed_visual_review_required",
+  "blender_version": "5.1.1",
+  "collection": "LOD_SOURCE",
+  "evaluated_triangle_total": 2663,
+  "objects": [
+    {
+      "name": "SK_wc_u_elf_rogue_LOD1",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.4157416820526123,
+        0.6443649530410767,
+        1.8911939859390259
+      ],
+      "evaluated_triangles": 1779,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    },
+    {
+      "name": "SK_wc_u_elf_rogue_LOD2",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.4157416820526123,
+        0.6456118226051331,
+        1.8912434577941895
+      ],
+      "evaluated_triangles": 884,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "not_checked": [
+    "appearance",
+    "deformation across all clips",
+    "UV overlap appropriateness",
+    "normal-map convention",
+    "Unreal import",
+    "LOD silhouette",
+    "gameplay readability"
+  ]
+}
+{
+  "status": "sampled_motion_invariants_passed",
+  "unit_id": "wc_u_elf_rogue",
+  "blender_version": "5.1.1",
+  "sampling": "actual deformed mesh every 3 frames at 60fps",
+  "clips": [
+    {
+      "clip": "Idle",
+      "samples": 41,
+      "minimum_support_sole_z_m": 0.017099998891353607,
+      "maximum_support_sole_z_m": 0.017099998891353607,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 4.172325134277344e-07
+    },
+    {
+      "clip": "Move",
+      "samples": 21,
+      "minimum_support_sole_z_m": -0.0025624800473451614,
+      "maximum_support_sole_z_m": 0.017100045457482338,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 4.172325134277344e-07
+    },
+    {
+      "clip": "Attack",
+      "samples": 14,
+      "minimum_support_sole_z_m": 0.017099998891353607,
+      "maximum_support_sole_z_m": 0.017099998891353607,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 4.172325134277344e-07
+    },
+    {
+      "clip": "Active",
+      "samples": 11,
+      "minimum_support_sole_z_m": 0.017099998891353607,
+      "maximum_support_sole_z_m": 0.017100006341934204,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 4.172325134277344e-07
+    },
+    {
+      "clip": "Hit",
+      "samples": 9,
+      "minimum_support_sole_z_m": 0.017099998891353607,
+      "maximum_support_sole_z_m": 0.017099998891353607,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 4.172325134277344e-07
+    },
+    {
+      "clip": "Defeat",
+      "samples": 21,
+      "minimum_support_sole_z_m": 0.017099885269999504,
+      "maximum_support_sole_z_m": 0.01710003800690174,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 4.172325134277344e-07
+    },
+    {
+      "clip": "Victory",
+      "samples": 31,
+      "minimum_support_sole_z_m": 0.017099998891353607,
+      "maximum_support_sole_z_m": 0.017099998891353607,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 4.172325134277344e-07
+    }
+  ],
+  "errors": [],
+  "not_checked": [
+    "continuous visual quality",
+    "weapon/costume clipping",
+    "semantic gesture review",
+    "Unreal retarget/import",
+    "runtime move-speed synchronization"
+  ]
+}
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+WC_NEW_HERO_READBACK_PASS {"status": "PASS_SAVED_SOURCE_SKIN_MOTION_AND_MESH_FBX_READBACK", "unit_id": "wc_u_elf_rogue", "source_sha256": "223d2ed2a46e09387479ea854f555f0219ca3b5ce1138658f8956b065416b7d9", "manifest_sha256": "8cbca14e3b99e37f0b94412a11950f0a2d7b4c659eca32c9211b82a87b460a1a", "source_revision": 8, "geometry_revision": 8, "animation_revision": 7, "blender_version": "5.1.1", "files_verified": 14, "source_clips_verified": 7, "mesh_fbx_readbacks": [{"mesh_suffix": "", "dimensions_m": [1.3817395567893982, 0.5794999599456787, 1.8904999289661646], "triangles": 3566, "bones": 27, "materials": 1, "uv_layers": 1, "weighted_vertices": 1906}, {"mesh_suffix": "_LOD1", "dimensions_m": [1.3737724423408508, 0.5755224525928497, 1.8911938462406397], "triangles": 1779, "bones": 27, "materials": 1, "uv_layers": 1, "weighted_vertices": 1009}, {"mesh_suffix": "_LOD2", "dimensions_m": [1.3737724423408508, 0.5721343755722046, 1.8912433553487062], "triangles": 884, "bones": 27, "materials": 1, "uv_layers": 1, "weighted_vertices": 559}], "animation_fbx_import_verified": false, "Unreal_import_verified": false, "final_art_accepted": false}
+00:03.094  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_elf_rogue\wc_u_elf_rogue.blend"
+00:05.828  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0000.png'
+00:08.453  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0001.png'
+00:10.938  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0002.png'
+00:13.531  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0003.png'
+00:16.047  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0004.png'
+00:18.672  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0005.png'
+00:21.234  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0006.png'
+00:23.891  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0007.png'
+00:26.797  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0008.png'
+00:29.484  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0009.png'
+00:32.156  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0010.png'
+00:35.063  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0011.png'
+00:37.859  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0012.png'
+00:40.656  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0013.png'
+00:43.422  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0014.png'
+00:46.047  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0015.png'
+00:48.547  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0016.png'
+00:51.109  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0017.png'
+00:53.766  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0018.png'
+00:56.203  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0019.png'
+00:58.828  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0020.png'
+01:01.328  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0021.png'
+01:03.844  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0022.png'
+01:06.359  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0023.png'
+01:08.891  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0024.png'
+01:11.297  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0025.png'
+01:13.734  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0026.png'
+01:16.219  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0027.png'
+01:18.922  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0028.png'
+01:21.594  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0029.png'
+01:24.594  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0030.png'
+01:27.141  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0031.png'
+01:29.609  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0032.png'
+01:32.328  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0033.png'
+01:34.953  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0034.png'
+01:37.656  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0035.png'
+01:40.219  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0036.png'
+01:42.781  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0037.png'
+01:45.344  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0038.png'
+01:47.766  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Idle\0039.png'
+WC_NEW_HERO_CLIP_RENDERED wc_u_elf_rogue Idle
+01:50.109  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Move\0000.png'
+01:52.703  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Move\0001.png'
+01:55.250  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Move\0002.png'
+01:57.828  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Move\0003.png'
+02:00.281  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Move\0004.png'
+02:02.797  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Move\0005.png'
+02:05.391  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Move\0006.png'
+02:07.906  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Move\0007.png'
+02:10.406  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Move\0008.png'
+02:12.922  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Move\0009.png'
+02:15.516  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Move\0010.png'
+02:18.297  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Move\0011.png'
+02:20.906  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Move\0012.png'
+02:23.516  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Move\0013.png'
+02:26.156  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Move\0014.png'
+02:29.203  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Move\0015.png'
+02:32.094  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Move\0016.png'
+02:35.047  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Move\0017.png'
+02:37.922  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Move\0018.png'
+02:40.750  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Move\0019.png'
+WC_NEW_HERO_CLIP_RENDERED wc_u_elf_rogue Move
+02:43.813  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Attack\0000.png'
+02:47.078  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Attack\0001.png'
+02:50.016  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Attack\0002.png'
+02:52.984  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Attack\0003.png'
+02:56.313  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Attack\0004.png'
+02:59.547  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Attack\0005.png'
+03:02.922  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Attack\0006.png'
+03:06.125  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Attack\0007.png'
+03:09.109  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Attack\0008.png'
+03:12.438  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Attack\0009.png'
+03:15.406  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Attack\0010.png'
+03:18.313  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Attack\0011.png'
+03:21.266  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Attack\0012.png'
+WC_NEW_HERO_CLIP_RENDERED wc_u_elf_rogue Attack
+03:24.313  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Active\0000.png'
+03:27.188  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Active\0001.png'
+03:30.234  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Active\0002.png'
+03:33.313  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Active\0003.png'
+03:36.172  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Active\0004.png'
+03:39.000  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Active\0005.png'
+03:41.844  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Active\0006.png'
+03:44.688  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Active\0007.png'
+03:47.422  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Active\0008.png'
+03:50.391  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Active\0009.png'
+WC_NEW_HERO_CLIP_RENDERED wc_u_elf_rogue Active
+03:53.266  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Hit\0000.png'
+03:56.141  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Hit\0001.png'
+03:59.000  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Hit\0002.png'
+04:02.359  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Hit\0003.png'
+04:05.391  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Hit\0004.png'
+04:08.266  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Hit\0005.png'
+04:11.219  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Hit\0006.png'
+04:14.094  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Hit\0007.png'
+WC_NEW_HERO_CLIP_RENDERED wc_u_elf_rogue Hit
+04:16.953  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Defeat\0000.png'
+04:19.750  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Defeat\0001.png'
+04:22.563  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Defeat\0002.png'
+04:25.469  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Defeat\0003.png'
+04:28.219  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Defeat\0004.png'
+04:31.016  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Defeat\0005.png'
+04:34.016  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Defeat\0006.png'
+04:37.094  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Defeat\0007.png'
+04:40.406  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Defeat\0008.png'
+04:43.531  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Defeat\0009.png'
+04:46.469  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Defeat\0010.png'
+04:50.047  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Defeat\0011.png'
+04:53.141  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Defeat\0012.png'
+04:56.328  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Defeat\0013.png'
+04:59.641  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Defeat\0014.png'
+05:03.344  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Defeat\0015.png'
+05:06.422  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Defeat\0016.png'
+05:09.578  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Defeat\0017.png'
+05:12.984  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Defeat\0018.png'
+05:16.672  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Defeat\0019.png'
+WC_NEW_HERO_CLIP_RENDERED wc_u_elf_rogue Defeat
+05:19.641  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Victory\0000.png'
+05:22.656  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Victory\0001.png'
+05:25.531  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Victory\0002.png'
+05:28.781  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Victory\0003.png'
+05:31.734  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Victory\0004.png'
+05:34.766  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Victory\0005.png'
+05:38.047  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Victory\0006.png'
+05:41.531  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Victory\0007.png'
+05:44.656  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Victory\0008.png'
+05:47.891  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Victory\0009.png'
+05:50.969  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Victory\0010.png'
+05:54.141  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Victory\0011.png'
+05:57.438  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Victory\0012.png'
+06:00.906  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Victory\0013.png'
+06:04.469  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Victory\0014.png'
+06:07.531  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Victory\0015.png'
+06:10.516  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Victory\0016.png'
+06:13.844  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Victory\0017.png'
+06:16.859  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Victory\0018.png'
+06:19.859  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Victory\0019.png'
+06:22.859  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Victory\0020.png'
+06:25.984  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Victory\0021.png'
+06:29.313  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Victory\0022.png'
+06:32.641  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Victory\0023.png'
+06:35.828  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Victory\0024.png'
+06:38.891  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Victory\0025.png'
+06:41.922  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Victory\0026.png'
+06:44.875  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Victory\0027.png'
+06:47.750  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Victory\0028.png'
+06:50.703  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162705Z-elf-shoulders\sylas-verified8\motion-frames\Victory\0029.png'
+WC_NEW_HERO_CLIP_RENDERED wc_u_elf_rogue Victory
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

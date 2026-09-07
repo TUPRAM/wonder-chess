@@ -1,0 +1,763 @@
+{
+  "status": "SOURCE_AND_EXPORTS_FROZEN_FOR_UNREAL_INTEGRATION",
+  "schema_version": "3.1.0",
+  "balance_version": "alpha_24_v0.4.1",
+  "canonical_units_sha256": "fd6d831113261dd984f3d2430236c06eda4a9f4e7f9e30a404a76f418fa953b0",
+  "blender_version": "5.1.1",
+  "hero_count": 3,
+  "clip_count": 21,
+  "actual_movie_frames": 1311,
+  "actual_movie_seconds": 21.849999999999998,
+  "actual_sampled_pose_images_reviewed": 63,
+  "actual_model_views_reviewed": 18,
+  "actual_silhouette_images_reviewed": 6,
+  "continuous_visual_approval": false,
+  "unreal_import_verified_by_this_handoff": false,
+  "crowded_board_visual_approval": false,
+  "equipment_contact_collision_approval": false,
+  "performance_acceptance": false,
+  "finished_art_accepted": false,
+  "heroes": [
+    {
+      "name": "Finn",
+      "unit_id": "wc_u_halfling_ranger",
+      "source_path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\heroes\\wc_u_halfling_ranger\\wc_u_halfling_ranger.blend",
+      "source_sha256": "3cdc9c6c637a4eef1d0fcb9afead810d4be308364e3a1117278160058be79b7f",
+      "manifest_path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_halfling_ranger\\export_manifest.json",
+      "manifest_sha256": "5ff9dfcd6e4d23a30f76c93733be479adbdb2bc0cc58f99dd4ab2e750d61343a",
+      "source_revision": 5,
+      "geometry_revision": 5,
+      "animation_revision": 5,
+      "triangles": [
+        6996,
+        3498,
+        1744
+      ],
+      "height_m": 1.08,
+      "bones": 27,
+      "material_slots": 1,
+      "fps": 60,
+      "export_files_verified": 14,
+      "clips": {
+        "Idle": {
+          "frames": [
+            1,
+            121
+          ],
+          "fps": 60,
+          "release_frame": null,
+          "duration_seconds": 2.0,
+          "loop": true,
+          "action": "AN_wc_u_halfling_ranger_Idle"
+        },
+        "Move": {
+          "frames": [
+            1,
+            61
+          ],
+          "fps": 60,
+          "release_frame": null,
+          "duration_seconds": 1.0,
+          "loop": true,
+          "action": "AN_wc_u_halfling_ranger_Move"
+        },
+        "Attack": {
+          "frames": [
+            1,
+            43
+          ],
+          "fps": 60,
+          "release_frame": 19,
+          "duration_seconds": 0.7,
+          "loop": false,
+          "action": "AN_wc_u_halfling_ranger_Attack"
+        },
+        "Active": {
+          "frames": [
+            1,
+            37
+          ],
+          "fps": 60,
+          "release_frame": 19,
+          "duration_seconds": 0.6,
+          "loop": false,
+          "action": "AN_wc_u_halfling_ranger_Active"
+        },
+        "Hit": {
+          "frames": [
+            1,
+            25
+          ],
+          "fps": 60,
+          "release_frame": null,
+          "duration_seconds": 0.4,
+          "loop": false,
+          "action": "AN_wc_u_halfling_ranger_Hit"
+        },
+        "Defeat": {
+          "frames": [
+            1,
+            61
+          ],
+          "fps": 60,
+          "release_frame": null,
+          "duration_seconds": 1.0,
+          "loop": false,
+          "action": "AN_wc_u_halfling_ranger_Defeat"
+        },
+        "Victory": {
+          "frames": [
+            1,
+            91
+          ],
+          "fps": 60,
+          "release_frame": null,
+          "duration_seconds": 1.5,
+          "loop": false,
+          "action": "AN_wc_u_halfling_ranger_Victory"
+        }
+      },
+      "recorded_frames": 439,
+      "recorded_seconds": 7.316666666666666,
+      "verification_path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T163654Z\\halfling-final-check\\finn-readback\\fbx-video-validation.json",
+      "verification_sha256": "52c20b467b6a177163552799ccce7c9576f874305bf078545b7628e314d341bf",
+      "authored_report": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T162841Z\\halfling-face-fit\\finn",
+      "all_frame_invariants": {
+        "status": "PASS",
+        "evidence_kind": "ALL_FRAME_DEFORMED_GEOMETRY_INVARIANTS",
+        "clips": [
+          {
+            "clip": "Idle",
+            "frames": 121,
+            "minimum_geometry_z_m": 1.7430334953161264e-09,
+            "root_translation_max_m": 0,
+            "scale_error_max": 0
+          },
+          {
+            "clip": "Move",
+            "frames": 61,
+            "minimum_geometry_z_m": -4.372276052322377e-08,
+            "root_translation_max_m": 0,
+            "scale_error_max": 0
+          },
+          {
+            "clip": "Attack",
+            "frames": 43,
+            "minimum_geometry_z_m": 1.7430334953161264e-09,
+            "root_translation_max_m": 0,
+            "scale_error_max": 0
+          },
+          {
+            "clip": "Active",
+            "frames": 37,
+            "minimum_geometry_z_m": 1.7430334953161264e-09,
+            "root_translation_max_m": 0,
+            "scale_error_max": 0
+          },
+          {
+            "clip": "Hit",
+            "frames": 25,
+            "minimum_geometry_z_m": -4.8860687940077696e-08,
+            "root_translation_max_m": 0,
+            "scale_error_max": 0
+          },
+          {
+            "clip": "Defeat",
+            "frames": 61,
+            "minimum_geometry_z_m": -5.6546934246171077e-08,
+            "root_translation_max_m": 0,
+            "scale_error_max": 0
+          },
+          {
+            "clip": "Victory",
+            "frames": 91,
+            "minimum_geometry_z_m": 1.7430334953161264e-09,
+            "root_translation_max_m": 0,
+            "scale_error_max": 0
+          }
+        ],
+        "errors": [],
+        "boundary": "Not continuous visual, equipment collision or engine approval"
+      },
+      "executed_ik": [
+        {
+          "clip": "Idle",
+          "frames": 121,
+          "maximum_hand_ik_clamp_m": 0,
+          "maximum_foot_ik_clamp_m": 0
+        },
+        {
+          "clip": "Move",
+          "frames": 61,
+          "maximum_hand_ik_clamp_m": 0,
+          "maximum_foot_ik_clamp_m": 0
+        },
+        {
+          "clip": "Attack",
+          "frames": 43,
+          "maximum_hand_ik_clamp_m": 0,
+          "maximum_foot_ik_clamp_m": 0
+        },
+        {
+          "clip": "Active",
+          "frames": 37,
+          "maximum_hand_ik_clamp_m": 0,
+          "maximum_foot_ik_clamp_m": 0
+        },
+        {
+          "clip": "Hit",
+          "frames": 25,
+          "maximum_hand_ik_clamp_m": 0,
+          "maximum_foot_ik_clamp_m": 0
+        },
+        {
+          "clip": "Defeat",
+          "frames": 61,
+          "maximum_hand_ik_clamp_m": 0,
+          "maximum_foot_ik_clamp_m": 0
+        },
+        {
+          "clip": "Victory",
+          "frames": 91,
+          "maximum_hand_ik_clamp_m": 0,
+          "maximum_foot_ik_clamp_m": 0
+        }
+      ],
+      "retained_invariants": {
+        "status": "PASS_EXACT_RETAINED_ACTIONS_RIG_AND_NON_HEAD_GEOMETRY",
+        "before_source_sha256": "a8ca68afd6658cf905a712647baddd334df8226c2cddb27dfbf7f5d8acf8a8ae",
+        "signature": {
+          "animation_and_rig": {
+            "rest_skeleton_sha256": "8bf8a1f04ef087f0317b3353c9ae947068a20e2f62ed85d4b9c95f6526e1fc9c",
+            "actions_sha256": "f6fb84dc363e417d6c05c9e2d76e809614d53a4d89b774e2c5188cb18908660f",
+            "action_names": [
+              "AN_wc_u_halfling_ranger_Active",
+              "AN_wc_u_halfling_ranger_Attack",
+              "AN_wc_u_halfling_ranger_Defeat",
+              "AN_wc_u_halfling_ranger_Hit",
+              "AN_wc_u_halfling_ranger_Idle",
+              "AN_wc_u_halfling_ranger_Move",
+              "AN_wc_u_halfling_ranger_Victory"
+            ],
+            "unit_scale_m": 1.0,
+            "fps": 60
+          },
+          "non_head_vertices": 1890,
+          "non_head_geometry_sha256": "7c9db5927e5dc5f438c8bb481523ad6f78fa221d1a8e8ed5a14db84790f31f74"
+        }
+      },
+      "silhouettes": [
+        {
+          "view": "front",
+          "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T163654Z\\halfling-final-check\\finn-readback\\silhouette96-front.png",
+          "sha256": "c50069b10454be9d597d8be0d5ebbd0b76f53d62eecabc92bd48e8e176dda712",
+          "dark_pixels": 935,
+          "light_pixels": 7991
+        },
+        {
+          "view": "game-angle",
+          "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T163654Z\\halfling-final-check\\finn-readback\\silhouette96-game-angle.png",
+          "sha256": "5b63db7acd83587261660f92e493bec7836197a2cd09ad967330c4dc0280b6c5",
+          "dark_pixels": 824,
+          "light_pixels": 8200
+        }
+      ]
+    },
+    {
+      "name": "Nella",
+      "unit_id": "wc_u_halfling_rogue",
+      "source_path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\heroes\\wc_u_halfling_rogue\\wc_u_halfling_rogue.blend",
+      "source_sha256": "668ae6c0eb57949364a7ac4c5cdf752d4aa20112b3ffe3301ddcb2914f1c9802",
+      "manifest_path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_halfling_rogue\\export_manifest.json",
+      "manifest_sha256": "7f89d2b7e07ee494d05033b51db345223c10a1d0c065b5f88f020b95e5da6315",
+      "source_revision": 4,
+      "geometry_revision": 4,
+      "animation_revision": 4,
+      "triangles": [
+        6748,
+        3373,
+        1668
+      ],
+      "height_m": 1.1,
+      "bones": 27,
+      "material_slots": 1,
+      "fps": 60,
+      "export_files_verified": 14,
+      "clips": {
+        "Idle": {
+          "frames": [
+            1,
+            121
+          ],
+          "fps": 60,
+          "release_frame": null,
+          "duration_seconds": 2.0,
+          "loop": true,
+          "action": "AN_wc_u_halfling_rogue_Idle"
+        },
+        "Move": {
+          "frames": [
+            1,
+            61
+          ],
+          "fps": 60,
+          "release_frame": null,
+          "duration_seconds": 1.0,
+          "loop": true,
+          "action": "AN_wc_u_halfling_rogue_Move"
+        },
+        "Attack": {
+          "frames": [
+            1,
+            40
+          ],
+          "fps": 60,
+          "release_frame": 16,
+          "duration_seconds": 0.65,
+          "loop": false,
+          "action": "AN_wc_u_halfling_rogue_Attack"
+        },
+        "Active": {
+          "frames": [
+            1,
+            31
+          ],
+          "fps": 60,
+          "release_frame": 13,
+          "duration_seconds": 0.5,
+          "loop": false,
+          "action": "AN_wc_u_halfling_rogue_Active"
+        },
+        "Hit": {
+          "frames": [
+            1,
+            25
+          ],
+          "fps": 60,
+          "release_frame": null,
+          "duration_seconds": 0.4,
+          "loop": false,
+          "action": "AN_wc_u_halfling_rogue_Hit"
+        },
+        "Defeat": {
+          "frames": [
+            1,
+            61
+          ],
+          "fps": 60,
+          "release_frame": null,
+          "duration_seconds": 1.0,
+          "loop": false,
+          "action": "AN_wc_u_halfling_rogue_Defeat"
+        },
+        "Victory": {
+          "frames": [
+            1,
+            91
+          ],
+          "fps": 60,
+          "release_frame": null,
+          "duration_seconds": 1.5,
+          "loop": false,
+          "action": "AN_wc_u_halfling_rogue_Victory"
+        }
+      },
+      "recorded_frames": 430,
+      "recorded_seconds": 7.166666666666666,
+      "verification_path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T163654Z\\halfling-final-check\\nella-readback\\fbx-video-validation.json",
+      "verification_sha256": "159ec977b8e30ebe3561870826aa620a9917c7cfeac864ca8f7fb07e6bfb1895",
+      "authored_report": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T163654Z\\halfling-final-check\\nella",
+      "all_frame_invariants": {
+        "status": "PASS",
+        "evidence_kind": "ALL_FRAME_DEFORMED_GEOMETRY_INVARIANTS",
+        "clips": [
+          {
+            "clip": "Idle",
+            "frames": 121,
+            "minimum_geometry_z_m": 8.114002980619262e-08,
+            "root_translation_max_m": 0,
+            "scale_error_max": 0
+          },
+          {
+            "clip": "Move",
+            "frames": 61,
+            "minimum_geometry_z_m": 3.656975522403627e-08,
+            "root_translation_max_m": 0,
+            "scale_error_max": 0
+          },
+          {
+            "clip": "Attack",
+            "frames": 40,
+            "minimum_geometry_z_m": 8.114002980619262e-08,
+            "root_translation_max_m": 0,
+            "scale_error_max": 0
+          },
+          {
+            "clip": "Active",
+            "frames": 31,
+            "minimum_geometry_z_m": 8.114002980619262e-08,
+            "root_translation_max_m": 0,
+            "scale_error_max": 0
+          },
+          {
+            "clip": "Hit",
+            "frames": 25,
+            "minimum_geometry_z_m": 4.332459724309956e-08,
+            "root_translation_max_m": 0,
+            "scale_error_max": 0
+          },
+          {
+            "clip": "Defeat",
+            "frames": 61,
+            "minimum_geometry_z_m": 2.8733841972439222e-08,
+            "root_translation_max_m": 0,
+            "scale_error_max": 0
+          },
+          {
+            "clip": "Victory",
+            "frames": 91,
+            "minimum_geometry_z_m": 8.114002980619262e-08,
+            "root_translation_max_m": 0,
+            "scale_error_max": 0
+          }
+        ],
+        "errors": [],
+        "boundary": "Not continuous visual, equipment collision or engine approval"
+      },
+      "executed_ik": [
+        {
+          "clip": "Idle",
+          "frames": 121,
+          "maximum_hand_ik_clamp_m": 0,
+          "maximum_foot_ik_clamp_m": 0
+        },
+        {
+          "clip": "Move",
+          "frames": 61,
+          "maximum_hand_ik_clamp_m": 0,
+          "maximum_foot_ik_clamp_m": 0
+        },
+        {
+          "clip": "Attack",
+          "frames": 40,
+          "maximum_hand_ik_clamp_m": 0,
+          "maximum_foot_ik_clamp_m": 0
+        },
+        {
+          "clip": "Active",
+          "frames": 31,
+          "maximum_hand_ik_clamp_m": 0,
+          "maximum_foot_ik_clamp_m": 0
+        },
+        {
+          "clip": "Hit",
+          "frames": 25,
+          "maximum_hand_ik_clamp_m": 0,
+          "maximum_foot_ik_clamp_m": 0
+        },
+        {
+          "clip": "Defeat",
+          "frames": 61,
+          "maximum_hand_ik_clamp_m": 0,
+          "maximum_foot_ik_clamp_m": 0
+        },
+        {
+          "clip": "Victory",
+          "frames": 91,
+          "maximum_hand_ik_clamp_m": 0,
+          "maximum_foot_ik_clamp_m": 0
+        }
+      ],
+      "retained_invariants": {
+        "status": "PASS_EXACT_RETAINED_ACTIONS_RIG_AND_NON_HEAD_GEOMETRY",
+        "before_source_sha256": "9cbfced9f00a950152818ec24a05714d7bff479c6fcefb98c95b13d6623a8a5f",
+        "signature": {
+          "animation_and_rig": {
+            "rest_skeleton_sha256": "05b185368b8c0d6d061a488e3e200e56c6f107fd9832a0f865281d4880afaab6",
+            "actions_sha256": "815f1b9d34095ed55962f3c9070d6742bc15a27eaea20e6cb7fbf05b889da6e6",
+            "action_names": [
+              "AN_wc_u_halfling_rogue_Active",
+              "AN_wc_u_halfling_rogue_Attack",
+              "AN_wc_u_halfling_rogue_Defeat",
+              "AN_wc_u_halfling_rogue_Hit",
+              "AN_wc_u_halfling_rogue_Idle",
+              "AN_wc_u_halfling_rogue_Move",
+              "AN_wc_u_halfling_rogue_Victory"
+            ],
+            "unit_scale_m": 1.0,
+            "fps": 60
+          },
+          "non_head_vertices": 1990,
+          "non_head_geometry_sha256": "dcbc147735bff452332b087e16be6b6a7b43a22923b88ef418edfa7e517df8b0"
+        }
+      },
+      "silhouettes": [
+        {
+          "view": "front",
+          "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T163654Z\\halfling-final-check\\nella-readback\\silhouette96-front.png",
+          "sha256": "9e3018ec9b885147f7374546f939492b66eff4399d78199f39eb789474d9be48",
+          "dark_pixels": 986,
+          "light_pixels": 7952
+        },
+        {
+          "view": "game-angle",
+          "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T163654Z\\halfling-final-check\\nella-readback\\silhouette96-game-angle.png",
+          "sha256": "6a2f7ce08dada97f5584788a62db2427abd35513afcd315448ac8c4fb6d9163c",
+          "dark_pixels": 825,
+          "light_pixels": 8185
+        }
+      ]
+    },
+    {
+      "name": "Milo",
+      "unit_id": "wc_u_halfling_mage",
+      "source_path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\heroes\\wc_u_halfling_mage\\wc_u_halfling_mage.blend",
+      "source_sha256": "b64ad1262cb15bcb5bde668a4767df6a5cea5111b797c31ae6129a80ba562faf",
+      "manifest_path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_halfling_mage\\export_manifest.json",
+      "manifest_sha256": "09aa0467d406f759c924cfa09d518858a5f4c0cf5a04f7f0627c19faff71caf7",
+      "source_revision": 2,
+      "geometry_revision": 2,
+      "animation_revision": 2,
+      "triangles": [
+        8400,
+        4200,
+        2083
+      ],
+      "height_m": 1.14,
+      "bones": 27,
+      "material_slots": 1,
+      "fps": 60,
+      "export_files_verified": 14,
+      "clips": {
+        "Idle": {
+          "frames": [
+            1,
+            121
+          ],
+          "fps": 60,
+          "release_frame": null,
+          "duration_seconds": 2.0,
+          "loop": true,
+          "action": "AN_wc_u_halfling_mage_Idle"
+        },
+        "Move": {
+          "frames": [
+            1,
+            61
+          ],
+          "fps": 60,
+          "release_frame": null,
+          "duration_seconds": 1.0,
+          "loop": true,
+          "action": "AN_wc_u_halfling_mage_Move"
+        },
+        "Attack": {
+          "frames": [
+            1,
+            43
+          ],
+          "fps": 60,
+          "release_frame": 19,
+          "duration_seconds": 0.7,
+          "loop": false,
+          "action": "AN_wc_u_halfling_mage_Attack"
+        },
+        "Active": {
+          "frames": [
+            1,
+            40
+          ],
+          "fps": 60,
+          "release_frame": 22,
+          "duration_seconds": 0.65,
+          "loop": false,
+          "action": "AN_wc_u_halfling_mage_Active"
+        },
+        "Hit": {
+          "frames": [
+            1,
+            25
+          ],
+          "fps": 60,
+          "release_frame": null,
+          "duration_seconds": 0.4,
+          "loop": false,
+          "action": "AN_wc_u_halfling_mage_Hit"
+        },
+        "Defeat": {
+          "frames": [
+            1,
+            61
+          ],
+          "fps": 60,
+          "release_frame": null,
+          "duration_seconds": 1.0,
+          "loop": false,
+          "action": "AN_wc_u_halfling_mage_Defeat"
+        },
+        "Victory": {
+          "frames": [
+            1,
+            91
+          ],
+          "fps": 60,
+          "release_frame": null,
+          "duration_seconds": 1.5,
+          "loop": false,
+          "action": "AN_wc_u_halfling_mage_Victory"
+        }
+      },
+      "recorded_frames": 442,
+      "recorded_seconds": 7.366666666666666,
+      "verification_path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T162841Z\\halfling-face-fit\\milo-readback\\fbx-video-validation.json",
+      "verification_sha256": "259ce4ec004b404b6fb1b70ac2572f12208d297496dce4528bbaab6891fb23e9",
+      "authored_report": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T162841Z\\halfling-face-fit\\milo",
+      "all_frame_invariants": {
+        "status": "PASS",
+        "evidence_kind": "ALL_FRAME_DEFORMED_GEOMETRY_INVARIANTS",
+        "clips": [
+          {
+            "clip": "Idle",
+            "frames": 121,
+            "minimum_geometry_z_m": -1.3470148019223416e-07,
+            "root_translation_max_m": 0,
+            "scale_error_max": 0
+          },
+          {
+            "clip": "Move",
+            "frames": 61,
+            "minimum_geometry_z_m": -1.3470473447796394e-07,
+            "root_translation_max_m": 0,
+            "scale_error_max": 0
+          },
+          {
+            "clip": "Attack",
+            "frames": 43,
+            "minimum_geometry_z_m": -1.3470148019223416e-07,
+            "root_translation_max_m": 0,
+            "scale_error_max": 0
+          },
+          {
+            "clip": "Active",
+            "frames": 40,
+            "minimum_geometry_z_m": -1.3470148019223416e-07,
+            "root_translation_max_m": 0,
+            "scale_error_max": 0
+          },
+          {
+            "clip": "Hit",
+            "frames": 25,
+            "minimum_geometry_z_m": -1.3470148019223416e-07,
+            "root_translation_max_m": 0,
+            "scale_error_max": 0
+          },
+          {
+            "clip": "Defeat",
+            "frames": 61,
+            "minimum_geometry_z_m": -1.3470148019223416e-07,
+            "root_translation_max_m": 0,
+            "scale_error_max": 0
+          },
+          {
+            "clip": "Victory",
+            "frames": 91,
+            "minimum_geometry_z_m": -1.3470148019223416e-07,
+            "root_translation_max_m": 0,
+            "scale_error_max": 0
+          }
+        ],
+        "errors": [],
+        "boundary": "Not continuous visual, equipment collision or engine approval"
+      },
+      "executed_ik": [
+        {
+          "clip": "Idle",
+          "frames": 121,
+          "maximum_hand_ik_clamp_m": 0,
+          "maximum_foot_ik_clamp_m": 0
+        },
+        {
+          "clip": "Move",
+          "frames": 61,
+          "maximum_hand_ik_clamp_m": 0,
+          "maximum_foot_ik_clamp_m": 0
+        },
+        {
+          "clip": "Attack",
+          "frames": 43,
+          "maximum_hand_ik_clamp_m": 0,
+          "maximum_foot_ik_clamp_m": 0
+        },
+        {
+          "clip": "Active",
+          "frames": 40,
+          "maximum_hand_ik_clamp_m": 0,
+          "maximum_foot_ik_clamp_m": 0
+        },
+        {
+          "clip": "Hit",
+          "frames": 25,
+          "maximum_hand_ik_clamp_m": 0,
+          "maximum_foot_ik_clamp_m": 0
+        },
+        {
+          "clip": "Defeat",
+          "frames": 61,
+          "maximum_hand_ik_clamp_m": 0,
+          "maximum_foot_ik_clamp_m": 0
+        },
+        {
+          "clip": "Victory",
+          "frames": 91,
+          "maximum_hand_ik_clamp_m": 0,
+          "maximum_foot_ik_clamp_m": 0
+        }
+      ],
+      "retained_invariants": {
+        "status": "PASS_EXACT_RETAINED_ACTIONS_RIG_AND_NON_HEAD_GEOMETRY",
+        "before_source_sha256": "6e3046a0ab74119c8abdb15d49dba9b475a59329435e58be428bd06d41a153d3",
+        "signature": {
+          "animation_and_rig": {
+            "rest_skeleton_sha256": "0fdba8d4defb0dcdcf6e5e6f4b64988f04984c5570865d9fe893b858ff4f49a6",
+            "actions_sha256": "484af8a15d5560a72510dccc400de6dc5c6831175b9aa433e4c5693db98e9f67",
+            "action_names": [
+              "AN_wc_u_halfling_mage_Active",
+              "AN_wc_u_halfling_mage_Attack",
+              "AN_wc_u_halfling_mage_Defeat",
+              "AN_wc_u_halfling_mage_Hit",
+              "AN_wc_u_halfling_mage_Idle",
+              "AN_wc_u_halfling_mage_Move",
+              "AN_wc_u_halfling_mage_Victory"
+            ],
+            "unit_scale_m": 1.0,
+            "fps": 60
+          },
+          "non_head_vertices": 2464,
+          "non_head_geometry_sha256": "b94f63fdfcbcf602ea12f741c40bc96ada9c6db9e3041a8f086d90d32ba0c2fc"
+        }
+      },
+      "silhouettes": [
+        {
+          "view": "front",
+          "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T162841Z\\halfling-face-fit\\milo-readback\\silhouette96-front.png",
+          "sha256": "464a4a85bc58037824ed31dc7b6610f1c8d36dfb26af57774f3d2765e27926f3",
+          "dark_pixels": 1058,
+          "light_pixels": 7864
+        },
+        {
+          "view": "game-angle",
+          "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T162841Z\\halfling-face-fit\\milo-readback\\silhouette96-game-angle.png",
+          "sha256": "b222a488f389acae0e117a0444934c38d4868c4266c2d0ba96db31605dfa2d4b",
+          "dark_pixels": 913,
+          "light_pixels": 8120
+        }
+      ]
+    }
+  ],
+  "tools": {
+    "tools\\blender\\author_update_halflings.py": "293b19530e389c2bd47495360845dcb56c5f3db6bfae60c159582e26df67a120",
+    "tools\\blender\\verify_update_halflings.py": "596078b8ee757952e39c78a20186a65260679672b5ce20bb5c7271e96c74f69e",
+    "tools\\blender\\author_update_pippa.py": "49c0e5845e0323266ec35daa8096b60f41a7426352f0fa672c060d4d543ebf50",
+    "tools\\blender\\halfling_production_profile.py": "4311e0b24d57c4b78f47c898fa726e41b240216ca7b543ea24908847eee51b44"
+  }
+}

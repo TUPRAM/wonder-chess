@@ -1,0 +1,14 @@
+00:04.047  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_elf_ranger\wc_u_elf_ranger.blend"
+Traceback (most recent call last):
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\repair_update_elf_shoulders.py", line 73, in <module>
+    p=argparse.ArgumentParser();p.add_argument('--unit',choices=['wc_u_elf_ranger','wc_u_elf_rogue'],required=True);p.add_argument('--report',type=Path,required=True);p.add_argument('--publish',action='store_true');a=p.parse_args(sys.argv[sys.argv.index('--')+1:]);publish(a.unit,a.report.resolve()) if a.publish else candidate(a.unit,a.report.resolve())
+                                                                                                                                                                                                                                                                                                                              ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\repair_update_elf_shoulders.py", line 41, in candidate
+    assert len(changes)==4
+           ^^^^^^^^^^^^^^^
+AssertionError
+
+Error: script failed, file: 'tools/blender/repair_update_elf_shoulders.py', exiting.
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

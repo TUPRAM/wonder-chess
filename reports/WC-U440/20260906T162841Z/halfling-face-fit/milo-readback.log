@@ -1,0 +1,215 @@
+00:02.360  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_halfling_mage\wc_u_halfling_mage.blend"
+{
+  "status": "structural_checks_passed_visual_review_required",
+  "blender_version": "5.1.1",
+  "collection": "EXPORT",
+  "evaluated_triangle_total": 8400,
+  "objects": [
+    {
+      "name": "Armature",
+      "type": "ARMATURE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.6707595586776733,
+        0.295413613319397,
+        1.2220799922943115
+      ],
+      "roots": [
+        "root"
+      ],
+      "deform_bones": 27
+    },
+    {
+      "name": "SK_wc_u_halfling_mage",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.7665771842002869,
+        0.390749990940094,
+        1.134170413017273
+      ],
+      "evaluated_triangles": 8400,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "not_checked": [
+    "appearance",
+    "deformation across all clips",
+    "UV overlap appropriateness",
+    "normal-map convention",
+    "Unreal import",
+    "LOD silhouette",
+    "gameplay readability"
+  ]
+}
+{
+  "status": "structural_checks_passed_visual_review_required",
+  "blender_version": "5.1.1",
+  "collection": "LOD_SOURCE",
+  "evaluated_triangle_total": 6283,
+  "objects": [
+    {
+      "name": "SK_wc_u_halfling_mage_LOD1",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.7667618989944458,
+        0.39155638217926025,
+        1.134170413017273
+      ],
+      "evaluated_triangles": 4200,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    },
+    {
+      "name": "SK_wc_u_halfling_mage_LOD2",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.768966794013977,
+        0.39230573177337646,
+        1.1312779188156128
+      ],
+      "evaluated_triangles": 2083,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "not_checked": [
+    "appearance",
+    "deformation across all clips",
+    "UV overlap appropriateness",
+    "normal-map convention",
+    "Unreal import",
+    "LOD silhouette",
+    "gameplay readability"
+  ]
+}
+{
+  "status": "sampled_motion_invariants_passed",
+  "unit_id": "wc_u_halfling_mage",
+  "blender_version": "5.1.1",
+  "sampling": "actual deformed mesh every 3 frames at 60fps",
+  "clips": [
+    {
+      "clip": "Idle",
+      "samples": 41,
+      "minimum_support_sole_z_m": -1.3470148019223416e-07,
+      "maximum_support_sole_z_m": -1.3470148019223416e-07,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Move",
+      "samples": 21,
+      "minimum_support_sole_z_m": -1.3470473447796394e-07,
+      "maximum_support_sole_z_m": -4.3924263337657976e-08,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Attack",
+      "samples": 15,
+      "minimum_support_sole_z_m": -1.3470148019223416e-07,
+      "maximum_support_sole_z_m": -1.3470148019223416e-07,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Active",
+      "samples": 14,
+      "minimum_support_sole_z_m": -1.3470148019223416e-07,
+      "maximum_support_sole_z_m": -1.3470148019223416e-07,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Hit",
+      "samples": 9,
+      "minimum_support_sole_z_m": -1.3470148019223416e-07,
+      "maximum_support_sole_z_m": -5.1757066188429235e-08,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Defeat",
+      "samples": 21,
+      "minimum_support_sole_z_m": -1.3470148019223416e-07,
+      "maximum_support_sole_z_m": -3.8133233459802796e-08,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Victory",
+      "samples": 31,
+      "minimum_support_sole_z_m": -1.3470148019223416e-07,
+      "maximum_support_sole_z_m": -1.3470148019223416e-07,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    }
+  ],
+  "errors": [],
+  "not_checked": [
+    "continuous visual quality",
+    "weapon/costume clipping",
+    "semantic gesture review",
+    "Unreal retarget/import",
+    "runtime move-speed synchronization"
+  ]
+}
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+WC_NEW_HERO_READBACK_PASS {"status": "PASS_SAVED_SOURCE_SKIN_MOTION_AND_MESH_FBX_READBACK", "unit_id": "wc_u_halfling_mage", "source_sha256": "b64ad1262cb15bcb5bde668a4767df6a5cea5111b797c31ae6129a80ba562faf", "manifest_sha256": "09aa0467d406f759c924cfa09d518858a5f4c0cf5a04f7f0627c19faff71caf7", "source_revision": 2, "geometry_revision": 2, "animation_revision": 2, "blender_version": "5.1.1", "files_verified": 14, "source_clips_verified": 7, "mesh_fbx_readbacks": [{"mesh_suffix": "", "dimensions_m": [0.7380085289478302, 0.3787491172552109, 1.1375902902948776], "triangles": 8400, "bones": 27, "materials": 1, "uv_layers": 1, "weighted_vertices": 4596}, {"mesh_suffix": "_LOD1", "dimensions_m": [0.7373090982437134, 0.37955547869205475, 1.1375902902948776], "triangles": 4200, "bones": 27, "materials": 1, "uv_layers": 1, "weighted_vertices": 2390}, {"mesh_suffix": "_LOD2", "dimensions_m": [0.7373363971710205, 0.3780403584241867, 1.134697728746687], "triangles": 2083, "bones": 27, "materials": 1, "uv_layers": 1, "weighted_vertices": 1306}], "animation_fbx_import_verified": false, "Unreal_import_verified": false, "final_art_accepted": false}
+00:03.485  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162841Z\halfling-face-fit\milo\before-source\wc_u_halfling_mage.blend"
+00:04.407  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_halfling_mage\wc_u_halfling_mage.blend"
+00:06.750  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_halfling_mage\wc_u_halfling_mage.blend"
+00:07.594  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162841Z\halfling-face-fit\milo-readback\silhouette96-front.png'
+00:07.625  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T162841Z\halfling-face-fit\milo-readback\silhouette96-game-angle.png'
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+WC_HALFLING_READBACK {"status": "PASS_ACTUAL_BLENDER_FBX_AND_VIDEO_READBACK", "unit_id": "wc_u_halfling_mage", "source_revision": 2, "source_sha256": "b64ad1262cb15bcb5bde668a4767df6a5cea5111b797c31ae6129a80ba562faf", "export_manifest_sha256": "09aa0467d406f759c924cfa09d518858a5f4c0cf5a04f7f0627c19faff71caf7", "blender_version": "5.1.1", "recorded_frames": 442, "recorded_seconds": 7.366666666666666, "source_modified": false, "Unreal_import_verified": false, "continuous_visual_approval": false, "finished_art_accepted": false, "face_refinement_preserved": {"status": "PASS_EXACT_RETAINED_ACTIONS_RIG_AND_NON_HEAD_GEOMETRY", "before_source_sha256": "6e3046a0ab74119c8abdb15d49dba9b475a59329435e58be428bd06d41a153d3", "signature": {"animation_and_rig": {"rest_skeleton_sha256": "0fdba8d4defb0dcdcf6e5e6f4b64988f04984c5570865d9fe893b858ff4f49a6", "actions_sha256": "484af8a15d5560a72510dccc400de6dc5c6831175b9aa433e4c5693db98e9f67", "action_names": ["AN_wc_u_halfling_mage_Active", "AN_wc_u_halfling_mage_Attack", "AN_wc_u_halfling_mage_Defeat", "AN_wc_u_halfling_mage_Hit", "AN_wc_u_halfling_mage_Idle", "AN_wc_u_halfling_mage_Move", "AN_wc_u_halfling_mage_Victory"], "unit_scale_m": 1.0, "fps": 60}, "non_head_vertices": 2464, "non_head_geometry_sha256": "b94f63fdfcbcf602ea12f741c40bc96ada9c6db9e3041a8f086d90d32ba0c2fc"}}, "silhouettes": [{"view": "front", "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T162841Z\\halfling-face-fit\\milo-readback\\silhouette96-front.png", "sha256": "464a4a85bc58037824ed31dc7b6610f1c8d36dfb26af57774f3d2765e27926f3", "dark_pixels": 1058, "light_pixels": 7864}, {"view": "game-angle", "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T162841Z\\halfling-face-fit\\milo-readback\\silhouette96-game-angle.png", "sha256": "b222a488f389acae0e117a0444934c38d4868c4266c2d0ba96db31605dfa2d4b", "dark_pixels": 913, "light_pixels": 8120}], "verification_script_sha256": "cd5c9af71f3820d140bb22e1e4dede40157cf640a3a0f10af28ed3a2511886f4"}
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

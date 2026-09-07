@@ -1,0 +1,173 @@
+{
+  "status": "SOURCE_AND_EXPORT_FROZEN_FOR_UNREAL_PILOT",
+  "unit_id": "wc_u_halfling_warrior",
+  "display_name": "Pippa",
+  "source_revision": 7,
+  "geometry_revision": 7,
+  "animation_revision": 7,
+  "source_path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\heroes\\wc_u_halfling_warrior\\wc_u_halfling_warrior.blend",
+  "source_sha256": "556a04fe6118487c8cd872e82c0c43bad5724ebbbd4fcfea6345f6adea3bcf22",
+  "export_manifest_path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_halfling_warrior\\export_manifest.json",
+  "export_manifest_sha256": "c7b2e8a1bec9fc6c6ebb899b6160187665782da4e429e5d7c11dc8238eaf03e3",
+  "rig_family": "humanoid_small",
+  "rig_revision": "WC_humanoid_small_v1",
+  "bones": 27,
+  "lod_triangles": [
+    10246,
+    5118,
+    2540
+  ],
+  "materials": 1,
+  "texture_dimensions": [
+    1024,
+    1024
+  ],
+  "portrait_dimensions": [
+    640,
+    640
+  ],
+  "unit_scale_m": 1,
+  "fps": 60,
+  "clips": {
+    "Idle": {
+      "frames": [
+        1,
+        121
+      ],
+      "fps": 60,
+      "release_frame": null,
+      "duration_seconds": 2.0,
+      "loop": true,
+      "action": "AN_wc_u_halfling_warrior_Idle"
+    },
+    "Move": {
+      "frames": [
+        1,
+        61
+      ],
+      "fps": 60,
+      "release_frame": null,
+      "duration_seconds": 1.0,
+      "loop": true,
+      "action": "AN_wc_u_halfling_warrior_Move"
+    },
+    "Attack": {
+      "frames": [
+        1,
+        46
+      ],
+      "fps": 60,
+      "release_frame": 22,
+      "duration_seconds": 0.75,
+      "loop": false,
+      "action": "AN_wc_u_halfling_warrior_Attack"
+    },
+    "Active": {
+      "frames": [
+        1,
+        34
+      ],
+      "fps": 60,
+      "release_frame": 16,
+      "duration_seconds": 0.55,
+      "loop": false,
+      "action": "AN_wc_u_halfling_warrior_Active"
+    },
+    "Hit": {
+      "frames": [
+        1,
+        25
+      ],
+      "fps": 60,
+      "release_frame": null,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "action": "AN_wc_u_halfling_warrior_Hit"
+    },
+    "Defeat": {
+      "frames": [
+        1,
+        61
+      ],
+      "fps": 60,
+      "release_frame": null,
+      "duration_seconds": 1.0,
+      "loop": false,
+      "action": "AN_wc_u_halfling_warrior_Defeat"
+    },
+    "Victory": {
+      "frames": [
+        1,
+        91
+      ],
+      "fps": 60,
+      "release_frame": null,
+      "duration_seconds": 1.5,
+      "loop": false,
+      "action": "AN_wc_u_halfling_warrior_Victory"
+    }
+  },
+  "all_frames_checked": 439,
+  "minimum_geometry_z_m": 4.471404579931004e-08,
+  "maximum_ik_clamp_m": 0,
+  "video_frames": 439,
+  "video_seconds_including_endpoint_frames": 7.316666666666666,
+  "production_report": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T160156Z\\pippa",
+  "readback_report": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T160405Z\\pippa-readback",
+  "visual_review": {
+    "reviewer": "Codex update_core image inspection",
+    "views": [
+      "front",
+      "side",
+      "back",
+      "three-quarter",
+      "face",
+      "game-angle",
+      "96px front silhouette",
+      "96px game-angle silhouette"
+    ],
+    "clip_samples": "start / release-or-middle / end for each of seven clips",
+    "continuous_normal_speed_approval": false,
+    "findings": [
+      "Quilt diamonds, broad berry scarf, leaf club and orchard buckler are distinguishable in portrait views.",
+      "The small adult face has a defined jaw/nose, shaped eyes, freckles and authored curl strands.",
+      "Soles contact the floor after correction; defeat now lowers the gaze and knees rather than looking upward.",
+      "At96px game angle the club foreshortens and the buckler overlaps the forearm; actual in-engine crowd/team comparison remains required.",
+      "Rigid finger geometry grips the visual handles; finger deformation and collision are not certified by sparse stills."
+    ]
+  },
+  "passed": [
+    "actual Blender5.1.1 production exit0",
+    "14 current export hashes and source hash",
+    "saved skin/UV/material/27-bone structure",
+    "439 deformed frame root/scale/floor checks",
+    "439 frame hand/foot IK zero clamp",
+    "all three mesh FBX bounds/triangles/bones/UV/material readback",
+    "all seven animation FBX frame ranges at explicit zero import offset",
+    "seven actual384px60fps movie metadata checks",
+    "read-only silhouettes/source hash retained"
+  ],
+  "failed_retained": [
+    {
+      "report": "reports/WC-U440/20260906T155651Z/readback.log",
+      "finding": "LOD1 reopened with5116 vs5122 source triangles before explicit triangulation/validation"
+    },
+    {
+      "report": "reports/WC-U440/20260906T155929Z/readback.log",
+      "finding": "After triangulation, actual Mesh.validate removed4 duplicated LOD1 faces and20 LOD2 faces; fixed in final source export"
+    },
+    {
+      "report": "reports/WC-U440/20260906T160156Z/readback.log",
+      "finding": "Verifier used installed FBX importer default+1 frame offset; final fresh verifier sets anim_offset=0, matching authored timeline"
+    }
+  ],
+  "not_run": [
+    "Unreal import/reimport and cold asset checks for this revision",
+    "normal-speed continuous Unreal clip review",
+    "both team orientations and crowded combat",
+    "LOD appearance acceptance",
+    "runtime shield/audio release synchronization",
+    "packaged play/performance with this new asset"
+  ],
+  "ownership": "Source/export and author/profile scripts frozen. Root owns Unreal import; Finn/Nella/Milo remain queued until pilot release."
+}

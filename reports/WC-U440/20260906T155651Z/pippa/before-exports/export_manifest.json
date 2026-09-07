@@ -1,0 +1,170 @@
+{
+  "status": "AUTHORED_EXPORTED_BLENDER_EXECUTED_ENGINE_AND_VISUAL_ACCEPTANCE_OPEN",
+  "unit_id": "wc_u_halfling_warrior",
+  "name": "Pippa Oakstride",
+  "blender_version": "5.1.1",
+  "source_revision": 4,
+  "geometry_revision": 4,
+  "geometry_source_revision": 4,
+  "animation_revision": 4,
+  "source_sha256": "3fa22bee655d60daa730b5f925fe874b9ba2135302889ec0348a81b9ef55deb6",
+  "author_script_sha256": "31c1c3507064cc63978842c39de5f6296b9ea4b9cdf41fb5f447e3cf8dae4470",
+  "family_helper_sha256": "4311e0b24d57c4b78f47c898fa726e41b240216ca7b543ea24908847eee51b44",
+  "units_source_sha256": "fd6d831113261dd984f3d2430236c06eda4a9f4e7f9e30a404a76f418fa953b0",
+  "height_m": 1.12,
+  "rig_family": "humanoid_small",
+  "rig_revision": "WC_humanoid_small_v1",
+  "bones": 27,
+  "triangles": 10246,
+  "materials": 1,
+  "fps": 60,
+  "source_forward": "+Y",
+  "source_up": "+Z",
+  "unit_scale_m": 1,
+  "fbx_profile": "tools/blender/profiles/fbx_skeletal_cm_v1.json",
+  "normalized_export_revision": 1,
+  "normalized_exporter_sha256": "13646d355744f5293d573816e5cd54459cf88f3b647c6c2a22aa61ae29200779",
+  "exported_coordinate_units": "centimeters in independent temporary copies; source metres",
+  "engine_calibration": [
+    "reports/WC-330/import-probe/forward_cm-results.json",
+    "reports/WC-330/import-probe/all7-comparison.json"
+  ],
+  "textures": {
+    "BaseColor": "sRGB",
+    "Normal": "linear flat tangent +Y; geometric bevels",
+    "ORM": "linear R occlusion, G roughness, B metallic"
+  },
+  "clips": {
+    "Idle": {
+      "frames": [
+        1,
+        121
+      ],
+      "fps": 60,
+      "release_frame": null,
+      "duration_seconds": 2.0,
+      "loop": true,
+      "action": "AN_wc_u_halfling_warrior_Idle"
+    },
+    "Move": {
+      "frames": [
+        1,
+        61
+      ],
+      "fps": 60,
+      "release_frame": null,
+      "duration_seconds": 1.0,
+      "loop": true,
+      "action": "AN_wc_u_halfling_warrior_Move"
+    },
+    "Attack": {
+      "frames": [
+        1,
+        46
+      ],
+      "fps": 60,
+      "release_frame": 22,
+      "duration_seconds": 0.75,
+      "loop": false,
+      "action": "AN_wc_u_halfling_warrior_Attack"
+    },
+    "Active": {
+      "frames": [
+        1,
+        34
+      ],
+      "fps": 60,
+      "release_frame": 16,
+      "duration_seconds": 0.55,
+      "loop": false,
+      "action": "AN_wc_u_halfling_warrior_Active"
+    },
+    "Hit": {
+      "frames": [
+        1,
+        25
+      ],
+      "fps": 60,
+      "release_frame": null,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "action": "AN_wc_u_halfling_warrior_Hit"
+    },
+    "Defeat": {
+      "frames": [
+        1,
+        61
+      ],
+      "fps": 60,
+      "release_frame": null,
+      "duration_seconds": 1.0,
+      "loop": false,
+      "action": "AN_wc_u_halfling_warrior_Defeat"
+    },
+    "Victory": {
+      "frames": [
+        1,
+        91
+      ],
+      "fps": 60,
+      "release_frame": null,
+      "duration_seconds": 1.5,
+      "loop": false,
+      "action": "AN_wc_u_halfling_warrior_Victory"
+    }
+  },
+  "lods": [
+    {
+      "lod": 1,
+      "triangles": 5122,
+      "ratio_target": 0.5,
+      "visual_acceptance": "pending"
+    },
+    {
+      "lod": 2,
+      "triangles": 2560,
+      "ratio_target": 0.25,
+      "visual_acceptance": "pending"
+    }
+  ],
+  "source_brief": {
+    "silhouette": "A small broad stance with a large round wooden buckler and an upright leaf-shaped fantasy club. An oversized short scarf forms a clear horizontal at the neck.",
+    "face": "Light brown skin, freckled cheeks, bright hazel eyes and dense chestnut curls. Keep the face friendly and visibly adult.",
+    "costume": "Apple-green quilted jacket, ochre trousers, a red neck scarf and broad walking boots. Outfit proportions emphasize capable mobility, not toy-like baby features.",
+    "palette": "Apple green #7A985A; ochre #BE9A59; berry red #A85251; walnut #73553B.",
+    "equipment": "Round orchard-mark buckler and short stylized wooden club reinforced with decorative bronze bands. Both are exaggerated fantasy props.",
+    "signature": "Circular buckler, large red scarf and wide planted stance.",
+    "materials": "Quilted cloth, matte wood and dull bronze. Paint the orchard emblem in one readable silhouette.",
+    "back": "A square travel patch on the jacket and scarf ends over one shoulder keep the rear identifiable.",
+    "animation": "Idle is grounded rather than constantly bouncing. Walk uses quick full-foot steps. Basics are short determined swings. Stout Heart lifts the buckler with a compact upward hop that returns to the same logical cell.",
+    "vfx": "A small green-gold shield outline that matches her scale. No taunt or healing accompanies it.",
+    "audio": "A light wooden knock and short warm chime; avoid childish squeaks.",
+    "risk": "Small units can disappear behind tall allies. Test camera spacing and health-bar anchors without enlarging her logical footprint."
+  },
+  "equipment": "Visual only; fully authored wooden club and buckler weighted to weapon bones",
+  "files": {
+    "AN_wc_u_halfling_warrior_Active.fbx": "be8138ed7f382b5b4d6d7549df9397f386b09b01f195b2f30c502f150414b3a4",
+    "AN_wc_u_halfling_warrior_Attack.fbx": "5f4a3935b20e146c7aceab495a82b1680f598659f555cc198b4afbb9bbda50e6",
+    "AN_wc_u_halfling_warrior_Defeat.fbx": "e822ba11ed820ca0eb3bfa85d85069b84fcdbd7a4812f02bced8a75b98781dc2",
+    "AN_wc_u_halfling_warrior_Hit.fbx": "6503ca7e0455c675b5e387de69c78d0d127d9aaf1c9b98883650c9e8c7d55759",
+    "AN_wc_u_halfling_warrior_Idle.fbx": "0505c8aac7625381e14d2efbaff15453d2cbeba44c9bd5699e914fb7ea9834b0",
+    "AN_wc_u_halfling_warrior_Move.fbx": "b6c2a7027953aae6ea72165eb5db71412cde6f37055c449bfd5d12c3c4f98127",
+    "AN_wc_u_halfling_warrior_Victory.fbx": "748a7192d68c610c4e8dbc6189ff075f9291c88825206e85cc7d52857f919294",
+    "portrait.png": "7b083b8e27468286fb8bf9a981fa421a5090b576927fbfea34e40520404ef467",
+    "SK_wc_u_halfling_warrior.fbx": "bec0888afea6447b8070483b58595b0cdf40bcc030a0f7704d2a1b4535bd1223",
+    "SK_wc_u_halfling_warrior_LOD1.fbx": "b8b927dbae305348843a1ac2b7a15d100297722773492804e5e48baa2aee905d",
+    "SK_wc_u_halfling_warrior_LOD2.fbx": "6b9d245640045acded9f5ca698c7ece29901b0829a61249a534c35db29cf80f4",
+    "T_wc_u_halfling_warrior_BaseColor.png": "558ab325ba6cb355e8019ab9184533c4dc7efccdc53f10c6ba534dbd6aecf384",
+    "T_wc_u_halfling_warrior_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
+    "T_wc_u_halfling_warrior_ORM.png": "3ea25ed3e1a6f3c159f74db7d0d9324b7d63f93448e42f1d9112645e19eaa3c7"
+  },
+  "report_directory": "reports\\WC-U440\\20260906T155451Z\\pippa",
+  "open_reviews": [
+    "continuous seven-clip visual quality",
+    "hands and weapon contact",
+    "crowded game-camera identity",
+    "actual Unreal import/reimport",
+    "LOD silhouettes",
+    "effects/audio synchronization"
+  ]
+}

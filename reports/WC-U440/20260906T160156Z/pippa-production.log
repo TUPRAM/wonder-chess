@@ -1,0 +1,672 @@
+C:\Users\iputu\Documents\Wonder Chess\tools\blender\author_update_pippa.py:60: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat=bpy.data.materials.new('M_'+UID);mat.use_nodes=True
+00:08.719  geom.mesh        | ERROR Face 1988 is a duplicate of 1987
+00:08.719  geom.mesh        | ERROR Face 2112 is a duplicate of 2110
+00:08.719  geom.mesh        | ERROR Face 3273 is a duplicate of 907
+00:08.719  geom.mesh        | ERROR Face 5092 is a duplicate of 3406
+00:08.765  geom.mesh        | ERROR Face 1395 is a duplicate of 331
+00:08.765  geom.mesh        | ERROR Face 1407 is a duplicate of 1400
+00:08.765  geom.mesh        | ERROR Face 1409 is a duplicate of 1401
+00:08.765  geom.mesh        | ERROR Face 1411 is a duplicate of 1402
+00:08.765  geom.mesh        | ERROR Face 1413 is a duplicate of 1403
+00:08.765  geom.mesh        | ERROR Face 1436 is a duplicate of 1425
+00:08.765  geom.mesh        | ERROR Face 1448 is a duplicate of 1436
+00:08.765  geom.mesh        | ERROR Face 1450 is a duplicate of 1437
+00:08.765  geom.mesh        | ERROR Face 1452 is a duplicate of 1438
+00:08.765  geom.mesh        | ERROR Face 1454 is a duplicate of 1439
+00:08.765  geom.mesh        | ERROR Face 1461 is a duplicate of 379
+00:08.765  geom.mesh        | ERROR Face 1462 is a duplicate of 380
+00:08.765  geom.mesh        | ERROR Face 1468 is a duplicate of 1450
+00:08.765  geom.mesh        | ERROR Face 1937 is a duplicate of 697
+00:08.765  geom.mesh        | ERROR Face 2521 is a duplicate of 696
+00:08.765  geom.mesh        | ERROR Face 331 is a duplicate of 330
+00:08.765  geom.mesh        | ERROR Face 369 is a duplicate of 367
+00:08.765  geom.mesh        | ERROR Face 768 is a duplicate of 765
+00:08.765  geom.mesh        | ERROR Face 770 is a duplicate of 766
+00:08.765  geom.mesh        | ERROR Face 772 is a duplicate of 767
+00:20.844  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T160156Z\pippa\front.png'
+00:24.640  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T160156Z\pippa\side.png'
+00:28.672  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T160156Z\pippa\back.png'
+00:32.656  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T160156Z\pippa\three-quarter.png'
+00:36.469  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T160156Z\pippa\face.png'
+00:40.703  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T160156Z\pippa\game-angle.png'
+00:43.781  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\exports\heroes\wc_u_halfling_warrior\portrait.png'
+00:44.375  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T160156Z\pippa\Idle-start.png'
+00:44.984  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T160156Z\pippa\Idle-release.png'
+00:45.625  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T160156Z\pippa\Idle-end.png'
+00:46.265  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T160156Z\pippa\Move-start.png'
+00:47.078  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T160156Z\pippa\Move-release.png'
+00:47.750  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T160156Z\pippa\Move-end.png'
+00:48.422  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T160156Z\pippa\Attack-start.png'
+00:49.078  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T160156Z\pippa\Attack-release.png'
+00:49.719  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T160156Z\pippa\Attack-end.png'
+00:50.359  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T160156Z\pippa\Active-start.png'
+00:50.906  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T160156Z\pippa\Active-release.png'
+00:51.422  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T160156Z\pippa\Active-end.png'
+00:51.984  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T160156Z\pippa\Hit-start.png'
+00:52.515  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T160156Z\pippa\Hit-release.png'
+00:53.062  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T160156Z\pippa\Hit-end.png'
+00:53.578  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T160156Z\pippa\Defeat-start.png'
+00:54.094  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T160156Z\pippa\Defeat-release.png'
+00:54.609  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T160156Z\pippa\Defeat-end.png'
+00:55.156  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T160156Z\pippa\Victory-start.png'
+00:55.656  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T160156Z\pippa\Victory-release.png'
+00:56.187  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T160156Z\pippa\Victory-end.png'
+00:57.219  render           | Video append frame 1
+00:57.250  render           | Video append frame 2
+00:57.265  render           | Video append frame 3
+00:57.281  render           | Video append frame 4
+00:57.312  render           | Video append frame 5
+00:57.328  render           | Video append frame 6
+00:57.344  render           | Video append frame 7
+00:57.375  render           | Video append frame 8
+00:57.390  render           | Video append frame 9
+00:57.406  render           | Video append frame 10
+00:57.437  render           | Video append frame 11
+00:57.453  render           | Video append frame 12
+00:57.469  render           | Video append frame 13
+00:57.484  render           | Video append frame 14
+00:57.515  render           | Video append frame 15
+00:57.531  render           | Video append frame 16
+00:57.547  render           | Video append frame 17
+00:57.578  render           | Video append frame 18
+00:57.594  render           | Video append frame 19
+00:57.609  render           | Video append frame 20
+00:57.625  render           | Video append frame 21
+00:57.656  render           | Video append frame 22
+00:57.672  render           | Video append frame 23
+00:57.687  render           | Video append frame 24
+00:57.719  render           | Video append frame 25
+00:57.734  render           | Video append frame 26
+00:57.750  render           | Video append frame 27
+00:57.781  render           | Video append frame 28
+00:57.797  render           | Video append frame 29
+00:57.812  render           | Video append frame 30
+00:57.828  render           | Video append frame 31
+00:57.859  render           | Video append frame 32
+00:57.875  render           | Video append frame 33
+00:57.890  render           | Video append frame 34
+00:57.906  render           | Video append frame 35
+00:57.922  render           | Video append frame 36
+00:57.953  render           | Video append frame 37
+00:57.969  render           | Video append frame 38
+00:57.984  render           | Video append frame 39
+00:58.000  render           | Video append frame 40
+00:58.031  render           | Video append frame 41
+00:58.047  render           | Video append frame 42
+00:58.062  render           | Video append frame 43
+00:58.078  render           | Video append frame 44
+00:58.109  render           | Video append frame 45
+00:58.125  render           | Video append frame 46
+00:58.140  render           | Video append frame 47
+00:58.156  render           | Video append frame 48
+00:58.172  render           | Video append frame 49
+00:58.203  render           | Video append frame 50
+00:58.219  render           | Video append frame 51
+00:58.234  render           | Video append frame 52
+00:58.250  render           | Video append frame 53
+00:58.281  render           | Video append frame 54
+00:58.297  render           | Video append frame 55
+00:58.312  render           | Video append frame 56
+00:58.344  render           | Video append frame 57
+00:58.359  render           | Video append frame 58
+00:58.375  render           | Video append frame 59
+00:58.406  render           | Video append frame 60
+00:58.422  render           | Video append frame 61
+00:58.437  render           | Video append frame 62
+00:58.469  render           | Video append frame 63
+00:58.484  render           | Video append frame 64
+00:58.500  render           | Video append frame 65
+00:58.531  render           | Video append frame 66
+00:58.547  render           | Video append frame 67
+00:58.562  render           | Video append frame 68
+00:58.594  render           | Video append frame 69
+00:58.609  render           | Video append frame 70
+00:58.625  render           | Video append frame 71
+00:58.656  render           | Video append frame 72
+00:58.672  render           | Video append frame 73
+00:58.687  render           | Video append frame 74
+00:58.719  render           | Video append frame 75
+00:58.734  render           | Video append frame 76
+00:58.750  render           | Video append frame 77
+00:58.781  render           | Video append frame 78
+00:58.797  render           | Video append frame 79
+00:58.828  render           | Video append frame 80
+00:58.844  render           | Video append frame 81
+00:58.859  render           | Video append frame 82
+00:58.890  render           | Video append frame 83
+00:58.906  render           | Video append frame 84
+00:58.922  render           | Video append frame 85
+00:58.953  render           | Video append frame 86
+00:58.969  render           | Video append frame 87
+00:58.984  render           | Video append frame 88
+00:59.000  render           | Video append frame 89
+00:59.031  render           | Video append frame 90
+00:59.047  render           | Video append frame 91
+00:59.062  render           | Video append frame 92
+00:59.094  render           | Video append frame 93
+00:59.109  render           | Video append frame 94
+00:59.125  render           | Video append frame 95
+00:59.140  render           | Video append frame 96
+00:59.172  render           | Video append frame 97
+00:59.187  render           | Video append frame 98
+00:59.203  render           | Video append frame 99
+00:59.219  render           | Video append frame 100
+00:59.250  render           | Video append frame 101
+00:59.265  render           | Video append frame 102
+00:59.281  render           | Video append frame 103
+00:59.312  render           | Video append frame 104
+00:59.328  render           | Video append frame 105
+00:59.344  render           | Video append frame 106
+00:59.359  render           | Video append frame 107
+00:59.390  render           | Video append frame 108
+00:59.406  render           | Video append frame 109
+00:59.422  render           | Video append frame 110
+00:59.437  render           | Video append frame 111
+00:59.469  render           | Video append frame 112
+00:59.484  render           | Video append frame 113
+00:59.500  render           | Video append frame 114
+00:59.531  render           | Video append frame 115
+00:59.547  render           | Video append frame 116
+00:59.562  render           | Video append frame 117
+00:59.578  render           | Video append frame 118
+00:59.609  render           | Video append frame 119
+00:59.625  render           | Video append frame 120
+00:59.640  render           | Video append frame 121
+00:59.687  render           | Video append frame 1
+00:59.703  render           | Video append frame 2
+00:59.719  render           | Video append frame 3
+00:59.750  render           | Video append frame 4
+00:59.765  render           | Video append frame 5
+00:59.781  render           | Video append frame 6
+00:59.797  render           | Video append frame 7
+00:59.828  render           | Video append frame 8
+00:59.844  render           | Video append frame 9
+00:59.859  render           | Video append frame 10
+00:59.875  render           | Video append frame 11
+00:59.906  render           | Video append frame 12
+00:59.922  render           | Video append frame 13
+00:59.937  render           | Video append frame 14
+00:59.953  render           | Video append frame 15
+00:59.984  render           | Video append frame 16
+01:00.000  render           | Video append frame 17
+01:00.015  render           | Video append frame 18
+01:00.031  render           | Video append frame 19
+01:00.062  render           | Video append frame 20
+01:00.078  render           | Video append frame 21
+01:00.094  render           | Video append frame 22
+01:00.125  render           | Video append frame 23
+01:00.140  render           | Video append frame 24
+01:00.156  render           | Video append frame 25
+01:00.172  render           | Video append frame 26
+01:00.203  render           | Video append frame 27
+01:00.219  render           | Video append frame 28
+01:00.234  render           | Video append frame 29
+01:00.250  render           | Video append frame 30
+01:00.281  render           | Video append frame 31
+01:00.297  render           | Video append frame 32
+01:00.312  render           | Video append frame 33
+01:00.344  render           | Video append frame 34
+01:00.359  render           | Video append frame 35
+01:00.375  render           | Video append frame 36
+01:00.390  render           | Video append frame 37
+01:00.422  render           | Video append frame 38
+01:00.437  render           | Video append frame 39
+01:00.453  render           | Video append frame 40
+01:00.469  render           | Video append frame 41
+01:00.500  render           | Video append frame 42
+01:00.515  render           | Video append frame 43
+01:00.531  render           | Video append frame 44
+01:00.547  render           | Video append frame 45
+01:00.578  render           | Video append frame 46
+01:00.594  render           | Video append frame 47
+01:00.609  render           | Video append frame 48
+01:00.625  render           | Video append frame 49
+01:00.656  render           | Video append frame 50
+01:00.672  render           | Video append frame 51
+01:00.687  render           | Video append frame 52
+01:00.703  render           | Video append frame 53
+01:00.719  render           | Video append frame 54
+01:00.750  render           | Video append frame 55
+01:00.765  render           | Video append frame 56
+01:00.781  render           | Video append frame 57
+01:00.812  render           | Video append frame 58
+01:00.828  render           | Video append frame 59
+01:00.859  render           | Video append frame 60
+01:00.875  render           | Video append frame 61
+01:00.922  render           | Video append frame 1
+01:00.937  render           | Video append frame 2
+01:00.953  render           | Video append frame 3
+01:00.969  render           | Video append frame 4
+01:01.000  render           | Video append frame 5
+01:01.015  render           | Video append frame 6
+01:01.031  render           | Video append frame 7
+01:01.047  render           | Video append frame 8
+01:01.078  render           | Video append frame 9
+01:01.094  render           | Video append frame 10
+01:01.109  render           | Video append frame 11
+01:01.140  render           | Video append frame 12
+01:01.156  render           | Video append frame 13
+01:01.172  render           | Video append frame 14
+01:01.203  render           | Video append frame 15
+01:01.219  render           | Video append frame 16
+01:01.234  render           | Video append frame 17
+01:01.265  render           | Video append frame 18
+01:01.281  render           | Video append frame 19
+01:01.297  render           | Video append frame 20
+01:01.312  render           | Video append frame 21
+01:01.344  render           | Video append frame 22
+01:01.359  render           | Video append frame 23
+01:01.375  render           | Video append frame 24
+01:01.390  render           | Video append frame 25
+01:01.422  render           | Video append frame 26
+01:01.437  render           | Video append frame 27
+01:01.453  render           | Video append frame 28
+01:01.469  render           | Video append frame 29
+01:01.500  render           | Video append frame 30
+01:01.515  render           | Video append frame 31
+01:01.531  render           | Video append frame 32
+01:01.562  render           | Video append frame 33
+01:01.578  render           | Video append frame 34
+01:01.594  render           | Video append frame 35
+01:01.609  render           | Video append frame 36
+01:01.625  render           | Video append frame 37
+01:01.656  render           | Video append frame 38
+01:01.672  render           | Video append frame 39
+01:01.687  render           | Video append frame 40
+01:01.703  render           | Video append frame 41
+01:01.734  render           | Video append frame 42
+01:01.750  render           | Video append frame 43
+01:01.765  render           | Video append frame 44
+01:01.781  render           | Video append frame 45
+01:01.812  render           | Video append frame 46
+01:01.844  render           | Video append frame 1
+01:01.875  render           | Video append frame 2
+01:01.890  render           | Video append frame 3
+01:01.906  render           | Video append frame 4
+01:01.922  render           | Video append frame 5
+01:01.953  render           | Video append frame 6
+01:01.969  render           | Video append frame 7
+01:01.984  render           | Video append frame 8
+01:02.015  render           | Video append frame 9
+01:02.031  render           | Video append frame 10
+01:02.047  render           | Video append frame 11
+01:02.078  render           | Video append frame 12
+01:02.094  render           | Video append frame 13
+01:02.109  render           | Video append frame 14
+01:02.140  render           | Video append frame 15
+01:02.156  render           | Video append frame 16
+01:02.187  render           | Video append frame 17
+01:02.203  render           | Video append frame 18
+01:02.234  render           | Video append frame 19
+01:02.250  render           | Video append frame 20
+01:02.265  render           | Video append frame 21
+01:02.297  render           | Video append frame 22
+01:02.312  render           | Video append frame 23
+01:02.328  render           | Video append frame 24
+01:02.359  render           | Video append frame 25
+01:02.375  render           | Video append frame 26
+01:02.390  render           | Video append frame 27
+01:02.422  render           | Video append frame 28
+01:02.437  render           | Video append frame 29
+01:02.469  render           | Video append frame 30
+01:02.484  render           | Video append frame 31
+01:02.515  render           | Video append frame 32
+01:02.531  render           | Video append frame 33
+01:02.562  render           | Video append frame 34
+01:02.594  render           | Video append frame 1
+01:02.609  render           | Video append frame 2
+01:02.640  render           | Video append frame 3
+01:02.656  render           | Video append frame 4
+01:02.672  render           | Video append frame 5
+01:02.703  render           | Video append frame 6
+01:02.719  render           | Video append frame 7
+01:02.734  render           | Video append frame 8
+01:02.750  render           | Video append frame 9
+01:02.781  render           | Video append frame 10
+01:02.797  render           | Video append frame 11
+01:02.812  render           | Video append frame 12
+01:02.844  render           | Video append frame 13
+01:02.859  render           | Video append frame 14
+01:02.875  render           | Video append frame 15
+01:02.906  render           | Video append frame 16
+01:02.922  render           | Video append frame 17
+01:02.937  render           | Video append frame 18
+01:02.953  render           | Video append frame 19
+01:02.984  render           | Video append frame 20
+01:03.000  render           | Video append frame 21
+01:03.015  render           | Video append frame 22
+01:03.047  render           | Video append frame 23
+01:03.062  render           | Video append frame 24
+01:03.094  render           | Video append frame 25
+01:03.140  render           | Video append frame 1
+01:03.156  render           | Video append frame 2
+01:03.172  render           | Video append frame 3
+01:03.203  render           | Video append frame 4
+01:03.219  render           | Video append frame 5
+01:03.250  render           | Video append frame 6
+01:03.265  render           | Video append frame 7
+01:03.281  render           | Video append frame 8
+01:03.297  render           | Video append frame 9
+01:03.328  render           | Video append frame 10
+01:03.344  render           | Video append frame 11
+01:03.359  render           | Video append frame 12
+01:03.390  render           | Video append frame 13
+01:03.406  render           | Video append frame 14
+01:03.437  render           | Video append frame 15
+01:03.453  render           | Video append frame 16
+01:03.469  render           | Video append frame 17
+01:03.500  render           | Video append frame 18
+01:03.515  render           | Video append frame 19
+01:03.531  render           | Video append frame 20
+01:03.562  render           | Video append frame 21
+01:03.578  render           | Video append frame 22
+01:03.594  render           | Video append frame 23
+01:03.625  render           | Video append frame 24
+01:03.640  render           | Video append frame 25
+01:03.672  render           | Video append frame 26
+01:03.687  render           | Video append frame 27
+01:03.703  render           | Video append frame 28
+01:03.734  render           | Video append frame 29
+01:03.750  render           | Video append frame 30
+01:03.765  render           | Video append frame 31
+01:03.797  render           | Video append frame 32
+01:03.812  render           | Video append frame 33
+01:03.844  render           | Video append frame 34
+01:03.859  render           | Video append frame 35
+01:03.890  render           | Video append frame 36
+01:03.906  render           | Video append frame 37
+01:03.922  render           | Video append frame 38
+01:03.937  render           | Video append frame 39
+01:03.969  render           | Video append frame 40
+01:03.984  render           | Video append frame 41
+01:04.000  render           | Video append frame 42
+01:04.031  render           | Video append frame 43
+01:04.047  render           | Video append frame 44
+01:04.062  render           | Video append frame 45
+01:04.094  render           | Video append frame 46
+01:04.109  render           | Video append frame 47
+01:04.125  render           | Video append frame 48
+01:04.156  render           | Video append frame 49
+01:04.172  render           | Video append frame 50
+01:04.203  render           | Video append frame 51
+01:04.219  render           | Video append frame 52
+01:04.234  render           | Video append frame 53
+01:04.265  render           | Video append frame 54
+01:04.281  render           | Video append frame 55
+01:04.297  render           | Video append frame 56
+01:04.328  render           | Video append frame 57
+01:04.344  render           | Video append frame 58
+01:04.359  render           | Video append frame 59
+01:04.390  render           | Video append frame 60
+01:04.406  render           | Video append frame 61
+01:04.453  render           | Video append frame 1
+01:04.469  render           | Video append frame 2
+01:04.500  render           | Video append frame 3
+01:04.515  render           | Video append frame 4
+01:04.531  render           | Video append frame 5
+01:04.547  render           | Video append frame 6
+01:04.578  render           | Video append frame 7
+01:04.594  render           | Video append frame 8
+01:04.625  render           | Video append frame 9
+01:04.640  render           | Video append frame 10
+01:04.656  render           | Video append frame 11
+01:04.672  render           | Video append frame 12
+01:04.703  render           | Video append frame 13
+01:04.719  render           | Video append frame 14
+01:04.734  render           | Video append frame 15
+01:04.750  render           | Video append frame 16
+01:04.781  render           | Video append frame 17
+01:04.797  render           | Video append frame 18
+01:04.812  render           | Video append frame 19
+01:04.844  render           | Video append frame 20
+01:04.859  render           | Video append frame 21
+01:04.875  render           | Video append frame 22
+01:04.906  render           | Video append frame 23
+01:04.922  render           | Video append frame 24
+01:04.937  render           | Video append frame 25
+01:04.953  render           | Video append frame 26
+01:04.984  render           | Video append frame 27
+01:05.000  render           | Video append frame 28
+01:05.015  render           | Video append frame 29
+01:05.047  render           | Video append frame 30
+01:05.062  render           | Video append frame 31
+01:05.078  render           | Video append frame 32
+01:05.094  render           | Video append frame 33
+01:05.125  render           | Video append frame 34
+01:05.140  render           | Video append frame 35
+01:05.156  render           | Video append frame 36
+01:05.187  render           | Video append frame 37
+01:05.203  render           | Video append frame 38
+01:05.219  render           | Video append frame 39
+01:05.250  render           | Video append frame 40
+01:05.265  render           | Video append frame 41
+01:05.281  render           | Video append frame 42
+01:05.297  render           | Video append frame 43
+01:05.328  render           | Video append frame 44
+01:05.344  render           | Video append frame 45
+01:05.359  render           | Video append frame 46
+01:05.390  render           | Video append frame 47
+01:05.406  render           | Video append frame 48
+01:05.422  render           | Video append frame 49
+01:05.453  render           | Video append frame 50
+01:05.469  render           | Video append frame 51
+01:05.484  render           | Video append frame 52
+01:05.500  render           | Video append frame 53
+01:05.531  render           | Video append frame 54
+01:05.547  render           | Video append frame 55
+01:05.562  render           | Video append frame 56
+01:05.594  render           | Video append frame 57
+01:05.609  render           | Video append frame 58
+01:05.625  render           | Video append frame 59
+01:05.656  render           | Video append frame 60
+01:05.672  render           | Video append frame 61
+01:05.687  render           | Video append frame 62
+01:05.719  render           | Video append frame 63
+01:05.734  render           | Video append frame 64
+01:05.750  render           | Video append frame 65
+01:05.765  render           | Video append frame 66
+01:05.797  render           | Video append frame 67
+01:05.812  render           | Video append frame 68
+01:05.828  render           | Video append frame 69
+01:05.859  render           | Video append frame 70
+01:05.875  render           | Video append frame 71
+01:05.890  render           | Video append frame 72
+01:05.906  render           | Video append frame 73
+01:05.937  render           | Video append frame 74
+01:05.953  render           | Video append frame 75
+01:05.984  render           | Video append frame 76
+01:06.000  render           | Video append frame 77
+01:06.015  render           | Video append frame 78
+01:06.047  render           | Video append frame 79
+01:06.062  render           | Video append frame 80
+01:06.078  render           | Video append frame 81
+01:06.109  render           | Video append frame 82
+01:06.125  render           | Video append frame 83
+01:06.140  render           | Video append frame 84
+01:06.156  render           | Video append frame 85
+01:06.187  render           | Video append frame 86
+01:06.203  render           | Video append frame 87
+01:06.219  render           | Video append frame 88
+01:06.234  render           | Video append frame 89
+01:06.265  render           | Video append frame 90
+01:06.281  render           | Video append frame 91
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_halfling_warrior\\SK_wc_u_halfling_warrior.fbx'
+(bpy.data.armatures['WC_humanoid_small_v1.001'], 'POSE')
+export finished in 0.0548 sec.
+Info: Applied modifier was not first, result may not be as expected
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_halfling_warrior\\SK_wc_u_halfling_warrior_LOD1.fbx'
+(bpy.data.armatures['WC_humanoid_small_v1.001'], 'POSE')
+export finished in 0.0392 sec.
+Info: Applied modifier was not first, result may not be as expected
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_halfling_warrior\\SK_wc_u_halfling_warrior_LOD2.fbx'
+(bpy.data.armatures['WC_humanoid_small_v1.001'], 'POSE')
+export finished in 0.0318 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_halfling_warrior\\SK_wc_u_halfling_warrior_LOD1.fbx'
+(bpy.data.armatures['WC_humanoid_small_v1.001'], 'POSE')
+export finished in 0.0421 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_halfling_warrior\\SK_wc_u_halfling_warrior_LOD2.fbx'
+(bpy.data.armatures['WC_humanoid_small_v1.001'], 'POSE')
+export finished in 0.0391 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_halfling_warrior\\AN_wc_u_halfling_warrior_Idle.fbx'
+export finished in 0.1895 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_halfling_warrior\\AN_wc_u_halfling_warrior_Move.fbx'
+export finished in 0.1168 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_halfling_warrior\\AN_wc_u_halfling_warrior_Attack.fbx'
+export finished in 0.1225 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_halfling_warrior\\AN_wc_u_halfling_warrior_Active.fbx'
+export finished in 0.0946 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_halfling_warrior\\AN_wc_u_halfling_warrior_Hit.fbx'
+export finished in 0.0740 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_halfling_warrior\\AN_wc_u_halfling_warrior_Defeat.fbx'
+export finished in 0.1525 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_halfling_warrior\\AN_wc_u_halfling_warrior_Victory.fbx'
+export finished in 0.1501 sec.
+Info: Saved as "wc_u_halfling_warrior.blend"
+{
+  "status": "structural_checks_passed_visual_review_required",
+  "blender_version": "5.1.1",
+  "collection": "EXPORT",
+  "evaluated_triangle_total": 10246,
+  "objects": [
+    {
+      "name": "Armature",
+      "type": "ARMATURE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.6733193397521973,
+        0.308004766702652,
+        1.200640082359314
+      ],
+      "roots": [
+        "root"
+      ],
+      "deform_bones": 27
+    },
+    {
+      "name": "SK_wc_u_halfling_warrior",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.7795583009719849,
+        0.3594103455543518,
+        1.1178237199783325
+      ],
+      "evaluated_triangles": 10246,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "not_checked": [
+    "appearance",
+    "deformation across all clips",
+    "UV overlap appropriateness",
+    "normal-map convention",
+    "Unreal import",
+    "LOD silhouette",
+    "gameplay readability"
+  ]
+}
+{
+  "status": "sampled_motion_invariants_passed",
+  "unit_id": "wc_u_halfling_warrior",
+  "blender_version": "5.1.1",
+  "sampling": "actual deformed mesh every 3 frames at 60fps",
+  "clips": [
+    {
+      "clip": "Idle",
+      "samples": 41,
+      "minimum_support_sole_z_m": 1.0191051558194886e-07,
+      "maximum_support_sole_z_m": 1.0191051558194886e-07,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Move",
+      "samples": 21,
+      "minimum_support_sole_z_m": 6.037546285142525e-08,
+      "maximum_support_sole_z_m": 1.427175249091306e-07,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Attack",
+      "samples": 16,
+      "minimum_support_sole_z_m": 1.0191051558194886e-07,
+      "maximum_support_sole_z_m": 1.0191051558194886e-07,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Active",
+      "samples": 12,
+      "minimum_support_sole_z_m": 1.0191051558194886e-07,
+      "maximum_support_sole_z_m": 0.012013362720608711,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Hit",
+      "samples": 9,
+      "minimum_support_sole_z_m": 8.243260651852324e-08,
+      "maximum_support_sole_z_m": 1.3381658447997324e-07,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Defeat",
+      "samples": 21,
+      "minimum_support_sole_z_m": 5.35909023824388e-08,
+      "maximum_support_sole_z_m": 1.2871883825482655e-07,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Victory",
+      "samples": 31,
+      "minimum_support_sole_z_m": 1.0191051558194886e-07,
+      "maximum_support_sole_z_m": 1.0191051558194886e-07,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    }
+  ],
+  "errors": [],
+  "not_checked": [
+    "continuous visual quality",
+    "weapon/costume clipping",
+    "semantic gesture review",
+    "Unreal retarget/import",
+    "runtime move-speed synchronization"
+  ]
+}
+WC_PIPPA_EXPORTED {"unit": "wc_u_halfling_warrior", "report": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T160156Z\\pippa", "triangles": 10246}
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

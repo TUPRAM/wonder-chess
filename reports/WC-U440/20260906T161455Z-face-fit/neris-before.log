@@ -1,0 +1,13 @@
+00:02.110  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_elf_mage\wc_u_elf_mage.blend"
+Traceback (most recent call last):
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\inspect_update_face_surfaces.py", line 20, in <module>
+    head=max((c for c in parts if c['palette']==6),key=lambda c:c['dimensions_m'][0]*c['dimensions_m'][1]*c['dimensions_m'][2])
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\inspect_update_face_surfaces.py", line 20, in <lambda>
+    head=max((c for c in parts if c['palette']==6),key=lambda c:c['dimensions_m'][0]*c['dimensions_m'][1]*c['dimensions_m'][2])
+                                                                ~^^^^^^^^^^^^^^^^
+KeyError: 'dimensions_m'
+
+Error: script failed, file: 'tools/blender/inspect_update_face_surfaces.py', exiting.
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit
