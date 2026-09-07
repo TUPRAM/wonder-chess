@@ -1,0 +1,51 @@
+﻿{
+    "utc_started":  "2026-09-06T07:28:12.9167701Z",
+    "status":  "FAILED",
+    "port":  7780,
+    "port_unowned_before_launch":  true,
+    "provenance_path":  "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\shipping-delivery-provenance.json",
+    "provenance_sha256":  "6f44003df4431b8a80ca9d4357c37ac14349e18e71c579873d1f7ed79f7bff42",
+    "executable_identities":  [
+                                  {
+                                      "sha256":  "38a46da697e48af83ec0105bd68b44073d95b3b902f710d53ac3f2280d6e8058",
+                                      "path":  "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Alpha-Windows\\Windows\\WonderChess.exe"
+                                  },
+                                  {
+                                      "sha256":  "bee75ae9de12c86e78993eb72055b6ec0a8ac359f4886cb7f76ea307736dc77b",
+                                      "path":  "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Alpha-Windows\\Windows\\WonderChess\\Binaries\\Win64\\WonderChess-Win64-Shipping.exe"
+                                  }
+                              ],
+    "processes":  [
+                      {
+                          "role":  "host",
+                          "bootstrap_pid":  40076,
+                          "utc_launched":  "2026-09-06T07:28:13.0282428Z",
+                          "arguments":  [
+                                            "/Game/WonderChess/Maps/L_WC_Courtyard?listen?WCHumans=2",
+                                            "-windowed",
+                                            "-ResX=1280",
+                                            "-ResY=720",
+                                            "-ForceRes",
+                                            "-dx11",
+                                            "-WCExercise",
+                                            "-WCAuthorityChecks",
+                                            "-WCProfile",
+                                            "-WCShots",
+                                            "-WCProjectedBounds",
+                                            "-WCFast=5",
+                                            "-WCExitAfter=270",
+                                            "-WCEvidenceDir=\"C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\shipping-network\\host\"",
+                                            "-Port=7780"
+                                        ],
+                          "executable":  "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Alpha-Windows\\Windows\\WonderChess.exe",
+                          "working_directory":  "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Alpha-Windows\\Windows",
+                          "planned_exit_after_seconds":  270,
+                          "exit_observed":  false,
+                          "exit_code":  null
+                      }
+                  ],
+    "listen_boundary":  "Actual OS UDP endpoint ownership, because this Shipping binary does not emit UE_LOG files.",
+    "boundary":  "Two real packaged Shipping processes with human controller RPCs over loopback. 1280x720 and simulation speed5; not normal1080p rendering acceptance.",
+    "error":  "No verified actual Shipping host UDP listener within35 seconds",
+    "utc_finished":  "2026-09-06T07:28:48.6239752Z"
+}

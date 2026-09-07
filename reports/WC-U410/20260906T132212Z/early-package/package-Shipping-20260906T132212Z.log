@@ -1,0 +1,66 @@
+Running AutomationTool...
+Using bundled DotNet SDK version: 8.0.412 win-x64
+Starting AutomationTool...
+Parsing command line: BuildCookRun -project="C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject" -noP4 -platform=Win64 -clientconfig=Shipping -build -cook -stage -pak -archive -archivedirectory="C:\Users\iputu\Documents\Wonder Chess\builds\WonderChess-Update24-Early" -prereqs -utf8output -ubtargs=-NoHotReloadFromIDE
+Initializing script modules...
+Total script module initialization time: 0.92 s.
+Using C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MSBuild.exe
+Executing commands...
+Setting up ProjectParams for C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject
+********** BUILD COMMAND STARTED **********
+Running: C:\Program Files\Epic Games\UE_5.7\Engine\Binaries\ThirdParty\DotNet\8.0.412\win-x64\dotnet.exe "C:\Program Files\Epic Games\UE_5.7\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" -Target="WonderChessEditor Win64 Development -Project=\"C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject\"" -Target="WonderChess Win64 Shipping -Project=\"C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject\"  -remoteini=\"C:\Users\iputu\Documents\Wonder Chess\game\"  -NoHotReloadFromIDE " -log="C:\Users\iputu\AppData\Roaming\Unreal Engine\AutomationTool\Logs\C+Program+Files+Epic+Games+UE_5.7\UBA-WonderChessEditor-Win64-Development.txt"
+Log file: C:\Users\iputu\AppData\Roaming\Unreal Engine\AutomationTool\Logs\C+Program+Files+Epic+Games+UE_5.7\UBA-WonderChessEditor-Win64-Development.txt
+Using 'git status' to determine working set for adaptive non-unity build (C:\Users\iputu\Documents\Wonder Chess).
+Invalidating makefile for WonderChessEditor (source file added)
+UHT compiled-in object format Default
+Invalidating makefile for WonderChess (source file added)
+UHT compiled-in object format Default
+Parsing headers for WonderChess
+  Running Internal UnrealHeaderTool "C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject" "C:\Users\iputu\Documents\Wonder Chess\game\Intermediate\Build\Win64\WonderChess\Shipping\WonderChess.uhtmanifest" -WarningsAsErrors -installed
+UHT processed WonderChess in 3.7815293 seconds (7 files written)
+Building WonderChessEditor and WonderChess...
+WonderChessEditor: Using Visual Studio 2022 14.44.35226 toolchain (C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+WonderChessEditor: [Adaptive Build] Excluded from WonderChessRuntime unity file: WCBoardPresenter.cpp, WCDefinitionRegistry.cpp, WCFrontEnd.cpp, WCFrontEndAudit.cpp, WCFrontEndScene.cpp, WCMatchHUD.cpp, WCMatchRuntime.cpp, WonderSimulation.cpp, WonderTournament.cpp
+WonderChess: Using Visual Studio 2022 14.44.35226 toolchain (C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+WonderChess: [Adaptive Build] Excluded from WonderChessRuntime unity file: WCBoardPresenter.cpp, WCDefinitionRegistry.cpp, WCFrontEnd.cpp, WCFrontEndAudit.cpp, WCFrontEndScene.cpp, WCMatchHUD.cpp, WCMatchRuntime.cpp, WonderSimulation.cpp, WonderTournament.cpp
+Determining max actions to execute in parallel (8 physical cores, 16 logical cores)
+  Executing up to 8 processes, one per physical core
+  Requested 1.5 GB memory per action, 1.82 GB available: limiting max parallel actions to 1
+Using Unreal Build Accelerator local executor to run 22 action(s)
+  Storage capacity 40Gb
+---- Starting trace: 260906_212235 ----
+UbaServer - Listening on 0.0.0.0:1345
+** For WonderChessEditor-Win64-Development **
+[1/22] Compile [x64] WCFrontEnd.cpp
+[2/22] Compile [x64] WCFrontEndAudit.cpp
+[3/22] Compile [x64] WCFrontEndScene.cpp
+[4/22] Compile [x64] WCMatchHUD.cpp
+[5/22] Compile [x64] WCMatchRuntime.cpp
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchRuntime.cpp(247,9): error C2181: illegal else without matching if
+        else CancelEntry(TEXT("The session could not start. Return to the lobby and try again."));
+        ^
+** For WonderChess-Win64-Shipping **
+[6/22] Compile [x64] Module.WonderChessRuntime.gen.cpp
+[7/22] Compile [x64] WCBoardPresenter.cpp
+[8/22] Compile [x64] WCDefinitionRegistry.cpp
+[9/22] Compile [x64] WCFrontEnd.cpp
+[10/22] Compile [x64] WCFrontEndAudit.cpp
+[11/22] Compile [x64] WCFrontEndScene.cpp
+[12/22] Compile [x64] WCMatchHUD.cpp
+[13/22] Compile [x64] WCMatchRuntime.cpp
+[14/22] Compile [x64] WCNetworkSession.cpp
+[15/22] Compile [x64] WCVerification.cpp
+[16/22] Compile [x64] WonderSimulation.cpp
+[17/22] Compile [x64] WonderTournament.cpp
+[18/22] Link [x64] WonderChess-Win64-Shipping.exe
+[19/22] WriteMetadata WonderChess-Win64-Shipping.target [NoUba]
+Trace written to file C:/Users/iputu/AppData/Roaming/Unreal Engine/AutomationTool/Logs/C+Program+Files+Epic+Games+UE_5.7/UBA-WonderChessEditor-Win64-Development.uba with size 31.0kb
+Total time in Unreal Build Accelerator local executor: 269.74 seconds
+
+Result: Failed (OtherCompilationError)
+Total execution time: 288.34 seconds
+Took 288.63s to run dotnet.exe, ExitCode=6
+UnrealBuildTool failed. See log for more details. (C:\Users\iputu\AppData\Roaming\Unreal Engine\AutomationTool\Logs\C+Program+Files+Epic+Games+UE_5.7\UBA-WonderChessEditor-Win64-Development.txt)
+AutomationTool executed for 0h 4m 52s
+AutomationTool exiting with ExitCode=6 (6)
+BUILD FAILED

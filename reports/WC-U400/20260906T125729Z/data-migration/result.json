@@ -1,0 +1,82 @@
+{
+  "status": "PASS_AUTHORING_ONLY",
+  "timestamp_utc": "2026-09-06T13:08:05.113441+00:00",
+  "source_base": "a2715ff7d5aac4080c75c5ba8040ca2aac8d9fbb",
+  "schema_version": "3.1.0",
+  "balance_version": "alpha_24_v0.4.0",
+  "profile_id": "alpha_24",
+  "protocol_version": 4,
+  "catalog_digest": "18ba21c7245750ab01fdc8d37d713daa27e8723a6ffab86b3bd0323a909f2122",
+  "hero_count": 24,
+  "neutral_creature_count": 7,
+  "neutral_wave_count": 11,
+  "trait_count": 12,
+  "active_thresholds": [
+    2,
+    4
+  ],
+  "preservation_checks": {
+    "stable_ids_preserved": true,
+    "all_base_stats_preserved": true,
+    "authored_names_biographies_asset_paths_preserved": true,
+    "all_prior_single_effect_values_preserved": true,
+    "all_ability_timing_fields_preserved": true
+  },
+  "verification": [
+    {
+      "command": "python tools/validate_kit.py",
+      "exit_code": 0,
+      "specification_check_count": 400,
+      "log": "validate-kit-final.log",
+      "log_sha256": "60bd9ba5cb6bfee31454a92b2052f8460391b3e7212009608c7dd738b506a6b5"
+    },
+    {
+      "command": "python -m unittest discover -s tests -v",
+      "exit_code": 0,
+      "test_count": 88,
+      "log": "reference-tests-final.log",
+      "log_sha256": "199f299d77915ffd40cbb57429d8f65fb9eab72041c0ee7845d8821ef9587908"
+    },
+    {
+      "command": "python tools/build_documents.py --check",
+      "exit_code": 0,
+      "artifact_count": 28,
+      "log": "documents-check-final.log",
+      "log_sha256": "933c458bf7acb74c8087ec95fece61b75e63f0896376ff5b930d13325b03ff6d"
+    },
+    {
+      "command": "python tools/compile_catalog.py --check",
+      "exit_code": 0,
+      "artifact_count": 6,
+      "log": "catalog-check-final.log",
+      "log_sha256": "5829a87dba4c6928fea135d328bce026d66fab616676a42b011c3a84556b773a"
+    }
+  ],
+  "git_diff_check_exit_code": 0,
+  "not_run_by_this_worker": [
+    "native C++ compilation and tests",
+    "Unreal compilation/import/package",
+    "Blender execution",
+    "human/bot matches",
+    "performance or visual/audio acceptance"
+  ],
+  "corrected_execution_failures": [
+    {
+      "stage": "one-time migration",
+      "error": "KeyError: movement_rate_milli from indexing schema stats without properties",
+      "resolution": "Corrected nested schema path and resumed schema phase; canonical hero migration was not applied twice."
+    },
+    {
+      "stage": "first validator after migration",
+      "error": "World schema did not previously expose schema_version; new version field rejected",
+      "resolution": "Added required schema_version const3.1.0 to world schema; final validator passes."
+    },
+    {
+      "stage": "evidence report creation",
+      "error": "Inline Python string quoting SyntaxError",
+      "resolution": "Rewrote the report dictionary clearly and reran; no source data changed."
+    }
+  ],
+  "migration_script_replayable": false,
+  "count_note": "400 aggregate checks replace prior single-effect checks with stricter capability validation; 88 unittest cases include 63 retained and 25 added fixtures. These are not combat tournament counts."
+}

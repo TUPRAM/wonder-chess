@@ -1,0 +1,54 @@
+{
+  "status": "FAILED_STARTUP_MODE",
+  "boundary": "Attempted Shipping CLI host startup produced a standalone match, so no client was launched and no Shipping2H6B result is claimed. The in-game Host/Join UI was not exercised by this attempt.",
+  "actual_host": {
+    "process_id": 42484,
+    "network_mode": 0,
+    "match_namespace": 1,
+    "phase": 1,
+    "round": 14,
+    "complete": false,
+    "aborted": false
+  },
+  "actual_public_mode": {
+    "requestedHumans": 1,
+    "connected": 1,
+    "network": false
+  },
+  "listener_observation": "No verified game-owned UDP7780 endpoint appeared during the35-second startup check.",
+  "installed_engine_findings": [
+    {
+      "path": "C:/Program Files/Epic Games/UE_5.7/Engine/Source/Runtime/Engine/Private/GameInstance.cpp",
+      "lines": [
+        620,
+        644
+      ],
+      "finding": "UE_ALLOW_MAP_OVERRIDE_IN_SHIPPING defaults0; Shipping nonserver startup clears the local command-line URL token before Browse."
+    },
+    {
+      "path": "C:/Program Files/Epic Games/UE_5.7/Engine/Source/Runtime/Core/Private/Misc/CoreMisc.cpp",
+      "lines": [
+        312,
+        326
+      ],
+      "finding": "FUrlConfig::Init independently reads Port= from FCommandLine without a Shipping guard. The absent listener here follows standalone startup, not evidence that Port= was rejected."
+    }
+  ],
+  "cleanup_status": "ABORTED_FAILED_STARTUP_CLEANUP",
+  "remaining_owned_ids": [],
+  "next_step": "Root-owned scoped WCHost/WCJoin routing via existing validated Host/Join APIs, then fresh packaged regression/network evidence and provenance. Do not enable a broad Shipping map-override switch.",
+  "inputs": [
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\shipping-network\\trial.json",
+      "sha256": "e99c91ddce7590d533de28eeaffdf1dc9ae3e0f1c3d43660da754c9b33f557c0"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\shipping-network\\host\\session.json",
+      "sha256": "dc233a4eca396ad621a28a99b982d5b16db6a8df746114c0709537419c0c724b"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\shipping-network\\aborted-cleanup.json",
+      "sha256": "bd27e29777da31622f72755b8325b914f3d24cc6d69d337802637a4ddebc65d2"
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "status": "PASS_NATIVE_EXECUTION_ONLY",
+  "content_digest": "18ba21c7245750ab01fdc8d37d713daa27e8723a6ffab86b3bd0323a909f2122",
+  "assertions": 3292147,
+  "tournaments": 100,
+  "seed_range": [
+    1,
+    100
+  ],
+  "encounters": 12748,
+  "combat_events": 1771598,
+  "timeouts": 1864,
+  "ghosts": 602,
+  "bot_rejects": 0,
+  "rounds_min_median_max": [
+    26,
+    32.0,
+    39
+  ],
+  "simulated_seconds_min_median_max": [
+    1011.05,
+    1229.225,
+    1523.8
+  ],
+  "hero_definitions": [
+    "wc_u_dragonkin_guardian",
+    "wc_u_dragonkin_priest",
+    "wc_u_dragonkin_ranger",
+    "wc_u_dragonkin_rogue",
+    "wc_u_dwarf_guardian",
+    "wc_u_dwarf_priest",
+    "wc_u_dwarf_ranger",
+    "wc_u_dwarf_warrior",
+    "wc_u_elf_mage",
+    "wc_u_elf_priest",
+    "wc_u_elf_ranger",
+    "wc_u_elf_rogue",
+    "wc_u_halfling_mage",
+    "wc_u_halfling_ranger",
+    "wc_u_halfling_rogue",
+    "wc_u_halfling_warrior",
+    "wc_u_human_guardian",
+    "wc_u_human_mage",
+    "wc_u_human_priest",
+    "wc_u_human_warrior",
+    "wc_u_orc_guardian",
+    "wc_u_orc_mage",
+    "wc_u_orc_rogue",
+    "wc_u_orc_warrior"
+  ],
+  "hero_skill_definitions": [
+    "wc_u_dragonkin_guardian",
+    "wc_u_dragonkin_priest",
+    "wc_u_dragonkin_ranger",
+    "wc_u_dragonkin_rogue",
+    "wc_u_dwarf_guardian",
+    "wc_u_dwarf_priest",
+    "wc_u_dwarf_ranger",
+    "wc_u_dwarf_warrior",
+    "wc_u_elf_mage",
+    "wc_u_elf_priest",
+    "wc_u_elf_ranger",
+    "wc_u_elf_rogue",
+    "wc_u_halfling_mage",
+    "wc_u_halfling_ranger",
+    "wc_u_halfling_rogue",
+    "wc_u_halfling_warrior",
+    "wc_u_human_guardian",
+    "wc_u_human_mage",
+    "wc_u_human_priest",
+    "wc_u_human_warrior",
+    "wc_u_orc_guardian",
+    "wc_u_orc_mage",
+    "wc_u_orc_rogue",
+    "wc_u_orc_warrior"
+  ],
+  "tier4_seen_in_normal_tournaments": [
+    "guardian",
+    "halfling",
+    "human",
+    "orc",
+    "ranger",
+    "warrior"
+  ],
+  "neutral_wave_outcomes": {
+    "1": {
+      "encounters": 800,
+      "wins": 800,
+      "timeouts": 0
+    },
+    "2": {
+      "encounters": 800,
+      "wins": 800,
+      "timeouts": 0
+    },
+    "3": {
+      "encounters": 800,
+      "wins": 800,
+      "timeouts": 0
+    },
+    "5": {
+      "encounters": 800,
+      "wins": 800,
+      "timeouts": 0
+    },
+    "10": {
+      "encounters": 800,
+      "wins": 800,
+      "timeouts": 0
+    },
+    "15": {
+      "encounters": 770,
+      "wins": 770,
+      "timeouts": 0
+    },
+    "20": {
+      "encounters": 555,
+      "wins": 555,
+      "timeouts": 0
+    },
+    "25": {
+      "encounters": 315,
+      "wins": 315,
+      "timeouts": 0
+    },
+    "30": {
+      "encounters": 142,
+      "wins": 142,
+      "timeouts": 0
+    },
+    "35": {
+      "encounters": 28,
+      "wins": 28,
+      "timeouts": 0
+    }
+  },
+  "focused_test_boundary": "The executable also asserts all 24 skills at three stars, Neris/Finn/Oren revisions, all eleven eight-seat waves in an actual forced round-40 match, neutral failures/draws, reward application and restart. See the exact compiled harness hashes in process.json.",
+  "limits": [
+    "Native actual combat only; no Unreal rendering, packaged human play, LAN or frame times established.",
+    "Simulated duration uses policy-ready preparation and is not measured human play duration.",
+    "Random formation coverage is separate from the focused twelve-trait tier tests."
+  ],
+  "evidence_sha256": {
+    "process.json": "d0e002bea926cf88e04f6732e6533f281ab062556411703f308bcc59d14786fc",
+    "runtime-tests.log": "89a8d1020bd4e61e898292bc4d3d524b9e61829c60e8953af4abdd8369f4ef57",
+    "tournaments.csv": "431dba3657b735df0259ece04d0f04997fab64cb1a9a4dbf8feae869f921140f",
+    "encounter-outcomes.csv": "db0f15ba0a1a54303513b103df0161fab53b3c2f93002affc2bad95d767ab4b5",
+    "ability-coverage.csv": "5f61b5bc3a2aa2479a8c2921fe3a45dc6e740ea6af55ac3fcfadbcebb98d74da",
+    "trait-coverage.csv": "fcc39f3d264231fafd2a2ceea49d208f07b53da3975cb0932c68228d65625880",
+    "compositions.csv": "44a212057ca173e5f6a786bf2c14827b62ddc40417a1e47dd29abf320815f9d6"
+  }
+}

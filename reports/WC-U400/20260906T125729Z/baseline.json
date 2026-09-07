@@ -1,0 +1,47 @@
+{
+  "run": "20260906T125729Z",
+  "source": "a2715ff7d5aac4080c75c5ba8040ca2aac8d9fbb",
+  "utc": "2026-09-06T12:57:29.979159+00:00",
+  "python": "C:\\Users\\iputu\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+  "checks": [
+    {
+      "name": "validate-kit",
+      "command": [
+        "C:\\Users\\iputu\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+        "tools/validate_kit.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "reference-tests",
+      "command": [
+        "C:\\Users\\iputu\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "documents",
+      "command": [
+        "C:\\Users\\iputu\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+        "tools/build_documents.py",
+        "--check"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "catalog",
+      "command": [
+        "C:\\Users\\iputu\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+        "tools/compile_catalog.py",
+        "--check"
+      ],
+      "exit_code": 0
+    }
+  ]
+}

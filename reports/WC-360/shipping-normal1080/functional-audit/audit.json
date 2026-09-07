@@ -1,0 +1,955 @@
+{
+  "status": "PASS",
+  "utc": "2026-09-06T08:15:07.281436+00:00",
+  "checks": [
+    {
+      "check": "completed_standalone1H7B",
+      "status": "PASS",
+      "detail": {
+        "process_id": 44708,
+        "match_namespace": 1,
+        "phase": 3,
+        "round": 20,
+        "complete": true,
+        "aborted": false,
+        "network_mode": 0
+      }
+    },
+    {
+      "check": "one_human_seven_persistent_named_bots",
+      "status": "PASS",
+      "detail": [
+        [
+          0,
+          "Captain 1",
+          true
+        ],
+        [
+          1,
+          "Rowanfield Bot",
+          false
+        ],
+        [
+          2,
+          "Starwatch Bot",
+          false
+        ],
+        [
+          3,
+          "Hearthkeeper Bot",
+          false
+        ],
+        [
+          4,
+          "Sunstride Bot",
+          false
+        ],
+        [
+          5,
+          "Gemseeker Bot",
+          false
+        ],
+        [
+          6,
+          "Highbanner Bot",
+          false
+        ],
+        [
+          7,
+          "Wayfinder Bot",
+          false
+        ]
+      ]
+    },
+    {
+      "check": "owner_private_seat_binding",
+      "status": "PASS",
+      "detail": 2806
+    },
+    {
+      "check": "received_public_privacy",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "check": "all20_combat_rounds_observed",
+      "status": "PASS",
+      "detail": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    },
+    {
+      "check": "changed_payload_same_request_rejected",
+      "status": "PASS",
+      "detail": {
+        "utc": "2026-09-06T07:48:22.533Z",
+        "match_namespace": 1,
+        "process_id": 44708,
+        "seat": 0,
+        "observed_seat": 0,
+        "elapsed_wall_seconds": 0.07481079921126366,
+        "phase": 0,
+        "round": 1,
+        "name": "changed_payload_same_request_rejected",
+        "status": "PASS",
+        "detail": "Actual reply and owner-private gold/lock state match expectation",
+        "accepted": false,
+        "reply": "Request ID reused with different payload",
+        "request_id": 90000017,
+        "unit": 0,
+        "observed_foreign_owner": -1,
+        "owner_private_before": "{\"seat\":0,\"gold\":10,\"xp\":0,\"level\":3,\"revision\":4294967298,\"sequence\":1,\"locked\":true,\"ready\":false,\"shop\":[9,3,11,0,7],\"units\":[]}",
+        "owner_private_after": "{\"seat\":0,\"gold\":10,\"xp\":0,\"level\":3,\"revision\":4294967298,\"sequence\":1,\"locked\":true,\"ready\":false,\"shop\":[9,3,11,0,7],\"units\":[]}",
+        "sent_phase": 0,
+        "sent_round": 1
+      }
+    },
+    {
+      "check": "combat_phase_buy_rejected",
+      "status": "PASS",
+      "detail": {
+        "utc": "2026-09-06T07:48:31.719Z",
+        "match_namespace": 1,
+        "process_id": 44708,
+        "seat": 0,
+        "observed_seat": 0,
+        "elapsed_wall_seconds": 9.259592700749636,
+        "phase": 1,
+        "round": 1,
+        "name": "combat_phase_buy_rejected",
+        "status": "PASS",
+        "detail": "Actual reply and owner-private gold/lock state match expectation",
+        "accepted": false,
+        "reply": "Preparation is locked",
+        "request_id": 90000026,
+        "unit": 0,
+        "observed_foreign_owner": -1,
+        "owner_private_before": "{\"seat\":0,\"gold\":1,\"xp\":0,\"level\":4,\"revision\":4294967310,\"sequence\":12,\"locked\":false,\"ready\":true,\"shop\":[-1,-1,-1,-1,7],\"units\":[{\"id\":8,\"def\":9,\"star\":1,\"board\":true,\"col\":3,\"row\":3,\"bench\":-1},{\"id\":16,\"def\":3,\"star\":1,\"board\":true,\"col\":3,\"row\":0,\"bench\":-1},{\"id\":17,\"def\":11,\"star\":1,\"board\":true,\"col\":4,\"row\":3,\"bench\":-1},{\"id\":18,\"def\":0,\"star\":1,\"board\":true,\"col\":2,\"row\":3,\"bench\":-1}]}",
+        "owner_private_after": "{\"seat\":0,\"gold\":1,\"xp\":0,\"level\":4,\"revision\":4294967310,\"sequence\":12,\"locked\":false,\"ready\":true,\"shop\":[-1,-1,-1,-1,7],\"units\":[{\"id\":8,\"def\":9,\"star\":1,\"board\":true,\"col\":3,\"row\":3,\"bench\":-1},{\"id\":16,\"def\":3,\"star\":1,\"board\":true,\"col\":3,\"row\":0,\"bench\":-1},{\"id\":17,\"def\":11,\"star\":1,\"board\":true,\"col\":4,\"row\":3,\"bench\":-1},{\"id\":18,\"def\":0,\"star\":1,\"board\":true,\"col\":2,\"row\":3,\"bench\":-1}]}",
+        "sent_phase": 1,
+        "sent_round": 1
+      }
+    },
+    {
+      "check": "duplicate_request_applies_once",
+      "status": "PASS",
+      "detail": {
+        "utc": "2026-09-06T07:48:22.517Z",
+        "match_namespace": 1,
+        "process_id": 44708,
+        "seat": 0,
+        "observed_seat": 0,
+        "elapsed_wall_seconds": 0.05816759914159775,
+        "phase": 0,
+        "round": 1,
+        "name": "duplicate_request_applies_once",
+        "status": "PASS",
+        "detail": "Actual reply and owner-private gold/lock state match expectation",
+        "accepted": true,
+        "reply": "Accepted",
+        "request_id": 90000017,
+        "unit": 0,
+        "observed_foreign_owner": -1,
+        "owner_private_before": "{\"seat\":0,\"gold\":10,\"xp\":0,\"level\":3,\"revision\":4294967298,\"sequence\":1,\"locked\":true,\"ready\":false,\"shop\":[9,3,11,0,7],\"units\":[]}",
+        "owner_private_after": "{\"seat\":0,\"gold\":10,\"xp\":0,\"level\":3,\"revision\":4294967298,\"sequence\":1,\"locked\":true,\"ready\":false,\"shop\":[9,3,11,0,7],\"units\":[]}",
+        "sent_phase": 0,
+        "sent_round": 1
+      }
+    },
+    {
+      "check": "foreign_unit_sale_rejected",
+      "status": "PASS",
+      "detail": {
+        "utc": "2026-09-06T07:48:23.491Z",
+        "match_namespace": 1,
+        "process_id": 44708,
+        "seat": 0,
+        "observed_seat": 0,
+        "elapsed_wall_seconds": 1.0322258993983269,
+        "phase": 0,
+        "round": 1,
+        "name": "foreign_unit_sale_rejected",
+        "status": "PASS",
+        "detail": "Actual reply and owner-private gold/lock state match expectation",
+        "accepted": false,
+        "reply": "Unit is not owned",
+        "request_id": 90000021,
+        "unit": 1,
+        "observed_foreign_owner": 1,
+        "owner_private_before": "{\"seat\":0,\"gold\":10,\"xp\":0,\"level\":3,\"revision\":4294967298,\"sequence\":1,\"locked\":true,\"ready\":false,\"shop\":[9,3,11,0,7],\"units\":[]}",
+        "owner_private_after": "{\"seat\":0,\"gold\":10,\"xp\":0,\"level\":3,\"revision\":4294967298,\"sequence\":1,\"locked\":true,\"ready\":false,\"shop\":[9,3,11,0,7],\"units\":[]}",
+        "sent_phase": 0,
+        "sent_round": 1
+      }
+    },
+    {
+      "check": "original_idempotent_lock_request",
+      "status": "PASS",
+      "detail": {
+        "utc": "2026-09-06T07:48:22.500Z",
+        "match_namespace": 1,
+        "process_id": 44708,
+        "seat": 0,
+        "observed_seat": 0,
+        "elapsed_wall_seconds": 0.041615601629018784,
+        "phase": 0,
+        "round": 1,
+        "name": "original_idempotent_lock_request",
+        "status": "PASS",
+        "detail": "Actual reply and owner-private gold/lock state match expectation",
+        "accepted": true,
+        "reply": "Accepted",
+        "request_id": 90000017,
+        "unit": 0,
+        "observed_foreign_owner": -1,
+        "owner_private_before": "{\"seat\":0,\"gold\":10,\"xp\":0,\"level\":3,\"revision\":4294967297,\"sequence\":0,\"locked\":false,\"ready\":false,\"shop\":[9,3,11,0,7],\"units\":[]}",
+        "owner_private_after": "{\"seat\":0,\"gold\":10,\"xp\":0,\"level\":3,\"revision\":4294967298,\"sequence\":1,\"locked\":true,\"ready\":false,\"shop\":[9,3,11,0,7],\"units\":[]}",
+        "sent_phase": 0,
+        "sent_round": 1
+      }
+    },
+    {
+      "check": "out_of_order_sequence_rejected",
+      "status": "PASS",
+      "detail": {
+        "utc": "2026-09-06T07:48:22.484Z",
+        "match_namespace": 1,
+        "process_id": 44708,
+        "seat": 0,
+        "observed_seat": 0,
+        "elapsed_wall_seconds": 0.024809502065181732,
+        "phase": 0,
+        "round": 1,
+        "name": "out_of_order_sequence_rejected",
+        "status": "PASS",
+        "detail": "Actual reply and owner-private gold/lock state match expectation",
+        "accepted": false,
+        "reply": "Out-of-order command sequence",
+        "request_id": 90000016,
+        "unit": 0,
+        "observed_foreign_owner": -1,
+        "owner_private_before": "{\"seat\":0,\"gold\":10,\"xp\":0,\"level\":3,\"revision\":4294967297,\"sequence\":0,\"locked\":false,\"ready\":false,\"shop\":[9,3,11,0,7],\"units\":[]}",
+        "owner_private_after": "{\"seat\":0,\"gold\":10,\"xp\":0,\"level\":3,\"revision\":4294967297,\"sequence\":0,\"locked\":false,\"ready\":false,\"shop\":[9,3,11,0,7],\"units\":[]}",
+        "sent_phase": 0,
+        "sent_round": 1
+      }
+    },
+    {
+      "check": "stale_revision_rejected",
+      "status": "PASS",
+      "detail": {
+        "utc": "2026-09-06T07:48:22.551Z",
+        "match_namespace": 1,
+        "process_id": 44708,
+        "seat": 0,
+        "observed_seat": 0,
+        "elapsed_wall_seconds": 0.09147730097174644,
+        "phase": 0,
+        "round": 1,
+        "name": "stale_revision_rejected",
+        "status": "PASS",
+        "detail": "Actual reply and owner-private gold/lock state match expectation",
+        "accepted": false,
+        "reply": "Stale seat revision",
+        "request_id": 90000020,
+        "unit": 0,
+        "observed_foreign_owner": -1,
+        "owner_private_before": "{\"seat\":0,\"gold\":10,\"xp\":0,\"level\":3,\"revision\":4294967298,\"sequence\":1,\"locked\":true,\"ready\":false,\"shop\":[9,3,11,0,7],\"units\":[]}",
+        "owner_private_after": "{\"seat\":0,\"gold\":10,\"xp\":0,\"level\":3,\"revision\":4294967298,\"sequence\":1,\"locked\":true,\"ready\":false,\"shop\":[9,3,11,0,7],\"units\":[]}",
+        "sent_phase": 0,
+        "sent_round": 1
+      }
+    },
+    {
+      "check": "human_eliminated_round10_place8",
+      "status": "PASS",
+      "detail": {
+        "utc": "2026-09-06T07:56:39.408Z",
+        "phase": 2,
+        "round": 10,
+        "final_human": {
+          "id": 0,
+          "name": "Captain 1",
+          "human": true,
+          "ready": true,
+          "takeover": false,
+          "health": 0,
+          "level": 6,
+          "place": 8,
+          "wins": 0,
+          "units": [
+            {
+              "id": 8,
+              "def": 9,
+              "star": 1,
+              "board": true,
+              "col": 3,
+              "row": 3
+            },
+            {
+              "id": 16,
+              "def": 3,
+              "star": 1,
+              "board": true,
+              "col": 3,
+              "row": 0
+            },
+            {
+              "id": 17,
+              "def": 11,
+              "star": 1,
+              "board": true,
+              "col": 4,
+              "row": 3
+            },
+            {
+              "id": 18,
+              "def": 0,
+              "star": 1,
+              "board": true,
+              "col": 2,
+              "row": 3
+            },
+            {
+              "id": 60,
+              "def": 4,
+              "star": 1,
+              "board": true,
+              "col": 4,
+              "row": 0
+            },
+            {
+              "id": 121,
+              "def": 7,
+              "star": 1,
+              "board": true,
+              "col": 2,
+              "row": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "check": "bots_continue_real_encounters_after_human_elimination",
+      "status": "PASS",
+      "detail": {
+        "combat_rounds": [
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "observations": 716
+      }
+    },
+    {
+      "check": "automatic_spectating_observed_after_elimination",
+      "status": "PASS",
+      "detail": [
+        0,
+        1,
+        2,
+        4,
+        6
+      ]
+    },
+    {
+      "check": "normal_speed1080_requested_and_recorded",
+      "status": "PASS",
+      "detail": {
+        "simulation_speed_multiplier": 1,
+        "resolution_x": 1920,
+        "resolution_y": 1080
+      }
+    },
+    {
+      "check": "final_actual_process_exit0",
+      "status": "PASS",
+      "detail": {
+        "started_utc": "2026-09-06T07:48:19.4918205Z",
+        "ended_utc": "2026-09-06T08:11:40.8479994Z",
+        "exit_code": 0,
+        "process_id": 44708,
+        "status": "EXITED_AUDIT_REQUIRED"
+      }
+    },
+    {
+      "check": "launch_executable_and_manifest_binding",
+      "status": "PASS",
+      "detail": {
+        "executable": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Alpha-Windows\\Windows\\WonderChess\\Binaries\\Win64\\WonderChess-Win64-Shipping.exe",
+        "sha256": "8c95858ddb1b7d690da6e2dc3d44288896a2e6cfad89c43992c0ca678538ca10",
+        "manifest": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\shipping-startup-fixed-provenance.json"
+      }
+    },
+    {
+      "check": "recorded_reply_totals_reconcile",
+      "status": "PASS",
+      "detail": {
+        "accepted": 37,
+        "rejected": 5,
+        "reasons": {
+          "Out-of-order command sequence": 1,
+          "Accepted": 37,
+          "Request ID reused with different payload": 1,
+          "Stale seat revision": 1,
+          "Unit is not owned": 1,
+          "Preparation is locked": 1
+        }
+      }
+    }
+  ],
+  "boundary": "Actual scripted human controller in baseline Shipping, one human and seven persistent bots. This is complete1H7B/elimination/spectating/RPC evidence; it is not manual usability, restart, TAA-candidate or human-audio acceptance.",
+  "first_match_observation_utc": "2026-09-06T07:48:22.460Z",
+  "first_results_utc": "2026-09-06T08:03:59.823Z",
+  "human_elimination_utc": "2026-09-06T07:56:39.408Z",
+  "final_standings": [
+    {
+      "id": 0,
+      "name": "Captain 1",
+      "human": true,
+      "ready": true,
+      "takeover": false,
+      "health": 0,
+      "level": 6,
+      "place": 8,
+      "wins": 0,
+      "units": [
+        {
+          "id": 8,
+          "def": 9,
+          "star": 1,
+          "board": true,
+          "col": 3,
+          "row": 3
+        },
+        {
+          "id": 16,
+          "def": 3,
+          "star": 1,
+          "board": true,
+          "col": 3,
+          "row": 0
+        },
+        {
+          "id": 17,
+          "def": 11,
+          "star": 1,
+          "board": true,
+          "col": 4,
+          "row": 3
+        },
+        {
+          "id": 18,
+          "def": 0,
+          "star": 1,
+          "board": true,
+          "col": 2,
+          "row": 3
+        },
+        {
+          "id": 60,
+          "def": 4,
+          "star": 1,
+          "board": true,
+          "col": 4,
+          "row": 0
+        },
+        {
+          "id": 121,
+          "def": 7,
+          "star": 1,
+          "board": true,
+          "col": 2,
+          "row": 0
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Rowanfield Bot",
+      "human": false,
+      "ready": true,
+      "takeover": false,
+      "health": 0,
+      "level": 6,
+      "place": 3,
+      "wins": 10,
+      "units": [
+        {
+          "id": 1,
+          "def": 6,
+          "star": 2,
+          "board": true,
+          "col": 3,
+          "row": 3
+        },
+        {
+          "id": 67,
+          "def": 0,
+          "star": 2,
+          "board": true,
+          "col": 5,
+          "row": 3
+        },
+        {
+          "id": 139,
+          "def": 9,
+          "star": 2,
+          "board": true,
+          "col": 0,
+          "row": 3
+        },
+        {
+          "id": 160,
+          "def": 7,
+          "star": 2,
+          "board": true,
+          "col": 4,
+          "row": 0
+        },
+        {
+          "id": 173,
+          "def": 8,
+          "star": 2,
+          "board": true,
+          "col": 2,
+          "row": 3
+        },
+        {
+          "id": 184,
+          "def": 6,
+          "star": 2,
+          "board": true,
+          "col": 1,
+          "row": 3
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Starwatch Bot",
+      "human": false,
+      "ready": true,
+      "takeover": false,
+      "health": 0,
+      "level": 6,
+      "place": 2,
+      "wins": 11,
+      "units": [
+        {
+          "id": 2,
+          "def": 8,
+          "star": 2,
+          "board": true,
+          "col": 4,
+          "row": 3
+        },
+        {
+          "id": 10,
+          "def": 11,
+          "star": 2,
+          "board": true,
+          "col": 3,
+          "row": 2
+        },
+        {
+          "id": 34,
+          "def": 9,
+          "star": 2,
+          "board": true,
+          "col": 0,
+          "row": 3
+        },
+        {
+          "id": 82,
+          "def": 3,
+          "star": 2,
+          "board": true,
+          "col": 2,
+          "row": 1
+        },
+        {
+          "id": 124,
+          "def": 7,
+          "star": 2,
+          "board": true,
+          "col": 3,
+          "row": 0
+        },
+        {
+          "id": 148,
+          "def": 6,
+          "star": 2,
+          "board": true,
+          "col": 3,
+          "row": 3
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Hearthkeeper Bot",
+      "human": false,
+      "ready": true,
+      "takeover": false,
+      "health": 0,
+      "level": 6,
+      "place": 4,
+      "wins": 6,
+      "units": [
+        {
+          "id": 3,
+          "def": 6,
+          "star": 2,
+          "board": true,
+          "col": 3,
+          "row": 3
+        },
+        {
+          "id": 28,
+          "def": 1,
+          "star": 2,
+          "board": true,
+          "col": 5,
+          "row": 3
+        },
+        {
+          "id": 49,
+          "def": 11,
+          "star": 2,
+          "board": true,
+          "col": 2,
+          "row": 1
+        },
+        {
+          "id": 83,
+          "def": 0,
+          "star": 2,
+          "board": true,
+          "col": 3,
+          "row": 2
+        },
+        {
+          "id": 110,
+          "def": 4,
+          "star": 2,
+          "board": true,
+          "col": 4,
+          "row": 2
+        },
+        {
+          "id": 170,
+          "def": 7,
+          "star": 2,
+          "board": true,
+          "col": 4,
+          "row": 0
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Sunstride Bot",
+      "human": false,
+      "ready": true,
+      "takeover": false,
+      "health": 0,
+      "level": 6,
+      "place": 6,
+      "wins": 4,
+      "units": [
+        {
+          "id": 4,
+          "def": 9,
+          "star": 2,
+          "board": true,
+          "col": 3,
+          "row": 3
+        },
+        {
+          "id": 22,
+          "def": 6,
+          "star": 2,
+          "board": true,
+          "col": 4,
+          "row": 3
+        },
+        {
+          "id": 29,
+          "def": 0,
+          "star": 2,
+          "board": true,
+          "col": 3,
+          "row": 2
+        },
+        {
+          "id": 36,
+          "def": 5,
+          "star": 1,
+          "board": true,
+          "col": 5,
+          "row": 3
+        },
+        {
+          "id": 62,
+          "def": 8,
+          "star": 1,
+          "board": true,
+          "col": 4,
+          "row": 2
+        },
+        {
+          "id": 100,
+          "def": 11,
+          "star": 1,
+          "board": true,
+          "col": 2,
+          "row": 3
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Gemseeker Bot",
+      "human": false,
+      "ready": true,
+      "takeover": false,
+      "health": 0,
+      "level": 6,
+      "place": 7,
+      "wins": 3,
+      "units": [
+        {
+          "id": 5,
+          "def": 9,
+          "star": 1,
+          "board": true,
+          "col": 4,
+          "row": 3
+        },
+        {
+          "id": 43,
+          "def": 11,
+          "star": 1,
+          "board": true,
+          "col": 3,
+          "row": 2
+        },
+        {
+          "id": 63,
+          "def": 2,
+          "star": 2,
+          "board": true,
+          "col": 2,
+          "row": 0
+        },
+        {
+          "id": 101,
+          "def": 5,
+          "star": 1,
+          "board": true,
+          "col": 5,
+          "row": 3
+        },
+        {
+          "id": 106,
+          "def": 8,
+          "star": 2,
+          "board": true,
+          "col": 2,
+          "row": 3
+        },
+        {
+          "id": 181,
+          "def": 4,
+          "star": 2,
+          "board": true,
+          "col": 3,
+          "row": 3
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Highbanner Bot",
+      "human": false,
+      "ready": true,
+      "takeover": false,
+      "health": 0,
+      "level": 6,
+      "place": 5,
+      "wins": 7,
+      "units": [
+        {
+          "id": 51,
+          "def": 1,
+          "star": 2,
+          "board": true,
+          "col": 4,
+          "row": 2
+        },
+        {
+          "id": 64,
+          "def": 8,
+          "star": 1,
+          "board": true,
+          "col": 3,
+          "row": 2
+        },
+        {
+          "id": 69,
+          "def": 0,
+          "star": 2,
+          "board": true,
+          "col": 4,
+          "row": 3
+        },
+        {
+          "id": 96,
+          "def": 6,
+          "star": 1,
+          "board": true,
+          "col": 3,
+          "row": 3
+        },
+        {
+          "id": 112,
+          "def": 9,
+          "star": 2,
+          "board": true,
+          "col": 2,
+          "row": 3
+        },
+        {
+          "id": 128,
+          "def": 11,
+          "star": 2,
+          "board": true,
+          "col": 3,
+          "row": 0
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Wayfinder Bot",
+      "human": false,
+      "ready": true,
+      "takeover": false,
+      "health": 53,
+      "level": 6,
+      "place": 1,
+      "wins": 19,
+      "units": [
+        {
+          "id": 15,
+          "def": 7,
+          "star": 2,
+          "board": true,
+          "col": 3,
+          "row": 0
+        },
+        {
+          "id": 25,
+          "def": 3,
+          "star": 2,
+          "board": true,
+          "col": 2,
+          "row": 2
+        },
+        {
+          "id": 53,
+          "def": 2,
+          "star": 2,
+          "board": true,
+          "col": 2,
+          "row": 0
+        },
+        {
+          "id": 78,
+          "def": 8,
+          "star": 2,
+          "board": true,
+          "col": 3,
+          "row": 3
+        },
+        {
+          "id": 87,
+          "def": 6,
+          "star": 2,
+          "board": true,
+          "col": 4,
+          "row": 3
+        },
+        {
+          "id": 205,
+          "def": 7,
+          "star": 2,
+          "board": true,
+          "col": 4,
+          "row": 0
+        }
+      ]
+    }
+  ],
+  "frame_measurements_boundary": "Frame measurements in this session are separate measured baseline evidence and do not by themselves establish the performance gate. Final TAA candidate needs its own run.",
+  "engine_log_checks": {
+    "status": "NOT_RUN",
+    "count": null,
+    "reason": "Shipping UE_LOG output unavailable; not interpreted as zero errors."
+  },
+  "inputs": [
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\shipping-normal1080\\completed-session.json",
+      "sha256": "7d8d4e926b77105de63aa1d1e37c77d6d5e381efc097d32761c6a451a4389e3f",
+      "bytes": 1707690
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\shipping-normal1080\\launch.json",
+      "sha256": "50049177c55c7cb4653bf5270306253e2c7e118187d70e2ab26debb35afb48fd",
+      "bytes": 1900
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\shipping-normal1080\\match-1-seat-0-pid-44708-snapshots.jsonl",
+      "sha256": "a43a80375bf5ad2b89a0871b496b4748434747fac4edc0576211ed2615a67f13",
+      "bytes": 56075861
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\shipping-normal1080\\match-1-seat-0-pid-44708-commands.jsonl",
+      "sha256": "683155504a1faa649467e45caa598637bb1561eb051c47aaacf8257d4d0e7ac3",
+      "bytes": 28095
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\shipping-startup-fixed-provenance.json",
+      "sha256": "c426e101aeea4b13c9af72ca55292c1358de814e22ada7c1521ab28cdd66b321",
+      "bytes": 492290
+    }
+  ]
+}

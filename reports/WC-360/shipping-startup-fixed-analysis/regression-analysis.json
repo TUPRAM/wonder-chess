@@ -1,0 +1,439 @@
+{
+  "utc": "2026-09-06T07:45:46.945370+00:00",
+  "status": "PASS",
+  "boundary": "Actual Shipping packaged 0H8B simulation and recorded deployment/settlement evidence. Not human interaction, networking, rendered frame performance or art/audio acceptance.",
+  "checks": [
+    {
+      "check": "all100_attempts_retained",
+      "status": "PASS",
+      "detail": {
+        "requested": 100,
+        "attempted": 100,
+        "retained": 100
+      }
+    },
+    {
+      "check": "zero_failed_trials",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "check": "complete_evidence_write",
+      "status": "PASS",
+      "detail": false
+    },
+    {
+      "check": "final_phase_and_commands",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "check": "candidate6_summary_parity",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "check": "candidate6_round_seat_parity",
+      "status": "PASS",
+      "detail": {
+        "rows_compared": 17728,
+        "mismatches": [],
+        "missing": [],
+        "unexpected": []
+      }
+    },
+    {
+      "check": "hero_use_reconciles_to_real_deployments",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "check": "actual_fights_complete_and_fixed_tick_duration",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "check": "latest_standalone_archive_digest",
+      "status": "PASS",
+      "detail": "4c00bb9c2c7fd6e6d11d4bdbbdae852a1a164ff59de95bdfbb3fd0b78a75d786"
+    },
+    {
+      "check": "direct_latest_standalone_summaries",
+      "status": "PASS",
+      "detail": {
+        "actual_rows": 100,
+        "reference_rows": 100,
+        "differences": []
+      }
+    },
+    {
+      "check": "direct_latest_standalone_round_seats",
+      "status": "PASS",
+      "detail": {
+        "actual_rows": 17728,
+        "reference_rows": 17728,
+        "differences": []
+      }
+    },
+    {
+      "check": "actual_packaged_hero_use_matches_standalone",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "check": "profile_catalog_matches_provenance",
+      "status": "PASS",
+      "detail": "3154592665ce21dc65e5afb06f3769655c8be9ec4157fa6779427c8b8fcc092f"
+    },
+    {
+      "check": "runtime_loaded_canonical_inputs",
+      "status": "PASS",
+      "detail": {
+        "rules.alpha.json": true,
+        "units.json": true,
+        "traits.json": true,
+        "bots.json": true,
+        "world.json": true
+      }
+    },
+    {
+      "check": "actual_executable_matches_provenance",
+      "status": "PASS",
+      "detail": {
+        "executable": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Alpha-Windows\\Windows\\WonderChess\\Binaries\\Win64\\WonderChess-Win64-Shipping.exe",
+        "sha256": "8c95858ddb1b7d690da6e2dc3d44288896a2e6cfad89c43992c0ca678538ca10"
+      }
+    },
+    {
+      "check": "captured_process_exit_zero",
+      "status": "PASS",
+      "detail": {
+        "ended_utc": "2026-09-06T07:44:03.9446176Z",
+        "exit_code": 0,
+        "process_id": 32028,
+        "executable": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Alpha-Windows\\Windows\\WonderChess\\Binaries\\Win64\\WonderChess-Win64-Shipping.exe",
+        "started_utc": "2026-09-06T07:43:09.6137052Z"
+      }
+    }
+  ],
+  "totals": {
+    "fights": 7118,
+    "timeouts": 1437,
+    "ghosts": 524,
+    "commands": 69656,
+    "command_rejects": 0,
+    "unresolved_encounters": 0,
+    "simulated_ms": 101569850
+  },
+  "explicit_capped_seeds": [
+    7,
+    18,
+    29,
+    34,
+    35,
+    36,
+    45,
+    46,
+    49,
+    65,
+    74,
+    80,
+    86,
+    89
+  ],
+  "timeout_fraction": 0.201882551278449,
+  "match_duration_ms": {
+    "count": 100,
+    "min": 852450,
+    "median": 1020650.0,
+    "mean": 1015698.5,
+    "p95": 1121700,
+    "max": 1160500
+  },
+  "fight_duration_ms": {
+    "count": 7118,
+    "min": 12900,
+    "median": 31450.0,
+    "mean": 31675.25288002248,
+    "p95": 40000,
+    "max": 40000
+  },
+  "ghost_recipient_counts": {
+    "0": 60,
+    "1": 71,
+    "2": 77,
+    "3": 62,
+    "4": 75,
+    "5": 42,
+    "6": 62,
+    "7": 75
+  },
+  "ghost_donor_counts": {
+    "0": 53,
+    "1": 79,
+    "2": 77,
+    "3": 79,
+    "4": 76,
+    "5": 46,
+    "6": 50,
+    "7": 64
+  },
+  "actual_packaged_hero_use": {
+    "wc_u_dwarf_guardian": {
+      "unit_rounds": 11225,
+      "rounds": 10146,
+      "seat_tournaments": 753,
+      "placements": {
+        "6": 95,
+        "1": 96,
+        "5": 92,
+        "7": 94,
+        "4": 93,
+        "3": 97,
+        "2": 97,
+        "8": 89
+      }
+    },
+    "wc_u_dwarf_ranger": {
+      "unit_rounds": 6411,
+      "rounds": 5820,
+      "seat_tournaments": 535,
+      "placements": {
+        "1": 89,
+        "5": 62,
+        "8": 40,
+        "7": 50,
+        "4": 68,
+        "2": 84,
+        "3": 79,
+        "6": 63
+      }
+    },
+    "wc_u_dwarf_warrior": {
+      "unit_rounds": 9661,
+      "rounds": 8818,
+      "seat_tournaments": 719,
+      "placements": {
+        "6": 93,
+        "1": 88,
+        "5": 88,
+        "8": 96,
+        "7": 92,
+        "4": 87,
+        "3": 83,
+        "2": 92
+      }
+    },
+    "wc_u_elf_priest": {
+      "unit_rounds": 1546,
+      "rounds": 1526,
+      "seat_tournaments": 252,
+      "placements": {
+        "7": 42,
+        "4": 36,
+        "8": 37,
+        "1": 22,
+        "6": 35,
+        "5": 30,
+        "3": 27,
+        "2": 23
+      }
+    },
+    "wc_u_elf_ranger": {
+      "unit_rounds": 7988,
+      "rounds": 7174,
+      "seat_tournaments": 675,
+      "placements": {
+        "6": 82,
+        "1": 84,
+        "8": 76,
+        "4": 92,
+        "3": 90,
+        "2": 91,
+        "7": 77,
+        "5": 83
+      }
+    },
+    "wc_u_elf_rogue": {
+      "unit_rounds": 3994,
+      "rounds": 3949,
+      "seat_tournaments": 462,
+      "placements": {
+        "6": 64,
+        "1": 53,
+        "8": 64,
+        "4": 58,
+        "3": 49,
+        "7": 53,
+        "2": 61,
+        "5": 60
+      }
+    },
+    "wc_u_human_guardian": {
+      "unit_rounds": 11109,
+      "rounds": 9758,
+      "seat_tournaments": 732,
+      "placements": {
+        "6": 90,
+        "1": 95,
+        "5": 92,
+        "8": 89,
+        "7": 95,
+        "4": 90,
+        "3": 90,
+        "2": 91
+      }
+    },
+    "wc_u_human_mage": {
+      "unit_rounds": 1877,
+      "rounds": 1857,
+      "seat_tournaments": 292,
+      "placements": {
+        "8": 30,
+        "6": 42,
+        "2": 28,
+        "3": 39,
+        "4": 36,
+        "5": 37,
+        "1": 41,
+        "7": 39
+      }
+    },
+    "wc_u_human_priest": {
+      "unit_rounds": 2299,
+      "rounds": 2238,
+      "seat_tournaments": 395,
+      "placements": {
+        "5": 51,
+        "8": 54,
+        "7": 57,
+        "2": 42,
+        "4": 49,
+        "1": 46,
+        "6": 51,
+        "3": 45
+      }
+    },
+    "wc_u_orc_mage": {
+      "unit_rounds": 326,
+      "rounds": 317,
+      "seat_tournaments": 53,
+      "placements": {
+        "8": 3,
+        "1": 11,
+        "4": 8,
+        "6": 3,
+        "7": 5,
+        "3": 8,
+        "2": 9,
+        "5": 6
+      }
+    },
+    "wc_u_orc_rogue": {
+      "unit_rounds": 8672,
+      "rounds": 7974,
+      "seat_tournaments": 669,
+      "placements": {
+        "1": 73,
+        "5": 86,
+        "8": 89,
+        "7": 91,
+        "3": 83,
+        "2": 77,
+        "6": 87,
+        "4": 83
+      }
+    },
+    "wc_u_orc_warrior": {
+      "unit_rounds": 10623,
+      "rounds": 9580,
+      "seat_tournaments": 721,
+      "placements": {
+        "5": 89,
+        "8": 94,
+        "7": 90,
+        "3": 89,
+        "2": 95,
+        "6": 95,
+        "4": 89,
+        "1": 80
+      }
+    }
+  },
+  "hero_use_boundary": "Observed real living-seat deployments at combat lock. Placement associations are descriptive and not causal strength estimates.",
+  "actual_run": {
+    "start_utc": "2026-09-06T07:43:11.471Z",
+    "end_utc": "2026-09-06T07:44:01.620Z",
+    "batch_wall_seconds": 50.120547000318766,
+    "engine": "5.7.4-51494982+++UE5+Release-5.7",
+    "cpu": "AMD Ryzen 7 6800H with Radeon Graphics         ",
+    "compiler": "MSVC",
+    "compiler_full_version": 194435226,
+    "translation_unit_build_date": "Sep  6 2026",
+    "translation_unit_build_time": "15:40:12",
+    "executable_path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Alpha-Windows\\Windows\\WonderChess\\Binaries\\Win64\\WonderChess-Win64-Shipping.exe"
+  },
+  "launch": {
+    "utc": "2026-09-06T07:43:09.6332493Z",
+    "arguments": [
+      "WonderChess",
+      "-nullrhi",
+      "-nosound",
+      "-WCRegression=100",
+      "-WCEvidenceDir=\"C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\shipping-startup-fixed-regression\""
+    ],
+    "process_id": 32028,
+    "executable": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Alpha-Windows\\Windows\\WonderChess\\Binaries\\Win64\\WonderChess-Win64-Shipping.exe",
+    "working_directory": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Alpha-Windows\\Windows"
+  },
+  "observed_process_exit": {
+    "ended_utc": "2026-09-06T07:44:03.9446176Z",
+    "exit_code": 0,
+    "process_id": 32028,
+    "executable": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Alpha-Windows\\Windows\\WonderChess\\Binaries\\Win64\\WonderChess-Win64-Shipping.exe",
+    "started_utc": "2026-09-06T07:43:09.6137052Z"
+  },
+  "exit_boundary": "The separately captured process record reports exit_code0. No Shipping game.log is present, so engine log error/exit checks remain NOT_RUN. This headless regression overlapped the beginning of the two-process functional network run and is not a rendering performance benchmark.",
+  "inputs": [
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\shipping-startup-fixed-regression\\regression.json",
+      "sha256": "15fd472cec52896978f1fad8ba99eeca83c3237ffc77c48f5c9266b7decb3558"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\shipping-startup-fixed-provenance.json",
+      "sha256": "c426e101aeea4b13c9af72ca55292c1358de814e22ada7c1521ab28cdd66b321"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-automation\\engine-tournaments.csv",
+      "sha256": "347259bdaa838b30f97671ba6e2e719d76c366e81d8e6dbb992615f17db10b77"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-automation\\engine-rounds.csv",
+      "sha256": "5db6e99fed2f44b9db64ef5cbd3fa6fb54f56683cc52ec3771ceecd631398ff2"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Content\\WonderChess\\SourceData\\runtime_stage_manifest.json",
+      "sha256": "7ee9ff4a82bc5de536b153a1d81c239f97f4b9873ca728e3090cc4ebb0052cac"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\shipping-startup-fixed-regression\\process-exit.json",
+      "sha256": "2f2f974c89e3bdf338f37129642e57dd049c68d9c1ff1e4bd9551a173359448f"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\shipping-startup-fixed-regression\\launch.json",
+      "sha256": "a0b3dce3b396826bb48cd82260c9d3ea974db819942c2253aa39fcd248e70c6a"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate4-analysis\\comparison.json",
+      "sha256": "cdf5aa000dbc14fb59c490b398e4a60b7b8d4dbe1d2182cf0939e6f0e28809b0"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-310\\runtime\\post-retained-recap\\validation.json",
+      "sha256": "f29b503f4db05a3da79a8ceda9687cd31c252a77a5bf646aba290decd65d3451"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-310\\runtime\\post-retained-recap\\standalone-100-evidence.zip",
+      "sha256": "4c00bb9c2c7fd6e6d11d4bdbbdae852a1a164ff59de95bdfbb3fd0b78a75d786"
+    }
+  ]
+}

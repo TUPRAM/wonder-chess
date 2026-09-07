@@ -1,0 +1,157 @@
+{
+  "status": "PASS",
+  "mode": "restart",
+  "boundary": "Actual process exports only. Resource observations are sampled, not an atomic Logout trace. This does not certify visible messaging, physical LAN transport, or packet capture.",
+  "checks": [
+    {
+      "check": "same_process_and_human_seat",
+      "status": "PASS",
+      "detail": [
+        24580,
+        24580,
+        0,
+        0
+      ]
+    },
+    {
+      "check": "distinct_positive_namespaces",
+      "status": "PASS",
+      "detail": [
+        1,
+        2
+      ]
+    },
+    {
+      "check": "both_matches_finished",
+      "status": "PASS",
+      "detail": [
+        {
+          "complete": true,
+          "aborted": false,
+          "round": 23
+        },
+        {
+          "complete": true,
+          "aborted": false,
+          "round": 20
+        }
+      ]
+    },
+    {
+      "check": "one_restart_requested",
+      "status": "PASS",
+      "detail": [
+        true,
+        false
+      ]
+    },
+    {
+      "check": "prior_namespace_recorded",
+      "status": "PASS",
+      "detail": 1
+    },
+    {
+      "check": "previous_match_request_rejected",
+      "status": "PASS",
+      "detail": [
+        {
+          "utc": "2026-09-06T08:18:16.315Z",
+          "match_namespace": 2,
+          "process_id": 24580,
+          "seat": 0,
+          "observed_seat": 0,
+          "exercise_seed_requested": "",
+          "exercise_seed_override_present": false,
+          "exercise_seed_override_valid": true,
+          "exercise_seed_effective_initial": 271828,
+          "exercise_seed_restart": 271828,
+          "match_seed_authority": 271828,
+          "exercise_seed_boundary": "Initial scripted ServerStart accepts decimal seeds 1-2147483647; absent or invalid values use271828. Actual match seed is recorded only where the authoritative Match is available. Restart retains the existing271828 seed.",
+          "follow_hero_requested": "",
+          "follow_hero_override_present": false,
+          "follow_hero_override_valid": true,
+          "follow_hero_definition": -1,
+          "follow_hero_candidate_encounters": 0,
+          "follow_hero_selected_encounter_a": -1,
+          "follow_hero_selected_encounter_b": -1,
+          "follow_hero_selected_encounter_ghost": false,
+          "follow_hero_selected_encounter_alive": 0,
+          "follow_hero_selected_unit": 0,
+          "follow_hero_actual_visible": false,
+          "follow_hero_boundary": "Read-only public scouting selects an existing unfinished encounter containing a living requested definition. ObservedSeat changes only the viewport; the presenter may reflect that change on the next frame. Actual visible membership is recorded separately.",
+          "elapsed_wall_seconds": 0.12474099919199944,
+          "phase": 0,
+          "round": 1,
+          "name": "previous_match_request_rejected",
+          "status": "PASS",
+          "detail": "Actual reply and owner-private gold/lock state match expectation",
+          "accepted": false,
+          "reply": "Stale seat revision",
+          "request_id": 90000017,
+          "unit": 0,
+          "observed_foreign_owner": -1,
+          "owner_private_before": "{\"seat\":0,\"gold\":10,\"xp\":0,\"level\":3,\"revision\":8589934593,\"sequence\":0,\"locked\":false,\"ready\":false,\"shop\":[9,3,11,0,7],\"units\":[]}",
+          "owner_private_after": "{\"seat\":0,\"gold\":10,\"xp\":0,\"level\":3,\"revision\":8589934593,\"sequence\":0,\"locked\":false,\"ready\":false,\"shop\":[9,3,11,0,7],\"units\":[]}",
+          "sent_phase": 0,
+          "sent_round": 1
+        }
+      ]
+    },
+    {
+      "check": "match_0_fresh_preparation_seen",
+      "status": "PASS",
+      "detail": {
+        "round_one_preparation_snapshots": 6
+      }
+    },
+    {
+      "check": "match_0_private_revision_namespace",
+      "status": "PASS",
+      "detail": [
+        1
+      ]
+    },
+    {
+      "check": "match_0_received_public_privacy",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "check": "match_1_fresh_preparation_seen",
+      "status": "PASS",
+      "detail": {
+        "round_one_preparation_snapshots": 6
+      }
+    },
+    {
+      "check": "match_1_private_revision_namespace",
+      "status": "PASS",
+      "detail": [
+        2
+      ]
+    },
+    {
+      "check": "match_1_received_public_privacy",
+      "status": "PASS",
+      "detail": []
+    }
+  ],
+  "inputs": [
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\shipping-restart\\match-1-seat-0-pid-24580-session.json",
+      "sha256": "6eb7102407f929da559f82f2be06d87d0098434736fc3c1679fef28659e5c912"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\shipping-restart\\match-2-seat-0-pid-24580-session.json",
+      "sha256": "a39b2a9bb57e9e446a0947a8b5b46de47fca59827a36694f9fbcffd775ef1f66"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\shipping-restart\\match-1-seat-0-pid-24580-snapshots.jsonl",
+      "sha256": "17e00efe4814649db0f67c611d5bf7e5510c5e550ca1021b9083c529567b9f36"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\shipping-restart\\match-2-seat-0-pid-24580-snapshots.jsonl",
+      "sha256": "7318676c47ba10a686d601dbee686d733d2299bae64207edcbe10f87ba5a6c9f"
+    }
+  ]
+}

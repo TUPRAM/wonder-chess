@@ -1,0 +1,525 @@
+Using bundled DotNet SDK version: 8.0.412 win-x64
+Running UnrealBuildTool: dotnet "..\..\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" WonderChessEditor Win64 Development "C:/Users/iputu/Documents/Wonder Chess/game/WonderChess.uproject" -WaitMutex -NoHotReloadFromIDE
+Log file: C:\Users\iputu\AppData\Local\UnrealBuildTool\Log.txt
+Using 'git status' to determine working set for adaptive non-unity build (C:\Users\iputu\Documents\Wonder Chess).
+Invalidating makefile for WonderChessEditor (source file added)
+UHT compiled-in object format Default
+Parsing headers for WonderChessEditor
+  Running Internal UnrealHeaderTool "C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject" "C:\Users\iputu\Documents\Wonder Chess\game\Intermediate\Build\Win64\WonderChessEditor\Development\WonderChessEditor.uhtmanifest" -WarningsAsErrors -installed
+UHT processed WonderChessEditor in 8.8559726 seconds (7 files written)
+Building WonderChessEditor...
+Using Visual Studio 2022 14.44.35226 toolchain (C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[Adaptive Build] Excluded from WonderChessRuntime unity file: WCBoardPresenter.cpp, WCDefinitionRegistry.cpp, WCFrontEnd.cpp, WCFrontEndScene.cpp, WCMatchHUD.cpp, WCMatchRuntime.cpp, WonderSimulation.cpp, WonderTournament.cpp
+Determining max actions to execute in parallel (8 physical cores, 16 logical cores)
+  Executing up to 8 processes, one per physical core
+  Requested 1.5 GB memory per action, 777.84 MB available: limiting max parallel actions to 1
+Using Unreal Build Accelerator local executor to run 16 action(s)
+  Storage capacity 40Gb
+---- Starting trace: 260906_210825 ----
+UbaServer - Listening on 0.0.0.0:1345
+[1/16] Compile [x64] Module.WonderChessRuntime.gen.cpp
+[2/16] Compile [x64] WCBoardPresenter.cpp
+[3/16] Compile [x64] WCDefinitionRegistry.cpp
+[4/16] Compile [x64] WCFrontEnd.cpp
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(88,13): warning C4996: 'FReferenceCollector::AddReferencedObjects': WARNING: Your program will randomly crash if this function is called when incremental gc is enabled. Pass TObjectPtr<...> instead of UObject* to AddReferencedObject(s) API's. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+  Collector.AddReferencedObjects(Assets);
+            ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(384,19): error C2440: 'return': cannot convert from 'ObjectType' to 'const FSlateBrush *'
+        with
+        [
+            ObjectType=FSlateBrush
+        ]
+  return Brush.Get();
+                  ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(384,19): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(517,46): error C2039: 'AlwaysShowScrollbar': is not a member of 'SScrollBox::FArguments'
+      [SAssignNew(GalleryScroll, SScrollBox).AlwaysShowScrollbar(true)
+                                             ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Slate\Public\Widgets\Layout\SScrollBox.h(148,2): note: see declaration of 'SScrollBox::FArguments'
+	SLATE_BEGIN_ARGS(SScrollBox)
+	^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(518,61): error C7732: expected an expression before ']'
+        + SScrollBox::Slot()[SAssignNew(Grid, SVerticalBox)]];
+                                                            ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(516,38): error C2679: binary '[': no operator found which takes a right-hand operand of type 'int' (or there is no acceptable conversion)
+    + SVerticalBox::Slot().FillHeight(1)
+                                     ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\SlateCore\Public\SlotBase.h(170,38): note: could be 'SVerticalBox::FSlot::FSlotArguments &TSlotBase<SlotType>::FSlotArguments::operator [](const TSharedRef<SWidget,ESPMode::ThreadSafe> &)'
+        with
+        [
+            SlotType=SVerticalBox::FSlot
+        ]
+		typename SlotType::FSlotArguments& operator[](const TSharedRef<SWidget>& InChildWidget)
+		                                   ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(516,38): note: 'SVerticalBox::FSlot::FSlotArguments &TSlotBase<SlotType>::FSlotArguments::operator [](const TSharedRef<SWidget,ESPMode::ThreadSafe> &)': cannot convert argument 2 from 'int' to 'const TSharedRef<SWidget,ESPMode::ThreadSafe> &'
+        with
+        [
+            SlotType=SVerticalBox::FSlot
+        ]
+    + SVerticalBox::Slot().FillHeight(1)
+                                     ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(518,61): note: Reason: cannot convert from 'int' to 'const TSharedRef<SWidget,ESPMode::ThreadSafe>'
+        + SScrollBox::Slot()[SAssignNew(Grid, SVerticalBox)]];
+                                                            ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(518,61): note: 'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef': no overloaded function could convert all the argument types
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(352,2): note: could be 'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(TSharedRef<SWidget,ESPMode::ThreadSafe> &&)'
+	inline TSharedRef( TSharedRef&& InSharedRef )
+	^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(518,61): note: 'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(TSharedRef<SWidget,ESPMode::ThreadSafe> &&)': cannot convert argument 1 from 'int' to 'TSharedRef<SWidget,ESPMode::ThreadSafe> &&'
+        + SScrollBox::Slot()[SAssignNew(Grid, SVerticalBox)]];
+                                                            ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(518,61): note: Reason: cannot convert from 'int' to 'TSharedRef<SWidget,ESPMode::ThreadSafe>'
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(518,61): note: Conversion requires a second user-defined-conversion operator or constructor
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(347,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<SWidget,ESPMode::ThreadSafe> &)'
+	inline TSharedRef( TSharedRef const& InSharedRef )
+	^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(518,61): note: 'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<SWidget,ESPMode::ThreadSafe> &)': cannot convert argument 1 from 'int' to 'const TSharedRef<SWidget,ESPMode::ThreadSafe> &'
+        + SScrollBox::Slot()[SAssignNew(Grid, SVerticalBox)]];
+                                                            ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(518,61): note: Reason: cannot convert from 'int' to 'const TSharedRef<SWidget,ESPMode::ThreadSafe>'
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(518,61): note: Conversion requires a second user-defined-conversion operator or constructor
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(202,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(void)'
+	TSharedRef()
+	^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(518,61): note: 'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef': function does not take 1 arguments
+        + SScrollBox::Slot()[SAssignNew(Grid, SVerticalBox)]];
+                                                            ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(338,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<UserClass,ESPMode::ThreadSafe> &,ObjectType *)'
+        with
+        [
+            ObjectType=SWidget
+        ]
+	inline TSharedRef( TSharedRef< OtherType, Mode > const& OtherSharedRef, ObjectType* InObject )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(324,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<UserClass,ESPMode::ThreadSafe> &,SharedPointerInternals::FConstCastTag)'
+	inline TSharedRef( TSharedRef< OtherType, Mode > const& InSharedRef, SharedPointerInternals::FConstCastTag )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(309,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<UserClass,ESPMode::ThreadSafe> &,SharedPointerInternals::FStaticCastTag)'
+	inline TSharedRef( TSharedRef< OtherType, Mode > const& InSharedRef, SharedPointerInternals::FStaticCastTag )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(294,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<UserClass,ESPMode::ThreadSafe> &)'
+	inline TSharedRef( TSharedRef< OtherType, Mode > const& InSharedRef )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(271,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(SharedPointerInternals::TRawPtrProxyWithDeleter<OtherType,DeleterType> &&)'
+	inline TSharedRef( SharedPointerInternals::TRawPtrProxyWithDeleter< OtherType, DeleterType >&& InRawPtrProxy )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(246,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const SharedPointerInternals::TRawPtrProxyWithDeleter<OtherType,DeleterType> &)'
+	inline TSharedRef( SharedPointerInternals::TRawPtrProxyWithDeleter< OtherType, DeleterType > const& InRawPtrProxy )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(221,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const SharedPointerInternals::TRawPtrProxy<OtherType> &)'
+	inline TSharedRef( SharedPointerInternals::TRawPtrProxy< OtherType > const& InRawPtrProxy )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(190,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(OtherType *,DeleterType &&)'
+	inline TSharedRef( OtherType* InObject, DeleterType&& InDeleter )
+	^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(518,61): note: while trying to match the argument list '(int)'
+        + SScrollBox::Slot()[SAssignNew(Grid, SVerticalBox)]];
+                                                            ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\SlateCore\Public\SlotBase.h(165,38): note: or       'SVerticalBox::FSlot::FSlotArguments &TSlotBase<SlotType>::FSlotArguments::operator [](TSharedRef<SWidget,ESPMode::ThreadSafe> &&)'
+        with
+        [
+            SlotType=SVerticalBox::FSlot
+        ]
+		typename SlotType::FSlotArguments& operator[](TSharedRef<SWidget>&& InChildWidget)
+		                                   ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(516,38): note: 'SVerticalBox::FSlot::FSlotArguments &TSlotBase<SlotType>::FSlotArguments::operator [](TSharedRef<SWidget,ESPMode::ThreadSafe> &&)': cannot convert argument 2 from 'int' to 'TSharedRef<SWidget,ESPMode::ThreadSafe> &&'
+        with
+        [
+            SlotType=SVerticalBox::FSlot
+        ]
+    + SVerticalBox::Slot().FillHeight(1)
+                                     ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(518,61): note: Reason: cannot convert from 'int' to 'TSharedRef<SWidget,ESPMode::ThreadSafe>'
+        + SScrollBox::Slot()[SAssignNew(Grid, SVerticalBox)]];
+                                                            ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(518,61): note: 'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef': no overloaded function could convert all the argument types
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(352,2): note: could be 'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(TSharedRef<SWidget,ESPMode::ThreadSafe> &&)'
+	inline TSharedRef( TSharedRef&& InSharedRef )
+	^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(518,61): note: 'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(TSharedRef<SWidget,ESPMode::ThreadSafe> &&)': cannot convert argument 1 from 'int' to 'TSharedRef<SWidget,ESPMode::ThreadSafe> &&'
+        + SScrollBox::Slot()[SAssignNew(Grid, SVerticalBox)]];
+                                                            ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(518,61): note: Reason: cannot convert from 'int' to 'TSharedRef<SWidget,ESPMode::ThreadSafe>'
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(518,61): note: Conversion requires a second user-defined-conversion operator or constructor
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(347,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<SWidget,ESPMode::ThreadSafe> &)'
+	inline TSharedRef( TSharedRef const& InSharedRef )
+	^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(518,61): note: 'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<SWidget,ESPMode::ThreadSafe> &)': cannot convert argument 1 from 'int' to 'const TSharedRef<SWidget,ESPMode::ThreadSafe> &'
+        + SScrollBox::Slot()[SAssignNew(Grid, SVerticalBox)]];
+                                                            ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(518,61): note: Reason: cannot convert from 'int' to 'const TSharedRef<SWidget,ESPMode::ThreadSafe>'
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(518,61): note: Conversion requires a second user-defined-conversion operator or constructor
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(202,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(void)'
+	TSharedRef()
+	^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(518,61): note: 'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef': function does not take 1 arguments
+        + SScrollBox::Slot()[SAssignNew(Grid, SVerticalBox)]];
+                                                            ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(338,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<UserClass,ESPMode::ThreadSafe> &,ObjectType *)'
+        with
+        [
+            ObjectType=SWidget
+        ]
+	inline TSharedRef( TSharedRef< OtherType, Mode > const& OtherSharedRef, ObjectType* InObject )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(324,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<UserClass,ESPMode::ThreadSafe> &,SharedPointerInternals::FConstCastTag)'
+	inline TSharedRef( TSharedRef< OtherType, Mode > const& InSharedRef, SharedPointerInternals::FConstCastTag )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(309,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<UserClass,ESPMode::ThreadSafe> &,SharedPointerInternals::FStaticCastTag)'
+	inline TSharedRef( TSharedRef< OtherType, Mode > const& InSharedRef, SharedPointerInternals::FStaticCastTag )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(294,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<UserClass,ESPMode::ThreadSafe> &)'
+	inline TSharedRef( TSharedRef< OtherType, Mode > const& InSharedRef )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(271,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(SharedPointerInternals::TRawPtrProxyWithDeleter<OtherType,DeleterType> &&)'
+	inline TSharedRef( SharedPointerInternals::TRawPtrProxyWithDeleter< OtherType, DeleterType >&& InRawPtrProxy )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(246,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const SharedPointerInternals::TRawPtrProxyWithDeleter<OtherType,DeleterType> &)'
+	inline TSharedRef( SharedPointerInternals::TRawPtrProxyWithDeleter< OtherType, DeleterType > const& InRawPtrProxy )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(221,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const SharedPointerInternals::TRawPtrProxy<OtherType> &)'
+	inline TSharedRef( SharedPointerInternals::TRawPtrProxy< OtherType > const& InRawPtrProxy )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(190,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(OtherType *,DeleterType &&)'
+	inline TSharedRef( OtherType* InObject, DeleterType&& InDeleter )
+	^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(518,61): note: while trying to match the argument list '(int)'
+        + SScrollBox::Slot()[SAssignNew(Grid, SVerticalBox)]];
+                                                            ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(516,38): note: while trying to match the argument list '(SVerticalBox::FSlot::FSlotArguments, int)'
+    + SVerticalBox::Slot().FillHeight(1)
+                                     ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(521,116): error C3536: 'Panel': cannot be used before it is initialized
+  return SNew(SBorder).BorderImage(FAppStyle::GetBrush(TEXT("WhiteBrush"))).BorderBackgroundColor(Ink).Padding(18)[Panel];
+                                                                                                                   ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(521,121): error C2088: built-in operator '[' cannot be applied to an operand of type 'SBorder::FArguments'
+  return SNew(SBorder).BorderImage(FAppStyle::GetBrush(TEXT("WhiteBrush"))).BorderBackgroundColor(Ink).Padding(18)[Panel];
+                                                                                                                        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(569,25): error C2039: 'AlwaysShowScrollbar': is not a member of 'SScrollBox::FArguments'
+      [SNew(SScrollBox).AlwaysShowScrollbar(true) + SScrollBox::Slot()[DetailBody()]];
+                        ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Slate\Public\Widgets\Layout\SScrollBox.h(148,2): note: see declaration of 'SScrollBox::FArguments'
+	SLATE_BEGIN_ARGS(SScrollBox)
+	^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(569,85): error C7732: expected an expression before ']'
+      [SNew(SScrollBox).AlwaysShowScrollbar(true) + SScrollBox::Slot()[DetailBody()]];
+                                                                                    ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(568,49): error C2679: binary '[': no operator found which takes a right-hand operand of type 'int' (or there is no acceptable conversion)
+    + SVerticalBox::Slot().FillHeight(1).Padding(0, 12, 0, 0)
+                                                ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\SlateCore\Public\SlotBase.h(170,38): note: could be 'SVerticalBox::FSlot::FSlotArguments &TSlotBase<SlotType>::FSlotArguments::operator [](const TSharedRef<SWidget,ESPMode::ThreadSafe> &)'
+        with
+        [
+            SlotType=SVerticalBox::FSlot
+        ]
+		typename SlotType::FSlotArguments& operator[](const TSharedRef<SWidget>& InChildWidget)
+		                                   ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(568,49): note: 'SVerticalBox::FSlot::FSlotArguments &TSlotBase<SlotType>::FSlotArguments::operator [](const TSharedRef<SWidget,ESPMode::ThreadSafe> &)': cannot convert argument 2 from 'int' to 'const TSharedRef<SWidget,ESPMode::ThreadSafe> &'
+        with
+        [
+            SlotType=SVerticalBox::FSlot
+        ]
+    + SVerticalBox::Slot().FillHeight(1).Padding(0, 12, 0, 0)
+                                                ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(569,85): note: Reason: cannot convert from 'int' to 'const TSharedRef<SWidget,ESPMode::ThreadSafe>'
+      [SNew(SScrollBox).AlwaysShowScrollbar(true) + SScrollBox::Slot()[DetailBody()]];
+                                                                                    ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(569,85): note: 'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef': no overloaded function could convert all the argument types
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(352,2): note: could be 'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(TSharedRef<SWidget,ESPMode::ThreadSafe> &&)'
+	inline TSharedRef( TSharedRef&& InSharedRef )
+	^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(569,85): note: 'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(TSharedRef<SWidget,ESPMode::ThreadSafe> &&)': cannot convert argument 1 from 'int' to 'TSharedRef<SWidget,ESPMode::ThreadSafe> &&'
+      [SNew(SScrollBox).AlwaysShowScrollbar(true) + SScrollBox::Slot()[DetailBody()]];
+                                                                                    ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(569,85): note: Reason: cannot convert from 'int' to 'TSharedRef<SWidget,ESPMode::ThreadSafe>'
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(569,85): note: Conversion requires a second user-defined-conversion operator or constructor
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(347,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<SWidget,ESPMode::ThreadSafe> &)'
+	inline TSharedRef( TSharedRef const& InSharedRef )
+	^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(569,85): note: 'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<SWidget,ESPMode::ThreadSafe> &)': cannot convert argument 1 from 'int' to 'const TSharedRef<SWidget,ESPMode::ThreadSafe> &'
+      [SNew(SScrollBox).AlwaysShowScrollbar(true) + SScrollBox::Slot()[DetailBody()]];
+                                                                                    ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(569,85): note: Reason: cannot convert from 'int' to 'const TSharedRef<SWidget,ESPMode::ThreadSafe>'
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(569,85): note: Conversion requires a second user-defined-conversion operator or constructor
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(202,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(void)'
+	TSharedRef()
+	^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(569,85): note: 'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef': function does not take 1 arguments
+      [SNew(SScrollBox).AlwaysShowScrollbar(true) + SScrollBox::Slot()[DetailBody()]];
+                                                                                    ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(338,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<UserClass,ESPMode::ThreadSafe> &,ObjectType *)'
+        with
+        [
+            ObjectType=SWidget
+        ]
+	inline TSharedRef( TSharedRef< OtherType, Mode > const& OtherSharedRef, ObjectType* InObject )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(324,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<UserClass,ESPMode::ThreadSafe> &,SharedPointerInternals::FConstCastTag)'
+	inline TSharedRef( TSharedRef< OtherType, Mode > const& InSharedRef, SharedPointerInternals::FConstCastTag )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(309,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<UserClass,ESPMode::ThreadSafe> &,SharedPointerInternals::FStaticCastTag)'
+	inline TSharedRef( TSharedRef< OtherType, Mode > const& InSharedRef, SharedPointerInternals::FStaticCastTag )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(294,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<UserClass,ESPMode::ThreadSafe> &)'
+	inline TSharedRef( TSharedRef< OtherType, Mode > const& InSharedRef )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(271,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(SharedPointerInternals::TRawPtrProxyWithDeleter<OtherType,DeleterType> &&)'
+	inline TSharedRef( SharedPointerInternals::TRawPtrProxyWithDeleter< OtherType, DeleterType >&& InRawPtrProxy )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(246,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const SharedPointerInternals::TRawPtrProxyWithDeleter<OtherType,DeleterType> &)'
+	inline TSharedRef( SharedPointerInternals::TRawPtrProxyWithDeleter< OtherType, DeleterType > const& InRawPtrProxy )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(221,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const SharedPointerInternals::TRawPtrProxy<OtherType> &)'
+	inline TSharedRef( SharedPointerInternals::TRawPtrProxy< OtherType > const& InRawPtrProxy )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(190,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(OtherType *,DeleterType &&)'
+	inline TSharedRef( OtherType* InObject, DeleterType&& InDeleter )
+	^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(569,85): note: while trying to match the argument list '(int)'
+      [SNew(SScrollBox).AlwaysShowScrollbar(true) + SScrollBox::Slot()[DetailBody()]];
+                                                                                    ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\SlateCore\Public\SlotBase.h(165,38): note: or       'SVerticalBox::FSlot::FSlotArguments &TSlotBase<SlotType>::FSlotArguments::operator [](TSharedRef<SWidget,ESPMode::ThreadSafe> &&)'
+        with
+        [
+            SlotType=SVerticalBox::FSlot
+        ]
+		typename SlotType::FSlotArguments& operator[](TSharedRef<SWidget>&& InChildWidget)
+		                                   ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(568,49): note: 'SVerticalBox::FSlot::FSlotArguments &TSlotBase<SlotType>::FSlotArguments::operator [](TSharedRef<SWidget,ESPMode::ThreadSafe> &&)': cannot convert argument 2 from 'int' to 'TSharedRef<SWidget,ESPMode::ThreadSafe> &&'
+        with
+        [
+            SlotType=SVerticalBox::FSlot
+        ]
+    + SVerticalBox::Slot().FillHeight(1).Padding(0, 12, 0, 0)
+                                                ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(569,85): note: Reason: cannot convert from 'int' to 'TSharedRef<SWidget,ESPMode::ThreadSafe>'
+      [SNew(SScrollBox).AlwaysShowScrollbar(true) + SScrollBox::Slot()[DetailBody()]];
+                                                                                    ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(569,85): note: 'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef': no overloaded function could convert all the argument types
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(352,2): note: could be 'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(TSharedRef<SWidget,ESPMode::ThreadSafe> &&)'
+	inline TSharedRef( TSharedRef&& InSharedRef )
+	^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(569,85): note: 'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(TSharedRef<SWidget,ESPMode::ThreadSafe> &&)': cannot convert argument 1 from 'int' to 'TSharedRef<SWidget,ESPMode::ThreadSafe> &&'
+      [SNew(SScrollBox).AlwaysShowScrollbar(true) + SScrollBox::Slot()[DetailBody()]];
+                                                                                    ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(569,85): note: Reason: cannot convert from 'int' to 'TSharedRef<SWidget,ESPMode::ThreadSafe>'
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(569,85): note: Conversion requires a second user-defined-conversion operator or constructor
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(347,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<SWidget,ESPMode::ThreadSafe> &)'
+	inline TSharedRef( TSharedRef const& InSharedRef )
+	^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(569,85): note: 'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<SWidget,ESPMode::ThreadSafe> &)': cannot convert argument 1 from 'int' to 'const TSharedRef<SWidget,ESPMode::ThreadSafe> &'
+      [SNew(SScrollBox).AlwaysShowScrollbar(true) + SScrollBox::Slot()[DetailBody()]];
+                                                                                    ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(569,85): note: Reason: cannot convert from 'int' to 'const TSharedRef<SWidget,ESPMode::ThreadSafe>'
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(569,85): note: Conversion requires a second user-defined-conversion operator or constructor
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(202,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(void)'
+	TSharedRef()
+	^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(569,85): note: 'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef': function does not take 1 arguments
+      [SNew(SScrollBox).AlwaysShowScrollbar(true) + SScrollBox::Slot()[DetailBody()]];
+                                                                                    ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(338,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<UserClass,ESPMode::ThreadSafe> &,ObjectType *)'
+        with
+        [
+            ObjectType=SWidget
+        ]
+	inline TSharedRef( TSharedRef< OtherType, Mode > const& OtherSharedRef, ObjectType* InObject )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(324,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<UserClass,ESPMode::ThreadSafe> &,SharedPointerInternals::FConstCastTag)'
+	inline TSharedRef( TSharedRef< OtherType, Mode > const& InSharedRef, SharedPointerInternals::FConstCastTag )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(309,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<UserClass,ESPMode::ThreadSafe> &,SharedPointerInternals::FStaticCastTag)'
+	inline TSharedRef( TSharedRef< OtherType, Mode > const& InSharedRef, SharedPointerInternals::FStaticCastTag )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(294,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<UserClass,ESPMode::ThreadSafe> &)'
+	inline TSharedRef( TSharedRef< OtherType, Mode > const& InSharedRef )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(271,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(SharedPointerInternals::TRawPtrProxyWithDeleter<OtherType,DeleterType> &&)'
+	inline TSharedRef( SharedPointerInternals::TRawPtrProxyWithDeleter< OtherType, DeleterType >&& InRawPtrProxy )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(246,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const SharedPointerInternals::TRawPtrProxyWithDeleter<OtherType,DeleterType> &)'
+	inline TSharedRef( SharedPointerInternals::TRawPtrProxyWithDeleter< OtherType, DeleterType > const& InRawPtrProxy )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(221,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const SharedPointerInternals::TRawPtrProxy<OtherType> &)'
+	inline TSharedRef( SharedPointerInternals::TRawPtrProxy< OtherType > const& InRawPtrProxy )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(190,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(OtherType *,DeleterType &&)'
+	inline TSharedRef( OtherType* InObject, DeleterType&& InDeleter )
+	^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(569,85): note: while trying to match the argument list '(int)'
+      [SNew(SScrollBox).AlwaysShowScrollbar(true) + SScrollBox::Slot()[DetailBody()]];
+                                                                                    ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(568,49): note: while trying to match the argument list '(SVerticalBox::FSlot::FSlotArguments, int)'
+    + SVerticalBox::Slot().FillHeight(1).Padding(0, 12, 0, 0)
+                                                ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(575,114): error C3536: 'Information': cannot be used before it is initialized
+      [SNew(SBorder).BorderImage(FAppStyle::GetBrush(TEXT("WhiteBrush"))).BorderBackgroundColor(Ink).Padding(22)[Information]]
+                                                                                                                 ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(575,125): error C2088: built-in operator '[' cannot be applied to an operand of type 'SBorder::FArguments'
+      [SNew(SBorder).BorderImage(FAppStyle::GetBrush(TEXT("WhiteBrush"))).BorderBackgroundColor(Ink).Padding(22)[Information]]
+                                                                                                                            ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(575,126): error C7732: expected an expression before ']'
+      [SNew(SBorder).BorderImage(FAppStyle::GetBrush(TEXT("WhiteBrush"))).BorderBackgroundColor(Ink).Padding(22)[Information]]
+                                                                                                                             ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(574,39): error C2679: binary '[': no operator found which takes a right-hand operand of type 'int' (or there is no acceptable conversion)
+    + SHorizontalBox::Slot().FillWidth(.55f)
+                                      ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\SlateCore\Public\SlotBase.h(170,38): note: could be 'SHorizontalBox::FSlot::FSlotArguments &TSlotBase<SlotType>::FSlotArguments::operator [](const TSharedRef<SWidget,ESPMode::ThreadSafe> &)'
+        with
+        [
+            SlotType=SHorizontalBox::FSlot
+        ]
+		typename SlotType::FSlotArguments& operator[](const TSharedRef<SWidget>& InChildWidget)
+		                                   ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(574,39): note: 'SHorizontalBox::FSlot::FSlotArguments &TSlotBase<SlotType>::FSlotArguments::operator [](const TSharedRef<SWidget,ESPMode::ThreadSafe> &)': cannot convert argument 2 from 'int' to 'const TSharedRef<SWidget,ESPMode::ThreadSafe> &'
+        with
+        [
+            SlotType=SHorizontalBox::FSlot
+        ]
+    + SHorizontalBox::Slot().FillWidth(.55f)
+                                      ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(575,126): note: Reason: cannot convert from 'int' to 'const TSharedRef<SWidget,ESPMode::ThreadSafe>'
+      [SNew(SBorder).BorderImage(FAppStyle::GetBrush(TEXT("WhiteBrush"))).BorderBackgroundColor(Ink).Padding(22)[Information]]
+                                                                                                                             ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(575,126): note: 'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef': no overloaded function could convert all the argument types
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(352,2): note: could be 'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(TSharedRef<SWidget,ESPMode::ThreadSafe> &&)'
+	inline TSharedRef( TSharedRef&& InSharedRef )
+	^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(575,126): note: 'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(TSharedRef<SWidget,ESPMode::ThreadSafe> &&)': cannot convert argument 1 from 'int' to 'TSharedRef<SWidget,ESPMode::ThreadSafe> &&'
+      [SNew(SBorder).BorderImage(FAppStyle::GetBrush(TEXT("WhiteBrush"))).BorderBackgroundColor(Ink).Padding(22)[Information]]
+                                                                                                                             ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(575,126): note: Reason: cannot convert from 'int' to 'TSharedRef<SWidget,ESPMode::ThreadSafe>'
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(575,126): note: Conversion requires a second user-defined-conversion operator or constructor
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(347,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<SWidget,ESPMode::ThreadSafe> &)'
+	inline TSharedRef( TSharedRef const& InSharedRef )
+	^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(575,126): note: 'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<SWidget,ESPMode::ThreadSafe> &)': cannot convert argument 1 from 'int' to 'const TSharedRef<SWidget,ESPMode::ThreadSafe> &'
+      [SNew(SBorder).BorderImage(FAppStyle::GetBrush(TEXT("WhiteBrush"))).BorderBackgroundColor(Ink).Padding(22)[Information]]
+                                                                                                                             ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(575,126): note: Reason: cannot convert from 'int' to 'const TSharedRef<SWidget,ESPMode::ThreadSafe>'
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(575,126): note: Conversion requires a second user-defined-conversion operator or constructor
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(202,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(void)'
+	TSharedRef()
+	^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(575,126): note: 'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef': function does not take 1 arguments
+      [SNew(SBorder).BorderImage(FAppStyle::GetBrush(TEXT("WhiteBrush"))).BorderBackgroundColor(Ink).Padding(22)[Information]]
+                                                                                                                             ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(338,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<UserClass,ESPMode::ThreadSafe> &,ObjectType *)'
+        with
+        [
+            ObjectType=SWidget
+        ]
+	inline TSharedRef( TSharedRef< OtherType, Mode > const& OtherSharedRef, ObjectType* InObject )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(324,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<UserClass,ESPMode::ThreadSafe> &,SharedPointerInternals::FConstCastTag)'
+	inline TSharedRef( TSharedRef< OtherType, Mode > const& InSharedRef, SharedPointerInternals::FConstCastTag )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(309,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<UserClass,ESPMode::ThreadSafe> &,SharedPointerInternals::FStaticCastTag)'
+	inline TSharedRef( TSharedRef< OtherType, Mode > const& InSharedRef, SharedPointerInternals::FStaticCastTag )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(294,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<UserClass,ESPMode::ThreadSafe> &)'
+	inline TSharedRef( TSharedRef< OtherType, Mode > const& InSharedRef )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(271,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(SharedPointerInternals::TRawPtrProxyWithDeleter<OtherType,DeleterType> &&)'
+	inline TSharedRef( SharedPointerInternals::TRawPtrProxyWithDeleter< OtherType, DeleterType >&& InRawPtrProxy )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(246,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const SharedPointerInternals::TRawPtrProxyWithDeleter<OtherType,DeleterType> &)'
+	inline TSharedRef( SharedPointerInternals::TRawPtrProxyWithDeleter< OtherType, DeleterType > const& InRawPtrProxy )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(221,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const SharedPointerInternals::TRawPtrProxy<OtherType> &)'
+	inline TSharedRef( SharedPointerInternals::TRawPtrProxy< OtherType > const& InRawPtrProxy )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(190,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(OtherType *,DeleterType &&)'
+	inline TSharedRef( OtherType* InObject, DeleterType&& InDeleter )
+	^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(575,126): note: while trying to match the argument list '(int)'
+      [SNew(SBorder).BorderImage(FAppStyle::GetBrush(TEXT("WhiteBrush"))).BorderBackgroundColor(Ink).Padding(22)[Information]]
+                                                                                                                             ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\SlateCore\Public\SlotBase.h(165,38): note: or       'SHorizontalBox::FSlot::FSlotArguments &TSlotBase<SlotType>::FSlotArguments::operator [](TSharedRef<SWidget,ESPMode::ThreadSafe> &&)'
+        with
+        [
+            SlotType=SHorizontalBox::FSlot
+        ]
+		typename SlotType::FSlotArguments& operator[](TSharedRef<SWidget>&& InChildWidget)
+		                                   ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(574,39): note: 'SHorizontalBox::FSlot::FSlotArguments &TSlotBase<SlotType>::FSlotArguments::operator [](TSharedRef<SWidget,ESPMode::ThreadSafe> &&)': cannot convert argument 2 from 'int' to 'TSharedRef<SWidget,ESPMode::ThreadSafe> &&'
+        with
+        [
+            SlotType=SHorizontalBox::FSlot
+        ]
+    + SHorizontalBox::Slot().FillWidth(.55f)
+                                      ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(575,126): note: Reason: cannot convert from 'int' to 'TSharedRef<SWidget,ESPMode::ThreadSafe>'
+      [SNew(SBorder).BorderImage(FAppStyle::GetBrush(TEXT("WhiteBrush"))).BorderBackgroundColor(Ink).Padding(22)[Information]]
+                                                                                                                             ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(575,126): note: 'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef': no overloaded function could convert all the argument types
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(352,2): note: could be 'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(TSharedRef<SWidget,ESPMode::ThreadSafe> &&)'
+	inline TSharedRef( TSharedRef&& InSharedRef )
+	^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(575,126): note: 'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(TSharedRef<SWidget,ESPMode::ThreadSafe> &&)': cannot convert argument 1 from 'int' to 'TSharedRef<SWidget,ESPMode::ThreadSafe> &&'
+      [SNew(SBorder).BorderImage(FAppStyle::GetBrush(TEXT("WhiteBrush"))).BorderBackgroundColor(Ink).Padding(22)[Information]]
+                                                                                                                             ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(575,126): note: Reason: cannot convert from 'int' to 'TSharedRef<SWidget,ESPMode::ThreadSafe>'
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(575,126): note: Conversion requires a second user-defined-conversion operator or constructor
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(347,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<SWidget,ESPMode::ThreadSafe> &)'
+	inline TSharedRef( TSharedRef const& InSharedRef )
+	^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(575,126): note: 'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<SWidget,ESPMode::ThreadSafe> &)': cannot convert argument 1 from 'int' to 'const TSharedRef<SWidget,ESPMode::ThreadSafe> &'
+      [SNew(SBorder).BorderImage(FAppStyle::GetBrush(TEXT("WhiteBrush"))).BorderBackgroundColor(Ink).Padding(22)[Information]]
+                                                                                                                             ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(575,126): note: Reason: cannot convert from 'int' to 'const TSharedRef<SWidget,ESPMode::ThreadSafe>'
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(575,126): note: Conversion requires a second user-defined-conversion operator or constructor
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(202,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(void)'
+	TSharedRef()
+	^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(575,126): note: 'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef': function does not take 1 arguments
+      [SNew(SBorder).BorderImage(FAppStyle::GetBrush(TEXT("WhiteBrush"))).BorderBackgroundColor(Ink).Padding(22)[Information]]
+                                                                                                                             ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(338,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<UserClass,ESPMode::ThreadSafe> &,ObjectType *)'
+        with
+        [
+            ObjectType=SWidget
+        ]
+	inline TSharedRef( TSharedRef< OtherType, Mode > const& OtherSharedRef, ObjectType* InObject )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(324,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<UserClass,ESPMode::ThreadSafe> &,SharedPointerInternals::FConstCastTag)'
+	inline TSharedRef( TSharedRef< OtherType, Mode > const& InSharedRef, SharedPointerInternals::FConstCastTag )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(309,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<UserClass,ESPMode::ThreadSafe> &,SharedPointerInternals::FStaticCastTag)'
+	inline TSharedRef( TSharedRef< OtherType, Mode > const& InSharedRef, SharedPointerInternals::FStaticCastTag )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(294,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const TSharedRef<UserClass,ESPMode::ThreadSafe> &)'
+	inline TSharedRef( TSharedRef< OtherType, Mode > const& InSharedRef )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(271,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(SharedPointerInternals::TRawPtrProxyWithDeleter<OtherType,DeleterType> &&)'
+	inline TSharedRef( SharedPointerInternals::TRawPtrProxyWithDeleter< OtherType, DeleterType >&& InRawPtrProxy )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(246,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const SharedPointerInternals::TRawPtrProxyWithDeleter<OtherType,DeleterType> &)'
+	inline TSharedRef( SharedPointerInternals::TRawPtrProxyWithDeleter< OtherType, DeleterType > const& InRawPtrProxy )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(221,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(const SharedPointerInternals::TRawPtrProxy<OtherType> &)'
+	inline TSharedRef( SharedPointerInternals::TRawPtrProxy< OtherType > const& InRawPtrProxy )
+	^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(190,2): note: or       'TSharedRef<SWidget,ESPMode::ThreadSafe>::TSharedRef(OtherType *,DeleterType &&)'
+	inline TSharedRef( OtherType* InObject, DeleterType&& InDeleter )
+	^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(575,126): note: while trying to match the argument list '(int)'
+      [SNew(SBorder).BorderImage(FAppStyle::GetBrush(TEXT("WhiteBrush"))).BorderBackgroundColor(Ink).Padding(22)[Information]]
+                                                                                                                             ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(574,39): note: while trying to match the argument list '(SHorizontalBox::FSlot::FSlotArguments, int)'
+    + SHorizontalBox::Slot().FillWidth(.55f)
+                                      ^
+[5/16] Compile [x64] WCFrontEndScene.cpp
+[6/16] Compile [x64] WCImportedAssetTests.cpp
+[7/16] Compile [x64] WCMatchHUD.cpp
+[8/16] Compile [x64] WCMatchRuntime.cpp
+[9/16] Compile [x64] WCNetworkSession.cpp
+[10/16] Compile [x64] WCVerification.cpp
+[11/16] Compile [x64] WonderSimulation.cpp
+[12/16] Compile [x64] WonderSimulationTests.cpp
+[13/16] Compile [x64] WonderTournament.cpp
+Trace written to file C:/Users/iputu/AppData/Local/UnrealBuildTool/Log.uba with size 29.6kb
+Total time in Unreal Build Accelerator local executor: 163.33 seconds
+
+Result: Failed (OtherCompilationError)
+Total execution time: 184.68 seconds

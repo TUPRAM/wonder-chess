@@ -1,0 +1,29 @@
+{
+  "generated_utc": "2026-09-06T17:19:15.613343+00:00",
+  "engine_version": "5.7.4-51494982+++UE5+Release-5.7",
+  "status": "PASS",
+  "scope": "compiled reflected alpha DataTable import, saved asset and JSON round-trip parity",
+  "tables": [
+    {
+      "asset": "/Game/WonderChess/Data/DT_Units_Alpha",
+      "row_struct": "/Script/WonderChessRuntime.WCUnitRow",
+      "row_count": 24,
+      "source_sha256": "321c699a82bdaceb18ad84689ef792bed02cfe49666ddd1679d9adbd7a0767b2",
+      "export_sha256": "8d4f870fdb420ddec30b8dffb5536ccfb7cc79f87afea2bde93964c047e07b9f",
+      "field_parity": "PASS",
+      "saved": true
+    },
+    {
+      "asset": "/Game/WonderChess/Data/DT_Abilities_Alpha",
+      "row_struct": "/Script/WonderChessRuntime.WCAbilityRow",
+      "row_count": 24,
+      "source_sha256": "b291b4e862dfdc1417f0784f95c9691475e64bd1f370bb13c423a55f02457f38",
+      "export_sha256": "bbec241f86d18e3f91c299e0af066b985a61910b1959785e4ddf4d01bc09c946",
+      "field_parity": "PASS",
+      "saved": true
+    }
+  ],
+  "runtime_gameplay_verified": false,
+  "exporter": "DataTableJSON.ExportUsingPropertyVisitor=0 (process-local UE 5.7.4 nested-array workaround)",
+  "finished_utc": "2026-09-06T17:19:15.772818+00:00"
+}
