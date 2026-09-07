@@ -1,0 +1,33 @@
+{
+  "utc": "2026-09-06T16:33:33.497050+00:00",
+  "status": "RECOVERY_FUNCTIONAL_AND_SCREEN_RESTORATION_PASS_WITH_STATUS_LABEL_DEFECT",
+  "audit_sha256": "e2a2d0766bfe58287696d5d95bef0b41b11b9acd5bbcaeef7728b0d9195434cc",
+  "checks_passed": 10,
+  "screenshots": [
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U430\\20260906T162849Z\\network-recovery-fixed\\client\\network-recovery-audit-failed-connection.png",
+      "sha256": "f535ca068596b9d898938e1617994a66c44bf4b598917be26002799690f2703f",
+      "viewed": true
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U430\\20260906T162849Z\\network-recovery-fixed\\client\\network-recovery-audit-connected-lobby.png",
+      "sha256": "250da38b3f70246ec2ce9e058eee57bf72494ae1127aa40baa66da088e035658",
+      "viewed": true
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U430\\20260906T162849Z\\network-recovery-fixed\\client\\network-recovery-audit-returned-title.png",
+      "sha256": "d9ed7e5cb9bb05f2cefe40e5c1adb400872b3b941d2c21a6d20544205500b1b2",
+      "viewed": true
+    }
+  ],
+  "observed": [
+    "Original Brighthaven scene, Ada and sky return after timeout, retry and Leave.",
+    "Indonesian failure text wraps within the panel; raw engine diagnostics remain in evidence.",
+    "No editor preparation overlay in these settled captures."
+  ],
+  "defects": [
+    "Idle human participants incorrectly display Loading while waiting for entry; UI fix is in progress."
+  ],
+  "boundary": "Actual software-driven editor-game controls on one PC; these three static screens do not certify manual play, full LAN match, all gallery states, continuous motion or final artistic acceptance.",
+  "timing_boundary": "Audit elapsed7.85sec starts after real failure callback; prior20.01sec connection timeout and startup are excluded."
+}

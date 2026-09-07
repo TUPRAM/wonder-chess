@@ -1,0 +1,46 @@
+{
+	"status": "PASS",
+	"started_utc": "2026-09-06T16:11:30.316Z",
+	"method": "Opt-in actual native HUD/Slate controls, real server command authority or Unreal network failure callback. Software-driven fixture; no physical human play or two-machine LAN claim.",
+	"content_digest": "a0fc03fd31260f245a795233aa00d3959e7f80be37dcc7affe3500d4346fc101",
+	"checks": [
+		{
+			"name": "HUD purchase produced an authoritative owned copy",
+			"pass": true,
+			"detail": "request=1 accepted=1 selected=0 revision=4.29497e+09 sequence=1 gold=9 reason=Accepted"
+		},
+		{
+			"name": "HUD selects the real owned bench copy",
+			"pass": true,
+			"detail": ""
+		},
+		{
+			"name": "Actual invalid move preserves useful selection and owner state",
+			"pass": true,
+			"detail": "request=2 accepted=0 selected=1 revision=4.29497e+09 sequence=1 gold=9 reason=Destination is outside own deployment"
+		},
+		{
+			"name": "Matching accepted move clears selection after actual placement",
+			"pass": true,
+			"detail": "request=3 accepted=1 selected=0 revision=4.29497e+09 sequence=2 gold=9 reason=Accepted"
+		},
+		{
+			"name": "Actual unowned sale rejection retains the useful owned selection",
+			"pass": true,
+			"detail": "request=4 accepted=0 selected=1 revision=4.29497e+09 sequence=2 gold=9 reason=Unit is not owned"
+		},
+		{
+			"name": "Matching accepted sale clears selection and pays canonical copy value",
+			"pass": true,
+			"detail": "request=5 accepted=1 selected=0 revision=4.29497e+09 sequence=3 gold=10 reason=Accepted"
+		}
+	],
+	"screenshots": [
+		"C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U430\\20260906T161052Z\\selection-ui/selection-rejection-audit-rejected-move.png",
+		"C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U430\\20260906T161052Z\\selection-ui/selection-rejection-audit-rejected-sale.png",
+		"C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U430\\20260906T161052Z\\selection-ui/selection-rejection-audit-accepted-sale.png"
+	],
+	"failed_checks_or_captures": 0,
+	"ended_utc": "2026-09-06T16:11:34.276Z",
+	"elapsed_seconds": 3.9604256004095078
+}

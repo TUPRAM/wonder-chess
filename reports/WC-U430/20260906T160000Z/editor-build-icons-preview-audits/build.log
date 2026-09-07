@@ -1,0 +1,48 @@
+Using bundled DotNet SDK version: 8.0.412 win-x64
+Running UnrealBuildTool: dotnet "..\..\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" WonderChessEditor Win64 Development "C:/Users/iputu/Documents/Wonder Chess/game/WonderChess.uproject" -WaitMutex -NoHotReloadFromIDE
+Log file: C:\Users\iputu\AppData\Local\UnrealBuildTool\Log.txt
+Using 'git status' to determine working set for adaptive non-unity build (C:\Users\iputu\Documents\Wonder Chess).
+Invalidating makefile for WonderChessEditor (working set of source files changed)
+UHT compiled-in object format Default
+Parsing headers for WonderChessEditor
+  Running Internal UnrealHeaderTool "C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject" "C:\Users\iputu\Documents\Wonder Chess\game\Intermediate\Build\Win64\WonderChessEditor\Development\WonderChessEditor.uhtmanifest" -WarningsAsErrors -installed
+UHT processed WonderChessEditor in 7.1203282 seconds (1 files written)
+Building WonderChessEditor...
+Using Visual Studio 2022 14.44.35226 toolchain (C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[Adaptive Build] Excluded from WonderChessRuntime unity file: WCDefinitionRegistry.cpp, WCFrontEnd.cpp, WCFrontEndAudit.cpp, WCMatchHUD.cpp, WCMatchRuntime.cpp, WCNetworkSession.cpp, WCVerification.cpp, WonderSimulation.cpp, WonderTournament.cpp
+Determining max actions to execute in parallel (8 physical cores, 16 logical cores)
+  Executing up to 8 processes, one per physical core
+  Requested 1.5 GB memory per action, 1.67 GB available: limiting max parallel actions to 1
+Using Unreal Build Accelerator local executor to run 18 action(s)
+  Storage capacity 40Gb
+---- Starting trace: 260907_000026 ----
+UbaServer - Listening on 0.0.0.0:1345
+[1/18] Compile [x64] Module.WonderChessRuntime.gen.cpp
+[2/18] Compile [x64] WCBoardPresenter.cpp
+[3/18] Compile [x64] WCDefinitionRegistry.cpp
+[4/18] Compile [x64] WCFrontEnd.cpp
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(796,110): error C2059: syntax error: ';'
+                + SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center)[Copy(ShortName(PartnerText), 16)]];
+                                                                                                             ^
+[5/18] Compile [x64] WCFrontEndAudit.cpp
+[6/18] Compile [x64] WCFrontEndScene.cpp
+[7/18] Compile [x64] WCImportedAssetTests.cpp
+[8/18] Compile [x64] WCMatchHUD.cpp
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(1092,18): error C4458: declaration of 'Owner' hides class member
+      const auto Owner = OwnerSeat(P);
+                 ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h(802,21): note: see declaration of 'AActor::Owner'
+	TObjectPtr<AActor> Owner;
+	                   ^
+[9/18] Compile [x64] WCMatchRuntime.cpp
+[10/18] Compile [x64] WCNetworkSession.cpp
+[11/18] Compile [x64] WCNeutralAssetTests.cpp
+[12/18] Compile [x64] WCVerification.cpp
+[13/18] Compile [x64] WonderSimulation.cpp
+[14/18] Compile [x64] WonderSimulationTests.cpp
+[15/18] Compile [x64] WonderTournament.cpp
+Trace written to file C:/Users/iputu/AppData/Local/UnrealBuildTool/Log.uba with size 14.5kb
+Total time in Unreal Build Accelerator local executor: 88.52 seconds
+
+Result: Failed (OtherCompilationError)
+Total execution time: 112.51 seconds

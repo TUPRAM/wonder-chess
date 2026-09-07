@@ -1,0 +1,44 @@
+{
+  "utc": "2026-09-06T16:43:21.122783+00:00",
+  "status": "PARTIAL_ASSET_SLICE_LOBBY_COOK_FIX_VERIFIED",
+  "audit": "reports\\WC-U430\\20260906T163733Z\\r2-packaged-gallery1080\\20260906T163736-frontend-audit.json",
+  "audit_sha256": "46d036964762be808d3033ddf4b398879a2d413f0d16b1781f67d08eb02b172c",
+  "checks": 531,
+  "passed": 468,
+  "failed": 63,
+  "failure_boundary": "Exactly seven not-yet-packaged hero mesh/portrait/sevenclip checks; no other audit failure.",
+  "missing_hero_ids": [
+    "wc_u_halfling_ranger",
+    "wc_u_halfling_rogue",
+    "wc_u_halfling_mage",
+    "wc_u_dragonkin_guardian",
+    "wc_u_dragonkin_ranger",
+    "wc_u_dragonkin_rogue",
+    "wc_u_dragonkin_priest"
+  ],
+  "screenshots_emitted": 60,
+  "viewed": [
+    {
+      "path": "reports\\WC-U430\\20260906T163733Z\\r2-packaged-gallery1080\\20260906T163736-lobby.png",
+      "sha256": "1287afddd3f0babf3922439f9c1dc440eb5411bce0c46ef69ac63cf0dad12832"
+    },
+    {
+      "path": "reports\\WC-U430\\20260906T163733Z\\r2-packaged-gallery1080\\20260906T163736-gallery.png",
+      "sha256": "11845669027bd2c38eaec4333460186a57fa9c1a83d6277e0434da3f2cf91ed8"
+    },
+    {
+      "path": "reports\\WC-U430\\20260906T163733Z\\r2-packaged-gallery1080\\20260906T163736-seat-introduction-1500ms.png",
+      "sha256": "174e979533a90a408079b021def9580c1d53dfb2bcd4dfb0a454a36b28ba568a"
+    }
+  ],
+  "observed": [
+    "Actual cooked original Brighthaven mesh/sky and Ada9 present in Shipping; previous cook failure repaired.",
+    "Gallery cards contain actual race/class/skill emblems and content; Finn portrait absent in this immutable17hero slice as expected.",
+    "Introduction shows real eight-seat roster and board camera before preparation begins; UI transition cancellation tests passed."
+  ],
+  "limits": [
+    "531 checks do not equal finished24hero or continuous visual acceptance.",
+    "Only three specified static images inspected here; other57 captures retained for targeted review.",
+    "No final performance claim; no WCProfile flag and concurrent workflows."
+  ]
+}

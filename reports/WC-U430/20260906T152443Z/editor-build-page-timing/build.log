@@ -1,0 +1,55 @@
+Using bundled DotNet SDK version: 8.0.412 win-x64
+Running UnrealBuildTool: dotnet "..\..\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" WonderChessEditor Win64 Development "C:\Users\iputu\Documents\Wonder Chess/game/WonderChess.uproject" -WaitMutex -NoHotReloadFromIDE
+Log file: C:\Users\iputu\AppData\Local\UnrealBuildTool\Log.txt
+Using 'git status' to determine working set for adaptive non-unity build (C:\Users\iputu\Documents\Wonder Chess).
+Invalidating makefile for WonderChessEditor (DefaultGame.ini modified)
+UHT compiled-in object format Default
+Building WonderChessEditor...
+Using Visual Studio 2022 14.44.35226 toolchain (C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[Adaptive Build] Excluded from WonderChessRuntime unity file: WCFrontEnd.cpp, WCFrontEndAudit.cpp, WCVerification.cpp
+Determining max actions to execute in parallel (8 physical cores, 16 logical cores)
+  Executing up to 8 processes, one per physical core
+  Requested 1.5 GB memory per action, 3.34 GB available: limiting max parallel actions to 2
+Using Unreal Build Accelerator local executor to run 7 action(s)
+  Storage capacity 40Gb
+---- Starting trace: 260906_232455 ----
+UbaServer - Listening on 0.0.0.0:1345
+[1/7] Compile [x64] WCFrontEndAudit.cpp
+[2/7] Compile [x64] WCFrontEnd.cpp
+[3/7] Compile [x64] WCVerification.cpp
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1060,12): error C2039: 'FrontEnd': is not a member of 'AWCMatchController'
+        P->FrontEnd ? P->FrontEnd->PageName() : TEXT("closed"));
+           ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Public\WCMatchRuntime.h(26,30): note: see declaration of 'AWCMatchController'
+class WONDERCHESSRUNTIME_API AWCMatchController : public APlayerController {
+                             ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1060,26): error C2039: 'FrontEnd': is not a member of 'AWCMatchController'
+        P->FrontEnd ? P->FrontEnd->PageName() : TEXT("closed"));
+                         ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Public\WCMatchRuntime.h(26,30): note: see declaration of 'AWCMatchController'
+class WONDERCHESSRUNTIME_API AWCMatchController : public APlayerController {
+                             ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1056,9): error C7595: 'UE::Core::Private::FormatStringSan::TCheckedFormatStringPrivate<FString::FmtCharType,double,int,int,int,int,int,double,double,double,double,int,int,int,int,int>::TCheckedFormatStringPrivate': call to immediate function is not a constant expression
+        TEXT("%.6f,%d,%d,%d,%d,%d,%.6f,%.6f,%.6f,%.6f,%d,%d,%d,%d,%d,%s\n"),
+        ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\String\FormatStringSanErrors.inl(39,1): note: failure was caused by call of undefined function or one not declared 'constexpr'
+X(NotEnoughArguments, "not enough arguments provided to format string.")
+^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\String\FormatStringSanErrors.inl(39,1): note: see usage of 'UE::Core::Private::FormatStringSan::TCheckedFormatStringPrivate<FString::FmtCharType,double,int,int,int,int,int,double,double,double,double,int,int,int,int,int>::PRINTF_FORMAT_STRING_ERROR'
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1056,9): note: the call stack of the evaluation (the oldest call first) is
+        TEXT("%.6f,%d,%d,%d,%d,%d,%.6f,%.6f,%.6f,%.6f,%d,%d,%d,%d,%d,%s\n"),
+        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1056,9): note: while evaluating function 'UE::Core::Private::FormatStringSan::TCheckedFormatStringPrivate<FString::FmtCharType,double,int,int,int,int,int,double,double,double,double,int,int,int,int,int>::TCheckedFormatStringPrivate<59>(const CharType (&)[59])'
+        with
+        [
+            CharType=FString::FmtCharType
+        ]
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\String\FormatStringSanErrors.inl(39,1): note: while evaluating function 'void UE::Core::Private::FormatStringSan::TCheckedFormatStringPrivate<FString::FmtCharType,double,int,int,int,int,int,double,double,double,double,int,int,int,int,int>::PRINTF_FORMAT_STRING_ERROR(const char *)'
+X(NotEnoughArguments, "not enough arguments provided to format string.")
+^
+[4/7] Compile [x64] WCMatchHUD.cpp
+Trace written to file C:/Users/iputu/AppData/Local/UnrealBuildTool/Log.uba with size 9.7kb
+Total time in Unreal Build Accelerator local executor: 36.89 seconds
+
+Result: Failed (OtherCompilationError)
+Total execution time: 48.30 seconds

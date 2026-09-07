@@ -1,0 +1,57 @@
+Using bundled DotNet SDK version: 8.0.412 win-x64
+Running UnrealBuildTool: dotnet "..\..\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" WonderChessEditor Win64 Development "C:/Users/iputu/Documents/Wonder Chess/game/WonderChess.uproject" -WaitMutex -NoHotReloadFromIDE
+Log file: C:\Users\iputu\AppData\Local\UnrealBuildTool\Log.txt
+Using 'git status' to determine working set for adaptive non-unity build (C:\Users\iputu\Documents\Wonder Chess).
+Invalidating makefile for WonderChessEditor (source file added)
+UHT compiled-in object format Default
+Parsing headers for WonderChessEditor
+  Running Internal UnrealHeaderTool "C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject" "C:\Users\iputu\Documents\Wonder Chess\game\Intermediate\Build\Win64\WonderChessEditor\Development\WonderChessEditor.uhtmanifest" -WarningsAsErrors -installed
+UHT processed WonderChessEditor in 4.4188611 seconds (0 files written)
+Building WonderChessEditor...
+Using Visual Studio 2022 14.44.35226 toolchain (C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[Adaptive Build] Excluded from WonderChessRuntime unity file: WCAnimationReview.cpp, WCDefinitionRegistry.cpp, WCFrontEnd.cpp, WCFrontEndAudit.cpp, WCMatchHUD.cpp, WCMatchRuntime.cpp, WCNetworkSession.cpp, WCVerification.cpp, WonderSimulation.cpp, WonderTournament.cpp
+Determining max actions to execute in parallel (8 physical cores, 16 logical cores)
+  Executing up to 8 processes, one per physical core
+  Requested 1.5 GB memory per action, 1.82 GB available: limiting max parallel actions to 1
+Using Unreal Build Accelerator local executor to run 13 action(s)
+  Storage capacity 40Gb
+---- Starting trace: 260907_000817 ----
+UbaServer - Listening on 0.0.0.0:1345
+[1/13] Compile [x64] Module.WonderChessRuntime.gen.cpp
+[2/13] Compile [x64] WCAnimationReview.cpp
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCAnimationReview.cpp(134,70): error C2662: 'UAnimationAsset *UAnimSingleNodeInstance::GetCurrentAsset(void)': cannot convert 'this' pointer from 'const UAnimSingleNodeInstance' to 'UAnimSingleNodeInstance &'
+    const auto* Animation = Instance ? Cast<UAnimSequence>(Instance->GetCurrentAsset()) : nullptr;
+                                                                     ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCAnimationReview.cpp(134,60): note: Conversion loses qualifiers
+    const auto* Animation = Instance ? Cast<UAnimSequence>(Instance->GetCurrentAsset()) : nullptr;
+                                                           ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Engine\Classes\Animation\AnimSingleNodeInstance.h(120,30): note: see declaration of 'UAnimSingleNodeInstance::GetCurrentAsset'
+	ENGINE_API UAnimationAsset* GetCurrentAsset();
+	                            ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCAnimationReview.cpp(134,70): note: while trying to match the argument list '()'
+    const auto* Animation = Instance ? Cast<UAnimSequence>(Instance->GetCurrentAsset()) : nullptr;
+                                                                     ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCAnimationReview.cpp(135,10): error C3536: 'Animation': cannot be used before it is initialized
+    if (!Animation || Animation->GetPlayLength() <= 0) {
+         ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCAnimationReview.cpp(138,22): error C2661: 'FJsonObject::SetStringField': no overloaded function takes 1 arguments
+    Capture.Current->SetStringField(TEXT("animation_asset"), Animation->GetPathName());
+                     ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCAnimationReview.cpp(138,22): note: while trying to match the argument list '(const wchar_t [16])'
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCAnimationReview.cpp(139,22): error C2661: 'FJsonObject::SetNumberField': no overloaded function takes 1 arguments
+    Capture.Current->SetNumberField(TEXT("clip_seconds"), Animation->GetPlayLength());
+                     ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCAnimationReview.cpp(139,22): note: while trying to match the argument list '(const wchar_t [13])'
+[3/13] Compile [x64] WCBoardPresenter.cpp
+[4/13] Compile [x64] WCFrontEnd.cpp
+[5/13] Compile [x64] WCFrontEndAudit.cpp
+[6/13] Compile [x64] WCFrontEndScene.cpp
+[7/13] Compile [x64] WCMatchHUD.cpp
+[8/13] Compile [x64] WCMatchRuntime.cpp
+[9/13] Compile [x64] WCNetworkSession.cpp
+[10/13] Compile [x64] WCVerification.cpp
+Trace written to file C:/Users/iputu/AppData/Local/UnrealBuildTool/Log.uba with size 14.2kb
+Total time in Unreal Build Accelerator local executor: 79.91 seconds
+
+Result: Failed (OtherCompilationError)
+Total execution time: 94.81 seconds

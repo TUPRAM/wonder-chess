@@ -1,0 +1,68 @@
+{
+  "started_utc": "2026-09-06T16:28:51.0617915Z",
+  "module_sha256": "ba80baef013c7b3580af0ae1b5b78f93388da0e68886e5c9b7e77a8b13c384d2",
+  "live_port": 17986,
+  "closed_port": 17987,
+  "ports_unowned_before": true,
+  "boundary": "Two actual editor-game processes. Real timeout and Slate retry/leave with camera readiness telemetry. Not physical LAN or manual play.",
+  "status": "EXITED_AUDIT_REQUIRED",
+  "processes": [
+    {
+      "role": "host",
+      "pid": 54416,
+      "arguments": [
+        "\"C:/Users/iputu/Documents/Wonder Chess/game/WonderChess.uproject\"",
+        "-game",
+        "-windowed",
+        "-ResX=1280",
+        "-ResY=720",
+        "-ForceRes",
+        "-dx11",
+        "-nop4",
+        "-nosplash",
+        "-WCEvidenceDir=\"C:/Users/iputu/Documents/Wonder Chess/reports/WC-U430/20260906T162849Z/network-recovery-fixed/host\"",
+        "-abslog=\"C:/Users/iputu/Documents/Wonder Chess/reports/WC-U430/20260906T162849Z/network-recovery-fixed/host/editor.log\"",
+        "-WCHost",
+        "-Port=17986",
+        "-WCExitAfter=150"
+      ],
+      "started_utc": "2026-09-06T16:28:51.2394251Z",
+      "module_sha256": "ba80baef013c7b3580af0ae1b5b78f93388da0e68886e5c9b7e77a8b13c384d2",
+      "exit_code": 0,
+      "observed_finished_utc": "2026-09-06T16:31:46.2320483Z"
+    },
+    {
+      "role": "client",
+      "pid": 63932,
+      "arguments": [
+        "\"C:/Users/iputu/Documents/Wonder Chess/game/WonderChess.uproject\"",
+        "-game",
+        "-windowed",
+        "-ResX=1280",
+        "-ResY=720",
+        "-ForceRes",
+        "-dx11",
+        "-nop4",
+        "-nosplash",
+        "-WCEvidenceDir=\"C:/Users/iputu/Documents/Wonder Chess/reports/WC-U430/20260906T162849Z/network-recovery-fixed/client\"",
+        "-abslog=\"C:/Users/iputu/Documents/Wonder Chess/reports/WC-U430/20260906T162849Z/network-recovery-fixed/client/editor.log\"",
+        "-WCJoin=127.0.0.1:17987",
+        "-WCFrontEndRecoveryAudit",
+        "-WCRecoveryTarget=127.0.0.1:17986",
+        "-WCExitAfter=130"
+      ],
+      "started_utc": "2026-09-06T16:29:18.7004389Z",
+      "module_sha256": "ba80baef013c7b3580af0ae1b5b78f93388da0e68886e5c9b7e77a8b13c384d2",
+      "exit_code": 0,
+      "observed_finished_utc": "2026-09-06T16:31:46.2383140Z"
+    }
+  ],
+  "listener": {
+    "port": 17986,
+    "address": "0.0.0.0",
+    "observed_utc": "2026-09-06T16:29:18.6498757Z",
+    "pid": 54416
+  },
+  "finished_utc": "2026-09-06T16:31:46.2523538Z",
+  "module_after_sha256": "ba80baef013c7b3580af0ae1b5b78f93388da0e68886e5c9b7e77a8b13c384d2"
+}

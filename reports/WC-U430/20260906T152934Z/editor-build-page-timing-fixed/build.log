@@ -1,0 +1,38 @@
+Using bundled DotNet SDK version: 8.0.412 win-x64
+Running UnrealBuildTool: dotnet "..\..\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" WonderChessEditor Win64 Development "C:\Users\iputu\Documents\Wonder Chess/game/WonderChess.uproject" -WaitMutex -NoHotReloadFromIDE
+Log file: C:\Users\iputu\AppData\Local\UnrealBuildTool\Log.txt
+Using 'git status' to determine working set for adaptive non-unity build (C:\Users\iputu\Documents\Wonder Chess).
+Building WonderChessEditor...
+Using Visual Studio 2022 14.44.35226 toolchain (C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[Adaptive Build] Excluded from WonderChessRuntime unity file: WCFrontEnd.cpp, WCFrontEndAudit.cpp, WCVerification.cpp
+Determining max actions to execute in parallel (8 physical cores, 16 logical cores)
+  Executing up to 8 processes, one per physical core
+  Requested 1.5 GB memory per action, 2.43 GB available: limiting max parallel actions to 1
+Using Unreal Build Accelerator local executor to run 4 action(s)
+  Storage capacity 40Gb
+---- Starting trace: 260906_232937 ----
+UbaServer - Listening on 0.0.0.0:1345
+[1/4] Compile [x64] WCVerification.cpp
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1061,19): error C2248: 'AWCMatchHUD::FrontEnd': cannot access private member declared in class 'AWCMatchHUD'
+        HUD && HUD->FrontEnd ? HUD->FrontEnd->PageName() : TEXT("closed"));
+                  ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Public\WCMatchRuntime.h(143,27): note: see declaration of 'AWCMatchHUD::FrontEnd'
+  TSharedPtr<FWCFrontEnd> FrontEnd;
+                          ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Public\WCMatchRuntime.h(130,30): note: see declaration of 'AWCMatchHUD'
+class WONDERCHESSRUNTIME_API AWCMatchHUD : public AHUD {
+                             ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1061,35): error C2248: 'AWCMatchHUD::FrontEnd': cannot access private member declared in class 'AWCMatchHUD'
+        HUD && HUD->FrontEnd ? HUD->FrontEnd->PageName() : TEXT("closed"));
+                                  ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Public\WCMatchRuntime.h(143,27): note: see declaration of 'AWCMatchHUD::FrontEnd'
+  TSharedPtr<FWCFrontEnd> FrontEnd;
+                          ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Public\WCMatchRuntime.h(130,30): note: see declaration of 'AWCMatchHUD'
+class WONDERCHESSRUNTIME_API AWCMatchHUD : public AHUD {
+                             ^
+Trace written to file C:/Users/iputu/AppData/Local/UnrealBuildTool/Log.uba with size 4.0kb
+Total time in Unreal Build Accelerator local executor: 2.99 seconds
+
+Result: Failed (OtherCompilationError)
+Total execution time: 5.47 seconds

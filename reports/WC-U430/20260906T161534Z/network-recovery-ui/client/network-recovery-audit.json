@@ -1,0 +1,53 @@
+{
+	"status": "PASS",
+	"started_utc": "2026-09-06T16:16:37.623Z",
+	"method": "Opt-in actual native HUD/Slate controls, real server command authority or Unreal network failure callback. Software-driven fixture; no physical human play or two-machine LAN claim.",
+	"content_digest": "a0fc03fd31260f245a795233aa00d3959e7f80be37dcc7affe3500d4346fc101",
+	"checks": [
+		{
+			"name": "Real network failure is visible in native Mode",
+			"pass": true,
+			"detail": "Could not reach the LAN host. Check the address and that the host is ready, then try again. | ConnectionTimeout: UNetConnection::Tick: Connection TIMED OUT. Closing connection.. Elapsed: 20.01, Real: 20.01, Good: 20.01, DriverTime: 20.05, Threshold: 20.00, [UNetConnection] RemoteAddr: 127.0.0.1:17987, Name: IpConnection_0, Driver: Name:PendingNetDriver Def:GameNetDriver IpNetDriver_0, IsServer: NO, PC: NULL, Owner: NULL, UniqueId: INVALID"
+		},
+		{
+			"name": "Join retry is enabled after real failure",
+			"pass": true,
+			"detail": ""
+		},
+		{
+			"name": "Slate Join retries the declared endpoint",
+			"pass": true,
+			"detail": ""
+		},
+		{
+			"name": "Retry connected to a real two-controller host",
+			"pass": true,
+			"detail": "assigned_seat=1 protocol=5 digest=a0fc03fd31260f245a795233aa00d3959e7f80be37dcc7affe3500d4346fc101"
+		},
+		{
+			"name": "Retry catalog and protocol agree",
+			"pass": true,
+			"detail": ""
+		},
+		{
+			"name": "Slate leaves the actual LAN lobby",
+			"pass": true,
+			"detail": ""
+		},
+		{
+			"name": "Return to local title has no running tournament",
+			"pass": true,
+			"detail": ""
+		}
+	],
+	"screenshots": [
+		"C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U430\\20260906T161534Z\\network-recovery-ui\\client/network-recovery-audit-failed-connection.png",
+		"C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U430\\20260906T161534Z\\network-recovery-ui\\client/network-recovery-audit-connected-lobby.png",
+		"C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U430\\20260906T161534Z\\network-recovery-ui\\client/network-recovery-audit-returned-title.png"
+	],
+	"failed_endpoint": "127.0.0.1:17987",
+	"retry_endpoint": "127.0.0.1:17986",
+	"failed_checks_or_captures": 0,
+	"ended_utc": "2026-09-06T16:16:43.001Z",
+	"elapsed_seconds": 5.378243800252676
+}

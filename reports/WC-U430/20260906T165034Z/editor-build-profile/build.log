@@ -1,0 +1,31 @@
+Using bundled DotNet SDK version: 8.0.412 win-x64
+Running UnrealBuildTool: dotnet "..\..\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" WonderChessEditor Win64 Development "C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject" -WaitMutex -NoHotReloadFromIDE
+Log file: C:\Users\iputu\AppData\Local\UnrealBuildTool\Log.txt
+Using 'git status' to determine working set for adaptive non-unity build (C:\Users\iputu\Documents\Wonder Chess).
+Invalidating makefile for WonderChessEditor (source file added)
+UHT compiled-in object format Default
+Building WonderChessEditor...
+Using Visual Studio 2022 14.44.35226 toolchain (C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[Adaptive Build] Excluded from WonderChessRuntime unity file: WCAnimationReview.cpp, WCDefinitionRegistry.cpp, WCFrontEnd.cpp, WCFrontEndAudit.cpp, WCFrontEndProfile.cpp, WCMatchHUD.cpp, WCMatchRuntime.cpp, WCNetworkSession.cpp, WCVerification.cpp, WonderSimulation.cpp, WonderTournament.cpp
+Determining max actions to execute in parallel (8 physical cores, 16 logical cores)
+  Executing up to 8 processes, one per physical core
+  Requested 1.5 GB memory per action, 1.82 GB available: limiting max parallel actions to 1
+Using Unreal Build Accelerator local executor to run 9 action(s)
+  Storage capacity 40Gb
+---- Starting trace: 260907_005048 ----
+UbaServer - Listening on 0.0.0.0:1345
+[1/9] Compile [x64] WCFrontEnd.cpp
+[2/9] Compile [x64] WCFrontEndAudit.cpp
+[3/9] Compile [x64] WCFrontEndProfile.cpp
+[4/9] Compile [x64] WCMatchHUD.cpp
+[5/9] Compile [x64] WCMatchRuntime.cpp
+[6/9] Compile [x64] WCVerification.cpp
+[7/9] Link [x64] UnrealEditor-WonderChessRuntime.dll
+[8/9] Link [x64] UnrealEditor-WonderChessRuntime.lib
+[9/9] WriteMetadata WonderChessEditor.target [NoUba]
+
+Trace written to file C:/Users/iputu/AppData/Local/UnrealBuildTool/Log.uba with size 10.2kb
+Total time in Unreal Build Accelerator local executor: 66.91 seconds
+
+Result: Succeeded
+Total execution time: 80.60 seconds

@@ -1,0 +1,49 @@
+Using bundled DotNet SDK version: 8.0.412 win-x64
+Running UnrealBuildTool: dotnet "..\..\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" WonderChessEditor Win64 Development "C:/Users/iputu/Documents/Wonder Chess/game/WonderChess.uproject" -WaitMutex -NoHotReloadFromIDE
+Log file: C:\Users\iputu\AppData\Local\UnrealBuildTool\Log.txt
+Using 'git status' to determine working set for adaptive non-unity build (C:\Users\iputu\Documents\Wonder Chess).
+Invalidating makefile for WonderChessEditor (source file added)
+UHT compiled-in object format Default
+Parsing headers for WonderChessEditor
+  Running Internal UnrealHeaderTool "C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject" "C:\Users\iputu\Documents\Wonder Chess\game\Intermediate\Build\Win64\WonderChessEditor\Development\WonderChessEditor.uhtmanifest" -WarningsAsErrors -installed
+UHT processed WonderChessEditor in 8.9732408 seconds (1 files written)
+Building WonderChessEditor...
+Using Visual Studio 2022 14.44.35226 toolchain (C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[Adaptive Build] Excluded from WonderChessRuntime unity file: WCAnimationReview.cpp, WCAttackPresentation.cpp, WCBoardPresenter.cpp, WCDefinitionRegistry.cpp, WCFrontEnd.cpp, WCFrontEndAudit.cpp, WCFrontEndProfile.cpp, WCFrontEndScene.cpp, WCMatchHUD.cpp, WCMatchRuntime.cpp, WCNetworkSession.cpp, WCVerification.cpp, WonderSimulation.cpp, WonderTournament.cpp, WCAttackWindowTests.cpp, WCImportedAssetTests.cpp
+Determining max actions to execute in parallel (8 physical cores, 16 logical cores)
+  Executing up to 8 processes, one per physical core
+  Requested 1.5 GB memory per action, 1.52 GB available: limiting max parallel actions to 1
+Using Unreal Build Accelerator local executor to run 22 action(s)
+  Storage capacity 40Gb
+---- Starting trace: 260907_011223 ----
+UbaServer - Listening on 0.0.0.0:1345
+[1/22] Compile [x64] Module.WonderChessRuntime.gen.cpp
+[2/22] Compile [x64] WCAnimationReview.cpp
+[3/22] Compile [x64] WCAttackPresentation.cpp
+[4/22] Compile [x64] WCAttackWindowTests.cpp
+[5/22] Compile [x64] WCBoardPresenter.cpp
+[6/22] Compile [x64] WCDefinitionRegistry.cpp
+[7/22] Compile [x64] WCFrontEnd.cpp
+[8/22] Compile [x64] WCFrontEndAudit.cpp
+[9/22] Compile [x64] WCFrontEndProfile.cpp
+[10/22] Compile [x64] WCFrontEndScene.cpp
+[11/22] Compile [x64] WCImportedAssetTests.cpp
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\Tests\WCImportedAssetTests.cpp(361,25): error C4456: declaration of 'Bounds' hides previous local declaration
+            const auto& Bounds = AttackSpec->GetArrayField(TEXT("frames"));
+                        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\Tests\WCImportedAssetTests.cpp(214,16): note: see declaration of 'Bounds'
+    const auto Bounds = Mesh->GetBounds();
+               ^
+[12/22] Compile [x64] WCMatchHUD.cpp
+[13/22] Compile [x64] WCMatchRuntime.cpp
+[14/22] Compile [x64] WCNetworkSession.cpp
+[15/22] Compile [x64] WCNeutralAssetTests.cpp
+[16/22] Compile [x64] WCVerification.cpp
+[17/22] Compile [x64] WonderSimulation.cpp
+[18/22] Compile [x64] WonderSimulationTests.cpp
+[19/22] Compile [x64] WonderTournament.cpp
+Trace written to file C:/Users/iputu/AppData/Local/UnrealBuildTool/Log.uba with size 17.8kb
+Total time in Unreal Build Accelerator local executor: 117.84 seconds
+
+Result: Failed (OtherCompilationError)
+Total execution time: 139.65 seconds

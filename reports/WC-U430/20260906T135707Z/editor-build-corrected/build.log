@@ -1,0 +1,27 @@
+Using bundled DotNet SDK version: 8.0.412 win-x64
+Running UnrealBuildTool: dotnet "..\..\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" WonderChessEditor Win64 Development "C:/Users/iputu/Documents/Wonder Chess/game/WonderChess.uproject" -WaitMutex -NoHotReloadFromIDE
+Log file: C:\Users\iputu\AppData\Local\UnrealBuildTool\Log.txt
+Using 'git status' to determine working set for adaptive non-unity build (C:\Users\iputu\Documents\Wonder Chess).
+Building WonderChessEditor...
+Using Visual Studio 2022 14.44.35226 toolchain (C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[Adaptive Build] Excluded from WonderChessRuntime unity file: WCBoardPresenter.cpp, WCDefinitionRegistry.cpp, WCFrontEnd.cpp, WCFrontEndAudit.cpp, WCFrontEndScene.cpp, WCMatchHUD.cpp, WCMatchRuntime.cpp, WCVerification.cpp, WonderSimulation.cpp, WonderSimulationTests.cpp, WonderTournament.cpp, WCImportedAssetTests.cpp, WCNeutralAssetTests.cpp
+Determining max actions to execute in parallel (8 physical cores, 16 logical cores)
+  Executing up to 8 processes, one per physical core
+  Requested 1.5 GB memory per action, 3.04 GB available: limiting max parallel actions to 2
+Using Unreal Build Accelerator local executor to run 7 action(s)
+  Storage capacity 40Gb
+---- Starting trace: 260906_215710 ----
+UbaServer - Listening on 0.0.0.0:1345
+[1/7] Compile [x64] WCMatchRuntime.cpp
+[2/7] Compile [x64] WCBoardPresenter.cpp
+[3/7] Compile [x64] WCNeutralAssetTests.cpp
+[4/7] Compile [x64] WCVerification.cpp
+[5/7] Link [x64] UnrealEditor-WonderChessRuntime.lib
+[6/7] Link [x64] UnrealEditor-WonderChessRuntime.dll
+[7/7] WriteMetadata WonderChessEditor.target [NoUba]
+
+Trace written to file C:/Users/iputu/AppData/Local/UnrealBuildTool/Log.uba with size 6.5kb
+Total time in Unreal Build Accelerator local executor: 28.34 seconds
+
+Result: Succeeded
+Total execution time: 30.92 seconds

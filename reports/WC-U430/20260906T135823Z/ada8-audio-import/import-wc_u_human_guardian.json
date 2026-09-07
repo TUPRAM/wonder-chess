@@ -1,0 +1,573 @@
+{
+  "engine": "5.7.4-51494982+++UE5+Release-5.7",
+  "heroes": [
+    {
+      "id": "wc_u_human_guardian",
+      "mesh": "/Game/WonderChess/Heroes/wc_u_human_guardian/SK_wc_u_human_guardian.SK_wc_u_human_guardian",
+      "skeleton": "/Game/WonderChess/Heroes/wc_u_human_guardian/SK_wc_u_human_guardian_Skeleton.SK_wc_u_human_guardian_Skeleton",
+      "prior_skeleton_existed": true,
+      "prior_skeleton_identity_preserved": true,
+      "skeleton_saved": true,
+      "reference_pose_refresh_requested": true,
+      "cold_reload_validation": "PENDING_SEPARATE_PROCESS",
+      "bounds_extent_cm": [
+        34.06838798522949,
+        79.4430046081543,
+        90.54499846696854
+      ],
+      "clips": [
+        {
+          "name": "Idle",
+          "path": "/Game/WonderChess/Heroes/wc_u_human_guardian/AN_wc_u_human_guardian_Idle.AN_wc_u_human_guardian_Idle",
+          "length": 2.0
+        },
+        {
+          "name": "Move",
+          "path": "/Game/WonderChess/Heroes/wc_u_human_guardian/AN_wc_u_human_guardian_Move.AN_wc_u_human_guardian_Move",
+          "length": 1.0
+        },
+        {
+          "name": "Attack",
+          "path": "/Game/WonderChess/Heroes/wc_u_human_guardian/AN_wc_u_human_guardian_Attack.AN_wc_u_human_guardian_Attack",
+          "length": 0.6499999761581421
+        },
+        {
+          "name": "Active",
+          "path": "/Game/WonderChess/Heroes/wc_u_human_guardian/AN_wc_u_human_guardian_Active.AN_wc_u_human_guardian_Active",
+          "length": 0.6000000238418579
+        },
+        {
+          "name": "Hit",
+          "path": "/Game/WonderChess/Heroes/wc_u_human_guardian/AN_wc_u_human_guardian_Hit.AN_wc_u_human_guardian_Hit",
+          "length": 0.4000000059604645
+        },
+        {
+          "name": "Defeat",
+          "path": "/Game/WonderChess/Heroes/wc_u_human_guardian/AN_wc_u_human_guardian_Defeat.AN_wc_u_human_guardian_Defeat",
+          "length": 1.0
+        },
+        {
+          "name": "Victory",
+          "path": "/Game/WonderChess/Heroes/wc_u_human_guardian/AN_wc_u_human_guardian_Victory.AN_wc_u_human_guardian_Victory",
+          "length": 1.5
+        }
+      ],
+      "lods": [
+        1,
+        2
+      ],
+      "status": "IMPORTED_NOT_VISUALLY_ACCEPTED",
+      "source_revision": 8,
+      "source_sha256": "70f97a1d00555cbee1c8bb42b7e6797936e02d1e6167ec16163e94744aeaa2a6",
+      "export_manifest_sha256": "b78fdaf00231280b7dd1ed0ac087f70c2519830eea74b0b7821a59737e7f5d41",
+      "units_sha256_at_export": "d824b02b11fb7607656fcc37389ff93015fa064f67175fa07e772f151179ff99",
+      "units_sha256_at_import": "ebd8f5f2fc2b889683566d1913e2c29d90ac9d041d47a231038c497e7a29865f"
+    }
+  ],
+  "audio": [
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_buy.S_WC_buy",
+      "source": "exports\\audio\\S_WC_buy.wav",
+      "source_sha256": "c63f966162835e30e21e4a6f52e2989d1f864f217844d7e3d033bfff9a7079dd",
+      "duration_seconds": 1.100000023841858,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_courtyard.S_WC_courtyard",
+      "source": "exports\\audio\\S_WC_courtyard.wav",
+      "source_sha256": "294b1507e60178c0b1a4d9a897c2f0c8d02c213cb439922ff9373ce610041a80",
+      "duration_seconds": 24.0,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_dash.S_WC_dash",
+      "source": "exports\\audio\\S_WC_dash.wav",
+      "source_sha256": "5731946d27b2248a3524d0b2ead44f399c0810fd47308d398e1068f7a444ea19",
+      "duration_seconds": 0.4000000059604645,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_defeat.S_WC_defeat",
+      "source": "exports\\audio\\S_WC_defeat.wav",
+      "source_sha256": "1da79c8acfddc2c9f36e005ae09cb0241c0a1204771435c338f79992c6ca9c72",
+      "duration_seconds": 1.7999999523162842,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_draw.S_WC_draw",
+      "source": "exports\\audio\\S_WC_draw.wav",
+      "source_sha256": "eb4307ee52075ce91ae651bda8f107af64ea082e29c4106d1e5a0426168a3579",
+      "duration_seconds": 1.100000023841858,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_heal.S_WC_heal",
+      "source": "exports\\audio\\S_WC_heal.wav",
+      "source_sha256": "2b94c7b5e8ce6ca789f2ff94206f3fff5cf267a3a861296f23e74906991f8cc4",
+      "duration_seconds": 1.100000023841858,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_health_loss.S_WC_health_loss",
+      "source": "exports\\audio\\S_WC_health_loss.wav",
+      "source_sha256": "99c60f86e089c5e9877d211fe6b9b0612e8cb39deccad8e2f9f781b2d6b46dda",
+      "duration_seconds": 1.100000023841858,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_magic_impact.S_WC_magic_impact",
+      "source": "exports\\audio\\S_WC_magic_impact.wav",
+      "source_sha256": "720e7b4729d93460291f569c9133cb638461e16ab5cf8b6cbcdf4fbf65329836",
+      "duration_seconds": 0.6499773263931274,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_melee.S_WC_melee",
+      "source": "exports\\audio\\S_WC_melee.wav",
+      "source_sha256": "42b90f1b65a041d22e046ffb9e5690a27ca86d25f66fa731ad5821d25c0ae564",
+      "duration_seconds": 0.24997732043266296,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_merge.S_WC_merge",
+      "source": "exports\\audio\\S_WC_merge.wav",
+      "source_sha256": "d40f0db895a9d12b3a38dd6cea05d277bc259c5323486b9b3fb8a644a2e16904",
+      "duration_seconds": 1.7999999523162842,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_movement.S_WC_movement",
+      "source": "exports\\audio\\S_WC_movement.wav",
+      "source_sha256": "78be041b3545d2e49d87da7eee4b791910066a9aee2aa1aef27753ddeed819ed",
+      "duration_seconds": 0.12997733056545258,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_phase.S_WC_phase",
+      "source": "exports\\audio\\S_WC_phase.wav",
+      "source_sha256": "7b387cbeb861fea3b40863bb97550dc7a7565a05a1b264f7da2d9d1790111c2b",
+      "duration_seconds": 1.100000023841858,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_ranged_impact.S_WC_ranged_impact",
+      "source": "exports\\audio\\S_WC_ranged_impact.wav",
+      "source_sha256": "4e7d22905c6f3925f02869ce0aaa7ab2e4e51c88984586909aa855ac558458b9",
+      "duration_seconds": 0.18000000715255737,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_ranged_launch.S_WC_ranged_launch",
+      "source": "exports\\audio\\S_WC_ranged_launch.wav",
+      "source_sha256": "31d0fe0c521cc8d09bc1d937bbc450dcd7fd8c5d57add9a716c5f3fed2280f66",
+      "duration_seconds": 0.23999999463558197,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_ready.S_WC_ready",
+      "source": "exports\\audio\\S_WC_ready.wav",
+      "source_sha256": "db22ba79933b58f81546b49de351d3ae4436b4a2c5de78095ecdba1567acad69",
+      "duration_seconds": 1.100000023841858,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_reroll.S_WC_reroll",
+      "source": "exports\\audio\\S_WC_reroll.wav",
+      "source_sha256": "b6079cdb6fb09848a2593968503299d267008ef70c433cfe0f343c8a86f2e793",
+      "duration_seconds": 1.100000023841858,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_sell.S_WC_sell",
+      "source": "exports\\audio\\S_WC_sell.wav",
+      "source_sha256": "dfe3e40d4cca53a4dc58ed12b73bd33e0ac8c9b208423d33da41a0d35230b739",
+      "duration_seconds": 1.100000023841858,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_shield.S_WC_shield",
+      "source": "exports\\audio\\S_WC_shield.wav",
+      "source_sha256": "ba345b62e847e555cc4642dc7dc40101b405a9c77451c34fd2f47474d355ca4e",
+      "duration_seconds": 1.100000023841858,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_stun.S_WC_stun",
+      "source": "exports\\audio\\S_WC_stun.wav",
+      "source_sha256": "f550c74c3bab758b5fa2b963fda09945085a9923478142bd2e5db9ab77b68af0",
+      "duration_seconds": 1.100000023841858,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_victory.S_WC_victory",
+      "source": "exports\\audio\\S_WC_victory.wav",
+      "source_sha256": "6a18e3b307a3bf8fba16123c8e0767137abd8a068d90ef4e6fe74336dcbbce6b",
+      "duration_seconds": 1.7999999523162842,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_n_prowler_active.S_WC_wc_n_prowler_active",
+      "source": "exports\\audio\\S_WC_wc_n_prowler_active.wav",
+      "source_sha256": "77fb83b6aeeb10db85869afe9e7c241da8c9152b7d8727f039c8e9031ed2dff6",
+      "duration_seconds": 0.3400000035762787,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_n_prowler_basic.S_WC_wc_n_prowler_basic",
+      "source": "exports\\audio\\S_WC_wc_n_prowler_basic.wav",
+      "source_sha256": "e758c9bad5f3ac6d22d8a72f4a30732ef22967d3f8b275025cb67da60032a915",
+      "duration_seconds": 0.24997732043266296,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_n_sentinel_active.S_WC_wc_n_sentinel_active",
+      "source": "exports\\audio\\S_WC_wc_n_sentinel_active.wav",
+      "source_sha256": "8ba4afb5d0622d8ab78ea20e421f1877da45473ceb2358a5f990be4707d51574",
+      "duration_seconds": 0.8600000143051147,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_n_sentinel_basic.S_WC_wc_n_sentinel_basic",
+      "source": "exports\\audio\\S_WC_wc_n_sentinel_basic.wav",
+      "source_sha256": "18eaa64129c5c16b6e2c1475d8ff425f0d0c552793657f3d54dc5e32920f9540",
+      "duration_seconds": 0.24997732043266296,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_n_sprout_basic.S_WC_wc_n_sprout_basic",
+      "source": "exports\\audio\\S_WC_wc_n_sprout_basic.wav",
+      "source_sha256": "6d3d3ded56e923c6b40bb0ae613fdf91df75f4f40c72e5a4eba4f4bec3e20cd3",
+      "duration_seconds": 0.24997732043266296,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_n_stoneback_active.S_WC_wc_n_stoneback_active",
+      "source": "exports\\audio\\S_WC_wc_n_stoneback_active.wav",
+      "source_sha256": "433b6e109e7465677f6d31a9069290f69ac0f469cf47e510398b2fe6aebba922",
+      "duration_seconds": 0.699999988079071,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_n_stoneback_basic.S_WC_wc_n_stoneback_basic",
+      "source": "exports\\audio\\S_WC_wc_n_stoneback_basic.wav",
+      "source_sha256": "ce103391ef9c990fe8c7b46b972ee00557c992a9b79dc30c77273c6cecee6022",
+      "duration_seconds": 0.24997732043266296,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_n_thorn_basic.S_WC_wc_n_thorn_basic",
+      "source": "exports\\audio\\S_WC_wc_n_thorn_basic.wav",
+      "source_sha256": "4de2ee249783c4adadb7cd4553c864d43b1453e43d68f218397b36d6fb047064",
+      "duration_seconds": 0.24997732043266296,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_n_warden_active.S_WC_wc_n_warden_active",
+      "source": "exports\\audio\\S_WC_wc_n_warden_active.wav",
+      "source_sha256": "63409d18e94c01b7597053742602dea4f3f252ef3d5fa6a2d6206e39729a3bb6",
+      "duration_seconds": 0.8799999952316284,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_n_warden_basic.S_WC_wc_n_warden_basic",
+      "source": "exports\\audio\\S_WC_wc_n_warden_basic.wav",
+      "source_sha256": "06822e3c9339045c3bc2b3d3d5d6102dba6c6ae958fc7401817711d4b19d4c3d",
+      "duration_seconds": 0.24997732043266296,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_n_wisp_active.S_WC_wc_n_wisp_active",
+      "source": "exports\\audio\\S_WC_wc_n_wisp_active.wav",
+      "source_sha256": "8b200d00a670c7c4cd97c313495a13446d0fc710e95ef2bc16cf4f81a707f7fd",
+      "duration_seconds": 0.5799999833106995,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_n_wisp_basic.S_WC_wc_n_wisp_basic",
+      "source": "exports\\audio\\S_WC_wc_n_wisp_basic.wav",
+      "source_sha256": "0822d263acb79716b718773919feeb46a47617d31e17b0fad2eac90e72f4b69b",
+      "duration_seconds": 0.24997732043266296,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_u_dragonkin_guardian_active.S_WC_wc_u_dragonkin_guardian_active",
+      "source": "exports\\audio\\S_WC_wc_u_dragonkin_guardian_active.wav",
+      "source_sha256": "7abb3a83387175719a906441aa01ad2fe823c9f16706f209ab67925bca560ba4",
+      "duration_seconds": 1.0199999809265137,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_u_dragonkin_priest_active.S_WC_wc_u_dragonkin_priest_active",
+      "source": "exports\\audio\\S_WC_wc_u_dragonkin_priest_active.wav",
+      "source_sha256": "1036bdd978c306c8b98e837009a2c0662c5c1b8ec5117feeef6ff79300031c05",
+      "duration_seconds": 0.9800000190734863,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_u_dragonkin_ranger_active.S_WC_wc_u_dragonkin_ranger_active",
+      "source": "exports\\audio\\S_WC_wc_u_dragonkin_ranger_active.wav",
+      "source_sha256": "8aff808abf800cfedf12c324f7e666b72b4324b5274e2748962a433b5912e0da",
+      "duration_seconds": 0.5799999833106995,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_u_dragonkin_rogue_active.S_WC_wc_u_dragonkin_rogue_active",
+      "source": "exports\\audio\\S_WC_wc_u_dragonkin_rogue_active.wav",
+      "source_sha256": "f4e37da2e52732dab4762703a2be22dab5e0b0b0fe539682d832ba59f9d8b0ee",
+      "duration_seconds": 0.4099773168563843,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_u_dwarf_guardian_active.S_WC_wc_u_dwarf_guardian_active",
+      "source": "exports\\audio\\S_WC_wc_u_dwarf_guardian_active.wav",
+      "source_sha256": "b0ba75a03ea20d71d27cd5287680486b8120b6895e9bb7ac111033b050dfbede",
+      "duration_seconds": 0.699999988079071,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_u_dwarf_priest_active.S_WC_wc_u_dwarf_priest_active",
+      "source": "exports\\audio\\S_WC_wc_u_dwarf_priest_active.wav",
+      "source_sha256": "410078153a57882b60253f57971e685cb422b7e111f65e5faae6d05c89aa44cd",
+      "duration_seconds": 0.929977297782898,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_u_dwarf_ranger_active.S_WC_wc_u_dwarf_ranger_active",
+      "source": "exports\\audio\\S_WC_wc_u_dwarf_ranger_active.wav",
+      "source_sha256": "026285cefe6376c6bc6be884f6fc6b126dadca90825941e9037de6bae54107f5",
+      "duration_seconds": 0.47002267837524414,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_u_dwarf_warrior_active.S_WC_wc_u_dwarf_warrior_active",
+      "source": "exports\\audio\\S_WC_wc_u_dwarf_warrior_active.wav",
+      "source_sha256": "3245658f75f37be1a59e61bbe01cda3099804abb07f59fb128719c8f25f11a74",
+      "duration_seconds": 0.6600000262260437,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_u_elf_mage_active.S_WC_wc_u_elf_mage_active",
+      "source": "exports\\audio\\S_WC_wc_u_elf_mage_active.wav",
+      "source_sha256": "4a509adcaef76404a5b5eae6dde18ef3d6ff424dbfd341f3b4725929499fb769",
+      "duration_seconds": 0.800000011920929,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_u_elf_priest_active.S_WC_wc_u_elf_priest_active",
+      "source": "exports\\audio\\S_WC_wc_u_elf_priest_active.wav",
+      "source_sha256": "e4130820159e60fccadb66d0a17310a72f3042be991ac9849c2960e20df2e134",
+      "duration_seconds": 1.1200000047683716,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_u_elf_ranger_active.S_WC_wc_u_elf_ranger_active",
+      "source": "exports\\audio\\S_WC_wc_u_elf_ranger_active.wav",
+      "source_sha256": "5eae737ecf8b495fb206dda217096d05956add05953a05dbc599de0ffbe18b58",
+      "duration_seconds": 0.4399999976158142,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_u_elf_rogue_active.S_WC_wc_u_elf_rogue_active",
+      "source": "exports\\audio\\S_WC_wc_u_elf_rogue_active.wav",
+      "source_sha256": "e826b2a1b621ddf631c399976f5effdf268ecee39f52ca9c6f4540e8e8083bb0",
+      "duration_seconds": 0.5600000023841858,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_u_halfling_mage_active.S_WC_wc_u_halfling_mage_active",
+      "source": "exports\\audio\\S_WC_wc_u_halfling_mage_active.wav",
+      "source_sha256": "faa5e574a1b974a7c499592304a80c1cef1810a9b27bb3a2ad5595c6bbfec4df",
+      "duration_seconds": 0.5299773216247559,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_u_halfling_ranger_active.S_WC_wc_u_halfling_ranger_active",
+      "source": "exports\\audio\\S_WC_wc_u_halfling_ranger_active.wav",
+      "source_sha256": "16cdb2908ce6a2c6db917fc5b508dc868de87e96ceda7778917a0fe8eb506623",
+      "duration_seconds": 0.6499773263931274,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_u_halfling_rogue_active.S_WC_wc_u_halfling_rogue_active",
+      "source": "exports\\audio\\S_WC_wc_u_halfling_rogue_active.wav",
+      "source_sha256": "9bbe7bab06188bbdf94147ddfdd1accf8c955b814c952ba13e133b8bdc5cde62",
+      "duration_seconds": 0.4300226867198944,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_u_halfling_warrior_active.S_WC_wc_u_halfling_warrior_active",
+      "source": "exports\\audio\\S_WC_wc_u_halfling_warrior_active.wav",
+      "source_sha256": "34ad065cdcd408326bc583ae64bdf44f665b617089fc835f3fa488fcbeec70ff",
+      "duration_seconds": 0.5900226831436157,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_u_human_guardian_active.S_WC_wc_u_human_guardian_active",
+      "source": "exports\\audio\\S_WC_wc_u_human_guardian_active.wav",
+      "source_sha256": "01ff20eb017a8ed10ff343bdb4a7b8d07abe8f7c5edad2f913b2ae04c2f2f790",
+      "duration_seconds": 0.8399999737739563,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_u_human_mage_active.S_WC_wc_u_human_mage_active",
+      "source": "exports\\audio\\S_WC_wc_u_human_mage_active.wav",
+      "source_sha256": "65198d86dd4b769bb18042fe44b1e4489eaa36f8b5d7c5ad2984383d8da71ad8",
+      "duration_seconds": 0.7200000286102295,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_u_human_priest_active.S_WC_wc_u_human_priest_active",
+      "source": "exports\\audio\\S_WC_wc_u_human_priest_active.wav",
+      "source_sha256": "72a883590bbd527a4720e9624e752a66bb0d1b8a121bb62e1fd3625dcd95a5cb",
+      "duration_seconds": 1.0399999618530273,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_u_human_warrior_active.S_WC_wc_u_human_warrior_active",
+      "source": "exports\\audio\\S_WC_wc_u_human_warrior_active.wav",
+      "source_sha256": "98a467794567f33be3397e59f21a95cc71e2f9c53359ea3acb27f2e160f494b7",
+      "duration_seconds": 0.47999998927116394,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_u_orc_guardian_active.S_WC_wc_u_orc_guardian_active",
+      "source": "exports\\audio\\S_WC_wc_u_orc_guardian_active.wav",
+      "source_sha256": "7ef001c81edd53e836a41352b9dbac181386671e61a4aefeccd4f9e5f2573711",
+      "duration_seconds": 0.8499773144721985,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_u_orc_mage_active.S_WC_wc_u_orc_mage_active",
+      "source": "exports\\audio\\S_WC_wc_u_orc_mage_active.wav",
+      "source_sha256": "4b7171f3d19dd35fea5f717fab786fc3e62dd643f9039bb6f59beea761c3eb7a",
+      "duration_seconds": 1.100000023841858,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_u_orc_rogue_active.S_WC_wc_u_orc_rogue_active",
+      "source": "exports\\audio\\S_WC_wc_u_orc_rogue_active.wav",
+      "source_sha256": "fb6ce8f1292b545740087637225feb9c8401e992df6522d77b34041da85028b8",
+      "duration_seconds": 0.36000001430511475,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    },
+    {
+      "path": "/Game/WonderChess/Audio/S_WC_wc_u_orc_warrior_active.S_WC_wc_u_orc_warrior_active",
+      "source": "exports\\audio\\S_WC_wc_u_orc_warrior_active.wav",
+      "source_sha256": "b898f30014ad6e236b8438d670d250d7b1fdb53a201e16e15253eb505833149e",
+      "duration_seconds": 0.699999988079071,
+      "channels": 1,
+      "compression": "PCM",
+      "listening_review": "NOT_RUN"
+    }
+  ]
+}
