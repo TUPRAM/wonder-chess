@@ -1,0 +1,160 @@
+{
+  "status": "authored_exported_rendered_candidate_not_engine_accepted",
+  "unit_id": "wc_u_dwarf_priest",
+  "name": "Orla Hearthglow",
+  "blender_version": "5.1.1",
+  "source_revision": 1,
+  "geometry_source_revision": 1,
+  "animation_revision": 1,
+  "height_m": 1.3,
+  "source_sha256": "6e5987b48540e292f98ce9f263347f0c2b76910111b0beab26de192f4a8c94fd",
+  "author_script_sha256": "d25cff5dc5069677358f92f47bf3efdb595bc9f26e6a0e0e8a0688fc175ea974",
+  "units_source_sha256": "fd6d831113261dd984f3d2430236c06eda4a9f4e7f9e30a404a76f418fa953b0",
+  "rig_family": "humanoid_stocky",
+  "rig_revision": "WC_family_v1",
+  "bones": 27,
+  "triangles": 7006,
+  "materials": 1,
+  "fps": 60,
+  "source_forward": "+Y",
+  "source_up": "+Z",
+  "unit_scale_m": 1,
+  "fbx_profile": "tools/blender/profiles/fbx_skeletal_cm_v1.json",
+  "normalized_export_revision": 1,
+  "normalized_exporter_sha256": "13646d355744f5293d573816e5cd54459cf88f3b647c6c2a22aa61ae29200779",
+  "exported_coordinate_units": "centimeters in temporary independent copies; source meters",
+  "engine_calibration": [
+    "reports/WC-330/import-probe/forward_cm-results.json",
+    "reports/WC-330/import-probe/all7-comparison.json"
+  ],
+  "textures": {
+    "BaseColor": "sRGB",
+    "Normal": "linear tangent +Y flat normal with modeled bevels",
+    "ORM": "linear R occlusion G roughness B metallic"
+  },
+  "equipment": "weighted within skeletal mesh; visual only",
+  "clips": {
+    "Idle": {
+      "action": "AN_wc_u_dwarf_priest_Idle",
+      "frames": [
+        1,
+        121
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 121,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Move": {
+      "action": "AN_wc_u_dwarf_priest_Move",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 61,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Attack": {
+      "action": "AN_wc_u_dwarf_priest_Attack",
+      "frames": [
+        1,
+        43
+      ],
+      "release_frame": 19,
+      "support_hand_bake_samples": 43,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Active": {
+      "action": "AN_wc_u_dwarf_priest_Active",
+      "frames": [
+        1,
+        40
+      ],
+      "release_frame": 22,
+      "support_hand_bake_samples": 40,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Hit": {
+      "action": "AN_wc_u_dwarf_priest_Hit",
+      "frames": [
+        1,
+        25
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 25,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Defeat": {
+      "action": "AN_wc_u_dwarf_priest_Defeat",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 61,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Victory": {
+      "action": "AN_wc_u_dwarf_priest_Victory",
+      "frames": [
+        1,
+        91
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 91,
+      "maximum_support_reach_clamp_m": 0
+    }
+  },
+  "lods": [
+    {
+      "lod": 1,
+      "triangles": 3503,
+      "ratio_target": 0.5,
+      "visual_acceptance": "pending"
+    },
+    {
+      "lod": 2,
+      "triangles": 1750,
+      "ratio_target": 0.25,
+      "visual_acceptance": "pending"
+    }
+  ],
+  "source_brief": {
+    "silhouette": "A broad rounded coat, low lantern held at the chest and a soft arch-shaped head covering. Her gentle oval outline contrasts with Borin\u2019s rectangular armor.",
+    "face": "Warm dark skin, lively brown eyes and silver hair arranged in two thick side braids. Her smile is restrained and dependable.",
+    "costume": "Rust-red wool coat over cream cloth, a wide woven apron panel, short gloves and practical boots. The head covering is a padded travel hood, not a rigid helmet.",
+    "palette": "Rust #AC6653; oatmeal #DCCEAF; forest #586B57; warm brass #BDA061.",
+    "equipment": "A squat octagonal lantern carried on a short handle and a small folded cloth pouch. The lantern\u2019s heavy silhouette stays visible even when unlit.",
+    "signature": "Low octagonal lantern, rounded hood and broad warm-colored coat.",
+    "materials": "Thick wool, stitched canvas, dull brass and frosted-looking opaque lantern panes with emissive color. Avoid glass refraction.",
+    "back": "A broad stitched hearth emblem and two large coat folds create readable planes. The hood must not stretch unnaturally during looking down.",
+    "animation": "Idle lifts the lantern slightly as if checking a path. Basics release a small light mote. The active opens the free arm and raises the lantern, then settles into the same stance.",
+    "vfx": "A low amber ring washes over adjacent allies once; small rising squares suggest warmth. No lasting zone, regeneration or shield.",
+    "audio": "A warm bell cluster with a soft wooden resonance, distinct from Mira\u2019s higher single-target cue.",
+    "risk": "Group-heal effects can look like a persistent aura. Make the one-shot pulse clear and cap repeated target sounds."
+  },
+  "files": {
+    "AN_wc_u_dwarf_priest_Active.fbx": "a2f0c2284afde531f860b61eae819a5f72284aaacb97bcbd064f8f353129b77a",
+    "AN_wc_u_dwarf_priest_Attack.fbx": "620609d194c96c9dba9b32815b25693747b7bf2e957c94bcc17e0f49d84a53df",
+    "AN_wc_u_dwarf_priest_Defeat.fbx": "669ba3a09b6a3b7533af868a8fdb3572a420e9f40550190825dd0b49c00dd2a3",
+    "AN_wc_u_dwarf_priest_Hit.fbx": "e5a6e4f71bdcb2d7543c6c8cf730bfbfd9d7a5b904c7e8a0bf04e0eb91562cb0",
+    "AN_wc_u_dwarf_priest_Idle.fbx": "745b9bfbe6fb62f0ea70de5f50a53f0e30ad2ba4ad46f7c2f260f529b00c9e58",
+    "AN_wc_u_dwarf_priest_Move.fbx": "30d905a5a82cb0010c6ec4761cedfba32fef30098a0de283e647aec0018ae8da",
+    "AN_wc_u_dwarf_priest_Victory.fbx": "2e2fb7706ccce4c94c92f617fbce69fab2d02bb7a05cf22846b6108fe7240734",
+    "portrait.png": "d0119c9ad40a8ffa80c8afac12c573d64bae812b8cc593feedfd7836a1daff1b",
+    "SK_wc_u_dwarf_priest.fbx": "a1b08f8376923874b29259a76e08a88eda244f0892ea36224992c261f18459d8",
+    "SK_wc_u_dwarf_priest_LOD1.fbx": "f2728ccde5850c6c3e578d62d5b321fab812eb93ec9dfff1f3ce7a88b9bba962",
+    "SK_wc_u_dwarf_priest_LOD2.fbx": "13eeaa4fc29112fcf7176c62344abfaaa93f984a3a6e15e8e934606ef7cf2f05",
+    "T_wc_u_dwarf_priest_BaseColor.png": "794dbae54f3720cc46c3a195fd6742570beb0330531174ccbb832e65cd71e00a",
+    "T_wc_u_dwarf_priest_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
+    "T_wc_u_dwarf_priest_ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c"
+  },
+  "open_reviews": [
+    "Unreal import/reimport",
+    "continuous clip quality",
+    "crowded board",
+    "LOD appearance",
+    "effects and audio"
+  ],
+  "report": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T144111Z\\wc_u_dwarf_priest\\candidate-v1"
+}

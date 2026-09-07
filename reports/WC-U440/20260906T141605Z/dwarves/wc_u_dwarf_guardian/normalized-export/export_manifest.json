@@ -1,0 +1,172 @@
+{
+  "status": "update24_refined_rendered_exported_pending_Unreal_reimport_and_visual_acceptance",
+  "unit_id": "wc_u_dwarf_guardian",
+  "name": "Borin Stonebell",
+  "blender_version": "5.1.1",
+  "source_revision": 7,
+  "height_m": 1.38,
+  "source_sha256": "215d3a259dc126a06521df0fc3c3e9b7545ccc588bebaab85a67427e8d01cec4",
+  "author_script_sha256": "474d9d165ca7a0c2134197c379978f59d2af9baf475bbcd0970fd97febd0a4da",
+  "units_source_sha256": "fd6d831113261dd984f3d2430236c06eda4a9f4e7f9e30a404a76f418fa953b0",
+  "rig_family": "humanoid_stocky",
+  "rig_revision": "WC_family_v1",
+  "bones": 27,
+  "triangles": 5670,
+  "materials": 1,
+  "fps": 60,
+  "source_forward": "+Y",
+  "source_up": "+Z",
+  "unit_scale_m": 1,
+  "fbx_profile": "tools/blender/profiles/fbx_skeletal_cm_v1.json",
+  "engine_calibration": [
+    "reports/WC-330/import-probe/normalized_cm-results.json",
+    "reports/WC-330/import-probe/forward_cm-results.json",
+    "reports/WC-330/normalized-cm-copy-trial.log"
+  ],
+  "textures": {
+    "BaseColor": "sRGB",
+    "Normal": "linear, tangent +Y, flat normal surface; geometric bevels",
+    "ORM": "linear R=occlusion G=roughness B=metallic"
+  },
+  "equipment": "weighted within the skeletal mesh; socket bones also available",
+  "clips": {
+    "Idle": {
+      "action": "AN_wc_u_dwarf_guardian_Idle",
+      "frames": [
+        1,
+        121
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 41,
+      "maximum_support_reach_clamp_m": 0.010106175080342727
+    },
+    "Move": {
+      "action": "AN_wc_u_dwarf_guardian_Move",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 21,
+      "maximum_support_reach_clamp_m": 0.010106118776370077
+    },
+    "Attack": {
+      "action": "AN_wc_u_dwarf_guardian_Attack",
+      "frames": [
+        1,
+        40
+      ],
+      "release_frame": 16,
+      "support_hand_bake_samples": 40,
+      "maximum_support_reach_clamp_m": 0.016334500819968345
+    },
+    "Active": {
+      "action": "AN_wc_u_dwarf_guardian_Active",
+      "frames": [
+        1,
+        43
+      ],
+      "release_frame": 25,
+      "support_hand_bake_samples": 43,
+      "maximum_support_reach_clamp_m": 0.017176451205796472
+    },
+    "Hit": {
+      "action": "AN_wc_u_dwarf_guardian_Hit",
+      "frames": [
+        1,
+        25
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 9,
+      "maximum_support_reach_clamp_m": 0.01010606810278919
+    },
+    "Defeat": {
+      "action": "AN_wc_u_dwarf_guardian_Defeat",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 21,
+      "maximum_support_reach_clamp_m": 0.01577012179271231
+    },
+    "Victory": {
+      "action": "AN_wc_u_dwarf_guardian_Victory",
+      "frames": [
+        1,
+        91
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 31,
+      "maximum_support_reach_clamp_m": 0.010106047457995482
+    }
+  },
+  "lods": [
+    {
+      "lod": 1,
+      "triangles": 2835,
+      "ratio_target": 0.5,
+      "visual_acceptance": "pending current Unreal review"
+    },
+    {
+      "lod": 2,
+      "triangles": 1416,
+      "ratio_target": 0.25,
+      "visual_acceptance": "pending current Unreal review"
+    }
+  ],
+  "source_brief": {
+    "silhouette": "A compact rectangular torso beneath a domed helmet, with wide rounded shoulder plates and an oversized bell-headed hammer. Short legs stay separated enough to read during motion.",
+    "face": "Ruddy tan skin, large brown brows and a thick brown beard divided into two broad braids. A hinged-looking open helmet never hides the eyes.",
+    "costume": "Slate plate over a moss-green padded coat, heavy riveted boots and a wide belt with a single square buckle. Avoid dozens of small rivets; bake secondary details.",
+    "palette": "Slate #697A88; moss #6B7750; muted bronze #A58354; warm beard brown #76533A.",
+    "equipment": "A two-handed fantasy hammer shaped like a solid bell housing. Its broad rim helps the stomp animation read without an actual moving bell interior.",
+    "signature": "Domed open helmet, paired beard braids and bell-shaped hammer head.",
+    "materials": "Rough forged metal, thick wool and a few worn bronze edges. Metal highlights should be broader and less bright than Ada\u2019s polished crest.",
+    "back": "Overlapping short backplates terminate above the hips. Beard and shoulder plates need separate clearance zones during a downward cast.",
+    "animation": "Idle rocks only slightly with the heavy hammer resting low. Walk is a deliberate short stride. Basics deliver compact side impacts. The active raises one foot and stamps while the hammer settles, emphasizing the ring on the ground.",
+    "vfx": "A single amber ground ring and a clear stun marker over affected enemies. The ring has no damage component and no lingering slow.",
+    "audio": "A low, short bell knock with a firm footfall. Do not layer a long reverberation for each affected target.",
+    "risk": "Large shoulders and beard can hide the head at the gameplay angle; shorten the rear plate depth and test three Borins standing adjacent."
+  },
+  "files": {
+    "AN_wc_u_dwarf_guardian_Active.fbx": "786ec4987958d2ee1ebd40d146f85573aec476bb4649c736dfff5a8f476b9a9f",
+    "AN_wc_u_dwarf_guardian_Attack.fbx": "17bfa65dedf6e5cb23577176df7563d9cae9c852ab238cdbbd9de030bc37595f",
+    "AN_wc_u_dwarf_guardian_Defeat.fbx": "1736a77c1fffc448336a20403c0c6250897ead3a70f59350816786557c4ef877",
+    "AN_wc_u_dwarf_guardian_Hit.fbx": "3021422669b350fe7914d21d271ab6ff1590e5c91ed34f37f05d6273be3ddc19",
+    "AN_wc_u_dwarf_guardian_Idle.fbx": "7a4625771089d8f39c893451e402b2d1b828dd43b3dc8115de72fa959a5dc699",
+    "AN_wc_u_dwarf_guardian_Move.fbx": "d84a30c3f243cd05fe77110b7bf0d6ec3ee9d44aefa44bd9b34b6d8bd543cd5a",
+    "AN_wc_u_dwarf_guardian_Victory.fbx": "d5a78fe9365beb8e9d3eecd7098ed8be8e1c88bb3a0e97e61ba29be5b5688568",
+    "portrait.png": "d6b32a431e996503f8736b5f9ed1a569e94362e0d4cc8338e5dd804af6a5fba3",
+    "SK_wc_u_dwarf_guardian.fbx": "2ae23e6e562c5c6e21c631f99bff848aa4b8c3127c263b541c9f211ddd88e4ce",
+    "SK_wc_u_dwarf_guardian_LOD1.fbx": "90d4e657a67d163258b2303f904d064731d17fce4943c5764793373e48ef04ff",
+    "SK_wc_u_dwarf_guardian_LOD2.fbx": "134b7e2e3d433315325f998d2ea62ac795f4ec3b82230ec8f5e8aa6979325e1b",
+    "T_wc_u_dwarf_guardian_BaseColor.png": "4bcc833a353058195fb6a3eefdc9d7466f7e73ff3f596891043c7803c14738d1",
+    "T_wc_u_dwarf_guardian_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
+    "T_wc_u_dwarf_guardian_ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c"
+  },
+  "open_reviews": [
+    "Current Unreal source revision/reimport",
+    "Continuous in-engine seven-clip review",
+    "Crowded-board shield occlusion",
+    "LOD silhouette review",
+    "Skill release/audio alignment",
+    "Final facial and costume art acceptance"
+  ],
+  "normalized_export_revision": 1,
+  "normalized_exporter_sha256": "ac2b263a2491f2cf991065e749926b5549ddc81e73c814fb9958e424b6d23bc6",
+  "normalized_reexport_script_sha256": "c1176dfe4526f36b767e3427383e70c3e174b2d62b36ac1a9562f5d8d7ffb99b",
+  "exported_coordinate_units": "centimeters: temporary geometry, rest translation and animation location values multiplied by100; authoring source remains meters",
+  "geometry_source_revision": 7,
+  "animation_revision": 7,
+  "animation_refinement_script_sha256": "883991d592dfb18f4fd3e85b04583782ea411a21426c8921c13966d8bcd16f40",
+  "animation_pose_script_sha256": "e43d6c05800e8b6dccbcd697d7cc9664b61d73f7012cac75ef98183e709d47b9",
+  "animation_author_script_sha256": "ddaed7bb350bafb94c1743bc31c4b613524f971af01a5611835402590d8ae6f0",
+  "animation_contact_script_sha256": "c36f8064fa5ab7ff136c399c68c7b012b5987234734aca0580bede3483017c1a",
+  "animation_normalizer_sha256": "13646d355744f5293d573816e5cd54459cf88f3b647c6c2a22aa61ae29200779",
+  "animation_evidence": "reports\\WC-330\\animation-refinement\\wc_u_dwarf_guardian",
+  "update_refinement_script_sha256": "34ceb31fe2678c447205cc740f906a47d0e74941105cac74431fefb1aa159064",
+  "update_export_script_sha256": "4d9ec9f5747367743efd1f44f653f2e95f7ebdeb061aa1a62351dc774ecd82bf",
+  "update_refinement_evidence": "reports/WC-U440/20260906T141605Z/dwarves/wc_u_dwarf_guardian",
+  "animation_update_evidence": "reports/WC-U440/20260906T141605Z/dwarves/wc_u_dwarf_guardian"
+}

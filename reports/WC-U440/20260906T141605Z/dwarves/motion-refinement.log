@@ -1,0 +1,23 @@
+00:03.281  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_dwarf_guardian\wc_u_dwarf_guardian.blend"
+00:03.328  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T140743Z\dwarves\wc_u_dwarf_guardian\wc_u_dwarf_guardian-update24-revision7.blend"
+00:04.484  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_dwarf_ranger\wc_u_dwarf_ranger.blend"
+00:04.500  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T141605Z\dwarves\wc_u_dwarf_ranger\wc_u_dwarf_ranger-update24-revision7.blend"
+00:05.766  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_dwarf_warrior\wc_u_dwarf_warrior.blend"
+00:05.797  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T140743Z\dwarves\wc_u_dwarf_warrior\wc_u_dwarf_warrior-update24-revision7.blend"
+Traceback (most recent call last):
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\refine_update_dwarves.py", line 566, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\refine_update_dwarves.py", line 556, in main
+    refine_motion(units[uid], out)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\refine_update_dwarves.py", line 439, in refine_motion
+    raise RuntimeError(f'{uid} {clip}: support hand unreachable by {maximum_error:.5f}m')
+RuntimeError: wc_u_dwarf_warrior Attack: support hand unreachable by 0.03623m
+Info: Saved as "wc_u_dwarf_guardian-update24-motion7.blend"
+Info: Saved as "wc_u_dwarf_ranger-update24-motion7.blend"
+
+Error: script failed, file: 'tools/blender/refine_update_dwarves.py', exiting.
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

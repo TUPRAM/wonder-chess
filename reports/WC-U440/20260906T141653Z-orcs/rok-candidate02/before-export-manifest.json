@@ -1,0 +1,168 @@
+{
+  "status": "authored_rendered_normalized_exported_pending_current_engine_and_visual_acceptance",
+  "unit_id": "wc_u_orc_warrior",
+  "name": "Rok Sunward",
+  "blender_version": "5.1.1",
+  "source_revision": 6,
+  "height_m": 2.04,
+  "source_sha256": "8796d4453fb7f184b7c24e70b9f2a2c6bd287ec584c4c4f95d845c0961cc28aa",
+  "author_script_sha256": "474d9d165ca7a0c2134197c379978f59d2af9baf475bbcd0970fd97febd0a4da",
+  "units_source_sha256": "1a93bfb07bd93ace4d5eb740864e26c69765a5ebb9b87885c1d3d40c772cd9e8",
+  "rig_family": "humanoid_broad",
+  "rig_revision": "WC_family_v1",
+  "bones": 27,
+  "triangles": 3090,
+  "materials": 1,
+  "fps": 60,
+  "source_forward": "+Y",
+  "source_up": "+Z",
+  "unit_scale_m": 1,
+  "fbx_profile": "tools\\blender\\profiles\\fbx_skeletal_cm_v1.json",
+  "engine_calibration": [
+    "reports/WC-330/import-probe/normalized_cm-results.json",
+    "reports/WC-330/import-probe/forward_cm-results.json",
+    "reports/WC-330/normalized-cm-copy-trial.log"
+  ],
+  "textures": {
+    "BaseColor": "sRGB",
+    "Normal": "linear, tangent +Y, flat normal surface; geometric bevels",
+    "ORM": "linear R=occlusion G=roughness B=metallic"
+  },
+  "equipment": "weighted within the skeletal mesh; socket bones also available",
+  "clips": {
+    "Idle": {
+      "action": "AN_wc_u_orc_warrior_Idle",
+      "frames": [
+        1,
+        121
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Move": {
+      "action": "AN_wc_u_orc_warrior_Move",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Attack": {
+      "action": "AN_wc_u_orc_warrior_Attack",
+      "frames": [
+        1,
+        46
+      ],
+      "release_frame": 22,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Active": {
+      "action": "AN_wc_u_orc_warrior_Active",
+      "frames": [
+        1,
+        34
+      ],
+      "release_frame": 16,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Hit": {
+      "action": "AN_wc_u_orc_warrior_Hit",
+      "frames": [
+        1,
+        25
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 9,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Defeat": {
+      "action": "AN_wc_u_orc_warrior_Defeat",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 21,
+      "maximum_support_reach_clamp_m": 0.009918101858314987
+    },
+    "Victory": {
+      "action": "AN_wc_u_orc_warrior_Victory",
+      "frames": [
+        1,
+        91
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    }
+  },
+  "lods": [
+    {
+      "lod": 1,
+      "triangles": 1544,
+      "ratio_target": 0.5,
+      "visual_acceptance": "pending"
+    },
+    {
+      "lod": 2,
+      "triangles": 772,
+      "ratio_target": 0.25,
+      "visual_acceptance": "pending"
+    }
+  ],
+  "source_brief": {
+    "silhouette": "A tall broad-shouldered figure with a short circular shoulder mantle, compact fantasy axe and a visibly open stance. The weapon and torso create a diagonal, not Dagna\u2019s horizontal bar.",
+    "face": "Olive-green skin, small rounded tusks, warm amber eyes and black hair tied in a short topknot. Keep the expression determined but friendly, avoiding a permanent snarl.",
+    "costume": "Sun-ochre woven mantle over brown padded armor, a red waist sash and practical high boots. The armor uses clean geometric plates with broad woven bands.",
+    "palette": "Ochre #CAA454; red earth #A95E4D; dark leather #5E5040; muted green skin #6E8260.",
+    "equipment": "A single broad stylized axe carried one-handed, with an open off-hand for balance. Its proportions communicate fantasy rather than realistic manufacturing.",
+    "signature": "Round ochre mantle, topknot, and broad diagonal axe silhouette.",
+    "materials": "Thick cloth, oiled hide, brushed iron and a restrained sun-pattern stitch. No spikes or trophy clutter.",
+    "back": "A wide sash knot sits on one hip; the mantle is stiff enough for a short bone chain instead of simulation.",
+    "animation": "Idle squares shoulders and rolls weight between feet. Basics use alternating short attacks. The active takes a clear breath and sets a quicker rhythm with a firm foot plant, not a transformation.",
+    "vfx": "Three short amber speed marks rise from the arms and fade; the buff remains visible as a small icon, not a continuous flame layer.",
+    "audio": "Rhythmic hand-drum accent and a restrained exhale, with ordinary attack impacts at the new cadence.",
+    "risk": "Large proportions need a broad rig variant rather than scaling a human mesh uniformly. Keep hands and axe away from face during tempo changes."
+  },
+  "files": {
+    "AN_wc_u_orc_warrior_Active.fbx": "d98b6e9f6a1c98a11119025d2e46350dfd26baa3d1bdf76d1abdd66b325e2453",
+    "AN_wc_u_orc_warrior_Attack.fbx": "c65cf2825f2051f14f8a5037b01fae9d81304db332dda438c09dc91bed4d7fa4",
+    "AN_wc_u_orc_warrior_Defeat.fbx": "b1327f071de7ea7475da4003a5e5fcdaf8772b69850a63cea5f3f44eda8096dd",
+    "AN_wc_u_orc_warrior_Hit.fbx": "2268bfcfc025d2fccc20cd30322a3d493272672e0861ae5c012c347755b93781",
+    "AN_wc_u_orc_warrior_Idle.fbx": "e469fa76df8ae994f80aba01b0c0e56ca416197242a508e6e37542b6b470850a",
+    "AN_wc_u_orc_warrior_Move.fbx": "936b8b21c81de2f5625ed6c4d19ad17f5d2a79254d438dc93d6d4bd709f36f54",
+    "AN_wc_u_orc_warrior_Victory.fbx": "37f520342fbbf487265d86ce3c9e0920e47d46398b3028e805136596072953e1",
+    "portrait.png": "e0e958f0763b2a246b9c6c94dbed0ecf1a6aa1e7c50d884c3f41642424ae9188",
+    "SK_wc_u_orc_warrior.fbx": "f7a2160d4935888383fc80f1d48d2c111211190a8ddfd7a10b39d61c46e2c458",
+    "SK_wc_u_orc_warrior_LOD1.fbx": "0b1ae255f65bb90b3edbef09a7034744b4c9d357ef607ee2265df12ce486949f",
+    "SK_wc_u_orc_warrior_LOD2.fbx": "78af2fe24bd0e1337f8383d28bb5d1c8a28cc313e103629c47979ea9a9c2444d",
+    "T_wc_u_orc_warrior_BaseColor.png": "1ef9487f9dfbef26be690963133dce8e0d01fc75604b582707a75365e1bf3338",
+    "T_wc_u_orc_warrior_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
+    "T_wc_u_orc_warrior_ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c"
+  },
+  "open_reviews": [
+    "Unreal scale and facing",
+    "all continuous animation deformation",
+    "source revision reimport",
+    "crowded-board readability",
+    "LOD1/LOD2",
+    "effects and sound integration"
+  ],
+  "normalized_export_revision": 1,
+  "normalized_exporter_sha256": "ac2b263a2491f2cf991065e749926b5549ddc81e73c814fb9958e424b6d23bc6",
+  "normalized_reexport_script_sha256": "c1176dfe4526f36b767e3427383e70c3e174b2d62b36ac1a9562f5d8d7ffb99b",
+  "exported_coordinate_units": "centimeters: temporary geometry, rest translation and animation location values multiplied by100; authoring source remains meters",
+  "geometry_source_revision": 4,
+  "animation_revision": 6,
+  "animation_refinement_script_sha256": "883991d592dfb18f4fd3e85b04583782ea411a21426c8921c13966d8bcd16f40",
+  "animation_pose_script_sha256": "e43d6c05800e8b6dccbcd697d7cc9664b61d73f7012cac75ef98183e709d47b9",
+  "animation_author_script_sha256": "ddaed7bb350bafb94c1743bc31c4b613524f971af01a5611835402590d8ae6f0",
+  "animation_contact_script_sha256": "c36f8064fa5ab7ff136c399c68c7b012b5987234734aca0580bede3483017c1a",
+  "animation_normalizer_sha256": "13646d355744f5293d573816e5cd54459cf88f3b647c6c2a22aa61ae29200779",
+  "animation_evidence": "reports\\WC-330\\animation-refinement\\wc_u_orc_warrior"
+}

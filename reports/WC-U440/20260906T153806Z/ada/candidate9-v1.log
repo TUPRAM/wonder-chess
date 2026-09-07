@@ -1,0 +1,14 @@
+00:02.172  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_human_guardian\wc_u_human_guardian.blend"
+Traceback (most recent call last):
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\polish_ada_gallery.py", line 111, in <module>
+    p=argparse.ArgumentParser();p.add_argument('--report',type=Path,required=True);p.add_argument('--publish',action='store_true');a=p.parse_args(sys.argv[sys.argv.index('--')+1:]);publish(a.report.resolve()) if a.publish else candidate(a.report.resolve())
+                                                                                                                                                                                                                                   ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\polish_ada_gallery.py", line 96, in candidate
+    extra.vertex_groups.clear();group=extra.vertex_groups.new(name='hand_'+side);group.add(list(range(len(extra.data.vertices))),1,'REPLACE');extra.data.uv_layers.clear();uv=extra.data.uv_layers.new(name='UVMap')
+                                                                                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: bpy_prop_collection: attribute "clear" not found
+
+Error: script failed, file: 'tools/blender/polish_ada_gallery.py', exiting.
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

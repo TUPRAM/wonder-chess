@@ -1,0 +1,162 @@
+{
+  "status": "authored_exported_rendered_candidate_not_engine_accepted",
+  "unit_id": "wc_u_orc_guardian",
+  "name": "Tala Ironroot",
+  "blender_version": "5.1.1",
+  "source_revision": 2,
+  "geometry_source_revision": 2,
+  "animation_revision": 1,
+  "height_m": 2.0,
+  "source_sha256": "544c21fa2eb3fbb5e1eac0adcc0f68bff71d533e53c0c11f3e6a68707d01e988",
+  "author_script_sha256": "d25cff5dc5069677358f92f47bf3efdb595bc9f26e6a0e0e8a0688fc175ea974",
+  "units_source_sha256": "fd6d831113261dd984f3d2430236c06eda4a9f4e7f9e30a404a76f418fa953b0",
+  "rig_family": "humanoid_broad",
+  "rig_revision": "WC_family_v1",
+  "bones": 27,
+  "triangles": 6292,
+  "materials": 1,
+  "fps": 60,
+  "source_forward": "+Y",
+  "source_up": "+Z",
+  "unit_scale_m": 1,
+  "fbx_profile": "tools/blender/profiles/fbx_skeletal_cm_v1.json",
+  "normalized_export_revision": 1,
+  "normalized_exporter_sha256": "13646d355744f5293d573816e5cd54459cf88f3b647c6c2a22aa61ae29200779",
+  "exported_coordinate_units": "centimeters in temporary independent copies; source meters",
+  "engine_calibration": [
+    "reports/WC-330/import-probe/forward_cm-results.json",
+    "reports/WC-330/import-probe/all7-comparison.json"
+  ],
+  "textures": {
+    "BaseColor": "sRGB",
+    "Normal": "linear tangent +Y flat normal with modeled bevels",
+    "ORM": "linear R occlusion G roughness B metallic"
+  },
+  "equipment": "weighted within skeletal mesh; visual only",
+  "clips": {
+    "Idle": {
+      "action": "AN_wc_u_orc_guardian_Idle",
+      "frames": [
+        1,
+        121
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 121,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Move": {
+      "action": "AN_wc_u_orc_guardian_Move",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 61,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Attack": {
+      "action": "AN_wc_u_orc_guardian_Attack",
+      "frames": [
+        1,
+        40
+      ],
+      "release_frame": 16,
+      "support_hand_bake_samples": 40,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Active": {
+      "action": "AN_wc_u_orc_guardian_Active",
+      "frames": [
+        1,
+        40
+      ],
+      "release_frame": 22,
+      "support_hand_bake_samples": 40,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Hit": {
+      "action": "AN_wc_u_orc_guardian_Hit",
+      "frames": [
+        1,
+        25
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 25,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Defeat": {
+      "action": "AN_wc_u_orc_guardian_Defeat",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 61,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Victory": {
+      "action": "AN_wc_u_orc_guardian_Victory",
+      "frames": [
+        1,
+        91
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 91,
+      "maximum_support_reach_clamp_m": 0
+    }
+  },
+  "lods": [
+    {
+      "lod": 1,
+      "triangles": 3145,
+      "ratio_target": 0.5,
+      "visual_acceptance": "pending"
+    },
+    {
+      "lod": 2,
+      "triangles": 1565,
+      "ratio_target": 0.25,
+      "visual_acceptance": "pending"
+    }
+  ],
+  "source_brief": {
+    "silhouette": "A wide arch formed by two high shoulder guards and a tall rectangular shield with a rounded top. The lower body remains a stable trapezoid.",
+    "face": "Deep moss-green skin, warm brown eyes, small tusks and tightly braided dark hair. Her expression is attentive rather than aggressive.",
+    "costume": "Layered leather-and-bronze armor, a pale ochre shoulder wrap, a blue woven sash and thick boots. Broad woven patterns identify her caravan community.",
+    "palette": "Bronze #AC8658; ochre #D1B576; deep blue #405E78; moss #60765A.",
+    "equipment": "A broad fantasy tower shield and a short ceremonial mace. The shield carries a simple interlocking-road emblem with no dense carving.",
+    "signature": "Rounded tower shield, arched shoulders and a bold blue waist sash.",
+    "materials": "Worn bronze, thick cloth and matte hide. Shield wear is painted as soft color variation rather than deep damage.",
+    "back": "A flat travel pack sits beneath the shoulder line. Keep its volume low enough not to collide with the shield when turning.",
+    "animation": "Idle angles the shield protectively toward adjacent allies. Basics use a short mace arc. Shared Guard plants the shield and extends the free hand outward, clearly signaling a group effect.",
+    "vfx": "Several short amber shield outlines appear on eligible recipients; a brief ground ring shows reach. No continuous aura follows her afterward.",
+    "audio": "One low shield chime and quiet recipient ticks, mixed as a single event rather than many full-volume sounds.",
+    "risk": "Large shield and shoulders may occlude neighboring supports. Use a lowered idle pose and test the camera from both encounter orientations."
+  },
+  "files": {
+    "AN_wc_u_orc_guardian_Active.fbx": "986b96155eb3555f67b56a643961e87f45c861a267987aaeae3801d70ea6f2ae",
+    "AN_wc_u_orc_guardian_Attack.fbx": "622ff3a94afb4d4f009718617f6e1884a9fe3df061cb138d6d824389dd1da8c4",
+    "AN_wc_u_orc_guardian_Defeat.fbx": "0b2ac49f6c836ccdb4c44246094075bd3ebb629add45d4ccaf1d26aea69a1177",
+    "AN_wc_u_orc_guardian_Hit.fbx": "42f8bd991219aef835f76c7363b0bb3e0c87bdb7a482cdd0800d083af31b0dfc",
+    "AN_wc_u_orc_guardian_Idle.fbx": "1db58009beb780faf3b2c9a950d50ef21c9b4110e68ef6a0753b97219bb02097",
+    "AN_wc_u_orc_guardian_Move.fbx": "9324e96830eacb5f982ce5b115c25ae130cd9983ca652698fc1487290a846ffe",
+    "AN_wc_u_orc_guardian_Victory.fbx": "10c3d2433dc9575a5ad31f5288c82af4cecbe44f699643c6cf76435726400ed1",
+    "portrait.png": "43b21f2571e44dece54694331278c72705f533da36c34f0a64718a0732a38690",
+    "SK_wc_u_orc_guardian.fbx": "97cd285d1a54150855d49f0965cfcfeb043cc3209ab7ae39d55f2a14c96a1d3d",
+    "SK_wc_u_orc_guardian_LOD1.fbx": "af9e7ce6626cc52a17b679b9ef84e127c57a1d5c2cfc8acf239f2fc3a591beb7",
+    "SK_wc_u_orc_guardian_LOD2.fbx": "aa1d028e04785b3b8c3c9bd20e58a9700b39878fd2031b019819a03895327480",
+    "T_wc_u_orc_guardian_BaseColor.png": "69010c683e544fc8ad3c47f7c8a8ad4e35a9bdade415e2a356297ba682da9fbf",
+    "T_wc_u_orc_guardian_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
+    "T_wc_u_orc_guardian_ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c"
+  },
+  "open_reviews": [
+    "Unreal import/reimport",
+    "continuous clip quality",
+    "crowded board",
+    "LOD appearance",
+    "effects and audio"
+  ],
+  "report": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T144111Z\\wc_u_orc_guardian\\candidate-v1",
+  "update_refinement_script_sha256": "98ccb7671f7ee0af3509dbea4214a5e32409eec42fff2d739fd88f0cd470adf6",
+  "update_refinement_evidence": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T144111Z\\wc_u_orc_guardian\\refinement-v1"
+}

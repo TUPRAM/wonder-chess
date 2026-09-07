@@ -1,0 +1,46 @@
+Traceback (most recent call last):
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\author_update_four.py", line 289, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_warrior\\SK_wc_u_human_warrior.fbx'
+(bpy.data.armatures['WC_humanoid_standard_v1.001'], 'POSE')
+export finished in 0.0458 sec.
+Info: Applied modifier was not first, result may not be as expected
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_warrior\\SK_wc_u_human_warrior_LOD1.fbx'
+(bpy.data.armatures['WC_humanoid_standard_v1.001'], 'POSE')
+export finished in 0.0331 sec.
+Info: Applied modifier was not first, result may not be as expected
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_warrior\\SK_wc_u_human_warrior_LOD2.fbx'
+(bpy.data.armatures['WC_humanoid_standard_v1.001'], 'POSE')
+export finished in 0.0290 sec.
+Info: Saved as "unanimated-source.blend"
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_warrior\\AN_wc_u_human_warrior_Idle.fbx'
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\author_update_four.py", line 273, in main
+    clips,reach=bake_actions(u,arm,out);action=bpy.data.actions[clips['Idle']['action']];arm.animation_data.action=action;arm.animation_data.action_slot=action.slots[0];scene.frame_set(1);camera=setup_render(u['height_m']);scene.cycles.samples=12;camera.data.ortho_scale=u['height_m']*1.45
+                ~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\author_update_four.py", line 247, in bake_actions
+    if limit>.025:raise RuntimeError('Reach clamp '+clip+' '+str(limit))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Reach clamp Defeat 0.03351183860642548
+export finished in 0.1635 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_warrior\\AN_wc_u_human_warrior_Move.fbx'
+export finished in 0.1116 sec.
+
+
+Error: script failed, file: 'tools/blender/author_update_four.py', exiting.
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_warrior\\AN_wc_u_human_warrior_Attack.fbx'
+export finished in 0.0948 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_warrior\\AN_wc_u_human_warrior_Active.fbx'
+export finished in 0.0830 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_warrior\\AN_wc_u_human_warrior_Hit.fbx'
+export finished in 0.0681 sec.
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

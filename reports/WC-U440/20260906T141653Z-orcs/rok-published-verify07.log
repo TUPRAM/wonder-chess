@@ -1,0 +1,199 @@
+00:02.390  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_orc_warrior\wc_u_orc_warrior.blend"
+{
+  "status": "structural_checks_passed_visual_review_required",
+  "blender_version": "5.1.1",
+  "collection": "EXPORT",
+  "evaluated_triangle_total": 5462,
+  "objects": [
+    {
+      "name": "Armature",
+      "type": "ARMATURE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.5882967710494995,
+        0.5099999904632568,
+        2.193000078201294
+      ],
+      "roots": [
+        "root"
+      ],
+      "deform_bones": 27
+    },
+    {
+      "name": "SK_wc_u_orc_warrior",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        2.029764175415039,
+        0.718086838722229,
+        2.1332571506500244
+      ],
+      "evaluated_triangles": 5462,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "not_checked": [
+    "appearance",
+    "deformation across all clips",
+    "UV overlap appropriateness",
+    "normal-map convention",
+    "Unreal import",
+    "LOD silhouette",
+    "gameplay readability"
+  ]
+}
+{
+  "status": "structural_checks_passed_visual_review_required",
+  "blender_version": "5.1.1",
+  "collection": "LOD_SOURCE",
+  "evaluated_triangle_total": 4095,
+  "objects": [
+    {
+      "name": "SK_wc_u_orc_warrior_LOD1",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        2.029764175415039,
+        0.7150804996490479,
+        2.1262576580047607
+      ],
+      "evaluated_triangles": 2731,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    },
+    {
+      "name": "SK_wc_u_orc_warrior_LOD2",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        2.030562162399292,
+        0.7229082584381104,
+        2.1227481365203857
+      ],
+      "evaluated_triangles": 1364,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "not_checked": [
+    "appearance",
+    "deformation across all clips",
+    "UV overlap appropriateness",
+    "normal-map convention",
+    "Unreal import",
+    "LOD silhouette",
+    "gameplay readability"
+  ]
+}
+{
+  "status": "sampled_motion_invariants_passed",
+  "unit_id": "wc_u_orc_warrior",
+  "blender_version": "5.1.1",
+  "sampling": "actual deformed mesh every 3 frames at 60fps",
+  "clips": [
+    {
+      "clip": "Idle",
+      "samples": 41,
+      "minimum_support_sole_z_m": 0.018359994515776634,
+      "maximum_support_sole_z_m": 0.018359994515776634,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 2.384185791015625e-07
+    },
+    {
+      "clip": "Move",
+      "samples": 21,
+      "minimum_support_sole_z_m": 0.004213172942399979,
+      "maximum_support_sole_z_m": 0.018359994515776634,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 2.384185791015625e-07
+    },
+    {
+      "clip": "Attack",
+      "samples": 16,
+      "minimum_support_sole_z_m": 0.018359994515776634,
+      "maximum_support_sole_z_m": 0.018359994515776634,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 2.384185791015625e-07
+    },
+    {
+      "clip": "Active",
+      "samples": 12,
+      "minimum_support_sole_z_m": 0.018359994515776634,
+      "maximum_support_sole_z_m": 0.018359994515776634,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 2.384185791015625e-07
+    },
+    {
+      "clip": "Hit",
+      "samples": 9,
+      "minimum_support_sole_z_m": 0.018359994515776634,
+      "maximum_support_sole_z_m": 0.018359994515776634,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 2.384185791015625e-07
+    },
+    {
+      "clip": "Defeat",
+      "samples": 21,
+      "minimum_support_sole_z_m": 0.018359949812293053,
+      "maximum_support_sole_z_m": 0.018360137939453125,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 2.384185791015625e-07
+    },
+    {
+      "clip": "Victory",
+      "samples": 31,
+      "minimum_support_sole_z_m": 0.018359994515776634,
+      "maximum_support_sole_z_m": 0.018359994515776634,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 2.384185791015625e-07
+    }
+  ],
+  "errors": [],
+  "not_checked": [
+    "continuous visual quality",
+    "weapon/costume clipping",
+    "semantic gesture review",
+    "Unreal retarget/import",
+    "runtime move-speed synchronization"
+  ]
+}
+WC_REFINED_HERO_PUBLISHED_CHECKS_PASS {"status": "PUBLISHED_SOURCE_EXPORT_AND_MOTION_CHECKS_PASS", "unit_id": "wc_u_orc_warrior", "blender_version": "5.1.1", "source_revision": 7, "geometry_revision": 7, "animation_revision": 6, "source_sha256": "9209f6b12f35fca71340688227570cea39e2868483d85741176b297ad4698f0a", "manifest_sha256": "9c485a77d1715bfe3b551e193c7f1e5364dc4f8afa2ed9a5988784cd40178d4c", "export_files_verified": 14, "triangles": 5462, "lods": [{"lod": 1, "triangles": 2731, "ratio_target": 0.5, "visual_acceptance": "pending current Unreal review"}, {"lod": 2, "triangles": 1364, "ratio_target": 0.25, "visual_acceptance": "pending current Unreal review"}], "modified_clips": [], "Unreal_reimport_verified": false, "final_art_accepted": false}
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

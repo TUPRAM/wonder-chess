@@ -1,0 +1,168 @@
+{
+  "status": "authored_rendered_normalized_exported_pending_current_engine_and_visual_acceptance",
+  "unit_id": "wc_u_elf_rogue",
+  "name": "Sylas Duskrun",
+  "blender_version": "5.1.1",
+  "source_revision": 6,
+  "height_m": 1.9,
+  "source_sha256": "95caa91648c81f11ea379501822ec8d60501479c8abc0c00ce2382886b1564a5",
+  "author_script_sha256": "474d9d165ca7a0c2134197c379978f59d2af9baf475bbcd0970fd97febd0a4da",
+  "units_source_sha256": "1a93bfb07bd93ace4d5eb740864e26c69765a5ebb9b87885c1d3d40c772cd9e8",
+  "rig_family": "humanoid_slender",
+  "rig_revision": "WC_family_v1",
+  "bones": 27,
+  "triangles": 3218,
+  "materials": 1,
+  "fps": 60,
+  "source_forward": "+Y",
+  "source_up": "+Z",
+  "unit_scale_m": 1,
+  "fbx_profile": "tools\\blender\\profiles\\fbx_skeletal_cm_v1.json",
+  "engine_calibration": [
+    "reports/WC-330/import-probe/normalized_cm-results.json",
+    "reports/WC-330/import-probe/forward_cm-results.json",
+    "reports/WC-330/normalized-cm-copy-trial.log"
+  ],
+  "textures": {
+    "BaseColor": "sRGB",
+    "Normal": "linear, tangent +Y, flat normal surface; geometric bevels",
+    "ORM": "linear R=occlusion G=roughness B=metallic"
+  },
+  "equipment": "weighted within the skeletal mesh; socket bones also available",
+  "clips": {
+    "Idle": {
+      "action": "AN_wc_u_elf_rogue_Idle",
+      "frames": [
+        1,
+        121
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Move": {
+      "action": "AN_wc_u_elf_rogue_Move",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Attack": {
+      "action": "AN_wc_u_elf_rogue_Attack",
+      "frames": [
+        1,
+        40
+      ],
+      "release_frame": 16,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Active": {
+      "action": "AN_wc_u_elf_rogue_Active",
+      "frames": [
+        1,
+        31
+      ],
+      "release_frame": 13,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Hit": {
+      "action": "AN_wc_u_elf_rogue_Hit",
+      "frames": [
+        1,
+        25
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 9,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Defeat": {
+      "action": "AN_wc_u_elf_rogue_Defeat",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 21,
+      "maximum_support_reach_clamp_m": 0.02082381039424075
+    },
+    "Victory": {
+      "action": "AN_wc_u_elf_rogue_Victory",
+      "frames": [
+        1,
+        91
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    }
+  },
+  "lods": [
+    {
+      "lod": 1,
+      "triangles": 1609,
+      "ratio_target": 0.5,
+      "visual_acceptance": "pending"
+    },
+    {
+      "lod": 2,
+      "triangles": 804,
+      "ratio_target": 0.25,
+      "visual_acceptance": "pending"
+    }
+  ],
+  "source_brief": {
+    "silhouette": "A low asymmetrical stance with a short diagonal mantle, one raised scarf end and paired curved fantasy blades. His shoulders form a compact wedge rather than a broad warrior line.",
+    "face": "Light bronze skin, dark hair swept to one side and narrow amber eyes. Keep the lower face visible, with no full mask that resembles a different character identity.",
+    "costume": "Dusk-blue leather panels over pale gray cloth, light knee guards and a cross-body courier strap. The mantle covers only the left shoulder and ends at the waist.",
+    "palette": "Dusk blue #3B4E6B; fog gray #BAC5CC; muted violet #786A8C; lantern amber #D2A35D.",
+    "equipment": "Two short stylized curved blades and a small shielded courier lantern fixed to the belt. The lantern is a visual cue, not a source of stealth or detection gameplay.",
+    "signature": "Single-shoulder mantle, paired curved silhouettes, and low forward stance.",
+    "materials": "Supple matte leather, soft fabric and restrained brushed metal. No black-on-black costume and no constant translucent body.",
+    "back": "Courier strap ends in a flat document case between the shoulder blades. Keep the case clear of both draw arcs.",
+    "animation": "Idle balances on the balls of the feet. Walk uses quick narrow steps. Basics alternate readable cuts. The active compresses into a low stance and launches along a single clean line; no teleport smoke hides the destination.",
+    "vfx": "A brief blue ribbon connects origin and landing, with a small landing ring. No bonus hit, invisibility, invulnerability or untargetability is implied.",
+    "audio": "Short cloth snap and crisp magical sweep for the dash; attacks remain light rather than explosive.",
+    "risk": "The dash can be tactically too strong against fragile backlines. Keep damage in normal attacks and test crowding, target validity and front/back targeting after landing."
+  },
+  "files": {
+    "AN_wc_u_elf_rogue_Active.fbx": "424524038dee54ced3571ae042100199dc4af247c20e101dd41a84dab3e9294f",
+    "AN_wc_u_elf_rogue_Attack.fbx": "576c7d567b190b00821984e7defc7a9e4fb4123daeebcffb1ccb6c719c2c4227",
+    "AN_wc_u_elf_rogue_Defeat.fbx": "5dc1cbf1c6f4fdefbffa0e3bbfeecd67ebf6710061759eb412890979fa68f2f3",
+    "AN_wc_u_elf_rogue_Hit.fbx": "991a46fcf681dc97e8434766988f6b7d04fc6a3507a25415c8cefd1ffbaf549a",
+    "AN_wc_u_elf_rogue_Idle.fbx": "a0714fdc9533749dc480f790499d88babdf43f9cebba73a5146c58e1c89762cd",
+    "AN_wc_u_elf_rogue_Move.fbx": "1e818a9509429e8925ea59a75d9b1414202009d44983b6e3cbb534a47593278d",
+    "AN_wc_u_elf_rogue_Victory.fbx": "e9860555e96048cb101bf65ec5db681cdc5dd5d281ca5aacc340376d5dadcb2a",
+    "portrait.png": "18d3eebff1e20cfeb65d1f53298628c52920323a71a49844ead766dc7adac08f",
+    "SK_wc_u_elf_rogue.fbx": "0990664b60f2380ecaafe20a940a099080db06f828a7b799e1604610ce8781df",
+    "SK_wc_u_elf_rogue_LOD1.fbx": "4b4357191768fa268745130ea1034412f30c0f4eb9019f74d993deec87a96d2b",
+    "SK_wc_u_elf_rogue_LOD2.fbx": "a645ed7438e31fb7bb29123131fb4d7500197d90d713a4ee4b85fe4cfeb7611d",
+    "T_wc_u_elf_rogue_BaseColor.png": "184cb4f61a56454a16bd222ad2eeed7d2e383f31df3fcf7c91fe5b19ad18db77",
+    "T_wc_u_elf_rogue_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
+    "T_wc_u_elf_rogue_ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c"
+  },
+  "open_reviews": [
+    "Unreal scale and facing",
+    "all continuous animation deformation",
+    "source revision reimport",
+    "crowded-board readability",
+    "LOD1/LOD2",
+    "effects and sound integration"
+  ],
+  "normalized_export_revision": 1,
+  "normalized_exporter_sha256": "ac2b263a2491f2cf991065e749926b5549ddc81e73c814fb9958e424b6d23bc6",
+  "normalized_reexport_script_sha256": "c1176dfe4526f36b767e3427383e70c3e174b2d62b36ac1a9562f5d8d7ffb99b",
+  "exported_coordinate_units": "centimeters: temporary geometry, rest translation and animation location values multiplied by100; authoring source remains meters",
+  "geometry_source_revision": 4,
+  "animation_revision": 6,
+  "animation_refinement_script_sha256": "883991d592dfb18f4fd3e85b04583782ea411a21426c8921c13966d8bcd16f40",
+  "animation_pose_script_sha256": "e43d6c05800e8b6dccbcd697d7cc9664b61d73f7012cac75ef98183e709d47b9",
+  "animation_author_script_sha256": "ddaed7bb350bafb94c1743bc31c4b613524f971af01a5611835402590d8ae6f0",
+  "animation_contact_script_sha256": "c36f8064fa5ab7ff136c399c68c7b012b5987234734aca0580bede3483017c1a",
+  "animation_normalizer_sha256": "13646d355744f5293d573816e5cd54459cf88f3b647c6c2a22aa61ae29200779",
+  "animation_evidence": "reports\\WC-330\\animation-refinement\\wc_u_elf_rogue"
+}

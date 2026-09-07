@@ -1,0 +1,337 @@
+{
+  "status": "PREPARED_NOT_EXECUTED_IN_BLENDER",
+  "production_order": [
+    "wc_u_dragonkin_guardian",
+    "wc_u_dragonkin_ranger",
+    "wc_u_dragonkin_rogue",
+    "wc_u_dragonkin_priest"
+  ],
+  "canonical_units_sha256": "fd6d831113261dd984f3d2430236c06eda4a9f4e7f9e30a404a76f418fa953b0",
+  "dossier_sha256": {
+    "wc_u_dragonkin_guardian": "bac996ab9a7526649f50ffd0fea299fc41471d93d5b43a3733c0ede8708eafc5",
+    "wc_u_dragonkin_ranger": "f4411b0b5288d472ef642eab46646585f3ffe0fb138d56e38e660867337904a2",
+    "wc_u_dragonkin_rogue": "04eecd886f1c43a1b0e5ef48c6777578f30e0769f8c018a13f07df2a99a03876",
+    "wc_u_dragonkin_priest": "93b30369d65f9738a3311d76795aba6ff2c20c33c4d5e1d3e79debbd03a5d29f"
+  },
+  "shared_helper_sha256": {
+    "author_alpha.py": "ddaed7bb350bafb94c1743bc31c4b613524f971af01a5611835402590d8ae6f0",
+    "hand_contacts.py": "c36f8064fa5ab7ff136c399c68c7b012b5987234734aca0580bede3483017c1a",
+    "normalized_fbx.py": "13646d355744f5293d573816e5cd54459cf88f3b647c6c2a22aa61ae29200779",
+    "profiles/fbx_skeletal_cm_v1.json": "3bcc0d2c3fe17c404800b25de8f156b623da15d514f3ae2ac1891c65a0ae58ae"
+  },
+  "family": "humanoid_draconic_candidate_v1",
+  "rig_contract": "Frozen 27-bone naming/parent/socket topology; separately calibrated Dragonkin head/neck/shoulder proportions. No compatibility acceptance from matching names.",
+  "wings": false,
+  "tail": false,
+  "feet": "plantigrade",
+  "source_unit": "meter",
+  "source_forward": "+Y",
+  "up": "+Z",
+  "export_profile": "fbx_skeletal_cm_v1.json; temporary independent centimeter copies; unit actor scale in Unreal",
+  "heroes": [
+    {
+      "name": "Sora",
+      "shoulder": 0.208,
+      "waist": 0.133,
+      "limb": 0.059,
+      "head_width": 0.087,
+      "muzzle_front": 0.143,
+      "horns": "short swept-back pair",
+      "crest": true,
+      "anatomy": "Broad chest, forward-set thick neck, rounded short closed muzzle, calm amber eyes, plantigrade armored feet.",
+      "equipment": "Upright oval beacon shield on left hand; short blunt ceremonial mace on right. No free-floating gem.",
+      "motion": "Tall still guard; deliberate steps; compact mace basic; upward shield angle with held anticipation before beacon release. Victory salutes with mace below horn height.",
+      "clearances": [
+        "muzzle versus shield rim",
+        "crest versus rear collar",
+        "horns versus clavicle armor",
+        "mace versus shield at release"
+      ],
+      "palette": "#E0D8C1 #486A9A #C4A367 #4D5B67 #A5B3BA #675D50 #DDD0AB #A79A76 #EEE7D5 #B5833B #C4A367 #B7D4D0 #C5B99A #7D9BBD #A28B69 #34404C",
+      "id": "wc_u_dragonkin_guardian",
+      "height_m": 2.08,
+      "dossier": "docs/heroes/wc_u_dragonkin_guardian.md",
+      "clips": {
+        "Idle": {
+          "frames": [
+            1,
+            121
+          ],
+          "release_frame": null
+        },
+        "Move": {
+          "frames": [
+            1,
+            61
+          ],
+          "release_frame": null
+        },
+        "Attack": {
+          "frames": [
+            1,
+            40
+          ],
+          "release_frame": 16
+        },
+        "Active": {
+          "frames": [
+            1,
+            40
+          ],
+          "release_frame": 22
+        },
+        "Hit": {
+          "frames": [
+            1,
+            25
+          ],
+          "release_frame": null
+        },
+        "Defeat": {
+          "frames": [
+            1,
+            61
+          ],
+          "release_frame": null
+        },
+        "Victory": {
+          "frames": [
+            1,
+            91
+          ],
+          "release_frame": null
+        }
+      }
+    },
+    {
+      "name": "Varek",
+      "shoulder": 0.17,
+      "waist": 0.107,
+      "limb": 0.046,
+      "head_width": 0.079,
+      "muzzle_front": 0.153,
+      "horns": "short outward blunt fins",
+      "crest": false,
+      "anatomy": "Long narrow chest, short angular integrated muzzle, gold eyes, blunt horn fins; no human nose or ears.",
+      "equipment": "Broad horizontal opaque prism bow with dark central grip and a readable second-hand draw; hip-length forked cloak and flat rear quiver.",
+      "motion": "Low bow rest; two-hand raise/draw/release; active aligns opaque facets before a finite-travel magic shot. Lower bow during defeat and turn, never an overhead sweep.",
+      "clearances": [
+        "bow versus muzzle",
+        "bow versus neighbor health anchors",
+        "quiver versus forked cloak",
+        "horn fins versus shoulder panels"
+      ],
+      "palette": "#3F567A #E6DFC9 #8BC9CA #304057 #A9BEC9 #546173 #7996AC #647F94 #EBE7D0 #D0B76D #C4B582 #8BC9CA #B5DADC #567A94 #526D83 #29394A",
+      "id": "wc_u_dragonkin_ranger",
+      "height_m": 1.98,
+      "dossier": "docs/heroes/wc_u_dragonkin_ranger.md",
+      "clips": {
+        "Idle": {
+          "frames": [
+            1,
+            121
+          ],
+          "release_frame": null
+        },
+        "Move": {
+          "frames": [
+            1,
+            61
+          ],
+          "release_frame": null
+        },
+        "Attack": {
+          "frames": [
+            1,
+            43
+          ],
+          "release_frame": 19
+        },
+        "Active": {
+          "frames": [
+            1,
+            40
+          ],
+          "release_frame": 22
+        },
+        "Hit": {
+          "frames": [
+            1,
+            25
+          ],
+          "release_frame": null
+        },
+        "Defeat": {
+          "frames": [
+            1,
+            61
+          ],
+          "release_frame": null
+        },
+        "Victory": {
+          "frames": [
+            1,
+            91
+          ],
+          "release_frame": null
+        }
+      }
+    },
+    {
+      "name": "Iri",
+      "shoulder": 0.159,
+      "waist": 0.104,
+      "limb": 0.044,
+      "head_width": 0.075,
+      "muzzle_front": 0.137,
+      "horns": "close backward pair",
+      "crest": true,
+      "anatomy": "Slim adult proportions, copper rounded short muzzle, violet eyes, neck crest ending above shoulders, visible elbow and knee shapes.",
+      "equipment": "Two broad decorative crescent blades, compact pale inset gems, coral diagonal sash over a closed charcoal jacket. No dash apparatus.",
+      "motion": "Low balanced idle; short alternating crescent basic; one blade draws inward, pauses for glint and releases deliberately. No teleport, leap or immunity pose.",
+      "clearances": [
+        "neck crest versus jacket in crouch",
+        "crescent versus forearm",
+        "paired blades versus torso",
+        "coral sash versus hip panels"
+      ],
+      "palette": "#454552 #CB7B6B #837B9E #353641 #A8A4AE #705849 #AF7C60 #8C674F #E4D9CD #756581 #C7AC86 #D2CEDC #A77366 #D99380 #7B5343 #2E303A",
+      "id": "wc_u_dragonkin_rogue",
+      "height_m": 1.89,
+      "dossier": "docs/heroes/wc_u_dragonkin_rogue.md",
+      "clips": {
+        "Idle": {
+          "frames": [
+            1,
+            121
+          ],
+          "release_frame": null
+        },
+        "Move": {
+          "frames": [
+            1,
+            61
+          ],
+          "release_frame": null
+        },
+        "Attack": {
+          "frames": [
+            1,
+            40
+          ],
+          "release_frame": 16
+        },
+        "Active": {
+          "frames": [
+            1,
+            34
+          ],
+          "release_frame": 16
+        },
+        "Hit": {
+          "frames": [
+            1,
+            25
+          ],
+          "release_frame": null
+        },
+        "Defeat": {
+          "frames": [
+            1,
+            61
+          ],
+          "release_frame": null
+        },
+        "Victory": {
+          "frames": [
+            1,
+            91
+          ],
+          "release_frame": null
+        }
+      }
+    },
+    {
+      "name": "Oren",
+      "shoulder": 0.178,
+      "waist": 0.112,
+      "limb": 0.048,
+      "head_width": 0.08,
+      "muzzle_front": 0.14,
+      "horns": "rounded swept arch pair",
+      "crest": false,
+      "anatomy": "Tall narrow adult torso, moss-gray rounded muzzle, attentive gold eyes and rounded swept horns with clear neck motion.",
+      "equipment": "Open hexagonal lantern staff in right hand, free left palm, closed rectangular map case; ankle-clearing white/teal split robe. No floating book.",
+      "motion": "Balanced staff rest; small light-mote basic; lantern turns toward recipient and free palm lifts for directional ward. No healing, revival or full-body glow.",
+      "clearances": [
+        "staff head versus horn arch",
+        "lantern rim versus free palm",
+        "mantle versus neck",
+        "robe panels versus boots in kneel"
+      ],
+      "palette": "#E5E2D3 #3E7F83 #C4AC72 #425F61 #ADBDB4 #706951 #92A69D #9B9D82 #E8E5D4 #B99C54 #C4AC72 #C4D8C9 #749B93 #629795 #687E75 #354744",
+      "id": "wc_u_dragonkin_priest",
+      "height_m": 2.02,
+      "dossier": "docs/heroes/wc_u_dragonkin_priest.md",
+      "clips": {
+        "Idle": {
+          "frames": [
+            1,
+            121
+          ],
+          "release_frame": null
+        },
+        "Move": {
+          "frames": [
+            1,
+            61
+          ],
+          "release_frame": null
+        },
+        "Attack": {
+          "frames": [
+            1,
+            43
+          ],
+          "release_frame": 19
+        },
+        "Active": {
+          "frames": [
+            1,
+            40
+          ],
+          "release_frame": 22
+        },
+        "Hit": {
+          "frames": [
+            1,
+            25
+          ],
+          "release_frame": null
+        },
+        "Defeat": {
+          "frames": [
+            1,
+            61
+          ],
+          "release_frame": null
+        },
+        "Victory": {
+          "frames": [
+            1,
+            91
+          ],
+          "release_frame": null
+        }
+      }
+    }
+  ],
+  "calibration_required": [
+    "Sora front/side/back/three-quarter and 96px silhouette; closed intentional muzzle, no human face underneath.",
+    "New family measured standing height, toe-forward vector, root at ground, unit armature/object scale and unchanged source after normalized export.",
+    "Every authored frame: normalized <=4 weights, <=60 bones, no animated scale/root translation, finite transforms, sole/gear floor penetration and two-hand reach.",
+    "Visual continuous seven-clip review including muzzle/horn/crest/collar/weapon clearances; numeric bounds are not collision or quality approval.",
+    "Fresh Unreal import: +X forward, expected centimeter height, root scale1, all seven clips sampled and played; actual gallery/board/neighbor captures.",
+    "Reversible Sora costume revision/reimport preserving skeleton/material/animation references before family acceptance and the remaining three heroes."
+  ]
+}

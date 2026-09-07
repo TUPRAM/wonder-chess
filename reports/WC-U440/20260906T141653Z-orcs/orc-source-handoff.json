@@ -1,0 +1,109 @@
+{
+  "status": "SOURCE_AND_MEASURED_EXPORT_HANDOFF_UNREAL_REVIEW_PENDING",
+  "blender_version": "5.1.1",
+  "entries": [
+    {
+      "name": "Rok",
+      "id": "wc_u_orc_warrior",
+      "source_revision": 7,
+      "geometry_revision": 7,
+      "animation_revision": 6,
+      "source_path": "art-source/heroes/wc_u_orc_warrior/wc_u_orc_warrior.blend",
+      "source_sha256": "9209f6b12f35fca71340688227570cea39e2868483d85741176b297ad4698f0a",
+      "export_folder": "exports/heroes/wc_u_orc_warrior",
+      "manifest_sha256": "9c485a77d1715bfe3b551e193c7f1e5364dc4f8afa2ed9a5988784cd40178d4c",
+      "triangles": [
+        5462,
+        2731,
+        1364
+      ],
+      "export_files_verified": 14,
+      "review_directory": "reports/WC-U440/20260906T141653Z-orcs/rok-candidate02/workbench-review",
+      "all_authored_frames_evaluated": 439,
+      "actual_60fps_movies": 7,
+      "movie_frames_verified": 439,
+      "animation_changes": [],
+      "minimum_all_vertex_z_m": 0.0030429288744926453,
+      "Unreal_reimport_verified": false,
+      "continuous_visual_acceptance": false,
+      "final_art_accepted": false
+    },
+    {
+      "name": "Zura",
+      "id": "wc_u_orc_mage",
+      "source_revision": 7,
+      "geometry_revision": 7,
+      "animation_revision": 6,
+      "source_path": "art-source/heroes/wc_u_orc_mage/wc_u_orc_mage.blend",
+      "source_sha256": "4a3ed73b9e7e03b54308c89b59b5dd31f7fe233280974643c360f756cafe4a81",
+      "export_folder": "exports/heroes/wc_u_orc_mage",
+      "manifest_sha256": "af7424099783c027c5efe13bd9769f3026da01dc6c86abd19ba1eb86aa668bf9",
+      "triangles": [
+        6884,
+        3441,
+        1720
+      ],
+      "export_files_verified": 14,
+      "review_directory": "reports/WC-U440/20260906T141653Z-orcs/zura-candidate02/workbench-fitted",
+      "all_authored_frames_evaluated": 457,
+      "actual_60fps_movies": 7,
+      "movie_frames_verified": 457,
+      "animation_changes": [],
+      "minimum_all_vertex_z_m": 0.0029385127127170563,
+      "Unreal_reimport_verified": false,
+      "continuous_visual_acceptance": false,
+      "final_art_accepted": false
+    },
+    {
+      "name": "Kesh",
+      "id": "wc_u_orc_rogue",
+      "source_revision": 7,
+      "geometry_revision": 7,
+      "animation_revision": 7,
+      "source_path": "art-source/heroes/wc_u_orc_rogue/wc_u_orc_rogue.blend",
+      "source_sha256": "9377fd6ea70ef5a8c376cbf7e83363a5c5f8e8c0f97b88508eb1623a80b2019a",
+      "export_folder": "exports/heroes/wc_u_orc_rogue",
+      "manifest_sha256": "d1cf5c81dee379dab019706e0458dc1b54561ebb80dff20ab472052c49a9b7ce",
+      "triangles": [
+        3798,
+        1899,
+        948
+      ],
+      "export_files_verified": 14,
+      "review_directory": "reports/WC-U440/20260906T141653Z-orcs/kesh-contact03/workbench-review",
+      "all_authored_frames_evaluated": 430,
+      "actual_60fps_movies": 7,
+      "movie_frames_verified": 430,
+      "animation_changes": [
+        {
+          "clip": "Move",
+          "kind": "Measured pelvis support correction",
+          "frames_baked": 61,
+          "maximum_lift_m": 0.006230668768286705,
+          "previous_minimum_mesh_z_m": -0.004230668768286705
+        }
+      ],
+      "minimum_all_vertex_z_m": 0.001999974250793457,
+      "Unreal_reimport_verified": false,
+      "continuous_visual_acceptance": false,
+      "final_art_accepted": false
+    }
+  ],
+  "actual_60fps_movies": 21,
+  "authored_frames_and_video_samples": 1326,
+  "retained_failures": [
+    "Rok candidate01 circular collar did not drape adequately",
+    "Zura candidate01 collar floated above shoulders",
+    "Zura candidate02 first portrait and Victory review cropped the staff; framed outputs retained separately",
+    "Kesh candidate02 Move all-frame geometry reached -0.0042306688m; candidate03 adds measured support correction",
+    "Partial Rok Cycles motion job stopped deliberately for full-frame Workbench path; files/log/exit retained"
+  ],
+  "checks_not_run": [
+    "Unreal reimport and cold asset verification of revision7",
+    "Continuous in-engine all21 clip review",
+    "Skill visual and sound alignment",
+    "Crowded gameplay camera and LOD review",
+    "Packaged runtime and performance of these source revisions"
+  ],
+  "metadata_note": "Generic published verifier modified_clips reads the older hand-contact schema and reports empty for Kesh; animation_changes and final export manifest correctly identify Move as changed."
+}

@@ -1,0 +1,74 @@
+00:02.468  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T153806Z\ada\candidate9-v5\ada-source9-candidate.blend"
+Traceback (most recent call last):
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\inspect_scene.py", line 94, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\inspect_scene.py", line 90, in main
+    raise RuntimeError('Structural validation failed; see report')
+RuntimeError: Structural validation failed; see report
+{
+  "status": "failed",
+  "blender_version": "5.1.1",
+  "collection": "EXPORT",
+  "evaluated_triangle_total": 26338,
+  "objects": [
+    {
+      "name": "Armature",
+      "type": "ARMATURE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.235010027885437,
+        0.45499998331069946,
+        1.9565000534057617
+      ],
+      "roots": [
+        "root"
+      ],
+      "deform_bones": 27
+    },
+    {
+      "name": "SK_wc_u_human_guardian",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.5977566242218018,
+        0.886250913143158,
+        1.8108999729156494
+      ],
+      "evaluated_triangles": 26338,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    }
+  ],
+  "errors": [
+    "Collection has 26338 evaluated triangles, above selected budget"
+  ],
+  "warnings": [],
+  "not_checked": [
+    "appearance",
+    "deformation across all clips",
+    "UV overlap appropriateness",
+    "normal-map convention",
+    "Unreal import",
+    "LOD silhouette",
+    "gameplay readability"
+  ]
+}
+
+Error: script failed, file: 'tools/blender/inspect_scene.py', exiting.
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

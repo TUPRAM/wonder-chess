@@ -1,0 +1,160 @@
+{
+  "status": "authored_exported_rendered_candidate_not_engine_accepted",
+  "unit_id": "wc_u_elf_mage",
+  "name": "Neris Starbloom",
+  "blender_version": "5.1.1",
+  "source_revision": 1,
+  "geometry_source_revision": 1,
+  "animation_revision": 1,
+  "height_m": 1.91,
+  "source_sha256": "830f2b7f097eabdb654aca769f07cfe5aeb4e0404e0cd4e88f43c010672a9635",
+  "author_script_sha256": "2c1db9090615bf504adc9bca99f87126494af6b03d89745f9b2cce3eb9d6e657",
+  "units_source_sha256": "fd6d831113261dd984f3d2430236c06eda4a9f4e7f9e30a404a76f418fa953b0",
+  "rig_family": "humanoid_slender",
+  "rig_revision": "WC_family_v1",
+  "bones": 27,
+  "triangles": 6006,
+  "materials": 1,
+  "fps": 60,
+  "source_forward": "+Y",
+  "source_up": "+Z",
+  "unit_scale_m": 1,
+  "fbx_profile": "tools/blender/profiles/fbx_skeletal_cm_v1.json",
+  "normalized_export_revision": 1,
+  "normalized_exporter_sha256": "13646d355744f5293d573816e5cd54459cf88f3b647c6c2a22aa61ae29200779",
+  "exported_coordinate_units": "centimeters in temporary independent copies; source meters",
+  "engine_calibration": [
+    "reports/WC-330/import-probe/forward_cm-results.json",
+    "reports/WC-330/import-probe/all7-comparison.json"
+  ],
+  "textures": {
+    "BaseColor": "sRGB",
+    "Normal": "linear tangent +Y flat normal with modeled bevels",
+    "ORM": "linear R occlusion G roughness B metallic"
+  },
+  "equipment": "weighted within skeletal mesh; visual only",
+  "clips": {
+    "Idle": {
+      "action": "AN_wc_u_elf_mage_Idle",
+      "frames": [
+        1,
+        121
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 121,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Move": {
+      "action": "AN_wc_u_elf_mage_Move",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 61,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Attack": {
+      "action": "AN_wc_u_elf_mage_Attack",
+      "frames": [
+        1,
+        43
+      ],
+      "release_frame": 19,
+      "support_hand_bake_samples": 43,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Active": {
+      "action": "AN_wc_u_elf_mage_Active",
+      "frames": [
+        1,
+        43
+      ],
+      "release_frame": 25,
+      "support_hand_bake_samples": 43,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Hit": {
+      "action": "AN_wc_u_elf_mage_Hit",
+      "frames": [
+        1,
+        25
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 25,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Defeat": {
+      "action": "AN_wc_u_elf_mage_Defeat",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 61,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Victory": {
+      "action": "AN_wc_u_elf_mage_Victory",
+      "frames": [
+        1,
+        91
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 91,
+      "maximum_support_reach_clamp_m": 0
+    }
+  },
+  "lods": [
+    {
+      "lod": 1,
+      "triangles": 3003,
+      "ratio_target": 0.5,
+      "visual_acceptance": "pending"
+    },
+    {
+      "lod": 2,
+      "triangles": 1500,
+      "ratio_target": 0.25,
+      "visual_acceptance": "pending"
+    }
+  ],
+  "source_brief": {
+    "silhouette": "A narrow column of layered robes topped by a wide broken-circle headpiece. A small star-lens disk rests in the open left hand instead of a long staff.",
+    "face": "Cool brown skin, pale violet eyes and midnight-blue hair braided into a smooth low knot. Long ears extend beneath the open headpiece.",
+    "costume": "Violet coat over pale blue layered cloth, a fitted waist sash and short split lower panels. The headpiece is one bold arc, not a crown of many spikes.",
+    "palette": "Violet #7465A5; pale blue #B4CADD; midnight #3E4166; pearl #E0E3D9.",
+    "equipment": "A palm-sized star-lens in a thick silver ring and a flat chart case at the hip. Presentation magic is anchored to hand sockets.",
+    "signature": "Broken-circle headpiece, open-hand star lens and clean vertical silhouette.",
+    "materials": "Satin-like cloth with restrained specular response, brushed silver and a small emissive star. Keep the face the brightest non-emissive plane.",
+    "back": "Long central seam and two overlapping panels create an open lower-leg gap. The chart case sits against the belt and cannot swing freely.",
+    "animation": "Idle follows the lens with a small eye-line shift. Basics flick a pale spark. Starbind raises the lens to eye level, aligns both palms and releases one small star toward the target.",
+    "vfx": "A pale violet projectile makes one compact magic impact, followed by a geometric ring above the surviving stunned target. Damage and stun share one impact; no chains, root or extra damage packets are added.",
+    "audio": "A clean glass note with a short crystalline arrival tone. No long loop while the target is stunned.",
+    "risk": "The headpiece can alias at low resolution; thicken it and test against bright sky. The control duration must not scale with stars."
+  },
+  "files": {
+    "AN_wc_u_elf_mage_Active.fbx": "a6a4b0068ebf162ad69324927190dbbef8eb17d900357bc1ba687795cfcc324f",
+    "AN_wc_u_elf_mage_Attack.fbx": "059ff113d6d9513259117f572f96e64daca44710f408f69fdc5721bcf5685380",
+    "AN_wc_u_elf_mage_Defeat.fbx": "5fced68b9007fe433dc921be8fd5c8e4d50a8000e89499ea0553865f9d2257e0",
+    "AN_wc_u_elf_mage_Hit.fbx": "5f891490aa5ba53e4110dbfb895e729c96db4e432340281057deb19281dccf20",
+    "AN_wc_u_elf_mage_Idle.fbx": "52e49ab87f601eea86c146eda75b069cd426425b410ff5266beb4fe7acf21683",
+    "AN_wc_u_elf_mage_Move.fbx": "f72750bbb7b46fa85f1d02c5f1c4b3b0473fe78a4c49b4ed47512ea6e299c125",
+    "AN_wc_u_elf_mage_Victory.fbx": "1e75c1c4cd4f02e4c903c21843d5eacc70d510fe4fff444befb6928d8ca0067d",
+    "portrait.png": "3a98ddcf12bf61f8062289536d7068813336c2746215a316d6aa067231825744",
+    "SK_wc_u_elf_mage.fbx": "6a6c9986cc2838c3723d52b9f4cb99f27b7eb31f989fdc2d437c431c88767126",
+    "SK_wc_u_elf_mage_LOD1.fbx": "ff36f9ef567aea0dcdc69fabdb8dada7c70b2cdb3606f9b391f921ac0a6400a6",
+    "SK_wc_u_elf_mage_LOD2.fbx": "fb1e17deffd2b92d3167b81ac11f39def48ae63799b99cb9c0988b20f7298aa3",
+    "T_wc_u_elf_mage_BaseColor.png": "b13617f3bce812f56e5c69636035fbc2aa69588b7be1fcd355b9c0e2e866bcff",
+    "T_wc_u_elf_mage_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
+    "T_wc_u_elf_mage_ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c"
+  },
+  "open_reviews": [
+    "Unreal import/reimport",
+    "continuous clip quality",
+    "crowded board",
+    "LOD appearance",
+    "effects and audio"
+  ],
+  "report": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T144111Z\\wc_u_elf_mage\\candidate-v1"
+}

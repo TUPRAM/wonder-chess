@@ -1,0 +1,160 @@
+{
+  "status": "authored_exported_rendered_candidate_not_engine_accepted",
+  "unit_id": "wc_u_human_warrior",
+  "name": "Cass Vale",
+  "blender_version": "5.1.1",
+  "source_revision": 1,
+  "geometry_source_revision": 1,
+  "animation_revision": 1,
+  "height_m": 1.86,
+  "source_sha256": "9240790878ef6ed80b8a223bd1e40ea9c44a44875e05536ea20c03e9599c4c6a",
+  "author_script_sha256": "ed1ace91ab5ec14d70fde1f1d2abd3361c94fe3afc873d3fa1ad1396d2c1238e",
+  "units_source_sha256": "fd6d831113261dd984f3d2430236c06eda4a9f4e7f9e30a404a76f418fa953b0",
+  "rig_family": "humanoid_standard",
+  "rig_revision": "WC_family_v1",
+  "bones": 27,
+  "triangles": 4774,
+  "materials": 1,
+  "fps": 60,
+  "source_forward": "+Y",
+  "source_up": "+Z",
+  "unit_scale_m": 1,
+  "fbx_profile": "tools/blender/profiles/fbx_skeletal_cm_v1.json",
+  "normalized_export_revision": 1,
+  "normalized_exporter_sha256": "13646d355744f5293d573816e5cd54459cf88f3b647c6c2a22aa61ae29200779",
+  "exported_coordinate_units": "centimeters in temporary independent copies; source meters",
+  "engine_calibration": [
+    "reports/WC-330/import-probe/forward_cm-results.json",
+    "reports/WC-330/import-probe/all7-comparison.json"
+  ],
+  "textures": {
+    "BaseColor": "sRGB",
+    "Normal": "linear tangent +Y flat normal with modeled bevels",
+    "ORM": "linear R occlusion G roughness B metallic"
+  },
+  "equipment": "weighted within skeletal mesh; visual only",
+  "clips": {
+    "Idle": {
+      "action": "AN_wc_u_human_warrior_Idle",
+      "frames": [
+        1,
+        121
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 121,
+      "maximum_support_reach_clamp_m": 0.0007536090703001985
+    },
+    "Move": {
+      "action": "AN_wc_u_human_warrior_Move",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 61,
+      "maximum_support_reach_clamp_m": 0.000753632043776653
+    },
+    "Attack": {
+      "action": "AN_wc_u_human_warrior_Attack",
+      "frames": [
+        1,
+        46
+      ],
+      "release_frame": 22,
+      "support_hand_bake_samples": 46,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Active": {
+      "action": "AN_wc_u_human_warrior_Active",
+      "frames": [
+        1,
+        40
+      ],
+      "release_frame": 22,
+      "support_hand_bake_samples": 40,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Hit": {
+      "action": "AN_wc_u_human_warrior_Hit",
+      "frames": [
+        1,
+        25
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 25,
+      "maximum_support_reach_clamp_m": 0.000753632043776653
+    },
+    "Defeat": {
+      "action": "AN_wc_u_human_warrior_Defeat",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 61,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Victory": {
+      "action": "AN_wc_u_human_warrior_Victory",
+      "frames": [
+        1,
+        91
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 91,
+      "maximum_support_reach_clamp_m": 0
+    }
+  },
+  "lods": [
+    {
+      "lod": 1,
+      "triangles": 2387,
+      "ratio_target": 0.5,
+      "visual_acceptance": "pending"
+    },
+    {
+      "lod": 2,
+      "triangles": 1192,
+      "ratio_target": 0.25,
+      "visual_acceptance": "pending"
+    }
+  ],
+  "source_brief": {
+    "silhouette": "A tall upright figure with one squared shoulder plate and a long, broad fantasy blade held diagonally downward. A short rectangular back-banner creates a distinctive vertical behind the head.",
+    "face": "Medium-brown skin, close-cropped dark hair, brown eyes and a composed, focused expression. A pale eyebrow streak is a natural hair accent rather than an injury story.",
+    "costume": "Deep red fitted coat under partial silver plate, broad belt, cream trousers and knee boots. The asymmetric armor leaves a clear leading and trailing side.",
+    "palette": "Crimson #A4464D; cream #E3D7BA; silver #A6B5BF; midnight #344155.",
+    "equipment": "Broad two-handed fantasy blade and a short banner fixed to a rigid back bracket. The banner is cosmetic; no area buff or faction system is implied.",
+    "signature": "Single large shoulder plate, upright back-banner and long diagonal blade.",
+    "materials": "Matte cloth and brushed steel with sparse clean edge highlights. Bake banner folds or use two accessory bones; no cloth solver.",
+    "back": "A rigid banner bracket attaches visibly to the harness, leaving shoulder motion clear. The cloth stops above the hips.",
+    "animation": "Idle keeps the blade low and feet apart. Basics are short two-handed cuts. The active pulls the blade inward and delivers one measured forward strike; the banner follows slightly after the torso.",
+    "vfx": "A single narrow warm-white trail and compact impact spark. No splash damage, armor break or knockback.",
+    "audio": "One firm cloth movement and a clean resonant hit; no shouted voice requirement.",
+    "risk": "Banner silhouette must not overlap health bars or obscure the next row. Validate that a two-handed pose works with the shared standard rig."
+  },
+  "files": {
+    "AN_wc_u_human_warrior_Active.fbx": "1d459b4b17136125033c08133d3d3482fb4d2b94cd0ff97cdb98398fa2aa4076",
+    "AN_wc_u_human_warrior_Attack.fbx": "6994c5a1c7ceb6ee8ae0f0d143515b3870af4c61db0117c868ce0db70c313dd2",
+    "AN_wc_u_human_warrior_Defeat.fbx": "0e25116797a1e7154f3ed05bbf08b0708fed33d5c82678657bffef289e1be5d1",
+    "AN_wc_u_human_warrior_Hit.fbx": "5db4f7e76dfa60d5e476bfdabce9534e2dbad156eb8a36a32d084c463ebf02cd",
+    "AN_wc_u_human_warrior_Idle.fbx": "5dc7a4bcfc27e7d756628a2f00173fbad710907f7953f8ffb28782390cf9378c",
+    "AN_wc_u_human_warrior_Move.fbx": "f782a8e6af943e02e2661308ddf7490b484f9ae71bbb7e8d0c933b6aba552cb0",
+    "AN_wc_u_human_warrior_Victory.fbx": "e1c92d6fcf50148e1c5d3e009f293fbd88079b4fdc5b74362e4850fce50c6168",
+    "portrait.png": "a1eb737f5e99234e19cb20db749681602badab8ed99a362aa22dcf79ba8c1852",
+    "SK_wc_u_human_warrior.fbx": "ca8ea3f853d3e2fb54f5c7de856e50b49414bdafc2aac98650b3e5de36b752e7",
+    "SK_wc_u_human_warrior_LOD1.fbx": "66271af354fd82de253856dd759bba62efeccfb0e99cec346f127bb94c93dde6",
+    "SK_wc_u_human_warrior_LOD2.fbx": "1dc0ad7ae2a74ea5995fba9118a4d4990e5231bce14093ca09e2b75e88f8a5ea",
+    "T_wc_u_human_warrior_BaseColor.png": "7a7889ab491370bbabfec4bba2e26c6733068bdc457e7d20a683ebb2400f9e86",
+    "T_wc_u_human_warrior_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
+    "T_wc_u_human_warrior_ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c"
+  },
+  "open_reviews": [
+    "Unreal import/reimport",
+    "continuous clip quality",
+    "crowded board",
+    "LOD appearance",
+    "effects and audio"
+  ],
+  "report": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260906T144111Z\\wc_u_human_warrior\\candidate-v3"
+}
