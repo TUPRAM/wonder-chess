@@ -18,4 +18,15 @@ __pycache__/
 .env.local
 *.sln
 *.VC.db
+# This machine's MCP paths and disposable native test build products.
+/.codex/config.toml
+/reports/**/*.obj
+/reports/**/wonder_runtime_tests.exe
+/reports/**/targeted_combat_tests.exe
+/reports/**/trait_combat_tests.exe
+/reports/**/measure_neutral_tuning.exe
+/reports/**/measure_update_counters.exe
+/reports/**/attack_windows.exe
+/reports/**/baseline.exe
+/reports/**/current.exe
 # Keep canonical data, generated catalog, docs and source assets versioned.

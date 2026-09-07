@@ -1,0 +1,88 @@
+{
+  "status": "AUTHORED_EXPORTED_RENDERED_CANDIDATE_NOT_ENGINE_ACCEPTED",
+  "source": "C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\lobby\\brighthaven_approach.blend",
+  "source_sha256": "4d2671622b59919d10005c9d7f8a62933dd0a14028e518d02f8b7599e20f719b",
+  "author_script_sha256": "0e376fc0dff1ac6aad698d58d56e455db00dff5ea69a1ffbcc3e0b41405a21e8",
+  "blender_version": "5.1.1",
+  "source_units": "meters",
+  "source_forward": "+Y",
+  "source_up": "+Z",
+  "bounds": {
+    "min_m": [
+      -6.099999904632568,
+      -7.349999904632568,
+      -0.33500000834465027
+    ],
+    "max_m": [
+      6.099999904632568,
+      2.5999999046325684,
+      4.4051361083984375
+    ]
+  },
+  "source_scale": [
+    1,
+    1,
+    1
+  ],
+  "combined_mesh": "SM_WC_BrighthavenApproach",
+  "modules": [
+    "SM_WC_ApproachWestHouse",
+    "SM_WC_ApproachEastHouse",
+    "SM_WC_ApproachGardenArch",
+    "SM_WC_ApproachBeacon",
+    "SM_WC_ApproachGardenWalls",
+    "SM_WC_ApproachPlatform"
+  ],
+  "material": "M_wc_brighthaven_approach",
+  "texture_channels": {
+    "BaseColor": "sRGB",
+    "Normal": "linear tangent +Y; flat normal with modeled bevels",
+    "ORM": "linear R occlusion G roughness B metallic"
+  },
+  "lods": [
+    {
+      "level": 0,
+      "mesh": "SM_WC_BrighthavenApproach",
+      "triangles": 17176
+    },
+    {
+      "level": 1,
+      "mesh": "SM_WC_BrighthavenApproach_LOD1",
+      "triangles": 8587
+    },
+    {
+      "level": 2,
+      "mesh": "SM_WC_BrighthavenApproach_LOD2",
+      "triangles": 4294
+    }
+  ],
+  "export_profile": "temporary centimeter copies via normalized_fbx.py and measured fbx_skeletal_cm_v1 operator settings; static Unreal import still unverified",
+  "placement": "Source origin0 at approach center, ground top about0m; view from+Y. Buildings atY-3..-3.6, beaconY-6.5. Clear central foreground. Combine meshes on Unreal import if needed; actor scale1 after centimeter import. Never stack combined mesh with individual modules.",
+  "files": {
+    "BaseColor.png": "92caca9b7e13e731a5e0af22ccd778c6351cf6fc203d85b0b995ba56477b0419",
+    "Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
+    "ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c",
+    "SM_WC_ApproachBeacon.fbx": "76a955e673a1dcd33677ccb5ee05f09f5ef2e5628374056614b468fe48dbcd6d",
+    "SM_WC_ApproachEastHouse.fbx": "9496b029c0f91f851eb0d4c212dacc44d70a068a1465351aef2ab1f4c7c70500",
+    "SM_WC_ApproachGardenArch.fbx": "e70bda98e0dee2a1c2081c8b350311096d6f6d7a17daa1dfaabf8b3dc16d6a33",
+    "SM_WC_ApproachGardenWalls.fbx": "e072208c688750f7cd9ec82a54c03c316902376b386ad55f8c26599271accc3a",
+    "SM_WC_ApproachPlatform.fbx": "e2667e1ec329b434f8e1498157a65766280ddb521f2aa9f0c216dbd8e265fd15",
+    "SM_WC_ApproachWestHouse.fbx": "f4c475a659bc0e1e243ba1b4a647901d4b39b51930f8a14af89f7aef63f8413c",
+    "SM_WC_BrighthavenApproach.fbx": "a933fde6eaed6d626190d3a5e7c3b94da09f517ed713a7728d05b7373c1f926e",
+    "SM_WC_BrighthavenApproach_LOD1.fbx": "9665f55abdcf782a7ebafa00a287f3c2321077a9bec86761986cc9a7ab1754df",
+    "SM_WC_BrighthavenApproach_LOD2.fbx": "9bf148705442c9ad90c27613fc11b29011b5cd830816593c66508ef4a0d80027",
+    "T_wc_brighthaven_approach_BaseColor.png": "92caca9b7e13e731a5e0af22ccd778c6351cf6fc203d85b0b995ba56477b0419",
+    "T_wc_brighthaven_approach_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
+    "T_wc_brighthaven_approach_ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c"
+  },
+  "not_verified": [
+    "Unreal placement/import",
+    "LOD appearance in Unreal",
+    "gallery animation bounds",
+    "performance",
+    "final art acceptance"
+  ],
+  "source_revision": 3,
+  "refinement_script_sha256": "72aa838b2bdc20a7da6ed8ebeeddfb64e386ac2fa9cfe44926e4034eeab5f35e",
+  "prior_candidate": "C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\lobby\\review\\revision2"
+}

@@ -499,5 +499,19 @@
     "eight_neutral_encounters": "OBSERVED",
     "required_busy_load": "NOT_RUN"
   },
-  "final_validation": "reports/WC-U460/20260907T173100Z-final-checks"
+  "final_validation": "reports/WC-U460/20260907T173100Z-final-checks",
+  "blender_mcp_connection": {
+    "status": "LIVE_PROTOCOL_VERIFIED_DESKTOP_RESTART_PENDING",
+    "verified_utc": "2026-09-07T23:29:42.174439+00:00",
+    "configuration": ".codex/config.toml",
+    "launcher": "tools/blender/Start-Mcp.ps1",
+    "guide": "docs/BLENDER_MCP_CONNECTION.md",
+    "evidence": "reports/blender-mcp/20260907T232817Z/verification.json",
+    "blender_version": "5.1.1",
+    "server_version": "1.9.1",
+    "listener": "127.0.0.1:9876",
+    "telemetry": false,
+    "code_safe_mode": true,
+    "source_assets_modified": false
+  }
 }
