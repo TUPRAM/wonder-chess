@@ -1,0 +1,878 @@
+{
+  "status": "PASS",
+  "boundary": "Two actual packaged 1H7B namespaces in one process using scripted human ServerIntent input at 10x simulation. This is functional execution evidence, not manual play, normal-speed performance acceptance, or a visual quality verdict.",
+  "audit_utc": "2026-09-06T07:00:02.016013+00:00",
+  "matches": [
+    {
+      "process_id": 14868,
+      "match_namespace": 1,
+      "seat": 0,
+      "network_mode": 0,
+      "authority_process": true,
+      "scripted_client": true,
+      "simulation_speed_multiplier": 10,
+      "complete": true,
+      "aborted": false,
+      "phase": 3,
+      "round": 20,
+      "intent_requests": 42,
+      "actual_accepted_replies": 37,
+      "actual_rejected_replies": 5,
+      "process_exit_requested": false,
+      "max_living_visible_units": 12,
+      "max_living_logical_units": 48,
+      "max_simultaneous_encounters": 4,
+      "observed_first_utc": "2026-09-06T06:45:40.280Z",
+      "observed_last_utc": "2026-09-06T06:47:18.485Z",
+      "first_results_utc": "2026-09-06T06:47:16.683Z",
+      "snapshot_count": 243,
+      "eight_seat_snapshot_count": 243,
+      "human_count_values": [
+        1
+      ],
+      "owner_private_binding": true,
+      "received_public_privacy_violations": [],
+      "fresh_owner_private": {
+        "seat": 0,
+        "gold": 10,
+        "xp": 0,
+        "level": 3,
+        "revision": 4294967297,
+        "sequence": 0,
+        "locked": false,
+        "ready": false,
+        "shop": [
+          9,
+          3,
+          11,
+          0,
+          7
+        ],
+        "units": []
+      },
+      "combat_rounds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "preparation_rounds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "first_human_eliminated_observation": {
+        "utc": "2026-09-06T06:46:32.387Z",
+        "round": 10,
+        "phase": 2
+      },
+      "combat_rounds_observed_after_human_elimination": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "post_elimination_combat_boundary": "Eliminated owner receives ongoing real encounters; this field alone does not prove camera selection or visible UX.",
+      "command_event_counts": {
+        "probe_sent": 7,
+        "actual_client_reply": 42,
+        "probe_result": 7,
+        "normal_intent_requested": 35
+      },
+      "actual_reply_reasons": {
+        "Out-of-order command sequence": 1,
+        "Accepted": 37,
+        "Request ID reused with different payload": 1,
+        "Stale seat revision": 1,
+        "Unit is not owned": 1,
+        "Preparation is locked": 1
+      },
+      "reply_counts_reconcile": true,
+      "probes": [
+        {
+          "name": "out_of_order_sequence_rejected",
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Out-of-order command sequence"
+        },
+        {
+          "name": "original_idempotent_lock_request",
+          "status": "PASS",
+          "accepted": true,
+          "reply": "Accepted"
+        },
+        {
+          "name": "duplicate_request_applies_once",
+          "status": "PASS",
+          "accepted": true,
+          "reply": "Accepted"
+        },
+        {
+          "name": "changed_payload_same_request_rejected",
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Request ID reused with different payload"
+        },
+        {
+          "name": "stale_revision_rejected",
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Stale seat revision"
+        },
+        {
+          "name": "foreign_unit_sale_rejected",
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Unit is not owned"
+        },
+        {
+          "name": "combat_phase_buy_rejected",
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Preparation is locked"
+        }
+      ],
+      "capped": false,
+      "final_standings": [
+        {
+          "id": 0,
+          "name": "Captain 1",
+          "human": true,
+          "health": 0,
+          "wins": 0,
+          "place": 8
+        },
+        {
+          "id": 1,
+          "name": "Rowanfield Bot",
+          "human": false,
+          "health": 0,
+          "wins": 10,
+          "place": 3
+        },
+        {
+          "id": 2,
+          "name": "Starwatch Bot",
+          "human": false,
+          "health": 0,
+          "wins": 11,
+          "place": 2
+        },
+        {
+          "id": 3,
+          "name": "Hearthkeeper Bot",
+          "human": false,
+          "health": 0,
+          "wins": 6,
+          "place": 4
+        },
+        {
+          "id": 4,
+          "name": "Sunstride Bot",
+          "human": false,
+          "health": 0,
+          "wins": 4,
+          "place": 6
+        },
+        {
+          "id": 5,
+          "name": "Gemseeker Bot",
+          "human": false,
+          "health": 0,
+          "wins": 3,
+          "place": 7
+        },
+        {
+          "id": 6,
+          "name": "Highbanner Bot",
+          "human": false,
+          "health": 0,
+          "wins": 7,
+          "place": 5
+        },
+        {
+          "id": 7,
+          "name": "Wayfinder Bot",
+          "human": false,
+          "health": 53,
+          "wins": 19,
+          "place": 1
+        }
+      ],
+      "inputs": [
+        {
+          "path": "reports\\WC-360\\candidate5-solo-restart\\match-1-seat-0-pid-14868-session.json",
+          "bytes": 2151045,
+          "sha256": "4ebe77ec00c0192947b8025f7c1efc4698a34f418568374c48c0a16be39e1287"
+        },
+        {
+          "path": "reports\\WC-360\\candidate5-solo-restart\\match-1-seat-0-pid-14868-snapshots.jsonl",
+          "bytes": 10252996,
+          "sha256": "7d66d7ab5422c35b7d1c69b3fc6af28ef311637cc9c0f3502221ba9150d0a3bf"
+        },
+        {
+          "path": "reports\\WC-360\\candidate5-solo-restart\\match-1-seat-0-pid-14868-commands.jsonl",
+          "bytes": 26456,
+          "sha256": "e78423deaf15d63141e7610863222316552e94d51153a2c49b5d87432a9540ef"
+        }
+      ]
+    },
+    {
+      "process_id": 14868,
+      "match_namespace": 2,
+      "seat": 0,
+      "network_mode": 0,
+      "authority_process": true,
+      "scripted_client": true,
+      "simulation_speed_multiplier": 10,
+      "complete": true,
+      "aborted": false,
+      "phase": 3,
+      "round": 20,
+      "intent_requests": 43,
+      "actual_accepted_replies": 37,
+      "actual_rejected_replies": 6,
+      "process_exit_requested": true,
+      "max_living_visible_units": 12,
+      "max_living_logical_units": 48,
+      "max_simultaneous_encounters": 4,
+      "observed_first_utc": "2026-09-06T06:47:19.019Z",
+      "observed_last_utc": "2026-09-06T06:51:35.383Z",
+      "first_results_utc": "2026-09-06T06:48:55.909Z",
+      "snapshot_count": 556,
+      "eight_seat_snapshot_count": 556,
+      "human_count_values": [
+        1
+      ],
+      "owner_private_binding": true,
+      "received_public_privacy_violations": [],
+      "fresh_owner_private": {
+        "seat": 0,
+        "gold": 10,
+        "xp": 0,
+        "level": 3,
+        "revision": 8589934593,
+        "sequence": 0,
+        "locked": false,
+        "ready": false,
+        "shop": [
+          9,
+          3,
+          11,
+          0,
+          7
+        ],
+        "units": []
+      },
+      "combat_rounds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "preparation_rounds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        17
+      ],
+      "first_human_eliminated_observation": {
+        "utc": "2026-09-06T06:48:11.865Z",
+        "round": 10,
+        "phase": 2
+      },
+      "combat_rounds_observed_after_human_elimination": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "post_elimination_combat_boundary": "Eliminated owner receives ongoing real encounters; this field alone does not prove camera selection or visible UX.",
+      "command_event_counts": {
+        "probe_sent": 8,
+        "actual_client_reply": 43,
+        "probe_result": 8,
+        "normal_intent_requested": 35
+      },
+      "actual_reply_reasons": {
+        "Stale seat revision": 2,
+        "Out-of-order command sequence": 1,
+        "Accepted": 37,
+        "Request ID reused with different payload": 1,
+        "Unit is not owned": 1,
+        "Preparation is locked": 1
+      },
+      "reply_counts_reconcile": true,
+      "probes": [
+        {
+          "name": "previous_match_request_rejected",
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Stale seat revision"
+        },
+        {
+          "name": "out_of_order_sequence_rejected",
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Out-of-order command sequence"
+        },
+        {
+          "name": "original_idempotent_lock_request",
+          "status": "PASS",
+          "accepted": true,
+          "reply": "Accepted"
+        },
+        {
+          "name": "duplicate_request_applies_once",
+          "status": "PASS",
+          "accepted": true,
+          "reply": "Accepted"
+        },
+        {
+          "name": "changed_payload_same_request_rejected",
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Request ID reused with different payload"
+        },
+        {
+          "name": "stale_revision_rejected",
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Stale seat revision"
+        },
+        {
+          "name": "foreign_unit_sale_rejected",
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Unit is not owned"
+        },
+        {
+          "name": "combat_phase_buy_rejected",
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Preparation is locked"
+        }
+      ],
+      "capped": false,
+      "final_standings": [
+        {
+          "id": 0,
+          "name": "Captain 1",
+          "human": true,
+          "health": 0,
+          "wins": 0,
+          "place": 8
+        },
+        {
+          "id": 1,
+          "name": "Rowanfield Bot",
+          "human": false,
+          "health": 0,
+          "wins": 10,
+          "place": 3
+        },
+        {
+          "id": 2,
+          "name": "Starwatch Bot",
+          "human": false,
+          "health": 0,
+          "wins": 11,
+          "place": 2
+        },
+        {
+          "id": 3,
+          "name": "Hearthkeeper Bot",
+          "human": false,
+          "health": 0,
+          "wins": 6,
+          "place": 4
+        },
+        {
+          "id": 4,
+          "name": "Sunstride Bot",
+          "human": false,
+          "health": 0,
+          "wins": 4,
+          "place": 6
+        },
+        {
+          "id": 5,
+          "name": "Gemseeker Bot",
+          "human": false,
+          "health": 0,
+          "wins": 3,
+          "place": 7
+        },
+        {
+          "id": 6,
+          "name": "Highbanner Bot",
+          "human": false,
+          "health": 0,
+          "wins": 7,
+          "place": 5
+        },
+        {
+          "id": 7,
+          "name": "Wayfinder Bot",
+          "human": false,
+          "health": 53,
+          "wins": 19,
+          "place": 1
+        }
+      ],
+      "inputs": [
+        {
+          "path": "reports\\WC-360\\candidate5-solo-restart\\match-2-seat-0-pid-14868-session.json",
+          "bytes": 2207422,
+          "sha256": "639cf3145cb0d12ab67c25d32e877a3ce693eeb334f46e23ce462907ba5d5ca7"
+        },
+        {
+          "path": "reports\\WC-360\\candidate5-solo-restart\\match-2-seat-0-pid-14868-snapshots.jsonl",
+          "bytes": 16337825,
+          "sha256": "aab4986b749ce719fc1c4ca5c0b00d190c5a02c0ab33286752f3d48ecf554d57"
+        },
+        {
+          "path": "reports\\WC-360\\candidate5-solo-restart\\match-2-seat-0-pid-14868-commands.jsonl",
+          "bytes": 27771,
+          "sha256": "392045e035691635da3811ce5fa446918861e3b9ce8348eeacfb8a5681998b04"
+        }
+      ]
+    }
+  ],
+  "restart_reader_status": "PASS",
+  "restart_reader_checks": 12,
+  "performance": [
+    {
+      "boundary": "Observed instrumented viewport timings; GPU zero samples omitted as unavailable. No inferred hardware or FPS.",
+      "hardware_and_settings": {
+        "cpu": "AMD Ryzen 7 6800H with Radeon Graphics         ",
+        "active_rhi_adapter": "NVIDIA GeForce RTX 3060 Laptop GPU",
+        "primary_gpu_reported_by_os": "AMD Radeon(TM) Graphics",
+        "engine": "5.7.4-51494982+++UE5+Release-5.7",
+        "rhi": "D3D11",
+        "render_settings": {
+          "r.ScreenPercentage": "100",
+          "r.VSync": "0",
+          "t.MaxFPS": "60",
+          "sg.ShadowQuality": "3",
+          "sg.PostProcessQuality": "3",
+          "r.DynamicGlobalIlluminationMethod": "0",
+          "r.ReflectionMethod": "0"
+        },
+        "resolution_x": 1920,
+        "resolution_y": 1080,
+        "simulation_speed_multiplier": 10,
+        "peak_process_physical_bytes": 625291264,
+        "gpu_timing_source": "RHIGetGPUFrameCycles GPU0; zero samples excluded as unavailable"
+      },
+      "subsets": {
+        "all_profiled_frames": {
+          "frames": 4788,
+          "frame_ms": {
+            "status": "OBSERVED",
+            "samples": 4788,
+            "p50_ms": 16.666901,
+            "p95_ms": 16.691298,
+            "p99_ms": 132.864899,
+            "max_ms": 229.297989,
+            "frames_over_33_33ms": 99,
+            "frames_over_100ms": 74
+          },
+          "game_ms": {
+            "status": "OBSERVED",
+            "samples": 4788,
+            "p50_ms": 3.3206,
+            "p95_ms": 9.6613,
+            "p99_ms": 127.6492,
+            "max_ms": 221.297104,
+            "frames_over_33_33ms": 98,
+            "frames_over_100ms": 63
+          },
+          "render_ms": {
+            "status": "OBSERVED",
+            "samples": 4788,
+            "p50_ms": 6.0433,
+            "p95_ms": 8.903,
+            "p99_ms": 9.9498,
+            "max_ms": 13.5268,
+            "frames_over_33_33ms": 0,
+            "frames_over_100ms": 0
+          },
+          "gpu_ms": {
+            "status": "OBSERVED",
+            "samples": 4788,
+            "p50_ms": 16.6001,
+            "p95_ms": 20.629499,
+            "p99_ms": 47.604698,
+            "max_ms": 249.484299,
+            "frames_over_33_33ms": 50,
+            "frames_over_100ms": 46
+          }
+        },
+        "twelve_visible_combatants": {
+          "frames": 206,
+          "frame_ms": {
+            "status": "OBSERVED",
+            "samples": 206,
+            "p50_ms": 16.666897,
+            "p95_ms": 175.053802,
+            "p99_ms": 194.064499,
+            "max_ms": 229.297989,
+            "frames_over_33_33ms": 27,
+            "frames_over_100ms": 24
+          },
+          "game_ms": {
+            "status": "OBSERVED",
+            "samples": 206,
+            "p50_ms": 3.2853,
+            "p95_ms": 141.111404,
+            "p99_ms": 168.876099,
+            "max_ms": 221.297104,
+            "frames_over_33_33ms": 21,
+            "frames_over_100ms": 19
+          },
+          "render_ms": {
+            "status": "OBSERVED",
+            "samples": 206,
+            "p50_ms": 5.7326,
+            "p95_ms": 8.0877,
+            "p99_ms": 9.5718,
+            "max_ms": 13.5268,
+            "frames_over_33_33ms": 0,
+            "frames_over_100ms": 0
+          },
+          "gpu_ms": {
+            "status": "OBSERVED",
+            "samples": 206,
+            "p50_ms": 16.5909,
+            "p95_ms": 167.089203,
+            "p99_ms": 180.496399,
+            "max_ms": 249.484299,
+            "frames_over_33_33ms": 13,
+            "frames_over_100ms": 13
+          }
+        },
+        "twelve_visible_and_four_live_encounters": {
+          "frames": 110,
+          "frame_ms": {
+            "status": "OBSERVED",
+            "samples": 110,
+            "p50_ms": 16.666897,
+            "p95_ms": 108.592003,
+            "p99_ms": 175.399307,
+            "max_ms": 202.179199,
+            "frames_over_33_33ms": 11,
+            "frames_over_100ms": 8
+          },
+          "game_ms": {
+            "status": "OBSERVED",
+            "samples": 110,
+            "p50_ms": 3.1039,
+            "p95_ms": 102.302101,
+            "p99_ms": 146.939102,
+            "max_ms": 221.297104,
+            "frames_over_33_33ms": 9,
+            "frames_over_100ms": 7
+          },
+          "render_ms": {
+            "status": "OBSERVED",
+            "samples": 110,
+            "p50_ms": 5.5406,
+            "p95_ms": 7.1532,
+            "p99_ms": 7.5891,
+            "max_ms": 8.0877,
+            "frames_over_33_33ms": 0,
+            "frames_over_100ms": 0
+          },
+          "gpu_ms": {
+            "status": "OBSERVED",
+            "samples": 110,
+            "p50_ms": 16.607201,
+            "p95_ms": 22.895599,
+            "p99_ms": 177.186798,
+            "max_ms": 249.484299,
+            "frames_over_33_33ms": 6,
+            "frames_over_100ms": 6
+          }
+        }
+      },
+      "inputs": [
+        {
+          "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate5-solo-restart\\match-1-seat-0-pid-14868-session.json",
+          "sha256": "4ebe77ec00c0192947b8025f7c1efc4698a34f418568374c48c0a16be39e1287"
+        },
+        {
+          "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate5-solo-restart\\match-1-seat-0-pid-14868-frames.csv",
+          "sha256": "6d0e87cc3a0ff812c274a8cb0b2d8363850eade862e9354667aa37558745f02d"
+        }
+      ],
+      "required_busy_load_status": "OBSERVED",
+      "viewport_1080p_observed": true
+    },
+    {
+      "boundary": "Observed instrumented viewport timings; GPU zero samples omitted as unavailable. No inferred hardware or FPS.",
+      "hardware_and_settings": {
+        "cpu": "AMD Ryzen 7 6800H with Radeon Graphics         ",
+        "active_rhi_adapter": "NVIDIA GeForce RTX 3060 Laptop GPU",
+        "primary_gpu_reported_by_os": "AMD Radeon(TM) Graphics",
+        "engine": "5.7.4-51494982+++UE5+Release-5.7",
+        "rhi": "D3D11",
+        "render_settings": {
+          "r.ScreenPercentage": "100",
+          "r.VSync": "0",
+          "t.MaxFPS": "60",
+          "sg.ShadowQuality": "3",
+          "sg.PostProcessQuality": "3",
+          "r.DynamicGlobalIlluminationMethod": "0",
+          "r.ReflectionMethod": "0"
+        },
+        "resolution_x": 1920,
+        "resolution_y": 1080,
+        "simulation_speed_multiplier": 10,
+        "peak_process_physical_bytes": 634200064,
+        "gpu_timing_source": "RHIGetGPUFrameCycles GPU0; zero samples excluded as unavailable"
+      },
+      "subsets": {
+        "all_profiled_frames": {
+          "frames": 4736,
+          "frame_ms": {
+            "status": "OBSERVED",
+            "samples": 4736,
+            "p50_ms": 16.666901,
+            "p95_ms": 16.9755,
+            "p99_ms": 133.968002,
+            "max_ms": 216.706696,
+            "frames_over_33_33ms": 125,
+            "frames_over_100ms": 78
+          },
+          "game_ms": {
+            "status": "OBSERVED",
+            "samples": 4736,
+            "p50_ms": 3.1791,
+            "p95_ms": 9.8502,
+            "p99_ms": 129.310196,
+            "max_ms": 253.389893,
+            "frames_over_33_33ms": 105,
+            "frames_over_100ms": 67
+          },
+          "render_ms": {
+            "status": "OBSERVED",
+            "samples": 4736,
+            "p50_ms": 6.0347,
+            "p95_ms": 16.514999,
+            "p99_ms": 28.989901,
+            "max_ms": 39.722198,
+            "frames_over_33_33ms": 18,
+            "frames_over_100ms": 0
+          },
+          "gpu_ms": {
+            "status": "OBSERVED",
+            "samples": 4736,
+            "p50_ms": 16.6257,
+            "p95_ms": 20.9951,
+            "p99_ms": 114.678703,
+            "max_ms": 285.443115,
+            "frames_over_33_33ms": 78,
+            "frames_over_100ms": 53
+          }
+        },
+        "twelve_visible_combatants": {
+          "frames": 204,
+          "frame_ms": {
+            "status": "OBSERVED",
+            "samples": 204,
+            "p50_ms": 16.666901,
+            "p95_ms": 163.932495,
+            "p99_ms": 189.260803,
+            "max_ms": 216.158493,
+            "frames_over_33_33ms": 29,
+            "frames_over_100ms": 27
+          },
+          "game_ms": {
+            "status": "OBSERVED",
+            "samples": 204,
+            "p50_ms": 3.2204,
+            "p95_ms": 133.627106,
+            "p99_ms": 150.276306,
+            "max_ms": 253.389893,
+            "frames_over_33_33ms": 25,
+            "frames_over_100ms": 23
+          },
+          "render_ms": {
+            "status": "OBSERVED",
+            "samples": 204,
+            "p50_ms": 5.491,
+            "p95_ms": 8.3719,
+            "p99_ms": 9.1343,
+            "max_ms": 13.4759,
+            "frames_over_33_33ms": 0,
+            "frames_over_100ms": 0
+          },
+          "gpu_ms": {
+            "status": "OBSERVED",
+            "samples": 204,
+            "p50_ms": 16.5734,
+            "p95_ms": 164.175903,
+            "p99_ms": 195.3638,
+            "max_ms": 285.443115,
+            "frames_over_33_33ms": 18,
+            "frames_over_100ms": 18
+          }
+        },
+        "twelve_visible_and_four_live_encounters": {
+          "frames": 96,
+          "frame_ms": {
+            "status": "OBSERVED",
+            "samples": 96,
+            "p50_ms": 16.666901,
+            "p95_ms": 158.2285,
+            "p99_ms": 191.775101,
+            "max_ms": 216.158493,
+            "frames_over_33_33ms": 12,
+            "frames_over_100ms": 10
+          },
+          "game_ms": {
+            "status": "OBSERVED",
+            "samples": 96,
+            "p50_ms": 3.3568,
+            "p95_ms": 107.216599,
+            "p99_ms": 133.627106,
+            "max_ms": 145.636597,
+            "frames_over_33_33ms": 9,
+            "frames_over_100ms": 7
+          },
+          "render_ms": {
+            "status": "OBSERVED",
+            "samples": 96,
+            "p50_ms": 5.8351,
+            "p95_ms": 8.6242,
+            "p99_ms": 10.0079,
+            "max_ms": 12.1313,
+            "frames_over_33_33ms": 0,
+            "frames_over_100ms": 0
+          },
+          "gpu_ms": {
+            "status": "OBSERVED",
+            "samples": 96,
+            "p50_ms": 16.472,
+            "p95_ms": 117.618698,
+            "p99_ms": 190.268494,
+            "max_ms": 195.3638,
+            "frames_over_33_33ms": 6,
+            "frames_over_100ms": 6
+          }
+        }
+      },
+      "inputs": [
+        {
+          "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate5-solo-restart\\match-2-seat-0-pid-14868-session.json",
+          "sha256": "639cf3145cb0d12ab67c25d32e877a3ce693eeb334f46e23ce462907ba5d5ca7"
+        },
+        {
+          "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate5-solo-restart\\match-2-seat-0-pid-14868-frames.csv",
+          "sha256": "f82afcffcdcc634e49db284c2c66ca4f20d7ddb05bba2337cc7587d0ac90af15"
+        }
+      ],
+      "required_busy_load_status": "OBSERVED",
+      "viewport_1080p_observed": true
+    }
+  ],
+  "log": {
+    "input": {
+      "path": "reports\\WC-360\\candidate5-solo-restart\\game.log",
+      "bytes": 100823,
+      "sha256": "b7d3fee644852633c304d3c88e678a544e3ed7fb1a875500d7cbda26dfd491bf"
+    },
+    "error_level_lines": 0,
+    "oversized_bunch_count": 0,
+    "bunch_size_min": null,
+    "bunch_size_max": null,
+    "oversized_bunch_first": null,
+    "oversized_bunch_last": null,
+    "oversized_bunch_lines": [],
+    "network_failure_lines": [],
+    "match_finished_lines": [
+      "[2026.09.06-06.47.16:394][ 34]LogTemp: Display: WC_MATCH_FINISHED seed=271828 rounds=20 capped=0",
+      "[2026.09.06-06.48.55:854][149]LogTemp: Display: WC_MATCH_FINISHED seed=271828 rounds=20 capped=0"
+    ],
+    "exit_lines": [
+      "[2026.09.06-06.51.35:597][547]LogWindows: FPlatformMisc::RequestExit(0, <NoCallSiteInfo>)",
+      "[2026.09.06-06.51.35:597][547]LogWindows: FPlatformMisc::RequestExitWithStatus(0, 0, <NoCallSiteInfo>)",
+      "[2026.09.06-06.51.35:597][547]LogCore: Engine exit requested (reason: Win RequestExit)",
+      "[2026.09.06-06.51.36:504][548]Log file closed, 09/06/26 14:51:36"
+    ]
+  },
+  "performance_caveat": "10x speed plus screenshot and JSON evidence capture; first match overlapped the separate regression and art work. Observed timing spikes are retained. A dedicated normal-speed run is required.",
+  "provenance": {
+    "path": "reports\\WC-360\\candidate5-provenance.json",
+    "bytes": 219495,
+    "sha256": "76655831eea4a768d2f1018ca65ed76cdc88b58e80175296fa261806af6d88c3"
+  }
+}

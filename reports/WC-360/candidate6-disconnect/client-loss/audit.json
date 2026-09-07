@@ -1,0 +1,550 @@
+{
+  "status": "PASS",
+  "mode": "client-loss",
+  "boundary": "Actual process exports only. Resource observations are sampled, not an atomic Logout trace. This does not certify visible messaging, physical LAN transport, or packet capture. Actual engine logs retain expected connection-loss/rejection errors. No manual UI or audio review occurred; no render-performance acceptance is inferred.",
+  "checks": [
+    {
+      "check": "distinct_processes",
+      "status": "PASS",
+      "detail": [
+        39904,
+        21872
+      ]
+    },
+    {
+      "check": "host_listen_authority",
+      "status": "PASS",
+      "detail": {
+        "network_mode": 2,
+        "authority_process": true,
+        "seat": 0
+      }
+    },
+    {
+      "check": "client_was_connected_to_this_match",
+      "status": "PASS",
+      "detail": [
+        {
+          "seat": 1,
+          "match_namespace": 1,
+          "network_mode": 3
+        },
+        {
+          "seat": 1,
+          "match_namespace": 1,
+          "network_mode": 3
+        }
+      ]
+    },
+    {
+      "check": "client_received_public_privacy",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "check": "client_requested_real_process_exit",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "check": "host_remained_unaborted",
+      "status": "PASS",
+      "detail": false
+    },
+    {
+      "check": "human_to_bot_takeover_observed",
+      "status": "PASS",
+      "detail": [
+        {
+          "utc": "2026-09-06T07:19:31.421Z",
+          "match_namespace": 1,
+          "process_id": 39904,
+          "seat": 0,
+          "elapsed_wall_seconds": 25.77398879826069,
+          "phase": 1,
+          "round": 1,
+          "event": "authority_takeover_transition",
+          "departed_seat": 1,
+          "status": "PASS",
+          "boundary": "Host-only local verification record; never replicated to clients. Resource comparison is conclusive only without intervening commands or a phase/round boundary.",
+          "intervening_bot_commands": false,
+          "before": {
+            "seat": 1,
+            "human": true,
+            "takeover": false,
+            "health": 60,
+            "gold": 1,
+            "xp": 0,
+            "level": 4,
+            "revision": 4294967310,
+            "sequence": 12,
+            "locked": false,
+            "shop_rng": "16224727393426816228",
+            "roster": [
+              {
+                "id": 8,
+                "definition": 6,
+                "star": 1,
+                "board": true,
+                "column": 3,
+                "row": 3,
+                "bench": -1
+              },
+              {
+                "id": 16,
+                "definition": 6,
+                "star": 1,
+                "board": true,
+                "column": 4,
+                "row": 3,
+                "bench": -1
+              },
+              {
+                "id": 18,
+                "definition": 0,
+                "star": 1,
+                "board": true,
+                "column": 2,
+                "row": 3,
+                "bench": -1
+              },
+              {
+                "id": 20,
+                "definition": 8,
+                "star": 1,
+                "board": true,
+                "column": 5,
+                "row": 3,
+                "bench": -1
+              }
+            ],
+            "shop": [
+              -1,
+              -1,
+              -1,
+              -1,
+              1
+            ]
+          },
+          "after": {
+            "seat": 1,
+            "human": false,
+            "takeover": true,
+            "health": 60,
+            "gold": 1,
+            "xp": 0,
+            "level": 4,
+            "revision": 4294967310,
+            "sequence": 12,
+            "locked": false,
+            "shop_rng": "16224727393426816228",
+            "roster": [
+              {
+                "id": 8,
+                "definition": 6,
+                "star": 1,
+                "board": true,
+                "column": 3,
+                "row": 3,
+                "bench": -1
+              },
+              {
+                "id": 16,
+                "definition": 6,
+                "star": 1,
+                "board": true,
+                "column": 4,
+                "row": 3,
+                "bench": -1
+              },
+              {
+                "id": 18,
+                "definition": 0,
+                "star": 1,
+                "board": true,
+                "column": 2,
+                "row": 3,
+                "bench": -1
+              },
+              {
+                "id": 20,
+                "definition": 8,
+                "star": 1,
+                "board": true,
+                "column": 5,
+                "row": 3,
+                "bench": -1
+              }
+            ],
+            "shop": [
+              -1,
+              -1,
+              -1,
+              -1,
+              1
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "check": "takeover_0_resources_preserved",
+      "status": "PASS",
+      "detail": {
+        "recorded_status": "PASS",
+        "resources_equal": true,
+        "boundary": "Host-only local verification record; never replicated to clients. Resource comparison is conclusive only without intervening commands or a phase/round boundary."
+      }
+    },
+    {
+      "check": "authority_continued_after_departure",
+      "status": "PASS",
+      "detail": {
+        "takeover_wall_seconds": 25.77398879826069,
+        "final_wall_seconds": 90.92305739969015
+      }
+    },
+    {
+      "check": "port_unowned_before_launch",
+      "status": "PASS",
+      "detail": 7778
+    },
+    {
+      "check": "planned_processes_exited_zero",
+      "status": "PASS",
+      "detail": [
+        {
+          "role": "host",
+          "bootstrap_pid": 41724,
+          "exit_observed": true,
+          "exit_code": 0,
+          "planned_exit_after_seconds": 100
+        },
+        {
+          "role": "client",
+          "bootstrap_pid": 26148,
+          "exit_observed": true,
+          "exit_code": 0,
+          "planned_exit_after_seconds": 30
+        },
+        {
+          "role": "late-join",
+          "bootstrap_pid": 41064,
+          "exit_observed": true,
+          "exit_code": 0,
+          "planned_exit_after_seconds": 25
+        }
+      ]
+    },
+    {
+      "check": "packaged_executables_match_immutable_manifest",
+      "status": "PASS",
+      "detail": [
+        {
+          "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\Windows-Alpha-Candidate6\\WonderChess.exe",
+          "expected_sha256": "e3c22795d6f2265fcbd88b66e1c5b33b7b017aac916be1f3dca4d0232020a93a",
+          "actual_sha256": "e3c22795d6f2265fcbd88b66e1c5b33b7b017aac916be1f3dca4d0232020a93a",
+          "matches": true
+        },
+        {
+          "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\Windows-Alpha-Candidate6\\WonderChess\\Binaries\\Win64\\WonderChess.exe",
+          "expected_sha256": "5e5ef5c513db0e6f789d8f9370222e82b691240e4d79511aa7115cca9797380f",
+          "actual_sha256": "5e5ef5c513db0e6f789d8f9370222e82b691240e4d79511aa7115cca9797380f",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "check": "departure_occurred_before_tournament_results",
+      "status": "PASS",
+      "detail": {
+        "host_complete": false,
+        "client_complete": false
+      }
+    },
+    {
+      "check": "takeover_during_quiescent_combat",
+      "status": "PASS",
+      "detail": [
+        {
+          "phase": 1,
+          "round": 1,
+          "status": "PASS",
+          "intervening_bot_commands": false
+        }
+      ]
+    },
+    {
+      "check": "late_join_after_takeover",
+      "status": "PASS",
+      "detail": {
+        "takeover_observed_utc": "2026-09-06T07:19:35.7910923Z"
+      }
+    },
+    {
+      "check": "late_join_separate_real_process",
+      "status": "PASS",
+      "detail": [
+        39904,
+        21872,
+        34416
+      ]
+    },
+    {
+      "check": "late_join_rejected_with_concrete_reason",
+      "status": "PASS",
+      "detail": {
+        "network_error": "This alpha does not support joining or rejoining a running tournament. Create a fresh lobby.",
+        "network_error_detail": "",
+        "aborted": true
+      }
+    },
+    {
+      "check": "late_join_no_active_match_or_commands",
+      "status": "PASS",
+      "detail": {
+        "namespace": 0,
+        "requests": 0,
+        "public": {
+          "practice": false,
+          "matchNamespace": 0,
+          "error": "",
+          "connected": 1,
+          "requestedHumans": 1,
+          "network": false,
+          "phase": -1,
+          "round": 0,
+          "remaining": 0,
+          "capped": false,
+          "seats": [],
+          "pairs": [],
+          "encounters": []
+        }
+      }
+    },
+    {
+      "check": "late_join_planned_exit",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "check": "host_kept_bot_takeover_after_late_join",
+      "status": "PASS",
+      "detail": {
+        "human_seats": [
+          0
+        ],
+        "takeover_seats": [
+          1
+        ],
+        "round": 2
+      }
+    },
+    {
+      "check": "host_no_oversized_bunches",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "check": "client_no_oversized_bunches",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "check": "late-join_no_oversized_bunches",
+      "status": "PASS",
+      "detail": []
+    }
+  ],
+  "inputs": [
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\client-loss\\host\\session.json",
+      "sha256": "68fbb1178bd06fd59a24bc907e1cdb230d15562889d8b02fee6363d65eb1f5d7"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\client-loss\\client\\session.json",
+      "sha256": "bd36b84a7a2eeee628738847c5d70d9c7849233d295337b057471e23c4ead54d"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\client-loss\\client\\match-1-seat-1-pid-21872-session.json",
+      "sha256": "bd36b84a7a2eeee628738847c5d70d9c7849233d295337b057471e23c4ead54d"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\client-loss\\client\\match-1-seat-1-pid-21872-snapshots.jsonl",
+      "sha256": "04bb937ffdf40cbb5ab0906d0e6c93b02497985c6cd1e14c6a96c5565fdb2a4d"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\client-loss\\trial.json",
+      "sha256": "d613a3ef5991c7af87ff8a88b33191e83b3030158e97fd41bf7fd43439c37792"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-provenance.json",
+      "sha256": "054e6867be4e339174f51ee5aabf378f70f76a8387ea46aa4a28afa13be13abe"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\client-loss\\late-join\\session.json",
+      "sha256": "e53733de310fa1ae40c1cdf79a8ba07aae70f9e9063e20b39fecb0061a8bc8e3"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\client-loss\\host\\game.log",
+      "sha256": "87730a386efefd7ac8f38c0d18f1b3deb302ec1d6032bcf3ecacb87f42122045"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\client-loss\\host\\launch.json",
+      "sha256": "fe77af70356a340fe4e707cf4912c5db4985ecc29e28f1e76646debbdf60c0d1"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\client-loss\\client\\game.log",
+      "sha256": "9c860fa4c13097693c9f5356ce74a51029afd4c358feb8da8edfd9f6a93fd246"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\client-loss\\client\\launch.json",
+      "sha256": "2d1267bf3690df9fbfdb949820b65da380a00d96aff689e68c72e81ca75a9ead"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\client-loss\\late-join\\game.log",
+      "sha256": "a777fd5488555bd1fe57e5509e739f96ed0058af8a09021ee56bd4b8f9266842"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\client-loss\\late-join\\launch.json",
+      "sha256": "e779fafeb5e10351a94cdfcd7375216b506b32f7827b07eead0fa70e619fd82a"
+    }
+  ],
+  "audit_utc": "2026-09-06T07:22:08.266556+00:00",
+  "lifecycle": {
+    "mode": "client-loss",
+    "port": 7778,
+    "utc_started": "2026-09-06T07:18:56.1621332Z",
+    "status": "PROCESSES_EXITED_AUDIT_REQUIRED",
+    "package": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\Windows-Alpha-Candidate6",
+    "bootstrap_sha256": "e3c22795d6f2265fcbd88b66e1c5b33b7b017aac916be1f3dca4d0232020a93a",
+    "port_unowned_before_launch": true,
+    "boundary": "Actual packaged local-loopback process lifecycle. Normal simulation speed, 1280x720. Profiling is confounded by parallel Shipping compilation and is not a performance acceptance run.",
+    "processes": [
+      {
+        "role": "host",
+        "bootstrap_pid": 41724,
+        "utc_launched": "2026-09-06T07:18:56.3472116Z",
+        "executable": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\Windows-Alpha-Candidate6\\WonderChess.exe",
+        "working_directory": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\Windows-Alpha-Candidate6",
+        "arguments": [
+          "/Game/WonderChess/Maps/L_WC_Courtyard?listen?WCHumans=2",
+          "-unattended",
+          "-nosplash",
+          "-windowed",
+          "-ResX=1280",
+          "-ResY=720",
+          "-ForceRes",
+          "-dx11",
+          "-WCExercise",
+          "-WCAuthorityChecks",
+          "-WCProfile",
+          "-WCFast=1",
+          "-WCExitAfter=100",
+          "-WCEvidenceDir=\"C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\client-loss\\host\"",
+          "-abslog=\"C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\client-loss\\host\\game.log\"",
+          "-Port=7778"
+        ],
+        "planned_exit_after_seconds": 100,
+        "exit_observed": true,
+        "exit_code": 0,
+        "exit_observed_utc": "2026-09-06T07:20:38.1795010Z"
+      },
+      {
+        "role": "client",
+        "bootstrap_pid": 26148,
+        "utc_launched": "2026-09-06T07:19:01.0922990Z",
+        "executable": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\Windows-Alpha-Candidate6\\WonderChess.exe",
+        "working_directory": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\Windows-Alpha-Candidate6",
+        "arguments": [
+          "127.0.0.1:7778",
+          "-unattended",
+          "-nosplash",
+          "-windowed",
+          "-ResX=1280",
+          "-ResY=720",
+          "-ForceRes",
+          "-dx11",
+          "-WCExercise",
+          "-WCAuthorityChecks",
+          "-WCProfile",
+          "-WCFast=1",
+          "-WCExitAfter=30",
+          "-WCEvidenceDir=\"C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\client-loss\\client\"",
+          "-abslog=\"C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\client-loss\\client\\game.log\""
+        ],
+        "planned_exit_after_seconds": 30,
+        "exit_observed": true,
+        "exit_code": 0,
+        "exit_observed_utc": "2026-09-06T07:19:33.1390732Z"
+      },
+      {
+        "role": "late-join",
+        "bootstrap_pid": 41064,
+        "utc_launched": "2026-09-06T07:19:35.8224583Z",
+        "executable": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\Windows-Alpha-Candidate6\\WonderChess.exe",
+        "working_directory": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\Windows-Alpha-Candidate6",
+        "arguments": [
+          "127.0.0.1:7778",
+          "-unattended",
+          "-nosplash",
+          "-windowed",
+          "-ResX=1280",
+          "-ResY=720",
+          "-ForceRes",
+          "-dx11",
+          "-WCExercise",
+          "-WCAuthorityChecks",
+          "-WCProfile",
+          "-WCFast=1",
+          "-WCExitAfter=25",
+          "-WCEvidenceDir=\"C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\client-loss\\late-join\"",
+          "-abslog=\"C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\client-loss\\late-join\\game.log\""
+        ],
+        "planned_exit_after_seconds": 25,
+        "exit_observed": true,
+        "exit_code": 0,
+        "exit_observed_utc": "2026-09-06T07:20:02.5951812Z"
+      }
+    ],
+    "late_join_launched_after_observed_takeover": true,
+    "listen_confirmed_utc": "2026-09-06T07:19:01.0651763Z",
+    "takeover_observed_utc": "2026-09-06T07:19:35.7910923Z",
+    "takeover_status": "PASS",
+    "takeover_phase": 1,
+    "takeover_round": 1,
+    "utc_finished": "2026-09-06T07:20:38.1840421Z"
+  },
+  "logs": {
+    "host": {
+      "error_lines": [],
+      "network_failure_lines": [],
+      "exit_lines": [
+        "[2026.09.06-07.20.36:578][700]LogWindows: FPlatformMisc::RequestExit(0, <NoCallSiteInfo>)",
+        "[2026.09.06-07.20.36:578][700]LogWindows: FPlatformMisc::RequestExitWithStatus(0, 0, <NoCallSiteInfo>)",
+        "[2026.09.06-07.20.36:578][700]LogCore: Engine exit requested (reason: Win RequestExit)",
+        "[2026.09.06-07.20.36:827][701]Log file closed, 09/06/26 15:20:36"
+      ]
+    },
+    "client": {
+      "error_lines": [],
+      "network_failure_lines": [],
+      "exit_lines": [
+        "[2026.09.06-07.19.31:329][101]LogWindows: FPlatformMisc::RequestExit(0, <NoCallSiteInfo>)",
+        "[2026.09.06-07.19.31:329][101]LogWindows: FPlatformMisc::RequestExitWithStatus(0, 0, <NoCallSiteInfo>)",
+        "[2026.09.06-07.19.31:329][101]LogCore: Engine exit requested (reason: Win RequestExit)",
+        "[2026.09.06-07.19.32:326][102]Log file closed, 09/06/26 15:19:32"
+      ]
+    },
+    "late-join": {
+      "error_lines": [],
+      "network_failure_lines": [],
+      "exit_lines": [
+        "[2026.09.06-07.20.01:040][525]LogWindows: FPlatformMisc::RequestExit(0, <NoCallSiteInfo>)",
+        "[2026.09.06-07.20.01:040][525]LogWindows: FPlatformMisc::RequestExitWithStatus(0, 0, <NoCallSiteInfo>)",
+        "[2026.09.06-07.20.01:040][525]LogCore: Engine exit requested (reason: Win RequestExit)",
+        "[2026.09.06-07.20.01:973][526]Log file closed, 09/06/26 15:20:01"
+      ]
+    }
+  }
+}

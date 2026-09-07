@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "utc": "2026-09-06T08:34:45.985356+00:00",
+  "checks_total": 38,
+  "client_loss_checks": 22,
+  "host_loss_checks": 16,
+  "owned_game_process_ids": [
+    2608,
+    21020,
+    21036,
+    38612,
+    44712,
+    45048,
+    48636,
+    50796,
+    50824,
+    51036
+  ],
+  "owned_remaining_at_inventory": [],
+  "other_game_processes_at_inventory": [
+    {
+      "ProcessId": 49972,
+      "ParentProcessId": 50564,
+      "Name": "WonderChess-Win64-Shipping.exe",
+      "ExecutablePath": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-NativeTAA-Candidate\\Windows\\WonderChess\\Binaries\\Win64\\WonderChess-Win64-Shipping.exe"
+    }
+  ],
+  "inventory_utc": "2026-09-06T08:27:17.9498977Z",
+  "requested_ports_unowned": true,
+  "boundary": "Actual two-process Shipping local loopback lifecycle; no physical second machine/LAN assertion. Current native-TAA immutable package. Bootstrap exits observed0, inner exit codes not captured. Client-loss resource-preserving takeover, rejected late join and host-loss client abort were actually exported. Only root normal-performance process49972 remained at later inventory; it was preserved. Shipping engine log checks unavailable, not zero errors. These runs are functional, not performance evidence.",
+  "inputs": [
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\native-taa-disconnect\\client-loss\\audit.json",
+      "sha256": "e9cb2d13cf7bc8321d008600d382b1a5e8ce499fe4377b89874c7405aef4266a"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\native-taa-disconnect\\host-loss\\audit.json",
+      "sha256": "cee82095613da8a996e772549e6baa63e39be0c7335e296640e0cf8db4dd91d0"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\native-taa-disconnect\\final-process-state.json",
+      "sha256": "930c15c97359f577c63b661f1bd7815aa0ef6e4534ab824cb78d3e1f6d2beffb"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\native-taa-provenance.json",
+      "sha256": "260eada0b2ecaaab3b6efa78d7d7b958dc19fd26b9f0ca81da6d387d86c9102a"
+    }
+  ]
+}

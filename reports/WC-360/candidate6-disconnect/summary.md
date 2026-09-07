@@ -1,0 +1,9 @@
+Candidate6 actual disconnect and late-join validation: PASS
+
+The normal-speed client-loss trial passed all 23 checks. Three actual packaged processes ran on local port7778. The departing client exited during round1 combat; authority preserved its captain health, gold, XP, level, shop and shop RNG, sequence, lock state, roster identities, stars and unit locations while converting that human seat to a persistent bot. The comparison was conclusive because no command or phase boundary intervened. The host continued and remained unaborted. A fresh late-join process was refused with the running-tournament message, returned to menu and issued zero game commands. All three processes reached their preplanned exits with code0.
+
+The normal-speed host-loss trial passed all 16 checks. Two actual packaged processes ran on local port7779. The host exited during round1 combat; its client retained the ConnectionLost detail, marked the match aborted with no winner, returned to menu and issued zero further game commands. Both processes reached their preplanned exits with code0.
+
+Both bootstrap and inner executable hashes match the immutable candidate6 provenance manifest. No oversized replication bunch errors occurred in either trial. Ports were checked unowned before each launch and were free after completion. All five trial processes were closed by 2026-09-06T07:22:29.718Z; the later root-owned Shipping manual game was identified separately and left untouched.
+
+These are real local-loopback lifecycle executions at normal simulation speed and 1280x720. No native UI automation, firewall changes, source changes, manual message review or audio capture occurred. Parallel Shipping compilation makes their profiling data unsuitable for a performance acceptance claim. Exact commands, actual process identities, exit observations, event snapshots and log hashes are in the per-trial reports.

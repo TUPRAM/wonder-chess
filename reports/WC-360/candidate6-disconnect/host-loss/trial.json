@@ -1,0 +1,72 @@
+﻿{
+    "mode":  "host-loss",
+    "port":  7779,
+    "utc_started":  "2026-09-06T07:21:19.6097889Z",
+    "status":  "PROCESSES_EXITED_AUDIT_REQUIRED",
+    "package":  "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\Windows-Alpha-Candidate6",
+    "bootstrap_sha256":  "e3c22795d6f2265fcbd88b66e1c5b33b7b017aac916be1f3dca4d0232020a93a",
+    "port_unowned_before_launch":  true,
+    "boundary":  "Actual packaged local-loopback process lifecycle. Normal simulation speed, 1280x720. Profiling is confounded by parallel Shipping compilation and is not a performance acceptance run.",
+    "processes":  [
+                      {
+                          "role":  "host",
+                          "bootstrap_pid":  17584,
+                          "utc_launched":  "2026-09-06T07:21:19.7128393Z",
+                          "executable":  "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\Windows-Alpha-Candidate6\\WonderChess.exe",
+                          "working_directory":  "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\Windows-Alpha-Candidate6",
+                          "arguments":  [
+                                            "/Game/WonderChess/Maps/L_WC_Courtyard?listen?WCHumans=2",
+                                            "-unattended",
+                                            "-nosplash",
+                                            "-windowed",
+                                            "-ResX=1280",
+                                            "-ResY=720",
+                                            "-ForceRes",
+                                            "-dx11",
+                                            "-WCExercise",
+                                            "-WCAuthorityChecks",
+                                            "-WCProfile",
+                                            "-WCFast=1",
+                                            "-WCExitAfter=35",
+                                            "-WCEvidenceDir=\"C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\host-loss\\host\"",
+                                            "-abslog=\"C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\host-loss\\host\\game.log\"",
+                                            "-Port=7779"
+                                        ],
+                          "planned_exit_after_seconds":  35,
+                          "exit_observed":  true,
+                          "exit_code":  0,
+                          "exit_observed_utc":  "2026-09-06T07:21:56.2568315Z"
+                      },
+                      {
+                          "role":  "client",
+                          "bootstrap_pid":  30604,
+                          "utc_launched":  "2026-09-06T07:21:22.7630698Z",
+                          "executable":  "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\Windows-Alpha-Candidate6\\WonderChess.exe",
+                          "working_directory":  "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\Windows-Alpha-Candidate6",
+                          "arguments":  [
+                                            "127.0.0.1:7779",
+                                            "-unattended",
+                                            "-nosplash",
+                                            "-windowed",
+                                            "-ResX=1280",
+                                            "-ResY=720",
+                                            "-ForceRes",
+                                            "-dx11",
+                                            "-WCExercise",
+                                            "-WCAuthorityChecks",
+                                            "-WCProfile",
+                                            "-WCFast=1",
+                                            "-WCExitAfter=65",
+                                            "-WCEvidenceDir=\"C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\host-loss\\client\"",
+                                            "-abslog=\"C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\host-loss\\client\\game.log\""
+                                        ],
+                          "planned_exit_after_seconds":  65,
+                          "exit_observed":  true,
+                          "exit_code":  0,
+                          "exit_observed_utc":  "2026-09-06T07:22:29.7183658Z"
+                      }
+                  ],
+    "late_join_launched_after_observed_takeover":  false,
+    "listen_confirmed_utc":  "2026-09-06T07:21:22.7270243Z",
+    "utc_finished":  "2026-09-06T07:22:29.7241088Z"
+}

@@ -1,0 +1,125 @@
+{
+  "mode": "client-loss",
+  "port": 7778,
+  "utc_started": "2026-09-06T08:22:06.7022666Z",
+  "status": "PROCESSES_EXITED_AUDIT_REQUIRED",
+  "package": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-NativeTAA-Candidate\\Windows",
+  "executable_identities": [
+    {
+      "sha256": "38a46da697e48af83ec0105bd68b44073d95b3b902f710d53ac3f2280d6e8058",
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-NativeTAA-Candidate\\Windows\\WonderChess.exe"
+    },
+    {
+      "sha256": "8b85eb3866bd7d50c85a09224a6227c6a7cb772d6b5cbf258bbe1818011ca936",
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-NativeTAA-Candidate\\Windows\\WonderChess\\Binaries\\Win64\\WonderChess-Win64-Shipping.exe"
+    }
+  ],
+  "port_unowned_before_launch": true,
+  "provenance_path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\native-taa-provenance.json",
+  "provenance_sha256": "260eada0b2ecaaab3b6efa78d7d7b958dc19fd26b9f0ca81da6d387d86c9102a",
+  "startup_flags": "Scoped game-owned -WCHost/-WCJoin routing; current PowerShell policy; actual OS UDP listen owner",
+  "boundary": "Actual Shipping packaged local-loopback process lifecycle. Normal simulation speed,1280x720. This functional multi-process run is not uncontended1080p performance acceptance. Shipping UE_LOG checks are unavailable, not zero errors.",
+  "processes": [
+    {
+      "role": "host",
+      "bootstrap_pid": 44712,
+      "utc_launched": "2026-09-06T08:22:06.8207310Z",
+      "executable": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-NativeTAA-Candidate\\Windows\\WonderChess.exe",
+      "working_directory": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-NativeTAA-Candidate\\Windows",
+      "arguments": [
+        "-unattended",
+        "-nosplash",
+        "-windowed",
+        "-ResX=1280",
+        "-ResY=720",
+        "-ForceRes",
+        "-dx11",
+        "-WCExercise",
+        "-WCAuthorityChecks",
+        "-WCProfile",
+        "-WCShots",
+        "-WCFast=1",
+        "-WCExitAfter=100",
+        "-WCEvidenceDir=\"C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\native-taa-disconnect\\client-loss\\host\"",
+        "-WCHost",
+        "-Port=7778"
+      ],
+      "planned_exit_after_seconds": 100,
+      "exit_observed": true,
+      "exit_code": 0,
+      "exit_observed_utc": "2026-09-06T08:23:48.0217332Z"
+    },
+    {
+      "role": "client",
+      "bootstrap_pid": 38612,
+      "utc_launched": "2026-09-06T08:22:10.1087865Z",
+      "executable": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-NativeTAA-Candidate\\Windows\\WonderChess.exe",
+      "working_directory": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-NativeTAA-Candidate\\Windows",
+      "arguments": [
+        "-unattended",
+        "-nosplash",
+        "-windowed",
+        "-ResX=1280",
+        "-ResY=720",
+        "-ForceRes",
+        "-dx11",
+        "-WCExercise",
+        "-WCAuthorityChecks",
+        "-WCProfile",
+        "-WCShots",
+        "-WCFast=1",
+        "-WCExitAfter=30",
+        "-WCEvidenceDir=\"C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\native-taa-disconnect\\client-loss\\client\"",
+        "-WCJoin=127.0.0.1:7778"
+      ],
+      "planned_exit_after_seconds": 30,
+      "exit_observed": true,
+      "exit_code": 0,
+      "exit_observed_utc": "2026-09-06T08:22:41.0757465Z"
+    },
+    {
+      "role": "late-join",
+      "bootstrap_pid": 50824,
+      "utc_launched": "2026-09-06T08:22:44.1998651Z",
+      "executable": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-NativeTAA-Candidate\\Windows\\WonderChess.exe",
+      "working_directory": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-NativeTAA-Candidate\\Windows",
+      "arguments": [
+        "-unattended",
+        "-nosplash",
+        "-windowed",
+        "-ResX=1280",
+        "-ResY=720",
+        "-ForceRes",
+        "-dx11",
+        "-WCExercise",
+        "-WCAuthorityChecks",
+        "-WCProfile",
+        "-WCShots",
+        "-WCFast=1",
+        "-WCExitAfter=25",
+        "-WCEvidenceDir=\"C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\native-taa-disconnect\\client-loss\\late-join\"",
+        "-WCJoin=127.0.0.1:7778"
+      ],
+      "planned_exit_after_seconds": 25,
+      "exit_observed": true,
+      "exit_code": 0,
+      "exit_observed_utc": "2026-09-06T08:23:10.4366522Z"
+    }
+  ],
+  "late_join_launched_after_observed_takeover": true,
+  "listen_owner": {
+    "parent_process_id": 44712,
+    "local_port": 7778,
+    "utc": "2026-09-06T08:22:10.0738234Z",
+    "executable_path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-NativeTAA-Candidate\\Windows\\WonderChess\\Binaries\\Win64\\WonderChess-Win64-Shipping.exe",
+    "command_line": "\"C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-NativeTAA-Candidate\\Windows\\WonderChess\\Binaries\\Win64\\WonderChess-Win64-Shipping.exe\" WonderChess -unattended -nosplash -windowed -ResX=1280 -ResY=720 -ForceRes -dx11 -WCExercise -WCAuthorityChecks -WCProfile -WCShots -WCFast=1 -WCExitAfter=100 -WCEvidenceDir=\"C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\native-taa-disconnect\\client-loss\\host\" -WCHost -Port=7778",
+    "process_id": 21020,
+    "local_address": "0.0.0.0"
+  },
+  "listen_confirmed_utc": "2026-09-06T08:22:10.0763129Z",
+  "takeover_observed_utc": "2026-09-06T08:22:44.1634527Z",
+  "takeover_status": "PASS",
+  "takeover_phase": 1,
+  "takeover_round": 1,
+  "utc_finished": "2026-09-06T08:23:48.0267736Z"
+}

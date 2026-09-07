@@ -1,0 +1,77 @@
+{
+  "status": "PASS",
+  "boundary": "Actual candidate6 Development Windows processes over local loopback; normal-speed functional lifecycle tests. Not a second physical computer, manual UI/audio review, or uncontended rendering benchmark.",
+  "trials": {
+    "client-loss": {
+      "status": "PASS",
+      "checks": 23,
+      "started_utc": "2026-09-06T07:18:56.1621332Z",
+      "finished_utc": "2026-09-06T07:20:38.1840421Z",
+      "port": 7778,
+      "processes": [
+        {
+          "role": "host",
+          "bootstrap_pid": 41724,
+          "exit_code": 0,
+          "exit_observed_utc": "2026-09-06T07:20:38.1795010Z"
+        },
+        {
+          "role": "client",
+          "bootstrap_pid": 26148,
+          "exit_code": 0,
+          "exit_observed_utc": "2026-09-06T07:19:33.1390732Z"
+        },
+        {
+          "role": "late-join",
+          "bootstrap_pid": 41064,
+          "exit_code": 0,
+          "exit_observed_utc": "2026-09-06T07:20:02.5951812Z"
+        }
+      ]
+    },
+    "host-loss": {
+      "status": "PASS",
+      "checks": 16,
+      "started_utc": "2026-09-06T07:21:19.6097889Z",
+      "finished_utc": "2026-09-06T07:22:29.7241088Z",
+      "port": 7779,
+      "processes": [
+        {
+          "role": "host",
+          "bootstrap_pid": 17584,
+          "exit_code": 0,
+          "exit_observed_utc": "2026-09-06T07:21:56.2568315Z"
+        },
+        {
+          "role": "client",
+          "bootstrap_pid": 30604,
+          "exit_code": 0,
+          "exit_observed_utc": "2026-09-06T07:22:29.7183658Z"
+        }
+      ]
+    }
+  },
+  "trial_processes_closed": true,
+  "inputs": [
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\client-loss\\audit.json",
+      "sha256": "de33d3380eb3570c3b9c9f02210a8dae22303b7b4b77ddbf616cc7eacf638205"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\host-loss\\audit.json",
+      "sha256": "234f45784d6456caf17cc73c3378d6350d0c366627e0045feeb3cadda7d1db07"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\final-process-state.json",
+      "sha256": "6bf7c2f42087853f94b35e0f9351db3ed9a41fa58b268471139d429c16005ccd"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\tests\\runtime\\run_disconnect_trial.ps1",
+      "sha256": "ea4460721bdf8baa37c0430b98ce159ac37becf3eb7234c2665835d4c9f053f8"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\tests\\runtime\\audit_disconnect_trial.py",
+      "sha256": "decd62d16b462ac9a397d365203ff0543ff606dc6f71aac74251de31e96536d2"
+    }
+  ]
+}

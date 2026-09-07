@@ -1,0 +1,314 @@
+{
+  "status": "PASS",
+  "mode": "host-loss",
+  "boundary": "Actual process exports only. Resource observations are sampled, not an atomic Logout trace. This does not certify visible messaging, physical LAN transport, or packet capture. Actual engine logs retain expected connection-loss/rejection errors. No manual UI or audio review occurred; no render-performance acceptance is inferred.",
+  "checks": [
+    {
+      "check": "distinct_processes",
+      "status": "PASS",
+      "detail": [
+        41392,
+        28864
+      ]
+    },
+    {
+      "check": "host_listen_authority",
+      "status": "PASS",
+      "detail": {
+        "network_mode": 2,
+        "authority_process": true,
+        "seat": 0
+      }
+    },
+    {
+      "check": "client_was_connected_to_this_match",
+      "status": "PASS",
+      "detail": [
+        {
+          "seat": 1,
+          "match_namespace": 0,
+          "network_mode": 3
+        },
+        {
+          "seat": 1,
+          "match_namespace": 1,
+          "network_mode": 3
+        }
+      ]
+    },
+    {
+      "check": "client_received_public_privacy",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "check": "host_requested_real_process_exit",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "check": "client_marked_host_loss",
+      "status": "PASS",
+      "detail": {
+        "host_disconnected": true,
+        "aborted": true,
+        "complete": false,
+        "network_error": "The host disconnected. This match ended without a winner.",
+        "network_error_detail": "ConnectionLost: Your connection to the host has been lost."
+      }
+    },
+    {
+      "check": "client_retained_concrete_failure",
+      "status": "PASS",
+      "detail": "ConnectionLost: Your connection to the host has been lost."
+    },
+    {
+      "check": "port_unowned_before_launch",
+      "status": "PASS",
+      "detail": 7779
+    },
+    {
+      "check": "planned_processes_exited_zero",
+      "status": "PASS",
+      "detail": [
+        {
+          "role": "host",
+          "bootstrap_pid": 17584,
+          "exit_observed": true,
+          "exit_code": 0,
+          "planned_exit_after_seconds": 35
+        },
+        {
+          "role": "client",
+          "bootstrap_pid": 30604,
+          "exit_observed": true,
+          "exit_code": 0,
+          "planned_exit_after_seconds": 65
+        }
+      ]
+    },
+    {
+      "check": "packaged_executables_match_immutable_manifest",
+      "status": "PASS",
+      "detail": [
+        {
+          "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\Windows-Alpha-Candidate6\\WonderChess.exe",
+          "expected_sha256": "e3c22795d6f2265fcbd88b66e1c5b33b7b017aac916be1f3dca4d0232020a93a",
+          "actual_sha256": "e3c22795d6f2265fcbd88b66e1c5b33b7b017aac916be1f3dca4d0232020a93a",
+          "matches": true
+        },
+        {
+          "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\Windows-Alpha-Candidate6\\WonderChess\\Binaries\\Win64\\WonderChess.exe",
+          "expected_sha256": "5e5ef5c513db0e6f789d8f9370222e82b691240e4d79511aa7115cca9797380f",
+          "actual_sha256": "5e5ef5c513db0e6f789d8f9370222e82b691240e4d79511aa7115cca9797380f",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "check": "departure_occurred_before_tournament_results",
+      "status": "PASS",
+      "detail": {
+        "host_complete": false,
+        "client_complete": false
+      }
+    },
+    {
+      "check": "host_departed_during_combat",
+      "status": "PASS",
+      "detail": {
+        "phase": 1,
+        "round": 1
+      }
+    },
+    {
+      "check": "aborted_client_did_not_autostart",
+      "status": "PASS",
+      "detail": {
+        "namespace": 0,
+        "requests": 0,
+        "public": {
+          "practice": false,
+          "matchNamespace": 0,
+          "error": "",
+          "connected": 1,
+          "requestedHumans": 1,
+          "network": false,
+          "phase": -1,
+          "round": 0,
+          "remaining": 0,
+          "capped": false,
+          "seats": [],
+          "pairs": [],
+          "encounters": []
+        }
+      }
+    },
+    {
+      "check": "client_planned_exit_after_abort",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "check": "host_no_oversized_bunches",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "check": "client_no_oversized_bunches",
+      "status": "PASS",
+      "detail": []
+    }
+  ],
+  "inputs": [
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\host-loss\\host\\session.json",
+      "sha256": "354f9f2610d36db040ea8e40023eba44579ab212665e7c3eba5d1414d58c9972"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\host-loss\\client\\session.json",
+      "sha256": "c41ecc02d9965f5e2d2972df03cc980ef2c55c0b8a96467a19ca94a08b2237e2"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\host-loss\\client\\match-0-seat-1-pid-28864-session.json",
+      "sha256": "4a2eadaad51242da5342bd0295f86227ebf34144d00ebb5ae3feb60ce01f74b8"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\host-loss\\client\\match-0-seat-1-pid-28864-snapshots.jsonl",
+      "sha256": "ed58d2fe30ffbaf9ceaaabd1cd891de3db660f376bacbf5c4c6a0d530af47d2f"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\host-loss\\client\\match-1-seat-1-pid-28864-session.json",
+      "sha256": "ae2a3020d625fe7756cf199ca8e8a1c7cb0985c03672e66d0b053b5275b73dc1"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\host-loss\\client\\match-1-seat-1-pid-28864-snapshots.jsonl",
+      "sha256": "80afcd42a3a87bc8db60821477ba34b79856b8bf8be8d1197a01d6619bddb262"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\host-loss\\trial.json",
+      "sha256": "7c7f6b2014266c71424389902c1c0c3acb422a0ff35a9a5bc065a67a3af775d9"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-provenance.json",
+      "sha256": "054e6867be4e339174f51ee5aabf378f70f76a8387ea46aa4a28afa13be13abe"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\host-loss\\host\\game.log",
+      "sha256": "c2f6676eaee9cbbec0834708d9cdcceea066794c67a72d9b77da70f55dac2949"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\host-loss\\host\\launch.json",
+      "sha256": "6afabcabda6ce97de0c60bb3a5b33c4ce9aa46ec2f60fa88e16da215f03bd863"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\host-loss\\client\\game.log",
+      "sha256": "6955bbb3706226e6329a2bbc7091d39ff97bbde3728a6712ca9412a993fb1912"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\host-loss\\client\\launch.json",
+      "sha256": "f4cce9062e3b4f307c77e11d34cb61eaed3224a1b7fe661f54426d82b382cb16"
+    }
+  ],
+  "audit_utc": "2026-09-06T07:22:44.108329+00:00",
+  "lifecycle": {
+    "mode": "host-loss",
+    "port": 7779,
+    "utc_started": "2026-09-06T07:21:19.6097889Z",
+    "status": "PROCESSES_EXITED_AUDIT_REQUIRED",
+    "package": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\Windows-Alpha-Candidate6",
+    "bootstrap_sha256": "e3c22795d6f2265fcbd88b66e1c5b33b7b017aac916be1f3dca4d0232020a93a",
+    "port_unowned_before_launch": true,
+    "boundary": "Actual packaged local-loopback process lifecycle. Normal simulation speed, 1280x720. Profiling is confounded by parallel Shipping compilation and is not a performance acceptance run.",
+    "processes": [
+      {
+        "role": "host",
+        "bootstrap_pid": 17584,
+        "utc_launched": "2026-09-06T07:21:19.7128393Z",
+        "executable": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\Windows-Alpha-Candidate6\\WonderChess.exe",
+        "working_directory": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\Windows-Alpha-Candidate6",
+        "arguments": [
+          "/Game/WonderChess/Maps/L_WC_Courtyard?listen?WCHumans=2",
+          "-unattended",
+          "-nosplash",
+          "-windowed",
+          "-ResX=1280",
+          "-ResY=720",
+          "-ForceRes",
+          "-dx11",
+          "-WCExercise",
+          "-WCAuthorityChecks",
+          "-WCProfile",
+          "-WCFast=1",
+          "-WCExitAfter=35",
+          "-WCEvidenceDir=\"C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\host-loss\\host\"",
+          "-abslog=\"C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\host-loss\\host\\game.log\"",
+          "-Port=7779"
+        ],
+        "planned_exit_after_seconds": 35,
+        "exit_observed": true,
+        "exit_code": 0,
+        "exit_observed_utc": "2026-09-06T07:21:56.2568315Z"
+      },
+      {
+        "role": "client",
+        "bootstrap_pid": 30604,
+        "utc_launched": "2026-09-06T07:21:22.7630698Z",
+        "executable": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\Windows-Alpha-Candidate6\\WonderChess.exe",
+        "working_directory": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\Windows-Alpha-Candidate6",
+        "arguments": [
+          "127.0.0.1:7779",
+          "-unattended",
+          "-nosplash",
+          "-windowed",
+          "-ResX=1280",
+          "-ResY=720",
+          "-ForceRes",
+          "-dx11",
+          "-WCExercise",
+          "-WCAuthorityChecks",
+          "-WCProfile",
+          "-WCFast=1",
+          "-WCExitAfter=65",
+          "-WCEvidenceDir=\"C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\host-loss\\client\"",
+          "-abslog=\"C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\candidate6-disconnect\\host-loss\\client\\game.log\""
+        ],
+        "planned_exit_after_seconds": 65,
+        "exit_observed": true,
+        "exit_code": 0,
+        "exit_observed_utc": "2026-09-06T07:22:29.7183658Z"
+      }
+    ],
+    "late_join_launched_after_observed_takeover": false,
+    "listen_confirmed_utc": "2026-09-06T07:21:22.7270243Z",
+    "utc_finished": "2026-09-06T07:22:29.7241088Z"
+  },
+  "logs": {
+    "host": {
+      "error_lines": [],
+      "network_failure_lines": [],
+      "exit_lines": [
+        "[2026.09.06-07.21.54:911][914]LogWindows: FPlatformMisc::RequestExit(0, <NoCallSiteInfo>)",
+        "[2026.09.06-07.21.54:911][914]LogWindows: FPlatformMisc::RequestExitWithStatus(0, 0, <NoCallSiteInfo>)",
+        "[2026.09.06-07.21.54:911][914]LogCore: Engine exit requested (reason: Win RequestExit)",
+        "[2026.09.06-07.21.55:553][915]Log file closed, 09/06/26 15:21:55"
+      ]
+    },
+    "client": {
+      "error_lines": [
+        "[2026.09.06-07.21.54:924][385]LogNet: Error: UEngine::BroadcastNetworkFailure: FailureType = FailureReceived, ErrorString = Host closed the connection., Driver = Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482483",
+        "[2026.09.06-07.21.54:925][385]LogNet: Error: UEngine::BroadcastNetworkFailure: FailureType = ConnectionLost, ErrorString = Your connection to the host has been lost., Driver = Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482483"
+      ],
+      "network_failure_lines": [
+        "[2026.09.06-07.21.54:924][385]LogNet: Error: UEngine::BroadcastNetworkFailure: FailureType = FailureReceived, ErrorString = Host closed the connection., Driver = Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482483",
+        "[2026.09.06-07.21.54:925][385]LogNet: Error: UEngine::BroadcastNetworkFailure: FailureType = ConnectionLost, ErrorString = Your connection to the host has been lost., Driver = Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482483"
+      ],
+      "exit_lines": [
+        "[2026.09.06-07.22.27:999][353]LogWindows: FPlatformMisc::RequestExit(0, <NoCallSiteInfo>)",
+        "[2026.09.06-07.22.27:999][353]LogWindows: FPlatformMisc::RequestExitWithStatus(0, 0, <NoCallSiteInfo>)",
+        "[2026.09.06-07.22.27:999][353]LogCore: Engine exit requested (reason: Win RequestExit)",
+        "[2026.09.06-07.22.29:055][354]Log file closed, 09/06/26 15:22:29"
+      ]
+    }
+  }
+}

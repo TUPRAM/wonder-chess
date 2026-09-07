@@ -1,0 +1,97 @@
+{
+  "utc_started": "2026-09-06T08:17:04.5397304Z",
+  "status": "PROCESSES_EXITED_AUDIT_REQUIRED",
+  "port": 7780,
+  "port_unowned_before_launch": true,
+  "provenance_path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\native-taa-provenance.json",
+  "provenance_sha256": "260eada0b2ecaaab3b6efa78d7d7b958dc19fd26b9f0ca81da6d387d86c9102a",
+  "executable_identities": [
+    {
+      "sha256": "38a46da697e48af83ec0105bd68b44073d95b3b902f710d53ac3f2280d6e8058",
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-NativeTAA-Candidate\\Windows\\WonderChess.exe"
+    },
+    {
+      "sha256": "8b85eb3866bd7d50c85a09224a6227c6a7cb772d6b5cbf258bbe1818011ca936",
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-NativeTAA-Candidate\\Windows\\WonderChess\\Binaries\\Win64\\WonderChess-Win64-Shipping.exe"
+    }
+  ],
+  "processes": [
+    {
+      "role": "host",
+      "bootstrap_pid": 47124,
+      "utc_launched": "2026-09-06T08:17:04.7193952Z",
+      "arguments": [
+        "-windowed",
+        "-ResX=1280",
+        "-ResY=720",
+        "-ForceRes",
+        "-dx11",
+        "-WCExercise",
+        "-WCAuthorityChecks",
+        "-WCProfile",
+        "-WCShots",
+        "-WCProjectedBounds",
+        "-WCFast=5",
+        "-WCExitAfter=270",
+        "-WCEvidenceDir=\"C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\native-taa-network\\host\"",
+        "-WCHost",
+        "-Port=7780"
+      ],
+      "executable": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-NativeTAA-Candidate\\Windows\\WonderChess.exe",
+      "working_directory": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-NativeTAA-Candidate\\Windows",
+      "planned_exit_after_seconds": 270,
+      "exit_observed": true,
+      "exit_code": 0,
+      "inner_pid": 38772,
+      "inner_exit_observed": true,
+      "inner_exit_code": null,
+      "inner_exit_observed_utc": "2026-09-06T08:21:35.9812245Z",
+      "exit_observed_utc": "2026-09-06T08:21:35.9846502Z"
+    },
+    {
+      "role": "client",
+      "bootstrap_pid": 48440,
+      "utc_launched": "2026-09-06T08:17:08.0742602Z",
+      "arguments": [
+        "-windowed",
+        "-ResX=1280",
+        "-ResY=720",
+        "-ForceRes",
+        "-dx11",
+        "-WCExercise",
+        "-WCAuthorityChecks",
+        "-WCProfile",
+        "-WCShots",
+        "-WCProjectedBounds",
+        "-WCFast=5",
+        "-WCExitAfter=280",
+        "-WCEvidenceDir=\"C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\native-taa-network\\client\"",
+        "-WCJoin=127.0.0.1:7780"
+      ],
+      "executable": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-NativeTAA-Candidate\\Windows\\WonderChess.exe",
+      "working_directory": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-NativeTAA-Candidate\\Windows",
+      "planned_exit_after_seconds": 280,
+      "exit_observed": true,
+      "exit_code": 0,
+      "inner_pid": 48568,
+      "inner_exit_observed": true,
+      "inner_exit_code": null,
+      "inner_exit_observed_utc": "2026-09-06T08:21:49.2677062Z",
+      "exit_observed_utc": "2026-09-06T08:21:50.0222972Z"
+    }
+  ],
+  "listen_boundary": "Actual OS UDP endpoint ownership, because this Shipping binary does not emit UE_LOG files.",
+  "startup_flags": "Scoped game-owned -WCHost/-WCJoin routing; no positional Shipping startup URL",
+  "profiling_confounders": "Root plans a separate headless100 regression during the initial network minute. This functional network run is not an uncontended performance measurement.",
+  "boundary": "Two real packaged Shipping processes with human controller RPCs over loopback. 1280x720 and simulation speed5; not normal1080p rendering acceptance.",
+  "listen_owner": {
+    "process_id": 38772,
+    "parent_process_id": 47124,
+    "utc": "2026-09-06T08:17:08.0118740Z",
+    "executable_path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-NativeTAA-Candidate\\Windows\\WonderChess\\Binaries\\Win64\\WonderChess-Win64-Shipping.exe",
+    "local_address": "0.0.0.0",
+    "command_line": "\"C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-NativeTAA-Candidate\\Windows\\WonderChess\\Binaries\\Win64\\WonderChess-Win64-Shipping.exe\" WonderChess -windowed -ResX=1280 -ResY=720 -ForceRes -dx11 -WCExercise -WCAuthorityChecks -WCProfile -WCShots -WCProjectedBounds -WCFast=5 -WCExitAfter=270 -WCEvidenceDir=\"C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\native-taa-network\\host\" -WCHost -Port=7780",
+    "local_port": 7780
+  },
+  "utc_finished": "2026-09-06T08:21:50.0274172Z"
+}

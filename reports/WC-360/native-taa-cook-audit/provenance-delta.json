@@ -1,0 +1,64 @@
+{
+  "utc": "2026-09-06T08:17:33.400412+00:00",
+  "status": "CAPTURED_IDENTITY_DELTA_RUNTIME_ACCEPTANCE_SEPARATE",
+  "baseline_manifest": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\shipping-startup-fixed-provenance.json",
+  "baseline_sha256": "c426e101aeea4b13c9af72ca55292c1358de814e22ada7c1521ab28cdd66b321",
+  "candidate_manifest": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\native-taa-provenance.json",
+  "candidate_sha256": "260eada0b2ecaaab3b6efa78d7d7b958dc19fd26b9f0ca81da6d387d86c9102a",
+  "compared_groups": [
+    "authoring_and_build_tools",
+    "canonical_data",
+    "game_config",
+    "game_content",
+    "game_source",
+    "staged_source_data"
+  ],
+  "changed": [
+    {
+      "path": "game/Config/DefaultEngine.ini",
+      "before_sha256": "30f15a372c09f1b5d1442562969a330d6142741d95422fb3b1c8db4bd4296018",
+      "after_sha256": "52c850d5498fbaf17ac14fc6855a5acbaea138781284dde2893f5d88698fe731"
+    },
+    {
+      "path": "game/Source/WonderChessRuntime/Private/WCVerification.cpp",
+      "before_sha256": "638492dced4dbf9380d3cc8209eb89c879b398a83e8934bd9ff7e9dc6edccc0e",
+      "after_sha256": "b3f7a689b53c67f65641220339b090a3a6b661d91039f226935b1c19427a668d"
+    }
+  ],
+  "added": [
+    {
+      "group": "game_content",
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Content\\WonderChess\\Verification\\AdaRoundTrip\\run_v2\\L_AdaRoundTrip.umap",
+      "workspace_relative_path": "game/Content/WonderChess/Verification/AdaRoundTrip/run_v2/L_AdaRoundTrip.umap",
+      "bytes": 19765,
+      "modified_utc": "2026-09-06T08:06:44.192014+00:00",
+      "sha256": "4a640577d808ca6a7c228d070ff2cd085c10d0e7f8bed43aa3dda1c3d16261f1"
+    },
+    {
+      "group": "game_content",
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Content\\WonderChess\\Verification\\AdaRoundTrip\\run_v2\\SK_AdaRoundTrip.uasset",
+      "workspace_relative_path": "game/Content/WonderChess/Verification/AdaRoundTrip/run_v2/SK_AdaRoundTrip.uasset",
+      "bytes": 3010388,
+      "modified_utc": "2026-09-06T08:06:44.168127+00:00",
+      "sha256": "43ee47fc3ee9d9bca3b964e9610cb32d8ab1492175cead4c6d0f3951921920b3"
+    },
+    {
+      "group": "authoring_and_build_tools",
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\tools\\blender\\prepare_ada_costume_roundtrip.py",
+      "workspace_relative_path": "tools/blender/prepare_ada_costume_roundtrip.py",
+      "bytes": 9553,
+      "modified_utc": "2026-09-06T07:58:47.805967+00:00",
+      "sha256": "e68f0bcdd9c16f80caca8ef31b4fd19bdef2b6a98753ea6841d0d539f9ea1fce"
+    },
+    {
+      "group": "authoring_and_build_tools",
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\tools\\unreal\\verify_ada_costume_roundtrip.py",
+      "workspace_relative_path": "tools/unreal/verify_ada_costume_roundtrip.py",
+      "bytes": 20901,
+      "modified_utc": "2026-09-06T07:58:47.439409+00:00",
+      "sha256": "404db1a241ffe40a7f3fcc09e7b8a5767c3f1a4263077d961edea1ee264f72e9"
+    }
+  ],
+  "removed": [],
+  "meaning": "Only DefaultEngine.ini and WCVerification.cpp changed among captured existing source/config/content/canonical/tools. Two isolated verification assets and two drill helpers were added. All other captured members of these groups are unchanged. Ada verification assets are source identity only; actual staging exclusion verified separately. Test harnesses under tests/ are not captured by this helper and remain bound to their own validation reports."
+}

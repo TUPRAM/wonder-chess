@@ -1,0 +1,38 @@
+{
+  "timestamp_utc": "2026-09-06T07:23:48.9478743Z",
+  "status": "INSTALLED_REDISTRIBUTABLES_INSPECTED_NOT_EXECUTED",
+  "engine": "Unreal Engine 5.7.4",
+  "prerequisite_flag": "-prereqs",
+  "packaging_property": "IncludePrerequisites",
+  "staging_destination": "Windows/Engine/Extras/Redist/en-us",
+  "installed_source": "Engine/Source/Programs/AutomationTool/Win/WinPlatform.Automation.cs:198-202",
+  "licensing_source": "https://learn.microsoft.com/en-us/visualstudio/releases/2022/redistribution#visual-c-runtime-files",
+  "licensing_boundary": "Microsoft permits unmodified runtime redistribution with a program by validly licensed Visual Studio users, subject to the license terms. Installed VS Community2022 observed; personal license eligibility not independently audited. No adjacent current installer license/README found; no unrestricted redistribution claim.",
+  "clean_machine_test": "NOT_RUN",
+  "records": [
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.7\\Engine\\Extras\\Redist\\en-us\\vc_redist.x64.exe",
+      "file_name": "vc_redist.x64.exe",
+      "bytes": 25646472,
+      "file_version": "14.44.35211.0",
+      "description": "Microsoft Visual C++ 2015-2022 Redistributable (x64) - 14.44.35211",
+      "sha256": "d027d8eb8edbef6c8740683b41d00442f4108351c034b9e0cb36fff27349b5be",
+      "authenticode_status": "Valid",
+      "signer": "CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US",
+      "signer_thumbprint": "8F985BE8FD256085C90A95D3C74580511A1DB975",
+      "executed": false
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.7\\Engine\\Extras\\Redist\\en-us\\vc_redist.arm64.exe",
+      "file_name": "vc_redist.arm64.exe",
+      "bytes": 11733048,
+      "file_version": "14.44.35211.0",
+      "description": "Microsoft Visual C++ 2022 Redistributable (Arm64) - 14.44.35211",
+      "sha256": "07698e7186563f0f9c78c37b2acb58136813fd5cfb068d41a339be2ee5b49cef",
+      "authenticode_status": "Valid",
+      "signer": "CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US",
+      "signer_thumbprint": "245D262748012A4FE6CE8BA6C951A4C4AFBC3E5D",
+      "executed": false
+    }
+  ]
+}
