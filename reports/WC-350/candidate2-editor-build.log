@@ -1,0 +1,10 @@
+Using bundled DotNet SDK version: 8.0.412 win-x64
+Running UnrealBuildTool: dotnet "..\..\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" WonderChessEditor Win64 Development "-Project=C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject" -WaitMutex -NoHotReloadFromIDE
+Log file: C:\Users\iputu\AppData\Local\UnrealBuildTool\Log.txt
+Using 'git status' to determine working set for adaptive non-unity build (C:\Users\iputu\Documents\Wonder Chess).
+Parsing headers for WonderChessEditor
+  Running Internal UnrealHeaderTool "C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject" "C:\Users\iputu\Documents\Wonder Chess\game\Intermediate\Build\Win64\WonderChessEditor\Development\WonderChessEditor.uhtmanifest" -WarningsAsErrors -installed
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Public\WCBoardPresenter.h(1): Error: #include found after .generated.h file - the .generated.h file should always be the last #include in a header
+
+Result: Failed (OtherCompilationError)
+Total execution time: 3.31 seconds

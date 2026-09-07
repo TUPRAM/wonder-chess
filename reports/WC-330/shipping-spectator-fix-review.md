@@ -1,0 +1,13 @@
+# Shipping spectator layout — actual visual correction check
+
+**The spectator-notice overlap is visually corrected in the inspected Shipping screenshots.** Five actual 1280×720 images were opened: combat round 10 before elimination and rounds 11–14 after elimination. In all four post-elimination images, the notice and restart/title buttons sit in the inactive shop area, beginning at approximately y=521. The full playing surface and front-rank living units remain visible. This closes the pixel-occlusion finding recorded in `packaged-candidate6-network720-review.md` for the earlier candidate-6 host round-12 image.
+
+The corrected header identifies the observed bot: `SCOUTING Sunstride Bot` in rounds 11–12 and `SCOUTING Highbanner Bot` in rounds 13–14. The earlier eliminated-human `VIEWING Captain 1` ambiguity is absent from these samples. Versus and ghost-opponent labels are visible alongside the scouting name. This is a sampled display check, not a complete interactive scouting test.
+
+The evidence comes from `reports/WC-360/shipping-network/host/`, process 42484, with the actual Windows Shipping game. Despite the directory name and intended launch URL, this run **failed network startup** and actually ran in `network_mode=0` as solo 1H7B. It was stopped at round 14 before completion. Its session reports `complete=false`, a five-times simulation multiplier and 1280×720 output. Both primary and secondary screen percentages are 100, with dynamic resolution disabled. These are valid actual game pixels for the layout check; they are not a passed network check, complete match, normal-speed animation check or final performance acceptance.
+
+Original unchanged images and exact observed session/launch JSON copies are preserved under `shipping-spectator-fix/`. `shipping-spectator-fix-review-evidence.json` records their hashes, original paths, capture times and relevant session fields. The screenshots are rounds 10, 11, 12, 13 and 14; no reconstruction or image modification was used.
+
+The five images retain coherent hero scale and courtyard/HUD framing. No new gross visual defect was observed during this focused correction check. Zura was not present as a living board character in the selected images; her shop portrait does not count. The pending live Zura crowd check, current 1080p presentation and complete skill/normal-speed motion review remain open. The readiness matrix now marks the prior spectator P2 as visually corrected while preserving its original failed image and the separate pending hero gates.
+
+No art source, export, game Content or package was modified by this review.

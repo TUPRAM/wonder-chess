@@ -1,0 +1,160 @@
+{
+  "status": "authored_rendered_normalized_exported_pending_current_engine_and_visual_acceptance",
+  "unit_id": "wc_u_orc_mage",
+  "name": "Zura Stormcall",
+  "blender_version": "5.1.1",
+  "source_revision": 4,
+  "height_m": 1.97,
+  "source_sha256": "fb6e83ac29c001b3fb1950901428873643095592b635d423077e8f2a9a496617",
+  "author_script_sha256": "474d9d165ca7a0c2134197c379978f59d2af9baf475bbcd0970fd97febd0a4da",
+  "units_source_sha256": "1a93bfb07bd93ace4d5eb740864e26c69765a5ebb9b87885c1d3d40c772cd9e8",
+  "rig_family": "humanoid_broad",
+  "rig_revision": "WC_family_v1",
+  "bones": 27,
+  "triangles": 5416,
+  "materials": 1,
+  "fps": 60,
+  "source_forward": "+Y",
+  "source_up": "+Z",
+  "unit_scale_m": 1,
+  "fbx_profile": "tools\\blender\\profiles\\fbx_skeletal_cm_v1.json",
+  "engine_calibration": [
+    "reports/WC-330/import-probe/normalized_cm-results.json",
+    "reports/WC-330/import-probe/forward_cm-results.json",
+    "reports/WC-330/normalized-cm-copy-trial.log"
+  ],
+  "textures": {
+    "BaseColor": "sRGB",
+    "Normal": "linear, tangent +Y, flat normal surface; geometric bevels",
+    "ORM": "linear R=occlusion G=roughness B=metallic"
+  },
+  "equipment": "weighted within the skeletal mesh; socket bones also available",
+  "clips": {
+    "Idle": {
+      "action": "AN_wc_u_orc_mage_Idle",
+      "frames": [
+        1,
+        121
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Move": {
+      "action": "AN_wc_u_orc_mage_Move",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Attack": {
+      "action": "AN_wc_u_orc_mage_Attack",
+      "frames": [
+        1,
+        43
+      ],
+      "release_frame": 19,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Active": {
+      "action": "AN_wc_u_orc_mage_Active",
+      "frames": [
+        1,
+        55
+      ],
+      "release_frame": 37,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Hit": {
+      "action": "AN_wc_u_orc_mage_Hit",
+      "frames": [
+        1,
+        25
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Defeat": {
+      "action": "AN_wc_u_orc_mage_Defeat",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Victory": {
+      "action": "AN_wc_u_orc_mage_Victory",
+      "frames": [
+        1,
+        91
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    }
+  },
+  "lods": [
+    {
+      "lod": 1,
+      "triangles": 2707,
+      "ratio_target": 0.5,
+      "visual_acceptance": "pending"
+    },
+    {
+      "lod": 2,
+      "triangles": 1354,
+      "ratio_target": 0.25,
+      "visual_acceptance": "pending"
+    }
+  ],
+  "source_brief": {
+    "silhouette": "A tall stable stance beneath two broad crescent shoulder cloths, with a forked staff held outward. Her costume forms layered triangles rather than a conventional pointed wizard hat.",
+    "face": "Sage-green skin, silver-gray eyes, modest tusks and dark hair braided into three thick sections. A calm upward gaze suggests listening to the weather.",
+    "costume": "Storm-blue layered coat, pale wool collar, russet belt and wrapped boots. Fabric panels end above the ankles and open around the knees for movement.",
+    "palette": "Storm blue #4A638D; cloud gray #CBD3DA; russet #A7664D; silver #A9B8C4.",
+    "equipment": "A tall wooden staff with an open fork framing a small floating sky stone. No hanging chains that require physical simulation.",
+    "signature": "Open forked staff, cloud collar and three thick braids.",
+    "materials": "Wool, painted wood, oxidized silver and restrained cyan glow. Keep the sky stone\u2019s bloom local.",
+    "back": "Two long triangular coat panels split around the legs, with a broad stitched cloud arc high on the back.",
+    "animation": "Idle makes a small palm-up listening gesture. Basics release small storm motes. The active raises the staff slowly, draws a visible circular path, then plants it as the captured area resolves.",
+    "vfx": "A thin blue circle previews the captured radius during travel, followed by several short vertical magic streaks. The ability is one damage pulse, not damage over time or stun.",
+    "audio": "Low rising wind followed by a short soft thunder chord, capped to avoid overwhelming every other cue.",
+    "risk": "Radius two covers a large portion of a crowded board. Effects must show the true edge and performance tests must include multiple simultaneous rings."
+  },
+  "files": {
+    "AN_wc_u_orc_mage_Active.fbx": "ca320bcb2adfec697b6480828f0556c89fea5ad67548813193a93169f71d33bd",
+    "AN_wc_u_orc_mage_Attack.fbx": "6544c4d04a0d374a8553755e625a886598d9991d62364a9aab1eac454f9ce365",
+    "AN_wc_u_orc_mage_Defeat.fbx": "67e1c363b44de55926cbd8655a1f467fbdd924c076758600334e10849b065ecf",
+    "AN_wc_u_orc_mage_Hit.fbx": "6e19ad1e3a4d564464341e2149eb156da32148f4af98e8bf66c9d6e57521e62f",
+    "AN_wc_u_orc_mage_Idle.fbx": "1c4ead0542972ffed39e9e430663962d87f550b3b6c2b91dfcb39156496e6c95",
+    "AN_wc_u_orc_mage_Move.fbx": "18171a6151fd05839ac29853c4006782a54b92b0ba2fb018e210a0c135767df3",
+    "AN_wc_u_orc_mage_Victory.fbx": "5b4c0308922388681d189ffb834efc2f09ff2ba34f9c9330bd0ceeddabf764e6",
+    "portrait.png": "141a24f8c3b60a5bc8ed484a15611e8a961239e89e6b0025833cbe21e3fef217",
+    "SK_wc_u_orc_mage.fbx": "c69224ff1a1f1f23cad9231950f715bc1de18327dd3c9177b8638c52ca6a0b84",
+    "SK_wc_u_orc_mage_LOD1.fbx": "26f5ac5eaea30c37fb9f41a65ef9867a53ce7ef65ff795b47c852e83e17f5f98",
+    "SK_wc_u_orc_mage_LOD2.fbx": "b97d424b957eac00a69543f1a7e8b61e9318002d71a2e7f0f8de08cf78e0d2e1",
+    "T_wc_u_orc_mage_BaseColor.png": "27c621afc55677fe7921a3fefb717a5f8a4d611c7a74903277614a2b74af055b",
+    "T_wc_u_orc_mage_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
+    "T_wc_u_orc_mage_ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c"
+  },
+  "open_reviews": [
+    "Unreal scale and facing",
+    "all continuous animation deformation",
+    "source revision reimport",
+    "crowded-board readability",
+    "LOD1/LOD2",
+    "effects and sound integration"
+  ],
+  "normalized_export_revision": 1,
+  "normalized_exporter_sha256": "ac2b263a2491f2cf991065e749926b5549ddc81e73c814fb9958e424b6d23bc6",
+  "normalized_reexport_script_sha256": "c1176dfe4526f36b767e3427383e70c3e174b2d62b36ac1a9562f5d8d7ffb99b",
+  "exported_coordinate_units": "centimeters: temporary geometry, rest translation and animation location values multiplied by100; authoring source remains meters"
+}

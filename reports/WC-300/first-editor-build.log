@@ -1,0 +1,33 @@
+Using bundled DotNet SDK version: 8.0.412 win-x64
+Running UnrealBuildTool: dotnet "..\..\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" WonderChessEditor Win64 Development "-Project=C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject" -WaitMutex -NoHotReloadFromIDE
+Log file: C:\Users\iputu\AppData\Local\UnrealBuildTool\Log.txt
+Using 'git status' to determine working set for adaptive non-unity build (C:\Users\iputu\Documents\Wonder Chess).
+Creating makefile for WonderChessEditor (no existing makefile)
+UHT compiled-in object format Default
+Parsing headers for WonderChessEditor
+  Running Internal UnrealHeaderTool "C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject" "C:\Users\iputu\Documents\Wonder Chess\game\Intermediate\Build\Win64\WonderChessEditor\Development\WonderChessEditor.uhtmanifest" -WarningsAsErrors -installed
+UHT processed WonderChessEditor in 1.9811586 seconds (4 files written)
+Building WonderChessEditor...
+Using Visual Studio 2022 14.44.35226 toolchain (C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+Determining max actions to execute in parallel (8 physical cores, 16 logical cores)
+  Executing up to 8 processes, one per physical core
+  Requested 1.5 GB memory per action, 622.27 MB available: limiting max parallel actions to 1
+Using Unreal Build Accelerator local executor to run 9 action(s)
+  Storage capacity 40Gb
+---- Starting trace: 260906_130610 ----
+UbaServer - Listening on 0.0.0.0:1345
+[1/9] Compile [x64] SharedPCH.UnrealEd.Project.ValApi.ValExpApi.Cpp20.cpp
+[2/9] Resource Default.rc2
+[3/9] Compile [x64] Module.WonderChessRuntime.gen.cpp
+[4/9] Compile [x64] PerModuleInline.gen.cpp
+[5/9] Compile [x64] WCGameMode.cpp
+[6/9] Compile [x64] WonderChessRuntime.cpp
+[7/9] Link [x64] UnrealEditor-WonderChessRuntime.dll
+[8/9] Link [x64] UnrealEditor-WonderChessRuntime.lib
+[9/9] WriteMetadata WonderChessEditor.target [NoUba]
+
+Trace written to file C:/Users/iputu/AppData/Local/UnrealBuildTool/Log.uba with size 11.1kb
+Total time in Unreal Build Accelerator local executor: 70.99 seconds
+
+Result: Succeeded
+Total execution time: 107.30 seconds

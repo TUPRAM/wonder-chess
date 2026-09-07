@@ -1,0 +1,158 @@
+{
+  "status": "authored_exported_rendered_pending_engine_and_visual_acceptance",
+  "unit_id": "wc_u_elf_ranger",
+  "name": "Liora Leafstep",
+  "blender_version": "5.1.1",
+  "source_revision": 5,
+  "height_m": 1.88,
+  "source_sha256": "f4a4bd28241a1616e802ab29826033651445da1cb35deaea4405111666e0656f",
+  "author_script_sha256": "f2fcf648f49acc28b85dcec4eb755f8d8122bc97f7dfef52e54ffc35bc973175",
+  "units_source_sha256": "1a93bfb07bd93ace4d5eb740864e26c69765a5ebb9b87885c1d3d40c772cd9e8",
+  "rig_family": "humanoid_slender",
+  "rig_revision": "WC_family_v1",
+  "bones": 27,
+  "triangles": 3136,
+  "materials": 1,
+  "fps": 60,
+  "source_forward": "+Y",
+  "source_up": "+Z",
+  "unit_scale_m": 1,
+  "fbx_profile": "tools/blender/profiles/fbx_skeletal_cm_v1.json",
+  "normalized_export_revision": 1,
+  "normalized_exporter_sha256": "13646d355744f5293d573816e5cd54459cf88f3b647c6c2a22aa61ae29200779",
+  "exported_coordinate_units": "centimeters in temporary independent copies; authoring source remains meters",
+  "engine_calibration": [
+    "reports/WC-330/import-probe/forward_cm-results.json",
+    "reports/WC-330/import-probe/all7-comparison.json"
+  ],
+  "textures": {
+    "BaseColor": "sRGB",
+    "Normal": "linear, tangent +Y, flat normal surface; geometric bevels",
+    "ORM": "linear R=occlusion G=roughness B=metallic"
+  },
+  "equipment": "weighted within the skeletal mesh; socket bones also available",
+  "clips": {
+    "Idle": {
+      "action": "AN_wc_u_elf_ranger_Idle",
+      "frames": [
+        1,
+        121
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 41,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Move": {
+      "action": "AN_wc_u_elf_ranger_Move",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 21,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Attack": {
+      "action": "AN_wc_u_elf_ranger_Attack",
+      "frames": [
+        1,
+        43
+      ],
+      "release_frame": 19,
+      "support_hand_bake_samples": 15,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Active": {
+      "action": "AN_wc_u_elf_ranger_Active",
+      "frames": [
+        1,
+        31
+      ],
+      "release_frame": 13,
+      "support_hand_bake_samples": 11,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Hit": {
+      "action": "AN_wc_u_elf_ranger_Hit",
+      "frames": [
+        1,
+        25
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 9,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Defeat": {
+      "action": "AN_wc_u_elf_ranger_Defeat",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 21,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Victory": {
+      "action": "AN_wc_u_elf_ranger_Victory",
+      "frames": [
+        1,
+        91
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 31,
+      "maximum_support_reach_clamp_m": 0
+    }
+  },
+  "lods": [
+    {
+      "lod": 1,
+      "triangles": 1567,
+      "ratio_target": 0.5,
+      "visual_acceptance": "pending"
+    },
+    {
+      "lod": 2,
+      "triangles": 784,
+      "ratio_target": 0.25,
+      "visual_acceptance": "pending"
+    }
+  ],
+  "source_brief": {
+    "silhouette": "A light forward-leaning profile, long crescent bow and three short leaflike cloak panels. The cloak stops above the knees, revealing long, narrow leg shapes.",
+    "face": "Golden-brown skin, gray-green eyes, swept-back pointed ears and pale brown hair tied into a short fan. Her gaze is alert rather than severe.",
+    "costume": "Moss fabric over fitted leather shoulder protection, a single pale scarf and flexible boots. The bow-side shoulder stays clear; no oversized pauldron blocks the draw.",
+    "palette": "Moss #647A4B; pale mint #B7CBB0; chestnut #765641; warm linen #DACCAB.",
+    "equipment": "A stylized crescent bow with broad flattened limbs and a slim back quiver. The bowstring is simplified geometry that can be hidden at distant LODs.",
+    "signature": "Crescent bow, three separated cloak panels, and sideways archery stance.",
+    "materials": "Matte woven cloth, satin-finished wood and leathery boots. Leaf motifs are broad seam shapes, not transparency cutouts.",
+    "back": "Quiver sits diagonally and avoids the shoulder draw arc. Cloak panels spread enough to read as three shapes without requiring cloth bones beyond a small secondary chain.",
+    "animation": "Idle scans in short head turns. Movement uses light lateral steps. Basics draw, pause visibly at release, and recover. Leafstep crouches briefly then slides through a controlled airborne step to the reserved cell.",
+    "vfx": "A short mint leaf trail follows the dash and fades within half a second. No invisibility, shield or damage accompanies the dash.",
+    "audio": "A soft bow snap and a brief brushlike dash sweep. Keep leaf rustle short and non-looping.",
+    "risk": "Foot sliding during the dash is acceptable only within the deliberate magical slide, not normal walking. Reserved tile and displayed landing must agree."
+  },
+  "files": {
+    "AN_wc_u_elf_ranger_Active.fbx": "111ed7c9df84b20f442ad036ed855b3ddfecef77f911f36e0f1bdc196dccf243",
+    "AN_wc_u_elf_ranger_Attack.fbx": "b562d6b4e51877425940e946b0c93fd81ecd9cfc7096e15f5575e39471325b12",
+    "AN_wc_u_elf_ranger_Defeat.fbx": "0dea333f6c8ebdb1c6c765069b5a97b5052e7069ba938df637454ad22af641fd",
+    "AN_wc_u_elf_ranger_Hit.fbx": "f0967edea871df78653765a10275851074f30630e085dd0bf749ee6c899eac8c",
+    "AN_wc_u_elf_ranger_Idle.fbx": "68de6797fa96924082722a18d52c6285bb8e8058d3d4dd10f265ea1d4e1710a0",
+    "AN_wc_u_elf_ranger_Move.fbx": "51465a45db95df37e2be99c61d7756ddbdc18ff1a7ce031dca2db6ed140d3ffb",
+    "AN_wc_u_elf_ranger_Victory.fbx": "59893bb3ae242c37dc066dc13edc6b5d772c2002b5c5c7df04b84770b92c9199",
+    "portrait.png": "cf298bbe2b154256cf218eb8c937e42301ca6463a7b3d79b257fe5d0302fadbd",
+    "SK_wc_u_elf_ranger.fbx": "1558ca1816d30b268f753f5a3a0f08b6d9916dd4c25e57f2573d200d6f4d3395",
+    "SK_wc_u_elf_ranger_LOD1.fbx": "dcf0308425d65cf1e200752551c56b67868199c5d2d4b8077c38f2b2ec51d3de",
+    "SK_wc_u_elf_ranger_LOD2.fbx": "16190cb5e60ef5d091d7080409847faa227db2d9549058e16c89d9f9b72cb6b8",
+    "T_wc_u_elf_ranger_BaseColor.png": "db270d53e03fb44b1c8b0d28dae50de370a3c2faddc49edf4f7cacd6131cab54",
+    "T_wc_u_elf_ranger_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
+    "T_wc_u_elf_ranger_ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c"
+  },
+  "open_reviews": [
+    "Unreal scale and facing",
+    "all continuous animation deformation",
+    "source revision reimport",
+    "crowded-board readability",
+    "LOD1/LOD2",
+    "effects and sound integration"
+  ]
+}

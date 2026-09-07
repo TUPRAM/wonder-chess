@@ -1,0 +1,22 @@
+Running AutomationTool...
+Using bundled DotNet SDK version: 8.0.412 win-x64
+Starting AutomationTool...
+Parsing command line: BuildCookRun -project="C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject" -noP4 -platform=Win64 -clientconfig=Development -build -cook -stage -pak -archive -archivedirectory="C:\Users\iputu\Documents\Wonder Chess\builds\WC-300-Minimal" -utf8output
+Initializing script modules...
+Total script module initialization time: 0.68 s.
+Using C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MSBuild.exe
+Executing commands...
+Setting up ProjectParams for C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject
+********** BUILD COMMAND STARTED **********
+Running: C:\Program Files\Epic Games\UE_5.7\Engine\Binaries\ThirdParty\DotNet\8.0.412\win-x64\dotnet.exe "C:\Program Files\Epic Games\UE_5.7\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" -Target="WonderChessEditor Win64 Development -Project=\"C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject\"" -Target="WonderChess Win64 Development -Project=\"C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject\"  -remoteini=\"C:\Users\iputu\Documents\Wonder Chess\game\"  " -log="C:\Users\iputu\AppData\Roaming\Unreal Engine\AutomationTool\Logs\C+Program+Files+Epic+Games+UE_5.7\UBA-WonderChessEditor-Win64-Development.txt"
+Log file: C:\Users\iputu\AppData\Roaming\Unreal Engine\AutomationTool\Logs\C+Program+Files+Epic+Games+UE_5.7\UBA-WonderChessEditor-Win64-Development.txt
+Using 'git status' to determine working set for adaptive non-unity build (C:\Users\iputu\Documents\Wonder Chess).
+Unable to build while Live Coding is active. Exit the editor and game, or press Ctrl+Alt+F11 if iterating on code in the editor or game
+
+Result: Failed (OtherCompilationError)
+Total execution time: 3.86 seconds
+Took 5.34s to run dotnet.exe, ExitCode=6
+UnrealBuildTool failed. See log for more details. (C:\Users\iputu\AppData\Roaming\Unreal Engine\AutomationTool\Logs\C+Program+Files+Epic+Games+UE_5.7\UBA-WonderChessEditor-Win64-Development.txt)
+AutomationTool executed for 0h 0m 9s
+AutomationTool exiting with ExitCode=6 (6)
+BUILD FAILED

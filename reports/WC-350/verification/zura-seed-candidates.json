@@ -1,0 +1,1222 @@
+{
+  "utc": "2026-09-06T08:08:04.938533+00:00",
+  "source": "reports\\WC-360\\shipping-startup-fixed-regression\\regression.json",
+  "source_sha256": "15fd472cec52896978f1fad8ba99eeca83c3237ffc77c48f5c9266b7decb3558",
+  "target_definition": 10,
+  "target_unit_id": "wc_u_orc_mage",
+  "recommended_first_seed": 49,
+  "selection_rule": "Earliest captured12-unit combat lock with four simultaneous encounters, then greatest observed crowd opportunities, then deployed unit-rounds, then seed. Only seats1-7 counted as target owners.",
+  "boundary": "These are actual0H8B deployment/pairing observations, not proof of the same outcome or roster in1H7B. FollowHero only selects existing public fights; no hero, currency, shop or result is forced. Actual rendered capture remains required.",
+  "candidates": [
+    {
+      "seed": 49,
+      "first_crowded_round": 7,
+      "crowded_observations": 8,
+      "zura_deployed_unit_rounds_bot_seats": 10,
+      "examples": [
+        {
+          "round": 7,
+          "a": 1,
+          "b": 3,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            3
+          ]
+        },
+        {
+          "round": 8,
+          "a": 3,
+          "b": 7,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            3
+          ]
+        },
+        {
+          "round": 9,
+          "a": 1,
+          "b": 3,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 52,
+      "first_crowded_round": 7,
+      "crowded_observations": 7,
+      "zura_deployed_unit_rounds_bot_seats": 13,
+      "examples": [
+        {
+          "round": 7,
+          "a": 5,
+          "b": 6,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            6
+          ]
+        },
+        {
+          "round": 8,
+          "a": 1,
+          "b": 6,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            6
+          ]
+        },
+        {
+          "round": 9,
+          "a": 4,
+          "b": 6,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            6
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 18,
+      "first_crowded_round": 7,
+      "crowded_observations": 5,
+      "zura_deployed_unit_rounds_bot_seats": 17,
+      "examples": [
+        {
+          "round": 7,
+          "a": 3,
+          "b": 7,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            3
+          ]
+        },
+        {
+          "round": 8,
+          "a": 3,
+          "b": 5,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            3
+          ]
+        },
+        {
+          "round": 9,
+          "a": 0,
+          "b": 3,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 33,
+      "first_crowded_round": 7,
+      "crowded_observations": 4,
+      "zura_deployed_unit_rounds_bot_seats": 6,
+      "examples": [
+        {
+          "round": 7,
+          "a": 2,
+          "b": 3,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            3
+          ]
+        },
+        {
+          "round": 8,
+          "a": 1,
+          "b": 3,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            3
+          ]
+        },
+        {
+          "round": 9,
+          "a": 3,
+          "b": 4,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "first_crowded_round": 7,
+      "crowded_observations": 1,
+      "zura_deployed_unit_rounds_bot_seats": 5,
+      "examples": [
+        {
+          "round": 7,
+          "a": 3,
+          "b": 7,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 83,
+      "first_crowded_round": 8,
+      "crowded_observations": 7,
+      "zura_deployed_unit_rounds_bot_seats": 26,
+      "examples": [
+        {
+          "round": 8,
+          "a": 4,
+          "b": 7,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            7
+          ]
+        },
+        {
+          "round": 9,
+          "a": 0,
+          "b": 7,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            7
+          ]
+        },
+        {
+          "round": 10,
+          "a": 6,
+          "b": 7,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            7
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 4,
+      "first_crowded_round": 8,
+      "crowded_observations": 6,
+      "zura_deployed_unit_rounds_bot_seats": 15,
+      "examples": [
+        {
+          "round": 8,
+          "a": 4,
+          "b": 7,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            4
+          ]
+        },
+        {
+          "round": 9,
+          "a": 1,
+          "b": 4,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            4
+          ]
+        },
+        {
+          "round": 10,
+          "a": 0,
+          "b": 4,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 59,
+      "first_crowded_round": 8,
+      "crowded_observations": 6,
+      "zura_deployed_unit_rounds_bot_seats": 7,
+      "examples": [
+        {
+          "round": 8,
+          "a": 6,
+          "b": 7,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            7
+          ]
+        },
+        {
+          "round": 9,
+          "a": 2,
+          "b": 7,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            7
+          ]
+        },
+        {
+          "round": 10,
+          "a": 1,
+          "b": 7,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            7
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 88,
+      "first_crowded_round": 8,
+      "crowded_observations": 5,
+      "zura_deployed_unit_rounds_bot_seats": 7,
+      "examples": [
+        {
+          "round": 8,
+          "a": 0,
+          "b": 7,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            7
+          ]
+        },
+        {
+          "round": 9,
+          "a": 4,
+          "b": 7,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            7
+          ]
+        },
+        {
+          "round": 10,
+          "a": 5,
+          "b": 7,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            7
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 58,
+      "first_crowded_round": 8,
+      "crowded_observations": 5,
+      "zura_deployed_unit_rounds_bot_seats": 5,
+      "examples": [
+        {
+          "round": 8,
+          "a": 2,
+          "b": 7,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            2
+          ]
+        },
+        {
+          "round": 9,
+          "a": 2,
+          "b": 6,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            2
+          ]
+        },
+        {
+          "round": 10,
+          "a": 1,
+          "b": 2,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 81,
+      "first_crowded_round": 8,
+      "crowded_observations": 4,
+      "zura_deployed_unit_rounds_bot_seats": 4,
+      "examples": [
+        {
+          "round": 8,
+          "a": 3,
+          "b": 6,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            3
+          ]
+        },
+        {
+          "round": 9,
+          "a": 3,
+          "b": 4,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            3
+          ]
+        },
+        {
+          "round": 10,
+          "a": 0,
+          "b": 3,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "first_crowded_round": 8,
+      "crowded_observations": 1,
+      "zura_deployed_unit_rounds_bot_seats": 1,
+      "examples": [
+        {
+          "round": 8,
+          "a": 2,
+          "b": 4,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 94,
+      "first_crowded_round": 9,
+      "crowded_observations": 7,
+      "zura_deployed_unit_rounds_bot_seats": 14,
+      "examples": [
+        {
+          "round": 9,
+          "a": 3,
+          "b": 6,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            6
+          ]
+        },
+        {
+          "round": 10,
+          "a": 6,
+          "b": 7,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            6
+          ]
+        },
+        {
+          "round": 11,
+          "a": 2,
+          "b": 6,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            6
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "first_crowded_round": 9,
+      "crowded_observations": 6,
+      "zura_deployed_unit_rounds_bot_seats": 8,
+      "examples": [
+        {
+          "round": 9,
+          "a": 4,
+          "b": 6,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            6
+          ]
+        },
+        {
+          "round": 10,
+          "a": 6,
+          "b": 7,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            6
+          ]
+        },
+        {
+          "round": 11,
+          "a": 1,
+          "b": 6,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            6
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 26,
+      "first_crowded_round": 9,
+      "crowded_observations": 5,
+      "zura_deployed_unit_rounds_bot_seats": 10,
+      "examples": [
+        {
+          "round": 9,
+          "a": 2,
+          "b": 4,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            4
+          ]
+        },
+        {
+          "round": 10,
+          "a": 4,
+          "b": 5,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            4
+          ]
+        },
+        {
+          "round": 11,
+          "a": 4,
+          "b": 6,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 57,
+      "first_crowded_round": 9,
+      "crowded_observations": 5,
+      "zura_deployed_unit_rounds_bot_seats": 5,
+      "examples": [
+        {
+          "round": 9,
+          "a": 1,
+          "b": 6,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            1
+          ]
+        },
+        {
+          "round": 10,
+          "a": 1,
+          "b": 5,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            1
+          ]
+        },
+        {
+          "round": 11,
+          "a": 1,
+          "b": 3,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 11,
+      "first_crowded_round": 9,
+      "crowded_observations": 4,
+      "zura_deployed_unit_rounds_bot_seats": 6,
+      "examples": [
+        {
+          "round": 9,
+          "a": 1,
+          "b": 7,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            1
+          ]
+        },
+        {
+          "round": 10,
+          "a": 1,
+          "b": 3,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            1
+          ]
+        },
+        {
+          "round": 11,
+          "a": 1,
+          "b": 6,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 21,
+      "first_crowded_round": 9,
+      "crowded_observations": 4,
+      "zura_deployed_unit_rounds_bot_seats": 6,
+      "examples": [
+        {
+          "round": 9,
+          "a": 1,
+          "b": 6,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            6
+          ]
+        },
+        {
+          "round": 10,
+          "a": 3,
+          "b": 6,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            6
+          ]
+        },
+        {
+          "round": 11,
+          "a": 5,
+          "b": 6,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            6
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 19,
+      "first_crowded_round": 9,
+      "crowded_observations": 3,
+      "zura_deployed_unit_rounds_bot_seats": 3,
+      "examples": [
+        {
+          "round": 9,
+          "a": 2,
+          "b": 6,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            6
+          ]
+        },
+        {
+          "round": 10,
+          "a": 5,
+          "b": 6,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            6
+          ]
+        },
+        {
+          "round": 11,
+          "a": 0,
+          "b": 6,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            6
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 22,
+      "first_crowded_round": 9,
+      "crowded_observations": 2,
+      "zura_deployed_unit_rounds_bot_seats": 2,
+      "examples": [
+        {
+          "round": 9,
+          "a": 2,
+          "b": 6,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            2
+          ]
+        },
+        {
+          "round": 10,
+          "a": 2,
+          "b": 3,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 25,
+      "first_crowded_round": 9,
+      "crowded_observations": 2,
+      "zura_deployed_unit_rounds_bot_seats": 2,
+      "examples": [
+        {
+          "round": 9,
+          "a": 5,
+          "b": 7,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            5
+          ]
+        },
+        {
+          "round": 10,
+          "a": 4,
+          "b": 5,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 47,
+      "first_crowded_round": 10,
+      "crowded_observations": 6,
+      "zura_deployed_unit_rounds_bot_seats": 14,
+      "examples": [
+        {
+          "round": 10,
+          "a": 0,
+          "b": 2,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            2
+          ]
+        },
+        {
+          "round": 11,
+          "a": 2,
+          "b": 6,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            2
+          ]
+        },
+        {
+          "round": 12,
+          "a": 2,
+          "b": 4,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 9,
+      "first_crowded_round": 10,
+      "crowded_observations": 5,
+      "zura_deployed_unit_rounds_bot_seats": 5,
+      "examples": [
+        {
+          "round": 10,
+          "a": 6,
+          "b": 7,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            7
+          ]
+        },
+        {
+          "round": 11,
+          "a": 1,
+          "b": 7,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            7
+          ]
+        },
+        {
+          "round": 12,
+          "a": 2,
+          "b": 7,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            7
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 27,
+      "first_crowded_round": 10,
+      "crowded_observations": 4,
+      "zura_deployed_unit_rounds_bot_seats": 10,
+      "examples": [
+        {
+          "round": 10,
+          "a": 1,
+          "b": 6,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            1
+          ]
+        },
+        {
+          "round": 11,
+          "a": 1,
+          "b": 7,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            1
+          ]
+        },
+        {
+          "round": 12,
+          "a": 1,
+          "b": 3,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 13,
+      "first_crowded_round": 10,
+      "crowded_observations": 4,
+      "zura_deployed_unit_rounds_bot_seats": 6,
+      "examples": [
+        {
+          "round": 10,
+          "a": 3,
+          "b": 4,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            3
+          ]
+        },
+        {
+          "round": 11,
+          "a": 3,
+          "b": 7,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            3
+          ]
+        },
+        {
+          "round": 12,
+          "a": 3,
+          "b": 5,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 70,
+      "first_crowded_round": 10,
+      "crowded_observations": 3,
+      "zura_deployed_unit_rounds_bot_seats": 15,
+      "examples": [
+        {
+          "round": 10,
+          "a": 0,
+          "b": 1,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            1
+          ]
+        },
+        {
+          "round": 11,
+          "a": 1,
+          "b": 2,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            1
+          ]
+        },
+        {
+          "round": 12,
+          "a": 1,
+          "b": 6,
+          "ghost": true,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 6,
+      "first_crowded_round": 10,
+      "crowded_observations": 3,
+      "zura_deployed_unit_rounds_bot_seats": 4,
+      "examples": [
+        {
+          "round": 10,
+          "a": 3,
+          "b": 4,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            4
+          ]
+        },
+        {
+          "round": 11,
+          "a": 0,
+          "b": 4,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            4
+          ]
+        },
+        {
+          "round": 12,
+          "a": 4,
+          "b": 5,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 75,
+      "first_crowded_round": 11,
+      "crowded_observations": 4,
+      "zura_deployed_unit_rounds_bot_seats": 9,
+      "examples": [
+        {
+          "round": 11,
+          "a": 4,
+          "b": 7,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            7
+          ]
+        },
+        {
+          "round": 12,
+          "a": 2,
+          "b": 7,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            7
+          ]
+        },
+        {
+          "round": 13,
+          "a": 0,
+          "b": 7,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            7
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 60,
+      "first_crowded_round": 12,
+      "crowded_observations": 2,
+      "zura_deployed_unit_rounds_bot_seats": 8,
+      "examples": [
+        {
+          "round": 12,
+          "a": 4,
+          "b": 6,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            4
+          ]
+        },
+        {
+          "round": 13,
+          "a": 1,
+          "b": 4,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 79,
+      "first_crowded_round": 12,
+      "crowded_observations": 2,
+      "zura_deployed_unit_rounds_bot_seats": 7,
+      "examples": [
+        {
+          "round": 12,
+          "a": 3,
+          "b": 6,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            6
+          ]
+        },
+        {
+          "round": 14,
+          "a": 1,
+          "b": 6,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 16,
+      "first_crowded_round": 12,
+      "crowded_observations": 1,
+      "zura_deployed_unit_rounds_bot_seats": 3,
+      "examples": [
+        {
+          "round": 12,
+          "a": 2,
+          "b": 7,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            7
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 7,
+      "first_crowded_round": 13,
+      "crowded_observations": 2,
+      "zura_deployed_unit_rounds_bot_seats": 2,
+      "examples": [
+        {
+          "round": 13,
+          "a": 0,
+          "b": 3,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            3
+          ]
+        },
+        {
+          "round": 14,
+          "a": 3,
+          "b": 5,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 12,
+      "first_crowded_round": 13,
+      "crowded_observations": 1,
+      "zura_deployed_unit_rounds_bot_seats": 9,
+      "examples": [
+        {
+          "round": 13,
+          "a": 1,
+          "b": 7,
+          "ghost": false,
+          "initial_units": 12,
+          "concurrent_encounters": 4,
+          "zura_seats": [
+            7
+          ]
+        }
+      ]
+    }
+  ]
+}

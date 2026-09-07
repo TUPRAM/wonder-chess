@@ -1,0 +1,45 @@
+X.get_reference_pose(skeleton) -> AnimPose
+Populates an Anim Pose with the reference poses stored for the provided USkeleton
+
+Args:
+    skeleton (Skeleton): USkeleton object to retrieve the reference pose from
+
+Returns:
+    AnimPose: 
+
+    out_pose (AnimPose): Anim pose to hold the reference pose
+
+X.get_anim_pose_at_time(animation_sequence_base, time, evaluation_options) -> AnimPose
+Evaluates an Animation Sequence Base to generate a valid Anim Pose instance
+
+Args:
+    animation_sequence_base (AnimSequenceBase): Animation sequence base to evaluate the pose from
+    time (double): Time at which the pose should be evaluated
+    evaluation_options (AnimPoseEvaluationOptions): Options determining the way the pose should be evaluated
+
+Returns:
+    AnimPose: 
+
+    pose (AnimPose): Anim Pose to hold the evaluated data
+
+X.get_bone_pose(pose, bone_name, space=AnimPoseSpaces.LOCAL) -> Transform
+Retrieves the transform for the provided bone name from a pose
+
+Args:
+    pose (AnimPose): Anim Pose to retrieve the transform from
+    bone_name (Name): Name of the bone to retrieve
+    space (AnimPoseSpaces): Space in which the transform should be retrieved
+
+Returns:
+    Transform: Transform in requested space for bone if found, otherwise return identity transform
+
+X.get_ref_bone_pose(pose, bone_name, space=AnimPoseSpaces.LOCAL) -> Transform
+Retrieves the reference pose transform for the provided bone name
+
+Args:
+    pose (AnimPose): Anim Pose to retrieve the transform from
+    bone_name (Name): Name of the bone to retrieve
+    space (AnimPoseSpaces): Space in which the transform should be retrieved
+
+Returns:
+    Transform: Transform in requested space for bone if found, otherwise return identity transform

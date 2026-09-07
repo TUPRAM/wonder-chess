@@ -1,0 +1,160 @@
+{
+  "status": "authored_rendered_normalized_exported_pending_current_engine_and_visual_acceptance",
+  "unit_id": "wc_u_human_priest",
+  "name": "Mira Dawnwell",
+  "blender_version": "5.1.1",
+  "source_revision": 4,
+  "height_m": 1.7,
+  "source_sha256": "bd1b4c1c64801abb4052d8a55fa8a70c8af3484f9fd5e1d8ffb41a7dbb056a9d",
+  "author_script_sha256": "474d9d165ca7a0c2134197c379978f59d2af9baf475bbcd0970fd97febd0a4da",
+  "units_source_sha256": "1a93bfb07bd93ace4d5eb740864e26c69765a5ebb9b87885c1d3d40c772cd9e8",
+  "rig_family": "humanoid_standard",
+  "rig_revision": "WC_family_v1",
+  "bones": 27,
+  "triangles": 3714,
+  "materials": 1,
+  "fps": 60,
+  "source_forward": "+Y",
+  "source_up": "+Z",
+  "unit_scale_m": 1,
+  "fbx_profile": "tools\\blender\\profiles\\fbx_skeletal_cm_v1.json",
+  "engine_calibration": [
+    "reports/WC-330/import-probe/normalized_cm-results.json",
+    "reports/WC-330/import-probe/forward_cm-results.json",
+    "reports/WC-330/normalized-cm-copy-trial.log"
+  ],
+  "textures": {
+    "BaseColor": "sRGB",
+    "Normal": "linear, tangent +Y, flat normal surface; geometric bevels",
+    "ORM": "linear R=occlusion G=roughness B=metallic"
+  },
+  "equipment": "weighted within the skeletal mesh; socket bones also available",
+  "clips": {
+    "Idle": {
+      "action": "AN_wc_u_human_priest_Idle",
+      "frames": [
+        1,
+        121
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Move": {
+      "action": "AN_wc_u_human_priest_Move",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Attack": {
+      "action": "AN_wc_u_human_priest_Attack",
+      "frames": [
+        1,
+        43
+      ],
+      "release_frame": 19,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Active": {
+      "action": "AN_wc_u_human_priest_Active",
+      "frames": [
+        1,
+        40
+      ],
+      "release_frame": 22,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Hit": {
+      "action": "AN_wc_u_human_priest_Hit",
+      "frames": [
+        1,
+        25
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Defeat": {
+      "action": "AN_wc_u_human_priest_Defeat",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Victory": {
+      "action": "AN_wc_u_human_priest_Victory",
+      "frames": [
+        1,
+        91
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    }
+  },
+  "lods": [
+    {
+      "lod": 1,
+      "triangles": 1857,
+      "ratio_target": 0.5,
+      "visual_acceptance": "pending"
+    },
+    {
+      "lod": 2,
+      "triangles": 928,
+      "ratio_target": 0.25,
+      "visual_acceptance": "pending"
+    }
+  ],
+  "source_brief": {
+    "silhouette": "A bell-shaped short coat and a high open staff loop, balanced by a small medicine satchel. Her upper body stays narrower than a Guardian, with the staff serving as the long vertical accent.",
+    "face": "Olive skin, hazel eyes, dark auburn hair in a loose bun, and a practical, attentive expression. A fabric headband frames her face without hiding it.",
+    "costume": "Cream wool layers under a coral traveling mantle; the mantle is cut at the elbows for clean arm animation. Fitted trousers and walking boots replace a floor-length robe.",
+    "palette": "Cream #F0E6CC; coral #CF7067; muted teal #538E8D; warm brass #BC9B58.",
+    "equipment": "A polished wood staff ending in an open circular lantern and a square leather satchel with two large clasps. Small bottle shapes remain abstract accessories, never gameplay consumables.",
+    "signature": "Circular staff head, coral shoulder mantle, and square hip satchel.",
+    "materials": "Soft woven cloth, oiled wood, dull brass and one small lantern emissive area. Paint folds in broad groups rather than dense noise.",
+    "back": "The mantle has a clean V seam; a wide satchel strap crosses from left shoulder to right hip. Keep the staff away from the bun in overhead poses.",
+    "animation": "Idle checks the battlefield rather than fussing with props. Movement is brisk and balanced. Basics point the staff for a small light bolt. Mend traces a single clear upward curve before its effect leaves the lantern.",
+    "vfx": "A warm-gold pulse travels to the selected ally and resolves as two rising leaflike arcs. The target health bar briefly indicates effective healing, not overheal.",
+    "audio": "Soft bell pair and airy arrival tone, quieter than damage impacts. A dry cloth rustle supports movement without masking action sounds.",
+    "risk": "The circular staff opening must remain readable at distance; overly thin geometry will vanish. Mend must remain distinct from a shield bubble."
+  },
+  "files": {
+    "AN_wc_u_human_priest_Active.fbx": "cef85afc775f0d7a5d8b221a9a987887511ce4e9ee048786bf84ef6436b57840",
+    "AN_wc_u_human_priest_Attack.fbx": "1d45adb629fbf8f760b8000dfed21c8057db0ffaa068cba90218fa1a9cceb371",
+    "AN_wc_u_human_priest_Defeat.fbx": "dabb32000144a982787245ab73dcf07c94b51acbc732827c9c99148c4e48512a",
+    "AN_wc_u_human_priest_Hit.fbx": "7b21bcda3a3be681f226f160c0c914f65193af569134b0e2131feff44938aeb6",
+    "AN_wc_u_human_priest_Idle.fbx": "c2f2f2a4ca5f76e8b212ad44b0aaa149d3947da72f49c0304d283f2e3cd1a37b",
+    "AN_wc_u_human_priest_Move.fbx": "1a9bb8efbcaa894470c05b111a56218371d6ad69ba721fff1ba353d75d25930c",
+    "AN_wc_u_human_priest_Victory.fbx": "94711ba8443cbe8752888a5b5aff4b124572fe50b468f44b9be3c41f55028499",
+    "portrait.png": "e4aeb9c43b50c42711099c68b4ce251b02eeb1532422e383ce973b995c3d20f6",
+    "SK_wc_u_human_priest.fbx": "251ca0cc911d08eceefe72217bffa68b1ef0b2b84f90bebaf1b1cf45ec30a146",
+    "SK_wc_u_human_priest_LOD1.fbx": "8e3e2e769cb185860fb9339e3f66950aa10e24399c10aeff88596092607dd44e",
+    "SK_wc_u_human_priest_LOD2.fbx": "c373f8f9da46e5d3eb9f304a24dc07f9161bf3a2ca43d27ed9780db739d34dd8",
+    "T_wc_u_human_priest_BaseColor.png": "2ba21c5b52d6b920ad57a8eabbe03ccb601b097a81bc997892b908fbd77ac221",
+    "T_wc_u_human_priest_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
+    "T_wc_u_human_priest_ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c"
+  },
+  "open_reviews": [
+    "Unreal scale and facing",
+    "all continuous animation deformation",
+    "source revision reimport",
+    "crowded-board readability",
+    "LOD1/LOD2",
+    "effects and sound integration"
+  ],
+  "normalized_export_revision": 1,
+  "normalized_exporter_sha256": "ac2b263a2491f2cf991065e749926b5549ddc81e73c814fb9958e424b6d23bc6",
+  "normalized_reexport_script_sha256": "c1176dfe4526f36b767e3427383e70c3e174b2d62b36ac1a9562f5d8d7ffb99b",
+  "exported_coordinate_units": "centimeters: temporary geometry, rest translation and animation location values multiplied by100; authoring source remains meters"
+}

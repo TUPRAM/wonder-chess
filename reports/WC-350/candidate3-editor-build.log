@@ -1,0 +1,61 @@
+Using bundled DotNet SDK version: 8.0.412 win-x64
+Running UnrealBuildTool: dotnet "..\..\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" WonderChessEditor Win64 Development "-Project=C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject" -WaitMutex -NoHotReloadFromIDE
+Log file: C:\Users\iputu\AppData\Local\UnrealBuildTool\Log.txt
+Using 'git status' to determine working set for adaptive non-unity build (C:\Users\iputu\Documents\Wonder Chess).
+Parsing headers for WonderChessEditor
+  Running Internal UnrealHeaderTool "C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject" "C:\Users\iputu\Documents\Wonder Chess\game\Intermediate\Build\Win64\WonderChessEditor\Development\WonderChessEditor.uhtmanifest" -WarningsAsErrors -installed
+UHT processed WonderChessEditor in 10.8886047 seconds (3 files written)
+Building WonderChessEditor...
+Using Visual Studio 2022 14.44.35226 toolchain (C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+Determining max actions to execute in parallel (8 physical cores, 16 logical cores)
+  Executing up to 8 processes, one per physical core
+  Requested 1.5 GB memory per action, 3.8 GB available: limiting max parallel actions to 2
+Using Unreal Build Accelerator local executor to run 9 action(s)
+  Storage capacity 40Gb
+---- Starting trace: 260906_141816 ----
+UbaServer - Listening on 0.0.0.0:1345
+[1/9] Compile [x64] Module.WonderChessRuntime.gen.cpp
+[2/9] Compile [x64] WCBoardPresenter.cpp
+[3/9] Compile [x64] WCMatchHUD.cpp
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(195,24): error C2039: 'tag': is not a member of 'wc::TraitDef'
+    const FString Id = UTF8_TO_TCHAR(Trait.tag.c_str());
+                       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Public\Simulation\WonderSimulation.h(100,8): note: see declaration of 'wc::TraitDef'
+struct TraitDef
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(195,24): error C2512: 'TStringConversion<FUTF8ToTCHAR_Convert,128>': no appropriate default constructor available
+    const FString Id = UTF8_TO_TCHAR(Trait.tag.c_str());
+                       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(195,24): note: 'TStringConversion<FUTF8ToTCHAR_Convert,128>::TStringConversion': no appropriate default constructor available
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Containers\StringConv.h(770,16): note: could be 'TStringConversion<FUTF8ToTCHAR_Convert,128>::TStringConversion(FromRangeType &&)'
+	[[nodiscard]] TStringConversion(FromRangeType&& Source)
+	              ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Containers\StringConv.h(728,16): note: or       'TStringConversion<FUTF8ToTCHAR_Convert,128>::TStringConversion(const SrcBufferType *,int32)'
+	[[nodiscard]] TStringConversion(const SrcBufferType* Source, int32 SourceLen)
+	              ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Containers\StringConv.h(707,16): note: or       'TStringConversion<FUTF8ToTCHAR_Convert,128>::TStringConversion(const SrcBufferType *)'
+	[[nodiscard]] explicit TStringConversion(const SrcBufferType* Source)
+	              ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(195,24): note: while trying to match the argument list '()'
+    const FString Id = UTF8_TO_TCHAR(Trait.tag.c_str());
+                       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(202,13): error C4459: declaration of 'Gold' hides global declaration
+  const int Gold = int(P->Private->GetNumberField(TEXT("gold")));
+            ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(16,5): note: see declaration of '`anonymous-namespace'::Gold'
+    Gold(.91, .71, .33), Muted(.60, .69, .71), Teal(.12, .52, .54);
+    ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(1065,17): error C4456: declaration of 'Feedback' hides previous local declaration
+        FString Feedback = Merge ? LocalizedPrintf(P, TEXT("MERGE -> %d stars"),
+                ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(581,9): note: see declaration of 'Feedback'
+  auto &Feedback = UpdateConfirmedFeedback(this, P);
+        ^
+[4/9] Compile [x64] WCNetworkSession.cpp
+[5/9] Compile [x64] WCMatchRuntime.cpp
+[6/9] Compile [x64] WCVerification.cpp
+Trace written to file C:/Users/iputu/AppData/Local/UnrealBuildTool/Log.uba with size 8.6kb
+Total time in Unreal Build Accelerator local executor: 21.90 seconds
+
+Result: Failed (OtherCompilationError)
+Total execution time: 35.93 seconds

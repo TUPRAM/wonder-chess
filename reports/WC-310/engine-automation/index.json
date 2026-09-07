@@ -1,0 +1,102 @@
+﻿{
+	"devices": [
+		{
+			"deviceName": "GR1ZZYLY",
+			"instance": "38BC733D42E6BFB8602AB9B7537575FB",
+			"instanceName": "GR1ZZYLY-40516",
+			"platform": "WindowsEditor",
+			"oSVersion": "Windows 11 (25H2) [10.0.26200.9278] ",
+			"model": "Default",
+			"gPU": "AMD Radeon(TM) Graphics",
+			"cPUModel": "AMD Ryzen 7 6800H with Radeon Graphics         ",
+			"rAMInGB": 16,
+			"renderMode": "SM6",
+			"rHI": "",
+			"appInstanceLog": ""
+		}
+	],
+	"reportCreatedOn": "2026.09.06-05.25.18",
+	"succeeded": 4,
+	"succeededWithWarnings": 0,
+	"failed": 0,
+	"notRun": 0,
+	"inProcess": 0,
+	"totalDuration": 39.899261474609375,
+	"comparisonExported": false,
+	"comparisonExportDirectory": "",
+	"tests": [
+		{
+			"testDisplayName": "CanonicalCatalog",
+			"fullTestPath": "WonderChess.Data.CanonicalCatalog",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"38BC733D42E6BFB8602AB9B7537575FB"
+			],
+			"duration": 0.11384779959917068,
+			"dateTime": "2026.09.06-05.24.38",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "RejectInvalidNumericTypes",
+			"fullTestPath": "WonderChess.Data.RejectInvalidNumericTypes",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"38BC733D42E6BFB8602AB9B7537575FB"
+			],
+			"duration": 0.015847299247980118,
+			"dateTime": "2026.09.06-05.24.38",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "IntegerContracts",
+			"fullTestPath": "WonderChess.Runtime.IntegerContracts",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"38BC733D42E6BFB8602AB9B7537575FB"
+			],
+			"duration": 0.016746096312999725,
+			"dateTime": "2026.09.06-05.24.38",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "OneHundredActualCombatTournaments",
+			"fullTestPath": "WonderChess.Runtime.OneHundredActualCombatTournaments",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"38BC733D42E6BFB8602AB9B7537575FB"
+			],
+			"duration": 39.752819061279297,
+			"dateTime": "2026.09.06-05.24.38",
+			"entries": [
+				{
+					"event":
+					{
+						"type": "Info",
+						"message": "Executed 100 actual combat tournaments, 7118 encounters; ../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/WonderChessEvidence",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "",
+					"lineNumber": -1,
+					"timestamp": "2026.09.06-05.25.18"
+				}
+			],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		}
+	]
+}

@@ -1,0 +1,89 @@
+{
+  "engine": "5.7.4-51494982+++UE5+Release-5.7",
+  "status": "PASS",
+  "manifest_sha256": "e410a2ff450a5bad1c9b4590438540e58fba297e06b552a76bf61d2ce132d371",
+  "material": "/Game/WonderChess/Materials/M_WC_Surface",
+  "preset": {
+    "convert_scene": true,
+    "convert_scene_unit": true,
+    "force_front_x_axis": false,
+    "yaw_degrees": 90,
+    "uniform_scale": 1,
+    "translation_cm": [
+      0,
+      0,
+      0
+    ]
+  },
+  "records": [
+    {
+      "mesh": "/Game/WonderChess/Effects/SM_WC_ArrowGlyph",
+      "source_sha256": "e269d8d92d3a622e0ca8111cdd473e2bbbce8c6287c16d4cdeef57cbb1d45095",
+      "uasset_sha256": "fea2b2132e4b129a95b0a4199e480e307dccb9fcf0f8b439c6db5139ca88af58",
+      "min_cm": [
+        -34.0,
+        -8.500001907348633,
+        -1.100000023841858
+      ],
+      "max_cm": [
+        42.0,
+        8.499998092651367,
+        1.100000023841858
+      ],
+      "dimensions_cm": [
+        76.0,
+        17.0,
+        2.200000047683716
+      ],
+      "expected_dimensions_cm": [
+        75.99999904632568,
+        17.000000178813934,
+        2.199999988079071
+      ],
+      "triangles": 64,
+      "checks": {
+        "dimensions_match_cm": true,
+        "long_axis_x": true,
+        "positive_x_tip_extent": true,
+        "negative_x_tail_extent": true,
+        "authored_triangle_count": true,
+        "surface_material_assigned": true
+      }
+    },
+    {
+      "mesh": "/Game/WonderChess/Effects/SM_WC_BoltGlyph",
+      "source_sha256": "1b8722f63b4488473aec40cfc08370678b2e0f046bf3dde9c3099ad47d383485",
+      "uasset_sha256": "f434a6649eeb247b03af5a2c8ad6966e98b496165b38efcda4982d46a4f9c3f0",
+      "min_cm": [
+        -27.000001907348633,
+        -6.500001907348633,
+        -1.7000000476837158
+      ],
+      "max_cm": [
+        35.0,
+        6.499998092651367,
+        1.7000000476837158
+      ],
+      "dimensions_cm": [
+        62.00000190734863,
+        13.0,
+        3.4000000953674316
+      ],
+      "expected_dimensions_cm": [
+        62.00000047683716,
+        12.999999523162842,
+        3.400000184774399
+      ],
+      "triangles": 76,
+      "checks": {
+        "dimensions_match_cm": true,
+        "long_axis_x": true,
+        "positive_x_tip_extent": true,
+        "negative_x_tail_extent": true,
+        "authored_triangle_count": true,
+        "surface_material_assigned": true
+      }
+    }
+  ],
+  "boundary": "Actual legacy static mesh import, saved assets and signed bounds; rendered flight and packaged use remain separate checks."
+}

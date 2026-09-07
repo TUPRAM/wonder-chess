@@ -1,0 +1,919 @@
+C:\Users\iputu\Documents\Wonder Chess\tools\blender\author_alpha.py:141: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat=bpy.data.materials.new(f'M_{unit["id"]}');mat.use_nodes=True
+C:\Users\iputu\Documents\Wonder Chess\tools\blender\author_alpha.py:561: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat=bpy.data.materials.new('PRESENTATION_DeepBlue');mat.diffuse_color=(.045,.065,.10,1);mat.use_nodes=True
+00:32.125  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\exports\heroes\wc_u_human_priest\portrait.png'
+00:41.296  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_human_priest\front.png'
+00:48.468  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_human_priest\side.png'
+00:56.968  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_human_priest\back.png'
+00:58.984  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_human_priest\clip_Idle.png'
+01:00.937  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_human_priest\clip_Move.png'
+01:03.656  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_human_priest\clip_Attack.png'
+01:05.328  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_human_priest\clip_Active.png'
+01:07.093  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_human_priest\clip_Hit.png'
+01:08.984  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_human_priest\clip_Defeat.png'
+01:10.671  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_human_priest\clip_Victory.png'
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_priest\\SK_wc_u_human_priest.fbx'
+(bpy.data.armatures['WC_humanoid_standard_v1'], 'POSE')
+export finished in 0.0447 sec.
+Info: Applied modifier was not first, result may not be as expected
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_priest\\SK_wc_u_human_priest_LOD1.fbx'
+(bpy.data.armatures['WC_humanoid_standard_v1'], 'POSE')
+export finished in 0.0369 sec.
+Info: Applied modifier was not first, result may not be as expected
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_priest\\SK_wc_u_human_priest_LOD2.fbx'
+(bpy.data.armatures['WC_humanoid_standard_v1'], 'POSE')
+export finished in 0.0392 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_priest\\AN_wc_u_human_priest_Idle.fbx'
+export finished in 0.2284 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_priest\\AN_wc_u_human_priest_Move.fbx'
+export finished in 0.1437 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_priest\\AN_wc_u_human_priest_Attack.fbx'
+export finished in 0.1501 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_priest\\AN_wc_u_human_priest_Active.fbx'
+export finished in 0.1204 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_priest\\AN_wc_u_human_priest_Hit.fbx'
+export finished in 0.1547 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_priest\\AN_wc_u_human_priest_Defeat.fbx'
+export finished in 0.2536 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_priest\\AN_wc_u_human_priest_Victory.fbx'
+export finished in 0.2042 sec.
+Info: Saved as "wc_u_human_priest.blend"
+{
+  "status": "structural_checks_passed_visual_review_required",
+  "blender_version": "5.1.1",
+  "collection": "EXPORT",
+  "evaluated_triangle_total": 3682,
+  "objects": [
+    {
+      "name": "Armature",
+      "type": "ARMATURE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.153580665588379,
+        0.42500001192092896,
+        1.8275001049041748
+      ],
+      "roots": [
+        "root"
+      ],
+      "deform_bones": 27
+    },
+    {
+      "name": "SK_wc_u_human_priest",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.2926572561264038,
+        0.6620491743087769,
+        1.8323523998260498
+      ],
+      "evaluated_triangles": 3682,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "not_checked": [
+    "appearance",
+    "deformation across all clips",
+    "UV overlap appropriateness",
+    "normal-map convention",
+    "Unreal import",
+    "LOD silhouette",
+    "gameplay readability"
+  ]
+}
+{
+  "status": "sampled_motion_invariants_passed",
+  "unit_id": "wc_u_human_priest",
+  "blender_version": "5.1.1",
+  "sampling": "actual deformed mesh every 3 frames at 60fps",
+  "clips": [
+    {
+      "clip": "Idle",
+      "samples": 41,
+      "minimum_support_sole_z_m": 0.015300003811717033,
+      "maximum_support_sole_z_m": 0.015300003811717033,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Move",
+      "samples": 21,
+      "minimum_support_sole_z_m": 0.003510933369398117,
+      "maximum_support_sole_z_m": 0.015300003811717033,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Attack",
+      "samples": 15,
+      "minimum_support_sole_z_m": 0.015300003811717033,
+      "maximum_support_sole_z_m": 0.015300003811717033,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Active",
+      "samples": 14,
+      "minimum_support_sole_z_m": 0.015300003811717033,
+      "maximum_support_sole_z_m": 0.015300003811717033,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Hit",
+      "samples": 9,
+      "minimum_support_sole_z_m": 0.015300003811717033,
+      "maximum_support_sole_z_m": 0.015300003811717033,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Defeat",
+      "samples": 21,
+      "minimum_support_sole_z_m": 0.014219620265066624,
+      "maximum_support_sole_z_m": 0.026913762092590332,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Victory",
+      "samples": 31,
+      "minimum_support_sole_z_m": 0.015300003811717033,
+      "maximum_support_sole_z_m": 0.015300003811717033,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    }
+  ],
+  "errors": [],
+  "not_checked": [
+    "continuous visual quality",
+    "weapon/costume clipping",
+    "semantic gesture review",
+    "Unreal retarget/import",
+    "runtime move-speed synchronization"
+  ]
+}
+WC_HERO_COMPLETE wc_u_human_priest {"triangles": 3682, "bones": 27}
+01:32.031  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\exports\heroes\wc_u_human_mage\portrait.png'
+01:37.578  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_human_mage\front.png'
+01:42.718  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_human_mage\side.png'
+01:47.859  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_human_mage\back.png'
+01:49.156  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_human_mage\clip_Idle.png'
+01:50.515  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_human_mage\clip_Move.png'
+01:51.921  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_human_mage\clip_Attack.png'
+01:53.234  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_human_mage\clip_Active.png'
+01:54.531  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_human_mage\clip_Hit.png'
+01:55.906  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_human_mage\clip_Defeat.png'
+01:57.312  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_human_mage\clip_Victory.png'
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_mage\\SK_wc_u_human_mage.fbx'
+(bpy.data.armatures['WC_humanoid_standard_v1'], 'POSE')
+export finished in 0.0344 sec.
+Info: Applied modifier was not first, result may not be as expected
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_mage\\SK_wc_u_human_mage_LOD1.fbx'
+(bpy.data.armatures['WC_humanoid_standard_v1'], 'POSE')
+export finished in 0.0407 sec.
+Info: Applied modifier was not first, result may not be as expected
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_mage\\SK_wc_u_human_mage_LOD2.fbx'
+(bpy.data.armatures['WC_humanoid_standard_v1'], 'POSE')
+export finished in 0.0302 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_mage\\AN_wc_u_human_mage_Idle.fbx'
+export finished in 0.1726 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_mage\\AN_wc_u_human_mage_Move.fbx'
+export finished in 0.0980 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_mage\\AN_wc_u_human_mage_Attack.fbx'
+export finished in 0.0846 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_mage\\AN_wc_u_human_mage_Active.fbx'
+export finished in 0.0974 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_mage\\AN_wc_u_human_mage_Hit.fbx'
+export finished in 0.0688 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_mage\\AN_wc_u_human_mage_Defeat.fbx'
+export finished in 0.1025 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_mage\\AN_wc_u_human_mage_Victory.fbx'
+export finished in 0.1994 sec.
+Info: Saved as "wc_u_human_mage.blend"
+{
+  "status": "structural_checks_passed_visual_review_required",
+  "blender_version": "5.1.1",
+  "collection": "EXPORT",
+  "evaluated_triangle_total": 4042,
+  "objects": [
+    {
+      "name": "Armature",
+      "type": "ARMATURE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.2078666687011719,
+        0.44499993324279785,
+        1.9135000705718994
+      ],
+      "roots": [
+        "root"
+      ],
+      "deform_bones": 27
+    },
+    {
+      "name": "SK_wc_u_human_mage",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.3644142150878906,
+        0.5141851305961609,
+        1.7710998058319092
+      ],
+      "evaluated_triangles": 4042,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "not_checked": [
+    "appearance",
+    "deformation across all clips",
+    "UV overlap appropriateness",
+    "normal-map convention",
+    "Unreal import",
+    "LOD silhouette",
+    "gameplay readability"
+  ]
+}
+{
+  "status": "sampled_motion_invariants_passed",
+  "unit_id": "wc_u_human_mage",
+  "blender_version": "5.1.1",
+  "sampling": "actual deformed mesh every 3 frames at 60fps",
+  "clips": [
+    {
+      "clip": "Idle",
+      "samples": 41,
+      "minimum_support_sole_z_m": 0.016019994392991066,
+      "maximum_support_sole_z_m": 0.016019994392991066,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Move",
+      "samples": 21,
+      "minimum_support_sole_z_m": 0.00367613323032856,
+      "maximum_support_sole_z_m": 0.016019994392991066,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Attack",
+      "samples": 15,
+      "minimum_support_sole_z_m": 0.016019994392991066,
+      "maximum_support_sole_z_m": 0.016019994392991066,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Active",
+      "samples": 16,
+      "minimum_support_sole_z_m": 0.016019994392991066,
+      "maximum_support_sole_z_m": 0.016019994392991066,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Hit",
+      "samples": 9,
+      "minimum_support_sole_z_m": 0.016019994392991066,
+      "maximum_support_sole_z_m": 0.016019994392991066,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Defeat",
+      "samples": 21,
+      "minimum_support_sole_z_m": 0.014888742938637733,
+      "maximum_support_sole_z_m": 0.02818024903535843,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Victory",
+      "samples": 31,
+      "minimum_support_sole_z_m": 0.016019994392991066,
+      "maximum_support_sole_z_m": 0.016019994392991066,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    }
+  ],
+  "errors": [],
+  "not_checked": [
+    "continuous visual quality",
+    "weapon/costume clipping",
+    "semantic gesture review",
+    "Unreal retarget/import",
+    "runtime move-speed synchronization"
+  ]
+}
+WC_HERO_COMPLETE wc_u_human_mage {"triangles": 4042, "bones": 27}
+02:12.890  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\exports\heroes\wc_u_elf_ranger\portrait.png'
+02:18.093  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_elf_ranger\front.png'
+02:22.531  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_elf_ranger\side.png'
+02:26.968  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_elf_ranger\back.png'
+02:28.390  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_elf_ranger\clip_Idle.png'
+02:29.640  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_elf_ranger\clip_Move.png'
+02:30.921  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_elf_ranger\clip_Attack.png'
+02:32.125  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_elf_ranger\clip_Active.png'
+02:33.359  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_elf_ranger\clip_Hit.png'
+02:34.625  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_elf_ranger\clip_Defeat.png'
+02:35.906  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_elf_ranger\clip_Victory.png'
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_elf_ranger\\SK_wc_u_elf_ranger.fbx'
+(bpy.data.armatures['WC_humanoid_slender_v1'], 'POSE')
+export finished in 0.0274 sec.
+Info: Applied modifier was not first, result may not be as expected
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_elf_ranger\\SK_wc_u_elf_ranger_LOD1.fbx'
+(bpy.data.armatures['WC_humanoid_slender_v1'], 'POSE')
+export finished in 0.0247 sec.
+Info: Applied modifier was not first, result may not be as expected
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_elf_ranger\\SK_wc_u_elf_ranger_LOD2.fbx'
+(bpy.data.armatures['WC_humanoid_slender_v1'], 'POSE')
+export finished in 0.0230 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_elf_ranger\\AN_wc_u_elf_ranger_Idle.fbx'
+export finished in 0.1164 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_elf_ranger\\AN_wc_u_elf_ranger_Move.fbx'
+export finished in 0.0747 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_elf_ranger\\AN_wc_u_elf_ranger_Attack.fbx'
+export finished in 0.0647 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_elf_ranger\\AN_wc_u_elf_ranger_Active.fbx'
+export finished in 0.0546 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_elf_ranger\\AN_wc_u_elf_ranger_Hit.fbx'
+export finished in 0.0523 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_elf_ranger\\AN_wc_u_elf_ranger_Defeat.fbx'
+export finished in 0.0753 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_elf_ranger\\AN_wc_u_elf_ranger_Victory.fbx'
+export finished in 0.1385 sec.
+Info: Saved as "wc_u_elf_ranger.blend"
+{
+  "status": "structural_checks_passed_visual_review_required",
+  "blender_version": "5.1.1",
+  "collection": "EXPORT",
+  "evaluated_triangle_total": 3104,
+  "objects": [
+    {
+      "name": "Armature",
+      "type": "ARMATURE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.1817243099212646,
+        0.4699999988079071,
+        2.0210001468658447
+      ],
+      "roots": [
+        "root"
+      ],
+      "deform_bones": 27
+    },
+    {
+      "name": "SK_wc_u_elf_ranger",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.4933421611785889,
+        0.8252561092376709,
+        1.8705998659133911
+      ],
+      "evaluated_triangles": 3104,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "not_checked": [
+    "appearance",
+    "deformation across all clips",
+    "UV overlap appropriateness",
+    "normal-map convention",
+    "Unreal import",
+    "LOD silhouette",
+    "gameplay readability"
+  ]
+}
+{
+  "status": "sampled_motion_invariants_passed",
+  "unit_id": "wc_u_elf_ranger",
+  "blender_version": "5.1.1",
+  "sampling": "actual deformed mesh every 3 frames at 60fps",
+  "clips": [
+    {
+      "clip": "Idle",
+      "samples": 41,
+      "minimum_support_sole_z_m": 0.01691998913884163,
+      "maximum_support_sole_z_m": 0.01691998913884163,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Move",
+      "samples": 21,
+      "minimum_support_sole_z_m": 0.003882620483636856,
+      "maximum_support_sole_z_m": 0.01691998913884163,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Attack",
+      "samples": 15,
+      "minimum_support_sole_z_m": 0.01691998913884163,
+      "maximum_support_sole_z_m": 0.01691998913884163,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Active",
+      "samples": 11,
+      "minimum_support_sole_z_m": 0.01691998913884163,
+      "maximum_support_sole_z_m": 0.01691998913884163,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Hit",
+      "samples": 9,
+      "minimum_support_sole_z_m": 0.01691998913884163,
+      "maximum_support_sole_z_m": 0.01691998913884163,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Defeat",
+      "samples": 21,
+      "minimum_support_sole_z_m": 0.01572517119348049,
+      "maximum_support_sole_z_m": 0.02976338565349579,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Victory",
+      "samples": 31,
+      "minimum_support_sole_z_m": 0.01691998913884163,
+      "maximum_support_sole_z_m": 0.01691998913884163,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    }
+  ],
+  "errors": [],
+  "not_checked": [
+    "continuous visual quality",
+    "weapon/costume clipping",
+    "semantic gesture review",
+    "Unreal retarget/import",
+    "runtime move-speed synchronization"
+  ]
+}
+WC_HERO_COMPLETE wc_u_elf_ranger {"triangles": 3104, "bones": 27}
+02:50.281  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\exports\heroes\wc_u_elf_priest\portrait.png'
+02:54.921  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_elf_priest\front.png'
+02:59.390  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_elf_priest\side.png'
+03:03.859  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_elf_priest\back.png'
+03:05.140  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_elf_priest\clip_Idle.png'
+03:06.406  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_elf_priest\clip_Move.png'
+03:07.687  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_elf_priest\clip_Attack.png'
+03:08.937  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_elf_priest\clip_Active.png'
+03:10.171  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_elf_priest\clip_Hit.png'
+03:11.406  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_elf_priest\clip_Defeat.png'
+03:12.640  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_elf_priest\clip_Victory.png'
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_elf_priest\\SK_wc_u_elf_priest.fbx'
+(bpy.data.armatures['WC_humanoid_slender_v1'], 'POSE')
+export finished in 0.0289 sec.
+Info: Applied modifier was not first, result may not be as expected
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_elf_priest\\SK_wc_u_elf_priest_LOD1.fbx'
+(bpy.data.armatures['WC_humanoid_slender_v1'], 'POSE')
+export finished in 0.0257 sec.
+Info: Applied modifier was not first, result may not be as expected
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_elf_priest\\SK_wc_u_elf_priest_LOD2.fbx'
+(bpy.data.armatures['WC_humanoid_slender_v1'], 'POSE')
+export finished in 0.0269 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_elf_priest\\AN_wc_u_elf_priest_Idle.fbx'
+export finished in 0.1166 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_elf_priest\\AN_wc_u_elf_priest_Move.fbx'
+export finished in 0.0766 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_elf_priest\\AN_wc_u_elf_priest_Attack.fbx'
+export finished in 0.0695 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_elf_priest\\AN_wc_u_elf_priest_Active.fbx'
+export finished in 0.0663 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_elf_priest\\AN_wc_u_elf_priest_Hit.fbx'
+export finished in 0.0520 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_elf_priest\\AN_wc_u_elf_priest_Defeat.fbx'
+export finished in 0.0809 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_elf_priest\\AN_wc_u_elf_priest_Victory.fbx'
+export finished in 0.0880 sec.
+Info: Saved as "wc_u_elf_priest.blend"
+{
+  "status": "structural_checks_passed_visual_review_required",
+  "blender_version": "5.1.1",
+  "collection": "EXPORT",
+  "evaluated_triangle_total": 3942,
+  "objects": [
+    {
+      "name": "Armature",
+      "type": "ARMATURE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.1628669500350952,
+        0.4625000059604645,
+        1.9887501001358032
+      ],
+      "roots": [
+        "root"
+      ],
+      "deform_bones": 27
+    },
+    {
+      "name": "SK_wc_u_elf_priest",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.4278700351715088,
+        0.6709964275360107,
+        1.840749979019165
+      ],
+      "evaluated_triangles": 3942,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "not_checked": [
+    "appearance",
+    "deformation across all clips",
+    "UV overlap appropriateness",
+    "normal-map convention",
+    "Unreal import",
+    "LOD silhouette",
+    "gameplay readability"
+  ]
+}
+{
+  "status": "sampled_motion_invariants_passed",
+  "unit_id": "wc_u_elf_priest",
+  "blender_version": "5.1.1",
+  "sampling": "actual deformed mesh every 3 frames at 60fps",
+  "clips": [
+    {
+      "clip": "Idle",
+      "samples": 41,
+      "minimum_support_sole_z_m": 0.016649996861815453,
+      "maximum_support_sole_z_m": 0.016649996861815453,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Move",
+      "samples": 21,
+      "minimum_support_sole_z_m": 0.0038206372410058975,
+      "maximum_support_sole_z_m": 0.016649996861815453,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Attack",
+      "samples": 15,
+      "minimum_support_sole_z_m": 0.016649996861815453,
+      "maximum_support_sole_z_m": 0.016649996861815453,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Active",
+      "samples": 14,
+      "minimum_support_sole_z_m": 0.016649996861815453,
+      "maximum_support_sole_z_m": 0.016649996861815453,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Hit",
+      "samples": 9,
+      "minimum_support_sole_z_m": 0.016649996861815453,
+      "maximum_support_sole_z_m": 0.016649996861815453,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Defeat",
+      "samples": 21,
+      "minimum_support_sole_z_m": 0.01547427847981453,
+      "maximum_support_sole_z_m": 0.029288457706570625,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Victory",
+      "samples": 31,
+      "minimum_support_sole_z_m": 0.016649996861815453,
+      "maximum_support_sole_z_m": 0.016649996861815453,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    }
+  ],
+  "errors": [],
+  "not_checked": [
+    "continuous visual quality",
+    "weapon/costume clipping",
+    "semantic gesture review",
+    "Unreal retarget/import",
+    "runtime move-speed synchronization"
+  ]
+}
+WC_HERO_COMPLETE wc_u_elf_priest {"triangles": 3942, "bones": 27}
+03:27.046  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\exports\heroes\wc_u_elf_rogue\portrait.png'
+03:31.406  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_elf_rogue\front.png'
+03:36.093  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_elf_rogue\side.png'
+03:41.093  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_elf_rogue\back.png'
+03:42.359  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_elf_rogue\clip_Idle.png'
+03:43.750  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_elf_rogue\clip_Move.png'
+03:44.968  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_elf_rogue\clip_Attack.png'
+03:46.218  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_elf_rogue\clip_Active.png'
+03:47.609  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_elf_rogue\clip_Hit.png'
+03:48.859  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_elf_rogue\clip_Defeat.png'
+03:50.078  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_elf_rogue\clip_Victory.png'
+Traceback (most recent call last):
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\author_alpha.py", line 634, in <module>
+    for unit in selected:author(unit,opt)
+                         ~~~~~~^^^^^^^^^^
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\author_alpha.py", line 625, in author
+    runpy.run_path(str(ROOT/'tools/blender/audit_motion.py'),run_name='__main__')
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\audit_motion.py", line 45, in <module>
+    if errors:raise RuntimeError('Actual motion invariants failed; inspect report')
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Actual motion invariants failed; inspect report
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_elf_rogue\\SK_wc_u_elf_rogue.fbx'
+(bpy.data.armatures['WC_humanoid_slender_v1'], 'POSE')
+export finished in 0.0278 sec.
+Info: Applied modifier was not first, result may not be as expected
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_elf_rogue\\SK_wc_u_elf_rogue_LOD1.fbx'
+(bpy.data.armatures['WC_humanoid_slender_v1'], 'POSE')
+export finished in 0.0253 sec.
+Info: Applied modifier was not first, result may not be as expected
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_elf_rogue\\SK_wc_u_elf_rogue_LOD2.fbx'
+(bpy.data.armatures['WC_humanoid_slender_v1'], 'POSE')
+export finished in 0.0240 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_elf_rogue\\AN_wc_u_elf_rogue_Idle.fbx'
+export finished in 0.1134 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_elf_rogue\\AN_wc_u_elf_rogue_Move.fbx'
+export finished in 0.0856 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_elf_rogue\\AN_wc_u_elf_rogue_Attack.fbx'
+export finished in 0.0611 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_elf_rogue\\AN_wc_u_elf_rogue_Active.fbx'
+export finished in 0.0578 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_elf_rogue\\AN_wc_u_elf_rogue_Hit.fbx'
+export finished in 0.0579 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_elf_rogue\\AN_wc_u_elf_rogue_Defeat.fbx'
+export finished in 0.0749 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_elf_rogue\\AN_wc_u_elf_rogue_Victory.fbx'
+export finished in 0.0917 sec.
+Info: Saved as "wc_u_elf_rogue.blend"
+{
+  "status": "structural_checks_passed_visual_review_required",
+  "blender_version": "5.1.1",
+  "collection": "EXPORT",
+  "evaluated_triangle_total": 3186,
+  "objects": [
+    {
+      "name": "Armature",
+      "type": "ARMATURE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.194295883178711,
+        0.4749999940395355,
+        2.0425000190734863
+      ],
+      "roots": [
+        "root"
+      ],
+      "deform_bones": 27
+    },
+    {
+      "name": "SK_wc_u_elf_rogue",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.4200186729431152,
+        0.6419491767883301,
+        1.8904999494552612
+      ],
+      "evaluated_triangles": 3186,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "not_checked": [
+    "appearance",
+    "deformation across all clips",
+    "UV overlap appropriateness",
+    "normal-map convention",
+    "Unreal import",
+    "LOD silhouette",
+    "gameplay readability"
+  ]
+}
+{
+  "status": "failed",
+  "unit_id": "wc_u_elf_rogue",
+  "blender_version": "5.1.1",
+  "sampling": "actual deformed mesh every 3 frames at 60fps",
+  "clips": [
+    {
+      "clip": "Idle",
+      "samples": 41,
+      "minimum_support_sole_z_m": 0.01709999144077301,
+      "maximum_support_sole_z_m": 0.01709999144077301,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Move",
+      "samples": 21,
+      "minimum_support_sole_z_m": -0.0025625228881835938,
+      "maximum_support_sole_z_m": 0.0171000137925148,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Attack",
+      "samples": 14,
+      "minimum_support_sole_z_m": 0.01709999144077301,
+      "maximum_support_sole_z_m": 0.01709999144077301,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Active",
+      "samples": 11,
+      "minimum_support_sole_z_m": -0.03565094619989395,
+      "maximum_support_sole_z_m": 0.017099998891353607,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Hit",
+      "samples": 9,
+      "minimum_support_sole_z_m": 0.01709999144077301,
+      "maximum_support_sole_z_m": 0.01709999144077301,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Defeat",
+      "samples": 21,
+      "minimum_support_sole_z_m": 0.015892472118139267,
+      "maximum_support_sole_z_m": 0.030079955235123634,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Victory",
+      "samples": 31,
+      "minimum_support_sole_z_m": 0.01709999144077301,
+      "maximum_support_sole_z_m": 0.01709999144077301,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    }
+  ],
+  "errors": [
+    "Active: foot penetrates floor by 0.0357m"
+  ],
+  "not_checked": [
+    "continuous visual quality",
+    "weapon/costume clipping",
+    "semantic gesture review",
+    "Unreal retarget/import",
+    "runtime move-speed synchronization"
+  ]
+}
+
+Error: script failed, file: 'tools/blender/author_alpha.py', exiting.
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

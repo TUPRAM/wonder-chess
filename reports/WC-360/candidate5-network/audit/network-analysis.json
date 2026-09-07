@@ -1,0 +1,702 @@
+{
+  "status": "FAIL",
+  "boundary": "Actual packaged listen-server and client processes over 127.0.0.1, two real human seat bindings with scripted RPCs at 10x speed. This does not certify a second physical computer or an external LAN.",
+  "audit_utc": "2026-09-06T07:00:04.442299+00:00",
+  "sessions": [
+    {
+      "process_id": 39788,
+      "match_namespace": 1,
+      "seat": 0,
+      "network_mode": 2,
+      "authority_process": true,
+      "scripted_client": true,
+      "simulation_speed_multiplier": 10,
+      "complete": true,
+      "aborted": false,
+      "phase": 3,
+      "round": 22,
+      "intent_requests": 42,
+      "actual_accepted_replies": 37,
+      "actual_rejected_replies": 5,
+      "process_exit_requested": true,
+      "max_living_visible_units": 12,
+      "max_living_logical_units": 47,
+      "max_simultaneous_encounters": 4,
+      "observed_first_utc": "2026-09-06T06:50:18.681Z",
+      "observed_last_utc": "2026-09-06T06:53:44.139Z",
+      "first_results_utc": "2026-09-06T06:52:37.342Z",
+      "snapshot_count": 362,
+      "eight_seat_snapshot_count": 362,
+      "human_count_values": [
+        2
+      ],
+      "owner_private_binding": true,
+      "received_public_privacy_violations": [],
+      "fresh_owner_private": {
+        "seat": 0,
+        "gold": 10,
+        "xp": 0,
+        "level": 3,
+        "revision": 4294967297,
+        "sequence": 0,
+        "locked": false,
+        "ready": false,
+        "shop": [
+          9,
+          3,
+          11,
+          0,
+          7
+        ],
+        "units": []
+      },
+      "combat_rounds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "preparation_rounds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        15,
+        16,
+        19
+      ],
+      "first_human_eliminated_observation": {
+        "utc": "2026-09-06T06:51:50.426Z",
+        "round": 10,
+        "phase": 2
+      },
+      "combat_rounds_observed_after_human_elimination": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "post_elimination_combat_boundary": "Eliminated owner receives ongoing real encounters; this field alone does not prove camera selection or visible UX.",
+      "command_event_counts": {
+        "probe_sent": 7,
+        "actual_client_reply": 42,
+        "probe_result": 7,
+        "normal_intent_requested": 35
+      },
+      "actual_reply_reasons": {
+        "Out-of-order command sequence": 1,
+        "Accepted": 37,
+        "Request ID reused with different payload": 1,
+        "Stale seat revision": 1,
+        "Unit is not owned": 1,
+        "Preparation is locked": 1
+      },
+      "reply_counts_reconcile": true,
+      "probes": [
+        {
+          "name": "out_of_order_sequence_rejected",
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Out-of-order command sequence"
+        },
+        {
+          "name": "original_idempotent_lock_request",
+          "status": "PASS",
+          "accepted": true,
+          "reply": "Accepted"
+        },
+        {
+          "name": "duplicate_request_applies_once",
+          "status": "PASS",
+          "accepted": true,
+          "reply": "Accepted"
+        },
+        {
+          "name": "changed_payload_same_request_rejected",
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Request ID reused with different payload"
+        },
+        {
+          "name": "stale_revision_rejected",
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Stale seat revision"
+        },
+        {
+          "name": "foreign_unit_sale_rejected",
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Unit is not owned"
+        },
+        {
+          "name": "combat_phase_buy_rejected",
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Preparation is locked"
+        }
+      ],
+      "capped": false,
+      "final_standings": [
+        {
+          "id": 0,
+          "name": "Captain 1",
+          "human": true,
+          "health": 0,
+          "wins": 0,
+          "place": 8
+        },
+        {
+          "id": 1,
+          "name": "Captain 2",
+          "human": true,
+          "health": 0,
+          "wins": 3,
+          "place": 6
+        },
+        {
+          "id": 2,
+          "name": "Rowanfield Bot",
+          "human": false,
+          "health": 0,
+          "wins": 7,
+          "place": 5
+        },
+        {
+          "id": 3,
+          "name": "Starwatch Bot",
+          "human": false,
+          "health": 0,
+          "wins": 9,
+          "place": 3
+        },
+        {
+          "id": 4,
+          "name": "Hearthkeeper Bot",
+          "human": false,
+          "health": 0,
+          "wins": 11,
+          "place": 4
+        },
+        {
+          "id": 5,
+          "name": "Sunstride Bot",
+          "human": false,
+          "health": 0,
+          "wins": 3,
+          "place": 7
+        },
+        {
+          "id": 6,
+          "name": "Gemseeker Bot",
+          "human": false,
+          "health": 0,
+          "wins": 14,
+          "place": 2
+        },
+        {
+          "id": 7,
+          "name": "Highbanner Bot",
+          "human": false,
+          "health": 41,
+          "wins": 19,
+          "place": 1
+        }
+      ],
+      "inputs": [
+        {
+          "path": "reports\\WC-360\\candidate5-network\\host\\match-1-seat-0-pid-39788-session.json",
+          "bytes": 2019480,
+          "sha256": "dd3d4b9a884d51580870d778266d0961ebe4f6d9da87e73a2128687a99adf46a"
+        },
+        {
+          "path": "reports\\WC-360\\candidate5-network\\host\\match-1-seat-0-pid-39788-snapshots.jsonl",
+          "bytes": 11936604,
+          "sha256": "cecdc9851d70bb4e72ef6a270c6c50222c5eae3bf1c0b273e67d1459c1b317e4"
+        },
+        {
+          "path": "reports\\WC-360\\candidate5-network\\host\\match-1-seat-0-pid-39788-commands.jsonl",
+          "bytes": 26443,
+          "sha256": "8d8e2f083e6102b037572a956fc45a73a6e3c99d40235767df8298ffbcb1615c"
+        }
+      ]
+    },
+    {
+      "process_id": 42340,
+      "match_namespace": 1,
+      "seat": 1,
+      "network_mode": 3,
+      "authority_process": false,
+      "scripted_client": true,
+      "simulation_speed_multiplier": 10,
+      "complete": true,
+      "aborted": false,
+      "phase": 3,
+      "round": 22,
+      "intent_requests": 79,
+      "actual_accepted_replies": 34,
+      "actual_rejected_replies": 45,
+      "process_exit_requested": false,
+      "max_living_visible_units": 12,
+      "max_living_logical_units": 28,
+      "max_simultaneous_encounters": 4,
+      "observed_first_utc": "2026-09-06T06:50:19.041Z",
+      "observed_last_utc": "2026-09-06T06:53:44.258Z",
+      "first_results_utc": "2026-09-06T06:52:37.973Z",
+      "snapshot_count": 365,
+      "eight_seat_snapshot_count": 365,
+      "human_count_values": [
+        2
+      ],
+      "owner_private_binding": true,
+      "received_public_privacy_violations": [],
+      "fresh_owner_private": {
+        "seat": 1,
+        "gold": 10,
+        "xp": 0,
+        "level": 3,
+        "revision": 4294967297,
+        "sequence": 0,
+        "locked": false,
+        "ready": false,
+        "shop": [
+          6,
+          6,
+          0,
+          8,
+          1
+        ],
+        "units": []
+      },
+      "combat_rounds": [
+        1,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "preparation_rounds": [
+        1,
+        3,
+        5,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        15,
+        16
+      ],
+      "first_human_eliminated_observation": {
+        "utc": "2026-09-06T06:51:59.005Z",
+        "round": 13,
+        "phase": 0
+      },
+      "combat_rounds_observed_after_human_elimination": [
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "post_elimination_combat_boundary": "Eliminated owner receives ongoing real encounters; this field alone does not prove camera selection or visible UX.",
+      "command_event_counts": {
+        "probe_sent": 7,
+        "actual_client_reply": 79,
+        "probe_result": 7,
+        "normal_intent_requested": 72
+      },
+      "actual_reply_reasons": {
+        "Out-of-order command sequence": 1,
+        "Accepted": 34,
+        "Request ID reused with different payload": 1,
+        "Stale seat revision": 1,
+        "Unit is not owned": 1,
+        "Preparation is locked": 41
+      },
+      "reply_counts_reconcile": true,
+      "probes": [
+        {
+          "name": "out_of_order_sequence_rejected",
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Out-of-order command sequence"
+        },
+        {
+          "name": "original_idempotent_lock_request",
+          "status": "PASS",
+          "accepted": true,
+          "reply": "Accepted"
+        },
+        {
+          "name": "duplicate_request_applies_once",
+          "status": "PASS",
+          "accepted": true,
+          "reply": "Accepted"
+        },
+        {
+          "name": "changed_payload_same_request_rejected",
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Request ID reused with different payload"
+        },
+        {
+          "name": "stale_revision_rejected",
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Stale seat revision"
+        },
+        {
+          "name": "foreign_unit_sale_rejected",
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Unit is not owned"
+        },
+        {
+          "name": "combat_phase_buy_rejected",
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Preparation is locked"
+        }
+      ],
+      "capped": false,
+      "final_standings": [
+        {
+          "id": 0,
+          "name": "Captain 1",
+          "human": true,
+          "health": 0,
+          "wins": 0,
+          "place": 8
+        },
+        {
+          "id": 1,
+          "name": "Captain 2",
+          "human": true,
+          "health": 0,
+          "wins": 3,
+          "place": 6
+        },
+        {
+          "id": 2,
+          "name": "Rowanfield Bot",
+          "human": false,
+          "health": 0,
+          "wins": 7,
+          "place": 5
+        },
+        {
+          "id": 3,
+          "name": "Starwatch Bot",
+          "human": false,
+          "health": 0,
+          "wins": 9,
+          "place": 3
+        },
+        {
+          "id": 4,
+          "name": "Hearthkeeper Bot",
+          "human": false,
+          "health": 0,
+          "wins": 11,
+          "place": 4
+        },
+        {
+          "id": 5,
+          "name": "Sunstride Bot",
+          "human": false,
+          "health": 0,
+          "wins": 3,
+          "place": 7
+        },
+        {
+          "id": 6,
+          "name": "Gemseeker Bot",
+          "human": false,
+          "health": 0,
+          "wins": 14,
+          "place": 2
+        },
+        {
+          "id": 7,
+          "name": "Highbanner Bot",
+          "human": false,
+          "health": 41,
+          "wins": 19,
+          "place": 1
+        }
+      ],
+      "inputs": [
+        {
+          "path": "reports\\WC-360\\candidate5-network\\client\\match-1-seat-1-pid-42340-session.json",
+          "bytes": 649095,
+          "sha256": "119e4098ad54fc05f619ea52a67a970b2fdcdbb84b1478fa0a064f5edf5cc3ff"
+        },
+        {
+          "path": "reports\\WC-360\\candidate5-network\\client\\match-1-seat-1-pid-42340-snapshots.jsonl",
+          "bytes": 8948825,
+          "sha256": "ef8350de9a04b5cdb55cbe8e3202896b4c929848702a9ce8ba4f9baa37755aee"
+        },
+        {
+          "path": "reports\\WC-360\\candidate5-network\\client\\match-1-seat-1-pid-42340-commands.jsonl",
+          "bytes": 44173,
+          "sha256": "f9224310d7b364ae1ddbbab7d8c7287fb025f180f57fe06718382a055c002f6b"
+        }
+      ]
+    }
+  ],
+  "logs": {
+    "host": {
+      "input": {
+        "path": "reports\\WC-360\\candidate5-network\\host\\game.log",
+        "bytes": 138359,
+        "sha256": "b748b8fb83a76a1cef828e7148e0ae1901535fa1c6b85a7be890d47f1d916d7f"
+      },
+      "error_level_lines": 86,
+      "oversized_bunch_count": 60,
+      "bunch_size_min": 73470,
+      "bunch_size_max": 99021,
+      "oversized_bunch_first": "[2026.09.06-06.50.40:000][354]LogOutputDevice: Error: Attempted to send bunch exceeding max allowed size. BunchSize=73500, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+      "oversized_bunch_last": "[2026.09.06-06.52.16:745][541]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76315, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+      "oversized_bunch_lines": [
+        "[2026.09.06-06.50.40:000][354]LogOutputDevice: Error: Attempted to send bunch exceeding max allowed size. BunchSize=73500, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.50.40:611][354]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=73500, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.50.41:551][355]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=73499, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.50.45:126][357]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=73487, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.50.48:881][359]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=73470, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.50.49:842][362]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=74143, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.51.09:457][418]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=85888, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.51.33:356][491]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=94906, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.51.34:097][493]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=94889, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.51.34:792][495]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=94869, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.51.35:544][497]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98647, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.51.38:483][561]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98720, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.51.39:031][578]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98726, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.51.39:540][594]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98708, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.51.40:068][610]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98701, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.51.42:287][675]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98733, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.51.42:841][683]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98729, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.51.43:372][701]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98725, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.51.43:906][717]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98726, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.51.44:447][733]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98688, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.51.44:976][749]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98677, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.51.45:508][765]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98683, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.51.48:369][833]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98711, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.51.48:928][850]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98708, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.51.49:438][866]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98707, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.51.49:959][882]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98686, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.51.50:549][897]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98751, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.51.53:190][955]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98897, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.51.53:475][963]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98913, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.51.53:914][975]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98876, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.51.54:494][992]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98851, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.51.55:021][  7]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98846, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.51.57:683][ 71]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=99021, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.51.57:834][ 76]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98941, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.51.58:327][ 92]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98945, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.52.01:054][158]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=87799, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.52.01:217][163]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=87778, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.52.01:730][179]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=87761, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.52.02:231][195]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=87760, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.52.02:732][211]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=87746, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.52.03:362][227]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76250, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.52.03:953][235]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76194, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.52.04:531][244]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76321, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.52.05:058][260]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76339, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.52.05:560][273]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76289, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.52.06:070][286]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76295, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.52.06:663][302]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76293, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.52.07:275][315]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76309, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.52.09:662][357]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76342, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.52.10:199][374]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76316, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.52.10:858][390]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76296, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.52.11:232][404]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76286, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.52.11:740][420]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76271, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.52.12:240][436]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76275, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.52.14:407][479]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76359, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.52.14:573][483]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76361, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.52.15:138][498]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76320, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.52.15:611][510]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76314, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.52.16:141][526]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76308, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "[2026.09.06-06.52.16:745][541]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76315, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3"
+      ],
+      "network_failure_lines": [],
+      "match_finished_lines": [
+        "[2026.09.06-06.52.36:863][ 81]LogTemp: Display: WC_MATCH_FINISHED seed=271828 rounds=22 capped=0"
+      ],
+      "exit_lines": [
+        "[2026.09.06-06.53.44:373][982]LogWindows: FPlatformMisc::RequestExit(0, <NoCallSiteInfo>)",
+        "[2026.09.06-06.53.44:373][982]LogWindows: FPlatformMisc::RequestExitWithStatus(0, 0, <NoCallSiteInfo>)",
+        "[2026.09.06-06.53.44:373][982]LogCore: Engine exit requested (reason: Win RequestExit)",
+        "[2026.09.06-06.53.45:060][983]Log file closed, 09/06/26 14:53:45"
+      ]
+    },
+    "client": {
+      "input": {
+        "path": "reports\\WC-360\\candidate5-network\\client\\game.log",
+        "bytes": 96262,
+        "sha256": "8806cf03976632e0976c08999d069618c21fd938b2377de621c875e36de0cbc7"
+      },
+      "error_level_lines": 2,
+      "oversized_bunch_count": 0,
+      "bunch_size_min": null,
+      "bunch_size_max": null,
+      "oversized_bunch_first": null,
+      "oversized_bunch_last": null,
+      "oversized_bunch_lines": [],
+      "network_failure_lines": [
+        "[2026.09.06-06.53.44:418][452]LogNet: Error: UEngine::BroadcastNetworkFailure: FailureType = FailureReceived, ErrorString = Host closed the connection., Driver = Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482483",
+        "[2026.09.06-06.53.44:420][452]LogNet: Error: UEngine::BroadcastNetworkFailure: FailureType = ConnectionLost, ErrorString = Your connection to the host has been lost., Driver = Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482483"
+      ],
+      "match_finished_lines": [],
+      "exit_lines": [
+        "[2026.09.06-06.54.02:797][535]LogWindows: FPlatformMisc::RequestExit(0, <NoCallSiteInfo>)",
+        "[2026.09.06-06.54.02:797][535]LogWindows: FPlatformMisc::RequestExitWithStatus(0, 0, <NoCallSiteInfo>)",
+        "[2026.09.06-06.54.02:797][535]LogCore: Engine exit requested (reason: Win RequestExit)",
+        "[2026.09.06-06.54.03:677][536]Log file closed, 09/06/26 14:54:03"
+      ]
+    }
+  },
+  "paired_checks": 37,
+  "failed_checks": [
+    {
+      "check": "received_combat_round_coverage",
+      "status": "FAIL",
+      "detail": {
+        "host_observed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "client_observed": [
+          1,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "missing_on_client": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "missing_on_host": [],
+        "boundary": "Sampled public combat presence, not every replicated tick or packet."
+      }
+    },
+    {
+      "check": "host_no_oversized_replication_bunches",
+      "status": "FAIL",
+      "detail": {
+        "count": 60,
+        "first": "[2026.09.06-06.50.40:000][354]LogOutputDevice: Error: Attempted to send bunch exceeding max allowed size. BunchSize=73500, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3",
+        "last": "[2026.09.06-06.52.16:745][541]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76315, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3"
+      }
+    }
+  ],
+  "missing_client_combat_rounds": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "after_host_planned_exit_client": {
+    "utc": "2026-09-06T06:54:02.795Z",
+    "match_namespace": 0,
+    "aborted": true,
+    "host_disconnected": true,
+    "network_error": "The host disconnected. This match ended without a winner.",
+    "network_error_detail": "ConnectionLost: Your connection to the host has been lost.",
+    "intent_requests": 0,
+    "process_exit_requested": true
+  },
+  "recap_reader_correction": "The reader now compares retained recap payloads by their own round. An older retained recap does not establish the round of current seat health; the original reader falsely treated that as inconsistent settlement. Missing combat rounds and actual oversized replication bunch errors remain independent failures.",
+  "provenance": {
+    "path": "reports\\WC-360\\candidate5-provenance.json",
+    "bytes": 219495,
+    "sha256": "76655831eea4a768d2f1018ca65ed76cdc88b58e80175296fa261806af6d88c3"
+  }
+}

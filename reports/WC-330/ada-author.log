@@ -1,0 +1,42 @@
+C:\Users\iputu\Documents\Wonder Chess\tools\blender\author_alpha.py:134: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat=bpy.data.materials.new(f'M_{unit["id"]}');mat.use_nodes=True
+Traceback (most recent call last):
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\author_alpha.py", line 549, in <module>
+    for unit in selected:author(unit,opt)
+                         ~~~~~~^^^^^^^^^^
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\author_alpha.py", line 514, in author
+    camera=setup_render(unit['height_m'])
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\author_alpha.py", line 480, in setup_render
+    sc.world.color=(.14,.17,.22);sc.view_settings.view_transform='AgX'
+    ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'color' and no __dict__ for setting new attributes
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_guardian\\SK_wc_u_human_guardian.fbx'
+(bpy.data.armatures['WC_humanoid_standard_v1'], 'POSE')
+export finished in 0.0423 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_guardian\\AN_wc_u_human_guardian_Idle.fbx'
+export finished in 0.1761 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_guardian\\AN_wc_u_human_guardian_Move.fbx'
+export finished in 0.1207 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_guardian\\AN_wc_u_human_guardian_Attack.fbx'
+export finished in 0.0970 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_guardian\\AN_wc_u_human_guardian_Active.fbx'
+export finished in 0.0915 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_guardian\\AN_wc_u_human_guardian_Hit.fbx'
+export finished in 0.0790 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_guardian\\AN_wc_u_human_guardian_Defeat.fbx'
+export finished in 0.1115 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_guardian\\AN_wc_u_human_guardian_Victory.fbx'
+export finished in 0.1365 sec.
+
+Error: script failed, file: 'tools/blender/author_alpha.py', exiting.
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

@@ -1,0 +1,1250 @@
+﻿Log file open, 09/06/26 13:28:31
+LogWindows: Failed to load 'aqProf.dll' (GetLastError=126)
+LogWindows: File 'aqProf.dll' does not exist
+LogProfilingDebugging: Loading WinPixEventRuntime.dll for PIX profiling (from ../../../Engine/Binaries/ThirdParty/Windows/WinPixEventRuntime/x64).
+LogWindows: Failed to load 'VtuneApi.dll' (GetLastError=126)
+LogWindows: File 'VtuneApi.dll' does not exist
+LogWindows: Failed to load 'VtuneApi32e.dll' (GetLastError=126)
+LogWindows: File 'VtuneApi32e.dll' does not exist
+LogWindows: Started CrashReportClient (pid=41672)
+LogWindows: Custom abort handler registered for crash reporting.
+LogInit: Display: Running engine for game: WonderChess
+LogCore: UTS: Unreal Trace Server launched successfully
+LogTrace: Initializing trace...
+LogCore: Display: Requested channels: 'cpu,gpu,frame,log,bookmark,screenshot,region'
+LogCore: No trace connection. Tracing to in-memory cache.
+LogTrace: Display: Control listening on port 34780
+LogTrace: Finished trace initialization.
+LogCsvProfiler: Display: Metadata set : platform="Windows"
+LogCsvProfiler: Display: Metadata set : config="Development"
+LogCsvProfiler: Display: Metadata set : buildversion="++UE5+Release-5.7-CL-51494982"
+LogCsvProfiler: Display: Metadata set : engineversion="5.7.4-51494982+++UE5+Release-5.7"
+LogCsvProfiler: Display: Metadata set : enginereleaseversion="5.7.4"
+LogCsvProfiler: Display: Metadata set : os="Windows 11 (25H2) [10.0.26200.9278] "
+LogCsvProfiler: Display: Metadata set : cpu="AuthenticAMD|AMD Ryzen 7 6800H with Radeon Graphics"
+LogCsvProfiler: Display: Metadata set : pgoenabled="0"
+LogCsvProfiler: Display: Metadata set : pgoprofilingenabled="0"
+LogCsvProfiler: Display: Metadata set : ltoenabled="0"
+LogCsvProfiler: Display: Metadata set : asan="0"
+LogCsvProfiler: Display: Metadata set : mergedmodules="0"
+LogCsvProfiler: Display: Metadata set : commandline="" "C:/Users/iputu/Documents/Wonder Chess/game/WonderChess.uproject" -run=pythonscript -script="C:/Users/iputu/Documents/Wonder Chess/tools/unreal/import_arena.py" -unattended -nop4 -nosplash -nullrhi -abslog="C:/Users/iputu/Documents/Wonder Chess/reports/WC-330/arena-import.log"""
+LogCsvProfiler: Display: Metadata set : loginid="b799ab2045cc4702946a270ab87fe1c4"
+LogCsvProfiler: Display: Metadata set : llm="0"
+LogStats: Stats thread started at 0.577668
+LogCsvProfiler: Display: Metadata set : systemresolution.resx="1280"
+LogCsvProfiler: Display: Metadata set : systemresolution.resy="720"
+LogICUInternationalization: ICU TimeZone Detection - Raw Offset: +8:00, Platform Override: ''
+LogInit: Session CrashGUID >====================================================
+         Session CrashGUID >   UECC-Windows-F32E1EA045DE0730FA037BAA941EFF6B
+         Session CrashGUID >====================================================
+LogConfig: No local boot hotfix file found at: [../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/PersistentDownloadDir/HotfixForNextBoot.txt]
+LogAudio: Display: Audio Device Manager not initializing due to all audio being disabled. If this is not intentional, please check command line arguments for "-nosound".
+LogPluginManager: Looking for build plugins target receipt
+LogPluginManager: Found matching target receipt: ../../../../../../Users/iputu/Documents/Wonder Chess/game/Binaries/Win64/WonderChessEditor.target
+LogPluginManager: Looking for enabled plugins target receipt
+LogPluginManager: Found matching target receipt: ../../../../../../Users/iputu/Documents/Wonder Chess/game/Binaries/Win64/WonderChessEditor.target
+LogConfig: Display: Loading Android ini files took 0.30 seconds
+LogConfig: Display: Loading IOS ini files took 0.30 seconds
+LogConfig: Display: Loading Mac ini files took 0.30 seconds
+LogConfig: Display: Loading VulkanPC ini files took 0.31 seconds
+LogPluginManager: Mounting Engine plugin BaseMaterial
+LogPluginManager: Mounting Engine plugin AudioInsights
+LogPluginManager: Mounting Engine plugin Bridge
+LogPluginManager: Mounting Engine plugin ChaosInsights
+LogPluginManager: Mounting Engine plugin ChaosVD
+LogPluginManager: Mounting Engine plugin ChaosCloth
+LogPluginManager: Mounting Engine plugin CmdLinkServer
+LogPluginManager: Mounting Engine plugin EnhancedInput
+LogPluginManager: Mounting Engine plugin Fab
+LogPluginManager: Mounting Engine plugin IoStoreInsights
+LogPluginManager: Mounting Engine plugin MassInsights
+LogPluginManager: Mounting Engine plugin MeshPainting
+LogPluginManager: Mounting Engine plugin RenderGraphInsights
+LogPluginManager: Mounting Engine plugin TraceUtilities
+LogPluginManager: Mounting Engine plugin UbaController
+LogPluginManager: Mounting Engine plugin WorldMetrics
+LogPluginManager: Mounting Engine plugin XGEController
+LogPluginManager: Mounting Engine plugin CodeLiteSourceCodeAccess
+LogPluginManager: Mounting Engine plugin CLionSourceCodeAccess
+LogConfig: Display: Loading VisionOS ini files took 0.37 seconds
+LogPluginManager: Mounting Engine plugin AnimationSharing
+LogPluginManager: Mounting Engine plugin AISupport
+LogPluginManager: Mounting Engine plugin AlembicImporter
+LogConfig: Display: Loading Unix ini files took 0.38 seconds
+LogConfig: Display: Loading TVOS ini files took 0.38 seconds
+LogPluginManager: Mounting Engine plugin EnvironmentQueryEditor
+LogPluginManager: Mounting Engine plugin DumpGPUServices
+LogPluginManager: Mounting Engine plugin GitSourceControl
+LogPluginManager: Mounting Engine plugin GPUReshape
+LogConfig: Display: Loading Windows ini files took 0.39 seconds
+LogPluginManager: Mounting Engine plugin N10XSourceCodeAccess
+LogPluginManager: Mounting Engine plugin KDevelopSourceCodeAccess
+LogPluginManager: Mounting Engine plugin NullSourceCodeAccess
+LogPluginManager: Mounting Engine plugin NamingTokens
+LogPluginManager: Mounting Engine plugin PerforceSourceControl
+LogPluginManager: Mounting Engine plugin PlasticSourceControl
+LogPluginManager: Mounting Engine plugin PixWinPlugin
+LogPluginManager: Mounting Engine plugin PluginUtils
+LogPluginManager: Mounting Engine plugin AdvancedRenamer
+LogPluginManager: Mounting Engine plugin AutomationUtils
+LogPluginManager: Mounting Engine plugin ProjectLauncher
+LogPluginManager: Mounting Engine plugin PropertyAccessNode
+LogPluginManager: Mounting Engine plugin RenderDocPlugin
+LogPluginManager: Mounting Engine plugin SubversionSourceControl
+LogPluginManager: Mounting Engine plugin RiderSourceCodeAccess
+LogPluginManager: Mounting Engine plugin TextureFormatOodle
+LogConfig: Display: Loading Linux ini files took 0.41 seconds
+LogPluginManager: Mounting Engine plugin UObjectPlugin
+LogPluginManager: Mounting Engine plugin VisualStudioCodeSourceCodeAccess
+LogPluginManager: Mounting Engine plugin VisualStudioSourceCodeAccess
+LogPluginManager: Mounting Engine plugin XCodeSourceCodeAccess
+LogPluginManager: Mounting Engine plugin BackChannel
+LogPluginManager: Mounting Engine plugin ChaosCaching
+LogPluginManager: Mounting Engine plugin ChaosNiagara
+LogPluginManager: Mounting Engine plugin ChaosEditor
+LogPluginManager: Mounting Engine plugin ChaosSolverPlugin
+LogPluginManager: Mounting Engine plugin ChaosUserDataPT
+LogPluginManager: Mounting Engine plugin CharacterAI
+LogPluginManager: Mounting Engine plugin Dataflow
+LogPluginManager: Mounting Engine plugin EditorDataStorage
+LogPluginManager: Mounting Engine plugin EditorDataStorageFeatures
+LogPluginManager: Mounting Engine plugin EditorTelemetry
+LogPluginManager: Mounting Engine plugin EditorPerformance
+LogPluginManager: Mounting Engine plugin Fracture
+LogPluginManager: Mounting Engine plugin FullBodyIK
+LogPluginManager: Mounting Engine plugin GeometryCollectionPlugin
+LogPluginManager: Mounting Engine plugin GeometryDataflow
+LogPluginManager: Mounting Engine plugin GeometryFlow
+LogPluginManager: Mounting Engine plugin GlobalConfigurationData
+LogPluginManager: Mounting Engine plugin LevelSequenceNavigatorBridge
+LogPluginManager: Mounting Engine plugin LowLevelNetTrace
+LogPluginManager: Mounting Engine plugin LocalizableMessage
+LogPluginManager: Mounting Engine plugin MeshModelingToolsetExp
+LogPluginManager: Mounting Engine plugin NFORDenoise
+LogPluginManager: Mounting Engine plugin PlanarCut
+LogPluginManager: Mounting Engine plugin PlatformCrypto
+LogPluginManager: Mounting Engine plugin PythonScriptPlugin
+LogPluginManager: Mounting Engine plugin RuntimeTelemetry
+LogPluginManager: Mounting Engine plugin SequenceNavigator
+LogPluginManager: Mounting Engine plugin SkeletalReduction
+LogPluginManager: Mounting Engine plugin ToolPresets
+LogPluginManager: Mounting Engine plugin AndroidMedia
+LogPluginManager: Mounting Engine plugin AvfMedia
+LogPluginManager: Mounting Engine plugin ImgMedia
+LogPluginManager: Mounting Engine plugin MediaCompositing
+LogPluginManager: Mounting Engine plugin MediaPlate
+LogPluginManager: Mounting Engine plugin MediaPlayerEditor
+LogPluginManager: Mounting Engine plugin WmfMedia
+LogPluginManager: Mounting Engine plugin WebMMedia
+LogPluginManager: Mounting Engine plugin Cascade
+LogPluginManager: Mounting Engine plugin Niagara
+LogPluginManager: Mounting Engine plugin OodleNetwork
+LogPluginManager: Mounting Engine plugin NiagaraPreviewContent
+LogPluginManager: Mounting Engine plugin NiagaraSimCaching
+LogPluginManager: Mounting Engine plugin MetaHumanSDK
+LogPluginManager: Mounting Engine plugin AssetManagerEditor
+LogPluginManager: Mounting Engine plugin DatasmithContent
+LogPluginManager: Mounting Engine plugin GLTFExporter
+LogPluginManager: Mounting Engine plugin VariantManager
+LogPluginManager: Mounting Engine plugin VariantManagerContent
+LogPluginManager: Mounting Engine plugin ChangelistReview
+LogPluginManager: Mounting Engine plugin BlueprintHeaderView
+LogPluginManager: Mounting Engine plugin ColorGrading
+LogPluginManager: Mounting Engine plugin CryptoKeys
+LogPluginManager: Mounting Engine plugin CurveEditorTools
+LogPluginManager: Mounting Engine plugin DataValidation
+LogPluginManager: Mounting Engine plugin EditorDebugTools
+LogPluginManager: Mounting Engine plugin EditorScriptingUtilities
+LogPluginManager: Mounting Engine plugin EngineAssetDefinitions
+LogPluginManager: Mounting Engine plugin FacialAnimation
+LogPluginManager: Mounting Engine plugin GameplayTagsEditor
+LogPluginManager: Mounting Engine plugin GeometryMode
+LogPluginManager: Mounting Engine plugin MacGraphicsSwitching
+LogPluginManager: Mounting Engine plugin MaterialAnalyzer
+LogPluginManager: Mounting Engine plugin MeshLODToolset
+LogPluginManager: Mounting Engine plugin MobileLauncherProfileWizard
+LogPluginManager: Mounting Engine plugin ModelingToolsEditorMode
+LogPluginManager: Mounting Engine plugin PluginBrowser
+LogPluginManager: Mounting Engine plugin ProxyLODPlugin
+LogPluginManager: Mounting Engine plugin InterchangeAssets
+LogPluginManager: Mounting Engine plugin InterchangeEditor
+LogPluginManager: Mounting Engine plugin Interchange
+LogPluginManager: Mounting Engine plugin TcpMessaging
+LogPluginManager: Mounting Engine plugin UdpMessaging
+LogPluginManager: Mounting Engine plugin ActorLayerUtilities
+LogPluginManager: Mounting Engine plugin SequencerAnimTools
+LogPluginManager: Mounting Engine plugin SpeedTreeImporter
+LogPluginManager: Mounting Engine plugin StylusInput
+LogPluginManager: Mounting Engine plugin UMGWidgetPreview
+LogPluginManager: Mounting Engine plugin WorldPartitionHLODUtilities
+LogPluginManager: Mounting Engine plugin UVEditor
+LogPluginManager: Mounting Engine plugin AndroidDeviceProfileSelector
+LogPluginManager: Mounting Engine plugin AndroidFileServer
+LogPluginManager: Mounting Engine plugin AndroidMoviePlayer
+LogPluginManager: Mounting Engine plugin AndroidPermission
+LogPluginManager: Mounting Engine plugin AppleMoviePlayer
+LogPluginManager: Mounting Engine plugin AudioCapture
+LogPluginManager: Mounting Engine plugin ArchVisCharacter
+LogPluginManager: Mounting Engine plugin AppleImageUtils
+LogPluginManager: Mounting Engine plugin AssetTags
+LogPluginManager: Mounting Engine plugin AudioSynesthesia
+LogPluginManager: Mounting Engine plugin AudioWidgets
+LogPluginManager: Mounting Engine plugin CableComponent
+LogPluginManager: Mounting Engine plugin ChunkDownloader
+LogPluginManager: Mounting Engine plugin ComputeFramework
+LogPluginManager: Mounting Engine plugin CustomMeshComponent
+LogPluginManager: Mounting Engine plugin ExampleDeviceProfileSelector
+LogPluginManager: Mounting Engine plugin GeometryCache
+LogPluginManager: Mounting Engine plugin GeometryProcessing
+LogPluginManager: Mounting Engine plugin GooglePAD
+LogPluginManager: Mounting Engine plugin GoogleCloudMessaging
+LogPluginManager: Mounting Engine plugin HairStrands
+LogPluginManager: Mounting Engine plugin InputDebugging
+LogPluginManager: Mounting Engine plugin IOSDeviceProfileSelector
+LogPluginManager: Mounting Engine plugin LinuxDeviceProfileSelector
+LogPluginManager: Mounting Engine plugin LocationServicesBPLibrary
+LogPluginManager: Mounting Engine plugin MeshModelingToolset
+LogPluginManager: Mounting Engine plugin Metasound
+LogPluginManager: Mounting Engine plugin MobilePatchingUtils
+LogPluginManager: Mounting Engine plugin MsQuic
+LogPluginManager: Mounting Engine plugin PropertyAccessEditor
+LogPluginManager: Mounting Engine plugin ProceduralMeshComponent
+LogPluginManager: Mounting Engine plugin PropertyBindingUtils
+LogPluginManager: Mounting Engine plugin ResonanceAudio
+LogPluginManager: Mounting Engine plugin RigVM
+LogPluginManager: Mounting Engine plugin SignificanceManager
+LogPluginManager: Mounting Engine plugin SoundFields
+LogPluginManager: Mounting Engine plugin StateTree
+LogPluginManager: Mounting Engine plugin Synthesis
+LogPluginManager: Mounting Engine plugin WaveTable
+LogPluginManager: Mounting Engine plugin WebMMoviePlayer
+LogPluginManager: Mounting Engine plugin WindowsDeviceProfileSelector
+LogPluginManager: Mounting Engine plugin WindowsMoviePlayer
+LogPluginManager: Mounting Engine plugin EOSShared
+LogPluginManager: Mounting Engine plugin OnlineBase
+LogPluginManager: Mounting Engine plugin OnlineServices
+LogPluginManager: Mounting Engine plugin OnlineSubsystem
+LogPluginManager: Mounting Engine plugin LauncherChunkInstaller
+LogPluginManager: Mounting Engine plugin NNERuntimeORT
+LogPluginManager: Mounting Engine plugin NNEDenoiser
+LogPluginManager: Mounting Engine plugin OnlineSubsystemNull
+LogPluginManager: Mounting Engine plugin OnlineSubsystemUtils
+LogPluginManager: Mounting Engine plugin Paper2D
+LogPluginManager: Mounting Engine plugin ACLPlugin
+LogPluginManager: Mounting Engine plugin AnimationData
+LogPluginManager: Mounting Engine plugin AnimationModifierLibrary
+LogPluginManager: Mounting Engine plugin Takes
+LogPluginManager: Mounting Engine plugin BlendSpaceMotionAnalysis
+LogPluginManager: Mounting Engine plugin ControlRigModules
+LogPluginManager: Mounting Engine plugin ControlRigSpline
+LogPluginManager: Mounting Engine plugin ControlRig
+LogPluginManager: Mounting Engine plugin GameplayInsights
+LogPluginManager: Mounting Engine plugin EaseCurveTool
+LogPluginManager: Mounting Engine plugin DeformerGraph
+LogPluginManager: Mounting Engine plugin IKRig
+LogPluginManager: Mounting Engine plugin CameraShakePreviewer
+LogPluginManager: Mounting Engine plugin GameplayCameras
+LogPluginManager: Mounting Engine plugin EngineCameras
+LogPluginManager: Mounting Engine plugin CompositeCore
+LogPluginManager: Mounting Engine plugin ActorSequence
+LogPluginManager: Mounting Engine plugin RigLogic
+LogPluginManager: Mounting Engine plugin TweeningUtils
+LogPluginManager: Mounting Engine plugin LevelSequenceEditor
+LogPluginManager: Mounting Engine plugin SkeletalMeshModelingTools
+LogPluginManager: Mounting Engine plugin SequencerScripting
+LogPluginManager: Mounting Engine plugin TemplateSequence
+LogPluginManager: Mounting Engine plugin SequenceValidator
+LogPluginManager: Mounting Engine plugin InterchangeTests
+LogPluginManager: Mounting Engine plugin OnlineSubsystemGooglePlay
+LogPluginManager: Mounting Engine plugin XInputDevice
+LogPluginManager: Mounting Engine plugin PortableObjectFileDataSource
+LogPluginManager: Mounting Engine plugin OnlineSubsystemIOS
+LogPluginManager: Mounting Engine plugin LightMixer
+LogPluginManager: Mounting Engine plugin ObjectMixer
+LogPluginManager: Mounting Engine plugin ContentBrowserFileDataSource
+LogPluginManager: Mounting Engine plugin ContentBrowserClassDataSource
+LogPluginManager: Mounting Engine plugin BaseCharacterFXEditor
+LogPluginManager: Mounting Engine plugin ContentBrowserAssetDataSource
+SourceControl: Revision control is disabled
+SourceControl: Revision control is disabled
+SourceControl: Revision control is disabled
+LogWindows: Failed to load 'WinPixGpuCapturer.dll' (GetLastError=126)
+LogWindows: File 'WinPixGpuCapturer.dll' does not exist
+PixWinPlugin: PIX capture plugin failed to initialize! Check that the process is launched from PIX.
+LogConfig: Applying CVar settings from Section [/Script/RenderDocPlugin.RenderDocPluginSettings] File [Engine]
+RenderDocPlugin: Display: RenderDoc plugin will not be loaded. Use '-AttachRenderDoc' on the cmd line or enable 'renderdoc.AutoAttach' in the plugin settings.
+LogStudioTelemetry: Started StudioTelemetry Session
+LogNFORDenoise: NFORDenoise function starting up
+LogStudioTelemetry: Started StudioTelemetry Session
+LogEOSShared: Loaded "C:/Program Files/Epic Games/UE_5.7/Engine/Binaries/Win64/EOSSDK-Win64-Shipping.dll"
+LogEOSShared: FEOSSDKManager::Initialize Initializing EOSSDK Version:1.19.0.3-49960398
+LogInit: Using libcurl 8.12.1
+LogInit:  - built for Windows
+LogInit:  - supports SSL with OpenSSL/1.1.1t
+LogInit:  - supports HTTP deflate (compression) using libz 1.3
+LogInit:  - other features:
+LogInit:      CURL_VERSION_SSL
+LogInit:      CURL_VERSION_LIBZ
+LogInit:      CURL_VERSION_IPV6
+LogInit:      CURL_VERSION_ASYNCHDNS
+LogInit:      CURL_VERSION_LARGEFILE
+LogInit:      CURL_VERSION_TLSAUTH_SRP
+LogInit:      CURL_VERSION_HTTP2
+LogInit:  CurlRequestOptions (configurable via config and command line):
+LogInit:  - bVerifyPeer = true  - Libcurl will verify peer certificate
+LogInit:  - bUseHttpProxy = false  - Libcurl will NOT use HTTP proxy
+LogInit:  - CVarHttpCurlReuseConnectionEnabled = true  - Libcurl will reuse connections
+LogInit:  - MaxHostConnections = 16  - Libcurl will limit the number of connections to a host
+LogInit:  - LocalHostAddr = Default
+LogInit:  - BufferSize = 65536
+LogInit: CreateHttpThread using FCurlMultiPollEventLoopHttpThread
+LogInit: Creating http thread with maximum 256 concurrent requests
+LogInit: WinSock: version 1.1 (2.2), MaxSocks=32767, MaxUdp=65467
+LogOnline: OSS: Created online subsystem instance for: NULL
+LogOnline: OSS: TryLoadSubsystemAndSetDefault: Loaded subsystem for type [NULL]
+LogConfig: Applying CVar settings from Section [/Script/CompositeCore.CompositeCorePluginSettings] File [Engine]
+LogInit: ExecutableName: UnrealEditor-Cmd.exe
+LogInit: Build: ++UE5+Release-5.7-CL-51494982
+LogInit: Platform=WindowsEditor
+LogInit: MachineId=b799ab2045cc4702946a270ab87fe1c4
+LogInit: DeviceId=
+LogInit: Engine Version: 5.7.4-51494982+++UE5+Release-5.7
+LogInit: Compatible Engine Version: 5.7.0-47537391+++UE5+Release-5.7
+LogInit: Net CL: 47537391
+LogInit: OS: Windows 11 (25H2) [10.0.26200.9278] (), CPU: AMD Ryzen 7 6800H with Radeon Graphics         , GPU: AMD Radeon(TM) Graphics
+LogInit: CPU Model ID: 19441, microcode revision: a404107
+LogInit: Compiled (64-bit): Mar  6 2026 12:43:05
+LogInit: Architecture: x64
+LogInit: Compiled with Visual C++: 19.44.35223.00
+LogInit: Build Configuration: Development
+LogInit: Branch Name: ++UE5+Release-5.7
+LogInit: Command Line:  "C:/Users/iputu/Documents/Wonder Chess/game/WonderChess.uproject" -run=pythonscript -script="C:/Users/iputu/Documents/Wonder Chess/tools/unreal/import_arena.py" -unattended -nop4 -nosplash -nullrhi -abslog="C:/Users/iputu/Documents/Wonder Chess/reports/WC-330/arena-import.log"
+LogInit: Base Directory: C:/Program Files/Epic Games/UE_5.7/Engine/Binaries/Win64/
+LogInit: Allocator: Mimalloc
+LogInit: Installed Engine Build: 1
+LogInit: This binary is optimized with LTO: no, PGO: no, instrumented for PGO data collection: no
+LogDevObjectVersion: Number of dev versions registered: 36
+LogDevObjectVersion:   Dev-Blueprints (B0D832E4-1F89-4F0D-ACCF-7EB736FD4AA2): 10
+LogDevObjectVersion:   Dev-Build (E1C64328-A22C-4D53-A36C-8E866417BD8C): 0
+LogDevObjectVersion:   Dev-Core (375EC13C-06E4-48FB-B500-84F0262A717E): 4
+LogDevObjectVersion:   Dev-Editor (E4B068ED-F494-42E9-A231-DA0B2E46BB41): 40
+LogDevObjectVersion:   Dev-Framework (CFFC743F-43B0-4480-9391-14DF171D2073): 37
+LogDevObjectVersion:   Dev-Mobile (B02B49B5-BB20-44E9-A304-32B752E40360): 3
+LogDevObjectVersion:   Dev-Networking (A4E4105C-59A1-49B5-A7C5-40C4547EDFEE): 0
+LogDevObjectVersion:   Dev-Online (39C831C9-5AE6-47DC-9A44-9C173E1C8E7C): 0
+LogDevObjectVersion:   Dev-Physics (78F01B33-EBEA-4F98-B9B4-84EACCB95AA2): 20
+LogDevObjectVersion:   Dev-Platform (6631380F-2D4D-43E0-8009-CF276956A95A): 0
+LogDevObjectVersion:   Dev-Rendering (12F88B9F-8875-4AFC-A67C-D90C383ABD29): 49
+LogDevObjectVersion:   Dev-Sequencer (7B5AE74C-D270-4C10-A958-57980B212A5A): 13
+LogDevObjectVersion:   Dev-VR (D7296918-1DD6-4BDD-9DE2-64A83CC13884): 3
+LogDevObjectVersion:   Dev-LoadTimes (C2A15278-BFE7-4AFE-6C17-90FF531DF755): 1
+LogDevObjectVersion:   Private-Geometry (6EACA3D4-40EC-4CC1-B786-8BED09428FC5): 3
+LogDevObjectVersion:   Dev-AnimPhys (29E575DD-E0A3-4627-9D10-D276232CDCEA): 17
+LogDevObjectVersion:   Dev-Anim (AF43A65D-7FD3-4947-9873-3E8ED9C1BB05): 15
+LogDevObjectVersion:   Dev-ReflectionCapture (6B266CEC-1EC7-4B8F-A30B-E4D90942FC07): 1
+LogDevObjectVersion:   Dev-Automation (0DF73D61-A23F-47EA-B727-89E90C41499A): 1
+LogDevObjectVersion:   FortniteMain (601D1886-AC64-4F84-AA16-D3DE0DEAC7D6): 225
+LogDevObjectVersion:   FortniteValkyrie (8DBC2C5B-54A7-43E0-A768-FCBB7DA29060): 8
+LogDevObjectVersion:   FortniteSeason (5B4C06B7-2463-4AF8-805B-BF70CDF5D0DD): 15
+LogDevObjectVersion:   FortniteRelease (E7086368-6B23-4C58-8439-1B7016265E91): 17
+LogDevObjectVersion:   Dev-Enterprise (9DFFBCD6-494F-0158-E221-12823C92A888): 11
+LogDevObjectVersion:   Dev-Niagara (F2AED0AC-9AFE-416F-8664-AA7FFA26D6FC): 1
+LogDevObjectVersion:   Dev-Destruction (174F1F0B-B4C6-45A5-B13F-2EE8D0FB917D): 10
+LogDevObjectVersion:   Dev-Physics-Ext (35F94A83-E258-406C-A318-09F59610247C): 41
+LogDevObjectVersion:   Dev-PhysicsMaterial-Chaos (B68FC16E-8B1B-42E2-B453-215C058844FE): 1
+LogDevObjectVersion:   Dev-CineCamera (B2E18506-4273-CFC2-A54E-F4BB758BBA07): 1
+LogDevObjectVersion:   Dev-VirtualProduction (64F58936-FD1B-42BA-BA96-7289D5D0FA4E): 1
+LogDevObjectVersion:   UE5-Main (697DD581-E64F-41AB-AA4A-51ECBEB7B628): 121
+LogDevObjectVersion:   UE5-Release (D89B5E42-24BD-4D46-8412-ACA8DF641779): 61
+LogDevObjectVersion:   UE5-SpecialProject (59DA5D52-1232-4948-B878-597870B8E98B): 9
+LogDevObjectVersion:   Dev-MediaFramework (6F0ED827-A609-4895-9C91-998D90180EA4): 2
+LogDevObjectVersion:   Dev-NaniteResearch (30D58BE3-95EA-4282-A6E3-B159D8EBB06A): 1
+LogDevObjectVersion:   Dev-ComputeFramework (6304A3E7-0059-4F59-8CFC-21BD7721FD4E): 0
+LogInit: Presizing for max 25165824 objects, including 0 objects not considered by GC.
+LogInit: Object subsystem initialized
+LogConfig: Set CVar [[con.DebugEarlyDefault:1]]
+LogConfig: CVar [[con.DebugLateDefault:1]] deferred - dummy variable created
+LogConfig: CVar [[con.DebugLateCheat:1]] deferred - dummy variable created
+LogConfig: CVar [[LogNamedEventFilters:Frame *]] deferred - dummy variable created
+LogConfig: Set CVar [[r.setres:1280x720]]
+LogConfig: CVar [[framepro.ScopeMinTimeMicroseconds:10]] deferred - dummy variable created
+LogConfig: Set CVar [[fx.NiagaraAllowRuntimeScalabilityChanges:1]]
+LogConfig: CVar [[QualityLevelMapping:high]] deferred - dummy variable created
+LogConfig: CVar [[r.Occlusion.SingleRHIThreadStall:1]] deferred - dummy variable created
+LogConfig: Set CVar [[r.Nanite.Streaming.ReservedResources:1]]
+LogConfig: CVar [[D3D12.Bindless.ResourceDescriptorHeapSize:32768]] deferred - dummy variable created
+LogConfig: CVar [[D3D12.Bindless.SamplerDescriptorHeapSize:2048]] deferred - dummy variable created
+LogConfig: Set CVar [[r.PSOPrecache.GlobalShaders:1]]
+LogConfig: Set CVar [[r.VRS.EnableSoftware:1]]
+LogConfig: Set CVar [[r.VRS.ContrastAdaptiveShading:1]]
+LogConfig: Set CVar [[r.VSync:0]]
+LogConfig: Set CVar [[t.MaxFPS:60]]
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[con.DebugLateDefault:1]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[con.DebugLateCheat:1]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[LogNamedEventFilters:Frame *]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[framepro.ScopeMinTimeMicroseconds:10]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[QualityLevelMapping:high]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[r.Occlusion.SingleRHIThreadStall:1]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[D3D12.Bindless.ResourceDescriptorHeapSize:32768]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[D3D12.Bindless.SamplerDescriptorHeapSize:2048]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.RendererSettings] File [Engine]
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[VisualizeCalibrationColorMaterialPath:/Engine/EngineMaterials/PPM_DefaultCalibrationColor.PPM_DefaultCalibrationColor]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[VisualizeCalibrationGrayscaleMaterialPath:/Engine/EngineMaterials/PPM_DefaultCalibrationGrayscale.PPM_DefaultCalibrationGrayscale]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.GPUCrashDebugging:0]]
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[MaxSkinBones:(Default=65536,PerPlatform=(("Mobile", 256)))]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Shaders.RemoveUnusedInterpolators:1]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Shadow.DetectVertexShaderLayerAtRuntime:1]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Substrate.RoughDiffuse:1]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Substrate.SheenQuality:1]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Substrate.ShadingQuality:1]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Substrate.TileCoord8bits:0]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Substrate.Glints:1]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Substrate.ClosuresPerPixel:4]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Refraction.Blur:1]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.DefaultFeature.AutoExposure:0]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.DefaultFeature.MotionBlur:0]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.DynamicGlobalIlluminationMethod:0]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.ReflectionMethod:0]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Shadow.Virtual.Enable:0]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.AllowStaticLighting:0]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.RendererOverrideSettings] File [Engine]
+[2026.09.06-05.28.33:011][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.StreamingSettings] File [Engine]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[s.MinBulkDataSizeForAsyncLoading:131072]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[s.AsyncLoadingThreadEnabled:1]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[s.EventDrivenLoaderEnabled:1]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[s.WarnIfTimeLimitExceeded:0]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[s.TimeLimitExceededMultiplier:1.5]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[s.TimeLimitExceededMinTime:0.005]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[s.UseBackgroundLevelStreaming:1]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[s.PriorityAsyncLoadingExtraTime:15.0]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[s.LevelStreamingActorsUpdateTimeLimit:5.0]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[s.PriorityLevelStreamingActorsUpdateExtraTime:5.0]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[s.LevelStreamingComponentsRegistrationGranularity:10]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[s.UnregisterComponentsTimeLimit:1.0]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[s.LevelStreamingComponentsUnregistrationGranularity:5]]
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[s.MaxPackageSummarySize:16384]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[s.FlushStreamingOnExit:1]]
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[FixedBootOrder:/Script/Engine/Default__SoundBase]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[FixedBootOrder:/Script/Engine/Default__MaterialInterface]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[FixedBootOrder:/Script/Engine/Default__DeviceProfileManager]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.GarbageCollectionSettings] File [Engine]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[gc.MaxObjectsNotConsideredByGC:1]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[gc.FlushStreamingOnGC:0]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[gc.NumRetriesBeforeForcingGC:10]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[gc.AllowParallelGC:1]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[gc.TimeBetweenPurgingPendingKillObjects:61.1]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[gc.MaxObjectsInEditor:25165824]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[gc.IncrementalBeginDestroyEnabled:1]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[gc.CreateGCClusters:1]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[gc.MinGCClusterSize:5]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[gc.AssetClustreringEnabled:0]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[gc.ActorClusteringEnabled:0]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[gc.VerifyUObjectsAreNotFGCObjects:0]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[gc.GarbageEliminationEnabled:1]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.NetworkSettings] File [Engine]
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[NetworkEmulationProfiles:(ProfileName="Average",ToolTip="Simulates average internet conditions")]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[NetworkEmulationProfiles:(ProfileName="Bad",ToolTip="Simulates laggy internet conditions")]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[NetworkEmulationProfiles:(ProfileName="BufferBloat",ToolTip="Simulates a connection affected by buffer bloat (in and out)")]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: Applying CVar settings from Section [/Script/UnrealEd.CookerSettings] File [Engine]
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[DefaultASTCQualityBySpeed:2]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[DefaultASTCQualityBySize:3]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[DefaultASTCQualityBySizeHQ:4]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:WidgetBlueprint]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:GroupActor]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:MetaData]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:ObjectRedirector]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:NavMeshRenderingComponent]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:ReflectionCaptureComponent]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:TextRenderComponent]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:Font]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:InterpCurveEdSetup]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:MaterialExpression]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:NiagaraEmitter]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:NiagaraScript]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:ParticleEmitter]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:ParticleLODLevel]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:ParticleModule]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:SubUVAnimation]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:SoundNode]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:GameplayEffectUIData]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:AmbientSound]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedClient:WidgetBlueprint]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedClient:GroupActor]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedClient:MetaData]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedClient:ObjectRedirector]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedClient:InterpCurveEdSetup]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[VersionedIntRValues:r.AllowStaticLighting]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[VersionedIntRValues:r.MaterialEditor.LWCTruncateMode]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[VersionedIntRValues:r.VelocityOutputPass]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[VersionedIntRValues:r.SelectiveBasePassOutputs]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[VersionedIntRValues:r.DBuffer]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[VersionedIntRValues:r.Mobile.DBuffer]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[VersionedIntRValues:r.Shaders.Symbols]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[VersionedIntRValues:r.Shaders.GenerateSymbols]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[VersionedIntRValues:r.Shaders.WriteSymbols]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[VersionedIntRValues:r.Shaders.AllowUniqueSymbols]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[VersionedIntRValues:r.Shaders.ExtraData]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[VersionedIntRValues:r.Shaders.Optimize]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[VersionedIntRValues:r.CompileShadersForDevelopment]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[VersionedIntRValues:r.MobileHDR]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: CVar [[VersionedIntRValues:r.UsePreExposure]] deferred - dummy variable created
+[2026.09.06-05.28.33:011][  0]LogConfig: Applying CVar settings from Section [ViewDistanceQuality@3] File [Scalability]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.SkeletalMeshLODBias:0]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.ViewDistanceScale:1.0]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Applying CVar settings from Section [AntiAliasingQuality@3] File [Scalability]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.FXAA.Quality:4]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.TemporalAA.Quality:2]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.TSR.History.R11G11B10:1]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.TSR.History.ScreenPercentage:200]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.TSR.History.UpdateQuality:3]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.TSR.ShadingRejection.Flickering:1]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.TSR.RejectionAntiAliasingQuality:2]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.TSR.ReprojectionField:1]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.TSR.Resurrection:1]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Applying CVar settings from Section [ShadowQuality@3] File [Scalability]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.LightFunctionQuality:1]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.ShadowQuality:5]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Shadow.CSM.MaxCascades:10]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Shadow.MaxResolution:2048]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Shadow.MaxCSMResolution:2048]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Shadow.RadiusThreshold:0.01]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Shadow.DistanceScale:1.0]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Shadow.CSM.TransitionScale:1.0]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Shadow.PreShadowResolutionFactor:1.0]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.DistanceFieldShadowing:1]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.VolumetricFog:1]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.VolumetricFog.GridPixelSize:8]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.VolumetricFog.GridSizeZ:128]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.VolumetricFog.HistoryMissSupersampleCount:4]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.LightMaxDrawDistanceScale:1]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.CapsuleShadows:1]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Shadow.Virtual.MaxPhysicalPages:4096]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Shadow.Virtual.ResolutionLodBiasDirectional:-1.5]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Shadow.Virtual.ResolutionLodBiasDirectionalMoving:-1.5]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Shadow.Virtual.ResolutionLodBiasLocal:0.0]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Shadow.Virtual.ResolutionLodBiasLocalMoving:1.0]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Shadow.Virtual.SMRT.RayCountDirectional:8]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Shadow.Virtual.SMRT.SamplesPerRayDirectional:4]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Shadow.Virtual.SMRT.RayCountLocal:8]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Shadow.Virtual.SMRT.SamplesPerRayLocal:4]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Shadow.Virtual.MarkCoarsePagesLocal:1]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Applying CVar settings from Section [GlobalIlluminationQuality@3] File [Scalability]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.DistanceFieldAO:1]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.SkylightIntensityMultiplier:1.0]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.AOQuality:2]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Lumen.DiffuseIndirect.Allow:1]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.LumenScene.DirectLighting.MaxLightsPerTile:8]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.LumenScene.DirectLighting.UpdateFactor:32]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.LumenScene.Radiosity.UpdateFactor:64]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.LumenScene.Radiosity.ProbeSpacing:4]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.LumenScene.Radiosity.HemisphereProbeResolution:4]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Lumen.TraceMeshSDFs.Allow:1]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.RadianceCache.ProbeResolution:32]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.RadianceCache.NumProbesToTraceBudget:100]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.DownsampleFactor:16]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.NumAdaptiveProbes:8]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.TracingOctahedronResolution:8]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.IrradianceFormat:0]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.StochasticInterpolation:0]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.FullResolutionJitterWidth:1]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.TwoSidedFoliageBackfaceDiffuse:1]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.ScreenTraces.HZBTraversal.FullResDepth:1]]
+[2026.09.06-05.28.33:011][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.ShortRangeAO.BentNormal:1]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.ShortRangeAO.HorizonSearch.HZB:0]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.ShortRangeAO.HorizonSearch.ForegroundSampleRejectPower:1]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.Lumen.TranslucencyVolume.GridPixelSize:32]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.Lumen.TranslucencyVolume.TraceFromVolume:1]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.Lumen.TranslucencyVolume.TracingOctahedronResolution:3]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.Lumen.TranslucencyVolume.RadianceCache.ProbeResolution:8]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.Lumen.TranslucencyVolume.RadianceCache.NumProbesToTraceBudget:70]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.RayTracing.Scene.BuildMode:1]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Applying CVar settings from Section [ReflectionQuality@3] File [Scalability]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.SSR.Quality:3]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.SSR.HalfResSceneColor:0]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.Lumen.Reflections.Allow:1]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.Lumen.Reflections.DownsampleFactor:1]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.Lumen.Reflections.MaxRoughnessToTraceForFoliage:0.4]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.MaxRoughnessToEvaluateRoughSpecularForFoliage:0.8]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.Lumen.Reflections.ScreenSpaceReconstruction.NumSamples:5]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.Lumen.Reflections.ScreenSpaceReconstruction.MinWeight:0]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.Lumen.TranslucencyReflections.FrontLayer.Allow:1]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.Lumen.TranslucencyReflections.FrontLayer.Enable:0]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Applying CVar settings from Section [PostProcessQuality@3] File [Scalability]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.MotionBlurQuality:4]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.MotionBlur.HalfResGather:0]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.AmbientOcclusionMipLevelFactor:0.4]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.AmbientOcclusionMaxQuality:100]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.AmbientOcclusionLevels:-1]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.AmbientOcclusionRadiusScale:1.0]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.DepthOfFieldQuality:2]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.RenderTargetPoolMin:400]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.LensFlareQuality:2]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.SceneColorFringeQuality:1]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.EyeAdaptationQuality:2]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.BloomQuality:5]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.Bloom.ScreenPercentage:50.000]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.FastBlurThreshold:100]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.Upscale.Quality:3]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.LightShaftQuality:1]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.Filter.SizeScale:1]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.Tonemapper.Quality:5]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.DOF.Gather.ResolutionDivisor:2         ; lower gathering resolution]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.DOF.Gather.AccumulatorQuality:1        ; higher gathering accumulator quality]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.DOF.Gather.PostfilterMethod:1          ; Median3x3 postfilering method]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.DOF.Gather.EnableBokehSettings:0       ; no bokeh simulation when gathering]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.DOF.Gather.RingCount:4                 ; medium number of samples when gathering]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.DOF.Scatter.ForegroundCompositing:1    ; additive foreground scattering]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.DOF.Scatter.BackgroundCompositing:2    ; additive background scattering]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.DOF.Scatter.EnableBokehSettings:1      ; bokeh simulation when scattering]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.DOF.Scatter.MaxSpriteRatio:0.1         ; only a maximum of 10% of scattered bokeh]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.DOF.Recombine.Quality:1                ; cheap slight out of focus]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.DOF.Recombine.EnableBokehSettings:0    ; no bokeh simulation on slight out of focus]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.DOF.TemporalAAQuality:1                ; more stable temporal accumulation]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.DOF.Kernel.MaxForegroundRadius:0.025]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.DOF.Kernel.MaxBackgroundRadius:0.025]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Applying CVar settings from Section [TextureQuality@3] File [Scalability]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.Streaming.MipBias:0]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.Streaming.AmortizeCPUToGPUCopy:0]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.Streaming.MaxNumTexturesToStreamPerFrame:0]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.Streaming.Boost:1]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.MaxAnisotropy:8]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.VT.MaxAnisotropy:8]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.Streaming.LimitPoolSizeToVRAM:0]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.Streaming.PoolSize:1000]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.Streaming.MaxEffectiveScreenSize:0]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Applying CVar settings from Section [EffectsQuality@3] File [Scalability]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.TranslucencyLightingVolume.Dim:64]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.RefractionQuality:2]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.SceneColorFormat:4]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.DetailMode:3]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.TranslucencyLightingVolume.Blur:1]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.MaterialQualityLevel:1 ; High quality]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.SSS.Scale:1]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.SSS.SampleSet:2]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.SSS.Quality:1]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.SSS.HalfRes:0]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.SSGI.Quality:3]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.EmitterSpawnRateScale:1.0]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.ParticleLightQuality:2]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.SkyAtmosphere.AerialPerspectiveLUT.FastApplyOnOpaque:1 ; Always have FastSkyLUT 1 in this case to avoid wrong sky]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.SkyAtmosphere.AerialPerspectiveLUT.SampleCountMaxPerSlice:4]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.SkyAtmosphere.AerialPerspectiveLUT.DepthResolution:16.0]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.SkyAtmosphere.FastSkyLUT:1]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.SkyAtmosphere.FastSkyLUT.SampleCountMin:4.0]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.SkyAtmosphere.FastSkyLUT.SampleCountMax:128.0]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.SkyAtmosphere.SampleCountMin:4.0]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.SkyAtmosphere.SampleCountMax:128.0]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.SkyAtmosphere.TransmittanceLUT.UseSmallFormat:0]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.SkyAtmosphere.TransmittanceLUT.SampleCount:10.0]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.SkyAtmosphere.MultiScatteringLUT.SampleCount:15.0]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[fx.Niagara.QualityLevel:3]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.Refraction.OffsetQuality:1]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.HeterogeneousVolumes.DownsampleFactor:2]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.HeterogeneousVolumes.MaxStepCount:256]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.HeterogeneousVolumes.Shadows.Resolution:512]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.HeterogeneousVolumes.Shadows.Precision:0]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.HeterogeneousVolumes.UseExistenceMask:0]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Applying CVar settings from Section [FoliageQuality@3] File [Scalability]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[foliage.DensityScale:1.0]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[grass.DensityScale:1.0]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Applying CVar settings from Section [ShadingQuality@3] File [Scalability]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.HairStrands.SkyLighting.IntegrationType:2]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.HairStrands.SkyAO.SampleCount:4]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.HairStrands.Visibility.MSAA.SamplePerPixel:4]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Set CVar [[r.AnisotropicMaterials:1]]
+[2026.09.06-05.28.33:013][  0]LogConfig: Applying CVar settings from Section [LandscapeQuality@3] File [Scalability]
+[2026.09.06-05.28.33:015][  0]LogInit: Selected Device Profile: [WindowsEditor]
+[2026.09.06-05.28.33:015][  0]LogHAL: Display: Platform has ~ 16 GB [16312393728 / 17179869184 / 16], which maps to Larger [LargestMinGB=32, LargerMinGB=12, DefaultMinGB=8, SmallerMinGB=6, SmallestMinGB=0)
+[2026.09.06-05.28.33:017][  0]LogDeviceProfileManager: Going up to parent DeviceProfile [Windows]
+[2026.09.06-05.28.33:017][  0]LogDeviceProfileManager: Going up to parent DeviceProfile []
+[2026.09.06-05.28.33:017][  0]LogDeviceProfileManager: Pushing Device Profile CVar: [[UI.SlateSDFText.RasterizationMode:Bitmap -> Msdf]]
+[2026.09.06-05.28.33:017][  0]LogDeviceProfileManager: Pushing Device Profile CVar: [[UI.SlateSDFText.ResolutionLevel:2 -> 2]]
+[2026.09.06-05.28.33:017][  0]LogConfig: Applying CVar settings from Section [Startup] File [../../../Engine/Config/ConsoleVariables.ini]
+[2026.09.06-05.28.33:018][  0]LogConfig: Set CVar [[r.DumpShaderDebugInfo:2]]
+[2026.09.06-05.28.33:018][  0]LogConfig: Set CVar [[p.chaos.AllowCreatePhysxBodies:1]]
+[2026.09.06-05.28.33:018][  0]LogConfig: Set CVar [[fx.SkipVectorVMBackendOptimizations:1]]
+[2026.09.06-05.28.33:018][  0]LogConfig: Applying CVar settings from Section [Startup_Windows] File [../../../Engine/Config/ConsoleVariables.ini]
+[2026.09.06-05.28.33:018][  0]LogConfig: Applying CVar settings from Section [ConsoleVariables] File [Engine]
+[2026.09.06-05.28.33:018][  0]LogConfig: Set CVar [[WindowsApplication.UseWorkerThreadForRawInput:0]]
+[2026.09.06-05.28.33:018][  0]LogConfig: Applying CVar settings from Section [ConsoleVariables] File [C:/Users/iputu/Documents/Wonder Chess/game/Saved/Config/WindowsEditor/Editor.ini]
+[2026.09.06-05.28.33:018][  0]LogInit: Computer: GR1ZZYLY
+[2026.09.06-05.28.33:018][  0]LogInit: User: Pram
+[2026.09.06-05.28.33:018][  0]LogInit: CPU Page size=4096, Cores=8
+[2026.09.06-05.28.33:018][  0]LogInit: High frequency timer resolution =10.000000 MHz
+[2026.09.06-05.28.33:018][  0]LogInit: Handheld Device: 0
+[2026.09.06-05.28.33:018][  0]LogMemory: Process is running as part of a Windows Job with separate resource limits
+[2026.09.06-05.28.33:018][  0]LogMemory: Memory total: Physical=15.2GB (16GB approx) Virtual=37.2GB
+[2026.09.06-05.28.33:018][  0]LogMemory: Platform Memory Stats for WindowsEditor
+[2026.09.06-05.28.33:018][  0]LogMemory: Process Physical Memory: 551.66 MB used, 551.66 MB peak
+[2026.09.06-05.28.33:018][  0]LogMemory: Process Virtual Memory: 540.35 MB used, 540.35 MB peak
+[2026.09.06-05.28.33:018][  0]LogMemory: Physical Memory: 12089.94 MB used,  3466.77 MB free, 15556.71 MB total
+[2026.09.06-05.28.33:018][  0]LogMemory: Virtual Memory: 31165.04 MB used,  6919.67 MB free, 38084.71 MB total
+[2026.09.06-05.28.33:018][  0]LogCsvProfiler: Display: Metadata set : extradevelopmentmemorymb="0"
+[2026.09.06-05.28.33:122][  0]LogWindows: WindowsPlatformFeatures enabled
+[2026.09.06-05.28.33:134][  0]LogSpline: Registered spline type: TypeId=0x54E3AD22, Impl=MultiSpline, Value=Vector
+[2026.09.06-05.28.33:135][  0]LogChaosDD: Chaos Debug Draw Startup
+[2026.09.06-05.28.33:135][  0]LogInit: Physics initialised using underlying interface: Chaos
+[2026.09.06-05.28.33:135][  0]LogInit: Using OS detected language (en-US).
+[2026.09.06-05.28.33:135][  0]LogInit: Using OS detected locale (en-CA).
+[2026.09.06-05.28.33:174][  0]LogTextLocalizationManager: No specific localization for 'en-US' exists, so 'en' will be used for the language.
+[2026.09.06-05.28.33:872][  0]LogObj: Display: Attempting to load config data for Default__SlateThemeManager before the Class has been constructed/registered/linked (likely during module loading or early startup). This will result in the load silently failing and should be fixed.
+[2026.09.06-05.28.34:300][  0]LogVRS: Current RHI does not support Variable Rate Shading
+[2026.09.06-05.28.34:302][  0]LogCsvProfiler: Display: Metadata set : verbatimrhiname="Null"
+[2026.09.06-05.28.34:302][  0]LogCsvProfiler: Display: Metadata set : rhiname="Null"
+[2026.09.06-05.28.34:302][  0]LogCsvProfiler: Display: Metadata set : rhifeaturelevel="SM6"
+[2026.09.06-05.28.34:302][  0]LogCsvProfiler: Display: Metadata set : shaderplatform="PCD3D_SM6"
+[2026.09.06-05.28.34:302][  0]LogInit: Initializing FReadOnlyCVARCache
+[2026.09.06-05.28.34:341][  0]LogTextureFormatASTC: Display: ASTCEnc version 5.0.1 library loaded
+[2026.09.06-05.28.34:341][  0]LogTextureFormatManager: Display: Loaded Base TextureFormat: TextureFormatASTC
+[2026.09.06-05.28.34:341][  0]LogTextureFormatManager: Display: Loaded Base TextureFormat: TextureFormatDXT
+[2026.09.06-05.28.34:341][  0]LogTextureFormatManager: Display: Loaded Base TextureFormat: TextureFormatETC2
+[2026.09.06-05.28.34:341][  0]LogTextureFormatManager: Display: Loaded Base TextureFormat: TextureFormatIntelISPCTexComp
+[2026.09.06-05.28.34:341][  0]LogTextureFormatManager: Display: Loaded Base TextureFormat: TextureFormatUncompressed
+[2026.09.06-05.28.34:341][  0]LogTextureFormatOodle: Display: Oodle Texture TFO init; latest sdk version = 2.9.14
+[2026.09.06-05.28.34:341][  0]LogTextureFormatOodle: Display: Oodle Texture loading DLL: oo2tex_win64_2.9.14.dll
+[2026.09.06-05.28.34:345][  0]LogTextureFormatOodle: Display: Oodle Texture loading DLL: oo2tex_win64_2.9.5.dll
+[2026.09.06-05.28.34:346][  0]LogTextureFormatManager: Display: Loaded Base TextureFormat: TextureFormatOodle
+[2026.09.06-05.28.34:490][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android'
+[2026.09.06-05.28.34:491][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ASTC'
+[2026.09.06-05.28.34:491][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_DXT'
+[2026.09.06-05.28.34:491][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ETC2'
+[2026.09.06-05.28.34:491][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_OpenXR'
+[2026.09.06-05.28.34:491][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'AndroidClient'
+[2026.09.06-05.28.34:491][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ASTCClient'
+[2026.09.06-05.28.34:491][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_DXTClient'
+[2026.09.06-05.28.34:491][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ETC2Client'
+[2026.09.06-05.28.34:491][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_OpenXRClient'
+[2026.09.06-05.28.34:491][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_Multi'
+[2026.09.06-05.28.34:491][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_MultiClient'
+[2026.09.06-05.28.34:577][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'IOS'
+[2026.09.06-05.28.34:578][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'IOSClient'
+[2026.09.06-05.28.34:657][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Linux'
+[2026.09.06-05.28.34:657][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxEditor'
+[2026.09.06-05.28.34:657][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxServer'
+[2026.09.06-05.28.34:657][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxClient'
+[2026.09.06-05.28.34:742][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Mac'
+[2026.09.06-05.28.34:742][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'MacEditor'
+[2026.09.06-05.28.34:742][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'MacServer'
+[2026.09.06-05.28.34:742][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'MacClient'
+[2026.09.06-05.28.34:814][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'TVOS'
+[2026.09.06-05.28.34:814][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'TVOSClient'
+[2026.09.06-05.28.34:877][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Windows'
+[2026.09.06-05.28.34:877][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'WindowsEditor'
+[2026.09.06-05.28.34:877][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'WindowsServer'
+[2026.09.06-05.28.34:877][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'WindowsClient'
+[2026.09.06-05.28.34:877][  0]LogTargetPlatformManager: Display: Building Assets For WindowsEditor
+[2026.09.06-05.28.34:890][  0]LogAudioDebug: Display: Lib vorbis DLL was dynamically loaded.
+[2026.09.06-05.28.34:977][  0]LogTargetPlatformManager: Unable to find shader format SF_METAL_ES3_1_IOS from hinted modules, loading all potential format modules to find it
+[2026.09.06-05.28.34:988][  0]LogTargetPlatformManager: Loaded format module MetalShaderFormat
+[2026.09.06-05.28.34:988][  0]LogTargetPlatformManager:   SF_METAL_ES3_1_IOS
+[2026.09.06-05.28.34:988][  0]LogTargetPlatformManager:   SF_METAL_SM5_IOS
+[2026.09.06-05.28.34:988][  0]LogTargetPlatformManager:   SF_METAL_ES3_1_TVOS
+[2026.09.06-05.28.34:988][  0]LogTargetPlatformManager:   SF_METAL_SM5_TVOS
+[2026.09.06-05.28.34:988][  0]LogTargetPlatformManager:   SF_METAL_SM5
+[2026.09.06-05.28.34:988][  0]LogTargetPlatformManager:   SF_METAL_SM6
+[2026.09.06-05.28.34:988][  0]LogTargetPlatformManager:   SF_METAL_SIM
+[2026.09.06-05.28.34:988][  0]LogTargetPlatformManager:   SF_METAL_ES3_1
+[2026.09.06-05.28.34:988][  0]LogTargetPlatformManager: Loaded format module ShaderFormatD3D
+[2026.09.06-05.28.34:988][  0]LogTargetPlatformManager:   PCD3D_SM6
+[2026.09.06-05.28.34:988][  0]LogTargetPlatformManager:   PCD3D_SM5
+[2026.09.06-05.28.34:988][  0]LogTargetPlatformManager:   PCD3D_ES31
+[2026.09.06-05.28.34:988][  0]LogTargetPlatformManager: Loaded format module ShaderFormatOpenGL
+[2026.09.06-05.28.34:988][  0]LogTargetPlatformManager:   GLSL_150_ES31
+[2026.09.06-05.28.34:988][  0]LogTargetPlatformManager:   GLSL_ES3_1_ANDROID
+[2026.09.06-05.28.34:988][  0]LogTargetPlatformManager: Loaded format module ShaderFormatVectorVM
+[2026.09.06-05.28.34:988][  0]LogTargetPlatformManager:   VVM_1_0
+[2026.09.06-05.28.34:988][  0]LogTargetPlatformManager: Loaded format module VulkanShaderFormat
+[2026.09.06-05.28.34:988][  0]LogTargetPlatformManager:   SF_VULKAN_SM5
+[2026.09.06-05.28.34:988][  0]LogTargetPlatformManager:   SF_VULKAN_ES31_ANDROID
+[2026.09.06-05.28.34:988][  0]LogTargetPlatformManager:   SF_VULKAN_ES31
+[2026.09.06-05.28.34:988][  0]LogTargetPlatformManager:   SF_VULKAN_SM5_ANDROID
+[2026.09.06-05.28.34:988][  0]LogTargetPlatformManager:   SF_VULKAN_SM6
+[2026.09.06-05.28.34:988][  0]LogRendererCore: Ray tracing is disabled. Reason: disabled through project setting (r.RayTracing=0).
+[2026.09.06-05.28.34:992][  0]LogDerivedDataCache: Display: Memory: Max Cache Size: -1 MB
+[2026.09.06-05.28.34:993][  0]LogDerivedDataCache: FDerivedDataBackendGraph: Pak pak cache file ../../../../../../Users/iputu/Documents/Wonder Chess/game/DerivedDataCache/DDC.ddp not found, will not use a pak cache.
+[2026.09.06-05.28.34:993][  0]LogDerivedDataCache: Unable to find inner node Pak for hierarchy Hierarchy.
+[2026.09.06-05.28.34:993][  0]LogDerivedDataCache: FDerivedDataBackendGraph: CompressedPak pak cache file ../../../../../../Users/iputu/Documents/Wonder Chess/game/DerivedDataCache/Compressed.ddp not found, will not use a pak cache.
+[2026.09.06-05.28.34:993][  0]LogDerivedDataCache: Unable to find inner node CompressedPak for hierarchy Hierarchy.
+[2026.09.06-05.28.35:454][  0]LogDerivedDataCache: Display: ../../../Engine/DerivedDataCache/Compressed.ddp: Opened pak cache for reading. (1729 MiB)
+[2026.09.06-05.28.35:455][  0]LogDerivedDataCache: FDerivedDataBackendGraph: EnterprisePak pak cache file ../../../Enterprise/DerivedDataCache/Compressed.ddp not found, will not use a pak cache.
+[2026.09.06-05.28.35:455][  0]LogDerivedDataCache: Unable to find inner node EnterprisePak for hierarchy Hierarchy.
+[2026.09.06-05.28.35:457][  0]LogZenServiceInstance: Found Zen config default=C:/Users/iputu/AppData/Local/UnrealEngine/Common/Zen/Data
+[2026.09.06-05.28.35:457][  0]LogZenServiceInstance: Display: Launching zen utility 'C:/Program Files/Epic Games/UE_5.7/Engine/Binaries/Win64/zen.exe service status'.
+[2026.09.06-05.28.35:873][  0]LogZenServiceInstance: Display: Launching zen utility 'C:/Program Files/Epic Games/UE_5.7/Engine/Binaries/Win64/zen.exe service status'.
+[2026.09.06-05.28.36:291][  0]LogZenServiceInstance: Display: Read zen version cache file from 'C:/Users/iputu/AppData/Local/UnrealEngine/5.7/Saved/Zen/zen.version', version: '5.7.6-202510061608-windows-x64-release-9a1ebb9'
+[2026.09.06-05.28.36:291][  0]LogZenServiceInstance: InTree version at 'C:/Program Files/Epic Games/UE_5.7/Engine/Binaries/Win64/zenserver.exe' is '5.7.6-202510061608-windows-x64-release-9a1ebb9'
+[2026.09.06-05.28.36:292][  0]LogZenServiceInstance: Display: Read zen version cache file from 'C:/Users/iputu/AppData/Local/UnrealEngine/Common/Zen/Install/zen.version', version: '5.7.6-202510061608-windows-x64-release-9a1ebb9'
+[2026.09.06-05.28.36:292][  0]LogZenServiceInstance: Installed version at 'C:/Users/iputu/AppData/Local/UnrealEngine/Common/Zen/Install/zenserver.exe' is '5.7.6-202510061608-windows-x64-release-9a1ebb9'
+[2026.09.06-05.28.36:292][  0]LogZenServiceInstance: Display: Installed service at 'C:/Users/iputu/AppData/Local/UnrealEngine/Common/Zen/Install/zenserver.exe' is up to date
+[2026.09.06-05.28.36:296][  0]LogZenServiceInstance: Found existing instance running on port 8558 matching our settings, no actions needed
+[2026.09.06-05.28.37:205][  0]LogZenServiceInstance: Display: Unreal Zen Storage Server HTTP service at http://[::1]:8558 status: OK!.
+[2026.09.06-05.28.37:205][  0]LogZenServiceInstance: Local ZenServer AutoLaunch initialization completed in 0.917 seconds
+[2026.09.06-05.28.37:208][  0]LogDerivedDataCache: Display: ZenLocal: Using ZenServer HTTP service at [::1] with namespace ue.ddc status: OK!.
+[2026.09.06-05.28.37:244][  0]LogDerivedDataCache: C:/Users/iputu/AppData/Local/UnrealEngine/Common/DerivedDataCache: Speed tests took 0.03 seconds.
+[2026.09.06-05.28.37:245][  0]LogDerivedDataCache: Display: C:/Users/iputu/AppData/Local/UnrealEngine/Common/DerivedDataCache: Performance: Latency=0.34ms. RandomReadSpeed=112.68MBs, RandomWriteSpeed=42.35MBs. Assigned SpeedClass 'Local'
+[2026.09.06-05.28.37:246][  0]LogDerivedDataCache: Local: Using data cache path C:/Users/iputu/AppData/Local/UnrealEngine/Common/DerivedDataCache: DeleteOnly
+[2026.09.06-05.28.37:246][  0]LogDerivedDataCache: ZenShared: Disabled because Host is set to 'None'
+[2026.09.06-05.28.37:246][  0]LogDerivedDataCache: Unable to find inner node ZenShared for hierarchy Hierarchy.
+[2026.09.06-05.28.37:246][  0]LogDerivedDataCache: Shared: Disabled because no path is configured.
+[2026.09.06-05.28.37:246][  0]LogDerivedDataCache: Unable to find inner node Shared for hierarchy Hierarchy.
+[2026.09.06-05.28.37:246][  0]LogDerivedDataCache: Cloud: Disabled because Host is set to 'None'
+[2026.09.06-05.28.37:246][  0]LogDerivedDataCache: Unable to find inner node Cloud for hierarchy Hierarchy.
+[2026.09.06-05.28.37:249][  0]LogShaderCompilers: Guid format shader working directory is -12 characters bigger than the processId version (../../../../../../Users/iputu/Documents/Wonder Chess/game/Intermediate/Shaders/WorkingDirectory/42600/).
+[2026.09.06-05.28.37:249][  0]LogShaderCompilers: Cleaned the shader compiler working directory 'C:/Users/iputu/AppData/Local/Temp/UnrealShaderWorkingDir/D26F176542A63AA4B2C125B315318348/'.
+[2026.09.06-05.28.37:250][  0]LogXGEController: Cannot use XGE Controller as Incredibuild is not installed on this machine.
+[2026.09.06-05.28.37:253][  0]LogUbaHorde: Display: UBA/Horde Configuration [Uba.Provider.Horde]: Not Enabled
+[2026.09.06-05.28.37:253][  0]LogShaderCompilers: Display: No distributed shader compiler controller found
+[2026.09.06-05.28.37:253][  0]LogShaderCompilers: Display: Using 13 local workers for shader compilation
+[2026.09.06-05.28.37:255][  0]LogShaderCompilers: Display: Compiling shader autogen file: ../../../../../../Users/iputu/Documents/Wonder Chess/game/Intermediate/ShaderAutogen/PCD3D_SM6/AutogenShaderHeaders.ush
+[2026.09.06-05.28.37:255][  0]LogShaderCompilers: Display: Autogen file is unchanged, skipping write.
+[2026.09.06-05.28.38:164][  0]LogAssetRegistry: FAssetRegistry took 0.0007 seconds to start up
+[2026.09.06-05.28.38:164][  0]LogEditorDomain: Display: EditorDomain is Disabled
+[2026.09.06-05.28.38:536][  0]LogDeviceProfileManager: Display: Deviceprofile LinuxArm64Editor not found.
+[2026.09.06-05.28.38:536][  0]LogDeviceProfileManager: Display: Deviceprofile LinuxArm64 not found.
+[2026.09.06-05.28.38:590][  0]LogDeviceProfileManager: Active device profile: [0000025B186CB180][0000025AD7A4A000 82] WindowsEditor
+[2026.09.06-05.28.38:590][  0]LogCsvProfiler: Display: Metadata set : deviceprofile="WindowsEditor"
+[2026.09.06-05.28.38:595][  0]LogStreaming: Display: FlushAsyncLoading(1): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-05.28.38:611][  0]LogStreaming: Display: Flushing package /Engine/Functions/Engine_MaterialFunctions01/Shading/PowerToRoughness (state: WaitingForIo) recursively from another package /Engine/EngineMaterials/DefaultTextMaterialOpaque (state: CreateLinkerLoadExports) will result in a partially loaded package to avoid a deadlock.
+[2026.09.06-05.28.38:612][  0]LogStreaming: Display: Package /Engine/EngineMaterials/DefaultTextMaterialOpaque is adding a dynamic import to package /Engine/Functions/Engine_MaterialFunctions01/Shading/PowerToRoughness because of a recursive sync load
+[2026.09.06-05.28.38:612][  0]LogStreaming: Display: Flushing package /Engine/Functions/Engine_MaterialFunctions01/Shading/PowerToRoughness (state: DeferredPostLoad) recursively from another package /Engine/EngineMaterials/DefaultTextMaterialOpaque (state: CreateLinkerLoadExports) will result in a partially loaded package to avoid a deadlock.
+[2026.09.06-05.28.38:612][  0]LogStreaming: Display: Flushing package /Engine/Functions/Engine_MaterialFunctions01/Shading/ConvertFromDiffSpec (state: WaitingForIo) recursively from another package /Engine/EngineMaterials/DefaultTextMaterialOpaque (state: CreateLinkerLoadExports) will result in a partially loaded package to avoid a deadlock.
+[2026.09.06-05.28.38:613][  0]LogStreaming: Display: Package /Engine/EngineMaterials/DefaultTextMaterialOpaque is adding a dynamic import to package /Engine/Functions/Engine_MaterialFunctions01/Shading/ConvertFromDiffSpec because of a recursive sync load
+[2026.09.06-05.28.38:613][  0]LogStreaming: Display: Flushing package /Engine/Functions/Engine_MaterialFunctions01/Shading/ConvertFromDiffSpec (state: DeferredPostLoad) recursively from another package /Engine/EngineMaterials/DefaultTextMaterialOpaque (state: CreateLinkerLoadExports) will result in a partially loaded package to avoid a deadlock.
+[2026.09.06-05.28.38:613][  0]LogStreaming: Display: Flushing package /Engine/EngineMaterials/WorldGridMaterial (state: WaitingForIo) recursively from another package /Engine/EngineMaterials/DefaultTextMaterialOpaque (state: CreateLinkerLoadExports) will result in a partially loaded package to avoid a deadlock.
+[2026.09.06-05.28.38:617][  0]LogStreaming: Display: Flushing package /Engine/EngineMaterials/DefaultDeferredDecalMaterial (state: WaitingForIo) recursively from another package /Engine/EngineMaterials/WorldGridMaterial (state: CreateLinkerLoadExports) will result in a partially loaded package to avoid a deadlock.
+[2026.09.06-05.28.38:619][  0]LogStreaming: Display: Flushing package /Engine/EngineMaterials/DefaultLightFunctionMaterial (state: WaitingForIo) recursively from another package /Engine/EngineMaterials/DefaultDeferredDecalMaterial (state: CreateLinkerLoadExports) will result in a partially loaded package to avoid a deadlock.
+[2026.09.06-05.28.38:619][  0]LogStreaming: Display: Flushing package /Engine/EngineMaterials/DefaultPostProcessMaterial (state: WaitingForIo) recursively from another package /Engine/EngineMaterials/DefaultLightFunctionMaterial (state: CreateLinkerLoadExports) will result in a partially loaded package to avoid a deadlock.
+[2026.09.06-05.28.38:622][  0]LogStreaming: Display: Package /Engine/EngineMaterials/DefaultLightFunctionMaterial is adding a dynamic import to package /Engine/EngineMaterials/DefaultPostProcessMaterial because of a recursive sync load
+[2026.09.06-05.28.38:622][  0]LogStreaming: Display: Flushing package /Engine/EngineMaterials/DefaultPostProcessMaterial (state: DeferredPostLoad) recursively from another package /Engine/EngineMaterials/DefaultLightFunctionMaterial (state: CreateLinkerLoadExports) will result in a partially loaded package to avoid a deadlock.
+[2026.09.06-05.28.38:622][  0]LogStreaming: Display: Package /Engine/EngineMaterials/DefaultDeferredDecalMaterial is adding a dynamic import to package /Engine/EngineMaterials/DefaultLightFunctionMaterial because of a recursive sync load
+[2026.09.06-05.28.38:622][  0]LogStreaming: Display: Flushing package /Engine/EngineMaterials/DefaultLightFunctionMaterial (state: DeferredPostLoad) recursively from another package /Engine/EngineMaterials/DefaultDeferredDecalMaterial (state: CreateLinkerLoadExports) will result in a partially loaded package to avoid a deadlock.
+[2026.09.06-05.28.38:623][  0]LogStreaming: Display: Package /Engine/EngineMaterials/WorldGridMaterial is adding a dynamic import to package /Engine/EngineMaterials/DefaultDeferredDecalMaterial because of a recursive sync load
+[2026.09.06-05.28.38:623][  0]LogStreaming: Display: Flushing package /Engine/EngineMaterials/DefaultDeferredDecalMaterial (state: DeferredPostLoad) recursively from another package /Engine/EngineMaterials/WorldGridMaterial (state: CreateLinkerLoadExports) will result in a partially loaded package to avoid a deadlock.
+[2026.09.06-05.28.38:624][  0]LogStreaming: Display: Package /Engine/EngineMaterials/DefaultTextMaterialOpaque is adding a dynamic import to package /Engine/EngineMaterials/WorldGridMaterial because of a recursive sync load
+[2026.09.06-05.28.38:624][  0]LogStreaming: Display: Flushing package /Engine/EngineMaterials/WorldGridMaterial (state: DeferredPostLoad) recursively from another package /Engine/EngineMaterials/DefaultTextMaterialOpaque (state: CreateLinkerLoadExports) will result in a partially loaded package to avoid a deadlock.
+[2026.09.06-05.28.38:626][  0]LogTextureEncodingSettings: Display: Texture Encode Speed: Final (cook).
+[2026.09.06-05.28.38:626][  0]LogTextureEncodingSettings: Display: Oodle Texture Encode Speed settings: Fast: RDO Off Lambda=0, Effort=Normal Final: RDO Off Lambda=0, Effort=Normal
+[2026.09.06-05.28.38:626][  0]LogTextureEncodingSettings: Display: Shared linear texture encoding: Disabled
+[2026.09.06-05.28.38:660][  0]LogMeshReduction: Display: Using QuadricMeshReduction for automatic static mesh reduction
+[2026.09.06-05.28.38:660][  0]LogMeshReduction: Display: Using SkeletalMeshReduction for automatic skeletal mesh reduction
+[2026.09.06-05.28.38:660][  0]LogMeshReduction: Display: Using ProxyLODMeshReduction for automatic mesh merging
+[2026.09.06-05.28.38:660][  0]LogMeshReduction: Display: No distributed automatic mesh merging module available
+[2026.09.06-05.28.38:660][  0]LogMeshMerging: No distributed automatic mesh merging module available
+[2026.09.06-05.28.38:882][  0]LogConfig: Applying CVar settings from Section [/Script/CQTest.CQTestSettings] File [Engine]
+[2026.09.06-05.28.38:908][  0]LogShaderCompilers: Display: Compiling shader autogen file: ../../../../../../Users/iputu/Documents/Wonder Chess/game/Intermediate/ShaderAutogen/PCD3D_SM5/AutogenShaderHeaders.ush
+[2026.09.06-05.28.38:909][  0]LogShaderCompilers: Display: Autogen file is unchanged, skipping write.
+[2026.09.06-05.28.38:909][  0]LogVirtualization: Display: VirtualizationSystem name found in ini file: None
+[2026.09.06-05.28.38:909][  0]LogVirtualization: Display: FNullVirtualizationSystem mounted, virtualization will be disabled
+[2026.09.06-05.28.38:946][  0]LogSlate: Border
+[2026.09.06-05.28.38:946][  0]LogSlate: BreadcrumbButton
+[2026.09.06-05.28.38:946][  0]LogSlate: Brushes.Title
+[2026.09.06-05.28.38:946][  0]LogSlate: ColorPicker.ColorThemes
+[2026.09.06-05.28.38:946][  0]LogSlate: Default
+[2026.09.06-05.28.38:946][  0]LogSlate: Icons.Save
+[2026.09.06-05.28.38:946][  0]LogSlate: Icons.Toolbar.Settings
+[2026.09.06-05.28.38:946][  0]LogSlate: ListView
+[2026.09.06-05.28.38:946][  0]LogSlate: SoftwareCursor_CardinalCross
+[2026.09.06-05.28.38:946][  0]LogSlate: SoftwareCursor_Grab
+[2026.09.06-05.28.38:946][  0]LogSlate: TableView.DarkRow
+[2026.09.06-05.28.38:946][  0]LogSlate: TableView.Row
+[2026.09.06-05.28.38:946][  0]LogSlate: TreeView
+[2026.09.06-05.28.39:075][  0]LogWorldPartition: Display: FWorldPartitionClassDescRegistry::Initialize started...
+[2026.09.06-05.28.39:078][  0]LogWorldPartition: Display: FWorldPartitionClassDescRegistry::Initialize took 2.695 ms
+[2026.09.06-05.28.39:121][  0]LogStats: UGameplayTagsManager::InitializeManager -  0.000 s
+[2026.09.06-05.28.39:312][  0]LogNiagaraDebuggerClient: Niagara Debugger Client Initialized | Session: 7E04AF0A4E124DF08000000000001D00 | Instance: 0825B8DA4042063F0E5796B5C2E72D8C (GR1ZZYLY-42600).
+[2026.09.06-05.28.39:358][  0]LogCollectionManager: Loaded 0 collections in 0.002279 seconds
+[2026.09.06-05.28.39:362][  0]LogFileCache: Scanning file cache for directory 'C:/Users/iputu/Documents/Wonder Chess/game/Saved/Collections/' took 0.00s
+[2026.09.06-05.28.39:365][  0]LogFileCache: Scanning file cache for directory 'C:/Users/iputu/Documents/Wonder Chess/game/Content/Developers/Pram/Collections/' took 0.00s
+[2026.09.06-05.28.39:367][  0]LogFileCache: Scanning file cache for directory 'C:/Users/iputu/Documents/Wonder Chess/game/Content/Collections/' took 0.00s
+[2026.09.06-05.28.39:367][  0]LogCollectionManager: Fixed up redirectors for 0 collections in 0.000000 seconds (updated 0 objects)
+[2026.09.06-05.28.39:725][  0]LogMetaSound: Display: MetaSound Page Target Initialized to 'Default'
+[2026.09.06-05.28.39:726][  0]LogAudio: Display: Registering Engine Module Parameter Interfaces...
+[2026.09.06-05.28.39:730][  0]LogMetaSound: MetaSound Engine Initialized
+[2026.09.06-05.28.40:327][  0]LogNNERuntimeORT: No NPU adapter found with attributes (!GRAPHICS && (GENERIC_ML || CORE_COMPUTE)) (Windows 11 Version 24H2 or newer)!
+[2026.09.06-05.28.40:327][  0]LogNNERuntimeORT: Available graphics and compute adapters:
+[2026.09.06-05.28.40:327][  0]LogNNERuntimeORT: 0: AMD Radeon(TM) Graphics (Compute, Graphics)
+[2026.09.06-05.28.40:327][  0]LogNNERuntimeORT: 1: NVIDIA GeForce RTX 3060 Laptop GPU (Compute, Graphics)
+[2026.09.06-05.28.40:327][  0]LogNNERuntimeORT: 2: Microsoft Basic Render Driver (Compute, Graphics)
+[2026.09.06-05.28.40:327][  0]LogNNERuntimeORT: No NPU adapter found!
+[2026.09.06-05.28.40:327][  0]LogNNERuntimeORT: MakeRuntimeORTDml:
+[2026.09.06-05.28.40:327][  0]LogNNERuntimeORT:   DirectML:  yes
+[2026.09.06-05.28.40:327][  0]LogNNERuntimeORT:   RHI D3D12: no
+[2026.09.06-05.28.40:327][  0]LogNNERuntimeORT:   D3D12:     yes
+[2026.09.06-05.28.40:327][  0]LogNNERuntimeORT:   NPU:       no
+[2026.09.06-05.28.40:327][  0]LogNNERuntimeORT: Interface availability:
+[2026.09.06-05.28.40:327][  0]LogNNERuntimeORT:   GPU: yes
+[2026.09.06-05.28.40:327][  0]LogNNERuntimeORT:   RDG: no
+[2026.09.06-05.28.40:327][  0]LogNNERuntimeORT:   NPU: no
+[2026.09.06-05.28.40:803][  0]LogNNERuntimeORT: No NPU adapter found with attributes (!GRAPHICS && (GENERIC_ML || CORE_COMPUTE)) (Windows 11 Version 24H2 or newer)!
+[2026.09.06-05.28.40:803][  0]LogNNERuntimeORT: Available graphics and compute adapters:
+[2026.09.06-05.28.40:803][  0]LogNNERuntimeORT: 0: AMD Radeon(TM) Graphics (Compute, Graphics)
+[2026.09.06-05.28.40:803][  0]LogNNERuntimeORT: 1: NVIDIA GeForce RTX 3060 Laptop GPU (Compute, Graphics)
+[2026.09.06-05.28.40:803][  0]LogNNERuntimeORT: 2: Microsoft Basic Render Driver (Compute, Graphics)
+[2026.09.06-05.28.40:803][  0]LogNNERuntimeORT: No NPU adapter found!
+[2026.09.06-05.28.40:990][  0]LogChaosVDEditor: [FChaosVDExtensionsManager::RegisterExtension] Registering CVD Extension [FChaosVDGenericDebugDrawExtension] ...
+[2026.09.06-05.28.40:990][  0]LogChaosVDEditor: [FChaosVDExtensionsManager::RegisterExtension] Registering CVD Extension [FChaosVDAccelerationStructuresExtension] ...
+[2026.09.06-05.28.41:016][  0]LogTimingProfiler: Initialize
+[2026.09.06-05.28.41:017][  0]LogTimingProfiler: OnSessionChanged
+[2026.09.06-05.28.41:017][  0]LoadingProfiler: Initialize
+[2026.09.06-05.28.41:017][  0]LoadingProfiler: OnSessionChanged
+[2026.09.06-05.28.41:017][  0]LogNetworkingProfiler: Initialize
+[2026.09.06-05.28.41:017][  0]LogNetworkingProfiler: OnSessionChanged
+[2026.09.06-05.28.41:017][  0]LogMemoryProfiler: Initialize
+[2026.09.06-05.28.41:017][  0]LogMemoryProfiler: OnSessionChanged
+[2026.09.06-05.28.41:083][  0]SourceControl: Revision control is disabled
+[2026.09.06-05.28.41:126][  0]SourceControl: Revision control is disabled
+[2026.09.06-05.28.41:650][  0]LogAndroidPermission: UAndroidPermissionCallbackProxy::GetInstance
+[2026.09.06-05.28.41:655][  0]LogAudioCaptureCore: Display: No Audio Capture implementations found. Audio input will be silent.
+[2026.09.06-05.28.41:656][  0]LogAudioCaptureCore: Display: No Audio Capture implementations found. Audio input will be silent.
+[2026.09.06-05.28.41:763][  0]LogConfig: Applying CVar settings from Section [/Script/NNEDenoiser.NNEDenoiserSettings] File [Engine]
+[2026.09.06-05.28.41:966][  0]LogUObjectArray: 42531 objects as part of root set at end of initial load.
+[2026.09.06-05.28.41:966][  0]LogUObjectArray: CloseDisregardForGC: 0/0 objects in disregard for GC pool
+[2026.09.06-05.28.41:982][  0]LogInit: Executing Class /Script/PythonScriptPlugin.PythonScriptCommandlet
+[2026.09.06-05.28.41:982][  0]LogInit: Initializing Editor Engine...
+[2026.09.06-05.28.41:982][  0]LogEngine: Initializing Engine...
+[2026.09.06-05.28.42:023][  0]LogTedsSettings: UTedsSettingsEditorSubsystem::Initialize
+[2026.09.06-05.28.42:155][  0]LogAssetRegistry: Display: Asset registry cache read as 66.9 MiB from ../../../../../../Users/iputu/Documents/Wonder Chess/game/Intermediate/CachedAssetRegistry_0.bin.
+[2026.09.06-05.28.42:155][  0]LogAssetRegistry: Display: AssetDataGatherer spent 0.058s loading caches ../../../../../../Users/iputu/Documents/Wonder Chess/game/Intermediate/CachedAssetRegistry_*.bin.
+[2026.09.06-05.28.42:174][  0]LogNiagara: UAV Float16 is not supported, compressed GPU emitters will be disabled.
+[2026.09.06-05.28.42:186][  0]LogNetVersion: Set ProjectVersion to 0.3.0. Version Checksum will be recalculated on next use.
+[2026.09.06-05.28.42:186][  0]LogInit: Texture streaming: Disabled
+[2026.09.06-05.28.42:203][  0]LogCsvProfiler: Display: Metadata set : largeworldcoordinates="1"
+[2026.09.06-05.28.42:208][  0]LogInit: Initializing Editor Engine Completed
+[2026.09.06-05.28.42:208][  0]LogContentValidation: Adding native validator /Script/DataValidation.DirtyFilesChangelistValidator
+[2026.09.06-05.28.42:208][  0]LogContentValidation: Adding native validator /Script/DataValidation.EditorValidator_Localization
+[2026.09.06-05.28.42:208][  0]LogContentValidation: Adding native validator /Script/DataValidation.EditorValidator_Material
+[2026.09.06-05.28.42:208][  0]LogContentValidation: Adding native validator /Script/DataValidation.PackageFileValidator
+[2026.09.06-05.28.42:208][  0]LogContentValidation: Adding native validator /Script/DataValidation.WorldPartitionChangelistValidator
+[2026.09.06-05.28.42:208][  0]LogContentValidation: Adding native validator /Script/InputBlueprintNodes.EnhancedInputUserWidgetValidator
+[2026.09.06-05.28.42:215][  0]LogNNEDenoiser: Ray Tracing is not enabled, therefore NNEDenoiser is not registered!
+[2026.09.06-05.28.42:226][  0]LogPython: Python enabled via CVar 'Engine.Python.IsEnabledByDefault'
+[2026.09.06-05.28.42:226][  0]LogPython: Using Python 3.11.8
+[2026.09.06-05.28.42:338][  0]LogPython: Display: No pip-enabled plugins with python dependencies found, skipping
+[2026.09.06-05.28.43:021][  0]LogLevelSequenceEditor: LevelSequenceEditor subsystem initialized.
+[2026.09.06-05.28.43:063][  0]LogPython: Display: Running start-up script C:/Program Files/Epic Games/UE_5.7/Engine/Plugins/Animation/IKRig/Content/Python/init_unreal.py... started...
+[2026.09.06-05.28.43:088][  0]LogPython: Display: Running start-up script C:/Program Files/Epic Games/UE_5.7/Engine/Plugins/Animation/IKRig/Content/Python/init_unreal.py... took 25.458 ms
+[2026.09.06-05.28.43:088][  0]LogPython: Display: Running start-up script C:/Program Files/Epic Games/UE_5.7/Engine/Plugins/Animation/ControlRig/Content/Python/init_unreal.py... started...
+[2026.09.06-05.28.43:113][  0]LogPython: registering <class 'ControlRigWorkflows.workflow_deformation_rig_preset.provider'>
+
+[2026.09.06-05.28.43:127][  0]LogPython: Display: Running start-up script C:/Program Files/Epic Games/UE_5.7/Engine/Plugins/Animation/ControlRig/Content/Python/init_unreal.py... took 39.315 ms (total: 64.773 ms)
+[2026.09.06-05.28.43:129][  0]LogPython: Python enabled via IPythonScriptPlugin::ForceEnablePythonAtRuntime: D:\build\++UE5\Sync\Engine\Plugins\Experimental\PythonScriptPlugin\Source\PythonScriptPlugin\Private\PythonScriptCommandlet.cpp(40:30) int __cdecl UPythonScriptCommandlet::Main(const class FString &)
+[2026.09.06-05.28.43:129][  0]LogPythonScriptCommandlet: Display: Running Python script: C:/Users/iputu/Documents/Wonder Chess/tools/unreal/import_arena.py
+[2026.09.06-05.28.43:177][  0]Interchange.FeatureFlags.Import.FBX = "false"
+[2026.09.06-05.28.43:177][  0]Interchange.FeatureFlags.Import.Enable = "false"
+[2026.09.06-05.28.43:187][  0]LogFactory: FactoryCreateFile: Texture with TextureFactory (0 0 C:/Users/iputu/Documents/Wonder Chess/exports/arena/T_wc_seven_lantern_courtyard_BaseColor.png)
+[2026.09.06-05.28.43:193][  0]LogEditorFactories: Display: Image imported as : TSF BGRA8
+[2026.09.06-05.28.43:201][  0]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2026.09.06-05.28.43:201][  0]LogFileHelpers: Saving Package: /Game/WonderChess/Arena/T_wc_seven_lantern_courtyard_BaseColor
+[2026.09.06-05.28.43:216][  0]LogSavePackage: Moving output files for package: /Game/WonderChess/Arena/T_wc_seven_lantern_courtyard_BaseColor
+[2026.09.06-05.28.43:216][  0]LogSavePackage: Moving '../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/T_wc_seven_lantern_courtyard_Bas58CAE34B47E1BB3EA15A95A980D81082.tmp' to '../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/T_wc_seven_lantern_courtyard_BaseColor.uasset'
+[2026.09.06-05.28.43:225][  0]LogSourceControl: Display: Uncontrolled Changelist persistency file loaded ../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/SourceControl/UncontrolledChangelists.json
+[2026.09.06-05.28.43:226][  0]LogSourceControl: Uncontrolled asset discovery started...
+[2026.09.06-05.28.43:227][  0]LogFileHelpers: InternalPromptForCheckoutAndSave took 25.614 ms
+[2026.09.06-05.28.43:237][  0]LogFactory: FactoryCreateFile: Texture with TextureFactory (0 0 C:/Users/iputu/Documents/Wonder Chess/exports/arena/T_wc_seven_lantern_courtyard_ORM.png)
+[2026.09.06-05.28.43:243][  0]LogEditorFactories: Display: Image imported as : TSF BGRA8
+[2026.09.06-05.28.43:249][  0]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2026.09.06-05.28.43:249][  0]LogFileHelpers: Saving Package: /Game/WonderChess/Arena/T_wc_seven_lantern_courtyard_ORM
+[2026.09.06-05.28.43:265][  0]LogSavePackage: Moving output files for package: /Game/WonderChess/Arena/T_wc_seven_lantern_courtyard_ORM
+[2026.09.06-05.28.43:265][  0]LogSavePackage: Moving '../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/T_wc_seven_lantern_courtyard_ORMCE8C5AE642DDDF77B0D7EFAF43C4C986.tmp' to '../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/T_wc_seven_lantern_courtyard_ORM.uasset'
+[2026.09.06-05.28.43:267][  0]LogFileHelpers: InternalPromptForCheckoutAndSave took 18.631 ms (total: 44.246 ms)
+[2026.09.06-05.28.43:289][  0]LogStreaming: Warning: LoadPackage: SkipPackage: /Game/WonderChess/Arena/MI_wc_seven_lantern_courtyard (0xDC77215CE6ED83BF) - The package to load does not exist on disk or in the loader
+[2026.09.06-05.28.43:290][  0]LogUObjectGlobals: Warning: Failed to find object 'Object None./Game/WonderChess/Arena/MI_wc_seven_lantern_courtyard'
+[2026.09.06-05.28.43:293][  0]LogFileHelpers: All files are already saved.
+[2026.09.06-05.28.43:293][  0]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2026.09.06-05.28.43:293][  0]LogFileHelpers: Saving Package: /Game/WonderChess/Arena/T_wc_seven_lantern_courtyard_ORM
+[2026.09.06-05.28.43:307][  0]LogSavePackage: Moving output files for package: /Game/WonderChess/Arena/T_wc_seven_lantern_courtyard_ORM
+[2026.09.06-05.28.43:308][  0]LogSavePackage: Moving '../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/T_wc_seven_lantern_courtyard_ORMB99F8BAC46ADA354C91E95AA32EF7D96.tmp' to '../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/T_wc_seven_lantern_courtyard_ORM.uasset'
+[2026.09.06-05.28.43:312][  0]LogFileHelpers: InternalPromptForCheckoutAndSave took 18.677 ms (total: 62.923 ms)
+[2026.09.06-05.28.43:312][  0]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2026.09.06-05.28.43:313][  0]LogFileHelpers: Saving Package: /Game/WonderChess/Arena/MI_wc_seven_lantern_courtyard
+[2026.09.06-05.28.43:313][  0]LogSourceControl: Uncontrolled asset discovery finished in 0.087842 seconds (Found 219 uncontrolled assets)
+[2026.09.06-05.28.43:325][  0]LogSavePackage: Moving output files for package: /Game/WonderChess/Arena/MI_wc_seven_lantern_courtyard
+[2026.09.06-05.28.43:325][  0]LogSavePackage: Moving '../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/MI_wc_seven_lantern_courtyardC5FD175846E1D66BB0343F92D4591310.tmp' to '../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/MI_wc_seven_lantern_courtyard.uasset'
+[2026.09.06-05.28.43:328][  0]LogFileHelpers: InternalPromptForCheckoutAndSave took 16.102 ms (total: 79.025 ms)
+[2026.09.06-05.28.43:339][  0]LogFactory: FactoryCreateFile: StaticMesh with FbxFactory (0 0 C:/Users/iputu/Documents/Wonder Chess/exports/arena/SM_WC_Banner.fbx)
+[2026.09.06-05.28.43:350][  0]LogFbx: Loading FBX Scene from C:/Users/iputu/Documents/Wonder Chess/exports/arena/SM_WC_Banner.fbx
+[2026.09.06-05.28.43:357][  0]LogFbx: FBX Scene Loaded Succesfully
+[2026.09.06-05.28.43:361][  0]LogFbx: Display: Triangulating static mesh SM_WC_Banner
+[2026.09.06-05.28.43:375][  0]LogStaticMesh: Display: Building static mesh SM_WC_Banner (Required Memory Estimate: 0.423942 MB)...
+[2026.09.06-05.28.43:385][  0]LogStaticMesh: Built static mesh [0.01s] /Game/WonderChess/Arena/SM_WC_Banner.SM_WC_Banner
+[2026.09.06-05.28.43:411][  0]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2026.09.06-05.28.43:412][  0]LogFileHelpers: Saving Package: /Game/WonderChess/Arena/SM_WC_Banner
+[2026.09.06-05.28.43:412][  0]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/WonderChess/Arena/SM_WC_Banner" FILE="../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_Banner.uasset" SILENT=true
+[2026.09.06-05.28.43:427][  0]LogSavePackage: Moving output files for package: /Game/WonderChess/Arena/SM_WC_Banner
+[2026.09.06-05.28.43:427][  0]LogSavePackage: Moving '../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/SM_WC_Banner469A622D486F62918452DEA2AD970C88.tmp' to '../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_Banner.uasset'
+[2026.09.06-05.28.43:428][  0]LogFileHelpers: InternalPromptForCheckoutAndSave took 16.797 ms (total: 95.823 ms)
+[2026.09.06-05.28.43:433][  0]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2026.09.06-05.28.43:433][  0]LogFileHelpers: Saving Package: /Game/WonderChess/Arena/SM_WC_Banner
+[2026.09.06-05.28.43:433][  0]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/WonderChess/Arena/SM_WC_Banner" FILE="../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_Banner.uasset" SILENT=true
+[2026.09.06-05.28.43:444][  0]LogSavePackage: Moving output files for package: /Game/WonderChess/Arena/SM_WC_Banner
+[2026.09.06-05.28.43:447][  0]LogSavePackage: Moving '../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/SM_WC_Banner383F35F94E471097291ED28EAAE2BAB2.tmp' to '../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_Banner.uasset'
+[2026.09.06-05.28.43:449][  0]LogFileHelpers: InternalPromptForCheckoutAndSave took 15.430 ms (total: 111.253 ms)
+[2026.09.06-05.28.43:459][  0]LogFactory: FactoryCreateFile: StaticMesh with FbxFactory (0 0 C:/Users/iputu/Documents/Wonder Chess/exports/arena/SM_WC_BenchPlinth.fbx)
+[2026.09.06-05.28.43:470][  0]LogFbx: Loading FBX Scene from C:/Users/iputu/Documents/Wonder Chess/exports/arena/SM_WC_BenchPlinth.fbx
+[2026.09.06-05.28.43:475][  0]LogFbx: FBX Scene Loaded Succesfully
+[2026.09.06-05.28.43:476][  0]LogFbx: Display: Triangulating static mesh SM_WC_BenchPlinth
+[2026.09.06-05.28.43:480][  0]LogStaticMesh: Display: Building static mesh SM_WC_BenchPlinth (Required Memory Estimate: 0.136772 MB)...
+[2026.09.06-05.28.43:483][  0]LogStaticMesh: Built static mesh [0.00s] /Game/WonderChess/Arena/SM_WC_BenchPlinth.SM_WC_BenchPlinth
+[2026.09.06-05.28.43:493][  0]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2026.09.06-05.28.43:493][  0]LogFileHelpers: Saving Package: /Game/WonderChess/Arena/SM_WC_BenchPlinth
+[2026.09.06-05.28.43:493][  0]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/WonderChess/Arena/SM_WC_BenchPlinth" FILE="../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_BenchPlinth.uasset" SILENT=true
+[2026.09.06-05.28.43:503][  0]LogSavePackage: Moving output files for package: /Game/WonderChess/Arena/SM_WC_BenchPlinth
+[2026.09.06-05.28.43:504][  0]LogSavePackage: Moving '../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/SM_WC_BenchPlinth4D76F4A54FBB9DC289616992BA35EC09.tmp' to '../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_BenchPlinth.uasset'
+[2026.09.06-05.28.43:507][  0]LogFileHelpers: InternalPromptForCheckoutAndSave took 14.263 ms (total: 125.517 ms)
+[2026.09.06-05.28.43:511][  0]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2026.09.06-05.28.43:511][  0]LogFileHelpers: Saving Package: /Game/WonderChess/Arena/SM_WC_BenchPlinth
+[2026.09.06-05.28.43:511][  0]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/WonderChess/Arena/SM_WC_BenchPlinth" FILE="../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_BenchPlinth.uasset" SILENT=true
+[2026.09.06-05.28.43:524][  0]LogSavePackage: Moving output files for package: /Game/WonderChess/Arena/SM_WC_BenchPlinth
+[2026.09.06-05.28.43:525][  0]LogSavePackage: Moving '../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/SM_WC_BenchPlinthCF5401E54D886CEB225B3FB4C8083BAD.tmp' to '../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_BenchPlinth.uasset'
+[2026.09.06-05.28.43:529][  0]LogFileHelpers: InternalPromptForCheckoutAndSave took 18.193 ms (total: 143.710 ms)
+[2026.09.06-05.28.43:540][  0]LogFactory: FactoryCreateFile: StaticMesh with FbxFactory (0 0 C:/Users/iputu/Documents/Wonder Chess/exports/arena/SM_WC_BoardCorner.fbx)
+[2026.09.06-05.28.43:553][  0]LogFbx: Loading FBX Scene from C:/Users/iputu/Documents/Wonder Chess/exports/arena/SM_WC_BoardCorner.fbx
+[2026.09.06-05.28.43:561][  0]LogFbx: FBX Scene Loaded Succesfully
+[2026.09.06-05.28.43:562][  0]LogFbx: Display: Triangulating static mesh SM_WC_BoardCorner
+[2026.09.06-05.28.43:565][  0]LogStaticMesh: Display: Building static mesh SM_WC_BoardCorner (Required Memory Estimate: 0.093794 MB)...
+[2026.09.06-05.28.43:569][  0]LogStaticMesh: Built static mesh [0.00s] /Game/WonderChess/Arena/SM_WC_BoardCorner.SM_WC_BoardCorner
+[2026.09.06-05.28.43:580][  0]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2026.09.06-05.28.43:581][  0]LogFileHelpers: Saving Package: /Game/WonderChess/Arena/SM_WC_BoardCorner
+[2026.09.06-05.28.43:581][  0]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/WonderChess/Arena/SM_WC_BoardCorner" FILE="../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_BoardCorner.uasset" SILENT=true
+[2026.09.06-05.28.43:593][  0]LogSavePackage: Moving output files for package: /Game/WonderChess/Arena/SM_WC_BoardCorner
+[2026.09.06-05.28.43:593][  0]LogSavePackage: Moving '../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/SM_WC_BoardCorner2BC49FED45D3E4D2A81C6BA9ACBE9382.tmp' to '../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_BoardCorner.uasset'
+[2026.09.06-05.28.43:596][  0]LogFileHelpers: InternalPromptForCheckoutAndSave took 15.681 ms (total: 159.392 ms)
+[2026.09.06-05.28.43:603][  0]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2026.09.06-05.28.43:603][  0]LogFileHelpers: Saving Package: /Game/WonderChess/Arena/SM_WC_BoardCorner
+[2026.09.06-05.28.43:603][  0]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/WonderChess/Arena/SM_WC_BoardCorner" FILE="../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_BoardCorner.uasset" SILENT=true
+[2026.09.06-05.28.43:615][  0]LogSavePackage: Moving output files for package: /Game/WonderChess/Arena/SM_WC_BoardCorner
+[2026.09.06-05.28.43:617][  0]LogSavePackage: Moving '../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/SM_WC_BoardCorner23212C5743ED38384941228499123FE2.tmp' to '../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_BoardCorner.uasset'
+[2026.09.06-05.28.43:619][  0]LogFileHelpers: InternalPromptForCheckoutAndSave took 16.556 ms (total: 175.948 ms)
+[2026.09.06-05.28.43:632][  0]LogFactory: FactoryCreateFile: StaticMesh with FbxFactory (0 0 C:/Users/iputu/Documents/Wonder Chess/exports/arena/SM_WC_BoardEdge.fbx)
+[2026.09.06-05.28.43:641][  0]LogFbx: Loading FBX Scene from C:/Users/iputu/Documents/Wonder Chess/exports/arena/SM_WC_BoardEdge.fbx
+[2026.09.06-05.28.43:646][  0]LogFbx: FBX Scene Loaded Succesfully
+[2026.09.06-05.28.43:648][  0]LogFbx: Display: Triangulating static mesh SM_WC_BoardEdge
+[2026.09.06-05.28.43:651][  0]LogStaticMesh: Display: Building static mesh SM_WC_BoardEdge (Required Memory Estimate: 0.093794 MB)...
+[2026.09.06-05.28.43:656][  0]LogStaticMesh: Built static mesh [0.01s] /Game/WonderChess/Arena/SM_WC_BoardEdge.SM_WC_BoardEdge
+[2026.09.06-05.28.43:665][  0]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2026.09.06-05.28.43:666][  0]LogFileHelpers: Saving Package: /Game/WonderChess/Arena/SM_WC_BoardEdge
+[2026.09.06-05.28.43:666][  0]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/WonderChess/Arena/SM_WC_BoardEdge" FILE="../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_BoardEdge.uasset" SILENT=true
+[2026.09.06-05.28.43:678][  0]LogSavePackage: Moving output files for package: /Game/WonderChess/Arena/SM_WC_BoardEdge
+[2026.09.06-05.28.43:678][  0]LogSavePackage: Moving '../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/SM_WC_BoardEdge0AFD8DC3416568817979D6882061D6A3.tmp' to '../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_BoardEdge.uasset'
+[2026.09.06-05.28.43:681][  0]LogFileHelpers: InternalPromptForCheckoutAndSave took 14.889 ms (total: 190.837 ms)
+[2026.09.06-05.28.43:684][  0]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2026.09.06-05.28.43:686][  0]LogFileHelpers: Saving Package: /Game/WonderChess/Arena/SM_WC_BoardEdge
+[2026.09.06-05.28.43:686][  0]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/WonderChess/Arena/SM_WC_BoardEdge" FILE="../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_BoardEdge.uasset" SILENT=true
+[2026.09.06-05.28.43:699][  0]LogSavePackage: Moving output files for package: /Game/WonderChess/Arena/SM_WC_BoardEdge
+[2026.09.06-05.28.43:701][  0]LogSavePackage: Moving '../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/SM_WC_BoardEdge48A7D3EC4146A0F830108CBC64136DB5.tmp' to '../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_BoardEdge.uasset'
+[2026.09.06-05.28.43:704][  0]LogFileHelpers: InternalPromptForCheckoutAndSave took 18.285 ms (total: 209.123 ms)
+[2026.09.06-05.28.43:716][  0]LogFactory: FactoryCreateFile: StaticMesh with FbxFactory (0 0 C:/Users/iputu/Documents/Wonder Chess/exports/arena/SM_WC_CourtyardFoundation.fbx)
+[2026.09.06-05.28.43:726][  0]LogFbx: Loading FBX Scene from C:/Users/iputu/Documents/Wonder Chess/exports/arena/SM_WC_CourtyardFoundation.fbx
+[2026.09.06-05.28.43:732][  0]LogFbx: FBX Scene Loaded Succesfully
+[2026.09.06-05.28.43:734][  0]LogFbx: Display: Triangulating static mesh SM_WC_CourtyardFoundation
+[2026.09.06-05.28.43:737][  0]LogStaticMesh: Display: Building static mesh SM_WC_CourtyardFoundation (Required Memory Estimate: 0.050842 MB)...
+[2026.09.06-05.28.43:740][  0]LogStaticMesh: Built static mesh [0.00s] /Game/WonderChess/Arena/SM_WC_CourtyardFoundation.SM_WC_CourtyardFoundation
+[2026.09.06-05.28.43:760][  0]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2026.09.06-05.28.43:762][  0]LogFileHelpers: Saving Package: /Game/WonderChess/Arena/SM_WC_CourtyardFoundation
+[2026.09.06-05.28.43:772][  0]LogSavePackage: Moving output files for package: /Game/WonderChess/Arena/SM_WC_CourtyardFoundation
+[2026.09.06-05.28.43:772][  0]LogSavePackage: Moving '../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/SM_WC_CourtyardFoundation3662324448533D6715E13782C66FA935.tmp' to '../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_CourtyardFoundation.uasset'
+[2026.09.06-05.28.43:775][  0]LogFileHelpers: InternalPromptForCheckoutAndSave took 14.363 ms (total: 223.487 ms)
+[2026.09.06-05.28.43:780][  0]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2026.09.06-05.28.43:780][  0]LogFileHelpers: Saving Package: /Game/WonderChess/Arena/SM_WC_CourtyardFoundation
+[2026.09.06-05.28.43:794][  0]LogSavePackage: Moving output files for package: /Game/WonderChess/Arena/SM_WC_CourtyardFoundation
+[2026.09.06-05.28.43:796][  0]LogSavePackage: Moving '../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/SM_WC_CourtyardFoundation378D730B4931103A22E9728EF6719F17.tmp' to '../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_CourtyardFoundation.uasset'
+[2026.09.06-05.28.43:799][  0]LogFileHelpers: InternalPromptForCheckoutAndSave took 18.969 ms (total: 242.457 ms)
+[2026.09.06-05.28.43:811][  0]LogFactory: FactoryCreateFile: StaticMesh with FbxFactory (0 0 C:/Users/iputu/Documents/Wonder Chess/exports/arena/SM_WC_DistantFacade.fbx)
+[2026.09.06-05.28.43:822][  0]LogFbx: Loading FBX Scene from C:/Users/iputu/Documents/Wonder Chess/exports/arena/SM_WC_DistantFacade.fbx
+[2026.09.06-05.28.43:827][  0]LogFbx: FBX Scene Loaded Succesfully
+[2026.09.06-05.28.43:829][  0]LogFbx: Display: Triangulating static mesh SM_WC_DistantFacade
+[2026.09.06-05.28.43:852][  0]LogStaticMesh: Display: Building static mesh SM_WC_DistantFacade (Required Memory Estimate: 1.470901 MB)...
+[2026.09.06-05.28.43:869][  0]LogStaticMesh: Built static mesh [0.02s] /Game/WonderChess/Arena/SM_WC_DistantFacade.SM_WC_DistantFacade
+[2026.09.06-05.28.43:918][  0]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2026.09.06-05.28.43:918][  0]LogFileHelpers: Saving Package: /Game/WonderChess/Arena/SM_WC_DistantFacade
+[2026.09.06-05.28.43:918][  0]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/WonderChess/Arena/SM_WC_DistantFacade" FILE="../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_DistantFacade.uasset" SILENT=true
+[2026.09.06-05.28.43:932][  0]LogSavePackage: Moving output files for package: /Game/WonderChess/Arena/SM_WC_DistantFacade
+[2026.09.06-05.28.43:932][  0]LogSavePackage: Moving '../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/SM_WC_DistantFacadeC730265B43128EACBB609BAE1A24EDB8.tmp' to '../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_DistantFacade.uasset'
+[2026.09.06-05.28.43:934][  0]LogFileHelpers: InternalPromptForCheckoutAndSave took 16.641 ms (total: 259.099 ms)
+[2026.09.06-05.28.43:940][  0]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2026.09.06-05.28.43:940][  0]LogFileHelpers: Saving Package: /Game/WonderChess/Arena/SM_WC_DistantFacade
+[2026.09.06-05.28.43:940][  0]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/WonderChess/Arena/SM_WC_DistantFacade" FILE="../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_DistantFacade.uasset" SILENT=true
+[2026.09.06-05.28.43:953][  0]LogSavePackage: Moving output files for package: /Game/WonderChess/Arena/SM_WC_DistantFacade
+[2026.09.06-05.28.43:955][  0]LogSavePackage: Moving '../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/SM_WC_DistantFacadeCF259FD549EE05250C7DD2944480D3A5.tmp' to '../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_DistantFacade.uasset'
+[2026.09.06-05.28.43:958][  0]LogFileHelpers: InternalPromptForCheckoutAndSave took 17.671 ms (total: 276.770 ms)
+[2026.09.06-05.28.43:971][  0]LogFactory: FactoryCreateFile: StaticMesh with FbxFactory (0 0 C:/Users/iputu/Documents/Wonder Chess/exports/arena/SM_WC_Flagpole.fbx)
+[2026.09.06-05.28.43:982][  0]LogFbx: Loading FBX Scene from C:/Users/iputu/Documents/Wonder Chess/exports/arena/SM_WC_Flagpole.fbx
+[2026.09.06-05.28.43:989][  0]LogFbx: FBX Scene Loaded Succesfully
+[2026.09.06-05.28.43:990][  0]LogFbx: Display: Triangulating static mesh SM_WC_Flagpole
+[2026.09.06-05.28.44:000][  0]LogStaticMesh: Display: Building static mesh SM_WC_Flagpole (Required Memory Estimate: 0.392719 MB)...
+[2026.09.06-05.28.44:004][  0]LogStaticMesh: Built static mesh [0.00s] /Game/WonderChess/Arena/SM_WC_Flagpole.SM_WC_Flagpole
+[2026.09.06-05.28.44:014][  0]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2026.09.06-05.28.44:014][  0]LogFileHelpers: Saving Package: /Game/WonderChess/Arena/SM_WC_Flagpole
+[2026.09.06-05.28.44:014][  0]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/WonderChess/Arena/SM_WC_Flagpole" FILE="../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_Flagpole.uasset" SILENT=true
+[2026.09.06-05.28.44:030][  0]LogSavePackage: Moving output files for package: /Game/WonderChess/Arena/SM_WC_Flagpole
+[2026.09.06-05.28.44:030][  0]LogSavePackage: Moving '../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/SM_WC_Flagpole900522F048DE03A41A03979B76B1EEAA.tmp' to '../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_Flagpole.uasset'
+[2026.09.06-05.28.44:032][  0]LogFileHelpers: InternalPromptForCheckoutAndSave took 17.764 ms (total: 294.535 ms)
+[2026.09.06-05.28.44:039][  0]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2026.09.06-05.28.44:039][  0]LogFileHelpers: Saving Package: /Game/WonderChess/Arena/SM_WC_Flagpole
+[2026.09.06-05.28.44:039][  0]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/WonderChess/Arena/SM_WC_Flagpole" FILE="../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_Flagpole.uasset" SILENT=true
+[2026.09.06-05.28.44:050][  0]LogSavePackage: Moving output files for package: /Game/WonderChess/Arena/SM_WC_Flagpole
+[2026.09.06-05.28.44:052][  0]LogSavePackage: Moving '../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/SM_WC_Flagpole55023ED04F7F8C9D933FB69227527AE0.tmp' to '../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_Flagpole.uasset'
+[2026.09.06-05.28.44:055][  0]LogFileHelpers: InternalPromptForCheckoutAndSave took 16.456 ms (total: 310.991 ms)
+[2026.09.06-05.28.44:066][  0]LogFactory: FactoryCreateFile: StaticMesh with FbxFactory (0 0 C:/Users/iputu/Documents/Wonder Chess/exports/arena/SM_WC_Lantern.fbx)
+[2026.09.06-05.28.44:077][  0]LogFbx: Loading FBX Scene from C:/Users/iputu/Documents/Wonder Chess/exports/arena/SM_WC_Lantern.fbx
+[2026.09.06-05.28.44:083][  0]LogFbx: FBX Scene Loaded Succesfully
+[2026.09.06-05.28.44:084][  0]LogFbx: Display: Triangulating static mesh SM_WC_Lantern
+[2026.09.06-05.28.44:091][  0]LogStaticMesh: Display: Building static mesh SM_WC_Lantern (Required Memory Estimate: 0.333038 MB)...
+[2026.09.06-05.28.44:096][  0]LogStaticMesh: Built static mesh [0.01s] /Game/WonderChess/Arena/SM_WC_Lantern.SM_WC_Lantern
+[2026.09.06-05.28.44:105][  0]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2026.09.06-05.28.44:106][  0]LogFileHelpers: Saving Package: /Game/WonderChess/Arena/SM_WC_Lantern
+[2026.09.06-05.28.44:106][  0]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/WonderChess/Arena/SM_WC_Lantern" FILE="../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_Lantern.uasset" SILENT=true
+[2026.09.06-05.28.44:233][  0]LogSavePackage: Moving output files for package: /Game/WonderChess/Arena/SM_WC_Lantern
+[2026.09.06-05.28.44:233][  0]LogSavePackage: Moving '../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/SM_WC_Lantern876BF87A42D6914F70A6CFA3AB18EE41.tmp' to '../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_Lantern.uasset'
+[2026.09.06-05.28.44:235][  0]LogFileHelpers: InternalPromptForCheckoutAndSave took 130.177 ms (total: 441.169 ms)
+[2026.09.06-05.28.44:242][  0]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2026.09.06-05.28.44:242][  0]LogFileHelpers: Saving Package: /Game/WonderChess/Arena/SM_WC_Lantern
+[2026.09.06-05.28.44:242][  0]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/WonderChess/Arena/SM_WC_Lantern" FILE="../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_Lantern.uasset" SILENT=true
+[2026.09.06-05.28.44:254][  0]LogSavePackage: Moving output files for package: /Game/WonderChess/Arena/SM_WC_Lantern
+[2026.09.06-05.28.44:255][  0]LogSavePackage: Moving '../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/SM_WC_LanternC9EFD68445CA310133532E97AF70CC2A.tmp' to '../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_Lantern.uasset'
+[2026.09.06-05.28.44:258][  0]LogFileHelpers: InternalPromptForCheckoutAndSave took 17.014 ms (total: 458.184 ms)
+[2026.09.06-05.28.44:271][  0]LogFactory: FactoryCreateFile: StaticMesh with FbxFactory (0 0 C:/Users/iputu/Documents/Wonder Chess/exports/arena/SM_WC_LowWall.fbx)
+[2026.09.06-05.28.44:279][  0]LogFbx: Loading FBX Scene from C:/Users/iputu/Documents/Wonder Chess/exports/arena/SM_WC_LowWall.fbx
+[2026.09.06-05.28.44:285][  0]LogFbx: FBX Scene Loaded Succesfully
+[2026.09.06-05.28.44:286][  0]LogFbx: Display: Triangulating static mesh SM_WC_LowWall
+[2026.09.06-05.28.44:291][  0]LogStaticMesh: Display: Building static mesh SM_WC_LowWall (Required Memory Estimate: 0.17975 MB)...
+[2026.09.06-05.28.44:296][  0]LogStaticMesh: Built static mesh [0.01s] /Game/WonderChess/Arena/SM_WC_LowWall.SM_WC_LowWall
+[2026.09.06-05.28.44:309][  0]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2026.09.06-05.28.44:309][  0]LogFileHelpers: Saving Package: /Game/WonderChess/Arena/SM_WC_LowWall
+[2026.09.06-05.28.44:309][  0]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/WonderChess/Arena/SM_WC_LowWall" FILE="../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_LowWall.uasset" SILENT=true
+[2026.09.06-05.28.44:321][  0]LogSavePackage: Moving output files for package: /Game/WonderChess/Arena/SM_WC_LowWall
+[2026.09.06-05.28.44:321][  0]LogSavePackage: Moving '../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/SM_WC_LowWall42F4331B4FD29DD7419C9A8EA95AA469.tmp' to '../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_LowWall.uasset'
+[2026.09.06-05.28.44:323][  0]LogFileHelpers: InternalPromptForCheckoutAndSave took 14.719 ms (total: 472.903 ms)
+[2026.09.06-05.28.44:330][  0]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2026.09.06-05.28.44:330][  0]LogFileHelpers: Saving Package: /Game/WonderChess/Arena/SM_WC_LowWall
+[2026.09.06-05.28.44:330][  0]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/WonderChess/Arena/SM_WC_LowWall" FILE="../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_LowWall.uasset" SILENT=true
+[2026.09.06-05.28.44:342][  0]LogSavePackage: Moving output files for package: /Game/WonderChess/Arena/SM_WC_LowWall
+[2026.09.06-05.28.44:344][  0]LogSavePackage: Moving '../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/SM_WC_LowWallF48008B041B2597CB02399911C8295DE.tmp' to '../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_LowWall.uasset'
+[2026.09.06-05.28.44:347][  0]LogFileHelpers: InternalPromptForCheckoutAndSave took 16.681 ms (total: 489.585 ms)
+[2026.09.06-05.28.44:359][  0]LogFactory: FactoryCreateFile: StaticMesh with FbxFactory (0 0 C:/Users/iputu/Documents/Wonder Chess/exports/arena/SM_WC_Planter.fbx)
+[2026.09.06-05.28.44:369][  0]LogFbx: Loading FBX Scene from C:/Users/iputu/Documents/Wonder Chess/exports/arena/SM_WC_Planter.fbx
+[2026.09.06-05.28.44:374][  0]LogFbx: FBX Scene Loaded Succesfully
+[2026.09.06-05.28.44:376][  0]LogFbx: Display: Triangulating static mesh SM_WC_Planter
+[2026.09.06-05.28.44:398][  0]LogStaticMesh: Display: Building static mesh SM_WC_Planter (Required Memory Estimate: 1.413877 MB)...
+[2026.09.06-05.28.44:414][  0]LogStaticMesh: Built static mesh [0.02s] /Game/WonderChess/Arena/SM_WC_Planter.SM_WC_Planter
+[2026.09.06-05.28.44:427][  0]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2026.09.06-05.28.44:427][  0]LogFileHelpers: Saving Package: /Game/WonderChess/Arena/SM_WC_Planter
+[2026.09.06-05.28.44:427][  0]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/WonderChess/Arena/SM_WC_Planter" FILE="../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_Planter.uasset" SILENT=true
+[2026.09.06-05.28.44:443][  0]LogSavePackage: Moving output files for package: /Game/WonderChess/Arena/SM_WC_Planter
+[2026.09.06-05.28.44:443][  0]LogSavePackage: Moving '../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/SM_WC_Planter5664AB2247BF29D986224D9B5929FC9F.tmp' to '../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_Planter.uasset'
+[2026.09.06-05.28.44:446][  0]LogFileHelpers: InternalPromptForCheckoutAndSave took 18.974 ms (total: 508.559 ms)
+[2026.09.06-05.28.44:452][  0]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2026.09.06-05.28.44:452][  0]LogFileHelpers: Saving Package: /Game/WonderChess/Arena/SM_WC_Planter
+[2026.09.06-05.28.44:452][  0]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/WonderChess/Arena/SM_WC_Planter" FILE="../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_Planter.uasset" SILENT=true
+[2026.09.06-05.28.44:463][  0]LogSavePackage: Moving output files for package: /Game/WonderChess/Arena/SM_WC_Planter
+[2026.09.06-05.28.44:466][  0]LogSavePackage: Moving '../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/SM_WC_PlanterDBD0402D4142E43A1F1C6A918B231E40.tmp' to '../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_Planter.uasset'
+[2026.09.06-05.28.44:469][  0]LogFileHelpers: InternalPromptForCheckoutAndSave took 17.820 ms (total: 526.380 ms)
+[2026.09.06-05.28.44:480][  0]LogFactory: FactoryCreateFile: StaticMesh with FbxFactory (0 0 C:/Users/iputu/Documents/Wonder Chess/exports/arena/SM_WC_Stairs.fbx)
+[2026.09.06-05.28.44:490][  0]LogFbx: Loading FBX Scene from C:/Users/iputu/Documents/Wonder Chess/exports/arena/SM_WC_Stairs.fbx
+[2026.09.06-05.28.44:495][  0]LogFbx: FBX Scene Loaded Succesfully
+[2026.09.06-05.28.44:496][  0]LogFbx: Display: Triangulating static mesh SM_WC_Stairs
+[2026.09.06-05.28.44:501][  0]LogStaticMesh: Display: Building static mesh SM_WC_Stairs (Required Memory Estimate: 0.17975 MB)...
+[2026.09.06-05.28.44:505][  0]LogStaticMesh: Built static mesh [0.00s] /Game/WonderChess/Arena/SM_WC_Stairs.SM_WC_Stairs
+[2026.09.06-05.28.44:516][  0]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2026.09.06-05.28.44:517][  0]LogFileHelpers: Saving Package: /Game/WonderChess/Arena/SM_WC_Stairs
+[2026.09.06-05.28.44:517][  0]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/WonderChess/Arena/SM_WC_Stairs" FILE="../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_Stairs.uasset" SILENT=true
+[2026.09.06-05.28.44:528][  0]LogSavePackage: Moving output files for package: /Game/WonderChess/Arena/SM_WC_Stairs
+[2026.09.06-05.28.44:528][  0]LogSavePackage: Moving '../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/SM_WC_Stairs26C3D3D34FC405DA6B547EA5F805CDA5.tmp' to '../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_Stairs.uasset'
+[2026.09.06-05.28.44:531][  0]LogFileHelpers: InternalPromptForCheckoutAndSave took 14.757 ms (total: 541.137 ms)
+[2026.09.06-05.28.44:539][  0]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2026.09.06-05.28.44:539][  0]LogFileHelpers: Saving Package: /Game/WonderChess/Arena/SM_WC_Stairs
+[2026.09.06-05.28.44:539][  0]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/WonderChess/Arena/SM_WC_Stairs" FILE="../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_Stairs.uasset" SILENT=true
+[2026.09.06-05.28.44:550][  0]LogSavePackage: Moving output files for package: /Game/WonderChess/Arena/SM_WC_Stairs
+[2026.09.06-05.28.44:551][  0]LogSavePackage: Moving '../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/SM_WC_Stairs6D1FD7C74A130F499EBD7C8E5A0837F7.tmp' to '../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_Stairs.uasset'
+[2026.09.06-05.28.44:553][  0]LogFileHelpers: InternalPromptForCheckoutAndSave took 14.767 ms (total: 555.905 ms)
+[2026.09.06-05.28.44:566][  0]LogFactory: FactoryCreateFile: StaticMesh with FbxFactory (0 0 C:/Users/iputu/Documents/Wonder Chess/exports/arena/SM_WC_Tile.fbx)
+[2026.09.06-05.28.44:578][  0]LogFbx: Loading FBX Scene from C:/Users/iputu/Documents/Wonder Chess/exports/arena/SM_WC_Tile.fbx
+[2026.09.06-05.28.44:583][  0]LogFbx: FBX Scene Loaded Succesfully
+[2026.09.06-05.28.44:585][  0]LogFbx: Display: Triangulating static mesh SM_WC_Tile
+[2026.09.06-05.28.44:591][  0]LogStaticMesh: Display: Building static mesh SM_WC_Tile (Required Memory Estimate: 0.222755 MB)...
+[2026.09.06-05.28.44:595][  0]LogStaticMesh: Built static mesh [0.01s] /Game/WonderChess/Arena/SM_WC_Tile.SM_WC_Tile
+[2026.09.06-05.28.44:604][  0]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2026.09.06-05.28.44:605][  0]LogFileHelpers: Saving Package: /Game/WonderChess/Arena/SM_WC_Tile
+[2026.09.06-05.28.44:605][  0]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/WonderChess/Arena/SM_WC_Tile" FILE="../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_Tile.uasset" SILENT=true
+[2026.09.06-05.28.44:614][  0]LogSavePackage: Moving output files for package: /Game/WonderChess/Arena/SM_WC_Tile
+[2026.09.06-05.28.44:614][  0]LogSavePackage: Moving '../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/SM_WC_TileE8EA01CE455EFD60B73B9BAC1BC0203E.tmp' to '../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_Tile.uasset'
+[2026.09.06-05.28.44:617][  0]LogFileHelpers: InternalPromptForCheckoutAndSave took 12.798 ms (total: 568.704 ms)
+[2026.09.06-05.28.44:623][  0]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2026.09.06-05.28.44:624][  0]LogFileHelpers: Saving Package: /Game/WonderChess/Arena/SM_WC_Tile
+[2026.09.06-05.28.44:624][  0]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/WonderChess/Arena/SM_WC_Tile" FILE="../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_Tile.uasset" SILENT=true
+[2026.09.06-05.28.44:635][  0]LogSavePackage: Moving output files for package: /Game/WonderChess/Arena/SM_WC_Tile
+[2026.09.06-05.28.44:636][  0]LogSavePackage: Moving '../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/SM_WC_Tile39B808914BDF47CF0CF747BAB7670B40.tmp' to '../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_Tile.uasset'
+[2026.09.06-05.28.44:639][  0]LogFileHelpers: InternalPromptForCheckoutAndSave took 15.622 ms (total: 584.326 ms)
+[2026.09.06-05.28.44:649][  0]LogFactory: FactoryCreateFile: StaticMesh with FbxFactory (0 0 C:/Users/iputu/Documents/Wonder Chess/exports/arena/SM_WC_TileAlt.fbx)
+[2026.09.06-05.28.44:661][  0]LogFbx: Loading FBX Scene from C:/Users/iputu/Documents/Wonder Chess/exports/arena/SM_WC_TileAlt.fbx
+[2026.09.06-05.28.44:668][  0]LogFbx: FBX Scene Loaded Succesfully
+[2026.09.06-05.28.44:670][  0]LogFbx: Display: Triangulating static mesh SM_WC_TileAlt
+[2026.09.06-05.28.44:675][  0]LogStaticMesh: Display: Building static mesh SM_WC_TileAlt (Required Memory Estimate: 0.222755 MB)...
+[2026.09.06-05.28.44:679][  0]LogStaticMesh: Built static mesh [0.00s] /Game/WonderChess/Arena/SM_WC_TileAlt.SM_WC_TileAlt
+[2026.09.06-05.28.44:688][  0]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2026.09.06-05.28.44:689][  0]LogFileHelpers: Saving Package: /Game/WonderChess/Arena/SM_WC_TileAlt
+[2026.09.06-05.28.44:689][  0]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/WonderChess/Arena/SM_WC_TileAlt" FILE="../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_TileAlt.uasset" SILENT=true
+[2026.09.06-05.28.44:700][  0]LogSavePackage: Moving output files for package: /Game/WonderChess/Arena/SM_WC_TileAlt
+[2026.09.06-05.28.44:700][  0]LogSavePackage: Moving '../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/SM_WC_TileAlt34867E5A4383D1ACB30999AFFBFA8B41.tmp' to '../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_TileAlt.uasset'
+[2026.09.06-05.28.44:703][  0]LogFileHelpers: InternalPromptForCheckoutAndSave took 14.098 ms (total: 598.425 ms)
+[2026.09.06-05.28.44:707][  0]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2026.09.06-05.28.44:707][  0]LogFileHelpers: Saving Package: /Game/WonderChess/Arena/SM_WC_TileAlt
+[2026.09.06-05.28.44:707][  0]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/WonderChess/Arena/SM_WC_TileAlt" FILE="../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_TileAlt.uasset" SILENT=true
+[2026.09.06-05.28.44:720][  0]LogSavePackage: Moving output files for package: /Game/WonderChess/Arena/SM_WC_TileAlt
+[2026.09.06-05.28.44:722][  0]LogSavePackage: Moving '../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/SM_WC_TileAlt011B2E82409BC668233683821DE4C9D5.tmp' to '../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Arena/SM_WC_TileAlt.uasset'
+[2026.09.06-05.28.44:725][  0]LogFileHelpers: InternalPromptForCheckoutAndSave took 17.276 ms (total: 615.701 ms)
+[2026.09.06-05.28.44:726][  0]LogStreaming: Warning: LoadPackage: SkipPackage: /Game/WonderChess/Materials/M_WC_Surface (0xD5DB4714A7519178) - The package to load does not exist on disk or in the loader
+[2026.09.06-05.28.44:727][  0]LogUObjectGlobals: Warning: Failed to find object 'Object None./Game/WonderChess/Materials/M_WC_Surface'
+[2026.09.06-05.28.44:757][  0]LogUObjectHash: Compacting FUObjectHashTables data took   1.00ms
+[2026.09.06-05.28.44:786][  0]LogUObjectHash: Compacting FUObjectHashTables data took   0.46ms
+[2026.09.06-05.28.44:787][  0]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2026.09.06-05.28.44:787][  0]LogFileHelpers: Saving Package: /Game/WonderChess/Materials/M_WC_Surface
+[2026.09.06-05.28.44:787][  0]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/WonderChess/Materials/M_WC_Surface" FILE="../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Materials/M_WC_Surface.uasset" SILENT=true
+[2026.09.06-05.28.44:798][  0]LogSavePackage: Moving output files for package: /Game/WonderChess/Materials/M_WC_Surface
+[2026.09.06-05.28.44:798][  0]LogSavePackage: Moving '../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/M_WC_Surface04F6D7FE47EF036EFB35189BAC043ED5.tmp' to '../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Materials/M_WC_Surface.uasset'
+[2026.09.06-05.28.44:799][  0]LogFileHelpers: InternalPromptForCheckoutAndSave took 12.848 ms (total: 628.550 ms)
+[2026.09.06-05.28.44:801][  0]Cmd: MAP LOAD FILE="../../../../../../Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Maps/L_WC_Menu.umap" TEMPLATE=0 SHOWPROGRESS=1 FEATURELEVEL=4
+[2026.09.06-05.28.44:834][  0]LogUObjectHash: Compacting FUObjectHashTables data took   0.60ms
+[2026.09.06-05.28.44:838][  0]LogEditorServer: Finished looking for orphan Actors (0.000 secs)
+[2026.09.06-05.28.44:865][  0]LogUObjectHash: Compacting FUObjectHashTables data took   0.56ms
+[2026.09.06-05.28.44:865][  0]Cmd: MAP CHECKDEP NOCLEARLOG
+[2026.09.06-05.28.44:865][  0]MapCheck: Map check complete: 0 Error(s), 0 Warning(s), took 0.143ms to complete.
+[2026.09.06-05.28.48:439][  0]LogWindows: Error: === Critical error: ===
+[2026.09.06-05.28.48:439][  0]LogWindows: Error: 
+[2026.09.06-05.28.48:439][  0]LogWindows: Error: Fatal error!
+[2026.09.06-05.28.48:439][  0]LogWindows: Error: 
+[2026.09.06-05.28.48:439][  0]LogWindows: Error: Unhandled Exception: EXCEPTION_ACCESS_VIOLATION reading address 0x0000000000000040
+[2026.09.06-05.28.48:439][  0]LogWindows: Error: 
+[2026.09.06-05.28.48:439][  0]LogWindows: Error: [Callstack] 0x00007ff9907c8b28 UnrealEditor-EditorFramework.dll!UnknownFunction []
+[2026.09.06-05.28.48:440][  0]LogWindows: Error: [Callstack] 0x00007ff94899674c UnrealEditor-UnrealEd.dll!UnknownFunction []
+[2026.09.06-05.28.48:440][  0]LogWindows: Error: [Callstack] 0x00007ff9494d9d5e UnrealEditor-UnrealEd.dll!UnknownFunction []
+[2026.09.06-05.28.48:440][  0]LogWindows: Error: [Callstack] 0x00007ff9494d951a UnrealEditor-UnrealEd.dll!UnknownFunction []
+[2026.09.06-05.28.48:440][  0]LogWindows: Error: [Callstack] 0x00007ff949963d57 UnrealEditor-UnrealEd.dll!UnknownFunction []
+[2026.09.06-05.28.48:440][  0]LogWindows: Error: [Callstack] 0x00007ff97e41d07a UnrealEditor-CoreUObject.dll!UnknownFunction []
+[2026.09.06-05.28.48:440][  0]LogWindows: Error: [Callstack] 0x00007ff97e741232 UnrealEditor-CoreUObject.dll!UnknownFunction []
+[2026.09.06-05.28.48:441][  0]LogWindows: Error: [Callstack] 0x00007ff90e018d23 UnrealEditor-PythonScriptPlugin.dll!UnknownFunction []
+[2026.09.06-05.28.48:441][  0]LogWindows: Error: [Callstack] 0x00007ff90e065f5a UnrealEditor-PythonScriptPlugin.dll!UnknownFunction []
+[2026.09.06-05.28.48:441][  0]LogWindows: Error: [Callstack] 0x00007ff90e06506e UnrealEditor-PythonScriptPlugin.dll!UnknownFunction []
+[2026.09.06-05.28.48:441][  0]LogWindows: Error: [Callstack] 0x00007ff90e0672a5 UnrealEditor-PythonScriptPlugin.dll!UnknownFunction []
+[2026.09.06-05.28.48:441][  0]LogWindows: Error: [Callstack] 0x00007ff90dff3b7e UnrealEditor-PythonScriptPlugin.dll!UnknownFunction []
+[2026.09.06-05.28.48:441][  0]LogWindows: Error: [Callstack] 0x00007ff92f721263 python311.dll!UnknownFunction []
+[2026.09.06-05.28.48:441][  0]LogWindows: Error: [Callstack] 0x00007ff92f7248df python311.dll!UnknownFunction []
+[2026.09.06-05.28.48:441][  0]LogWindows: Error: [Callstack] 0x00007ff92f7260b2 python311.dll!UnknownFunction []
+[2026.09.06-05.28.48:442][  0]LogWindows: Error: [Callstack] 0x00007ff92f7856bf python311.dll!UnknownFunction []
+[2026.09.06-05.28.48:442][  0]LogWindows: Error: [Callstack] 0x00007ff92f7870bf python311.dll!UnknownFunction []
+[2026.09.06-05.28.48:442][  0]LogWindows: Error: [Callstack] 0x00007ff90e001d20 UnrealEditor-PythonScriptPlugin.dll!UnknownFunction []
+[2026.09.06-05.28.48:442][  0]LogWindows: Error: [Callstack] 0x00007ff90e02bb34 UnrealEditor-PythonScriptPlugin.dll!UnknownFunction []
+[2026.09.06-05.28.48:442][  0]LogWindows: Error: [Callstack] 0x00007ff90e002328 UnrealEditor-PythonScriptPlugin.dll!UnknownFunction []
+[2026.09.06-05.28.48:442][  0]LogWindows: Error: [Callstack] 0x00007ff90e01b40d UnrealEditor-PythonScriptPlugin.dll!UnknownFunction []
+[2026.09.06-05.28.48:442][  0]LogWindows: Error: [Callstack] 0x00007ff7eb42a5d1 UnrealEditor-Cmd.exe!UnknownFunction []
+[2026.09.06-05.28.48:442][  0]LogWindows: Error: [Callstack] 0x00007ff7eb420a1b UnrealEditor-Cmd.exe!UnknownFunction []
+[2026.09.06-05.28.48:442][  0]LogWindows: Error: [Callstack] 0x00007ff7eb420d0a UnrealEditor-Cmd.exe!UnknownFunction []
+[2026.09.06-05.28.48:442][  0]LogWindows: Error: [Callstack] 0x00007ff7eb424590 UnrealEditor-Cmd.exe!UnknownFunction []
+[2026.09.06-05.28.48:442][  0]LogWindows: Error: [Callstack] 0x00007ff7eb435be4 UnrealEditor-Cmd.exe!UnknownFunction []
+[2026.09.06-05.28.48:442][  0]LogWindows: Error: [Callstack] 0x00007ff7eb4382f6 UnrealEditor-Cmd.exe!UnknownFunction []
+[2026.09.06-05.28.48:442][  0]LogWindows: Error: [Callstack] 0x00007ffad513ccb7 KERNEL32.DLL!UnknownFunction []
+[2026.09.06-05.28.48:442][  0]LogWindows: Error: 
+[2026.09.06-05.28.48:450][  0]LogExit: Executing StaticShutdownAfterError
+[2026.09.06-05.28.48:466][  0]LogWindows: FPlatformMisc::RequestExit(1, LaunchWindowsStartup.ExceptionHandler)
+[2026.09.06-05.28.48:466][  0]LogWindows: FPlatformMisc::RequestExitWithStatus(1, 3, LaunchWindowsStartup.ExceptionHandler)
+[2026.09.06-05.28.48:467][  0]LogCore: Engine exit requested (reason: Win RequestExit)

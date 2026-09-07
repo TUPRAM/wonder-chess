@@ -1,0 +1,183 @@
+Using bundled DotNet SDK version: 8.0.412 win-x64
+Running UnrealBuildTool: dotnet "..\..\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" WonderChessEditor Win64 Development "C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject" -NoHotReloadFromIDE -WaitMutex
+Log file: C:\Users\iputu\AppData\Local\UnrealBuildTool\Log.txt
+Using 'git status' to determine working set for adaptive non-unity build (C:\Users\iputu\Documents\Wonder Chess).
+Invalidating makefile for WonderChessEditor (source file added)
+UHT compiled-in object format Default
+Parsing headers for WonderChessEditor
+  Running Internal UnrealHeaderTool "C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject" "C:\Users\iputu\Documents\Wonder Chess\game\Intermediate\Build\Win64\WonderChessEditor\Development\WonderChessEditor.uhtmanifest" -WarningsAsErrors -installed
+UHT processed WonderChessEditor in 12.3409555 seconds (7 files written)
+Building WonderChessEditor...
+Using Visual Studio 2022 14.44.35226 toolchain (C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+Determining max actions to execute in parallel (8 physical cores, 16 logical cores)
+  Executing up to 8 processes, one per physical core
+  Requested 1.5 GB memory per action, 1.52 GB available: limiting max parallel actions to 1
+Using Unreal Build Accelerator local executor to run 11 action(s)
+  Storage capacity 40Gb
+---- Starting trace: 260906_132034 ----
+UbaServer - Listening on 0.0.0.0:1345
+[1/11] Compile [x64] Module.WonderChessRuntime.gen.cpp
+[2/11] Compile [x64] WCBoardPresenter.cpp
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCBoardPresenter.cpp(68,59): warning C4996: 'FJsonObject::GetNumberField': Passing an ANSI string to GetNumberField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+    auto Public=Controller->Public; int Phase=int(Public->GetNumberField("phase")); int Observed=Controller->ObservedSeat; VisibleUnits.Reset();
+                                                          ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCBoardPresenter.cpp(70,40): warning C4996: 'FJsonObject::GetArrayField': Passing an ANSI string to GetArrayField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+        const auto& Encounters=Public->GetArrayField("encounters"); int Index=0; bool Found=false;
+                                       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCBoardPresenter.cpp(71,73): warning C4996: 'FJsonObject::GetNumberField': Passing an ANSI string to GetNumberField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+        for(const auto& E:Encounters) { auto P=E->AsObject(); if(int(P->GetNumberField("a"))==Observed||(!P->GetBoolField("ghost")&&int(P->GetNumberField("b"))==Observed)) { VisibleUnits=P->GetArrayField("units"); Found=true; break; }++Index; }
+                                                                        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCBoardPresenter.cpp(72,91): warning C4996: 'FJsonObject::GetArrayField': Passing an ANSI string to GetArrayField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+        if(!Found && Encounters.Num()) { Index=0; VisibleUnits=Encounters[0]->AsObject()->GetArrayField("units"); }
+                                                                                          ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCBoardPresenter.cpp(75,73): warning C4996: 'FJsonObject::GetArrayField': Passing an ANSI string to GetArrayField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+            auto P=Encounters[Index]->AsObject(); const auto& Events=P->GetArrayField("events"); int Newest=LastEventTick;
+                                                                        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCBoardPresenter.cpp(76,78): warning C4996: 'FJsonObject::GetNumberField': Passing an ANSI string to GetNumberField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+            for(const auto& E:Events) {auto V=E->AsObject(); int Tick=int(V->GetNumberField("tick")); if(Tick>LastEventTick) {Newest=FMath::Max(Newest,Tick); if(LastEventTick>=0) {int Effect=int(V->GetNumberField("effect")); static const TCHAR* Names[]={TEXT("melee"),TEXT("heal"),TEXT("shield"),TEXT("stun"),TEXT("dash"),TEXT("magic_impact")}; Controller->Sound(Names[FMath::Clamp(Effect,0,5)]); break;}}} LastEventTick=Newest;
+                                                                             ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCBoardPresenter.cpp(79,35): warning C4996: 'FJsonObject::GetArrayField': Passing an ANSI string to GetArrayField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+        const auto& Seats=Public->GetArrayField("seats");
+                                  ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCBoardPresenter.cpp(80,88): warning C4996: 'FJsonObject::GetArrayField': Passing an ANSI string to GetArrayField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+        if(Seats.IsValidIndex(Observed))for(const auto& V:Seats[Observed]->AsObject()->GetArrayField("units")) {
+                                                                                       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCBoardPresenter.cpp(88,49): warning C4996: 'FJsonObject::GetNumberField': Passing an ANSI string to GetNumberField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+        auto O=V->AsObject(); int64 Id=int64(O->GetNumberField("id")); int Def=int(O->GetNumberField("def")); if(Def<0||Def>=int(Definitions.units.size()))continue;
+                                                ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCBoardPresenter.cpp(89,103): warning C4996: 'FJsonObject::GetNumberField': Passing an ANSI string to GetNumberField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+        const FString UnitId=UTF8_TO_TCHAR(Definitions.units[Def].id.c_str()); const int State=int(O->GetNumberField("state")); Alive.Add(Id);
+                                                                                                      ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCBoardPresenter.cpp(90,25): warning C4996: 'FJsonObject::GetNumberField': Passing an ANSI string to GetNumberField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+        int Side=int(O->GetNumberField("side")); FVector Target=Position(int(O->GetNumberField("col")),int(O->GetNumberField("row")));
+                        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCBoardPresenter.cpp(100,31): warning C4996: 'FJsonObject::GetNumberField': Passing an ANSI string to GetNumberField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+        int64 Action=int64(O->GetNumberField("action"));
+                              ^
+[3/11] Compile [x64] WCDefinitionRegistry.cpp
+[4/11] Compile [x64] WCMatchHUD.cpp
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(33,70): warning C4996: 'FJsonObject::GetNumberField': Passing an ANSI string to GetNumberField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+    auto& Defs=P->Presenter->Definitions; const int Phase=int(State->GetNumberField("phase"));
+                                                                     ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(34,32): warning C4996: 'FJsonObject::GetStringField': Passing an ANSI string to GetStringField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+    const FString Error=State->GetStringField("error");
+                               ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(40,35): warning C4996: 'FJsonObject::GetBoolField': Passing an ANSI string to GetBoolField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+        const bool Network=State->GetBoolField("network");
+                                  ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(46,85): warning C4996: 'FJsonObject::GetNumberField': Passing an ANSI string to GetNumberField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+        if(Network)Text(FString::Printf(TEXT("Connected humans: %d / 2"),int(State->GetNumberField("connected"))),130,884,1,Gold);
+                                                                                    ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(49,36): warning C4996: 'FJsonObject::GetNumberField': Passing an ANSI string to GetNumberField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+        const int Round=int(State->GetNumberField("round")); const int Remaining=FMath::CeilToInt(State->GetNumberField("remaining")/1000.0);
+                                   ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(54,34): warning C4996: 'FJsonObject::GetArrayField': Passing an ANSI string to GetArrayField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+        const auto& Seats=State->GetArrayField("seats"); auto Own=Seats.IsValidIndex(P->AssignedSeat)?Seats[P->AssignedSeat]->AsObject():TSharedPtr<FJsonObject>();
+                                 ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(55,48): warning C4996: 'FJsonObject::GetNumberField': Passing an ANSI string to GetNumberField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+        const bool Alive=Own.IsValid() && Own->GetNumberField("health")>0;
+                                               ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(58,84): warning C4996: 'FJsonObject::GetStringField': Passing an ANSI string to GetStringField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+        for(int I=0;I<Seats.Num();++I){auto S=Seats[I]->AsObject();FString Name=S->GetStringField("name");int Hp=int(S->GetNumberField("health"));int Place=int(S->GetNumberField("place"));
+                                                                                   ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(60,76): warning C4996: 'FJsonObject::GetNumberField': Passing an ANSI string to GetNumberField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+            Text(Hp>0?FString::Printf(TEXT("%d HP  |  Lv %d %s"),Hp,int(S->GetNumberField("level")),S->GetBoolField("human")?TEXT("HUMAN"):TEXT("BOT")):FString::Printf(TEXT("Placed %d - eliminated"),Place),1610,230+I*64,.70,Hp>0?Muted:Gold);
+                                                                           ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(62,70): warning C4996: 'FJsonObject::GetArrayField': Passing an ANSI string to GetArrayField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+        int Opponent=-1;bool Ghost=false;for(const auto& Pair:State->GetArrayField("pairs")){auto V=Pair->AsObject();int A=int(V->GetNumberField("a")),B=int(V->GetNumberField("b"));if(A==P->ObservedSeat){Opponent=B;Ghost=V->GetBoolField("ghost");break;}if(B==P->ObservedSeat&&!V->GetBoolField("ghost")){Opponent=A;break;}}
+                                                                     ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(63,108): warning C4996: 'FJsonObject::GetStringField': Passing an ANSI string to GetStringField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+        if(Seats.IsValidIndex(P->ObservedSeat)){Text(TEXT("VIEWING  ")+Seats[P->ObservedSeat]->AsObject()->GetStringField("name"),480,135,1,Muted);if(Seats.IsValidIndex(Opponent))Text((Ghost?TEXT("GHOST OF  "):TEXT("VERSUS  "))+Seats[Opponent]->AsObject()->GetStringField("name"),980,135,1,Gold);}
+                                                                                                           ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(65,98): warning C4996: 'FJsonObject::GetNumberField': Passing an ANSI string to GetNumberField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+            for(const auto& V:P->Presenter->VisibleUnits){auto U=V->AsObject();int64 Id=int64(U->GetNumberField("id"));if(!P->Presenter->Heroes.Contains(Id))continue;auto* A=P->Presenter->Heroes[Id];FVector2D Screen;P->ProjectWorldLocationToScreen(A->GetActorLocation()+FVector(0,0,205),Screen);float X=(Screen.X-OffsetX)/Scale,Y=(Screen.Y-OffsetY)/Scale;int D=int(U->GetNumberField("def"));if(D<0||D>=int(Defs.units.size()))continue;
+                                                                                                 ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(66,23): warning C4996: 'FJsonObject::GetNumberField': Passing an ANSI string to GetNumberField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+                if(U->GetNumberField("hp")>0){Box(X-40,Y,80,5,FLinearColor(.06,.07,.07));Box(X-40,Y,80*U->GetNumberField("hp")/FMath::Max(1.0,U->GetNumberField("maxHp")),5,U->GetNumberField("side")==0?Teal:FLinearColor(.82,.33,.17));}
+                      ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(67,23): warning C4996: 'FJsonObject::GetNumberField': Passing an ANSI string to GetNumberField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+                if(U->GetNumberField("shield")>0)Text(FString::Printf(TEXT("SHIELD %.0f"),U->GetNumberField("shield")/100),X-40,Y-17,.63,Gold);
+                      ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(68,23): warning C4996: 'FJsonObject::GetNumberField': Passing an ANSI string to GetNumberField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+                if(U->GetNumberField("stun")>0)Text(TEXT("STUN"),X-20,Y+10,.7,Gold);
+                      ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(69,43): warning C4996: 'FJsonObject::GetNumberField': Passing an ANSI string to GetNumberField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+                Text(FString::ChrN(int(U->GetNumberField("star")),TEXT('*')),X-10,Y-30,.8,Gold);
+                                          ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(76,102): warning C4996: 'FJsonObject::GetArrayField': Passing an ANSI string to GetArrayField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+        if(Seats.IsValidIndex(P->ObservedSeat))for(const auto& V:Seats[P->ObservedSeat]->AsObject()->GetArrayField("units")){int D=int(V->AsObject()->GetNumberField("def"));if(D<0||D>=int(Defs.units.size()))continue;Counts.FindOrAdd(UTF8_TO_TCHAR(Defs.units[D].race.c_str())).Add(D);Counts.FindOrAdd(UTF8_TO_TCHAR(Defs.units[D].unitClass.c_str())).Add(D);}
+                                                                                                     ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(83,42): warning C4996: 'FJsonObject::HasField': Passing an ANSI string to HasField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+        if(Private.IsValid() && Private->HasField("gold")){
+                                         ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(84,40): warning C4996: 'FJsonObject::GetNumberField': Passing an ANSI string to GetNumberField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+            int GoldValue=int(Private->GetNumberField("gold")),Level=int(Private->GetNumberField("level")),Xp=int(Private->GetNumberField("xp"));int Deployed=0;for(const auto& V:Private->GetArrayField("units"))if(V->AsObject()->GetBoolField("board"))++Deployed;
+                                       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(86,91): warning C4996: 'FJsonObject::GetArrayField': Passing an ANSI string to GetArrayField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+            for(int B=0;B<8;++B){TSharedPtr<FJsonObject> Found;for(const auto& V:Private->GetArrayField("units")){auto U=V->AsObject();if(!U->GetBoolField("board")&&int(U->GetNumberField("bench"))==B){Found=U;break;}}
+                                                                                          ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(87,92): warning C4996: 'FJsonObject::GetNumberField': Passing an ANSI string to GetNumberField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+                FString Caption=FString::Printf(TEXT("%d"),B+1);if(Found){int D=int(Found->GetNumberField("def"));if(D>=0&&D<int(Defs.units.size())){Caption=UTF8_TO_TCHAR(Defs.units[D].name.c_str());int Space; if(Caption.FindChar(TEXT(' '),Space))Caption=Caption.Left(Space);Caption+=FString::ChrN(int(Found->GetNumberField("star")),TEXT('*'));}}
+                                                                                           ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(90,39): warning C4996: 'FJsonObject::GetArrayField': Passing an ANSI string to GetArrayField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+            const auto& Shop=Private->GetArrayField("shop");for(int I=0;I<Shop.Num();++I){int D=int(Shop[I]->AsNumber());float X=355+I*234;Box(X,905,224,146,Panel);if(D>=0&&D<int(Defs.units.size())){const auto& U=Defs.units[D];FString Id=UTF8_TO_TCHAR(U.id.c_str());const FString Path=TEXT("/Game/WonderChess/Heroes/")+Id+TEXT("/T_")+Id+TEXT("_Portrait.T_")+Id+TEXT("_Portrait");if(auto* Texture=LoadObject<UTexture2D>(nullptr,*Path))DrawTextureSimple(Texture,OffsetX+(X+5)*Scale,OffsetY+912*Scale,(62.f/Texture->GetSizeX())*Scale);Text(UTF8_TO_TCHAR(U.name.c_str()),X+74,918,.77,Gold);Text(UTF8_TO_TCHAR(U.race.c_str()),X+74,947,.70,Muted);Text(UTF8_TO_TCHAR(U.unitClass.c_str()),X+74,970,.70,Muted);Button(TEXT("buy_")+FString::FromInt(I),FString::Printf(TEXT("%s - %d gold"),*Label(TEXT("shop.buy")),U.cost),X+7,1002,210,40,Editable);}else Text(TEXT("Recruited"),X+55,965,.9,Muted);}
+                                      ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(91,315): warning C4996: 'FJsonObject::GetBoolField': Passing an ANSI string to GetBoolField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+            Button(TEXT("reroll"),FString::Printf(TEXT("Reroll | %d gold"),Defs.rules.rerollCost),1585,785,290,50,Editable);Button(TEXT("xp"),FString::Printf(TEXT("+%d XP | %d gold"),Defs.rules.buyXpAmount,Defs.rules.buyXpGold),1585,846,290,50,Editable&&Level<Defs.rules.maximumLevel);Button(TEXT("lock"),Private->GetBoolField("locked")?TEXT("Unlock shop"):Label(TEXT("shop.lock")),1585,907,290,50,Editable);Button(TEXT("ready"),Private->GetBoolField("ready")?Label(TEXT("match.unready")):Label(TEXT("match.ready")),1585,968,290,74,Phase==0&&Alive);
+                                                                                                                                                                                                                                                                                                                          ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(95,192): warning C4996: 'FJsonObject::GetNumberField': Passing an ANSI string to GetNumberField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+        if(!Alive && Phase<3) {Box(495,690,900,70,Navy);Text(FString::Printf(TEXT("Eliminated - placement %d. The tournament continues; choose a captain to spectate."),Own.IsValid()?int(Own->GetNumberField("place")):0),515,715,.85,Gold);}
+                                                                                                                                                                                               ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(96,29): warning C4996: 'FJsonObject::HasField': Passing an ANSI string to HasField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+        if(Phase==2&&State->HasField("recap")){auto Rec=State->GetObjectField("recap");const auto& Damage=Rec->GetArrayField("damage");if(Damage.IsValidIndex(P->ObservedSeat)){Box(550,630,820,70,Navy);Text(FString::Printf(TEXT("Round %d settled | Captain health lost: %.0f"),int(Rec->GetNumberField("round")),Damage[P->ObservedSeat]->AsNumber()),575,652,1,Gold);}}
+                            ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(97,151): warning C4996: 'FJsonObject::GetBoolField': Passing an ANSI string to GetBoolField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+        if(Phase==3||Phase==4){Box(410,200,1090,530,Navy);Text(Phase==4?TEXT("MATCH ABORTED"):TEXT("THE TRIALS CONCLUDE"),475,235,2,Gold);Text(State->GetBoolField("capped")?TEXT("Round cap adjudication - shared placements are possible"):TEXT("Final tournament standings"),475,296,1,Muted);for(int I=0;I<Seats.Num();++I){auto S=Seats[I]->AsObject();Text(FString::Printf(TEXT("#%d  %s  |  %d victories"),int(S->GetNumberField("place")),*S->GetStringField("name"),int(S->GetNumberField("wins"))),490+(I/4)*485,355+(I%4)*54,1);}Button(TEXT("restart"),Label(TEXT("match.restart")),475,618,430,64,P->AssignedSeat<=0);Button(TEXT("menu"),TEXT("Return to title"),940,618,475,64);}
+                                                                                                                                                      ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(118,95): warning C4996: 'FJsonObject::GetBoolField': Passing an ANSI string to GetBoolField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+    if(Id==TEXT("start")||Id==TEXT("restart")){P->ServerStart(P->Public.IsValid()&&P->Public->GetBoolField("network")?2:1,int32(FDateTime::UtcNow().GetTicks()&0x7fffffff));return;}
+                                                                                              ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(125,44): warning C4996: 'FJsonObject::HasField': Passing an ANSI string to HasField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+    if(!P->Private.IsValid()||!P->Private->HasField("shop"))return;
+                                           ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(126,102): warning C4996: 'FJsonObject::GetArrayField': Passing an ANSI string to GetArrayField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+    if(Id.StartsWith(TEXT("buy_"))){int Slot=FCString::Atoi(*Id.Mid(4));const auto& Shop=P->Private->GetArrayField("shop");if(Shop.IsValidIndex(Slot))P->InspectedDefinition=int(Shop[Slot]->AsNumber());P->Intent(wc::CommandType::Buy,0,Slot);return;}
+                                                                                                     ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(132,205): warning C4996: 'FJsonObject::GetArrayField': Passing an ANSI string to GetArrayField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+    if(Id.StartsWith(TEXT("bench_"))){int B=FCString::Atoi(*Id.Mid(6));if(P->SelectedUnit){P->Intent(wc::CommandType::Move,P->SelectedUnit,B,false);P->SelectedUnit=0;return;}for(const auto& V:P->Private->GetArrayField("units")){auto U=V->AsObject();if(!U->GetBoolField("board")&&int(U->GetNumberField("bench"))==B)Select=int64(U->GetNumberField("id"));}}
+                                                                                                                                                                                                            ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(133,45): warning C4996: 'FJsonObject::GetArrayField': Passing an ANSI string to GetArrayField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+    if(Select)for(const auto& V:P->Private->GetArrayField("units")){auto U=V->AsObject();if(int64(U->GetNumberField("id"))==Select){P->SelectedUnit=Select;P->InspectedDefinition=int(U->GetNumberField("def"));}}
+                                            ^
+[5/11] Compile [x64] WCMatchRuntime.cpp
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchRuntime.cpp(30,128): error C2065: 'OutLifetimeProps': undeclared identifier
+void AWCMatchState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Out) const { Super::GetLifetimeReplicatedProps(Out); DOREPLIFETIME(AWCMatchState,PublicJson); }
+                                                                                                                               ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchRuntime.cpp(159,170): warning C4996: 'FJsonObject::GetNumberField': Passing an ANSI string to GetNumberField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+void AWCMatchController::ClientPrivateState_Implementation(const FString& Json) { PrivateJson=Json; Private=Decode(Json); if(Private.IsValid())AssignedSeat=int(Private->GetNumberField("seat")); }
+                                                                                                                                                                         ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchRuntime.cpp(171,38): warning C4996: 'FJsonObject::HasField': Passing an ANSI string to HasField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+    if(!Private.IsValid()||!Private->HasField("revision"))return;
+                                     ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchRuntime.cpp(172,55): warning C4996: 'FJsonObject::GetNumberField': Passing an ANSI string to GetNumberField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+    ServerIntent(int(Type),RequestId++,int64(Private->GetNumberField("sequence"))+1,int64(Private->GetNumberField("revision")),Unit,Slot,ToBoard,Column,Row);
+                                                      ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchRuntime.cpp(178,54): warning C4996: 'FJsonObject::GetNumberField': Passing an ANSI string to GetNumberField has been deprecated outside of UTF-8 mode. Please use the overload that takes a TCHAR string. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+        if(Public.IsValid()) { int Phase=int(Public->GetNumberField("phase")); if(Phase!=LastPhase) { SelectedUnit=0; if(Phase>=0)Sound(Phase==int(wc::Phase::Finished)?TEXT("victory"):TEXT("phase")); LastPhase=Phase; } }
+                                                     ^
+[6/11] Compile [x64] WonderSimulation.cpp
+[7/11] Compile [x64] WonderSimulationTests.cpp
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(9,1): error C2838: 'ApplicationContextMask': illegal qualified name in member declaration
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FWCArithmeticTest, "WonderChess.Runtime.IntegerContracts",
+^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(9,1): error C2065: 'ApplicationContextMask': undeclared identifier
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(47,1): error C2838: 'ApplicationContextMask': illegal qualified name in member declaration
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FWCAllBotCombatTest, "WonderChess.Runtime.OneHundredActualCombatTournaments",
+^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(47,1): error C2065: 'ApplicationContextMask': undeclared identifier
+[8/11] Compile [x64] WonderTournament.cpp
+Trace written to file C:/Users/iputu/AppData/Local/UnrealBuildTool/Log.uba with size 14.6kb
+Total time in Unreal Build Accelerator local executor: 73.27 seconds
+
+Result: Failed (OtherCompilationError)
+Total execution time: 99.77 seconds

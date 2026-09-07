@@ -1,0 +1,535 @@
+{
+  "status": "PASS",
+  "generated_utc": "2026-09-06T07:42:18.218503+00:00",
+  "execution": {
+    "status": "PASS",
+    "cases": 20,
+    "failures": 0,
+    "assertions": 1314848,
+    "combat_executions": 1460,
+    "compiler_msc_full_ver": 194435226,
+    "catalog_digest": "3154592665ce21dc65e5afb06f3769655c8be9ec4157fa6779427c8b8fcc092f"
+  },
+  "process": {
+    "started_utc": "2026-09-06T07:38:14.9434700Z",
+    "ended_utc": "2026-09-06T07:38:52.1889849Z",
+    "compile_exit": 0,
+    "process_exit": 0,
+    "executable": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-310\\runtime\\targeted-native\\build\\targeted_combat_tests.exe",
+    "executable_sha256": "2a0705b9c95149282a4642aa145771348613a246e919fe8fd8d29df3d0033ac4",
+    "source_sha256": "32f8b7cd7a7c82575d90eeb55faf8077a81a170d6b3b16aba53b037a3d862651",
+    "core_sha256": "96019f1f3d5b34fc0e79674c958b01551c28d73643c0fd81850322eb2b87988e"
+  },
+  "edge_cases": [
+    {
+      "case": "canonical_catalog",
+      "status": "PASS",
+      "assertions": "1",
+      "error": ""
+    },
+    {
+      "case": "shield_stronger_replaces",
+      "status": "PASS",
+      "assertions": "10",
+      "error": ""
+    },
+    {
+      "case": "shield_equal_later_refreshes",
+      "status": "PASS",
+      "assertions": "10",
+      "error": ""
+    },
+    {
+      "case": "shield_weaker_changes_nothing",
+      "status": "PASS",
+      "assertions": "10",
+      "error": ""
+    },
+    {
+      "case": "shield_equal_earlier_changes_nothing",
+      "status": "PASS",
+      "assertions": "10",
+      "error": ""
+    },
+    {
+      "case": "physical_shield_overflow",
+      "status": "PASS",
+      "assertions": "7",
+      "error": ""
+    },
+    {
+      "case": "true_damage_shield_overkill",
+      "status": "PASS",
+      "assertions": "7",
+      "error": ""
+    },
+    {
+      "case": "heal_effective_cap",
+      "status": "PASS",
+      "assertions": "15",
+      "error": ""
+    },
+    {
+      "case": "heal_no_revive",
+      "status": "PASS",
+      "assertions": "14",
+      "error": ""
+    },
+    {
+      "case": "horizontal_orthogonal_corner",
+      "status": "PASS",
+      "assertions": "24",
+      "error": ""
+    },
+    {
+      "case": "vertical_orthogonal_corner",
+      "status": "PASS",
+      "assertions": "24",
+      "error": ""
+    },
+    {
+      "case": "reserved_orthogonal_corner",
+      "status": "PASS",
+      "assertions": "27",
+      "error": ""
+    },
+    {
+      "case": "stun_cancels_step",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "defeat_cancels_step",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "stun_cancels_dash",
+      "status": "PASS",
+      "assertions": "13",
+      "error": ""
+    },
+    {
+      "case": "enclosed_corner_no_path",
+      "status": "PASS",
+      "assertions": "9",
+      "error": ""
+    },
+    {
+      "case": "dash_has_no_secret_damage",
+      "status": "PASS",
+      "assertions": "5",
+      "error": ""
+    },
+    {
+      "case": "stun_shorter_does_not_stack",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    },
+    {
+      "case": "stun_longer_extends_maximum",
+      "status": "PASS",
+      "assertions": "6",
+      "error": ""
+    }
+  ],
+  "formation_case": {
+    "case": "canonical_equal_investment_matrix",
+    "status": "PASS",
+    "assertions": "1314638",
+    "error": ""
+  },
+  "formation_scenarios": 720,
+  "distinct_formation_inputs": 600,
+  "observed_replays": 720,
+  "actual_matrix_combat_executions": 1440,
+  "edge_combat_executions_including_bounded_seed_search": 20,
+  "formation_timeouts": 77,
+  "formation_events": 160860,
+  "combat_ticks_min": 399,
+  "combat_ticks_max": 800,
+  "cross_formation_mirror_pairs": 240,
+  "cross_formation_mirror_outcome_changes": 29,
+  "star_scenario_counts": {
+    "1": 240,
+    "2": 240,
+    "3": 240
+  },
+  "base_cost_per_formation": 10,
+  "acquisition_cost_per_star": {
+    "1": 10,
+    "2": 30,
+    "3": 90
+  },
+  "formation_definitions": [
+    {
+      "formation": "shield_heavy",
+      "unit_id": "wc_u_human_guardian",
+      "cost": "1",
+      "column": "2",
+      "row": "3"
+    },
+    {
+      "formation": "shield_heavy",
+      "unit_id": "wc_u_dwarf_guardian",
+      "cost": "1",
+      "column": "3",
+      "row": "3"
+    },
+    {
+      "formation": "shield_heavy",
+      "unit_id": "wc_u_dwarf_warrior",
+      "cost": "2",
+      "column": "4",
+      "row": "3"
+    },
+    {
+      "formation": "shield_heavy",
+      "unit_id": "wc_u_elf_priest",
+      "cost": "2",
+      "column": "2",
+      "row": "2"
+    },
+    {
+      "formation": "shield_heavy",
+      "unit_id": "wc_u_human_priest",
+      "cost": "1",
+      "column": "3",
+      "row": "2"
+    },
+    {
+      "formation": "shield_heavy",
+      "unit_id": "wc_u_orc_mage",
+      "cost": "3",
+      "column": "4",
+      "row": "1"
+    },
+    {
+      "formation": "sustain",
+      "unit_id": "wc_u_human_guardian",
+      "cost": "1",
+      "column": "2",
+      "row": "3"
+    },
+    {
+      "formation": "sustain",
+      "unit_id": "wc_u_dwarf_guardian",
+      "cost": "1",
+      "column": "4",
+      "row": "3"
+    },
+    {
+      "formation": "sustain",
+      "unit_id": "wc_u_elf_rogue",
+      "cost": "3",
+      "column": "5",
+      "row": "2"
+    },
+    {
+      "formation": "sustain",
+      "unit_id": "wc_u_human_priest",
+      "cost": "1",
+      "column": "2",
+      "row": "2"
+    },
+    {
+      "formation": "sustain",
+      "unit_id": "wc_u_elf_priest",
+      "cost": "2",
+      "column": "3",
+      "row": "2"
+    },
+    {
+      "formation": "sustain",
+      "unit_id": "wc_u_dwarf_ranger",
+      "cost": "2",
+      "column": "4",
+      "row": "1"
+    },
+    {
+      "formation": "spread_ranged",
+      "unit_id": "wc_u_human_guardian",
+      "cost": "1",
+      "column": "2",
+      "row": "3"
+    },
+    {
+      "formation": "spread_ranged",
+      "unit_id": "wc_u_dwarf_guardian",
+      "cost": "1",
+      "column": "5",
+      "row": "3"
+    },
+    {
+      "formation": "spread_ranged",
+      "unit_id": "wc_u_elf_ranger",
+      "cost": "1",
+      "column": "0",
+      "row": "0"
+    },
+    {
+      "formation": "spread_ranged",
+      "unit_id": "wc_u_dwarf_ranger",
+      "cost": "2",
+      "column": "7",
+      "row": "0"
+    },
+    {
+      "formation": "spread_ranged",
+      "unit_id": "wc_u_human_mage",
+      "cost": "2",
+      "column": "2",
+      "row": "1"
+    },
+    {
+      "formation": "spread_ranged",
+      "unit_id": "wc_u_orc_mage",
+      "cost": "3",
+      "column": "5",
+      "row": "1"
+    },
+    {
+      "formation": "paired_mage",
+      "unit_id": "wc_u_human_guardian",
+      "cost": "1",
+      "column": "2",
+      "row": "3"
+    },
+    {
+      "formation": "paired_mage",
+      "unit_id": "wc_u_dwarf_guardian",
+      "cost": "1",
+      "column": "3",
+      "row": "3"
+    },
+    {
+      "formation": "paired_mage",
+      "unit_id": "wc_u_dwarf_warrior",
+      "cost": "2",
+      "column": "4",
+      "row": "3"
+    },
+    {
+      "formation": "paired_mage",
+      "unit_id": "wc_u_human_mage",
+      "cost": "2",
+      "column": "2",
+      "row": "1"
+    },
+    {
+      "formation": "paired_mage",
+      "unit_id": "wc_u_orc_mage",
+      "cost": "3",
+      "column": "4",
+      "row": "1"
+    },
+    {
+      "formation": "paired_mage",
+      "unit_id": "wc_u_human_priest",
+      "cost": "1",
+      "column": "3",
+      "row": "2"
+    },
+    {
+      "formation": "rogue_pressure",
+      "unit_id": "wc_u_human_guardian",
+      "cost": "1",
+      "column": "2",
+      "row": "3"
+    },
+    {
+      "formation": "rogue_pressure",
+      "unit_id": "wc_u_dwarf_warrior",
+      "cost": "2",
+      "column": "3",
+      "row": "3"
+    },
+    {
+      "formation": "rogue_pressure",
+      "unit_id": "wc_u_orc_warrior",
+      "cost": "1",
+      "column": "4",
+      "row": "3"
+    },
+    {
+      "formation": "rogue_pressure",
+      "unit_id": "wc_u_elf_rogue",
+      "cost": "3",
+      "column": "0",
+      "row": "2"
+    },
+    {
+      "formation": "rogue_pressure",
+      "unit_id": "wc_u_orc_rogue",
+      "cost": "2",
+      "column": "7",
+      "row": "2"
+    },
+    {
+      "formation": "rogue_pressure",
+      "unit_id": "wc_u_elf_ranger",
+      "cost": "1",
+      "column": "5",
+      "row": "0"
+    }
+  ],
+  "formation_seat_results": {
+    "shield_heavy": {
+      "seat_appearances": 288,
+      "losses": 161,
+      "timeout_appearances": 40,
+      "wins": 127
+    },
+    "sustain": {
+      "seat_appearances": 288,
+      "wins": 101,
+      "timeout_appearances": 83,
+      "losses": 187
+    },
+    "spread_ranged": {
+      "seat_appearances": 288,
+      "wins": 240,
+      "timeout_appearances": 0,
+      "losses": 48
+    },
+    "paired_mage": {
+      "seat_appearances": 288,
+      "wins": 183,
+      "timeout_appearances": 7,
+      "losses": 93,
+      "draws": 12
+    },
+    "rogue_pressure": {
+      "seat_appearances": 288,
+      "losses": 225,
+      "timeout_appearances": 24,
+      "wins": 63
+    }
+  },
+  "boundaries": [
+    "These are native MSVC executions of current authoritative Combat, not Unreal Automation or packaged network tests.",
+    "Controlled edge fixtures copy the canonical catalog in memory, remove trait bonuses, set deterministic health/damage/range/timing and effect routing, and do not modify canonical files or production code.",
+    "The matrix uses unchanged canonical unit stats, abilities, traits, and rules. All five formations have six distinct heroes and base cost10; all seats use the same star in each scenario.",
+    "The720 matrix rows comprise480 cross-formation oriented scenarios plus240 same-formation rows. Same-formation swapped rows repeat120 identical inputs, leaving600 distinct initial-input scenarios.",
+    "Observation replay reads simulation state and events at each tick; it does not test rendering, networking or user-interface observation. Compared fields are exactly those in Signature().",
+    "Read-only replay checks and all invariant assertions dominate the assertion count; assertion volume is not a quality or performance score.",
+    "Mirror outcomes can change because a seed determines initiative in side insertion order and board route tie-breaking is absolute. The report records these differences without declaring them necessarily defects or balanced outcomes.",
+    "This is a bounded formation sample, not an exhaustive strategy search or proof of solved balance. Frame-time and audio/visual acceptance are outside this harness.",
+    "Empty battles, released projectile after source defeat, expiry-tick shield ordering, and tournament frame-hitch recaps were executed in the separate existing runtime suite; they were not rerun in this new executable."
+  ],
+  "files": [
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-310\\runtime\\targeted-native\\build\\execution.json",
+      "sha256": "c93b17b44d0967f1acd248e552ba42282b983bd487ca5648d54eaa6018c472fe",
+      "bytes": 207
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-310\\runtime\\targeted-native\\build\\process.json",
+      "sha256": "af0f559ccde8450c64e1c5ab0c883239b01efacfc123bedabc9581cb1ef1c9fe",
+      "bytes": 579
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-310\\runtime\\targeted-native\\build\\edge-cases.csv",
+      "sha256": "1133030ee42e517d221b6ab679bac2fad06f59e98d8ba2bd17ee17c4e066d522",
+      "bytes": 731
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-310\\runtime\\targeted-native\\build\\edge-events.csv",
+      "sha256": "7d37e3a50e4d5cb49e3bbcf00357921023692ec731e6803132c4364b7aa5d008",
+      "bytes": 3720
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-310\\runtime\\targeted-native\\build\\edge-positions.csv",
+      "sha256": "4deb5ddb75be9c46fc0e1b026e77e48e4916f3877fcf46921b2fc01e2b5ba261",
+      "bytes": 25000
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-310\\runtime\\targeted-native\\build\\formations.csv",
+      "sha256": "6e1163bdf8480ffa47be25b687212754e9c628b907769c9c1625199f788f1e61",
+      "bytes": 1144
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-310\\runtime\\targeted-native\\build\\formation-combats.csv",
+      "sha256": "d77daf6ae5e0c916223caaefa837e2453768c3e187eb40f92ddc1b85a36d5795",
+      "bytes": 38159
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-310\\runtime\\targeted-native\\build\\compile.log",
+      "sha256": "86572fbf47bb78cacd87d9f32806a532f1fe76b3eaa6af9259254464e61bcc3b",
+      "bytes": 738
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-310\\runtime\\targeted-native\\build\\run.log",
+      "sha256": "51b24934431e715da08b4056ce2a6dea63bad74635f14948a8ffdbb926e21e19",
+      "bytes": 114
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-310\\runtime\\targeted-native\\build\\targeted_combat_tests.exe",
+      "sha256": "2a0705b9c95149282a4642aa145771348613a246e919fe8fd8d29df3d0033ac4",
+      "bytes": 399360
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\tests\\runtime\\targeted_combat_tests.cpp",
+      "sha256": "32f8b7cd7a7c82575d90eeb55faf8077a81a170d6b3b16aba53b037a3d862651",
+      "bytes": 18012
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\tests\\runtime\\run_targeted_combat.ps1",
+      "sha256": "f6069fd957023a95b7ee4cdefc32ce9d483d3c3c66bc7a0e71678230f89884f5",
+      "bytes": 2381
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\tests\\runtime\\analyze_targeted_combat.py",
+      "sha256": "ed118e6d41ac02d569b72f7cca12fab7df925330602a75bf3425ec7604505798",
+      "bytes": 10479
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\tests\\runtime\\generate_catalog_fixture.py",
+      "sha256": "927331d778c9adaf531b09954c6debc74c0680eb77e06788cbf40c124408311d",
+      "bytes": 6324
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\tests\\runtime\\build\\CatalogFixture.h",
+      "sha256": "fc0ba787a619f56a31ffc7d1991e15facf7e4e3b81bf03f33fe96a19b4c0796b",
+      "bytes": 15336
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Public\\Simulation\\WonderSimulation.h",
+      "sha256": "86444d44ce05abf811bafa06deb63a7577ea1fba4fb66a19450a208a3f8b916a",
+      "bytes": 11270
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Simulation\\WonderSimulation.cpp",
+      "sha256": "96019f1f3d5b34fc0e79674c958b01551c28d73643c0fd81850322eb2b87988e",
+      "bytes": 31614
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\data\\rules.alpha.json",
+      "sha256": "6c7eefa224c242f0aa9d105d91cb252bd89cbfc3775b87c1974eab30c57b30d8",
+      "bytes": 3608
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\data\\units.json",
+      "sha256": "1a93bfb07bd93ace4d5eb740864e26c69765a5ebb9b87885c1d3d40c772cd9e8",
+      "bytes": 176393
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\data\\traits.json",
+      "sha256": "ba71d85cd836e0005d9e7d812be2a1a8d8bbb96428eff69208b6c144767f7e07",
+      "bytes": 7244
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\data\\bots.json",
+      "sha256": "01206e18d2965f52f26a4606a77a9c080f97f80ad9c06b00ba9b2cbef42d4f95",
+      "bytes": 3832
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\generated\\catalog_digest.json",
+      "sha256": "0b9f6fecfbe32be44085968b777d0d2ac22b4d307c3a19dee5d81f875e8c1d59",
+      "bytes": 744
+    }
+  ]
+}

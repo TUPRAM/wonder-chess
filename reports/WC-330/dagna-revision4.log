@@ -1,0 +1,186 @@
+C:\Users\iputu\Documents\Wonder Chess\tools\blender\author_alpha.py:144: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat=bpy.data.materials.new(f'M_{unit["id"]}');mat.use_nodes=True
+C:\Users\iputu\Documents\Wonder Chess\tools\blender\author_alpha.py:589: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat=bpy.data.materials.new('PRESENTATION_DeepBlue');mat.diffuse_color=(.045,.065,.10,1);mat.use_nodes=True
+00:22.328  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\exports\heroes\wc_u_dwarf_warrior\portrait.png'
+00:26.843  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_dwarf_warrior\front.png'
+00:31.515  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_dwarf_warrior\side.png'
+00:37.593  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_dwarf_warrior\back.png'
+00:39.172  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_dwarf_warrior\clip_Idle.png'
+00:40.953  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_dwarf_warrior\clip_Move.png'
+00:42.906  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_dwarf_warrior\clip_Attack.png'
+00:45.265  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_dwarf_warrior\clip_Active.png'
+00:47.031  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_dwarf_warrior\clip_Hit.png'
+00:48.765  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_dwarf_warrior\clip_Defeat.png'
+00:50.437  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_dwarf_warrior\clip_Victory.png'
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_dwarf_warrior\\SK_wc_u_dwarf_warrior.fbx'
+(bpy.data.armatures['WC_humanoid_stocky_v1'], 'POSE')
+export finished in 0.0398 sec.
+Info: Applied modifier was not first, result may not be as expected
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_dwarf_warrior\\SK_wc_u_dwarf_warrior_LOD1.fbx'
+(bpy.data.armatures['WC_humanoid_stocky_v1'], 'POSE')
+export finished in 0.0252 sec.
+Info: Applied modifier was not first, result may not be as expected
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_dwarf_warrior\\SK_wc_u_dwarf_warrior_LOD2.fbx'
+(bpy.data.armatures['WC_humanoid_stocky_v1'], 'POSE')
+export finished in 0.0243 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_dwarf_warrior\\AN_wc_u_dwarf_warrior_Idle.fbx'
+export finished in 0.1294 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_dwarf_warrior\\AN_wc_u_dwarf_warrior_Move.fbx'
+export finished in 0.0871 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_dwarf_warrior\\AN_wc_u_dwarf_warrior_Attack.fbx'
+export finished in 0.0740 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_dwarf_warrior\\AN_wc_u_dwarf_warrior_Active.fbx'
+export finished in 0.0864 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_dwarf_warrior\\AN_wc_u_dwarf_warrior_Hit.fbx'
+export finished in 0.0563 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_dwarf_warrior\\AN_wc_u_dwarf_warrior_Defeat.fbx'
+export finished in 0.0846 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_dwarf_warrior\\AN_wc_u_dwarf_warrior_Victory.fbx'
+export finished in 0.1112 sec.
+Info: Saved as "wc_u_dwarf_warrior.blend"
+{
+  "status": "structural_checks_passed_visual_review_required",
+  "blender_version": "5.1.1",
+  "collection": "EXPORT",
+  "evaluated_triangle_total": 3696,
+  "objects": [
+    {
+      "name": "Armature",
+      "type": "ARMATURE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.7790063619613647,
+        0.35499998927116394,
+        1.5264999866485596
+      ],
+      "roots": [
+        "root"
+      ],
+      "deform_bones": 27
+    },
+    {
+      "name": "SK_wc_u_dwarf_warrior",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.9228345155715942,
+        0.4654577076435089,
+        1.4128999710083008
+      ],
+      "evaluated_triangles": 3696,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "not_checked": [
+    "appearance",
+    "deformation across all clips",
+    "UV overlap appropriateness",
+    "normal-map convention",
+    "Unreal import",
+    "LOD silhouette",
+    "gameplay readability"
+  ]
+}
+{
+  "status": "sampled_motion_invariants_passed",
+  "unit_id": "wc_u_dwarf_warrior",
+  "blender_version": "5.1.1",
+  "sampling": "actual deformed mesh every 3 frames at 60fps",
+  "clips": [
+    {
+      "clip": "Idle",
+      "samples": 41,
+      "minimum_support_sole_z_m": 0.012779992073774338,
+      "maximum_support_sole_z_m": 0.012779992073774338,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 3.5762786865234375e-07
+    },
+    {
+      "clip": "Move",
+      "samples": 21,
+      "minimum_support_sole_z_m": 0.005351224448531866,
+      "maximum_support_sole_z_m": 0.012779992073774338,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 3.5762786865234375e-07
+    },
+    {
+      "clip": "Attack",
+      "samples": 16,
+      "minimum_support_sole_z_m": 0.012779992073774338,
+      "maximum_support_sole_z_m": 0.012779992073774338,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 3.5762786865234375e-07
+    },
+    {
+      "clip": "Active",
+      "samples": 15,
+      "minimum_support_sole_z_m": 0.012779992073774338,
+      "maximum_support_sole_z_m": 0.012779992073774338,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 3.5762786865234375e-07
+    },
+    {
+      "clip": "Hit",
+      "samples": 9,
+      "minimum_support_sole_z_m": 0.012779992073774338,
+      "maximum_support_sole_z_m": 0.012779992073774338,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 3.5762786865234375e-07
+    },
+    {
+      "clip": "Defeat",
+      "samples": 21,
+      "minimum_support_sole_z_m": 0.012114137411117554,
+      "maximum_support_sole_z_m": 0.0224809180945158,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 3.5762786865234375e-07
+    },
+    {
+      "clip": "Victory",
+      "samples": 31,
+      "minimum_support_sole_z_m": 0.012779992073774338,
+      "maximum_support_sole_z_m": 0.012779992073774338,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 3.5762786865234375e-07
+    }
+  ],
+  "errors": [],
+  "not_checked": [
+    "continuous visual quality",
+    "weapon/costume clipping",
+    "semantic gesture review",
+    "Unreal retarget/import",
+    "runtime move-speed synchronization"
+  ]
+}
+WC_HERO_COMPLETE wc_u_dwarf_warrior {"triangles": 3696, "bones": 27}
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

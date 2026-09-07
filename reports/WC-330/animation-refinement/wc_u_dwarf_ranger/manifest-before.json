@@ -1,0 +1,158 @@
+{
+  "status": "authored_exported_rendered_pending_engine_and_visual_acceptance",
+  "unit_id": "wc_u_dwarf_ranger",
+  "name": "Tessa Brassbolt",
+  "blender_version": "5.1.1",
+  "source_revision": 5,
+  "height_m": 1.32,
+  "source_sha256": "fd96cdacab8654249debc7bb6e9cc5a0f04b37b2df54bafe4accfd7187c194cc",
+  "author_script_sha256": "f2fcf648f49acc28b85dcec4eb755f8d8122bc97f7dfef52e54ffc35bc973175",
+  "units_source_sha256": "1a93bfb07bd93ace4d5eb740864e26c69765a5ebb9b87885c1d3d40c772cd9e8",
+  "rig_family": "humanoid_stocky",
+  "rig_revision": "WC_family_v1",
+  "bones": 27,
+  "triangles": 4020,
+  "materials": 1,
+  "fps": 60,
+  "source_forward": "+Y",
+  "source_up": "+Z",
+  "unit_scale_m": 1,
+  "fbx_profile": "tools/blender/profiles/fbx_skeletal_cm_v1.json",
+  "normalized_export_revision": 1,
+  "normalized_exporter_sha256": "13646d355744f5293d573816e5cd54459cf88f3b647c6c2a22aa61ae29200779",
+  "exported_coordinate_units": "centimeters in temporary independent copies; authoring source remains meters",
+  "engine_calibration": [
+    "reports/WC-330/import-probe/forward_cm-results.json",
+    "reports/WC-330/import-probe/all7-comparison.json"
+  ],
+  "textures": {
+    "BaseColor": "sRGB",
+    "Normal": "linear, tangent +Y, flat normal surface; geometric bevels",
+    "ORM": "linear R=occlusion G=roughness B=metallic"
+  },
+  "equipment": "weighted within the skeletal mesh; socket bones also available",
+  "clips": {
+    "Idle": {
+      "action": "AN_wc_u_dwarf_ranger_Idle",
+      "frames": [
+        1,
+        121
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 41,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Move": {
+      "action": "AN_wc_u_dwarf_ranger_Move",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 21,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Attack": {
+      "action": "AN_wc_u_dwarf_ranger_Attack",
+      "frames": [
+        1,
+        43
+      ],
+      "release_frame": 19,
+      "support_hand_bake_samples": 15,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Active": {
+      "action": "AN_wc_u_dwarf_ranger_Active",
+      "frames": [
+        1,
+        40
+      ],
+      "release_frame": 22,
+      "support_hand_bake_samples": 14,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Hit": {
+      "action": "AN_wc_u_dwarf_ranger_Hit",
+      "frames": [
+        1,
+        25
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 9,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Defeat": {
+      "action": "AN_wc_u_dwarf_ranger_Defeat",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 21,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Victory": {
+      "action": "AN_wc_u_dwarf_ranger_Victory",
+      "frames": [
+        1,
+        91
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 31,
+      "maximum_support_reach_clamp_m": 0
+    }
+  },
+  "lods": [
+    {
+      "lod": 1,
+      "triangles": 2009,
+      "ratio_target": 0.5,
+      "visual_acceptance": "pending"
+    },
+    {
+      "lod": 2,
+      "triangles": 1005,
+      "ratio_target": 0.25,
+      "visual_acceptance": "pending"
+    }
+  ],
+  "source_brief": {
+    "silhouette": "A compact upright body with a wide horizontal crossbow and a high single-lens goggle shape above the forehead. A short jacket flares just enough to contrast with the weapon bar.",
+    "face": "Freckled medium-brown skin, dark eyes, cropped copper hair and a confident grin. Goggles sit above the eyes during normal play so expressions remain visible.",
+    "costume": "Mustard work jacket over charcoal padding, leather forearm guards, sturdy trousers and broad boots. A few oversized straps suggest workshop practicality.",
+    "palette": "Mustard #C5A04B; charcoal #404851; copper #B67B55; pale linen #D9CDAF.",
+    "equipment": "A broad stylized crank crossbow with exaggerated fantasy housing and a circular side wheel. It is a game prop, not a functional construction plan; mechanisms remain decorative.",
+    "signature": "Horizontal crossbow silhouette, forehead goggles and mustard jacket.",
+    "materials": "Worn painted wood, brushed copper, matte leather and a tiny cool aiming-gem emissive point. Do not use transparent scope glass.",
+    "back": "A flat bolt case is strapped low between the shoulders; jacket seams form a large X. Keep all parts outside the elbows\u2019 reload arc.",
+    "animation": "Idle checks the line of sight with a small tilt. Basics brace, fire and reset the bow. The active plants both feet, pulls the housing close and releases with a longer visible windup than a basic shot.",
+    "vfx": "A bright compact bolt with a short trail and a sharp target flash. It never pierces or explodes.",
+    "audio": "A dry mechanical click and compact fantasy bow thump; the active adds a short metallic accent rather than a firearm report.",
+    "risk": "The wide prop can overlap neighboring units. Use its lowered rest pose outside windup and a close-to-body turn pose."
+  },
+  "files": {
+    "AN_wc_u_dwarf_ranger_Active.fbx": "411417bdb08412fd63828376e841bee77a4973494ffaefc038d8109ce4020eba",
+    "AN_wc_u_dwarf_ranger_Attack.fbx": "40eca64e85e928ad40885b08a55ae6a95d3bdd1949568b61d2c9d2fa3175ba22",
+    "AN_wc_u_dwarf_ranger_Defeat.fbx": "bff60185beb1812c5c7dc9b864ce69ddfd88e3293f6af5813a910985b0e68e1d",
+    "AN_wc_u_dwarf_ranger_Hit.fbx": "c15ad43bd780e969efb6e09357b69930972d810865496f427a313d67f10a7174",
+    "AN_wc_u_dwarf_ranger_Idle.fbx": "610fb3cebe67a76529dd8463ae3db9a2c3a6a74756b17421736b597a4e8fa80a",
+    "AN_wc_u_dwarf_ranger_Move.fbx": "97fdd0030217e4655006ba6aa3ef721db31d49db2c474e472a3d6dbcae2a9980",
+    "AN_wc_u_dwarf_ranger_Victory.fbx": "2ce7e0893ff759addf6efccf111c98d35f4d4ee2e960e94864cdbcb8b40ec747",
+    "portrait.png": "4d76fe44382573ea9505dd6f36a0c0592d25ac3ea1df22dcbc4467d8e51aaadc",
+    "SK_wc_u_dwarf_ranger.fbx": "713770e483fcafd3138d9dd6f1a66bab6cb9f3a4666e02651e89044c4ebfa381",
+    "SK_wc_u_dwarf_ranger_LOD1.fbx": "586475c07425f5a8614bbeadb01a5bc6087735ac50d5e1238bc82a6c9b6a0640",
+    "SK_wc_u_dwarf_ranger_LOD2.fbx": "89ec8ad8d0cc2cf8327bcb4adeda9138b649531db7a1083d820854b0a5bc6dd3",
+    "T_wc_u_dwarf_ranger_BaseColor.png": "3c0e220e25413f7ad641da7b96c4a38f0010239b1bf8b51c0a45b4f1b78fc5c2",
+    "T_wc_u_dwarf_ranger_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
+    "T_wc_u_dwarf_ranger_ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c"
+  },
+  "open_reviews": [
+    "Unreal scale and facing",
+    "all continuous animation deformation",
+    "source revision reimport",
+    "crowded-board readability",
+    "LOD1/LOD2",
+    "effects and sound integration"
+  ]
+}

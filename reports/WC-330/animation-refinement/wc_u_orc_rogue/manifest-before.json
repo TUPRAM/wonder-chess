@@ -1,0 +1,160 @@
+{
+  "status": "authored_rendered_normalized_exported_pending_current_engine_and_visual_acceptance",
+  "unit_id": "wc_u_orc_rogue",
+  "name": "Kesh Quickwind",
+  "blender_version": "5.1.1",
+  "source_revision": 4,
+  "height_m": 1.93,
+  "source_sha256": "7f039c2c2f5a1c139d6b3e6036df97673bd6aba0a980d4dabca704add8a7a8c4",
+  "author_script_sha256": "474d9d165ca7a0c2134197c379978f59d2af9baf475bbcd0970fd97febd0a4da",
+  "units_source_sha256": "1a93bfb07bd93ace4d5eb740864e26c69765a5ebb9b87885c1d3d40c772cd9e8",
+  "rig_family": "humanoid_broad",
+  "rig_revision": "WC_family_v1",
+  "bones": 27,
+  "triangles": 3422,
+  "materials": 1,
+  "fps": 60,
+  "source_forward": "+Y",
+  "source_up": "+Z",
+  "unit_scale_m": 1,
+  "fbx_profile": "tools\\blender\\profiles\\fbx_skeletal_cm_v1.json",
+  "engine_calibration": [
+    "reports/WC-330/import-probe/normalized_cm-results.json",
+    "reports/WC-330/import-probe/forward_cm-results.json",
+    "reports/WC-330/normalized-cm-copy-trial.log"
+  ],
+  "textures": {
+    "BaseColor": "sRGB",
+    "Normal": "linear, tangent +Y, flat normal surface; geometric bevels",
+    "ORM": "linear R=occlusion G=roughness B=metallic"
+  },
+  "equipment": "weighted within the skeletal mesh; socket bones also available",
+  "clips": {
+    "Idle": {
+      "action": "AN_wc_u_orc_rogue_Idle",
+      "frames": [
+        1,
+        121
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Move": {
+      "action": "AN_wc_u_orc_rogue_Move",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Attack": {
+      "action": "AN_wc_u_orc_rogue_Attack",
+      "frames": [
+        1,
+        40
+      ],
+      "release_frame": 16,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Active": {
+      "action": "AN_wc_u_orc_rogue_Active",
+      "frames": [
+        1,
+        31
+      ],
+      "release_frame": 13,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Hit": {
+      "action": "AN_wc_u_orc_rogue_Hit",
+      "frames": [
+        1,
+        25
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Defeat": {
+      "action": "AN_wc_u_orc_rogue_Defeat",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Victory": {
+      "action": "AN_wc_u_orc_rogue_Victory",
+      "frames": [
+        1,
+        91
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    }
+  },
+  "lods": [
+    {
+      "lod": 1,
+      "triangles": 1710,
+      "ratio_target": 0.5,
+      "visual_acceptance": "pending"
+    },
+    {
+      "lod": 2,
+      "triangles": 854,
+      "ratio_target": 0.25,
+      "visual_acceptance": "pending"
+    }
+  ],
+  "source_brief": {
+    "silhouette": "A narrow athletic wedge with a high scarf loop, short rounded shoulder guards and two compact hooked fantasy blades. The overall shape is tall and light rather than Rok\u2019s broad mantle.",
+    "face": "Muted jade skin, brown eyes, small tusks and cropped dark hair with a pale cloth tie. An easy grin distinguishes him from a stereotypically menacing Rogue.",
+    "costume": "Turquoise courier jacket over charcoal cloth, a tan diagonal sash and light wrapped boots. Large route-marker patches replace armor clutter.",
+    "palette": "Turquoise #408E91; tan #C1A477; charcoal #3D4C4E; muted jade #708D72.",
+    "equipment": "Two short rounded fantasy blades and a flat map case on the hip. Keep the implements stylized and visually simpler than Sylas\u2019s curves.",
+    "signature": "High scarf loop, turquoise diagonal jacket and open forward-running posture.",
+    "materials": "Waxed cloth, soft leather and minimal brushed metal. No transparent cape or spark trail during normal walking.",
+    "back": "A route-map case sits close to the lower back, with a broad sash crossing above it. The scarf loop uses a few stiff bones rather than simulated cloth.",
+    "animation": "Idle is ready to run, not constantly bouncing. Basics use economical alternating motions. The active lowers the lead shoulder and makes one fast grounded glide to the reserved cell.",
+    "vfx": "A short pale-cyan streak hugs the ground; mark the landing rather than hiding the unit. No implicit extra strike or slow.",
+    "audio": "A quick brushed-wind accent and light foot landing. Separate the cue from Sylas\u2019s longer dash with a shorter pitch envelope.",
+    "risk": "The landing must reduce distance to the current target; otherwise a ready skill could loop without tactical purpose. Test same-tick target movement and blocked cells."
+  },
+  "files": {
+    "AN_wc_u_orc_rogue_Active.fbx": "e2e9e0bc480720b02f7a3be8fca73942f86a2057468209050ddbfc87029e6eee",
+    "AN_wc_u_orc_rogue_Attack.fbx": "087f13e44edba1cedfcca22545ddd892f0063ecc379184bf01c1b6d76953a56a",
+    "AN_wc_u_orc_rogue_Defeat.fbx": "ae9e7df73988a6fca2288a20311a99edd33fdff538c581052934faaecaa8cb33",
+    "AN_wc_u_orc_rogue_Hit.fbx": "92da08d0277f4d8ee710bf356d9516be2ab11359ddec3fc541f18a2c76016b08",
+    "AN_wc_u_orc_rogue_Idle.fbx": "6f65dc83d6c5db1789c2b9e1585626daccb6b50555248851d70a5ebc2bfeb5c2",
+    "AN_wc_u_orc_rogue_Move.fbx": "74601112b9bd855304317ac89bad17450140308595ba415df21d91e4db6db295",
+    "AN_wc_u_orc_rogue_Victory.fbx": "22fc79f643db3211320cced0725e138c20bb6721a6c5be11f57b1cc52ea03f69",
+    "portrait.png": "859ae4b02d3693b2d8d48d30c5dfc78abe1fc0afd8a117384b16047563d5e562",
+    "SK_wc_u_orc_rogue.fbx": "973694245ea75b90e8f1e1c127a18e01b2d0e883a2ed9e21d310ef0c16b86537",
+    "SK_wc_u_orc_rogue_LOD1.fbx": "56cd4868e8b3910bcd64553a1db5f14f77b27b8f65b104e205f54aa283f30172",
+    "SK_wc_u_orc_rogue_LOD2.fbx": "140490c4c6702edfa45cff91b3c38c1d9113ad6d5fcd39d8feac721eb4ce9000",
+    "T_wc_u_orc_rogue_BaseColor.png": "caf58f62eb930c8af50300eebae6291fe741c866401c31b13a65204a42af1b36",
+    "T_wc_u_orc_rogue_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
+    "T_wc_u_orc_rogue_ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c"
+  },
+  "open_reviews": [
+    "Unreal scale and facing",
+    "all continuous animation deformation",
+    "source revision reimport",
+    "crowded-board readability",
+    "LOD1/LOD2",
+    "effects and sound integration"
+  ],
+  "normalized_export_revision": 1,
+  "normalized_exporter_sha256": "ac2b263a2491f2cf991065e749926b5549ddc81e73c814fb9958e424b6d23bc6",
+  "normalized_reexport_script_sha256": "c1176dfe4526f36b767e3427383e70c3e174b2d62b36ac1a9562f5d8d7ffb99b",
+  "exported_coordinate_units": "centimeters: temporary geometry, rest translation and animation location values multiplied by100; authoring source remains meters"
+}

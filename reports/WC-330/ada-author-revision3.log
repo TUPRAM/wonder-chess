@@ -1,0 +1,186 @@
+C:\Users\iputu\Documents\Wonder Chess\tools\blender\author_alpha.py:141: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat=bpy.data.materials.new(f'M_{unit["id"]}');mat.use_nodes=True
+C:\Users\iputu\Documents\Wonder Chess\tools\blender\author_alpha.py:561: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat=bpy.data.materials.new('PRESENTATION_DeepBlue');mat.diffuse_color=(.045,.065,.10,1);mat.use_nodes=True
+00:21.079  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\exports\heroes\wc_u_human_guardian\portrait.png'
+00:26.235  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_human_guardian\front.png'
+00:31.360  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_human_guardian\side.png'
+00:37.266  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_human_guardian\back.png'
+00:38.797  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_human_guardian\clip_Idle.png'
+00:40.329  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_human_guardian\clip_Move.png'
+00:41.922  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_human_guardian\clip_Attack.png'
+00:44.110  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_human_guardian\clip_Active.png'
+00:47.500  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_human_guardian\clip_Hit.png'
+00:51.485  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_human_guardian\clip_Defeat.png'
+00:54.797  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\wc_u_human_guardian\clip_Victory.png'
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_guardian\\SK_wc_u_human_guardian.fbx'
+(bpy.data.armatures['WC_humanoid_standard_v1'], 'POSE')
+export finished in 0.0363 sec.
+Info: Applied modifier was not first, result may not be as expected
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_guardian\\SK_wc_u_human_guardian_LOD1.fbx'
+(bpy.data.armatures['WC_humanoid_standard_v1'], 'POSE')
+export finished in 0.0287 sec.
+Info: Applied modifier was not first, result may not be as expected
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_guardian\\SK_wc_u_human_guardian_LOD2.fbx'
+(bpy.data.armatures['WC_humanoid_standard_v1'], 'POSE')
+export finished in 0.0300 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_guardian\\AN_wc_u_human_guardian_Idle.fbx'
+export finished in 0.1614 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_guardian\\AN_wc_u_human_guardian_Move.fbx'
+export finished in 0.1010 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_guardian\\AN_wc_u_human_guardian_Attack.fbx'
+export finished in 0.1059 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_guardian\\AN_wc_u_human_guardian_Active.fbx'
+export finished in 0.0853 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_guardian\\AN_wc_u_human_guardian_Hit.fbx'
+export finished in 0.0679 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_guardian\\AN_wc_u_human_guardian_Defeat.fbx'
+export finished in 0.0968 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\heroes\\wc_u_human_guardian\\AN_wc_u_human_guardian_Victory.fbx'
+export finished in 0.1336 sec.
+Info: Saved as "wc_u_human_guardian.blend"
+{
+  "status": "structural_checks_passed_visual_review_required",
+  "blender_version": "5.1.1",
+  "collection": "EXPORT",
+  "evaluated_triangle_total": 4486,
+  "objects": [
+    {
+      "name": "Armature",
+      "type": "ARMATURE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.235010027885437,
+        0.45499998331069946,
+        1.9565000534057617
+      ],
+      "roots": [
+        "root"
+      ],
+      "deform_bones": 27
+    },
+    {
+      "name": "SK_wc_u_human_guardian",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.5977728366851807,
+        0.8608721494674683,
+        1.8108999729156494
+      ],
+      "evaluated_triangles": 4486,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "not_checked": [
+    "appearance",
+    "deformation across all clips",
+    "UV overlap appropriateness",
+    "normal-map convention",
+    "Unreal import",
+    "LOD silhouette",
+    "gameplay readability"
+  ]
+}
+{
+  "status": "sampled_motion_invariants_passed",
+  "unit_id": "wc_u_human_guardian",
+  "blender_version": "5.1.1",
+  "sampling": "actual deformed mesh every 3 frames at 60fps",
+  "clips": [
+    {
+      "clip": "Idle",
+      "samples": 41,
+      "minimum_support_sole_z_m": 0.01637999527156353,
+      "maximum_support_sole_z_m": 0.01637999527156353,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Move",
+      "samples": 21,
+      "minimum_support_sole_z_m": 0.003758801147341728,
+      "maximum_support_sole_z_m": 0.016380056738853455,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Attack",
+      "samples": 14,
+      "minimum_support_sole_z_m": 0.01637999527156353,
+      "maximum_support_sole_z_m": 0.01637999527156353,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Active",
+      "samples": 13,
+      "minimum_support_sole_z_m": 0.01637999527156353,
+      "maximum_support_sole_z_m": 0.01637999527156353,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Hit",
+      "samples": 9,
+      "minimum_support_sole_z_m": 0.01637999527156353,
+      "maximum_support_sole_z_m": 0.01637999527156353,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Defeat",
+      "samples": 21,
+      "minimum_support_sole_z_m": 0.01522333174943924,
+      "maximum_support_sole_z_m": 0.028813600540161133,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Victory",
+      "samples": 31,
+      "minimum_support_sole_z_m": 0.01637999527156353,
+      "maximum_support_sole_z_m": 0.01637999527156353,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    }
+  ],
+  "errors": [],
+  "not_checked": [
+    "continuous visual quality",
+    "weapon/costume clipping",
+    "semantic gesture review",
+    "Unreal retarget/import",
+    "runtime move-speed synchronization"
+  ]
+}
+WC_HERO_COMPLETE wc_u_human_guardian {"triangles": 4486, "bones": 27}
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

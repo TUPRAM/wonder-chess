@@ -1,0 +1,1146 @@
+﻿Log file open, 09/06/26 14:49:44
+LogWindows: Failed to load 'aqProf.dll' (GetLastError=126)
+LogWindows: File 'aqProf.dll' does not exist
+LogProfilingDebugging: Loading WinPixEventRuntime.dll for PIX profiling (from ../../../Engine/Binaries/ThirdParty/Windows/WinPixEventRuntime/x64).
+LogWindows: Failed to load 'VtuneApi.dll' (GetLastError=126)
+LogWindows: File 'VtuneApi.dll' does not exist
+LogWindows: Failed to load 'VtuneApi32e.dll' (GetLastError=126)
+LogWindows: File 'VtuneApi32e.dll' does not exist
+LogWindows: Custom abort handler registered for crash reporting.
+LogCore: Display: UTS: The Unreal Trace Server binary is not available ('../../../Engine/Binaries/Win64/UnrealTraceServer.exe')
+LogTrace: Initializing trace...
+LogTrace: Finished trace initialization.
+LogCsvProfiler: Display: Metadata set : platform="Windows"
+LogCsvProfiler: Display: Metadata set : config="Development"
+LogCsvProfiler: Display: Metadata set : buildversion="++UE5+Release-5.7-CL-51494982"
+LogCsvProfiler: Display: Metadata set : engineversion="5.7.4-51494982+++UE5+Release-5.7"
+LogCsvProfiler: Display: Metadata set : enginereleaseversion="5.7.4"
+LogCsvProfiler: Display: Metadata set : os="Windows 11 (25H2) [10.0.26200.9278] "
+LogCsvProfiler: Display: Metadata set : cpu="AuthenticAMD|AMD Ryzen 7 6800H with Radeon Graphics"
+LogCsvProfiler: Display: Metadata set : pgoenabled="0"
+LogCsvProfiler: Display: Metadata set : pgoprofilingenabled="0"
+LogCsvProfiler: Display: Metadata set : ltoenabled="0"
+LogCsvProfiler: Display: Metadata set : asan="0"
+LogCsvProfiler: Display: Metadata set : mergedmodules="0"
+LogCsvProfiler: Display: Metadata set : commandline="" WonderChess /Game/WonderChess/Maps/L_WC_Courtyard?listen?WCHumans=2 -unattended -nosplash -windowed -ResX=1920 -ResY=1080 -ForceRes -d3d11 -WCExercise -WCAuthorityChecks -WCProfile -WCShots -ExecCmds="r.ScreenPercentage 100" -WCFast=10 -WCExitAfter=240 -WCEvidenceDir="C:\Users\iputu\Documents\Wonder Chess\reports\WC-360\candidate5-network\host" -abslog="C:\Users\iputu\Documents\Wonder Chess\reports\WC-360\candidate5-network\host\game.log"""
+LogCsvProfiler: Display: Metadata set : loginid="b799ab2045cc4702946a270ab87fe1c4"
+LogCsvProfiler: Display: Metadata set : llm="0"
+LogPakFile: Initializing PakPlatformFile
+LogIoDispatcher: Display: Reading toc: ../../../WonderChess/Content/Paks/global.utoc
+LogIoDispatcher: Display: Toc loaded : ../../../WonderChess/Content/Paks/global.utoc, Id=ffffffffffffffff, Order=0, EntryCount=1, SignatureHash=0000000000000000000000000000000000000000
+LogIoDispatcher: Display: Mounting container '../../../WonderChess/Content/Paks/global.utoc' in location slot 0
+LogPakFile: Display: Initialized I/O dispatcher file backend. Mounted the global container: ../../../WonderChess/Content/Paks/global.utoc
+LogPakFile: Display: Found Pak file ../../../WonderChess/Content/Paks/WonderChess-Windows.pak attempting to mount.
+LogPakFile: Display: Mounting pak file ../../../WonderChess/Content/Paks/WonderChess-Windows.pak.
+LogIoDispatcher: Display: Reading toc: ../../../WonderChess/Content/Paks/WonderChess-Windows.utoc
+LogIoDispatcher: Display: Toc loaded : ../../../WonderChess/Content/Paks/WonderChess-Windows.utoc, Id=d7b75ae51ac0398e, Order=4, EntryCount=1294, SignatureHash=0000000000000000000000000000000000000000
+LogIoDispatcher: Display: Mounting container '../../../WonderChess/Content/Paks/WonderChess-Windows.utoc' in location slot 0
+LogFilePackageStore: Mounting container: Id=d7b75ae51ac0398e, Order=4, NumPackages=659
+LogPakFile: Display: Mounted IoStore container "../../../WonderChess/Content/Paks/WonderChess-Windows.utoc"
+LogPakFile: Display: Mounted Pak file '../../../WonderChess/Content/Paks/WonderChess-Windows.pak', mount point: '../../../'
+LogStats: Stats thread started at 0.210133
+LogAssetRegistry: Premade AssetRegistry loaded from '../../../WonderChess/AssetRegistry.bin'
+LogCsvProfiler: Display: Metadata set : systemresolution.resx="1280"
+LogCsvProfiler: Display: Metadata set : systemresolution.resy="720"
+LogICUInternationalization: OS requested locale 'en-CA' is not supported. Using the OS requested language of 'en-US' as the locale.
+LogICUInternationalization: ICU TimeZone Detection - Raw Offset: +8:00, Platform Override: ''
+LogInit: Session CrashGUID >====================================================
+         Session CrashGUID >   UECC-Windows-D81B16504A5238AE9B92D191EC9BDFC2
+         Session CrashGUID >====================================================
+LogConfig: No local boot hotfix file found at: [../../../WonderChess/Saved/PersistentDownloadDir/HotfixForNextBoot.txt]
+LogAudio: Display: Pre-Initializing Audio Device Manager...
+LogAudio: Display: AudioInfo: 'OPUS' Registered
+LogAudioDebug: Display: Lib vorbis DLL was dynamically loaded.
+LogAudio: Display: AudioInfo: 'OGG' Registered
+LogAudio: Display: AudioInfo: 'ADPCM' Registered
+LogAudio: Display: AudioInfo: 'PCM' Registered
+LogAudio: Display: AudioInfo: 'BINKA' Registered
+LogAudio: Display: AudioInfo: 'RADA' Registered
+LogAudio: Display: Audio Device Manager Pre-Initialized
+LogPluginManager: Mounting Engine plugin Paper2D
+LogPluginManager: Mounting Engine plugin AISupport
+LogPluginManager: Mounting Engine plugin EnvironmentQueryEditor
+LogPluginManager: Mounting Engine plugin ACLPlugin
+LogPluginManager: Mounting Engine plugin AnimationData
+LogPluginManager: Mounting Engine plugin ControlRigModules
+LogPluginManager: Mounting Engine plugin ControlRigSpline
+LogPluginManager: Mounting Engine plugin ControlRig
+LogPluginManager: Mounting Engine plugin DeformerGraph
+LogPluginManager: Mounting Engine plugin EaseCurveTool
+LogPluginManager: Mounting Engine plugin IKRig
+LogPluginManager: Mounting Engine plugin RigLogic
+LogPluginManager: Mounting Engine plugin SkeletalMeshModelingTools
+LogPluginManager: Mounting Engine plugin TweeningUtils
+LogPluginManager: Mounting Engine plugin AudioInsights
+LogPluginManager: Mounting Engine plugin BaseMaterial
+LogPluginManager: Mounting Engine plugin Bridge
+LogPluginManager: Mounting Engine plugin CameraShakePreviewer
+LogPluginManager: Mounting Engine plugin EngineCameras
+LogPluginManager: Mounting Engine plugin GameplayCameras
+LogPluginManager: Mounting Engine plugin ChaosCloth
+LogPluginManager: Mounting Engine plugin ChaosVD
+LogPluginManager: Mounting Engine plugin CompositeCore
+LogPluginManager: Mounting Engine plugin OodleNetwork
+LogPluginManager: Mounting Engine plugin AnimationSharing
+LogPluginManager: Mounting Engine plugin DumpGPUServices
+LogPluginManager: Mounting Engine plugin GPUReshape
+LogPluginManager: Mounting Engine plugin NamingTokens
+LogPluginManager: Mounting Engine plugin PixWinPlugin
+LogPluginManager: Mounting Engine plugin PluginUtils
+LogPluginManager: Mounting Engine plugin RenderDocPlugin
+LogPluginManager: Mounting Engine plugin UObjectPlugin
+LogPluginManager: Mounting Engine plugin AssetManagerEditor
+LogPluginManager: Mounting Engine plugin BlueprintHeaderView
+LogPluginManager: Mounting Engine plugin ColorGrading
+LogPluginManager: Mounting Engine plugin ContentBrowserAssetDataSource
+LogPluginManager: Mounting Engine plugin CurveEditorTools
+LogPluginManager: Mounting Engine plugin DataValidation
+LogPluginManager: Mounting Engine plugin EditorScriptingUtilities
+LogPluginManager: Mounting Engine plugin EngineAssetDefinitions
+LogPluginManager: Mounting Engine plugin FacialAnimation
+LogPluginManager: Mounting Engine plugin GeometryMode
+LogPluginManager: Mounting Engine plugin LightMixer
+LogPluginManager: Mounting Engine plugin ObjectMixer
+LogPluginManager: Mounting Engine plugin SequencerAnimTools
+LogPluginManager: Mounting Engine plugin SpeedTreeImporter
+LogPluginManager: Mounting Engine plugin UMGWidgetPreview
+LogPluginManager: Mounting Engine plugin UVEditor
+LogPluginManager: Mounting Engine plugin EnhancedInput
+LogPluginManager: Mounting Engine plugin DatasmithContent
+LogPluginManager: Mounting Engine plugin GLTFExporter
+LogPluginManager: Mounting Engine plugin VariantManagerContent
+LogPluginManager: Mounting Engine plugin VariantManager
+LogPluginManager: Mounting Engine plugin AutomationUtils
+LogPluginManager: Mounting Engine plugin BackChannel
+LogPluginManager: Mounting Engine plugin ChaosCaching
+LogPluginManager: Mounting Engine plugin ChaosEditor
+LogPluginManager: Mounting Engine plugin ChaosNiagara
+LogPluginManager: Mounting Engine plugin ChaosSolverPlugin
+LogPluginManager: Mounting Engine plugin ChaosUserDataPT
+LogPluginManager: Mounting Engine plugin CharacterAI
+LogPluginManager: Mounting Engine plugin Dataflow
+LogPluginManager: Mounting Engine plugin EditorDataStorageFeatures
+LogPluginManager: Mounting Engine plugin EditorDataStorage
+LogPluginManager: Mounting Engine plugin Fracture
+LogPluginManager: Mounting Engine plugin FullBodyIK
+LogPluginManager: Mounting Engine plugin GeometryCollectionPlugin
+LogPluginManager: Mounting Engine plugin GeometryDataflow
+LogPluginManager: Mounting Engine plugin GlobalConfigurationData
+LogPluginManager: Mounting Engine plugin LevelSequenceNavigatorBridge
+LogPluginManager: Mounting Engine plugin LocalizableMessage
+LogPluginManager: Mounting Engine plugin NFORDenoise
+LogPluginManager: Mounting Engine plugin PlatformCrypto
+LogPluginManager: Mounting Engine plugin PythonScriptPlugin
+LogPluginManager: Mounting Engine plugin RuntimeTelemetry
+LogPluginManager: Mounting Engine plugin ToolPresets
+LogPluginManager: Mounting Engine plugin Cascade
+LogPluginManager: Mounting Engine plugin NiagaraPreviewContent
+LogPluginManager: Mounting Engine plugin NiagaraSimCaching
+LogPluginManager: Mounting Engine plugin Niagara
+LogPluginManager: Mounting Engine plugin Fab
+LogPluginManager: Mounting Engine plugin AlembicImporter
+LogPluginManager: Mounting Engine plugin InterchangeAssets
+LogPluginManager: Mounting Engine plugin InterchangeEditor
+LogPluginManager: Mounting Engine plugin Interchange
+LogPluginManager: Mounting Engine plugin AvfMedia
+LogPluginManager: Mounting Engine plugin ImgMedia
+LogPluginManager: Mounting Engine plugin MediaCompositing
+LogPluginManager: Mounting Engine plugin MediaPlate
+LogPluginManager: Mounting Engine plugin WebMMedia
+LogPluginManager: Mounting Engine plugin WmfMedia
+LogPluginManager: Mounting Engine plugin MeshPainting
+LogPluginManager: Mounting Engine plugin TcpMessaging
+LogPluginManager: Mounting Engine plugin UdpMessaging
+LogPluginManager: Mounting Engine plugin MetaHumanSDK
+LogPluginManager: Mounting Engine plugin ActorSequence
+LogPluginManager: Mounting Engine plugin LevelSequenceEditor
+LogPluginManager: Mounting Engine plugin SequenceValidator
+LogPluginManager: Mounting Engine plugin SequencerScripting
+LogPluginManager: Mounting Engine plugin TemplateSequence
+LogPluginManager: Mounting Engine plugin NNEDenoiser
+LogPluginManager: Mounting Engine plugin NNERuntimeORT
+LogPluginManager: Mounting Engine plugin OnlineBase
+LogPluginManager: Mounting Engine plugin OnlineServices
+LogPluginManager: Mounting Engine plugin OnlineSubsystemNull
+LogPluginManager: Mounting Engine plugin OnlineSubsystemUtils
+LogPluginManager: Mounting Engine plugin OnlineSubsystem
+LogPluginManager: Mounting Engine plugin LauncherChunkInstaller
+LogPluginManager: Mounting Engine plugin ActorLayerUtilities
+LogPluginManager: Mounting Engine plugin AndroidPermission
+LogPluginManager: Mounting Engine plugin AppleImageUtils
+LogPluginManager: Mounting Engine plugin ArchVisCharacter
+LogPluginManager: Mounting Engine plugin AssetTags
+LogPluginManager: Mounting Engine plugin AudioCapture
+LogPluginManager: Mounting Engine plugin AudioSynesthesia
+LogPluginManager: Mounting Engine plugin AudioWidgets
+LogPluginManager: Mounting Engine plugin CableComponent
+LogPluginManager: Mounting Engine plugin ChunkDownloader
+LogPluginManager: Mounting Engine plugin ComputeFramework
+LogPluginManager: Mounting Engine plugin CustomMeshComponent
+LogPluginManager: Mounting Engine plugin ExampleDeviceProfileSelector
+LogPluginManager: Mounting Engine plugin GeometryCache
+LogPluginManager: Mounting Engine plugin GeometryProcessing
+LogPluginManager: Mounting Engine plugin GooglePAD
+LogPluginManager: Mounting Engine plugin HairStrands
+LogPluginManager: Mounting Engine plugin InputDebugging
+LogPluginManager: Mounting Engine plugin LocationServicesBPLibrary
+LogPluginManager: Mounting Engine plugin Metasound
+LogPluginManager: Mounting Engine plugin MobilePatchingUtils
+LogPluginManager: Mounting Engine plugin MsQuic
+LogPluginManager: Mounting Engine plugin ProceduralMeshComponent
+LogPluginManager: Mounting Engine plugin PropertyAccessEditor
+LogPluginManager: Mounting Engine plugin PropertyBindingUtils
+LogPluginManager: Mounting Engine plugin ResonanceAudio
+LogPluginManager: Mounting Engine plugin RigVM
+LogPluginManager: Mounting Engine plugin SignificanceManager
+LogPluginManager: Mounting Engine plugin SoundFields
+LogPluginManager: Mounting Engine plugin StateTree
+LogPluginManager: Mounting Engine plugin Synthesis
+LogPluginManager: Mounting Engine plugin WaveTable
+LogPluginManager: Mounting Engine plugin WebMMoviePlayer
+LogPluginManager: Mounting Engine plugin WindowsDeviceProfileSelector
+LogPluginManager: Mounting Engine plugin WindowsMoviePlayer
+LogPluginManager: Mounting Engine plugin XInputDevice
+LogPluginManager: Mounting Engine plugin InterchangeTests
+LogPluginManager: Mounting Engine plugin TraceUtilities
+LogPluginManager: Mounting Engine plugin Takes
+LogPluginManager: Mounting Engine plugin WorldMetrics
+LogConfig: Applying CVar settings from Section [/Script/CompositeCore.CompositeCorePluginSettings] File [Engine]
+LogWindows: Failed to load 'WinPixGpuCapturer.dll' (GetLastError=126)
+LogWindows: File 'WinPixGpuCapturer.dll' does not exist
+PixWinPlugin: PIX capture plugin failed to initialize! Check that the process is launched from PIX.
+LogConfig: Applying CVar settings from Section [/Script/RenderDocPlugin.RenderDocPluginSettings] File [Engine]
+RenderDocPlugin: Display: RenderDoc plugin will not be loaded. Use '-AttachRenderDoc' on the cmd line or enable 'renderdoc.AutoAttach' in the plugin settings.
+LogNFORDenoise: NFORDenoise function starting up
+LogStudioTelemetry: Started StudioTelemetry Session
+LogInit: Using libcurl 8.12.1
+LogInit:  - built for Windows
+LogInit:  - supports SSL with OpenSSL/1.1.1t
+LogInit:  - supports HTTP deflate (compression) using libz 1.3
+LogInit:  - other features:
+LogInit:      CURL_VERSION_SSL
+LogInit:      CURL_VERSION_LIBZ
+LogInit:      CURL_VERSION_IPV6
+LogInit:      CURL_VERSION_ASYNCHDNS
+LogInit:      CURL_VERSION_LARGEFILE
+LogInit:      CURL_VERSION_TLSAUTH_SRP
+LogInit:      CURL_VERSION_HTTP2
+LogInit:  CurlRequestOptions (configurable via config and command line):
+LogInit:  - bVerifyPeer = true  - Libcurl will verify peer certificate
+LogInit:  - bUseHttpProxy = false  - Libcurl will NOT use HTTP proxy
+LogInit:  - CVarHttpCurlReuseConnectionEnabled = true  - Libcurl will reuse connections
+LogInit:  - MaxHostConnections = 16  - Libcurl will limit the number of connections to a host
+LogInit:  - LocalHostAddr = Default
+LogInit:  - BufferSize = 65536
+LogInit: CreateHttpThread using FCurlMultiPollEventLoopHttpThread
+LogInit: Creating http thread with maximum 256 concurrent requests
+LogInit: WinSock: version 1.1 (2.2), MaxSocks=32767, MaxUdp=65467
+LogOnline: OSS: Created online subsystem instance for: NULL
+LogOnline: OSS: TryLoadSubsystemAndSetDefault: Loaded subsystem for type [NULL]
+LogInit: ExecutableName: WonderChess.exe
+LogInit: Build: ++UE5+Release-5.7-CL-51494982
+LogInit: Platform=Windows
+LogInit: MachineId=b799ab2045cc4702946a270ab87fe1c4
+LogInit: DeviceId=
+LogInit: Engine Version: 5.7.4-51494982+++UE5+Release-5.7
+LogInit: Compatible Engine Version: 5.7.0-47537391+++UE5+Release-5.7
+LogInit: Net CL: 47537391
+LogInit: OS: Windows 11 (25H2) [10.0.26200.9278] (), CPU: AMD Ryzen 7 6800H with Radeon Graphics         , GPU: AMD Radeon(TM) Graphics
+LogInit: CPU Model ID: 19441, microcode revision: a404107
+LogInit: Compiled (64-bit): Mar  6 2026 12:47:26
+LogInit: Architecture: x64
+LogInit: Compiled with Visual C++: 19.44.35223.00
+LogInit: Build Configuration: Development
+LogInit: Branch Name: ++UE5+Release-5.7
+LogInit: Command Line: /Game/WonderChess/Maps/L_WC_Courtyard?listen?WCHumans=2 -unattended -nosplash -windowed -ResX=1920 -ResY=1080 -ForceRes -d3d11 -WCExercise -WCAuthorityChecks -WCProfile -WCShots -ExecCmds="r.ScreenPercentage 100" -WCFast=10 -WCExitAfter=240 -WCEvidenceDir="C:\Users\iputu\Documents\Wonder Chess\reports\WC-360\candidate5-network\host" -abslog="C:\Users\iputu\Documents\Wonder Chess\reports\WC-360\candidate5-network\host\game.log"
+LogInit: Base Directory: C:/Users/iputu/Documents/Wonder Chess/builds/Windows-Alpha/WonderChess/Binaries/Win64/
+LogInit: Allocator: Binned2
+LogInit: Installed Engine Build: 0
+LogInit: This binary is optimized with LTO: no, PGO: no, instrumented for PGO data collection: no
+LogDevObjectVersion: Number of dev versions registered: 41
+LogDevObjectVersion:   Dev-Blueprints (B0D832E4-1F89-4F0D-ACCF-7EB736FD4AA2): 10
+LogDevObjectVersion:   Dev-Build (E1C64328-A22C-4D53-A36C-8E866417BD8C): 0
+LogDevObjectVersion:   Dev-Core (375EC13C-06E4-48FB-B500-84F0262A717E): 4
+LogDevObjectVersion:   Dev-Editor (E4B068ED-F494-42E9-A231-DA0B2E46BB41): 40
+LogDevObjectVersion:   Dev-Framework (CFFC743F-43B0-4480-9391-14DF171D2073): 37
+LogDevObjectVersion:   Dev-Mobile (B02B49B5-BB20-44E9-A304-32B752E40360): 3
+LogDevObjectVersion:   Dev-Networking (A4E4105C-59A1-49B5-A7C5-40C4547EDFEE): 0
+LogDevObjectVersion:   Dev-Online (39C831C9-5AE6-47DC-9A44-9C173E1C8E7C): 0
+LogDevObjectVersion:   Dev-Physics (78F01B33-EBEA-4F98-B9B4-84EACCB95AA2): 20
+LogDevObjectVersion:   Dev-Platform (6631380F-2D4D-43E0-8009-CF276956A95A): 0
+LogDevObjectVersion:   Dev-Rendering (12F88B9F-8875-4AFC-A67C-D90C383ABD29): 49
+LogDevObjectVersion:   Dev-Sequencer (7B5AE74C-D270-4C10-A958-57980B212A5A): 13
+LogDevObjectVersion:   Dev-VR (D7296918-1DD6-4BDD-9DE2-64A83CC13884): 3
+LogDevObjectVersion:   Dev-LoadTimes (C2A15278-BFE7-4AFE-6C17-90FF531DF755): 1
+LogDevObjectVersion:   Private-Geometry (6EACA3D4-40EC-4CC1-B786-8BED09428FC5): 3
+LogDevObjectVersion:   Dev-AnimPhys (29E575DD-E0A3-4627-9D10-D276232CDCEA): 17
+LogDevObjectVersion:   Dev-Anim (AF43A65D-7FD3-4947-9873-3E8ED9C1BB05): 15
+LogDevObjectVersion:   Dev-ReflectionCapture (6B266CEC-1EC7-4B8F-A30B-E4D90942FC07): 1
+LogDevObjectVersion:   Dev-Automation (0DF73D61-A23F-47EA-B727-89E90C41499A): 1
+LogDevObjectVersion:   FortniteMain (601D1886-AC64-4F84-AA16-D3DE0DEAC7D6): 225
+LogDevObjectVersion:   FortniteValkyrie (8DBC2C5B-54A7-43E0-A768-FCBB7DA29060): 8
+LogDevObjectVersion:   FortniteSeason (5B4C06B7-2463-4AF8-805B-BF70CDF5D0DD): 15
+LogDevObjectVersion:   FortniteRelease (E7086368-6B23-4C58-8439-1B7016265E91): 17
+LogDevObjectVersion:   Dev-Enterprise (9DFFBCD6-494F-0158-E221-12823C92A888): 11
+LogDevObjectVersion:   Dev-Niagara (F2AED0AC-9AFE-416F-8664-AA7FFA26D6FC): 1
+LogDevObjectVersion:   Dev-Destruction (174F1F0B-B4C6-45A5-B13F-2EE8D0FB917D): 10
+LogDevObjectVersion:   Dev-Physics-Ext (35F94A83-E258-406C-A318-09F59610247C): 41
+LogDevObjectVersion:   Dev-PhysicsMaterial-Chaos (B68FC16E-8B1B-42E2-B453-215C058844FE): 1
+LogDevObjectVersion:   Dev-CineCamera (B2E18506-4273-CFC2-A54E-F4BB758BBA07): 1
+LogDevObjectVersion:   Dev-VirtualProduction (64F58936-FD1B-42BA-BA96-7289D5D0FA4E): 1
+LogDevObjectVersion:   UE5-Main (697DD581-E64F-41AB-AA4A-51ECBEB7B628): 121
+LogDevObjectVersion:   UE5-Release (D89B5E42-24BD-4D46-8412-ACA8DF641779): 61
+LogDevObjectVersion:   UE5-SpecialProject (59DA5D52-1232-4948-B878-597870B8E98B): 9
+LogDevObjectVersion:   Dev-MediaFramework (6F0ED827-A609-4895-9C91-998D90180EA4): 2
+LogDevObjectVersion:   Dev-NaniteResearch (30D58BE3-95EA-4282-A6E3-B159D8EBB06A): 1
+LogDevObjectVersion:   Dev-RigVM (DC49959B-53C0-4DE7-9156-EA885E7C5D39): 19
+LogDevObjectVersion:   Dev-ControlRig (A7820CFB-20A7-4359-8C54-2C149623CF50): 40
+LogDevObjectVersion:   Dev-IKRig (F6DFBB78-BB50-A0E4-4018-B84D60CBAF23): 11
+LogDevObjectVersion:   Dev-ComputeFramework (6304A3E7-0059-4F59-8CFC-21BD7721FD4E): 0
+LogDevObjectVersion:   Dev-Optimus (93EDE1AA-10CA-7375-4DF9-8A2849B157A0): 14
+LogDevObjectVersion:   FN-Main-InterchangePipeline (B69D2E47-E2A8-4003-BF77-18A492C4D899): 1
+LogInit: Presizing for max 2097152 objects, including 1 objects not considered by GC.
+LogInit: Object subsystem initialized
+LogConfig: Set CVar [[con.DebugEarlyDefault:1]]
+LogConfig: CVar [[con.DebugLateDefault:1]] deferred - dummy variable created
+LogConfig: CVar [[con.DebugLateCheat:1]] deferred - dummy variable created
+LogConfig: CVar [[LogNamedEventFilters:Frame *]] deferred - dummy variable created
+LogConfig: Set CVar [[r.setres:1280x720]]
+LogConfig: CVar [[framepro.ScopeMinTimeMicroseconds:10]] deferred - dummy variable created
+LogConfig: Set CVar [[fx.NiagaraAllowRuntimeScalabilityChanges:1]]
+LogConfig: CVar [[QualityLevelMapping:high]] deferred - dummy variable created
+LogConfig: CVar [[r.Occlusion.SingleRHIThreadStall:1]] deferred - dummy variable created
+LogConfig: Set CVar [[r.Nanite.Streaming.ReservedResources:1]]
+LogConfig: Set CVar [[D3D12.Bindless.ResourceDescriptorHeapSize:32768]]
+LogConfig: Set CVar [[D3D12.Bindless.SamplerDescriptorHeapSize:2048]]
+LogConfig: Set CVar [[r.PSOPrecache.GlobalShaders:1]]
+LogConfig: Set CVar [[r.VRS.EnableSoftware:1]]
+LogConfig: Set CVar [[r.VRS.ContrastAdaptiveShading:1]]
+LogConfig: Set CVar [[r.VSync:0]]
+LogConfig: Set CVar [[t.MaxFPS:60]]
+[2026.09.06-06.49.44:675][  0]LogConfig: CVar [[con.DebugLateDefault:1]] deferred - dummy variable created
+[2026.09.06-06.49.44:675][  0]LogConfig: CVar [[con.DebugLateCheat:1]] deferred - dummy variable created
+[2026.09.06-06.49.44:675][  0]LogConfig: CVar [[LogNamedEventFilters:Frame *]] deferred - dummy variable created
+[2026.09.06-06.49.44:675][  0]LogConfig: CVar [[framepro.ScopeMinTimeMicroseconds:10]] deferred - dummy variable created
+[2026.09.06-06.49.44:675][  0]LogConfig: CVar [[QualityLevelMapping:high]] deferred - dummy variable created
+[2026.09.06-06.49.44:675][  0]LogConfig: CVar [[r.Occlusion.SingleRHIThreadStall:1]] deferred - dummy variable created
+[2026.09.06-06.49.44:675][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.RendererSettings] File [Engine]
+[2026.09.06-06.49.44:675][  0]LogConfig: CVar [[VisualizeCalibrationColorMaterialPath:/Engine/EngineMaterials/PPM_DefaultCalibrationColor.PPM_DefaultCalibrationColor]] deferred - dummy variable created
+[2026.09.06-06.49.44:675][  0]LogConfig: CVar [[VisualizeCalibrationGrayscaleMaterialPath:/Engine/EngineMaterials/PPM_DefaultCalibrationGrayscale.PPM_DefaultCalibrationGrayscale]] deferred - dummy variable created
+[2026.09.06-06.49.44:675][  0]LogConfig: Set CVar [[r.GPUCrashDebugging:0]]
+[2026.09.06-06.49.44:675][  0]LogConfig: CVar [[MaxSkinBones:(Default=65536,PerPlatform=(("Mobile", 256)))]] deferred - dummy variable created
+[2026.09.06-06.49.44:675][  0]LogConfig: Set CVar [[r.Shaders.RemoveUnusedInterpolators:1]]
+[2026.09.06-06.49.44:675][  0]LogConfig: Set CVar [[r.Shadow.DetectVertexShaderLayerAtRuntime:1]]
+[2026.09.06-06.49.44:675][  0]LogConfig: Set CVar [[r.Substrate.RoughDiffuse:1]]
+[2026.09.06-06.49.44:675][  0]LogConfig: Set CVar [[r.Substrate.SheenQuality:1]]
+[2026.09.06-06.49.44:675][  0]LogConfig: Set CVar [[r.Substrate.ShadingQuality:1]]
+[2026.09.06-06.49.44:675][  0]LogConfig: Set CVar [[r.Substrate.TileCoord8bits:0]]
+[2026.09.06-06.49.44:675][  0]LogConfig: Set CVar [[r.Substrate.Glints:1]]
+[2026.09.06-06.49.44:675][  0]LogConfig: Set CVar [[r.Substrate.ClosuresPerPixel:4]]
+[2026.09.06-06.49.44:675][  0]LogConfig: Set CVar [[r.Refraction.Blur:1]]
+[2026.09.06-06.49.44:675][  0]LogConfig: Set CVar [[r.DefaultFeature.AutoExposure:0]]
+[2026.09.06-06.49.44:675][  0]LogConfig: Set CVar [[r.DefaultFeature.MotionBlur:0]]
+[2026.09.06-06.49.44:675][  0]LogConfig: Set CVar [[r.DynamicGlobalIlluminationMethod:0]]
+[2026.09.06-06.49.44:675][  0]LogConfig: Set CVar [[r.ReflectionMethod:0]]
+[2026.09.06-06.49.44:675][  0]LogConfig: Set CVar [[r.Shadow.Virtual.Enable:0]]
+[2026.09.06-06.49.44:675][  0]LogConfig: Set CVar [[r.AllowStaticLighting:0]]
+[2026.09.06-06.49.44:675][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.RendererOverrideSettings] File [Engine]
+[2026.09.06-06.49.44:676][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.StreamingSettings] File [Engine]
+[2026.09.06-06.49.44:676][  0]LogConfig: Set CVar [[s.MinBulkDataSizeForAsyncLoading:131072]]
+[2026.09.06-06.49.44:676][  0]LogConfig: Set CVar [[s.AsyncLoadingThreadEnabled:1]]
+[2026.09.06-06.49.44:676][  0]LogConfig: Set CVar [[s.EventDrivenLoaderEnabled:1]]
+[2026.09.06-06.49.44:676][  0]LogConfig: Set CVar [[s.WarnIfTimeLimitExceeded:0]]
+[2026.09.06-06.49.44:676][  0]LogConfig: Set CVar [[s.TimeLimitExceededMultiplier:1.5]]
+[2026.09.06-06.49.44:676][  0]LogConfig: Set CVar [[s.TimeLimitExceededMinTime:0.005]]
+[2026.09.06-06.49.44:676][  0]LogConfig: Set CVar [[s.UseBackgroundLevelStreaming:1]]
+[2026.09.06-06.49.44:676][  0]LogConfig: Set CVar [[s.PriorityAsyncLoadingExtraTime:15.0]]
+[2026.09.06-06.49.44:676][  0]LogConfig: Set CVar [[s.LevelStreamingActorsUpdateTimeLimit:5.0]]
+[2026.09.06-06.49.44:676][  0]LogConfig: Set CVar [[s.PriorityLevelStreamingActorsUpdateExtraTime:5.0]]
+[2026.09.06-06.49.44:676][  0]LogConfig: Set CVar [[s.LevelStreamingComponentsRegistrationGranularity:10]]
+[2026.09.06-06.49.44:676][  0]LogConfig: Set CVar [[s.UnregisterComponentsTimeLimit:1.0]]
+[2026.09.06-06.49.44:676][  0]LogConfig: Set CVar [[s.LevelStreamingComponentsUnregistrationGranularity:5]]
+[2026.09.06-06.49.44:676][  0]LogConfig: CVar [[s.MaxPackageSummarySize:16384]] deferred - dummy variable created
+[2026.09.06-06.49.44:676][  0]LogConfig: Set CVar [[s.FlushStreamingOnExit:1]]
+[2026.09.06-06.49.44:676][  0]LogConfig: CVar [[FixedBootOrder:/Script/Engine/Default__SoundBase]] deferred - dummy variable created
+[2026.09.06-06.49.44:676][  0]LogConfig: CVar [[FixedBootOrder:/Script/Engine/Default__MaterialInterface]] deferred - dummy variable created
+[2026.09.06-06.49.44:676][  0]LogConfig: CVar [[FixedBootOrder:/Script/Engine/Default__DeviceProfileManager]] deferred - dummy variable created
+[2026.09.06-06.49.44:676][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.GarbageCollectionSettings] File [Engine]
+[2026.09.06-06.49.44:676][  0]LogConfig: Set CVar [[gc.MaxObjectsNotConsideredByGC:1]]
+[2026.09.06-06.49.44:676][  0]LogConfig: Set CVar [[gc.FlushStreamingOnGC:0]]
+[2026.09.06-06.49.44:676][  0]LogConfig: Set CVar [[gc.NumRetriesBeforeForcingGC:10]]
+[2026.09.06-06.49.44:676][  0]LogConfig: Set CVar [[gc.AllowParallelGC:1]]
+[2026.09.06-06.49.44:676][  0]LogConfig: Set CVar [[gc.TimeBetweenPurgingPendingKillObjects:61.1]]
+[2026.09.06-06.49.44:676][  0]LogConfig: Set CVar [[gc.MaxObjectsInEditor:25165824]]
+[2026.09.06-06.49.44:676][  0]LogConfig: Set CVar [[gc.IncrementalBeginDestroyEnabled:1]]
+[2026.09.06-06.49.44:676][  0]LogConfig: Set CVar [[gc.CreateGCClusters:1]]
+[2026.09.06-06.49.44:676][  0]LogConfig: Set CVar [[gc.MinGCClusterSize:5]]
+[2026.09.06-06.49.44:676][  0]LogConfig: Set CVar [[gc.AssetClustreringEnabled:0]]
+[2026.09.06-06.49.44:676][  0]LogConfig: Set CVar [[gc.ActorClusteringEnabled:0]]
+[2026.09.06-06.49.44:676][  0]LogConfig: Set CVar [[gc.VerifyUObjectsAreNotFGCObjects:0]]
+[2026.09.06-06.49.44:676][  0]LogConfig: Set CVar [[gc.GarbageEliminationEnabled:1]]
+[2026.09.06-06.49.44:676][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.NetworkSettings] File [Engine]
+[2026.09.06-06.49.44:676][  0]LogConfig: CVar [[NetworkEmulationProfiles:(ProfileName="Average",ToolTip="Simulates average internet conditions")]] deferred - dummy variable created
+[2026.09.06-06.49.44:676][  0]LogConfig: CVar [[NetworkEmulationProfiles:(ProfileName="Bad",ToolTip="Simulates laggy internet conditions")]] deferred - dummy variable created
+[2026.09.06-06.49.44:676][  0]LogConfig: CVar [[NetworkEmulationProfiles:(ProfileName="BufferBloat",ToolTip="Simulates a connection affected by buffer bloat (in and out)")]] deferred - dummy variable created
+[2026.09.06-06.49.44:700][  0]LogCsvProfiler: Display: Metadata set : systemresolution.resx="1920"
+[2026.09.06-06.49.44:700][  0]LogCsvProfiler: Display: Metadata set : systemresolution.resy="1080"
+[2026.09.06-06.49.44:700][  0]LogConfig: Applying CVar settings from Section [ViewDistanceQuality@3] File [Scalability]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.SkeletalMeshLODBias:0]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.ViewDistanceScale:1.0]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Applying CVar settings from Section [AntiAliasingQuality@3] File [Scalability]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.FXAA.Quality:4]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.TemporalAA.Quality:2]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.TSR.History.R11G11B10:1]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.TSR.History.ScreenPercentage:200]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.TSR.History.UpdateQuality:3]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.TSR.ShadingRejection.Flickering:1]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.TSR.RejectionAntiAliasingQuality:2]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.TSR.ReprojectionField:1]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.TSR.Resurrection:1]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Applying CVar settings from Section [ShadowQuality@3] File [Scalability]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.LightFunctionQuality:1]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.ShadowQuality:5]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Shadow.CSM.MaxCascades:10]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Shadow.MaxResolution:2048]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Shadow.MaxCSMResolution:2048]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Shadow.RadiusThreshold:0.01]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Shadow.DistanceScale:1.0]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Shadow.CSM.TransitionScale:1.0]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Shadow.PreShadowResolutionFactor:1.0]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.DistanceFieldShadowing:1]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.VolumetricFog:1]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.VolumetricFog.GridPixelSize:8]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.VolumetricFog.GridSizeZ:128]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.VolumetricFog.HistoryMissSupersampleCount:4]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.LightMaxDrawDistanceScale:1]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.CapsuleShadows:1]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Shadow.Virtual.MaxPhysicalPages:4096]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Shadow.Virtual.ResolutionLodBiasDirectional:-1.5]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Shadow.Virtual.ResolutionLodBiasDirectionalMoving:-1.5]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Shadow.Virtual.ResolutionLodBiasLocal:0.0]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Shadow.Virtual.ResolutionLodBiasLocalMoving:1.0]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Shadow.Virtual.SMRT.RayCountDirectional:8]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Shadow.Virtual.SMRT.SamplesPerRayDirectional:4]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Shadow.Virtual.SMRT.RayCountLocal:8]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Shadow.Virtual.SMRT.SamplesPerRayLocal:4]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Shadow.Virtual.MarkCoarsePagesLocal:1]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Applying CVar settings from Section [GlobalIlluminationQuality@3] File [Scalability]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.DistanceFieldAO:1]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.SkylightIntensityMultiplier:1.0]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.AOQuality:2]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Lumen.DiffuseIndirect.Allow:1]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.LumenScene.DirectLighting.MaxLightsPerTile:8]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.LumenScene.DirectLighting.UpdateFactor:32]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.LumenScene.Radiosity.UpdateFactor:64]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.LumenScene.Radiosity.ProbeSpacing:4]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.LumenScene.Radiosity.HemisphereProbeResolution:4]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Lumen.TraceMeshSDFs.Allow:1]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.RadianceCache.ProbeResolution:32]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.RadianceCache.NumProbesToTraceBudget:100]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.DownsampleFactor:16]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.NumAdaptiveProbes:8]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.TracingOctahedronResolution:8]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.IrradianceFormat:0]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.StochasticInterpolation:0]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.FullResolutionJitterWidth:1]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.TwoSidedFoliageBackfaceDiffuse:1]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.ScreenTraces.HZBTraversal.FullResDepth:1]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.ShortRangeAO.BentNormal:1]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.ShortRangeAO.HorizonSearch.HZB:0]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.ShortRangeAO.HorizonSearch.ForegroundSampleRejectPower:1]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Lumen.TranslucencyVolume.GridPixelSize:32]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Lumen.TranslucencyVolume.TraceFromVolume:1]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Lumen.TranslucencyVolume.TracingOctahedronResolution:3]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Lumen.TranslucencyVolume.RadianceCache.ProbeResolution:8]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Lumen.TranslucencyVolume.RadianceCache.NumProbesToTraceBudget:70]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.RayTracing.Scene.BuildMode:1]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Applying CVar settings from Section [ReflectionQuality@3] File [Scalability]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.SSR.Quality:3]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.SSR.HalfResSceneColor:0]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Lumen.Reflections.Allow:1]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Lumen.Reflections.DownsampleFactor:1]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Lumen.Reflections.MaxRoughnessToTraceForFoliage:0.4]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Lumen.ScreenProbeGather.MaxRoughnessToEvaluateRoughSpecularForFoliage:0.8]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Lumen.Reflections.ScreenSpaceReconstruction.NumSamples:5]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Lumen.Reflections.ScreenSpaceReconstruction.MinWeight:0]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Lumen.TranslucencyReflections.FrontLayer.Allow:1]]
+[2026.09.06-06.49.44:700][  0]LogConfig: Set CVar [[r.Lumen.TranslucencyReflections.FrontLayer.Enable:0]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Applying CVar settings from Section [PostProcessQuality@3] File [Scalability]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.MotionBlurQuality:4]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.MotionBlur.HalfResGather:0]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.AmbientOcclusionMipLevelFactor:0.4]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.AmbientOcclusionMaxQuality:100]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.AmbientOcclusionLevels:-1]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.AmbientOcclusionRadiusScale:1.0]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.DepthOfFieldQuality:2]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.RenderTargetPoolMin:400]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.LensFlareQuality:2]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.SceneColorFringeQuality:1]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.EyeAdaptationQuality:2]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.BloomQuality:5]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.Bloom.ScreenPercentage:50.000]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.FastBlurThreshold:100]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.Upscale.Quality:3]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.LightShaftQuality:1]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.Filter.SizeScale:1]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.Tonemapper.Quality:5]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.DOF.Gather.ResolutionDivisor:2         ; lower gathering resolution]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.DOF.Gather.AccumulatorQuality:1        ; higher gathering accumulator quality]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.DOF.Gather.PostfilterMethod:1          ; Median3x3 postfilering method]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.DOF.Gather.EnableBokehSettings:0       ; no bokeh simulation when gathering]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.DOF.Gather.RingCount:4                 ; medium number of samples when gathering]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.DOF.Scatter.ForegroundCompositing:1    ; additive foreground scattering]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.DOF.Scatter.BackgroundCompositing:2    ; additive background scattering]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.DOF.Scatter.EnableBokehSettings:1      ; bokeh simulation when scattering]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.DOF.Scatter.MaxSpriteRatio:0.1         ; only a maximum of 10% of scattered bokeh]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.DOF.Recombine.Quality:1                ; cheap slight out of focus]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.DOF.Recombine.EnableBokehSettings:0    ; no bokeh simulation on slight out of focus]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.DOF.TemporalAAQuality:1                ; more stable temporal accumulation]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.DOF.Kernel.MaxForegroundRadius:0.025]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.DOF.Kernel.MaxBackgroundRadius:0.025]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Applying CVar settings from Section [TextureQuality@3] File [Scalability]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.Streaming.MipBias:0]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.Streaming.AmortizeCPUToGPUCopy:0]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.Streaming.MaxNumTexturesToStreamPerFrame:0]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.Streaming.Boost:1]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.MaxAnisotropy:8]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.VT.MaxAnisotropy:8]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.Streaming.LimitPoolSizeToVRAM:0]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.Streaming.PoolSize:1000]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.Streaming.MaxEffectiveScreenSize:0]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Applying CVar settings from Section [EffectsQuality@3] File [Scalability]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.TranslucencyLightingVolume.Dim:64]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.RefractionQuality:2]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.SceneColorFormat:4]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.DetailMode:3]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.TranslucencyLightingVolume.Blur:1]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.MaterialQualityLevel:1 ; High quality]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.SSS.Scale:1]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.SSS.SampleSet:2]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.SSS.Quality:1]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.SSS.HalfRes:0]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.SSGI.Quality:3]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.EmitterSpawnRateScale:1.0]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.ParticleLightQuality:2]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.SkyAtmosphere.AerialPerspectiveLUT.FastApplyOnOpaque:1 ; Always have FastSkyLUT 1 in this case to avoid wrong sky]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.SkyAtmosphere.AerialPerspectiveLUT.SampleCountMaxPerSlice:4]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.SkyAtmosphere.AerialPerspectiveLUT.DepthResolution:16.0]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.SkyAtmosphere.FastSkyLUT:1]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.SkyAtmosphere.FastSkyLUT.SampleCountMin:4.0]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.SkyAtmosphere.FastSkyLUT.SampleCountMax:128.0]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.SkyAtmosphere.SampleCountMin:4.0]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.SkyAtmosphere.SampleCountMax:128.0]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.SkyAtmosphere.TransmittanceLUT.UseSmallFormat:0]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.SkyAtmosphere.TransmittanceLUT.SampleCount:10.0]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.SkyAtmosphere.MultiScatteringLUT.SampleCount:15.0]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[fx.Niagara.QualityLevel:3]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.Refraction.OffsetQuality:1]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.HeterogeneousVolumes.DownsampleFactor:2]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.HeterogeneousVolumes.MaxStepCount:256]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.HeterogeneousVolumes.Shadows.Resolution:512]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.HeterogeneousVolumes.Shadows.Precision:0]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.HeterogeneousVolumes.UseExistenceMask:0]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Applying CVar settings from Section [FoliageQuality@3] File [Scalability]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[foliage.DensityScale:1.0]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[grass.DensityScale:1.0]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Applying CVar settings from Section [ShadingQuality@3] File [Scalability]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.HairStrands.SkyLighting.IntegrationType:2]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.HairStrands.SkyAO.SampleCount:4]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.HairStrands.Visibility.MSAA.SamplePerPixel:4]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Set CVar [[r.AnisotropicMaterials:1]]
+[2026.09.06-06.49.44:702][  0]LogConfig: Applying CVar settings from Section [LandscapeQuality@3] File [Scalability]
+[2026.09.06-06.49.44:703][  0]LogRHI: Using Forced RHI: D3D11
+[2026.09.06-06.49.44:734][  0]LogRHI: Using Highest Feature Level of D3D11: SM5
+[2026.09.06-06.49.44:734][  0]LogRHI: Loading RHI module D3D11RHI
+[2026.09.06-06.49.44:734][  0]LogRHI: Checking if RHI D3D11 with Feature Level SM5 is supported by your system.
+[2026.09.06-06.49.44:734][  0]LogD3D11RHI: D3D11 min allowed feature level: 11_0
+[2026.09.06-06.49.44:734][  0]LogD3D11RHI: D3D11 max allowed feature level: 11_1
+[2026.09.06-06.49.44:734][  0]LogD3D11RHI: D3D11 adapters:
+[2026.09.06-06.49.44:734][  0]LogD3D11RHI: Testing D3D11 Adapter 0:
+[2026.09.06-06.49.44:734][  0]LogD3D11RHI:     Description : NVIDIA GeForce RTX 3060 Laptop GPU
+[2026.09.06-06.49.44:734][  0]LogD3D11RHI:     VendorId    : 10de
+[2026.09.06-06.49.44:734][  0]LogD3D11RHI:     DeviceId    : 2560
+[2026.09.06-06.49.44:734][  0]LogD3D11RHI:     SubSysId    : 3b0717aa
+[2026.09.06-06.49.44:734][  0]LogD3D11RHI:     Revision    : 00a1
+[2026.09.06-06.49.44:734][  0]LogD3D11RHI:     DedicatedVideoMemory : 6287261696 bytes
+[2026.09.06-06.49.44:734][  0]LogD3D11RHI:     DedicatedSystemMemory : 0 bytes
+[2026.09.06-06.49.44:734][  0]LogD3D11RHI:     SharedSystemMemory : 8156196864 bytes
+[2026.09.06-06.49.44:734][  0]LogD3D11RHI:     AdapterLuid : 0 91007
+[2026.09.06-06.49.45:038][  0]LogD3D11RHI:    0. 'NVIDIA GeForce RTX 3060 Laptop GPU' (Feature Level 11_1)
+[2026.09.06-06.49.45:038][  0]LogD3D11RHI:       5996/0/7778 MB DedicatedVideo/DedicatedSystem/SharedSystem, Outputs:1, VendorId:0x10de UMA:false
+[2026.09.06-06.49.45:038][  0]LogD3D11RHI: Testing D3D11 Adapter 1:
+[2026.09.06-06.49.45:038][  0]LogD3D11RHI:     Description : AMD Radeon(TM) Graphics
+[2026.09.06-06.49.45:038][  0]LogD3D11RHI:     VendorId    : 1002
+[2026.09.06-06.49.45:038][  0]LogD3D11RHI:     DeviceId    : 1681
+[2026.09.06-06.49.45:038][  0]LogD3D11RHI:     SubSysId    : 3b0717aa
+[2026.09.06-06.49.45:038][  0]LogD3D11RHI:     Revision    : 00c8
+[2026.09.06-06.49.45:038][  0]LogD3D11RHI:     DedicatedVideoMemory : 506945536 bytes
+[2026.09.06-06.49.45:038][  0]LogD3D11RHI:     DedicatedSystemMemory : 0 bytes
+[2026.09.06-06.49.45:038][  0]LogD3D11RHI:     SharedSystemMemory : 8156196864 bytes
+[2026.09.06-06.49.45:038][  0]LogD3D11RHI:     AdapterLuid : 0 84226
+[2026.09.06-06.49.45:109][  0]LogD3D11RHI:    1. 'AMD Radeon(TM) Graphics' (Feature Level 11_1)
+[2026.09.06-06.49.45:109][  0]LogD3D11RHI:       483/0/7778 MB DedicatedVideo/DedicatedSystem/SharedSystem, Outputs:1, VendorId:0x1002 UMA:true
+[2026.09.06-06.49.45:110][  0]LogD3D11RHI: Testing D3D11 Adapter 2:
+[2026.09.06-06.49.45:110][  0]LogD3D11RHI:     Description : Microsoft Basic Render Driver
+[2026.09.06-06.49.45:110][  0]LogD3D11RHI:     VendorId    : 1414
+[2026.09.06-06.49.45:110][  0]LogD3D11RHI:     DeviceId    : 008c
+[2026.09.06-06.49.45:110][  0]LogD3D11RHI:     SubSysId    : 0000
+[2026.09.06-06.49.45:110][  0]LogD3D11RHI:     Revision    : 0000
+[2026.09.06-06.49.45:110][  0]LogD3D11RHI:     DedicatedVideoMemory : 0 bytes
+[2026.09.06-06.49.45:110][  0]LogD3D11RHI:     DedicatedSystemMemory : 0 bytes
+[2026.09.06-06.49.45:110][  0]LogD3D11RHI:     SharedSystemMemory : 8156196864 bytes
+[2026.09.06-06.49.45:110][  0]LogD3D11RHI:     AdapterLuid : 0 90892
+[2026.09.06-06.49.45:117][  0]LogD3D11RHI:    2. 'Microsoft Basic Render Driver' (Feature Level 11_1)
+[2026.09.06-06.49.45:117][  0]LogD3D11RHI:       0/0/7778 MB DedicatedVideo/DedicatedSystem/SharedSystem, Outputs:0, VendorId:0x1414 UMA:true
+[2026.09.06-06.49.45:117][  0]LogD3D11RHI: Testing D3D11 Adapter 3:
+[2026.09.06-06.49.45:117][  0]LogD3D11RHI:     Description : AMD Radeon(TM) Graphics
+[2026.09.06-06.49.45:117][  0]LogD3D11RHI:     VendorId    : 1002
+[2026.09.06-06.49.45:117][  0]LogD3D11RHI:     DeviceId    : 1681
+[2026.09.06-06.49.45:117][  0]LogD3D11RHI:     SubSysId    : 3b0717aa
+[2026.09.06-06.49.45:117][  0]LogD3D11RHI:     Revision    : 00c8
+[2026.09.06-06.49.45:117][  0]LogD3D11RHI:     DedicatedVideoMemory : 506945536 bytes
+[2026.09.06-06.49.45:117][  0]LogD3D11RHI:     DedicatedSystemMemory : 0 bytes
+[2026.09.06-06.49.45:117][  0]LogD3D11RHI:     SharedSystemMemory : 8156196864 bytes
+[2026.09.06-06.49.45:117][  0]LogD3D11RHI:     AdapterLuid : 0 127261
+[2026.09.06-06.49.45:187][  0]LogD3D11RHI:    3. 'AMD Radeon(TM) Graphics' (Feature Level 11_1)
+[2026.09.06-06.49.45:187][  0]LogD3D11RHI:       483/0/7778 MB DedicatedVideo/DedicatedSystem/SharedSystem, Outputs:0, VendorId:0x1002 UMA:true
+[2026.09.06-06.49.45:187][  0]LogD3D11RHI: Chosen D3D11 Adapter:
+[2026.09.06-06.49.45:187][  0]LogD3D11RHI:     Description : NVIDIA GeForce RTX 3060 Laptop GPU
+[2026.09.06-06.49.45:187][  0]LogD3D11RHI:     VendorId    : 10de
+[2026.09.06-06.49.45:187][  0]LogD3D11RHI:     DeviceId    : 2560
+[2026.09.06-06.49.45:187][  0]LogD3D11RHI:     SubSysId    : 3b0717aa
+[2026.09.06-06.49.45:187][  0]LogD3D11RHI:     Revision    : 00a1
+[2026.09.06-06.49.45:187][  0]LogD3D11RHI:     DedicatedVideoMemory : 6287261696 bytes
+[2026.09.06-06.49.45:187][  0]LogD3D11RHI:     DedicatedSystemMemory : 0 bytes
+[2026.09.06-06.49.45:187][  0]LogD3D11RHI:     SharedSystemMemory : 8156196864 bytes
+[2026.09.06-06.49.45:187][  0]LogD3D11RHI:     AdapterLuid : 0 91007
+[2026.09.06-06.49.45:187][  0]LogD3D11RHI: Integrated GPU (iGPU): false
+[2026.09.06-06.49.45:187][  0]LogRHI: RHI D3D11 with Feature Level SM5 is supported and will be used.
+[2026.09.06-06.49.45:187][  0]LogInit: Selected Device Profile: [Windows]
+[2026.09.06-06.49.45:187][  0]LogHAL: Display: Platform has ~ 16 GB [16312393728 / 17179869184 / 16], which maps to Larger [LargestMinGB=32, LargerMinGB=12, DefaultMinGB=8, SmallerMinGB=6, SmallestMinGB=0)
+[2026.09.06-06.49.45:187][  0]LogDeviceProfileManager: Going up to parent DeviceProfile []
+[2026.09.06-06.49.45:187][  0]LogDeviceProfileManager: Pushing Device Profile CVar: [[UI.SlateSDFText.RasterizationMode:Bitmap -> Msdf]]
+[2026.09.06-06.49.45:187][  0]LogDeviceProfileManager: Pushing Device Profile CVar: [[UI.SlateSDFText.ResolutionLevel:2 -> 2]]
+[2026.09.06-06.49.45:187][  0]LogConfig: Applying CVar settings from Section [Startup] File [../../../Engine/Config/ConsoleVariables.ini]
+[2026.09.06-06.49.45:187][  0]LogConfig: Set CVar [[r.DumpShaderDebugInfo:2]]
+[2026.09.06-06.49.45:187][  0]LogConfig: Set CVar [[p.chaos.AllowCreatePhysxBodies:1]]
+[2026.09.06-06.49.45:187][  0]LogConfig: Set CVar [[fx.SkipVectorVMBackendOptimizations:1]]
+[2026.09.06-06.49.45:187][  0]LogConfig: Applying CVar settings from Section [Startup_Windows] File [../../../Engine/Config/ConsoleVariables.ini]
+[2026.09.06-06.49.45:187][  0]LogConfig: Applying CVar settings from Section [ConsoleVariables] File [Engine]
+[2026.09.06-06.49.45:187][  0]LogConfig: Set CVar [[WindowsApplication.UseWorkerThreadForRawInput:0]]
+[2026.09.06-06.49.45:187][  0]LogInit: Computer: GR1ZZYLY
+[2026.09.06-06.49.45:187][  0]LogInit: User: Pram
+[2026.09.06-06.49.45:187][  0]LogInit: CPU Page size=4096, Cores=8
+[2026.09.06-06.49.45:187][  0]LogInit: High frequency timer resolution =10.000000 MHz
+[2026.09.06-06.49.45:187][  0]LogInit: Handheld Device: 0
+[2026.09.06-06.49.45:187][  0]LogMemory: Process is running as part of a Windows Job with separate resource limits
+[2026.09.06-06.49.45:187][  0]LogMemory: Memory total: Physical=15.2GB (16GB approx) Virtual=37.2GB
+[2026.09.06-06.49.45:187][  0]LogMemory: Platform Memory Stats for Windows
+[2026.09.06-06.49.45:187][  0]LogMemory: Process Physical Memory: 262.39 MB used, 280.40 MB peak
+[2026.09.06-06.49.45:187][  0]LogMemory: Process Virtual Memory: 146.44 MB used, 151.17 MB peak
+[2026.09.06-06.49.45:187][  0]LogMemory: Physical Memory: 10986.36 MB used,  4570.36 MB free, 15556.71 MB total
+[2026.09.06-06.49.45:187][  0]LogMemory: Virtual Memory: 32099.18 MB used,  5985.53 MB free, 38084.71 MB total
+[2026.09.06-06.49.45:187][  0]LogCsvProfiler: Display: Metadata set : extradevelopmentmemorymb="0"
+[2026.09.06-06.49.45:258][  0]LogWindows: WindowsPlatformFeatures enabled
+[2026.09.06-06.49.45:260][  0]LogSpline: Registered spline type: TypeId=0x54E3AD22, Impl=MultiSpline, Value=Vector
+[2026.09.06-06.49.45:260][  0]LogChaosDD: Chaos Debug Draw Startup
+[2026.09.06-06.49.45:260][  0]LogInit: Physics initialised using underlying interface: Chaos
+[2026.09.06-06.49.45:260][  0]LogInit: Using OS detected language (en-US).
+[2026.09.06-06.49.45:260][  0]LogInit: Using OS detected locale (en-US).
+[2026.09.06-06.49.45:260][  0]LogTextLocalizationManager: No specific localization for 'en-US' exists, so 'en' will be used for the language.
+[2026.09.06-06.49.45:329][  0]LogWindowsTextInputMethodSystem: Available input methods:
+[2026.09.06-06.49.45:329][  0]LogWindowsTextInputMethodSystem:   - English (United States) - (Keyboard).
+[2026.09.06-06.49.45:329][  0]LogWindowsTextInputMethodSystem:   - English (Canada) - Touch Input Correction (TSF IME).
+[2026.09.06-06.49.45:329][  0]LogWindowsTextInputMethodSystem: Activated input method: English (United States) - (Keyboard).
+[2026.09.06-06.49.45:353][  0]LogWindowsTouchpad: Display: CacheForceMaxTouchpadSensitivityMode SetMaxTouchpadSensitivity
+[2026.09.06-06.49.45:357][  0]LogObj: Display: Attempting to load config data for Default__SlateThemeManager before the Class has been constructed/registered/linked (likely during module loading or early startup). This will result in the load silently failing and should be fixed.
+[2026.09.06-06.49.45:358][  0]LogSlate: New Slate User Created. Platform User Id 0, User Index 0, Is Virtual User: 0
+[2026.09.06-06.49.45:358][  0]LogSlate: Slate User Registered.  User Index 0, Is Virtual User: 0
+[2026.09.06-06.49.45:394][  0]LogRHI: Using Forced RHI: D3D11
+[2026.09.06-06.49.45:394][  0]LogRHI: Using Highest Feature Level of D3D11: SM5
+[2026.09.06-06.49.45:394][  0]LogRHI: Loading RHI module D3D11RHI
+[2026.09.06-06.49.45:394][  0]LogRHI: Checking if RHI D3D11 with Feature Level SM5 is supported by your system.
+[2026.09.06-06.49.45:394][  0]LogRHI: RHI D3D11 with Feature Level SM5 is supported and will be used.
+[2026.09.06-06.49.45:395][  0]LogWindows: Attached monitors:
+[2026.09.06-06.49.45:395][  0]LogWindows:     resolution: 1707x1067, work area: (-2560, -252) -> (-853, 767), device: '\\.\DISPLAY1'
+[2026.09.06-06.49.45:395][  0]LogWindows:     resolution: 1920x1080, work area: (0, 0) -> (1920, 1032), device: '\\.\DISPLAY6' [PRIMARY]
+[2026.09.06-06.49.45:395][  0]LogWindows: Found 2 attached monitors.
+[2026.09.06-06.49.45:395][  0]LogWindows: Gathering driver information using Windows Setup API
+[2026.09.06-06.49.45:395][  0]LogRHI: RHI Adapter Info:
+[2026.09.06-06.49.45:395][  0]LogRHI:             Name: NVIDIA GeForce RTX 3060 Laptop GPU
+[2026.09.06-06.49.45:396][  0]LogRHI:   Driver Version: 580.88 (internal:32.0.15.8088, unified:580.88)
+[2026.09.06-06.49.45:396][  0]LogRHI:      Driver Date: 7-27-2025
+[2026.09.06-06.49.45:396][  0]LogD3D11RHI: Creating new Direct3DDevice
+[2026.09.06-06.49.45:396][  0]LogD3D11RHI:     GPU DeviceId: 0x2560 (for the marketing name, search the web for "GPU Device Id")
+[2026.09.06-06.49.45:396][  0]LogRHI: Texture pool is 4197 MB (70% of 5996 MB)
+[2026.09.06-06.49.45:396][  0]LogNvidiaAftermath: Nvidia Aftermath is disabled in D3D11 due to instability issues.
+[2026.09.06-06.49.45:396][  0]LogD3D11RHI: Creating D3DDevice using adapter:
+[2026.09.06-06.49.45:396][  0]LogD3D11RHI:     Description : NVIDIA GeForce RTX 3060 Laptop GPU
+[2026.09.06-06.49.45:396][  0]LogD3D11RHI:     VendorId    : 10de
+[2026.09.06-06.49.45:396][  0]LogD3D11RHI:     DeviceId    : 2560
+[2026.09.06-06.49.45:396][  0]LogD3D11RHI:     SubSysId    : 3b0717aa
+[2026.09.06-06.49.45:396][  0]LogD3D11RHI:     Revision    : 00a1
+[2026.09.06-06.49.45:396][  0]LogD3D11RHI:     DedicatedVideoMemory : 6287261696 bytes
+[2026.09.06-06.49.45:396][  0]LogD3D11RHI:     DedicatedSystemMemory : 0 bytes
+[2026.09.06-06.49.45:396][  0]LogD3D11RHI:     SharedSystemMemory : 8156196864 bytes
+[2026.09.06-06.49.45:396][  0]LogD3D11RHI:     AdapterLuid : 0 91007
+[2026.09.06-06.49.45:573][  0]LogNvidiaAftermath: Aftermath is not loaded.
+[2026.09.06-06.49.45:578][  0]LogD3D11RHI: RHI has support for 64 bit atomics
+[2026.09.06-06.49.45:578][  0]LogD3D11RHI: Async texture creation enabled
+[2026.09.06-06.49.45:578][  0]LogD3D11RHI: D3D11_MAP_WRITE_NO_OVERWRITE for dynamic buffer SRVs is supported
+[2026.09.06-06.49.45:578][  0]LogD3D11RHI: Array index from any shader is supported
+[2026.09.06-06.49.45:595][  0]LogVRS: Current RHI does not support Variable Rate Shading
+[2026.09.06-06.49.45:600][  0]LogCsvProfiler: Display: Metadata set : verbatimrhiname="D3D11"
+[2026.09.06-06.49.45:601][  0]LogCsvProfiler: Display: Metadata set : rhiname="D3D11"
+[2026.09.06-06.49.45:601][  0]LogCsvProfiler: Display: Metadata set : rhifeaturelevel="SM5"
+[2026.09.06-06.49.45:601][  0]LogCsvProfiler: Display: Metadata set : shaderplatform="PCD3D_SM5"
+[2026.09.06-06.49.45:601][  0]LogInit: Initializing FReadOnlyCVARCache
+[2026.09.06-06.49.45:610][  0]LogRendererCore: Ray tracing is disabled. Reason: disabled through project setting (r.RayTracing=0).
+[2026.09.06-06.49.45:611][  0]LogShaderLibrary: Display: Using IoDispatcher for shader code library Global. Total 4244 unique shaders.
+[2026.09.06-06.49.45:611][  0]LogShaderLibrary: Display: Cooked Context: Using Shared Shader Library Global
+[2026.09.06-06.49.45:611][  0]LogShaderLibrary: Display: Logical shader library 'Global' has been created as a monolithic library
+[2026.09.06-06.49.45:611][  0]LogTemp: Display: Clearing the OS Cache
+[2026.09.06-06.49.45:618][  0]LogInit: FStereoShaderAspects: --- StereoAspects begin ---
+[2026.09.06-06.49.45:618][  0]LogInit: FStereoShaderAspects: Platform=PCD3D_SM5 (0)
+[2026.09.06-06.49.45:618][  0]LogInit: FStereoShaderAspects: bInstancedStereo = 0
+[2026.09.06-06.49.45:618][  0]LogInit: FStereoShaderAspects: bMobilePlatform = 0
+[2026.09.06-06.49.45:618][  0]LogInit: FStereoShaderAspects: bMobilePostprocessing = 1
+[2026.09.06-06.49.45:618][  0]LogInit: FStereoShaderAspects: bMobileMultiView = 0
+[2026.09.06-06.49.45:618][  0]LogInit: FStereoShaderAspects: bMultiViewportCapable = 1
+[2026.09.06-06.49.45:618][  0]LogInit: FStereoShaderAspects: bInstancedStereoNative = 0
+[2026.09.06-06.49.45:618][  0]LogInit: FStereoShaderAspects: ---
+[2026.09.06-06.49.45:618][  0]LogInit: FStereoShaderAspects: bMobileMultiViewCoreSupport = 0
+[2026.09.06-06.49.45:618][  0]LogInit: FStereoShaderAspects: bMobileMultiViewNative = 0
+[2026.09.06-06.49.45:618][  0]LogInit: FStereoShaderAspects: bMobileMultiViewFallback = 0
+[2026.09.06-06.49.45:618][  0]LogInit: FStereoShaderAspects: ---
+[2026.09.06-06.49.45:618][  0]LogInit: FStereoShaderAspects: bInstancedMultiViewportEnabled = 0
+[2026.09.06-06.49.45:618][  0]LogInit: FStereoShaderAspects: bInstancedStereoEnabled = 0
+[2026.09.06-06.49.45:618][  0]LogInit: FStereoShaderAspects: bMobileMultiViewEnabled = 0
+[2026.09.06-06.49.45:618][  0]LogInit: FStereoShaderAspects: --- StereoAspects end ---
+[2026.09.06-06.49.45:634][  0]LogInit: XR: Instanced Stereo Rendering is Disabled
+[2026.09.06-06.49.45:634][  0]LogInit: XR: MultiViewport is Disabled
+[2026.09.06-06.49.45:634][  0]LogInit: XR: Mobile Multiview is Disabled
+[2026.09.06-06.49.45:650][  0]LogSlate: Using FreeType 2.10.0
+[2026.09.06-06.49.45:650][  0]LogSlate: SlateFontServices - WITH_FREETYPE: 1, WITH_HARFBUZZ: 1
+[2026.09.06-06.49.45:707][  0]LogShaderLibrary: Display: Using IoDispatcher for shader code library WonderChess. Total 1023 unique shaders.
+[2026.09.06-06.49.45:707][  0]LogShaderLibrary: Display: Cooked Context: Using Shared Shader Library WonderChess
+[2026.09.06-06.49.45:707][  0]LogShaderLibrary: Display: Logical shader library 'WonderChess' has been created as a monolithic library
+[2026.09.06-06.49.45:707][  0]LogShaderLibrary: Display: Tried to open again shader library 'WonderChess', but could not find new components for it (existing components: 1).
+[2026.09.06-06.49.45:707][  0]LogInit: Using OS detected language (en-US).
+[2026.09.06-06.49.45:707][  0]LogInit: Using OS detected locale (en-US).
+[2026.09.06-06.49.45:707][  0]LogTextLocalizationManager: No localization for 'en-US' exists, so 'en' will be used for the language.
+[2026.09.06-06.49.45:707][  0]LogTextLocalizationManager: No localization for 'en-US' exists, so 'en' will be used for the locale.
+[2026.09.06-06.49.45:707][  0]LogSlate: FontCache flush requested. Reason: Culture for localization was changed
+[2026.09.06-06.49.45:707][  0]LogSlate: FontCache flush requested. Reason: Culture for localization was changed
+[2026.09.06-06.49.45:708][  0]LogAssetRegistry: FAssetRegistry took 0.0001 seconds to start up
+[2026.09.06-06.49.45:919][  0]LogDeviceProfileManager: Display: Deviceprofile LinuxArm64Editor not found.
+[2026.09.06-06.49.45:919][  0]LogDeviceProfileManager: Display: Deviceprofile LinuxArm64 not found.
+[2026.09.06-06.49.45:922][  0]LogDeviceProfileManager: Active device profile: [00007FF42CB4E690][0000024D1E00B6E0 82] Windows
+[2026.09.06-06.49.45:922][  0]LogCsvProfiler: Display: Metadata set : deviceprofile="Windows"
+[2026.09.06-06.49.45:923][  0]LogStreaming: Display: FlushAsyncLoading(1): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.49.45:923][  0]LogFilePackageStore: Updated: NewPackages=659, OldPackages=0, TotalPackages=660
+[2026.09.06-06.49.46:023][  0]LogAudioCaptureCore: Display: No Audio Capture implementations found. Audio input will be silent.
+[2026.09.06-06.49.46:025][  0]LogMetaSound: Display: MetaSound Page Target Initialized to 'Default'
+[2026.09.06-06.49.46:027][  0]LogPackageLocalizationCache: Processed 65 localized package path(s) for 1 prioritized culture(s) in 0.000116 seconds
+[2026.09.06-06.49.46:030][  0]LogStats: UGameplayTagsManager::InitializeManager -  0.000 s
+[2026.09.06-06.49.46:031][  0]LogConfig: Applying CVar settings from Section [/Script/NNEDenoiser.NNEDenoiserSettings] File [Engine]
+[2026.09.06-06.49.46:034][  0]LogAudioCaptureCore: Display: No Audio Capture implementations found. Audio input will be silent.
+[2026.09.06-06.49.46:046][  0]LogMoviePlayer: Initializing movie player
+[2026.09.06-06.49.46:049][  0]LogNiagaraDebuggerClient: Niagara Debugger Client Initialized | Session: 8817AF0A989346938000000000003600 | Instance: 4D7CCFE14FD0350BEA53DDA1271A277B (GR1ZZYLY-39788).
+[2026.09.06-06.49.46:356][  0]LogNNERuntimeORT: No NPU adapter found with attributes (!GRAPHICS && (GENERIC_ML || CORE_COMPUTE)) (Windows 11 Version 24H2 or newer)!
+[2026.09.06-06.49.46:356][  0]LogNNERuntimeORT: Available graphics and compute adapters:
+[2026.09.06-06.49.46:356][  0]LogNNERuntimeORT: 0: AMD Radeon(TM) Graphics (Compute, Graphics)
+[2026.09.06-06.49.46:356][  0]LogNNERuntimeORT: 1: NVIDIA GeForce RTX 3060 Laptop GPU (Compute, Graphics)
+[2026.09.06-06.49.46:356][  0]LogNNERuntimeORT: 2: Microsoft Basic Render Driver (Compute, Graphics)
+[2026.09.06-06.49.46:356][  0]LogNNERuntimeORT: No NPU adapter found!
+[2026.09.06-06.49.46:356][  0]LogNNERuntimeORT: MakeRuntimeORTDml:
+[2026.09.06-06.49.46:356][  0]LogNNERuntimeORT:   DirectML:  yes
+[2026.09.06-06.49.46:356][  0]LogNNERuntimeORT:   RHI D3D12: no
+[2026.09.06-06.49.46:356][  0]LogNNERuntimeORT:   D3D12:     yes
+[2026.09.06-06.49.46:356][  0]LogNNERuntimeORT:   NPU:       no
+[2026.09.06-06.49.46:356][  0]LogNNERuntimeORT: Interface availability:
+[2026.09.06-06.49.46:356][  0]LogNNERuntimeORT:   GPU: yes
+[2026.09.06-06.49.46:356][  0]LogNNERuntimeORT:   RDG: no
+[2026.09.06-06.49.46:356][  0]LogNNERuntimeORT:   NPU: no
+[2026.09.06-06.49.46:648][  0]LogNNERuntimeORT: No NPU adapter found with attributes (!GRAPHICS && (GENERIC_ML || CORE_COMPUTE)) (Windows 11 Version 24H2 or newer)!
+[2026.09.06-06.49.46:648][  0]LogNNERuntimeORT: Available graphics and compute adapters:
+[2026.09.06-06.49.46:648][  0]LogNNERuntimeORT: 0: AMD Radeon(TM) Graphics (Compute, Graphics)
+[2026.09.06-06.49.46:648][  0]LogNNERuntimeORT: 1: NVIDIA GeForce RTX 3060 Laptop GPU (Compute, Graphics)
+[2026.09.06-06.49.46:648][  0]LogNNERuntimeORT: 2: Microsoft Basic Render Driver (Compute, Graphics)
+[2026.09.06-06.49.46:648][  0]LogNNERuntimeORT: No NPU adapter found!
+[2026.09.06-06.49.46:658][  0]LogAudio: Display: Registering Engine Module Parameter Interfaces...
+[2026.09.06-06.49.46:659][  0]LogMetaSound: MetaSound Engine Initialized
+[2026.09.06-06.49.46:668][  0]LogAndroidPermission: UAndroidPermissionCallbackProxy::GetInstance
+[2026.09.06-06.49.46:678][  0]LogUObjectArray: 28303 objects as part of root set at end of initial load.
+[2026.09.06-06.49.46:678][  0]LogUObjectArray: 4 objects are not in the root set, but can never be destroyed because they are in the DisregardForGC set.
+[2026.09.06-06.49.46:678][  0]LogUObjectArray: CloseDisregardForGC: 28303/28303 objects in disregard for GC pool
+[2026.09.06-06.49.46:697][  0]LogEngine: Initializing Engine...
+[2026.09.06-06.49.46:712][  0]LogNetVersion: Set ProjectVersion to 0.3.0. Version Checksum will be recalculated on next use.
+[2026.09.06-06.49.46:712][  0]LogInit: Texture streaming: Enabled
+[2026.09.06-06.49.46:712][  0]LogAudio: Display: Initializing Audio Device Manager...
+[2026.09.06-06.49.46:712][  0]LogAudio: Display: Loading Default Audio Settings Objects...
+[2026.09.06-06.49.46:712][  0]LogAudio: Display: No default SoundConcurrencyObject specified (or failed to load).
+[2026.09.06-06.49.46:712][  0]LogAudio: Display: Audio Device Manager Initialized
+[2026.09.06-06.49.46:712][  0]LogAudio: Display: Creating Audio Device:                 Id: 1, Scope: Shared, Realtime: True
+[2026.09.06-06.49.46:712][  0]LogAudioMixer: Display: Audio Mixer Platform Settings:
+[2026.09.06-06.49.46:713][  0]LogAudioMixer: Display: 	Sample Rate:						  48000
+[2026.09.06-06.49.46:713][  0]LogAudioMixer: Display: 	Callback Buffer Frame Size Requested: 1024
+[2026.09.06-06.49.46:713][  0]LogAudioMixer: Display: 	Callback Buffer Frame Size To Use:	  1024
+[2026.09.06-06.49.46:713][  0]LogAudioMixer: Display: 	Number of buffers to queue:			  1
+[2026.09.06-06.49.46:713][  0]LogAudioMixer: Display: 	Max Channels (voices):				  32
+[2026.09.06-06.49.46:713][  0]LogAudioMixer: Display: 	Number of Async Source Workers:		  4
+[2026.09.06-06.49.46:713][  0]LogAudio: Display: AudioDevice MaxSources: 32
+[2026.09.06-06.49.46:713][  0]LogAudio: Display: Audio Spatialization Plugin: None (built-in).
+[2026.09.06-06.49.46:713][  0]LogAudio: Display: Audio Reverb Plugin: None (built-in).
+[2026.09.06-06.49.46:713][  0]LogAudio: Display: Audio Occlusion Plugin: None (built-in).
+[2026.09.06-06.49.46:721][  0]LogAudioMixer: Display: Initializing audio mixer using platform API: 'XAudio2'
+[2026.09.06-06.49.46:814][  0]LogAudioEnumeration: Display: FWindowsMMDeviceCache: Default Render Role='Console', Device='Headphones (Realtek(R) Audio)'
+[2026.09.06-06.49.46:815][  0]LogAudioEnumeration: Display: FWindowsMMDeviceCache: Default Capture Role='Console', Device='Microphone Array (Realtek(R) Audio)'
+[2026.09.06-06.49.46:816][  0]LogAudioEnumeration: Display: FWindowsMMDeviceCache: Default Render Role='Multimedia', Device='Headphones (Realtek(R) Audio)'
+[2026.09.06-06.49.46:817][  0]LogAudioEnumeration: Display: FWindowsMMDeviceCache: Default Capture Role='Multimedia', Device='Microphone Array (Realtek(R) Audio)'
+[2026.09.06-06.49.46:819][  0]LogAudioEnumeration: Display: FWindowsMMDeviceCache: Default Render Role='Communications', Device='Headphones (Realtek(R) Audio)'
+[2026.09.06-06.49.46:820][  0]LogAudioEnumeration: Display: FWindowsMMDeviceCache: Default Capture Role='Communications', Device='Microphone Array (Realtek(R) Audio)'
+[2026.09.06-06.49.46:896][  0]LogAudioMixer: Display: Using Audio Hardware Device Headphones (Realtek(R) Audio)
+[2026.09.06-06.49.46:896][  0]LogAudioMixer: Display: Initializing Sound Submixes...
+[2026.09.06-06.49.46:897][  0]LogAudioMixer: Display: Creating Master Submix 'MasterSubmixDefault'
+[2026.09.06-06.49.46:897][  0]LogAudioMixer: Display: Creating Master Submix 'MasterReverbSubmixDefault'
+[2026.09.06-06.49.46:898][  0]LogAudioMixer: FMixerPlatformXAudio2::StartAudioStream() called. InstanceID=1
+[2026.09.06-06.49.46:898][  0]LogAudioMixer: Display: Output buffers initialized: Frames=1024, Channels=2, Samples=2048, InstanceID=1
+[2026.09.06-06.49.46:898][  0]LogAudioMixer: Display: Starting AudioMixerPlatformInterface::RunInternal(), InstanceID=1
+[2026.09.06-06.49.46:898][  0]LogAudioMixer: Display: FMixerPlatformXAudio2::SubmitBuffer() called for the first time. InstanceID=1
+[2026.09.06-06.49.46:898][  0]LogInit: FAudioDevice initialized with ID 1.
+[2026.09.06-06.49.46:899][  0]LogAudioMixer: Initializing Audio Bus Subsystem for audio device with ID 1
+[2026.09.06-06.49.46:899][  0]LogCsvProfiler: Display: Metadata set : largeworldcoordinates="1"
+[2026.09.06-06.49.46:902][  0]LogChaosDD: Creating Chaos Debug Draw Scene for world Untitled
+[2026.09.06-06.49.46:905][  0]LogAudio: Display: Audio Device (ID: 1) registered with world 'Untitled'.
+[2026.09.06-06.49.46:905][  0]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2026.09.06-06.49.46:905][  0]LogInit: Display: Game Engine Initialized.
+[2026.09.06-06.49.46:905][  0]LogNNEDenoiser: Ray Tracing is not enabled, therefore NNEDenoiser is not registered!
+[2026.09.06-06.49.46:910][  0]LogInit: Display: Starting Game.
+[2026.09.06-06.49.46:910][  0]LogGlobalStatus: UEngine::Browse Started Browse: "/Game/WonderChess/Maps/L_WC_Courtyard?Name=Player?listen?WCHumans=2"
+[2026.09.06-06.49.46:910][  0]LogNet: Browse: /Game/WonderChess/Maps/L_WC_Courtyard?Name=Player?listen?WCHumans=2
+[2026.09.06-06.49.46:910][  0]LogLoad: LoadMap: /Game/WonderChess/Maps/L_WC_Courtyard?Name=Player?listen?WCHumans=2
+[2026.09.06-06.49.46:910][  0]LogWorld: BeginTearingDown for /Temp/Untitled_0
+[2026.09.06-06.49.46:910][  0]LogWorld: UWorld::CleanupWorld for Untitled, bSessionEnded=true, bCleanupResources=true
+[2026.09.06-06.49.46:910][  0]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2026.09.06-06.49.46:914][  0]LogAudio: Display: Audio Device unregistered from world 'None'.
+[2026.09.06-06.49.46:920][  0]LogUObjectHash: Compacting FUObjectHashTables data took   0.83ms
+[2026.09.06-06.49.46:930][  0]LogAudio: Display: Audio Device (ID: 1) registered with world 'L_WC_Courtyard'.
+[2026.09.06-06.49.46:930][  0]LogChaosDD: Creating Chaos Debug Draw Scene for world L_WC_Courtyard
+[2026.09.06-06.49.46:931][  0]LogLoad: Game class is 'WCMatchMode'
+[2026.09.06-06.49.46:933][  0]LogCsvProfiler: Display: Metadata set : iris="0"
+[2026.09.06-06.49.46:933][  0]LogNet: ReplicationDriverClass is null! Not using ReplicationDriver.
+[2026.09.06-06.49.46:933][  0]LogNetCore: DDoS detection status: detection enabled: 0 analytics enabled: 0
+[2026.09.06-06.49.46:933][  0]LogNet: InitBase GameNetDriver (NetDriverDefinition GameNetDriver) using replication model Generic
+[2026.09.06-06.49.46:934][  0]LogInit: WinSock: Socket queue. Rx: 131072 (config 131072) Tx: 131072 (config 131072)
+[2026.09.06-06.49.46:934][  0]LogNet: Created socket for bind address: 0.0.0.0:7777
+[2026.09.06-06.49.46:934][  0]PacketHandlerLog: Loaded PacketHandler component: Engine.EngineHandlerComponentFactory (StatelessConnectHandlerComponent)
+[2026.09.06-06.49.46:934][  0]LogNet: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438 IpNetDriver listening on port 7777
+[2026.09.06-06.49.46:937][  0]LogWorld: Bringing World /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard up for play (max tick rate 0) at 2026.09.06-14.49.46
+[2026.09.06-06.49.46:939][  0]LogWorld: Bringing up level for play took: 0.004062
+[2026.09.06-06.49.46:939][  0]LogGameMode: FindPlayerStart: PATHS NOT DEFINED or NO PLAYERSTART with positive rating
+[2026.09.06-06.49.46:947][  0]LogTemp: Display: WC_CATALOG_LOADED units=12 digest=3154592665ce21dc65e5afb06f3769655c8be9ec4157fa6779427c8b8fcc092f
+[2026.09.06-06.49.46:947][  0]LogViewport: Display: Viewport MouseLockMode Changed, LockOnCapture -> DoNotLock
+[2026.09.06-06.49.46:947][  0]LogViewport: Display: Viewport MouseCaptureMode Changed, CapturePermanently_IncludingInitialMouseDown -> CaptureDuringMouseDown
+[2026.09.06-06.49.46:997][  0]LogLoad: Took 0.085562 seconds to LoadMap(/Game/WonderChess/Maps/L_WC_Courtyard)
+[2026.09.06-06.49.46:997][  0]LogGlobalStatus: UEngine::LoadMap Load map complete /Game/WonderChess/Maps/L_WC_Courtyard
+[2026.09.06-06.49.47:074][  0]LogSlate: Took 0.000462 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Regular.ttf' (155K)
+[2026.09.06-06.49.47:157][  0]LogRHI: Display: ShaderPipelineCache: Paused Batching. 1
+[2026.09.06-06.49.47:157][  0]LogPakFile: AllPaks IndexSizes: DirectoryHashSize=32, PathHashSize=16, EntriesSize=32752, DirTreeIndexSize=145572, TotalSize=178372
+[2026.09.06-06.49.47:157][  0]LogRHI: Display: ShaderPipelineCache: Resumed Batching. 0
+[2026.09.06-06.49.47:157][  0]LogRHI: Display: ShaderPipelineCache: Batching Resumed.
+[2026.09.06-06.49.47:229][  0]LogInit: Display: Engine is initialized. Leaving FEngineLoop::Init()
+[2026.09.06-06.49.47:229][  0]LogLoad: (Engine Initialization) Total time: 3.14 seconds
+[2026.09.06-06.49.47:254][  0]LogContentStreaming: Texture pool size now 1000 MB
+[2026.09.06-06.49.47:254][  0]LogCsvProfiler: Display: Metadata set : streamingpoolsizemb="1000"
+[2026.09.06-06.49.47:256][  0]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2026.09.06-06.49.47:762][  0]LogSlate: Slate font cache was flushed
+[2026.09.06-06.49.47:762][  0]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2026.09.06-06.49.47:763][  0]r.ScreenPercentage = "100"
+[2026.09.06-06.49.47:763][  0]LogTrace: Display: Control listening on port 36924
+[2026.09.06-06.49.47:765][  1]LogTemp: Display: WC_EVIDENCE_SESSION namespace=0 directory=C:/Users/iputu/Documents/Wonder Chess/reports/WC-360/candidate5-network/host
+[2026.09.06-06.49.47:786][  1]LogStreaming: Display: FlushAsyncLoading(171): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.49.47:796][  1]LogSlate: Took 0.000319 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Regular.ttf' (155K)
+[2026.09.06-06.50.17:711][290]LogNet: NotifyAcceptingConnection accepted from: 127.0.0.1:64970
+[2026.09.06-06.50.17:711][290]LogNetVersion: WonderChess 0.3.0, NetCL: 47537391, EngineNetworkVersion: 43, GameNetworkVersion: 0 (Checksum: 2881143343)
+[2026.09.06-06.50.17:711][290]LogHandshake: SendConnectChallenge. Timestamp: 30.482921, Cookie: 001074190214159078194074093015177243088087045184072183084095
+[2026.09.06-06.50.17:855][291]LogNet: NotifyAcceptingConnection accepted from: 127.0.0.1:64970
+[2026.09.06-06.50.17:855][291]LogHandshake: SendChallengeAck. InCookie: 001074190214159078194074093015177243088087045184072183084095
+[2026.09.06-06.50.17:855][291]LogNet: Server accepting post-challenge connection from: 127.0.0.1:64970
+[2026.09.06-06.50.17:855][291]LogNet: IpConnection_2147482308 setting maximum channels to: 32767
+[2026.09.06-06.50.17:856][291]PacketHandlerLog: Loaded PacketHandler component: Engine.EngineHandlerComponentFactory (StatelessConnectHandlerComponent)
+[2026.09.06-06.50.17:856][291]LogNet: NotifyAcceptedConnection: Name: L_WC_Courtyard, TimeStamp: 09/06/26 14:50:17, [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: NULL, Owner: NULL, UniqueId: INVALID
+[2026.09.06-06.50.17:856][291]LogNet: AddClientConnection: Added client connection: [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: NULL, Owner: NULL, UniqueId: INVALID
+[2026.09.06-06.50.17:992][292]LogNet: NotifyAcceptingChannel Control 0 server World /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard: Accepted
+[2026.09.06-06.50.17:992][292]LogNet: Remote platform little endian=1
+[2026.09.06-06.50.17:992][292]LogNet: This platform little endian=1
+[2026.09.06-06.50.18:140][293]LogNet: Login request: ?Name=GR1ZZYLY-F69F749340B8948255076CB1B9E470B3 userId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3 platform: NULL
+[2026.09.06-06.50.18:214][294]LogNet: Client netspeed is 100000
+[2026.09.06-06.50.18:214][294]LogNet: Join request: /Game/WonderChess/Maps/L_WC_Menu?Name=GR1ZZYLY-F69F749340B8948255076CB1B9E470B3?SplitscreenCount=1
+[2026.09.06-06.50.18:214][294]LogGameMode: FindPlayerStart: PATHS NOT DEFINED or NO PLAYERSTART with positive rating
+[2026.09.06-06.50.18:219][294]LogNet: Join succeeded: GR1ZZYLY-F69F749340B
+[2026.09.06-06.50.18:545][296]LogTemp: Display: WC_MATCH_START seed=271828 humans=2 bots=6
+[2026.09.06-06.50.18:547][296]LogStreaming: Display: FlushAsyncLoading(173): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.50.18:681][297]LogTemp: Display: WC_EVIDENCE_SESSION namespace=1 directory=C:/Users/iputu/Documents/Wonder Chess/reports/WC-360/candidate5-network/host
+[2026.09.06-06.50.18:704][297]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=0 reason=Out-of-order command sequence
+[2026.09.06-06.50.18:704][297]LogStreaming: Display: FlushAsyncLoading(174): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.50.18:912][298]LogTemp: Display: WC_COMMAND_PROBE out_of_order_sequence_rejected status=PASS detail=Actual reply and owner-private gold/lock state match expectation
+[2026.09.06-06.50.18:915][298]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.50.18:915][298]LogStreaming: Display: FlushAsyncLoading(175): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.50.19:114][299]LogTemp: Display: WC_COMMAND_PROBE original_idempotent_lock_request status=PASS detail=Actual reply and owner-private gold/lock state match expectation
+[2026.09.06-06.50.19:115][299]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.50.19:609][300]LogTemp: Display: WC_COMMAND_PROBE duplicate_request_applies_once status=PASS detail=Actual reply and owner-private gold/lock state match expectation
+[2026.09.06-06.50.19:610][300]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=0 reason=Request ID reused with different payload
+[2026.09.06-06.50.19:621][301]LogTemp: Display: WC_COMMAND_PROBE changed_payload_same_request_rejected status=PASS detail=Actual reply and owner-private gold/lock state match expectation
+[2026.09.06-06.50.19:622][301]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=0 reason=Stale seat revision
+[2026.09.06-06.50.19:638][302]LogTemp: Display: WC_COMMAND_PROBE stale_revision_rejected status=PASS detail=Actual reply and owner-private gold/lock state match expectation
+[2026.09.06-06.50.19:638][302]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=0 reason=Unit is not owned
+[2026.09.06-06.50.19:655][303]LogTemp: Display: WC_COMMAND_PROBE foreign_unit_sale_rejected status=PASS detail=Actual reply and owner-private gold/lock state match expectation
+[2026.09.06-06.50.19:875][304]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.50.20:212][305]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.50.20:212][305]LogStreaming: Display: FlushAsyncLoading(176): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.50.20:533][307]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.50.20:533][307]LogStreaming: Display: FlushAsyncLoading(177): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.50.20:718][308]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.50.21:156][310]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.50.21:405][311]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.50.21:654][312]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.50.21:909][313]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.50.22:174][314]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.50.22:439][315]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.50.22:718][316]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.50.24:051][321]LogStreaming: Display: FlushAsyncLoading(178): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.50.25:295][322]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=0 reason=Preparation is locked
+[2026.09.06-06.50.25:301][322]LogStreaming: Display: FlushAsyncLoading(181): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.50.25:306][323]LogTemp: Display: WC_COMMAND_PROBE combat_phase_buy_rejected status=PASS detail=Actual reply and owner-private gold/lock state match expectation
+[2026.09.06-06.50.25:608][326]LogStreaming: Display: FlushAsyncLoading(182): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.50.25:881][327]LogStreaming: Display: FlushAsyncLoading(183): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.50.27:071][332]LogStreaming: Display: FlushAsyncLoading(184): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.50.27:411][334]LogStreaming: Display: FlushAsyncLoading(185): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.50.28:027][336]LogTemp: Display: WC_ROUND_SETTLED round=1 seat0_hp=56 records=1
+[2026.09.06-06.50.28:332][337]LogStreaming: Display: FlushAsyncLoading(186): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.50.28:862][339]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.50.29:049][340]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.50.29:049][340]LogStreaming: Display: FlushAsyncLoading(187): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.50.29:280][341]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.50.39:679][351]LogStreaming: Display: FlushAsyncLoading(188): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.50.39:769][354]LogOutputDevice: Warning: 
+
+Script Stack (0 frames) :
+
+[2026.09.06-06.50.40:000][354]LogStats: FPlatformStackWalk::StackWalkAndDump -  0.231 s
+[2026.09.06-06.50.40:000][354]LogOutputDevice: Error: === Handled ensure: ===
+[2026.09.06-06.50.40:000][354]LogOutputDevice: Error: 
+[2026.09.06-06.50.40:000][354]LogOutputDevice: Error: Ensure condition failed: !IsBunchTooLarge(Connection, Bunch)  [File:D:\build\++UE5\Sync\Engine\Source\Runtime\Engine\Private\DataChannel.cpp] [Line: 1259] 
+[2026.09.06-06.50.40:000][354]LogOutputDevice: Error: Attempted to send bunch exceeding max allowed size. BunchSize=73500, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.50.40:000][354]LogOutputDevice: Error: Stack: 
+[2026.09.06-06.50.40:000][354]LogOutputDevice: Error: [Callstack] 0x00007ff6b35900d1 WonderChess.exe!`UE::Geometry::Spline::TTangentBezierSpline<UE::Math::TQuat<double> >::GetNumPoints'::`4'::<lambda_1>::operator()() []
+[2026.09.06-06.50.40:000][354]LogOutputDevice: Error: [Callstack] 0x00007ff6add9a056 WonderChess.exe!UChannel::SendBunch() []
+[2026.09.06-06.50.40:000][354]LogOutputDevice: Error: [Callstack] 0x00007ff6add95055 WonderChess.exe!UActorChannel::ReplicateActor() []
+[2026.09.06-06.50.40:000][354]LogOutputDevice: Error: [Callstack] 0x00007ff6ae372d49 WonderChess.exe!UNetDriver::ServerReplicateActors_ProcessPrioritizedActorsRange() []
+[2026.09.06-06.50.40:000][354]LogOutputDevice: Error: [Callstack] 0x00007ff6ae3701ac WonderChess.exe!UNetDriver::ServerReplicateActors_ForConnection() []
+[2026.09.06-06.50.40:000][354]LogOutputDevice: Error: [Callstack] 0x00007ff6ae36e077 WonderChess.exe!UNetDriver::ServerReplicateActors() []
+[2026.09.06-06.50.40:000][354]LogOutputDevice: Error: [Callstack] 0x00007ff6ae37bc3e WonderChess.exe!UNetDriver::TickFlush() []
+[2026.09.06-06.50.40:000][354]LogOutputDevice: Error: [Callstack] 0x00007ff6ae355b84 WonderChess.exe!UNetDriver::InternalTickFlush() []
+[2026.09.06-06.50.40:000][354]LogOutputDevice: Error: [Callstack] 0x00007ff6ae3443bf WonderChess.exe!TBaseUObjectMethodDelegateInstance<0,UNetDriver,void __cdecl(float),FDefaultDelegateUserPolicy>::ExecuteIfSafe() []
+[2026.09.06-06.50.40:000][354]LogOutputDevice: Error: [Callstack] 0x00007ff6a89b60c3 WonderChess.exe!TMulticastDelegate<void __cdecl(float),FDefaultDelegateUserPolicy>::Broadcast() []
+[2026.09.06-06.50.40:000][354]LogOutputDevice: Error: [Callstack] 0x00007ff6ae1ed125 WonderChess.exe!UWorld::Tick() []
+[2026.09.06-06.50.40:000][354]LogOutputDevice: Error: [Callstack] 0x00007ff6adf1b48b WonderChess.exe!UGameEngine::Tick() []
+[2026.09.06-06.50.40:000][354]LogOutputDevice: Error: [Callstack] 0x00007ff6af0a564c WonderChess.exe!FEngineLoop::Tick() []
+[2026.09.06-06.50.40:000][354]LogOutputDevice: Error: [Callstack] 0x00007ff6af0b347d WonderChess.exe!GuardedMain() []
+[2026.09.06-06.50.40:000][354]LogOutputDevice: Error: [Callstack] 0x00007ff6af0b356a WonderChess.exe!GuardedMainWrapper() []
+[2026.09.06-06.50.40:000][354]LogOutputDevice: Error: [Callstack] 0x00007ff6af0b617a WonderChess.exe!LaunchWindowsStartup() []
+[2026.09.06-06.50.40:000][354]LogOutputDevice: Error: [Callstack] 0x00007ff6af0c1f94 WonderChess.exe!WinMain() []
+[2026.09.06-06.50.40:000][354]LogOutputDevice: Error: [Callstack] 0x00007ff6b331c32a WonderChess.exe!__scrt_common_main_seh() [D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288]
+[2026.09.06-06.50.40:000][354]LogOutputDevice: Error: [Callstack] 0x00007ffad513ccb7 KERNEL32.DLL!UnknownFunction []
+[2026.09.06-06.50.40:000][354]LogOutputDevice: Error: [Callstack] 0x00007ffad57ecaec ntdll.dll!UnknownFunction []
+[2026.09.06-06.50.40:000][354]LogOutputDevice: Error: 
+[2026.09.06-06.50.40:011][354]LogStats:                SubmitErrorReport -  0.000 s
+[2026.09.06-06.50.40:592][354]LogRHI: Error: Breadcrumbs 'RHIThread'
+ - Frame 352
+
+[2026.09.06-06.50.40:611][354]LogWindows: Could not start crash report client using ../../../Engine/Binaries/Win64/CrashReportClient-Win64-Debug.exe
+[2026.09.06-06.50.40:611][354]LogMemory: Platform Memory Stats for Windows
+[2026.09.06-06.50.40:611][354]LogMemory: Process Physical Memory: 724.34 MB used, 731.04 MB peak
+[2026.09.06-06.50.40:611][354]LogMemory: Process Virtual Memory: 1243.18 MB used, 1590.25 MB peak
+[2026.09.06-06.50.40:611][354]LogMemory: Physical Memory: 12371.73 MB used,  3184.98 MB free, 15556.71 MB total
+[2026.09.06-06.50.40:611][354]LogMemory: Virtual Memory: 35122.04 MB used,  2962.67 MB free, 38084.71 MB total
+[2026.09.06-06.50.40:611][354]LogStats:                    SendNewReport -  0.600 s
+[2026.09.06-06.50.40:611][354]LogStats:             FDebug::EnsureFailed -  0.842 s
+[2026.09.06-06.50.40:611][354]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=73500, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.50.41:551][355]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=73499, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.50.45:126][357]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=73487, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.50.48:881][359]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=73470, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.50.49:795][362]LogTemp: Display: WC_ROUND_SETTLED round=2 seat0_hp=52 records=2
+[2026.09.06-06.50.49:802][362]LogStreaming: Display: FlushAsyncLoading(189): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.50.49:842][362]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=74143, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.50.54:214][364]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.50.54:214][364]LogStreaming: Display: FlushAsyncLoading(191): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.50.54:547][368]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.50.54:547][368]LogStreaming: Display: FlushAsyncLoading(192): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.50.55:957][369]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.50.55:957][369]LogStreaming: Display: FlushAsyncLoading(193): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.50.56:196][373]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.50.56:196][373]LogStreaming: Display: FlushAsyncLoading(194): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.50.59:109][379]LogStreaming: Display: FlushAsyncLoading(195): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.51.00:447][390]LogStreaming: Display: FlushAsyncLoading(196): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.51.01:469][393]LogTemp: Display: WC_ROUND_SETTLED round=3 seat0_hp=45 records=3
+[2026.09.06-06.51.01:853][394]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.51.02:190][395]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.51.03:899][396]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.51.09:457][418]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=85888, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.51.09:658][420]LogTemp: Display: WC_ROUND_SETTLED round=4 seat0_hp=38 records=4
+[2026.09.06-06.51.10:142][421]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.51.10:550][422]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.51.19:388][447]LogTemp: Display: WC_ROUND_SETTLED round=5 seat0_hp=33 records=5
+[2026.09.06-06.51.19:939][452]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.51.20:240][453]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.51.21:834][454]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.51.22:202][458]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.51.26:854][472]LogTemp: Display: WC_ROUND_SETTLED round=6 seat0_hp=26 records=6
+[2026.09.06-06.51.29:217][474]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.51.29:418][478]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.51.32:699][486]LogStreaming: Display: FlushAsyncLoading(198): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.51.33:356][491]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=94906, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.51.34:094][493]LogStreaming: Display: FlushAsyncLoading(199): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.51.34:097][493]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=94889, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.51.34:792][495]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=94869, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.51.35:469][497]LogTemp: Display: WC_ROUND_SETTLED round=7 seat0_hp=19 records=7
+[2026.09.06-06.51.35:544][497]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98647, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.51.36:154][507]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.51.36:291][513]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.51.38:483][561]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98720, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.51.39:031][578]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98726, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.51.39:540][594]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98708, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.51.39:994][608]LogTemp: Display: WC_ROUND_SETTLED round=8 seat0_hp=11 records=8
+[2026.09.06-06.51.40:068][610]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98701, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.51.40:591][624]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.51.40:770][631]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.51.42:287][675]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98733, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.51.42:841][683]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98729, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.51.43:372][701]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98725, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.51.43:906][717]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98726, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.51.44:447][733]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98688, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.51.44:976][749]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98677, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.51.45:506][765]LogTemp: Display: WC_ROUND_SETTLED round=9 seat0_hp=3 records=9
+[2026.09.06-06.51.45:508][765]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98683, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.51.46:063][780]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.51.46:273][788]LogTemp: Display: WC_COMMAND_REPLY seat=0 accepted=1 reason=Accepted
+[2026.09.06-06.51.47:835][816]LogStreaming: Display: FlushAsyncLoading(200): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.51.48:369][833]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98711, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.51.48:928][850]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98708, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.51.49:438][866]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98707, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.51.49:959][882]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98686, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.51.50:314][893]LogTemp: Display: WC_ROUND_SETTLED round=10 seat0_hp=0 records=10
+[2026.09.06-06.51.50:423][896]LogStreaming: Display: FlushAsyncLoading(201): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.51.50:549][897]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98751, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.51.52:286][935]LogStreaming: Display: FlushAsyncLoading(203): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.51.52:875][944]LogStreaming: Display: FlushAsyncLoading(204): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.51.53:190][955]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98897, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.51.53:389][960]LogStreaming: Display: FlushAsyncLoading(207): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.51.53:475][963]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98913, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.51.53:912][975]LogStreaming: Display: FlushAsyncLoading(209): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.51.53:914][975]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98876, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.51.54:494][992]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98851, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.51.54:985][  6]LogTemp: Display: WC_ROUND_SETTLED round=11 seat0_hp=0 records=11
+[2026.09.06-06.51.55:021][  7]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98846, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.51.57:272][ 57]LogStreaming: Display: FlushAsyncLoading(210): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.51.57:683][ 71]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=99021, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.51.57:794][ 74]LogStreaming: Display: FlushAsyncLoading(211): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.51.57:834][ 76]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98941, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.51.58:327][ 92]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=98945, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.51.58:356][ 93]LogTemp: Display: WC_ROUND_SETTLED round=12 seat0_hp=0 records=12
+[2026.09.06-06.52.00:127][128]LogStreaming: Display: FlushAsyncLoading(212): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.52.01:054][158]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=87799, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.52.01:180][161]LogStreaming: Display: FlushAsyncLoading(214): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.52.01:217][163]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=87778, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.52.01:730][179]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=87761, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.52.02:231][195]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=87760, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.52.02:732][211]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=87746, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.52.03:039][221]LogTemp: Display: WC_ROUND_SETTLED round=13 seat0_hp=0 records=13
+[2026.09.06-06.52.03:362][227]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76250, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.52.03:953][235]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76194, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.52.04:531][244]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76321, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.52.05:058][260]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76339, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.52.05:560][273]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76289, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.52.06:070][286]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76295, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.52.06:663][302]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76293, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.52.07:074][313]LogTemp: Display: WC_ROUND_SETTLED round=14 seat0_hp=0 records=14
+[2026.09.06-06.52.07:275][315]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76309, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.52.09:662][357]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76342, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.52.10:199][374]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76316, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.52.10:657][388]LogStreaming: Display: FlushAsyncLoading(215): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.52.10:858][390]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76296, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.52.11:232][404]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76286, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.52.11:740][420]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76271, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.52.12:239][436]LogTemp: Display: WC_ROUND_SETTLED round=15 seat0_hp=0 records=15
+[2026.09.06-06.52.12:240][436]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76275, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.52.14:407][479]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76359, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.52.14:573][483]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76361, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.52.15:138][498]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76320, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.52.15:611][510]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76314, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.52.16:141][526]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76308, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.52.16:565][539]LogTemp: Display: WC_ROUND_SETTLED round=16 seat0_hp=0 records=16
+[2026.09.06-06.52.16:745][541]LogNetPartialBunch: Error: Attempted to send bunch exceeding max allowed size. BunchSize=76315, MaximumSize=65536 Channel: [UActorChannel] Actor: WCMatchState /Game/WonderChess/Maps/L_WC_Courtyard.L_WC_Courtyard:PersistentLevel.WCMatchState_2147482368, Role: 3, RemoteRole: 1 [UChannel] ChIndex: 4, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.52.18:344][581]LogStreaming: Display: FlushAsyncLoading(216): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.52.19:363][612]LogStreaming: Display: FlushAsyncLoading(217): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.52.19:995][632]LogTemp: Display: WC_ROUND_SETTLED round=17 seat0_hp=0 records=17
+[2026.09.06-06.52.23:561][739]LogTemp: Display: WC_ROUND_SETTLED round=18 seat0_hp=0 records=18
+[2026.09.06-06.52.26:022][786]LogStreaming: Display: FlushAsyncLoading(218): 1 QueuedPackages, 0 AsyncPackages
+[2026.09.06-06.52.27:428][836]LogTemp: Display: WC_ROUND_SETTLED round=19 seat0_hp=0 records=19
+[2026.09.06-06.52.30:308][903]LogTemp: Display: WC_ROUND_SETTLED round=20 seat0_hp=0 records=20
+[2026.09.06-06.52.33:715][996]LogTemp: Display: WC_ROUND_SETTLED round=21 seat0_hp=0 records=21
+[2026.09.06-06.52.36:863][ 81]LogTemp: Display: WC_ROUND_SETTLED round=22 seat0_hp=0 records=22
+[2026.09.06-06.52.36:863][ 81]LogTemp: Display: WC_MATCH_FINISHED seed=271828 rounds=22 capped=0
+[2026.09.06-06.52.37:603][ 94]LogTemp: Display: WC_SCRIPTED_SESSION_FINISHED namespace=1 seat=0 commands=42
+[2026.09.06-06.52.57:029][640]LogTemp: Warning: WC_EVIDENCE_WRITE_FAILED C:/Users/iputu/Documents/Wonder Chess/reports/WC-360/candidate5-network/host/match-1-seat-0-pid-39788-snapshots.jsonl
+[2026.09.06-06.53.44:373][982]LogTemp: Display: WC_VERIFICATION_PROCESS_EXIT namespace=1 phase=3 complete=1 wall_seconds=240.007
+[2026.09.06-06.53.44:373][982]LogWindows: FPlatformMisc::RequestExit(0, <NoCallSiteInfo>)
+[2026.09.06-06.53.44:373][982]LogWindows: FPlatformMisc::RequestExitWithStatus(0, 0, <NoCallSiteInfo>)
+[2026.09.06-06.53.44:373][982]LogCore: Engine exit requested (reason: Win RequestExit)
+[2026.09.06-06.53.44:375][983]LogCore: Engine exit requested (reason: EngineExit() was called; note: exit was already requested)
+[2026.09.06-06.53.44:384][983]LogInit: Display: PreExit Game.
+[2026.09.06-06.53.44:385][983]LogWorld: BeginTearingDown for /Game/WonderChess/Maps/L_WC_Courtyard
+[2026.09.06-06.53.44:385][983]LogNet: World NetDriver shutdown IpNetDriver_2147482438 [GameNetDriver]
+[2026.09.06-06.53.44:385][983]LogNet: DestroyNamedNetDriver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438 
+[2026.09.06-06.53.44:385][983]LogNet: UNetConnection::SendCloseReason:
+[2026.09.06-06.53.44:385][983]LogNet:  - Result=HostClosedConnection, ErrorContext="HostClosedConnection"
+[2026.09.06-06.53.44:386][983]LogNet: UNetConnection::Cleanup: Closing open connection. [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.53.44:386][983]LogNet: UNetConnection::Close: [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3, Channels: 9, Time: 2026.09.06-06.53.44
+[2026.09.06-06.53.44:386][983]LogNet: UNetConnection::SendCloseReason:
+[2026.09.06-06.53.44:386][983]LogNet:  - Result=Cleanup, ErrorContext="Cleanup"
+[2026.09.06-06.53.44:386][983]LogNet: UChannel::Close: Sending CloseBunch. ChIndex == 0. Name: [UChannel] ChIndex: 0, Closing: 0 [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.53.44:386][983]LogNet: UNetDriver::RemoveClientConnection - Removed address 127.0.0.1:64970 from MappedClientConnections for: [UNetConnection] RemoteAddr: 127.0.0.1:64970, Name: IpConnection_2147482308, Driver: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438, IsServer: YES, PC: WCMatchController_2147482303, Owner: WCMatchController_2147482303, UniqueId: NULL:GR1ZZYLY-F69F749340B8948255076CB1B9E470B3
+[2026.09.06-06.53.44:386][983]LogExit: Name:GameNetDriver Def:GameNetDriver IpNetDriver_2147482438 shut down
+[2026.09.06-06.53.44:386][983]LogTemp: Display: WC_BOT_TAKEOVER seat=0
+[2026.09.06-06.53.44:386][983]LogWorld: UWorld::CleanupWorld for L_WC_Courtyard, bSessionEnded=true, bCleanupResources=true
+[2026.09.06-06.53.44:390][983]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2026.09.06-06.53.44:390][983]LogRuntimeTelemetry: Recording EnginePreExit events
+[2026.09.06-06.53.44:856][983]LogAudio: Display: Beginning Audio Device Manager Shutdown (Module: AudioMixerXAudio2)...
+[2026.09.06-06.53.44:856][983]LogAudio: Display: Destroying 1 Remaining Audio Device(s)...
+[2026.09.06-06.53.44:856][983]LogAudio: Display: Audio Device unregistered from world 'L_WC_Courtyard'.
+[2026.09.06-06.53.44:856][983]LogAudio: Display: Shutting down audio device while 1 references to it are still alive. For more information, compile with INSTRUMENT_AUDIODEVICE_HANDLES.
+[2026.09.06-06.53.44:891][983]LogAudioMixer: Display: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=1, StreamState=4
+[2026.09.06-06.53.44:891][983]LogAudioMixer: Display: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=1, StreamState=2
+[2026.09.06-06.53.44:898][983]LogAudioMixer: Deinitializing Audio Bus Subsystem for audio device with ID -1
+[2026.09.06-06.53.44:898][983]LogAudio: Display: Audio Device Manager Shutdown
+[2026.09.06-06.53.44:898][983]LogSlate: Request Window 'WonderChess (64-bit Development PCD3D_SM5) ' being destroyed
+[2026.09.06-06.53.44:900][983]LogSlate: Window 'WonderChess (64-bit Development PCD3D_SM5) ' being destroyed
+[2026.09.06-06.53.44:906][983]LogWindowsTextInputMethodSystem: Activated input method: English (United States) - (Keyboard).
+[2026.09.06-06.53.44:918][983]LogSlate: Slate User Destroyed.  User Index 0, Is Virtual User: 0
+[2026.09.06-06.53.44:918][983]LogExit: Preparing to exit.
+[2026.09.06-06.53.44:918][983]LogMoviePlayer: Shutting down movie player
+[2026.09.06-06.53.44:929][983]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2026.09.06-06.53.44:933][983]LogDemo: Cleaned up 0 splitscreen connections, owner deletion: enabled
+[2026.09.06-06.53.44:936][983]LogExit: Game engine shut down
+[2026.09.06-06.53.44:989][983]LogExit: Object subsystem successfully closed.
+[2026.09.06-06.53.44:996][983]LogShaderLibrary: Display: Closing logical shader library 'Global' with 1 components
+[2026.09.06-06.53.44:997][983]LogShaderLibrary: Display: Closing logical shader library 'WonderChess' with 1 components
+[2026.09.06-06.53.45:007][983]LogChaosDD: Chaos Debug Draw Shutdown
+[2026.09.06-06.53.45:010][983]LogNFORDenoise: NFORDenoise function shutting down
+[2026.09.06-06.53.45:011][983]RenderDocPlugin: plugin has been unloaded.
+[2026.09.06-06.53.45:012][983]LogPakFile: Destroying PakPlatformFile
+[2026.09.06-06.53.45:015][983]LogD3D11RHI: Shutdown
+[2026.09.06-06.53.45:016][983]LogD3D11RHI: CleanupD3DDevice
+[2026.09.06-06.53.45:027][983]LogExit: Exiting.
+[2026.09.06-06.53.45:060][983]Log file closed, 09/06/26 14:53:45

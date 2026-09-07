@@ -1,0 +1,13 @@
+{
+  "observed_utc": "2026-09-06T05:58:25.527950+00:00",
+  "severity": "P1",
+  "status": "FIX_IMPLEMENTED_COLD_LOAD_VERIFICATION_PENDING",
+  "trigger": "Actual Unreal -game launch loaded meshes and animations whose referenced skeleton packages were missing from disk.",
+  "cause": "AssetImportTask.save saved primary imported objects; generated skeletons were never explicitly persisted by the importer.",
+  "failed_evidence": "reports/WC-350/first-ui.log",
+  "invalidated_claim": "Earlier skeleton_preserved=true only compared objects during an import session and does not establish persistence or a cold reimport pass.",
+  "fix": "Explicitly save mesh.skeleton before and after LOD import. Add real compiled asset automation and verify from a separate process.",
+  "first_six_reimport_log": "reports/WC-330/skeleton-persistence-six.log",
+  "verified_files_on_disk": 6,
+  "remaining_skeletons_pending": 6
+}

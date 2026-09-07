@@ -1,0 +1,116 @@
+00:03.579  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_elf_ranger\wc_u_elf_ranger.blend"
+00:08.797  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\animation-refinement\wc_u_elf_ranger\Idle_portrait.png'
+00:11.125  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\animation-refinement\wc_u_elf_ranger\Idle_game_angle.png'
+00:13.891  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\animation-refinement\wc_u_elf_ranger\Hit_portrait.png'
+00:16.813  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\animation-refinement\wc_u_elf_ranger\Hit_game_angle.png'
+00:19.204  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\animation-refinement\wc_u_elf_ranger\Defeat_portrait.png'
+00:21.422  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\animation-refinement\wc_u_elf_ranger\Defeat_game_angle.png'
+00:23.610  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\animation-refinement\wc_u_elf_ranger\Active_portrait.png'
+00:25.782  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\animation-refinement\wc_u_elf_ranger\Active_game_angle.png'
+00:27.875  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\animation-refinement\wc_u_elf_ranger\Victory_portrait.png'
+00:30.032  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-330\animation-refinement\wc_u_elf_ranger\Victory_game_angle.png'
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\calibration\\animation-refinement-trial\\wc_u_elf_ranger\\AN_wc_u_elf_ranger_Active.fbx'
+export finished in 0.1057 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\calibration\\animation-refinement-trial\\wc_u_elf_ranger\\AN_wc_u_elf_ranger_Hit.fbx'
+export finished in 0.1279 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\calibration\\animation-refinement-trial\\wc_u_elf_ranger\\AN_wc_u_elf_ranger_Defeat.fbx'
+export finished in 0.1969 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\calibration\\animation-refinement-trial\\wc_u_elf_ranger\\AN_wc_u_elf_ranger_Victory.fbx'
+export finished in 0.2626 sec.
+{
+  "status": "sampled_motion_invariants_passed",
+  "unit_id": "wc_u_elf_ranger",
+  "blender_version": "5.1.1",
+  "sampling": "actual deformed mesh every 3 frames at 60fps",
+  "clips": [
+    {
+      "clip": "Idle",
+      "samples": 41,
+      "minimum_support_sole_z_m": 0.01691998913884163,
+      "maximum_support_sole_z_m": 0.01691998913884163,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Move",
+      "samples": 21,
+      "minimum_support_sole_z_m": 0.003882620483636856,
+      "maximum_support_sole_z_m": 0.01691998913884163,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Attack",
+      "samples": 15,
+      "minimum_support_sole_z_m": 0.01691998913884163,
+      "maximum_support_sole_z_m": 0.01691998913884163,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Active",
+      "samples": 11,
+      "minimum_support_sole_z_m": 0.01691998913884163,
+      "maximum_support_sole_z_m": 0.016919996589422226,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Hit",
+      "samples": 9,
+      "minimum_support_sole_z_m": 0.01691998913884163,
+      "maximum_support_sole_z_m": 0.01691998913884163,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Defeat",
+      "samples": 21,
+      "minimum_support_sole_z_m": 0.016919851303100586,
+      "maximum_support_sole_z_m": 0.016919966787099838,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Victory",
+      "samples": 31,
+      "minimum_support_sole_z_m": 0.01691998913884163,
+      "maximum_support_sole_z_m": 0.01691998913884163,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    }
+  ],
+  "errors": [],
+  "not_checked": [
+    "continuous visual quality",
+    "weapon/costume clipping",
+    "semantic gesture review",
+    "Unreal retarget/import",
+    "runtime move-speed synchronization"
+  ]
+}
+Info: Saved as "animation-refinement6.blend"
+WC_ANIMATION_REFINEMENT_COMPLETE wc_u_elf_ranger
+00:30.219  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_elf_priest\wc_u_elf_priest.blend"
+Traceback (most recent call last):
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\refine_saved_animations.py", line 35, in <module>
+    clips=animate(unit,arm,target,selected_clips=selected)
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\author_alpha.py", line 558, in animate
+    if contact_maximum>.025:raise RuntimeError(f'{u["id"]} {clip}: support grip unreachable by {contact_maximum:.4f}m')
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: wc_u_elf_priest Defeat: support grip unreachable by 0.1602m
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\calibration\\animation-refinement-trial\\wc_u_elf_priest\\AN_wc_u_elf_priest_Active.fbx'
+export finished in 0.0785 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\exports\\calibration\\animation-refinement-trial\\wc_u_elf_priest\\AN_wc_u_elf_priest_Hit.fbx'
+export finished in 0.0830 sec.
+
+Error: script failed, file: 'tools/blender/refine_saved_animations.py', exiting.
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

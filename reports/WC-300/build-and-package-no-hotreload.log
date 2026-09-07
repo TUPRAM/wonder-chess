@@ -1,0 +1,948 @@
+Running AutomationTool...
+Using bundled DotNet SDK version: 8.0.412 win-x64
+Starting AutomationTool...
+Parsing command line: BuildCookRun -project="C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject" -noP4 -platform=Win64 -clientconfig=Development -build -cook -stage -pak -archive -archivedirectory="C:\Users\iputu\Documents\Wonder Chess\builds\WC-300-Minimal" -utf8output -ubtargs=-NoHotReloadFromIDE
+Initializing script modules...
+Total script module initialization time: 0.45 s.
+Using C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MSBuild.exe
+Executing commands...
+Setting up ProjectParams for C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject
+********** BUILD COMMAND STARTED **********
+Running: C:\Program Files\Epic Games\UE_5.7\Engine\Binaries\ThirdParty\DotNet\8.0.412\win-x64\dotnet.exe "C:\Program Files\Epic Games\UE_5.7\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" -Target="WonderChessEditor Win64 Development -Project=\"C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject\"" -Target="WonderChess Win64 Development -Project=\"C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject\"  -remoteini=\"C:\Users\iputu\Documents\Wonder Chess\game\"  -NoHotReloadFromIDE " -log="C:\Users\iputu\AppData\Roaming\Unreal Engine\AutomationTool\Logs\C+Program+Files+Epic+Games+UE_5.7\UBA-WonderChessEditor-Win64-Development.txt"
+Log file: C:\Users\iputu\AppData\Roaming\Unreal Engine\AutomationTool\Logs\C+Program+Files+Epic+Games+UE_5.7\UBA-WonderChessEditor-Win64-Development.txt
+Using 'git status' to determine working set for adaptive non-unity build (C:\Users\iputu\Documents\Wonder Chess).
+Creating makefile for WonderChess (command line arguments changed)
+UHT compiled-in object format Default
+Building WonderChessEditor and WonderChess...
+WonderChessEditor: Using Visual Studio 2022 14.44.35226 toolchain (C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+WonderChess: Using Visual Studio 2022 14.44.35226 toolchain (C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+Determining max actions to execute in parallel (8 physical cores, 16 logical cores)
+  Executing up to 8 processes, one per physical core
+  Requested 1.5 GB memory per action, 4.41 GB available: limiting max parallel actions to 2
+Using Unreal Build Accelerator local executor to run 17 action(s)
+  Storage capacity 40Gb
+---- Starting trace: 260906_131103 ----
+UbaServer - Listening on 0.0.0.0:1345
+** For WonderChessEditor-Win64-Development **
+[1/17] Compile [x64] WonderSimulation.cpp
+[2/17] Link [x64] UnrealEditor-WonderChessRuntime.dll
+[3/17] Link [x64] UnrealEditor-WonderChessRuntime.lib
+[4/17] WriteMetadata WonderChessEditor.target [NoUba]
+** For WonderChess-Win64-Development **
+[5/17] Resource Default.rc2
+[6/17] Copy D3D12Core.dll
+[7/17] Copy d3d12SDKLayers.dll
+[8/17] Copy DirectML.dll
+[9/17] Copy tbb12.dll
+[10/17] Copy tbbmalloc.dll
+[11/17] Compile [x64] SharedPCH.Engine.Project.Exceptions.ValApi.ValExpApi.Cpp20.cpp
+[12/17] Compile [x64] Module.WonderChessRuntime.gen.cpp
+[13/17] Compile [x64] WonderChessRuntime.cpp
+[14/17] Compile [x64] WCGameMode.cpp
+[15/17] Compile [x64] WonderSimulation.cpp
+[16/17] Link [x64] WonderChess.exe
+[17/17] WriteMetadata WonderChess.target [NoUba]
+
+Trace written to file C:/Users/iputu/AppData/Roaming/Unreal Engine/AutomationTool/Logs/C+Program+Files+Epic+Games+UE_5.7/UBA-WonderChessEditor-Win64-Development.uba with size 11.3kb
+Total time in Unreal Build Accelerator local executor: 61.01 seconds
+
+Result: Succeeded
+Total execution time: 66.07 seconds
+Took 66.31s to run dotnet.exe, ExitCode=0
+No build products were made
+Build command time: 66.34 s
+********** BUILD COMMAND COMPLETED **********
+********** COOK COMMAND STARTED **********
+Running UnrealEditor Cook for project C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject
+Commandlet log file is C:\Program Files\Epic Games\UE_5.7\Engine\Programs\AutomationTool\Saved\Cook-2026.09.06-13.12.04.txt
+Running: C:\Program Files\Epic Games\UE_5.7\Engine\Binaries\Win64\UnrealEditor-Cmd.exe "C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject" -run=Cook  -TargetPlatform=Windows  -unversioned -fileopenlog -abslog="C:\Program Files\Epic Games\UE_5.7\Engine\Programs\AutomationTool\Saved\Cook-2026.09.06-13.12.04.txt" -stdout -CrashForUAT -unattended -NoLogTimes
+LogInit: Display: Running engine for game: WonderChess
+LogCore: Display: Requested channels: 'cpu,gpu,frame,log,bookmark,screenshot,region'
+LogTrace: Display: Control listening on port 37218
+LogCsvProfiler: Display: Metadata set : platform="Windows"
+LogCsvProfiler: Display: Metadata set : config="Development"
+LogCsvProfiler: Display: Metadata set : buildversion="++UE5+Release-5.7-CL-51494982"
+LogCsvProfiler: Display: Metadata set : engineversion="5.7.4-51494982+++UE5+Release-5.7"
+LogCsvProfiler: Display: Metadata set : enginereleaseversion="5.7.4"
+LogCsvProfiler: Display: Metadata set : os="Windows 11 (25H2) [10.0.26200.9278] "
+LogCsvProfiler: Display: Metadata set : cpu="AuthenticAMD|AMD Ryzen 7 6800H with Radeon Graphics"
+LogCsvProfiler: Display: Metadata set : pgoenabled="0"
+LogCsvProfiler: Display: Metadata set : pgoprofilingenabled="0"
+LogCsvProfiler: Display: Metadata set : ltoenabled="0"
+LogCsvProfiler: Display: Metadata set : asan="0"
+LogCsvProfiler: Display: Metadata set : mergedmodules="0"
+LogCsvProfiler: Display: Metadata set : commandline="" "C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject" -run=Cook -TargetPlatform=Windows -unversioned -fileopenlog -abslog="C:\Program Files\Epic Games\UE_5.7\Engine\Programs\AutomationTool\Saved\Cook-2026.09.06-13.12.04.txt" -stdout -CrashForUAT -unattended -NoLogTimes""
+LogCsvProfiler: Display: Metadata set : loginid="b799ab2045cc4702946a270ab87fe1c4"
+LogCsvProfiler: Display: Metadata set : llm="0"
+LogCsvProfiler: Display: Metadata set : systemresolution.resx="1280"
+LogCsvProfiler: Display: Metadata set : systemresolution.resy="720"
+LogAudio: Display: Audio Device Manager not initializing due to all audio being disabled. If this is not intentional, please check command line arguments for "-nosound".
+LogAssetRegistry: Display: No AssetDiscovery cache present at ../../../../../../Users/iputu/Documents/Wonder Chess/game/Intermediate/CachedAssetRegistryDiscovery.bin. AssetRegistry discovery of files will be uncached.
+LogConfig: Display: Loading Mac ini files took 0.14 seconds
+LogConfig: Display: Loading VulkanPC ini files took 0.15 seconds
+LogConfig: Display: Loading Android ini files took 0.16 seconds
+LogConfig: Display: Loading IOS ini files took 0.16 seconds
+LogConfig: Display: Loading Unix ini files took 0.19 seconds
+LogConfig: Display: Loading TVOS ini files took 0.20 seconds
+LogConfig: Display: Loading Windows ini files took 0.20 seconds
+LogConfig: Display: Loading VisionOS ini files took 0.20 seconds
+LogConfig: Display: Loading Linux ini files took 0.23 seconds
+RenderDocPlugin: Display: RenderDoc plugin will not be loaded. Use '-AttachRenderDoc' on the cmd line or enable 'renderdoc.AutoAttach' in the plugin settings.
+LogHAL: Display: Platform has ~ 16 GB [16312393728 / 17179869184 / 16], which maps to Larger [LargestMinGB=32, LargerMinGB=12, DefaultMinGB=8, SmallerMinGB=6, SmallestMinGB=0)
+LogCsvProfiler: Display: Metadata set : extradevelopmentmemorymb="0"
+LogTextureFormatASTC: Display: ASTCEnc version 5.0.1 library loaded
+LogTextureFormatManager: Display: Loaded Base TextureFormat: TextureFormatASTC
+LogTextureFormatManager: Display: Loaded Base TextureFormat: TextureFormatDXT
+LogTextureFormatManager: Display: Loaded Base TextureFormat: TextureFormatETC2
+LogTextureFormatManager: Display: Loaded Base TextureFormat: TextureFormatIntelISPCTexComp
+LogTextureFormatManager: Display: Loaded Base TextureFormat: TextureFormatUncompressed
+LogTextureFormatOodle: Display: Oodle Texture TFO init; latest sdk version = 2.9.14
+LogTextureFormatOodle: Display: Oodle Texture loading DLL: oo2tex_win64_2.9.14.dll
+LogTextureFormatOodle: Display: Oodle Texture loading DLL: oo2tex_win64_2.9.5.dll
+LogTextureFormatManager: Display: Loaded Base TextureFormat: TextureFormatOodle
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ASTC'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_DXT'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ETC2'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_OpenXR'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'AndroidClient'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ASTCClient'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_DXTClient'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ETC2Client'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_OpenXRClient'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_Multi'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_MultiClient'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'IOS'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'IOSClient'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Linux'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxEditor'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxServer'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxClient'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Mac'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'MacEditor'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'MacServer'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'MacClient'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'TVOS'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'TVOSClient'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Windows'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'WindowsEditor'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'WindowsServer'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'WindowsClient'
+LogTargetPlatformManager: Display: Building Assets For Windows
+LogAudioDebug: Display: Lib vorbis DLL was dynamically loaded.
+LogObj: Display: Attempting to load config data for Default__SlateThemeManager before the Class has been constructed/registered/linked (likely during module loading or early startup). This will result in the load silently failing and should be fixed.
+LogCsvProfiler: Display: Metadata set : verbatimrhiname="Null"
+LogCsvProfiler: Display: Metadata set : rhiname="Null"
+LogCsvProfiler: Display: Metadata set : rhifeaturelevel="SM6"
+LogCsvProfiler: Display: Metadata set : shaderplatform="PCD3D_SM6"
+LogDerivedDataCache: Display: Memory: Max Cache Size: -1 MB
+LogDerivedDataCache: Display: ../../../Engine/DerivedDataCache/Compressed.ddp: Opened pak cache for reading. (1729 MiB)
+LogZenServiceInstance: Display: Launching zen utility 'C:/Program Files/Epic Games/UE_5.7/Engine/Binaries/Win64/zen.exe service status'.
+LogZenServiceInstance: Display: Launching zen utility 'C:/Program Files/Epic Games/UE_5.7/Engine/Binaries/Win64/zen.exe service status'.
+LogZenServiceInstance: Display: Read zen version cache file from 'C:/Users/iputu/AppData/Local/UnrealEngine/5.7/Saved/Zen/zen.version', version: '5.7.6-202510061608-windows-x64-release-9a1ebb9'
+LogZenServiceInstance: Display: Read zen version cache file from 'C:/Users/iputu/AppData/Local/UnrealEngine/Common/Zen/Install/zen.version', version: '5.7.6-202510061608-windows-x64-release-9a1ebb9'
+LogZenServiceInstance: Display: Installed service at 'C:/Users/iputu/AppData/Local/UnrealEngine/Common/Zen/Install/zenserver.exe' is up to date
+LogZenServiceInstance: Display: Unreal Zen Storage Server HTTP service at http://[::1]:8558 status: OK!.
+LogDerivedDataCache: Display: ZenLocal: Using ZenServer HTTP service at [::1] with namespace ue.ddc status: OK!.
+LogDerivedDataCache: Display: C:/Users/iputu/AppData/Local/UnrealEngine/Common/DerivedDataCache: Performance: Latency=0.26ms. RandomReadSpeed=109.45MBs, RandomWriteSpeed=53.09MBs. Assigned SpeedClass 'Local'
+LogUbaHorde: Display: UBA/Horde Configuration [Uba.Provider.Horde]: Not Enabled
+LogShaderCompilers: Display: No distributed shader compiler controller found
+LogShaderCompilers: Display: Using 13 local workers for shader compilation
+LogShaderCompilers: Display: Compiling shader autogen file: ../../../../../../Users/iputu/Documents/Wonder Chess/game/Intermediate/ShaderAutogen/PCD3D_SM6/AutogenShaderHeaders.ush
+LogShaderCompilers: Display: Autogen file is unchanged, skipping write.
+LogEditorDomain: Display: EditorDomain is Disabled
+LogAssetRegistry: Display: AssetDataGatherer spent 0.000s loading caches ../../../../../../Users/iputu/Documents/Wonder Chess/game/Intermediate/CachedAssetRegistry_*.bin.
+LogDeviceProfileManager: Display: Deviceprofile LinuxArm64Editor not found.
+LogDeviceProfileManager: Display: Deviceprofile LinuxArm64 not found.
+LogCsvProfiler: Display: Metadata set : deviceprofile="WindowsEditor"
+LogStreaming: Display: FlushAsyncLoading(1): 1 QueuedPackages, 0 AsyncPackages
+LogStreaming: Display: Flushing package /Engine/Functions/Engine_MaterialFunctions01/Shading/PowerToRoughness (state: WaitingForIo) recursively from another package /Engine/EngineMaterials/DefaultTextMaterialOpaque (state: CreateLinkerLoadExports) will result in a partially loaded package to avoid a deadlock.
+LogStreaming: Display: Package /Engine/EngineMaterials/DefaultTextMaterialOpaque is adding a dynamic import to package /Engine/Functions/Engine_MaterialFunctions01/Shading/PowerToRoughness because of a recursive sync load
+LogStreaming: Display: Flushing package /Engine/Functions/Engine_MaterialFunctions01/Shading/PowerToRoughness (state: DeferredPostLoad) recursively from another package /Engine/EngineMaterials/DefaultTextMaterialOpaque (state: CreateLinkerLoadExports) will result in a partially loaded package to avoid a deadlock.
+LogStreaming: Display: Flushing package /Engine/Functions/Engine_MaterialFunctions01/Shading/ConvertFromDiffSpec (state: WaitingForIo) recursively from another package /Engine/EngineMaterials/DefaultTextMaterialOpaque (state: CreateLinkerLoadExports) will result in a partially loaded package to avoid a deadlock.
+LogStreaming: Display: Package /Engine/EngineMaterials/DefaultTextMaterialOpaque is adding a dynamic import to package /Engine/Functions/Engine_MaterialFunctions01/Shading/ConvertFromDiffSpec because of a recursive sync load
+LogStreaming: Display: Flushing package /Engine/Functions/Engine_MaterialFunctions01/Shading/ConvertFromDiffSpec (state: DeferredPostLoad) recursively from another package /Engine/EngineMaterials/DefaultTextMaterialOpaque (state: CreateLinkerLoadExports) will result in a partially loaded package to avoid a deadlock.
+LogStreaming: Display: Flushing package /Engine/EngineMaterials/WorldGridMaterial (state: WaitingForIo) recursively from another package /Engine/EngineMaterials/DefaultTextMaterialOpaque (state: CreateLinkerLoadExports) will result in a partially loaded package to avoid a deadlock.
+LogStreaming: Display: Flushing package /Engine/EngineMaterials/DefaultDeferredDecalMaterial (state: WaitingForIo) recursively from another package /Engine/EngineMaterials/WorldGridMaterial (state: CreateLinkerLoadExports) will result in a partially loaded package to avoid a deadlock.
+LogStreaming: Display: Flushing package /Engine/EngineMaterials/DefaultLightFunctionMaterial (state: WaitingForIo) recursively from another package /Engine/EngineMaterials/DefaultDeferredDecalMaterial (state: CreateLinkerLoadExports) will result in a partially loaded package to avoid a deadlock.
+LogStreaming: Display: Flushing package /Engine/EngineMaterials/DefaultPostProcessMaterial (state: WaitingForIo) recursively from another package /Engine/EngineMaterials/DefaultLightFunctionMaterial (state: CreateLinkerLoadExports) will result in a partially loaded package to avoid a deadlock.
+LogStreaming: Display: Package /Engine/EngineMaterials/DefaultLightFunctionMaterial is adding a dynamic import to package /Engine/EngineMaterials/DefaultPostProcessMaterial because of a recursive sync load
+LogStreaming: Display: Flushing package /Engine/EngineMaterials/DefaultPostProcessMaterial (state: DeferredPostLoad) recursively from another package /Engine/EngineMaterials/DefaultLightFunctionMaterial (state: CreateLinkerLoadExports) will result in a partially loaded package to avoid a deadlock.
+LogStreaming: Display: Package /Engine/EngineMaterials/DefaultDeferredDecalMaterial is adding a dynamic import to package /Engine/EngineMaterials/DefaultLightFunctionMaterial because of a recursive sync load
+LogStreaming: Display: Flushing package /Engine/EngineMaterials/DefaultLightFunctionMaterial (state: DeferredPostLoad) recursively from another package /Engine/EngineMaterials/DefaultDeferredDecalMaterial (state: CreateLinkerLoadExports) will result in a partially loaded package to avoid a deadlock.
+LogStreaming: Display: Package /Engine/EngineMaterials/WorldGridMaterial is adding a dynamic import to package /Engine/EngineMaterials/DefaultDeferredDecalMaterial because of a recursive sync load
+LogStreaming: Display: Flushing package /Engine/EngineMaterials/DefaultDeferredDecalMaterial (state: DeferredPostLoad) recursively from another package /Engine/EngineMaterials/WorldGridMaterial (state: CreateLinkerLoadExports) will result in a partially loaded package to avoid a deadlock.
+LogStreaming: Display: Package /Engine/EngineMaterials/DefaultTextMaterialOpaque is adding a dynamic import to package /Engine/EngineMaterials/WorldGridMaterial because of a recursive sync load
+LogStreaming: Display: Flushing package /Engine/EngineMaterials/WorldGridMaterial (state: DeferredPostLoad) recursively from another package /Engine/EngineMaterials/DefaultTextMaterialOpaque (state: CreateLinkerLoadExports) will result in a partially loaded package to avoid a deadlock.
+LogTextureEncodingSettings: Display: Texture Encode Speed: Final (cook).
+LogTextureEncodingSettings: Display: Oodle Texture Encode Speed settings: Fast: RDO Off Lambda=0, Effort=Normal Final: RDO Off Lambda=0, Effort=Normal
+LogTextureEncodingSettings: Display: Shared linear texture encoding: Disabled
+LogMeshReduction: Display: Using QuadricMeshReduction for automatic static mesh reduction
+LogMeshReduction: Display: Using SkeletalMeshReduction for automatic skeletal mesh reduction
+LogMeshReduction: Display: Using ProxyLODMeshReduction for automatic mesh merging
+LogMeshReduction: Display: No distributed automatic mesh merging module available
+LogShaderCompilers: Display: Compiling shader autogen file: ../../../../../../Users/iputu/Documents/Wonder Chess/game/Intermediate/ShaderAutogen/PCD3D_SM5/AutogenShaderHeaders.ush
+LogShaderCompilers: Display: Autogen file is unchanged, skipping write.
+LogVirtualization: Display: VirtualizationSystem name found in ini file: None
+LogVirtualization: Display: FNullVirtualizationSystem mounted, virtualization will be disabled
+LogWorldPartition: Display: FWorldPartitionClassDescRegistry::Initialize started...
+LogWorldPartition: Display: FWorldPartitionClassDescRegistry::Initialize took 6.288 ms
+LogMetaSound: Display: MetaSound Page Target Initialized to 'Default'
+LogAudio: Display: Registering Engine Module Parameter Interfaces...
+LogAudioCaptureCore: Display: No Audio Capture implementations found. Audio input will be silent.
+LogAudioCaptureCore: Display: No Audio Capture implementations found. Audio input will be silent.
+LogCsvProfiler: Display: Metadata set : largeworldcoordinates="1"
+LogCook: Display: CookProcessCount=1. CookMultiprocess is disabled and the cooker is running as a single process.
+LogCook: Display: CookSettings for Memory:
+	MemoryMaxUsedVirtual 0MiB
+	MemoryMaxUsedPhysical 0MiB
+	MemoryMinFreeVirtual 2048MiB
+	MemoryMinFreePhysical 2048MiB
+	MemoryTriggerGCAtPressureLevel None
+	SoftGCMemoryUseTrigger disabled
+	SoftGCTimeBudgetTrigger enabled (0.05 budget, 30s min period)
+LogCook: Display: SkipOnlyEditorOnly is enabled, unsolicited packages will not be cooked unless they are referenced from the cooked version of the instigator package.
+LogEditorDomain: Display: Cycle detected in parents of class /Script/RigVMDeveloper.RigVMUnitNode. Allow flags for editordomain and incremental cooking will be invalid.
+LogZenServiceInstance: Display: Launching zen utility 'C:/Program Files/Epic Games/UE_5.7/Engine/Binaries/Win64/zen.exe service status'.
+LogZenServiceInstance: Display: Launching zen utility 'C:/Program Files/Epic Games/UE_5.7/Engine/Binaries/Win64/zen.exe service status'.
+LogZenStore: Display: Establishing oplog 'WonderChess.6aa54fa5/EditorDomain'
+LogZenStore: Display: Zen project 'WonderChess.6aa54fa5' created
+LogZenStore: Display: Zen oplog 'WonderChess.6aa54fa5/EditorDomain' created
+LogCook: Display: Waiting for Asset Registry
+LogAssetRegistry: Display: Starting OnFilesLoaded.Broadcast
+LogPlacementMode: Display: The Asset Registry is done with its initial scan, the list of placeable classes has been updated.
+LogAssetRegistry: Display: Completed OnFilesLoaded.Broadcast: -0.397s
+LogCook: Display: INCREMENTAL COOK DEPENDENCIES: Disabled. Incremental Cook Dependencies are disabled because the cooker is not using ZenStore, and we do not yet support storage of Incremental Cook dependency data with loose cooked packages. Falling back to legacy iterative cook mode.
+LogCook: Display: CalculateGlobalDependenciesHash(Windows):
+LogCook: Display: 	[Engine]:Core.System.CanStripEditorOnlyExportsAndImports = True
+LogCook: Display: 	[Engine]:Core.System.CanSkipEditorReferencedPackagesWhenCooking = False
+LogCook: Display: 	CanUseUnversionedPropertySerialization = True
+LogCook: Display: 	[Editor]:CookSettings.AutomaticOptionalInclusionAssetType = /Script/Niagara.NiagaraScript, /Script/Niagara.NiagaraEmitter, /Script/Niagara.NiagaraSystem, /Script/NiagaraEditor.NiagaraParameterDefinitions, /Script/Niagara.NiagaraEffectType, /Script/Niagara.NiagaraValidationRuleSet
+LogCook: Display: 	IsCookFlagSet(ECookInitializationFlags::Unversioned) = True
+LogCook: Display: 	FCoreRedirects::AppendHashOfGlobalRedirects = 8ce3fd4dde4f0af93c37d88fbbeb19761bf78a6dacad17629c2a2703b712d96d
+LogCook: Display: 	GlobalDependenciesHash(Windows) = a81e90480c513382108cf77285f73a24b66c72c0b323a22e11ac44e9d3d259b3
+LogCook: Display: FULL COOK: Incremental Cook Dependencies are disabled, and -legacyiterative was not specified. Deleting previously cooked packages for platform Windows and recooking all packages discovered in the current cook.
+LogCook: Display: Sandbox cleanup took 0.063 seconds for platforms Windows
+LogCook: Display: Compiling global changed shaders for platform 'Windows'
+LogShaderLibrary: Display:
+LogShaderLibrary: Display: Shader Library 'Global' (PCD3D_SM5-PCD3D_SM5) Stats:
+LogShaderLibrary: Display: =================
+LogShaderLibrary: Display: Assets: 1, Unique Shadermaps: 330 (33000.00%)
+LogShaderLibrary: Display: Total Shaders: 4257, Unique Shaders: 4244 (99.69%)
+LogShaderLibrary: Display: Total Shader Size: 12.87mb, Unique Shaders Size: 12.87mb (99.96%)
+LogShaderLibrary: Display: === Extended info:
+LogShaderLibrary: Display: Minimum number of shaders in shadermap: 1
+LogShaderLibrary: Display: Median number of shaders in shadermap: 3
+LogShaderLibrary: Display: Maximum number of shaders in shadermap: 303
+LogShaderLibrary: Display: Number of shadermaps referencing top 10 most shared shaders:
+LogShaderLibrary: Display:     3, 3, 2, 2, 2, 2, 2, 2, 2, 2
+LogShaderLibrary: Display: Unique shaders itemization (sorted by compressed size):
+LogShaderLibrary: Display: SF_Compute: 2446 shaders (57.63%), compressed size: 6.42 MB (2.69 KB avg per shader), uncompressed size: 25.05 MB (10.49 KB avg per shader)
+LogShaderLibrary: Display: SF_Pixel: 1689 shaders (39.80%), compressed size: 6.39 MB (3.87 KB avg per shader), uncompressed size: 30.46 MB (18.47 KB avg per shader)
+LogShaderLibrary: Display: SF_Vertex: 107 shaders (2.52%), compressed size: 0.06 MB (0.59 KB avg per shader), uncompressed size: 0.13 MB (1.29 KB avg per shader)
+LogShaderLibrary: Display: SF_Geometry: 2 shaders (0.05%), compressed size: 0.00 MB (0.49 KB avg per shader), uncompressed size: 0.00 MB (1.55 KB avg per shader)
+LogShaderLibrary: Display: Textual dump saved to '../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/Shaders/PCD3D_SM5-PCD3D_SM5/ShaderDebug-Global-PCD3D_SM5-PCD3D_SM5/Dump.txt'
+LogShaderLibrary: Display: =================
+LogCook: Display: Discovering localized assets for cultures: en
+LogCook: Display: Found 0 localized assets
+LogCook: Display: Cooked packages 0 Packages Remain 390 Total 390
+LogCook: Display: Cook Diagnostics: OpenFileHandles=221, VirtualMemory=1386MiB, VirtualMemoryAvailable=5479MiB
+LogMaterial: Display: Missing cached shadermap for SpeedTreeMaster in PCD3D_SM5, Default, SM5, Game (DDC key hash: efb2955a3764e658ef8d38fb31e44519a28dee7a), compiling.
+LogMaterial: Display: Missing cached shadermap for SpeedTreeBillboardMaster in PCD3D_SM5, Default, SM5, Game (DDC key hash: 70339e3cef1be40b632938b5891d507dcef9e56d), compiling.
+LogCook: Display: Garbage collection triggered (Soft). Triggered by conditions:
+  CookSettings.SoftGCTimeTrigger: Periodic triggering of SoftGC: No duration data.
+LogCookCommandlet: Display: GarbageCollection... (Periodic GC)
+LogMaterial: Display: Missing cached shadermap for Widget3DPassThrough_Translucent_OneSided in PCD3D_SM5, Default, SM5, Game (DDC key hash: 02ed544beb92fd7a9601c61a98a113cc0ac3c291), compiling.
+LogMaterial: Display: Missing cached shadermap for Widget3DPassThrough_Opaque_OneSided in PCD3D_SM5, Default, SM5, Game (DDC key hash: 6496e4335c0c3d6c89e6541c63bed119a9d1b8f1), compiling.
+LogMaterial: Display: Missing cached shadermap for Widget3DPassThrough_Masked_OneSided in PCD3D_SM5, Default, SM5, Game (DDC key hash: f986b21ae9aa9aa218e27ff68f44beae9f6b7b3a), compiling.
+LogMaterial: Display: Missing cached shadermap for LandscapeLayerUsageMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: 874cdfd2f41852f9753b3f35993466182288a817), compiling.
+LogMaterial: Display: Missing cached shadermap for Widget3DPassThrough_Translucent in PCD3D_SM5, Default, SM5, Game (DDC key hash: 6d42edb0a01144726241b9a04b0db602d6a2a8a0), compiling.
+LogMaterial: Display: Missing cached shadermap for Widget3DPassThrough_Opaque in PCD3D_SM5, Default, SM5, Game (DDC key hash: f2e35efc53d08ed1657d06e36d2c23777f1d4679), compiling.
+LogMaterial: Display: Missing cached shadermap for MI_Sheen_Mask_DS in PCD3D_SM5, Default, SM5, Game (DDC key hash: 93755663ef97c9f445211830dde8e8314de9d6d5), compiling.
+LogMaterial: Display: Missing cached shadermap for MI_Sheen_Opaque_DS in PCD3D_SM5, Default, SM5, Game (DDC key hash: f9ff5f706fe8021806e6ca60fefb4671545b3aa6), compiling.
+LogMaterial: Display: Missing cached shadermap for MI_Sheen_Blend in PCD3D_SM5, Default, SM5, Game (DDC key hash: ad362d3b8b8410fe955ad55efe18a264ecae9b03), compiling.
+LogMaterial: Display: Missing cached shadermap for MI_Sheen_Mask in PCD3D_SM5, Default, SM5, Game (DDC key hash: 35c07607122fbb808cce76427b3127ec05de6a8e), compiling.
+LogMaterial: Display: Missing cached shadermap for M_Sheen in PCD3D_SM5, Default, SM5, Game (DDC key hash: a19f27bb254446494054fef09a11c1b0460ebda3), compiling.
+LogMaterial: Display: Missing cached shadermap for MI_Default_Blend_DS in PCD3D_SM5, Default, SM5, Game (DDC key hash: 4dbf77346ca4227fa0ba1f8a595701a9a57d84a7), compiling.
+LogMaterial: Display: Missing cached shadermap for MI_Default_Mask_DS in PCD3D_SM5, Default, SM5, Game (DDC key hash: bfdcd4f4e8bc40cefd89eb24d9896f9c6cb9297f), compiling.
+LogMaterial: Display: Missing cached shadermap for MI_Default_Opaque_DS in PCD3D_SM5, Default, SM5, Game (DDC key hash: 39f334472d43bee1544262370a92c259a97081d1), compiling.
+LogMaterial: Display: Missing cached shadermap for MI_Default_Blend in PCD3D_SM5, Default, SM5, Game (DDC key hash: fd85a0d0302b659ec0ee788723143e5206fec2ba), compiling.
+LogMaterial: Display: Missing cached shadermap for MI_Default_Mask in PCD3D_SM5, Default, SM5, Game (DDC key hash: 98f0b9770c830aee5792458750c06ce4fb1ee6db), compiling.
+LogMaterial: Display: Missing cached shadermap for Widget3DPassThrough_Masked in PCD3D_SM5, Default, SM5, Game (DDC key hash: 275899ec099a94419f5c851d9c04298016eaa8d5), compiling.
+LogMaterial: Display: Missing cached shadermap for PointSetOverlaidComponentMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: 96a607efdfe8229f3e0fda61f51b7fda58cf88a7), compiling.
+LogMaterial: Display: Missing cached shadermap for MaskBrushMaterial_MaskedRegion in PCD3D_SM5, Default, SM5, Game (DDC key hash: aa4e132f2525cec3f3524dd91b084e239b40219d), compiling.
+LogMaterial: Display: Missing cached shadermap for SnapGridMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: 018f64ebc3056c17948d8ac55e8448de328e630a), compiling.
+LogMaterial: Display: Missing cached shadermap for OpaqueUnlitSpriteMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: 1294c6ca866d2b8a68b7b57a80e2a7b0226e2879), compiling.
+LogMaterial: Display: Missing cached shadermap for DefaultMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: 76d3731a5b335b4a0566019a56c789e94b4f10a1), compiling.
+LogMaterial: Display: Missing cached shadermap for DefaultDeferredDecalMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: 005bc18fac5b1a83a0af5985d817d72d83637eba), compiling.
+LogMaterial: Display: Missing cached shadermap for DefaultPostProcessMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: 4db95ce08e02ee6d1ff4e1c80e4306723e7ea419), compiling.
+LogMaterial: Display: Missing cached shadermap for M_VolumeRenderSphereTracePP in PCD3D_SM5, Default, SM5, Game (DDC key hash: 841757fc386f2cb83722f266e6c6fbe07aaa367f), compiling.
+LogMaterial: Display: Missing cached shadermap for MI_Transmission_DS in PCD3D_SM5, Default, SM5, Game (DDC key hash: 2242ce4459668f0b0348b844008e8d6808f72748), compiling.
+LogMaterial: Display: Missing cached shadermap for M_Transmission in PCD3D_SM5, Default, SM5, Game (DDC key hash: 5f1b9375d859618560442b809b2be10d01660f86), compiling.
+LogMaterial: Display: Missing cached shadermap for MI_Unlit_Blend_DS in PCD3D_SM5, Default, SM5, Game (DDC key hash: d4dd5973af16d51d95c4d4983c80f4ccbe89c513), compiling.
+LogMaterial: Display: Missing cached shadermap for MI_Unlit_Mask_DS in PCD3D_SM5, Default, SM5, Game (DDC key hash: 13180786b54de340730e0a080f84c2b0c966383e), compiling.
+LogMaterial: Display: Missing cached shadermap for MI_Unlit_Opaque_DS in PCD3D_SM5, Default, SM5, Game (DDC key hash: ea29a0fe1197e49349994ba284304e4f2874c636), compiling.
+LogMaterial: Display: Missing cached shadermap for SelectBrushMaterial_SelectedRegion in PCD3D_SM5, Default, SM5, Game (DDC key hash: 6d28b609c77d304879d6a732925ec9695c4edbaa), compiling.
+LogMaterial: Display: Missing cached shadermap for DefaultTextMaterialOpaque in PCD3D_SM5, Default, SM5, Game (DDC key hash: 5bdd8e0c63e031d9d92b6331c189d26edcd1ea02), compiling.
+LogMaterial: Display: Missing cached shadermap for WorldGridMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: d797cbb73f533d551686daec7dda99dcea475192), compiling. Is special engine material.
+LogMaterial: Display: Missing cached shadermap for M_Default in PCD3D_SM5, Default, SM5, Game (DDC key hash: 0cd903e035a50d57157a684907452665a160ce07), compiling.
+LogMaterial: Display: Missing cached shadermap for MI_ClearCoat_Blend_DS in PCD3D_SM5, Default, SM5, Game (DDC key hash: e90f5c7ca20aa1027f507d8fffbb8a1a5d26723e), compiling.
+LogMaterial: Display: Missing cached shadermap for MI_ClearCoat_Mask_DS in PCD3D_SM5, Default, SM5, Game (DDC key hash: d0a5132b595aa8cb2f05312fd2957abb4c1c9197), compiling.
+LogMaterial: Display: Missing cached shadermap for MI_ClearCoat_Opaque_DS in PCD3D_SM5, Default, SM5, Game (DDC key hash: 912423f4fad1e18f3403962ef2c40e32d272d353), compiling.
+LogMaterial: Display: Missing cached shadermap for MI_ClearCoat_Blend in PCD3D_SM5, Default, SM5, Game (DDC key hash: 4f3a6038959285b3bdc2db59ec98c45409f4ad3c), compiling.
+LogMaterial: Display: Missing cached shadermap for M_ClearCoat in PCD3D_SM5, Default, SM5, Game (DDC key hash: 87f3d4412be622a7f427f718a6d4fe529cd42142), compiling.
+LogMaterial: Display: Missing cached shadermap for MI_ClearCoat_Mask in PCD3D_SM5, Default, SM5, Game (DDC key hash: 30905d2078cdcdf58a4e4cb167c4412eed835ef1), compiling.
+LogMaterial: Display: Missing cached shadermap for MI_Sheen_Blend_DS in PCD3D_SM5, Default, SM5, Game (DDC key hash: b5a0deb10904f8824d37985580a7ebccaf05e708), compiling.
+LogCook: Display: Cooked packages 122 Packages Remain 321 Total 443
+LogTextureFormatOodle: Display: Oodle Texture loading DLL: oo2tex_win64_2.9.11.dll
+LogTextureFormatOodle: Display: Oodle Texture loading DLL: oo2tex_win64_2.9.12.dll
+LogCook: Display: Cooked packages 164 Packages Remain 279 Total 443
+LogMaterial: Display: Missing cached shadermap for DefaultLightFunctionMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: f47f001b2c43144c09f05c23ffd682f00351050e), compiling.
+LogMaterial: Display: Missing cached shadermap for MI_Unlit_Blend in PCD3D_SM5, Default, SM5, Game (DDC key hash: c284a7494268d023335c569c49f827f31459ab75), compiling.
+LogMaterial: Display: Missing cached shadermap for CineMat in PCD3D_SM5, Default, SM5, Game (DDC key hash: 72bc2464d0724128b22a20c891b238cef4e5e420), compiling.
+LogMaterial: Display: Missing cached shadermap for SplineEditorMeshMat in PCD3D_SM5, Default, SM5, Game (DDC key hash: b0817b3932a129b8a8c98a0465cdb20621926926), compiling.
+LogMaterial: Display: Missing cached shadermap for HairDefaultMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: 2071388400368267aeb7246b1c92f93cef954d2e), compiling.
+LogMaterial: Display: Missing cached shadermap for HairCardsDefaultMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: 67e511b15b85a74f5ffb2ab6ef26377c642888f2), compiling.
+LogMaterial: Display: Missing cached shadermap for HairMeshesDefaultMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: 7986c7f82e8c52127ef6d9bf75b1384214309fcb), compiling.
+LogMaterial: Display: Missing cached shadermap for TranslucentTransformGizmoMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: ef3a22452ebaa1e2dc38c4a6e17f4d5bf5ebbe3e), compiling.
+LogMaterial: Display: Missing cached shadermap for M_SimpleUnlitTranslucent in PCD3D_SM5, Default, SM5, Game (DDC key hash: 2424c568a1396423fb5530edbd76a3c453d37fae), compiling.
+LogMaterial: Display: Missing cached shadermap for ControlRigXRayMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: 51d66f89c414f171ad7ad9168988012f85ff10eb), compiling.
+LogMaterial: Display: Missing cached shadermap for BasicShapeMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: ff881ebdab831ba8b2e70c8e69e1f4e297f1446f), compiling.
+LogMaterial: Display: Missing cached shadermap for DataflowVertexMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: bd41b1bfef2c0af827c21647721c68316fcc0de6), compiling.
+LogMaterial: Display: Missing cached shadermap for DataflowTwoSidedVertexMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: f643f71f4397b3f5c3d28859b3c6a5175954c207), compiling.
+LogMaterial: Display: Missing cached shadermap for SculptMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: 5cb982c9035f1c0f5f15232a76dc6b50ef5dbce3), compiling.
+LogMaterial: Display: Missing cached shadermap for NaniteHiddenSectionMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: ffe9f3fbae8fdac48c47cab103495dad3e3b5278), compiling.
+LogMaterial: Display: Missing cached shadermap for PreviewShadowIndicatorMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: aa0623581310f666590adc9fbd113d94a3336348), compiling.
+LogMaterial: Display: Missing cached shadermap for MI_Unlit_Mask in PCD3D_SM5, Default, SM5, Game (DDC key hash: 26d1092eb086c976c0d00d9652334b35bf2bbd7e), compiling.
+LogMaterial: Display: Missing cached shadermap for RemoveSurfaceMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: 348f8d0a7194cbc84358ac1b98566486ca350582), compiling.
+LogMaterial: Display: Missing cached shadermap for DebugMeshMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: a357d8f3a92005f2e1a03e86d55b23ef25f95343), compiling.
+LogMaterial: Display: Missing cached shadermap for GizmoMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: 8f2f241492311092f81206cb056b7c0a95df6530), compiling.
+LogMaterial: Display: Missing cached shadermap for PhAT_UnselectedMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: 1a3bee2818809150892db63f05f0a29499823f78), compiling.
+LogMaterial: Display: Missing cached shadermap for PhAT_NoCollisionMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: 66c0c8f5d6d0c414174ffab767007e1fb697cfde), compiling.
+LogMaterial: Display: Missing cached shadermap for M_Unlit in PCD3D_SM5, Default, SM5, Game (DDC key hash: 3fb69f31903f57ea7496e0375f6602e8590e39fe), compiling.
+LogMaterial: Display: Missing cached shadermap for MI_SpecularGlossiness_Blend_DS in PCD3D_SM5, Default, SM5, Game (DDC key hash: 028fe0fec190022763359cd97a3cd923ea183986), compiling.
+LogMaterial: Display: Missing cached shadermap for MI_SpecularGlossiness_Mask_DS in PCD3D_SM5, Default, SM5, Game (DDC key hash: 4ce21cbe06a1b1c2bc86cc6c851fc0fd0afd4893), compiling.
+LogMaterial: Display: Missing cached shadermap for MI_SpecularGlossiness_Opaque_DS in PCD3D_SM5, Default, SM5, Game (DDC key hash: d84b1102fe159db078aaa8704e5bf841d342c381), compiling.
+LogMaterial: Display: Missing cached shadermap for MI_SpecularGlossiness_Blend in PCD3D_SM5, Default, SM5, Game (DDC key hash: 58c97825e79cbb086733c0ba22df01279e28b0fd), compiling.
+LogCook: Display: Garbage collection triggered (Full). Triggered by conditions:
+  CookSettings.MemoryMinFreePhysical: Available physical memory 1568MiB is less than 2048MiB.
+LogCook: Display: Cooked packages 211 Packages Remain 232 Total 443
+LogCookCommandlet: Display: GarbageCollection... (Exceeded Max Memory)
+LogMaterial: Display: Missing cached shadermap for MI_SpecularGlossiness_Mask in PCD3D_SM5, Default, SM5, Game (DDC key hash: f3efcb636b83cabb9b264eb433642782c54753f3), compiling.
+LogMaterial: Display: Missing cached shadermap for M_SpecularGlossiness in PCD3D_SM5, Default, SM5, Game (DDC key hash: bc9e87f8ea4dd7e478463e4e6fafcc1a2d391f46), compiling.
+LogMaterial: Display: Missing cached shadermap for HairDebugMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: a9e33c9b218e3dc5cd117c2541d3583b6672d4aa), compiling.
+LogMaterial: Display: Missing cached shadermap for TransformGizmoMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: 2f9916695dfb6f6bde73d0ff4ca02f1008657c7a), compiling.
+LogMaterial: Display: Missing cached shadermap for M_Manip in PCD3D_SM5, Default, SM5, Game (DDC key hash: e35752163add029feb1c1a117ac63842f31fe07e), compiling.
+LogMaterial: Display: Missing cached shadermap for PhAT_JointLimitMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: be286d36ad42003eefc5079871a5eaf9cfd305b2), compiling.
+LogMaterial: Display: Missing cached shadermap for DefaultSpriteMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: 2915d982d7b88444b53fd0acdea130431016329f), compiling.
+LogMaterial: Display: Missing cached shadermap for LayerVisMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: 453635ed135f4a1b9c9002818ecf0d0d29b1a9ae), compiling.
+LogMaterial: Display: Missing cached shadermap for SelectBrushMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: 8e2935f870ebf86841fd589e26ded69e2dfdbe54), compiling.
+LogMaterial: Display: Missing cached shadermap for ColorMaskBrushMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: 2c798949e2f6989ff15ed12fccdd04742c165b81), compiling.
+LogMaterial: Display: Missing cached shadermap for LandscapeDirtyMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: 743c61ee7d8e0233783491c4f74f72a72be5cd8a), compiling.
+LogMaterial: Display: Missing cached shadermap for EmissiveMeshMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: 420f4c1df542fc30756db6a0d228181716cd0f50), compiling.
+LogMaterial: Display: Missing cached shadermap for M_InvalidLightmapSettings in PCD3D_SM5, Default, SM5, Game (DDC key hash: 0aa3f865f6e1095ce0c3370e20616460c7377cbd), compiling.
+LogMaterial: Display: Missing cached shadermap for FlattenMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: 697d42fbf89b77bdb4e36e8cf64e942717330768), compiling.
+LogMaterial: Display: Missing cached shadermap for FlattenMaterial_VT in PCD3D_SM5, Default, SM5, Game (DDC key hash: 76d6543e189705808afea9835503f55ac10df360), compiling.
+LogMaterial: Display: Missing cached shadermap for FlattenMaterial_WS_Normal_VT in PCD3D_SM5, Default, SM5, Game (DDC key hash: f0f91cee343a1c030e77af8990e824a9a00043f6), compiling.
+LogCook: Display: GarbageCollection Results: Garbage Collection was not very impactful.
+LogCook: Display: 	MemoryAnalysis: General:
+		Type: Full
+	Duration: 0.287s
+LogCook: Display: 	MemoryAnalysis: NumObjects:
+		Capacity:           25231360
+		Process Min:           44619
+		Process Max:           60700
+		Process Spread:        16081
+		Before GC:             60700
+		After GC:              49278
+		Freed by GC:           11422
+LogCook: Display: 	MemoryAnalysis: Virtual Memory:
+		Process Min:            1264 MB
+		Process Max:            1874 MB
+		Process Spread:          610 MB
+		Before GC:              1850 MB
+		After GC:               1874 MB
+		Freed by GC:             -23 MB
+LogCook: Display: 	MemoryAnalysis: Allocator Stats Before:
+		Item Malloc calls 0
+		Item Realloc calls 0
+		Item Free calls 0
+		Item Total Allocator calls 0
+LogCook: Display: 	MemoryAnalysis: Allocator Stats After:
+		Item Malloc calls 0
+		Item Realloc calls 0
+		Item Free calls 0
+		Item Total Allocator calls 0
+LogCook: Display: Extended memory diagnostics are disabled. Run with -llm or -trace=memtag to log information for UObject classes and LLM tags.
+LogCook: Display: Garbage collection triggers ignored: Out of memory condition has been detected, but is only 0s after the last GC. It will be prevented until 60 seconds have passed and we may run out of memory.
+Garbage collection triggered by conditions:
+  CookSettings.MemoryMinFreePhysical: Available physical memory 1622MiB is less than 2048MiB.
+LogCook: Display: Cooked packages 305 Packages Remain 138 Total 443
+LogMaterial: Display: Missing cached shadermap for PPM_DefaultCalibrationGrayscale in PCD3D_SM5, Default, SM5, Game (DDC key hash: 43df8bb383dda0a33df470a9d7c0a2b2666ea4e5), compiling.
+LogMaterial: Display: Missing cached shadermap for PPM_DefaultCalibrationColor in PCD3D_SM5, Default, SM5, Game (DDC key hash: 7836fa1a2fc9d1e46840f7a4ef79297e08d106e0), compiling.
+LogCook: Display: Cooked packages 327 Packages Remain 116 Total 443
+LogTextureFormatOodle: Display: Oodle Texture loading DLL: oo2tex_win64_2.9.13.dll
+LogMaterial: Display: Missing cached shadermap for DebugEditorMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: 213c0c7fd09370bfa2db50cf39029976c6335d81), compiling.
+LogMaterial: Display: Missing cached shadermap for ControlRigGizmoMaterial in PCD3D_SM5, Default, SM5, Game (DDC key hash: 7b7fec415e96e0461296e4e29ee4fe0c4f5086f7), compiling.
+LogCook: Display: Cooked packages 404 Packages Remain 39 Total 443
+LogCook: Display: Cooked packages 404 Packages Remain 39 Total 443
+LogCook: Display: Cooked packages 404 Packages Remain 39 Total 443
+LogCook: Display: Cooked packages 405 Packages Remain 38 Total 443
+LogCook: Display: Cooked packages 408 Packages Remain 35 Total 443
+LogCook: Display: Cook Diagnostics: OpenFileHandles=4247, VirtualMemory=2017MiB, VirtualMemoryAvailable=2650MiB
+LogCook: Display: Cooked packages 411 Packages Remain 32 Total 443
+LogCook: Display: Cooked packages 413 Packages Remain 30 Total 443
+LogCook: Display: Cooked packages 416 Packages Remain 27 Total 443
+LogCook: Display: Cooked packages 416 Packages Remain 27 Total 443
+LogCook: Display: Cooked packages 417 Packages Remain 26 Total 443
+LogCook: Display: Cooked packages 424 Packages Remain 19 Total 443
+LogCook: Display: Cooked packages 425 Packages Remain 18 Total 443
+LogCook: Display: Cooked packages 432 Packages Remain 11 Total 443
+LogCook: Display: Cooked packages 436 Packages Remain 7 Total 443
+LogCook: Display: Cook Diagnostics: OpenFileHandles=4303, VirtualMemory=2017MiB, VirtualMemoryAvailable=2705MiB
+LogCook: Display: Cooked packages 436 Packages Remain 7 Total 443
+LogCook: Display: Cooked packages 436 Packages Remain 7 Total 443
+LogCook: Display: Garbage collection triggered (Full). Triggered by conditions:
+  CookSettings.MemoryMinFreePhysical: Available physical memory 963MiB is less than 2048MiB.
+LogCookCommandlet: Display: GarbageCollection... (Exceeded Max Memory)
+LogCook: Display: GarbageCollection Results:
+	Type: Full
+	Duration: 0.179s
+	NumObjects:
+		Capacity:           25231360
+		Before GC:             58212
+		After GC:              44370
+		Freed by GC:           13842
+	Virtual Memory:
+		Before GC:              2115 MB
+		After GC:               1901 MB
+		Freed by GC:             213 MB
+LogCook: Display: Garbage collection triggers ignored: Out of memory condition has been detected, but is only 0s after the last GC. It will be prevented until 60 seconds have passed and we may run out of memory.
+Garbage collection triggered by conditions:
+  CookSettings.MemoryMinFreePhysical: Available physical memory 1077MiB is less than 2048MiB.
+LogCook: Display: Cooked packages 436 Packages Remain 7 Total 443
+LogCook: Display: Cooked packages 436 Packages Remain 7 Total 443
+LogCook: Display: Cooked packages 436 Packages Remain 7 Total 443
+LogCook: Display: Cooked packages 436 Packages Remain 7 Total 443
+LogCook: Display: Cook Diagnostics: OpenFileHandles=1082, VirtualMemory=1813MiB, VirtualMemoryAvailable=2819MiB
+LogCook: Display: Cooked packages 436 Packages Remain 7 Total 443
+LogShaderCompilers: Display: Job TBasePassPSFNoLightMapPolicy(permutation 0, format PCD3D_SM5) compile time exceeded threshold (30.436s)
+LogShaderCompilers: Display: Job TBasePassPSFNoLightMapPolicy(permutation 0, format PCD3D_SM5) compile time exceeded threshold (35.030s)
+LogCook: Display: Cooked packages 436 Packages Remain 7 Total 443
+LogShaderCompilers: Display: Job TVelocityPS<EVelocityPassMode::Velocity_Standard>(permutation 0, format PCD3D_SM5) compile time exceeded threshold (34.341s)
+LogCook: Display: Cooked packages 439 Packages Remain 4 Total 443
+LogCook: Display: Garbage collection triggered (Soft). Triggered by conditions:
+  CookSettings.SoftGCTimeTrigger: Periodic triggering of SoftGC: SoftGCTimeFractionBudget == 0.050. TimeSinceLastGCSeconds == 30.004. CurrentTimeBudget == 1.579. ExpectedDuration == 0.174.
+LogCookCommandlet: Display: GarbageCollection... (Periodic GC)
+LogShaderCompilers: Display: Job TBasePassPSFSelfShadowedTranslucencyPolicy(permutation 0, format PCD3D_SM5) compile time exceeded threshold (30.575s)
+LogCook: Display: Cooked packages 440 Packages Remain 3 Total 443
+LogCook: Display: Cooked packages 442 Packages Remain 1 Total 443
+LogCook: Display: Cooked packages 443 Packages Remain 0 Total 443
+LogCook: Display: Cook Diagnostics: OpenFileHandles=1095, VirtualMemory=1814MiB, VirtualMemoryAvailable=3317MiB
+LogShaderCompilers: Display: ================================================
+LogShaderCompilers: Display: === FShaderJobCache stats ===
+LogShaderCompilers: Display: Total job queries 1,932, among them cache hits 306 (15.84%), DDC hits 1,154 (59.73%), Duplicates 59 (3.05%)
+LogShaderCompilers: Display: Tracking 1,567 distinct input hashes that result in 867 distinct outputs (55.33%)
+LogShaderCompilers: Display: RAM used: 2.95 MiB of 819.20 MiB budget. Usage: 0.36%
+LogShaderCompilers: Display: === Shader Compilation stats ===
+LogShaderCompilers: Display: Shaders Compiled: 413
+LogShaderCompilers: Display: Jobs assigned 413, completed 413 (100%)
+LogShaderCompilers: Display: Average time worker was idle: 0.00 s
+LogShaderCompilers: Display: Time job spent in pending queue: average 27.98 s, longest 97.16 s
+LogShaderCompilers: Display: Job execution time: average 23.74 s, max 54.88 s
+LogShaderCompilers: Display: Job life time (pending + execution): average 51.73 s, max 99.74
+LogShaderCompilers: Display: Shader code size: total 2.879 MiB, numShaders 454, average 6.493 KiB, min 448 B, max 31.645 KiB
+LogShaderCompilers: Display: Time at least one job was in flight (either pending or executed): 101.03 s
+LogShaderCompilers: Display: Mutex wait stall in FShaderJobCache::SubmitJobs:  0.09%
+LogShaderCompilers: Display: Jobs were issued in 73 batches (only local compilation was used), average 5.66 jobs/batch
+LogShaderCompilers: Display: Average processing rate: 4.09 jobs/sec
+LogShaderCompilers: Display: Total thread time: 1,217.834 s
+LogShaderCompilers: Display: Total thread preprocess time: 39.803 s
+LogShaderCompilers: Display: Percentage time preprocessing: 3.27%
+LogShaderCompilers: Display: Effective parallelization: 12.05 (times faster than compiling all shaders on one thread). Compare with number of workers: 12 - 1.004473
+LogShaderCompilers: Display: Top 5 most expensive shader types by average time:
+LogShaderCompilers: Display:                   TBasePassPSFSelfShadowedTranslucencyPolicy (compiled    3 times, average 11.84 sec, max 30.58 sec, min 2.47 sec)
+LogShaderCompilers: Display:                   TBasePassVSFSelfShadowedTranslucencyPolicy (compiled    2 times, average 7.16 sec, max 12.08 sec, min 2.25 sec)
+LogShaderCompilers: Display:            TVelocityPS<EVelocityPassMode::Velocity_Standard> (compiled   37 times, average 3.95 sec, max 34.34 sec, min 1.26 sec)
+LogShaderCompilers: Display:                         TBasePassPSFNoLightMapPolicySkylight (compiled   59 times, average 3.26 sec, max 29.96 sec, min 1.09 sec)
+LogShaderCompilers: Display:                                 TBasePassPSFNoLightMapPolicy (compiled   74 times, average 3.18 sec, max 35.03 sec, min 0.97 sec)
+LogShaderCompilers: Display: Top 5 shader types by total compile time:
+LogShaderCompilers: Display:                                 TBasePassPSFNoLightMapPolicy - 19.35% of total time (compiled   74 times, average 3.18 sec, max 35.03 sec, min 0.97 sec)
+LogShaderCompilers: Display:                         TBasePassPSFNoLightMapPolicySkylight - 15.81% of total time (compiled   59 times, average 3.26 sec, max 29.96 sec, min 1.09 sec)
+LogShaderCompilers: Display:            TVelocityPS<EVelocityPassMode::Velocity_Standard> - 11.99% of total time (compiled   37 times, average 3.95 sec, max 34.34 sec, min 1.26 sec)
+LogShaderCompilers: Display:                                 TBasePassVSFNoLightMapPolicy - 11.54% of total time (compiled   66 times, average 2.13 sec, max 23.37 sec, min 0.67 sec)
+LogShaderCompilers: Display:                                                  FHitProxyVS - 7.01% of total time (compiled   37 times, average 2.31 sec, max 16.06 sec, min 0.77 sec)
+LogShaderCompilers: Display: === Material stats ===
+LogShaderCompilers: Display: Materials Cooked:        104
+LogShaderCompilers: Display: Materials Translated:    90
+LogShaderCompilers: Display: Material Total Translate Time: 0.40 s
+LogShaderCompilers: Display: Material Translation Only: 0.31 s (77%)
+LogShaderCompilers: Display: Material DDC Serialization Only: 0.00 s (0%)
+LogShaderCompilers: Display: Material Cache Hits: 0 (0%)
+LogShaderCompilers: Display: ================================================
+LogAssetRegistryGenerator: Display: Saving asset registry v22.
+LogAssetRegistryGenerator: Display: Generated development asset registry C:/Users/iputu/Documents/Wonder Chess/game/Saved/Cooked/Windows/WonderChess/Metadata/DevelopmentAssetRegistry.bin num assets 445, size is 336.44kb, XxHash64[LE] = 0x1A8D2CFC570C84A6, waited on hash 0.00 seconds
+LogAssetRegistryGenerator: Display: Generated asset registry num assets 438, size is 124.61kb
+LogShaderLibrary: Display:
+LogShaderLibrary: Display: Shader Library 'WonderChess' (PCD3D_SM5-PCD3D_SM5) Stats:
+LogShaderLibrary: Display: =================
+LogShaderLibrary: Display: Assets: 91, Unique Shadermaps: 92 (101.10%)
+LogShaderLibrary: Display: Total Shaders: 1581, Unique Shaders: 1019 (64.45%)
+LogShaderLibrary: Display: Total Shader Size: 3.59mb, Unique Shaders Size: 2.42mb (67.26%)
+LogShaderLibrary: Display: === Extended info:
+LogShaderLibrary: Display: Minimum number of shaders in shadermap: 1
+LogShaderLibrary: Display: Median number of shaders in shadermap: 9
+LogShaderLibrary: Display: Maximum number of shaders in shadermap: 347
+LogShaderLibrary: Display: Number of shadermaps referencing top 10 most shared shaders:
+LogShaderLibrary: Display:     18, 17, 17, 17, 17, 16, 16, 15, 14, 10
+LogShaderLibrary: Display: Unique shaders itemization (sorted by compressed size):
+LogShaderLibrary: Display: SF_Pixel: 512 shaders (50.25%), compressed size: 1.18 MB (2.36 KB avg per shader), uncompressed size: 4.42 MB (8.85 KB avg per shader)
+LogShaderLibrary: Display: SF_Vertex: 362 shaders (35.53%), compressed size: 0.94 MB (2.65 KB avg per shader), uncompressed size: 2.92 MB (8.26 KB avg per shader)
+LogShaderLibrary: Display: SF_Compute: 145 shaders (14.23%), compressed size: 0.30 MB (2.09 KB avg per shader), uncompressed size: 1.10 MB (7.79 KB avg per shader)
+LogShaderLibrary: Display: Textual dump saved to '../../../../../../Users/iputu/Documents/Wonder Chess/game/Saved/Shaders/PCD3D_SM5-PCD3D_SM5/ShaderDebug-WonderChess-PCD3D_SM5-PCD3D_SM5/Dump.txt'
+LogShaderLibrary: Display: =================
+LogCook: Display: Dependent plugin "SteamShared" referenced by "EOS Shared" wasn't found in enabled plugins list when creating cook metadata file... skipping
+LogCook: Display: Finalize package store(s)...
+LogCook: Display: Cook by the book total time in tick 103.174337s total time 125.080818
+LogCook: Display: Peak Used virtual 2155 MiB Peak Used physical 2174 MiB
+LogCook: Display: Packages Cooked: 436, Packages Incrementally Skipped: 0, Packages Skipped by Platform: 7, Total Packages: 443
+LogCookStats: Display: Hierarchy Timer Information:
+LogCookStats: Display:   Root: 0.000s (0)
+LogCookStats: Display:     CleanSandbox: 0.063s (1)
+LogCookStats: Display:     CollectFilesToCook: 0.012s (1)
+LogCookStats: Display:       CookModificationDelegate: 0.001s (1)
+LogCookStats: Display:     GenerateLongPackageName: 0.001s (1)
+LogCookStats: Display:     TickMainCookLoop: 103.174s (5)
+LogCookStats: Display:       PumpPollables: 0.022s (39)
+LogCookStats: Display:       PumpRequests: 0.024s (15)
+LogCookStats: Display:       LoadPackageForCooking: 3.371s (3546)
+LogCookStats: Display:       ValidateSourcePackage: 0.000s (452)
+LogCookStats: Display:       SavingPackages: 11.414s (8656)
+LogCookStats: Display:         PollPendingCookedPlatformDatas: 5.215s (153934)
+LogCookStats: Display:         PrepareSave: 0.933s (153612)
+LogCookStats: Display:         PrecachePlatformDataForNextPackage: 0.860s (442)
+LogCookStats: Display:           PrepareSave: 0.859s (674)
+LogCookStats: Display:         SaveCookedPackage: 3.998s (443)
+LogCookStats: Display:           GEditorSavePackage: 3.926s (443)
+LogCookStats: Display:             VerifyCanCookPackage: 0.005s (436)
+LogCookStats: Display:         ClearAllCachedCookedPlatformData: 0.021s (443)
+LogCookStats: Display:       WaitForAsync: 87.296s (216972)
+LogCookStats: Display:       PostLoadPackageFixup: 0.000s (3)
+LogCookStats: Display:     CookByTheBookFinished: 0.396s (1)
+LogCookStats: Display:       SavingCurrentIniSettings: 0.091s (1)
+LogCookStats: Display:         ProcessingAccessedStrings: 0.006s (1)
+LogCookStats: Display:       ChunkGeneration: 0.027s (1)
+LogCookStats: Display:       CalculateReferencedSet: 0.000s (1)
+LogCookStats: Display:       FinishPopulateShaderLibrary: 0.001s (1)
+LogCookStats: Display:       GeneratorPreSave: 0.001s (1)
+LogCookStats: Display:       BuildChunkManifest: 0.047s (1)
+LogCookStats: Display:         FixupPackageDependenciesForChunks: 0.015s (1)
+LogCookStats: Display:       SaveManifests: 0.000s (1)
+LogCookStats: Display:       SaveAssetRegistry: 0.050s (1)
+LogCookStats: Display:       WriteCookerOpenOrder: 0.053s (1)
+LogCookStats: Display:       WriteCookMetadata: 0.005s (1)
+LogCookStats: Display:       WriteReferencedSet: 0.001s (1)
+LogCookStats: Display:       FinalizePackageStore: 0.003s (1)
+LogCookStats: Display: Misc Cook Stats
+LogCookStats: Display: ===============
+LogCookStats: Display: Niagara
+LogCookStats: Display:     NiagaraScriptTranslationCount=0
+LogCookStats: Display:     NiagaraCpuScriptCompileCount=0
+LogCookStats: Display:     NiagaraCpuScriptDdcCacheHitCount=0
+LogCookStats: Display:     NiagaraCpuScriptDdcCacheMissCount=0
+LogCookStats: Display:     NiagaraGpuScriptCompileCount=0
+LogCookStats: Display:     NiagaraGpuScriptDdcCacheHitCount=0
+LogCookStats: Display:     NiagaraGpuScriptDdcCacheMissCount=0
+LogCookStats: Display:     NiagaraSystemWaitForCompilationCompleteTime=0.000000
+LogCookStats: Display: NiagaraShader.Misc
+LogCookStats: Display:     ShadersCompiled=0
+LogCookStats: Display: ComputeKernelShader.Misc
+LogCookStats: Display:     ShadersCompiled=0
+LogCookStats: Display: ShaderCompiler
+LogCookStats: Display:     BlockingTimeSec=0.000257
+LogCookStats: Display:     AsyncCompileTimeSec=1284.274797
+LogCookStats: Display:     GlobalBeginCompileShaderTimeSec=0.313805
+LogCookStats: Display:     GlobalBeginCompileShaderCalls=2074
+LogCookStats: Display:     ProcessAsyncResultsTimeSec=0.545015
+LogCookStats: Display: GlobalShader.Misc
+LogCookStats: Display:     ShadersCompiled=0
+LogCookStats: Display: Material
+LogCookStats: Display:     FinishCacheShadersSec=0.973406
+LogCookStats: Display: Package.Load
+LogCookStats: Display:     NumRequestedLoads=3262
+LogCookStats: Display:     NumPackagesLoaded=5353
+LogCookStats: Display:     NumInlineLoads=2091
+LogCookStats: Display:     LoadPackageTimeSec=3.812775
+LogCookStats: Display: Package.Save
+LogCookStats: Display:     NumPackagesIncrementallySkipped=0
+LogCookStats: Display:     NumPackagesSaved=443
+LogCookStats: Display:     SavePackageTimeSec=3.855925
+LogCookStats: Display:     TagPackageExportsPresaveTimeSec=0.000000
+LogCookStats: Display:     TagPackageExportsTimeSec=0.000000
+LogCookStats: Display:     FullyLoadLoadersTimeSec=0.000000
+LogCookStats: Display:     ResetLoadersTimeSec=0.000000
+LogCookStats: Display:     TagPackageExportsGetObjectsWithOuter=0.000000
+LogCookStats: Display:     TagPackageExportsGetObjectsWithMarks=0.000000
+LogCookStats: Display:     SerializeImportsTimeSec=0.000000
+LogCookStats: Display:     SortExportsSeekfreeInnerTimeSec=0.000000
+LogCookStats: Display:     SerializeExportsTimeSec=0.000000
+LogCookStats: Display:     SerializeBulkDataTimeSec=0.005296
+LogCookStats: Display:     AsyncWriteTimeSec=0.000000
+LogCookStats: Display:     MBWritten=0.000000
+LogCookStats: Display: CookOnTheFlyServer
+LogCookStats: Display:     PeakRequestQueueSize=442
+LogCookStats: Display:     PeakLoadQueueSize=135
+LogCookStats: Display:     PeakSaveQueueSize=204
+LogCookStats: Display: Package.DifferentPackagesSizeMBPerAsset
+LogCookStats: Display: Package.NumberOfDifferencesInPackagesPerAsset
+LogCookStats: Display: Package.PackageDifferencesSizeMBPerAsset
+LogCookStats: Display: Package.DiffTotal
+LogCookStats: Display:     NumberOfDifferentPackages=0
+LogCookStats: Display:     DifferentPackagesSizeMB=0.000000
+LogCookStats: Display:     NumberOfDifferencesInPackages=0
+LogCookStats: Display:     PackageDifferencesSizeMB=0.000000
+LogCookStats: Display: UnversionedProperties
+LogCookStats: Display:     SavedStructs=0
+LogCookStats: Display:     SavedMB=0
+LogCookStats: Display:     EquivalentTaggedMB=0
+LogCookStats: Display:     CompressionRatio=-nan(ind)
+LogCookStats: Display:     BitfieldWasteKB=0
+LogCookStats: Display:
+LogCookStats: Display: Cook Profile
+LogCookStats: Display: ============
+LogCookStats: Display:  0.CookWallTimeSec=141.535152
+LogCookStats: Display:  0. 0.StartupWallTimeSec=13.984795
+LogCookStats: Display:  0. 1.StartCookByTheBookTimeSec=23.429140
+LogCookStats: Display:  0. 1. 0.BlockOnAssetRegistryTimeSec=18.556327
+LogCookStats: Display:  0. 1. 1.GameCookModificationDelegateTimeSec=0.000635
+LogCookStats: Display:  0. 2.TickCookOnTheSideTimeSec=98.914240
+LogCookStats: Display:  0. 2. 0.TickCookOnTheSideLoadPackagesTimeSec=3.372240
+LogCookStats: Display:  0. 2. 1.TickCookOnTheSideSaveCookedPackageTimeSec=3.998471
+LogCookStats: Display:  0. 2. 1. 0.TickCookOnTheSideResolveRedirectorsTimeSec=0.000000
+LogCookStats: Display:  0. 2. 2.TickCookOnTheSidePrepareSaveTimeSec=1.802698
+LogCookStats: Display:  0. 3.TickLoopGCTimeSec=0.539219
+LogCookStats: Display:  0. 4.TickLoopRecompileShaderRequestsTimeSec=0.000000
+LogCookStats: Display:  0. 5.TickLoopShaderProcessAsyncResultsTimeSec=0.008276
+LogCookStats: Display:  0. 6.TickLoopProcessDeferredCommandsTimeSec=0.000062
+LogCookStats: Display:  0. 7.TickLoopTickCommandletStatsTimeSec=0.000022
+LogCookStats: Display:  0. 8.TickLoopFlushRenderingCommandsTimeSec=0.012801
+LogCookStats: Display:  0. 9.ShaderFlushTimeSec=0.000000
+LogCookStats: Display:  0. 10.ValidationTimeSec=0.000292
+LogCookStats: Display:  1.CookParameters=
+LogCookStats: Display:  1. 0.TargetPlatforms=Windows
+LogCookStats: Display:  1. 1.CookProject=WonderChess
+LogCookStats: Display:  1. 2.CookCultures=
+LogCookStats: Display:  1. 3.IsCookAll=false
+LogCookStats: Display:  1. 4.IsCookOnTheFly=false
+LogCookStats: Display:  1. 5.IsIterativeCook=false
+LogCookStats: Display:  1. 6.IsUnversioned=true
+LogCookStats: Display:  1. 7.CookLabel=
+LogCookStats: Display:  1. 8.IsFastCook=false
+LogCookStats: Display:
+LogCookStats: Display: DDC Summary Stats
+LogCookStats: Display: =================
+LogCookStats: Display: BackEnd         =InstalledDerivedDataBackendGraph
+LogCookStats: Display: HasLocalCache   =      true
+LogCookStats: Display: HasSharedCache  =     false
+LogCookStats: Display: HasCloudCache   =     false
+LogCookStats: Display: HasZenCache     =      true
+LogCookStats: Display: TotalGetHits    =      1931
+LogCookStats: Display: TotalGetMisses  =      3656
+LogCookStats: Display: TotalGets       =      5587
+LogCookStats: Display: TotalGetHitPct  =  0.345624
+LogCookStats: Display: GetMissPct      =  0.654376
+LogCookStats: Display: TotalPutHits    =      3656
+LogCookStats: Display: TotalPutMisses  =         0
+LogCookStats: Display: TotalPuts       =      3656
+LogCookStats: Display: TotalPutHitPct  =  1.000000
+LogCookStats: Display: PutMissPct      =  0.000000
+LogCookStats: Display: LocalGetHits    =         0
+LogCookStats: Display: LocalGetMisses  =      3654
+LogCookStats: Display: LocalGetTotal   =      3654
+LogCookStats: Display: LocalGetHitPct  =  0.000000
+LogCookStats: Display: SharedGetHits   =         0
+LogCookStats: Display: SharedGetTotal  =         0
+LogCookStats: Display: SharedGetHitPct =  0.000000
+LogCookStats: Display: ZenLocalGetHits =         0
+LogCookStats: Display: ZenLocalGetTotal=      3654
+LogCookStats: Display: ZenLocalGetHitPct=  0.000000
+LogCookStats: Display: ZenRemoteGetHits=         0
+LogCookStats: Display: ZenRemoteGetTotal=         0
+LogCookStats: Display: ZenRemoteGetHitPct=  0.000000
+LogCookStats: Display: ZenRemoteReadSpeed=  0.000000
+LogCookStats: Display: ZenRemoteWriteSpeed=  0.000000
+LogCookStats: Display: ZenRemoteLatency=  0.000000
+LogCookStats: Display: CloudGetHits    =         0
+LogCookStats: Display: CloudGetTotal   =         0
+LogCookStats: Display: CloudGetHitPct  =  0.000000
+LogCookStats: Display: LocalLatency    =  0.747000
+LogCookStats: Display: LocalReadSpeed  =  0.000000
+LogCookStats: Display: LocalWriteSpeed = 21.358871
+LogCookStats: Display: SharedLatency   =  0.000000
+LogCookStats: Display: SharedReadSpeed =  0.000000
+LogCookStats: Display: SharedWriteSpeed=  0.000000
+LogCookStats: Display: CloudLatency    =  0.000000
+LogCookStats: Display: CloudReadSpeed  =  0.000000
+LogCookStats: Display: CloudWriteSpeed =  0.000000
+LogCookStats: Display:
+LogCookStats: Display: DDC Resource Stats
+LogCookStats: Display: =======================================================================================================
+LogCookStats: Display: Asset Type                          Total Time (Sec)  GameThread Time (Sec)  Assets Built  MB Processed
+LogCookStats: Display: ----------------------------------  ----------------  ---------------------  ------------  ------------
+LogCookStats: Display: Shader                                          1.12                   0.00           413          3.44
+LogCookStats: Display: GlobalShader                                    0.71                   0.71             0         13.14
+LogCookStats: Display: MaterialShader                                  0.31                   0.28            90          0.00
+LogCookStats: Display: BulkDataList                                    0.18                   0.00          3100          0.00
+LogCookStats: Display: Texture                                         0.09                   3.01             0          8.40
+LogCookStats: Display: StaticMesh                                      0.04                   0.02             0          1.13
+LogCookStats: Display: MaterialTranslation                             0.02                   0.00            53          0.00
+LogCookStats: Display: CardRepresentation                              0.01                   0.00             0          0.02
+LogCookStats: Display: STREAMEDAUDIO                                   0.01                   0.00             0          0.09
+LogCookStats: Display: NavCollision                                    0.01                   0.00             0          0.04
+LogCookStats: Display: Audio                                           0.00                   0.00             0          0.08
+LogCookStats: Display: CKERSM                                          0.00                   0.00             0          0.10
+LogCookStats: Display: BodySetup                                       0.00                   0.00             0          0.31
+LogPackageBuildDependencyTracker: Display: Package Accesses (218 referencing packages with a total of 1640 unique accesses)
+LogConfigBuildDependencyTracker: Display: Config Accesses (267 referencing packages with a total of 726 unique accesses). 1622 unique accesses that were not associated with a package.
+LogCook: Display: Done!
+LogSavePackage: Display: Took 0.001209s to verify the EDL loading graph.
+LogInit: Display:
+LogInit: Display: Success - 0 error(s), 0 warning(s)
+LogInit: Display:
+
+Execution of commandlet took:  2m 7s (127.56 seconds)
+LogShaderCompilers: Display: Shaders left to compile 0
+Took 146.06s to run UnrealEditor-Cmd.exe, ExitCode=0
+Cook command time: 146.16 s
+********** COOK COMMAND COMPLETED **********
+********** STAGE COMMAND STARTED **********
+Creating Staging Manifest...
+Patching bootstrap executable; C:\Users\iputu\Documents\Wonder Chess\game\Intermediate\Staging\WonderChess.exe
+Begin update resource 'C:\Users\iputu\Documents\Wonder Chess\game\Intermediate\Staging\WonderChess.exe' (0)
+Add resource 101, length 104 (True)
+Add resource 1, length 1996 (True)
+Add resource 2, length 2447 (True)
+Add resource 3, length 2535 (True)
+Add resource 4, length 3037 (True)
+Add resource 5, length 3244 (True)
+Add resource 6, length 3531 (True)
+Add resource 7, length 6931 (True)
+Add resource 201, length 86 (True)
+Add resource 202, length 24 (True)
+Add resource 205, length 2 (True)
+End update resource (True/0)
+Excluding config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\Localization\Engine.ini
+Excluding config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\Localization\ToolTips.ini
+Excluding config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\Localization\WordCount.ini
+Excluding config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\BaseSourceControlSettings.ini
+Excluding config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\Localization\Category.ini
+Excluding config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\BaseEditor.ini
+Excluding config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\Localization\Keywords.ini
+Excluding config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\BaseLightmass.ini
+Excluding config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\BaseEditorSettings.ini
+Excluding config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\Windows\WindowsEditorPerProjectUserSettings.ini
+Excluding config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\Localization\PortableObjectImport.ini
+Excluding config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\BasePakFileRules.ini
+Excluding config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\BaseUnrealInsightsSettings.ini
+Excluding config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\Localization\Editor.ini
+Excluding config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\BaseEditorKeyBindings.ini
+Excluding config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\Localization\PortableObjectExport.ini
+Excluding config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\Windows\WindowsEditorSettings.ini
+Excluding config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\Localization\PropertyNames.ini
+Excluding config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\BaseEditorPerProjectUserSettings.ini
+Excluding config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\Localization\RepairData.ini
+Including config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\ConfigRedirects.ini
+Including config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\BaseScalability.ini
+Including config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\BaseRuntimeOptions.ini
+Including config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\BaseGame.ini
+Including config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\BaseEngine.ini
+Including config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\Layouts\DefaultLayout.ini
+Including config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\PluginBase.ini
+Including config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\ConsoleVariables.ini
+Including config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\BaseMaterialExpressions.ini
+Including config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\BaseInstallBundle.ini
+Including config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\BaseDeviceProfiles.ini
+Including config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\BaseCompat.ini
+Including config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\Base.ini
+Including config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\Windows\DataDrivenPlatformInfo.ini
+Including config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\Windows\BaseWindowsInput.ini
+Including config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\BaseInput.ini
+Including config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\BaseHardware.ini
+Including config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\BaseGameUserSettings.ini
+Including config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\Windows\WindowsInput.ini
+Including config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\Windows\WindowsGame.ini
+Including config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\Windows\BaseWindowsEngine.ini
+Including config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\VulkanPC\DataDrivenPlatformInfo.ini
+Including config file C:\Program Files\Epic Games\UE_5.7\Engine\Config\Layouts\UE4ClassicLayout.ini
+Including config file C:\Users\iputu\Documents\Wonder Chess\game\Config\DefaultEngine.ini
+Including config file C:\Users\iputu\Documents\Wonder Chess\game\Config\DefaultGame.ini
+Cleaning Stage Directory: C:\Users\iputu\Documents\Wonder Chess\game\Saved\StagedBuilds\Windows
+Creating pak using staging manifest.
+DumpManifest: C:\Users\iputu\AppData\Roaming\Unreal Engine\AutomationTool\Logs\C+Program+Files+Epic+Games+UE_5.7\PrePak_Windows_NonUFSFiles.txt, NumItems: 33
+DumpManifest: C:\Users\iputu\AppData\Roaming\Unreal Engine\AutomationTool\Logs\C+Program+Files+Epic+Games+UE_5.7\PrePak_Windows_NonUFSFilesDebug.txt, NumItems: 6
+DumpManifest: C:\Users\iputu\AppData\Roaming\Unreal Engine\AutomationTool\Logs\C+Program+Files+Epic+Games+UE_5.7\PrePak_Windows_UFSFiles.txt, NumItems: 2577
+No matching platform for PakFileRules for Section ExcludeContentForMobile : Windows
+Using 0 pak order files:
+Running UnrealPak with arguments: "C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject"  -cryptokeys="C:\Users\iputu\Documents\Wonder Chess\game\Saved\Cooked\Windows\WonderChess\Metadata\Crypto.json" -patchpaddingalign=2048 -compressionformats=Oodle -compresslevel=4 -compressmethod=Kraken  -platform=Windows  -CreateMultiple="C:\Users\iputu\AppData\Roaming\Unreal Engine\AutomationTool\Logs\C+Program+Files+Epic+Games+UE_5.7\PakCommands.txt"
+Running: C:\Program Files\Epic Games\UE_5.7\Engine\Binaries\Win64\UnrealPak.exe "C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject"  -cryptokeys="C:\Users\iputu\Documents\Wonder Chess\game\Saved\Cooked\Windows\WonderChess\Metadata\Crypto.json" -patchpaddingalign=2048 -compressionformats=Oodle -compresslevel=4 -compressmethod=Kraken  -platform=Windows  -CreateMultiple="C:\Users\iputu\AppData\Roaming\Unreal Engine\AutomationTool\Logs\C+Program+Files+Epic+Games+UE_5.7\PakCommands.txt"
+LogPakFile: Display: ProjectDir: ../../../../../../Users/iputu/Documents/Wonder Chess/game/
+LogPakFile: Display: Parsing crypto keys from a crypto key cache file
+LogPakFile: Display: CompressionFormats in priority order: Oodle, Zlib
+LogPakFile: Display: Oodle enabled on 'NoPluginCompression' files
+LogPakFile: Display: Loading response file C:\Program Files\Epic Games\UE_5.7\Engine\Programs\AutomationTool\Saved\ResponseFiles\PakList_WonderChess-Windows.txt
+LogPakFile: Display: Added 1673 entries to add to pak file.
+LogPakFile: Display: Collecting files to add to pak file...
+LogPakFile: Display: Collected 1673 files in 0.01s.
+LogPakFile: Display: Creating pak C:/Users/iputu/Documents/Wonder Chess/game/Saved/StagedBuilds/Windows/WonderChess/Content/Paks/WonderChess-Windows.pak.
+OodleDataCompression: Display: Oodle v2.9.14 format for pak/iostore with method=Kraken, level=4=Normal
+LogPakFile: Display: Created pak file: C:/Users/iputu/Documents/Wonder Chess/game/Saved/StagedBuilds/Windows/WonderChess/Content/Paks/WonderChess-Windows.pak
+LogPakFile: Display: CompressionFormat 0 [Oodle] : 378 files, 23415634 -> 8894789 bytes
+LogPakFile: Display: CompressionFormat 2 [None] : 1295 files, 761678 -> 761678 bytes
+LogPakFile: Display: Added 1673 files, 10299344 bytes total
+LogPakFile: Display: PrimaryIndex size: 23042 bytes
+LogPakFile: Display: PathHashIndex size: 49527 bytes
+LogPakFile: Display: FullDirectoryIndex size: 53077 bytes
+LogPakFile: Display: Compression summary: 37.99% of original size. Compressed Size 8894789 bytes, Original Size 23415634 bytes.
+LogPakFile: Display: Encryption - DISABLED
+LogPakFile: Display:
+LogPakFile: Display: Writer and Compression Threads exited.
+LogPakFile: Display: UnrealPak executed in 1.120265 seconds
+Took 1.95s to run UnrealPak.exe, ExitCode=0
+Running UnrealPak with arguments: "C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject" -CreateGlobalContainer="C:\Users\iputu\Documents\Wonder Chess\game\Saved\StagedBuilds\Windows\WonderChess\Content\Paks\global.utoc" -PackageStoreManifest="C:\Users\iputu\Documents\Wonder Chess\game\Saved\Cooked\Windows\WonderChess\Metadata\packagestore.manifest" -CookedDirectory="C:\Users\iputu\Documents\Wonder Chess\game\Saved\Cooked\Windows" -Commands="C:\Users\iputu\AppData\Roaming\Unreal Engine\AutomationTool\Logs\C+Program+Files+Epic+Games+UE_5.7\IoStoreCommands.txt" -ScriptObjects="C:\Users\iputu\Documents\Wonder Chess\game\Saved\Cooked\Windows\WonderChess\Metadata\scriptobjects.bin" -patchpaddingalign=2048 -compressionformats=Oodle -compresslevel=4 -compressmethod=Kraken   -cryptokeys="C:\Users\iputu\Documents\Wonder Chess\game\Saved\Cooked\Windows\WonderChess\Metadata\Crypto.json" -compressionMinBytesSaved=1024 -compressionMinPercentSaved=5 -WriteBackMetadataToAssetRegistry=Disabled -platform=Windows 
+Running: C:\Program Files\Epic Games\UE_5.7\Engine\Binaries\Win64\UnrealPak.exe "C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject" -CreateGlobalContainer="C:\Users\iputu\Documents\Wonder Chess\game\Saved\StagedBuilds\Windows\WonderChess\Content\Paks\global.utoc" -PackageStoreManifest="C:\Users\iputu\Documents\Wonder Chess\game\Saved\Cooked\Windows\WonderChess\Metadata\packagestore.manifest" -CookedDirectory="C:\Users\iputu\Documents\Wonder Chess\game\Saved\Cooked\Windows" -Commands="C:\Users\iputu\AppData\Roaming\Unreal Engine\AutomationTool\Logs\C+Program+Files+Epic+Games+UE_5.7\IoStoreCommands.txt" -ScriptObjects="C:\Users\iputu\Documents\Wonder Chess\game\Saved\Cooked\Windows\WonderChess\Metadata\scriptobjects.bin" -patchpaddingalign=2048 -compressionformats=Oodle -compresslevel=4 -compressmethod=Kraken   -cryptokeys="C:\Users\iputu\Documents\Wonder Chess\game\Saved\Cooked\Windows\WonderChess\Metadata\Crypto.json" -compressionMinBytesSaved=1024 -compressionMinPercentSaved=5 -WriteBackMetadataToAssetRegistry=Disabled -platform=Windows
+LogPakFile: Display: ProjectDir: ../../../../../../Users/iputu/Documents/Wonder Chess/game/
+LogIoStore: Display: ==================== IoStore Utils ====================
+LogIoStore: Display: Parsing crypto keys from a crypto key cache file 'C:\Users\iputu\Documents\Wonder Chess\game\Saved\Cooked\Windows\WonderChess\Metadata\Crypto.json'
+LogIoStore: Display: Container signing - DISABLED
+LogIoStore: Display: Directory index - ENABLED
+LogIoStore: Display: Using compression format 'Oodle'
+LogConfig: Display: Read in platform Windows ini files took 0.11 seconds
+LogIoStore: Display: Using memory mapping alignment '16384'
+LogIoStore: Display: Using compression block size '65536'
+LogIoStore: Display: Using compression block alignment '2048'
+LogIoStore: Display: Using compression min bytes saved '1024'
+LogIoStore: Display: Using compression min percent saved '5'
+LogIoStore: Display: Using max partition size '0'
+LogIoStore: Display: Not using DDC for compression
+LogIoStore: Display: Using command list file: 'C:\Users\iputu\AppData\Roaming\Unreal Engine\AutomationTool\Logs\C+Program+Files+Epic+Games+UE_5.7\IoStoreCommands.txt'
+LogIoStore: Display: Selected Oodle level 4 (Normal) from command line for shaders
+LogIoStore: Display: Fetched 443 oplog items from Manifest in 0.00 seconds
+LogIoStore: Display: Parsed 443 oplog items 0.00 seconds, 466 chunks
+LogIoStore: Display: Using input asset registry: C:/Users/iputu/Documents/Wonder Chess/game/Saved/Cooked/Windows/WonderChess/Metadata/DevelopmentAssetRegistry.bin
+LogIoStore: Display: Loaded 30 chunk hashes from AssetRegistry in 0.02 seconds, 30 hashes updated in 0.00 seconds
+LogIoStore: Display: Searching for cooked assets in folder 'C:\Users\iputu\Documents\Wonder Chess\game\Saved\Cooked\Windows'
+LogIoStore: Display: Found '906' files
+LogIoStore: Display: Creating container targets...
+OodleDataCompression: Display: Oodle v2.9.14 format for pak/iostore with method=Kraken, level=4=Normal
+LogIoStore: Display: Parsing packages...
+LogIoStore: Display: Reading package assets...
+LogIoStore: Display: Packages read 436 files in 0.02 seconds, 600,889 total bytes, 26,912,386 bytes per second
+LogIoStore: Display: Processing shader libraries, compressing with Oodle Mermaid, level 4 (Normal)
+LogShaderLibrary: Display: Created IoStoreShaderArchive header: shaders grouped in 371 groups (137 of them didn't need new indices), average uncompressed size 157264 bytes, min 249 bytes, max 1047779 bytes (r.ShaderCodeLibrary.MaxShaderGroupSize=1048576)
+LogIoStore: Display: Global-PCD3D_SM5(PCD3D_SM5): Recompressed 4244 shaders as 371 groups. Library size changed from 13177 KB (4.32 : 1 ratio) to 5645 KB (10.09 : 1 ratio), 42.84% of previous.
+LogShaderLibrary: Display: Created IoStoreShaderArchive header: shaders grouped in 158 groups (68 of them didn't need new indices), average uncompressed size 56049 bytes, min 490 bytes, max 966602 bytes (r.ShaderCodeLibrary.MaxShaderGroupSize=1048576)
+LogIoStore: Display: WonderChess-PCD3D_SM5(PCD3D_SM5): Recompressed 1019 shaders as 158 groups. Library size changed from 2473 KB (3.50 : 1 ratio) to 1021 KB (8.47 : 1 ratio), 41.28% of previous.
+LogIoStore: Display: Shaders processed in 0.16 seconds
+LogIoStore: Display: Initialized WriteRequestManager with MaxConcurrentSourceReads=8 (16 cores), MaxSourceBufferMemory=3072MiB
+LogIoStore: Display: Processing redirects...
+LogIoStore: Display: Creating disk layout...
+LogIoStore: Display: Ordered 436 packages using fallback bundle order
+LogIoStore: Display: Serializing container(s)...
+LogIoStore: Display: Writing and compressing took 0.45 seconds, writes to disk took 0.17 seconds for 125,793,248 bytes @ 719,206,520 bytes per second.
+LogIoStore: Display: global: Found perfect hashmap for 1 items.
+LogIoStore: Display: WonderChess-Windows: Found perfect hashmap for 997 items.
+LogIoStore: Display: Finalize took 0.0 seconds for 2 writers to write 113,549 bytes, 14,846,111 bytes per second
+LogIoStore: Display: Writing tocs... [Physical: 514 MiB, Virtual: 3277 MiB]
+LogIoStore: Display: 30 / 998 hashes were loaded from the hash database, by type:
+LogIoStore: Display:     BulkData                   30
+LogIoStore: Display: 466 / 998 chunks attempted to compress, by type:
+LogIoStore: Display:     ExportBundleData           436 / 436
+LogIoStore: Display:     BulkData                   30 / 30
+LogIoStore: Display:     ScriptObjects              0 / 1
+LogIoStore: Display:     ContainerHeader            0 / 1
+LogIoStore: Display:     ShaderCodeLibrary          0 / 2
+LogIoStore: Display:     ShaderCode                 0 / 528
+LogIoStore: Display: Source bytes read:
+LogIoStore: Display:     Zen:                                  0
+LogIoStore: Display:     Loose File:                 311,799,082
+LogIoStore: Display:         ExportBundleData        304,646,374 bytes over 872 reads
+LogIoStore: Display:         BulkData                  7,152,708 bytes over 30 reads
+LogIoStore: Display:     Memory:                      14,088,206
+LogIoStore: Display:         ShaderCodeLibrary           434,944 bytes over 4 reads
+LogIoStore: Display:         ShaderCode               13,653,262 bytes over 1,056 reads
+LogIoStore: Display: Calculating stats...
+LogIoStore: Display:
+LogIoStore: Display: Container Summary
+LogIoStore: Display: ==================
+LogIoStore: Display:
+LogIoStore: Display: Container                                               Flags      Chunk(s) #       TOC (KiB)       Raw Size (MiB)           Size (MiB)
+LogIoStore: Display: ----------------------------------------------------------------------------------------------------------------------------------------------
+LogIoStore: Display: global                                              -/-/-/-/-               1            0.67                 2.51                 2.51 -
+LogIoStore: Display: WonderChess-Windows                                 C/-/-/I/-             997          110.22               159.75               117.45 (26.48% Oodle)
+LogIoStore: Display: ----------------------------------------------------------------------------------------------------------------------------------------------
+LogIoStore: Display: Total                                                                     998          110.89               162.26               119.97
+LogIoStore: Display:
+LogIoStore: Display: ** Flags: (C)ompressed / (E)ncrypted / (S)igned) / (I)ndexed) / (O)nDemand **
+LogIoStore: Display:
+LogIoStore: Display: Compression block padding:     0.58 MiB
+LogIoStore: Display:
+LogIoStore: Display: Container Directory Index
+LogIoStore: Display: ==========================
+LogIoStore: Display:
+LogIoStore: Display: Container                                          Size (KiB)
+LogIoStore: Display: ----------------------------------------------------------------------------------------------------------------------------------------------
+LogIoStore: Display: global                                                   0.00
+LogIoStore: Display: WonderChess-Windows                                     23.38
+LogIoStore: Display:
+LogIoStore: Display: Container Patch Report
+LogIoStore: Display: ========================
+LogIoStore: Display:
+LogIoStore: Display: Container                                             Total #       Modified #          Added #   Modified (MiB)      Added (MiB)
+LogIoStore: Display: ----------------------------------------------------------------------------------------------------------------------------------------------
+LogIoStore: Display: global                                                      1                0                0             0.00             0.00
+LogIoStore: Display: WonderChess-Windows                                       997                0              997             0.00           116.87
+LogIoStore: Display:
+LogIoStore: Display: PackageStore
+LogIoStore: Display: =============
+LogIoStore: Display:
+LogIoStore: Display: Container                                          Size (KiB)      Packages #     Localized #
+LogIoStore: Display: ----------------------------------------------------------------------------------------------------------------------------------------------
+LogIoStore: Display: WonderChess-Windows                                        12             436               0
+LogIoStore: Display: ----------------------------------------------------------------------------------------------------------------------------------------------
+LogIoStore: Display: Total                                                      12             436               0
+LogIoStore: Display:
+LogIoStore: Display:
+LogIoStore: Display: Input:       436 Packages
+LogIoStore: Display: Input:    145.27 MiB UExp
+LogIoStore: Display: Input:    586.81 KiB UAsset
+LogIoStore: Display: Input:      6.82 MiB UBulk
+LogIoStore: Display: Input:      5.51 MiB for 371 Global shaders
+LogIoStore: Display: Input:    227.51 KiB for 70 Shared shaders
+LogIoStore: Display: Input:         0   B for 0 Unique shaders
+LogIoStore: Display: Input:    793.47 KiB for 87 Inline shaders
+LogIoStore: Display:
+LogIoStore: Display: Output:     3527 Name map entries
+LogIoStore: Display: Output:      378 Imported package entries
+LogIoStore: Display: Output:      264 Packages without imports
+LogIoStore: Display: Output:        0 Public runtime script objects
+LogIoStore: Display: Output:   354.09 KiB HeaderData
+LogIoStore: Display: Output:     2.51 MiB InitialLoadData
+LogIoStore: Display:
+LogIoStore: Display: Success
+LogPakFile: Display: UnrealPak executed in 1.030859 seconds
+Took 1.74s to run UnrealPak.exe, ExitCode=0
+DumpManifest: C:\Users\iputu\AppData\Roaming\Unreal Engine\AutomationTool\Logs\C+Program+Files+Epic+Games+UE_5.7\FinalCopyWin64_UFSFiles.txt, NumItems: 2578
+DumpManifest: C:\Users\iputu\AppData\Roaming\Unreal Engine\AutomationTool\Logs\C+Program+Files+Epic+Games+UE_5.7\FinalCopyWin64_NonUFSFiles.txt, NumItems: 33
+DumpManifest: C:\Users\iputu\AppData\Roaming\Unreal Engine\AutomationTool\Logs\C+Program+Files+Epic+Games+UE_5.7\FinalCopyWin64_NonUFSFilesDebug.txt, NumItems: 6
+Copying NonUFSFiles to staging directory: C:\Users\iputu\Documents\Wonder Chess\game\Saved\StagedBuilds\Windows
+Copying DebugFiles to staging directory: C:\Users\iputu\Documents\Wonder Chess\game\Saved\StagedBuilds\Windows
+Stage command time: 5.88 s
+********** STAGE COMMAND COMPLETED **********
+********** ARCHIVE COMMAND STARTED **********
+Archiving to C:\Users\iputu\Documents\Wonder Chess\builds\WC-300-Minimal
+Archive command time: 0.83 s
+********** ARCHIVE COMMAND COMPLETED **********
+BuildCookRun time: 220.25 s
+BUILD SUCCESSFUL
+AutomationTool executed for 0h 3m 41s
+AutomationTool exiting with ExitCode=0 (Success)

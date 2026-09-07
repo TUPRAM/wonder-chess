@@ -1,0 +1,55 @@
+{
+  "status": "EXITED_AUDIT_REQUIRED",
+  "mode": "restart",
+  "started_utc": "2026-09-06T08:40:52.4062545Z",
+  "executable": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Alpha-Candidate\\Windows\\WonderChess\\Binaries\\Win64\\WonderChess-Win64-Shipping.exe",
+  "executable_sha256": "b3114876d3d75e6d89677f42b2a6117b5989ba8dfe91d4f50ef50e965a2103ac",
+  "working_directory": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Alpha-Candidate\\Windows",
+  "arguments": [
+    "WonderChess",
+    "-windowed",
+    "-ResX=1920",
+    "-ResY=1080",
+    "-ForceRes",
+    "-dx11",
+    "-WCExercise",
+    "-WCAuthorityChecks",
+    "-WCProfile",
+    "-WCShots",
+    "-WCProjectedBounds",
+    "-WCFast=10",
+    "-WCExitAfter=320",
+    "-WCEvidenceDir=\"C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\alpha-candidate-restart\"",
+    "-WCRestartOnce",
+    "-WCAutoStart"
+  ],
+  "provenance_path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-360\\alpha-candidate-provenance.json",
+  "provenance_sha256": "89d6e2129cf28e491fb69d9d2fb2c68f2f50e0562dcdbc792322c2fe04786415",
+  "ambient_editor_processes": [
+    {
+      "Id": 29288,
+      "ProcessName": "blender",
+      "StartTime": "2026-09-06T12:14:06.8863542+08:00",
+      "CPU": 258.515625,
+      "WorkingSet64": 20840448
+    },
+    {
+      "Id": 38828,
+      "ProcessName": "UnrealEditor",
+      "StartTime": "2026-09-06T13:03:33.2593469+08:00",
+      "CPU": 4938.125,
+      "WorkingSet64": 215023616
+    }
+  ],
+  "other_task_games_before_launch": 0,
+  "process_id": 53152,
+  "exit_code": 0,
+  "window_style": "Hidden",
+  "null_rhi": false,
+  "simulation_speed": 10,
+  "bounded_seconds": 320,
+  "automatic_screenshots": true,
+  "projected_bounds": true,
+  "boundary": "Scripted legal player commands in the actual Shipping game. PNG captures, public-state evidence and frame CSV instrumentation are enabled. Existing user editor applications are preserved. This is not manual usability or audio audition evidence.",
+  "ended_utc": "2026-09-06T08:46:13.5741122Z"
+}

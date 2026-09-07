@@ -1,0 +1,23 @@
+{
+  "engine": "5.7.4-51494982+++UE5+Release-5.7",
+  "asset_mutations": false,
+  "properties": [
+    {
+      "class": "FbxSkeletalMeshImportData",
+      "property": "update_skeleton_reference_pose",
+      "before": false,
+      "after": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "class": "FbxAnimSequenceImportData",
+      "property": "preserve_local_transform",
+      "before": false,
+      "after": false,
+      "expected": false,
+      "pass": true
+    }
+  ],
+  "status": "PASS"
+}

@@ -1,0 +1,1221 @@
+﻿{
+	"devices": [
+		{
+			"deviceName": "GR1ZZYLY",
+			"instance": "1C2AC3F346EC54018267C6AF6FA98D95",
+			"instanceName": "GR1ZZYLY-25036",
+			"platform": "WindowsEditor",
+			"oSVersion": "Windows 11 (25H2) [10.0.26200.9278] ",
+			"model": "Default",
+			"gPU": "AMD Radeon(TM) Graphics",
+			"cPUModel": "AMD Ryzen 7 6800H with Radeon Graphics         ",
+			"rAMInGB": 16,
+			"renderMode": "SM6",
+			"rHI": "",
+			"appInstanceLog": ""
+		}
+	],
+	"reportCreatedOn": "2026.09.06-05.59.58",
+	"succeeded": 0,
+	"succeededWithWarnings": 0,
+	"failed": 1,
+	"notRun": 0,
+	"inProcess": 0,
+	"totalDuration": 1.1312803030014038,
+	"comparisonExported": false,
+	"comparisonExportDirectory": "",
+	"tests": [
+		{
+			"testDisplayName": "ImportedAlphaContracts",
+			"fullTestPath": "WonderChess.Assets.ImportedAlphaContracts",
+			"tags": [],
+			"state": "Fail",
+			"deviceInstance": [
+				"1C2AC3F346EC54018267C6AF6FA98D95"
+			],
+			"duration": 1.1312803030014038,
+			"dateTime": "2026.09.06-05.59.57",
+			"entries": [
+				{
+					"event":
+					{
+						"type": "Info",
+						"message": "LogStreaming: FlushAsyncLoading(327): 1 QueuedPackages, 0 AsyncPackages",
+						"context": "log",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "",
+					"lineNumber": -1,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_guardian reference scale root' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 135,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_guardian material slot1' to be not null.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 164,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_guardian texture has dimensions BaseColor' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 213,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_guardian texture has dimensions Normal' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 213,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_guardian texture has dimensions ORM' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 213,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_guardian texture has dimensions Portrait' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 213,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_guardian portrait resolution512..1024' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 219,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_guardian sampled identity root Idle' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_guardian sampled identity root Move' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_guardian sampled identity root Attack' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_guardian sampled identity root Active' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_guardian sampled identity root Hit' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_guardian sampled identity root Defeat' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_guardian sampled identity root Victory' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_priest reference scale root' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 135,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_priest material slot1' to be not null.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 164,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_priest texture has dimensions BaseColor' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 213,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_priest texture has dimensions Normal' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 213,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_priest texture has dimensions ORM' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 213,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_priest texture has dimensions Portrait' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 213,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_priest portrait resolution512..1024' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 219,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_priest sampled identity root Idle' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_priest sampled identity root Move' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_priest sampled identity root Attack' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_priest sampled identity root Active' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_priest sampled identity root Hit' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_priest sampled identity root Defeat' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_priest sampled identity root Victory' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_mage reference scale root' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 135,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_mage material slot1' to be not null.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 164,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_mage texture has dimensions BaseColor' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 213,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_mage texture has dimensions Normal' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 213,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_mage texture has dimensions ORM' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 213,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_mage texture has dimensions Portrait' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 213,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_mage portrait resolution512..1024' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 219,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_mage sampled identity root Idle' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_mage sampled identity root Move' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_mage sampled identity root Attack' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_mage sampled identity root Active' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_mage sampled identity root Hit' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_mage sampled identity root Defeat' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_mage sampled identity root Victory' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_ranger reference scale root' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 135,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_ranger material slot1' to be not null.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 164,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_ranger texture has dimensions BaseColor' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 213,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_ranger texture has dimensions Normal' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 213,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_ranger texture has dimensions ORM' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 213,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_ranger texture has dimensions Portrait' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 213,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_ranger portrait resolution512..1024' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 219,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_ranger sampled identity root Idle' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_ranger sampled identity root Move' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_ranger sampled identity root Attack' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_ranger sampled identity root Active' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_ranger sampled identity root Hit' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_ranger sampled identity root Defeat' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_ranger sampled identity root Victory' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_priest reference scale root' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 135,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_priest material slot1' to be not null.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 164,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_priest texture has dimensions BaseColor' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 213,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_priest texture has dimensions Normal' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 213,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_priest texture has dimensions ORM' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 213,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_priest texture has dimensions Portrait' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 213,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_priest portrait resolution512..1024' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 219,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_priest sampled identity root Idle' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_priest sampled identity root Move' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_priest sampled identity root Attack' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_priest sampled identity root Active' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_priest sampled identity root Hit' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_priest sampled identity root Defeat' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_priest sampled identity root Victory' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_rogue reference scale root' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 135,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_rogue material slot1' to be not null.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 164,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_rogue texture has dimensions BaseColor' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 213,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_rogue texture has dimensions Normal' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 213,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_rogue texture has dimensions ORM' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 213,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_rogue texture has dimensions Portrait' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 213,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_rogue portrait resolution512..1024' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 219,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_rogue sampled identity root Idle' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_rogue sampled identity root Move' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_rogue sampled identity root Attack' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_rogue sampled identity root Active' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_rogue sampled identity root Hit' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_rogue sampled identity root Defeat' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_rogue sampled identity root Victory' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 317,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_dwarf_guardian skeleton' to be not null.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 115,
+					"timestamp": "2026.09.06-05.59.57"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_dwarf_ranger skeleton' to be not null.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 115,
+					"timestamp": "2026.09.06-05.59.58"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_dwarf_warrior skeleton' to be not null.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 115,
+					"timestamp": "2026.09.06-05.59.58"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_orc_warrior skeleton' to be not null.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 115,
+					"timestamp": "2026.09.06-05.59.58"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_orc_mage skeleton' to be not null.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 115,
+					"timestamp": "2026.09.06-05.59.58"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_orc_rogue skeleton' to be not null.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 115,
+					"timestamp": "2026.09.06-05.59.58"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'All84 hero animation references loaded' to be 84, but it was 42.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 325,
+					"timestamp": "2026.09.06-05.59.58"
+				},
+				{
+					"event":
+					{
+						"type": "Warning",
+						"message": "LoadErrors: While trying to load package /Game/WonderChess/Heroes/wc_u_dwarf_guardian/SK_wc_u_dwarf_guardian, a dependent package /Game/WonderChess/Heroes/wc_u_dwarf_guardian/SK_wc_u_dwarf_guardian_Skeleton was not available. Additional explanatory information follows:\nFPackageName: Skipped package /Game/WonderChess/Heroes/wc_u_dwarf_guardian/SK_wc_u_dwarf_guardian_Skeleton has a valid, mounted, mount point but does not exist either on disk or in iostore. The uncooked file would be expected on disk at 'C:/Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Heroes/wc_u_dwarf_guardian/SK_wc_u_dwarf_guardian_Skeleton'. Perhaps it has been deleted or was not synced?\n",
+						"context": "log",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "",
+					"lineNumber": -1,
+					"timestamp": "2026.09.06-05.59.58"
+				},
+				{
+					"event":
+					{
+						"type": "Warning",
+						"message": "LoadErrors: While trying to load package /Game/WonderChess/Heroes/wc_u_dwarf_ranger/SK_wc_u_dwarf_ranger, a dependent package /Game/WonderChess/Heroes/wc_u_dwarf_ranger/SK_wc_u_dwarf_ranger_Skeleton was not available. Additional explanatory information follows:\nFPackageName: Skipped package /Game/WonderChess/Heroes/wc_u_dwarf_ranger/SK_wc_u_dwarf_ranger_Skeleton has a valid, mounted, mount point but does not exist either on disk or in iostore. The uncooked file would be expected on disk at 'C:/Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Heroes/wc_u_dwarf_ranger/SK_wc_u_dwarf_ranger_Skeleton'. Perhaps it has been deleted or was not synced?\n",
+						"context": "log",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "",
+					"lineNumber": -1,
+					"timestamp": "2026.09.06-05.59.58"
+				},
+				{
+					"event":
+					{
+						"type": "Warning",
+						"message": "LoadErrors: While trying to load package /Game/WonderChess/Heroes/wc_u_dwarf_warrior/SK_wc_u_dwarf_warrior, a dependent package /Game/WonderChess/Heroes/wc_u_dwarf_warrior/SK_wc_u_dwarf_warrior_Skeleton was not available. Additional explanatory information follows:\nFPackageName: Skipped package /Game/WonderChess/Heroes/wc_u_dwarf_warrior/SK_wc_u_dwarf_warrior_Skeleton has a valid, mounted, mount point but does not exist either on disk or in iostore. The uncooked file would be expected on disk at 'C:/Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Heroes/wc_u_dwarf_warrior/SK_wc_u_dwarf_warrior_Skeleton'. Perhaps it has been deleted or was not synced?\n",
+						"context": "log",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "",
+					"lineNumber": -1,
+					"timestamp": "2026.09.06-05.59.58"
+				},
+				{
+					"event":
+					{
+						"type": "Warning",
+						"message": "LoadErrors: While trying to load package /Game/WonderChess/Heroes/wc_u_orc_warrior/SK_wc_u_orc_warrior, a dependent package /Game/WonderChess/Heroes/wc_u_orc_warrior/SK_wc_u_orc_warrior_Skeleton was not available. Additional explanatory information follows:\nFPackageName: Skipped package /Game/WonderChess/Heroes/wc_u_orc_warrior/SK_wc_u_orc_warrior_Skeleton has a valid, mounted, mount point but does not exist either on disk or in iostore. The uncooked file would be expected on disk at 'C:/Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Heroes/wc_u_orc_warrior/SK_wc_u_orc_warrior_Skeleton'. Perhaps it has been deleted or was not synced?\n",
+						"context": "log",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "",
+					"lineNumber": -1,
+					"timestamp": "2026.09.06-05.59.58"
+				},
+				{
+					"event":
+					{
+						"type": "Warning",
+						"message": "LoadErrors: While trying to load package /Game/WonderChess/Heroes/wc_u_orc_mage/SK_wc_u_orc_mage, a dependent package /Game/WonderChess/Heroes/wc_u_orc_mage/SK_wc_u_orc_mage_Skeleton was not available. Additional explanatory information follows:\nFPackageName: Skipped package /Game/WonderChess/Heroes/wc_u_orc_mage/SK_wc_u_orc_mage_Skeleton has a valid, mounted, mount point but does not exist either on disk or in iostore. The uncooked file would be expected on disk at 'C:/Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Heroes/wc_u_orc_mage/SK_wc_u_orc_mage_Skeleton'. Perhaps it has been deleted or was not synced?\n",
+						"context": "log",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "",
+					"lineNumber": -1,
+					"timestamp": "2026.09.06-05.59.58"
+				},
+				{
+					"event":
+					{
+						"type": "Warning",
+						"message": "LoadErrors: While trying to load package /Game/WonderChess/Heroes/wc_u_orc_rogue/SK_wc_u_orc_rogue, a dependent package /Game/WonderChess/Heroes/wc_u_orc_rogue/SK_wc_u_orc_rogue_Skeleton was not available. Additional explanatory information follows:\nFPackageName: Skipped package /Game/WonderChess/Heroes/wc_u_orc_rogue/SK_wc_u_orc_rogue_Skeleton has a valid, mounted, mount point but does not exist either on disk or in iostore. The uncooked file would be expected on disk at 'C:/Users/iputu/Documents/Wonder Chess/game/Content/WonderChess/Heroes/wc_u_orc_rogue/SK_wc_u_orc_rogue_Skeleton'. Perhaps it has been deleted or was not synced?\n",
+						"context": "log",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "",
+					"lineNumber": -1,
+					"timestamp": "2026.09.06-05.59.58"
+				}
+			],
+			"warnings": 6,
+			"errors": 91,
+			"artifacts": []
+		}
+	]
+}

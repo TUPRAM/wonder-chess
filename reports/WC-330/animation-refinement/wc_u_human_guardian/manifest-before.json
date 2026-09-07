@@ -1,0 +1,160 @@
+{
+  "status": "authored_rendered_normalized_exported_pending_current_engine_and_visual_acceptance",
+  "unit_id": "wc_u_human_guardian",
+  "name": "Ada Brightshield",
+  "blender_version": "5.1.1",
+  "source_revision": 4,
+  "height_m": 1.82,
+  "source_sha256": "cffd33a37d95fda45599f73b7ced9615b95c13bb3f3c3aa5ea05462fbd662160",
+  "author_script_sha256": "474d9d165ca7a0c2134197c379978f59d2af9baf475bbcd0970fd97febd0a4da",
+  "units_source_sha256": "1a93bfb07bd93ace4d5eb740864e26c69765a5ebb9b87885c1d3d40c772cd9e8",
+  "rig_family": "humanoid_standard",
+  "rig_revision": "WC_family_v1",
+  "bones": 27,
+  "triangles": 4760,
+  "materials": 1,
+  "fps": 60,
+  "source_forward": "+Y",
+  "source_up": "+Z",
+  "unit_scale_m": 1,
+  "fbx_profile": "tools\\blender\\profiles\\fbx_skeletal_cm_v1.json",
+  "engine_calibration": [
+    "reports/WC-330/import-probe/normalized_cm-results.json",
+    "reports/WC-330/import-probe/forward_cm-results.json",
+    "reports/WC-330/normalized-cm-copy-trial.log"
+  ],
+  "textures": {
+    "BaseColor": "sRGB",
+    "Normal": "linear, tangent +Y, flat normal surface; geometric bevels",
+    "ORM": "linear R=occlusion G=roughness B=metallic"
+  },
+  "equipment": "weighted within the skeletal mesh; socket bones also available",
+  "clips": {
+    "Idle": {
+      "action": "AN_wc_u_human_guardian_Idle",
+      "frames": [
+        1,
+        121
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Move": {
+      "action": "AN_wc_u_human_guardian_Move",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Attack": {
+      "action": "AN_wc_u_human_guardian_Attack",
+      "frames": [
+        1,
+        40
+      ],
+      "release_frame": 16,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Active": {
+      "action": "AN_wc_u_human_guardian_Active",
+      "frames": [
+        1,
+        37
+      ],
+      "release_frame": 19,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Hit": {
+      "action": "AN_wc_u_human_guardian_Hit",
+      "frames": [
+        1,
+        25
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Defeat": {
+      "action": "AN_wc_u_human_guardian_Defeat",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Victory": {
+      "action": "AN_wc_u_human_guardian_Victory",
+      "frames": [
+        1,
+        91
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    }
+  },
+  "lods": [
+    {
+      "lod": 1,
+      "triangles": 2379,
+      "ratio_target": 0.5,
+      "visual_acceptance": "pending"
+    },
+    {
+      "lod": 2,
+      "triangles": 1190,
+      "ratio_target": 0.25,
+      "visual_acceptance": "pending"
+    }
+  ],
+  "source_brief": {
+    "silhouette": "A broad inverted-triangle shoulder line over a compact waist, anchored by an oversized rounded kite shield on the left. The shield rises to eyebrow height when guarding, but stays below her eyes at rest.",
+    "face": "Warm brown skin, square brows, dark eyes and a short black braid tucked behind the neck. Her calm, alert expression is readable without exaggerated facial animation.",
+    "costume": "An ivory quilted coat sits under simplified steel breast and shoulder plates. A split navy tabard ends above the knees, leaving the leg silhouettes clear. Heavy boots and broad bracers make her planted stance apparent.",
+    "palette": "Navy #25466B; ivory #E9E2CD; brushed steel #9EAAB5; restrained gold #C7A25B. Gold covers only the shield crest and two fasteners.",
+    "equipment": "Left-hand kite shield with a raised rising-sun disk; short, broad fantasy sword in the right hand. Build the emblem as shallow geometry with a baked bevel, not dense engraving.",
+    "signature": "The high curved shield, squared shoulder line, and single sun disk must survive a 96-pixel hero render.",
+    "materials": "Use a shared armor master, a cloth instance and a small emissive crest mask. Keep roughness separation between plate, fabric and the leather shield grip; no mirror-polished surfaces.",
+    "back": "A navy crossed strap carries a plain bedroll clasp; the braid sits clear of the shoulder plates. No long cape hides the back silhouette.",
+    "animation": "Idle with weight on the rear foot and shield angled outward. Walk with measured short steps. Basic attacks use one readable right-hand sweep. The active lifts the shield before the crest lights; return to guard without whole-body root motion.",
+    "vfx": "A thin warm-gold shell follows the shield silhouette and a brief low-opacity arc wraps the torso. Do not use a solid sphere that obscures nearby heroes.",
+    "audio": "A firm boot placement, restrained metal knock, and short rounded shield chime. Avoid a booming impact on every basic attack.",
+    "risk": "Shield/forearm intersections during attack recovery are the main deformation risk. Test full left-arm elevation and adjacent-hero visibility."
+  },
+  "files": {
+    "AN_wc_u_human_guardian_Active.fbx": "8fa51161a87ab387b48d89e045776d389e30a055f671ccc948ef89589175a3a2",
+    "AN_wc_u_human_guardian_Attack.fbx": "78defeadc79e045a2c2281f7dc46245a1d15720913c19fec908839610d2d57c2",
+    "AN_wc_u_human_guardian_Defeat.fbx": "957c6acf69d5a7cf72569d0d4a17bf6fbac2854195cae8e56ad17f3cf8bf866e",
+    "AN_wc_u_human_guardian_Hit.fbx": "166c36d5242616dafe3a6629a0b30119db89cc9d09da09447d0265e48d1243f6",
+    "AN_wc_u_human_guardian_Idle.fbx": "93d91e6bf9d6d4d2957a4a8794290f0af3106adc326f9935c22b309aabb6ae29",
+    "AN_wc_u_human_guardian_Move.fbx": "936f42b975dd2ad58b774b2e55f2495ad201fc1de07f962d042d43c78f6d9cc2",
+    "AN_wc_u_human_guardian_Victory.fbx": "0631230b88cda1f74d78fa8bb1799c5a3380f6e7f2ed58bb6ddcac5ebfdacb76",
+    "portrait.png": "a3726d6efa2cfdace5805f1ab86be47baf43935beed11b9d79fa1b6b58338969",
+    "SK_wc_u_human_guardian.fbx": "419f786511ee502362ee5af58ca201d219c7729ac573bc7a48bf2d7ce85ed2f2",
+    "SK_wc_u_human_guardian_LOD1.fbx": "6d73b6f819dd50df1107e1aa9af5333bc67556415c0eebc4e1eefbf859950ac3",
+    "SK_wc_u_human_guardian_LOD2.fbx": "0600931e5d1f0358b1f3db2ecbbcf466e893bf972b1bd2e92b5fa1f1389938b9",
+    "T_wc_u_human_guardian_BaseColor.png": "304909f4c0fa012dcc73149629aa3ee34f768f7f6ba8e1ac83cc6d000b2d0847",
+    "T_wc_u_human_guardian_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
+    "T_wc_u_human_guardian_ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c"
+  },
+  "open_reviews": [
+    "Unreal scale and facing",
+    "all continuous animation deformation",
+    "source revision reimport",
+    "crowded-board readability",
+    "LOD1/LOD2",
+    "effects and sound integration"
+  ],
+  "normalized_export_revision": 1,
+  "normalized_exporter_sha256": "ac2b263a2491f2cf991065e749926b5549ddc81e73c814fb9958e424b6d23bc6",
+  "normalized_reexport_script_sha256": "c1176dfe4526f36b767e3427383e70c3e174b2d62b36ac1a9562f5d8d7ffb99b",
+  "exported_coordinate_units": "centimeters: temporary geometry, rest translation and animation location values multiplied by100; authoring source remains meters"
+}

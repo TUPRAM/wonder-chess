@@ -1,0 +1,449 @@
+{
+	"only_unit": "wc_u_human_guardian",
+	"folder_override": "",
+	"animation_sampling_boundary": "runtime_root uses GetBoneTransform with bUseRawData=false, which requests compressed sampling but may fall back to raw data. raw_root explicitly requests raw sampling; compressed-data validity is recorded per clip.",
+	"texture_dimension_boundary": "Editor imported FTextureSource dimensions are authoritative here; render dimensions are recorded separately and may be zero under NullRHI. This does not prove cooked texture residency.",
+	"root_basis_boundary": "A fixed uniform positive reference-root scale is recorded, while every sampled root must preserve the reference transform and sampled bone scales must preserve reference scales. Physical height, feet and forward direction still need measured scene validation.",
+	"utc": "2026-09-06T06:21:06.818Z",
+	"engine": "5.7.4-51494982+++UE5+Release-5.7",
+	"catalog_digest": "3154592665ce21dc65e5afb06f3769655c8be9ec4157fa6779427c8b8fcc092f",
+	"boundary": "Actual imported skeletal assets and sampled animation transforms. This does not verify feet contact, deformation quality, silhouette attractiveness, retarget compatibility, or visual release alignment.",
+	"animation_duration_policy": "Idle2s, Move1s, Hit0.4s, Defeat1s, Victory1.5s; Attack uses current source export preset max(0.6s, authored windup+0.4s); Active max(0.5s, authored cast+recovery).",
+	"loaded_meshes": 1,
+	"animation_references": 7,
+	"unique_animation_assets": 7,
+	"sampled_bone_transforms": 999,
+	"heroes": [
+		{
+			"id": "wc_u_human_guardian",
+			"authored_rig_family": "humanoid_standard",
+			"authored_height_m": 1.8200000000000001,
+			"mesh_loaded": true,
+			"mesh": "/Game/WonderChess/Heroes/wc_u_human_guardian/SK_wc_u_human_guardian.SK_wc_u_human_guardian",
+			"skeleton": "/Game/WonderChess/Heroes/wc_u_human_guardian/SK_wc_u_human_guardian_Skeleton.SK_wc_u_human_guardian_Skeleton",
+			"bones": 27,
+			"bone_names": [
+				"root",
+				"pelvis",
+				"spine_01",
+				"spine_02",
+				"spine_03",
+				"neck",
+				"head",
+				"head_ui",
+				"clavicle_l",
+				"upperarm_l",
+				"lowerarm_l",
+				"hand_l",
+				"weapon_l",
+				"clavicle_r",
+				"upperarm_r",
+				"lowerarm_r",
+				"hand_r",
+				"weapon_r",
+				"cast_origin",
+				"thigh_l",
+				"calf_l",
+				"foot_l",
+				"toe_l",
+				"thigh_r",
+				"calf_r",
+				"foot_r",
+				"toe_r"
+			],
+			"reference_root_transform": "0.000000,0.000000,0.000000|-0.000005,-89.999988,89.999998|1.000000,1.000000,1.000000",
+			"reference_root_normalized": false,
+			"skeleton_reference_root_transform": "0.000000,0.000000,0.000000|-0.000005,-89.999988,89.999998|1.000000,1.000000,1.000000",
+			"imported_bounds_origin_cm": "X=10.812 Y=9.737 Z=92.183",
+			"imported_bounds_extent_cm": "X=32.686 Y=79.443 Z=90.545",
+			"material_slots": 2,
+			"lods": [
+				{
+					"lod": 0,
+					"vertices": 8317,
+					"triangles": 4760
+				},
+				{
+					"lod": 1,
+					"vertices": 5095,
+					"triangles": 2379
+				},
+				{
+					"lod": 2,
+					"vertices": 2782,
+					"triangles": 1190
+				}
+			],
+			"textures": [
+				{
+					"kind": "BaseColor",
+					"loaded": true,
+					"path": "/Game/WonderChess/Heroes/wc_u_human_guardian/T_wc_u_human_guardian_BaseColor.T_wc_u_human_guardian_BaseColor",
+					"srgb": true,
+					"imported_source_valid": true,
+					"size_x": 1024,
+					"size_y": 1024,
+					"render_size_x": 0,
+					"render_size_y": 0,
+					"bound_to_material": true
+				},
+				{
+					"kind": "Normal",
+					"loaded": true,
+					"path": "/Game/WonderChess/Heroes/wc_u_human_guardian/T_wc_u_human_guardian_Normal.T_wc_u_human_guardian_Normal",
+					"srgb": false,
+					"imported_source_valid": true,
+					"size_x": 1024,
+					"size_y": 1024,
+					"render_size_x": 0,
+					"render_size_y": 0,
+					"bound_to_material": true
+				},
+				{
+					"kind": "ORM",
+					"loaded": true,
+					"path": "/Game/WonderChess/Heroes/wc_u_human_guardian/T_wc_u_human_guardian_ORM.T_wc_u_human_guardian_ORM",
+					"srgb": false,
+					"imported_source_valid": true,
+					"size_x": 1024,
+					"size_y": 1024,
+					"render_size_x": 0,
+					"render_size_y": 0,
+					"bound_to_material": true
+				},
+				{
+					"kind": "Portrait",
+					"loaded": true,
+					"path": "/Game/WonderChess/Heroes/wc_u_human_guardian/T_wc_u_human_guardian_Portrait.T_wc_u_human_guardian_Portrait",
+					"srgb": true,
+					"imported_source_valid": true,
+					"size_x": 768,
+					"size_y": 768,
+					"render_size_x": 0,
+					"render_size_y": 0
+				}
+			],
+			"clips": [
+				{
+					"clip": "Idle",
+					"loaded": true,
+					"compressed_data_valid": true,
+					"path": "/Game/WonderChess/Heroes/wc_u_human_guardian/AN_wc_u_human_guardian_Idle.AN_wc_u_human_guardian_Idle",
+					"duration_seconds": 2,
+					"expected_duration_seconds": 2,
+					"source_frames_per_second": 60,
+					"source_keys": 121,
+					"sampled_times": 5,
+					"max_root_translation_cm": 0,
+					"max_root_rotation_radians": 2.094394964742162,
+					"max_bone_scale_error": 1.1920928955078125e-07,
+					"max_bone_scale_delta_from_reference": 0,
+					"max_root_translation_delta_from_reference_cm": 0,
+					"max_root_rotation_delta_from_reference_radians": 0.00034526694227094887,
+					"root_samples": [
+						{
+							"time_seconds": 0,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						},
+						{
+							"time_seconds": 0.5,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						},
+						{
+							"time_seconds": 1,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						},
+						{
+							"time_seconds": 1.5,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						},
+						{
+							"time_seconds": 2,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						}
+					]
+				},
+				{
+					"clip": "Move",
+					"loaded": true,
+					"compressed_data_valid": true,
+					"path": "/Game/WonderChess/Heroes/wc_u_human_guardian/AN_wc_u_human_guardian_Move.AN_wc_u_human_guardian_Move",
+					"duration_seconds": 1,
+					"expected_duration_seconds": 1,
+					"source_frames_per_second": 60,
+					"source_keys": 61,
+					"sampled_times": 5,
+					"max_root_translation_cm": 0,
+					"max_root_rotation_radians": 2.094394964742162,
+					"max_bone_scale_error": 1.1920928955078125e-07,
+					"max_bone_scale_delta_from_reference": 0,
+					"max_root_translation_delta_from_reference_cm": 0,
+					"max_root_rotation_delta_from_reference_radians": 0.00034526694227094887,
+					"root_samples": [
+						{
+							"time_seconds": 0,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						},
+						{
+							"time_seconds": 0.25,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						},
+						{
+							"time_seconds": 0.5,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						},
+						{
+							"time_seconds": 0.75,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						},
+						{
+							"time_seconds": 1,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						}
+					]
+				},
+				{
+					"clip": "Attack",
+					"loaded": true,
+					"compressed_data_valid": true,
+					"path": "/Game/WonderChess/Heroes/wc_u_human_guardian/AN_wc_u_human_guardian_Attack.AN_wc_u_human_guardian_Attack",
+					"duration_seconds": 0.64999997615814209,
+					"expected_duration_seconds": 0.65000000000000002,
+					"source_frames_per_second": 60,
+					"source_keys": 40,
+					"sampled_times": 6,
+					"max_root_translation_cm": 0,
+					"max_root_rotation_radians": 2.094394964742162,
+					"max_bone_scale_error": 1.1920928955078125e-07,
+					"max_bone_scale_delta_from_reference": 0,
+					"max_root_translation_delta_from_reference_cm": 0,
+					"max_root_rotation_delta_from_reference_radians": 0.00034526694227094887,
+					"root_samples": [
+						{
+							"time_seconds": 0,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						},
+						{
+							"time_seconds": 0.16249999403953552,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						},
+						{
+							"time_seconds": 0.32499998807907104,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						},
+						{
+							"time_seconds": 0.48749998211860657,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						},
+						{
+							"time_seconds": 0.64999997615814209,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						},
+						{
+							"time_seconds": 0.25,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						}
+					]
+				},
+				{
+					"clip": "Active",
+					"loaded": true,
+					"compressed_data_valid": true,
+					"path": "/Game/WonderChess/Heroes/wc_u_human_guardian/AN_wc_u_human_guardian_Active.AN_wc_u_human_guardian_Active",
+					"duration_seconds": 0.60000002384185791,
+					"expected_duration_seconds": 0.59999999999999998,
+					"source_frames_per_second": 60,
+					"source_keys": 37,
+					"sampled_times": 6,
+					"max_root_translation_cm": 0,
+					"max_root_rotation_radians": 2.094394964742162,
+					"max_bone_scale_error": 1.1920928955078125e-07,
+					"max_bone_scale_delta_from_reference": 0,
+					"max_root_translation_delta_from_reference_cm": 0,
+					"max_root_rotation_delta_from_reference_radians": 0.00034526694227094887,
+					"root_samples": [
+						{
+							"time_seconds": 0,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						},
+						{
+							"time_seconds": 0.15000000596046448,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						},
+						{
+							"time_seconds": 0.30000001192092896,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						},
+						{
+							"time_seconds": 0.45000001788139343,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						},
+						{
+							"time_seconds": 0.60000002384185791,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						},
+						{
+							"time_seconds": 0.29999999999999999,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						}
+					]
+				},
+				{
+					"clip": "Hit",
+					"loaded": true,
+					"compressed_data_valid": true,
+					"path": "/Game/WonderChess/Heroes/wc_u_human_guardian/AN_wc_u_human_guardian_Hit.AN_wc_u_human_guardian_Hit",
+					"duration_seconds": 0.40000000596046448,
+					"expected_duration_seconds": 0.40000000000000002,
+					"source_frames_per_second": 60,
+					"source_keys": 25,
+					"sampled_times": 5,
+					"max_root_translation_cm": 0,
+					"max_root_rotation_radians": 2.094394964742162,
+					"max_bone_scale_error": 1.1920928955078125e-07,
+					"max_bone_scale_delta_from_reference": 0,
+					"max_root_translation_delta_from_reference_cm": 0,
+					"max_root_rotation_delta_from_reference_radians": 0.00034526694227094887,
+					"root_samples": [
+						{
+							"time_seconds": 0,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						},
+						{
+							"time_seconds": 0.10000000149011612,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						},
+						{
+							"time_seconds": 0.20000000298023224,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						},
+						{
+							"time_seconds": 0.30000000447034836,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						},
+						{
+							"time_seconds": 0.40000000596046448,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						}
+					]
+				},
+				{
+					"clip": "Defeat",
+					"loaded": true,
+					"compressed_data_valid": true,
+					"path": "/Game/WonderChess/Heroes/wc_u_human_guardian/AN_wc_u_human_guardian_Defeat.AN_wc_u_human_guardian_Defeat",
+					"duration_seconds": 1,
+					"expected_duration_seconds": 1,
+					"source_frames_per_second": 60,
+					"source_keys": 61,
+					"sampled_times": 5,
+					"max_root_translation_cm": 0,
+					"max_root_rotation_radians": 2.094394964742162,
+					"max_bone_scale_error": 1.1920928955078125e-07,
+					"max_bone_scale_delta_from_reference": 0,
+					"max_root_translation_delta_from_reference_cm": 0,
+					"max_root_rotation_delta_from_reference_radians": 0.00034526694227094887,
+					"root_samples": [
+						{
+							"time_seconds": 0,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						},
+						{
+							"time_seconds": 0.25,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						},
+						{
+							"time_seconds": 0.5,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						},
+						{
+							"time_seconds": 0.75,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						},
+						{
+							"time_seconds": 1,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						}
+					]
+				},
+				{
+					"clip": "Victory",
+					"loaded": true,
+					"compressed_data_valid": true,
+					"path": "/Game/WonderChess/Heroes/wc_u_human_guardian/AN_wc_u_human_guardian_Victory.AN_wc_u_human_guardian_Victory",
+					"duration_seconds": 1.5,
+					"expected_duration_seconds": 1.5,
+					"source_frames_per_second": 60,
+					"source_keys": 91,
+					"sampled_times": 5,
+					"max_root_translation_cm": 0,
+					"max_root_rotation_radians": 2.094394964742162,
+					"max_bone_scale_error": 1.1920928955078125e-07,
+					"max_bone_scale_delta_from_reference": 0,
+					"max_root_translation_delta_from_reference_cm": 0,
+					"max_root_rotation_delta_from_reference_radians": 0.00034526694227094887,
+					"root_samples": [
+						{
+							"time_seconds": 0,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						},
+						{
+							"time_seconds": 0.375,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						},
+						{
+							"time_seconds": 0.75,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						},
+						{
+							"time_seconds": 1.125,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						},
+						{
+							"time_seconds": 1.5,
+							"runtime_root": "0.000000,0.000000,0.000000|-0.000005,-89.999990,89.999997|1.000000,1.000000,1.000000",
+							"raw_root": "0.000000,0.000000,0.000000|-0.000000,-89.999985,90.000008|1.000000,1.000000,1.000000"
+						}
+					]
+				}
+			]
+		}
+	],
+	"passed": true
+}

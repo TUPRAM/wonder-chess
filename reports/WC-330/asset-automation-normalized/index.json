@@ -1,0 +1,1077 @@
+﻿{
+	"devices": [
+		{
+			"deviceName": "GR1ZZYLY",
+			"instance": "F1F79D37458210DFDABEEF8F538077F0",
+			"instanceName": "GR1ZZYLY-31216",
+			"platform": "WindowsEditor",
+			"oSVersion": "Windows 11 (25H2) [10.0.26200.9278] ",
+			"model": "Default",
+			"gPU": "AMD Radeon(TM) Graphics",
+			"cPUModel": "AMD Ryzen 7 6800H with Radeon Graphics         ",
+			"rAMInGB": 16,
+			"renderMode": "SM6",
+			"rHI": "",
+			"appInstanceLog": ""
+		}
+	],
+	"reportCreatedOn": "2026.09.06-06.16.30",
+	"succeeded": 0,
+	"succeededWithWarnings": 0,
+	"failed": 1,
+	"notRun": 0,
+	"inProcess": 0,
+	"totalDuration": 0.9233849048614502,
+	"comparisonExported": false,
+	"comparisonExportDirectory": "",
+	"tests": [
+		{
+			"testDisplayName": "ImportedAlphaContracts",
+			"fullTestPath": "WonderChess.Assets.ImportedAlphaContracts",
+			"tags": [],
+			"state": "Fail",
+			"deviceInstance": [
+				"F1F79D37458210DFDABEEF8F538077F0"
+			],
+			"duration": 0.9233849048614502,
+			"dateTime": "2026.09.06-06.16.29",
+			"entries": [
+				{
+					"event":
+					{
+						"type": "Info",
+						"message": "LogStreaming: FlushAsyncLoading(327): 1 QueuedPackages, 0 AsyncPackages",
+						"context": "log",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "",
+					"lineNumber": -1,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Info",
+						"message": "LogSkinnedAsset: Waiting for skinned assets to be ready 0/1 (SK_wc_u_human_guardian) ...",
+						"context": "log",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "",
+					"lineNumber": -1,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_guardian sampled root matches reference basis Idle' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_guardian sampled root matches reference basis Move' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_guardian sampled root matches reference basis Attack' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_guardian sampled root matches reference basis Active' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_guardian sampled root matches reference basis Hit' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_guardian sampled root matches reference basis Defeat' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_guardian sampled root matches reference basis Victory' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_priest sampled root matches reference basis Idle' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_priest sampled root matches reference basis Move' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_priest sampled root matches reference basis Attack' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_priest sampled root matches reference basis Active' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_priest sampled root matches reference basis Hit' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_priest sampled root matches reference basis Defeat' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_priest sampled root matches reference basis Victory' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_mage sampled root matches reference basis Idle' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_mage sampled root matches reference basis Move' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_mage sampled root matches reference basis Attack' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_mage sampled root matches reference basis Active' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_mage sampled root matches reference basis Hit' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_mage sampled root matches reference basis Defeat' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_human_mage sampled root matches reference basis Victory' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_ranger sampled root matches reference basis Idle' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_ranger sampled root matches reference basis Move' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_ranger sampled root matches reference basis Attack' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_ranger sampled root matches reference basis Active' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_ranger sampled root matches reference basis Hit' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_ranger sampled root matches reference basis Defeat' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_ranger sampled root matches reference basis Victory' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_priest sampled root matches reference basis Idle' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_priest sampled root matches reference basis Move' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_priest sampled root matches reference basis Attack' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_priest sampled root matches reference basis Active' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_priest sampled root matches reference basis Hit' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_priest sampled root matches reference basis Defeat' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_priest sampled root matches reference basis Victory' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_rogue sampled root matches reference basis Idle' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_rogue sampled root matches reference basis Move' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_rogue sampled root matches reference basis Attack' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_rogue sampled root matches reference basis Active' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_rogue sampled root matches reference basis Hit' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_rogue sampled root matches reference basis Defeat' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_elf_rogue sampled root matches reference basis Victory' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_dwarf_guardian sampled root matches reference basis Idle' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_dwarf_guardian sampled root matches reference basis Move' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_dwarf_guardian sampled root matches reference basis Attack' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_dwarf_guardian sampled root matches reference basis Active' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_dwarf_guardian sampled root matches reference basis Hit' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_dwarf_guardian sampled root matches reference basis Defeat' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_dwarf_guardian sampled root matches reference basis Victory' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_dwarf_ranger sampled root matches reference basis Idle' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_dwarf_ranger sampled root matches reference basis Move' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_dwarf_ranger sampled root matches reference basis Attack' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_dwarf_ranger sampled root matches reference basis Active' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_dwarf_ranger sampled root matches reference basis Hit' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_dwarf_ranger sampled root matches reference basis Defeat' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_dwarf_ranger sampled root matches reference basis Victory' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_dwarf_warrior sampled root matches reference basis Idle' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_dwarf_warrior sampled root matches reference basis Move' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_dwarf_warrior sampled root matches reference basis Attack' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_dwarf_warrior sampled root matches reference basis Active' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_dwarf_warrior sampled root matches reference basis Hit' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_dwarf_warrior sampled root matches reference basis Defeat' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_dwarf_warrior sampled root matches reference basis Victory' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_orc_warrior sampled root matches reference basis Idle' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_orc_warrior sampled root matches reference basis Move' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_orc_warrior sampled root matches reference basis Attack' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_orc_warrior sampled root matches reference basis Active' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_orc_warrior sampled root matches reference basis Hit' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_orc_warrior sampled root matches reference basis Defeat' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_orc_warrior sampled root matches reference basis Victory' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_orc_mage sampled root matches reference basis Idle' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_orc_mage sampled root matches reference basis Move' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_orc_mage sampled root matches reference basis Attack' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_orc_mage sampled root matches reference basis Active' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_orc_mage sampled root matches reference basis Hit' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_orc_mage sampled root matches reference basis Defeat' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_orc_mage sampled root matches reference basis Victory' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_orc_rogue sampled root matches reference basis Idle' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_orc_rogue sampled root matches reference basis Move' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_orc_rogue sampled root matches reference basis Attack' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_orc_rogue sampled root matches reference basis Active' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_orc_rogue sampled root matches reference basis Hit' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_orc_rogue sampled root matches reference basis Defeat' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				},
+				{
+					"event":
+					{
+						"type": "Error",
+						"message": "Expected 'wc_u_orc_rogue sampled root matches reference basis Victory' to be true.",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Tests\\WCImportedAssetTests.cpp",
+					"lineNumber": 413,
+					"timestamp": "2026.09.06-06.16.29"
+				}
+			],
+			"warnings": 0,
+			"errors": 84,
+			"artifacts": []
+		}
+	]
+}

@@ -1,0 +1,351 @@
+Wonder Chess WC-300 native toolchain inventory
+UTC: 2026-09-06T05:05:04.7776702Z
+Scope: requested workspace, registered/common software locations and read-only hardware inventory. No old project inspected. No installs or downloads.
+COMMAND: C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe -all -products * -format json
+EXIT: 0
+[
+  {
+    "instanceId": "96ee0893",
+    "installDate": "2026-04-23T22:53:24Z",
+    "installationName": "VisualStudio/17.14.31+37216.2.-april.2026-",
+    "installationPath": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community",
+    "installationVersion": "17.14.37216.2",
+    "productId": "Microsoft.VisualStudio.Product.Community",
+    "productPath": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\devenv.exe",
+    "state": 4294967295,
+    "isComplete": true,
+    "isLaunchable": true,
+    "isPrerelease": false,
+    "isRebootRequired": false,
+    "displayName": "Visual Studio Community 2022",
+    "description": "Powerful IDE, free for students, open-source contributors, and individuals",
+    "channelId": "VisualStudio.17.Release",
+    "channelUri": "https://aka.ms/vs/17/release/channel",
+    "enginePath": "C:\\Program Files (x86)\\Microsoft Visual Studio\\Installer\\resources\\app\\ServiceHub\\Services\\Microsoft.VisualStudio.Setup.Service",
+    "installedChannelId": "VisualStudio.17.Release",
+    "installedChannelUri": "https://aka.ms/vs/17/release/channel",
+    "releaseNotes": "https://docs.microsoft.com/en-us/visualstudio/releases/2022/release-notes-v17.14#17.14.31",
+    "resolvedInstallationPath": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community",
+    "thirdPartyNotices": "https://go.microsoft.com/fwlink/?LinkId=661288",
+    "updateDate": "2026-04-23T22:53:24.5128904Z",
+    "catalog": {
+      "buildBranch": "d17.14",
+      "buildVersion": "17.14.37216.2",
+      "id": "VisualStudio/17.14.31+37216.2.-april.2026-",
+      "localBuild": "build-lab",
+      "manifestName": "VisualStudio",
+      "manifestType": "installer",
+      "productDisplayVersion": "17.14.31 (April 2026)",
+      "productLine": "Dev17",
+      "productLineVersion": "2022",
+      "productMilestone": "RTW",
+      "productMilestoneIsPreRelease": "False",
+      "productName": "Visual Studio",
+      "productPatchVersion": "31",
+      "productPreReleaseMilestoneSuffix": "1.0",
+      "productReleaseNameSuffix": "(April 2026)",
+      "productSemanticVersion": "17.14.31+37216.2.-april.2026-",
+      "requiredEngineVersion": "3.14.2086.54749"
+    },
+    "properties": {
+      "appLocalWPF": "false",
+      "campaignId": "",
+      "channelManifestId": "VisualStudio.17.Release/17.14.31+37216.2.-april.2026-",
+      "includeRecommended": "1",
+      "nickname": "",
+      "setupEngineFilePath": "C:\\Program Files (x86)\\Microsoft Visual Studio\\Installer\\setup.exe"
+    }
+  }
+]
+COMMAND: C:\Program Files\Blender Foundation\Blender 5.1\blender.exe --version
+EXIT: 0
+Blender 5.1.1
+	build date: 2026-04-14
+	build time: 01:37:22
+	build commit date: 2026-04-13
+	build commit time: 14:35
+	build hash: b70da489d7f4
+	build branch: blender-v5.1-release
+	build platform: Windows
+	build type: Release
+	build c flags:  -Wall -Werror=implicit-function-declaration -Werror=return-type -Wno-tautological-compare -Wno-unknown-pragmas -Wno-char-subscripts -Wstrict-prototypes -Wmissing-prototypes -Wunused-parameter -Wundef -Wundef-prefix -Werror=unguarded-availability-new /W3 -Wno-c++98-compat -Wno-old-style-cast -Wno-unsafe-buffer-usage -Wno-missing-prototypes -Wno-sign-conversion -Wno-missing-field-initializers -Wno-extra-semi -Wno-language-extension-token -Wno-implicit-float-conversion -Wno-c++98-compat-pedantic -Wno-implicit-int-float-conversion -Wno-double-promotion -Wno-pre-c++17-compat -Wno-shorten-64-to-32 -Wno-c++98-compat-local-type-template-args -Wno-reserved-identifier -Wno-cast-align -Wno-documentation -Wno-disabled-macro-expansion -Wno-extra-semi-stmt -Wno-zero-as-null-pointer-constant -Wno-float-conversion -Wno-reserved-macro-identifier -Wno-cast-function-type-strict -Wno-float-equal -Wno-implicit-int-conversion -Wno-shadow -Wno-shadow-field-in-constructor -Wno-cast-qual -Wno-pre-c++14-compat -Wno-global-constructors -Wno-switch-enum -Wno-exit-time-destructors -Wno-ctad-maybe-unsupported -Wno-undefined-func-template -Wno-c++98-compat-extra-semi -Wno-cast-function-type -Wno-nullability-extension -Wno-shadow-field -Wno-conditional-uninitialized -Wno-unused-parameter -Wno-suggest-destructor-override -Wno-shadow-uncaptured-local -Wno-unused-macros -Wno-covered-switch-default -Wno-signed-enum-bitfield -Wno-declaration-after-statement -Wno-implicit-fallthrough -Wno-non-virtual-dtor -Wno-nested-anon-types -Wno-gnu-zero-variadic-macro-arguments -Wno-unreachable-code-break -Wno-inconsistent-missing-destructor-override -Wno-format-pedantic -Wno-nonportable-system-include-path -Wno-undef -Wno-ignored-qualifiers -Wno-used-but-marked-unused -Wno-header-hygiene -Wno-char-subscripts -Wno-unreachable-code-return -Wno-unused-template -Wno-gnu-anonymous-struct -Wno-deprecated-copy-with-user-provided-dtor -Wno-inconsistent-missing-override -Wno-unreachable-code -Wno-deprecated-dynamic-exception-spec -Wno-bad-function-cast -Wno-microsoft-enum-value -Wno-deprecated-copy-with-user-provided-copy -Wno-zero-length-array -Wno-unused-function -Wno-pedantic -Wno-deprecated-copy-with-dtor -Wno-documentation-unknown-command -Wno-undefined-reinterpret-cast -Wno-format-nonliteral -Wno-comma -Wno-documentation-deprecated-sync -Wno-shift-sign-overflow -Wno-pre-c++17-compat-pedantic -Wno-c++98-compat-unnamed-type-template-args -Wno-sign-compare -Wno-format -Wno-c++98-compat-bind-to-temporary-copy -Wno-enum-enum-conversion -Wno-anon-enum-enum-conversion -Wno-range-loop-bind-reference -Wno-enum-float-conversion -Wno-keyword-macro -Wno-deprecated-copy -Wno-unused-member-function -Wno-missing-noreturn -Wno-missing-variable-declarations -Wno-documentation-html -Wno-gnu-redeclared-enum -Wno-deprecated-declarations -Wno-overloaded-virtual -Wno-c++98-c++11-compat-binary-literal -Wno-deprecated-redundant-constexpr-static-def -Wno-missing-braces -Wno-c99-extensions -Wno-strict-prototypes -Wno-unreachable-code-loop-increment -Wno-gnu-case-range -Wno-duplicate-enum -Wno-null-pointer-subtraction -Wno-deprecated-literal-operator -Wno-newline-eof -Wno-microsoft-cast -Wno-date-time -Wno-delete-non-abstract-non-virtual-dtor -Wno-unused-private-field -Wno-flexible-array-extensions -Wno-string-conversion -Wno-final-dtor-non-final-class -Wno-microsoft-unqualified-friend -Wno-invalid-noreturn -Wno-invalid-utf8 -Wno-four-char-constants -Wno-parentheses -Wno-pessimizing-move -Wno-deprecated-non-prototype -Wno-bitfield-enum-conversion -Wno-unused-lambda-capture -Wno-shadow-field-in-constructor-modified -Wno-switch-default -Wno-nan-infinity-disabled -Wno-pre-c11-compat /DWIN32 /D_WINDOWS  /MP /nologo /J /Gy /Gd /showFilenames -Wno-unused-command-line-argument -Wno-microsoft-enum-forward-reference /clang:-funsigned-char /clang:-fno-strict-aliasing /clang:-ffp-contract=off -march=x86-64-v2 
+	build c++ flags:  -Wall -Wno-tautological-compare -Wno-unknown-pragmas -Wno-char-subscripts -Wno-overloaded-virtual -Wno-sign-compare -Wno-invalid-offsetof -Wno-suggest-override -Wundef -Wundef-prefix -Wunused-parameter -Wmismatched-tags -Werror=unguarded-availability-new /W3 -Wno-c++98-compat -Wno-old-style-cast -Wno-unsafe-buffer-usage -Wno-missing-prototypes -Wno-sign-conversion -Wno-missing-field-initializers -Wno-extra-semi -Wno-language-extension-token -Wno-implicit-float-conversion -Wno-c++98-compat-pedantic -Wno-implicit-int-float-conversion -Wno-double-promotion -Wno-pre-c++17-compat -Wno-shorten-64-to-32 -Wno-c++98-compat-local-type-template-args -Wno-reserved-identifier -Wno-cast-align -Wno-documentation -Wno-disabled-macro-expansion -Wno-extra-semi-stmt -Wno-zero-as-null-pointer-constant -Wno-float-conversion -Wno-reserved-macro-identifier -Wno-cast-function-type-strict -Wno-float-equal -Wno-implicit-int-conversion -Wno-shadow -Wno-shadow-field-in-constructor -Wno-cast-qual -Wno-pre-c++14-compat -Wno-global-constructors -Wno-switch-enum -Wno-exit-time-destructors -Wno-ctad-maybe-unsupported -Wno-undefined-func-template -Wno-c++98-compat-extra-semi -Wno-cast-function-type -Wno-nullability-extension -Wno-shadow-field -Wno-conditional-uninitialized -Wno-unused-parameter -Wno-suggest-destructor-override -Wno-shadow-uncaptured-local -Wno-unused-macros -Wno-covered-switch-default -Wno-signed-enum-bitfield -Wno-declaration-after-statement -Wno-implicit-fallthrough -Wno-non-virtual-dtor -Wno-nested-anon-types -Wno-gnu-zero-variadic-macro-arguments -Wno-unreachable-code-break -Wno-inconsistent-missing-destructor-override -Wno-format-pedantic -Wno-nonportable-system-include-path -Wno-undef -Wno-ignored-qualifiers -Wno-used-but-marked-unused -Wno-header-hygiene -Wno-char-subscripts -Wno-unreachable-code-return -Wno-unused-template -Wno-gnu-anonymous-struct -Wno-deprecated-copy-with-user-provided-dtor -Wno-inconsistent-missing-override -Wno-unreachable-code -Wno-deprecated-dynamic-exception-spec -Wno-bad-function-cast -Wno-microsoft-enum-value -Wno-deprecated-copy-with-user-provided-copy -Wno-zero-length-array -Wno-unused-function -Wno-pedantic -Wno-deprecated-copy-with-dtor -Wno-documentation-unknown-command -Wno-undefined-reinterpret-cast -Wno-format-nonliteral -Wno-comma -Wno-documentation-deprecated-sync -Wno-shift-sign-overflow -Wno-pre-c++17-compat-pedantic -Wno-c++98-compat-unnamed-type-template-args -Wno-sign-compare -Wno-format -Wno-c++98-compat-bind-to-temporary-copy -Wno-enum-enum-conversion -Wno-anon-enum-enum-conversion -Wno-range-loop-bind-reference -Wno-enum-float-conversion -Wno-keyword-macro -Wno-deprecated-copy -Wno-unused-member-function -Wno-missing-noreturn -Wno-missing-variable-declarations -Wno-documentation-html -Wno-gnu-redeclared-enum -Wno-deprecated-declarations -Wno-overloaded-virtual -Wno-c++98-c++11-compat-binary-literal -Wno-deprecated-redundant-constexpr-static-def -Wno-missing-braces -Wno-c99-extensions -Wno-strict-prototypes -Wno-unreachable-code-loop-increment -Wno-gnu-case-range -Wno-duplicate-enum -Wno-null-pointer-subtraction -Wno-deprecated-literal-operator -Wno-newline-eof -Wno-microsoft-cast -Wno-date-time -Wno-delete-non-abstract-non-virtual-dtor -Wno-unused-private-field -Wno-flexible-array-extensions -Wno-string-conversion -Wno-final-dtor-non-final-class -Wno-microsoft-unqualified-friend -Wno-invalid-noreturn -Wno-invalid-utf8 -Wno-four-char-constants -Wno-parentheses -Wno-pessimizing-move -Wno-deprecated-non-prototype -Wno-bitfield-enum-conversion -Wno-unused-lambda-capture -Wno-shadow-field-in-constructor-modified -Wno-switch-default -Wno-nan-infinity-disabled -Wno-pre-c11-compat /DWIN32 /D_WINDOWS   /EHsc  /Gy /MP /nologo /J /Gd /showFilenames /EHsc -Wno-unused-command-line-argument -Wno-microsoft-enum-forward-reference /clang:-funsigned-char /clang:-fno-strict-aliasing /clang:-ffp-contract=off -march=x86-64-v2 
+	build link flags: /MACHINE:X64  /SUBSYSTEM:CONSOLE /STACK:2097152 /ignore:4049 /ignore:4217 /ignore:4221
+	build system: CMake
+COMMAND: C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\Hostx64\x64\cl.exe /Bv
+EXIT: 2
+Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35226 for x64
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+Compiler Passes:
+ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\Hostx64\x64\cl.exe:        Version 19.44.35226.0
+ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\Hostx64\x64\c1.dll:        Version 19.44.35226.0
+ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\Hostx64\x64\c1xx.dll:      Version 19.44.35226.0
+ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\Hostx64\x64\c2.dll:        Version 19.44.35226.0
+ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\Hostx64\x64\c1xx.dll:      Version 19.44.35226.0
+ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\Hostx64\x64\link.exe:      Version 14.44.35226.0
+ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\Hostx64\x64\mspdb140.dll:  Version 14.44.35226.0
+ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\Hostx64\x64\1033\clui.dll: Version 19.44.35226.0
+
+cl : Command line error D8003 : missing source filename
+COMMAND: C:\Program Files\Epic Games\UE_5.7\Engine\Binaries\ThirdParty\DotNet\8.0.412\win-x64\dotnet.exe --version
+EXIT: 0
+8.0.412
+COMMAND: C:\Program Files\Git\cmd\git.exe --version
+EXIT: 0
+git version 2.53.0.windows.2
+COMMAND: C:\Users\iputu\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe --version
+EXIT: 0
+Python 3.11.8
+COMMAND: C:\Windows\system32\nvidia-smi.exe --query-gpu=name,driver_version,memory.total --format=csv,noheader
+EXIT: 0
+NVIDIA GeForce RTX 3060 Laptop GPU, 580.88, 6144 MiB
+STRUCTURED INVENTORY:
+{
+  "generated_utc": "2026-09-06T05:05:06.7895080Z",
+  "task": "WC-300",
+  "evidence_level": "native executable version probes and filesystem/registry inventory; no compilation or editor/package acceptance",
+  "operating_system": {
+    "Caption": "Microsoft Windows 11 Home Single Language",
+    "Version": "10.0.26200",
+    "BuildNumber": "26200"
+  },
+  "hardware": {
+    "system": {
+      "Manufacturer": "LENOVO",
+      "Model": "82RG",
+      "TotalPhysicalMemory": 16312393728
+    },
+    "cpu": [
+      {
+        "Name": "AMD Ryzen 7 6800H with Radeon Graphics         ",
+        "NumberOfCores": 8,
+        "NumberOfLogicalProcessors": 16
+      }
+    ],
+    "gpu": [
+      {
+        "Name": "NVIDIA GeForce RTX 3060 Laptop GPU",
+        "DriverVersion": "32.0.15.8088",
+        "AdapterRAM": 4293918720
+      },
+      {
+        "Name": "LuminonCore IDDCX Adapter",
+        "DriverVersion": "1.0.2018.1204",
+        "AdapterRAM": null
+      },
+      {
+        "Name": "AMD Radeon(TM) Graphics",
+        "DriverVersion": "32.0.21045.5002",
+        "AdapterRAM": 536870912
+      }
+    ],
+    "nvidia_probe": {
+      "executable": "C:\\Windows\\system32\\nvidia-smi.exe",
+      "arguments": [
+        "--query-gpu=name,driver_version,memory.total",
+        "--format=csv,noheader"
+      ],
+      "exit_code": 0,
+      "output": "NVIDIA GeForce RTX 3060 Laptop GPU, 580.88, 6144 MiB"
+    },
+    "disks": [
+      {
+        "DeviceID": "C:",
+        "FileSystem": "NTFS",
+        "Size": 1021821579264,
+        "FreeSpace": 120091078656
+      },
+      {
+        "DeviceID": "D:",
+        "FileSystem": "NTFS",
+        "Size": 1000186310656,
+        "FreeSpace": 97009999872
+      }
+    ]
+  },
+  "tools": {
+    "unreal": {
+      "root": "C:\\Program Files\\Epic Games\\UE_5.7",
+      "build_version": {
+        "MajorVersion": 5,
+        "MinorVersion": 7,
+        "PatchVersion": 4,
+        "Changelist": 51494982,
+        "CompatibleChangelist": 47537391,
+        "IsLicenseeVersion": 0,
+        "IsPromotedBuild": 1,
+        "BranchName": "++UE5+Release-5.7"
+      },
+      "registered_installs": [
+        {
+          "PSChildName": "4.0",
+          "InstalledDirectory": "C:\\Program Files\\Epic Games\\4.0\\"
+        },
+        {
+          "PSChildName": "5.7",
+          "InstalledDirectory": "C:\\Program Files\\Epic Games\\UE_5.7"
+        }
+      ],
+      "paths": {
+        "Engine\\Binaries\\Win64\\UnrealEditor.exe": {
+          "path": "C:\\Program Files\\Epic Games\\UE_5.7\\Engine\\Binaries\\Win64\\UnrealEditor.exe",
+          "exists": true,
+          "file_version": "++UE5+Release-5.7-CL-51494982",
+          "execution_verified": false
+        },
+        "Engine\\Binaries\\Win64\\UnrealEditor-Cmd.exe": {
+          "path": "C:\\Program Files\\Epic Games\\UE_5.7\\Engine\\Binaries\\Win64\\UnrealEditor-Cmd.exe",
+          "exists": true,
+          "file_version": "++UE5+Release-5.7-CL-51494982",
+          "execution_verified": false
+        },
+        "Engine\\Build\\BatchFiles\\Build.bat": {
+          "path": "C:\\Program Files\\Epic Games\\UE_5.7\\Engine\\Build\\BatchFiles\\Build.bat",
+          "exists": true,
+          "file_version": null,
+          "execution_verified": false
+        },
+        "Engine\\Build\\BatchFiles\\RunUAT.bat": {
+          "path": "C:\\Program Files\\Epic Games\\UE_5.7\\Engine\\Build\\BatchFiles\\RunUAT.bat",
+          "exists": true,
+          "file_version": null,
+          "execution_verified": false
+        },
+        "Engine\\Binaries\\DotNET\\UnrealBuildTool\\UnrealBuildTool.dll": {
+          "path": "C:\\Program Files\\Epic Games\\UE_5.7\\Engine\\Binaries\\DotNET\\UnrealBuildTool\\UnrealBuildTool.dll",
+          "exists": true,
+          "file_version": "5.7.0.0",
+          "execution_verified": false
+        }
+      }
+    },
+    "blender": {
+      "executable": "C:\\Program Files\\Blender Foundation\\Blender 5.1\\blender.exe",
+      "arguments": [
+        "--version"
+      ],
+      "exit_code": 0,
+      "output": "Blender 5.1.1\r\n\tbuild date: 2026-04-14\r\n\tbuild time: 01:37:22\r\n\tbuild commit date: 2026-04-13\r\n\tbuild commit time: 14:35\r\n\tbuild hash: b70da489d7f4\r\n\tbuild branch: blender-v5.1-release\r\n\tbuild platform: Windows\r\n\tbuild type: Release\r\n\tbuild c flags:  -Wall -Werror=implicit-function-declaration -Werror=return-type -Wno-tautological-compare -Wno-unknown-pragmas -Wno-char-subscripts -Wstrict-prototypes -Wmissing-prototypes -Wunused-parameter -Wundef -Wundef-prefix -Werror=unguarded-availability-new /W3 -Wno-c++98-compat -Wno-old-style-cast -Wno-unsafe-buffer-usage -Wno-missing-prototypes -Wno-sign-conversion -Wno-missing-field-initializers -Wno-extra-semi -Wno-language-extension-token -Wno-implicit-float-conversion -Wno-c++98-compat-pedantic -Wno-implicit-int-float-conversion -Wno-double-promotion -Wno-pre-c++17-compat -Wno-shorten-64-to-32 -Wno-c++98-compat-local-type-template-args -Wno-reserved-identifier -Wno-cast-align -Wno-documentation -Wno-disabled-macro-expansion -Wno-extra-semi-stmt -Wno-zero-as-null-pointer-constant -Wno-float-conversion -Wno-reserved-macro-identifier -Wno-cast-function-type-strict -Wno-float-equal -Wno-implicit-int-conversion -Wno-shadow -Wno-shadow-field-in-constructor -Wno-cast-qual -Wno-pre-c++14-compat -Wno-global-constructors -Wno-switch-enum -Wno-exit-time-destructors -Wno-ctad-maybe-unsupported -Wno-undefined-func-template -Wno-c++98-compat-extra-semi -Wno-cast-function-type -Wno-nullability-extension -Wno-shadow-field -Wno-conditional-uninitialized -Wno-unused-parameter -Wno-suggest-destructor-override -Wno-shadow-uncaptured-local -Wno-unused-macros -Wno-covered-switch-default -Wno-signed-enum-bitfield -Wno-declaration-after-statement -Wno-implicit-fallthrough -Wno-non-virtual-dtor -Wno-nested-anon-types -Wno-gnu-zero-variadic-macro-arguments -Wno-unreachable-code-break -Wno-inconsistent-missing-destructor-override -Wno-format-pedantic -Wno-nonportable-system-include-path -Wno-undef -Wno-ignored-qualifiers -Wno-used-but-marked-unused -Wno-header-hygiene -Wno-char-subscripts -Wno-unreachable-code-return -Wno-unused-template -Wno-gnu-anonymous-struct -Wno-deprecated-copy-with-user-provided-dtor -Wno-inconsistent-missing-override -Wno-unreachable-code -Wno-deprecated-dynamic-exception-spec -Wno-bad-function-cast -Wno-microsoft-enum-value -Wno-deprecated-copy-with-user-provided-copy -Wno-zero-length-array -Wno-unused-function -Wno-pedantic -Wno-deprecated-copy-with-dtor -Wno-documentation-unknown-command -Wno-undefined-reinterpret-cast -Wno-format-nonliteral -Wno-comma -Wno-documentation-deprecated-sync -Wno-shift-sign-overflow -Wno-pre-c++17-compat-pedantic -Wno-c++98-compat-unnamed-type-template-args -Wno-sign-compare -Wno-format -Wno-c++98-compat-bind-to-temporary-copy -Wno-enum-enum-conversion -Wno-anon-enum-enum-conversion -Wno-range-loop-bind-reference -Wno-enum-float-conversion -Wno-keyword-macro -Wno-deprecated-copy -Wno-unused-member-function -Wno-missing-noreturn -Wno-missing-variable-declarations -Wno-documentation-html -Wno-gnu-redeclared-enum -Wno-deprecated-declarations -Wno-overloaded-virtual -Wno-c++98-c++11-compat-binary-literal -Wno-deprecated-redundant-constexpr-static-def -Wno-missing-braces -Wno-c99-extensions -Wno-strict-prototypes -Wno-unreachable-code-loop-increment -Wno-gnu-case-range -Wno-duplicate-enum -Wno-null-pointer-subtraction -Wno-deprecated-literal-operator -Wno-newline-eof -Wno-microsoft-cast -Wno-date-time -Wno-delete-non-abstract-non-virtual-dtor -Wno-unused-private-field -Wno-flexible-array-extensions -Wno-string-conversion -Wno-final-dtor-non-final-class -Wno-microsoft-unqualified-friend -Wno-invalid-noreturn -Wno-invalid-utf8 -Wno-four-char-constants -Wno-parentheses -Wno-pessimizing-move -Wno-deprecated-non-prototype -Wno-bitfield-enum-conversion -Wno-unused-lambda-capture -Wno-shadow-field-in-constructor-modified -Wno-switch-default -Wno-nan-infinity-disabled -Wno-pre-c11-compat /DWIN32 /D_WINDOWS  /MP /nologo /J /Gy /Gd /showFilenames -Wno-unused-command-line-argument -Wno-microsoft-enum-forward-reference /clang:-funsigned-char /clang:-fno-strict-aliasing /clang:-ffp-contract=off -march=x86-64-v2 \r\n\tbuild c++ flags:  -Wall -Wno-tautological-compare -Wno-unknown-pragmas -Wno-char-subscripts -Wno-overloaded-virtual -Wno-sign-compare -Wno-invalid-offsetof -Wno-suggest-override -Wundef -Wundef-prefix -Wunused-parameter -Wmismatched-tags -Werror=unguarded-availability-new /W3 -Wno-c++98-compat -Wno-old-style-cast -Wno-unsafe-buffer-usage -Wno-missing-prototypes -Wno-sign-conversion -Wno-missing-field-initializers -Wno-extra-semi -Wno-language-extension-token -Wno-implicit-float-conversion -Wno-c++98-compat-pedantic -Wno-implicit-int-float-conversion -Wno-double-promotion -Wno-pre-c++17-compat -Wno-shorten-64-to-32 -Wno-c++98-compat-local-type-template-args -Wno-reserved-identifier -Wno-cast-align -Wno-documentation -Wno-disabled-macro-expansion -Wno-extra-semi-stmt -Wno-zero-as-null-pointer-constant -Wno-float-conversion -Wno-reserved-macro-identifier -Wno-cast-function-type-strict -Wno-float-equal -Wno-implicit-int-conversion -Wno-shadow -Wno-shadow-field-in-constructor -Wno-cast-qual -Wno-pre-c++14-compat -Wno-global-constructors -Wno-switch-enum -Wno-exit-time-destructors -Wno-ctad-maybe-unsupported -Wno-undefined-func-template -Wno-c++98-compat-extra-semi -Wno-cast-function-type -Wno-nullability-extension -Wno-shadow-field -Wno-conditional-uninitialized -Wno-unused-parameter -Wno-suggest-destructor-override -Wno-shadow-uncaptured-local -Wno-unused-macros -Wno-covered-switch-default -Wno-signed-enum-bitfield -Wno-declaration-after-statement -Wno-implicit-fallthrough -Wno-non-virtual-dtor -Wno-nested-anon-types -Wno-gnu-zero-variadic-macro-arguments -Wno-unreachable-code-break -Wno-inconsistent-missing-destructor-override -Wno-format-pedantic -Wno-nonportable-system-include-path -Wno-undef -Wno-ignored-qualifiers -Wno-used-but-marked-unused -Wno-header-hygiene -Wno-char-subscripts -Wno-unreachable-code-return -Wno-unused-template -Wno-gnu-anonymous-struct -Wno-deprecated-copy-with-user-provided-dtor -Wno-inconsistent-missing-override -Wno-unreachable-code -Wno-deprecated-dynamic-exception-spec -Wno-bad-function-cast -Wno-microsoft-enum-value -Wno-deprecated-copy-with-user-provided-copy -Wno-zero-length-array -Wno-unused-function -Wno-pedantic -Wno-deprecated-copy-with-dtor -Wno-documentation-unknown-command -Wno-undefined-reinterpret-cast -Wno-format-nonliteral -Wno-comma -Wno-documentation-deprecated-sync -Wno-shift-sign-overflow -Wno-pre-c++17-compat-pedantic -Wno-c++98-compat-unnamed-type-template-args -Wno-sign-compare -Wno-format -Wno-c++98-compat-bind-to-temporary-copy -Wno-enum-enum-conversion -Wno-anon-enum-enum-conversion -Wno-range-loop-bind-reference -Wno-enum-float-conversion -Wno-keyword-macro -Wno-deprecated-copy -Wno-unused-member-function -Wno-missing-noreturn -Wno-missing-variable-declarations -Wno-documentation-html -Wno-gnu-redeclared-enum -Wno-deprecated-declarations -Wno-overloaded-virtual -Wno-c++98-c++11-compat-binary-literal -Wno-deprecated-redundant-constexpr-static-def -Wno-missing-braces -Wno-c99-extensions -Wno-strict-prototypes -Wno-unreachable-code-loop-increment -Wno-gnu-case-range -Wno-duplicate-enum -Wno-null-pointer-subtraction -Wno-deprecated-literal-operator -Wno-newline-eof -Wno-microsoft-cast -Wno-date-time -Wno-delete-non-abstract-non-virtual-dtor -Wno-unused-private-field -Wno-flexible-array-extensions -Wno-string-conversion -Wno-final-dtor-non-final-class -Wno-microsoft-unqualified-friend -Wno-invalid-noreturn -Wno-invalid-utf8 -Wno-four-char-constants -Wno-parentheses -Wno-pessimizing-move -Wno-deprecated-non-prototype -Wno-bitfield-enum-conversion -Wno-unused-lambda-capture -Wno-shadow-field-in-constructor-modified -Wno-switch-default -Wno-nan-infinity-disabled -Wno-pre-c11-compat /DWIN32 /D_WINDOWS   /EHsc  /Gy /MP /nologo /J /Gd /showFilenames /EHsc -Wno-unused-command-line-argument -Wno-microsoft-enum-forward-reference /clang:-funsigned-char /clang:-fno-strict-aliasing /clang:-ffp-contract=off -march=x86-64-v2 \r\n\tbuild link flags: /MACHINE:X64  /SUBSYSTEM:CONSOLE /STACK:2097152 /ignore:4049 /ignore:4217 /ignore:4221\r\n\tbuild system: CMake"
+    },
+    "visual_studio": {
+      "instanceId": "96ee0893",
+      "installDate": "2026-04-23T22:53:24Z",
+      "installationName": "VisualStudio/17.14.31+37216.2.-april.2026-",
+      "installationPath": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community",
+      "installationVersion": "17.14.37216.2",
+      "productId": "Microsoft.VisualStudio.Product.Community",
+      "productPath": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\devenv.exe",
+      "state": 4294967295,
+      "isComplete": true,
+      "isLaunchable": true,
+      "isPrerelease": false,
+      "isRebootRequired": false,
+      "displayName": "Visual Studio Community 2022",
+      "description": "Powerful IDE, free for students, open-source contributors, and individuals",
+      "channelId": "VisualStudio.17.Release",
+      "channelUri": "https://aka.ms/vs/17/release/channel",
+      "enginePath": "C:\\Program Files (x86)\\Microsoft Visual Studio\\Installer\\resources\\app\\ServiceHub\\Services\\Microsoft.VisualStudio.Setup.Service",
+      "installedChannelId": "VisualStudio.17.Release",
+      "installedChannelUri": "https://aka.ms/vs/17/release/channel",
+      "releaseNotes": "https://docs.microsoft.com/en-us/visualstudio/releases/2022/release-notes-v17.14#17.14.31",
+      "resolvedInstallationPath": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community",
+      "thirdPartyNotices": "https://go.microsoft.com/fwlink/?LinkId=661288",
+      "updateDate": "2026-04-23T22:53:24.5128904Z",
+      "catalog": {
+        "buildBranch": "d17.14",
+        "buildVersion": "17.14.37216.2",
+        "id": "VisualStudio/17.14.31+37216.2.-april.2026-",
+        "localBuild": "build-lab",
+        "manifestName": "VisualStudio",
+        "manifestType": "installer",
+        "productDisplayVersion": "17.14.31 (April 2026)",
+        "productLine": "Dev17",
+        "productLineVersion": "2022",
+        "productMilestone": "RTW",
+        "productMilestoneIsPreRelease": "False",
+        "productName": "Visual Studio",
+        "productPatchVersion": "31",
+        "productPreReleaseMilestoneSuffix": "1.0",
+        "productReleaseNameSuffix": "(April 2026)",
+        "productSemanticVersion": "17.14.31+37216.2.-april.2026-",
+        "requiredEngineVersion": "3.14.2086.54749"
+      },
+      "properties": {
+        "appLocalWPF": "false",
+        "campaignId": "",
+        "channelManifestId": "VisualStudio.17.Release/17.14.31+37216.2.-april.2026-",
+        "includeRecommended": "1",
+        "nickname": "",
+        "setupEngineFilePath": "C:\\Program Files (x86)\\Microsoft Visual Studio\\Installer\\setup.exe"
+      }
+    },
+    "cpp_compiler": {
+      "executable": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+      "arguments": [
+        "/Bv"
+      ],
+      "exit_code": 2,
+      "output": "Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35226 for x64\r\nCopyright (C) Microsoft Corporation.  All rights reserved.\r\n\r\nCompiler Passes:\r\n C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe:        Version 19.44.35226.0\r\n C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\c1.dll:        Version 19.44.35226.0\r\n C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\c1xx.dll:      Version 19.44.35226.0\r\n C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\c2.dll:        Version 19.44.35226.0\r\n C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\c1xx.dll:      Version 19.44.35226.0\r\n C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe:      Version 14.44.35226.0\r\n C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\mspdb140.dll:  Version 14.44.35226.0\r\n C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\1033\\clui.dll: Version 19.44.35226.0\r\n\r\ncl : Command line error D8003 : missing source filename"
+    },
+    "sdk": {
+      "root": "C:\\Program Files (x86)\\Windows Kits\\10",
+      "include_versions": [
+        "10.0.22621.0"
+      ],
+      "required_files_present": {
+        "Include\\10.0.22621.0\\um\\Windows.h": true,
+        "Include\\10.0.22621.0\\ucrt\\stdio.h": true,
+        "Lib\\10.0.22621.0\\um\\x64\\kernel32.lib": true,
+        "Lib\\10.0.22621.0\\ucrt\\x64\\ucrt.lib": true,
+        "bin\\10.0.22621.0\\x64\\rc.exe": true
+      }
+    },
+    "dotnet": {
+      "executable": "C:\\Program Files\\Epic Games\\UE_5.7\\Engine\\Binaries\\ThirdParty\\DotNet\\8.0.412\\win-x64\\dotnet.exe",
+      "arguments": [
+        "--version"
+      ],
+      "exit_code": 0,
+      "output": "8.0.412"
+    },
+    "git": {
+      "executable": "C:\\Program Files\\Git\\cmd\\git.exe",
+      "arguments": [
+        "--version"
+      ],
+      "exit_code": 0,
+      "output": "git version 2.53.0.windows.2"
+    },
+    "python": {
+      "executable": "C:\\Users\\iputu\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+      "arguments": [
+        "--version"
+      ],
+      "exit_code": 0,
+      "output": "Python 3.11.8"
+    },
+    "powershell": {
+      "path": "C:\\Users\\iputu\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+      "version": "7.6.5"
+    }
+  },
+  "claims": {
+    "blender_version_execution_verified": true,
+    "blender_asset_execution_verified": false,
+    "cpp_version_execution_verified": true,
+    "cpp_compilation_verified": false,
+    "unreal_editor_execution_verified": false,
+    "windows_package_verified": false,
+    "performance_measured": false
+  },
+  "notes": [
+    "cl.exe /Bv was deliberately given no source and returned D8003 / exit 2 after printing compiler versions. This is a version probe, not a failed project build or a successful compile.",
+    "Windows SDK 10.0.22621.0 required headers, libraries and resource compiler checked individually.",
+    "Win32_VideoController AdapterRAM is not reliable for this 6 GiB GPU; nvidia-smi reported 6144 MiB.",
+    "Engine version is from installed Engine/Build/Build.version; editor binaries were not launched by this audit.",
+    "Compiler/editor presence does not establish a compatible or successful project build.",
+    "Historical registry entry for UE 4.0 was not selected or assumed present.",
+    "No game frame-time or runtime memory measurements were performed."
+  ]
+}

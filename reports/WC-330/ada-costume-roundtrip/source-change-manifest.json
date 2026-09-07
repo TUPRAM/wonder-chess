@@ -1,0 +1,137 @@
+{
+  "status": "BLENDER_EXECUTED_UNREAL_ROUNDTRIP_PENDING",
+  "unit_id": "wc_u_human_guardian",
+  "expected_min_vertex_count_increase": 1,
+  "blender_version": "5.1.1",
+  "change_description": "Add a central gold breastplate medallion by copying the authored left gold fastener, enlarging X/Z by 1.8, and placing it at normalized body coordinates (0, .1365, .687), with its back touching the breastplate front. Existing material, UV, spine_03 weights, source vertices and skeleton/actions are preserved.",
+  "production_source": "art-source/heroes/wc_u_human_guardian/wc_u_human_guardian.blend",
+  "production_source_sha256": "3de6908b826241c9794b911d8569be28cc3cdf2932a51527f80e6e53a2aadb58",
+  "baseline_source": "reports/WC-330/ada-costume-roundtrip/source-baseline.blend",
+  "baseline_source_sha256": "3de6908b826241c9794b911d8569be28cc3cdf2932a51527f80e6e53a2aadb58",
+  "changed_source": "reports/WC-330/ada-costume-roundtrip/source-changed.blend",
+  "changed_source_sha256": "31862d036cb8345a7f0da443cc1aec37a21ef6847ea0ce90171d4f50965e78f4",
+  "baseline_fbx": "reports/WC-330/ada-costume-roundtrip/baseline/SK_wc_u_human_guardian.fbx",
+  "baseline_fbx_sha256": "fa11287032763dabad237875890d49a27be7b3fabb0211c8c72d835a0c0ba286",
+  "changed_fbx": "reports/WC-330/ada-costume-roundtrip/changed/SK_wc_u_human_guardian.fbx",
+  "changed_fbx_sha256": "bb8a15d55c10d530549dddcebb32c46f0e78402af2d73eae8d42057e9f6c8664",
+  "baseline_geometry": {
+    "vertices": 2517,
+    "polygons": 2138,
+    "triangles": 4760,
+    "bounds_min_m": [
+      -0.6970599889755249,
+      -0.2187470644712448,
+      0.01637999899685383
+    ],
+    "bounds_max_m": [
+      0.891800045967102,
+      0.43498000502586365,
+      1.8272799253463745
+    ],
+    "positions_sha256": "d778711ef1184479aa41573b3aceb2431a1b4bd6443ca3ad2d66ee735c3f3650",
+    "uv_layer_names": [
+      "WC_PaletteAtlas"
+    ]
+  },
+  "changed_geometry": {
+    "vertices": 2557,
+    "polygons": 2172,
+    "triangles": 4836,
+    "bounds_min_m": [
+      -0.6970599889755249,
+      -0.2187470644712448,
+      0.01637999899685383
+    ],
+    "bounds_max_m": [
+      0.891800045967102,
+      0.43498000502586365,
+      1.8272799253463745
+    ],
+    "positions_sha256": "193cfca239f5dcd4c4b4a7f12534bfb68fa9336f3f0bd3445447d9c302666cb6",
+    "uv_layer_names": [
+      "WC_PaletteAtlas"
+    ]
+  },
+  "geometry_delta": {
+    "vertices": 40,
+    "triangles": 76,
+    "bounds_change_m": 0
+  },
+  "unchanged_invariants": {
+    "rest_skeleton_sha256": "f2e834c266bb10111165db02970765747005ba09e796df16f749a0e3502af8a3",
+    "actions_sha256": "fc32c8cc435ab158c180eec3b7f677d817590152c1b6453637a0b95af8e8215f",
+    "action_names": [
+      "AN_wc_u_human_guardian_Active",
+      "AN_wc_u_human_guardian_Attack",
+      "AN_wc_u_human_guardian_Defeat",
+      "AN_wc_u_human_guardian_Hit",
+      "AN_wc_u_human_guardian_Idle",
+      "AN_wc_u_human_guardian_Move",
+      "AN_wc_u_human_guardian_Victory"
+    ],
+    "material_slots": [
+      "M_wc_u_human_guardian"
+    ],
+    "vertex_group_names": [
+      "root",
+      "pelvis",
+      "spine_01",
+      "spine_02",
+      "spine_03",
+      "neck",
+      "head",
+      "head_ui",
+      "clavicle_l",
+      "upperarm_l",
+      "lowerarm_l",
+      "hand_l",
+      "weapon_l",
+      "clavicle_r",
+      "upperarm_r",
+      "lowerarm_r",
+      "hand_r",
+      "weapon_r",
+      "cast_origin",
+      "thigh_l",
+      "calf_l",
+      "foot_l",
+      "toe_l",
+      "thigh_r",
+      "calf_r",
+      "foot_r",
+      "toe_r"
+    ],
+    "armature_modifier_targets": [
+      "Armature"
+    ],
+    "source_units": 1.0
+  },
+  "protected_production_files_sha256": {
+    "art-source/heroes/wc_u_human_guardian/wc_u_human_guardian.blend": "3de6908b826241c9794b911d8569be28cc3cdf2932a51527f80e6e53a2aadb58",
+    "exports/heroes/wc_u_human_guardian/AN_wc_u_human_guardian_Active.fbx": "8fa51161a87ab387b48d89e045776d389e30a055f671ccc948ef89589175a3a2",
+    "exports/heroes/wc_u_human_guardian/AN_wc_u_human_guardian_Attack.fbx": "78defeadc79e045a2c2281f7dc46245a1d15720913c19fec908839610d2d57c2",
+    "exports/heroes/wc_u_human_guardian/AN_wc_u_human_guardian_Defeat.fbx": "bc21f5e20b4dc3fc4ea3e12c49f892f83e8236313c2eb9a19ef164bfff44de05",
+    "exports/heroes/wc_u_human_guardian/AN_wc_u_human_guardian_Hit.fbx": "486933f13eb842f97f39761940cbd7ff8c7ece112314eca2abf6ac8717c051cb",
+    "exports/heroes/wc_u_human_guardian/AN_wc_u_human_guardian_Idle.fbx": "93d91e6bf9d6d4d2957a4a8794290f0af3106adc326f9935c22b309aabb6ae29",
+    "exports/heroes/wc_u_human_guardian/AN_wc_u_human_guardian_Move.fbx": "936f42b975dd2ad58b774b2e55f2495ad201fc1de07f962d042d43c78f6d9cc2",
+    "exports/heroes/wc_u_human_guardian/AN_wc_u_human_guardian_Victory.fbx": "0631230b88cda1f74d78fa8bb1799c5a3380f6e7f2ed58bb6ddcac5ebfdacb76",
+    "exports/heroes/wc_u_human_guardian/export_manifest.json": "34b7555858b76da0e8faee87437f2a34fd18bf881d31d801325b6ecc61c5b7b4",
+    "exports/heroes/wc_u_human_guardian/portrait.png": "a3726d6efa2cfdace5805f1ab86be47baf43935beed11b9d79fa1b6b58338969",
+    "exports/heroes/wc_u_human_guardian/SK_wc_u_human_guardian.fbx": "419f786511ee502362ee5af58ca201d219c7729ac573bc7a48bf2d7ce85ed2f2",
+    "exports/heroes/wc_u_human_guardian/SK_wc_u_human_guardian_LOD1.fbx": "6d73b6f819dd50df1107e1aa9af5333bc67556415c0eebc4e1eefbf859950ac3",
+    "exports/heroes/wc_u_human_guardian/SK_wc_u_human_guardian_LOD2.fbx": "0600931e5d1f0358b1f3db2ecbbcf466e893bf972b1bd2e92b5fa1f1389938b9",
+    "exports/heroes/wc_u_human_guardian/T_wc_u_human_guardian_BaseColor.png": "304909f4c0fa012dcc73149629aa3ee34f768f7f6ba8e1ac83cc6d000b2d0847",
+    "exports/heroes/wc_u_human_guardian/T_wc_u_human_guardian_Normal.png": "9d635534e475c7dc60f869767dbd9b0f37a94ddd7aa9a7b98642a6bd4febe8bc",
+    "exports/heroes/wc_u_human_guardian/T_wc_u_human_guardian_ORM.png": "81a86d3d0e3f95701c26014e53b02012574a0d9bd2b0d147083f20d392450b4c"
+  },
+  "production_files_preserved": true,
+  "source_unchanged_original_vertices": true,
+  "source_unchanged_original_weights_and_uvs": true,
+  "clip_count_unchanged": 7,
+  "export_profile": "tools/blender/profiles/fbx_skeletal_cm_v1.json",
+  "renders": [],
+  "limits": [
+    "Isolated source-copy drill, no production change",
+    "No beauty render or Unreal reference check is implied by export"
+  ]
+}
