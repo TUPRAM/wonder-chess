@@ -21,7 +21,7 @@ async def main():
     before = hashlib.sha256(source.read_bytes()).hexdigest()
     results = {'started_utc': datetime.now(timezone.utc).isoformat(), 'source_sha256_before': before}
     params = StdioServerParameters(command=config['command'], args=config['args'],
-                                  cwd=config['cwd'], env={**os.environ, **config['env']})
+                                  cwd=config.get('cwd', str(root)), env={**os.environ, **config['env']})
     with (folder / 'server.log').open('w', encoding='utf-8') as log:
         async with stdio_client(params, errlog=log) as streams:
             async with ClientSession(*streams) as session:

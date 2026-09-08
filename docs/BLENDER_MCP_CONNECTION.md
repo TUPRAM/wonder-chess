@@ -18,6 +18,8 @@ The ZIP is missing `src/blender_mcp/config.py`, which its telemetry module impor
 
 ## Use now
 
+For a fresh Git clone, the machine-specific `.codex/config.toml` is intentionally ignored. Copy `.codex/config.example.toml` to `.codex/config.toml` and set `command` to the Python executable in your installed Blender MCP environment. The example does not install the server or add-on. The absolute installation and launcher paths below describe the verified original workstation; adjust them for another PC.
+
 1. Leave Blender open. Ada's existing source file is loaded; no `.blend` file was saved or modified.
 2. Restart Codex and reopen this Wonder Chess workspace. Verify the `blender` server in MCP settings. The current conversation cannot hot-load a new native tool list merely by editing configuration.
 3. Ask: **“Use Blender MCP to inspect the open Wonder Chess scene and take a viewport screenshot before editing.”**

@@ -1,0 +1,15 @@
+# Copy to .codex/config.toml and replace command with your isolated MCP Python.
+[mcp_servers.blender]
+command = 'C:\path\to\blender-mcp\.venv\Scripts\python.exe'
+args = ["-m", "blender_mcp.server"]
+enabled = true
+startup_timeout_sec = 30
+tool_timeout_sec = 120
+enabled_tools = ["get_addon_status", "get_scene_info", "get_object_info", "get_viewport_screenshot", "execute_blender_code"]
+
+[mcp_servers.blender.env]
+BLENDER_HOST = "127.0.0.1"
+BLENDER_PORT = "9876"
+BLENDER_MCP_DISABLE_TELEMETRY = "1"
+BLENDER_MCP_SAFE_MODE = "1"
+PYTHONIOENCODING = "utf-8"
