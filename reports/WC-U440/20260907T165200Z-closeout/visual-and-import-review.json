@@ -1,0 +1,24 @@
+{
+  "utc": "2026-09-07T16:58:24.143421+00:00",
+  "review_method": "Individual supplied and actual rendered PNG inspection; no video playback or continuous approval",
+  "reviewed": [
+    "../20260906T170748Z-alternating/rok-candidate8/two-window-poses.png",
+    "wc_u_orc_rogue-windows/L-055.png",
+    "wc_u_halfling_rogue-windows/L-055.png",
+    "iri/front.png",
+    "oren/three-quarter.png"
+  ],
+  "findings": [
+    "Rok uses one axe with open off hand and visibly different second sweep",
+    "Kesh and Nella have alternate leading-hand poses; isolated releases only reviewed",
+    "Iri dual blades and Oren staff are distinct but simplified anatomy, rounded shoulder joints and costume surfaces require further art refinement"
+  ],
+  "finished_art_approved": false,
+  "continuous_clip_review_approved": false,
+  "source_preservation": "Existing canonical source revisions retained; new Iri and Oren generated with source/export hashes and independent FBX/video readback",
+  "marker_fix": {
+    "defect": "UE5.7 AnimationLibrary sync marker edits do not mark packages dirty; save_loaded_asset default skipped clean assets",
+    "repair": "only_if_is_dirty=False",
+    "actual_validation": "cold/automation/index.json; five tests Success, all 24 meshes and 168 clips loaded"
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "status": "PASS_NATIVE_EXECUTION_ONLY",
+  "content_digest": "ca82ef5c0fde5ceef24241acf417266f0c8d8047ca0c11a60961ec6bed19b4d3",
+  "assertions": 3367561,
+  "tournaments": 100,
+  "seed_range": [
+    1,
+    100
+  ],
+  "encounters": 12645,
+  "combat_events": 1837221,
+  "timeouts": 1887,
+  "ghosts": 577,
+  "bot_rejects": 0,
+  "rounds_min_median_max": [
+    26,
+    31.0,
+    39
+  ],
+  "simulated_seconds_min_median_max": [
+    1057.25,
+    1275.525,
+    1601.55
+  ],
+  "hero_definitions": [
+    "wc_u_dragonkin_guardian",
+    "wc_u_dragonkin_priest",
+    "wc_u_dragonkin_ranger",
+    "wc_u_dragonkin_rogue",
+    "wc_u_dwarf_guardian",
+    "wc_u_dwarf_priest",
+    "wc_u_dwarf_ranger",
+    "wc_u_dwarf_warrior",
+    "wc_u_elf_mage",
+    "wc_u_elf_priest",
+    "wc_u_elf_ranger",
+    "wc_u_elf_rogue",
+    "wc_u_halfling_mage",
+    "wc_u_halfling_ranger",
+    "wc_u_halfling_rogue",
+    "wc_u_halfling_warrior",
+    "wc_u_human_guardian",
+    "wc_u_human_mage",
+    "wc_u_human_priest",
+    "wc_u_human_warrior",
+    "wc_u_orc_guardian",
+    "wc_u_orc_mage",
+    "wc_u_orc_rogue",
+    "wc_u_orc_warrior"
+  ],
+  "hero_skill_definitions": [
+    "wc_u_dragonkin_guardian",
+    "wc_u_dragonkin_priest",
+    "wc_u_dragonkin_ranger",
+    "wc_u_dragonkin_rogue",
+    "wc_u_dwarf_guardian",
+    "wc_u_dwarf_priest",
+    "wc_u_dwarf_ranger",
+    "wc_u_dwarf_warrior",
+    "wc_u_elf_mage",
+    "wc_u_elf_priest",
+    "wc_u_elf_ranger",
+    "wc_u_elf_rogue",
+    "wc_u_halfling_mage",
+    "wc_u_halfling_ranger",
+    "wc_u_halfling_rogue",
+    "wc_u_halfling_warrior",
+    "wc_u_human_guardian",
+    "wc_u_human_mage",
+    "wc_u_human_priest",
+    "wc_u_human_warrior",
+    "wc_u_orc_guardian",
+    "wc_u_orc_mage",
+    "wc_u_orc_rogue",
+    "wc_u_orc_warrior"
+  ],
+  "tier4_seen_in_normal_tournaments": [
+    "guardian",
+    "halfling",
+    "human",
+    "orc",
+    "ranger",
+    "warrior"
+  ],
+  "neutral_wave_outcomes": {
+    "1": {
+      "encounters": 800,
+      "wins": 800,
+      "timeouts": 0
+    },
+    "2": {
+      "encounters": 800,
+      "wins": 800,
+      "timeouts": 0
+    },
+    "3": {
+      "encounters": 800,
+      "wins": 800,
+      "timeouts": 0
+    },
+    "5": {
+      "encounters": 800,
+      "wins": 800,
+      "timeouts": 0
+    },
+    "10": {
+      "encounters": 800,
+      "wins": 800,
+      "timeouts": 0
+    },
+    "15": {
+      "encounters": 770,
+      "wins": 766,
+      "timeouts": 0,
+      "losses": 4
+    },
+    "20": {
+      "encounters": 555,
+      "losses": 127,
+      "timeouts": 18,
+      "wins": 426,
+      "draws": 2
+    },
+    "25": {
+      "encounters": 311,
+      "wins": 242,
+      "timeouts": 22,
+      "losses": 69
+    },
+    "30": {
+      "encounters": 133,
+      "wins": 34,
+      "timeouts": 1,
+      "losses": 99
+    },
+    "35": {
+      "encounters": 18,
+      "wins": 17,
+      "timeouts": 6,
+      "losses": 1
+    }
+  },
+  "focused_test_boundary": "The executable also asserts all 24 skills at three stars, Neris/Finn/Oren revisions, all eleven eight-seat waves in an actual forced round-40 match, neutral failures/draws, reward application and restart. See the exact compiled harness hashes in process.json.",
+  "limits": [
+    "Native actual combat only; no Unreal rendering, packaged human play, LAN or frame times established.",
+    "Simulated duration uses policy-ready preparation and is not measured human play duration.",
+    "Random formation coverage is separate from the focused twelve-trait tier tests."
+  ],
+  "evidence_sha256": {
+    "process.json": "3787d251df2b3b7b1b9194bc930fd7b10d5c5449f122ebef351587166ce2bcc1",
+    "runtime-tests.log": "9fbabe2cd58d69048537c89c2298063b3f26e364faeb44888f2d5e1bf3bb322e",
+    "tournaments.csv": "f23df794729ddfbe334b87680713928dd5caf32e10569447f0e69c2f85f54827",
+    "encounter-outcomes.csv": "34d7e7d4412fd30215a24c956c9794e96f7ac006ef8bba7ce7f14988bb8b2a8f",
+    "ability-coverage.csv": "e45da95f0882a61ae537cf683f255dd9e7b8ede790c5b3c9d3186faa978f27a1",
+    "trait-coverage.csv": "bb5e45fda1ecdd238ac6745a521b4920886b5b5de512d37096651f46e93deacb",
+    "compositions.csv": "f29e2a533d50dd5d760ed0160e04b34370a25d52f880ba23731e2f1e24db3bc2"
+  }
+}

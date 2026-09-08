@@ -1,0 +1,15 @@
+{
+  "status": "PASS_GAMEPLAY_FIELDS",
+  "tournaments": 100,
+  "tournament_comparison": "All fields identical except measured wall_ms",
+  "byte_identical_outputs": {
+    "encounter-outcomes.csv": true,
+    "ability-coverage.csv": true,
+    "trait-coverage.csv": true,
+    "compositions.csv": true,
+    "bot-decisions.csv": true
+  },
+  "economy_comparison": "All 24,744 rows identical except transport settlement_id, which includes the separately allocated Match namespace. Added test matches shift namespaces without changing rewards or outcomes.",
+  "retained_failed_check": "inventory-refactor-byte-parity-failed.json",
+  "boundary": "Gameplay parity after shared inventory extraction; not UI or rendered acceptance."
+}

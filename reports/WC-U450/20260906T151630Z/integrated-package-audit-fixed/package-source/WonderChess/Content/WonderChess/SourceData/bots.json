@@ -1,0 +1,145 @@
+{
+  "schema_version": "3.1.0",
+  "bots": [
+    {
+      "id": "rowanfield_bot",
+      "label": "Rowanfield Bot",
+      "focus": "balanced",
+      "weights": {
+        "frontline": 1.3,
+        "damage": 1.1,
+        "support": 1.0,
+        "upgrade": 1.0,
+        "synergy": 1.0,
+        "level": 1.0,
+        "save": 1.0
+      },
+      "decision_interval_ms": 700,
+      "public_observation_ms": 1500,
+      "max_commands_per_preparation": 40,
+      "max_paid_rerolls_per_preparation": 4,
+      "noise_bp": 500,
+      "honesty": "same_commands_same_information_same_shop_rules"
+    },
+    {
+      "id": "starwatch_bot",
+      "label": "Starwatch Bot",
+      "focus": "spells",
+      "weights": {
+        "frontline": 1.0,
+        "damage": 1.3,
+        "support": 0.7,
+        "upgrade": 1.0,
+        "synergy": 1.2,
+        "level": 1.0,
+        "save": 0.8
+      },
+      "decision_interval_ms": 700,
+      "public_observation_ms": 1500,
+      "max_commands_per_preparation": 40,
+      "max_paid_rerolls_per_preparation": 4,
+      "noise_bp": 500,
+      "honesty": "same_commands_same_information_same_shop_rules"
+    },
+    {
+      "id": "hearthkeeper_bot",
+      "label": "Hearthkeeper Bot",
+      "focus": "sustain",
+      "weights": {
+        "frontline": 1.3,
+        "damage": 0.9,
+        "support": 1.3,
+        "upgrade": 1.0,
+        "synergy": 1.1,
+        "level": 0.9,
+        "save": 1.0
+      },
+      "decision_interval_ms": 700,
+      "public_observation_ms": 1500,
+      "max_commands_per_preparation": 40,
+      "max_paid_rerolls_per_preparation": 4,
+      "noise_bp": 500,
+      "honesty": "same_commands_same_information_same_shop_rules"
+    },
+    {
+      "id": "sunstride_bot",
+      "label": "Sunstride Bot",
+      "focus": "tempo",
+      "weights": {
+        "frontline": 1.2,
+        "damage": 1.3,
+        "support": 0.7,
+        "upgrade": 1.0,
+        "synergy": 0.8,
+        "level": 0.9,
+        "save": 0.5
+      },
+      "decision_interval_ms": 700,
+      "public_observation_ms": 1500,
+      "max_commands_per_preparation": 40,
+      "max_paid_rerolls_per_preparation": 4,
+      "noise_bp": 500,
+      "honesty": "same_commands_same_information_same_shop_rules"
+    },
+    {
+      "id": "gemseeker_bot",
+      "label": "Gemseeker Bot",
+      "focus": "upgrades",
+      "weights": {
+        "frontline": 1.0,
+        "damage": 1.0,
+        "support": 0.9,
+        "upgrade": 1.5,
+        "synergy": 1.0,
+        "level": 0.7,
+        "save": 0.9
+      },
+      "decision_interval_ms": 700,
+      "public_observation_ms": 1500,
+      "max_commands_per_preparation": 40,
+      "max_paid_rerolls_per_preparation": 4,
+      "noise_bp": 500,
+      "honesty": "same_commands_same_information_same_shop_rules"
+    },
+    {
+      "id": "highbanner_bot",
+      "label": "Highbanner Bot",
+      "focus": "leveling",
+      "weights": {
+        "frontline": 1.1,
+        "damage": 1.0,
+        "support": 0.9,
+        "upgrade": 0.8,
+        "synergy": 1.0,
+        "level": 1.5,
+        "save": 1.1
+      },
+      "decision_interval_ms": 700,
+      "public_observation_ms": 1500,
+      "max_commands_per_preparation": 40,
+      "max_paid_rerolls_per_preparation": 4,
+      "noise_bp": 500,
+      "honesty": "same_commands_same_information_same_shop_rules"
+    },
+    {
+      "id": "wayfinder_bot",
+      "label": "Wayfinder Bot",
+      "focus": "adaptive",
+      "weights": {
+        "frontline": 1.2,
+        "damage": 1.1,
+        "support": 1.0,
+        "upgrade": 1.2,
+        "synergy": 1.1,
+        "level": 1.1,
+        "save": 1.0
+      },
+      "decision_interval_ms": 700,
+      "public_observation_ms": 1500,
+      "max_commands_per_preparation": 40,
+      "max_paid_rerolls_per_preparation": 4,
+      "noise_bp": 500,
+      "honesty": "same_commands_same_information_same_shop_rules"
+    }
+  ]
+}

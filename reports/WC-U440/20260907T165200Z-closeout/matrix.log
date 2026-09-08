@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\report_update_assets.py", line 219, in <module>
+    main()
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\report_update_assets.py", line 185, in main
+    imports, evidence = collect_imports(args.import_report)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\report_update_assets.py", line 61, in collect_imports
+    raise ValueError(f"Expected explicit importer report object: {path}")
+ValueError: Expected explicit importer report object: C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260906T142439Z\import_data_tables\imported_DT_Abilities_Alpha.json

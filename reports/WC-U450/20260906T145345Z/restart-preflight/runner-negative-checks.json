@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "checks": 9,
+  "cases": [
+    "valid payload hashes and membership accepted",
+    "missing payload group rejected",
+    "unstable provenance rejected",
+    "duplicate entry rejected",
+    "manifest path escape rejected",
+    "missing manifested file rejected",
+    "runtime Saved directory explicitly excluded",
+    "modified payload bytes rejected",
+    "unmanifested payload file rejected"
+  ],
+  "boundary": "Synthetic preflight helper tests, no executable launched"
+}

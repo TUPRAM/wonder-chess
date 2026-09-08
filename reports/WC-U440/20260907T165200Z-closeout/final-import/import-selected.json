@@ -1,0 +1,535 @@
+{
+  "engine": "5.7.4-51494982+++UE5+Release-5.7",
+  "selected_hero_ids": [
+    "wc_u_elf_rogue",
+    "wc_u_orc_warrior",
+    "wc_u_orc_rogue",
+    "wc_u_halfling_rogue",
+    "wc_u_dragonkin_ranger",
+    "wc_u_dragonkin_rogue",
+    "wc_u_dragonkin_priest"
+  ],
+  "audio_only": false,
+  "audio_requested": false,
+  "heroes": [
+    {
+      "id": "wc_u_elf_rogue",
+      "mesh": "/Game/WonderChess/Heroes/wc_u_elf_rogue/SK_wc_u_elf_rogue.SK_wc_u_elf_rogue",
+      "skeleton": "/Game/WonderChess/Heroes/wc_u_elf_rogue/SK_wc_u_elf_rogue_Skeleton.SK_wc_u_elf_rogue_Skeleton",
+      "prior_skeleton_existed": true,
+      "prior_skeleton_identity_preserved": true,
+      "skeleton_saved": true,
+      "reference_pose_refresh_requested": true,
+      "cold_reload_validation": "PENDING_SEPARATE_PROCESS",
+      "bounds_extent_cm": [
+        28.97499942779541,
+        69.08697891235352,
+        94.52499729394913
+      ],
+      "clips": [
+        {
+          "name": "Idle",
+          "path": "/Game/WonderChess/Heroes/wc_u_elf_rogue/AN_wc_u_elf_rogue_Idle.AN_wc_u_elf_rogue_Idle",
+          "length": 2.0,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Move",
+          "path": "/Game/WonderChess/Heroes/wc_u_elf_rogue/AN_wc_u_elf_rogue_Move.AN_wc_u_elf_rogue_Move",
+          "length": 1.0,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Attack",
+          "path": "/Game/WonderChess/Heroes/wc_u_elf_rogue/AN_wc_u_elf_rogue_Attack.AN_wc_u_elf_rogue_Attack",
+          "length": 1.2999999523162842,
+          "attack_window_markers": {
+            "WC_Attack_R_Start": 0.0,
+            "WC_Attack_R_Release": 0.25,
+            "WC_Attack_L_Start": 0.6499999761581421,
+            "WC_Attack_R_End": 0.6499999761581421,
+            "WC_Attack_L_Release": 0.8999999761581421,
+            "WC_Attack_L_End": 1.2999999523162842
+          }
+        },
+        {
+          "name": "Active",
+          "path": "/Game/WonderChess/Heroes/wc_u_elf_rogue/AN_wc_u_elf_rogue_Active.AN_wc_u_elf_rogue_Active",
+          "length": 0.5,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Hit",
+          "path": "/Game/WonderChess/Heroes/wc_u_elf_rogue/AN_wc_u_elf_rogue_Hit.AN_wc_u_elf_rogue_Hit",
+          "length": 0.4000000059604645,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Defeat",
+          "path": "/Game/WonderChess/Heroes/wc_u_elf_rogue/AN_wc_u_elf_rogue_Defeat.AN_wc_u_elf_rogue_Defeat",
+          "length": 1.0,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Victory",
+          "path": "/Game/WonderChess/Heroes/wc_u_elf_rogue/AN_wc_u_elf_rogue_Victory.AN_wc_u_elf_rogue_Victory",
+          "length": 1.5,
+          "attack_window_markers": null
+        }
+      ],
+      "lods": [
+        1,
+        2
+      ],
+      "status": "IMPORTED_NOT_VISUALLY_ACCEPTED",
+      "source_revision": 9,
+      "source_sha256": "b50a0d636498476ffcdc32624f7a3c844e60f0df38ad6d9f93bda2d0e8840ecd",
+      "export_manifest_sha256": "95c9e622e734a83003dbfbb32214a862905f6c199a67122ca9fca2102d1c46cb",
+      "units_sha256_at_export": "fd6d831113261dd984f3d2430236c06eda4a9f4e7f9e30a404a76f418fa953b0",
+      "units_sha256_at_import": "7dbf08ec21daef3c63c4e6cfd1302b508b44df771ee91322f50a95fe9dc31e05"
+    },
+    {
+      "id": "wc_u_orc_warrior",
+      "mesh": "/Game/WonderChess/Heroes/wc_u_orc_warrior/SK_wc_u_orc_warrior.SK_wc_u_orc_warrior",
+      "skeleton": "/Game/WonderChess/Heroes/wc_u_orc_warrior/SK_wc_u_orc_warrior_Skeleton.SK_wc_u_orc_warrior_Skeleton",
+      "prior_skeleton_existed": true,
+      "prior_skeleton_identity_preserved": true,
+      "skeleton_saved": true,
+      "reference_pose_refresh_requested": true,
+      "cold_reload_validation": "PENDING_SEPARATE_PROCESS",
+      "bounds_extent_cm": [
+        32.4754638671875,
+        99.86249923706055,
+        106.66285640001297
+      ],
+      "clips": [
+        {
+          "name": "Idle",
+          "path": "/Game/WonderChess/Heroes/wc_u_orc_warrior/AN_wc_u_orc_warrior_Idle.AN_wc_u_orc_warrior_Idle",
+          "length": 2.0,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Move",
+          "path": "/Game/WonderChess/Heroes/wc_u_orc_warrior/AN_wc_u_orc_warrior_Move.AN_wc_u_orc_warrior_Move",
+          "length": 1.0,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Attack",
+          "path": "/Game/WonderChess/Heroes/wc_u_orc_warrior/AN_wc_u_orc_warrior_Attack.AN_wc_u_orc_warrior_Attack",
+          "length": 1.5,
+          "attack_window_markers": {
+            "WC_Attack_R_Start": 0.0,
+            "WC_Attack_R_Release": 0.3499999940395355,
+            "WC_Attack_L_Start": 0.75,
+            "WC_Attack_R_End": 0.75,
+            "WC_Attack_L_Release": 1.100000023841858,
+            "WC_Attack_L_End": 1.5
+          }
+        },
+        {
+          "name": "Active",
+          "path": "/Game/WonderChess/Heroes/wc_u_orc_warrior/AN_wc_u_orc_warrior_Active.AN_wc_u_orc_warrior_Active",
+          "length": 0.550000011920929,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Hit",
+          "path": "/Game/WonderChess/Heroes/wc_u_orc_warrior/AN_wc_u_orc_warrior_Hit.AN_wc_u_orc_warrior_Hit",
+          "length": 0.4000000059604645,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Defeat",
+          "path": "/Game/WonderChess/Heroes/wc_u_orc_warrior/AN_wc_u_orc_warrior_Defeat.AN_wc_u_orc_warrior_Defeat",
+          "length": 1.0,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Victory",
+          "path": "/Game/WonderChess/Heroes/wc_u_orc_warrior/AN_wc_u_orc_warrior_Victory.AN_wc_u_orc_warrior_Victory",
+          "length": 1.5,
+          "attack_window_markers": null
+        }
+      ],
+      "lods": [
+        1,
+        2
+      ],
+      "status": "IMPORTED_NOT_VISUALLY_ACCEPTED",
+      "source_revision": 8,
+      "source_sha256": "eda8e8a562aace20f2264c072ed5346cfa883fdd169a432d151ebcc885b51f95",
+      "export_manifest_sha256": "b9248523665514d7f53006020576ee3b2a3a450bba12014d012429a2f9af2df1",
+      "units_sha256_at_export": "fd6d831113261dd984f3d2430236c06eda4a9f4e7f9e30a404a76f418fa953b0",
+      "units_sha256_at_import": "7dbf08ec21daef3c63c4e6cfd1302b508b44df771ee91322f50a95fe9dc31e05"
+    },
+    {
+      "id": "wc_u_orc_rogue",
+      "mesh": "/Game/WonderChess/Heroes/wc_u_orc_rogue/SK_wc_u_orc_rogue.SK_wc_u_orc_rogue",
+      "skeleton": "/Game/WonderChess/Heroes/wc_u_orc_rogue/SK_wc_u_orc_rogue_Skeleton.SK_wc_u_orc_rogue_Skeleton",
+      "prior_skeleton_existed": true,
+      "prior_skeleton_identity_preserved": true,
+      "skeleton_saved": true,
+      "reference_pose_refresh_requested": true,
+      "cold_reload_validation": "PENDING_SEPARATE_PROCESS",
+      "bounds_extent_cm": [
+        29.432499885559082,
+        79.36464309692383,
+        96.01749402284622
+      ],
+      "clips": [
+        {
+          "name": "Idle",
+          "path": "/Game/WonderChess/Heroes/wc_u_orc_rogue/AN_wc_u_orc_rogue_Idle.AN_wc_u_orc_rogue_Idle",
+          "length": 2.0,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Move",
+          "path": "/Game/WonderChess/Heroes/wc_u_orc_rogue/AN_wc_u_orc_rogue_Move.AN_wc_u_orc_rogue_Move",
+          "length": 1.0,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Attack",
+          "path": "/Game/WonderChess/Heroes/wc_u_orc_rogue/AN_wc_u_orc_rogue_Attack.AN_wc_u_orc_rogue_Attack",
+          "length": 1.2999999523162842,
+          "attack_window_markers": {
+            "WC_Attack_R_Start": 0.0,
+            "WC_Attack_R_Release": 0.25,
+            "WC_Attack_L_Start": 0.6499999761581421,
+            "WC_Attack_R_End": 0.6499999761581421,
+            "WC_Attack_L_Release": 0.8999999761581421,
+            "WC_Attack_L_End": 1.2999999523162842
+          }
+        },
+        {
+          "name": "Active",
+          "path": "/Game/WonderChess/Heroes/wc_u_orc_rogue/AN_wc_u_orc_rogue_Active.AN_wc_u_orc_rogue_Active",
+          "length": 0.5,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Hit",
+          "path": "/Game/WonderChess/Heroes/wc_u_orc_rogue/AN_wc_u_orc_rogue_Hit.AN_wc_u_orc_rogue_Hit",
+          "length": 0.4000000059604645,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Defeat",
+          "path": "/Game/WonderChess/Heroes/wc_u_orc_rogue/AN_wc_u_orc_rogue_Defeat.AN_wc_u_orc_rogue_Defeat",
+          "length": 1.0,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Victory",
+          "path": "/Game/WonderChess/Heroes/wc_u_orc_rogue/AN_wc_u_orc_rogue_Victory.AN_wc_u_orc_rogue_Victory",
+          "length": 1.5,
+          "attack_window_markers": null
+        }
+      ],
+      "lods": [
+        1,
+        2
+      ],
+      "status": "IMPORTED_NOT_VISUALLY_ACCEPTED",
+      "source_revision": 9,
+      "source_sha256": "002170270eb33e4299d5329c20ae4cb8f58daf5cf578b8436c9018b212e10f04",
+      "export_manifest_sha256": "17fd6b187eb32d340e75bfbba82c28844d43898d52d0da73dd147fb8002639b3",
+      "units_sha256_at_export": "fd6d831113261dd984f3d2430236c06eda4a9f4e7f9e30a404a76f418fa953b0",
+      "units_sha256_at_import": "7dbf08ec21daef3c63c4e6cfd1302b508b44df771ee91322f50a95fe9dc31e05"
+    },
+    {
+      "id": "wc_u_halfling_rogue",
+      "mesh": "/Game/WonderChess/Heroes/wc_u_halfling_rogue/SK_wc_u_halfling_rogue.SK_wc_u_halfling_rogue",
+      "skeleton": "/Game/WonderChess/Heroes/wc_u_halfling_rogue/SK_wc_u_halfling_rogue_Skeleton.SK_wc_u_halfling_rogue_Skeleton",
+      "prior_skeleton_existed": true,
+      "prior_skeleton_identity_preserved": true,
+      "skeleton_saved": true,
+      "reference_pose_refresh_requested": true,
+      "cold_reload_validation": "PENDING_SEPARATE_PROCESS",
+      "bounds_extent_cm": [
+        14.519996166229248,
+        41.36000061035156,
+        56.43000030517578
+      ],
+      "clips": [
+        {
+          "name": "Idle",
+          "path": "/Game/WonderChess/Heroes/wc_u_halfling_rogue/AN_wc_u_halfling_rogue_Idle.AN_wc_u_halfling_rogue_Idle",
+          "length": 2.0,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Move",
+          "path": "/Game/WonderChess/Heroes/wc_u_halfling_rogue/AN_wc_u_halfling_rogue_Move.AN_wc_u_halfling_rogue_Move",
+          "length": 1.0,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Attack",
+          "path": "/Game/WonderChess/Heroes/wc_u_halfling_rogue/AN_wc_u_halfling_rogue_Attack.AN_wc_u_halfling_rogue_Attack",
+          "length": 1.2999999523162842,
+          "attack_window_markers": {
+            "WC_Attack_R_Start": 0.0,
+            "WC_Attack_R_Release": 0.25,
+            "WC_Attack_L_Start": 0.6499999761581421,
+            "WC_Attack_R_End": 0.6499999761581421,
+            "WC_Attack_L_Release": 0.8999999761581421,
+            "WC_Attack_L_End": 1.2999999523162842
+          }
+        },
+        {
+          "name": "Active",
+          "path": "/Game/WonderChess/Heroes/wc_u_halfling_rogue/AN_wc_u_halfling_rogue_Active.AN_wc_u_halfling_rogue_Active",
+          "length": 0.5,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Hit",
+          "path": "/Game/WonderChess/Heroes/wc_u_halfling_rogue/AN_wc_u_halfling_rogue_Hit.AN_wc_u_halfling_rogue_Hit",
+          "length": 0.4000000059604645,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Defeat",
+          "path": "/Game/WonderChess/Heroes/wc_u_halfling_rogue/AN_wc_u_halfling_rogue_Defeat.AN_wc_u_halfling_rogue_Defeat",
+          "length": 1.0,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Victory",
+          "path": "/Game/WonderChess/Heroes/wc_u_halfling_rogue/AN_wc_u_halfling_rogue_Victory.AN_wc_u_halfling_rogue_Victory",
+          "length": 1.5,
+          "attack_window_markers": null
+        }
+      ],
+      "lods": [
+        1,
+        2
+      ],
+      "status": "IMPORTED_NOT_VISUALLY_ACCEPTED",
+      "source_revision": 5,
+      "source_sha256": "e36f8f0664c06850d81bf6983825abfe67861a82b64f6836db615eef8ee6add0",
+      "export_manifest_sha256": "b35240db3e148a6ef7d8aabf6723708e2fed8c77c32cc4ca399211246f9004e4",
+      "units_sha256_at_export": "fd6d831113261dd984f3d2430236c06eda4a9f4e7f9e30a404a76f418fa953b0",
+      "units_sha256_at_import": "7dbf08ec21daef3c63c4e6cfd1302b508b44df771ee91322f50a95fe9dc31e05"
+    },
+    {
+      "id": "wc_u_dragonkin_ranger",
+      "mesh": "/Game/WonderChess/Heroes/wc_u_dragonkin_ranger/SK_wc_u_dragonkin_ranger.SK_wc_u_dragonkin_ranger",
+      "skeleton": "/Game/WonderChess/Heroes/wc_u_dragonkin_ranger/SK_wc_u_dragonkin_ranger_Skeleton.SK_wc_u_dragonkin_ranger_Skeleton",
+      "prior_skeleton_existed": false,
+      "prior_skeleton_identity_preserved": null,
+      "skeleton_saved": true,
+      "reference_pose_refresh_requested": true,
+      "cold_reload_validation": "PENDING_SEPARATE_PROCESS",
+      "bounds_extent_cm": [
+        32.62049961090088,
+        94.04119873046875,
+        98.70300957560539
+      ],
+      "clips": [
+        {
+          "name": "Idle",
+          "path": "/Game/WonderChess/Heroes/wc_u_dragonkin_ranger/AN_wc_u_dragonkin_ranger_Idle.AN_wc_u_dragonkin_ranger_Idle",
+          "length": 2.0,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Move",
+          "path": "/Game/WonderChess/Heroes/wc_u_dragonkin_ranger/AN_wc_u_dragonkin_ranger_Move.AN_wc_u_dragonkin_ranger_Move",
+          "length": 1.0,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Attack",
+          "path": "/Game/WonderChess/Heroes/wc_u_dragonkin_ranger/AN_wc_u_dragonkin_ranger_Attack.AN_wc_u_dragonkin_ranger_Attack",
+          "length": 0.699999988079071,
+          "attack_window_markers": {}
+        },
+        {
+          "name": "Active",
+          "path": "/Game/WonderChess/Heroes/wc_u_dragonkin_ranger/AN_wc_u_dragonkin_ranger_Active.AN_wc_u_dragonkin_ranger_Active",
+          "length": 0.6499999761581421,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Hit",
+          "path": "/Game/WonderChess/Heroes/wc_u_dragonkin_ranger/AN_wc_u_dragonkin_ranger_Hit.AN_wc_u_dragonkin_ranger_Hit",
+          "length": 0.4000000059604645,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Defeat",
+          "path": "/Game/WonderChess/Heroes/wc_u_dragonkin_ranger/AN_wc_u_dragonkin_ranger_Defeat.AN_wc_u_dragonkin_ranger_Defeat",
+          "length": 1.0,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Victory",
+          "path": "/Game/WonderChess/Heroes/wc_u_dragonkin_ranger/AN_wc_u_dragonkin_ranger_Victory.AN_wc_u_dragonkin_ranger_Victory",
+          "length": 1.5,
+          "attack_window_markers": null
+        }
+      ],
+      "lods": [
+        1,
+        2
+      ],
+      "status": "IMPORTED_NOT_VISUALLY_ACCEPTED",
+      "source_revision": 3,
+      "source_sha256": "d1404700ba838c9c7cdcd7362b83034236055a3542082eb9d14118f724d95217",
+      "export_manifest_sha256": "dc4d264317f311949568ea8f1546765ff8e0bcdc8189b030cb5ceef3f226845f",
+      "units_sha256_at_export": "7dbf08ec21daef3c63c4e6cfd1302b508b44df771ee91322f50a95fe9dc31e05",
+      "units_sha256_at_import": "7dbf08ec21daef3c63c4e6cfd1302b508b44df771ee91322f50a95fe9dc31e05"
+    },
+    {
+      "id": "wc_u_dragonkin_rogue",
+      "mesh": "/Game/WonderChess/Heroes/wc_u_dragonkin_rogue/SK_wc_u_dragonkin_rogue.SK_wc_u_dragonkin_rogue",
+      "skeleton": "/Game/WonderChess/Heroes/wc_u_dragonkin_rogue/SK_wc_u_dragonkin_rogue_Skeleton.SK_wc_u_dragonkin_rogue_Skeleton",
+      "prior_skeleton_existed": false,
+      "prior_skeleton_identity_preserved": null,
+      "skeleton_saved": true,
+      "reference_pose_refresh_requested": true,
+      "cold_reload_validation": "PENDING_SEPARATE_PROCESS",
+      "bounds_extent_cm": [
+        23.936115264892578,
+        89.3969955444336,
+        94.21649700403214
+      ],
+      "clips": [
+        {
+          "name": "Idle",
+          "path": "/Game/WonderChess/Heroes/wc_u_dragonkin_rogue/AN_wc_u_dragonkin_rogue_Idle.AN_wc_u_dragonkin_rogue_Idle",
+          "length": 2.0,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Move",
+          "path": "/Game/WonderChess/Heroes/wc_u_dragonkin_rogue/AN_wc_u_dragonkin_rogue_Move.AN_wc_u_dragonkin_rogue_Move",
+          "length": 1.0,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Attack",
+          "path": "/Game/WonderChess/Heroes/wc_u_dragonkin_rogue/AN_wc_u_dragonkin_rogue_Attack.AN_wc_u_dragonkin_rogue_Attack",
+          "length": 1.2999999523162842,
+          "attack_window_markers": {
+            "WC_Attack_R_Start": 0.0,
+            "WC_Attack_R_Release": 0.25,
+            "WC_Attack_L_Start": 0.6499999761581421,
+            "WC_Attack_R_End": 0.6499999761581421,
+            "WC_Attack_L_Release": 0.8999999761581421,
+            "WC_Attack_L_End": 1.2999999523162842
+          }
+        },
+        {
+          "name": "Active",
+          "path": "/Game/WonderChess/Heroes/wc_u_dragonkin_rogue/AN_wc_u_dragonkin_rogue_Active.AN_wc_u_dragonkin_rogue_Active",
+          "length": 0.550000011920929,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Hit",
+          "path": "/Game/WonderChess/Heroes/wc_u_dragonkin_rogue/AN_wc_u_dragonkin_rogue_Hit.AN_wc_u_dragonkin_rogue_Hit",
+          "length": 0.4000000059604645,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Defeat",
+          "path": "/Game/WonderChess/Heroes/wc_u_dragonkin_rogue/AN_wc_u_dragonkin_rogue_Defeat.AN_wc_u_dragonkin_rogue_Defeat",
+          "length": 1.0,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Victory",
+          "path": "/Game/WonderChess/Heroes/wc_u_dragonkin_rogue/AN_wc_u_dragonkin_rogue_Victory.AN_wc_u_dragonkin_rogue_Victory",
+          "length": 1.5,
+          "attack_window_markers": null
+        }
+      ],
+      "lods": [
+        1,
+        2
+      ],
+      "status": "IMPORTED_NOT_VISUALLY_ACCEPTED",
+      "source_revision": 1,
+      "source_sha256": "0f918bf0a76472b129212189273e9160ca697e08d72cca103c63c1da8b3ecf77",
+      "export_manifest_sha256": "1bb93f7d9e67c964ef1a578d5bdc835f86d62cbb59ecc145d71effe5a9d2d038",
+      "units_sha256_at_export": "7dbf08ec21daef3c63c4e6cfd1302b508b44df771ee91322f50a95fe9dc31e05",
+      "units_sha256_at_import": "7dbf08ec21daef3c63c4e6cfd1302b508b44df771ee91322f50a95fe9dc31e05"
+    },
+    {
+      "id": "wc_u_dragonkin_priest",
+      "mesh": "/Game/WonderChess/Heroes/wc_u_dragonkin_priest/SK_wc_u_dragonkin_priest.SK_wc_u_dragonkin_priest",
+      "skeleton": "/Game/WonderChess/Heroes/wc_u_dragonkin_priest/SK_wc_u_dragonkin_priest_Skeleton.SK_wc_u_dragonkin_priest_Skeleton",
+      "prior_skeleton_existed": false,
+      "prior_skeleton_identity_preserved": null,
+      "skeleton_saved": true,
+      "reference_pose_refresh_requested": true,
+      "cold_reload_validation": "PENDING_SEPARATE_PROCESS",
+      "bounds_extent_cm": [
+        25.969343185424805,
+        75.0185775756836,
+        101.19614202529192
+      ],
+      "clips": [
+        {
+          "name": "Idle",
+          "path": "/Game/WonderChess/Heroes/wc_u_dragonkin_priest/AN_wc_u_dragonkin_priest_Idle.AN_wc_u_dragonkin_priest_Idle",
+          "length": 2.0,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Move",
+          "path": "/Game/WonderChess/Heroes/wc_u_dragonkin_priest/AN_wc_u_dragonkin_priest_Move.AN_wc_u_dragonkin_priest_Move",
+          "length": 1.0,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Attack",
+          "path": "/Game/WonderChess/Heroes/wc_u_dragonkin_priest/AN_wc_u_dragonkin_priest_Attack.AN_wc_u_dragonkin_priest_Attack",
+          "length": 0.699999988079071,
+          "attack_window_markers": {}
+        },
+        {
+          "name": "Active",
+          "path": "/Game/WonderChess/Heroes/wc_u_dragonkin_priest/AN_wc_u_dragonkin_priest_Active.AN_wc_u_dragonkin_priest_Active",
+          "length": 0.6499999761581421,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Hit",
+          "path": "/Game/WonderChess/Heroes/wc_u_dragonkin_priest/AN_wc_u_dragonkin_priest_Hit.AN_wc_u_dragonkin_priest_Hit",
+          "length": 0.4000000059604645,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Defeat",
+          "path": "/Game/WonderChess/Heroes/wc_u_dragonkin_priest/AN_wc_u_dragonkin_priest_Defeat.AN_wc_u_dragonkin_priest_Defeat",
+          "length": 1.0,
+          "attack_window_markers": null
+        },
+        {
+          "name": "Victory",
+          "path": "/Game/WonderChess/Heroes/wc_u_dragonkin_priest/AN_wc_u_dragonkin_priest_Victory.AN_wc_u_dragonkin_priest_Victory",
+          "length": 1.5,
+          "attack_window_markers": null
+        }
+      ],
+      "lods": [
+        1,
+        2
+      ],
+      "status": "IMPORTED_NOT_VISUALLY_ACCEPTED",
+      "source_revision": 1,
+      "source_sha256": "6a0c42ce5b642a230f4b5f7f3bb6e175c6fb5e780c082c6f3719a4569d4b7e05",
+      "export_manifest_sha256": "e42535c2cae7acd2ba7dbb35f2f9c9fb28a069d567c5344ec0b24567514dc363",
+      "units_sha256_at_export": "7dbf08ec21daef3c63c4e6cfd1302b508b44df771ee91322f50a95fe9dc31e05",
+      "units_sha256_at_import": "7dbf08ec21daef3c63c4e6cfd1302b508b44df771ee91322f50a95fe9dc31e05"
+    }
+  ],
+  "audio": []
+}

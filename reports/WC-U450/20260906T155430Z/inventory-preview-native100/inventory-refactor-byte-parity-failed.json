@@ -1,0 +1,13 @@
+{
+  "status": "FAIL",
+  "attempted_check": "All six CSVs byte identical",
+  "results": {
+    "encounter-outcomes.csv": true,
+    "ability-coverage.csv": true,
+    "trait-coverage.csv": true,
+    "compositions.csv": true,
+    "round-economy.csv": false,
+    "bot-decisions.csv": true
+  },
+  "investigation": "Only round-economy settlement_id differs. Added PreviewIsolation creates two extra Match namespaces before tournaments; settlement identity includes namespace. Raw differing artifacts retained."
+}

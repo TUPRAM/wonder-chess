@@ -1,0 +1,213 @@
+00:02.141  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_dragonkin_priest\wc_u_dragonkin_priest.blend"
+{
+  "status": "structural_checks_passed_visual_review_required",
+  "blender_version": "5.1.1",
+  "collection": "EXPORT",
+  "evaluated_triangle_total": 5284,
+  "objects": [
+    {
+      "name": "Armature",
+      "type": "ARMATURE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.2215795516967773,
+        0.5179390907287598,
+        2.1553399562835693
+      ],
+      "roots": [
+        "root"
+      ],
+      "deform_bones": 27
+    },
+    {
+      "name": "SK_wc_u_dragonkin_priest",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.3236877918243408,
+        0.5949394702911377,
+        2.126408576965332
+      ],
+      "evaluated_triangles": 5284,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "not_checked": [
+    "appearance",
+    "deformation across all clips",
+    "UV overlap appropriateness",
+    "normal-map convention",
+    "Unreal import",
+    "LOD silhouette",
+    "gameplay readability"
+  ]
+}
+{
+  "status": "structural_checks_passed_visual_review_required",
+  "blender_version": "5.1.1",
+  "collection": "LOD_SOURCE",
+  "evaluated_triangle_total": 3961,
+  "objects": [
+    {
+      "name": "SK_wc_u_dragonkin_priest_LOD1",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.3215446472167969,
+        0.5911515355110168,
+        2.126408576965332
+      ],
+      "evaluated_triangles": 2641,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    },
+    {
+      "name": "SK_wc_u_dragonkin_priest_LOD2",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.308843970298767,
+        0.5900019407272339,
+        2.123957633972168
+      ],
+      "evaluated_triangles": 1320,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "not_checked": [
+    "appearance",
+    "deformation across all clips",
+    "UV overlap appropriateness",
+    "normal-map convention",
+    "Unreal import",
+    "LOD silhouette",
+    "gameplay readability"
+  ]
+}
+{
+  "status": "sampled_motion_invariants_passed",
+  "unit_id": "wc_u_dragonkin_priest",
+  "blender_version": "5.1.1",
+  "sampling": "actual deformed mesh every 3 frames at 60fps",
+  "clips": [
+    {
+      "clip": "Idle",
+      "samples": 41,
+      "minimum_support_sole_z_m": 0.0020199294667690992,
+      "maximum_support_sole_z_m": 0.0020199294667690992,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Move",
+      "samples": 21,
+      "minimum_support_sole_z_m": 0.0020198430866003036,
+      "maximum_support_sole_z_m": 0.0020199029240757227,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Attack",
+      "samples": 15,
+      "minimum_support_sole_z_m": 0.0020199294667690992,
+      "maximum_support_sole_z_m": 0.0020199294667690992,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Active",
+      "samples": 14,
+      "minimum_support_sole_z_m": 0.0020199294667690992,
+      "maximum_support_sole_z_m": 0.0020199294667690992,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Hit",
+      "samples": 9,
+      "minimum_support_sole_z_m": 0.0020198661368340254,
+      "maximum_support_sole_z_m": 0.002019959967583418,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Defeat",
+      "samples": 21,
+      "minimum_support_sole_z_m": 0.002019753446802497,
+      "maximum_support_sole_z_m": 0.0020199294667690992,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Victory",
+      "samples": 31,
+      "minimum_support_sole_z_m": 0.0020199294667690992,
+      "maximum_support_sole_z_m": 0.0020199294667690992,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    }
+  ],
+  "errors": [],
+  "not_checked": [
+    "continuous visual quality",
+    "weapon/costume clipping",
+    "semantic gesture review",
+    "Unreal retarget/import",
+    "runtime move-speed synchronization"
+  ]
+}
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+WC_NEW_HERO_READBACK_PASS {"status": "PASS_SAVED_SOURCE_SKIN_MOTION_AND_MESH_FBX_READBACK", "unit_id": "wc_u_dragonkin_priest", "source_sha256": "6a0c42ce5b642a230f4b5f7f3bb6e175c6fb5e780c082c6f3719a4569d4b7e05", "manifest_sha256": "e42535c2cae7acd2ba7dbb35f2f9c9fb28a069d567c5344ec0b24567514dc363", "source_revision": 1, "geometry_revision": 1, "animation_revision": 1, "blender_version": "5.1.1", "files_verified": 14, "source_clips_verified": 7, "mesh_fbx_readbacks": [{"mesh_suffix": "", "dimensions_m": [1.500371515750885, 0.5193868577480316, 2.0239228047430515], "triangles": 5284, "bones": 27, "materials": 1, "uv_layers": 1, "weighted_vertices": 2986}, {"mesh_suffix": "_LOD1", "dimensions_m": [1.500371515750885, 0.5198650658130646, 2.0239228047430515], "triangles": 2641, "bones": 27, "materials": 1, "uv_layers": 1, "weighted_vertices": 1540}, {"mesh_suffix": "_LOD2", "dimensions_m": [1.4991373419761658, 0.5251746326684952, 2.018489618320018], "triangles": 1320, "bones": 27, "materials": 1, "uv_layers": 1, "weighted_vertices": 830}], "animation_fbx_import_verified": false, "Unreal_import_verified": false, "final_art_accepted": false}
+00:04.156  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_dragonkin_priest\wc_u_dragonkin_priest.blend"
+00:04.953  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260907T165200Z-closeout\wc_u_dragonkin_priest-readback\silhouette96-front.png'
+00:04.985  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260907T165200Z-closeout\wc_u_dragonkin_priest-readback\silhouette96-game-angle.png'
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+WC_DRAGONKIN_READBACK {"status": "PASS_ACTUAL_BLENDER_FBX_AND_VIDEO_READBACK", "unit_id": "wc_u_dragonkin_priest", "source_revision": 1, "source_sha256": "6a0c42ce5b642a230f4b5f7f3bb6e175c6fb5e780c082c6f3719a4569d4b7e05", "export_manifest_sha256": "e42535c2cae7acd2ba7dbb35f2f9c9fb28a069d567c5344ec0b24567514dc363", "blender_version": "5.1.1", "recorded_frames": 442, "recorded_seconds": 7.366666666666666, "rig_revision": "WC_humanoid_draconic_v1", "source_modified": false, "Unreal_import_verified": false, "continuous_visual_approval": false, "finished_art_accepted": false, "silhouettes": [{"view": "front", "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260907T165200Z-closeout\\wc_u_dragonkin_priest-readback\\silhouette96-front.png", "sha256": "bddc2949359cb346bfcc8f1efac2bb6e007ffc6eda1981c9bb4d642f19a924fc", "dark_pixels": 1004, "light_pixels": 7836}, {"view": "game-angle", "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260907T165200Z-closeout\\wc_u_dragonkin_priest-readback\\silhouette96-game-angle.png", "sha256": "7500c4e554644521dc795990649142f0c0b13834d2882d7bdf2d6fcafa48cf94", "dark_pixels": 799, "light_pixels": 8186}], "semantic_geometry": {"continuous_gesture_quality_approved": false, "free_palm_rise_m": 0.3030000329017639, "active_release_frame": 22}, "preserved": null, "verification_script_sha256": "50cb121795fc7318078d6bf0ae6e41487a1b5f8b8be1d048e4d2e13e4d58c3f7"}
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

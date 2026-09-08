@@ -1,0 +1,213 @@
+00:02.703  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_dragonkin_rogue\wc_u_dragonkin_rogue.blend"
+{
+  "status": "structural_checks_passed_visual_review_required",
+  "blender_version": "5.1.1",
+  "collection": "EXPORT",
+  "evaluated_triangle_total": 5668,
+  "objects": [
+    {
+      "name": "Armature",
+      "type": "ARMATURE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.0779612064361572,
+        0.49362826347351074,
+        2.0153849124908447
+      ],
+      "roots": [
+        "root"
+      ],
+      "deform_bones": 27
+    },
+    {
+      "name": "SK_wc_u_dragonkin_rogue",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.4759020805358887,
+        0.6529622077941895,
+        1.8687134981155396
+      ],
+      "evaluated_triangles": 5668,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "not_checked": [
+    "appearance",
+    "deformation across all clips",
+    "UV overlap appropriateness",
+    "normal-map convention",
+    "Unreal import",
+    "LOD silhouette",
+    "gameplay readability"
+  ]
+}
+{
+  "status": "structural_checks_passed_visual_review_required",
+  "blender_version": "5.1.1",
+  "collection": "LOD_SOURCE",
+  "evaluated_triangle_total": 4250,
+  "objects": [
+    {
+      "name": "SK_wc_u_dragonkin_rogue_LOD1",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.4759020805358887,
+        0.6529622077941895,
+        1.8687922954559326
+      ],
+      "evaluated_triangles": 2833,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    },
+    {
+      "name": "SK_wc_u_dragonkin_rogue_LOD2",
+      "type": "MESH",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.478710651397705,
+        0.6518049836158752,
+        1.8694175481796265
+      ],
+      "evaluated_triangles": 1417,
+      "material_slots": 1,
+      "uv_layers": 1,
+      "skin_checks": {
+        "unweighted": 0,
+        "excess_influences": 0,
+        "unnormalized": 0
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "not_checked": [
+    "appearance",
+    "deformation across all clips",
+    "UV overlap appropriateness",
+    "normal-map convention",
+    "Unreal import",
+    "LOD silhouette",
+    "gameplay readability"
+  ]
+}
+{
+  "status": "sampled_motion_invariants_passed",
+  "unit_id": "wc_u_dragonkin_rogue",
+  "blender_version": "5.1.1",
+  "sampling": "actual deformed mesh every 3 frames at 60fps",
+  "clips": [
+    {
+      "clip": "Idle",
+      "samples": 41,
+      "minimum_support_sole_z_m": 0.0018898452399298549,
+      "maximum_support_sole_z_m": 0.0018898452399298549,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Move",
+      "samples": 21,
+      "minimum_support_sole_z_m": 0.0018897784175351262,
+      "maximum_support_sole_z_m": 0.001889890292659402,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Attack",
+      "samples": 27,
+      "minimum_support_sole_z_m": 0.0018898452399298549,
+      "maximum_support_sole_z_m": 0.0018898452399298549,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Active",
+      "samples": 12,
+      "minimum_support_sole_z_m": 0.0018898452399298549,
+      "maximum_support_sole_z_m": 0.0018898452399298549,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Hit",
+      "samples": 9,
+      "minimum_support_sole_z_m": 0.00188979331869632,
+      "maximum_support_sole_z_m": 0.0018898622365668416,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Defeat",
+      "samples": 21,
+      "minimum_support_sole_z_m": 0.0018897784175351262,
+      "maximum_support_sole_z_m": 0.0018899721326306462,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    },
+    {
+      "clip": "Victory",
+      "samples": 31,
+      "minimum_support_sole_z_m": 0.0018898452399298549,
+      "maximum_support_sole_z_m": 0.0018898452399298549,
+      "max_root_translation_m": 0,
+      "max_pose_scale_error": 0
+    }
+  ],
+  "errors": [],
+  "not_checked": [
+    "continuous visual quality",
+    "weapon/costume clipping",
+    "semantic gesture review",
+    "Unreal retarget/import",
+    "runtime move-speed synchronization"
+  ]
+}
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+WC_NEW_HERO_READBACK_PASS {"status": "PASS_SAVED_SOURCE_SKIN_MOTION_AND_MESH_FBX_READBACK", "unit_id": "wc_u_dragonkin_rogue", "source_sha256": "0f918bf0a76472b129212189273e9160ca697e08d72cca103c63c1da8b3ecf77", "manifest_sha256": "1bb93f7d9e67c964ef1a578d5bdc835f86d62cbb59ecc145d71effe5a9d2d038", "source_revision": 1, "geometry_revision": 1, "animation_revision": 1, "blender_version": "5.1.1", "files_verified": 14, "source_clips_verified": 7, "mesh_fbx_readbacks": [{"mesh_suffix": "", "dimensions_m": [1.7879399061203003, 0.4787222892045975, 1.884329859050922], "triangles": 5668, "bones": 27, "materials": 1, "uv_layers": 1, "weighted_vertices": 3180}, {"mesh_suffix": "_LOD1", "dimensions_m": [1.7879399061203003, 0.4787222892045975, 1.884512487682514], "triangles": 2833, "bones": 27, "materials": 1, "uv_layers": 1, "weighted_vertices": 1636}, {"mesh_suffix": "_LOD2", "dimensions_m": [1.792992353439331, 0.48330381512641907, 1.885052919969894], "triangles": 1417, "bones": 27, "materials": 1, "uv_layers": 1, "weighted_vertices": 883}], "animation_fbx_import_verified": false, "Unreal_import_verified": false, "final_art_accepted": false}
+00:05.172  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_dragonkin_rogue\wc_u_dragonkin_rogue.blend"
+00:06.985  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260907T165200Z-closeout\wc_u_dragonkin_rogue-readback\silhouette96-front.png'
+00:07.032  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\WC-U440\20260907T165200Z-closeout\wc_u_dragonkin_rogue-readback\silhouette96-game-angle.png'
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+WC_DRAGONKIN_READBACK {"status": "PASS_ACTUAL_BLENDER_FBX_AND_VIDEO_READBACK", "unit_id": "wc_u_dragonkin_rogue", "source_revision": 1, "source_sha256": "0f918bf0a76472b129212189273e9160ca697e08d72cca103c63c1da8b3ecf77", "export_manifest_sha256": "1bb93f7d9e67c964ef1a578d5bdc835f86d62cbb59ecc145d71effe5a9d2d038", "blender_version": "5.1.1", "recorded_frames": 472, "recorded_seconds": 7.866666666666666, "rig_revision": "WC_humanoid_draconic_v1", "source_modified": false, "Unreal_import_verified": false, "continuous_visual_approval": false, "finished_art_accepted": false, "silhouettes": [{"view": "front", "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260907T165200Z-closeout\\wc_u_dragonkin_rogue-readback\\silhouette96-front.png", "sha256": "d05725053914febf3eec82b70e63f36f1af23fda8b4daaef33e38bc9a405322c", "dark_pixels": 880, "light_pixels": 7976}, {"view": "game-angle", "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U440\\20260907T165200Z-closeout\\wc_u_dragonkin_rogue-readback\\silhouette96-game-angle.png", "sha256": "0bfdbae9523af7c1f25fd5625831414923c4d9cf7f1282a736aa8b34b6cb6ef9", "dark_pixels": 702, "light_pixels": 8265}], "semantic_geometry": {"continuous_gesture_quality_approved": false, "two_actual_alternating_attack_windows": [{"window": {"name": "R", "start_frame": 1, "release_frame": 16, "end_frame": 40}, "hand_movement_m": {"r": 0.15473338594104172, "l": 0.0}}, {"window": {"name": "L", "start_frame": 40, "release_frame": 55, "end_frame": 79}, "hand_movement_m": {"r": 0.0, "l": 0.15473333026633834}}], "attack_asset_count": 1}, "preserved": null, "verification_script_sha256": "50cb121795fc7318078d6bf0ae6e41487a1b5f8b8be1d048e4d2e13e4d58c3f7"}
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

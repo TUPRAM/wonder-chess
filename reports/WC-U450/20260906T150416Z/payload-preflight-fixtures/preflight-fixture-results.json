@@ -1,0 +1,63 @@
+{
+  "boundary": "File fixtures test preflight acceptance and rejection only. No game launched; no network or gameplay certification.",
+  "checks": [
+    {
+      "case": "valid",
+      "pass": true,
+      "expected_acceptance": true,
+      "actual_acceptance": true,
+      "detail": null
+    },
+    {
+      "case": "changed-ucas",
+      "pass": true,
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "detail": "Packaged payload differs from immutable provenance: C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T150416Z\\payload-preflight-fixtures\\changed-ucas\\fixture.ucas"
+    },
+    {
+      "case": "unexpected-file",
+      "pass": true,
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "detail": "Package file membership changed since provenance capture; only runtime Saved directories are excluded"
+    },
+    {
+      "case": "missing-file",
+      "pass": true,
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "detail": "Packaged payload file is missing: C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T150416Z\\payload-preflight-fixtures\\missing-file\\missing.utoc"
+    },
+    {
+      "case": "duplicate-entry",
+      "pass": true,
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "detail": "Duplicate packaged payload entry"
+    },
+    {
+      "case": "outside-root",
+      "pass": true,
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "detail": "Manifest payload path escapes package root"
+    },
+    {
+      "case": "legacy-executable-only",
+      "pass": true,
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "detail": "Unverified payload provenance: a complete packaged_payload group and stable capture are required; legacy executable-only provenance cannot authorize this run"
+    },
+    {
+      "case": "runtime-saved",
+      "pass": true,
+      "expected_acceptance": true,
+      "actual_acceptance": true,
+      "detail": null
+    }
+  ],
+  "passed": 8,
+  "failed": 0
+}

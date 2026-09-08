@@ -1,0 +1,766 @@
+{
+  "schema": "wonder_chess_update_regression_audit_v1",
+  "status": "PASS",
+  "started_utc": "2026-09-06T14:03:48.121495+00:00",
+  "ended_utc": "2026-09-06T14:03:56.430971+00:00",
+  "evidence_directory": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U410\\20260906T133515Z\\early-packaged100",
+  "native_run": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U410\\20260906T131435Z\\native-100-final",
+  "package_source_data": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T135347Z\\early-package-audit\\package-source\\WonderChess\\Content\\WonderChess\\SourceData",
+  "auditor_sha256": "95611a729096723a5f8e70213801805b2ddfc1b1b4aa421659ddc6b4bcbf591a",
+  "checks_passed": 588244,
+  "checks_failed": 0,
+  "categories": {
+    "active_profile": {
+      "passed": 1,
+      "failed": 0
+    },
+    "actual_headless_mode": {
+      "passed": 1,
+      "failed": 0
+    },
+    "actual_process_exit": {
+      "passed": 1,
+      "failed": 0
+    },
+    "all24_heroes_deployed": {
+      "passed": 1,
+      "failed": 0
+    },
+    "audit_inputs_stable": {
+      "passed": 60,
+      "failed": 0
+    },
+    "batch_complete": {
+      "passed": 1,
+      "failed": 0
+    },
+    "cap_truthful": {
+      "passed": 100,
+      "failed": 0
+    },
+    "catalog_digest_binding": {
+      "passed": 1,
+      "failed": 0
+    },
+    "catalog_source_binding": {
+      "passed": 7,
+      "failed": 0
+    },
+    "combat_lock_round_set": {
+      "passed": 100,
+      "failed": 0
+    },
+    "combat_lock_round_unique": {
+      "passed": 3158,
+      "failed": 0
+    },
+    "deployment_legal": {
+      "passed": 108031,
+      "failed": 0
+    },
+    "deployment_seat_set": {
+      "passed": 3158,
+      "failed": 0
+    },
+    "deployment_seat_unique": {
+      "passed": 25264,
+      "failed": 0
+    },
+    "eliminated_deployment_empty": {
+      "passed": 25264,
+      "failed": 0
+    },
+    "elimination_persistent": {
+      "passed": 6180,
+      "failed": 0
+    },
+    "every_living_seat_one_fight": {
+      "passed": 3158,
+      "failed": 0
+    },
+    "executable_binding": {
+      "passed": 1,
+      "failed": 0
+    },
+    "execution_timestamp_order": {
+      "passed": 1,
+      "failed": 0
+    },
+    "fight_aggregate_reconciled": {
+      "passed": 300,
+      "failed": 0
+    },
+    "fight_completed": {
+      "passed": 12748,
+      "failed": 0
+    },
+    "fight_namespace": {
+      "passed": 12748,
+      "failed": 0
+    },
+    "final_round_placement": {
+      "passed": 800,
+      "failed": 0
+    },
+    "health_and_economy": {
+      "passed": 25264,
+      "failed": 0
+    },
+    "hero_use_complete_matrix": {
+      "passed": 100,
+      "failed": 0
+    },
+    "hero_use_key": {
+      "passed": 19200,
+      "failed": 0
+    },
+    "hero_use_reconciled": {
+      "passed": 19200,
+      "failed": 0
+    },
+    "native_catalog_parity": {
+      "passed": 1,
+      "failed": 0
+    },
+    "native_command_count": {
+      "passed": 100,
+      "failed": 0
+    },
+    "native_commands_legal": {
+      "passed": 78791,
+      "failed": 0
+    },
+    "native_deployment_capacity": {
+      "passed": 25264,
+      "failed": 0
+    },
+    "native_deployment_parity": {
+      "passed": 25264,
+      "failed": 0
+    },
+    "native_deployment_set_complete": {
+      "passed": 1,
+      "failed": 0
+    },
+    "native_executable_hash": {
+      "passed": 1,
+      "failed": 0
+    },
+    "native_execution_success": {
+      "passed": 1,
+      "failed": 0
+    },
+    "native_fight_parity": {
+      "passed": 3158,
+      "failed": 0
+    },
+    "native_fight_pvp_index": {
+      "passed": 3158,
+      "failed": 0
+    },
+    "native_fight_round_set_complete": {
+      "passed": 1,
+      "failed": 0
+    },
+    "native_fixture_binding": {
+      "passed": 1,
+      "failed": 0
+    },
+    "native_logical_hash_parity": {
+      "passed": 25264,
+      "failed": 0
+    },
+    "native_pending_neutral_reward": {
+      "passed": 5810,
+      "failed": 0
+    },
+    "native_retained_evidence_hash": {
+      "passed": 7,
+      "failed": 0
+    },
+    "native_round_present": {
+      "passed": 25264,
+      "failed": 0
+    },
+    "native_round_schedule": {
+      "passed": 25264,
+      "failed": 0
+    },
+    "native_round_seat_parity": {
+      "passed": 25264,
+      "failed": 0
+    },
+    "native_round_seat_unique": {
+      "passed": 25264,
+      "failed": 0
+    },
+    "native_round_set_complete": {
+      "passed": 1,
+      "failed": 0
+    },
+    "native_seed_present": {
+      "passed": 100,
+      "failed": 0
+    },
+    "native_seed_set": {
+      "passed": 1,
+      "failed": 0
+    },
+    "native_settlement_once": {
+      "passed": 3158,
+      "failed": 0
+    },
+    "native_summary_aggregate": {
+      "passed": 3,
+      "failed": 0
+    },
+    "native_summary_unique": {
+      "passed": 100,
+      "failed": 0
+    },
+    "native_tournament_parity": {
+      "passed": 700,
+      "failed": 0
+    },
+    "neutral_settlement": {
+      "passed": 5810,
+      "failed": 0
+    },
+    "neutral_typed_owner": {
+      "passed": 5810,
+      "failed": 0
+    },
+    "package_build_success": {
+      "passed": 1,
+      "failed": 0
+    },
+    "package_capture_precedes_launch": {
+      "passed": 1,
+      "failed": 0
+    },
+    "package_payload_present": {
+      "passed": 1,
+      "failed": 0
+    },
+    "package_payload_scope": {
+      "passed": 31,
+      "failed": 0
+    },
+    "package_payload_unchanged": {
+      "passed": 31,
+      "failed": 0
+    },
+    "package_source_provenance": {
+      "passed": 13,
+      "failed": 0
+    },
+    "placement_range": {
+      "passed": 100,
+      "failed": 0
+    },
+    "placement_seat_set": {
+      "passed": 100,
+      "failed": 0
+    },
+    "placement_seat_unique": {
+      "passed": 800,
+      "failed": 0
+    },
+    "provenance_hash": {
+      "passed": 1,
+      "failed": 0
+    },
+    "pvp_typed_owners": {
+      "passed": 6938,
+      "failed": 0
+    },
+    "round_seat_set": {
+      "passed": 3158,
+      "failed": 0
+    },
+    "round_seat_unique": {
+      "passed": 25264,
+      "failed": 0
+    },
+    "rounds_contiguous": {
+      "passed": 100,
+      "failed": 0
+    },
+    "runtime_input_observation_set": {
+      "passed": 1,
+      "failed": 0
+    },
+    "runtime_observed_data_binding": {
+      "passed": 6,
+      "failed": 0
+    },
+    "seed_set": {
+      "passed": 1,
+      "failed": 0
+    },
+    "settlement_once": {
+      "passed": 3158,
+      "failed": 0
+    },
+    "source_data_file_set": {
+      "passed": 1,
+      "failed": 0
+    },
+    "source_data_path_scope": {
+      "passed": 13,
+      "failed": 0
+    },
+    "stage_data_binding": {
+      "passed": 12,
+      "failed": 0
+    },
+    "stage_profile_binding": {
+      "passed": 1,
+      "failed": 0
+    },
+    "tick_parity": {
+      "passed": 1,
+      "failed": 0
+    },
+    "trial_execution": {
+      "passed": 100,
+      "failed": 0
+    },
+    "version_parity": {
+      "passed": 1,
+      "failed": 0
+    },
+    "wave_schedule_complete": {
+      "passed": 1,
+      "failed": 0
+    }
+  },
+  "failures_first150": [],
+  "metrics": {
+    "totals": {
+      "fights": 12748,
+      "timeouts": 1864,
+      "ghosts": 602,
+      "commands": 78791,
+      "rounds": 3158,
+      "round_seat_rows": 25264
+    },
+    "hero_deployed_unit_rounds": {
+      "wc_u_dragonkin_guardian": 3510,
+      "wc_u_dragonkin_priest": 825,
+      "wc_u_dragonkin_ranger": 1671,
+      "wc_u_dragonkin_rogue": 586,
+      "wc_u_dwarf_guardian": 11327,
+      "wc_u_dwarf_priest": 1158,
+      "wc_u_dwarf_ranger": 3364,
+      "wc_u_dwarf_warrior": 6806,
+      "wc_u_elf_mage": 48,
+      "wc_u_elf_priest": 530,
+      "wc_u_elf_ranger": 8937,
+      "wc_u_elf_rogue": 2662,
+      "wc_u_halfling_mage": 466,
+      "wc_u_halfling_ranger": 9303,
+      "wc_u_halfling_rogue": 2540,
+      "wc_u_halfling_warrior": 9392,
+      "wc_u_human_guardian": 11655,
+      "wc_u_human_mage": 436,
+      "wc_u_human_priest": 1923,
+      "wc_u_human_warrior": 7242,
+      "wc_u_orc_guardian": 5720,
+      "wc_u_orc_mage": 116,
+      "wc_u_orc_rogue": 5792,
+      "wc_u_orc_warrior": 12022
+    },
+    "neutral_outcomes": {
+      "1": {
+        "encounters": 800,
+        "wins": 800,
+        "losses": 0,
+        "draws": 0,
+        "timeouts": 0
+      },
+      "2": {
+        "encounters": 800,
+        "wins": 800,
+        "losses": 0,
+        "draws": 0,
+        "timeouts": 0
+      },
+      "3": {
+        "encounters": 800,
+        "wins": 800,
+        "losses": 0,
+        "draws": 0,
+        "timeouts": 0
+      },
+      "5": {
+        "encounters": 800,
+        "wins": 800,
+        "losses": 0,
+        "draws": 0,
+        "timeouts": 0
+      },
+      "10": {
+        "encounters": 800,
+        "wins": 800,
+        "losses": 0,
+        "draws": 0,
+        "timeouts": 0
+      },
+      "15": {
+        "encounters": 770,
+        "wins": 770,
+        "losses": 0,
+        "draws": 0,
+        "timeouts": 0
+      },
+      "20": {
+        "encounters": 555,
+        "wins": 555,
+        "losses": 0,
+        "draws": 0,
+        "timeouts": 0
+      },
+      "25": {
+        "encounters": 315,
+        "wins": 315,
+        "losses": 0,
+        "draws": 0,
+        "timeouts": 0
+      },
+      "30": {
+        "encounters": 142,
+        "wins": 142,
+        "losses": 0,
+        "draws": 0,
+        "timeouts": 0
+      },
+      "35": {
+        "encounters": 28,
+        "wins": 28,
+        "losses": 0,
+        "draws": 0,
+        "timeouts": 0
+      }
+    },
+    "simulated_seconds": {
+      "count": 100,
+      "min": 1011.05,
+      "median": 1229.225,
+      "mean": 1236.0845,
+      "p95": 1458.25,
+      "max": 1523.8
+    }
+  },
+  "artifacts": [
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U410\\20260906T133515Z\\early-packaged100\\regression.json",
+      "bytes": 18121367,
+      "sha256": "7d425d5569de8e46a325fe6de167ae4f200b83ca4826cf432bdd366d42c2792d"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U410\\20260906T133515Z\\early-packaged100\\launch.json",
+      "bytes": 1101,
+      "sha256": "f5420fb42c23bfa1910416304698db7fa6e67619da797c1350858b121bf5616c"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U410\\20260906T133515Z\\early-packaged100\\process-exit.json",
+      "bytes": 315,
+      "sha256": "76cf37f04b9e39665622f10f0b3c2dd50fb5eb2da9239406715b046dd263305b"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U410\\20260906T132749Z\\early-package\\early-provenance.json",
+      "bytes": 318746,
+      "sha256": "ac3e76660e86515c516aa7dd54c20609b9a466cff890f174dc7b577bd053b3f1"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Early\\Windows\\Engine\\Binaries\\ThirdParty\\DbgHelp\\dbghelp.dll",
+      "bytes": 2232688,
+      "sha256": "d65dff2ebe90bf79fba62f3bb1f105a7ce8efaefaa8349379a886bb893a4ef45"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Early\\Windows\\Engine\\Binaries\\ThirdParty\\MsQuic\\v220\\win64\\msquic.dll",
+      "bytes": 2547080,
+      "sha256": "832f4ae560b1623aa4d8f87b982e9c9414312723fbc905ddab93fd80d7f1cea2"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Early\\Windows\\Engine\\Binaries\\ThirdParty\\NVIDIA\\NVaftermath\\Win64\\GFSDK_Aftermath_Lib.x64.dll",
+      "bytes": 5442592,
+      "sha256": "f2f1a88185345b28d05673e11111ee21845f3ebe65919cf6b3085bee7d09e30a"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Early\\Windows\\Engine\\Binaries\\ThirdParty\\Ogg\\Win64\\VS2015\\libogg_64.dll",
+      "bytes": 59832,
+      "sha256": "1e2fe8a3dfe9616edcb3cd3a5a958c791f690d5b604eb1658b0f844cef156eee"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Early\\Windows\\Engine\\Binaries\\ThirdParty\\Vorbis\\Win64\\VS2015\\libvorbis_64.dll",
+      "bytes": 1724856,
+      "sha256": "676bbdc5838755d7a881c847f84ca79997b525882594b66160ab800676cab9c0"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Early\\Windows\\Engine\\Binaries\\ThirdParty\\Vorbis\\Win64\\VS2015\\libvorbisfile_64.dll",
+      "bytes": 48568,
+      "sha256": "ceb067771c03ae1a7afc125c15c85dbab027aaec72575dc101c618eba2bafea0"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Early\\Windows\\Engine\\Binaries\\ThirdParty\\Windows\\XAudio2_9\\x64\\xaudio2_9redist.dll",
+      "bytes": 858144,
+      "sha256": "013984e33e884bd0b823734ab86a599a8dceffed675039ff293d15ffcf7f2be9"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Early\\Windows\\Engine\\Config\\StagedBuild_WonderChess.ini",
+      "bytes": 3,
+      "sha256": "f1945cd6c19e56b3c1c78943ef5ec18116907a4ca1efc40a57d48ab1db7adfc5"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Early\\Windows\\Engine\\Content\\Renderer\\TessellationTable.bin",
+      "bytes": 259568,
+      "sha256": "edc4f3b628a139c5e185bbaeca661c95c1f427368d3b92892c5cff36c56dd941"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Early\\Windows\\Engine\\Content\\Slate\\Cursor\\invisible.cur",
+      "bytes": 326,
+      "sha256": "fef3980fa567e9c45d5d8dcaa432a2c1a3f3bb17fe67d7ab198164f56c142aa1"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Early\\Windows\\Engine\\Content\\SlateDebug\\Fonts\\LastResort.tps",
+      "bytes": 930,
+      "sha256": "0f775fa99d05e21d43d2d06d55982b23dcdccdb512a9a5a07aff674f212c41b8"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Early\\Windows\\Engine\\Content\\SlateDebug\\Fonts\\LastResort.ttf",
+      "bytes": 5395052,
+      "sha256": "fff0f8de0b868b964950fe97c9b60f893e9bc85a4f90b3629c5693db058b97b9"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Early\\Windows\\Engine\\Extras\\Redist\\en-us\\vc_redist.arm64.exe",
+      "bytes": 11733048,
+      "sha256": "07698e7186563f0f9c78c37b2acb58136813fd5cfb068d41a339be2ee5b49cef"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Early\\Windows\\Engine\\Extras\\Redist\\en-us\\vc_redist.x64.exe",
+      "bytes": 25646472,
+      "sha256": "d027d8eb8edbef6c8740683b41d00442f4108351c034b9e0cb36fff27349b5be"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Early\\Windows\\Engine\\Plugins\\NNE\\NNERuntimeORT\\Binaries\\ThirdParty\\Onnxruntime\\Win64\\onnxruntime.dll",
+      "bytes": 14692872,
+      "sha256": "381497f383b457180aba6e5bf56a2eb18cefd6735cfd47257539f6d87fbc8584"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Early\\Windows\\Manifest_DebugFiles_Win64.txt",
+      "bytes": 230,
+      "sha256": "0633daeb59dc710e5194880599562f9b83fd38b000c100880705a1370c84870f"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Early\\Windows\\Manifest_NonUFSFiles_Win64.txt",
+      "bytes": 1578,
+      "sha256": "d54b550585711a626078e264a62c925e1c7a965a7ea283fdc0bc08cb74513f93"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Early\\Windows\\Manifest_UFSFiles_Win64.txt",
+      "bytes": 284387,
+      "sha256": "cbea3b23a5deefa981811a32268afd1c3e50f5aa4b60c61ba3369390d2823cab"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Early\\Windows\\WonderChess.exe",
+      "bytes": 164864,
+      "sha256": "38a46da697e48af83ec0105bd68b44073d95b3b902f710d53ac3f2280d6e8058"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Early\\Windows\\WonderChess\\Binaries\\Win64\\D3D12\\x64\\D3D12Core.dll",
+      "bytes": 4544000,
+      "sha256": "fb197903fea91aaf352d2322f342b1cec8db36ff0292a49f24173577e08f26cf"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Early\\Windows\\WonderChess\\Binaries\\Win64\\D3D12\\x64\\d3d12SDKLayers.dll",
+      "bytes": 5104632,
+      "sha256": "a817223446f53b3da894edb1ee7a92b94573690e689a9470b87bf42866115f91"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Early\\Windows\\WonderChess\\Binaries\\Win64\\DML\\x64\\DirectML.dll",
+      "bytes": 18537968,
+      "sha256": "664255a3d9a6b976e2d0e2440403537d9d0dd91b1fad866768638b4e73a2c33a"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Early\\Windows\\WonderChess\\Binaries\\Win64\\WonderChess-Win64-Shipping.exe",
+      "bytes": 144345600,
+      "sha256": "56da89fcfac07f59b5ea0ac9a895ea979d5fafcd585806128bbe8548d08ab371"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Early\\Windows\\WonderChess\\Binaries\\Win64\\WonderChess-Win64-Shipping.pdb",
+      "bytes": 209842176,
+      "sha256": "8e913a40867f8c2859d1857bfca530cd4403358aca71d7080b24de69e7ef0067"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Early\\Windows\\WonderChess\\Binaries\\Win64\\tbb12.dll",
+      "bytes": 331704,
+      "sha256": "645b681e3581c04d57f468bd85c17648172decf873653ab00382211b96cc98fb"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Early\\Windows\\WonderChess\\Binaries\\Win64\\tbbmalloc.dll",
+      "bytes": 117688,
+      "sha256": "f81a11f2e6e93036bab4e51a1daab9940fb8a9a5ec0f508c4cb76d398e27c100"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Early\\Windows\\WonderChess\\Content\\Paks\\WonderChess-Windows.pak",
+      "bytes": 10322390,
+      "sha256": "8b41bbc94aad5936977323feb01a07f71c878cade0868634406ef5d325369948"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Early\\Windows\\WonderChess\\Content\\Paks\\WonderChess-Windows.ucas",
+      "bytes": 128171952,
+      "sha256": "2ad88ce80de8adeccd7198be89566b0b902515c40383d36b6411fb0e449bca45"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Early\\Windows\\WonderChess\\Content\\Paks\\WonderChess-Windows.utoc",
+      "bytes": 153258,
+      "sha256": "d01810463ed5e9bcfa388e1fecf814518aefffd724b50e6ce922ed57316aabf2"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Early\\Windows\\WonderChess\\Content\\Paks\\global.ucas",
+      "bytes": 2636736,
+      "sha256": "1b564afda3ce2cdab09d284afc9287a0a042363755421da34bde9ac78c025968"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Early\\Windows\\WonderChess\\Content\\Paks\\global.utoc",
+      "bytes": 686,
+      "sha256": "ea801f6054a051e27f52eb7c210e10bcbae85251dc1e016f60e44459f7179c93"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T135347Z\\early-package-audit\\package-source\\WonderChess\\Content\\WonderChess\\SourceData\\asset_manifest.json",
+      "bytes": 13584,
+      "sha256": "07cda72611cb78b46f7e50656aa5ba807966cbdd71a64ce507858633c5bb571f"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T135347Z\\early-package-audit\\package-source\\WonderChess\\Content\\WonderChess\\SourceData\\bots.json",
+      "bytes": 3977,
+      "sha256": "8dca6fa22fa3cd370da18c77bf6eb2bb1fd335d837ec4200c5793fe8c2bd675b"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T135347Z\\early-package-audit\\package-source\\WonderChess\\Content\\WonderChess\\SourceData\\generated\\catalog_digest.json",
+      "bytes": 852,
+      "sha256": "395354c62c9ffde2279c974caf8409cc597cc09af013a708338e7297a7053e81"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T135347Z\\early-package-audit\\package-source\\WonderChess\\Content\\WonderChess\\SourceData\\generated\\unreal\\DT_Abilities_Alpha.json",
+      "bytes": 20766,
+      "sha256": "b291b4e862dfdc1417f0784f95c9691475e64bd1f370bb13c423a55f02457f38"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T135347Z\\early-package-audit\\package-source\\WonderChess\\Content\\WonderChess\\SourceData\\generated\\unreal\\DT_Units_Alpha.json",
+      "bytes": 15598,
+      "sha256": "321c699a82bdaceb18ad84689ef792bed02cfe49666ddd1679d9adbd7a0767b2"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T135347Z\\early-package-audit\\package-source\\WonderChess\\Content\\WonderChess\\SourceData\\locales\\en.json",
+      "bytes": 3826,
+      "sha256": "384265a2a8135aaea35f43a1a48913b356276a5fde39f6a4595ce18f9ee75ae5"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T135347Z\\early-package-audit\\package-source\\WonderChess\\Content\\WonderChess\\SourceData\\locales\\id.json",
+      "bytes": 3890,
+      "sha256": "0e4071ccf38eb62ad98c1d95c1f3cab1e6a10c8c961719d45f95020e04d9731c"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T135347Z\\early-package-audit\\package-source\\WonderChess\\Content\\WonderChess\\SourceData\\neutrals.json",
+      "bytes": 21468,
+      "sha256": "cebc886e01ead6b6a26b879ec6adb613a94cbb2879eeef440759ec23e619b129"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T135347Z\\early-package-audit\\package-source\\WonderChess\\Content\\WonderChess\\SourceData\\rules.alpha.json",
+      "bytes": 4312,
+      "sha256": "3030f588f96b94c03f857e82337c9ad658497fd3e0c8b9f3ae8a4313f5c2074f"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T135347Z\\early-package-audit\\package-source\\WonderChess\\Content\\WonderChess\\SourceData\\runtime_stage_manifest.json",
+      "bytes": 3793,
+      "sha256": "a57983a10116a5fb49db9085154e82e0a991356078653c460b8c48316d39bac5"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T135347Z\\early-package-audit\\package-source\\WonderChess\\Content\\WonderChess\\SourceData\\traits.json",
+      "bytes": 7523,
+      "sha256": "102263fc7b73c776b35dc2fffbee0f4805d41b85a935f6b8c0cf2b9d2922525f"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T135347Z\\early-package-audit\\package-source\\WonderChess\\Content\\WonderChess\\SourceData\\units.json",
+      "bytes": 184644,
+      "sha256": "d824b02b11fb7607656fcc37389ff93015fa064f67175fa07e772f151179ff99"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T135347Z\\early-package-audit\\package-source\\WonderChess\\Content\\WonderChess\\SourceData\\world.json",
+      "bytes": 6320,
+      "sha256": "bfdb3b375068922f68e5ccaa37d333ef26264b25391fa2e4530db83a68a1c044"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U410\\20260906T131435Z\\native-100-final\\process.json",
+      "bytes": 1525,
+      "sha256": "d0e002bea926cf88e04f6732e6533f281ab062556411703f308bcc59d14786fc"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U410\\20260906T131435Z\\native-100-final\\runtime-tests.log",
+      "bytes": 10610,
+      "sha256": "89a8d1020bd4e61e898292bc4d3d524b9e61829c60e8953af4abdd8369f4ef57"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U410\\20260906T131435Z\\native-100-final\\tournaments.csv",
+      "bytes": 7714,
+      "sha256": "431dba3657b735df0259ece04d0f04997fab64cb1a9a4dbf8feae869f921140f"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U410\\20260906T131435Z\\native-100-final\\encounter-outcomes.csv",
+      "bytes": 417872,
+      "sha256": "db0f15ba0a1a54303513b103df0161fab53b3c2f93002affc2bad95d767ab4b5"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U410\\20260906T131435Z\\native-100-final\\ability-coverage.csv",
+      "bytes": 2951852,
+      "sha256": "5f61b5bc3a2aa2479a8c2921fe3a45dc6e740ea6af55ac3fcfadbcebb98d74da"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U410\\20260906T131435Z\\native-100-final\\trait-coverage.csv",
+      "bytes": 3657117,
+      "sha256": "fcc39f3d264231fafd2a2ceea49d208f07b53da3975cb0932c68228d65625880"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U410\\20260906T131435Z\\native-100-final\\compositions.csv",
+      "bytes": 11507999,
+      "sha256": "44a212057ca173e5f6a786bf2c14827b62ddc40417a1e47dd29abf320815f9d6"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U410\\20260906T131435Z\\native-100-final\\wonder_runtime_tests.exe",
+      "bytes": 553984,
+      "sha256": "65afd56cd312492acc64b31bf387185bd05a4d4a543bddb8b62225dfe2847902"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U410\\20260906T131435Z\\native-100-final\\CatalogFixture.h",
+      "bytes": 43486,
+      "sha256": "16c7eb396b1e22b7f0fc9cf7bcda138e83b23d605978d569333e3c2ec8ba60aa"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U410\\20260906T131435Z\\native-100-final\\summary.json",
+      "bytes": 4171,
+      "sha256": "d1b9b03945ff4428272b0b64eae020ee0fcada4f7025c5d65679871b22291cc9"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U410\\20260906T131435Z\\native-100-final\\round-economy.csv",
+      "bytes": 2232551,
+      "sha256": "74d948136568e8f5aa48e83585826c7731b3dcee63e3e4566bbf49a315a643eb"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U410\\20260906T131435Z\\native-100-final\\bot-decisions.csv",
+      "bytes": 4629918,
+      "sha256": "dca7fe25507a654ae584a589a0c18beddeacb42c14e8528e5ea19e5098d4d8a3"
+    }
+  ],
+  "limits": [
+    "Actual packaged -nullrhi -nosound 0H8B combat regression only; no rendering, listening, human input, two-machine LAN or frame-time acceptance.",
+    "Native and engine process namespaces intentionally produce different settlement IDs; IDs must be unique within the packaged run, while every logical pre/post hash is compared exactly.",
+    "Package SourceData is bound to captured packaging provenance and immutable payload hashes. Current workspace canonical data and current observed source files are not treated as compiled inputs.",
+    "Early package lacks a direct runtime neutrals.json hash observation. Its neutral bytes are bound through package payload, captured stage manifest and native catalog; this is not a direct runtime file-read hash.",
+    "Native round-economy.csv and bot-decisions.csv lack pre-existing summary digests; this audit hashes retained bytes and checks their consistency with hash-bound native summaries/fights/compositions and packaged outcomes.",
+    "Packaged legal-command evidence records aggregate counts and rejections; per-command decisions come from the retained native run, not a claimed packaged command trace.",
+    "Simulated duration and headless wall time are not human match duration or graphical performance measurements."
+  ]
+}

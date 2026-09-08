@@ -1,0 +1,489 @@
+{
+  "boundary": "File and public-JSON fixtures only; no game, network, art or match acceptance.",
+  "passed": 15,
+  "failed": 0,
+  "checks": [
+    {
+      "case": "payload_changed-ucas",
+      "pass": true,
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "checks": [
+        {
+          "check": "manifest_identity_matches_launch",
+          "status": "PASS",
+          "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T150416Z\\payload-preflight-fixtures\\changed-ucas-manifest.json"
+        },
+        {
+          "check": "stable_successful_packaging_provenance",
+          "status": "PASS",
+          "detail": "Shipping"
+        },
+        {
+          "check": "all_packaged_payload_bytes_still_match",
+          "status": "FAIL",
+          "detail": {
+            "file_count": 3,
+            "errors": [
+              {
+                "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T150416Z\\payload-preflight-fixtures\\changed-ucas\\fixture.ucas",
+                "error": "Payload changed",
+                "actual_sha256": "b3685b9934d4e8497de1cf5d6b54e92536f42b47cf9a3b4a1b56d73345759dd9"
+              }
+            ]
+          }
+        },
+        {
+          "check": "packaged_payload_membership_unchanged",
+          "status": "PASS",
+          "detail": {
+            "missing": [],
+            "unexpected": [],
+            "excluded": "Runtime Saved directories"
+          }
+        },
+        {
+          "check": "complete_payload_preflight_recorded_before_launch",
+          "status": "FAIL",
+          "detail": {
+            "recorded_count": 0,
+            "required_count": 3,
+            "verified_utc": null
+          }
+        }
+      ]
+    },
+    {
+      "case": "payload_duplicate-entry",
+      "pass": true,
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "checks": [
+        {
+          "check": "manifest_identity_matches_launch",
+          "status": "PASS",
+          "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T150416Z\\payload-preflight-fixtures\\duplicate-entry-manifest.json"
+        },
+        {
+          "check": "stable_successful_packaging_provenance",
+          "status": "PASS",
+          "detail": "Shipping"
+        },
+        {
+          "check": "all_packaged_payload_bytes_still_match",
+          "status": "FAIL",
+          "detail": {
+            "file_count": 4,
+            "errors": [
+              {
+                "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T150416Z\\payload-preflight-fixtures\\duplicate-entry\\fixture.exe",
+                "error": "Outside package or duplicate entry"
+              }
+            ]
+          }
+        },
+        {
+          "check": "packaged_payload_membership_unchanged",
+          "status": "PASS",
+          "detail": {
+            "missing": [],
+            "unexpected": [],
+            "excluded": "Runtime Saved directories"
+          }
+        },
+        {
+          "check": "complete_payload_preflight_recorded_before_launch",
+          "status": "FAIL",
+          "detail": {
+            "recorded_count": 0,
+            "required_count": 3,
+            "verified_utc": null
+          }
+        }
+      ]
+    },
+    {
+      "case": "payload_legacy-executable-only",
+      "pass": true,
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "checks": [
+        {
+          "check": "manifest_identity_matches_launch",
+          "status": "PASS",
+          "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T150416Z\\payload-preflight-fixtures\\legacy-executable-only-manifest.json"
+        },
+        {
+          "check": "stable_successful_packaging_provenance",
+          "status": "PASS",
+          "detail": "Shipping"
+        },
+        {
+          "check": "all_packaged_payload_bytes_still_match",
+          "status": "FAIL",
+          "detail": {
+            "file_count": 0,
+            "errors": []
+          }
+        },
+        {
+          "check": "packaged_payload_membership_unchanged",
+          "status": "FAIL",
+          "detail": {
+            "missing": [],
+            "unexpected": [
+              "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T150416Z\\payload-preflight-fixtures\\legacy-executable-only\\fixture.exe",
+              "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T150416Z\\payload-preflight-fixtures\\legacy-executable-only\\fixture.pak",
+              "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T150416Z\\payload-preflight-fixtures\\legacy-executable-only\\fixture.ucas"
+            ],
+            "excluded": "Runtime Saved directories"
+          }
+        },
+        {
+          "check": "complete_payload_preflight_recorded_before_launch",
+          "status": "FAIL",
+          "detail": {
+            "recorded_count": 0,
+            "required_count": 0,
+            "verified_utc": null
+          }
+        }
+      ]
+    },
+    {
+      "case": "payload_missing-file",
+      "pass": true,
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "checks": [
+        {
+          "check": "manifest_identity_matches_launch",
+          "status": "PASS",
+          "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T150416Z\\payload-preflight-fixtures\\missing-file-manifest.json"
+        },
+        {
+          "check": "stable_successful_packaging_provenance",
+          "status": "PASS",
+          "detail": "Shipping"
+        },
+        {
+          "check": "all_packaged_payload_bytes_still_match",
+          "status": "FAIL",
+          "detail": {
+            "file_count": 4,
+            "errors": [
+              {
+                "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T150416Z\\payload-preflight-fixtures\\missing-file\\missing.utoc",
+                "error": "Missing payload"
+              }
+            ]
+          }
+        },
+        {
+          "check": "packaged_payload_membership_unchanged",
+          "status": "FAIL",
+          "detail": {
+            "missing": [
+              "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T150416Z\\payload-preflight-fixtures\\missing-file\\missing.utoc"
+            ],
+            "unexpected": [],
+            "excluded": "Runtime Saved directories"
+          }
+        },
+        {
+          "check": "complete_payload_preflight_recorded_before_launch",
+          "status": "FAIL",
+          "detail": {
+            "recorded_count": 0,
+            "required_count": 4,
+            "verified_utc": null
+          }
+        }
+      ]
+    },
+    {
+      "case": "payload_outside-root",
+      "pass": true,
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "checks": [
+        {
+          "check": "manifest_identity_matches_launch",
+          "status": "PASS",
+          "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T150416Z\\payload-preflight-fixtures\\outside-root-manifest.json"
+        },
+        {
+          "check": "stable_successful_packaging_provenance",
+          "status": "PASS",
+          "detail": "Shipping"
+        },
+        {
+          "check": "all_packaged_payload_bytes_still_match",
+          "status": "FAIL",
+          "detail": {
+            "file_count": 4,
+            "errors": [
+              {
+                "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T150416Z\\payload-preflight-fixtures\\outside.fixture",
+                "error": "Outside package or duplicate entry"
+              }
+            ]
+          }
+        },
+        {
+          "check": "packaged_payload_membership_unchanged",
+          "status": "PASS",
+          "detail": {
+            "missing": [],
+            "unexpected": [],
+            "excluded": "Runtime Saved directories"
+          }
+        },
+        {
+          "check": "complete_payload_preflight_recorded_before_launch",
+          "status": "FAIL",
+          "detail": {
+            "recorded_count": 0,
+            "required_count": 4,
+            "verified_utc": null
+          }
+        }
+      ]
+    },
+    {
+      "case": "payload_runtime-saved",
+      "pass": true,
+      "expected_acceptance": true,
+      "actual_acceptance": true,
+      "checks": [
+        {
+          "check": "manifest_identity_matches_launch",
+          "status": "PASS",
+          "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T150416Z\\payload-preflight-fixtures\\runtime-saved-manifest.json"
+        },
+        {
+          "check": "stable_successful_packaging_provenance",
+          "status": "PASS",
+          "detail": "Shipping"
+        },
+        {
+          "check": "all_packaged_payload_bytes_still_match",
+          "status": "PASS",
+          "detail": {
+            "file_count": 3,
+            "errors": []
+          }
+        },
+        {
+          "check": "packaged_payload_membership_unchanged",
+          "status": "PASS",
+          "detail": {
+            "missing": [],
+            "unexpected": [],
+            "excluded": "Runtime Saved directories"
+          }
+        },
+        {
+          "check": "complete_payload_preflight_recorded_before_launch",
+          "status": "PASS",
+          "detail": {
+            "recorded_count": 3,
+            "required_count": 3,
+            "verified_utc": "2026-09-06T15:04:17.0161692Z"
+          }
+        }
+      ]
+    },
+    {
+      "case": "payload_unexpected-file",
+      "pass": true,
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "checks": [
+        {
+          "check": "manifest_identity_matches_launch",
+          "status": "PASS",
+          "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T150416Z\\payload-preflight-fixtures\\unexpected-file-manifest.json"
+        },
+        {
+          "check": "stable_successful_packaging_provenance",
+          "status": "PASS",
+          "detail": "Shipping"
+        },
+        {
+          "check": "all_packaged_payload_bytes_still_match",
+          "status": "PASS",
+          "detail": {
+            "file_count": 3,
+            "errors": []
+          }
+        },
+        {
+          "check": "packaged_payload_membership_unchanged",
+          "status": "FAIL",
+          "detail": {
+            "missing": [],
+            "unexpected": [
+              "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T150416Z\\payload-preflight-fixtures\\unexpected-file\\unexpected.dll"
+            ],
+            "excluded": "Runtime Saved directories"
+          }
+        },
+        {
+          "check": "complete_payload_preflight_recorded_before_launch",
+          "status": "FAIL",
+          "detail": {
+            "recorded_count": 0,
+            "required_count": 3,
+            "verified_utc": null
+          }
+        }
+      ]
+    },
+    {
+      "case": "payload_valid",
+      "pass": true,
+      "expected_acceptance": true,
+      "actual_acceptance": true,
+      "checks": [
+        {
+          "check": "manifest_identity_matches_launch",
+          "status": "PASS",
+          "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T150416Z\\payload-preflight-fixtures\\valid-manifest.json"
+        },
+        {
+          "check": "stable_successful_packaging_provenance",
+          "status": "PASS",
+          "detail": "Shipping"
+        },
+        {
+          "check": "all_packaged_payload_bytes_still_match",
+          "status": "PASS",
+          "detail": {
+            "file_count": 3,
+            "errors": []
+          }
+        },
+        {
+          "check": "packaged_payload_membership_unchanged",
+          "status": "PASS",
+          "detail": {
+            "missing": [],
+            "unexpected": [],
+            "excluded": "Runtime Saved directories"
+          }
+        },
+        {
+          "check": "complete_payload_preflight_recorded_before_launch",
+          "status": "PASS",
+          "detail": {
+            "recorded_count": 3,
+            "required_count": 3,
+            "verified_utc": "2026-09-06T15:04:16.6617127Z"
+          }
+        }
+      ]
+    },
+    {
+      "case": "round_kind_{'phase': 1, 'round': 1, 'neutralRound': True}",
+      "pass": true,
+      "actual": {
+        "phase": 1,
+        "round": 1,
+        "phase_name": "combat",
+        "round_kind": "neutral",
+        "source": "actual replicated neutralRound flag"
+      }
+    },
+    {
+      "case": "round_kind_{'phase': 1, 'round': 4, 'neutralRound': False}",
+      "pass": true,
+      "actual": {
+        "phase": 1,
+        "round": 4,
+        "phase_name": "combat",
+        "round_kind": "pvp",
+        "source": "actual replicated neutralRound flag"
+      }
+    },
+    {
+      "case": "round_kind_{'phase': 1, 'round': 1}",
+      "pass": true,
+      "actual": {
+        "phase": 1,
+        "round": 1,
+        "phase_name": "combat",
+        "round_kind": "unknown",
+        "source": "actual replicated neutralRound flag"
+      }
+    },
+    {
+      "case": "round_kind_{'phase': 0, 'round': 5, 'neutralRound': True}",
+      "pass": true,
+      "actual": {
+        "phase": 0,
+        "round": 5,
+        "phase_name": "preparation",
+        "round_kind": "neutral",
+        "source": "actual replicated neutralRound flag"
+      }
+    },
+    {
+      "case": "protocol_4_a",
+      "pass": true,
+      "checks": [
+        {
+          "check": "fixture_received_current_catalog_protocol",
+          "status": "PASS",
+          "detail": {
+            "received": {
+              "schemaVersion": "3.1.0",
+              "protocolVersion": 4,
+              "contentDigest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "provenance_catalog_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "boundary": "Actual received schema/protocol and full catalog digest; not hero art acceptance."
+          }
+        }
+      ]
+    },
+    {
+      "case": "protocol_3_a",
+      "pass": true,
+      "checks": [
+        {
+          "check": "fixture_received_current_catalog_protocol",
+          "status": "FAIL",
+          "detail": {
+            "received": {
+              "schemaVersion": "3.1.0",
+              "protocolVersion": 3,
+              "contentDigest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "provenance_catalog_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "boundary": "Actual received schema/protocol and full catalog digest; not hero art acceptance."
+          }
+        }
+      ]
+    },
+    {
+      "case": "protocol_4_b",
+      "pass": true,
+      "checks": [
+        {
+          "check": "fixture_received_current_catalog_protocol",
+          "status": "FAIL",
+          "detail": {
+            "received": {
+              "schemaVersion": "3.1.0",
+              "protocolVersion": 4,
+              "contentDigest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+            },
+            "provenance_catalog_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "boundary": "Actual received schema/protocol and full catalog digest; not hero art acceptance."
+          }
+        }
+      ]
+    }
+  ]
+}

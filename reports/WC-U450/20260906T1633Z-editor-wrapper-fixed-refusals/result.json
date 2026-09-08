@@ -1,0 +1,521 @@
+{
+  "status": "PASS",
+  "executed_utc": "2026-09-06T16:31:40.2131818Z",
+  "method": "Actual PowerShell wrapper refusal paths. Start-Process is intercepted as a defensive backstop: zero editor launches. Unexpected attempts remain failing results.",
+  "powershell_version": "7.6.5",
+  "wrapper": "C:\\Users\\iputu\\Documents\\Wonder Chess\\tools\\unreal\\invoke_editor_task.ps1",
+  "wrapper_sha256": "f8ca0b3ac209b12445159ebad68629adefb1ed715688487ee0d3b1a6e1c6a298",
+  "wrapper_unchanged": true,
+  "tests": 16,
+  "passed": 16,
+  "failed": 0,
+  "editor_processes_launched": 0,
+  "intercepted_launch_calls": [
+    {
+      "file": "C:/Program Files/Epic Games/UE_5.7/Engine/Binaries/Win64/UnrealEditor-Cmd.exe",
+      "arguments": [
+        "\"C:/Users/iputu/Documents/Wonder Chess/game/WonderChess.uproject\"",
+        "-unattended",
+        "-nop4",
+        "-NullRHI",
+        "-nosplash",
+        "-ExecutePythonScript=\"C:/Users/iputu/Documents/Wonder Chess/tools/unreal/run_editor_task.py\"",
+        "-abslog=\"C:/Users/iputu/Documents/Wonder Chess/reports/WC-U450/20260906T1633Z-editor-wrapper-fixed-refusals/cases/restore-absent/editor.log\""
+      ]
+    },
+    {
+      "file": "C:/Program Files/Epic Games/UE_5.7/Engine/Binaries/Win64/UnrealEditor-Cmd.exe",
+      "arguments": [
+        "\"C:/Users/iputu/Documents/Wonder Chess/game/WonderChess.uproject\"",
+        "-unattended",
+        "-nop4",
+        "-NullRHI",
+        "-nosplash",
+        "-ExecutePythonScript=\"C:/Users/iputu/Documents/Wonder Chess/tools/unreal/run_editor_task.py\"",
+        "-abslog=\"C:/Users/iputu/Documents/Wonder Chess/reports/WC-U450/20260906T1633Z-editor-wrapper-fixed-refusals/cases/restore-mixed/editor.log\""
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "name": "invalid-hero",
+      "pass": true,
+      "actual_error": "Unknown alpha hero: wc_u_not_real",
+      "expected_error_contains": "Unknown alpha hero",
+      "parameters": {
+        "Task": "import_alpha_assets",
+        "ReportDirectory": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T1633Z-editor-wrapper-fixed-refusals\\cases\\invalid-hero",
+        "Hero": [
+          "wc_u_not_real"
+        ],
+        "Editor": "C:/Program Files/Epic Games/UE_5.7/Engine/Binaries/Win64/UnrealEditor-Cmd.exe"
+      },
+      "intercepted_launch_calls": 0,
+      "created_output_directory": false,
+      "environment_preserved": true,
+      "environment_before": {
+        "WC_IMPORT_AUDIO_ONLY": null,
+        "WC_EDITOR_TASK": null,
+        "WC_IMPORT_AUDIO": null,
+        "WC_IMPORT_HERO": null,
+        "WC_EDITOR_REPORT_DIR": null
+      },
+      "environment_after": {
+        "WC_IMPORT_AUDIO_ONLY": null,
+        "WC_EDITOR_TASK": null,
+        "WC_IMPORT_AUDIO": null,
+        "WC_IMPORT_HERO": null,
+        "WC_EDITOR_REPORT_DIR": null
+      },
+      "existing_marker_hash_preserved": true,
+      "marker_sha256": null
+    },
+    {
+      "name": "path-shaped-hero",
+      "pass": true,
+      "actual_error": "Unknown alpha hero: ../../not-a-hero",
+      "expected_error_contains": "Unknown alpha hero",
+      "parameters": {
+        "Task": "import_alpha_assets",
+        "ReportDirectory": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T1633Z-editor-wrapper-fixed-refusals\\cases\\path-shaped-hero",
+        "Hero": [
+          "../../not-a-hero"
+        ],
+        "Editor": "C:/Program Files/Epic Games/UE_5.7/Engine/Binaries/Win64/UnrealEditor-Cmd.exe"
+      },
+      "intercepted_launch_calls": 0,
+      "created_output_directory": false,
+      "environment_preserved": true,
+      "environment_before": {
+        "WC_IMPORT_AUDIO_ONLY": null,
+        "WC_EDITOR_TASK": null,
+        "WC_IMPORT_AUDIO": null,
+        "WC_IMPORT_HERO": null,
+        "WC_EDITOR_REPORT_DIR": null
+      },
+      "environment_after": {
+        "WC_IMPORT_AUDIO_ONLY": null,
+        "WC_EDITOR_TASK": null,
+        "WC_IMPORT_AUDIO": null,
+        "WC_IMPORT_HERO": null,
+        "WC_EDITOR_REPORT_DIR": null
+      },
+      "existing_marker_hash_preserved": true,
+      "marker_sha256": null
+    },
+    {
+      "name": "outside-reports",
+      "pass": true,
+      "actual_error": "Choose a fresh report directory inside this project reports folder.",
+      "expected_error_contains": "inside this project reports folder",
+      "parameters": {
+        "Task": "import_alpha_assets",
+        "ReportDirectory": "C:/Users/iputu/Documents/Wonder Chess",
+        "Editor": "C:/Program Files/Epic Games/UE_5.7/Engine/Binaries/Win64/UnrealEditor-Cmd.exe"
+      },
+      "intercepted_launch_calls": 0,
+      "created_output_directory": false,
+      "environment_preserved": true,
+      "environment_before": {
+        "WC_IMPORT_AUDIO_ONLY": null,
+        "WC_EDITOR_TASK": null,
+        "WC_IMPORT_AUDIO": null,
+        "WC_IMPORT_HERO": null,
+        "WC_EDITOR_REPORT_DIR": null
+      },
+      "environment_after": {
+        "WC_IMPORT_AUDIO_ONLY": null,
+        "WC_EDITOR_TASK": null,
+        "WC_IMPORT_AUDIO": null,
+        "WC_IMPORT_HERO": null,
+        "WC_EDITOR_REPORT_DIR": null
+      },
+      "existing_marker_hash_preserved": true,
+      "marker_sha256": null
+    },
+    {
+      "name": "traversal-outside-reports",
+      "pass": true,
+      "actual_error": "Choose a fresh report directory inside this project reports folder.",
+      "expected_error_contains": "inside this project reports folder",
+      "parameters": {
+        "Task": "import_alpha_assets",
+        "ReportDirectory": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\..\\docs",
+        "Editor": "C:/Program Files/Epic Games/UE_5.7/Engine/Binaries/Win64/UnrealEditor-Cmd.exe"
+      },
+      "intercepted_launch_calls": 0,
+      "created_output_directory": false,
+      "environment_preserved": true,
+      "environment_before": {
+        "WC_IMPORT_AUDIO_ONLY": null,
+        "WC_EDITOR_TASK": null,
+        "WC_IMPORT_AUDIO": null,
+        "WC_IMPORT_HERO": null,
+        "WC_EDITOR_REPORT_DIR": null
+      },
+      "environment_after": {
+        "WC_IMPORT_AUDIO_ONLY": null,
+        "WC_EDITOR_TASK": null,
+        "WC_IMPORT_AUDIO": null,
+        "WC_IMPORT_HERO": null,
+        "WC_EDITOR_REPORT_DIR": null
+      },
+      "existing_marker_hash_preserved": true,
+      "marker_sha256": null
+    },
+    {
+      "name": "reports-root-itself",
+      "pass": true,
+      "actual_error": "Choose a fresh report directory inside this project reports folder.",
+      "expected_error_contains": "inside this project reports folder",
+      "parameters": {
+        "Task": "import_alpha_assets",
+        "ReportDirectory": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports",
+        "Editor": "C:/Program Files/Epic Games/UE_5.7/Engine/Binaries/Win64/UnrealEditor-Cmd.exe"
+      },
+      "intercepted_launch_calls": 0,
+      "created_output_directory": false,
+      "environment_preserved": true,
+      "environment_before": {
+        "WC_IMPORT_AUDIO_ONLY": null,
+        "WC_EDITOR_TASK": null,
+        "WC_IMPORT_AUDIO": null,
+        "WC_IMPORT_HERO": null,
+        "WC_EDITOR_REPORT_DIR": null
+      },
+      "environment_after": {
+        "WC_IMPORT_AUDIO_ONLY": null,
+        "WC_EDITOR_TASK": null,
+        "WC_IMPORT_AUDIO": null,
+        "WC_IMPORT_HERO": null,
+        "WC_EDITOR_REPORT_DIR": null
+      },
+      "existing_marker_hash_preserved": true,
+      "marker_sha256": null
+    },
+    {
+      "name": "preexisting-evidence",
+      "pass": true,
+      "actual_error": "Existing evidence directory will not be overwritten.",
+      "expected_error_contains": "Existing evidence directory",
+      "parameters": {
+        "Task": "import_alpha_assets",
+        "ReportDirectory": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T1633Z-editor-wrapper-fixed-refusals\\cases\\preexisting-evidence",
+        "Editor": "C:/Program Files/Epic Games/UE_5.7/Engine/Binaries/Win64/UnrealEditor-Cmd.exe"
+      },
+      "intercepted_launch_calls": 0,
+      "created_output_directory": false,
+      "environment_preserved": true,
+      "environment_before": {
+        "WC_IMPORT_AUDIO_ONLY": null,
+        "WC_EDITOR_TASK": null,
+        "WC_IMPORT_AUDIO": null,
+        "WC_IMPORT_HERO": null,
+        "WC_EDITOR_REPORT_DIR": null
+      },
+      "environment_after": {
+        "WC_IMPORT_AUDIO_ONLY": null,
+        "WC_EDITOR_TASK": null,
+        "WC_IMPORT_AUDIO": null,
+        "WC_IMPORT_HERO": null,
+        "WC_EDITOR_REPORT_DIR": null
+      },
+      "existing_marker_hash_preserved": true,
+      "marker_sha256": "04AF1D63FA6D8954469665AB6FCF112CE907478381E7CFB717D05E54127CF4D5"
+    },
+    {
+      "name": "hero-on-wrong-task",
+      "pass": true,
+      "actual_error": "Hero/audio selection is only supported for import_alpha_assets.",
+      "expected_error_contains": "only supported for import_alpha_assets",
+      "parameters": {
+        "Task": "import_arena",
+        "ReportDirectory": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T1633Z-editor-wrapper-fixed-refusals\\cases\\hero-on-wrong-task",
+        "Hero": [
+          "wc_u_human_guardian"
+        ],
+        "Editor": "C:/Program Files/Epic Games/UE_5.7/Engine/Binaries/Win64/UnrealEditor-Cmd.exe"
+      },
+      "intercepted_launch_calls": 0,
+      "created_output_directory": false,
+      "environment_preserved": true,
+      "environment_before": {
+        "WC_IMPORT_AUDIO_ONLY": null,
+        "WC_EDITOR_TASK": null,
+        "WC_IMPORT_AUDIO": null,
+        "WC_IMPORT_HERO": null,
+        "WC_EDITOR_REPORT_DIR": null
+      },
+      "environment_after": {
+        "WC_IMPORT_AUDIO_ONLY": null,
+        "WC_EDITOR_TASK": null,
+        "WC_IMPORT_AUDIO": null,
+        "WC_IMPORT_HERO": null,
+        "WC_EDITOR_REPORT_DIR": null
+      },
+      "existing_marker_hash_preserved": true,
+      "marker_sha256": null
+    },
+    {
+      "name": "audio-on-wrong-task",
+      "pass": true,
+      "actual_error": "Hero/audio selection is only supported for import_alpha_assets.",
+      "expected_error_contains": "only supported for import_alpha_assets",
+      "parameters": {
+        "Task": "import_data_tables",
+        "ReportDirectory": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T1633Z-editor-wrapper-fixed-refusals\\cases\\audio-on-wrong-task",
+        "IncludeAudio": true,
+        "Editor": "C:/Program Files/Epic Games/UE_5.7/Engine/Binaries/Win64/UnrealEditor-Cmd.exe"
+      },
+      "intercepted_launch_calls": 0,
+      "created_output_directory": false,
+      "environment_preserved": true,
+      "environment_before": {
+        "WC_IMPORT_AUDIO_ONLY": null,
+        "WC_EDITOR_TASK": null,
+        "WC_IMPORT_AUDIO": null,
+        "WC_IMPORT_HERO": null,
+        "WC_EDITOR_REPORT_DIR": null
+      },
+      "environment_after": {
+        "WC_IMPORT_AUDIO_ONLY": null,
+        "WC_EDITOR_TASK": null,
+        "WC_IMPORT_AUDIO": null,
+        "WC_IMPORT_HERO": null,
+        "WC_EDITOR_REPORT_DIR": null
+      },
+      "existing_marker_hash_preserved": true,
+      "marker_sha256": null
+    },
+    {
+      "name": "audioonly-on-wrong-task",
+      "pass": true,
+      "actual_error": "Hero/audio selection is only supported for import_alpha_assets.",
+      "expected_error_contains": "only supported for import_alpha_assets",
+      "parameters": {
+        "Task": "create_lobby_sky",
+        "ReportDirectory": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T1633Z-editor-wrapper-fixed-refusals\\cases\\audioonly-on-wrong-task",
+        "AudioOnly": true,
+        "Editor": "C:/Program Files/Epic Games/UE_5.7/Engine/Binaries/Win64/UnrealEditor-Cmd.exe"
+      },
+      "intercepted_launch_calls": 0,
+      "created_output_directory": false,
+      "environment_preserved": true,
+      "environment_before": {
+        "WC_IMPORT_AUDIO_ONLY": null,
+        "WC_EDITOR_TASK": null,
+        "WC_IMPORT_AUDIO": null,
+        "WC_IMPORT_HERO": null,
+        "WC_EDITOR_REPORT_DIR": null
+      },
+      "environment_after": {
+        "WC_IMPORT_AUDIO_ONLY": null,
+        "WC_EDITOR_TASK": null,
+        "WC_IMPORT_AUDIO": null,
+        "WC_IMPORT_HERO": null,
+        "WC_EDITOR_REPORT_DIR": null
+      },
+      "existing_marker_hash_preserved": true,
+      "marker_sha256": null
+    },
+    {
+      "name": "incompatible-audio-hero",
+      "pass": true,
+      "actual_error": "Audio-only import cannot also select heroes.",
+      "expected_error_contains": "cannot also select heroes",
+      "parameters": {
+        "Task": "import_alpha_assets",
+        "ReportDirectory": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T1633Z-editor-wrapper-fixed-refusals\\cases\\incompatible-audio-hero",
+        "Hero": [
+          "wc_u_human_guardian"
+        ],
+        "AudioOnly": true,
+        "Editor": "C:/Program Files/Epic Games/UE_5.7/Engine/Binaries/Win64/UnrealEditor-Cmd.exe"
+      },
+      "intercepted_launch_calls": 0,
+      "created_output_directory": false,
+      "environment_preserved": true,
+      "environment_before": {
+        "WC_IMPORT_AUDIO_ONLY": null,
+        "WC_EDITOR_TASK": null,
+        "WC_IMPORT_AUDIO": null,
+        "WC_IMPORT_HERO": null,
+        "WC_EDITOR_REPORT_DIR": null
+      },
+      "environment_after": {
+        "WC_IMPORT_AUDIO_ONLY": null,
+        "WC_EDITOR_TASK": null,
+        "WC_IMPORT_AUDIO": null,
+        "WC_IMPORT_HERO": null,
+        "WC_EDITOR_REPORT_DIR": null
+      },
+      "existing_marker_hash_preserved": true,
+      "marker_sha256": null
+    },
+    {
+      "name": "missing-editor",
+      "pass": true,
+      "actual_error": "The supplied Unreal editor executable is absent.",
+      "expected_error_contains": "editor executable is absent",
+      "parameters": {
+        "Task": "import_alpha_assets",
+        "ReportDirectory": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T1633Z-editor-wrapper-fixed-refusals\\cases\\missing-editor",
+        "Editor": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T1633Z-editor-wrapper-fixed-refusals\\absent-editor.exe"
+      },
+      "intercepted_launch_calls": 0,
+      "created_output_directory": false,
+      "environment_preserved": true,
+      "environment_before": {
+        "WC_IMPORT_AUDIO_ONLY": null,
+        "WC_EDITOR_TASK": null,
+        "WC_IMPORT_AUDIO": null,
+        "WC_IMPORT_HERO": null,
+        "WC_EDITOR_REPORT_DIR": null
+      },
+      "environment_after": {
+        "WC_IMPORT_AUDIO_ONLY": null,
+        "WC_EDITOR_TASK": null,
+        "WC_IMPORT_AUDIO": null,
+        "WC_IMPORT_HERO": null,
+        "WC_EDITOR_REPORT_DIR": null
+      },
+      "existing_marker_hash_preserved": true,
+      "marker_sha256": null
+    },
+    {
+      "name": "invalid-task",
+      "pass": true,
+      "actual_error": "Cannot validate argument on parameter 'Task'. The argument \"not-a-task\" does not belong to the set \"import_arena,import_alpha_assets,import_data_tables,import_neutral_assets,import_lobby_assets,create_lobby_sky\" specified by the ValidateSet attribute. Supply an argument that is in the set and then try the command again.",
+      "expected_error_contains": "ValidateSet",
+      "parameters": {
+        "Task": "not-a-task",
+        "ReportDirectory": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T1633Z-editor-wrapper-fixed-refusals\\cases\\invalid-task",
+        "Editor": "C:/Program Files/Epic Games/UE_5.7/Engine/Binaries/Win64/UnrealEditor-Cmd.exe"
+      },
+      "intercepted_launch_calls": 0,
+      "created_output_directory": false,
+      "environment_preserved": true,
+      "environment_before": {
+        "WC_IMPORT_AUDIO_ONLY": null,
+        "WC_EDITOR_TASK": null,
+        "WC_IMPORT_AUDIO": null,
+        "WC_IMPORT_HERO": null,
+        "WC_EDITOR_REPORT_DIR": null
+      },
+      "environment_after": {
+        "WC_IMPORT_AUDIO_ONLY": null,
+        "WC_EDITOR_TASK": null,
+        "WC_IMPORT_AUDIO": null,
+        "WC_IMPORT_HERO": null,
+        "WC_EDITOR_REPORT_DIR": null
+      },
+      "existing_marker_hash_preserved": true,
+      "marker_sha256": null
+    },
+    {
+      "name": "wrong-case-hero",
+      "pass": true,
+      "actual_error": "Unknown alpha hero: WC_U_HUMAN_GUARDIAN",
+      "expected_error_contains": "Unknown alpha hero",
+      "parameters": {
+        "Task": "import_alpha_assets",
+        "ReportDirectory": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T1633Z-editor-wrapper-fixed-refusals\\cases\\wrong-case-hero",
+        "Hero": [
+          "WC_U_HUMAN_GUARDIAN"
+        ],
+        "Editor": "C:/Program Files/Epic Games/UE_5.7/Engine/Binaries/Win64/UnrealEditor-Cmd.exe"
+      },
+      "intercepted_launch_calls": 0,
+      "created_output_directory": false,
+      "environment_preserved": true,
+      "environment_before": {
+        "WC_IMPORT_AUDIO_ONLY": null,
+        "WC_EDITOR_TASK": null,
+        "WC_IMPORT_AUDIO": null,
+        "WC_IMPORT_HERO": null,
+        "WC_EDITOR_REPORT_DIR": null
+      },
+      "environment_after": {
+        "WC_IMPORT_AUDIO_ONLY": null,
+        "WC_EDITOR_TASK": null,
+        "WC_IMPORT_AUDIO": null,
+        "WC_IMPORT_HERO": null,
+        "WC_EDITOR_REPORT_DIR": null
+      },
+      "existing_marker_hash_preserved": true,
+      "marker_sha256": null
+    },
+    {
+      "name": "wrong-case-task",
+      "pass": true,
+      "actual_error": "Task names must use their exact lowercase spelling.",
+      "expected_error_contains": "exact lowercase spelling",
+      "parameters": {
+        "Task": "IMPORT_ALPHA_ASSETS",
+        "ReportDirectory": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260906T1633Z-editor-wrapper-fixed-refusals\\cases\\wrong-case-task",
+        "Editor": "C:/Program Files/Epic Games/UE_5.7/Engine/Binaries/Win64/UnrealEditor-Cmd.exe"
+      },
+      "intercepted_launch_calls": 0,
+      "created_output_directory": false,
+      "environment_preserved": true,
+      "environment_before": {
+        "WC_IMPORT_AUDIO_ONLY": null,
+        "WC_EDITOR_TASK": null,
+        "WC_IMPORT_AUDIO": null,
+        "WC_IMPORT_HERO": null,
+        "WC_EDITOR_REPORT_DIR": null
+      },
+      "environment_after": {
+        "WC_IMPORT_AUDIO_ONLY": null,
+        "WC_EDITOR_TASK": null,
+        "WC_IMPORT_AUDIO": null,
+        "WC_IMPORT_HERO": null,
+        "WC_EDITOR_REPORT_DIR": null
+      },
+      "existing_marker_hash_preserved": true,
+      "marker_sha256": null
+    },
+    {
+      "name": "restore-absent",
+      "pass": true,
+      "kind": "finally restoration after intercepted launch, not an editor task",
+      "environment_before": {},
+      "environment_after": {
+        "WC_IMPORT_AUDIO_ONLY": null,
+        "WC_EDITOR_TASK": null,
+        "WC_IMPORT_AUDIO": null,
+        "WC_IMPORT_HERO": null,
+        "WC_EDITOR_REPORT_DIR": null
+      },
+      "environment_preserved": true,
+      "intercepted_launch_calls": 1,
+      "actual_error": "TEST_BACKSTOP_EDITOR_LAUNCH_BLOCKED",
+      "process_report_status": "FAIL",
+      "process_report_pid": null,
+      "process_report_exit_code": null
+    },
+    {
+      "name": "restore-mixed",
+      "pass": true,
+      "kind": "finally restoration after intercepted launch, not an editor task",
+      "environment_before": {
+        "WC_EDITOR_TASK": "retained task",
+        "WC_IMPORT_AUDIO": "0",
+        "WC_IMPORT_HERO": "retained hero"
+      },
+      "environment_after": {
+        "WC_IMPORT_AUDIO_ONLY": null,
+        "WC_EDITOR_TASK": "retained task",
+        "WC_IMPORT_AUDIO": "0",
+        "WC_IMPORT_HERO": "retained hero",
+        "WC_EDITOR_REPORT_DIR": null
+      },
+      "environment_preserved": true,
+      "intercepted_launch_calls": 1,
+      "actual_error": "TEST_BACKSTOP_EDITOR_LAUNCH_BLOCKED",
+      "process_report_status": "FAIL",
+      "process_report_pid": null,
+      "process_report_exit_code": null
+    }
+  ]
+}
