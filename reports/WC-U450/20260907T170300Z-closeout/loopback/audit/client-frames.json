@@ -1,0 +1,944 @@
+{
+  "status": "OBSERVED_PRELIMINARY",
+  "boundary": "Actual instrumented samples only; no inferred hardware, FPS, missing load, or final performance acceptance. CPU timings under NullRHI do not represent rendered gameplay.",
+  "hardware_and_settings": {
+    "cpu": "AMD Ryzen 7 6800H with Radeon Graphics         ",
+    "active_rhi_adapter": "NVIDIA GeForce RTX 3060 Laptop GPU",
+    "primary_gpu_reported_by_os": "AMD Radeon(TM) Graphics",
+    "engine": "5.7.4-51494982+++UE5+Release-5.7",
+    "rhi": "D3D11",
+    "render_settings": {
+      "r.ScreenPercentage": "100",
+      "r.SecondaryScreenPercentage.GameViewport": "100",
+      "r.DynamicRes.OperationMode": "0",
+      "r.VSync": "0",
+      "t.MaxFPS": "60",
+      "sg.ShadowQuality": "3",
+      "sg.PostProcessQuality": "3",
+      "r.AntiAliasingMethod": "2",
+      "sg.AntiAliasingQuality": "3",
+      "r.TSR.History.ScreenPercentage": "200",
+      "r.ShadowQuality": "5",
+      "r.DynamicGlobalIlluminationMethod": "0",
+      "r.ReflectionMethod": "0"
+    },
+    "resolution_x": 1280,
+    "resolution_y": 720,
+    "simulation_speed_multiplier": 20,
+    "peak_process_physical_bytes": 525950976,
+    "gpu_timing_source": "RHIGetGPUFrameCycles GPU0; zero samples excluded as unavailable"
+  },
+  "source": {
+    "match_namespace": 1,
+    "seat": 1,
+    "process_id": 16404,
+    "csv_path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260907T170300Z-closeout\\loopback\\client\\match-1-seat-1-pid-16404-frames.csv",
+    "csv_missing": false,
+    "header_only": false,
+    "columns": [
+      "wall_seconds",
+      "phase",
+      "round",
+      "visible_alive",
+      "logical_alive",
+      "encounters",
+      "frame_ms",
+      "game_ms",
+      "render_ms",
+      "gpu_ms",
+      "gpu_available",
+      "public_chars",
+      "public_utf8_bytes",
+      "neutral_round",
+      "neutral_live_encounters",
+      "frontend_page",
+      "frame_counter"
+    ],
+    "rows": 3406
+  },
+  "percentile_method": "Sorted sample at floor((n-1)*percentile/100), without interpolation; compatible with prior reports.",
+  "hitch_thresholds": {
+    "frames_over_33_33ms": "strictly greater than 100/3 ms",
+    "frames_over_100ms": "strictly greater than 100 ms"
+  },
+  "instrumentation": {
+    "launch_record_present": true,
+    "profile_flag_recorded": true,
+    "null_rhi": false,
+    "capture_flags": [
+      "-WCShots",
+      "-WCProjectedBounds"
+    ],
+    "launch_arguments": [
+      "-windowed",
+      "-ResX=1280",
+      "-ResY=720",
+      "-ForceRes",
+      "-dx11",
+      "-WCExercise",
+      "-WCAuthorityChecks",
+      "-WCProfile",
+      "-WCShots",
+      "-WCProjectedBounds",
+      "-WCFast=20",
+      "-WCExitAfter=210",
+      "-WCEvidenceDir=\"C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260907T170300Z-closeout\\loopback\\client\"",
+      "-WCJoin=127.0.0.1:17988"
+    ],
+    "launch_boundary": null,
+    "launch_arguments_raw": [
+      "-windowed",
+      "-ResX=1280",
+      "-ResY=720",
+      "-ForceRes",
+      "-dx11",
+      "-WCExercise",
+      "-WCAuthorityChecks",
+      "-WCProfile",
+      "-WCShots",
+      "-WCProjectedBounds",
+      "-WCFast=20",
+      "-WCExitAfter=210",
+      "-WCEvidenceDir=\"C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260907T170300Z-closeout\\loopback\\client\"",
+      "-WCJoin=127.0.0.1:17988"
+    ],
+    "ambient_editor_processes": null,
+    "declared_confounders": null,
+    "context_evidence": [],
+    "gpu_sample_policy": "Require rendered RHI, gpu_available=1 and a finite positive gpu_ms value. Zero, null, invalid and unavailable samples never become zero-cost GPU observations.",
+    "performance_acceptance": "NOT_ASSESSED; captures, asset traversal/loading, concurrent workloads and accelerated simulation may affect these samples."
+  },
+  "frontend_page_coverage": {
+    "column_available": true,
+    "combined_namespace0_status": "NOT_RUN",
+    "lobby_only_status": "NOT_RUN",
+    "gallery_list_status": "NOT_RUN",
+    "hero_detail_status": "NOT_RUN",
+    "unclassified_frames": 0,
+    "reason": "Separate pages use only the actual frontend_page column. Older CSVs support combined namespace0/phase-1 only. Mode may include truthful entry transitions; closed frames are not attributed to a visible page."
+  },
+  "subsets": {
+    "all_profiled_frames": {
+      "frames": 3406,
+      "frame_ms": {
+        "status": "OBSERVED",
+        "samples": 3406,
+        "p50_ms": 16.666901,
+        "p95_ms": 16.895901,
+        "p99_ms": 87.5364,
+        "max_ms": 146.990799,
+        "frames_over_33_33ms": 111,
+        "frames_over_100ms": 22,
+        "unavailable_or_invalid_samples": 0
+      },
+      "game_ms": {
+        "status": "OBSERVED",
+        "samples": 3406,
+        "p50_ms": 2.915,
+        "p95_ms": 8.1135,
+        "p99_ms": 74.386703,
+        "max_ms": 147.078201,
+        "frames_over_33_33ms": 111,
+        "frames_over_100ms": 21,
+        "unavailable_or_invalid_samples": 0
+      },
+      "render_ms": {
+        "status": "OBSERVED",
+        "samples": 3406,
+        "p50_ms": 4.815,
+        "p95_ms": 7.1016,
+        "p99_ms": 8.2578,
+        "max_ms": 12.3639,
+        "frames_over_33_33ms": 0,
+        "frames_over_100ms": 0,
+        "unavailable_or_invalid_samples": 0
+      },
+      "gpu_ms": {
+        "status": "OBSERVED",
+        "samples": 3406,
+        "p50_ms": 16.621599,
+        "p95_ms": 21.4272,
+        "p99_ms": 77.048897,
+        "max_ms": 158.675903,
+        "frames_over_33_33ms": 61,
+        "frames_over_100ms": 4,
+        "unavailable_or_invalid_samples": 0
+      }
+    },
+    "frontend_namespace0_frames": {
+      "frames": 0,
+      "frame_ms": {
+        "status": "NOT_RUN",
+        "samples": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null,
+        "frames_over_33_33ms": null,
+        "frames_over_100ms": null,
+        "unavailable_or_invalid_samples": 0
+      },
+      "game_ms": {
+        "status": "NOT_RUN",
+        "samples": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null,
+        "frames_over_33_33ms": null,
+        "frames_over_100ms": null,
+        "unavailable_or_invalid_samples": 0
+      },
+      "render_ms": {
+        "status": "NOT_RUN",
+        "samples": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null,
+        "frames_over_33_33ms": null,
+        "frames_over_100ms": null,
+        "unavailable_or_invalid_samples": 0
+      },
+      "gpu_ms": {
+        "status": "NOT_RUN",
+        "samples": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null,
+        "frames_over_33_33ms": null,
+        "frames_over_100ms": null,
+        "unavailable_or_invalid_samples": 0
+      }
+    },
+    "lobby_frames": {
+      "frames": 0,
+      "frame_ms": {
+        "status": "NOT_RUN",
+        "samples": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null,
+        "frames_over_33_33ms": null,
+        "frames_over_100ms": null,
+        "unavailable_or_invalid_samples": 0
+      },
+      "game_ms": {
+        "status": "NOT_RUN",
+        "samples": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null,
+        "frames_over_33_33ms": null,
+        "frames_over_100ms": null,
+        "unavailable_or_invalid_samples": 0
+      },
+      "render_ms": {
+        "status": "NOT_RUN",
+        "samples": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null,
+        "frames_over_33_33ms": null,
+        "frames_over_100ms": null,
+        "unavailable_or_invalid_samples": 0
+      },
+      "gpu_ms": {
+        "status": "NOT_RUN",
+        "samples": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null,
+        "frames_over_33_33ms": null,
+        "frames_over_100ms": null,
+        "unavailable_or_invalid_samples": 0
+      }
+    },
+    "gallery_list_frames": {
+      "frames": 0,
+      "frame_ms": {
+        "status": "NOT_RUN",
+        "samples": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null,
+        "frames_over_33_33ms": null,
+        "frames_over_100ms": null,
+        "unavailable_or_invalid_samples": 0
+      },
+      "game_ms": {
+        "status": "NOT_RUN",
+        "samples": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null,
+        "frames_over_33_33ms": null,
+        "frames_over_100ms": null,
+        "unavailable_or_invalid_samples": 0
+      },
+      "render_ms": {
+        "status": "NOT_RUN",
+        "samples": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null,
+        "frames_over_33_33ms": null,
+        "frames_over_100ms": null,
+        "unavailable_or_invalid_samples": 0
+      },
+      "gpu_ms": {
+        "status": "NOT_RUN",
+        "samples": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null,
+        "frames_over_33_33ms": null,
+        "frames_over_100ms": null,
+        "unavailable_or_invalid_samples": 0
+      }
+    },
+    "hero_detail_frames": {
+      "frames": 0,
+      "frame_ms": {
+        "status": "NOT_RUN",
+        "samples": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null,
+        "frames_over_33_33ms": null,
+        "frames_over_100ms": null,
+        "unavailable_or_invalid_samples": 0
+      },
+      "game_ms": {
+        "status": "NOT_RUN",
+        "samples": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null,
+        "frames_over_33_33ms": null,
+        "frames_over_100ms": null,
+        "unavailable_or_invalid_samples": 0
+      },
+      "render_ms": {
+        "status": "NOT_RUN",
+        "samples": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null,
+        "frames_over_33_33ms": null,
+        "frames_over_100ms": null,
+        "unavailable_or_invalid_samples": 0
+      },
+      "gpu_ms": {
+        "status": "NOT_RUN",
+        "samples": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null,
+        "frames_over_33_33ms": null,
+        "frames_over_100ms": null,
+        "unavailable_or_invalid_samples": 0
+      }
+    },
+    "gallery_and_detail_frames": {
+      "frames": 0,
+      "frame_ms": {
+        "status": "NOT_RUN",
+        "samples": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null,
+        "frames_over_33_33ms": null,
+        "frames_over_100ms": null,
+        "unavailable_or_invalid_samples": 0
+      },
+      "game_ms": {
+        "status": "NOT_RUN",
+        "samples": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null,
+        "frames_over_33_33ms": null,
+        "frames_over_100ms": null,
+        "unavailable_or_invalid_samples": 0
+      },
+      "render_ms": {
+        "status": "NOT_RUN",
+        "samples": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null,
+        "frames_over_33_33ms": null,
+        "frames_over_100ms": null,
+        "unavailable_or_invalid_samples": 0
+      },
+      "gpu_ms": {
+        "status": "NOT_RUN",
+        "samples": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null,
+        "frames_over_33_33ms": null,
+        "frames_over_100ms": null,
+        "unavailable_or_invalid_samples": 0
+      }
+    },
+    "mode_or_entry_frames": {
+      "frames": 0,
+      "frame_ms": {
+        "status": "NOT_RUN",
+        "samples": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null,
+        "frames_over_33_33ms": null,
+        "frames_over_100ms": null,
+        "unavailable_or_invalid_samples": 0
+      },
+      "game_ms": {
+        "status": "NOT_RUN",
+        "samples": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null,
+        "frames_over_33_33ms": null,
+        "frames_over_100ms": null,
+        "unavailable_or_invalid_samples": 0
+      },
+      "render_ms": {
+        "status": "NOT_RUN",
+        "samples": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null,
+        "frames_over_33_33ms": null,
+        "frames_over_100ms": null,
+        "unavailable_or_invalid_samples": 0
+      },
+      "gpu_ms": {
+        "status": "NOT_RUN",
+        "samples": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null,
+        "frames_over_33_33ms": null,
+        "frames_over_100ms": null,
+        "unavailable_or_invalid_samples": 0
+      }
+    },
+    "settings_frames": {
+      "frames": 0,
+      "frame_ms": {
+        "status": "NOT_RUN",
+        "samples": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null,
+        "frames_over_33_33ms": null,
+        "frames_over_100ms": null,
+        "unavailable_or_invalid_samples": 0
+      },
+      "game_ms": {
+        "status": "NOT_RUN",
+        "samples": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null,
+        "frames_over_33_33ms": null,
+        "frames_over_100ms": null,
+        "unavailable_or_invalid_samples": 0
+      },
+      "render_ms": {
+        "status": "NOT_RUN",
+        "samples": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null,
+        "frames_over_33_33ms": null,
+        "frames_over_100ms": null,
+        "unavailable_or_invalid_samples": 0
+      },
+      "gpu_ms": {
+        "status": "NOT_RUN",
+        "samples": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null,
+        "frames_over_33_33ms": null,
+        "frames_over_100ms": null,
+        "unavailable_or_invalid_samples": 0
+      }
+    },
+    "active_tournament_frames": {
+      "frames": 3405,
+      "frame_ms": {
+        "status": "OBSERVED",
+        "samples": 3405,
+        "p50_ms": 16.666901,
+        "p95_ms": 16.895901,
+        "p99_ms": 87.5364,
+        "max_ms": 146.990799,
+        "frames_over_33_33ms": 111,
+        "frames_over_100ms": 22,
+        "unavailable_or_invalid_samples": 0
+      },
+      "game_ms": {
+        "status": "OBSERVED",
+        "samples": 3405,
+        "p50_ms": 2.9152,
+        "p95_ms": 8.1135,
+        "p99_ms": 74.386703,
+        "max_ms": 147.078201,
+        "frames_over_33_33ms": 111,
+        "frames_over_100ms": 21,
+        "unavailable_or_invalid_samples": 0
+      },
+      "render_ms": {
+        "status": "OBSERVED",
+        "samples": 3405,
+        "p50_ms": 4.815,
+        "p95_ms": 7.1016,
+        "p99_ms": 8.2578,
+        "max_ms": 12.3639,
+        "frames_over_33_33ms": 0,
+        "frames_over_100ms": 0,
+        "unavailable_or_invalid_samples": 0
+      },
+      "gpu_ms": {
+        "status": "OBSERVED",
+        "samples": 3405,
+        "p50_ms": 16.621599,
+        "p95_ms": 21.4272,
+        "p99_ms": 77.048897,
+        "max_ms": 158.675903,
+        "frames_over_33_33ms": 61,
+        "frames_over_100ms": 4,
+        "unavailable_or_invalid_samples": 0
+      }
+    },
+    "combat_frames": {
+      "frames": 2955,
+      "frame_ms": {
+        "status": "OBSERVED",
+        "samples": 2955,
+        "p50_ms": 16.666901,
+        "p95_ms": 16.798,
+        "p99_ms": 87.808701,
+        "max_ms": 146.990799,
+        "frames_over_33_33ms": 80,
+        "frames_over_100ms": 20,
+        "unavailable_or_invalid_samples": 0
+      },
+      "game_ms": {
+        "status": "OBSERVED",
+        "samples": 2955,
+        "p50_ms": 2.9267,
+        "p95_ms": 7.7626,
+        "p99_ms": 73.348503,
+        "max_ms": 147.078201,
+        "frames_over_33_33ms": 80,
+        "frames_over_100ms": 19,
+        "unavailable_or_invalid_samples": 0
+      },
+      "render_ms": {
+        "status": "OBSERVED",
+        "samples": 2955,
+        "p50_ms": 4.8909,
+        "p95_ms": 7.176,
+        "p99_ms": 8.3227,
+        "max_ms": 12.3639,
+        "frames_over_33_33ms": 0,
+        "frames_over_100ms": 0,
+        "unavailable_or_invalid_samples": 0
+      },
+      "gpu_ms": {
+        "status": "OBSERVED",
+        "samples": 2955,
+        "p50_ms": 16.6318,
+        "p95_ms": 21.6166,
+        "p99_ms": 77.802498,
+        "max_ms": 158.675903,
+        "frames_over_33_33ms": 50,
+        "frames_over_100ms": 4,
+        "unavailable_or_invalid_samples": 0
+      }
+    },
+    "neutral_combat_frames": {
+      "frames": 408,
+      "frame_ms": {
+        "status": "OBSERVED",
+        "samples": 408,
+        "p50_ms": 16.666897,
+        "p95_ms": 16.752602,
+        "p99_ms": 87.824493,
+        "max_ms": 116.721397,
+        "frames_over_33_33ms": 15,
+        "frames_over_100ms": 3,
+        "unavailable_or_invalid_samples": 0
+      },
+      "game_ms": {
+        "status": "OBSERVED",
+        "samples": 408,
+        "p50_ms": 2.9077,
+        "p95_ms": 8.9859,
+        "p99_ms": 65.876801,
+        "max_ms": 116.084801,
+        "frames_over_33_33ms": 15,
+        "frames_over_100ms": 3,
+        "unavailable_or_invalid_samples": 0
+      },
+      "render_ms": {
+        "status": "OBSERVED",
+        "samples": 408,
+        "p50_ms": 4.8863,
+        "p95_ms": 7.0377,
+        "p99_ms": 8.1782,
+        "max_ms": 9.5511,
+        "frames_over_33_33ms": 0,
+        "frames_over_100ms": 0,
+        "unavailable_or_invalid_samples": 0
+      },
+      "gpu_ms": {
+        "status": "OBSERVED",
+        "samples": 408,
+        "p50_ms": 16.626699,
+        "p95_ms": 22.528,
+        "p99_ms": 76.732399,
+        "max_ms": 89.191498,
+        "frames_over_33_33ms": 9,
+        "frames_over_100ms": 0,
+        "unavailable_or_invalid_samples": 0
+      }
+    },
+    "pvp_combat_frames": {
+      "frames": 2547,
+      "frame_ms": {
+        "status": "OBSERVED",
+        "samples": 2547,
+        "p50_ms": 16.666901,
+        "p95_ms": 16.812399,
+        "p99_ms": 85.841194,
+        "max_ms": 146.990799,
+        "frames_over_33_33ms": 65,
+        "frames_over_100ms": 17,
+        "unavailable_or_invalid_samples": 0
+      },
+      "game_ms": {
+        "status": "OBSERVED",
+        "samples": 2547,
+        "p50_ms": 2.9285,
+        "p95_ms": 7.5072,
+        "p99_ms": 73.136902,
+        "max_ms": 147.078201,
+        "frames_over_33_33ms": 65,
+        "frames_over_100ms": 16,
+        "unavailable_or_invalid_samples": 0
+      },
+      "render_ms": {
+        "status": "OBSERVED",
+        "samples": 2547,
+        "p50_ms": 4.8935,
+        "p95_ms": 7.1767,
+        "p99_ms": 8.3227,
+        "max_ms": 12.3639,
+        "frames_over_33_33ms": 0,
+        "frames_over_100ms": 0,
+        "unavailable_or_invalid_samples": 0
+      },
+      "gpu_ms": {
+        "status": "OBSERVED",
+        "samples": 2547,
+        "p50_ms": 16.6318,
+        "p95_ms": 21.417999,
+        "p99_ms": 77.410301,
+        "max_ms": 158.675903,
+        "frames_over_33_33ms": 41,
+        "frames_over_100ms": 4,
+        "unavailable_or_invalid_samples": 0
+      }
+    },
+    "twelve_visible_combatants": {
+      "frames": 223,
+      "frame_ms": {
+        "status": "OBSERVED",
+        "samples": 223,
+        "p50_ms": 16.666901,
+        "p95_ms": 106.490906,
+        "p99_ms": 130.424103,
+        "max_ms": 146.990799,
+        "frames_over_33_33ms": 32,
+        "frames_over_100ms": 15,
+        "unavailable_or_invalid_samples": 0
+      },
+      "game_ms": {
+        "status": "OBSERVED",
+        "samples": 223,
+        "p50_ms": 3.1119,
+        "p95_ms": 104.878502,
+        "p99_ms": 129.556702,
+        "max_ms": 147.078201,
+        "frames_over_33_33ms": 31,
+        "frames_over_100ms": 14,
+        "unavailable_or_invalid_samples": 0
+      },
+      "render_ms": {
+        "status": "OBSERVED",
+        "samples": 223,
+        "p50_ms": 4.8627,
+        "p95_ms": 7.252,
+        "p99_ms": 8.1886,
+        "max_ms": 10.4132,
+        "frames_over_33_33ms": 0,
+        "frames_over_100ms": 0,
+        "unavailable_or_invalid_samples": 0
+      },
+      "gpu_ms": {
+        "status": "OBSERVED",
+        "samples": 223,
+        "p50_ms": 16.514,
+        "p95_ms": 21.9361,
+        "p99_ms": 90.630203,
+        "max_ms": 158.675903,
+        "frames_over_33_33ms": 10,
+        "frames_over_100ms": 3,
+        "unavailable_or_invalid_samples": 0
+      }
+    },
+    "twelve_visible_and_four_live_encounters": {
+      "frames": 117,
+      "frame_ms": {
+        "status": "OBSERVED",
+        "samples": 117,
+        "p50_ms": 16.666901,
+        "p95_ms": 75.696098,
+        "p99_ms": 83.241699,
+        "max_ms": 88.889297,
+        "frames_over_33_33ms": 16,
+        "frames_over_100ms": 0,
+        "unavailable_or_invalid_samples": 0
+      },
+      "game_ms": {
+        "status": "OBSERVED",
+        "samples": 117,
+        "p50_ms": 3.1356,
+        "p95_ms": 63.100201,
+        "p99_ms": 73.136902,
+        "max_ms": 86.241699,
+        "frames_over_33_33ms": 15,
+        "frames_over_100ms": 0,
+        "unavailable_or_invalid_samples": 0
+      },
+      "render_ms": {
+        "status": "OBSERVED",
+        "samples": 117,
+        "p50_ms": 4.5166,
+        "p95_ms": 6.3164,
+        "p99_ms": 7.1094,
+        "max_ms": 8.1886,
+        "frames_over_33_33ms": 0,
+        "frames_over_100ms": 0,
+        "unavailable_or_invalid_samples": 0
+      },
+      "gpu_ms": {
+        "status": "OBSERVED",
+        "samples": 117,
+        "p50_ms": 16.6604,
+        "p95_ms": 22.7717,
+        "p99_ms": 77.410301,
+        "max_ms": 86.6642,
+        "frames_over_33_33ms": 6,
+        "frames_over_100ms": 0,
+        "unavailable_or_invalid_samples": 0
+      }
+    },
+    "twelve_visible_and_four_live_pvp_encounters": {
+      "frames": 117,
+      "frame_ms": {
+        "status": "OBSERVED",
+        "samples": 117,
+        "p50_ms": 16.666901,
+        "p95_ms": 75.696098,
+        "p99_ms": 83.241699,
+        "max_ms": 88.889297,
+        "frames_over_33_33ms": 16,
+        "frames_over_100ms": 0,
+        "unavailable_or_invalid_samples": 0
+      },
+      "game_ms": {
+        "status": "OBSERVED",
+        "samples": 117,
+        "p50_ms": 3.1356,
+        "p95_ms": 63.100201,
+        "p99_ms": 73.136902,
+        "max_ms": 86.241699,
+        "frames_over_33_33ms": 15,
+        "frames_over_100ms": 0,
+        "unavailable_or_invalid_samples": 0
+      },
+      "render_ms": {
+        "status": "OBSERVED",
+        "samples": 117,
+        "p50_ms": 4.5166,
+        "p95_ms": 6.3164,
+        "p99_ms": 7.1094,
+        "max_ms": 8.1886,
+        "frames_over_33_33ms": 0,
+        "frames_over_100ms": 0,
+        "unavailable_or_invalid_samples": 0
+      },
+      "gpu_ms": {
+        "status": "OBSERVED",
+        "samples": 117,
+        "p50_ms": 16.6604,
+        "p95_ms": 22.7717,
+        "p99_ms": 77.410301,
+        "max_ms": 86.6642,
+        "frames_over_33_33ms": 6,
+        "frames_over_100ms": 0,
+        "unavailable_or_invalid_samples": 0
+      }
+    },
+    "eight_live_neutral_encounters": {
+      "frames": 39,
+      "frame_ms": {
+        "status": "OBSERVED",
+        "samples": 39,
+        "p50_ms": 16.666901,
+        "p95_ms": 75.778603,
+        "p99_ms": 78.767998,
+        "max_ms": 90.951599,
+        "frames_over_33_33ms": 6,
+        "frames_over_100ms": 0,
+        "unavailable_or_invalid_samples": 0
+      },
+      "game_ms": {
+        "status": "OBSERVED",
+        "samples": 39,
+        "p50_ms": 3.2376,
+        "p95_ms": 60.2981,
+        "p99_ms": 63.195801,
+        "max_ms": 74.757599,
+        "frames_over_33_33ms": 6,
+        "frames_over_100ms": 0,
+        "unavailable_or_invalid_samples": 0
+      },
+      "render_ms": {
+        "status": "OBSERVED",
+        "samples": 39,
+        "p50_ms": 4.8583,
+        "p95_ms": 6.6096,
+        "p99_ms": 8.2578,
+        "max_ms": 9.3804,
+        "frames_over_33_33ms": 0,
+        "frames_over_100ms": 0,
+        "unavailable_or_invalid_samples": 0
+      },
+      "gpu_ms": {
+        "status": "OBSERVED",
+        "samples": 39,
+        "p50_ms": 16.503799,
+        "p95_ms": 75.908096,
+        "p99_ms": 78.7005,
+        "max_ms": 89.191498,
+        "frames_over_33_33ms": 4,
+        "frames_over_100ms": 0,
+        "unavailable_or_invalid_samples": 0
+      }
+    },
+    "twelve_visible_and_eight_live_neutral_encounters": {
+      "frames": 0,
+      "frame_ms": {
+        "status": "NOT_RUN",
+        "samples": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null,
+        "frames_over_33_33ms": null,
+        "frames_over_100ms": null,
+        "unavailable_or_invalid_samples": 0
+      },
+      "game_ms": {
+        "status": "NOT_RUN",
+        "samples": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null,
+        "frames_over_33_33ms": null,
+        "frames_over_100ms": null,
+        "unavailable_or_invalid_samples": 0
+      },
+      "render_ms": {
+        "status": "NOT_RUN",
+        "samples": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null,
+        "frames_over_33_33ms": null,
+        "frames_over_100ms": null,
+        "unavailable_or_invalid_samples": 0
+      },
+      "gpu_ms": {
+        "status": "NOT_RUN",
+        "samples": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null,
+        "frames_over_33_33ms": null,
+        "frames_over_100ms": null,
+        "unavailable_or_invalid_samples": 0
+      }
+    }
+  },
+  "inputs": [
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260907T170300Z-closeout\\loopback\\client\\match-1-seat-1-pid-16404-session.json",
+      "sha256": "4361e4b6f1924f549d4b387c9a9c810ff9789d42a161de6c7153f5a239a9bda9",
+      "bytes": 2025576
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260907T170300Z-closeout\\loopback\\client\\match-1-seat-1-pid-16404-frames.csv",
+      "sha256": "2c30f6f1e5d9e858997784c7f2652d35a04fab38fa5a8a0df871743b06fccff2",
+      "bytes": 304047
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260907T170300Z-closeout\\loopback\\client\\launch.json",
+      "sha256": "4249199c94c72977493dbbdcaeb16583759c7ecd356219f2f11ad6ece0b461b8",
+      "bytes": 873
+    }
+  ],
+  "required_busy_load_status": "OBSERVED",
+  "eight_neutral_encounters_status": "OBSERVED",
+  "eight_neutral_encounters_definition": "Combat phase with neutral_round=1, neutral_live_encounters=8 and total unfinished encounters=8. No inference from a round number or participant count.",
+  "neutral_instrumentation_available": true,
+  "combat_kind_unclassified_frames": 0,
+  "viewport_1080p_observed": false
+}

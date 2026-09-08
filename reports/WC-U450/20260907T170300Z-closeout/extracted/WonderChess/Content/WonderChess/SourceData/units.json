@@ -1,0 +1,3186 @@
+{
+  "schema_version": "3.1.0",
+  "balance_version": "alpha_24_v0.4.1",
+  "units": [
+    {
+      "id": "wc_u_human_guardian",
+      "slug": "ada-brightshield",
+      "name": "Ada Brightshield",
+      "title": "The Gatekeeper",
+      "race": "human",
+      "unit_class": "guardian",
+      "region": "brighthaven",
+      "faction": "dawn_compact",
+      "role": "Defender",
+      "cost": 1,
+      "rarity": "Common",
+      "production_phase": "alpha",
+      "implementation_status": "designed_not_built",
+      "height_m": 1.82,
+      "rig_family": "humanoid_standard",
+      "stats": {
+        "health_cp": 105000,
+        "attack_damage_cp": 4800,
+        "attack_rate_milli": 700,
+        "attack_range_tiles": 1,
+        "physical_armor": 35,
+        "magic_resistance": 15,
+        "movement_rate_milli": 1000,
+        "attack_delivery": "melee",
+        "attack_damage_type": "physical",
+        "attack_windup_ms": 250,
+        "projectile_travel_ms": 0
+      },
+      "ability": {
+        "name": "Sun Guard",
+        "tooltip_en": "Gains a shield for three seconds.",
+        "target_rule": "self",
+        "first_cast_ms": 2000,
+        "cooldown_ms": 8000,
+        "cast_ms": 300,
+        "radius_tiles": 0,
+        "range_tiles": 0,
+        "allow_self": true,
+        "id": "wc_a_human_guardian",
+        "recovery_ms": 300,
+        "max_targets": 12,
+        "max_dash_tiles": 0,
+        "travel_ms": 0,
+        "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
+        "no_target_policy": "remain_ready_continue_basics",
+        "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
+        "delivery": "instant",
+        "tooltip_id": "Memberikan perisai sementara kepada diri sendiri.",
+        "effects": [
+          {
+            "effect": "shield",
+            "damage_type": null,
+            "magnitude_unit": "centipoints",
+            "magnitude_by_star": [
+              20000,
+              36000,
+              64800
+            ],
+            "stat": null,
+            "duration_ms": 3000
+          }
+        ]
+      },
+      "art": {
+        "silhouette": "A broad inverted-triangle shoulder line over a compact waist, anchored by an oversized rounded kite shield on the left. The shield rises to eyebrow height when guarding, but stays below her eyes at rest.",
+        "face": "Warm brown skin, square brows, dark eyes and a short black braid tucked behind the neck. Her calm, alert expression is readable without exaggerated facial animation.",
+        "costume": "An ivory quilted coat sits under simplified steel breast and shoulder plates. A split navy tabard ends above the knees, leaving the leg silhouettes clear. Heavy boots and broad bracers make her planted stance apparent.",
+        "palette": "Navy #25466B; ivory #E9E2CD; brushed steel #9EAAB5; restrained gold #C7A25B. Gold covers only the shield crest and two fasteners.",
+        "equipment": "Left-hand kite shield with a raised rising-sun disk; short, broad fantasy sword in the right hand. Build the emblem as shallow geometry with a baked bevel, not dense engraving.",
+        "signature": "The high curved shield, squared shoulder line, and single sun disk must survive a 96-pixel hero render.",
+        "materials": "Use a shared armor master, a cloth instance and a small emissive crest mask. Keep roughness separation between plate, fabric and the leather shield grip; no mirror-polished surfaces.",
+        "back": "A navy crossed strap carries a plain bedroll clasp; the braid sits clear of the shoulder plates. No long cape hides the back silhouette.",
+        "animation": "Idle with weight on the rear foot and shield angled outward. Walk with measured short steps. Basic attacks use one readable right-hand sweep. The active lifts the shield before the crest lights; return to guard without whole-body root motion.",
+        "vfx": "A thin warm-gold shell follows the shield silhouette and a brief low-opacity arc wraps the torso. Do not use a solid sphere that obscures nearby heroes.",
+        "audio": "A firm boot placement, restrained metal knock, and short rounded shield chime. Avoid a booming impact on every basic attack.",
+        "risk": "Shield/forearm intersections during attack recovery are the main deformation risk. Test full left-arm elevation and adjacent-hero visibility."
+      },
+      "biography": "Ada kept Brighthaven’s river gate open during the evacuation of a flooded caravan road. She joins the Compact trials to teach young captains that protecting an ally is a deliberate choice, not a consolation role. Mira maintained the roadside aid station beside her gate, and the two trust each other without always agreeing on when to advance.",
+      "tactics": {
+        "placement": "Front row, one cell ahead of a damage dealer; center-left leaves room for her shield silhouette.",
+        "partner": "Mira Dawnwell extends Ada’s time on the frontline; Rowan Emberwick uses the space she buys.",
+        "counter": "Zura Stormcall applies magic damage against Ada’s lower resistance; sustained focused attacks can exhaust the shield before its duration ends.",
+        "weakness": "Low offensive output and a self-only shield: she cannot rescue a distant backline unit.",
+        "contrast": "Unlike Borin, Ada prevents damage to herself instead of interrupting surrounding enemies.",
+        "test": "Check that a shielded Ada still takes overflow damage correctly and cannot refresh a stronger shield with a weaker cast."
+      },
+      "localization_status": "draft_en_id_review_required",
+      "asset_paths": {
+        "blender": "art-source/heroes/wc_u_human_guardian/wc_u_human_guardian.blend",
+        "mesh_fbx": "exports/heroes/wc_u_human_guardian/SK_wc_u_human_guardian.fbx",
+        "unreal_folder": "/Game/WonderChess/Heroes/wc_u_human_guardian",
+        "portrait": "exports/heroes/wc_u_human_guardian/portrait.png"
+      },
+      "animation_contract": {
+        "fps": 60,
+        "in_place": true,
+        "required_clips": [
+          "Idle",
+          "Move",
+          "Attack",
+          "Active",
+          "Hit",
+          "Defeat",
+          "Victory"
+        ],
+        "root_bone": "root",
+        "root_motion": false,
+        "socket_names": [
+          "weapon_r",
+          "weapon_l",
+          "cast_origin",
+          "head_ui"
+        ],
+        "deformation_review_required": true
+      },
+      "art_budget": {
+        "lod0_triangles_max": 15000,
+        "material_slots_max": 2,
+        "texture_size_default": 1024,
+        "deform_bones_target_max": 60,
+        "skin_influences_max": 4,
+        "lod1_target_ratio": 0.5,
+        "lod2_target_ratio": 0.25,
+        "budget_status": "unprofiled_starting_target"
+      },
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Ada Brightshield, The Gatekeeper. Human Guardian, adult character, height 1.82 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A broad inverted-triangle shoulder line over a compact waist, anchored by an oversized rounded kite shield on the left. The shield rises to eyebrow height when guarding, but stays below her eyes at rest. Warm brown skin, square brows, dark eyes and a short black braid tucked behind the neck. Her calm, alert expression is readable without exaggerated facial animation. An ivory quilted coat sits under simplified steel breast and shoulder plates. A split navy tabard ends above the knees, leaving the leg silhouettes clear. Heavy boots and broad bracers make her planted stance apparent. Left-hand kite shield with a raised rising-sun disk; short, broad fantasy sword in the right hand. Build the emblem as shallow geometry with a baked bevel, not dense engraving. Palette: Navy #25466B; ivory #E9E2CD; brushed steel #9EAAB5; restrained gold #C7A25B. Gold covers only the shield crest and two fasteners. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Ada",
+      "role_tags": [
+        "tank"
+      ]
+    },
+    {
+      "id": "wc_u_human_priest",
+      "slug": "mira-dawnwell",
+      "name": "Mira Dawnwell",
+      "title": "The Roadside Healer",
+      "race": "human",
+      "unit_class": "priest",
+      "region": "brighthaven",
+      "faction": "dawn_compact",
+      "role": "Support",
+      "cost": 1,
+      "rarity": "Common",
+      "production_phase": "alpha",
+      "implementation_status": "designed_not_built",
+      "height_m": 1.7,
+      "rig_family": "humanoid_standard",
+      "stats": {
+        "health_cp": 65000,
+        "attack_damage_cp": 3400,
+        "attack_rate_milli": 750,
+        "attack_range_tiles": 3,
+        "physical_armor": 10,
+        "magic_resistance": 20,
+        "movement_rate_milli": 1050,
+        "attack_delivery": "ranged",
+        "attack_damage_type": "magic",
+        "attack_windup_ms": 300,
+        "projectile_travel_ms": 150
+      },
+      "ability": {
+        "name": "Mend",
+        "tooltip_en": "Heals the ally with the lowest health percentage.",
+        "target_rule": "lowest_health_ally",
+        "first_cast_ms": 3000,
+        "cooldown_ms": 7000,
+        "cast_ms": 350,
+        "radius_tiles": 0,
+        "range_tiles": 8,
+        "allow_self": true,
+        "id": "wc_a_human_priest",
+        "recovery_ms": 300,
+        "max_targets": 12,
+        "max_dash_tiles": 0,
+        "travel_ms": 0,
+        "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
+        "no_target_policy": "remain_ready_continue_basics",
+        "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
+        "delivery": "instant",
+        "tooltip_id": "Memulihkan kesehatan sekutu dengan persentase kesehatan terendah.",
+        "effects": [
+          {
+            "effect": "heal",
+            "damage_type": null,
+            "magnitude_unit": "centipoints",
+            "magnitude_by_star": [
+              18000,
+              32400,
+              58300
+            ],
+            "stat": null,
+            "duration_ms": 0
+          }
+        ]
+      },
+      "art": {
+        "silhouette": "A bell-shaped short coat and a high open staff loop, balanced by a small medicine satchel. Her upper body stays narrower than a Guardian, with the staff serving as the long vertical accent.",
+        "face": "Olive skin, hazel eyes, dark auburn hair in a loose bun, and a practical, attentive expression. A fabric headband frames her face without hiding it.",
+        "costume": "Cream wool layers under a coral traveling mantle; the mantle is cut at the elbows for clean arm animation. Fitted trousers and walking boots replace a floor-length robe.",
+        "palette": "Cream #F0E6CC; coral #CF7067; muted teal #538E8D; warm brass #BC9B58.",
+        "equipment": "A polished wood staff ending in an open circular lantern and a square leather satchel with two large clasps. Small bottle shapes remain abstract accessories, never gameplay consumables.",
+        "signature": "Circular staff head, coral shoulder mantle, and square hip satchel.",
+        "materials": "Soft woven cloth, oiled wood, dull brass and one small lantern emissive area. Paint folds in broad groups rather than dense noise.",
+        "back": "The mantle has a clean V seam; a wide satchel strap crosses from left shoulder to right hip. Keep the staff away from the bun in overhead poses.",
+        "animation": "Idle checks the battlefield rather than fussing with props. Movement is brisk and balanced. Basics point the staff for a small light bolt. Mend traces a single clear upward curve before its effect leaves the lantern.",
+        "vfx": "A warm-gold pulse travels to the selected ally and resolves as two rising leaflike arcs. The target health bar briefly indicates effective healing, not overheal.",
+        "audio": "Soft bell pair and airy arrival tone, quieter than damage impacts. A dry cloth rustle supports movement without masking action sounds.",
+        "risk": "The circular staff opening must remain readable at distance; overly thin geometry will vanish. Mend must remain distinct from a shield bubble."
+      },
+      "biography": "Mira originally planned to run a quiet clinic near Brighthaven’s market. Traveling with Ada taught her how much difference an organized defense makes before healing is needed. She enters the trials to help train captains and sends field notes to Orla beneath Stoneveil, turning their friendly arguments into better care for both communities.",
+      "tactics": {
+        "placement": "Second or third row behind a frontline unit, not alone in a corner exposed to flankers.",
+        "partner": "Ada Brightshield provides a long-lived healing target; Elin Moonsong can increase Mira’s ordinary attack cadence but never her skill cooldown.",
+        "counter": "Sylas Duskrun can reach the support line; burst area damage can outpace single-target Mend.",
+        "weakness": "Low durability and only one healed target per cast; no resurrection or cleanse.",
+        "contrast": "Compared with Elin, Mira repairs health directly instead of accelerating nearby allies.",
+        "test": "Verify lowest-health percentage ties, self-healing eligibility, overheal cap, and no cast when all allies are full."
+      },
+      "localization_status": "draft_en_id_review_required",
+      "asset_paths": {
+        "blender": "art-source/heroes/wc_u_human_priest/wc_u_human_priest.blend",
+        "mesh_fbx": "exports/heroes/wc_u_human_priest/SK_wc_u_human_priest.fbx",
+        "unreal_folder": "/Game/WonderChess/Heroes/wc_u_human_priest",
+        "portrait": "exports/heroes/wc_u_human_priest/portrait.png"
+      },
+      "animation_contract": {
+        "fps": 60,
+        "in_place": true,
+        "required_clips": [
+          "Idle",
+          "Move",
+          "Attack",
+          "Active",
+          "Hit",
+          "Defeat",
+          "Victory"
+        ],
+        "root_bone": "root",
+        "root_motion": false,
+        "socket_names": [
+          "weapon_r",
+          "weapon_l",
+          "cast_origin",
+          "head_ui"
+        ],
+        "deformation_review_required": true
+      },
+      "art_budget": {
+        "lod0_triangles_max": 15000,
+        "material_slots_max": 2,
+        "texture_size_default": 1024,
+        "deform_bones_target_max": 60,
+        "skin_influences_max": 4,
+        "lod1_target_ratio": 0.5,
+        "lod2_target_ratio": 0.25,
+        "budget_status": "unprofiled_starting_target"
+      },
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Mira Dawnwell, The Roadside Healer. Human Priest, adult character, height 1.7 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A bell-shaped short coat and a high open staff loop, balanced by a small medicine satchel. Her upper body stays narrower than a Guardian, with the staff serving as the long vertical accent. Olive skin, hazel eyes, dark auburn hair in a loose bun, and a practical, attentive expression. A fabric headband frames her face without hiding it. Cream wool layers under a coral traveling mantle; the mantle is cut at the elbows for clean arm animation. Fitted trousers and walking boots replace a floor-length robe. A polished wood staff ending in an open circular lantern and a square leather satchel with two large clasps. Small bottle shapes remain abstract accessories, never gameplay consumables. Palette: Cream #F0E6CC; coral #CF7067; muted teal #538E8D; warm brass #BC9B58. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Mira",
+      "role_tags": [
+        "healer"
+      ]
+    },
+    {
+      "id": "wc_u_human_mage",
+      "slug": "rowan-emberwick",
+      "name": "Rowan Emberwick",
+      "title": "The Hearth Scholar",
+      "race": "human",
+      "unit_class": "mage",
+      "region": "brighthaven",
+      "faction": "dawn_compact",
+      "role": "Spell damage",
+      "cost": 2,
+      "rarity": "Uncommon",
+      "production_phase": "alpha",
+      "implementation_status": "designed_not_built",
+      "height_m": 1.78,
+      "rig_family": "humanoid_standard",
+      "stats": {
+        "health_cp": 62000,
+        "attack_damage_cp": 4500,
+        "attack_rate_milli": 700,
+        "attack_range_tiles": 3,
+        "physical_armor": 8,
+        "magic_resistance": 20,
+        "movement_rate_milli": 1000,
+        "attack_delivery": "ranged",
+        "attack_damage_type": "magic",
+        "attack_windup_ms": 300,
+        "projectile_travel_ms": 150
+      },
+      "ability": {
+        "name": "Ember Burst",
+        "tooltip_en": "Damages enemies around the target’s captured location.",
+        "target_rule": "current_enemy_area",
+        "first_cast_ms": 3500,
+        "cooldown_ms": 8000,
+        "cast_ms": 450,
+        "radius_tiles": 1,
+        "range_tiles": 4,
+        "travel_ms": 250,
+        "id": "wc_a_human_mage",
+        "recovery_ms": 300,
+        "max_targets": 12,
+        "allow_self": false,
+        "max_dash_tiles": 0,
+        "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
+        "no_target_policy": "remain_ready_continue_basics",
+        "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
+        "delivery": "projectile",
+        "tooltip_id": "Memberikan kerusakan sihir kepada musuh di area sasaran.",
+        "effects": [
+          {
+            "effect": "damage",
+            "damage_type": "magic",
+            "magnitude_unit": "centipoints",
+            "magnitude_by_star": [
+              15000,
+              27000,
+              48600
+            ],
+            "stat": null,
+            "duration_ms": 0
+          }
+        ]
+      },
+      "art": {
+        "silhouette": "An angular, high folded collar above a tapered traveling coat, with a large open orb frame held beside the right shoulder. Broad sleeve cuffs distinguish him from staff-bearing Priests.",
+        "face": "Copper-brown skin, round spectacles with thick readable rims, charcoal curls and an inquisitive half-smile. Use painted eyes rather than separate transparent lenses in the first pass.",
+        "costume": "Indigo scholar’s coat over an amber vest, reinforced fabric cuffs and calf-high boots. The coat splits into two stiff tails at the hips; no cloth simulation is required.",
+        "palette": "Indigo #494774; amber #E2A148; parchment #E7D9B4; coal #38333E.",
+        "equipment": "A hovering presentation-only ember orb inside a hand-held bronze bracket; a closed book fixed to the belt. The orb is not a summoned combat unit.",
+        "signature": "High folded collar, round spectacles, and bright orb within an asymmetrical frame.",
+        "materials": "Matte wool with broad color planes, worn bronze and a bounded emissive core. Reserve flame transparency for the brief active.",
+        "back": "Two coat tails form an inverted V, and a stitched star diagram sits high on the shoulders. The closed book does not intersect the thighs while walking.",
+        "animation": "Idle balances the orb with a restrained wrist movement. Move with compact forward steps. Basics flick a small spark. The active draws both hands inward then pushes the orb toward its captured ground location.",
+        "vfx": "A small amber projectile expands into a low circular burst at the captured cell. Mark the radius briefly on the ground; no lingering fire damage exists.",
+        "audio": "A brief rising furnace note followed by a soft magical pop; omit crackling loops once the burst resolves.",
+        "risk": "The orb must be driven by a socket/presentation component, not physics. Camera brightness must not erase the unit or neighboring health bars."
+      },
+      "biography": "Rowan studied old heating runes because he wanted every winter home in Brighthaven to be warm. A damaged ward exposed how those same patterns could defend a road from magical intruders. He dislikes grand speeches but joins the trials to translate useful research into dependable field practice, often testing his theories against Zura’s storm lessons.",
+      "tactics": {
+        "placement": "Back or middle row with a stable frontline, positioned to target an enemy cluster early.",
+        "partner": "Borin Stonebell briefly holds nearby enemies together; Zura enables the Mage bonus.",
+        "counter": "Spread formations waste the area component; Kesh can close the distance to an isolated caster.",
+        "weakness": "Fragile, and the projectile resolves at a captured cell rather than following a moving target.",
+        "contrast": "Rowan has a smaller, faster-targeted area burst than Zura’s wider delayed storm.",
+        "test": "Move the original target after release and prove the orb still hits only the captured area."
+      },
+      "localization_status": "draft_en_id_review_required",
+      "asset_paths": {
+        "blender": "art-source/heroes/wc_u_human_mage/wc_u_human_mage.blend",
+        "mesh_fbx": "exports/heroes/wc_u_human_mage/SK_wc_u_human_mage.fbx",
+        "unreal_folder": "/Game/WonderChess/Heroes/wc_u_human_mage",
+        "portrait": "exports/heroes/wc_u_human_mage/portrait.png"
+      },
+      "animation_contract": {
+        "fps": 60,
+        "in_place": true,
+        "required_clips": [
+          "Idle",
+          "Move",
+          "Attack",
+          "Active",
+          "Hit",
+          "Defeat",
+          "Victory"
+        ],
+        "root_bone": "root",
+        "root_motion": false,
+        "socket_names": [
+          "weapon_r",
+          "weapon_l",
+          "cast_origin",
+          "head_ui"
+        ],
+        "deformation_review_required": true
+      },
+      "art_budget": {
+        "lod0_triangles_max": 15000,
+        "material_slots_max": 2,
+        "texture_size_default": 1024,
+        "deform_bones_target_max": 60,
+        "skin_influences_max": 4,
+        "lod1_target_ratio": 0.5,
+        "lod2_target_ratio": 0.25,
+        "budget_status": "unprofiled_starting_target"
+      },
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Rowan Emberwick, The Hearth Scholar. Human Mage, adult character, height 1.78 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. An angular, high folded collar above a tapered traveling coat, with a large open orb frame held beside the right shoulder. Broad sleeve cuffs distinguish him from staff-bearing Priests. Copper-brown skin, round spectacles with thick readable rims, charcoal curls and an inquisitive half-smile. Use painted eyes rather than separate transparent lenses in the first pass. Indigo scholar’s coat over an amber vest, reinforced fabric cuffs and calf-high boots. The coat splits into two stiff tails at the hips; no cloth simulation is required. A hovering presentation-only ember orb inside a hand-held bronze bracket; a closed book fixed to the belt. The orb is not a summoned combat unit. Palette: Indigo #494774; amber #E2A148; parchment #E7D9B4; coal #38333E. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Rowan",
+      "role_tags": [
+        "caster"
+      ]
+    },
+    {
+      "id": "wc_u_elf_ranger",
+      "slug": "liora-leafstep",
+      "name": "Liora Leafstep",
+      "title": "The Canopy Scout",
+      "race": "elf",
+      "unit_class": "ranger",
+      "region": "thistlewood",
+      "faction": "greenward_circle",
+      "role": "Ranged damage",
+      "cost": 1,
+      "rarity": "Common",
+      "production_phase": "alpha",
+      "implementation_status": "designed_not_built",
+      "height_m": 1.88,
+      "rig_family": "humanoid_slender",
+      "stats": {
+        "health_cp": 67000,
+        "attack_damage_cp": 6000,
+        "attack_rate_milli": 850,
+        "attack_range_tiles": 4,
+        "physical_armor": 10,
+        "magic_resistance": 10,
+        "movement_rate_milli": 1150,
+        "attack_delivery": "ranged",
+        "attack_damage_type": "physical",
+        "attack_windup_ms": 300,
+        "projectile_travel_ms": 150
+      },
+      "ability": {
+        "name": "Leafstep",
+        "tooltip_en": "Dashes away from her target while keeping it in range.",
+        "target_rule": "retreat_from_current_enemy",
+        "first_cast_ms": 2000,
+        "cooldown_ms": 7500,
+        "cast_ms": 200,
+        "radius_tiles": 0,
+        "range_tiles": 4,
+        "max_dash_tiles": 2,
+        "recovery_ms": 150,
+        "id": "wc_a_elf_ranger",
+        "max_targets": 12,
+        "allow_self": false,
+        "travel_ms": 0,
+        "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
+        "no_target_policy": "remain_ready_continue_basics",
+        "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
+        "delivery": "instant",
+        "tooltip_id": "Melakukan dash menjauh dari sasaran sambil tetap dalam jangkauan serang.",
+        "effects": [
+          {
+            "effect": "dash",
+            "damage_type": null,
+            "magnitude_unit": null,
+            "magnitude_by_star": [
+              0,
+              0,
+              0
+            ],
+            "stat": null,
+            "duration_ms": 0
+          }
+        ]
+      },
+      "art": {
+        "silhouette": "A light forward-leaning profile, long crescent bow and three short leaflike cloak panels. The cloak stops above the knees, revealing long, narrow leg shapes.",
+        "face": "Golden-brown skin, gray-green eyes, swept-back pointed ears and pale brown hair tied into a short fan. Her gaze is alert rather than severe.",
+        "costume": "Moss fabric over fitted leather shoulder protection, a single pale scarf and flexible boots. The bow-side shoulder stays clear; no oversized pauldron blocks the draw.",
+        "palette": "Moss #647A4B; pale mint #B7CBB0; chestnut #765641; warm linen #DACCAB.",
+        "equipment": "A stylized crescent bow with broad flattened limbs and a slim back quiver. The bowstring is simplified geometry that can be hidden at distant LODs.",
+        "signature": "Crescent bow, three separated cloak panels, and sideways archery stance.",
+        "materials": "Matte woven cloth, satin-finished wood and leathery boots. Leaf motifs are broad seam shapes, not transparency cutouts.",
+        "back": "Quiver sits diagonally and avoids the shoulder draw arc. Cloak panels spread enough to read as three shapes without requiring cloth bones beyond a small secondary chain.",
+        "animation": "Idle scans in short head turns. Movement uses light lateral steps. Basics draw, pause visibly at release, and recover. Leafstep crouches briefly then slides through a controlled airborne step to the reserved cell.",
+        "vfx": "A short mint leaf trail follows the dash and fades within half a second. No invisibility, shield or damage accompanies the dash.",
+        "audio": "A soft bow snap and a brief brushlike dash sweep. Keep leaf rustle short and non-looping.",
+        "risk": "Foot sliding during the dash is acceptable only within the deliberate magical slide, not normal walking. Reserved tile and displayed landing must agree."
+      },
+      "biography": "Liora mapped the canopy paths above Thistlewood’s old trade road. She believes visitors protect a forest better when they understand it, so she guides traders rather than turning them away. Elin persuaded her to enter the trials, where she studies how to keep a ranged ally safe without simply hiding it in a corner.",
+      "tactics": {
+        "placement": "Backline with at least one free retreat tile; avoid filling every adjacent rear cell.",
+        "partner": "Ada or Borin gives Liora room to reposition; Tessa completes Ranger.",
+        "counter": "A fully crowded backline can deny landing cells, and pursuing Rogues can force repeated relocation.",
+        "weakness": "The skill deals no damage and fails to commit when no useful legal landing exists.",
+        "contrast": "Tessa provides burst damage; Liora trades that burst for positional resilience.",
+        "test": "Test blocked board edges, equal-distance destinations, two dash reservations and target loss before release."
+      },
+      "localization_status": "draft_en_id_review_required",
+      "asset_paths": {
+        "blender": "art-source/heroes/wc_u_elf_ranger/wc_u_elf_ranger.blend",
+        "mesh_fbx": "exports/heroes/wc_u_elf_ranger/SK_wc_u_elf_ranger.fbx",
+        "unreal_folder": "/Game/WonderChess/Heroes/wc_u_elf_ranger",
+        "portrait": "exports/heroes/wc_u_elf_ranger/portrait.png"
+      },
+      "animation_contract": {
+        "fps": 60,
+        "in_place": true,
+        "required_clips": [
+          "Idle",
+          "Move",
+          "Attack",
+          "Active",
+          "Hit",
+          "Defeat",
+          "Victory"
+        ],
+        "root_bone": "root",
+        "root_motion": false,
+        "socket_names": [
+          "weapon_r",
+          "weapon_l",
+          "cast_origin",
+          "head_ui"
+        ],
+        "deformation_review_required": true
+      },
+      "art_budget": {
+        "lod0_triangles_max": 15000,
+        "material_slots_max": 2,
+        "texture_size_default": 1024,
+        "deform_bones_target_max": 60,
+        "skin_influences_max": 4,
+        "lod1_target_ratio": 0.5,
+        "lod2_target_ratio": 0.25,
+        "budget_status": "unprofiled_starting_target"
+      },
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Liora Leafstep, The Canopy Scout. Elf Ranger, adult character, height 1.88 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A light forward-leaning profile, long crescent bow and three short leaflike cloak panels. The cloak stops above the knees, revealing long, narrow leg shapes. Golden-brown skin, gray-green eyes, swept-back pointed ears and pale brown hair tied into a short fan. Her gaze is alert rather than severe. Moss fabric over fitted leather shoulder protection, a single pale scarf and flexible boots. The bow-side shoulder stays clear; no oversized pauldron blocks the draw. A stylized crescent bow with broad flattened limbs and a slim back quiver. The bowstring is simplified geometry that can be hidden at distant LODs. Palette: Moss #647A4B; pale mint #B7CBB0; chestnut #765641; warm linen #DACCAB. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Liora",
+      "role_tags": [
+        "ranged"
+      ]
+    },
+    {
+      "id": "wc_u_elf_priest",
+      "slug": "elin-moonsong",
+      "name": "Elin Moonsong",
+      "title": "The Grove Cantor",
+      "race": "elf",
+      "unit_class": "priest",
+      "region": "thistlewood",
+      "faction": "greenward_circle",
+      "role": "Support",
+      "cost": 2,
+      "rarity": "Uncommon",
+      "production_phase": "alpha",
+      "implementation_status": "designed_not_built",
+      "height_m": 1.85,
+      "rig_family": "humanoid_slender",
+      "stats": {
+        "health_cp": 70000,
+        "attack_damage_cp": 3500,
+        "attack_rate_milli": 800,
+        "attack_range_tiles": 3,
+        "physical_armor": 10,
+        "magic_resistance": 25,
+        "movement_rate_milli": 1050,
+        "attack_delivery": "ranged",
+        "attack_damage_type": "magic",
+        "attack_windup_ms": 300,
+        "projectile_travel_ms": 150
+      },
+      "ability": {
+        "name": "Quick Song",
+        "tooltip_en": "Temporarily increases nearby allies’ attack speed.",
+        "target_rule": "adjacent_allies",
+        "first_cast_ms": 2500,
+        "cooldown_ms": 9000,
+        "cast_ms": 350,
+        "radius_tiles": 1,
+        "range_tiles": 1,
+        "allow_self": true,
+        "id": "wc_a_elf_priest",
+        "recovery_ms": 300,
+        "max_targets": 12,
+        "max_dash_tiles": 0,
+        "travel_ms": 0,
+        "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
+        "no_target_policy": "remain_ready_continue_basics",
+        "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
+        "delivery": "instant",
+        "tooltip_id": "Meningkatkan kecepatan serang diri sendiri dan sekutu bersebelahan untuk sementara.",
+        "effects": [
+          {
+            "effect": "stat_modifier",
+            "damage_type": null,
+            "magnitude_unit": "basis_points",
+            "magnitude_by_star": [
+              2000,
+              2500,
+              3000
+            ],
+            "stat": "attack_rate",
+            "duration_ms": 3000
+          }
+        ]
+      },
+      "art": {
+        "silhouette": "An upright pear-shaped silhouette with an open half-moon harp framing one shoulder. Layered petal-shaped sleeves form large, separated planes rather than many small leaves.",
+        "face": "Deep umber skin, pale blue eyes and silver hair in a compact crown braid. Pointed ears remain visible on both sides of the harp.",
+        "costume": "Blue-green tunic with ivory sleeve ends, a short overlapping overskirt and practical fitted boots. Silver trim follows one large curved line across the torso.",
+        "palette": "Deep teal #337A80; moon ivory #E3E8DD; blue-gray #6E86A0; silver #B6C7C9.",
+        "equipment": "A compact crescent harp held close to the torso, with only a few thick stylized strings. A small charm at the waist marks her order without introducing a resource.",
+        "signature": "Open crescent harp, crown braid, and layered pale sleeve ends.",
+        "materials": "Smooth cloth with sparse brocade normals, brushed silver and a faint cool glow on the harp rim. Do not use constantly glowing eyes.",
+        "back": "Short robe panels leave the legs visible; a braided cord forms a clean circle high on the back. The harp must not clip through the spine during turning.",
+        "animation": "Idle shifts a hand over the harp. Basic attacks pluck a single note. The active plants both feet and plays a broad chord, opening the elbows so the cast silhouette differs from an attack.",
+        "vfx": "A low teal ring outlines affected adjacent cells, then small wing-shaped chevrons appear briefly over recipients. No continuous aura tick; recipients are snapshotted at release.",
+        "audio": "One clear string note for basics and a restrained three-note chord for the skill. Separate the buff sound from Mira’s healing bell.",
+        "risk": "String geometry and hands can shimmer or intersect. Simplify the finger action and let the chord’s full-body gesture carry readability."
+      },
+      "biography": "Elin directs music at Thistlewood’s seasonal gatherings, where songs help visiting communities learn each other’s histories. When travel became dangerous, she adapted those rhythms into marching exercises. She joins Liora in the trials to prove that cooperation can be felt in a formation as clearly as it can be heard in a chorus.",
+      "tactics": {
+        "placement": "One row behind clustered attackers so several allies occupy the eight neighboring cells.",
+        "partner": "Tessa and Liora use the attack-rate bonus effectively; Mira activates Priest support potency.",
+        "counter": "Area spells punish the grouping that makes the song efficient.",
+        "weakness": "She does not heal, and moving away after release does not grant the buff to newly adjacent units.",
+        "contrast": "Mira restores health; Elin improves ordinary attack tempo without shortening active cooldowns.",
+        "test": "Priest must strengthen the positive attack-rate buff as well as healing/shields; equal-key casts must not stack indefinitely."
+      },
+      "localization_status": "draft_en_id_review_required",
+      "asset_paths": {
+        "blender": "art-source/heroes/wc_u_elf_priest/wc_u_elf_priest.blend",
+        "mesh_fbx": "exports/heroes/wc_u_elf_priest/SK_wc_u_elf_priest.fbx",
+        "unreal_folder": "/Game/WonderChess/Heroes/wc_u_elf_priest",
+        "portrait": "exports/heroes/wc_u_elf_priest/portrait.png"
+      },
+      "animation_contract": {
+        "fps": 60,
+        "in_place": true,
+        "required_clips": [
+          "Idle",
+          "Move",
+          "Attack",
+          "Active",
+          "Hit",
+          "Defeat",
+          "Victory"
+        ],
+        "root_bone": "root",
+        "root_motion": false,
+        "socket_names": [
+          "weapon_r",
+          "weapon_l",
+          "cast_origin",
+          "head_ui"
+        ],
+        "deformation_review_required": true
+      },
+      "art_budget": {
+        "lod0_triangles_max": 15000,
+        "material_slots_max": 2,
+        "texture_size_default": 1024,
+        "deform_bones_target_max": 60,
+        "skin_influences_max": 4,
+        "lod1_target_ratio": 0.5,
+        "lod2_target_ratio": 0.25,
+        "budget_status": "unprofiled_starting_target"
+      },
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Elin Moonsong, The Grove Cantor. Elf Priest, adult character, height 1.85 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. An upright pear-shaped silhouette with an open half-moon harp framing one shoulder. Layered petal-shaped sleeves form large, separated planes rather than many small leaves. Deep umber skin, pale blue eyes and silver hair in a compact crown braid. Pointed ears remain visible on both sides of the harp. Blue-green tunic with ivory sleeve ends, a short overlapping overskirt and practical fitted boots. Silver trim follows one large curved line across the torso. A compact crescent harp held close to the torso, with only a few thick stylized strings. A small charm at the waist marks her order without introducing a resource. Palette: Deep teal #337A80; moon ivory #E3E8DD; blue-gray #6E86A0; silver #B6C7C9. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Elin",
+      "role_tags": [
+        "support"
+      ]
+    },
+    {
+      "id": "wc_u_elf_rogue",
+      "slug": "sylas-duskrun",
+      "name": "Sylas Duskrun",
+      "title": "The Lantern Runner",
+      "race": "elf",
+      "unit_class": "rogue",
+      "region": "thistlewood",
+      "faction": "greenward_circle",
+      "role": "Disruption",
+      "cost": 3,
+      "rarity": "Rare",
+      "production_phase": "alpha",
+      "implementation_status": "designed_not_built",
+      "height_m": 1.9,
+      "rig_family": "humanoid_slender",
+      "stats": {
+        "health_cp": 79000,
+        "attack_damage_cp": 7400,
+        "attack_rate_milli": 1050,
+        "attack_range_tiles": 1,
+        "physical_armor": 18,
+        "magic_resistance": 12,
+        "movement_rate_milli": 1250,
+        "attack_delivery": "melee",
+        "attack_damage_type": "physical",
+        "attack_windup_ms": 250,
+        "projectile_travel_ms": 0
+      },
+      "ability": {
+        "name": "Backline Leap",
+        "tooltip_en": "Dashes beside the farthest enemy when a landing tile is free.",
+        "target_rule": "farthest_enemy_adjacent",
+        "first_cast_ms": 1000,
+        "cooldown_ms": 8500,
+        "cast_ms": 200,
+        "radius_tiles": 0,
+        "range_tiles": 8,
+        "max_dash_tiles": 7,
+        "recovery_ms": 150,
+        "id": "wc_a_elf_rogue",
+        "max_targets": 12,
+        "allow_self": false,
+        "travel_ms": 0,
+        "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
+        "no_target_policy": "remain_ready_continue_basics",
+        "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
+        "delivery": "instant",
+        "tooltip_id": "Melakukan dash ke petak kosong di samping musuh terjauh.",
+        "effects": [
+          {
+            "effect": "dash",
+            "damage_type": null,
+            "magnitude_unit": null,
+            "magnitude_by_star": [
+              0,
+              0,
+              0
+            ],
+            "stat": null,
+            "duration_ms": 0
+          }
+        ]
+      },
+      "art": {
+        "silhouette": "A low asymmetrical stance with a short diagonal mantle, one raised scarf end and paired curved fantasy blades. His shoulders form a compact wedge rather than a broad warrior line.",
+        "face": "Light bronze skin, dark hair swept to one side and narrow amber eyes. Keep the lower face visible, with no full mask that resembles a different character identity.",
+        "costume": "Dusk-blue leather panels over pale gray cloth, light knee guards and a cross-body courier strap. The mantle covers only the left shoulder and ends at the waist.",
+        "palette": "Dusk blue #3B4E6B; fog gray #BAC5CC; muted violet #786A8C; lantern amber #D2A35D.",
+        "equipment": "Two short stylized curved blades and a small shielded courier lantern fixed to the belt. The lantern is a visual cue, not a source of stealth or detection gameplay.",
+        "signature": "Single-shoulder mantle, paired curved silhouettes, and low forward stance.",
+        "materials": "Supple matte leather, soft fabric and restrained brushed metal. No black-on-black costume and no constant translucent body.",
+        "back": "Courier strap ends in a flat document case between the shoulder blades. Keep the case clear of both draw arcs.",
+        "animation": "Idle balances on the balls of the feet. Walk uses quick narrow steps. Basics alternate readable cuts. The active compresses into a low stance and launches along a single clean line; no teleport smoke hides the destination.",
+        "vfx": "A brief blue ribbon connects origin and landing, with a small landing ring. No bonus hit, invisibility, invulnerability or untargetability is implied.",
+        "audio": "Short cloth snap and crisp magical sweep for the dash; attacks remain light rather than explosive.",
+        "risk": "The dash can be tactically too strong against fragile backlines. Keep damage in normal attacks and test crowding, target validity and front/back targeting after landing."
+      },
+      "biography": "Sylas carried lantern messages between isolated settlements when the main roads were closed. He is proud of arriving on time, less proud of the shortcuts that occasionally alarm his friends. Liora recruits him for the trials because he understands how a formation can have safe-looking gaps that are not safe at all.",
+      "tactics": {
+        "placement": "A flank with an unobstructed initial approach; keep him out of immediate focus before the first dash.",
+        "partner": "Kesh completes Rogue and helps pressure the backline, while a Guardian draws ordinary frontline targeting.",
+        "counter": "Reserve a durable unit beside vulnerable supports and avoid leaving every backline neighbor empty.",
+        "weakness": "He can land in a dangerous formation and has no escape immunity; the dash itself does no damage.",
+        "contrast": "Kesh closes on the current target over a short distance; Sylas seeks the farthest enemy over the board.",
+        "test": "Validate farthest-target ties, free landing selection, no available landing, and donor ghost clones preserving the skill timer."
+      },
+      "localization_status": "draft_en_id_review_required",
+      "asset_paths": {
+        "blender": "art-source/heroes/wc_u_elf_rogue/wc_u_elf_rogue.blend",
+        "mesh_fbx": "exports/heroes/wc_u_elf_rogue/SK_wc_u_elf_rogue.fbx",
+        "unreal_folder": "/Game/WonderChess/Heroes/wc_u_elf_rogue",
+        "portrait": "exports/heroes/wc_u_elf_rogue/portrait.png"
+      },
+      "animation_contract": {
+        "fps": 60,
+        "in_place": true,
+        "required_clips": [
+          "Idle",
+          "Move",
+          "Attack",
+          "Active",
+          "Hit",
+          "Defeat",
+          "Victory"
+        ],
+        "root_bone": "root",
+        "root_motion": false,
+        "socket_names": [
+          "weapon_r",
+          "weapon_l",
+          "cast_origin",
+          "head_ui"
+        ],
+        "deformation_review_required": true
+      },
+      "art_budget": {
+        "lod0_triangles_max": 15000,
+        "material_slots_max": 2,
+        "texture_size_default": 1024,
+        "deform_bones_target_max": 60,
+        "skin_influences_max": 4,
+        "lod1_target_ratio": 0.5,
+        "lod2_target_ratio": 0.25,
+        "budget_status": "unprofiled_starting_target"
+      },
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Sylas Duskrun, The Lantern Runner. Elf Rogue, adult character, height 1.9 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A low asymmetrical stance with a short diagonal mantle, one raised scarf end and paired curved fantasy blades. His shoulders form a compact wedge rather than a broad warrior line. Light bronze skin, dark hair swept to one side and narrow amber eyes. Keep the lower face visible, with no full mask that resembles a different character identity. Dusk-blue leather panels over pale gray cloth, light knee guards and a cross-body courier strap. The mantle covers only the left shoulder and ends at the waist. Two short stylized curved blades and a small shielded courier lantern fixed to the belt. The lantern is a visual cue, not a source of stealth or detection gameplay. Palette: Dusk blue #3B4E6B; fog gray #BAC5CC; muted violet #786A8C; lantern amber #D2A35D. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Sylas",
+      "role_tags": [
+        "control"
+      ]
+    },
+    {
+      "id": "wc_u_dwarf_guardian",
+      "slug": "borin-stonebell",
+      "name": "Borin Stonebell",
+      "title": "The Bridge Sentinel",
+      "race": "dwarf",
+      "unit_class": "guardian",
+      "region": "stoneveil",
+      "faction": "hearthwright_union",
+      "role": "Defender",
+      "cost": 1,
+      "rarity": "Common",
+      "production_phase": "alpha",
+      "implementation_status": "designed_not_built",
+      "height_m": 1.38,
+      "rig_family": "humanoid_stocky",
+      "stats": {
+        "health_cp": 110000,
+        "attack_damage_cp": 4400,
+        "attack_rate_milli": 650,
+        "attack_range_tiles": 1,
+        "physical_armor": 40,
+        "magic_resistance": 10,
+        "movement_rate_milli": 900,
+        "attack_delivery": "melee",
+        "attack_damage_type": "physical",
+        "attack_windup_ms": 250,
+        "projectile_travel_ms": 0
+      },
+      "ability": {
+        "name": "Bell Stomp",
+        "tooltip_en": "Stuns adjacent enemies for one second.",
+        "target_rule": "adjacent_enemies",
+        "first_cast_ms": 3000,
+        "cooldown_ms": 8500,
+        "cast_ms": 400,
+        "radius_tiles": 1,
+        "range_tiles": 1,
+        "id": "wc_a_dwarf_guardian",
+        "recovery_ms": 300,
+        "max_targets": 12,
+        "allow_self": false,
+        "max_dash_tiles": 0,
+        "travel_ms": 0,
+        "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
+        "no_target_policy": "remain_ready_continue_basics",
+        "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
+        "delivery": "instant",
+        "tooltip_id": "Melumpuhkan sementara musuh di petak bersebelahan.",
+        "effects": [
+          {
+            "effect": "stun",
+            "damage_type": null,
+            "magnitude_unit": null,
+            "magnitude_by_star": [
+              0,
+              0,
+              0
+            ],
+            "stat": null,
+            "duration_ms": 1000
+          }
+        ]
+      },
+      "art": {
+        "silhouette": "A compact rectangular torso beneath a domed helmet, with wide rounded shoulder plates and an oversized bell-headed hammer. Short legs stay separated enough to read during motion.",
+        "face": "Ruddy tan skin, large brown brows and a thick brown beard divided into two broad braids. A hinged-looking open helmet never hides the eyes.",
+        "costume": "Slate plate over a moss-green padded coat, heavy riveted boots and a wide belt with a single square buckle. Avoid dozens of small rivets; bake secondary details.",
+        "palette": "Slate #697A88; moss #6B7750; muted bronze #A58354; warm beard brown #76533A.",
+        "equipment": "A two-handed fantasy hammer shaped like a solid bell housing. Its broad rim helps the stomp animation read without an actual moving bell interior.",
+        "signature": "Domed open helmet, paired beard braids and bell-shaped hammer head.",
+        "materials": "Rough forged metal, thick wool and a few worn bronze edges. Metal highlights should be broader and less bright than Ada’s polished crest.",
+        "back": "Overlapping short backplates terminate above the hips. Beard and shoulder plates need separate clearance zones during a downward cast.",
+        "animation": "Idle rocks only slightly with the heavy hammer resting low. Walk is a deliberate short stride. Basics deliver compact side impacts. The active raises one foot and stamps while the hammer settles, emphasizing the ring on the ground.",
+        "vfx": "A single amber ground ring and a clear stun marker over affected enemies. The ring has no damage component and no lingering slow.",
+        "audio": "A low, short bell knock with a firm footfall. Do not layer a long reverberation for each affected target.",
+        "risk": "Large shoulders and beard can hide the head at the gameplay angle; shorten the rear plate depth and test three Borins standing adjacent."
+      },
+      "biography": "Borin supervised a narrow stone bridge into Stoneveil long before anyone called it a strategic crossing. He knows that a well-timed pause can prevent a crowd from becoming a crush. In the Compact trials he brings that patience to the frontline, while Tessa repeatedly tries to persuade him that a lighter hammer would be more convenient.",
+      "tactics": {
+        "placement": "Central frontline where multiple enemies approach adjacent cells.",
+        "partner": "Rowan’s area burst benefits when enemies are briefly held nearby; Tessa activates Dwarf.",
+        "counter": "Spread ranged units can attack without entering the stun ring; magical burst attacks his lower resistance.",
+        "weakness": "Slow movement and low damage; the active controls enemies but does not hurt them.",
+        "contrast": "Ada absorbs a burst; Borin interrupts the local tempo and relies on allies for damage.",
+        "test": "All three stars retain exactly 1000 ms stun; repeated casts refresh expiry rather than adding durations."
+      },
+      "localization_status": "draft_en_id_review_required",
+      "asset_paths": {
+        "blender": "art-source/heroes/wc_u_dwarf_guardian/wc_u_dwarf_guardian.blend",
+        "mesh_fbx": "exports/heroes/wc_u_dwarf_guardian/SK_wc_u_dwarf_guardian.fbx",
+        "unreal_folder": "/Game/WonderChess/Heroes/wc_u_dwarf_guardian",
+        "portrait": "exports/heroes/wc_u_dwarf_guardian/portrait.png"
+      },
+      "animation_contract": {
+        "fps": 60,
+        "in_place": true,
+        "required_clips": [
+          "Idle",
+          "Move",
+          "Attack",
+          "Active",
+          "Hit",
+          "Defeat",
+          "Victory"
+        ],
+        "root_bone": "root",
+        "root_motion": false,
+        "socket_names": [
+          "weapon_r",
+          "weapon_l",
+          "cast_origin",
+          "head_ui"
+        ],
+        "deformation_review_required": true
+      },
+      "art_budget": {
+        "lod0_triangles_max": 15000,
+        "material_slots_max": 2,
+        "texture_size_default": 1024,
+        "deform_bones_target_max": 60,
+        "skin_influences_max": 4,
+        "lod1_target_ratio": 0.5,
+        "lod2_target_ratio": 0.25,
+        "budget_status": "unprofiled_starting_target"
+      },
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Borin Stonebell, The Bridge Sentinel. Dwarf Guardian, adult character, height 1.38 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A compact rectangular torso beneath a domed helmet, with wide rounded shoulder plates and an oversized bell-headed hammer. Short legs stay separated enough to read during motion. Ruddy tan skin, large brown brows and a thick brown beard divided into two broad braids. A hinged-looking open helmet never hides the eyes. Slate plate over a moss-green padded coat, heavy riveted boots and a wide belt with a single square buckle. Avoid dozens of small rivets; bake secondary details. A two-handed fantasy hammer shaped like a solid bell housing. Its broad rim helps the stomp animation read without an actual moving bell interior. Palette: Slate #697A88; moss #6B7750; muted bronze #A58354; warm beard brown #76533A. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Borin",
+      "role_tags": [
+        "tank"
+      ]
+    },
+    {
+      "id": "wc_u_dwarf_ranger",
+      "slug": "tessa-brassbolt",
+      "name": "Tessa Brassbolt",
+      "title": "The Clockwork Marksman",
+      "race": "dwarf",
+      "unit_class": "ranger",
+      "region": "stoneveil",
+      "faction": "hearthwright_union",
+      "role": "Ranged damage",
+      "cost": 2,
+      "rarity": "Uncommon",
+      "production_phase": "alpha",
+      "implementation_status": "designed_not_built",
+      "height_m": 1.32,
+      "rig_family": "humanoid_stocky",
+      "stats": {
+        "health_cp": 76000,
+        "attack_damage_cp": 6800,
+        "attack_rate_milli": 800,
+        "attack_range_tiles": 4,
+        "physical_armor": 20,
+        "magic_resistance": 10,
+        "movement_rate_milli": 950,
+        "attack_delivery": "ranged",
+        "attack_damage_type": "physical",
+        "attack_windup_ms": 300,
+        "projectile_travel_ms": 150
+      },
+      "ability": {
+        "name": "Heavy Bolt",
+        "tooltip_en": "Fires a stronger physical shot at her current target.",
+        "target_rule": "current_enemy",
+        "first_cast_ms": 2500,
+        "cooldown_ms": 6500,
+        "cast_ms": 350,
+        "radius_tiles": 0,
+        "range_tiles": 4,
+        "travel_ms": 150,
+        "id": "wc_a_dwarf_ranger",
+        "recovery_ms": 300,
+        "max_targets": 12,
+        "allow_self": false,
+        "max_dash_tiles": 0,
+        "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
+        "no_target_policy": "remain_ready_continue_basics",
+        "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
+        "delivery": "projectile",
+        "tooltip_id": "Memberikan kerusakan fisik kepada sasaran saat ini.",
+        "effects": [
+          {
+            "effect": "damage",
+            "damage_type": "physical",
+            "magnitude_unit": "centipoints",
+            "magnitude_by_star": [
+              17000,
+              30600,
+              55100
+            ],
+            "stat": null,
+            "duration_ms": 0
+          }
+        ]
+      },
+      "art": {
+        "silhouette": "A compact upright body with a wide horizontal crossbow and a high single-lens goggle shape above the forehead. A short jacket flares just enough to contrast with the weapon bar.",
+        "face": "Freckled medium-brown skin, dark eyes, cropped copper hair and a confident grin. Goggles sit above the eyes during normal play so expressions remain visible.",
+        "costume": "Mustard work jacket over charcoal padding, leather forearm guards, sturdy trousers and broad boots. A few oversized straps suggest workshop practicality.",
+        "palette": "Mustard #C5A04B; charcoal #404851; copper #B67B55; pale linen #D9CDAF.",
+        "equipment": "A broad stylized crank crossbow with exaggerated fantasy housing and a circular side wheel. It is a game prop, not a functional construction plan; mechanisms remain decorative.",
+        "signature": "Horizontal crossbow silhouette, forehead goggles and mustard jacket.",
+        "materials": "Worn painted wood, brushed copper, matte leather and a tiny cool aiming-gem emissive point. Do not use transparent scope glass.",
+        "back": "A flat bolt case is strapped low between the shoulders; jacket seams form a large X. Keep all parts outside the elbows’ reload arc.",
+        "animation": "Idle checks the line of sight with a small tilt. Basics brace, fire and reset the bow. The active plants both feet, pulls the housing close and releases with a longer visible windup than a basic shot.",
+        "vfx": "A bright compact bolt with a short trail and a sharp target flash. It never pierces or explodes.",
+        "audio": "A dry mechanical click and compact fantasy bow thump; the active adds a short metallic accent rather than a firearm report.",
+        "risk": "The wide prop can overlap neighboring units. Use its lowered rest pose outside windup and a close-to-body turn pose."
+      },
+      "biography": "Tessa builds reliable tools for Stoneveil’s long-distance couriers and tests every invention herself. She joined the trials to show that dwarven craft can support a team without adding another suit of heavy armor. Borin is her favorite test partner because he notices every rattle, and Liora is the rival whose accuracy she quietly admires.",
+      "tactics": {
+        "placement": "Backline behind protection, with a clear visual lane and space for the crossbow’s silhouette.",
+        "partner": "Liora completes Ranger; Elin increases ordinary shots between Heavy Bolt casts.",
+        "counter": "Armor reduces both her basics and her active; backline pressure can interrupt the long active windup.",
+        "weakness": "No mobility or area damage, and a shot expires if its target is already defeated.",
+        "contrast": "Liora trades burst for movement; Tessa is a stationary physical-damage specialist.",
+        "test": "Heavy Bolt uses ability damage rules, not the Ranger basic-only bonus; source Orclike bonuses must not appear on a Dwarf."
+      },
+      "localization_status": "draft_en_id_review_required",
+      "asset_paths": {
+        "blender": "art-source/heroes/wc_u_dwarf_ranger/wc_u_dwarf_ranger.blend",
+        "mesh_fbx": "exports/heroes/wc_u_dwarf_ranger/SK_wc_u_dwarf_ranger.fbx",
+        "unreal_folder": "/Game/WonderChess/Heroes/wc_u_dwarf_ranger",
+        "portrait": "exports/heroes/wc_u_dwarf_ranger/portrait.png"
+      },
+      "animation_contract": {
+        "fps": 60,
+        "in_place": true,
+        "required_clips": [
+          "Idle",
+          "Move",
+          "Attack",
+          "Active",
+          "Hit",
+          "Defeat",
+          "Victory"
+        ],
+        "root_bone": "root",
+        "root_motion": false,
+        "socket_names": [
+          "weapon_r",
+          "weapon_l",
+          "cast_origin",
+          "head_ui"
+        ],
+        "deformation_review_required": true
+      },
+      "art_budget": {
+        "lod0_triangles_max": 15000,
+        "material_slots_max": 2,
+        "texture_size_default": 1024,
+        "deform_bones_target_max": 60,
+        "skin_influences_max": 4,
+        "lod1_target_ratio": 0.5,
+        "lod2_target_ratio": 0.25,
+        "budget_status": "unprofiled_starting_target"
+      },
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Tessa Brassbolt, The Clockwork Marksman. Dwarf Ranger, adult character, height 1.32 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A compact upright body with a wide horizontal crossbow and a high single-lens goggle shape above the forehead. A short jacket flares just enough to contrast with the weapon bar. Freckled medium-brown skin, dark eyes, cropped copper hair and a confident grin. Goggles sit above the eyes during normal play so expressions remain visible. Mustard work jacket over charcoal padding, leather forearm guards, sturdy trousers and broad boots. A few oversized straps suggest workshop practicality. A broad stylized crank crossbow with exaggerated fantasy housing and a circular side wheel. It is a game prop, not a functional construction plan; mechanisms remain decorative. Palette: Mustard #C5A04B; charcoal #404851; copper #B67B55; pale linen #D9CDAF. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Tessa",
+      "role_tags": [
+        "ranged"
+      ]
+    },
+    {
+      "id": "wc_u_dwarf_warrior",
+      "slug": "dagna-anvilheart",
+      "name": "Dagna Anvilheart",
+      "title": "The Hall Champion",
+      "race": "dwarf",
+      "unit_class": "warrior",
+      "region": "stoneveil",
+      "faction": "hearthwright_union",
+      "role": "Melee damage",
+      "cost": 2,
+      "rarity": "Uncommon",
+      "production_phase": "alpha",
+      "implementation_status": "designed_not_built",
+      "height_m": 1.42,
+      "rig_family": "humanoid_stocky",
+      "stats": {
+        "health_cp": 100000,
+        "attack_damage_cp": 7000,
+        "attack_rate_milli": 800,
+        "attack_range_tiles": 1,
+        "physical_armor": 25,
+        "magic_resistance": 15,
+        "movement_rate_milli": 1000,
+        "attack_delivery": "melee",
+        "attack_damage_type": "physical",
+        "attack_windup_ms": 350,
+        "projectile_travel_ms": 0
+      },
+      "ability": {
+        "name": "Hammer Sweep",
+        "tooltip_en": "Damages all adjacent enemies.",
+        "target_rule": "adjacent_enemies",
+        "first_cast_ms": 3500,
+        "cooldown_ms": 8000,
+        "cast_ms": 400,
+        "radius_tiles": 1,
+        "range_tiles": 1,
+        "id": "wc_a_dwarf_warrior",
+        "recovery_ms": 300,
+        "max_targets": 12,
+        "allow_self": false,
+        "max_dash_tiles": 0,
+        "travel_ms": 0,
+        "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
+        "no_target_policy": "remain_ready_continue_basics",
+        "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
+        "delivery": "instant",
+        "tooltip_id": "Memberikan kerusakan fisik kepada musuh di area sasaran.",
+        "effects": [
+          {
+            "effect": "damage",
+            "damage_type": "physical",
+            "magnitude_unit": "centipoints",
+            "magnitude_by_star": [
+              14000,
+              25200,
+              45400
+            ],
+            "stat": null,
+            "duration_ms": 0
+          }
+        ]
+      },
+      "art": {
+        "silhouette": "A broad low center of gravity, square apron panels and a single large two-handed hammer held across the body. One uncovered upper sleeve breaks the armored outline without exposing a vulnerable-looking costume.",
+        "face": "Deep brown skin, bright gray eyes and black hair in a thick high braid coiled at the back. A stern resting expression softens during the victory pose.",
+        "costume": "Red workshop coat beneath segmented shoulder armor, a short split leather apron and heavy wrapped boots. Metal is limited to the shoulders, wrists and tool head.",
+        "palette": "Brick red #A64E45; soot #4A4343; honey leather #A67E4B; steel #AAB2B7.",
+        "equipment": "A blocky fantasy forge hammer with a large beveled face and short decorative rune strip. The tool reads from shape rather than detailed mechanical parts.",
+        "signature": "Wide hammer bar, red split coat and squared apron silhouette.",
+        "materials": "Coarse leather, wool, lightly worn iron and painted wood. Use broad edge accents to suggest craft rather than gritty damage.",
+        "back": "A simple crossed harness stabilizes the hammer rest pose; the braid coil stays above the shoulder blades and outside the swing path.",
+        "animation": "Idle holds the hammer diagonally with settled elbows. Walk uses strong grounded steps. Basics use a short overhead arc. The active pivots through one wide sweep, then returns to the same tile.",
+        "vfx": "A low pale-gold sweep arc traces only the adjacent-cell ring; no knockback or extra stun.",
+        "audio": "A broad whoosh and compact stone-on-metal fantasy impact, limited to one main active sound even with several victims.",
+        "risk": "The sweep must not imply a larger hit radius than the data. Avoid excessive root rotation that changes gameplay facing or shifts the feet."
+      },
+      "biography": "Dagna organizes Stoneveil’s annual craft contests, where finishing a useful bridge bracket matters more than winning an argument. She enters the Compact trials because she refuses to send apprentices into danger without learning how the teams will work. Her friendship with Rok began when they rebuilt a damaged caravan platform together, each claiming the other’s measurements were too cautious.",
+      "tactics": {
+        "placement": "Frontline beside, rather than in front of, the primary tank; try to contact two opponents.",
+        "partner": "Rok completes Warrior; Borin’s stun gives her time to finish the sweep.",
+        "counter": "Ranged spread formations deny area value; magical focus can wear down her moderate resistance.",
+        "weakness": "Needs close contact and has no self-heal, shield or forced movement.",
+        "contrast": "Rok accelerates repeated basics; Dagna delivers a periodic area hit.",
+        "test": "Each adjacent enemy receives one physical packet; no center self-hit and no duplicate diagonal hit."
+      },
+      "localization_status": "draft_en_id_review_required",
+      "asset_paths": {
+        "blender": "art-source/heroes/wc_u_dwarf_warrior/wc_u_dwarf_warrior.blend",
+        "mesh_fbx": "exports/heroes/wc_u_dwarf_warrior/SK_wc_u_dwarf_warrior.fbx",
+        "unreal_folder": "/Game/WonderChess/Heroes/wc_u_dwarf_warrior",
+        "portrait": "exports/heroes/wc_u_dwarf_warrior/portrait.png"
+      },
+      "animation_contract": {
+        "fps": 60,
+        "in_place": true,
+        "required_clips": [
+          "Idle",
+          "Move",
+          "Attack",
+          "Active",
+          "Hit",
+          "Defeat",
+          "Victory"
+        ],
+        "root_bone": "root",
+        "root_motion": false,
+        "socket_names": [
+          "weapon_r",
+          "weapon_l",
+          "cast_origin",
+          "head_ui"
+        ],
+        "deformation_review_required": true
+      },
+      "art_budget": {
+        "lod0_triangles_max": 15000,
+        "material_slots_max": 2,
+        "texture_size_default": 1024,
+        "deform_bones_target_max": 60,
+        "skin_influences_max": 4,
+        "lod1_target_ratio": 0.5,
+        "lod2_target_ratio": 0.25,
+        "budget_status": "unprofiled_starting_target"
+      },
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Dagna Anvilheart, The Hall Champion. Dwarf Warrior, adult character, height 1.42 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A broad low center of gravity, square apron panels and a single large two-handed hammer held across the body. One uncovered upper sleeve breaks the armored outline without exposing a vulnerable-looking costume. Deep brown skin, bright gray eyes and black hair in a thick high braid coiled at the back. A stern resting expression softens during the victory pose. Red workshop coat beneath segmented shoulder armor, a short split leather apron and heavy wrapped boots. Metal is limited to the shoulders, wrists and tool head. A blocky fantasy forge hammer with a large beveled face and short decorative rune strip. The tool reads from shape rather than detailed mechanical parts. Palette: Brick red #A64E45; soot #4A4343; honey leather #A67E4B; steel #AAB2B7. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Dagna",
+      "role_tags": [
+        "melee"
+      ]
+    },
+    {
+      "id": "wc_u_orc_warrior",
+      "slug": "rok-sunward",
+      "name": "Rok Sunward",
+      "title": "The Pass Champion",
+      "race": "orc",
+      "unit_class": "warrior",
+      "region": "stormstep",
+      "faction": "highland_watch",
+      "role": "Melee damage",
+      "cost": 1,
+      "rarity": "Common",
+      "production_phase": "alpha",
+      "implementation_status": "designed_not_built",
+      "height_m": 2.04,
+      "rig_family": "humanoid_broad",
+      "stats": {
+        "health_cp": 95000,
+        "attack_damage_cp": 6400,
+        "attack_rate_milli": 850,
+        "attack_range_tiles": 1,
+        "physical_armor": 20,
+        "magic_resistance": 15,
+        "movement_rate_milli": 1100,
+        "attack_delivery": "melee",
+        "attack_damage_type": "physical",
+        "attack_windup_ms": 350,
+        "projectile_travel_ms": 0
+      },
+      "ability": {
+        "name": "Battle Rhythm",
+        "tooltip_en": "Temporarily increases his attack speed.",
+        "target_rule": "self",
+        "first_cast_ms": 2500,
+        "cooldown_ms": 8500,
+        "cast_ms": 250,
+        "radius_tiles": 0,
+        "range_tiles": 0,
+        "allow_self": true,
+        "id": "wc_a_orc_warrior",
+        "recovery_ms": 300,
+        "max_targets": 12,
+        "max_dash_tiles": 0,
+        "travel_ms": 0,
+        "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
+        "no_target_policy": "remain_ready_continue_basics",
+        "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
+        "delivery": "instant",
+        "tooltip_id": "Meningkatkan kecepatan serang diri sendiri untuk sementara.",
+        "effects": [
+          {
+            "effect": "stat_modifier",
+            "damage_type": null,
+            "magnitude_unit": "basis_points",
+            "magnitude_by_star": [
+              3000,
+              3500,
+              4000
+            ],
+            "stat": "attack_rate",
+            "duration_ms": 3000
+          }
+        ]
+      },
+      "art": {
+        "silhouette": "A tall broad-shouldered figure with a short circular shoulder mantle, compact fantasy axe and a visibly open stance. The weapon and torso create a diagonal, not Dagna’s horizontal bar.",
+        "face": "Olive-green skin, small rounded tusks, warm amber eyes and black hair tied in a short topknot. Keep the expression determined but friendly, avoiding a permanent snarl.",
+        "costume": "Sun-ochre woven mantle over brown padded armor, a red waist sash and practical high boots. The armor uses clean geometric plates with broad woven bands.",
+        "palette": "Ochre #CAA454; red earth #A95E4D; dark leather #5E5040; muted green skin #6E8260.",
+        "equipment": "A single broad stylized axe carried one-handed, with an open off-hand for balance. Its proportions communicate fantasy rather than realistic manufacturing.",
+        "signature": "Round ochre mantle, topknot, and broad diagonal axe silhouette.",
+        "materials": "Thick cloth, oiled hide, brushed iron and a restrained sun-pattern stitch. No spikes or trophy clutter.",
+        "back": "A wide sash knot sits on one hip; the mantle is stiff enough for a short bone chain instead of simulation.",
+        "animation": "Idle squares shoulders and rolls weight between feet. Basics use alternating short attacks. The active takes a clear breath and sets a quicker rhythm with a firm foot plant, not a transformation.",
+        "vfx": "Three short amber speed marks rise from the arms and fade; the buff remains visible as a small icon, not a continuous flame layer.",
+        "audio": "Rhythmic hand-drum accent and a restrained exhale, with ordinary attack impacts at the new cadence.",
+        "risk": "Large proportions need a broad rig variant rather than scaling a human mesh uniformly. Keep hands and axe away from face during tempo changes."
+      },
+      "biography": "Rok escorts trade caravans through Stormstep’s high passes and treats a successful arrival as the only meaningful victory. He sees the trials as practice for cooperation, not proof that one people is strongest. Dagna’s exacting workshop habits amuse him, while Zura’s weather lessons taught him when patience matters more than force.",
+      "tactics": {
+        "placement": "Frontline flank next to a Guardian, so he can keep attacking one target rather than absorb all focus.",
+        "partner": "Dagna activates Warrior; Zura or Kesh activates Orc to improve direct damage.",
+        "counter": "Stuns interrupt his attacking window, and shields can absorb much of the tempo burst.",
+        "weakness": "All sustained offense is basic attacks; no mobility, area attack or protection.",
+        "contrast": "Dagna has an area skill; Rok turns one ordinary attack pattern into a temporary sustained threat.",
+        "test": "Tempo adjusts the next attack interval, never rewinds an already committed attack or accelerates the cooldown."
+      },
+      "localization_status": "draft_en_id_review_required",
+      "asset_paths": {
+        "blender": "art-source/heroes/wc_u_orc_warrior/wc_u_orc_warrior.blend",
+        "mesh_fbx": "exports/heroes/wc_u_orc_warrior/SK_wc_u_orc_warrior.fbx",
+        "unreal_folder": "/Game/WonderChess/Heroes/wc_u_orc_warrior",
+        "portrait": "exports/heroes/wc_u_orc_warrior/portrait.png"
+      },
+      "animation_contract": {
+        "fps": 60,
+        "in_place": true,
+        "required_clips": [
+          "Idle",
+          "Move",
+          "Attack",
+          "Active",
+          "Hit",
+          "Defeat",
+          "Victory"
+        ],
+        "root_bone": "root",
+        "root_motion": false,
+        "socket_names": [
+          "weapon_r",
+          "weapon_l",
+          "cast_origin",
+          "head_ui"
+        ],
+        "deformation_review_required": true
+      },
+      "art_budget": {
+        "lod0_triangles_max": 15000,
+        "material_slots_max": 2,
+        "texture_size_default": 1024,
+        "deform_bones_target_max": 60,
+        "skin_influences_max": 4,
+        "lod1_target_ratio": 0.5,
+        "lod2_target_ratio": 0.25,
+        "budget_status": "unprofiled_starting_target"
+      },
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Rok Sunward, The Pass Champion. Orc Warrior, adult character, height 2.04 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A tall broad-shouldered figure with a short circular shoulder mantle, compact fantasy axe and a visibly open stance. The weapon and torso create a diagonal, not Dagna’s horizontal bar. Olive-green skin, small rounded tusks, warm amber eyes and black hair tied in a short topknot. Keep the expression determined but friendly, avoiding a permanent snarl. Sun-ochre woven mantle over brown padded armor, a red waist sash and practical high boots. The armor uses clean geometric plates with broad woven bands. A single broad stylized axe carried one-handed, with an open off-hand for balance. Its proportions communicate fantasy rather than realistic manufacturing. Palette: Ochre #CAA454; red earth #A95E4D; dark leather #5E5040; muted green skin #6E8260. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Rok",
+      "role_tags": [
+        "melee"
+      ]
+    },
+    {
+      "id": "wc_u_orc_mage",
+      "slug": "zura-stormcall",
+      "name": "Zura Stormcall",
+      "title": "The Sky Listener",
+      "race": "orc",
+      "unit_class": "mage",
+      "region": "stormstep",
+      "faction": "highland_watch",
+      "role": "Spell damage",
+      "cost": 3,
+      "rarity": "Rare",
+      "production_phase": "alpha",
+      "implementation_status": "designed_not_built",
+      "height_m": 1.97,
+      "rig_family": "humanoid_broad",
+      "stats": {
+        "health_cp": 75000,
+        "attack_damage_cp": 5000,
+        "attack_rate_milli": 750,
+        "attack_range_tiles": 3,
+        "physical_armor": 12,
+        "magic_resistance": 25,
+        "movement_rate_milli": 1000,
+        "attack_delivery": "ranged",
+        "attack_damage_type": "magic",
+        "attack_windup_ms": 300,
+        "projectile_travel_ms": 150
+      },
+      "ability": {
+        "name": "Storm Ring",
+        "tooltip_en": "Strikes enemies around a captured enemy location with magic.",
+        "target_rule": "current_enemy_area",
+        "first_cast_ms": 4000,
+        "cooldown_ms": 10000,
+        "cast_ms": 600,
+        "radius_tiles": 2,
+        "range_tiles": 4,
+        "travel_ms": 300,
+        "id": "wc_a_orc_mage",
+        "recovery_ms": 300,
+        "max_targets": 12,
+        "allow_self": false,
+        "max_dash_tiles": 0,
+        "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
+        "no_target_policy": "remain_ready_continue_basics",
+        "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
+        "delivery": "projectile",
+        "tooltip_id": "Memberikan kerusakan sihir kepada musuh di area sasaran.",
+        "effects": [
+          {
+            "effect": "damage",
+            "damage_type": "magic",
+            "magnitude_unit": "centipoints",
+            "magnitude_by_star": [
+              19000,
+              34200,
+              61600
+            ],
+            "stat": null,
+            "duration_ms": 0
+          }
+        ]
+      },
+      "art": {
+        "silhouette": "A tall stable stance beneath two broad crescent shoulder cloths, with a forked staff held outward. Her costume forms layered triangles rather than a conventional pointed wizard hat.",
+        "face": "Sage-green skin, silver-gray eyes, modest tusks and dark hair braided into three thick sections. A calm upward gaze suggests listening to the weather.",
+        "costume": "Storm-blue layered coat, pale wool collar, russet belt and wrapped boots. Fabric panels end above the ankles and open around the knees for movement.",
+        "palette": "Storm blue #4A638D; cloud gray #CBD3DA; russet #A7664D; silver #A9B8C4.",
+        "equipment": "A tall wooden staff with an open fork framing a small floating sky stone. No hanging chains that require physical simulation.",
+        "signature": "Open forked staff, cloud collar and three thick braids.",
+        "materials": "Wool, painted wood, oxidized silver and restrained cyan glow. Keep the sky stone’s bloom local.",
+        "back": "Two long triangular coat panels split around the legs, with a broad stitched cloud arc high on the back.",
+        "animation": "Idle makes a small palm-up listening gesture. Basics release small storm motes. The active raises the staff slowly, draws a visible circular path, then plants it as the captured area resolves.",
+        "vfx": "A thin blue circle previews the captured radius during travel, followed by several short vertical magic streaks. The ability is one damage pulse, not damage over time or stun.",
+        "audio": "Low rising wind followed by a short soft thunder chord, capped to avoid overwhelming every other cue.",
+        "risk": "Radius two covers a large portion of a crowded board. Effects must show the true edge and performance tests must include multiple simultaneous rings."
+      },
+      "biography": "Zura learned to read mountain winds so that Stormstep’s villages could prepare before storms arrived. She now studies disturbances around the distant breach, comparing notes with Rowan instead of accepting easy omens. In the trials she teaches captains to notice where enemies gather and to commit carefully when a spell cannot change direction once released.",
+      "tactics": {
+        "placement": "Protected backline with a frontline lasting long enough for the first cast.",
+        "partner": "Rowan completes Mage; Rok activates Orc; Borin can briefly keep targets close.",
+        "counter": "Spread out or force movement after the capture; Rogues can interrupt the long windup.",
+        "weakness": "High cost, slow active cadence and no control effect despite the storm imagery.",
+        "contrast": "Rowan casts sooner with a smaller area; Zura risks a longer commitment for broader coverage.",
+        "test": "The storm captures center at release, not at impact; verify every affected unit receives exactly one magic packet."
+      },
+      "localization_status": "draft_en_id_review_required",
+      "asset_paths": {
+        "blender": "art-source/heroes/wc_u_orc_mage/wc_u_orc_mage.blend",
+        "mesh_fbx": "exports/heroes/wc_u_orc_mage/SK_wc_u_orc_mage.fbx",
+        "unreal_folder": "/Game/WonderChess/Heroes/wc_u_orc_mage",
+        "portrait": "exports/heroes/wc_u_orc_mage/portrait.png"
+      },
+      "animation_contract": {
+        "fps": 60,
+        "in_place": true,
+        "required_clips": [
+          "Idle",
+          "Move",
+          "Attack",
+          "Active",
+          "Hit",
+          "Defeat",
+          "Victory"
+        ],
+        "root_bone": "root",
+        "root_motion": false,
+        "socket_names": [
+          "weapon_r",
+          "weapon_l",
+          "cast_origin",
+          "head_ui"
+        ],
+        "deformation_review_required": true
+      },
+      "art_budget": {
+        "lod0_triangles_max": 15000,
+        "material_slots_max": 2,
+        "texture_size_default": 1024,
+        "deform_bones_target_max": 60,
+        "skin_influences_max": 4,
+        "lod1_target_ratio": 0.5,
+        "lod2_target_ratio": 0.25,
+        "budget_status": "unprofiled_starting_target"
+      },
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Zura Stormcall, The Sky Listener. Orc Mage, adult character, height 1.97 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A tall stable stance beneath two broad crescent shoulder cloths, with a forked staff held outward. Her costume forms layered triangles rather than a conventional pointed wizard hat. Sage-green skin, silver-gray eyes, modest tusks and dark hair braided into three thick sections. A calm upward gaze suggests listening to the weather. Storm-blue layered coat, pale wool collar, russet belt and wrapped boots. Fabric panels end above the ankles and open around the knees for movement. A tall wooden staff with an open fork framing a small floating sky stone. No hanging chains that require physical simulation. Palette: Storm blue #4A638D; cloud gray #CBD3DA; russet #A7664D; silver #A9B8C4. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Zura",
+      "role_tags": [
+        "caster"
+      ]
+    },
+    {
+      "id": "wc_u_orc_rogue",
+      "slug": "kesh-quickwind",
+      "name": "Kesh Quickwind",
+      "title": "The Ridge Courier",
+      "race": "orc",
+      "unit_class": "rogue",
+      "region": "stormstep",
+      "faction": "highland_watch",
+      "role": "Disruption",
+      "cost": 2,
+      "rarity": "Uncommon",
+      "production_phase": "alpha",
+      "implementation_status": "designed_not_built",
+      "height_m": 1.93,
+      "rig_family": "humanoid_broad",
+      "stats": {
+        "health_cp": 82000,
+        "attack_damage_cp": 6700,
+        "attack_rate_milli": 1000,
+        "attack_range_tiles": 1,
+        "physical_armor": 15,
+        "magic_resistance": 10,
+        "movement_rate_milli": 1250,
+        "attack_delivery": "melee",
+        "attack_damage_type": "physical",
+        "attack_windup_ms": 250,
+        "projectile_travel_ms": 0
+      },
+      "ability": {
+        "name": "Quickstep",
+        "tooltip_en": "Dashes beside the current target within three tiles.",
+        "target_rule": "current_enemy_adjacent",
+        "first_cast_ms": 1500,
+        "cooldown_ms": 6500,
+        "cast_ms": 200,
+        "radius_tiles": 0,
+        "range_tiles": 4,
+        "max_dash_tiles": 3,
+        "recovery_ms": 150,
+        "id": "wc_a_orc_rogue",
+        "max_targets": 12,
+        "allow_self": false,
+        "travel_ms": 0,
+        "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
+        "no_target_policy": "remain_ready_continue_basics",
+        "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
+        "delivery": "instant",
+        "tooltip_id": "Melakukan dash ke petak kosong di samping sasaran saat ini.",
+        "effects": [
+          {
+            "effect": "dash",
+            "damage_type": null,
+            "magnitude_unit": null,
+            "magnitude_by_star": [
+              0,
+              0,
+              0
+            ],
+            "stat": null,
+            "duration_ms": 0
+          }
+        ]
+      },
+      "art": {
+        "silhouette": "A narrow athletic wedge with a high scarf loop, short rounded shoulder guards and two compact hooked fantasy blades. The overall shape is tall and light rather than Rok’s broad mantle.",
+        "face": "Muted jade skin, brown eyes, small tusks and cropped dark hair with a pale cloth tie. An easy grin distinguishes him from a stereotypically menacing Rogue.",
+        "costume": "Turquoise courier jacket over charcoal cloth, a tan diagonal sash and light wrapped boots. Large route-marker patches replace armor clutter.",
+        "palette": "Turquoise #408E91; tan #C1A477; charcoal #3D4C4E; muted jade #708D72.",
+        "equipment": "Two short rounded fantasy blades and a flat map case on the hip. Keep the implements stylized and visually simpler than Sylas’s curves.",
+        "signature": "High scarf loop, turquoise diagonal jacket and open forward-running posture.",
+        "materials": "Waxed cloth, soft leather and minimal brushed metal. No transparent cape or spark trail during normal walking.",
+        "back": "A route-map case sits close to the lower back, with a broad sash crossing above it. The scarf loop uses a few stiff bones rather than simulated cloth.",
+        "animation": "Idle is ready to run, not constantly bouncing. Basics use economical alternating motions. The active lowers the lead shoulder and makes one fast grounded glide to the reserved cell.",
+        "vfx": "A short pale-cyan streak hugs the ground; mark the landing rather than hiding the unit. No implicit extra strike or slow.",
+        "audio": "A quick brushed-wind accent and light foot landing. Separate the cue from Sylas’s longer dash with a shorter pitch envelope.",
+        "risk": "The landing must reduce distance to the current target; otherwise a ready skill could loop without tactical purpose. Test same-tick target movement and blocked cells."
+      },
+      "biography": "Kesh carries maps and letters between Stormstep’s scattered homes, measuring a route by who it connects rather than how impressive it looks. He joined the trials after Sylas challenged him to a friendly delivery race. Their rivalry is cheerful, but Kesh wants captains to understand that reaching the right place is only useful when the team is ready to follow.",
+      "tactics": {
+        "placement": "A flank near the front, with a path toward a vulnerable current target rather than an isolated leap across the entire board.",
+        "partner": "Sylas completes Rogue; Rok makes an effective nearby damage partner.",
+        "counter": "Protect the current target with occupied neighboring cells or a durable control unit.",
+        "weakness": "Short dash and modest defenses; cannot automatically select the farthest support like Sylas.",
+        "contrast": "Kesh chases the existing target; Sylas selects the farthest enemy and has a longer cooldown.",
+        "test": "Never consume cooldown when already adjacent with no improving destination; landing reservation must release on interrupt."
+      },
+      "localization_status": "draft_en_id_review_required",
+      "asset_paths": {
+        "blender": "art-source/heroes/wc_u_orc_rogue/wc_u_orc_rogue.blend",
+        "mesh_fbx": "exports/heroes/wc_u_orc_rogue/SK_wc_u_orc_rogue.fbx",
+        "unreal_folder": "/Game/WonderChess/Heroes/wc_u_orc_rogue",
+        "portrait": "exports/heroes/wc_u_orc_rogue/portrait.png"
+      },
+      "animation_contract": {
+        "fps": 60,
+        "in_place": true,
+        "required_clips": [
+          "Idle",
+          "Move",
+          "Attack",
+          "Active",
+          "Hit",
+          "Defeat",
+          "Victory"
+        ],
+        "root_bone": "root",
+        "root_motion": false,
+        "socket_names": [
+          "weapon_r",
+          "weapon_l",
+          "cast_origin",
+          "head_ui"
+        ],
+        "deformation_review_required": true
+      },
+      "art_budget": {
+        "lod0_triangles_max": 15000,
+        "material_slots_max": 2,
+        "texture_size_default": 1024,
+        "deform_bones_target_max": 60,
+        "skin_influences_max": 4,
+        "lod1_target_ratio": 0.5,
+        "lod2_target_ratio": 0.25,
+        "budget_status": "unprofiled_starting_target"
+      },
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Kesh Quickwind, The Ridge Courier. Orc Rogue, adult character, height 1.93 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A narrow athletic wedge with a high scarf loop, short rounded shoulder guards and two compact hooked fantasy blades. The overall shape is tall and light rather than Rok’s broad mantle. Muted jade skin, brown eyes, small tusks and cropped dark hair with a pale cloth tie. An easy grin distinguishes him from a stereotypically menacing Rogue. Turquoise courier jacket over charcoal cloth, a tan diagonal sash and light wrapped boots. Large route-marker patches replace armor clutter. Two short rounded fantasy blades and a flat map case on the hip. Keep the implements stylized and visually simpler than Sylas’s curves. Palette: Turquoise #408E91; tan #C1A477; charcoal #3D4C4E; muted jade #708D72. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Kesh",
+      "role_tags": [
+        "control"
+      ]
+    },
+    {
+      "id": "wc_u_human_warrior",
+      "slug": "cass-vale",
+      "name": "Cass Vale",
+      "title": "The Banner Captain",
+      "race": "human",
+      "unit_class": "warrior",
+      "region": "brighthaven",
+      "faction": "dawn_compact",
+      "role": "Melee damage",
+      "cost": 2,
+      "rarity": "Uncommon",
+      "production_phase": "alpha",
+      "implementation_status": "designed_not_built",
+      "height_m": 1.86,
+      "rig_family": "humanoid_standard",
+      "stats": {
+        "health_cp": 98000,
+        "attack_damage_cp": 7200,
+        "attack_rate_milli": 800,
+        "attack_range_tiles": 1,
+        "physical_armor": 25,
+        "magic_resistance": 15,
+        "movement_rate_milli": 1050,
+        "attack_delivery": "melee",
+        "attack_damage_type": "physical",
+        "attack_windup_ms": 350,
+        "projectile_travel_ms": 0
+      },
+      "ability": {
+        "name": "Firm Strike",
+        "tooltip_en": "Delivers a stronger physical hit to the current target.",
+        "target_rule": "current_enemy",
+        "first_cast_ms": 3000,
+        "cooldown_ms": 7500,
+        "cast_ms": 350,
+        "radius_tiles": 0,
+        "range_tiles": 1,
+        "id": "wc_a_human_warrior",
+        "recovery_ms": 300,
+        "max_targets": 12,
+        "allow_self": false,
+        "max_dash_tiles": 0,
+        "travel_ms": 0,
+        "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
+        "no_target_policy": "remain_ready_continue_basics",
+        "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
+        "delivery": "instant",
+        "tooltip_id": "Memberikan kerusakan fisik kepada sasaran saat ini.",
+        "effects": [
+          {
+            "effect": "damage",
+            "damage_type": "physical",
+            "magnitude_unit": "centipoints",
+            "magnitude_by_star": [
+              18000,
+              32400,
+              58300
+            ],
+            "stat": null,
+            "duration_ms": 0
+          }
+        ]
+      },
+      "art": {
+        "silhouette": "A tall upright figure with one squared shoulder plate and a long, broad fantasy blade held diagonally downward. A short rectangular back-banner creates a distinctive vertical behind the head.",
+        "face": "Medium-brown skin, close-cropped dark hair, brown eyes and a composed, focused expression. A pale eyebrow streak is a natural hair accent rather than an injury story.",
+        "costume": "Deep red fitted coat under partial silver plate, broad belt, cream trousers and knee boots. The asymmetric armor leaves a clear leading and trailing side.",
+        "palette": "Crimson #A4464D; cream #E3D7BA; silver #A6B5BF; midnight #344155.",
+        "equipment": "Broad two-handed fantasy blade and a short banner fixed to a rigid back bracket. The banner is cosmetic; no area buff or faction system is implied.",
+        "signature": "Single large shoulder plate, upright back-banner and long diagonal blade.",
+        "materials": "Matte cloth and brushed steel with sparse clean edge highlights. Bake banner folds or use two accessory bones; no cloth solver.",
+        "back": "A rigid banner bracket attaches visibly to the harness, leaving shoulder motion clear. The cloth stops above the hips.",
+        "animation": "Idle keeps the blade low and feet apart. Basics are short two-handed cuts. The active pulls the blade inward and delivers one measured forward strike; the banner follows slightly after the torso.",
+        "vfx": "A single narrow warm-white trail and compact impact spark. No splash damage, armor break or knockback.",
+        "audio": "One firm cloth movement and a clean resonant hit; no shouted voice requirement.",
+        "risk": "Banner silhouette must not overlap health bars or obscure the next row. Validate that a two-handed pose works with the shared standard rig."
+      },
+      "biography": "Cass trains Brighthaven’s volunteer patrols and remembers every recruit’s name. Ada taught him that a captain who rushes ahead can leave a stronger team behind. He enters the trials to practice decisive attacks within a formation, carrying a banner sewn by the same market families whose roads his patrols protect.",
+      "tactics": {
+        "placement": "Frontline second contact, beside a Guardian rather than alone at the center.",
+        "partner": "Rok or Dagna enables Warrior while Ada can provide the Human bonus.",
+        "counter": "High armor and shields reduce the single large physical hit; stuns can cancel its windup.",
+        "weakness": "No area effect or self-protection; he needs access to a useful current target.",
+        "contrast": "Dagna spreads damage; Cass concentrates it on one enemy.",
+        "test": "Ensure the active is an ability packet, not a basic attack repeated with all basic-only bonuses."
+      },
+      "localization_status": "draft_en_id_review_required",
+      "asset_paths": {
+        "blender": "art-source/heroes/wc_u_human_warrior/wc_u_human_warrior.blend",
+        "mesh_fbx": "exports/heroes/wc_u_human_warrior/SK_wc_u_human_warrior.fbx",
+        "unreal_folder": "/Game/WonderChess/Heroes/wc_u_human_warrior",
+        "portrait": "exports/heroes/wc_u_human_warrior/portrait.png"
+      },
+      "animation_contract": {
+        "fps": 60,
+        "in_place": true,
+        "required_clips": [
+          "Idle",
+          "Move",
+          "Attack",
+          "Active",
+          "Hit",
+          "Defeat",
+          "Victory"
+        ],
+        "root_bone": "root",
+        "root_motion": false,
+        "socket_names": [
+          "weapon_r",
+          "weapon_l",
+          "cast_origin",
+          "head_ui"
+        ],
+        "deformation_review_required": true
+      },
+      "art_budget": {
+        "lod0_triangles_max": 15000,
+        "material_slots_max": 2,
+        "texture_size_default": 1024,
+        "deform_bones_target_max": 60,
+        "skin_influences_max": 4,
+        "lod1_target_ratio": 0.5,
+        "lod2_target_ratio": 0.25,
+        "budget_status": "unprofiled_starting_target"
+      },
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Cass Vale, The Banner Captain. Human Warrior, adult character, height 1.86 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A tall upright figure with one squared shoulder plate and a long, broad fantasy blade held diagonally downward. A short rectangular back-banner creates a distinctive vertical behind the head. Medium-brown skin, close-cropped dark hair, brown eyes and a composed, focused expression. A pale eyebrow streak is a natural hair accent rather than an injury story. Deep red fitted coat under partial silver plate, broad belt, cream trousers and knee boots. The asymmetric armor leaves a clear leading and trailing side. Broad two-handed fantasy blade and a short banner fixed to a rigid back bracket. The banner is cosmetic; no area buff or faction system is implied. Palette: Crimson #A4464D; cream #E3D7BA; silver #A6B5BF; midnight #344155. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Cass",
+      "role_tags": [
+        "melee"
+      ]
+    },
+    {
+      "id": "wc_u_elf_mage",
+      "slug": "neris-starbloom",
+      "name": "Neris Starbloom",
+      "title": "The Observatory Keeper",
+      "race": "elf",
+      "unit_class": "mage",
+      "region": "thistlewood",
+      "faction": "greenward_circle",
+      "role": "Spell damage",
+      "cost": 3,
+      "rarity": "Rare",
+      "production_phase": "alpha",
+      "implementation_status": "designed_not_built",
+      "height_m": 1.91,
+      "rig_family": "humanoid_slender",
+      "stats": {
+        "health_cp": 69000,
+        "attack_damage_cp": 4800,
+        "attack_rate_milli": 750,
+        "attack_range_tiles": 4,
+        "physical_armor": 8,
+        "magic_resistance": 30,
+        "movement_rate_milli": 1050,
+        "attack_delivery": "ranged",
+        "attack_damage_type": "magic",
+        "attack_windup_ms": 300,
+        "projectile_travel_ms": 150
+      },
+      "ability": {
+        "name": "Starbind",
+        "tooltip_en": "Deal 60 / 108 / 194.4 magic damage to the current enemy, then stun it for 1.25 seconds if it survives. Mage bonuses affect damage only.",
+        "target_rule": "current_enemy",
+        "first_cast_ms": 3500,
+        "cooldown_ms": 9500,
+        "cast_ms": 400,
+        "radius_tiles": 0,
+        "range_tiles": 4,
+        "travel_ms": 200,
+        "id": "wc_a_elf_mage",
+        "recovery_ms": 300,
+        "max_targets": 12,
+        "allow_self": false,
+        "max_dash_tiles": 0,
+        "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
+        "no_target_policy": "remain_ready_continue_basics",
+        "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
+        "delivery": "projectile",
+        "tooltip_id": "Berikan 60 / 108 / 194,4 kerusakan sihir kepada musuh saat ini, lalu buatnya tertegun selama 1,25 detik jika bertahan. Bonus Mage hanya meningkatkan kerusakan.",
+        "effects": [
+          {
+            "effect": "damage",
+            "damage_type": "magic",
+            "magnitude_unit": "centipoints",
+            "magnitude_by_star": [
+              6000,
+              10800,
+              19440
+            ],
+            "stat": null,
+            "duration_ms": 0
+          },
+          {
+            "effect": "stun",
+            "damage_type": null,
+            "magnitude_unit": null,
+            "magnitude_by_star": [
+              0,
+              0,
+              0
+            ],
+            "stat": null,
+            "duration_ms": 1250
+          }
+        ]
+      },
+      "art": {
+        "silhouette": "A narrow column of layered robes topped by a wide broken-circle headpiece. A small star-lens disk rests in the open left hand instead of a long staff.",
+        "face": "Cool brown skin, pale violet eyes and midnight-blue hair braided into a smooth low knot. Long ears extend beneath the open headpiece.",
+        "costume": "Violet coat over pale blue layered cloth, a fitted waist sash and short split lower panels. The headpiece is one bold arc, not a crown of many spikes.",
+        "palette": "Violet #7465A5; pale blue #B4CADD; midnight #3E4166; pearl #E0E3D9.",
+        "equipment": "A palm-sized star-lens in a thick silver ring and a flat chart case at the hip. Presentation magic is anchored to hand sockets.",
+        "signature": "Broken-circle headpiece, open-hand star lens and clean vertical silhouette.",
+        "materials": "Satin-like cloth with restrained specular response, brushed silver and a small emissive star. Keep the face the brightest non-emissive plane.",
+        "back": "Long central seam and two overlapping panels create an open lower-leg gap. The chart case sits against the belt and cannot swing freely.",
+        "animation": "Idle follows the lens with a small eye-line shift. Basics flick a pale spark. Starbind raises the lens to eye level, aligns both palms and releases one small star toward the target.",
+        "vfx": "A pale violet projectile makes one compact magic impact, followed by a geometric ring above the surviving stunned target. Damage and stun share one impact; no chains, root or extra damage packets are added.",
+        "audio": "A clean glass note with a short crystalline arrival tone. No long loop while the target is stunned.",
+        "risk": "The headpiece can alias at low resolution; thicken it and test against bright sky. The control duration must not scale with stars."
+      },
+      "biography": "Neris maintains Thistlewood’s hill observatory, where travelers once gathered to compare calendars. Unusual lights over Cindercrest led her to exchange observations with Oren. She attends the trials to learn how a precisely timed interruption can protect an expedition more reliably than a spectacular but poorly placed spell.",
+      "tactics": {
+        "placement": "Protected backline with range to interrupt a dangerous current target.",
+        "partner": "Rowan or Zura completes a Mage pair that amplifies each hero's damage-bearing skill effect. Neris's magic impact gains that bonus once; its stun duration does not. Liora supplies Elf.",
+        "counter": "Several moderate threats reduce the value of locking one target; a flanker can force a poor current target.",
+        "weakness": "Her single-target magic impact is modest and has a long cooldown. A target defeated by the impact receives no stun; Mage damage bonuses never extend the control duration.",
+        "contrast": "Borin controls a nearby group; Neris interrupts one distant opponent for slightly longer.",
+        "test": "Projectile may expire on a defeated target; its 1250 ms control remains constant at all star levels."
+      },
+      "localization_status": "draft_en_id_review_required",
+      "asset_paths": {
+        "blender": "art-source/heroes/wc_u_elf_mage/wc_u_elf_mage.blend",
+        "mesh_fbx": "exports/heroes/wc_u_elf_mage/SK_wc_u_elf_mage.fbx",
+        "unreal_folder": "/Game/WonderChess/Heroes/wc_u_elf_mage",
+        "portrait": "exports/heroes/wc_u_elf_mage/portrait.png"
+      },
+      "animation_contract": {
+        "fps": 60,
+        "in_place": true,
+        "required_clips": [
+          "Idle",
+          "Move",
+          "Attack",
+          "Active",
+          "Hit",
+          "Defeat",
+          "Victory"
+        ],
+        "root_bone": "root",
+        "root_motion": false,
+        "socket_names": [
+          "weapon_r",
+          "weapon_l",
+          "cast_origin",
+          "head_ui"
+        ],
+        "deformation_review_required": true
+      },
+      "art_budget": {
+        "lod0_triangles_max": 15000,
+        "material_slots_max": 2,
+        "texture_size_default": 1024,
+        "deform_bones_target_max": 60,
+        "skin_influences_max": 4,
+        "lod1_target_ratio": 0.5,
+        "lod2_target_ratio": 0.25,
+        "budget_status": "unprofiled_starting_target"
+      },
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Neris Starbloom, The Observatory Keeper. Elf Mage, adult character, height 1.91 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A narrow column of layered robes topped by a wide broken-circle headpiece. A small star-lens disk rests in the open left hand instead of a long staff. Cool brown skin, pale violet eyes and midnight-blue hair braided into a smooth low knot. Long ears extend beneath the open headpiece. Violet coat over pale blue layered cloth, a fitted waist sash and short split lower panels. The headpiece is one bold arc, not a crown of many spikes. A palm-sized star-lens in a thick silver ring and a flat chart case at the hip. Presentation magic is anchored to hand sockets. Palette: Violet #7465A5; pale blue #B4CADD; midnight #3E4166; pearl #E0E3D9. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Neris",
+      "role_tags": [
+        "control"
+      ]
+    },
+    {
+      "id": "wc_u_dwarf_priest",
+      "slug": "orla-hearthglow",
+      "name": "Orla Hearthglow",
+      "title": "The Hallkeeper",
+      "race": "dwarf",
+      "unit_class": "priest",
+      "region": "stoneveil",
+      "faction": "hearthwright_union",
+      "role": "Support",
+      "cost": 2,
+      "rarity": "Uncommon",
+      "production_phase": "alpha",
+      "implementation_status": "designed_not_built",
+      "height_m": 1.3,
+      "rig_family": "humanoid_stocky",
+      "stats": {
+        "health_cp": 82000,
+        "attack_damage_cp": 3600,
+        "attack_rate_milli": 700,
+        "attack_range_tiles": 2,
+        "physical_armor": 20,
+        "magic_resistance": 25,
+        "movement_rate_milli": 950,
+        "attack_delivery": "ranged",
+        "attack_damage_type": "magic",
+        "attack_windup_ms": 300,
+        "projectile_travel_ms": 150
+      },
+      "ability": {
+        "name": "Hearth Glow",
+        "tooltip_en": "Heals herself and adjacent allies.",
+        "target_rule": "adjacent_allies",
+        "first_cast_ms": 3000,
+        "cooldown_ms": 8000,
+        "cast_ms": 350,
+        "radius_tiles": 1,
+        "range_tiles": 1,
+        "allow_self": true,
+        "id": "wc_a_dwarf_priest",
+        "recovery_ms": 300,
+        "max_targets": 12,
+        "max_dash_tiles": 0,
+        "travel_ms": 0,
+        "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
+        "no_target_policy": "remain_ready_continue_basics",
+        "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
+        "delivery": "instant",
+        "tooltip_id": "Memulihkan kesehatan diri sendiri dan sekutu di petak bersebelahan.",
+        "effects": [
+          {
+            "effect": "heal",
+            "damage_type": null,
+            "magnitude_unit": "centipoints",
+            "magnitude_by_star": [
+              12500,
+              22500,
+              40500
+            ],
+            "stat": null,
+            "duration_ms": 0
+          }
+        ]
+      },
+      "art": {
+        "silhouette": "A broad rounded coat, low lantern held at the chest and a soft arch-shaped head covering. Her gentle oval outline contrasts with Borin’s rectangular armor.",
+        "face": "Warm dark skin, lively brown eyes and silver hair arranged in two thick side braids. Her smile is restrained and dependable.",
+        "costume": "Rust-red wool coat over cream cloth, a wide woven apron panel, short gloves and practical boots. The head covering is a padded travel hood, not a rigid helmet.",
+        "palette": "Rust #AC6653; oatmeal #DCCEAF; forest #586B57; warm brass #BDA061.",
+        "equipment": "A squat octagonal lantern carried on a short handle and a small folded cloth pouch. The lantern’s heavy silhouette stays visible even when unlit.",
+        "signature": "Low octagonal lantern, rounded hood and broad warm-colored coat.",
+        "materials": "Thick wool, stitched canvas, dull brass and frosted-looking opaque lantern panes with emissive color. Avoid glass refraction.",
+        "back": "A broad stitched hearth emblem and two large coat folds create readable planes. The hood must not stretch unnaturally during looking down.",
+        "animation": "Idle lifts the lantern slightly as if checking a path. Basics release a small light mote. The active opens the free arm and raises the lantern, then settles into the same stance.",
+        "vfx": "A low amber ring washes over adjacent allies once; small rising squares suggest warmth. No lasting zone, regeneration or shield.",
+        "audio": "A warm bell cluster with a soft wooden resonance, distinct from Mira’s higher single-target cue.",
+        "risk": "Group-heal effects can look like a persistent aura. Make the one-shot pulse clear and cap repeated target sounds."
+      },
+      "biography": "Orla keeps Stoneveil’s common hall welcoming to miners, craftspeople and travelers alike. She and Mira exchange practical notes, with Orla insisting that a good chair and a warm meal are often as important as a clever spell. In the trials she practices keeping a close-knit team standing without asking anyone to become invulnerable.",
+      "tactics": {
+        "placement": "Second row among durable allies rather than alone at maximum range.",
+        "partner": "Borin and Dagna can stay close enough to receive the pulse; Mira enables Priest.",
+        "counter": "Area magic punishes the group formation required for efficient healing.",
+        "weakness": "Short heal reach and modest damage; allies outside the release snapshot receive nothing.",
+        "contrast": "Mira can heal a distant single ally; Orla repairs a nearby group.",
+        "test": "Self is counted exactly once, each adjacent ally is healed once, and full-health targets do not inflate effective healing."
+      },
+      "localization_status": "draft_en_id_review_required",
+      "asset_paths": {
+        "blender": "art-source/heroes/wc_u_dwarf_priest/wc_u_dwarf_priest.blend",
+        "mesh_fbx": "exports/heroes/wc_u_dwarf_priest/SK_wc_u_dwarf_priest.fbx",
+        "unreal_folder": "/Game/WonderChess/Heroes/wc_u_dwarf_priest",
+        "portrait": "exports/heroes/wc_u_dwarf_priest/portrait.png"
+      },
+      "animation_contract": {
+        "fps": 60,
+        "in_place": true,
+        "required_clips": [
+          "Idle",
+          "Move",
+          "Attack",
+          "Active",
+          "Hit",
+          "Defeat",
+          "Victory"
+        ],
+        "root_bone": "root",
+        "root_motion": false,
+        "socket_names": [
+          "weapon_r",
+          "weapon_l",
+          "cast_origin",
+          "head_ui"
+        ],
+        "deformation_review_required": true
+      },
+      "art_budget": {
+        "lod0_triangles_max": 15000,
+        "material_slots_max": 2,
+        "texture_size_default": 1024,
+        "deform_bones_target_max": 60,
+        "skin_influences_max": 4,
+        "lod1_target_ratio": 0.5,
+        "lod2_target_ratio": 0.25,
+        "budget_status": "unprofiled_starting_target"
+      },
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Orla Hearthglow, The Hallkeeper. Dwarf Priest, adult character, height 1.3 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A broad rounded coat, low lantern held at the chest and a soft arch-shaped head covering. Her gentle oval outline contrasts with Borin’s rectangular armor. Warm dark skin, lively brown eyes and silver hair arranged in two thick side braids. Her smile is restrained and dependable. Rust-red wool coat over cream cloth, a wide woven apron panel, short gloves and practical boots. The head covering is a padded travel hood, not a rigid helmet. A squat octagonal lantern carried on a short handle and a small folded cloth pouch. The lantern’s heavy silhouette stays visible even when unlit. Palette: Rust #AC6653; oatmeal #DCCEAF; forest #586B57; warm brass #BDA061. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Orla",
+      "role_tags": [
+        "healer"
+      ]
+    },
+    {
+      "id": "wc_u_orc_guardian",
+      "slug": "tala-ironroot",
+      "name": "Tala Ironroot",
+      "title": "The Caravan Wall",
+      "race": "orc",
+      "unit_class": "guardian",
+      "region": "stormstep",
+      "faction": "highland_watch",
+      "role": "Defender",
+      "cost": 2,
+      "rarity": "Uncommon",
+      "production_phase": "alpha",
+      "implementation_status": "designed_not_built",
+      "height_m": 2.0,
+      "rig_family": "humanoid_broad",
+      "stats": {
+        "health_cp": 112000,
+        "attack_damage_cp": 4500,
+        "attack_rate_milli": 650,
+        "attack_range_tiles": 1,
+        "physical_armor": 30,
+        "magic_resistance": 20,
+        "movement_rate_milli": 900,
+        "attack_delivery": "melee",
+        "attack_damage_type": "physical",
+        "attack_windup_ms": 250,
+        "projectile_travel_ms": 0
+      },
+      "ability": {
+        "name": "Shared Guard",
+        "tooltip_en": "Shields herself and adjacent allies for three seconds.",
+        "target_rule": "adjacent_allies",
+        "first_cast_ms": 2500,
+        "cooldown_ms": 9500,
+        "cast_ms": 350,
+        "radius_tiles": 1,
+        "range_tiles": 1,
+        "allow_self": true,
+        "id": "wc_a_orc_guardian",
+        "recovery_ms": 300,
+        "max_targets": 12,
+        "max_dash_tiles": 0,
+        "travel_ms": 0,
+        "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
+        "no_target_policy": "remain_ready_continue_basics",
+        "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
+        "delivery": "instant",
+        "tooltip_id": "Memberikan perisai sementara kepada diri sendiri dan sekutu bersebelahan.",
+        "effects": [
+          {
+            "effect": "shield",
+            "damage_type": null,
+            "magnitude_unit": "centipoints",
+            "magnitude_by_star": [
+              14000,
+              25200,
+              45400
+            ],
+            "stat": null,
+            "duration_ms": 3000
+          }
+        ]
+      },
+      "art": {
+        "silhouette": "A wide arch formed by two high shoulder guards and a tall rectangular shield with a rounded top. The lower body remains a stable trapezoid.",
+        "face": "Deep moss-green skin, warm brown eyes, small tusks and tightly braided dark hair. Her expression is attentive rather than aggressive.",
+        "costume": "Layered leather-and-bronze armor, a pale ochre shoulder wrap, a blue woven sash and thick boots. Broad woven patterns identify her caravan community.",
+        "palette": "Bronze #AC8658; ochre #D1B576; deep blue #405E78; moss #60765A.",
+        "equipment": "A broad fantasy tower shield and a short ceremonial mace. The shield carries a simple interlocking-road emblem with no dense carving.",
+        "signature": "Rounded tower shield, arched shoulders and a bold blue waist sash.",
+        "materials": "Worn bronze, thick cloth and matte hide. Shield wear is painted as soft color variation rather than deep damage.",
+        "back": "A flat travel pack sits beneath the shoulder line. Keep its volume low enough not to collide with the shield when turning.",
+        "animation": "Idle angles the shield protectively toward adjacent allies. Basics use a short mace arc. Shared Guard plants the shield and extends the free hand outward, clearly signaling a group effect.",
+        "vfx": "Several short amber shield outlines appear on eligible recipients; a brief ground ring shows reach. No continuous aura follows her afterward.",
+        "audio": "One low shield chime and quiet recipient ticks, mixed as a single event rather than many full-volume sounds.",
+        "risk": "Large shield and shoulders may occlude neighboring supports. Use a lowered idle pose and test the camera from both encounter orientations."
+      },
+      "biography": "Tala leads caravan defenses across Stormstep and knows that travelers rarely fit a perfect formation. She joins the trials to make protection adaptable without turning it into a promise that nobody can be hurt. Rok respects her steady judgment, while Kesh keeps returning to ask whether his latest shortcut counts as a sensible route.",
+      "tactics": {
+        "placement": "Frontline with at least one adjacent ally at cast time.",
+        "partner": "Dagna or Rok benefits from nearby protection; Orla can sustain the same cluster.",
+        "counter": "Spread ranged attacks and area magic both pressure different weaknesses of her grouped team.",
+        "weakness": "Lower shield amount per recipient than a dedicated self-shield; no control skill.",
+        "contrast": "Ada shields only herself for a larger amount; Tala distributes a smaller shield to a nearby formation.",
+        "test": "Shield power is source-derived once, self is not duplicated, and leaving the radius after release does not remove the granted shield."
+      },
+      "localization_status": "draft_en_id_review_required",
+      "asset_paths": {
+        "blender": "art-source/heroes/wc_u_orc_guardian/wc_u_orc_guardian.blend",
+        "mesh_fbx": "exports/heroes/wc_u_orc_guardian/SK_wc_u_orc_guardian.fbx",
+        "unreal_folder": "/Game/WonderChess/Heroes/wc_u_orc_guardian",
+        "portrait": "exports/heroes/wc_u_orc_guardian/portrait.png"
+      },
+      "animation_contract": {
+        "fps": 60,
+        "in_place": true,
+        "required_clips": [
+          "Idle",
+          "Move",
+          "Attack",
+          "Active",
+          "Hit",
+          "Defeat",
+          "Victory"
+        ],
+        "root_bone": "root",
+        "root_motion": false,
+        "socket_names": [
+          "weapon_r",
+          "weapon_l",
+          "cast_origin",
+          "head_ui"
+        ],
+        "deformation_review_required": true
+      },
+      "art_budget": {
+        "lod0_triangles_max": 15000,
+        "material_slots_max": 2,
+        "texture_size_default": 1024,
+        "deform_bones_target_max": 60,
+        "skin_influences_max": 4,
+        "lod1_target_ratio": 0.5,
+        "lod2_target_ratio": 0.25,
+        "budget_status": "unprofiled_starting_target"
+      },
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Tala Ironroot, The Caravan Wall. Orc Guardian, adult character, height 2.0 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A wide arch formed by two high shoulder guards and a tall rectangular shield with a rounded top. The lower body remains a stable trapezoid. Deep moss-green skin, warm brown eyes, small tusks and tightly braided dark hair. Her expression is attentive rather than aggressive. Layered leather-and-bronze armor, a pale ochre shoulder wrap, a blue woven sash and thick boots. Broad woven patterns identify her caravan community. A broad fantasy tower shield and a short ceremonial mace. The shield carries a simple interlocking-road emblem with no dense carving. Palette: Bronze #AC8658; ochre #D1B576; deep blue #405E78; moss #60765A. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Tala",
+      "role_tags": [
+        "tank"
+      ]
+    },
+    {
+      "id": "wc_u_halfling_warrior",
+      "slug": "pippa-oakstride",
+      "name": "Pippa Oakstride",
+      "title": "The Orchard Defender",
+      "race": "halfling",
+      "unit_class": "warrior",
+      "region": "willowrun",
+      "faction": "wayfarer_fellowship",
+      "role": "Melee damage",
+      "cost": 1,
+      "rarity": "Common",
+      "production_phase": "alpha",
+      "implementation_status": "designed_not_built",
+      "height_m": 1.12,
+      "rig_family": "humanoid_small",
+      "stats": {
+        "health_cp": 76000,
+        "attack_damage_cp": 5400,
+        "attack_rate_milli": 950,
+        "attack_range_tiles": 1,
+        "physical_armor": 20,
+        "magic_resistance": 10,
+        "movement_rate_milli": 1200,
+        "attack_delivery": "melee",
+        "attack_damage_type": "physical",
+        "attack_windup_ms": 350,
+        "projectile_travel_ms": 0
+      },
+      "ability": {
+        "name": "Stout Heart",
+        "tooltip_en": "Gains a temporary personal shield.",
+        "target_rule": "self",
+        "first_cast_ms": 2000,
+        "cooldown_ms": 7500,
+        "cast_ms": 250,
+        "radius_tiles": 0,
+        "range_tiles": 0,
+        "allow_self": true,
+        "id": "wc_a_halfling_warrior",
+        "recovery_ms": 300,
+        "max_targets": 12,
+        "max_dash_tiles": 0,
+        "travel_ms": 0,
+        "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
+        "no_target_policy": "remain_ready_continue_basics",
+        "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
+        "delivery": "instant",
+        "tooltip_id": "Memberikan perisai sementara kepada diri sendiri.",
+        "effects": [
+          {
+            "effect": "shield",
+            "damage_type": null,
+            "magnitude_unit": "centipoints",
+            "magnitude_by_star": [
+              15000,
+              27000,
+              48600
+            ],
+            "stat": null,
+            "duration_ms": 2500
+          }
+        ]
+      },
+      "art": {
+        "silhouette": "A small broad stance with a large round wooden buckler and an upright leaf-shaped fantasy club. An oversized short scarf forms a clear horizontal at the neck.",
+        "face": "Light brown skin, freckled cheeks, bright hazel eyes and dense chestnut curls. Keep the face friendly and visibly adult.",
+        "costume": "Apple-green quilted jacket, ochre trousers, a red neck scarf and broad walking boots. Outfit proportions emphasize capable mobility, not toy-like baby features.",
+        "palette": "Apple green #7A985A; ochre #BE9A59; berry red #A85251; walnut #73553B.",
+        "equipment": "Round orchard-mark buckler and short stylized wooden club reinforced with decorative bronze bands. Both are exaggerated fantasy props.",
+        "signature": "Circular buckler, large red scarf and wide planted stance.",
+        "materials": "Quilted cloth, matte wood and dull bronze. Paint the orchard emblem in one readable silhouette.",
+        "back": "A square travel patch on the jacket and scarf ends over one shoulder keep the rear identifiable.",
+        "animation": "Idle is grounded rather than constantly bouncing. Walk uses quick full-foot steps. Basics are short determined swings. Stout Heart lifts the buckler with a compact upward hop that returns to the same logical cell.",
+        "vfx": "A small green-gold shield outline that matches her scale. No taunt or healing accompanies it.",
+        "audio": "A light wooden knock and short warm chime; avoid childish squeaks.",
+        "risk": "Small units can disappear behind tall allies. Test camera spacing and health-bar anchors without enlarging her logical footprint."
+      },
+      "biography": "Pippa organizes Willowrun’s orchard crews and can settle an argument about harvest shares before it becomes a feud. She entered the trials after helping Tala guide a stranded caravan home. Her confidence comes from preparation and practical teamwork, not from pretending that being small makes every danger harmless.",
+      "tactics": {
+        "placement": "Beside a sturdier frontline ally where she can attack without taking every hit.",
+        "partner": "Finn or Nella supplies Halfling movement; Cass provides Warrior damage.",
+        "counter": "Sustained magic and crowd control can overcome her modest health after the shield ends.",
+        "weakness": "Short reach, no area effect, and less durability than a dedicated Guardian.",
+        "contrast": "Ada is a defensive anchor; Pippa is a faster Warrior with a smaller survival window.",
+        "test": "Shield has a fixed 2500 ms duration at every star and a correctly scaled visual shell."
+      },
+      "localization_status": "draft_en_id_review_required",
+      "asset_paths": {
+        "blender": "art-source/heroes/wc_u_halfling_warrior/wc_u_halfling_warrior.blend",
+        "mesh_fbx": "exports/heroes/wc_u_halfling_warrior/SK_wc_u_halfling_warrior.fbx",
+        "unreal_folder": "/Game/WonderChess/Heroes/wc_u_halfling_warrior",
+        "portrait": "exports/heroes/wc_u_halfling_warrior/portrait.png"
+      },
+      "animation_contract": {
+        "fps": 60,
+        "in_place": true,
+        "required_clips": [
+          "Idle",
+          "Move",
+          "Attack",
+          "Active",
+          "Hit",
+          "Defeat",
+          "Victory"
+        ],
+        "root_bone": "root",
+        "root_motion": false,
+        "socket_names": [
+          "weapon_r",
+          "weapon_l",
+          "cast_origin",
+          "head_ui"
+        ],
+        "deformation_review_required": true
+      },
+      "art_budget": {
+        "lod0_triangles_max": 15000,
+        "material_slots_max": 2,
+        "texture_size_default": 1024,
+        "deform_bones_target_max": 60,
+        "skin_influences_max": 4,
+        "lod1_target_ratio": 0.5,
+        "lod2_target_ratio": 0.25,
+        "budget_status": "unprofiled_starting_target"
+      },
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Pippa Oakstride, The Orchard Defender. Halfling Warrior, adult character, height 1.12 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A small broad stance with a large round wooden buckler and an upright leaf-shaped fantasy club. An oversized short scarf forms a clear horizontal at the neck. Light brown skin, freckled cheeks, bright hazel eyes and dense chestnut curls. Keep the face friendly and visibly adult. Apple-green quilted jacket, ochre trousers, a red neck scarf and broad walking boots. Outfit proportions emphasize capable mobility, not toy-like baby features. Round orchard-mark buckler and short stylized wooden club reinforced with decorative bronze bands. Both are exaggerated fantasy props. Palette: Apple green #7A985A; ochre #BE9A59; berry red #A85251; walnut #73553B. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Pippa",
+      "role_tags": [
+        "melee"
+      ]
+    },
+    {
+      "id": "wc_u_halfling_ranger",
+      "slug": "finn-thistlearrow",
+      "name": "Finn Thistlearrow",
+      "title": "The River Lookout",
+      "race": "halfling",
+      "unit_class": "ranger",
+      "region": "willowrun",
+      "faction": "wayfarer_fellowship",
+      "role": "Ranged damage",
+      "cost": 1,
+      "rarity": "Common",
+      "production_phase": "alpha",
+      "implementation_status": "designed_not_built",
+      "height_m": 1.08,
+      "rig_family": "humanoid_small",
+      "stats": {
+        "health_cp": 59000,
+        "attack_damage_cp": 4900,
+        "attack_rate_milli": 1000,
+        "attack_range_tiles": 4,
+        "physical_armor": 8,
+        "magic_resistance": 10,
+        "movement_rate_milli": 1250,
+        "attack_delivery": "ranged",
+        "attack_damage_type": "physical",
+        "attack_windup_ms": 300,
+        "projectile_travel_ms": 150
+      },
+      "ability": {
+        "name": "Dulling Shot",
+        "tooltip_en": "Reduce the basic attack rate of the in-range enemy with the highest current attack rate. Ties prefer the nearer enemy, then stable identity. Movement and skill cooldowns are unchanged.",
+        "target_rule": "highest_attack_rate_enemy",
+        "first_cast_ms": 2500,
+        "cooldown_ms": 8000,
+        "cast_ms": 300,
+        "radius_tiles": 0,
+        "range_tiles": 4,
+        "travel_ms": 150,
+        "id": "wc_a_halfling_ranger",
+        "recovery_ms": 300,
+        "max_targets": 12,
+        "allow_self": false,
+        "max_dash_tiles": 0,
+        "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
+        "no_target_policy": "remain_ready_continue_basics",
+        "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
+        "delivery": "projectile",
+        "tooltip_id": "Kurangi laju serangan dasar musuh dalam jangkauan dengan laju serangan tertinggi saat ini. Jika sama, pilih yang terdekat, lalu identitas tetap. Gerakan dan jeda skill tidak berubah.",
+        "effects": [
+          {
+            "effect": "stat_modifier",
+            "damage_type": null,
+            "magnitude_unit": "basis_points",
+            "magnitude_by_star": [
+              -2000,
+              -2500,
+              -3000
+            ],
+            "stat": "attack_rate",
+            "duration_ms": 3000
+          }
+        ]
+      },
+      "art": {
+        "silhouette": "A small narrow body beneath a broad folded brim and a long simple bow carried upright. A narrow shoulder cape makes a triangular rear profile.",
+        "face": "Tan skin, dark eyes, sandy curls and a thoughtful expression. The hat brim tilts upward enough not to hide his eyes.",
+        "costume": "River-blue vest over cream sleeves, moss trousers, a short cape and simple boots. One broad belt pouch breaks the symmetrical torso.",
+        "palette": "River blue #58899C; cream #E4DABC; moss #6F8158; warm brown #866243.",
+        "equipment": "A slim fantasy bow and a compact quiver worn at the side. Keep the active projectile visibly magical instead of suggesting a real substance.",
+        "signature": "Folded brim, upright long bow and blue triangular shoulder cape.",
+        "materials": "Matte cloth, oiled wood and simple leather. No thin transparent feathers on arrows at gameplay distance.",
+        "back": "The cape ends above the waist and leaves the side quiver visible; a stitched river line supplies one large motif.",
+        "animation": "Idle checks the distance under the hat brim. Basics use quick controlled bow draws. The active pauses longer, aims carefully and releases one blue mote-tipped fantasy arrow.",
+        "vfx": "Blue chevrons descend briefly over the target to indicate reduced attack tempo. No movement slow, poison or damage-over-time trail.",
+        "audio": "A clear bow snap followed by a soft descending two-note magical cue.",
+        "risk": "The debuff must remain distinguishable from stun. Do not show immobilizing chains or stop the target’s movement animation."
+      },
+      "biography": "Finn watches Willowrun’s river crossings and records changes in water levels for travelers. He is quieter than Pippa but just as determined to keep routes open. The trials give him a way to practice slowing a dangerous opponent’s attacks while the rest of his team carries out a plan.",
+      "tactics": {
+        "placement": "Protected backline where he can keep shooting the most threatening current opponent.",
+        "partner": "Tessa or Liora enables Ranger; Pippa provides a matching-race frontline.",
+        "counter": "Ability-focused casters are less affected because Dulling Shot does not alter active cooldowns.",
+        "weakness": "Low health and no burst active; the debuff has limited value against already slow attackers.",
+        "contrast": "Tessa adds a damage burst; Finn reduces an enemy’s basic-attack output.",
+        "test": "Negative speed modifiers use the strongest-key refresh policy, cannot reduce speed below the clamp, and never slow cooldowns."
+      },
+      "localization_status": "draft_en_id_review_required",
+      "asset_paths": {
+        "blender": "art-source/heroes/wc_u_halfling_ranger/wc_u_halfling_ranger.blend",
+        "mesh_fbx": "exports/heroes/wc_u_halfling_ranger/SK_wc_u_halfling_ranger.fbx",
+        "unreal_folder": "/Game/WonderChess/Heroes/wc_u_halfling_ranger",
+        "portrait": "exports/heroes/wc_u_halfling_ranger/portrait.png"
+      },
+      "animation_contract": {
+        "fps": 60,
+        "in_place": true,
+        "required_clips": [
+          "Idle",
+          "Move",
+          "Attack",
+          "Active",
+          "Hit",
+          "Defeat",
+          "Victory"
+        ],
+        "root_bone": "root",
+        "root_motion": false,
+        "socket_names": [
+          "weapon_r",
+          "weapon_l",
+          "cast_origin",
+          "head_ui"
+        ],
+        "deformation_review_required": true
+      },
+      "art_budget": {
+        "lod0_triangles_max": 15000,
+        "material_slots_max": 2,
+        "texture_size_default": 1024,
+        "deform_bones_target_max": 60,
+        "skin_influences_max": 4,
+        "lod1_target_ratio": 0.5,
+        "lod2_target_ratio": 0.25,
+        "budget_status": "unprofiled_starting_target"
+      },
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Finn Thistlearrow, The River Lookout. Halfling Ranger, adult character, height 1.08 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A small narrow body beneath a broad folded brim and a long simple bow carried upright. A narrow shoulder cape makes a triangular rear profile. Tan skin, dark eyes, sandy curls and a thoughtful expression. The hat brim tilts upward enough not to hide his eyes. River-blue vest over cream sleeves, moss trousers, a short cape and simple boots. One broad belt pouch breaks the symmetrical torso. A slim fantasy bow and a compact quiver worn at the side. Keep the active projectile visibly magical instead of suggesting a real substance. Palette: River blue #58899C; cream #E4DABC; moss #6F8158; warm brown #866243. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Finn",
+      "role_tags": [
+        "ranged"
+      ]
+    },
+    {
+      "id": "wc_u_halfling_rogue",
+      "slug": "nella-quickpocket",
+      "name": "Nella Quickpocket",
+      "title": "The Festival Scout",
+      "race": "halfling",
+      "unit_class": "rogue",
+      "region": "willowrun",
+      "faction": "wayfarer_fellowship",
+      "role": "Disruption",
+      "cost": 2,
+      "rarity": "Uncommon",
+      "production_phase": "alpha",
+      "implementation_status": "designed_not_built",
+      "height_m": 1.1,
+      "rig_family": "humanoid_small",
+      "stats": {
+        "health_cp": 66000,
+        "attack_damage_cp": 5800,
+        "attack_rate_milli": 1100,
+        "attack_range_tiles": 1,
+        "physical_armor": 12,
+        "magic_resistance": 12,
+        "movement_rate_milli": 1300,
+        "attack_delivery": "melee",
+        "attack_damage_type": "physical",
+        "attack_windup_ms": 250,
+        "projectile_travel_ms": 0
+      },
+      "ability": {
+        "name": "Quick Feint",
+        "tooltip_en": "Stuns the current target for one second.",
+        "target_rule": "current_enemy",
+        "first_cast_ms": 2000,
+        "cooldown_ms": 7500,
+        "cast_ms": 200,
+        "radius_tiles": 0,
+        "range_tiles": 1,
+        "id": "wc_a_halfling_rogue",
+        "recovery_ms": 300,
+        "max_targets": 12,
+        "allow_self": false,
+        "max_dash_tiles": 0,
+        "travel_ms": 0,
+        "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
+        "no_target_policy": "remain_ready_continue_basics",
+        "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
+        "delivery": "instant",
+        "tooltip_id": "Melumpuhkan sementara sasaran saat ini.",
+        "effects": [
+          {
+            "effect": "stun",
+            "damage_type": null,
+            "magnitude_unit": null,
+            "magnitude_by_star": [
+              0,
+              0,
+              0
+            ],
+            "stat": null,
+            "duration_ms": 1000
+          }
+        ]
+      },
+      "art": {
+        "silhouette": "A compact side-on stance with a short diamond-shaped cape and a high swept hair tuft. Two flat fanlike fantasy batons form a clear paired shape.",
+        "face": "Rich brown skin, green-brown eyes and dark curls clipped at the sides. Her expression is mischievous without a villainous mask.",
+        "costume": "Plum festival jacket, pale shirt, teal waist cord and sturdy close-fitting trousers. Small stitched stars appear only on one large lapel.",
+        "palette": "Plum #785B83; teal #548B89; parchment #E1D4BB; dark cocoa #594838.",
+        "equipment": "Paired short fanlike fantasy batons and a flat messenger pouch. Do not include lockpicking gear or realistic criminal instruction props.",
+        "signature": "Diamond cape, swept hair tuft and paired broad baton ends.",
+        "materials": "Smooth dyed cloth, matte leather and painted wood with a few metallic accents.",
+        "back": "A single diagonal teal cord crosses the short cape. Pouch placement must not collide with quick turns.",
+        "animation": "Idle rests in a sideways stance. Basics use short alternating taps. The active feints with the off-hand and makes one clear forward gesture; no disappearing body or forced camera cut.",
+        "vfx": "A compact gold star above the target and a faint impact ring, then the shared stun marker. No damage packet.",
+        "audio": "A quick double tap and a short bright bell accent.",
+        "risk": "Fast motion can become unreadable on a small model. Preserve a brief anticipation pose and avoid motion blur as a substitute."
+      },
+      "biography": "Nella scouts safe routes for Willowrun’s traveling festivals and knows where crowds tend to form. Her nickname comes from always finding a spare ribbon or missing ticket in a coat pocket. She joins the trials to practice the kind of interruption that gives an ally a moment to recover, often teasing Sylas about his much more dramatic entrances.",
+      "tactics": {
+        "placement": "Frontline edge near a valuable current target, not alone against an entire team.",
+        "partner": "Sylas or Kesh supplies Rogue; Pippa can help occupy the same flank.",
+        "counter": "Long-range focus can defeat her before she reaches stun range.",
+        "weakness": "No dash, shield or active damage; relies on ordinary movement and attacks.",
+        "contrast": "Sylas reaches the backline; Nella stays local and interrupts one target.",
+        "test": "Quick Feint cancels an unreleased attack windup but never recalls a projectile already in flight."
+      },
+      "localization_status": "draft_en_id_review_required",
+      "asset_paths": {
+        "blender": "art-source/heroes/wc_u_halfling_rogue/wc_u_halfling_rogue.blend",
+        "mesh_fbx": "exports/heroes/wc_u_halfling_rogue/SK_wc_u_halfling_rogue.fbx",
+        "unreal_folder": "/Game/WonderChess/Heroes/wc_u_halfling_rogue",
+        "portrait": "exports/heroes/wc_u_halfling_rogue/portrait.png"
+      },
+      "animation_contract": {
+        "fps": 60,
+        "in_place": true,
+        "required_clips": [
+          "Idle",
+          "Move",
+          "Attack",
+          "Active",
+          "Hit",
+          "Defeat",
+          "Victory"
+        ],
+        "root_bone": "root",
+        "root_motion": false,
+        "socket_names": [
+          "weapon_r",
+          "weapon_l",
+          "cast_origin",
+          "head_ui"
+        ],
+        "deformation_review_required": true
+      },
+      "art_budget": {
+        "lod0_triangles_max": 15000,
+        "material_slots_max": 2,
+        "texture_size_default": 1024,
+        "deform_bones_target_max": 60,
+        "skin_influences_max": 4,
+        "lod1_target_ratio": 0.5,
+        "lod2_target_ratio": 0.25,
+        "budget_status": "unprofiled_starting_target"
+      },
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Nella Quickpocket, The Festival Scout. Halfling Rogue, adult character, height 1.1 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A compact side-on stance with a short diamond-shaped cape and a high swept hair tuft. Two flat fanlike fantasy batons form a clear paired shape. Rich brown skin, green-brown eyes and dark curls clipped at the sides. Her expression is mischievous without a villainous mask. Plum festival jacket, pale shirt, teal waist cord and sturdy close-fitting trousers. Small stitched stars appear only on one large lapel. Paired short fanlike fantasy batons and a flat messenger pouch. Do not include lockpicking gear or realistic criminal instruction props. Palette: Plum #785B83; teal #548B89; parchment #E1D4BB; dark cocoa #594838. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Nella",
+      "role_tags": [
+        "control"
+      ]
+    },
+    {
+      "id": "wc_u_halfling_mage",
+      "slug": "milo-mistwhistle",
+      "name": "Milo Mistwhistle",
+      "title": "The Weather Tinkerer",
+      "race": "halfling",
+      "unit_class": "mage",
+      "region": "willowrun",
+      "faction": "wayfarer_fellowship",
+      "role": "Spell damage",
+      "cost": 2,
+      "rarity": "Uncommon",
+      "production_phase": "alpha",
+      "implementation_status": "designed_not_built",
+      "height_m": 1.14,
+      "rig_family": "humanoid_small",
+      "stats": {
+        "health_cp": 57000,
+        "attack_damage_cp": 4200,
+        "attack_rate_milli": 800,
+        "attack_range_tiles": 3,
+        "physical_armor": 8,
+        "magic_resistance": 20,
+        "movement_rate_milli": 1150,
+        "attack_delivery": "ranged",
+        "attack_damage_type": "magic",
+        "attack_windup_ms": 300,
+        "projectile_travel_ms": 150
+      },
+      "ability": {
+        "name": "Mist Pop",
+        "tooltip_en": "Bursts magic around the target’s captured location.",
+        "target_rule": "current_enemy_area",
+        "first_cast_ms": 3000,
+        "cooldown_ms": 7000,
+        "cast_ms": 350,
+        "radius_tiles": 1,
+        "range_tiles": 4,
+        "travel_ms": 200,
+        "id": "wc_a_halfling_mage",
+        "recovery_ms": 300,
+        "max_targets": 12,
+        "allow_self": false,
+        "max_dash_tiles": 0,
+        "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
+        "no_target_policy": "remain_ready_continue_basics",
+        "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
+        "delivery": "projectile",
+        "tooltip_id": "Memberikan kerusakan sihir kepada musuh di area sasaran.",
+        "effects": [
+          {
+            "effect": "damage",
+            "damage_type": "magic",
+            "magnitude_unit": "centipoints",
+            "magnitude_by_star": [
+              13500,
+              24300,
+              43700
+            ],
+            "stat": null,
+            "duration_ms": 0
+          }
+        ]
+      },
+      "art": {
+        "silhouette": "A round short travel coat, large upturned collar and a thick spiral-topped wand. A small rigid umbrella disk folded against the back adds a distinctive rounded shape.",
+        "face": "Warm tan skin, gray eyes, a small dark mustache and wavy brown hair. Clearly adult proportions and expression; no oversized infant features.",
+        "costume": "Sky-blue raincoat, cream collar, copper belt buckle and dark boots. Sleeves are wide but stop at the wrists for clean hand animation.",
+        "palette": "Sky blue #77AFC2; cream #EAE0C7; copper #B78258; slate #566477.",
+        "equipment": "A thick spiral fantasy wand and a collapsed decorative umbrella disk. The disk is not a shield or movement device.",
+        "signature": "Spiral wand, upturned pale collar and round coat silhouette.",
+        "materials": "Waxed cloth, painted wood and dull copper; use a small bounded emissive spiral rather than transparent mist clothing.",
+        "back": "Umbrella disk is locked to a short bracket, clear of the head. The coat separates into two broad lower panels.",
+        "animation": "Idle balances the wand with a curious head tilt. Basics send a small pale mote. The active makes one circular stir and flicks a cloudlet toward the captured target area.",
+        "vfx": "A small blue-white cloud pops low to the board and vanishes. It does not blind, obscure the camera, slow movement or persist.",
+        "audio": "A soft rising whistle followed by a light magical pop, without a continuous wind loop.",
+        "risk": "Cloud effects can obscure units. Keep opacity low, lifetime short and the gameplay ring more readable than the vapor."
+      },
+      "biography": "Milo makes harmless weather displays for Willowrun’s festivals and became fascinated by why the real winds were changing. Zura answered his questions more patiently than he expected. He enters the trials to turn those lessons into a small dependable spell, while insisting that practical magic can still be delightful.",
+      "tactics": {
+        "placement": "Middle-back row with enough protection to cast repeatedly.",
+        "partner": "Rowan enables Mage; Finn or Pippa supplies Halfling mobility.",
+        "counter": "Spread formations reduce area value, while a single durable target exposes his low burst.",
+        "weakness": "Fragile and unable to provide any control or protection.",
+        "contrast": "Rowan’s burst is stronger and slower; Milo supplies lower-cost repeated small areas.",
+        "test": "Mist Pop is a single damage event and never produces hidden ticking cloud damage."
+      },
+      "localization_status": "draft_en_id_review_required",
+      "asset_paths": {
+        "blender": "art-source/heroes/wc_u_halfling_mage/wc_u_halfling_mage.blend",
+        "mesh_fbx": "exports/heroes/wc_u_halfling_mage/SK_wc_u_halfling_mage.fbx",
+        "unreal_folder": "/Game/WonderChess/Heroes/wc_u_halfling_mage",
+        "portrait": "exports/heroes/wc_u_halfling_mage/portrait.png"
+      },
+      "animation_contract": {
+        "fps": 60,
+        "in_place": true,
+        "required_clips": [
+          "Idle",
+          "Move",
+          "Attack",
+          "Active",
+          "Hit",
+          "Defeat",
+          "Victory"
+        ],
+        "root_bone": "root",
+        "root_motion": false,
+        "socket_names": [
+          "weapon_r",
+          "weapon_l",
+          "cast_origin",
+          "head_ui"
+        ],
+        "deformation_review_required": true
+      },
+      "art_budget": {
+        "lod0_triangles_max": 15000,
+        "material_slots_max": 2,
+        "texture_size_default": 1024,
+        "deform_bones_target_max": 60,
+        "skin_influences_max": 4,
+        "lod1_target_ratio": 0.5,
+        "lod2_target_ratio": 0.25,
+        "budget_status": "unprofiled_starting_target"
+      },
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Milo Mistwhistle, The Weather Tinkerer. Halfling Mage, adult character, height 1.14 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A round short travel coat, large upturned collar and a thick spiral-topped wand. A small rigid umbrella disk folded against the back adds a distinctive rounded shape. Warm tan skin, gray eyes, a small dark mustache and wavy brown hair. Clearly adult proportions and expression; no oversized infant features. Sky-blue raincoat, cream collar, copper belt buckle and dark boots. Sleeves are wide but stop at the wrists for clean hand animation. A thick spiral fantasy wand and a collapsed decorative umbrella disk. The disk is not a shield or movement device. Palette: Sky blue #77AFC2; cream #EAE0C7; copper #B78258; slate #566477. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Milo",
+      "role_tags": [
+        "caster"
+      ]
+    },
+    {
+      "id": "wc_u_dragonkin_guardian",
+      "slug": "sora-dawnscale",
+      "name": "Sora Dawnscale",
+      "title": "The Beacon Sentinel",
+      "race": "dragonkin",
+      "unit_class": "guardian",
+      "region": "cindercrest",
+      "faction": "skyward_conclave",
+      "role": "Defender",
+      "cost": 3,
+      "rarity": "Rare",
+      "production_phase": "alpha",
+      "implementation_status": "designed_not_built",
+      "height_m": 2.08,
+      "rig_family": "humanoid_draconic",
+      "stats": {
+        "health_cp": 118000,
+        "attack_damage_cp": 4800,
+        "attack_rate_milli": 650,
+        "attack_range_tiles": 1,
+        "physical_armor": 30,
+        "magic_resistance": 30,
+        "movement_rate_milli": 950,
+        "attack_delivery": "melee",
+        "attack_damage_type": "physical",
+        "attack_windup_ms": 250,
+        "projectile_travel_ms": 0
+      },
+      "ability": {
+        "name": "Beacon Shield",
+        "tooltip_en": "Gains a strong shield for three seconds.",
+        "target_rule": "self",
+        "first_cast_ms": 2500,
+        "cooldown_ms": 9000,
+        "cast_ms": 350,
+        "radius_tiles": 0,
+        "range_tiles": 0,
+        "allow_self": true,
+        "id": "wc_a_dragonkin_guardian",
+        "recovery_ms": 300,
+        "max_targets": 12,
+        "max_dash_tiles": 0,
+        "travel_ms": 0,
+        "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
+        "no_target_policy": "remain_ready_continue_basics",
+        "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
+        "delivery": "instant",
+        "tooltip_id": "Memberikan perisai sementara kepada diri sendiri.",
+        "effects": [
+          {
+            "effect": "shield",
+            "damage_type": null,
+            "magnitude_unit": "centipoints",
+            "magnitude_by_star": [
+              24000,
+              43200,
+              77800
+            ],
+            "stat": null,
+            "duration_ms": 3000
+          }
+        ]
+      },
+      "art": {
+        "silhouette": "A tall broad chest, short swept-back horns and an upright oval shield. A compact crest rises behind the forehead without adding wings or a tail.",
+        "face": "Pearl-gold scales, deep amber eyes and a short rounded muzzle. Keep the mouth closed at rest and use a calm expression, not a permanent display of teeth.",
+        "costume": "White-and-blue ceremonial armor with broad articulated panels, a short tabard and armored boots built around plantigrade feet.",
+        "palette": "Pearl #E0D8C1; royal blue #486A9A; gold #C4A367; dark slate #4D5B67.",
+        "equipment": "An oval fantasy shield with a single beacon gem and a short ceremonial mace. The gem is cosmetic outside the shield cast.",
+        "signature": "Swept horns, oval beacon shield and pale armored torso.",
+        "materials": "Matte scale normals at low frequency, brushed armor and one gem emissive mask. Do not model every scale.",
+        "back": "A short raised neck crest ends above the shoulders. No wings, tail or dangling cloth; clear shoulders make retargeting manageable.",
+        "animation": "Idle stands tall with the shield close. Walk uses slow deliberate steps. Basics strike compactly. The active angles the shield upward and lights the beacon disk before a protective shell forms.",
+        "vfx": "A pale-gold shield outline with a small vertical glint, never a full-screen column of light.",
+        "audio": "Low resonant chime and a measured armor movement; no roaring requirement.",
+        "risk": "Muzzle, neck crest and shoulder plates need a draconic rig review. Do not force a human head mesh under a scale texture."
+      },
+      "biography": "Sora tends a beacon above Cindercrest that once guided winter travelers home. When distant wards began to flicker, she helped Oren organize shared watches rather than blame neighboring kingdoms. She joins the trials to build trust in a coalition whose members may never have seen a Dragonkin before.",
+      "tactics": {
+        "placement": "Primary frontline against mixed damage, with allies using the space behind her.",
+        "partner": "Oren supports her and activates Dragonkin; Ada or Tala activates Guardian.",
+        "counter": "Focused sustained attacks can consume the shield; control denies her already modest damage.",
+        "weakness": "Expensive defensive unit with no area protection or crowd control.",
+        "contrast": "Ada is a cheaper physical anchor; Sora pays for broader defenses and a larger shield.",
+        "test": "Dragonkin resistance is applied before damage and does not secretly grant damage immunity."
+      },
+      "localization_status": "draft_en_id_review_required",
+      "asset_paths": {
+        "blender": "art-source/heroes/wc_u_dragonkin_guardian/wc_u_dragonkin_guardian.blend",
+        "mesh_fbx": "exports/heroes/wc_u_dragonkin_guardian/SK_wc_u_dragonkin_guardian.fbx",
+        "unreal_folder": "/Game/WonderChess/Heroes/wc_u_dragonkin_guardian",
+        "portrait": "exports/heroes/wc_u_dragonkin_guardian/portrait.png"
+      },
+      "animation_contract": {
+        "fps": 60,
+        "in_place": true,
+        "required_clips": [
+          "Idle",
+          "Move",
+          "Attack",
+          "Active",
+          "Hit",
+          "Defeat",
+          "Victory"
+        ],
+        "root_bone": "root",
+        "root_motion": false,
+        "socket_names": [
+          "weapon_r",
+          "weapon_l",
+          "cast_origin",
+          "head_ui"
+        ],
+        "deformation_review_required": true
+      },
+      "art_budget": {
+        "lod0_triangles_max": 15000,
+        "material_slots_max": 2,
+        "texture_size_default": 1024,
+        "deform_bones_target_max": 60,
+        "skin_influences_max": 4,
+        "lod1_target_ratio": 0.5,
+        "lod2_target_ratio": 0.25,
+        "budget_status": "unprofiled_starting_target"
+      },
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Sora Dawnscale, The Beacon Sentinel. Dragonkin Guardian, adult character, height 2.08 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A tall broad chest, short swept-back horns and an upright oval shield. A compact crest rises behind the forehead without adding wings or a tail. Pearl-gold scales, deep amber eyes and a short rounded muzzle. Keep the mouth closed at rest and use a calm expression, not a permanent display of teeth. White-and-blue ceremonial armor with broad articulated panels, a short tabard and armored boots built around plantigrade feet. An oval fantasy shield with a single beacon gem and a short ceremonial mace. The gem is cosmetic outside the shield cast. Palette: Pearl #E0D8C1; royal blue #486A9A; gold #C4A367; dark slate #4D5B67. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Sora",
+      "role_tags": [
+        "tank"
+      ]
+    },
+    {
+      "id": "wc_u_dragonkin_ranger",
+      "slug": "varek-prismshot",
+      "name": "Varek Prismshot",
+      "title": "The Glasswing Archer",
+      "race": "dragonkin",
+      "unit_class": "ranger",
+      "region": "cindercrest",
+      "faction": "skyward_conclave",
+      "role": "Ranged damage",
+      "cost": 2,
+      "rarity": "Uncommon",
+      "production_phase": "alpha",
+      "implementation_status": "designed_not_built",
+      "height_m": 1.98,
+      "rig_family": "humanoid_draconic",
+      "stats": {
+        "health_cp": 72000,
+        "attack_damage_cp": 5600,
+        "attack_rate_milli": 850,
+        "attack_range_tiles": 4,
+        "physical_armor": 12,
+        "magic_resistance": 25,
+        "movement_rate_milli": 1050,
+        "attack_delivery": "ranged",
+        "attack_damage_type": "magic",
+        "attack_windup_ms": 300,
+        "projectile_travel_ms": 150
+      },
+      "ability": {
+        "name": "Prism Shot",
+        "tooltip_en": "Fires a stronger magic shot at the current target.",
+        "target_rule": "current_enemy",
+        "first_cast_ms": 3000,
+        "cooldown_ms": 7500,
+        "cast_ms": 350,
+        "radius_tiles": 0,
+        "range_tiles": 4,
+        "travel_ms": 150,
+        "id": "wc_a_dragonkin_ranger",
+        "recovery_ms": 300,
+        "max_targets": 12,
+        "allow_self": false,
+        "max_dash_tiles": 0,
+        "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
+        "no_target_policy": "remain_ready_continue_basics",
+        "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
+        "delivery": "projectile",
+        "tooltip_id": "Memberikan kerusakan sihir kepada sasaran saat ini.",
+        "effects": [
+          {
+            "effect": "damage",
+            "damage_type": "magic",
+            "magnitude_unit": "centipoints",
+            "magnitude_by_star": [
+              16000,
+              28800,
+              51800
+            ],
+            "stat": null,
+            "duration_ms": 0
+          }
+        ]
+      },
+      "art": {
+        "silhouette": "A long narrow torso with a broad prismatic bow and two short outward horn fins. A split short cloak creates a forked shape without actual wings.",
+        "face": "Blue-gray scales, pale gold eyes and a short angular muzzle. Horn fins are blunt and clearly part of the head rather than a wearable crown.",
+        "costume": "Dark blue fitted ranger coat, ivory shoulder panels, silver belt and practical boots. The cloak ends at the hips.",
+        "palette": "Blue gray #7996AC; deep blue #3F567A; ivory #E6DFC9; prism cyan #8BC9CA.",
+        "equipment": "A stylized bow with broad translucent-looking but opaque shaded crystal facets. Keep its central grip readable and its mechanics decorative.",
+        "signature": "Prismatic horizontal bow, short horn fins and forked cloak.",
+        "materials": "Opaque faceted crystal shader, matte scale surface and soft cloth. Refraction is not required for the crystal look.",
+        "back": "Cloak panels suggest folded wings in outline only; no hidden wing rig or flight ability. A flat quiver sits between them.",
+        "animation": "Idle holds the bow low. Basics release pale magic arrows. The active rotates the bow slightly to align its facets, then fires one clear beamlike projectile with finite travel time.",
+        "vfx": "One narrow cyan projectile and compact prismatic target sparkle. It does not pierce, chain or deal true damage.",
+        "audio": "A crystalline bow note and a short clean impact, mixed below large area spells.",
+        "risk": "Crystal materials can become too bright against snowlike backgrounds. Keep dark facet planes and verify readability without bloom."
+      },
+      "biography": "Varek crafts signal mirrors for Cindercrest’s mountain paths and developed an archer’s patience while aligning them. Tessa’s mechanical accuracy fascinates him, and their friendly demonstrations draw crowds in Brighthaven. He joins the trials to show that magical ranged combat can be precise rather than spectacularly noisy.",
+      "tactics": {
+        "placement": "Protected backline against opponents leaning heavily on physical armor.",
+        "partner": "Tessa or Liora activates Ranger; Oren activates Dragonkin.",
+        "counter": "High magic resistance reduces both his basics and his active; Rogues threaten his unprotected flank.",
+        "weakness": "No mobility and no area damage; cannot bypass resistance.",
+        "contrast": "Tessa deals physical damage, while Varek’s basic and active shots deal magic damage.",
+        "test": "Ranger boosts his magic basic attacks but not Prism Shot; mitigation selects resistance rather than armor."
+      },
+      "localization_status": "draft_en_id_review_required",
+      "asset_paths": {
+        "blender": "art-source/heroes/wc_u_dragonkin_ranger/wc_u_dragonkin_ranger.blend",
+        "mesh_fbx": "exports/heroes/wc_u_dragonkin_ranger/SK_wc_u_dragonkin_ranger.fbx",
+        "unreal_folder": "/Game/WonderChess/Heroes/wc_u_dragonkin_ranger",
+        "portrait": "exports/heroes/wc_u_dragonkin_ranger/portrait.png"
+      },
+      "animation_contract": {
+        "fps": 60,
+        "in_place": true,
+        "required_clips": [
+          "Idle",
+          "Move",
+          "Attack",
+          "Active",
+          "Hit",
+          "Defeat",
+          "Victory"
+        ],
+        "root_bone": "root",
+        "root_motion": false,
+        "socket_names": [
+          "weapon_r",
+          "weapon_l",
+          "cast_origin",
+          "head_ui"
+        ],
+        "deformation_review_required": true
+      },
+      "art_budget": {
+        "lod0_triangles_max": 15000,
+        "material_slots_max": 2,
+        "texture_size_default": 1024,
+        "deform_bones_target_max": 60,
+        "skin_influences_max": 4,
+        "lod1_target_ratio": 0.5,
+        "lod2_target_ratio": 0.25,
+        "budget_status": "unprofiled_starting_target"
+      },
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Varek Prismshot, The Glasswing Archer. Dragonkin Ranger, adult character, height 1.98 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A long narrow torso with a broad prismatic bow and two short outward horn fins. A split short cloak creates a forked shape without actual wings. Blue-gray scales, pale gold eyes and a short angular muzzle. Horn fins are blunt and clearly part of the head rather than a wearable crown. Dark blue fitted ranger coat, ivory shoulder panels, silver belt and practical boots. The cloak ends at the hips. A stylized bow with broad translucent-looking but opaque shaded crystal facets. Keep its central grip readable and its mechanics decorative. Palette: Blue gray #7996AC; deep blue #3F567A; ivory #E6DFC9; prism cyan #8BC9CA. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Varek",
+      "role_tags": [
+        "ranged"
+      ]
+    },
+    {
+      "id": "wc_u_dragonkin_rogue",
+      "slug": "iri-cinderstep",
+      "name": "Iri Cinderstep",
+      "title": "The Quiet Spark",
+      "race": "dragonkin",
+      "unit_class": "rogue",
+      "region": "cindercrest",
+      "faction": "skyward_conclave",
+      "role": "Disruption",
+      "cost": 3,
+      "rarity": "Rare",
+      "production_phase": "alpha",
+      "implementation_status": "designed_not_built",
+      "height_m": 1.89,
+      "rig_family": "humanoid_draconic",
+      "stats": {
+        "health_cp": 73000,
+        "attack_damage_cp": 6500,
+        "attack_rate_milli": 1050,
+        "attack_range_tiles": 1,
+        "physical_armor": 15,
+        "magic_resistance": 20,
+        "movement_rate_milli": 1250,
+        "attack_delivery": "melee",
+        "attack_damage_type": "physical",
+        "attack_windup_ms": 250,
+        "projectile_travel_ms": 0
+      },
+      "ability": {
+        "name": "Prism Cut",
+        "tooltip_en": "Deals a small true-damage hit to the current target.",
+        "target_rule": "current_enemy",
+        "first_cast_ms": 2500,
+        "cooldown_ms": 8000,
+        "cast_ms": 250,
+        "radius_tiles": 0,
+        "range_tiles": 1,
+        "id": "wc_a_dragonkin_rogue",
+        "recovery_ms": 300,
+        "max_targets": 12,
+        "allow_self": false,
+        "max_dash_tiles": 0,
+        "travel_ms": 0,
+        "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
+        "no_target_policy": "remain_ready_continue_basics",
+        "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
+        "delivery": "instant",
+        "tooltip_id": "Memberikan kerusakan murni kepada sasaran saat ini.",
+        "effects": [
+          {
+            "effect": "damage",
+            "damage_type": "true",
+            "magnitude_unit": "centipoints",
+            "magnitude_by_star": [
+              10000,
+              18000,
+              32400
+            ],
+            "stat": null,
+            "duration_ms": 0
+          }
+        ]
+      },
+      "art": {
+        "silhouette": "A slim low stance with a short swept neck crest, one long diagonal sash and paired broad crescent fantasy blades. The outline stays compact rather than spiky.",
+        "face": "Muted copper scales, dark violet eyes and a short soft-edged muzzle. Two small backward horns sit close to the skull.",
+        "costume": "Charcoal traveling jacket with coral lining, short layered hip panels and light boots. Leave elbow and knee shapes visible for agile poses.",
+        "palette": "Copper #AF7C60; charcoal #454552; coral #CB7B6B; muted violet #837B9E.",
+        "equipment": "Paired fantasy crescent blades with small pale inset gems. The true-damage fantasy comes from a brief magical effect, not realistic cutting detail.",
+        "signature": "Close neck crest, coral diagonal sash and paired crescents.",
+        "materials": "Matte scales, soft cloth and restrained metal. Keep gem glow off except during the active.",
+        "back": "The sash crosses a flat back panel; no tail or wings. Neck crest must clear the shoulder blades during crouches.",
+        "animation": "Idle is still and balanced. Basics are compact alternating attacks. Prism Cut draws one crescent inward, pauses for a readable glint and releases a short deliberate gesture.",
+        "vfx": "A thin white-violet impact mark and the ordinary damage number with a distinct true-damage icon. No injury detail, teleport or invulnerability.",
+        "audio": "A clean bright note with a soft impact tick; avoid harsh scraping sounds.",
+        "risk": "True damage can erase defensive choices if overtuned. Its magnitude is deliberately lower than same-tier physical or magic skills; measure durable-target counterplay in the full 24-hero alpha."
+      },
+      "biography": "Iri repairs small ward stones along Cindercrest’s footpaths, work that rewards precision more than force. She initially found the public trials overwhelming, but Sora encouraged her to bring a quiet skill to a noisy event. Her friendship with Nella rests on a shared belief that one well-timed action can be more useful than a grand entrance.",
+      "tactics": {
+        "placement": "Flank where she can reach a valuable durable target without taking the initial focus.",
+        "partner": "Sylas or Kesh enables Rogue; Sora provides protection and Dragonkin.",
+        "counter": "Shields still absorb Prism Cut, and her low health makes focused attacks effective.",
+        "weakness": "No dash and no area attack; true damage is small and does not bypass shields.",
+        "contrast": "Other Rogues reposition or stun; Iri offers a narrow anti-defense damage tool in the full 24-hero alpha.",
+        "test": "True damage bypasses armor/resistance, still applies permitted source bonuses once and is absorbed by shields first."
+      },
+      "localization_status": "draft_en_id_review_required",
+      "asset_paths": {
+        "blender": "art-source/heroes/wc_u_dragonkin_rogue/wc_u_dragonkin_rogue.blend",
+        "mesh_fbx": "exports/heroes/wc_u_dragonkin_rogue/SK_wc_u_dragonkin_rogue.fbx",
+        "unreal_folder": "/Game/WonderChess/Heroes/wc_u_dragonkin_rogue",
+        "portrait": "exports/heroes/wc_u_dragonkin_rogue/portrait.png"
+      },
+      "animation_contract": {
+        "fps": 60,
+        "in_place": true,
+        "required_clips": [
+          "Idle",
+          "Move",
+          "Attack",
+          "Active",
+          "Hit",
+          "Defeat",
+          "Victory"
+        ],
+        "root_bone": "root",
+        "root_motion": false,
+        "socket_names": [
+          "weapon_r",
+          "weapon_l",
+          "cast_origin",
+          "head_ui"
+        ],
+        "deformation_review_required": true
+      },
+      "art_budget": {
+        "lod0_triangles_max": 15000,
+        "material_slots_max": 2,
+        "texture_size_default": 1024,
+        "deform_bones_target_max": 60,
+        "skin_influences_max": 4,
+        "lod1_target_ratio": 0.5,
+        "lod2_target_ratio": 0.25,
+        "budget_status": "unprofiled_starting_target"
+      },
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Iri Cinderstep, The Quiet Spark. Dragonkin Rogue, adult character, height 1.89 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A slim low stance with a short swept neck crest, one long diagonal sash and paired broad crescent fantasy blades. The outline stays compact rather than spiky. Muted copper scales, dark violet eyes and a short soft-edged muzzle. Two small backward horns sit close to the skull. Charcoal traveling jacket with coral lining, short layered hip panels and light boots. Leave elbow and knee shapes visible for agile poses. Paired fantasy crescent blades with small pale inset gems. The true-damage fantasy comes from a brief magical effect, not realistic cutting detail. Palette: Copper #AF7C60; charcoal #454552; coral #CB7B6B; muted violet #837B9E. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Iri",
+      "role_tags": [
+        "control"
+      ]
+    },
+    {
+      "id": "wc_u_dragonkin_priest",
+      "slug": "oren-skyward",
+      "name": "Oren Skyward",
+      "title": "The Beacon Keeper",
+      "race": "dragonkin",
+      "unit_class": "priest",
+      "region": "cindercrest",
+      "faction": "skyward_conclave",
+      "role": "Support",
+      "cost": 2,
+      "rarity": "Uncommon",
+      "production_phase": "alpha",
+      "implementation_status": "designed_not_built",
+      "height_m": 2.02,
+      "rig_family": "humanoid_draconic",
+      "stats": {
+        "health_cp": 80000,
+        "attack_damage_cp": 3800,
+        "attack_rate_milli": 750,
+        "attack_range_tiles": 3,
+        "physical_armor": 15,
+        "magic_resistance": 30,
+        "movement_rate_milli": 1000,
+        "attack_delivery": "ranged",
+        "attack_damage_type": "magic",
+        "attack_windup_ms": 300,
+        "projectile_travel_ms": 150
+      },
+      "ability": {
+        "name": "Sky Ward",
+        "tooltip_en": "Shield the lowest-health eligible ally in range, including self. Skip an ally whose existing shield would reject the ward; remain ready when no ally can benefit.",
+        "target_rule": "lowest_health_ally",
+        "first_cast_ms": 2500,
+        "cooldown_ms": 8000,
+        "cast_ms": 350,
+        "radius_tiles": 0,
+        "range_tiles": 8,
+        "allow_self": true,
+        "id": "wc_a_dragonkin_priest",
+        "recovery_ms": 300,
+        "max_targets": 12,
+        "max_dash_tiles": 0,
+        "travel_ms": 0,
+        "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
+        "no_target_policy": "remain_ready_continue_basics",
+        "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
+        "delivery": "instant",
+        "tooltip_id": "Lindungi sekutu yang memenuhi syarat dengan persentase kesehatan terendah dalam jangkauan, termasuk diri sendiri. Lewati perisai yang akan menolak perlindungan ini; tetap siap jika tidak ada penerima yang mendapat manfaat.",
+        "effects": [
+          {
+            "effect": "shield",
+            "damage_type": null,
+            "magnitude_unit": "centipoints",
+            "magnitude_by_star": [
+              19000,
+              34200,
+              61600
+            ],
+            "stat": null,
+            "duration_ms": 3000
+          }
+        ]
+      },
+      "art": {
+        "silhouette": "A tall narrow silhouette framed by a short mantle and a large open lantern staff. Two rounded swept horns form an unobtrusive arch above the head.",
+        "face": "Pale moss-gray scales, warm gold eyes and a short rounded muzzle. The face should appear attentive and scholarly rather than ferocious.",
+        "costume": "White traveling robes with deep teal panels, short gold-edged mantle and fitted lower-leg wraps. Split robe panels stop above the ankles.",
+        "palette": "White linen #E5E2D3; teal #3E7F83; moss gray #92A69D; pale gold #C4AC72.",
+        "equipment": "A long staff with an open hexagonal lantern frame and a small sealed map case. No books float as independent actors.",
+        "signature": "Hexagonal lantern head, rounded swept horns and teal vertical robe panels.",
+        "materials": "Matte cloth, subtle scale normal, brushed gold and frosted opaque lantern panels. Keep glowing area small.",
+        "back": "A single wide teal panel and short mantle define the rear. Horns clear the staff during over-shoulder poses.",
+        "animation": "Idle rests the staff near the body. Basics release a small light mote. The active turns the lantern toward the selected ally and lifts the free palm, producing a visibly directed ward.",
+        "vfx": "A pale-gold line leads briefly to the recipient, then a hexagonal shield outline appears. It is protection, not healing or revival.",
+        "audio": "A restrained bell with a short sustaining tail cut on expiry; avoid one continuous sound per shielded target.",
+        "risk": "The selected ally may already carry a stronger shield. Candidate validation and replacement rules must prevent wasted weak overwrites."
+      },
+      "biography": "Oren charts the safe paths between Cindercrest’s beacons and corresponds with Neris about the distant sky. He believes cooperation begins when people can find one another, so his maps include taverns and gardens as carefully as watchtowers. He joins the trials to practice protecting an ally before the next blow rather than only repairing the damage afterward.",
+      "tactics": {
+        "placement": "Protected middle-back row within global support reach, with a durable frontline target.",
+        "partner": "Sora activates Dragonkin; Mira or Orla activates Priest support potency.",
+        "counter": "Sustained multi-target pressure can defeat allies that his single-target ward does not reach.",
+        "weakness": "No healing; shielding an already injured ally does not restore missing health.",
+        "contrast": "Mira repairs health directly, while Oren grants temporary absorption to a vulnerable ally.",
+        "test": "Lowest-health selection includes self; stronger existing shields are not replaced by weaker wards, and shields expire at the exact tick."
+      },
+      "localization_status": "draft_en_id_review_required",
+      "asset_paths": {
+        "blender": "art-source/heroes/wc_u_dragonkin_priest/wc_u_dragonkin_priest.blend",
+        "mesh_fbx": "exports/heroes/wc_u_dragonkin_priest/SK_wc_u_dragonkin_priest.fbx",
+        "unreal_folder": "/Game/WonderChess/Heroes/wc_u_dragonkin_priest",
+        "portrait": "exports/heroes/wc_u_dragonkin_priest/portrait.png"
+      },
+      "animation_contract": {
+        "fps": 60,
+        "in_place": true,
+        "required_clips": [
+          "Idle",
+          "Move",
+          "Attack",
+          "Active",
+          "Hit",
+          "Defeat",
+          "Victory"
+        ],
+        "root_bone": "root",
+        "root_motion": false,
+        "socket_names": [
+          "weapon_r",
+          "weapon_l",
+          "cast_origin",
+          "head_ui"
+        ],
+        "deformation_review_required": true
+      },
+      "art_budget": {
+        "lod0_triangles_max": 15000,
+        "material_slots_max": 2,
+        "texture_size_default": 1024,
+        "deform_bones_target_max": 60,
+        "skin_influences_max": 4,
+        "lod1_target_ratio": 0.5,
+        "lod2_target_ratio": 0.25,
+        "budget_status": "unprofiled_starting_target"
+      },
+      "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Oren Skyward, The Beacon Keeper. Dragonkin Priest, adult character, height 2.02 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A tall narrow silhouette framed by a short mantle and a large open lantern staff. Two rounded swept horns form an unobtrusive arch above the head. Pale moss-gray scales, warm gold eyes and a short rounded muzzle. The face should appear attentive and scholarly rather than ferocious. White traveling robes with deep teal panels, short gold-edged mantle and fitted lower-leg wraps. Split robe panels stop above the ankles. A long staff with an open hexagonal lantern frame and a small sealed map case. No books float as independent actors. Palette: White linen #E5E2D3; teal #3E7F83; moss gray #92A69D; pale gold #C4AC72. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+      "display_name": "Oren",
+      "role_tags": [
+        "support"
+      ]
+    }
+  ]
+}

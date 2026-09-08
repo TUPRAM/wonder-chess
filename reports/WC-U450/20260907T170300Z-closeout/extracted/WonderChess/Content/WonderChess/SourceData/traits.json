@@ -1,0 +1,281 @@
+{
+  "schema_version": "3.1.0",
+  "traits": [
+    {
+      "id": "human",
+      "kind": "race",
+      "name": "Resolute Alliance",
+      "stat": "max_health_bonus_bp",
+      "magnitude_unit": "basis_points",
+      "tiers": [
+        {
+          "count": 2,
+          "value": 1000
+        },
+        {
+          "count": 4,
+          "value": 2000
+        }
+      ],
+      "recipients": "matching_units",
+      "count_rule": "distinct_deployed_types",
+      "higher_tier": "replaces",
+      "activation": "combat_snapshot",
+      "description": "Humans gain maximum health before combat starts.",
+      "alpha_enabled": true
+    },
+    {
+      "id": "elf",
+      "kind": "race",
+      "name": "Forest Rhythm",
+      "stat": "attack_rate_bonus_bp",
+      "magnitude_unit": "basis_points",
+      "tiers": [
+        {
+          "count": 2,
+          "value": 1000
+        },
+        {
+          "count": 4,
+          "value": 2000
+        }
+      ],
+      "recipients": "matching_units",
+      "count_rule": "distinct_deployed_types",
+      "higher_tier": "replaces",
+      "activation": "combat_snapshot",
+      "description": "Elves make ordinary attacks faster; skills keep their cooldowns.",
+      "alpha_enabled": true
+    },
+    {
+      "id": "dwarf",
+      "kind": "race",
+      "name": "Stonecraft",
+      "stat": "physical_armor_flat",
+      "magnitude_unit": "armor_points",
+      "tiers": [
+        {
+          "count": 2,
+          "value": 10
+        },
+        {
+          "count": 4,
+          "value": 20
+        }
+      ],
+      "recipients": "matching_units",
+      "count_rule": "distinct_deployed_types",
+      "higher_tier": "replaces",
+      "activation": "combat_snapshot",
+      "description": "Dwarves gain physical armor, not magic resistance.",
+      "alpha_enabled": true
+    },
+    {
+      "id": "orc",
+      "kind": "race",
+      "name": "Shared Resolve",
+      "stat": "all_damage_bonus_bp",
+      "magnitude_unit": "basis_points",
+      "tiers": [
+        {
+          "count": 2,
+          "value": 1000
+        },
+        {
+          "count": 4,
+          "value": 2000
+        }
+      ],
+      "recipients": "matching_units",
+      "count_rule": "distinct_deployed_types",
+      "higher_tier": "replaces",
+      "activation": "combat_snapshot",
+      "description": "Orcs increase direct damage from basics and skills, not healing or shields.",
+      "alpha_enabled": true
+    },
+    {
+      "id": "halfling",
+      "kind": "race",
+      "name": "Open Roads",
+      "stat": "movement_bonus_bp",
+      "magnitude_unit": "basis_points",
+      "tiers": [
+        {
+          "count": 2,
+          "value": 1000
+        },
+        {
+          "count": 4,
+          "value": 2000
+        }
+      ],
+      "recipients": "matching_units",
+      "count_rule": "distinct_deployed_types",
+      "higher_tier": "replaces",
+      "activation": "combat_snapshot",
+      "description": "Halflings move faster between cells; dash range and attack speed do not change.",
+      "alpha_enabled": true
+    },
+    {
+      "id": "dragonkin",
+      "kind": "race",
+      "name": "Beacon Kin",
+      "stat": "magic_resistance_flat",
+      "magnitude_unit": "resistance_points",
+      "tiers": [
+        {
+          "count": 2,
+          "value": 15
+        },
+        {
+          "count": 4,
+          "value": 30
+        }
+      ],
+      "recipients": "matching_units",
+      "count_rule": "distinct_deployed_types",
+      "higher_tier": "replaces",
+      "activation": "combat_snapshot",
+      "description": "Dragonkin gain magic resistance, not damage immunity.",
+      "alpha_enabled": true
+    },
+    {
+      "id": "guardian",
+      "kind": "class",
+      "name": "Hold the Line",
+      "stat": "physical_armor_flat",
+      "magnitude_unit": "armor_points",
+      "tiers": [
+        {
+          "count": 2,
+          "value": 15
+        },
+        {
+          "count": 4,
+          "value": 30
+        }
+      ],
+      "recipients": "matching_units",
+      "count_rule": "distinct_deployed_types",
+      "higher_tier": "replaces",
+      "activation": "combat_snapshot",
+      "description": "Guardians gain physical armor.",
+      "alpha_enabled": true
+    },
+    {
+      "id": "warrior",
+      "kind": "class",
+      "name": "Strong Arms",
+      "stat": "basic_damage_bonus_bp",
+      "magnitude_unit": "basis_points",
+      "tiers": [
+        {
+          "count": 2,
+          "value": 1500
+        },
+        {
+          "count": 4,
+          "value": 3000
+        }
+      ],
+      "recipients": "matching_units",
+      "count_rule": "distinct_deployed_types",
+      "higher_tier": "replaces",
+      "activation": "combat_snapshot",
+      "description": "Warriors increase basic attack damage; active skills are unchanged.",
+      "alpha_enabled": true
+    },
+    {
+      "id": "ranger",
+      "kind": "class",
+      "name": "Clear Aim",
+      "stat": "basic_damage_bonus_bp",
+      "magnitude_unit": "basis_points",
+      "tiers": [
+        {
+          "count": 2,
+          "value": 1500
+        },
+        {
+          "count": 4,
+          "value": 3000
+        }
+      ],
+      "recipients": "matching_units",
+      "count_rule": "distinct_deployed_types",
+      "higher_tier": "replaces",
+      "activation": "combat_snapshot",
+      "description": "Rangers increase basic attack damage regardless of its damage type.",
+      "alpha_enabled": true
+    },
+    {
+      "id": "rogue",
+      "kind": "class",
+      "name": "Quick Hands",
+      "stat": "attack_rate_bonus_bp",
+      "magnitude_unit": "basis_points",
+      "tiers": [
+        {
+          "count": 2,
+          "value": 1500
+        },
+        {
+          "count": 4,
+          "value": 3000
+        }
+      ],
+      "recipients": "matching_units",
+      "count_rule": "distinct_deployed_types",
+      "higher_tier": "replaces",
+      "activation": "combat_snapshot",
+      "description": "Rogues attack faster without cooldown reduction or hidden critical hits.",
+      "alpha_enabled": true
+    },
+    {
+      "id": "mage",
+      "kind": "class",
+      "name": "Focused Magic",
+      "stat": "ability_damage_bonus_bp",
+      "magnitude_unit": "basis_points",
+      "tiers": [
+        {
+          "count": 2,
+          "value": 2000
+        },
+        {
+          "count": 4,
+          "value": 4000
+        }
+      ],
+      "recipients": "matching_units",
+      "count_rule": "distinct_deployed_types",
+      "higher_tier": "replaces",
+      "activation": "combat_snapshot",
+      "description": "Mages increase active-skill damage only; nondamaging skills receive no invented effect.",
+      "alpha_enabled": true
+    },
+    {
+      "id": "priest",
+      "kind": "class",
+      "name": "Kindred Aid",
+      "stat": "support_power_bonus_bp",
+      "magnitude_unit": "basis_points",
+      "tiers": [
+        {
+          "count": 2,
+          "value": 1500
+        },
+        {
+          "count": 4,
+          "value": 3000
+        }
+      ],
+      "recipients": "matching_units",
+      "count_rule": "distinct_deployed_types",
+      "higher_tier": "replaces",
+      "activation": "combat_snapshot",
+      "description": "Priests strengthen their active heals, shields and positive attack-rate buffs once at the source.",
+      "alpha_enabled": true
+    }
+  ]
+}

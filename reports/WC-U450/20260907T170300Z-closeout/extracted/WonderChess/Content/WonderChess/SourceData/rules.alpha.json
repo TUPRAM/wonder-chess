@@ -1,0 +1,168 @@
+{
+  "schema_version": "3.1.0",
+  "balance_version": "alpha_24_v0.4.1",
+  "profile_id": "alpha_24",
+  "design_status": "prototype_unplaytested",
+  "board": {
+    "columns": 8,
+    "rows": 8,
+    "deployment_rows_per_side": 4,
+    "tile_size_cm": 200,
+    "neighbor_mode": "eight",
+    "distance_metric": "chebyshev",
+    "diagonal_corner_policy": "block_if_either_orthogonal_blocked"
+  },
+  "simulation": {
+    "tick_ms": 50,
+    "health_scale": 100,
+    "basis_scale": 10000,
+    "rate_scale": 1000,
+    "rounding": "round_half_up_nonnegative",
+    "star_multiplier_bp": [
+      10000,
+      18000,
+      32400
+    ],
+    "min_attack_rate_milli": 250,
+    "max_attack_rate_milli": 2500,
+    "max_health_cp": 100000000,
+    "max_armor": 10000,
+    "max_raw_damage_cp": 10000000,
+    "simultaneous_semantics": "released_due_packets_survive_source_defeat_target_defeat_immediate"
+  },
+  "tournament": {
+    "seats": 8,
+    "default_humans": 1,
+    "starting_health": 60,
+    "max_rounds": 40,
+    "first_preparation_ms": 45000,
+    "preparation_ms": 25000,
+    "combat_timeout_ms": 40000,
+    "settlement_ms": 4000,
+    "draw_damage": 2,
+    "loss_base_by_stage": [
+      {
+        "start": 1,
+        "end": 6,
+        "damage": 2
+      },
+      {
+        "start": 7,
+        "end": 12,
+        "damage": 4
+      },
+      {
+        "start": 13,
+        "end": 40,
+        "damage": 6
+      }
+    ],
+    "ghost_wins_count_for_cap": true,
+    "timeout_score": "sum_survivor_health_fractions",
+    "rank_ties": "competition_ranking_same_placement",
+    "neutral_opening_rounds": 3,
+    "neutral_every_rounds": 5,
+    "neutral_opening_failure_damage": 0,
+    "neutral_failure_damage": 2
+  },
+  "economy": {
+    "starting_gold": 10,
+    "bench_capacity": 8,
+    "shop_slots": 5,
+    "reroll_cost": 2,
+    "base_income": 5,
+    "win_income": 1,
+    "interest_divisor": 10,
+    "interest_cap": 3,
+    "interest_snapshot": "preparation_lock",
+    "pool": "independent_with_replacement",
+    "starting_level": 3,
+    "maximum_level": 6,
+    "buy_xp_gold": 4,
+    "buy_xp_amount": 4,
+    "passive_xp": 2,
+    "xp_to_next": {
+      "3": 4,
+      "4": 8,
+      "5": 12
+    },
+    "sell_formula": "cost_times_3_power_star_minus_1",
+    "shop_weights_by_level": {
+      "3": {
+        "1": 7500,
+        "2": 2500,
+        "3": 0
+      },
+      "4": {
+        "1": 5500,
+        "2": 4000,
+        "3": 500
+      },
+      "5": {
+        "1": 3500,
+        "2": 5000,
+        "3": 1500
+      },
+      "6": {
+        "1": 2000,
+        "2": 5000,
+        "3": 3000
+      }
+    },
+    "neutral_win_income": 2
+  },
+  "alpha_unit_ids": [
+    "wc_u_human_guardian",
+    "wc_u_human_priest",
+    "wc_u_human_mage",
+    "wc_u_elf_ranger",
+    "wc_u_elf_priest",
+    "wc_u_elf_rogue",
+    "wc_u_dwarf_guardian",
+    "wc_u_dwarf_ranger",
+    "wc_u_dwarf_warrior",
+    "wc_u_orc_warrior",
+    "wc_u_orc_mage",
+    "wc_u_orc_rogue",
+    "wc_u_human_warrior",
+    "wc_u_elf_mage",
+    "wc_u_dwarf_priest",
+    "wc_u_orc_guardian",
+    "wc_u_halfling_warrior",
+    "wc_u_halfling_ranger",
+    "wc_u_halfling_rogue",
+    "wc_u_halfling_mage",
+    "wc_u_dragonkin_guardian",
+    "wc_u_dragonkin_ranger",
+    "wc_u_dragonkin_rogue",
+    "wc_u_dragonkin_priest"
+  ],
+  "active_trait_thresholds": [
+    2,
+    4
+  ],
+  "future_profile": "future_changes_require_versioned_profile",
+  "runtime_llm_calls": false,
+  "website_blocks_alpha": false,
+  "status_policies": {
+    "shield": "stronger_replaces_equal_refreshes_weaker_ignored",
+    "stun": "max_expiry_no_duration_sum",
+    "buff": "same_key_strongest_refresh_distinct_keys_add",
+    "debuff": "same_key_strongest_refresh_attack_rate_only",
+    "support_power": "heal_shield_and_positive_active_attack_rate_only"
+  },
+  "network": {
+    "release_test_modes": [
+      "1H7B",
+      "0H8B",
+      "2H6B"
+    ],
+    "future_mode": "8H0B",
+    "disconnect_policy": "bot_takeover_until_match_end_no_rejoin_alpha",
+    "host_disconnect": "abort_explicitly_no_host_migration",
+    "public_snapshot_cadence_ms": 500,
+    "bot_public_observation_ms": 1500,
+    "bot_final_reposition_cutoff_ms": 3000,
+    "protocol_version": 6
+  }
+}

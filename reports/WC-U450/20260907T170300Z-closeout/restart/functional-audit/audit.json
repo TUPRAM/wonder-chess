@@ -1,0 +1,1495 @@
+{
+  "status": "PASS",
+  "utc": "2026-09-07T17:10:17.099585+00:00",
+  "checks": [
+    {
+      "check": "restart_1_same_process_and_human_seat",
+      "status": "PASS",
+      "detail": [
+        40584,
+        40584,
+        0,
+        0
+      ]
+    },
+    {
+      "check": "restart_1_distinct_positive_namespaces",
+      "status": "PASS",
+      "detail": [
+        1,
+        2
+      ]
+    },
+    {
+      "check": "restart_1_both_matches_finished",
+      "status": "PASS",
+      "detail": [
+        {
+          "complete": true,
+          "aborted": false,
+          "round": 28
+        },
+        {
+          "complete": true,
+          "aborted": false,
+          "round": 30
+        }
+      ]
+    },
+    {
+      "check": "restart_1_one_restart_requested",
+      "status": "PASS",
+      "detail": [
+        true,
+        true
+      ]
+    },
+    {
+      "check": "restart_1_prior_namespace_recorded",
+      "status": "PASS",
+      "detail": 1
+    },
+    {
+      "check": "restart_1_previous_match_request_rejected",
+      "status": "PASS",
+      "detail": [
+        {
+          "utc": "2026-09-07T17:06:58.297Z",
+          "match_namespace": 2,
+          "process_id": 40584,
+          "seat": 0,
+          "observed_seat": 0,
+          "exercise_seed_requested": "",
+          "exercise_seed_override_present": false,
+          "exercise_seed_override_valid": true,
+          "exercise_seed_effective_initial": 271828,
+          "exercise_seed_restart": 271828,
+          "exercise_seed_restart_second": 161803,
+          "restart_count_requested": 2,
+          "match_seed_authority": 271828,
+          "exercise_seed_boundary": "Initial scripted ServerStart accepts decimal seeds 1-2147483647; absent or invalid values use271828. Actual match seed is recorded only where the authoritative Match is available and cached for that namespace. The first restart uses271828 and the second restart uses161803. WCAutoStart initializes314159 independently of the scripted-start seed override.",
+          "follow_hero_requested": "",
+          "follow_hero_override_present": false,
+          "follow_hero_override_valid": true,
+          "follow_hero_definition": -1,
+          "follow_hero_candidate_encounters": 0,
+          "follow_hero_selected_encounter_a": -1,
+          "follow_hero_selected_encounter_b": -1,
+          "follow_hero_selected_encounter_ghost": false,
+          "follow_hero_selected_encounter_alive": 0,
+          "follow_hero_selected_unit": 0,
+          "follow_hero_actual_visible": false,
+          "follow_hero_boundary": "Read-only public scouting selects an existing unfinished encounter containing a living requested definition. ObservedSeat changes only the viewport; the presenter may reflect that change on the next frame. Actual visible membership is recorded separately.",
+          "elapsed_wall_seconds": 0.04426699876785278,
+          "phase": 0,
+          "round": 1,
+          "name": "previous_match_request_rejected",
+          "status": "PASS",
+          "detail": "Actual reply and owner-private gold/lock state match expectation",
+          "accepted": false,
+          "reply": "Stale seat revision",
+          "request_id": 90000017,
+          "unit": 0,
+          "observed_foreign_owner": -1,
+          "owner_private_before": "{\"seat\":0,\"gold\":10,\"xp\":0,\"level\":3,\"revision\":8589934593,\"sequence\":0,\"locked\":false,\"ready\":false,\"shop\":[1,1,7,6,23],\"units\":[]}",
+          "owner_private_after": "{\"seat\":0,\"gold\":10,\"xp\":0,\"level\":3,\"revision\":8589934593,\"sequence\":0,\"locked\":false,\"ready\":false,\"shop\":[1,1,7,6,23],\"units\":[]}",
+          "sent_phase": 0,
+          "sent_round": 1
+        }
+      ]
+    },
+    {
+      "check": "restart_1_match_0_fresh_preparation_seen",
+      "status": "PASS",
+      "detail": {
+        "round_one_preparation_snapshots": 6
+      }
+    },
+    {
+      "check": "restart_1_match_0_private_revision_namespace",
+      "status": "PASS",
+      "detail": [
+        1
+      ]
+    },
+    {
+      "check": "restart_1_match_0_received_public_privacy",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "check": "restart_1_match_1_fresh_preparation_seen",
+      "status": "PASS",
+      "detail": {
+        "round_one_preparation_snapshots": 6
+      }
+    },
+    {
+      "check": "restart_1_match_1_private_revision_namespace",
+      "status": "PASS",
+      "detail": [
+        2
+      ]
+    },
+    {
+      "check": "restart_1_match_1_received_public_privacy",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "check": "restart_2_same_process_and_human_seat",
+      "status": "PASS",
+      "detail": [
+        40584,
+        40584,
+        0,
+        0
+      ]
+    },
+    {
+      "check": "restart_2_distinct_positive_namespaces",
+      "status": "PASS",
+      "detail": [
+        2,
+        3
+      ]
+    },
+    {
+      "check": "restart_2_both_matches_finished",
+      "status": "PASS",
+      "detail": [
+        {
+          "complete": true,
+          "aborted": false,
+          "round": 30
+        },
+        {
+          "complete": true,
+          "aborted": false,
+          "round": 31
+        }
+      ]
+    },
+    {
+      "check": "restart_2_one_restart_requested",
+      "status": "PASS",
+      "detail": [
+        true,
+        false
+      ]
+    },
+    {
+      "check": "restart_2_prior_namespace_recorded",
+      "status": "PASS",
+      "detail": 2
+    },
+    {
+      "check": "restart_2_previous_match_request_rejected",
+      "status": "PASS",
+      "detail": [
+        {
+          "utc": "2026-09-07T17:08:02.068Z",
+          "match_namespace": 3,
+          "process_id": 40584,
+          "seat": 0,
+          "observed_seat": 0,
+          "exercise_seed_requested": "",
+          "exercise_seed_override_present": false,
+          "exercise_seed_override_valid": true,
+          "exercise_seed_effective_initial": 271828,
+          "exercise_seed_restart": 271828,
+          "exercise_seed_restart_second": 161803,
+          "restart_count_requested": 2,
+          "match_seed_authority": 161803,
+          "exercise_seed_boundary": "Initial scripted ServerStart accepts decimal seeds 1-2147483647; absent or invalid values use271828. Actual match seed is recorded only where the authoritative Match is available and cached for that namespace. The first restart uses271828 and the second restart uses161803. WCAutoStart initializes314159 independently of the scripted-start seed override.",
+          "follow_hero_requested": "",
+          "follow_hero_override_present": false,
+          "follow_hero_override_valid": true,
+          "follow_hero_definition": -1,
+          "follow_hero_candidate_encounters": 0,
+          "follow_hero_selected_encounter_a": -1,
+          "follow_hero_selected_encounter_b": -1,
+          "follow_hero_selected_encounter_ghost": false,
+          "follow_hero_selected_encounter_alive": 0,
+          "follow_hero_selected_unit": 0,
+          "follow_hero_actual_visible": false,
+          "follow_hero_boundary": "Read-only public scouting selects an existing unfinished encounter containing a living requested definition. ObservedSeat changes only the viewport; the presenter may reflect that change on the next frame. Actual visible membership is recorded separately.",
+          "elapsed_wall_seconds": 0.029512498527765274,
+          "phase": 0,
+          "round": 1,
+          "name": "previous_match_request_rejected",
+          "status": "PASS",
+          "detail": "Actual reply and owner-private gold/lock state match expectation",
+          "accepted": false,
+          "reply": "Stale seat revision",
+          "request_id": 90000033,
+          "unit": 0,
+          "observed_foreign_owner": -1,
+          "owner_private_before": "{\"seat\":0,\"gold\":10,\"xp\":0,\"level\":3,\"revision\":12884901889,\"sequence\":0,\"locked\":false,\"ready\":false,\"shop\":[17,0,1,9,17],\"units\":[]}",
+          "owner_private_after": "{\"seat\":0,\"gold\":10,\"xp\":0,\"level\":3,\"revision\":12884901889,\"sequence\":0,\"locked\":false,\"ready\":false,\"shop\":[17,0,1,9,17],\"units\":[]}",
+          "sent_phase": 0,
+          "sent_round": 1
+        }
+      ]
+    },
+    {
+      "check": "restart_2_match_0_fresh_preparation_seen",
+      "status": "PASS",
+      "detail": {
+        "round_one_preparation_snapshots": 6
+      }
+    },
+    {
+      "check": "restart_2_match_0_private_revision_namespace",
+      "status": "PASS",
+      "detail": [
+        2
+      ]
+    },
+    {
+      "check": "restart_2_match_0_received_public_privacy",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "check": "restart_2_match_1_fresh_preparation_seen",
+      "status": "PASS",
+      "detail": {
+        "round_one_preparation_snapshots": 6
+      }
+    },
+    {
+      "check": "restart_2_match_1_private_revision_namespace",
+      "status": "PASS",
+      "detail": [
+        3
+      ]
+    },
+    {
+      "check": "restart_2_match_1_received_public_privacy",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "check": "pre_match_has_no_tournament",
+      "status": "PASS",
+      "detail": {
+        "path": "match-0-seat-0-pid-40584-session.json",
+        "namespace": 0,
+        "round": 0,
+        "phase": -1
+      }
+    },
+    {
+      "check": "namespace_1_eight_persistent_seats_with1H7B",
+      "status": "PASS",
+      "detail": [
+        [
+          0,
+          "Captain 1",
+          true
+        ],
+        [
+          1,
+          "Rowanfield Bot",
+          false
+        ],
+        [
+          2,
+          "Starwatch Bot",
+          false
+        ],
+        [
+          3,
+          "Hearthkeeper Bot",
+          false
+        ],
+        [
+          4,
+          "Sunstride Bot",
+          false
+        ],
+        [
+          5,
+          "Gemseeker Bot",
+          false
+        ],
+        [
+          6,
+          "Highbanner Bot",
+          false
+        ],
+        [
+          7,
+          "Wayfinder Bot",
+          false
+        ]
+      ]
+    },
+    {
+      "check": "namespace_1_all_combat_rounds_observed",
+      "status": "PASS",
+      "detail": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ]
+    },
+    {
+      "check": "namespace_1_owner_private_binding_and_public_privacy",
+      "status": "PASS",
+      "detail": 177
+    },
+    {
+      "check": "namespace_1_all_required_actual_rpc_probes",
+      "status": "PASS",
+      "detail": {
+        "out_of_order_sequence_rejected": {
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Out-of-order command sequence",
+          "request_id": 90000016
+        },
+        "original_idempotent_lock_request": {
+          "status": "PASS",
+          "accepted": true,
+          "reply": "Accepted",
+          "request_id": 90000017
+        },
+        "duplicate_request_applies_once": {
+          "status": "PASS",
+          "accepted": true,
+          "reply": "Accepted",
+          "request_id": 90000017
+        },
+        "changed_payload_same_request_rejected": {
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Request ID reused with different payload",
+          "request_id": 90000017
+        },
+        "stale_revision_rejected": {
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Stale seat revision",
+          "request_id": 90000020
+        },
+        "foreign_unit_sale_rejected": {
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Unit is not owned",
+          "request_id": 90000021
+        },
+        "combat_phase_buy_rejected": {
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Preparation is locked",
+          "request_id": 90000026
+        }
+      }
+    },
+    {
+      "check": "namespace_1_reply_totals_reconcile",
+      "status": "PASS",
+      "detail": {
+        "accepted": 52,
+        "rejected": 5
+      }
+    },
+    {
+      "check": "namespace_1_no_unintended_command_rejections",
+      "status": "PASS",
+      "detail": {
+        "actual": {
+          "Out-of-order command sequence": 1,
+          "Request ID reused with different payload": 1,
+          "Stale seat revision": 1,
+          "Unit is not owned": 1,
+          "Preparation is locked": 1
+        },
+        "expected_deliberate_probes": {
+          "Out-of-order command sequence": 1,
+          "Request ID reused with different payload": 1,
+          "Stale seat revision": 1,
+          "Unit is not owned": 1,
+          "Preparation is locked": 1
+        }
+      }
+    },
+    {
+      "check": "namespace_1_bots_continue_after_early_elimination",
+      "status": "PASS",
+      "detail": {
+        "elimination_round": 17,
+        "subsequent_combat_rounds": [
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28
+        ]
+      }
+    },
+    {
+      "check": "namespace_1_spectating_after_elimination",
+      "status": "PASS",
+      "detail": [
+        0,
+        1
+      ]
+    },
+    {
+      "check": "namespace_1_actual_taa_candidate_settings",
+      "status": "PASS",
+      "detail": {
+        "render_settings": {
+          "r.ScreenPercentage": "100",
+          "r.SecondaryScreenPercentage.GameViewport": "100",
+          "r.DynamicRes.OperationMode": "0",
+          "r.VSync": "0",
+          "t.MaxFPS": "60",
+          "sg.ShadowQuality": "3",
+          "sg.PostProcessQuality": "3",
+          "r.AntiAliasingMethod": "2",
+          "sg.AntiAliasingQuality": "3",
+          "r.TSR.History.ScreenPercentage": "200",
+          "r.ShadowQuality": "5",
+          "r.DynamicGlobalIlluminationMethod": "0",
+          "r.ReflectionMethod": "0"
+        },
+        "speed": 20
+      }
+    },
+    {
+      "check": "namespace_1_snapshot_authority_seed_consistency",
+      "status": "PASS",
+      "detail": [
+        314159
+      ]
+    },
+    {
+      "check": "namespace_1_summary_seed_matches_retained_snapshots",
+      "status": "PASS",
+      "detail": {
+        "summary": 314159,
+        "snapshots": [
+          314159
+        ]
+      }
+    },
+    {
+      "check": "namespace_2_eight_persistent_seats_with1H7B",
+      "status": "PASS",
+      "detail": [
+        [
+          0,
+          "Captain 1",
+          true
+        ],
+        [
+          1,
+          "Rowanfield Bot",
+          false
+        ],
+        [
+          2,
+          "Starwatch Bot",
+          false
+        ],
+        [
+          3,
+          "Hearthkeeper Bot",
+          false
+        ],
+        [
+          4,
+          "Sunstride Bot",
+          false
+        ],
+        [
+          5,
+          "Gemseeker Bot",
+          false
+        ],
+        [
+          6,
+          "Highbanner Bot",
+          false
+        ],
+        [
+          7,
+          "Wayfinder Bot",
+          false
+        ]
+      ]
+    },
+    {
+      "check": "namespace_2_all_combat_rounds_observed",
+      "status": "PASS",
+      "detail": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30
+      ]
+    },
+    {
+      "check": "namespace_2_owner_private_binding_and_public_privacy",
+      "status": "PASS",
+      "detail": 178
+    },
+    {
+      "check": "namespace_2_all_required_actual_rpc_probes",
+      "status": "PASS",
+      "detail": {
+        "previous_match_request_rejected": {
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Stale seat revision",
+          "request_id": 90000017
+        },
+        "out_of_order_sequence_rejected": {
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Out-of-order command sequence",
+          "request_id": 90000032
+        },
+        "original_idempotent_lock_request": {
+          "status": "PASS",
+          "accepted": true,
+          "reply": "Accepted",
+          "request_id": 90000033
+        },
+        "duplicate_request_applies_once": {
+          "status": "PASS",
+          "accepted": true,
+          "reply": "Accepted",
+          "request_id": 90000033
+        },
+        "changed_payload_same_request_rejected": {
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Request ID reused with different payload",
+          "request_id": 90000033
+        },
+        "stale_revision_rejected": {
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Stale seat revision",
+          "request_id": 90000036
+        },
+        "foreign_unit_sale_rejected": {
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Unit is not owned",
+          "request_id": 90000037
+        },
+        "combat_phase_buy_rejected": {
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Preparation is locked",
+          "request_id": 90000042
+        }
+      }
+    },
+    {
+      "check": "namespace_2_reply_totals_reconcile",
+      "status": "PASS",
+      "detail": {
+        "accepted": 48,
+        "rejected": 6
+      }
+    },
+    {
+      "check": "namespace_2_no_unintended_command_rejections",
+      "status": "PASS",
+      "detail": {
+        "actual": {
+          "Stale seat revision": 2,
+          "Out-of-order command sequence": 1,
+          "Request ID reused with different payload": 1,
+          "Unit is not owned": 1,
+          "Preparation is locked": 1
+        },
+        "expected_deliberate_probes": {
+          "Stale seat revision": 2,
+          "Out-of-order command sequence": 1,
+          "Request ID reused with different payload": 1,
+          "Unit is not owned": 1,
+          "Preparation is locked": 1
+        }
+      }
+    },
+    {
+      "check": "namespace_2_bots_continue_after_early_elimination",
+      "status": "PASS",
+      "detail": {
+        "elimination_round": 16,
+        "subsequent_combat_rounds": [
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30
+        ]
+      }
+    },
+    {
+      "check": "namespace_2_spectating_after_elimination",
+      "status": "PASS",
+      "detail": [
+        0,
+        2,
+        5
+      ]
+    },
+    {
+      "check": "namespace_2_actual_taa_candidate_settings",
+      "status": "PASS",
+      "detail": {
+        "render_settings": {
+          "r.ScreenPercentage": "100",
+          "r.SecondaryScreenPercentage.GameViewport": "100",
+          "r.DynamicRes.OperationMode": "0",
+          "r.VSync": "0",
+          "t.MaxFPS": "60",
+          "sg.ShadowQuality": "3",
+          "sg.PostProcessQuality": "3",
+          "r.AntiAliasingMethod": "2",
+          "sg.AntiAliasingQuality": "3",
+          "r.TSR.History.ScreenPercentage": "200",
+          "r.ShadowQuality": "5",
+          "r.DynamicGlobalIlluminationMethod": "0",
+          "r.ReflectionMethod": "0"
+        },
+        "speed": 20
+      }
+    },
+    {
+      "check": "namespace_2_snapshot_authority_seed_consistency",
+      "status": "PASS",
+      "detail": [
+        271828
+      ]
+    },
+    {
+      "check": "namespace_2_summary_seed_matches_retained_snapshots",
+      "status": "PASS",
+      "detail": {
+        "summary": 271828,
+        "snapshots": [
+          271828
+        ]
+      }
+    },
+    {
+      "check": "namespace_3_eight_persistent_seats_with1H7B",
+      "status": "PASS",
+      "detail": [
+        [
+          0,
+          "Captain 1",
+          true
+        ],
+        [
+          1,
+          "Rowanfield Bot",
+          false
+        ],
+        [
+          2,
+          "Starwatch Bot",
+          false
+        ],
+        [
+          3,
+          "Hearthkeeper Bot",
+          false
+        ],
+        [
+          4,
+          "Sunstride Bot",
+          false
+        ],
+        [
+          5,
+          "Gemseeker Bot",
+          false
+        ],
+        [
+          6,
+          "Highbanner Bot",
+          false
+        ],
+        [
+          7,
+          "Wayfinder Bot",
+          false
+        ]
+      ]
+    },
+    {
+      "check": "namespace_3_all_combat_rounds_observed",
+      "status": "PASS",
+      "detail": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ]
+    },
+    {
+      "check": "namespace_3_owner_private_binding_and_public_privacy",
+      "status": "PASS",
+      "detail": 266
+    },
+    {
+      "check": "namespace_3_all_required_actual_rpc_probes",
+      "status": "PASS",
+      "detail": {
+        "previous_match_request_rejected": {
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Stale seat revision",
+          "request_id": 90000033
+        },
+        "out_of_order_sequence_rejected": {
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Out-of-order command sequence",
+          "request_id": 90000048
+        },
+        "original_idempotent_lock_request": {
+          "status": "PASS",
+          "accepted": true,
+          "reply": "Accepted",
+          "request_id": 90000049
+        },
+        "duplicate_request_applies_once": {
+          "status": "PASS",
+          "accepted": true,
+          "reply": "Accepted",
+          "request_id": 90000049
+        },
+        "changed_payload_same_request_rejected": {
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Request ID reused with different payload",
+          "request_id": 90000049
+        },
+        "stale_revision_rejected": {
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Stale seat revision",
+          "request_id": 90000052
+        },
+        "foreign_unit_sale_rejected": {
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Unit is not owned",
+          "request_id": 90000053
+        },
+        "combat_phase_buy_rejected": {
+          "status": "PASS",
+          "accepted": false,
+          "reply": "Preparation is locked",
+          "request_id": 90000058
+        }
+      }
+    },
+    {
+      "check": "namespace_3_reply_totals_reconcile",
+      "status": "PASS",
+      "detail": {
+        "accepted": 56,
+        "rejected": 6
+      }
+    },
+    {
+      "check": "namespace_3_no_unintended_command_rejections",
+      "status": "PASS",
+      "detail": {
+        "actual": {
+          "Stale seat revision": 2,
+          "Out-of-order command sequence": 1,
+          "Request ID reused with different payload": 1,
+          "Unit is not owned": 1,
+          "Preparation is locked": 1
+        },
+        "expected_deliberate_probes": {
+          "Stale seat revision": 2,
+          "Out-of-order command sequence": 1,
+          "Request ID reused with different payload": 1,
+          "Unit is not owned": 1,
+          "Preparation is locked": 1
+        }
+      }
+    },
+    {
+      "check": "namespace_3_bots_continue_after_early_elimination",
+      "status": "PASS",
+      "detail": {
+        "elimination_round": 18,
+        "subsequent_combat_rounds": [
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ]
+      }
+    },
+    {
+      "check": "namespace_3_spectating_after_elimination",
+      "status": "PASS",
+      "detail": [
+        1
+      ]
+    },
+    {
+      "check": "namespace_3_actual_taa_candidate_settings",
+      "status": "PASS",
+      "detail": {
+        "render_settings": {
+          "r.ScreenPercentage": "100",
+          "r.SecondaryScreenPercentage.GameViewport": "100",
+          "r.DynamicRes.OperationMode": "0",
+          "r.VSync": "0",
+          "t.MaxFPS": "60",
+          "sg.ShadowQuality": "3",
+          "sg.PostProcessQuality": "3",
+          "r.AntiAliasingMethod": "2",
+          "sg.AntiAliasingQuality": "3",
+          "r.TSR.History.ScreenPercentage": "200",
+          "r.ShadowQuality": "5",
+          "r.DynamicGlobalIlluminationMethod": "0",
+          "r.ReflectionMethod": "0"
+        },
+        "speed": 20
+      }
+    },
+    {
+      "check": "namespace_3_snapshot_authority_seed_consistency",
+      "status": "PASS",
+      "detail": [
+        161803
+      ]
+    },
+    {
+      "check": "namespace_3_summary_seed_matches_retained_snapshots",
+      "status": "PASS",
+      "detail": {
+        "summary": 161803,
+        "snapshots": [
+          161803
+        ]
+      }
+    },
+    {
+      "check": "complete_payload_preflight_retained",
+      "status": "PASS",
+      "detail": {
+        "manifested_files": 31,
+        "captured_files": 31,
+        "legacy_launch_boundary": null
+      }
+    },
+    {
+      "check": "payload_file_unchanged",
+      "status": "PASS",
+      "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Checkpoint-r3\\Windows\\Engine\\Binaries\\ThirdParty\\DbgHelp\\dbghelp.dll"
+    },
+    {
+      "check": "payload_file_unchanged",
+      "status": "PASS",
+      "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Checkpoint-r3\\Windows\\Engine\\Binaries\\ThirdParty\\MsQuic\\v220\\win64\\msquic.dll"
+    },
+    {
+      "check": "payload_file_unchanged",
+      "status": "PASS",
+      "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Checkpoint-r3\\Windows\\Engine\\Binaries\\ThirdParty\\NVIDIA\\NVaftermath\\Win64\\GFSDK_Aftermath_Lib.x64.dll"
+    },
+    {
+      "check": "payload_file_unchanged",
+      "status": "PASS",
+      "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Checkpoint-r3\\Windows\\Engine\\Binaries\\ThirdParty\\Ogg\\Win64\\VS2015\\libogg_64.dll"
+    },
+    {
+      "check": "payload_file_unchanged",
+      "status": "PASS",
+      "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Checkpoint-r3\\Windows\\Engine\\Binaries\\ThirdParty\\Vorbis\\Win64\\VS2015\\libvorbis_64.dll"
+    },
+    {
+      "check": "payload_file_unchanged",
+      "status": "PASS",
+      "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Checkpoint-r3\\Windows\\Engine\\Binaries\\ThirdParty\\Vorbis\\Win64\\VS2015\\libvorbisfile_64.dll"
+    },
+    {
+      "check": "payload_file_unchanged",
+      "status": "PASS",
+      "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Checkpoint-r3\\Windows\\Engine\\Binaries\\ThirdParty\\Windows\\XAudio2_9\\x64\\xaudio2_9redist.dll"
+    },
+    {
+      "check": "payload_file_unchanged",
+      "status": "PASS",
+      "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Checkpoint-r3\\Windows\\Engine\\Config\\StagedBuild_WonderChess.ini"
+    },
+    {
+      "check": "payload_file_unchanged",
+      "status": "PASS",
+      "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Checkpoint-r3\\Windows\\Engine\\Content\\Renderer\\TessellationTable.bin"
+    },
+    {
+      "check": "payload_file_unchanged",
+      "status": "PASS",
+      "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Checkpoint-r3\\Windows\\Engine\\Content\\Slate\\Cursor\\invisible.cur"
+    },
+    {
+      "check": "payload_file_unchanged",
+      "status": "PASS",
+      "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Checkpoint-r3\\Windows\\Engine\\Content\\SlateDebug\\Fonts\\LastResort.tps"
+    },
+    {
+      "check": "payload_file_unchanged",
+      "status": "PASS",
+      "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Checkpoint-r3\\Windows\\Engine\\Content\\SlateDebug\\Fonts\\LastResort.ttf"
+    },
+    {
+      "check": "payload_file_unchanged",
+      "status": "PASS",
+      "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Checkpoint-r3\\Windows\\Engine\\Extras\\Redist\\en-us\\vc_redist.arm64.exe"
+    },
+    {
+      "check": "payload_file_unchanged",
+      "status": "PASS",
+      "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Checkpoint-r3\\Windows\\Engine\\Extras\\Redist\\en-us\\vc_redist.x64.exe"
+    },
+    {
+      "check": "payload_file_unchanged",
+      "status": "PASS",
+      "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Checkpoint-r3\\Windows\\Engine\\Plugins\\NNE\\NNERuntimeORT\\Binaries\\ThirdParty\\Onnxruntime\\Win64\\onnxruntime.dll"
+    },
+    {
+      "check": "payload_file_unchanged",
+      "status": "PASS",
+      "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Checkpoint-r3\\Windows\\Manifest_DebugFiles_Win64.txt"
+    },
+    {
+      "check": "payload_file_unchanged",
+      "status": "PASS",
+      "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Checkpoint-r3\\Windows\\Manifest_NonUFSFiles_Win64.txt"
+    },
+    {
+      "check": "payload_file_unchanged",
+      "status": "PASS",
+      "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Checkpoint-r3\\Windows\\Manifest_UFSFiles_Win64.txt"
+    },
+    {
+      "check": "payload_file_unchanged",
+      "status": "PASS",
+      "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Checkpoint-r3\\Windows\\WonderChess.exe"
+    },
+    {
+      "check": "payload_file_unchanged",
+      "status": "PASS",
+      "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Checkpoint-r3\\Windows\\WonderChess\\Binaries\\Win64\\D3D12\\x64\\D3D12Core.dll"
+    },
+    {
+      "check": "payload_file_unchanged",
+      "status": "PASS",
+      "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Checkpoint-r3\\Windows\\WonderChess\\Binaries\\Win64\\D3D12\\x64\\d3d12SDKLayers.dll"
+    },
+    {
+      "check": "payload_file_unchanged",
+      "status": "PASS",
+      "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Checkpoint-r3\\Windows\\WonderChess\\Binaries\\Win64\\DML\\x64\\DirectML.dll"
+    },
+    {
+      "check": "payload_file_unchanged",
+      "status": "PASS",
+      "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Checkpoint-r3\\Windows\\WonderChess\\Binaries\\Win64\\WonderChess-Win64-Shipping.exe"
+    },
+    {
+      "check": "payload_file_unchanged",
+      "status": "PASS",
+      "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Checkpoint-r3\\Windows\\WonderChess\\Binaries\\Win64\\WonderChess-Win64-Shipping.pdb"
+    },
+    {
+      "check": "payload_file_unchanged",
+      "status": "PASS",
+      "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Checkpoint-r3\\Windows\\WonderChess\\Binaries\\Win64\\tbb12.dll"
+    },
+    {
+      "check": "payload_file_unchanged",
+      "status": "PASS",
+      "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Checkpoint-r3\\Windows\\WonderChess\\Binaries\\Win64\\tbbmalloc.dll"
+    },
+    {
+      "check": "payload_file_unchanged",
+      "status": "PASS",
+      "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Checkpoint-r3\\Windows\\WonderChess\\Content\\Paks\\WonderChess-Windows.pak"
+    },
+    {
+      "check": "payload_file_unchanged",
+      "status": "PASS",
+      "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Checkpoint-r3\\Windows\\WonderChess\\Content\\Paks\\WonderChess-Windows.ucas"
+    },
+    {
+      "check": "payload_file_unchanged",
+      "status": "PASS",
+      "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Checkpoint-r3\\Windows\\WonderChess\\Content\\Paks\\WonderChess-Windows.utoc"
+    },
+    {
+      "check": "payload_file_unchanged",
+      "status": "PASS",
+      "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Checkpoint-r3\\Windows\\WonderChess\\Content\\Paks\\global.ucas"
+    },
+    {
+      "check": "payload_file_unchanged",
+      "status": "PASS",
+      "detail": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Checkpoint-r3\\Windows\\WonderChess\\Content\\Paks\\global.utoc"
+    },
+    {
+      "check": "payload_file_membership_unchanged",
+      "status": "PASS",
+      "detail": {
+        "missing": [],
+        "unexpected": []
+      }
+    },
+    {
+      "check": "immutable_candidate_binding",
+      "status": "PASS",
+      "detail": {
+        "manifest": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U430\\20260907T165700Z-closeout\\provenance.json",
+        "manifest_sha256": "e8165917ad9cc9381279275497575dc37ecee5b26edb6a8e3b8c8dab2bf9dfca",
+        "inner_sha256": "38b2a14161d8e1ee592c6a841b80520886f72168887dbc64dc2ce4057ba979c5"
+      }
+    },
+    {
+      "check": "same_direct_inner_process_exit0",
+      "status": "PASS",
+      "detail": {
+        "process_id": 40584,
+        "started_utc": "2026-09-07T17:05:43.0991150Z",
+        "ended_utc": "2026-09-07T17:09:46.4341333Z",
+        "exit_code": 0
+      }
+    }
+  ],
+  "matches": [
+    {
+      "namespace": 1,
+      "first_observation_utc": "2026-09-07T17:05:53.150Z",
+      "results_utc": "2026-09-07T17:06:53.125Z",
+      "rounds": 28,
+      "actual_authority_seed": 314159,
+      "summary_authority_seed": 314159,
+      "seed_summary_matches_snapshots": true,
+      "elimination_round": 17,
+      "human_place": 8,
+      "accepted_replies": 52,
+      "deliberate_rejected_replies": 5,
+      "probes": 7,
+      "passed_probes": 7,
+      "standings": [
+        {
+          "id": 0,
+          "name": "Captain 1",
+          "human": true,
+          "health": 0,
+          "place": 8,
+          "wins": 2
+        },
+        {
+          "id": 1,
+          "name": "Rowanfield Bot",
+          "human": false,
+          "health": 32,
+          "place": 1,
+          "wins": 15
+        },
+        {
+          "id": 2,
+          "name": "Starwatch Bot",
+          "human": false,
+          "health": 0,
+          "place": 3,
+          "wins": 10
+        },
+        {
+          "id": 3,
+          "name": "Hearthkeeper Bot",
+          "human": false,
+          "health": 0,
+          "place": 4,
+          "wins": 9
+        },
+        {
+          "id": 4,
+          "name": "Sunstride Bot",
+          "human": false,
+          "health": 0,
+          "place": 2,
+          "wins": 11
+        },
+        {
+          "id": 5,
+          "name": "Gemseeker Bot",
+          "human": false,
+          "health": 0,
+          "place": 5,
+          "wins": 9
+        },
+        {
+          "id": 6,
+          "name": "Highbanner Bot",
+          "human": false,
+          "health": 0,
+          "place": 6,
+          "wins": 8
+        },
+        {
+          "id": 7,
+          "name": "Wayfinder Bot",
+          "human": false,
+          "health": 0,
+          "place": 7,
+          "wins": 2
+        }
+      ]
+    },
+    {
+      "namespace": 2,
+      "first_observation_utc": "2026-09-07T17:06:58.255Z",
+      "results_utc": "2026-09-07T17:07:56.905Z",
+      "rounds": 30,
+      "actual_authority_seed": 271828,
+      "summary_authority_seed": 271828,
+      "seed_summary_matches_snapshots": true,
+      "elimination_round": 16,
+      "human_place": 7,
+      "accepted_replies": 48,
+      "deliberate_rejected_replies": 6,
+      "probes": 8,
+      "passed_probes": 8,
+      "standings": [
+        {
+          "id": 0,
+          "name": "Captain 1",
+          "human": true,
+          "health": 0,
+          "place": 7,
+          "wins": 1
+        },
+        {
+          "id": 1,
+          "name": "Rowanfield Bot",
+          "human": false,
+          "health": 0,
+          "place": 8,
+          "wins": 0
+        },
+        {
+          "id": 2,
+          "name": "Starwatch Bot",
+          "human": false,
+          "health": 0,
+          "place": 3,
+          "wins": 11
+        },
+        {
+          "id": 3,
+          "name": "Hearthkeeper Bot",
+          "human": false,
+          "health": 0,
+          "place": 6,
+          "wins": 4
+        },
+        {
+          "id": 4,
+          "name": "Sunstride Bot",
+          "human": false,
+          "health": 0,
+          "place": 4,
+          "wins": 9
+        },
+        {
+          "id": 5,
+          "name": "Gemseeker Bot",
+          "human": false,
+          "health": 0,
+          "place": 2,
+          "wins": 14
+        },
+        {
+          "id": 6,
+          "name": "Highbanner Bot",
+          "human": false,
+          "health": 48,
+          "place": 1,
+          "wins": 18
+        },
+        {
+          "id": 7,
+          "name": "Wayfinder Bot",
+          "human": false,
+          "health": 0,
+          "place": 5,
+          "wins": 4
+        }
+      ]
+    },
+    {
+      "namespace": 3,
+      "first_observation_utc": "2026-09-07T17:08:02.040Z",
+      "results_utc": "2026-09-07T17:09:12.347Z",
+      "rounds": 31,
+      "actual_authority_seed": 161803,
+      "summary_authority_seed": 161803,
+      "seed_summary_matches_snapshots": true,
+      "elimination_round": 18,
+      "human_place": 7,
+      "accepted_replies": 56,
+      "deliberate_rejected_replies": 6,
+      "probes": 8,
+      "passed_probes": 8,
+      "standings": [
+        {
+          "id": 0,
+          "name": "Captain 1",
+          "human": true,
+          "health": 0,
+          "place": 7,
+          "wins": 1
+        },
+        {
+          "id": 1,
+          "name": "Rowanfield Bot",
+          "human": false,
+          "health": 0,
+          "place": 2,
+          "wins": 15
+        },
+        {
+          "id": 2,
+          "name": "Starwatch Bot",
+          "human": false,
+          "health": 0,
+          "place": 3,
+          "wins": 10
+        },
+        {
+          "id": 3,
+          "name": "Hearthkeeper Bot",
+          "human": false,
+          "health": 0,
+          "place": 5,
+          "wins": 5
+        },
+        {
+          "id": 4,
+          "name": "Sunstride Bot",
+          "human": false,
+          "health": 32,
+          "place": 1,
+          "wins": 18
+        },
+        {
+          "id": 5,
+          "name": "Gemseeker Bot",
+          "human": false,
+          "health": 0,
+          "place": 6,
+          "wins": 5
+        },
+        {
+          "id": 6,
+          "name": "Highbanner Bot",
+          "human": false,
+          "health": 0,
+          "place": 4,
+          "wins": 8
+        },
+        {
+          "id": 7,
+          "name": "Wayfinder Bot",
+          "human": false,
+          "health": 0,
+          "place": 8,
+          "wins": 2
+        }
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260907T170300Z-closeout\\restart\\match-0-seat-0-pid-40584-session.json",
+      "sha256": "a50fc78259112edd07e23d081681b9b70dcee5ec6c13b56b82706a144a35a9f9",
+      "bytes": 7680
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260907T170300Z-closeout\\restart\\match-1-seat-0-pid-40584-session.json",
+      "sha256": "b586459f9355ed331a363224b3223936ed27133681da3f3fbcb45d7f67590305",
+      "bytes": 1870722
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260907T170300Z-closeout\\restart\\match-2-seat-0-pid-40584-session.json",
+      "sha256": "87a6608df27e233ec8ae09403417cec7ac859d2078d121c15f79e944723aeb7d",
+      "bytes": 1908246
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260907T170300Z-closeout\\restart\\match-3-seat-0-pid-40584-session.json",
+      "sha256": "5c40eb74c9ce5c8acfe0ab3e0b4df28b89768341b6ca57c4e25b75e759b7b496",
+      "bytes": 2280914
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260907T170300Z-closeout\\restart\\launch.json",
+      "sha256": "b4e1fa92010a1ff67ab2fc4cbcb586bec3aa387eeb830ac20f689bede7c288b7",
+      "bytes": 11806
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260907T170300Z-closeout\\restart\\match-1-seat-0-pid-40584-snapshots.jsonl",
+      "sha256": "a93e4be335a9b9b636a681874f5bba808320f0064fa8ffe266c654307d972a1e",
+      "bytes": 5695947
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260907T170300Z-closeout\\restart\\match-1-seat-0-pid-40584-commands.jsonl",
+      "sha256": "5daa3590b710b9f2c619c681f43d86099f2a5f2666bffdecb65f63589fb67156",
+      "bytes": 198737
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260907T170300Z-closeout\\restart\\match-2-seat-0-pid-40584-snapshots.jsonl",
+      "sha256": "a3e8eadc8eb59a4e6aca4c13c2f47f89a097bb06ce10c8e79a56d4cc9ef98f81",
+      "bytes": 5280100
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260907T170300Z-closeout\\restart\\match-2-seat-0-pid-40584-commands.jsonl",
+      "sha256": "e37c426a2acdceb34d22a59d7833f2c7f1de026f4615830ab70ebb0d0e4f647c",
+      "bytes": 191508
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260907T170300Z-closeout\\restart\\match-3-seat-0-pid-40584-snapshots.jsonl",
+      "sha256": "d31ee59e13266cbf3e11da082fc1e131ad96d98852652143ffa1c66d5b94d59e",
+      "bytes": 7149982
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260907T170300Z-closeout\\restart\\match-3-seat-0-pid-40584-commands.jsonl",
+      "sha256": "18bcd9618743880958fc5c9ffc4d9d0711d55ed1eee71ccae51ebc0b7cc6ce67",
+      "bytes": 217001
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U430\\20260907T165700Z-closeout\\provenance.json",
+      "sha256": "e8165917ad9cc9381279275497575dc37ecee5b26edb6a8e3b8c8dab2bf9dfca",
+      "bytes": 871984
+    }
+  ],
+  "boundary": "Audited 3 retained 1H7B namespaces and 2 requested restarts in one Shipping process, using actual scripted controller commands. Completion and correctness are established only by the individual checks. Accelerated functional runs do not establish performance or manual usability/audio acceptance; exact speed and rendering mode are in the bound launch record. Actual authority seeds are reported separately for every namespace.",
+  "known_evidence_defects": [],
+  "engine_log_checks": {
+    "status": "NOT_RUN",
+    "count": null,
+    "reason": "Shipping UE_LOG output unavailable, not a zero-error inference."
+  }
+}

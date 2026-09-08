@@ -1,0 +1,15 @@
+test_additive_frame_counter_preserves_page_metrics_and_gpu_absence (__main__.ProfileColumnCompatibility.test_additive_frame_counter_preserves_page_metrics_and_gpu_absence) ... ERROR
+
+======================================================================
+ERROR: test_additive_frame_counter_preserves_page_metrics_and_gpu_absence (__main__.ProfileColumnCompatibility.test_additive_frame_counter_preserves_page_metrics_and_gpu_absence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\iputu\Documents\Wonder Chess\reports\WC-U450\20260906T164623Z-frontend-profile\test_profile_csv_compatibility.py", line 34, in test_additive_frame_counter_preserves_page_metrics_and_gpu_absence
+    self.assertEqual(result['subsets']['gallery_frames']['frames'],1)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+KeyError: 'gallery_frames'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.051s
+
+FAILED (errors=1)
