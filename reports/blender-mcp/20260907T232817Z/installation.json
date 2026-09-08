@@ -1,0 +1,51 @@
+{
+  "created_utc": "2026-09-07T23:29:42.174439+00:00",
+  "source_commit": "c6276928b902bddbf22e9c691ae3c6aa202892d4",
+  "files": {
+    "zip": {
+      "path": "C:\\Users\\iputu\\Downloads\\blender-mcp-main (1).zip",
+      "sha256": "a7576e30ee43bc379af2c6bab27749c48b8b1a1380068112910498e5d672f005"
+    },
+    "installed_addon": {
+      "path": "C:\\Users\\iputu\\AppData\\Roaming\\Blender Foundation\\Blender\\5.1\\scripts\\addons\\blender_mcp.py",
+      "sha256": "f43469c8518c7021e0060e32cfe52e3beb126b0f62fbae7293106642a3ebda89"
+    },
+    "bundled_addon": {
+      "path": "C:\\Users\\iputu\\Documents\\Project Support\\Wonder Chess\\blender-mcp-1.9.1\\blender-mcp-main\\src\\blender_mcp\\bundled\\addon.py",
+      "sha256": "f43469c8518c7021e0060e32cfe52e3beb126b0f62fbae7293106642a3ebda89"
+    },
+    "local_telemetry_config": {
+      "path": "C:\\Users\\iputu\\Documents\\Project Support\\Wonder Chess\\blender-mcp-1.9.1\\blender-mcp-main\\src\\blender_mcp\\config.py",
+      "sha256": "6176efb656004fe11256c9e448f0304043df84c40d300a63d0b3e138540e5d9a"
+    },
+    "uv_lock": {
+      "path": "C:\\Users\\iputu\\Documents\\Project Support\\Wonder Chess\\blender-mcp-1.9.1\\blender-mcp-main\\uv.lock",
+      "sha256": "6df804046b8fccca02952a149c80ab1e226137023fc46b6f53e3678bc05c39c5"
+    },
+    "project_config": {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\.codex\\config.toml",
+      "sha256": "d5c08c73d5829c162dedf8d3ee92b401ce6330d83850f2c7aed6561a345931a2"
+    }
+  },
+  "versions": {
+    "blender": "5.1.1",
+    "blender_mcp_package": "1.9.1",
+    "addon_declared": "1.6",
+    "protocol": 5,
+    "python": "3.11.8",
+    "mcp_sdk": "1.29.0",
+    "uv": "0.11.28",
+    "codex_cli": "0.153.4"
+  },
+  "installation": "uv sync --frozen against supplied lock; offline cache miss then PyPI dependencies installed",
+  "local_patch": "ZIP omits blender_mcp/config.py; added permanently disabled telemetry_config with enabled=False. Supplied add-on is byte-identical.",
+  "listener": "127.0.0.1:9876",
+  "existing_custom_bridge": "blender_addon preserved; configured port 9877; not started by this task",
+  "desktop_tool_refresh": "pending Codex restart; MCP protocol verified through stdio ClientSession",
+  "checks": {
+    "live_mcp_tools": 5,
+    "live_verification": "PASS",
+    "ada_source_unchanged": true,
+    "full_game_regression": "NOT_RUN_CONNECTION_ONLY_TASK"
+  }
+}

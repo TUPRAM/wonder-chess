@@ -1,0 +1,128 @@
+{
+  "started_utc": "2026-09-07T23:27:35.718669+00:00",
+  "source_sha256_before": "54f04b8f28fd819eb22b7a4f6c8051484c6466513e6cd43d419c835b67d950b3",
+  "initialize": {
+    "meta": null,
+    "protocolVersion": "2025-11-25",
+    "capabilities": {
+      "experimental": {},
+      "logging": null,
+      "prompts": {
+        "listChanged": false
+      },
+      "resources": {
+        "subscribe": false,
+        "listChanged": false
+      },
+      "tools": {
+        "listChanged": false
+      },
+      "completions": null,
+      "tasks": null
+    },
+    "serverInfo": {
+      "name": "BlenderMCP",
+      "title": null,
+      "version": "1.29.0",
+      "websiteUrl": null,
+      "icons": null
+    },
+    "instructions": null
+  },
+  "advertised_tools": [
+    "get_addon_status",
+    "disable_telemetry",
+    "get_scene_info",
+    "get_object_info",
+    "get_viewport_screenshot",
+    "execute_blender_code",
+    "get_polyhaven_categories",
+    "search_polyhaven_assets",
+    "download_polyhaven_asset",
+    "set_texture",
+    "get_polyhaven_status",
+    "get_hyper3d_status",
+    "get_sketchfab_status",
+    "search_sketchfab_models",
+    "get_sketchfab_model_preview",
+    "download_sketchfab_model",
+    "get_polypizza_status",
+    "search_polypizza_models",
+    "download_polypizza_model",
+    "generate_hyper3d_model_via_text",
+    "generate_hyper3d_model_via_images",
+    "poll_rodin_job_status",
+    "import_generated_asset",
+    "get_hunyuan3d_status",
+    "generate_hunyuan3d_model",
+    "poll_hunyuan_job_status",
+    "import_generated_asset_hunyuan",
+    "record_trajectory_feedback"
+  ],
+  "codex_enabled_tools": [
+    "get_addon_status",
+    "get_scene_info",
+    "get_object_info",
+    "get_viewport_screenshot",
+    "execute_blender_code"
+  ],
+  "get_addon_status": {
+    "meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"up_to_date\": true,\n  \"protocol_version\": 5,\n  \"expected_protocol_version\": 5,\n  \"addon_version\": [\n    1,\n    6\n  ],\n  \"capabilities\": [\n    \"drain_human_activity\",\n    \"execute_code\",\n    \"get_addon_info\",\n    \"get_object_info\",\n    \"get_scene_info\",\n    \"get_telemetry_consent\",\n    \"get_viewport_screenshot\",\n    \"get_world_state_snapshot\",\n    \"set_telemetry_consent\"\n  ],\n  \"blender_version\": \"5.1.1\",\n  \"source\": \"native\",\n  \"warning\": null,\n  \"telemetry_consent\": false,\n  \"update_command\": \"uvx blender-mcp install-addon\",\n  \"after_install\": \"If the addon file was updated: in Blender, Preferences \\u2192 Add-ons \\u2192 disable/enable 'Interface: Blender MCP', or restart Blender, then Start MCP Server.\"\n}",
+        "annotations": null,
+        "meta": null
+      }
+    ],
+    "structuredContent": {
+      "result": "{\n  \"up_to_date\": true,\n  \"protocol_version\": 5,\n  \"expected_protocol_version\": 5,\n  \"addon_version\": [\n    1,\n    6\n  ],\n  \"capabilities\": [\n    \"drain_human_activity\",\n    \"execute_code\",\n    \"get_addon_info\",\n    \"get_object_info\",\n    \"get_scene_info\",\n    \"get_telemetry_consent\",\n    \"get_viewport_screenshot\",\n    \"get_world_state_snapshot\",\n    \"set_telemetry_consent\"\n  ],\n  \"blender_version\": \"5.1.1\",\n  \"source\": \"native\",\n  \"warning\": null,\n  \"telemetry_consent\": false,\n  \"update_command\": \"uvx blender-mcp install-addon\",\n  \"after_install\": \"If the addon file was updated: in Blender, Preferences \\u2192 Add-ons \\u2192 disable/enable 'Interface: Blender MCP', or restart Blender, then Start MCP Server.\"\n}"
+    },
+    "isError": false
+  },
+  "get_scene_info": {
+    "meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "Error executing tool get_scene_info: 1 validation error for get_scene_infoArguments\nuser_prompt\n  Field required [type=missing, input_value={}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing",
+        "annotations": null,
+        "meta": null
+      }
+    ],
+    "structuredContent": null,
+    "isError": true
+  },
+  "execute_blender_code": {
+    "meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "Code executed successfully: {\"file\": \"C:\\\\Users\\\\iputu\\\\Documents\\\\Wonder Chess\\\\art-source\\\\heroes\\\\wc_u_human_guardian\\\\wc_u_human_guardian.blend\", \"version\": \"5.1.1\", \"objects\": 12, \"meshes\": [\"PRESENTATION_Ground\", \"BODY_SK_wc_u_human_guardian\", \"COSTUME_SK_wc_u_human_guardian\", \"EQUIPMENT_SK_wc_u_human_guardian\", \"SK_wc_u_human_guardian\", \"SK_wc_u_human_guardian_LOD1\", \"SK_wc_u_human_guardian_LOD2\"], \"actions\": [\"AN_wc_u_human_guardian_Active\", \"AN_wc_u_human_guardian_Attack\", \"AN_wc_u_human_guardian_Defeat\", \"AN_wc_u_human_guardian_Hit\", \"AN_wc_u_human_guardian_Idle\", \"AN_wc_u_human_guardian_Move\", \"AN_wc_u_human_guardian_Victory\"]}\n",
+        "annotations": null,
+        "meta": null
+      }
+    ],
+    "structuredContent": {
+      "result": "Code executed successfully: {\"file\": \"C:\\\\Users\\\\iputu\\\\Documents\\\\Wonder Chess\\\\art-source\\\\heroes\\\\wc_u_human_guardian\\\\wc_u_human_guardian.blend\", \"version\": \"5.1.1\", \"objects\": 12, \"meshes\": [\"PRESENTATION_Ground\", \"BODY_SK_wc_u_human_guardian\", \"COSTUME_SK_wc_u_human_guardian\", \"EQUIPMENT_SK_wc_u_human_guardian\", \"SK_wc_u_human_guardian\", \"SK_wc_u_human_guardian_LOD1\", \"SK_wc_u_human_guardian_LOD2\"], \"actions\": [\"AN_wc_u_human_guardian_Active\", \"AN_wc_u_human_guardian_Attack\", \"AN_wc_u_human_guardian_Defeat\", \"AN_wc_u_human_guardian_Hit\", \"AN_wc_u_human_guardian_Idle\", \"AN_wc_u_human_guardian_Move\", \"AN_wc_u_human_guardian_Victory\"]}\n"
+    },
+    "isError": false
+  },
+  "get_viewport_screenshot": {
+    "meta": null,
+    "content": [
+      {
+        "type": "image",
+        "mimeType": "image/png",
+        "annotations": null,
+        "meta": null,
+        "saved_path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\blender-mcp\\20260907T232735Z\\viewport.png"
+      }
+    ],
+    "structuredContent": null,
+    "isError": false
+  },
+  "source_sha256_after": "54f04b8f28fd819eb22b7a4f6c8051484c6466513e6cd43d419c835b67d950b3",
+  "source_unchanged": true
+}

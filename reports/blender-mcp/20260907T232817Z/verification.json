@@ -1,0 +1,225 @@
+{
+  "started_utc": "2026-09-07T23:28:17.386552+00:00",
+  "source_sha256_before": "54f04b8f28fd819eb22b7a4f6c8051484c6466513e6cd43d419c835b67d950b3",
+  "initialize": {
+    "meta": null,
+    "protocolVersion": "2025-11-25",
+    "capabilities": {
+      "experimental": {},
+      "logging": null,
+      "prompts": {
+        "listChanged": false
+      },
+      "resources": {
+        "subscribe": false,
+        "listChanged": false
+      },
+      "tools": {
+        "listChanged": false
+      },
+      "completions": null,
+      "tasks": null
+    },
+    "serverInfo": {
+      "name": "BlenderMCP",
+      "title": null,
+      "version": "1.29.0",
+      "websiteUrl": null,
+      "icons": null
+    },
+    "instructions": null
+  },
+  "advertised_tools": [
+    "get_addon_status",
+    "disable_telemetry",
+    "get_scene_info",
+    "get_object_info",
+    "get_viewport_screenshot",
+    "execute_blender_code",
+    "get_polyhaven_categories",
+    "search_polyhaven_assets",
+    "download_polyhaven_asset",
+    "set_texture",
+    "get_polyhaven_status",
+    "get_hyper3d_status",
+    "get_sketchfab_status",
+    "search_sketchfab_models",
+    "get_sketchfab_model_preview",
+    "download_sketchfab_model",
+    "get_polypizza_status",
+    "search_polypizza_models",
+    "download_polypizza_model",
+    "generate_hyper3d_model_via_text",
+    "generate_hyper3d_model_via_images",
+    "poll_rodin_job_status",
+    "import_generated_asset",
+    "get_hunyuan3d_status",
+    "generate_hunyuan3d_model",
+    "poll_hunyuan_job_status",
+    "import_generated_asset_hunyuan",
+    "record_trajectory_feedback"
+  ],
+  "codex_enabled_tools": [
+    "get_addon_status",
+    "get_scene_info",
+    "get_object_info",
+    "get_viewport_screenshot",
+    "execute_blender_code"
+  ],
+  "tool_schemas": {
+    "get_addon_status": {
+      "properties": {
+        "user_prompt": {
+          "default": "",
+          "title": "User Prompt",
+          "type": "string"
+        }
+      },
+      "title": "get_addon_statusArguments",
+      "type": "object"
+    },
+    "get_scene_info": {
+      "properties": {
+        "user_prompt": {
+          "title": "User Prompt",
+          "type": "string"
+        }
+      },
+      "required": [
+        "user_prompt"
+      ],
+      "title": "get_scene_infoArguments",
+      "type": "object"
+    },
+    "get_object_info": {
+      "properties": {
+        "object_name": {
+          "title": "Object Name",
+          "type": "string"
+        },
+        "user_prompt": {
+          "default": "",
+          "title": "User Prompt",
+          "type": "string"
+        }
+      },
+      "required": [
+        "object_name"
+      ],
+      "title": "get_object_infoArguments",
+      "type": "object"
+    },
+    "get_viewport_screenshot": {
+      "properties": {
+        "max_size": {
+          "default": 1000,
+          "title": "Max Size",
+          "type": "integer"
+        },
+        "user_prompt": {
+          "default": "",
+          "title": "User Prompt",
+          "type": "string"
+        }
+      },
+      "title": "get_viewport_screenshotArguments",
+      "type": "object"
+    },
+    "execute_blender_code": {
+      "properties": {
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "user_prompt": {
+          "default": "",
+          "title": "User Prompt",
+          "type": "string"
+        }
+      },
+      "required": [
+        "code"
+      ],
+      "title": "execute_blender_codeArguments",
+      "type": "object"
+    }
+  },
+  "get_addon_status": {
+    "meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"up_to_date\": true,\n  \"protocol_version\": 5,\n  \"expected_protocol_version\": 5,\n  \"addon_version\": [\n    1,\n    6\n  ],\n  \"capabilities\": [\n    \"drain_human_activity\",\n    \"execute_code\",\n    \"get_addon_info\",\n    \"get_object_info\",\n    \"get_scene_info\",\n    \"get_telemetry_consent\",\n    \"get_viewport_screenshot\",\n    \"get_world_state_snapshot\",\n    \"set_telemetry_consent\"\n  ],\n  \"blender_version\": \"5.1.1\",\n  \"source\": \"native\",\n  \"warning\": null,\n  \"telemetry_consent\": false,\n  \"update_command\": \"uvx blender-mcp install-addon\",\n  \"after_install\": \"If the addon file was updated: in Blender, Preferences \\u2192 Add-ons \\u2192 disable/enable 'Interface: Blender MCP', or restart Blender, then Start MCP Server.\"\n}",
+        "annotations": null,
+        "meta": null
+      }
+    ],
+    "structuredContent": {
+      "result": "{\n  \"up_to_date\": true,\n  \"protocol_version\": 5,\n  \"expected_protocol_version\": 5,\n  \"addon_version\": [\n    1,\n    6\n  ],\n  \"capabilities\": [\n    \"drain_human_activity\",\n    \"execute_code\",\n    \"get_addon_info\",\n    \"get_object_info\",\n    \"get_scene_info\",\n    \"get_telemetry_consent\",\n    \"get_viewport_screenshot\",\n    \"get_world_state_snapshot\",\n    \"set_telemetry_consent\"\n  ],\n  \"blender_version\": \"5.1.1\",\n  \"source\": \"native\",\n  \"warning\": null,\n  \"telemetry_consent\": false,\n  \"update_command\": \"uvx blender-mcp install-addon\",\n  \"after_install\": \"If the addon file was updated: in Blender, Preferences \\u2192 Add-ons \\u2192 disable/enable 'Interface: Blender MCP', or restart Blender, then Start MCP Server.\"\n}"
+    },
+    "isError": false
+  },
+  "get_scene_info": {
+    "meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"name\": \"Scene\",\n  \"object_count\": 12,\n  \"objects\": [\n    {\n      \"name\": \"Key\",\n      \"type\": \"LIGHT\",\n      \"location\": [\n        3.0,\n        4.0,\n        5.0\n      ]\n    },\n    {\n      \"name\": \"Fill\",\n      \"type\": \"LIGHT\",\n      \"location\": [\n        -3.0,\n        1.0,\n        3.0\n      ]\n    },\n    {\n      \"name\": \"Rim\",\n      \"type\": \"LIGHT\",\n      \"location\": [\n        0.0,\n        -3.0,\n        4.0\n      ]\n    },\n    {\n      \"name\": \"WC_Portrait\",\n      \"type\": \"CAMERA\",\n      \"location\": [\n        3.0,\n        5.0,\n        2.7\n      ]\n    },\n    {\n      \"name\": \"PRESENTATION_Ground\",\n      \"type\": \"MESH\",\n      \"location\": [\n        0.0,\n        0.0,\n        -0.01\n      ]\n    },\n    {\n      \"name\": \"BODY_SK_wc_u_human_guardian\",\n      \"type\": \"MESH\",\n      \"location\": [\n        0.0,\n        0.0,\n        0.0\n      ]\n    },\n    {\n      \"name\": \"COSTUME_SK_wc_u_human_guardian\",\n      \"type\": \"MESH\",\n      \"location\": [\n        0.0,\n        0.0,\n        0.0\n      ]\n    },\n    {\n      \"name\": \"EQUIPMENT_SK_wc_u_human_guardian\",\n      \"type\": \"MESH\",\n      \"location\": [\n        0.0,\n        0.0,\n        0.0\n      ]\n    },\n    {\n      \"name\": \"Armature\",\n      \"type\": \"ARMATURE\",\n      \"location\": [\n        0.0,\n        0.0,\n        0.0\n      ]\n    },\n    {\n      \"name\": \"SK_wc_u_human_guardian\",\n      \"type\": \"MESH\",\n      \"location\": [\n        0.0,\n        0.0,\n        0.0\n      ]\n    }\n  ],\n  \"materials_count\": 2\n}",
+        "annotations": null,
+        "meta": null
+      }
+    ],
+    "structuredContent": {
+      "result": "{\n  \"name\": \"Scene\",\n  \"object_count\": 12,\n  \"objects\": [\n    {\n      \"name\": \"Key\",\n      \"type\": \"LIGHT\",\n      \"location\": [\n        3.0,\n        4.0,\n        5.0\n      ]\n    },\n    {\n      \"name\": \"Fill\",\n      \"type\": \"LIGHT\",\n      \"location\": [\n        -3.0,\n        1.0,\n        3.0\n      ]\n    },\n    {\n      \"name\": \"Rim\",\n      \"type\": \"LIGHT\",\n      \"location\": [\n        0.0,\n        -3.0,\n        4.0\n      ]\n    },\n    {\n      \"name\": \"WC_Portrait\",\n      \"type\": \"CAMERA\",\n      \"location\": [\n        3.0,\n        5.0,\n        2.7\n      ]\n    },\n    {\n      \"name\": \"PRESENTATION_Ground\",\n      \"type\": \"MESH\",\n      \"location\": [\n        0.0,\n        0.0,\n        -0.01\n      ]\n    },\n    {\n      \"name\": \"BODY_SK_wc_u_human_guardian\",\n      \"type\": \"MESH\",\n      \"location\": [\n        0.0,\n        0.0,\n        0.0\n      ]\n    },\n    {\n      \"name\": \"COSTUME_SK_wc_u_human_guardian\",\n      \"type\": \"MESH\",\n      \"location\": [\n        0.0,\n        0.0,\n        0.0\n      ]\n    },\n    {\n      \"name\": \"EQUIPMENT_SK_wc_u_human_guardian\",\n      \"type\": \"MESH\",\n      \"location\": [\n        0.0,\n        0.0,\n        0.0\n      ]\n    },\n    {\n      \"name\": \"Armature\",\n      \"type\": \"ARMATURE\",\n      \"location\": [\n        0.0,\n        0.0,\n        0.0\n      ]\n    },\n    {\n      \"name\": \"SK_wc_u_human_guardian\",\n      \"type\": \"MESH\",\n      \"location\": [\n        0.0,\n        0.0,\n        0.0\n      ]\n    }\n  ],\n  \"materials_count\": 2\n}"
+    },
+    "isError": false
+  },
+  "get_object_info": {
+    "meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"name\": \"SK_wc_u_human_guardian\",\n  \"type\": \"MESH\",\n  \"location\": [\n    0.0,\n    0.0,\n    0.0\n  ],\n  \"rotation\": [\n    0.0,\n    0.0,\n    0.0\n  ],\n  \"scale\": [\n    1.0,\n    1.0,\n    1.0\n  ],\n  \"visible\": true,\n  \"materials\": [\n    \"M_wc_u_human_guardian\"\n  ],\n  \"world_bounding_box\": [\n    [\n      -0.725043773651123,\n      -0.2187470644712448,\n      0.016380002722144127\n    ],\n    [\n      0.8727128505706787,\n      0.667503833770752,\n      1.8272799253463745\n    ]\n  ],\n  \"mesh\": {\n    \"vertices\": 4787,\n    \"edges\": 13744,\n    \"polygons\": 9068\n  }\n}",
+        "annotations": null,
+        "meta": null
+      }
+    ],
+    "structuredContent": {
+      "result": "{\n  \"name\": \"SK_wc_u_human_guardian\",\n  \"type\": \"MESH\",\n  \"location\": [\n    0.0,\n    0.0,\n    0.0\n  ],\n  \"rotation\": [\n    0.0,\n    0.0,\n    0.0\n  ],\n  \"scale\": [\n    1.0,\n    1.0,\n    1.0\n  ],\n  \"visible\": true,\n  \"materials\": [\n    \"M_wc_u_human_guardian\"\n  ],\n  \"world_bounding_box\": [\n    [\n      -0.725043773651123,\n      -0.2187470644712448,\n      0.016380002722144127\n    ],\n    [\n      0.8727128505706787,\n      0.667503833770752,\n      1.8272799253463745\n    ]\n  ],\n  \"mesh\": {\n    \"vertices\": 4787,\n    \"edges\": 13744,\n    \"polygons\": 9068\n  }\n}"
+    },
+    "isError": false
+  },
+  "execute_blender_code": {
+    "meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "Code executed successfully: {\"file\": \"C:\\\\Users\\\\iputu\\\\Documents\\\\Wonder Chess\\\\art-source\\\\heroes\\\\wc_u_human_guardian\\\\wc_u_human_guardian.blend\", \"version\": \"5.1.1\", \"objects\": 12, \"meshes\": [\"PRESENTATION_Ground\", \"BODY_SK_wc_u_human_guardian\", \"COSTUME_SK_wc_u_human_guardian\", \"EQUIPMENT_SK_wc_u_human_guardian\", \"SK_wc_u_human_guardian\", \"SK_wc_u_human_guardian_LOD1\", \"SK_wc_u_human_guardian_LOD2\"], \"actions\": [\"AN_wc_u_human_guardian_Active\", \"AN_wc_u_human_guardian_Attack\", \"AN_wc_u_human_guardian_Defeat\", \"AN_wc_u_human_guardian_Hit\", \"AN_wc_u_human_guardian_Idle\", \"AN_wc_u_human_guardian_Move\", \"AN_wc_u_human_guardian_Victory\"]}\n",
+        "annotations": null,
+        "meta": null
+      }
+    ],
+    "structuredContent": {
+      "result": "Code executed successfully: {\"file\": \"C:\\\\Users\\\\iputu\\\\Documents\\\\Wonder Chess\\\\art-source\\\\heroes\\\\wc_u_human_guardian\\\\wc_u_human_guardian.blend\", \"version\": \"5.1.1\", \"objects\": 12, \"meshes\": [\"PRESENTATION_Ground\", \"BODY_SK_wc_u_human_guardian\", \"COSTUME_SK_wc_u_human_guardian\", \"EQUIPMENT_SK_wc_u_human_guardian\", \"SK_wc_u_human_guardian\", \"SK_wc_u_human_guardian_LOD1\", \"SK_wc_u_human_guardian_LOD2\"], \"actions\": [\"AN_wc_u_human_guardian_Active\", \"AN_wc_u_human_guardian_Attack\", \"AN_wc_u_human_guardian_Defeat\", \"AN_wc_u_human_guardian_Hit\", \"AN_wc_u_human_guardian_Idle\", \"AN_wc_u_human_guardian_Move\", \"AN_wc_u_human_guardian_Victory\"]}\n"
+    },
+    "isError": false
+  },
+  "get_viewport_screenshot": {
+    "meta": null,
+    "content": [
+      {
+        "type": "image",
+        "mimeType": "image/png",
+        "annotations": null,
+        "meta": null,
+        "saved_path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\blender-mcp\\20260907T232817Z\\viewport.png"
+      }
+    ],
+    "structuredContent": null,
+    "isError": false
+  },
+  "source_sha256_after": "54f04b8f28fd819eb22b7a4f6c8051484c6466513e6cd43d419c835b67d950b3",
+  "source_unchanged": true,
+  "failures": [],
+  "passed": true
+}

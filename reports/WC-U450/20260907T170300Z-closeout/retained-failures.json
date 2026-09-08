@@ -1,0 +1,26 @@
+{
+  "utc": "2026-09-07T17:17:51.866221+00:00",
+  "failures": [
+    {
+      "path": "regression-audit/regression-analysis.json",
+      "cause": "Wrong historical protocol5 native fixture supplied for protocol6 package; catalog/state hashes differ. Retained failure; current-native fresh audit passes."
+    },
+    {
+      "path": "regression-audit-protocol6/regression-analysis.json",
+      "cause": "Selected native window fixture lacked required summary.json/process.json shape. Retained missing-evidence failure; standard build_and_run fixture regenerated."
+    },
+    {
+      "path": "loopback/audit/network-analysis.json",
+      "cause": "Actual public protocolVersion5 while canonical rules require6;54/56checks pass, two version checks fail. Runtime publisher and recovery audit now use one NetworkProtocolVersion constant. Requires new package and new test, not reinterpretation of r3."
+    },
+    {
+      "path": "normal1080-opening/frame-summary.json",
+      "cause": "Preliminary r3 timing only; r4 compilation overlaps final seconds. Not uncontended final-build performance."
+    },
+    {
+      "path": "../WC-U430/20260907T171400Z-protocol-fix/package",
+      "cause": "Initial shared-constant build failed C2065 in the internal catalog reader; fixed by qualifying wc::NetworkProtocolVersion. Fresh package-qualified logs retain the rerun."
+    }
+  ],
+  "art_failure_boundary": "Incomplete artistic and continuous audiovisual acceptance is not repaired by source/export/import/cold/load counts; prototype presentation remains visible."
+}

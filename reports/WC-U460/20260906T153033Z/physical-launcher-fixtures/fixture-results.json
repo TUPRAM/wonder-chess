@@ -1,0 +1,162 @@
+{
+  "status": "PASS",
+  "evidence_kind": "SYNTHETIC_INPUT_AND_PAYLOAD_FIXTURES_ONLY",
+  "checks": 25,
+  "results": [
+    {
+      "status": "PASS",
+      "expected_rejection": false,
+      "observed_error": null,
+      "name": "relocated_complete_payload_valid"
+    },
+    {
+      "status": "PASS",
+      "expected_rejection": false,
+      "observed_error": null,
+      "name": "original_manifest_remains_identical"
+    },
+    {
+      "status": "PASS",
+      "expected_rejection": false,
+      "observed_error": null,
+      "name": "private_ipv4_normalized"
+    },
+    {
+      "status": "PASS",
+      "expected_rejection": true,
+      "observed_error": "This launcher is scoped to private IPv4 LAN addresses; loopback, wildcard, multicast and public addresses are rejected",
+      "name": "reject_address_127.0.0.1"
+    },
+    {
+      "status": "PASS",
+      "expected_rejection": true,
+      "observed_error": "This launcher is scoped to private IPv4 LAN addresses; loopback, wildcard, multicast and public addresses are rejected",
+      "name": "reject_address_0.0.0.0"
+    },
+    {
+      "status": "PASS",
+      "expected_rejection": true,
+      "observed_error": "This launcher is scoped to private IPv4 LAN addresses; loopback, wildcard, multicast and public addresses are rejected",
+      "name": "reject_address_224.0.0.1"
+    },
+    {
+      "status": "PASS",
+      "expected_rejection": true,
+      "observed_error": "This launcher is scoped to private IPv4 LAN addresses; loopback, wildcard, multicast and public addresses are rejected",
+      "name": "reject_address_8.8.8.8"
+    },
+    {
+      "status": "PASS",
+      "expected_rejection": true,
+      "observed_error": "IPv4 octet exceeds255",
+      "name": "reject_address_192.168.1.256"
+    },
+    {
+      "status": "PASS",
+      "expected_rejection": true,
+      "observed_error": "Use a literal private LAN IPv4 address without a port, URL or hostname",
+      "name": "reject_address_192.168.1.2:7777"
+    },
+    {
+      "status": "PASS",
+      "expected_rejection": true,
+      "observed_error": "Use a literal private LAN IPv4 address without a port, URL or hostname",
+      "name": "reject_address_localhost"
+    },
+    {
+      "status": "PASS",
+      "expected_rejection": true,
+      "observed_error": "Use a literal private LAN IPv4 address without a port, URL or hostname",
+      "name": "reject_address_192.168.1.2 -WCHost"
+    },
+    {
+      "status": "PASS",
+      "expected_rejection": false,
+      "observed_error": null,
+      "name": "host_own_address"
+    },
+    {
+      "status": "PASS",
+      "expected_rejection": true,
+      "observed_error": "The supplied host address is not assigned to this host machine",
+      "name": "host_other_address_rejected"
+    },
+    {
+      "status": "PASS",
+      "expected_rejection": false,
+      "observed_error": null,
+      "name": "client_remote_address"
+    },
+    {
+      "status": "PASS",
+      "expected_rejection": true,
+      "observed_error": "The client points to this same machine; this cannot establish the two-physical-PC gate",
+      "name": "client_same_machine_rejected"
+    },
+    {
+      "status": "PASS",
+      "expected_rejection": true,
+      "observed_error": "Package, provenance and output must be absolute local drive paths; UNC/network paths and quotes are not accepted",
+      "name": "unc_rejected_without_access"
+    },
+    {
+      "status": "PASS",
+      "expected_rejection": true,
+      "observed_error": "Package, provenance and output must be absolute local drive paths; UNC/network paths and quotes are not accepted",
+      "name": "relative_path_rejected"
+    },
+    {
+      "status": "PASS",
+      "expected_rejection": false,
+      "observed_error": null,
+      "name": "local_paths_valid"
+    },
+    {
+      "status": "PASS",
+      "expected_rejection": true,
+      "observed_error": "Original payload entry escapes the captured package root",
+      "name": "original_path_escape"
+    },
+    {
+      "status": "PASS",
+      "expected_rejection": true,
+      "observed_error": "Duplicate packaged payload entry",
+      "name": "duplicate_payload_rejected"
+    },
+    {
+      "status": "PASS",
+      "expected_rejection": true,
+      "observed_error": "Unverified payload provenance: a complete packaged_payload group and stable capture are required; legacy executable-only provenance cannot authorize this run",
+      "name": "unstable_capture_rejected"
+    },
+    {
+      "status": "PASS",
+      "expected_rejection": true,
+      "observed_error": "Packaged payload differs from immutable provenance: C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U460\\20260906T153033Z\\physical-launcher-fixtures\\copied-package\\WonderChess.exe",
+      "name": "changed_payload_rejected"
+    },
+    {
+      "status": "PASS",
+      "expected_rejection": true,
+      "observed_error": "Package file membership changed since provenance capture; only runtime Saved directories are excluded",
+      "name": "missing_manifest_member_rejected"
+    },
+    {
+      "status": "PASS",
+      "expected_rejection": false,
+      "observed_error": null,
+      "name": "runtime_saved_excluded"
+    },
+    {
+      "status": "PASS",
+      "expected_rejection": true,
+      "observed_error": "Package file membership changed since provenance capture; only runtime Saved directories are excluded",
+      "name": "extra_payload_rejected"
+    }
+  ],
+  "game_launched": false,
+  "network_connection_attempted": false,
+  "physical_lan_acceptance": "NOT_RUN",
+  "launcher_sha256": "8cf621de29d47b4ac6a77cf2a4151e964f33d4f83425976d3d35dba9709363f2",
+  "helper_sha256": "589c7cd78c119650d512e31f0642ceb9a560a12db51a019c166bc30fe874c21a"
+}

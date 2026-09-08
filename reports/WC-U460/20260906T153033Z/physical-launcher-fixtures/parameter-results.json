@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "checks": 8,
+  "results": [
+    {
+      "name": "valid_defaults",
+      "rejection": false,
+      "status": "PASS"
+    },
+    {
+      "name": "role_rejected",
+      "rejection": true,
+      "status": "PASS"
+    },
+    {
+      "name": "port_zero",
+      "rejection": true,
+      "status": "PASS"
+    },
+    {
+      "name": "port_overflow",
+      "rejection": true,
+      "status": "PASS"
+    },
+    {
+      "name": "speed_zero",
+      "rejection": true,
+      "status": "PASS"
+    },
+    {
+      "name": "duration_overflow",
+      "rejection": true,
+      "status": "PASS"
+    },
+    {
+      "name": "input_mode_rejected",
+      "rejection": true,
+      "status": "PASS"
+    },
+    {
+      "name": "machine_label_rejected",
+      "rejection": true,
+      "status": "PASS"
+    }
+  ],
+  "evidence_kind": "PARAMETER_BINDING_ONLY",
+  "game_launched": false,
+  "network_connection_attempted": false,
+  "launcher_sha256": "8cf621de29d47b4ac6a77cf2a4151e964f33d4f83425976d3d35dba9709363f2"
+}

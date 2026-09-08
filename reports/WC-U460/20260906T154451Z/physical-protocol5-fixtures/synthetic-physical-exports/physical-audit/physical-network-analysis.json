@@ -1,0 +1,1022 @@
+{
+  "status": "PASS",
+  "evidence_kind": "PHYSICAL_LAN_RECORDED_RECEIVED_STATE_AND_RPC",
+  "boundary": "Functional audit of recorded two-machine identity, private LAN target, payload bindings, received states and real RPC replies. This does not independently observe two physical devices or certify manual play, graphics, audio or performance.",
+  "physical_device_observation": "NOT_RUN_BY_ANALYZER",
+  "physical_lan_release_acceptance": "REQUIRES_OPERATOR_PHYSICAL_DEVICE_EVIDENCE_AND_RELEASE_REVIEW",
+  "checks": [
+    {
+      "check": "distinct_human_seats",
+      "status": "PASS",
+      "detail": [
+        0,
+        1
+      ]
+    },
+    {
+      "check": "listen_server_and_client",
+      "status": "PASS",
+      "detail": [
+        {
+          "mode": 2,
+          "authority": true
+        },
+        {
+          "mode": 3,
+          "authority": false
+        }
+      ]
+    },
+    {
+      "check": "shared_nonzero_match_namespace",
+      "status": "PASS",
+      "detail": [
+        1,
+        1
+      ]
+    },
+    {
+      "check": "process_0_two_humans_six_bots",
+      "status": "PASS",
+      "detail": {
+        "observed_snapshots": 1
+      }
+    },
+    {
+      "check": "process_0_owner_private_binding",
+      "status": "PASS",
+      "detail": {
+        "observed_private_snapshots": 1
+      }
+    },
+    {
+      "check": "process_0_current_private_namespace_seen",
+      "status": "PASS",
+      "detail": {
+        "observed_revision_namespaces": [
+          1
+        ]
+      }
+    },
+    {
+      "check": "process_0_received_state_privacy",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "check": "process_0_changed_payload_same_request_rejected",
+      "status": "PASS",
+      "detail": {
+        "name": "changed_payload_same_request_rejected",
+        "status": "PASS"
+      }
+    },
+    {
+      "check": "process_0_combat_phase_buy_rejected",
+      "status": "PASS",
+      "detail": {
+        "name": "combat_phase_buy_rejected",
+        "status": "PASS"
+      }
+    },
+    {
+      "check": "process_0_duplicate_request_applies_once",
+      "status": "PASS",
+      "detail": {
+        "name": "duplicate_request_applies_once",
+        "status": "PASS"
+      }
+    },
+    {
+      "check": "process_0_foreign_unit_sale_rejected",
+      "status": "PASS",
+      "detail": {
+        "name": "foreign_unit_sale_rejected",
+        "status": "PASS"
+      }
+    },
+    {
+      "check": "process_0_original_idempotent_lock_request",
+      "status": "PASS",
+      "detail": {
+        "name": "original_idempotent_lock_request",
+        "status": "PASS"
+      }
+    },
+    {
+      "check": "process_0_out_of_order_sequence_rejected",
+      "status": "PASS",
+      "detail": {
+        "name": "out_of_order_sequence_rejected",
+        "status": "PASS"
+      }
+    },
+    {
+      "check": "process_0_stale_revision_rejected",
+      "status": "PASS",
+      "detail": {
+        "name": "stale_revision_rejected",
+        "status": "PASS"
+      }
+    },
+    {
+      "check": "process_0_actual_commands_received",
+      "status": "PASS",
+      "detail": {
+        "accepted": 3,
+        "rejected": 2
+      }
+    },
+    {
+      "check": "process_0_complete_tournament",
+      "status": "PASS",
+      "detail": {
+        "complete": true,
+        "aborted": false,
+        "last_round": 1
+      }
+    },
+    {
+      "check": "process_1_two_humans_six_bots",
+      "status": "PASS",
+      "detail": {
+        "observed_snapshots": 1
+      }
+    },
+    {
+      "check": "process_1_owner_private_binding",
+      "status": "PASS",
+      "detail": {
+        "observed_private_snapshots": 1
+      }
+    },
+    {
+      "check": "process_1_current_private_namespace_seen",
+      "status": "PASS",
+      "detail": {
+        "observed_revision_namespaces": [
+          1
+        ]
+      }
+    },
+    {
+      "check": "process_1_received_state_privacy",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "check": "process_1_changed_payload_same_request_rejected",
+      "status": "PASS",
+      "detail": {
+        "name": "changed_payload_same_request_rejected",
+        "status": "PASS"
+      }
+    },
+    {
+      "check": "process_1_combat_phase_buy_rejected",
+      "status": "PASS",
+      "detail": {
+        "name": "combat_phase_buy_rejected",
+        "status": "PASS"
+      }
+    },
+    {
+      "check": "process_1_duplicate_request_applies_once",
+      "status": "PASS",
+      "detail": {
+        "name": "duplicate_request_applies_once",
+        "status": "PASS"
+      }
+    },
+    {
+      "check": "process_1_foreign_unit_sale_rejected",
+      "status": "PASS",
+      "detail": {
+        "name": "foreign_unit_sale_rejected",
+        "status": "PASS"
+      }
+    },
+    {
+      "check": "process_1_original_idempotent_lock_request",
+      "status": "PASS",
+      "detail": {
+        "name": "original_idempotent_lock_request",
+        "status": "PASS"
+      }
+    },
+    {
+      "check": "process_1_out_of_order_sequence_rejected",
+      "status": "PASS",
+      "detail": {
+        "name": "out_of_order_sequence_rejected",
+        "status": "PASS"
+      }
+    },
+    {
+      "check": "process_1_stale_revision_rejected",
+      "status": "PASS",
+      "detail": {
+        "name": "stale_revision_rejected",
+        "status": "PASS"
+      }
+    },
+    {
+      "check": "process_1_actual_commands_received",
+      "status": "PASS",
+      "detail": {
+        "accepted": 3,
+        "rejected": 2
+      }
+    },
+    {
+      "check": "process_1_complete_tournament",
+      "status": "PASS",
+      "detail": {
+        "complete": true,
+        "aborted": false,
+        "last_round": 1
+      }
+    },
+    {
+      "check": "received_combat_round_coverage",
+      "status": "PASS",
+      "detail": {
+        "host_observed": [
+          1
+        ],
+        "client_observed": [
+          1
+        ],
+        "missing_on_client": [],
+        "missing_on_host": [],
+        "boundary": "Sampled public combat presence, not every replicated tick or packet."
+      }
+    },
+    {
+      "check": "pairing_public_state_agreement",
+      "status": "PASS",
+      "detail": {
+        "matched_keys": 1,
+        "mismatches": [],
+        "internally_inconsistent_keys": []
+      }
+    },
+    {
+      "check": "settlement_public_state_agreement",
+      "status": "PASS",
+      "detail": {
+        "matched_keys": 1,
+        "mismatches": [],
+        "internally_inconsistent_keys": []
+      }
+    },
+    {
+      "check": "combat_public_state_agreement",
+      "status": "PASS",
+      "detail": {
+        "matched_keys": 1,
+        "mismatches": [],
+        "internally_inconsistent_keys": []
+      }
+    },
+    {
+      "check": "complete_results_agree",
+      "status": "PASS",
+      "detail": [
+        [
+          [
+            0,
+            30,
+            0,
+            0
+          ],
+          [
+            1,
+            30,
+            0,
+            0
+          ],
+          [
+            2,
+            30,
+            0,
+            0
+          ],
+          [
+            3,
+            30,
+            0,
+            0
+          ],
+          [
+            4,
+            30,
+            0,
+            0
+          ],
+          [
+            5,
+            30,
+            0,
+            0
+          ],
+          [
+            6,
+            30,
+            0,
+            0
+          ],
+          [
+            7,
+            30,
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            30,
+            0,
+            0
+          ],
+          [
+            1,
+            30,
+            0,
+            0
+          ],
+          [
+            2,
+            30,
+            0,
+            0
+          ],
+          [
+            3,
+            30,
+            0,
+            0
+          ],
+          [
+            4,
+            30,
+            0,
+            0
+          ],
+          [
+            5,
+            30,
+            0,
+            0
+          ],
+          [
+            6,
+            30,
+            0,
+            0
+          ],
+          [
+            7,
+            30,
+            0,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "check": "physical_distinct_recorded_hostnames",
+      "status": "PASS",
+      "detail": [
+        "physical_fixture_pc_0",
+        "physical_fixture_pc_1"
+      ]
+    },
+    {
+      "check": "physical_distinct_machine_processes",
+      "status": "PASS",
+      "detail": [
+        [
+          "physical_fixture_pc_0",
+          500
+        ],
+        [
+          "physical_fixture_pc_1",
+          500
+        ]
+      ]
+    },
+    {
+      "check": "physical_successful_complete_provenance",
+      "status": "PASS",
+      "detail": {
+        "files": 1,
+        "errors": []
+      }
+    },
+    {
+      "check": "physical_nonloopback_private_target",
+      "status": "PASS",
+      "detail": {
+        "address": "192.168.1.20",
+        "ports": [
+          7780,
+          7780
+        ]
+      }
+    },
+    {
+      "check": "host_physical_role_address",
+      "status": "PASS",
+      "detail": [
+        "192.168.1.20"
+      ]
+    },
+    {
+      "check": "host_physical_route_arguments",
+      "status": "PASS",
+      "detail": [
+        "-WCHost",
+        "-Port=7780"
+      ]
+    },
+    {
+      "check": "host_physical_session_process_binding",
+      "status": "PASS",
+      "detail": {
+        "recorded_pid": 500,
+        "session_pid": 500,
+        "status": "EXITED_AUDIT_REQUIRED",
+        "exit": 0
+      }
+    },
+    {
+      "check": "host_physical_manifest_binding",
+      "status": "PASS",
+      "detail": "fab1b9c824965b2b4cd757dadff788d995487029ba1b023b970ef97878128d9c"
+    },
+    {
+      "check": "host_physical_preflight_all_payload_bytes_recorded",
+      "status": "PASS",
+      "detail": {
+        "expected_count": 1,
+        "mapping_count": 1,
+        "hashed_count": 1,
+        "boundary": "Launcher-recorded local hashes bound to immutable provenance; reviewer does not assume access to either relocated machine path."
+      }
+    },
+    {
+      "check": "host_physical_post_run_all_payload_bytes_recorded",
+      "status": "PASS",
+      "detail": {
+        "expected_count": 1,
+        "mapping_count": 1,
+        "hashed_count": 1,
+        "boundary": "Launcher-recorded local hashes bound to immutable provenance; reviewer does not assume access to either relocated machine path."
+      }
+    },
+    {
+      "check": "client_physical_role_address",
+      "status": "PASS",
+      "detail": [
+        "192.168.1.21"
+      ]
+    },
+    {
+      "check": "client_physical_route_arguments",
+      "status": "PASS",
+      "detail": [
+        "-WCJoin=192.168.1.20:7780"
+      ]
+    },
+    {
+      "check": "client_physical_session_process_binding",
+      "status": "PASS",
+      "detail": {
+        "recorded_pid": 500,
+        "session_pid": 500,
+        "status": "EXITED_AUDIT_REQUIRED",
+        "exit": 0
+      }
+    },
+    {
+      "check": "client_physical_manifest_binding",
+      "status": "PASS",
+      "detail": "fab1b9c824965b2b4cd757dadff788d995487029ba1b023b970ef97878128d9c"
+    },
+    {
+      "check": "client_physical_preflight_all_payload_bytes_recorded",
+      "status": "PASS",
+      "detail": {
+        "expected_count": 1,
+        "mapping_count": 1,
+        "hashed_count": 1,
+        "boundary": "Launcher-recorded local hashes bound to immutable provenance; reviewer does not assume access to either relocated machine path."
+      }
+    },
+    {
+      "check": "client_physical_post_run_all_payload_bytes_recorded",
+      "status": "PASS",
+      "detail": {
+        "expected_count": 1,
+        "mapping_count": 1,
+        "hashed_count": 1,
+        "boundary": "Launcher-recorded local hashes bound to immutable provenance; reviewer does not assume access to either relocated machine path."
+      }
+    },
+    {
+      "check": "physical_hardware_identity_not_known_duplicate",
+      "status": "PASS",
+      "detail": [
+        "0000000000000000000000000000000000000000000000000000000000000000",
+        "1111111111111111111111111111111111111111111111111111111111111111"
+      ]
+    },
+    {
+      "check": "physical_host_listener_binding",
+      "status": "PASS",
+      "detail": [
+        {
+          "OwningProcess": 500,
+          "LocalPort": 7780
+        }
+      ]
+    },
+    {
+      "check": "host_received_current_catalog_protocol",
+      "status": "PASS",
+      "detail": {
+        "received": {
+          "schemaVersion": "3.1.0",
+          "protocolVersion": 5,
+          "contentDigest": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+        },
+        "provenance_catalog_digest": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "boundary": "Actual received schema/protocol and full catalog digest; not hero art acceptance."
+      }
+    },
+    {
+      "check": "client_received_current_catalog_protocol",
+      "status": "PASS",
+      "detail": {
+        "received": {
+          "schemaVersion": "3.1.0",
+          "protocolVersion": 5,
+          "contentDigest": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+        },
+        "provenance_catalog_digest": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "boundary": "Actual received schema/protocol and full catalog digest; not hero art acceptance."
+      }
+    }
+  ],
+  "raw_same_host_paired_reader": {
+    "status": "FAIL",
+    "boundary": "Actual exported received state and real RPC replies. Not packet capture, human usability, or disconnect certification.",
+    "checks": [
+      {
+        "check": "distinct_processes",
+        "status": "FAIL",
+        "detail": [
+          500,
+          500
+        ]
+      },
+      {
+        "check": "distinct_human_seats",
+        "status": "PASS",
+        "detail": [
+          0,
+          1
+        ]
+      },
+      {
+        "check": "listen_server_and_client",
+        "status": "PASS",
+        "detail": [
+          {
+            "mode": 2,
+            "authority": true
+          },
+          {
+            "mode": 3,
+            "authority": false
+          }
+        ]
+      },
+      {
+        "check": "shared_nonzero_match_namespace",
+        "status": "PASS",
+        "detail": [
+          1,
+          1
+        ]
+      },
+      {
+        "check": "process_0_two_humans_six_bots",
+        "status": "PASS",
+        "detail": {
+          "observed_snapshots": 1
+        }
+      },
+      {
+        "check": "process_0_owner_private_binding",
+        "status": "PASS",
+        "detail": {
+          "observed_private_snapshots": 1
+        }
+      },
+      {
+        "check": "process_0_current_private_namespace_seen",
+        "status": "PASS",
+        "detail": {
+          "observed_revision_namespaces": [
+            1
+          ]
+        }
+      },
+      {
+        "check": "process_0_received_state_privacy",
+        "status": "PASS",
+        "detail": []
+      },
+      {
+        "check": "process_0_changed_payload_same_request_rejected",
+        "status": "PASS",
+        "detail": {
+          "name": "changed_payload_same_request_rejected",
+          "status": "PASS"
+        }
+      },
+      {
+        "check": "process_0_combat_phase_buy_rejected",
+        "status": "PASS",
+        "detail": {
+          "name": "combat_phase_buy_rejected",
+          "status": "PASS"
+        }
+      },
+      {
+        "check": "process_0_duplicate_request_applies_once",
+        "status": "PASS",
+        "detail": {
+          "name": "duplicate_request_applies_once",
+          "status": "PASS"
+        }
+      },
+      {
+        "check": "process_0_foreign_unit_sale_rejected",
+        "status": "PASS",
+        "detail": {
+          "name": "foreign_unit_sale_rejected",
+          "status": "PASS"
+        }
+      },
+      {
+        "check": "process_0_original_idempotent_lock_request",
+        "status": "PASS",
+        "detail": {
+          "name": "original_idempotent_lock_request",
+          "status": "PASS"
+        }
+      },
+      {
+        "check": "process_0_out_of_order_sequence_rejected",
+        "status": "PASS",
+        "detail": {
+          "name": "out_of_order_sequence_rejected",
+          "status": "PASS"
+        }
+      },
+      {
+        "check": "process_0_stale_revision_rejected",
+        "status": "PASS",
+        "detail": {
+          "name": "stale_revision_rejected",
+          "status": "PASS"
+        }
+      },
+      {
+        "check": "process_0_actual_commands_received",
+        "status": "PASS",
+        "detail": {
+          "accepted": 3,
+          "rejected": 2
+        }
+      },
+      {
+        "check": "process_0_complete_tournament",
+        "status": "PASS",
+        "detail": {
+          "complete": true,
+          "aborted": false,
+          "last_round": 1
+        }
+      },
+      {
+        "check": "process_1_two_humans_six_bots",
+        "status": "PASS",
+        "detail": {
+          "observed_snapshots": 1
+        }
+      },
+      {
+        "check": "process_1_owner_private_binding",
+        "status": "PASS",
+        "detail": {
+          "observed_private_snapshots": 1
+        }
+      },
+      {
+        "check": "process_1_current_private_namespace_seen",
+        "status": "PASS",
+        "detail": {
+          "observed_revision_namespaces": [
+            1
+          ]
+        }
+      },
+      {
+        "check": "process_1_received_state_privacy",
+        "status": "PASS",
+        "detail": []
+      },
+      {
+        "check": "process_1_changed_payload_same_request_rejected",
+        "status": "PASS",
+        "detail": {
+          "name": "changed_payload_same_request_rejected",
+          "status": "PASS"
+        }
+      },
+      {
+        "check": "process_1_combat_phase_buy_rejected",
+        "status": "PASS",
+        "detail": {
+          "name": "combat_phase_buy_rejected",
+          "status": "PASS"
+        }
+      },
+      {
+        "check": "process_1_duplicate_request_applies_once",
+        "status": "PASS",
+        "detail": {
+          "name": "duplicate_request_applies_once",
+          "status": "PASS"
+        }
+      },
+      {
+        "check": "process_1_foreign_unit_sale_rejected",
+        "status": "PASS",
+        "detail": {
+          "name": "foreign_unit_sale_rejected",
+          "status": "PASS"
+        }
+      },
+      {
+        "check": "process_1_original_idempotent_lock_request",
+        "status": "PASS",
+        "detail": {
+          "name": "original_idempotent_lock_request",
+          "status": "PASS"
+        }
+      },
+      {
+        "check": "process_1_out_of_order_sequence_rejected",
+        "status": "PASS",
+        "detail": {
+          "name": "out_of_order_sequence_rejected",
+          "status": "PASS"
+        }
+      },
+      {
+        "check": "process_1_stale_revision_rejected",
+        "status": "PASS",
+        "detail": {
+          "name": "stale_revision_rejected",
+          "status": "PASS"
+        }
+      },
+      {
+        "check": "process_1_actual_commands_received",
+        "status": "PASS",
+        "detail": {
+          "accepted": 3,
+          "rejected": 2
+        }
+      },
+      {
+        "check": "process_1_complete_tournament",
+        "status": "PASS",
+        "detail": {
+          "complete": true,
+          "aborted": false,
+          "last_round": 1
+        }
+      },
+      {
+        "check": "received_combat_round_coverage",
+        "status": "PASS",
+        "detail": {
+          "host_observed": [
+            1
+          ],
+          "client_observed": [
+            1
+          ],
+          "missing_on_client": [],
+          "missing_on_host": [],
+          "boundary": "Sampled public combat presence, not every replicated tick or packet."
+        }
+      },
+      {
+        "check": "pairing_public_state_agreement",
+        "status": "PASS",
+        "detail": {
+          "matched_keys": 1,
+          "mismatches": [],
+          "internally_inconsistent_keys": []
+        }
+      },
+      {
+        "check": "settlement_public_state_agreement",
+        "status": "PASS",
+        "detail": {
+          "matched_keys": 1,
+          "mismatches": [],
+          "internally_inconsistent_keys": []
+        }
+      },
+      {
+        "check": "combat_public_state_agreement",
+        "status": "PASS",
+        "detail": {
+          "matched_keys": 1,
+          "mismatches": [],
+          "internally_inconsistent_keys": []
+        }
+      },
+      {
+        "check": "complete_results_agree",
+        "status": "PASS",
+        "detail": [
+          [
+            [
+              0,
+              30,
+              0,
+              0
+            ],
+            [
+              1,
+              30,
+              0,
+              0
+            ],
+            [
+              2,
+              30,
+              0,
+              0
+            ],
+            [
+              3,
+              30,
+              0,
+              0
+            ],
+            [
+              4,
+              30,
+              0,
+              0
+            ],
+            [
+              5,
+              30,
+              0,
+              0
+            ],
+            [
+              6,
+              30,
+              0,
+              0
+            ],
+            [
+              7,
+              30,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              30,
+              0,
+              0
+            ],
+            [
+              1,
+              30,
+              0,
+              0
+            ],
+            [
+              2,
+              30,
+              0,
+              0
+            ],
+            [
+              3,
+              30,
+              0,
+              0
+            ],
+            [
+              4,
+              30,
+              0,
+              0
+            ],
+            [
+              5,
+              30,
+              0,
+              0
+            ],
+            [
+              6,
+              30,
+              0,
+              0
+            ],
+            [
+              7,
+              30,
+              0,
+              0
+            ]
+          ]
+        ]
+      }
+    ],
+    "inputs": [
+      {
+        "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U460\\20260906T154451Z\\physical-protocol5-fixtures\\synthetic-physical-exports\\host\\match-1-seat-0-pid-500-session.json",
+        "sha256": "963c2032305e351c8a27507a37c601bdaa550f5936c3b15648af69159c4ecbf8"
+      },
+      {
+        "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U460\\20260906T154451Z\\physical-protocol5-fixtures\\synthetic-physical-exports\\client\\match-1-seat-1-pid-500-session.json",
+        "sha256": "6aae03b3fc8f807306c3cccc4336397c1d79186b549297d7b288dcf4ed176203"
+      },
+      {
+        "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U460\\20260906T154451Z\\physical-protocol5-fixtures\\synthetic-physical-exports\\host\\match-1-seat-0-pid-500-snapshots.jsonl",
+        "sha256": "32447eb86a215b8f05a44ba08620b6bd26c2446f9426fce45d479e75093066e1"
+      },
+      {
+        "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U460\\20260906T154451Z\\physical-protocol5-fixtures\\synthetic-physical-exports\\client\\match-1-seat-1-pid-500-snapshots.jsonl",
+        "sha256": "de01d3978ffc274b57c16fe884771181336284ba3b34640f697eebafb64ab0ba"
+      }
+    ]
+  },
+  "inputs": [
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U460\\20260906T154451Z\\physical-protocol5-fixtures\\synthetic-physical-exports\\host\\match-1-seat-0-pid-500-session.json",
+      "sha256": "963c2032305e351c8a27507a37c601bdaa550f5936c3b15648af69159c4ecbf8",
+      "bytes": 1716
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U460\\20260906T154451Z\\physical-protocol5-fixtures\\synthetic-physical-exports\\client\\match-1-seat-1-pid-500-session.json",
+      "sha256": "6aae03b3fc8f807306c3cccc4336397c1d79186b549297d7b288dcf4ed176203",
+      "bytes": 1717
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U460\\20260906T154451Z\\physical-protocol5-fixtures\\synthetic-physical-exports\\host\\physical-launch.json",
+      "sha256": "9d7d53b04eaefa627f83887c4a0d0dd136fdc562a5d20d593481d9dd2edb8142",
+      "bytes": 1863
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U460\\20260906T154451Z\\physical-protocol5-fixtures\\synthetic-physical-exports\\client\\physical-launch.json",
+      "sha256": "d04e6ba99cb5a764f080068625a0eec25691ed8c8ee082719d28dc1fd7e9ef7c",
+      "bytes": 1830
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U460\\20260906T154451Z\\physical-protocol5-fixtures\\synthetic-physical-exports\\provenance.json",
+      "sha256": "fab1b9c824965b2b4cd757dadff788d995487029ba1b023b970ef97878128d9c",
+      "bytes": 418
+    }
+  ],
+  "hardware": [
+    {
+      "hostname": "PHYSICAL_FIXTURE_PC_0",
+      "smbios_uuid_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "hostname": "PHYSICAL_FIXTURE_PC_1",
+      "smbios_uuid_sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+    }
+  ]
+}

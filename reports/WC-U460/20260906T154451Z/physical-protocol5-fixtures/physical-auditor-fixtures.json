@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "checks": 12,
+  "results": [
+    "same numeric PID on different bound hostnames is valid",
+    "same_hostname rejected",
+    "same_uuid rejected",
+    "loopback rejected",
+    "wrong_manifest rejected",
+    "wrong_process rejected",
+    "wrong_route rejected",
+    "wrong_payload rejected",
+    "missing_postflight rejected",
+    "same_machine_target rejected",
+    "full physical branch preserves raw PID failure and evaluates machine plus PID without changing exports",
+    "original identical PIDs remain unchanged"
+  ],
+  "evidence_kind": "SYNTHETIC_ANALYZER_FIXTURES_ONLY",
+  "game_launched": false,
+  "connection_attempted": false,
+  "physical_lan_acceptance": "NOT_RUN",
+  "auditor_sha256": "d893599db1784364082a5fdc865ca7069820eba511d0c8193808cab0e0ea9360"
+}

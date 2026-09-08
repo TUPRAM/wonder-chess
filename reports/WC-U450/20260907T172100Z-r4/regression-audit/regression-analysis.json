@@ -1,0 +1,35 @@
+{
+  "schema": "wonder_chess_update_regression_audit_v1",
+  "status": "FAIL",
+  "started_utc": "2026-09-07T17:24:00.633723+00:00",
+  "ended_utc": "2026-09-07T17:24:00.997567+00:00",
+  "evidence_directory": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260907T172100Z-r4\\packaged100",
+  "native_run": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260907T170300Z-closeout\\native100",
+  "package_source_data": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U450\\20260907T172100Z-r4\\extracted\\WonderChess\\Content\\WonderChess\\SourceData",
+  "auditor_sha256": "1211081774df254e91673fe4ba5d4d040a46362f32c46174e4a2aa6420ff2ec3",
+  "checks_passed": 0,
+  "checks_failed": 1,
+  "categories": {
+    "malformed_or_missing_evidence": {
+      "passed": 0,
+      "failed": 1
+    }
+  },
+  "failures_first150": [
+    {
+      "check": "malformed_or_missing_evidence",
+      "detail": "FileNotFoundError: [Errno 2] No such file or directory: 'C:\\\\Users\\\\iputu\\\\Documents\\\\Wonder Chess\\\\reports\\\\WC-U450\\\\20260907T172100Z-r4\\\\packaged100\\\\process-exit.json'"
+    }
+  ],
+  "metrics": {},
+  "artifacts": [],
+  "limits": [
+    "Actual packaged -nullrhi -nosound 0H8B combat regression only; no rendering, listening, human input, two-machine LAN or frame-time acceptance.",
+    "Native and engine process namespaces intentionally produce different settlement IDs; IDs must be unique within the packaged run, while every logical pre/post hash is compared exactly.",
+    "Package SourceData is bound to captured packaging provenance and immutable payload hashes. Current workspace canonical data and current observed source files are not treated as compiled inputs.",
+    "This package records a runtime neutrals.json hash observation; its bytes are checked against the captured SourceData.",
+    "Native round-economy.csv and bot-decisions.csv lack pre-existing summary digests; this audit hashes retained bytes and checks their consistency with hash-bound native summaries/fights/compositions and packaged outcomes.",
+    "Packaged legal-command evidence records aggregate counts and rejections; per-command decisions come from the retained native run, not a claimed packaged command trace.",
+    "Simulated duration and headless wall time are not human match duration or graphical performance measurements."
+  ]
+}
