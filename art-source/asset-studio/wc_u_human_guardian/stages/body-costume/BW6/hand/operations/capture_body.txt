@@ -1,0 +1,68 @@
+def render(name):
+ path=OUT/'captures'/name;s.render.filepath=str(path);bpy.ops.render.render(write_still=True);manifest['captures'].append({'path':str(path),'sha256':sha(path),'camera':s.camera.name,'matrix_world':[list(r) for r in s.camera.matrix_world],'source_sha256':frozenhash})
+def equipment(mode):
+ for ob in s.objects:
+  if ob.name.startswith('BW4_SelectedSword_'):ob.hide_render=mode=='hidden' or (mode=='hilt' and not ob.name.endswith('handle'))
+for name in ('palm','dorsal','side','underside','oblique','axial'):
+ s.camera=bpy.data.objects['BW4_'+name];manifest['cameras'][name]={'matrix_world':[list(r) for r in s.camera.matrix_world],'ortho_scale':s.camera.data.ortho_scale}
+ equipment('full');render('retained_full_'+name+'.png')
+ equipment('hilt');render('retained_hilt_only_'+name+'.png')
+ if name in ('palm','oblique','underside','side'):
+  equipment('hidden');render('retained_equipment_hidden_'+name+'.png')
+# Anatomy markers are projected from actual construction landmarks; labels are
+# composited later without altering rendered anatomy.
+s.camera=bpy.data.objects['BW4_palm'];labels=[]
+for name,x in [('index',.027),('middle',.003),('ring',-.019),('little',-.039)]:
+ p=Vector((x,.088,.060));uv=world_to_camera_view(s,s.camera,p);labels.append({'label':name,'world_m':list(p),'image_xy':[uv.x*1000,(1-uv.y)*1000]})
+p=Vector((.034,.056,.032));uv=world_to_camera_view(s,s.camera,p);labels.append({'label':'thumb / index side','world_m':list(p),'image_xy':[uv.x*1000,(1-uv.y)*1000]})
+(OUT/'records/anatomical_label_projection.json').write_text(json.dumps({'source':str(frozen),'sha256':frozenhash,'camera':'BW4_palm','labels':labels,'guard_starts_x_m':.059,'handle_axis_guard_to_end':[-1,0,0]},indent=2))
+# Actual raw cage: a separate unsaved overlay copy has wireframe geometry only.
+equipment('hidden');sub=o.modifiers[0];sub.show_render=False;sub.show_viewport=False
+wire=bpy.data.objects.new('BW6_Actual_Cage_Overlay',o.data.copy());s.collection.objects.link(wire);wire.color=(.015,.02,.025,1)
+w=wire.modifiers.new('Actual source edges','WIREFRAME');w.thickness=.00022;w.use_replace=True
+for name in ('palm','oblique','side','underside'):
+ s.camera=bpy.data.objects['BW4_'+name];render('retained_actual_cage_'+name+'.png')
+bpy.data.objects.remove(wire,do_unlink=True);sub.show_render=True;sub.show_viewport=True
+# Balanced and reversed area key: same source, exposure, material and camera.
+s.camera=bpy.data.objects['BW4_oblique'];s.render.engine='CYCLES';s.cycles.samples=16;s.cycles.use_denoising=True;s.render.threads_mode='FIXED';s.render.threads=4
+mat=bpy.data.materials.new('BW6_Neutral_Clay_Diagnostic');mat.diffuse_color=(.34,.32,.29,1);mat.use_nodes=True;bs=mat.node_tree.nodes.get('Principled BSDF');bs.inputs['Base Color'].default_value=(.34,.32,.29,1);bs.inputs['Roughness'].default_value=.7;o.data.materials.clear();o.data.materials.append(mat)
+s.world.use_nodes=True;s.world.node_tree.nodes['Background'].inputs['Color'].default_value=(.12,.12,.12,1);s.world.node_tree.nodes['Background'].inputs['Strength'].default_value=.3
+target=Vector((0,.065,.025))
+def area(name,pos,power,size):
+ d=bpy.data.lights.new(name,'AREA');ob=bpy.data.objects.new(name,d);s.collection.objects.link(ob);ob.location=pos;ob.rotation_euler=(target-ob.location).to_track_quat('-Z','Y').to_euler();d.energy=power;d.shape='DISK';d.size=size;return ob
+key=area('BW6_Diagnostic_Key',(.16,.06,.30),1.3,.22);fill=area('BW6_Diagnostic_Fill',(-.22,.05,.18),.20,.25)
+s.view_settings.view_transform='AgX';s.view_settings.look='AgX - Medium High Contrast'
+render('retained_uniform_clay_key.png');key.location=(-.16,.06,.30);key.rotation_euler=(target-key.location).to_track_quat('-Z','Y').to_euler();render('retained_uniform_clay_reversed_key.png')
+for ob in (key,fill):bpy.data.objects.remove(ob,do_unlink=True)
+s.render.engine='BLENDER_WORKBENCH';s.view_settings.view_transform='Standard';s.view_settings.look='None'
+# Actual evaluated plane intersections, not drawn estimates of cross sections.
+def geo(ob):
+ ev=ob.evaluated_get(bpy.context.evaluated_depsgraph_get());me=ev.to_mesh();me.calc_loop_triangles();pts=[ev.matrix_world@v.co for v in me.vertices];tri=[tuple(t.vertices) for t in me.loop_triangles];ev.to_mesh_clear();return pts,tri
+def section_segments(ob,x):
+ pts,tri=geo(ob);segments=[]
+ for ids in tri:
+  hits=[]
+  for a,b in zip(ids,ids[1:]+ids[:1]):
+   va,vb=pts[a],pts[b];da=va.x-x;db=vb.x-x
+   if da*db<0:
+    q=va+(vb-va)*(da/(da-db))
+    if not any((q-p).length<1e-8 for p in hits):hits.append(q)
+  if len(hits)==2:segments.append(hits)
+ return segments
+def lines(name,segments,color):
+ cu=bpy.data.curves.new(name,'CURVE');cu.dimensions='3D';cu.bevel_depth=.00027;cu.bevel_resolution=1;cu.resolution_u=1
+ for a,b in segments:
+  sp=cu.splines.new('POLY');sp.points.add(1);sp.points[0].co=(*a,1);sp.points[1].co=(*b,1)
+ ob=bpy.data.objects.new(name,cu);s.collection.objects.link(ob);ob.color=(*color,1);return ob
+sections={};equipment('hidden');o.hide_render=True
+cd=bpy.data.cameras.new('BW6_Actual_Section_Camera');cam=bpy.data.objects.new(cd.name,cd);s.collection.objects.link(cam);cd.type='ORTHO';cd.ortho_scale=.16
+for name,x in [('index',.027),('middle',.003),('ring',-.019),('little',-.039)]:
+ segs=section_segments(o,x);hs=section_segments(bpy.data.objects['BW4_SelectedSword_handle'],x);gs=section_segments(bpy.data.objects['BW4_SelectedSword_guard'],x)
+ sections[name]={'plane_x_m':x,'normal':[1,0,0],'glove_evaluated_segments_m':[[list(a),list(b)] for a,b in segs],'actual_handle_segments_m':[[list(a),list(b)] for a,b in hs],'actual_guard_segments_m':[[list(a),list(b)] for a,b in gs]}
+ objects=[lines('BW6_Glove_Cut',segs,(.22,.74,.90)),lines('BW6_Actual_Octagonal_Hilt_Cut',hs,(1,.52,.12))]
+ if gs:objects.append(lines('BW6_Guard_Cut',gs,(.88,.2,.22)))
+ aim=Vector((x,.059,.025));cam.location=aim+Vector((-.5,0,0));cam.rotation_euler=(aim-cam.location).to_track_quat('-Z','Y').to_euler();s.camera=cam;render('retained_actual_section_'+name+'.png')
+ for ob in objects:bpy.data.objects.remove(ob,do_unlink=True)
+(OUT/'records/actual_transverse_sections.json').write_text(json.dumps({'source':str(frozen),'source_sha256':frozenhash,'space':'metres in retained BW4 hand coordinate frame','scope':'Actual evaluated mesh triangles, fixed planes normal to hilt axis. Guard retained in full 3D query; guard lies outside these X planes.','sections':sections},indent=2))
+o.hide_render=False;equipment('hilt')
+

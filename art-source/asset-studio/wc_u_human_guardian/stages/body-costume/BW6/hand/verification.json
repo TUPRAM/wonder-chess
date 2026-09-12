@@ -1,0 +1,832 @@
+{
+  "status": "ART_REVISE",
+  "human_approval": false,
+  "runtime_tests": "NOT_RUN",
+  "scope": "BW6 anatomical fixed-glove lane only; files/models and render/collision evidence actually executed",
+  "blender_version": "5.1.1",
+  "work_and_frozen_sha256": "12831f6a3d9f89c604bbdbfa0db72878a372bc5b5c19ec0fc706d87272ad3cf1",
+  "checks": {
+    "native_work_and_frozen_reopen": true,
+    "historical_cameras_exact": true,
+    "equipment_geometry_and_registration_exact": true,
+    "wrist_20_vertices_max_error_m": 0.0,
+    "mesh_independent": true,
+    "raw_and_evaluated_confirmed_transverse_self_equipment_clear": true,
+    "contact_screen_pass": false,
+    "images_opened_and_verified": 29,
+    "script_syntax_parsed": 15
+  },
+  "visually_inspected": [
+    "target_initial_palm_isolated.png",
+    "target_correction1_oblique.png",
+    "target_correction2_oblique.png",
+    "reconstructed_initial_oblique.png",
+    "reconstructed_correction1_palm_isolated.png",
+    "reconstructed_correction2_oblique_isolated.png",
+    "local_transfer_initial_side.png",
+    "retained_actual_cage_oblique.png",
+    "retained_uniform_clay_reversed_key.png",
+    "retained_full_oblique.png",
+    "retained_actual_section_middle.png",
+    "provisional_pad_regions_oblique.png",
+    "BW5_vs_BW6_ANATOMICAL_HAND_ART_REVISE.png"
+  ],
+  "remaining_major_defects": [
+    "Bulbous thumb/thenar; opposing pad not sufficiently articulated",
+    "Long straight finger faces and parallel mechanical C-shapes",
+    "Loose distributed contact",
+    "Wrist/cuff integration unproved"
+  ],
+  "protected_source_hashes": {
+    "C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_u_human_guardian\\stages\\body-costume\\BW4\\r001\\ada_fixed_hand_checkpoint_ART_REVISE.blend": "f85003358791c8346f4432a0fbdfc797047abca19ca9dc33c9d66428b411ffa3",
+    "C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_u_human_guardian\\stages\\body-costume\\BW5\\hand\\ada_bw5_hand_checkpoint_ART_REVISE.blend": "bbd06c025af7ab848bd5e52e001e62b25d7a13edecd9bd70e75fd7650dd5d563",
+    "C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_u_human_guardian\\stages\\body-costume\\BW5\\hand\\ada_bw5_hand_work.blend": "edf436f59dc54255db650decd9994fb9b693ffc1f53462498bc3578edf82ac41"
+  },
+  "artifacts": [
+    {
+      "path": "ada_bw6_hand_checkpoint_ART_REVISE.blend",
+      "bytes": 5820474,
+      "sha256": "12831f6a3d9f89c604bbdbfa0db72878a372bc5b5c19ec0fc706d87272ad3cf1"
+    },
+    {
+      "path": "ada_bw6_hand_local_transfer_initial.blend",
+      "bytes": 5817859,
+      "sha256": "3f358b9c1f2f83ee32d0df106b43c88855c79b780170f35f99eec511445e6304"
+    },
+    {
+      "path": "ada_bw6_hand_reconstructed_correction1.blend",
+      "bytes": 3031149,
+      "sha256": "aa7dc1942ff4437cdf1bbbf7c5c87947df3268e6cc8f27ce42d35d4335e65926"
+    },
+    {
+      "path": "ada_bw6_hand_reconstructed_correction2.blend",
+      "bytes": 3029787,
+      "sha256": "889fd9907731548349d1cdda221e50a65274c23e098c2fc06afe847c9045b883"
+    },
+    {
+      "path": "ada_bw6_hand_reconstructed_initial.blend",
+      "bytes": 2965384,
+      "sha256": "54606629ad3a67650db470eb877d68f85b8fab761efd33af23916c4426932d49"
+    },
+    {
+      "path": "ada_bw6_hand_target_correction2.blend",
+      "bytes": 2922189,
+      "sha256": "b9162c6395d63f7499bf091efc06b0388e46355558ed894415c0badad1887f7f"
+    },
+    {
+      "path": "ada_bw6_hand_target_local_c1.blend",
+      "bytes": 2968609,
+      "sha256": "09f958c91fe09545598fdde3eb843919369e257a94f5bd57fe8fe794e17d4e8b"
+    },
+    {
+      "path": "ada_bw6_hand_target_local_c2.blend",
+      "bytes": 2974357,
+      "sha256": "a6a03384f44157286ac8074b4426223de337b5a92d68b158da9d6a8d078a3022"
+    },
+    {
+      "path": "ada_bw6_hand_work.blend",
+      "bytes": 5820474,
+      "sha256": "12831f6a3d9f89c604bbdbfa0db72878a372bc5b5c19ec0fc706d87272ad3cf1"
+    },
+    {
+      "path": "ada_bw6_palm_target_correction1.blend",
+      "bytes": 961586,
+      "sha256": "ec8b6aa3178852608e40e7e5300db1fc37c970c226ea650734d2f0e45af70efa"
+    },
+    {
+      "path": "ada_bw6_palm_target_initial.blend",
+      "bytes": 1149600,
+      "sha256": "1b428877902113fe46a3e00a7891d1da3fdd1d3275b6804eb8e58547de887ec7"
+    },
+    {
+      "path": "captures\\BW5_vs_BW6_ANATOMICAL_HAND_ART_REVISE.png",
+      "bytes": 1926638,
+      "sha256": "fc6712cb383989cd6a565c00241900637e14b62fc26602b7b659a604c9675257"
+    },
+    {
+      "path": "captures\\BW6_ACTUAL_GRIP_CHANNEL_SECTIONS.png",
+      "bytes": 876622,
+      "sha256": "8745f916a226f101888afc09f78df4978e618c7ef625afba517b0e0dcd7d130e"
+    },
+    {
+      "path": "captures\\BW6_CAGE_AND_REVERSED_LIGHT_ART_REVISE.png",
+      "bytes": 1431043,
+      "sha256": "a7dbfddc093bd3d74e7e64603034ba6c1310b276bf3c91052e1488ffdde63422"
+    },
+    {
+      "path": "captures\\local_transfer_initial_oblique.png",
+      "bytes": 653031,
+      "sha256": "6cb5feb3beea8d1a017268065646888ab6bc3642f22b5c17f6c389feba734dcc"
+    },
+    {
+      "path": "captures\\local_transfer_initial_oblique_isolated.png",
+      "bytes": 634692,
+      "sha256": "a349184620f9bbcb7be84a1c64eaa00ea3d8b3f421f2e8f129f77fe1871a25bf"
+    },
+    {
+      "path": "captures\\local_transfer_initial_palm.png",
+      "bytes": 707270,
+      "sha256": "ef0ffdc3107d7c4d0320a9bbd4d6ca1f051b4006b10cd487a7c5375e9cb2abbc"
+    },
+    {
+      "path": "captures\\local_transfer_initial_palm_isolated.png",
+      "bytes": 674721,
+      "sha256": "daa270ec3d50bb98af77a1e2fe8e93f3dc870fc9a63161ec9f8acbdb256ae65b"
+    },
+    {
+      "path": "captures\\local_transfer_initial_side.png",
+      "bytes": 603956,
+      "sha256": "6877abb6d0d0d73d333df3f30a908a67e4db24427f60ca8429554a3c1f3ad318"
+    },
+    {
+      "path": "captures\\local_transfer_initial_side_isolated.png",
+      "bytes": 592037,
+      "sha256": "fcf97bc32da9cc62a92d2e0e2590cd636c28dff9377981afda8fa3f97dac6415"
+    },
+    {
+      "path": "captures\\provisional_pad_regions_oblique.png",
+      "bytes": 630752,
+      "sha256": "25c4e7ae6ac94a3c026b6ca0aa81a8e46a2fe6afcbb3ee04f0acd8a57d409e12"
+    },
+    {
+      "path": "captures\\provisional_pad_regions_palm.png",
+      "bytes": 667463,
+      "sha256": "8f15fe3a4b5556e0e7aba53268358004dcc5a2bc49e1e3e31280ef0c6d8c799c"
+    },
+    {
+      "path": "captures\\provisional_pad_regions_side.png",
+      "bytes": 588523,
+      "sha256": "6ac23d515a9875735662babb936b0c85479006db4402739b9c5925d7b5c64057"
+    },
+    {
+      "path": "captures\\reconstructed_correction1_axial.png",
+      "bytes": 603918,
+      "sha256": "7b9fde06c0f7d50f787314e34814c0c33b27b4b4661215358baa02a98c9dd1f3"
+    },
+    {
+      "path": "captures\\reconstructed_correction1_dorsal.png",
+      "bytes": 671903,
+      "sha256": "78e1e0308b79a9b883a4da267cf7661b245e1cc8f74bf065847e9661a5cd23be"
+    },
+    {
+      "path": "captures\\reconstructed_correction1_oblique.png",
+      "bytes": 652446,
+      "sha256": "14fcac7edba9d881acbd6556ff9a973e260e769e4d2651301fdd52558df6fecd"
+    },
+    {
+      "path": "captures\\reconstructed_correction1_oblique_isolated.png",
+      "bytes": 634644,
+      "sha256": "d8d1e2a671e02a027d40d4f4077b748ffe0d368159ce0011029ecbddb41c313c"
+    },
+    {
+      "path": "captures\\reconstructed_correction1_palm.png",
+      "bytes": 706500,
+      "sha256": "5986896e92324561021da32d5ba54ada19e1606fa921b07cd5792180d1fa0dc0"
+    },
+    {
+      "path": "captures\\reconstructed_correction1_palm_isolated.png",
+      "bytes": 674499,
+      "sha256": "c9575f55640c1b709454b5769f70cf066798f72a5d2973207d39b509ea595ef5"
+    },
+    {
+      "path": "captures\\reconstructed_correction1_side.png",
+      "bytes": 603499,
+      "sha256": "9f95ce7b5c536a18ed889b23d359f539765e95a4f01296f2975087e453df823b"
+    },
+    {
+      "path": "captures\\reconstructed_correction1_side_isolated.png",
+      "bytes": 591781,
+      "sha256": "62a5a6997eb313fa7625fd54ad4c79add1c15b74d8e3773490535733e0318e78"
+    },
+    {
+      "path": "captures\\reconstructed_correction1_underside.png",
+      "bytes": 651640,
+      "sha256": "e8de0d30f187816826e727ba259dfe54f85dbad07b757efbc2ab82ed42892ca7"
+    },
+    {
+      "path": "captures\\reconstructed_correction2_axial.png",
+      "bytes": 606533,
+      "sha256": "85d4ad1a3d54f5eaadcd5712db69472eb5d48f5605e6aa606241a12f6bb3c955"
+    },
+    {
+      "path": "captures\\reconstructed_correction2_dorsal.png",
+      "bytes": 671835,
+      "sha256": "198549d0ca64bae548a98f6a05afb92ff1d67690739ba0e7bceba3d106e44123"
+    },
+    {
+      "path": "captures\\reconstructed_correction2_oblique.png",
+      "bytes": 652849,
+      "sha256": "351c0e9de423a1acce85472cc616331ecfdbb062ba4aa0dd10962cf9907f0434"
+    },
+    {
+      "path": "captures\\reconstructed_correction2_oblique_isolated.png",
+      "bytes": 635315,
+      "sha256": "826f7d7a892d38740275a1f28a770856b41fd28d844b88e29e4d3144be270005"
+    },
+    {
+      "path": "captures\\reconstructed_correction2_palm.png",
+      "bytes": 705339,
+      "sha256": "2469bc4be1442ee188d2899bbc3248ae33a62b2339bcdae1f1890537f7b27d64"
+    },
+    {
+      "path": "captures\\reconstructed_correction2_palm_isolated.png",
+      "bytes": 672600,
+      "sha256": "b5399b51dd5e77343ee6ff15e5d3a68ed854811dbe1cc273756f5c0e134b0abf"
+    },
+    {
+      "path": "captures\\reconstructed_correction2_side.png",
+      "bytes": 603241,
+      "sha256": "e2517327e39096a9b0c2538814c2b14e0e3e78af84df6a639beb2690074d0bc8"
+    },
+    {
+      "path": "captures\\reconstructed_correction2_side_isolated.png",
+      "bytes": 591779,
+      "sha256": "483703f67640e992744cf21577e4f2e694037ab5dd216a19586664ce26cc7deb"
+    },
+    {
+      "path": "captures\\reconstructed_correction2_underside.png",
+      "bytes": 651222,
+      "sha256": "6f2ba5a786adadebc0f7feca401a011d8cfda5faaae0bd5611b6f19d98480874"
+    },
+    {
+      "path": "captures\\reconstructed_initial_axial.png",
+      "bytes": 603509,
+      "sha256": "c032c106696e8230e555308ba239eb27a23e34a23cb1048d210c2b12d02ecbd8"
+    },
+    {
+      "path": "captures\\reconstructed_initial_dorsal.png",
+      "bytes": 669571,
+      "sha256": "55933e52da4e2ae9de53b97fbd4ebb3a0680e905142afc9c9b664e7d32fc7e14"
+    },
+    {
+      "path": "captures\\reconstructed_initial_oblique.png",
+      "bytes": 645440,
+      "sha256": "53dd93422ed4932ef59f197502caf852a5d1961700f34f94e1f3685511bc78db"
+    },
+    {
+      "path": "captures\\reconstructed_initial_oblique_isolated.png",
+      "bytes": 626565,
+      "sha256": "75eaf4e58835da5d238642e9801f9d2182e84afb2e7dc19ea3c95b41a5592a85"
+    },
+    {
+      "path": "captures\\reconstructed_initial_palm.png",
+      "bytes": 701246,
+      "sha256": "d0f994716ac827b2c3082ee2aa9c33649e391ff717bda2e6d7ab1c89e5c7003f"
+    },
+    {
+      "path": "captures\\reconstructed_initial_palm_isolated.png",
+      "bytes": 668451,
+      "sha256": "1eccfe4c2bd41d58954fbb8b67aaa2f185da2f3402eb6ba519af4eb70aa089fe"
+    },
+    {
+      "path": "captures\\reconstructed_initial_side.png",
+      "bytes": 603120,
+      "sha256": "6253363b919284c4f1c961bf03d967e372c8c006b87e6df649703360cc646d77"
+    },
+    {
+      "path": "captures\\reconstructed_initial_side_isolated.png",
+      "bytes": 594430,
+      "sha256": "12d24346a1b4112da8a09b42d471e05f88c96ae9d43659c9cbbb82d3bbbd1a62"
+    },
+    {
+      "path": "captures\\reconstructed_initial_underside.png",
+      "bytes": 648937,
+      "sha256": "8cee99dfb011b3da5b220dbbb6622712e1e4b7ab08f4516c0f3599312be0d3c4"
+    },
+    {
+      "path": "captures\\retained_actual_cage_oblique.png",
+      "bytes": 692892,
+      "sha256": "8e98778596ea8e232445fd85a1e2f970236fc0140f912554bec9dc684f860276"
+    },
+    {
+      "path": "captures\\retained_actual_cage_palm.png",
+      "bytes": 730497,
+      "sha256": "4745247decc46184061b2a574e4df964722c8dd6d5028dead3823a682f3f4c96"
+    },
+    {
+      "path": "captures\\retained_actual_cage_side.png",
+      "bytes": 632157,
+      "sha256": "3230276d9eff55301c6ab6b270f69df18ee10a9331b5fb542c0b8dcb214304df"
+    },
+    {
+      "path": "captures\\retained_actual_cage_underside.png",
+      "bytes": 693459,
+      "sha256": "7565bc84a2f3d9a1ba0b63f46ddb72e1532146e87d52b736a4d29a9b33334ed4"
+    },
+    {
+      "path": "captures\\retained_actual_section_index.png",
+      "bytes": 547912,
+      "sha256": "9f7a88660ce8257ea42a946688084cd3536f264ce7a44c88454c4a188b4a6ce6"
+    },
+    {
+      "path": "captures\\retained_actual_section_little.png",
+      "bytes": 539610,
+      "sha256": "01012876c738cd620d55771a13faaa6eb0375d776c00a52feb72d24c2ea2395f"
+    },
+    {
+      "path": "captures\\retained_actual_section_middle.png",
+      "bytes": 546674,
+      "sha256": "042fa1093f0e9f1b69d68e5a128f44d3c7eda1f9f589295a1ed76556e95ec2ea"
+    },
+    {
+      "path": "captures\\retained_actual_section_ring.png",
+      "bytes": 545117,
+      "sha256": "fb11af2b0730554d92039c9bc327d907c088676311d01c33d6ac7a3e38a5c131"
+    },
+    {
+      "path": "captures\\retained_equipment_hidden_oblique.png",
+      "bytes": 634678,
+      "sha256": "2f9e4fb2e47bbd650150db885e6dc98ba276da1a97c42ea2395ecd272d7e3444"
+    },
+    {
+      "path": "captures\\retained_equipment_hidden_palm.png",
+      "bytes": 674707,
+      "sha256": "3cac3c36e63cea2dcee6500042764ca1f03b29f6f7e61ad4bb52f7ff1290dd0a"
+    },
+    {
+      "path": "captures\\retained_equipment_hidden_side.png",
+      "bytes": 592023,
+      "sha256": "72f760a9ac5e271ed82899df5cf096c896cb800e2afdaeb9357563ea8aa2af31"
+    },
+    {
+      "path": "captures\\retained_equipment_hidden_underside.png",
+      "bytes": 634094,
+      "sha256": "4ab2f8e5b25dd71a4b7248c10076d25145fc75516368aa9fd1886226e0568ba8"
+    },
+    {
+      "path": "captures\\retained_full_axial.png",
+      "bytes": 755180,
+      "sha256": "c83857fd9c82e757dd9daf4be53760d21332e1be6439db658ac446dce732e858"
+    },
+    {
+      "path": "captures\\retained_full_dorsal.png",
+      "bytes": 862958,
+      "sha256": "65c7820d15d9d4f94e252ba323dad4859f59f4787a3ead59b0711441bec6cba2"
+    },
+    {
+      "path": "captures\\retained_full_oblique.png",
+      "bytes": 868918,
+      "sha256": "a2156c71a5734df2d4571a3484f47ab2b56ab9b1bb40d21df9c0cade0c47ce7e"
+    },
+    {
+      "path": "captures\\retained_full_palm.png",
+      "bytes": 896813,
+      "sha256": "9dd3072d6a9d1b52ccc4878b359026dd396b361fb8c8ccf3f7bbe9501e681b1a"
+    },
+    {
+      "path": "captures\\retained_full_side.png",
+      "bytes": 730412,
+      "sha256": "dd1ccda805bc788b364bfe2f7455b240f1a044dfbdadde14fb5040e63ce29fab"
+    },
+    {
+      "path": "captures\\retained_full_underside.png",
+      "bytes": 730533,
+      "sha256": "6313626b2dde3b1d1707f391d0b085f42698aff1d063c00dbcae2bac30d61c1f"
+    },
+    {
+      "path": "captures\\retained_hilt_only_axial.png",
+      "bytes": 603869,
+      "sha256": "a6c368abde6c1caf010b7517a8a24954b6a86847e892cff7f61d0926488a897a"
+    },
+    {
+      "path": "captures\\retained_hilt_only_dorsal.png",
+      "bytes": 671884,
+      "sha256": "24e3163643f80b5a542fa78c2569aaa8f15f8422e3d098003f754502266d13c3"
+    },
+    {
+      "path": "captures\\retained_hilt_only_oblique.png",
+      "bytes": 653017,
+      "sha256": "9f5812d8ec25260183a9d3a5ecaed9062df59b917d38240b8c23b5f636f376ea"
+    },
+    {
+      "path": "captures\\retained_hilt_only_palm.png",
+      "bytes": 707464,
+      "sha256": "36370988457296691d5e707b04c8738e327fb2a68e72bbe615f2582e25efe691"
+    },
+    {
+      "path": "captures\\retained_hilt_only_side.png",
+      "bytes": 603942,
+      "sha256": "5c5948b453b008dcb6d7e3c3efe735013b272cca01491e49f1ff146efd6e9db8"
+    },
+    {
+      "path": "captures\\retained_hilt_only_underside.png",
+      "bytes": 651619,
+      "sha256": "fd0fa422c1ed92cc61fb5b25217478842f04d4640410afbc650524a8fd537ee2"
+    },
+    {
+      "path": "captures\\retained_uniform_clay_key.png",
+      "bytes": 671774,
+      "sha256": "836ac4767f1ef6e281731f8f645d85d0fa6c968f11d548c7080309165795c7f8"
+    },
+    {
+      "path": "captures\\retained_uniform_clay_reversed_key.png",
+      "bytes": 666601,
+      "sha256": "430b11798b062aff7fb8f7eede9ecb0fc74f257c6185b771bfed1a22e2dfdb6e"
+    },
+    {
+      "path": "captures\\target_correction1_axial.png",
+      "bytes": 580733,
+      "sha256": "342ec2c37a487f46e3b90364f71a74416a4da1714116d0e2958e2336a8052c3a"
+    },
+    {
+      "path": "captures\\target_correction1_axial_isolated.png",
+      "bytes": 568598,
+      "sha256": "da1fda7a8a20eb26b67b9e7eb6918eacc73baf736661dd7511e3a06d0c6d2581"
+    },
+    {
+      "path": "captures\\target_correction1_dorsal.png",
+      "bytes": 655619,
+      "sha256": "197687ff6cdf41d4af9d610c28ed425b25843f91f407a48e2b0166538c9f3bc9"
+    },
+    {
+      "path": "captures\\target_correction1_dorsal_isolated.png",
+      "bytes": 633903,
+      "sha256": "6738fff7337597087a9e74fd10aef273fb35f2495efdc1fc5159bb216e9fca2f"
+    },
+    {
+      "path": "captures\\target_correction1_oblique.png",
+      "bytes": 635072,
+      "sha256": "8697b1b46ed19ede561b2621c06fd259c5c44f2ce5e31c4db16252ee1d881d1d"
+    },
+    {
+      "path": "captures\\target_correction1_oblique_isolated.png",
+      "bytes": 611160,
+      "sha256": "5fdc7f2f70edd2ce96be942e07588d6b381e775cb95c57ae6ce7a17980727e61"
+    },
+    {
+      "path": "captures\\target_correction1_palm.png",
+      "bytes": 669946,
+      "sha256": "004645c065088eb1539d0a44c086d83c3e0b4533ff4c1cfa1aab9853e9fde5b2"
+    },
+    {
+      "path": "captures\\target_correction1_palm_isolated.png",
+      "bytes": 642870,
+      "sha256": "e7edfd1895418356a6b0eca6da400254c194817bf9f7ed8fbfa81a4c481370f2"
+    },
+    {
+      "path": "captures\\target_correction1_side.png",
+      "bytes": 578589,
+      "sha256": "399502a60654190e9a7688d34c9073825093ee0138402f6b90727d7478532da1"
+    },
+    {
+      "path": "captures\\target_correction1_side_isolated.png",
+      "bytes": 566045,
+      "sha256": "7adae61bb39d4b5a7b59f6f865a033fdd9588b68968cde659daf8ccbb6eee178"
+    },
+    {
+      "path": "captures\\target_correction2_axial.png",
+      "bytes": 613153,
+      "sha256": "91931cc28cc8695d4a2ab935ac614a49db9b91330e18a583c5d3cb149d60d587"
+    },
+    {
+      "path": "captures\\target_correction2_axial_isolated.png",
+      "bytes": 609788,
+      "sha256": "293412ec7a117a61ff629eddd816e7ecfd896401bf49cb0a377f454d6c907e8a"
+    },
+    {
+      "path": "captures\\target_correction2_dorsal.png",
+      "bytes": 671107,
+      "sha256": "2a1de96be8615f67587820305b6c38f09ef42c4bc571b0c647f7da3df83c30a6"
+    },
+    {
+      "path": "captures\\target_correction2_dorsal_isolated.png",
+      "bytes": 648328,
+      "sha256": "f23d2830b3b5d07f498db3b47a8ad2d140819e584d32b508b0cb310c0a5ed2ca"
+    },
+    {
+      "path": "captures\\target_correction2_oblique.png",
+      "bytes": 649110,
+      "sha256": "73c12407157948b5570b32229737ed9649787954e2f655bc8c36c5bc5fe92981"
+    },
+    {
+      "path": "captures\\target_correction2_oblique_isolated.png",
+      "bytes": 635419,
+      "sha256": "241a082fc3003e4a84be00e7b9226921a651b8ce8b23a19c3b733be9e416a946"
+    },
+    {
+      "path": "captures\\target_correction2_palm.png",
+      "bytes": 707734,
+      "sha256": "f623584d0b8957e86aeb0023efb714cadde7c5bd3a605a46030b4cdf83c27bce"
+    },
+    {
+      "path": "captures\\target_correction2_palm_isolated.png",
+      "bytes": 676010,
+      "sha256": "4a60816c9bed2eac973b97aa2f7e4e5d57906895287d896c6a873c15cf95b236"
+    },
+    {
+      "path": "captures\\target_correction2_side.png",
+      "bytes": 611143,
+      "sha256": "64dbf7fe801c612397c25fde1a830d63fd7ed45070e902e735cbbfce8bac1131"
+    },
+    {
+      "path": "captures\\target_correction2_side_isolated.png",
+      "bytes": 603610,
+      "sha256": "d93bfa919af06b76156ad3b72871791bdaf492e8bbaa3dde7b1716829a2659af"
+    },
+    {
+      "path": "captures\\target_initial_axial.png",
+      "bytes": 598912,
+      "sha256": "2bc6948173b9135c128c6dbf0cdec148d6a4547aa4a6e12b476932dc8a6e2acd"
+    },
+    {
+      "path": "captures\\target_initial_axial_isolated.png",
+      "bytes": 591161,
+      "sha256": "3285d85185580802eb364c5e562729ca663b209ff06065ac92f0fd8e3b6bb869"
+    },
+    {
+      "path": "captures\\target_initial_dorsal.png",
+      "bytes": 684403,
+      "sha256": "c25425094d29db8e42d614989a68b6d7cbd714d36f582094dcc5bd48ef774810"
+    },
+    {
+      "path": "captures\\target_initial_dorsal_isolated.png",
+      "bytes": 663924,
+      "sha256": "dbf4d6d05818fe2cf8f7bcabe965b64070a9963fa7a8f9246aa8cd1493749b4e"
+    },
+    {
+      "path": "captures\\target_initial_oblique.png",
+      "bytes": 664549,
+      "sha256": "8a6ec43a9281ca3cf9234083e96c4dcc30c01ecec54aa15d4e853b672aee2194"
+    },
+    {
+      "path": "captures\\target_initial_oblique_isolated.png",
+      "bytes": 639236,
+      "sha256": "4ace0e449e5c7bb5f360d060f37c6427adf8c7e6edb2aba1115ee44f8320b775"
+    },
+    {
+      "path": "captures\\target_initial_palm.png",
+      "bytes": 688833,
+      "sha256": "4c2ae038226c40b2b5c00f408f8b3f2ae99be742f7fc4b114ac179b3c9eeda5b"
+    },
+    {
+      "path": "captures\\target_initial_palm_isolated.png",
+      "bytes": 656441,
+      "sha256": "1b0fa1ed5875ea043d70da89447e95096a254725ee51e299edc14496609e46b3"
+    },
+    {
+      "path": "captures\\target_initial_side.png",
+      "bytes": 592608,
+      "sha256": "e42e38ba8c1e8c5dd844056440733f75e4cfab25da7af239b1bde53aa2d1645e"
+    },
+    {
+      "path": "captures\\target_initial_side_isolated.png",
+      "bytes": 583860,
+      "sha256": "f5d9dac755fba088d8ca0f96402a0e6ded78721aaccd944d9073a270ecf22e80"
+    },
+    {
+      "path": "captures\\target_local_c1_oblique.png",
+      "bytes": 655566,
+      "sha256": "c50511cdd4d082020b53f9a92c3546d14046a6c15e9b03b7a09e637b6ecab1d5"
+    },
+    {
+      "path": "captures\\target_local_c1_oblique_isolated.png",
+      "bytes": 640821,
+      "sha256": "cabd1e792e8cfcc919d6d613822fbcfff06fa48b46cd13ef59712ef21930a8ac"
+    },
+    {
+      "path": "captures\\target_local_c1_palm.png",
+      "bytes": 711546,
+      "sha256": "69b9bc3b0ebbe5cfccea326f9341114e4e9930895e5433b49c63ec51e3c1a574"
+    },
+    {
+      "path": "captures\\target_local_c1_palm_isolated.png",
+      "bytes": 679875,
+      "sha256": "bbf9cd10460f865d0649761cb5a9b211393faa6f8c7dad8325b3b9c3b98ee05a"
+    },
+    {
+      "path": "captures\\target_local_c2_oblique.png",
+      "bytes": 656503,
+      "sha256": "37cfbccd142b71b2f227764190083742a4bc8e522beecc7c87dbc243ab8a1037"
+    },
+    {
+      "path": "captures\\target_local_c2_oblique_isolated.png",
+      "bytes": 641502,
+      "sha256": "5dfd782e37a6c4d71441e4a1168fc474855988ac0c1f953beffe26854f992e8a"
+    },
+    {
+      "path": "captures\\target_local_c2_palm.png",
+      "bytes": 711749,
+      "sha256": "cffb689772581c177cdb8495dcd16ef495a2b5f2eab69c7c0e96bd6133a348db"
+    },
+    {
+      "path": "captures\\target_local_c2_palm_isolated.png",
+      "bytes": 680724,
+      "sha256": "e12cd5c4b0d05b0e632870d90455d45964e72c7f7cffd540ea643bd85e3959d4"
+    },
+    {
+      "path": "operations\\01_anatomical_target.py",
+      "bytes": 6310,
+      "sha256": "6ee7f7f8fe47272cc32d11c9efd8e2a6657a2302f879df23e290f373d70f3cce"
+    },
+    {
+      "path": "operations\\02_closed_target.py",
+      "bytes": 7014,
+      "sha256": "cf3afbb3f722e2236a4daa9560001d620311f9beedd0e216494e6b63397883d6"
+    },
+    {
+      "path": "operations\\03_phalangeal_target.py",
+      "bytes": 8336,
+      "sha256": "2336ee889a5bf8106411dd9ec4748526b6fc51c381fed6cc1a5adb0a253469c0"
+    },
+    {
+      "path": "operations\\04_reconstruct_surface.py",
+      "bytes": 4465,
+      "sha256": "87f9544ebcf3a298f538c2c974ed6658e39bec501e10cf673f254b89bbb4b26f"
+    },
+    {
+      "path": "operations\\05_local_target_correction.py",
+      "bytes": 8300,
+      "sha256": "e79de0a4af8081b6a63349a2895a1e83e8ec5e546ff54aeaa702928d4def96fd"
+    },
+    {
+      "path": "operations\\06_reconstruct_correction1.py",
+      "bytes": 4530,
+      "sha256": "8130671e3c2a78a3d46338e16d2585a9e2a451ce10f230a1ba8e395e310e334f"
+    },
+    {
+      "path": "operations\\07_distal_target_correction.py",
+      "bytes": 8302,
+      "sha256": "efcddb2aabfa794ad6bd46d5a49178e598bdb563fdeaaf4a8c74cfcde572a80c"
+    },
+    {
+      "path": "operations\\08_reconstruct_correction2.py",
+      "bytes": 4532,
+      "sha256": "c17ee4fc2de0f48e36af5392adba33ae62871ac13857508faa05706a0884f28d"
+    },
+    {
+      "path": "operations\\09_local_target_transfer.py",
+      "bytes": 3289,
+      "sha256": "96f5e1fe1b3ee30680022af42fab2a79e5ffc25015096f45f152b125b6bbaaeb"
+    },
+    {
+      "path": "operations\\10_freeze_review.py",
+      "bytes": 4400,
+      "sha256": "0f520ff259c0e125cde0a4d58a449eb83a9702be6a8fecf44d50af7654aa569b"
+    },
+    {
+      "path": "operations\\11_verify_reopen.py",
+      "bytes": 4479,
+      "sha256": "f7f1b7d827577d0d87c239d84ecf02f7547867268167cc5eeccb66523629dc29"
+    },
+    {
+      "path": "operations\\12_compose_evidence.py",
+      "bytes": 3142,
+      "sha256": "7c0c11efbf07070a0bdc44fd3d681ee2220bcdc57d94eed00f52f25601c8fceb"
+    },
+    {
+      "path": "operations\\13_render_pad_regions.py",
+      "bytes": 1991,
+      "sha256": "774de4d0680c9e1654b407f428b63c6924da12130fcb2b6dedfaea461bc03957"
+    },
+    {
+      "path": "operations\\14_verify_artifacts.py",
+      "bytes": 3242,
+      "sha256": "fae5378b0b71a03111f2642a56ccb0af711f3233c63d067663f08edccb1882a0"
+    },
+    {
+      "path": "operations\\audit_candidate.py",
+      "bytes": 4647,
+      "sha256": "ecfc025b79f48a00c7b562f4e86918cbc2ad16a8ad2c4f9101d70dbf265eb688"
+    },
+    {
+      "path": "operations\\capture_body.txt",
+      "bytes": 6438,
+      "sha256": "52be2e9c2d44d361eb6a666c1bab87bf3b2a06d13e4e791beb3df6f5bec87e2a"
+    },
+    {
+      "path": "records\\actual_transverse_sections.json",
+      "bytes": 435822,
+      "sha256": "72b259ffad597c940975c0b0f8b8ccc2b214e7e36a7dac0fbf6c201d63f00d1e"
+    },
+    {
+      "path": "records\\anatomical_label_projection.json",
+      "bytes": 1640,
+      "sha256": "70b3bb4509a71d8db9388fbbc1b7b05af17b29c18f77ac93c83d49150ee01aed"
+    },
+    {
+      "path": "records\\capture_manifest.json",
+      "bytes": 30216,
+      "sha256": "c33f5a991d7d2de99a2a014c2b193ba9be0c8aa45d6122582350c8064484ce24"
+    },
+    {
+      "path": "records\\comparison_composition.json",
+      "bytes": 3234,
+      "sha256": "78cfcecd0260fe11d28bd74a560714511961b421bd31486a7c5acd9d75e6273f"
+    },
+    {
+      "path": "records\\local_transfer_initial.json",
+      "bytes": 83679,
+      "sha256": "f3c1361a27c6f0456bf47db49dfcc291615815b515c48ad326c34cbc554c3294"
+    },
+    {
+      "path": "records\\local_transfer_initial_geometry.json",
+      "bytes": 6938,
+      "sha256": "ba6d58c9ef7aa6d7da421f59f601c7bdbc30d9fdf385c2c4e0655029ab615882"
+    },
+    {
+      "path": "records\\local_transfer_initial_summary.json",
+      "bytes": 1448,
+      "sha256": "1fda1febe25eedb6f8d224b322ec671a7ce49194bd3c375201f4186d0f171cc3"
+    },
+    {
+      "path": "records\\pad_region_visualization.json",
+      "bytes": 1802,
+      "sha256": "1638d39804f45a28f35c3b088fa815405e6546434f026e6c2752bf8d93906df4"
+    },
+    {
+      "path": "records\\reconstructed_correction1.json",
+      "bytes": 610,
+      "sha256": "922fc08092deb5f97b452b998f3011ea6f7bdba4d8f86aed712d0e22ce14c3de"
+    },
+    {
+      "path": "records\\reconstructed_correction1_geometry.json",
+      "bytes": 103550,
+      "sha256": "25783acdb391063d8d959079f6760ff1aec368728dfd4ccb17e36ace43ac0f47"
+    },
+    {
+      "path": "records\\reconstructed_correction1_summary.json",
+      "bytes": 1417,
+      "sha256": "ab9fe32aa7cb99110fdc8a1dc7d6f8c70b01b42343bf9fc71854f644db0f2f02"
+    },
+    {
+      "path": "records\\reconstructed_correction2.json",
+      "bytes": 610,
+      "sha256": "131bc627085b0ff795264a322a497817d7fdbdbfeeb1f7d75bdff70e6e344bcc"
+    },
+    {
+      "path": "records\\reconstructed_correction2_geometry.json",
+      "bytes": 35732,
+      "sha256": "7293facb1ebe866827bdab8d2f641ead4247c231f893d93ae74a2c1ab81fbfcd"
+    },
+    {
+      "path": "records\\reconstructed_correction2_summary.json",
+      "bytes": 13833,
+      "sha256": "cd68bd84ceecdf7138cf6f8071604aa810d00c4e0e6ec517165d98ca9a3e4fd6"
+    },
+    {
+      "path": "records\\reconstructed_initial.json",
+      "bytes": 613,
+      "sha256": "fc96724f93d01c80318df456e4a242256a0e14b26212525bff77fc143590e46d"
+    },
+    {
+      "path": "records\\reconstructed_initial_geometry.json",
+      "bytes": 312095,
+      "sha256": "0c6998b7ec5b0ed1aee3bd1af90645032513b4469d32eca8be04f9b59eee4fe3"
+    },
+    {
+      "path": "records\\reconstructed_initial_summary.json",
+      "bytes": 6569,
+      "sha256": "c419284a39fdba07f6275672ed608a460a00471c6efbcbc10a9e58df4e05760f"
+    },
+    {
+      "path": "records\\reopen_and_preservation.json",
+      "bytes": 4431,
+      "sha256": "97864fe81ae02f5f7f21f285dd1443b15beb97cce172e5cc35170b7444d0417f"
+    },
+    {
+      "path": "records\\retained_geometry.json",
+      "bytes": 81198,
+      "sha256": "66a4c8cbb80da9f9f640b90f9b1fe69caad3fe4e6af3316d9bfe390839622a1b"
+    },
+    {
+      "path": "records\\retained_pad_mapping_before_scoring.json",
+      "bytes": 4777,
+      "sha256": "089ac6d70d098f790ba42f74987fdab6d57717ec66cfda08d6f527b705ce3773"
+    },
+    {
+      "path": "records\\retained_summary.json",
+      "bytes": 1447,
+      "sha256": "4e55c670fcb7335afed27e45a2e1b2770925c14771746f0d7c4e1ae5d76876e4"
+    },
+    {
+      "path": "records\\target_correction1.json",
+      "bytes": 1183,
+      "sha256": "0e2ccfd9aa57dc9208cbc1d2d3d0119ccb3f0cfff85bbb8875b0442227146ead"
+    },
+    {
+      "path": "records\\target_correction2.json",
+      "bytes": 2358,
+      "sha256": "960ac88bf0fb20f86e5692c0983131aee8ab07b5c78a407108674b62005e7cdd"
+    },
+    {
+      "path": "records\\target_initial.json",
+      "bytes": 1123,
+      "sha256": "78d7ee2e6c5eda4c5493a6b165f25ec10240dcb304a1773b7732ff8f21dac60a"
+    },
+    {
+      "path": "records\\target_local_c1.json",
+      "bytes": 2360,
+      "sha256": "70c73af2128608f1e75fc3a664432b80f73f63a782f9677de4906d9a123ad054"
+    },
+    {
+      "path": "records\\target_local_c2.json",
+      "bytes": 2360,
+      "sha256": "2ddf75d88f0d6fdcde2a132b45d2eacec69dcce117de60844438a3b9023fe9c7"
+    },
+    {
+      "path": "REVIEW.md",
+      "bytes": 8755,
+      "sha256": "563888b8d9b5dd9afdb0b14664e1b640e60e45bb6161df1a7404682460fa083f"
+    }
+  ]
+}
