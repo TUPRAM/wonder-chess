@@ -1,0 +1,1109 @@
+{
+  "stage": "MR1",
+  "revision": "r001",
+  "completed_utc": "2026-09-08T07:37:44.151398+00:00",
+  "status": "EXECUTED_LOCAL_METHODS_ACCEPTED_CONTEXT_REVISE",
+  "blender_executed": true,
+  "blender_version": "5.1.1",
+  "baseline_status": "r003_REVISE_preserved",
+  "baseline_source_sha256": "15f7fdc7c842d57ff05873a7cd988637411ad8985eadf852757ebbd62877043b",
+  "face_method": {
+    "status": "METHOD_PROOF_ACCEPTED",
+    "scope": "isolated eye/socket/cheek cage only",
+    "source": "face_proof_r002.blend",
+    "vertices": 100,
+    "quads": 80,
+    "corrective_passes": 2,
+    "review": "reviews/face_final_review.md"
+  },
+  "hair_method": {
+    "status": "METHOD_PROOF_ACCEPTED",
+    "scope": "one broad leading clump and its local foundation contact",
+    "source": "hair_mass_proof_r002.blend",
+    "vertices": 90,
+    "quads": 88,
+    "corrective_passes": 1,
+    "review": "reviews/hair_r002_review.md"
+  },
+  "contextual_head": {
+    "status": "REVISE",
+    "source": "contextual_head_candidate_final.blend",
+    "review": "reviews/context_final_review.md",
+    "primary_hair_masses": 4,
+    "joined_head_vertices": 19016,
+    "joined_head_faces": 19050,
+    "bridge_triangles": 460,
+    "source_regional_boundary_vertices": 68,
+    "source_retained_head_boundary_vertices": 392,
+    "critical_visual_defects": [
+      "serrated forehead/nasal/cheek transitions despite connected topology",
+      "unsupported counter-sweep underside gap",
+      "abrupt plate-like rear gathering overlaps",
+      "wide fixed expression; likeness unestablished"
+    ],
+    "retained_braid": "unchanged; wider captures show lower taper and finite tie/tail",
+    "attempts": "initial peripheral assembly followed by connected bridge; both contextual interfaces visibly fail",
+    "stop_reason": "Independent review recommends one short deliberate transition band, not another broad bridge or smoothing pass"
+  },
+  "human_approvals": {
+    "references": "accepted_current_prior_user_approval",
+    "forms": false,
+    "release": false
+  },
+  "next_action": "Prove one anatomical-right nasal-to-upper-cheek transition band with compatible sampling and surface tangents; then verify counter-sweep and rear-gathering contacts individually",
+  "not_run": [
+    "production topology approval",
+    "production UV/bake/textures/materials",
+    "rigging",
+    "skinning",
+    "animation",
+    "LODs",
+    "FBX",
+    "Unreal",
+    "packaged gameplay",
+    "human forms approval",
+    "human release approval"
+  ],
+  "preservation": "verification.json",
+  "capture_recipes": "scene_audit_and_capture_recipe_final.json",
+  "artifacts": [
+    {
+      "path": "baseline_source.blend",
+      "bytes": 7130371,
+      "sha256": "15f7fdc7c842d57ff05873a7cd988637411ad8985eadf852757ebbd62877043b"
+    },
+    {
+      "path": "ada_method_proof_work.blend",
+      "bytes": 10676630,
+      "sha256": "751e43f061d05626f8b7adb9492cff85edbee1c4530bf76df0939390e5b02fab"
+    },
+    {
+      "path": "face_proof_r002.blend",
+      "bytes": 7724367,
+      "sha256": "90c10ffc6c0182f110dda9099281543142100b8592fd769558d3fee12ed1831f"
+    },
+    {
+      "path": "hair_mass_proof_r002.blend",
+      "bytes": 8850353,
+      "sha256": "9a975792a03087a4dfdb32a2889a58db797a557e012514f560633a2e2414726b"
+    },
+    {
+      "path": "contextual_head_candidate_final.blend",
+      "bytes": 10676630,
+      "sha256": "751e43f061d05626f8b7adb9492cff85edbee1c4530bf76df0939390e5b02fab"
+    },
+    {
+      "path": "scene_audit_and_capture_recipe_final.json",
+      "bytes": 138043,
+      "sha256": "2f133b6b800f48415d911120671696b8c15a3215b1fb56aa6e66b2a2fc0835db"
+    },
+    {
+      "path": "baseline_inventory.json",
+      "bytes": 69103,
+      "sha256": "ccb197bb94fa4ad27b1618e78ff5c79a94fd12eb4fdc8f642043a21d5cf98ba0"
+    },
+    {
+      "path": "REVIEW_MR1.md",
+      "bytes": 13334,
+      "sha256": "163d98fafe8fdaae5956a1770f35c1f3a108c491fccca2a7789aa238a5adb19a"
+    },
+    {
+      "path": "FOCUSED_INTERVENTION.md",
+      "bytes": 3069,
+      "sha256": "9f49cda92d69a495de6dd88b0fdb10e6fd11d5fe8ef23c6e509d5fb409c93927"
+    },
+    {
+      "path": "reviews/context_final_review.md",
+      "bytes": 9524,
+      "sha256": "edda8e283a85e80d0918b68ad7656631ce0831703b19882d81067958254cab3a"
+    },
+    {
+      "path": "reviews/face_final_review.md",
+      "bytes": 4931,
+      "sha256": "a82b6eb0356b2d8b202ae76f228a1dfc73c35a021b6b2bba36d43b7b5e7325d0"
+    },
+    {
+      "path": "reviews/face_r001_review.md",
+      "bytes": 5005,
+      "sha256": "423e93da3dc045dbd279e3953f35a12fa720b6e40dbbe0d69fa5879ca3b28984"
+    },
+    {
+      "path": "reviews/hair_r001_review.md",
+      "bytes": 5418,
+      "sha256": "2c4121ceb4dbfd982fd44df5ac049711f2918e00b889fe4a0a5d2c85492d367c"
+    },
+    {
+      "path": "reviews/hair_r002_review.md",
+      "bytes": 4090,
+      "sha256": "73ab5abc3eddfd921121b1bddbaccd12225052faec05f434698dfb98dbc9e55f"
+    },
+    {
+      "path": "reviews/reference_visual_read.md",
+      "bytes": 2207,
+      "sha256": "73c025bb5ab76bf0bba7728891fc3c823d992651de62aa72e7c3f963e4316ac4"
+    },
+    {
+      "path": "operations/01_face_cage.py",
+      "bytes": 7712,
+      "sha256": "2c292065834fc496c56c293e23ca28ba4b490b8566233fc57d124db12aeb7a44"
+    },
+    {
+      "path": "operations/02_review_lighting.py",
+      "bytes": 2025,
+      "sha256": "806e08ca13374559f8da337127b09a29b006ad986740e0a653f14b9b43093370"
+    },
+    {
+      "path": "operations/03_face_review_captures.py",
+      "bytes": 3709,
+      "sha256": "76ee24c8fadd1d964b36c299fb78b3a8dcff5bdc246935d81125bb6b806bd24e"
+    },
+    {
+      "path": "operations/04_face_corner_correction.py",
+      "bytes": 2135,
+      "sha256": "ace1116362fe42dc48500c7d34651e43d55a02b256120008b8ef1df6c3464cac"
+    },
+    {
+      "path": "operations/05_face_clearance_correction.py",
+      "bytes": 1464,
+      "sha256": "b1c52277adc507759ec81e62fc6bcb1487019b5b7443a6c928442032c6d5b3d8"
+    },
+    {
+      "path": "operations/06_face_final_captures.py",
+      "bytes": 2267,
+      "sha256": "02fa73789f32a3b4eaf5cabc14b6f7dff5fc7520503bdb78a82dad0408b62277"
+    },
+    {
+      "path": "operations/07_hair_cage.py",
+      "bytes": 6765,
+      "sha256": "f032df2633d3ba253ebd456796828438bcf5658c3fd4198e6dfe722e33acecb3"
+    },
+    {
+      "path": "operations/08_hair_review_captures.py",
+      "bytes": 5318,
+      "sha256": "26096ba12f251c0345e27b643c5a807ba44580bcf46bb6e80dfac694a103e4b0"
+    },
+    {
+      "path": "operations/09_hair_temple_contact.py",
+      "bytes": 1629,
+      "sha256": "a776039e07cf73ecb14421dbae883a8f14d70850d4c188e3d319b5b10d49e0e6"
+    },
+    {
+      "path": "operations/10_context_orbital_assembly.py",
+      "bytes": 6327,
+      "sha256": "da097a4fd4fe1de39ba780344001d55e3cf23662b313d077b5016148e2051f53"
+    },
+    {
+      "path": "operations/11_context_boundary_join.py",
+      "bytes": 6358,
+      "sha256": "8544dbf5a8b106d385faa23056cea63c21d46cfd917cf8ed040da609a7a0be2e"
+    },
+    {
+      "path": "operations/12_context_primary_hair.py",
+      "bytes": 3909,
+      "sha256": "357e29a0fb8d955fda9dc31fba71cd590f79de4789bbc6c0272807804c73134b"
+    },
+    {
+      "path": "operations/13_context_matched_baseline.py",
+      "bytes": 2035,
+      "sha256": "b77e4de14e246c2c162c5556cb2e268782485b509ffb6aadc17e89afe72ace2e"
+    },
+    {
+      "path": "operations/14_context_gaze_and_cage.py",
+      "bytes": 2564,
+      "sha256": "ecf200f5ee90e161f0f5da2c2c7bf13633ff4c50d544a349407ffae13d8938d6"
+    },
+    {
+      "path": "operations/15_final_scene_audit.py",
+      "bytes": 4837,
+      "sha256": "9509547669bdb9dc68e3d07250c2c88d5e3995d64aa073b6bd4d9ca866aeed26"
+    },
+    {
+      "path": "operations/16_write_review_manifest.py",
+      "bytes": 8213,
+      "sha256": "825a3b7f3ced84dc164e2d1503117212efd4b37732589cedbd66cf0c1b625ef8"
+    }
+  ],
+  "captures": [
+    {
+      "path": "captures/context_assembly_initial_front.png",
+      "pixels": [
+        1000,
+        1000
+      ],
+      "sha256": "b55bc36d99d07472e082cf48ec05547c316a96551c5b3290b46042cf8545df17"
+    },
+    {
+      "path": "captures/context_assembly_initial_profile.png",
+      "pixels": [
+        1000,
+        1000
+      ],
+      "sha256": "6aea4563ceac8590d8e2f2d1a33edaa35a732a8e598711821d742236665593a2"
+    },
+    {
+      "path": "captures/context_assembly_initial_three_quarter.png",
+      "pixels": [
+        1000,
+        1000
+      ],
+      "sha256": "afced72d3ccd064d59b0b5986f52e1ff52fdebdd073a4271a56d494cf54a294f"
+    },
+    {
+      "path": "captures/context_baseline_bust_rear.png",
+      "pixels": [
+        1000,
+        1000
+      ],
+      "sha256": "6f2594be506e4b837f0be0310e4ed01bec66d7636b09eaa3cd103f44482c4145"
+    },
+    {
+      "path": "captures/context_baseline_bust_three_quarter.png",
+      "pixels": [
+        1000,
+        1000
+      ],
+      "sha256": "640fe9f3d2cea053022ae5d2d3e7428937a23103fd9e4b33bd5ad6492beee01f"
+    },
+    {
+      "path": "captures/context_baseline_clay_front.png",
+      "pixels": [
+        1000,
+        1000
+      ],
+      "sha256": "cb288214753a90e4baef79c1b95cf83be30a541a763670487ac92155384c307a"
+    },
+    {
+      "path": "captures/context_baseline_clay_opposite.png",
+      "pixels": [
+        1000,
+        1000
+      ],
+      "sha256": "7fd74c0492406ad0ce880a8f33e6c03d23fa18570b94e10fcdd9bbc10740740a"
+    },
+    {
+      "path": "captures/context_baseline_clay_profile.png",
+      "pixels": [
+        1000,
+        1000
+      ],
+      "sha256": "70fa85b07d1c50f39528082b4476879284ec07cde30c34d83c3bff06ada38339"
+    },
+    {
+      "path": "captures/context_baseline_clay_rear.png",
+      "pixels": [
+        1000,
+        1000
+      ],
+      "sha256": "811ea2c13f619a2bf49dae73db1d27861de0de0baa33fa428357f09ee9397109"
+    },
+    {
+      "path": "captures/context_baseline_clay_three_quarter.png",
+      "pixels": [
+        1000,
+        1000
+      ],
+      "sha256": "f7db98bbbe21ccbbfdf70d039649ecdf4d4909bbb9c7fec0104ea5f0a569ee99"
+    },
+    {
+      "path": "captures/context_baseline_clay_top.png",
+      "pixels": [
+        1000,
+        1000
+      ],
+      "sha256": "cbdf2a75db6d979637abbd3c5c28baa7db07316be10f15c78eb26c903bff6565"
+    },
+    {
+      "path": "captures/context_baseline_reverse_front.png",
+      "pixels": [
+        1000,
+        1000
+      ],
+      "sha256": "19eec0cae8260f00bf2fa3f88200e820b86bfbb9d47edbf15f2e492718606254"
+    },
+    {
+      "path": "captures/context_baseline_reverse_three_quarter.png",
+      "pixels": [
+        1000,
+        1000
+      ],
+      "sha256": "58c30ebf9336136e667d0c0e54e343ac2e7ebfd169735a3fef448d82b25fa609"
+    },
+    {
+      "path": "captures/context_comparison_REVISE.png",
+      "pixels": [
+        1800,
+        946
+      ],
+      "sha256": "41952b3a17a8dbb549159fb5441426c6098b1ec9ba0384194b2af786f0ccd955"
+    },
+    {
+      "path": "captures/context_final_bust_rear.png",
+      "pixels": [
+        1000,
+        1000
+      ],
+      "sha256": "0c8e37c44891e80a980963bfa3e901d71d6ae4b33b3596a09f43699194ca5e25"
+    },
+    {
+      "path": "captures/context_final_bust_three_quarter.png",
+      "pixels": [
+        1000,
+        1000
+      ],
+      "sha256": "ae850c2807c3142a86a346a5dc9059566b801d9e0ae88cda48b8bc0ce531569a"
+    },
+    {
+      "path": "captures/context_final_gaze_front.png",
+      "pixels": [
+        1000,
+        1000
+      ],
+      "sha256": "88cb849f163959c997b0222da7d09d13953864241e25b1ee06aba512aa5b0802"
+    },
+    {
+      "path": "captures/context_final_gaze_opposite.png",
+      "pixels": [
+        1000,
+        1000
+      ],
+      "sha256": "11d17a977739e7e5a8757f802f0085de1ab8885d2612e7e2645c72de5587b873"
+    },
+    {
+      "path": "captures/context_final_gaze_profile.png",
+      "pixels": [
+        1000,
+        1000
+      ],
+      "sha256": "00518f4942fa7f6f8f9335309618648eae2622959814477c09c1875ae5510ea1"
+    },
+    {
+      "path": "captures/context_final_gaze_three_quarter.png",
+      "pixels": [
+        1000,
+        1000
+      ],
+      "sha256": "d7f950f29f9bbb8c9d483086ec56ea66b602811208a593e67b18dbeb818bc9df"
+    },
+    {
+      "path": "captures/context_final_reverse_front.png",
+      "pixels": [
+        1000,
+        1000
+      ],
+      "sha256": "c25e4ba0ccd311c706f964b0e8931cd01dd65ccf8600d3f64b2ea4d9c328c03a"
+    },
+    {
+      "path": "captures/context_final_reverse_three_quarter.png",
+      "pixels": [
+        1000,
+        1000
+      ],
+      "sha256": "224efc0e7df3c614fb273133ca7a231b9f3f5555d90ebcfa54aabc73474167f5"
+    },
+    {
+      "path": "captures/context_join_wire_three_quarter.png",
+      "pixels": [
+        1000,
+        1000
+      ],
+      "sha256": "d0f043c9ffab178cd0adc232c84b44c1b2d94c8683e3042e0d34c591fa6ed3a6"
+    },
+    {
+      "path": "captures/context_joined_r001_front.png",
+      "pixels": [
+        1000,
+        1000
+      ],
+      "sha256": "e6485c23c749e103c893b8f84722275d477924e9f30d02f67abeb234db97d2a0"
+    },
+    {
+      "path": "captures/context_joined_r001_profile.png",
+      "pixels": [
+        1000,
+        1000
+      ],
+      "sha256": "8f28fe62ea004f95f36245e28a249bc597ccdd30225ed3b1bef0777439ecd951"
+    },
+    {
+      "path": "captures/context_joined_r001_three_quarter.png",
+      "pixels": [
+        1000,
+        1000
+      ],
+      "sha256": "2b91b22f4bbda8a8b6ed05fb271ab73bb5db9233a896a9f70e352c2b746c2863"
+    },
+    {
+      "path": "captures/context_primary_r001_clay_front.png",
+      "pixels": [
+        1000,
+        1000
+      ],
+      "sha256": "15515f0bf82060012a776290b73660cf1d8eb9788da2fe6cf78a82e6dc759fa4"
+    },
+    {
+      "path": "captures/context_primary_r001_clay_opposite.png",
+      "pixels": [
+        1000,
+        1000
+      ],
+      "sha256": "74f8323050d025c1cdbfdc312f53dab30632b5735bba2b4c3e88351391571f2b"
+    },
+    {
+      "path": "captures/context_primary_r001_clay_profile.png",
+      "pixels": [
+        1000,
+        1000
+      ],
+      "sha256": "7adf892c6d046ddf573aca889876c9af159276f814778185262458a11c4404f1"
+    },
+    {
+      "path": "captures/context_primary_r001_clay_rear.png",
+      "pixels": [
+        1000,
+        1000
+      ],
+      "sha256": "accd0483d6a5157ff49c1c3a38b3b13e1274bae9979d05fd047a3f928830080c"
+    },
+    {
+      "path": "captures/context_primary_r001_clay_three_quarter.png",
+      "pixels": [
+        1000,
+        1000
+      ],
+      "sha256": "b56521c92401daf2cc7d781468ae1fa5bfef48c8c4c5d5741a49ab01605bf7d7"
+    },
+    {
+      "path": "captures/context_primary_r001_clay_top.png",
+      "pixels": [
+        1000,
+        1000
+      ],
+      "sha256": "4067b8f1cdc214993b0c527617b174d0409fa5c765b3f58f2a8128f3f97cad79"
+    },
+    {
+      "path": "captures/context_source_cage_three_quarter.png",
+      "pixels": [
+        1000,
+        1000
+      ],
+      "sha256": "7b254741fdf2bfbdf5999cf3f6b31e0db942bf9287a07d00aba34e9c7c4ace1d"
+    },
+    {
+      "path": "captures/face_baseline_clay_front.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "051bd408b177b263b5b486baed749396ebb1d263d1c15e9fbbfe3af6cc1eca0d"
+    },
+    {
+      "path": "captures/face_baseline_clay_opposite.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "6e0e82d13076a3831bddfd7e42b826b5cbd47e22f39d7cba0dc5dc260ced50a0"
+    },
+    {
+      "path": "captures/face_baseline_clay_profile.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "1e2af7014c99bee685ea49af8347ed31cfd69cd971709a980176c7e33055597a"
+    },
+    {
+      "path": "captures/face_baseline_clay_three_quarter.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "c3de6a2257a02e95d7bf9ff05501be4a436afd0ff1b259d78803b83d12af9194"
+    },
+    {
+      "path": "captures/face_baseline_reverse_front.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "4c1caef5e536574427f06b0dd17cb0fe077e845d04de5c48cdcc7aca0358a70d"
+    },
+    {
+      "path": "captures/face_baseline_reverse_three_quarter.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "9e8f537c834d9e2597c65c23299a4bcb9eea2d834535ced9ed6ed50f879c635d"
+    },
+    {
+      "path": "captures/face_calibrated_three_quarter.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "a99bb7bb1f88a0229cdd7cd1408f42792d76666109be9243cd601c7c6b6cc7a8"
+    },
+    {
+      "path": "captures/face_final_cage_surface_three_quarter.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "1418b572577824c1002ab759bee1a89472e4c9057a1ddfb4d65e219694f04e24"
+    },
+    {
+      "path": "captures/face_final_cage_three_quarter.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "c8ae6910fa4ad06e8605952346deb9ab28da72f928d78354f4de9ceb0e7d91e2"
+    },
+    {
+      "path": "captures/face_final_clay_front.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "5634fccdbb61731cadbc216f771df2c788f1d49b88dc2b24e4f2c607524e785a"
+    },
+    {
+      "path": "captures/face_final_clay_opposite.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "3392f296932593f59372613e4994d299edd2d882af40ad63165499bf7c673a51"
+    },
+    {
+      "path": "captures/face_final_clay_profile.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "d7dfbb37695d8119b095ad1e7980be2806436215313f9234b761263dc8424274"
+    },
+    {
+      "path": "captures/face_final_clay_three_quarter.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "575c2c3ddcaec7b4d05b056a6de72276c15cb837f38dca3ab7e47af7c9e97c10"
+    },
+    {
+      "path": "captures/face_final_gaze_front.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "664ed9876b794fdc9a6f5a86378344aa87111d04b845e28ac8cddd3f03d4df04"
+    },
+    {
+      "path": "captures/face_final_gaze_opposite.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "1b70a43068e65cc3bff8493964c5285da7a97d94265208e1e06262777be83466"
+    },
+    {
+      "path": "captures/face_final_gaze_profile.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "440295898af83554332d289a926a050f0e6b1934adb6da19e56ab70ffc09b4bf"
+    },
+    {
+      "path": "captures/face_final_gaze_three_quarter.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "09e61c3f638956cc2aaa0ee8f85ec9e43c5b7cf7d0fe2aa32fb88285bea8d0c6"
+    },
+    {
+      "path": "captures/face_final_opening_three_quarter.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "c88e3bea7178781f4d98fdbe328644920dd71ef3f3b0c5b1644e855aea52cea0"
+    },
+    {
+      "path": "captures/face_final_reverse_front.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "d31585a8472f60d387968319a03ed9f54360716b61d9e967ae3d50c930715877"
+    },
+    {
+      "path": "captures/face_final_reverse_three_quarter.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "a22f0833ae32f6d9d4d644b79bdb757fb5baaeb32953e13dc7f1f5169227a972"
+    },
+    {
+      "path": "captures/face_initial_front.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "4bb60ab52210c59f0e88e7d2f1daa453d92640bc37cbab11090b29c7583cff21"
+    },
+    {
+      "path": "captures/face_initial_opposite.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "c3157e991ccbda55145990937030145346b55f21ab0b8e50cf4bbcf3b400cf73"
+    },
+    {
+      "path": "captures/face_initial_profile.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "88323df4fe250f221c0a2645cb1024d342c0cc9fdda92fbb169ffd1c83dded23"
+    },
+    {
+      "path": "captures/face_initial_three_quarter.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "fca27198d1e9e0af9a52a11d596bc6e9047649e3319e7f1a92449605fa0d5caf"
+    },
+    {
+      "path": "captures/face_method_comparison.png",
+      "pixels": [
+        1800,
+        946
+      ],
+      "sha256": "93c5b010fd8fece55d41499742769390814fedc0f8f72f8da1537f79f12b99b9"
+    },
+    {
+      "path": "captures/face_r001_cage_surface_three_quarter.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "c7019b658e42520926d2944046d36522e6427fe3d63705b8f60d133fd377b4f3"
+    },
+    {
+      "path": "captures/face_r001_cage_three_quarter.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "fe72bcbdc9dedeb1a58185a30cb97ad197269eecdb894333e4a8737c385dd3c7"
+    },
+    {
+      "path": "captures/face_r001_clay_front.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "44dc310c33e3cde9f29d5d5bcafdd70edde259ebec843839578e207f90303fd7"
+    },
+    {
+      "path": "captures/face_r001_clay_opposite.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "cfbd58773c1c253462b922c6857236a51995465ba9e6343c3ad8cef1c10d926a"
+    },
+    {
+      "path": "captures/face_r001_clay_profile.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "6c9480d426782e59ff86ede7c29f3caa51674cdf8d3ef841e398def1940b848a"
+    },
+    {
+      "path": "captures/face_r001_clay_three_quarter.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "f4c03c3d95efbde32c69cdd898bcef8734387daed28949ad0185dafaee313206"
+    },
+    {
+      "path": "captures/face_r001_gaze_front.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "93c486a330b71b0c1c2abbbc7ff5f8da90a140e7dd29f52436f20862a3262bf7"
+    },
+    {
+      "path": "captures/face_r001_gaze_opposite.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "c08b5855608fc345bb85a5b98eaa80e7acfdfe35f5fd244bec1bdba4c0791019"
+    },
+    {
+      "path": "captures/face_r001_gaze_profile.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "c42cda0fa94430cd5bbc06bdd966afd22708c471c3b05b59710bb198c081c2e8"
+    },
+    {
+      "path": "captures/face_r001_gaze_three_quarter.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "d6c3ad0303a625cd1824c537962046bc7f1472011e902ca6bbaa47cd3ca417e9"
+    },
+    {
+      "path": "captures/face_r001_opening_three_quarter.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "d0e1b27b66f585c1a30cb2bb757389debd4ad84b047ed1a250fa84bb9446ce7e"
+    },
+    {
+      "path": "captures/face_r001_reverse_front.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "4d22cda53ab954cd24f53a8238d3101b8424d8b72d5947a0f47c42564bce8dd2"
+    },
+    {
+      "path": "captures/face_r001_reverse_three_quarter.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "ce01d1dce71a30b5c9799509fa8221bba05f86518d16b384b381c2c434ed5240"
+    },
+    {
+      "path": "captures/face_r002_cage_three_quarter.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "9b0ab373b1b7b175b45d6d4d5978545d774590173e1d91441fd57f89ad4c1dbd"
+    },
+    {
+      "path": "captures/face_r002_gaze_front.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "6687957ff1290879ed73a1d1747e59c69813f311d3bbb47abd4061143ba4c347"
+    },
+    {
+      "path": "captures/face_r002_gaze_opposite.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "f9939c32fe744b5ed09f1c49d0da6acfdda016be83e6294654708eb539bed967"
+    },
+    {
+      "path": "captures/face_r002_gaze_three_quarter.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "c8f92000c7ed0093b53976a6583ac471504a2114d9db0737d8ea319724304da0"
+    },
+    {
+      "path": "captures/hair_baseline_clay_front.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "49492e95ab1a6f3f8096a64cf21414ee0c3099a7a1e9787a621358fbb12ece2c"
+    },
+    {
+      "path": "captures/hair_baseline_clay_profile.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "ec2e8f7828362219c235f7580f5a9960c2d09a8b2e962133df2e572d3c1405dd"
+    },
+    {
+      "path": "captures/hair_baseline_clay_rear.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "48d5969790800719e210c6d88876789ac7989872c2d0f204deb68f487f6f1438"
+    },
+    {
+      "path": "captures/hair_baseline_clay_root.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "b9ee3220315529ce6f0c8a55a77583f5583717456e360fb8bab203249b9e7bfb"
+    },
+    {
+      "path": "captures/hair_baseline_clay_three_quarter.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "47e47290101e83cf37ccee70dcc8376928ae437dbb2cba73d8f4cc475652c7c2"
+    },
+    {
+      "path": "captures/hair_baseline_clay_top.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "1a6cde2aaa77dd8557bbed42e939de18b2a9473ab646a0648cc52743391357c0"
+    },
+    {
+      "path": "captures/hair_method_comparison.png",
+      "pixels": [
+        1800,
+        946
+      ],
+      "sha256": "13fae56c23af5dcdfb3594147303a1d5ef1cb0c093ee77536ee666fc597c4d6c"
+    },
+    {
+      "path": "captures/hair_r001_cage_three_quarter.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "136a7954e20013472d66bdc14d5fc95f0432f886d312ce51cd5801f415b4a2a9"
+    },
+    {
+      "path": "captures/hair_r001_cage_top.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "3836f79134bb268a2a2037852a49d3686bebd387bb65a52f2c29ae90f42313b0"
+    },
+    {
+      "path": "captures/hair_r001_clay_front.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "a82f721d2b0d552da11a4dca2f5425faf884ad60588f8862fcdfa54f5b28182a"
+    },
+    {
+      "path": "captures/hair_r001_clay_profile.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "399379caa2a48fe16d4ff1c23d2068f771295e080b83efbfbea20f927990fc89"
+    },
+    {
+      "path": "captures/hair_r001_clay_rear.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "801f8ad728a28be52787284256a9132035fd6479378bc0dc6f4d179064f1d4fa"
+    },
+    {
+      "path": "captures/hair_r001_clay_root.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "fbd263aa8ea8c032fdc60681f39c4452fdffe4d3e6ed86b22e574460af5a4eec"
+    },
+    {
+      "path": "captures/hair_r001_clay_three_quarter.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "ce639c748b37243826cdb98bf93f2a86ebb4884d982852638579a38a28924187"
+    },
+    {
+      "path": "captures/hair_r001_clay_top.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "b356357ef5e2925111cf3b6f10123a739bf7f7cd11b5bd035f21b684e9a4c481"
+    },
+    {
+      "path": "captures/hair_r001_cross_section.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "b0f53dcfa2c51c256618476fb0467de2b903a9b220a9f75cab7b2de0f28135dd"
+    },
+    {
+      "path": "captures/hair_r001_isolated_three_quarter.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "76feedc22fe2ba25cf710b40a753a593e155786196aa1c93d9b96db2cc93364a"
+    },
+    {
+      "path": "captures/hair_r001_isolated_top.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "9815a3afa2b275285ff81072e5c3078eecb7e96bfb04f82ef1aa5205be82c4da"
+    },
+    {
+      "path": "captures/hair_r002_cage_three_quarter.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "2da9a3e92e027bd5fab010e5c41f3681f487cc99f9a12f17ffa9905d8e3ee3f3"
+    },
+    {
+      "path": "captures/hair_r002_clay_front.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "97ee6c9f2cb492d05bb118a35d0f6f3f75c832ea6f92dc739f3da7cada5ae36f"
+    },
+    {
+      "path": "captures/hair_r002_clay_profile.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "edea0dd498f7871e6a96feaea5d3082ff9a48240fbd64cb00515e4e0725797af"
+    },
+    {
+      "path": "captures/hair_r002_clay_rear.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "05f2f668aa02e64bc9efaf5cf105bd0ed12bde12ae7f805701828fd74a4229fe"
+    },
+    {
+      "path": "captures/hair_r002_clay_root.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "77c20b539517be8828540665e5cbd06d345497aa8d9680b6043ae291af61d184"
+    },
+    {
+      "path": "captures/hair_r002_clay_three_quarter.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "4ab6738ac99c01ac1f0775693e24b1a9e78e05d96aa058789de7bdb32b6b3ec4"
+    },
+    {
+      "path": "captures/hair_r002_clay_top.png",
+      "pixels": [
+        900,
+        900
+      ],
+      "sha256": "9c50525a9724f3cf10cf9c53ca8629b82bfc8c5d8859bd84808cd0d28c0c52ff"
+    }
+  ],
+  "blend_snapshot_inventory": [
+    {
+      "path": "ada_method_proof_work.blend",
+      "bytes": 10676630,
+      "sha256": "751e43f061d05626f8b7adb9492cff85edbee1c4530bf76df0939390e5b02fab",
+      "current_delivery": true
+    },
+    {
+      "path": "baseline_source.blend",
+      "bytes": 7130371,
+      "sha256": "15f7fdc7c842d57ff05873a7cd988637411ad8985eadf852757ebbd62877043b",
+      "current_delivery": true
+    },
+    {
+      "path": "context_before_join.blend",
+      "bytes": 9352981,
+      "sha256": "82c11815aeb4d63b201faced6349afb3628383fc2d972ed578d032ca48fba566",
+      "current_delivery": false
+    },
+    {
+      "path": "contextual_head_candidate_final.blend",
+      "bytes": 10676630,
+      "sha256": "751e43f061d05626f8b7adb9492cff85edbee1c4530bf76df0939390e5b02fab",
+      "current_delivery": true
+    },
+    {
+      "path": "contextual_head_candidate_r001.blend",
+      "bytes": 9982135,
+      "sha256": "a0a724b018e03716670040f9b3fad49555fb980f7b2eefb300b11905531c68f6",
+      "current_delivery": false
+    },
+    {
+      "path": "contextual_head_candidate_review.blend",
+      "bytes": 10679168,
+      "sha256": "0f120bcd6080085b6bc0ed3e6b152ed6c3e51304506307c0c7b2a27c4fd505d2",
+      "current_delivery": false
+    },
+    {
+      "path": "face_before_correction_01.blend",
+      "bytes": 7724984,
+      "sha256": "cda47d8344bd5129a89162652b4acf29c8685f262387cd4c577088ab9b5b37db",
+      "current_delivery": false
+    },
+    {
+      "path": "face_before_correction_02.blend",
+      "bytes": 7727340,
+      "sha256": "437b6b60c86b7ac1471cc1fc40584247545f1a0507ce6a0a91dd0e255f1af2e3",
+      "current_delivery": false
+    },
+    {
+      "path": "face_proof_r001.blend",
+      "bytes": 7724470,
+      "sha256": "37bb5dcab645af5dbda27a8c6c5de7f758d761e0cb0fa7d04fe1e6bac112fc47",
+      "current_delivery": false
+    },
+    {
+      "path": "face_proof_r002.blend",
+      "bytes": 7724367,
+      "sha256": "90c10ffc6c0182f110dda9099281543142100b8592fd769558d3fee12ed1831f",
+      "current_delivery": true
+    },
+    {
+      "path": "hair_before_correction_01.blend",
+      "bytes": 8848242,
+      "sha256": "3a1d0cf78cec37151f8e0820a303922010a8fe095ef4abfa49bef8e27744e689",
+      "current_delivery": false
+    },
+    {
+      "path": "hair_mass_proof_r001.blend",
+      "bytes": 8846960,
+      "sha256": "106a749cb6f820c6093c6a43672e788face56687f6a6f96ef6404312949edd2c",
+      "current_delivery": false
+    },
+    {
+      "path": "hair_mass_proof_r002.blend",
+      "bytes": 8850353,
+      "sha256": "9a975792a03087a4dfdb32a2889a58db797a557e012514f560633a2e2414726b",
+      "current_delivery": true
+    }
+  ],
+  "staging_record_boundary": "staging_record.json describes only initial copies, before Blender execution"
+}

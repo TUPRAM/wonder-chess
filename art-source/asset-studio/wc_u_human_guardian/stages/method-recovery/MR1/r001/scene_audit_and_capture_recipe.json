@@ -1,0 +1,4988 @@
+{
+  "blender_version": "5.1.1",
+  "active_filepath": "C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_u_human_guardian\\stages\\method-recovery\\MR1\\r001\\ada_method_proof_work.blend",
+  "active_scene": "MR1_CONTEXT_HEAD_CANDIDATE",
+  "proof_geometry": {
+    "MR1_Right_Orbital_Cage": {
+      "vertices": 100,
+      "faces": 80,
+      "quads": 80,
+      "triangles": 0,
+      "boundary_edges": 40,
+      "nonmanifold_internal_edges": 0,
+      "degenerate_faces": 0,
+      "winding_conflicts": 0,
+      "loose_vertices": 0
+    },
+    "MR1_Hair_Leading_Sweep_Cage": {
+      "vertices": 90,
+      "faces": 88,
+      "quads": 88,
+      "triangles": 0,
+      "boundary_edges": 0,
+      "nonmanifold_internal_edges": 0,
+      "degenerate_faces": 0,
+      "winding_conflicts": 0,
+      "loose_vertices": 0
+    },
+    "MR1_CONTEXT_Joined_Head_Diagnostic": {
+      "vertices": 19016,
+      "faces": 19050,
+      "quads": 18588,
+      "triangles": 460,
+      "boundary_edges": 80,
+      "nonmanifold_internal_edges": 0,
+      "degenerate_faces": 0,
+      "winding_conflicts": 0,
+      "loose_vertices": 0
+    }
+  },
+  "eye_clearance_sample": {
+    "skin_ray_hits": 1682,
+    "intersection_threshold_mm": 0.05,
+    "intersections": [],
+    "boundary": "1 mm sampled analytic globe check; not exhaustive collision or deformation verification"
+  },
+  "scenes": [
+    {
+      "scene": "MR1_FACE_PROOF",
+      "active_camera": "MR1_FACE_three_quarter",
+      "resolution": [
+        900,
+        900,
+        100
+      ],
+      "engine": "CYCLES",
+      "samples": 16,
+      "denoising": true,
+      "world": "MR1_Neutral_World",
+      "world_background_color": [
+        0.17000000178813934,
+        0.17000000178813934,
+        0.17000000178813934,
+        1
+      ],
+      "world_strength": 0.3499999940395355,
+      "view_transform": "Standard",
+      "look": "None",
+      "exposure": 0,
+      "gamma": 1,
+      "material_override": null,
+      "render_allowlist": [
+        "MR1_Right_Orbital_Cage",
+        "MR1_Right_Eye_Globe",
+        "MR1_FACE_front",
+        "MR1_FACE_profile",
+        "MR1_FACE_three_quarter",
+        "MR1_FACE_opposite",
+        "MR1_FACE_Key",
+        "MR1_FACE_Fill"
+      ],
+      "objects": [
+        {
+          "name": "MR1_Right_Orbital_Cage",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_FACE_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "One subdivision level proof",
+              "type": "SUBSURF",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": 1,
+              "render_levels": 1
+            }
+          ]
+        },
+        {
+          "name": "MR1_Right_Eye_Globe",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_FACE_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_FACE_front",
+          "type": "CAMERA",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_FACE_BASELINE_ALLOWLIST",
+            "MR1_FACE_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_FACE_profile",
+          "type": "CAMERA",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_FACE_BASELINE_ALLOWLIST",
+            "MR1_FACE_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_FACE_three_quarter",
+          "type": "CAMERA",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_FACE_BASELINE_ALLOWLIST",
+            "MR1_FACE_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_FACE_opposite",
+          "type": "CAMERA",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_FACE_BASELINE_ALLOWLIST",
+            "MR1_FACE_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_FACE_Key",
+          "type": "LIGHT",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_FACE_BASELINE_ALLOWLIST",
+            "MR1_FACE_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_FACE_Fill",
+          "type": "LIGHT",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_FACE_BASELINE_ALLOWLIST",
+            "MR1_FACE_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_FACE_Control_Cage_Wire",
+          "type": "MESH",
+          "hide_render": true,
+          "hide_viewport": false,
+          "hide_get": true,
+          "collections": [
+            "MR1_FACE_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Actual control edges",
+              "type": "WIREFRAME",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        }
+      ],
+      "collection_exclusions": [
+        {
+          "name": "MR1_FACE_CANDIDATE_ALLOWLIST",
+          "exclude": false,
+          "hide_viewport": false
+        }
+      ],
+      "cameras": [
+        {
+          "name": "MR1_FACE_front",
+          "matrix_world": [
+            [
+              -1,
+              -1.5099580252808664e-7,
+              1.1399865765455465e-14,
+              0.039000000804662704
+            ],
+            [
+              0,
+              7.549790126404332e-8,
+              1,
+              0.550000011920929
+            ],
+            [
+              -1.5099580252808664e-7,
+              1,
+              -7.549790126404332e-8,
+              1.687000036239624
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "projection": "ORTHO",
+          "ortho_scale": 0.13500000536441803,
+          "lens": 50,
+          "clip": [
+            0.0010000000474974513,
+            20
+          ],
+          "depth_of_field": false
+        },
+        {
+          "name": "MR1_FACE_profile",
+          "matrix_world": [
+            [
+              -4.371138828673793e-8,
+              4.371138828673793e-8,
+              1,
+              0.550000011920929
+            ],
+            [
+              1,
+              1.910685676922942e-15,
+              4.371138828673793e-8,
+              0.02500000037252903
+            ],
+            [
+              0,
+              1,
+              -4.371138828673793e-8,
+              1.687000036239624
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "projection": "ORTHO",
+          "ortho_scale": 0.13500000536441803,
+          "lens": 50,
+          "clip": [
+            0.0010000000474974513,
+            20
+          ],
+          "depth_of_field": false
+        },
+        {
+          "name": "MR1_FACE_three_quarter",
+          "matrix_world": [
+            [
+              -0.8280382752418518,
+              -0.02235591597855091,
+              0.5602257251739502,
+              0.3199999928474426
+            ],
+            [
+              0.5606715679168701,
+              -0.033016908913850784,
+              0.8273797631263733,
+              0.4399999976158142
+            ],
+            [
+              8.902453174641778e-8,
+              0.9992047548294067,
+              0.03987359255552292,
+              1.7070000171661377
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "projection": "ORTHO",
+          "ortho_scale": 0.13500000536441803,
+          "lens": 50,
+          "clip": [
+            0.0010000000474974513,
+            20
+          ],
+          "depth_of_field": false
+        },
+        {
+          "name": "MR1_FACE_opposite",
+          "matrix_world": [
+            [
+              -0.820622980594635,
+              0.02258293330669403,
+              -0.5710236430168152,
+              -0.25
+            ],
+            [
+              -0.5714700222015381,
+              -0.032428693026304245,
+              0.8199819326400757,
+              0.4399999976158142
+            ],
+            [
+              4.6946780685175327e-8,
+              0.9992188811302185,
+              0.039517197757959366,
+              1.7070000171661377
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "projection": "ORTHO",
+          "ortho_scale": 0.13500000536441803,
+          "lens": 50,
+          "clip": [
+            0.0010000000474974513,
+            20
+          ],
+          "depth_of_field": false
+        }
+      ],
+      "lights": [
+        {
+          "name": "MR1_FACE_Key",
+          "matrix_world": [
+            [
+              -0.7472824454307556,
+              0.3438588082790375,
+              -0.5686211585998535,
+              -0.25
+            ],
+            [
+              -0.6645064949989319,
+              -0.38669252395629883,
+              0.6394528746604919,
+              0.3499999940395355
+            ],
+            [
+              -5.40862998832381e-8,
+              0.8557043671607971,
+              0.5174649953842163,
+              1.9500000476837158
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "type": "AREA",
+          "energy": 1.2999999523162842,
+          "size": 0.2800000011920929,
+          "color": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "MR1_FACE_Fill",
+          "matrix_world": [
+            [
+              -0.6479236483573914,
+              -0.1932782083749771,
+              0.7367756962776184,
+              0.2800000011920929
+            ],
+            [
+              0.7617052793502808,
+              -0.16440697014331818,
+              0.6267179846763611,
+              0.23000000417232513
+            ],
+            [
+              1.3507430196568748e-7,
+              0.9672713279724121,
+              0.2537442147731781,
+              1.7699999809265137
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "type": "AREA",
+          "energy": 0.3199999928474426,
+          "size": 0.30000001192092896,
+          "color": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "scene": "MR1_FACE_BASELINE_REVIEW",
+      "active_camera": "MR1_FACE_three_quarter",
+      "resolution": [
+        900,
+        900,
+        100
+      ],
+      "engine": "CYCLES",
+      "samples": 16,
+      "denoising": true,
+      "world": "MR1_Neutral_World",
+      "world_background_color": [
+        0.17000000178813934,
+        0.17000000178813934,
+        0.17000000178813934,
+        1
+      ],
+      "world_strength": 0.3499999940395355,
+      "view_transform": "Standard",
+      "look": "None",
+      "exposure": 0,
+      "gamma": 1,
+      "material_override": "MR1_Uniform_Clay",
+      "render_allowlist": [
+        "MR1_BASE_ADA_Head_Continuous",
+        "MR1_BASE_ADA_Fitted_Eye_R",
+        "MR1_BASE_ADA_Fitted_Brow_R",
+        "MR1_FACE_front",
+        "MR1_FACE_profile",
+        "MR1_FACE_three_quarter",
+        "MR1_FACE_opposite",
+        "MR1_FACE_Key",
+        "MR1_FACE_Fill"
+      ],
+      "objects": [
+        {
+          "name": "MR1_BASE_ADA_Head_Continuous",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_FACE_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_BASE_ADA_Fitted_Eye_R",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_FACE_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_BASE_ADA_Fitted_Brow_R",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_FACE_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Finite shell thickness",
+              "type": "SOLIDIFY",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            },
+            {
+              "name": "Controlled edge transition",
+              "type": "BEVEL",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_FACE_front",
+          "type": "CAMERA",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_FACE_BASELINE_ALLOWLIST",
+            "MR1_FACE_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_FACE_profile",
+          "type": "CAMERA",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_FACE_BASELINE_ALLOWLIST",
+            "MR1_FACE_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_FACE_three_quarter",
+          "type": "CAMERA",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_FACE_BASELINE_ALLOWLIST",
+            "MR1_FACE_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_FACE_opposite",
+          "type": "CAMERA",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_FACE_BASELINE_ALLOWLIST",
+            "MR1_FACE_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_FACE_Key",
+          "type": "LIGHT",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_FACE_BASELINE_ALLOWLIST",
+            "MR1_FACE_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_FACE_Fill",
+          "type": "LIGHT",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_FACE_BASELINE_ALLOWLIST",
+            "MR1_FACE_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        }
+      ],
+      "collection_exclusions": [
+        {
+          "name": "MR1_FACE_BASELINE_ALLOWLIST",
+          "exclude": false,
+          "hide_viewport": false
+        }
+      ],
+      "cameras": [
+        {
+          "name": "MR1_FACE_front",
+          "matrix_world": [
+            [
+              -1,
+              -1.5099580252808664e-7,
+              1.1399865765455465e-14,
+              0.039000000804662704
+            ],
+            [
+              0,
+              7.549790126404332e-8,
+              1,
+              0.550000011920929
+            ],
+            [
+              -1.5099580252808664e-7,
+              1,
+              -7.549790126404332e-8,
+              1.687000036239624
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "projection": "ORTHO",
+          "ortho_scale": 0.13500000536441803,
+          "lens": 50,
+          "clip": [
+            0.0010000000474974513,
+            20
+          ],
+          "depth_of_field": false
+        },
+        {
+          "name": "MR1_FACE_profile",
+          "matrix_world": [
+            [
+              -4.371138828673793e-8,
+              4.371138828673793e-8,
+              1,
+              0.550000011920929
+            ],
+            [
+              1,
+              1.910685676922942e-15,
+              4.371138828673793e-8,
+              0.02500000037252903
+            ],
+            [
+              0,
+              1,
+              -4.371138828673793e-8,
+              1.687000036239624
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "projection": "ORTHO",
+          "ortho_scale": 0.13500000536441803,
+          "lens": 50,
+          "clip": [
+            0.0010000000474974513,
+            20
+          ],
+          "depth_of_field": false
+        },
+        {
+          "name": "MR1_FACE_three_quarter",
+          "matrix_world": [
+            [
+              -0.8280382752418518,
+              -0.02235591597855091,
+              0.5602257251739502,
+              0.3199999928474426
+            ],
+            [
+              0.5606715679168701,
+              -0.033016908913850784,
+              0.8273797631263733,
+              0.4399999976158142
+            ],
+            [
+              8.902453174641778e-8,
+              0.9992047548294067,
+              0.03987359255552292,
+              1.7070000171661377
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "projection": "ORTHO",
+          "ortho_scale": 0.13500000536441803,
+          "lens": 50,
+          "clip": [
+            0.0010000000474974513,
+            20
+          ],
+          "depth_of_field": false
+        },
+        {
+          "name": "MR1_FACE_opposite",
+          "matrix_world": [
+            [
+              -0.820622980594635,
+              0.02258293330669403,
+              -0.5710236430168152,
+              -0.25
+            ],
+            [
+              -0.5714700222015381,
+              -0.032428693026304245,
+              0.8199819326400757,
+              0.4399999976158142
+            ],
+            [
+              4.6946780685175327e-8,
+              0.9992188811302185,
+              0.039517197757959366,
+              1.7070000171661377
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "projection": "ORTHO",
+          "ortho_scale": 0.13500000536441803,
+          "lens": 50,
+          "clip": [
+            0.0010000000474974513,
+            20
+          ],
+          "depth_of_field": false
+        }
+      ],
+      "lights": [
+        {
+          "name": "MR1_FACE_Key",
+          "matrix_world": [
+            [
+              -0.7472824454307556,
+              0.3438588082790375,
+              -0.5686211585998535,
+              -0.25
+            ],
+            [
+              -0.6645064949989319,
+              -0.38669252395629883,
+              0.6394528746604919,
+              0.3499999940395355
+            ],
+            [
+              -5.40862998832381e-8,
+              0.8557043671607971,
+              0.5174649953842163,
+              1.9500000476837158
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "type": "AREA",
+          "energy": 1.2999999523162842,
+          "size": 0.2800000011920929,
+          "color": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "MR1_FACE_Fill",
+          "matrix_world": [
+            [
+              -0.6479236483573914,
+              -0.1932782083749771,
+              0.7367756962776184,
+              0.2800000011920929
+            ],
+            [
+              0.7617052793502808,
+              -0.16440697014331818,
+              0.6267179846763611,
+              0.23000000417232513
+            ],
+            [
+              1.3507430196568748e-7,
+              0.9672713279724121,
+              0.2537442147731781,
+              1.7699999809265137
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "type": "AREA",
+          "energy": 0.3199999928474426,
+          "size": 0.30000001192092896,
+          "color": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "scene": "MR1_HAIR_PROOF",
+      "active_camera": "MR1_HAIR_three_quarter",
+      "resolution": [
+        900,
+        900,
+        100
+      ],
+      "engine": "CYCLES",
+      "samples": 16,
+      "denoising": true,
+      "world": "MR1_Neutral_World",
+      "world_background_color": [
+        0.17000000178813934,
+        0.17000000178813934,
+        0.17000000178813934,
+        1
+      ],
+      "world_strength": 0.3499999940395355,
+      "view_transform": "Standard",
+      "look": "None",
+      "exposure": 0,
+      "gamma": 1,
+      "material_override": "MR1_Uniform_Clay",
+      "render_allowlist": [
+        "MR1_HAIR_CONTEXT_ADA_Head_Continuous",
+        "MR1_HAIR_CONTEXT_ADA_Neck",
+        "MR1_HAIR_CONTEXT_ADA_Ear_Pinna_L",
+        "MR1_HAIR_CONTEXT_ADA_Ear_Helix_L",
+        "MR1_HAIR_CONTEXT_ADA_Ear_Pinna_R",
+        "MR1_HAIR_CONTEXT_ADA_Ear_Helix_R",
+        "MR1_HAIR_CONTEXT_ADA_Fitted_Eye_L",
+        "MR1_HAIR_CONTEXT_ADA_Fitted_Brow_L",
+        "MR1_HAIR_CONTEXT_ADA_Fitted_Eye_R",
+        "MR1_HAIR_CONTEXT_ADA_Fitted_Brow_R",
+        "MR1_HAIR_CONTEXT_ADA_Hair_Foundation",
+        "MR1_Hair_Leading_Sweep_Cage",
+        "MR1_HAIR_front",
+        "MR1_HAIR_profile",
+        "MR1_HAIR_three_quarter",
+        "MR1_HAIR_rear",
+        "MR1_HAIR_top",
+        "MR1_HAIR_root",
+        "MR1_HAIR_Key",
+        "MR1_HAIR_Fill",
+        "MR1_HAIR_section"
+      ],
+      "objects": [
+        {
+          "name": "MR1_HAIR_CONTEXT_ADA_Head_Continuous",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_CONTEXT_ADA_Neck",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_CONTEXT_ADA_Ear_Pinna_L",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Finite shell thickness",
+              "type": "SOLIDIFY",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_HAIR_CONTEXT_ADA_Ear_Helix_L",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_CONTEXT_ADA_Ear_Pinna_R",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Finite shell thickness",
+              "type": "SOLIDIFY",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_HAIR_CONTEXT_ADA_Ear_Helix_R",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_CONTEXT_ADA_Fitted_Eye_L",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_CONTEXT_ADA_Fitted_Brow_L",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Finite shell thickness",
+              "type": "SOLIDIFY",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            },
+            {
+              "name": "Controlled edge transition",
+              "type": "BEVEL",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_HAIR_CONTEXT_ADA_Fitted_Eye_R",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_CONTEXT_ADA_Fitted_Brow_R",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Finite shell thickness",
+              "type": "SOLIDIFY",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            },
+            {
+              "name": "Controlled edge transition",
+              "type": "BEVEL",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_HAIR_CONTEXT_ADA_Hair_Foundation",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Finite shell thickness",
+              "type": "SOLIDIFY",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_Hair_Leading_Sweep_Cage",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "One subdivision level proof",
+              "type": "SUBSURF",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": 1,
+              "render_levels": 1
+            }
+          ]
+        },
+        {
+          "name": "MR1_HAIR_front",
+          "type": "CAMERA",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST",
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_profile",
+          "type": "CAMERA",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST",
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_three_quarter",
+          "type": "CAMERA",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST",
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_rear",
+          "type": "CAMERA",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST",
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_top",
+          "type": "CAMERA",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST",
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_root",
+          "type": "CAMERA",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST",
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_Key",
+          "type": "LIGHT",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST",
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_Fill",
+          "type": "LIGHT",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST",
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_Control_Cage_Wire",
+          "type": "MESH",
+          "hide_render": true,
+          "hide_viewport": false,
+          "hide_get": true,
+          "collections": [
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Visible control edges",
+              "type": "WIREFRAME",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_HAIR_PART_GUIDE",
+          "type": "EMPTY",
+          "hide_render": true,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_FRONTAL_HAIRLINE_GUIDE",
+          "type": "EMPTY",
+          "hide_render": true,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_TEMPLE_TRANSITION_GUIDE",
+          "type": "EMPTY",
+          "hide_render": true,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_REAR_GATHERING_GUIDE",
+          "type": "EMPTY",
+          "hide_render": true,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_SECTION_DIAGNOSTIC_ONLY",
+          "type": "MESH",
+          "hide_render": true,
+          "hide_viewport": false,
+          "hide_get": true,
+          "collections": [
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_section",
+          "type": "CAMERA",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        }
+      ],
+      "collection_exclusions": [
+        {
+          "name": "MR1_HAIR_CANDIDATE_ALLOWLIST",
+          "exclude": false,
+          "hide_viewport": false
+        }
+      ],
+      "cameras": [
+        {
+          "name": "MR1_HAIR_front",
+          "matrix_world": [
+            [
+              -1,
+              -1.5099580252808664e-7,
+              1.1399865765455465e-14,
+              0
+            ],
+            [
+              0,
+              7.549790126404332e-8,
+              1,
+              0.6499999761581421
+            ],
+            [
+              -1.5099580252808664e-7,
+              1,
+              -7.549790126404332e-8,
+              1.7369999885559082
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "projection": "ORTHO",
+          "ortho_scale": 0.2750000059604645,
+          "lens": 50,
+          "clip": [
+            0.0010000000474974513,
+            20
+          ],
+          "depth_of_field": false
+        },
+        {
+          "name": "MR1_HAIR_profile",
+          "matrix_world": [
+            [
+              -4.371138828673793e-8,
+              4.371138828673793e-8,
+              1,
+              0.6499999761581421
+            ],
+            [
+              1,
+              1.910685676922942e-15,
+              4.371138828673793e-8,
+              -0.019999999552965164
+            ],
+            [
+              0,
+              1,
+              -4.371138828673793e-8,
+              1.7369999885559082
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "projection": "ORTHO",
+          "ortho_scale": 0.2750000059604645,
+          "lens": 50,
+          "clip": [
+            0.0010000000474974513,
+            20
+          ],
+          "depth_of_field": false
+        },
+        {
+          "name": "MR1_HAIR_three_quarter",
+          "matrix_world": [
+            [
+              -0.789352297782898,
+              -0.056300338357686996,
+              0.6113536357879639,
+              0.41999998688697815
+            ],
+            [
+              0.6139405369758606,
+              -0.07238598167896271,
+              0.7860262393951416,
+              0.5199999809265137
+            ],
+            [
+              -1.1140707556478446e-7,
+              0.9957863688468933,
+              0.09170310199260712,
+              1.7999999523162842
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "projection": "ORTHO",
+          "ortho_scale": 0.2750000059604645,
+          "lens": 50,
+          "clip": [
+            0.0010000000474974513,
+            20
+          ],
+          "depth_of_field": false
+        },
+        {
+          "name": "MR1_HAIR_rear",
+          "matrix_world": [
+            [
+              1,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              -1.6292068494294654e-7,
+              -1,
+              -0.6499999761581421
+            ],
+            [
+              0,
+              1,
+              -1.6292068494294654e-7,
+              1.7369999885559082
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "projection": "ORTHO",
+          "ortho_scale": 0.2750000059604645,
+          "lens": 50,
+          "clip": [
+            0.0010000000474974513,
+            20
+          ],
+          "depth_of_field": false
+        },
+        {
+          "name": "MR1_HAIR_top",
+          "matrix_world": [
+            [
+              1,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0,
+              -0.019999999552965164
+            ],
+            [
+              0,
+              0,
+              1,
+              2.380000114440918
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "projection": "ORTHO",
+          "ortho_scale": 0.2750000059604645,
+          "lens": 50,
+          "clip": [
+            0.0010000000474974513,
+            20
+          ],
+          "depth_of_field": false
+        },
+        {
+          "name": "MR1_HAIR_root",
+          "matrix_world": [
+            [
+              -0.9247875213623047,
+              0.3227177560329437,
+              -0.20154714584350586,
+              -0.07999999821186066
+            ],
+            [
+              -0.3804838955402374,
+              -0.7843837141990662,
+              0.489871621131897,
+              0.20000000298023224
+            ],
+            [
+              -3.7566401545063854e-8,
+              0.5297126173973083,
+              0.8481771945953369,
+              2.0999999046325684
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "projection": "ORTHO",
+          "ortho_scale": 0.08500000089406967,
+          "lens": 50,
+          "clip": [
+            0.0010000000474974513,
+            20
+          ],
+          "depth_of_field": false
+        },
+        {
+          "name": "MR1_HAIR_section",
+          "matrix_world": [
+            [
+              -0.05490739643573761,
+              0.6208390593528748,
+              -0.7820128202438354,
+              -0.3559064269065857
+            ],
+            [
+              -0.9984914660453796,
+              -0.03414023295044899,
+              0.04300310090184212,
+              0.06500158458948135
+            ],
+            [
+              -9.525027877543835e-8,
+              0.7831943035125732,
+              0.6217770576477051,
+              2.0722885131835938
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "projection": "ORTHO",
+          "ortho_scale": 0.06700000166893005,
+          "lens": 50,
+          "clip": [
+            0.0010000000474974513,
+            20
+          ],
+          "depth_of_field": false
+        }
+      ],
+      "lights": [
+        {
+          "name": "MR1_HAIR_Key",
+          "matrix_world": [
+            [
+              -0.8192318677902222,
+              0.3163967430591583,
+              -0.4782804846763611,
+              -0.2800000011920929
+            ],
+            [
+              -0.5734624266624451,
+              -0.45199528336524963,
+              0.6832577586174011,
+              0.3799999952316284
+            ],
+            [
+              3.856584385175665e-9,
+              0.8340224027633667,
+              0.5517305731773376,
+              2.059999942779541
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "type": "AREA",
+          "energy": 3.4000000953674316,
+          "size": 0.3499999940395355,
+          "color": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "MR1_HAIR_Fill",
+          "matrix_world": [
+            [
+              -0.6305925846099854,
+              -0.1707688271999359,
+              0.7570937871932983,
+              0.3199999928474426
+            ],
+            [
+              0.7761140465736389,
+              -0.13874965906143188,
+              0.615138590335846,
+              0.23999999463558197
+            ],
+            [
+              1.1981086345258518e-8,
+              0.9754929542541504,
+              0.22003057599067688,
+              1.8300000429153442
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "type": "AREA",
+          "energy": 0.800000011920929,
+          "size": 0.3499999940395355,
+          "color": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "scene": "MR1_HAIR_BASELINE_REVIEW",
+      "active_camera": "MR1_HAIR_root",
+      "resolution": [
+        900,
+        900,
+        100
+      ],
+      "engine": "CYCLES",
+      "samples": 16,
+      "denoising": true,
+      "world": "MR1_Neutral_World",
+      "world_background_color": [
+        0.17000000178813934,
+        0.17000000178813934,
+        0.17000000178813934,
+        1
+      ],
+      "world_strength": 0.3499999940395355,
+      "view_transform": "Standard",
+      "look": "None",
+      "exposure": 0,
+      "gamma": 1,
+      "material_override": "MR1_Uniform_Clay",
+      "render_allowlist": [
+        "MR1_HAIR_BASE_ADA_Head_Continuous",
+        "MR1_HAIR_BASE_ADA_Neck",
+        "MR1_HAIR_BASE_ADA_Ear_Pinna_L",
+        "MR1_HAIR_BASE_ADA_Ear_Helix_L",
+        "MR1_HAIR_BASE_ADA_Ear_Pinna_R",
+        "MR1_HAIR_BASE_ADA_Ear_Helix_R",
+        "MR1_HAIR_BASE_ADA_Fitted_Eye_L",
+        "MR1_HAIR_BASE_ADA_Fitted_Brow_L",
+        "MR1_HAIR_BASE_ADA_Fitted_Eye_R",
+        "MR1_HAIR_BASE_ADA_Fitted_Brow_R",
+        "MR1_HAIR_BASE_ADA_Hair_Foundation",
+        "MR1_HAIR_BASE_ADA_Temple_Loose_Lock",
+        "MR1_HAIR_BASE_ADA_Braid_Strand_0",
+        "MR1_HAIR_BASE_ADA_Braid_Strand_1",
+        "MR1_HAIR_BASE_ADA_Braid_Strand_2",
+        "MR1_HAIR_BASE_ADA_Braid_Tail",
+        "MR1_HAIR_BASE_ADA_Overlapping_Lock_00_0",
+        "MR1_HAIR_BASE_ADA_Overlapping_Lock_00_1",
+        "MR1_HAIR_BASE_ADA_Overlapping_Lock_00_2",
+        "MR1_HAIR_BASE_ADA_Overlapping_Lock_01_0",
+        "MR1_HAIR_BASE_ADA_Overlapping_Lock_01_1",
+        "MR1_HAIR_BASE_ADA_Overlapping_Lock_01_2",
+        "MR1_HAIR_BASE_ADA_Overlapping_Lock_02_0",
+        "MR1_HAIR_BASE_ADA_Overlapping_Lock_02_1",
+        "MR1_HAIR_BASE_ADA_Overlapping_Lock_03_0",
+        "MR1_HAIR_BASE_ADA_Overlapping_Lock_03_1",
+        "MR1_HAIR_BASE_ADA_Overlapping_Lock_04_0",
+        "MR1_HAIR_BASE_ADA_Overlapping_Lock_04_1",
+        "MR1_HAIR_BASE_ADA_Overlapping_Lock_05_0",
+        "MR1_HAIR_BASE_ADA_Overlapping_Lock_05_1",
+        "MR1_HAIR_BASE_ADA_Overlapping_Lock_06_0",
+        "MR1_HAIR_BASE_ADA_Overlapping_Lock_06_1",
+        "MR1_HAIR_BASE_ADA_Overlapping_Lock_07_0",
+        "MR1_HAIR_BASE_ADA_Overlapping_Lock_07_1",
+        "MR1_HAIR_BASE_ADA_Temporal_Sweep_-1_0",
+        "MR1_HAIR_BASE_ADA_Temporal_Sweep_-1_1",
+        "MR1_HAIR_BASE_ADA_Temporal_Sweep_-1_2",
+        "MR1_HAIR_BASE_ADA_Temporal_Sweep_-1_3",
+        "MR1_HAIR_BASE_ADA_Temporal_Sweep_1_0",
+        "MR1_HAIR_BASE_ADA_Temporal_Sweep_1_1",
+        "MR1_HAIR_BASE_ADA_Temporal_Sweep_1_2",
+        "MR1_HAIR_BASE_ADA_Temporal_Sweep_1_3",
+        "MR1_HAIR_front",
+        "MR1_HAIR_profile",
+        "MR1_HAIR_three_quarter",
+        "MR1_HAIR_rear",
+        "MR1_HAIR_top",
+        "MR1_HAIR_root",
+        "MR1_HAIR_Key",
+        "MR1_HAIR_Fill"
+      ],
+      "objects": [
+        {
+          "name": "MR1_HAIR_BASE_ADA_Head_Continuous",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Neck",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Ear_Pinna_L",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Finite shell thickness",
+              "type": "SOLIDIFY",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Ear_Helix_L",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Ear_Pinna_R",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Finite shell thickness",
+              "type": "SOLIDIFY",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Ear_Helix_R",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Fitted_Eye_L",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Fitted_Brow_L",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Finite shell thickness",
+              "type": "SOLIDIFY",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            },
+            {
+              "name": "Controlled edge transition",
+              "type": "BEVEL",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Fitted_Eye_R",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Fitted_Brow_R",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Finite shell thickness",
+              "type": "SOLIDIFY",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            },
+            {
+              "name": "Controlled edge transition",
+              "type": "BEVEL",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Hair_Foundation",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Finite shell thickness",
+              "type": "SOLIDIFY",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Temple_Loose_Lock",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Braid_Strand_0",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Braid_Strand_1",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Braid_Strand_2",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Braid_Tail",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Overlapping_Lock_00_0",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Overlapping_Lock_00_1",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Overlapping_Lock_00_2",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Overlapping_Lock_01_0",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Overlapping_Lock_01_1",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Overlapping_Lock_01_2",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Overlapping_Lock_02_0",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Overlapping_Lock_02_1",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Overlapping_Lock_03_0",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Overlapping_Lock_03_1",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Overlapping_Lock_04_0",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Overlapping_Lock_04_1",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Overlapping_Lock_05_0",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Overlapping_Lock_05_1",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Overlapping_Lock_06_0",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Overlapping_Lock_06_1",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Overlapping_Lock_07_0",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Overlapping_Lock_07_1",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Temporal_Sweep_-1_0",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Temporal_Sweep_-1_1",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Temporal_Sweep_-1_2",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Temporal_Sweep_-1_3",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Temporal_Sweep_1_0",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Temporal_Sweep_1_1",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Temporal_Sweep_1_2",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_BASE_ADA_Temporal_Sweep_1_3",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_front",
+          "type": "CAMERA",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST",
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_profile",
+          "type": "CAMERA",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST",
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_three_quarter",
+          "type": "CAMERA",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST",
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_rear",
+          "type": "CAMERA",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST",
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_top",
+          "type": "CAMERA",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST",
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_root",
+          "type": "CAMERA",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST",
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_Key",
+          "type": "LIGHT",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST",
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_HAIR_Fill",
+          "type": "LIGHT",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_HAIR_BASELINE_ALLOWLIST",
+            "MR1_HAIR_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        }
+      ],
+      "collection_exclusions": [
+        {
+          "name": "MR1_HAIR_BASELINE_ALLOWLIST",
+          "exclude": false,
+          "hide_viewport": false
+        }
+      ],
+      "cameras": [
+        {
+          "name": "MR1_HAIR_front",
+          "matrix_world": [
+            [
+              -1,
+              -1.5099580252808664e-7,
+              1.1399865765455465e-14,
+              0
+            ],
+            [
+              0,
+              7.549790126404332e-8,
+              1,
+              0.6499999761581421
+            ],
+            [
+              -1.5099580252808664e-7,
+              1,
+              -7.549790126404332e-8,
+              1.7369999885559082
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "projection": "ORTHO",
+          "ortho_scale": 0.2750000059604645,
+          "lens": 50,
+          "clip": [
+            0.0010000000474974513,
+            20
+          ],
+          "depth_of_field": false
+        },
+        {
+          "name": "MR1_HAIR_profile",
+          "matrix_world": [
+            [
+              -4.371138828673793e-8,
+              4.371138828673793e-8,
+              1,
+              0.6499999761581421
+            ],
+            [
+              1,
+              1.910685676922942e-15,
+              4.371138828673793e-8,
+              -0.019999999552965164
+            ],
+            [
+              0,
+              1,
+              -4.371138828673793e-8,
+              1.7369999885559082
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "projection": "ORTHO",
+          "ortho_scale": 0.2750000059604645,
+          "lens": 50,
+          "clip": [
+            0.0010000000474974513,
+            20
+          ],
+          "depth_of_field": false
+        },
+        {
+          "name": "MR1_HAIR_three_quarter",
+          "matrix_world": [
+            [
+              -0.789352297782898,
+              -0.056300338357686996,
+              0.6113536357879639,
+              0.41999998688697815
+            ],
+            [
+              0.6139405369758606,
+              -0.07238598167896271,
+              0.7860262393951416,
+              0.5199999809265137
+            ],
+            [
+              -1.1140707556478446e-7,
+              0.9957863688468933,
+              0.09170310199260712,
+              1.7999999523162842
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "projection": "ORTHO",
+          "ortho_scale": 0.2750000059604645,
+          "lens": 50,
+          "clip": [
+            0.0010000000474974513,
+            20
+          ],
+          "depth_of_field": false
+        },
+        {
+          "name": "MR1_HAIR_rear",
+          "matrix_world": [
+            [
+              1,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              -1.6292068494294654e-7,
+              -1,
+              -0.6499999761581421
+            ],
+            [
+              0,
+              1,
+              -1.6292068494294654e-7,
+              1.7369999885559082
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "projection": "ORTHO",
+          "ortho_scale": 0.2750000059604645,
+          "lens": 50,
+          "clip": [
+            0.0010000000474974513,
+            20
+          ],
+          "depth_of_field": false
+        },
+        {
+          "name": "MR1_HAIR_top",
+          "matrix_world": [
+            [
+              1,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0,
+              -0.019999999552965164
+            ],
+            [
+              0,
+              0,
+              1,
+              2.380000114440918
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "projection": "ORTHO",
+          "ortho_scale": 0.2750000059604645,
+          "lens": 50,
+          "clip": [
+            0.0010000000474974513,
+            20
+          ],
+          "depth_of_field": false
+        },
+        {
+          "name": "MR1_HAIR_root",
+          "matrix_world": [
+            [
+              -0.9247875213623047,
+              0.3227177560329437,
+              -0.20154714584350586,
+              -0.07999999821186066
+            ],
+            [
+              -0.3804838955402374,
+              -0.7843837141990662,
+              0.489871621131897,
+              0.20000000298023224
+            ],
+            [
+              -3.7566401545063854e-8,
+              0.5297126173973083,
+              0.8481771945953369,
+              2.0999999046325684
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "projection": "ORTHO",
+          "ortho_scale": 0.08500000089406967,
+          "lens": 50,
+          "clip": [
+            0.0010000000474974513,
+            20
+          ],
+          "depth_of_field": false
+        }
+      ],
+      "lights": [
+        {
+          "name": "MR1_HAIR_Key",
+          "matrix_world": [
+            [
+              -0.8192318677902222,
+              0.3163967430591583,
+              -0.4782804846763611,
+              -0.2800000011920929
+            ],
+            [
+              -0.5734624266624451,
+              -0.45199528336524963,
+              0.6832577586174011,
+              0.3799999952316284
+            ],
+            [
+              3.856584385175665e-9,
+              0.8340224027633667,
+              0.5517305731773376,
+              2.059999942779541
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "type": "AREA",
+          "energy": 3.4000000953674316,
+          "size": 0.3499999940395355,
+          "color": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "MR1_HAIR_Fill",
+          "matrix_world": [
+            [
+              -0.6305925846099854,
+              -0.1707688271999359,
+              0.7570937871932983,
+              0.3199999928474426
+            ],
+            [
+              0.7761140465736389,
+              -0.13874965906143188,
+              0.615138590335846,
+              0.23999999463558197
+            ],
+            [
+              1.1981086345258518e-8,
+              0.9754929542541504,
+              0.22003057599067688,
+              1.8300000429153442
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "type": "AREA",
+          "energy": 0.800000011920929,
+          "size": 0.3499999940395355,
+          "color": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "scene": "MR1_CONTEXT_HEAD_CANDIDATE",
+      "active_camera": "MR1_CONTEXT_three_quarter",
+      "resolution": [
+        1000,
+        1000,
+        100
+      ],
+      "engine": "CYCLES",
+      "samples": 16,
+      "denoising": true,
+      "world": "MR1_Neutral_World",
+      "world_background_color": [
+        0.17000000178813934,
+        0.17000000178813934,
+        0.17000000178813934,
+        1
+      ],
+      "world_strength": 0.3499999940395355,
+      "view_transform": "Standard",
+      "look": "None",
+      "exposure": 0,
+      "gamma": 1,
+      "material_override": "MR1_Uniform_Clay",
+      "render_allowlist": [
+        "MR1_CONTEXT_ADA_Neck",
+        "MR1_CONTEXT_ADA_Ear_Pinna_L",
+        "MR1_CONTEXT_ADA_Ear_Helix_L",
+        "MR1_CONTEXT_ADA_Ear_Pinna_R",
+        "MR1_CONTEXT_ADA_Ear_Helix_R",
+        "MR1_CONTEXT_ADA_Fitted_Brow_L",
+        "MR1_CONTEXT_ADA_Fitted_Brow_R",
+        "MR1_CONTEXT_ADA_Torso_Undercoat",
+        "MR1_CONTEXT_ADA_Padded_Collar",
+        "MR1_CONTEXT_ADA_Study_Sleeve_R",
+        "MR1_CONTEXT_ADA_Collar_Fitted_Roll",
+        "MR1_CONTEXT_ADA_Breastplate",
+        "MR1_CONTEXT_ADA_Backplate",
+        "MR1_CONTEXT_ADA_Upper_Attachment_L",
+        "MR1_CONTEXT_ADA_Upper_Attachment_R",
+        "MR1_CONTEXT_ADA_Cupped_Shoulder_R_1",
+        "MR1_CONTEXT_ADA_Cupped_Shoulder_R_2",
+        "MR1_CONTEXT_ADA_Cupped_Shoulder_R_3",
+        "MR1_CONTEXT_ADA_Braid_Strand_0",
+        "MR1_CONTEXT_ADA_Braid_Strand_1",
+        "MR1_CONTEXT_ADA_Braid_Strand_2",
+        "MR1_CONTEXT_ADA_Braid_Tail",
+        "MR1_CONTEXT_Globe_R",
+        "MR1_CONTEXT_Globe_L",
+        "MR1_CONTEXT_Hair_Foundation",
+        "MR1_CONTEXT_Hair_Leading_Sweep",
+        "MR1_CONTEXT_front",
+        "MR1_CONTEXT_profile",
+        "MR1_CONTEXT_three_quarter",
+        "MR1_CONTEXT_opposite",
+        "MR1_CONTEXT_rear",
+        "MR1_CONTEXT_top",
+        "MR1_CONTEXT_Key",
+        "MR1_CONTEXT_Fill",
+        "MR1_CONTEXT_Joined_Head_Diagnostic",
+        "MR1_CONTEXT_Hair_Counter_Sweep",
+        "MR1_CONTEXT_Hair_Crown_Rear",
+        "MR1_CONTEXT_Hair_Rear_Gathering"
+      ],
+      "objects": [
+        {
+          "name": "MR1_CONTEXT_Retained_Head_Outside_Orbital_Regions",
+          "type": "MESH",
+          "hide_render": true,
+          "hide_viewport": false,
+          "hide_get": true,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_ADA_Neck",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_ADA_Ear_Pinna_L",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Finite shell thickness",
+              "type": "SOLIDIFY",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_CONTEXT_ADA_Ear_Helix_L",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_ADA_Ear_Pinna_R",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Finite shell thickness",
+              "type": "SOLIDIFY",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_CONTEXT_ADA_Ear_Helix_R",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_ADA_Fitted_Brow_L",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Finite shell thickness",
+              "type": "SOLIDIFY",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            },
+            {
+              "name": "Controlled edge transition",
+              "type": "BEVEL",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_CONTEXT_ADA_Fitted_Brow_R",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Finite shell thickness",
+              "type": "SOLIDIFY",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            },
+            {
+              "name": "Controlled edge transition",
+              "type": "BEVEL",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_CONTEXT_ADA_Torso_Undercoat",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_ADA_Padded_Collar",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Rounded padded borders",
+              "type": "BEVEL",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_CONTEXT_ADA_Study_Sleeve_R",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_ADA_Collar_Fitted_Roll",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_ADA_Breastplate",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Finite shell thickness",
+              "type": "SOLIDIFY",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            },
+            {
+              "name": "Controlled edge transition",
+              "type": "BEVEL",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_CONTEXT_ADA_Backplate",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Finite shell thickness",
+              "type": "SOLIDIFY",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            },
+            {
+              "name": "Controlled edge transition",
+              "type": "BEVEL",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_CONTEXT_ADA_Upper_Attachment_L",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_ADA_Upper_Attachment_R",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_ADA_Cupped_Shoulder_R_1",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Finite shell thickness",
+              "type": "SOLIDIFY",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            },
+            {
+              "name": "Controlled edge transition",
+              "type": "BEVEL",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_CONTEXT_ADA_Cupped_Shoulder_R_2",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Finite shell thickness",
+              "type": "SOLIDIFY",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            },
+            {
+              "name": "Controlled edge transition",
+              "type": "BEVEL",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_CONTEXT_ADA_Cupped_Shoulder_R_3",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Finite shell thickness",
+              "type": "SOLIDIFY",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            },
+            {
+              "name": "Controlled edge transition",
+              "type": "BEVEL",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_CONTEXT_ADA_Braid_Strand_0",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_ADA_Braid_Strand_1",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_ADA_Braid_Strand_2",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_ADA_Braid_Tail",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_Orbital_Cage_R",
+          "type": "MESH",
+          "hide_render": true,
+          "hide_viewport": false,
+          "hide_get": true,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "One subdivision level proof",
+              "type": "SUBSURF",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": 1,
+              "render_levels": 1
+            }
+          ]
+        },
+        {
+          "name": "MR1_CONTEXT_Orbital_Cage_L",
+          "type": "MESH",
+          "hide_render": true,
+          "hide_viewport": false,
+          "hide_get": true,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "One subdivision level proof",
+              "type": "SUBSURF",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": 1,
+              "render_levels": 1
+            }
+          ]
+        },
+        {
+          "name": "MR1_CONTEXT_Globe_R",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_Globe_L",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_Hair_Foundation",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Finite shell thickness",
+              "type": "SOLIDIFY",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_CONTEXT_Hair_Leading_Sweep",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "One subdivision level proof",
+              "type": "SUBSURF",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": 1,
+              "render_levels": 1
+            }
+          ]
+        },
+        {
+          "name": "MR1_CONTEXT_front",
+          "type": "CAMERA",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST",
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_profile",
+          "type": "CAMERA",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST",
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_three_quarter",
+          "type": "CAMERA",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST",
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_opposite",
+          "type": "CAMERA",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST",
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_rear",
+          "type": "CAMERA",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST",
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_top",
+          "type": "CAMERA",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST",
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_Key",
+          "type": "LIGHT",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST",
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_Fill",
+          "type": "LIGHT",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST",
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_Two_Eye_Source_Cage",
+          "type": "MESH",
+          "hide_render": true,
+          "hide_viewport": false,
+          "hide_get": true,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "One level for contextual join",
+              "type": "SUBSURF",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": 1,
+              "render_levels": 1
+            }
+          ]
+        },
+        {
+          "name": "MR1_CONTEXT_Joined_Head_Diagnostic",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_Hair_Counter_Sweep",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "One level broad mass preview",
+              "type": "SUBSURF",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": 1,
+              "render_levels": 1
+            }
+          ]
+        },
+        {
+          "name": "MR1_CONTEXT_Hair_Crown_Rear",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "One level broad mass preview",
+              "type": "SUBSURF",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": 1,
+              "render_levels": 1
+            }
+          ]
+        },
+        {
+          "name": "MR1_CONTEXT_Hair_Rear_Gathering",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "One level broad mass preview",
+              "type": "SUBSURF",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": 1,
+              "render_levels": 1
+            }
+          ]
+        },
+        {
+          "name": "MR1_CONTEXT_Source_Cage_Wire",
+          "type": "MESH",
+          "hide_render": true,
+          "hide_viewport": false,
+          "hide_get": true,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Source cage edges",
+              "type": "WIREFRAME",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_CONTEXT_Join_Diagnostic_Wire",
+          "type": "MESH",
+          "hide_render": true,
+          "hide_viewport": false,
+          "hide_get": true,
+          "collections": [
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Context bridge edges",
+              "type": "WIREFRAME",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        }
+      ],
+      "collection_exclusions": [
+        {
+          "name": "MR1_CONTEXT_CANDIDATE_ALLOWLIST",
+          "exclude": false,
+          "hide_viewport": false
+        }
+      ],
+      "cameras": [
+        {
+          "name": "MR1_CONTEXT_front",
+          "matrix_world": [
+            [
+              -1,
+              -1.5099580252808664e-7,
+              1.1399865765455465e-14,
+              0
+            ],
+            [
+              0,
+              7.549790126404332e-8,
+              1,
+              0.699999988079071
+            ],
+            [
+              -1.5099580252808664e-7,
+              1,
+              -7.549790126404332e-8,
+              1.7039999961853027
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "projection": "ORTHO",
+          "ortho_scale": 0.3400000035762787,
+          "lens": 50,
+          "clip": [
+            0.0010000000474974513,
+            20
+          ],
+          "depth_of_field": false
+        },
+        {
+          "name": "MR1_CONTEXT_profile",
+          "matrix_world": [
+            [
+              -4.371138828673793e-8,
+              4.371138828673793e-8,
+              1,
+              0.699999988079071
+            ],
+            [
+              1,
+              1.910685676922942e-15,
+              4.371138828673793e-8,
+              -0.009999999776482582
+            ],
+            [
+              0,
+              1,
+              -4.371138828673793e-8,
+              1.7039999961853027
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "projection": "ORTHO",
+          "ortho_scale": 0.3400000035762787,
+          "lens": 50,
+          "clip": [
+            0.0010000000474974513,
+            20
+          ],
+          "depth_of_field": false
+        },
+        {
+          "name": "MR1_CONTEXT_three_quarter",
+          "matrix_world": [
+            [
+              -0.7951222658157349,
+              -0.04968710243701935,
+              0.6044102907180786,
+              0.44999998807907104
+            ],
+            [
+              0.6064491271972656,
+              -0.06514527648687363,
+              0.7924490571022034,
+              0.5799999833106995
+            ],
+            [
+              -2.4376566543082845e-8,
+              0.9966380000114441,
+              0.08193115890026093,
+              1.7649999856948853
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "projection": "ORTHO",
+          "ortho_scale": 0.3400000035762787,
+          "lens": 50,
+          "clip": [
+            0.0010000000474974513,
+            20
+          ],
+          "depth_of_field": false
+        },
+        {
+          "name": "MR1_CONTEXT_opposite",
+          "matrix_world": [
+            [
+              -0.7951222658157349,
+              0.04968710243701935,
+              -0.6044102907180786,
+              -0.44999998807907104
+            ],
+            [
+              -0.6064491271972656,
+              -0.06514527648687363,
+              0.7924490571022034,
+              0.5799999833106995
+            ],
+            [
+              2.4376566543082845e-8,
+              0.9966380000114441,
+              0.08193115890026093,
+              1.7649999856948853
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "projection": "ORTHO",
+          "ortho_scale": 0.3400000035762787,
+          "lens": 50,
+          "clip": [
+            0.0010000000474974513,
+            20
+          ],
+          "depth_of_field": false
+        },
+        {
+          "name": "MR1_CONTEXT_rear",
+          "matrix_world": [
+            [
+              1,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              -1.6292068494294654e-7,
+              -1,
+              -0.699999988079071
+            ],
+            [
+              0,
+              1,
+              -1.6292068494294654e-7,
+              1.7039999961853027
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "projection": "ORTHO",
+          "ortho_scale": 0.3400000035762787,
+          "lens": 50,
+          "clip": [
+            0.0010000000474974513,
+            20
+          ],
+          "depth_of_field": false
+        },
+        {
+          "name": "MR1_CONTEXT_top",
+          "matrix_world": [
+            [
+              1,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0,
+              -0.009999999776482582
+            ],
+            [
+              0,
+              0,
+              1,
+              2.4000000953674316
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "projection": "ORTHO",
+          "ortho_scale": 0.3400000035762787,
+          "lens": 50,
+          "clip": [
+            0.0010000000474974513,
+            20
+          ],
+          "depth_of_field": false
+        }
+      ],
+      "lights": [
+        {
+          "name": "MR1_CONTEXT_Key",
+          "matrix_world": [
+            [
+              -0.8123238682746887,
+              0.34737199544906616,
+              -0.46846839785575867,
+              -0.2800000011920929
+            ],
+            [
+              -0.5832065939903259,
+              -0.483839750289917,
+              0.652509868144989,
+              0.3799999952316284
+            ],
+            [
+              3.9954439756684224e-8,
+              0.8032631874084473,
+              0.5956242084503174,
+              2.059999942779541
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "type": "AREA",
+          "energy": 3.4000000953674316,
+          "size": 0.3499999940395355,
+          "color": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "MR1_CONTEXT_Fill",
+          "matrix_world": [
+            [
+              -0.6156441569328308,
+              -0.2335285246372223,
+              0.7526265382766724,
+              0.3199999928474426
+            ],
+            [
+              0.7880242466926575,
+              -0.18244412541389465,
+              0.5879896879196167,
+              0.23999999463558197
+            ],
+            [
+              -8.265165263310337e-8,
+              0.9550803899765015,
+              0.2963468134403229,
+              1.8300000429153442
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "type": "AREA",
+          "energy": 0.800000011920929,
+          "size": 0.3499999940395355,
+          "color": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "scene": "MR1_CONTEXT_BASELINE_REVIEW",
+      "active_camera": "MR1_CONTEXT_three_quarter",
+      "resolution": [
+        1000,
+        1000,
+        100
+      ],
+      "engine": "CYCLES",
+      "samples": 16,
+      "denoising": true,
+      "world": "MR1_Neutral_World",
+      "world_background_color": [
+        0.17000000178813934,
+        0.17000000178813934,
+        0.17000000178813934,
+        1
+      ],
+      "world_strength": 0.3499999940395355,
+      "view_transform": "Standard",
+      "look": "None",
+      "exposure": 0,
+      "gamma": 1,
+      "material_override": "MR1_Uniform_Clay",
+      "render_allowlist": [
+        "MR1_CONTEXT_BASE_ADA_Head_Continuous",
+        "MR1_CONTEXT_BASE_ADA_Neck",
+        "MR1_CONTEXT_BASE_ADA_Ear_Pinna_L",
+        "MR1_CONTEXT_BASE_ADA_Ear_Helix_L",
+        "MR1_CONTEXT_BASE_ADA_Ear_Pinna_R",
+        "MR1_CONTEXT_BASE_ADA_Ear_Helix_R",
+        "MR1_CONTEXT_BASE_ADA_Fitted_Eye_L",
+        "MR1_CONTEXT_BASE_ADA_Fitted_Brow_L",
+        "MR1_CONTEXT_BASE_ADA_Fitted_Eye_R",
+        "MR1_CONTEXT_BASE_ADA_Fitted_Brow_R",
+        "MR1_CONTEXT_BASE_ADA_Torso_Undercoat",
+        "MR1_CONTEXT_BASE_ADA_Padded_Collar",
+        "MR1_CONTEXT_BASE_ADA_Study_Sleeve_R",
+        "MR1_CONTEXT_BASE_ADA_Collar_Fitted_Roll",
+        "MR1_CONTEXT_BASE_ADA_Hair_Foundation",
+        "MR1_CONTEXT_BASE_ADA_Temple_Loose_Lock",
+        "MR1_CONTEXT_BASE_ADA_Braid_Strand_0",
+        "MR1_CONTEXT_BASE_ADA_Braid_Strand_1",
+        "MR1_CONTEXT_BASE_ADA_Braid_Strand_2",
+        "MR1_CONTEXT_BASE_ADA_Braid_Tail",
+        "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_00_0",
+        "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_00_1",
+        "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_00_2",
+        "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_01_0",
+        "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_01_1",
+        "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_01_2",
+        "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_02_0",
+        "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_02_1",
+        "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_03_0",
+        "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_03_1",
+        "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_04_0",
+        "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_04_1",
+        "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_05_0",
+        "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_05_1",
+        "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_06_0",
+        "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_06_1",
+        "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_07_0",
+        "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_07_1",
+        "MR1_CONTEXT_BASE_ADA_Temporal_Sweep_-1_0",
+        "MR1_CONTEXT_BASE_ADA_Temporal_Sweep_-1_1",
+        "MR1_CONTEXT_BASE_ADA_Temporal_Sweep_-1_2",
+        "MR1_CONTEXT_BASE_ADA_Temporal_Sweep_-1_3",
+        "MR1_CONTEXT_BASE_ADA_Temporal_Sweep_1_0",
+        "MR1_CONTEXT_BASE_ADA_Temporal_Sweep_1_1",
+        "MR1_CONTEXT_BASE_ADA_Temporal_Sweep_1_2",
+        "MR1_CONTEXT_BASE_ADA_Temporal_Sweep_1_3",
+        "MR1_CONTEXT_BASE_ADA_Breastplate",
+        "MR1_CONTEXT_BASE_ADA_Backplate",
+        "MR1_CONTEXT_BASE_ADA_Upper_Attachment_L",
+        "MR1_CONTEXT_BASE_ADA_Upper_Attachment_R",
+        "MR1_CONTEXT_BASE_ADA_Cupped_Shoulder_R_1",
+        "MR1_CONTEXT_BASE_ADA_Cupped_Shoulder_R_2",
+        "MR1_CONTEXT_BASE_ADA_Cupped_Shoulder_R_3",
+        "MR1_CONTEXT_front",
+        "MR1_CONTEXT_profile",
+        "MR1_CONTEXT_three_quarter",
+        "MR1_CONTEXT_opposite",
+        "MR1_CONTEXT_rear",
+        "MR1_CONTEXT_top",
+        "MR1_CONTEXT_Key",
+        "MR1_CONTEXT_Fill"
+      ],
+      "objects": [
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Head_Continuous",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Neck",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Ear_Pinna_L",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Finite shell thickness",
+              "type": "SOLIDIFY",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Ear_Helix_L",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Ear_Pinna_R",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Finite shell thickness",
+              "type": "SOLIDIFY",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Ear_Helix_R",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Fitted_Eye_L",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Fitted_Brow_L",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Finite shell thickness",
+              "type": "SOLIDIFY",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            },
+            {
+              "name": "Controlled edge transition",
+              "type": "BEVEL",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Fitted_Eye_R",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Fitted_Brow_R",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Finite shell thickness",
+              "type": "SOLIDIFY",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            },
+            {
+              "name": "Controlled edge transition",
+              "type": "BEVEL",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Torso_Undercoat",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Padded_Collar",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Rounded padded borders",
+              "type": "BEVEL",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Study_Sleeve_R",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Collar_Fitted_Roll",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Hair_Foundation",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Finite shell thickness",
+              "type": "SOLIDIFY",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Temple_Loose_Lock",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Braid_Strand_0",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Braid_Strand_1",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Braid_Strand_2",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Braid_Tail",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_00_0",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_00_1",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_00_2",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_01_0",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_01_1",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_01_2",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_02_0",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_02_1",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_03_0",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_03_1",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_04_0",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_04_1",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_05_0",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_05_1",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_06_0",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_06_1",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_07_0",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Overlapping_Lock_07_1",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Temporal_Sweep_-1_0",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Temporal_Sweep_-1_1",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Temporal_Sweep_-1_2",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Temporal_Sweep_-1_3",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Temporal_Sweep_1_0",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Temporal_Sweep_1_1",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Temporal_Sweep_1_2",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Temporal_Sweep_1_3",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Breastplate",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Finite shell thickness",
+              "type": "SOLIDIFY",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            },
+            {
+              "name": "Controlled edge transition",
+              "type": "BEVEL",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Backplate",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Finite shell thickness",
+              "type": "SOLIDIFY",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            },
+            {
+              "name": "Controlled edge transition",
+              "type": "BEVEL",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Upper_Attachment_L",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Upper_Attachment_R",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Cupped_Shoulder_R_1",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Finite shell thickness",
+              "type": "SOLIDIFY",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            },
+            {
+              "name": "Controlled edge transition",
+              "type": "BEVEL",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Cupped_Shoulder_R_2",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Finite shell thickness",
+              "type": "SOLIDIFY",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            },
+            {
+              "name": "Controlled edge transition",
+              "type": "BEVEL",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_CONTEXT_BASE_ADA_Cupped_Shoulder_R_3",
+          "type": "MESH",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST"
+          ],
+          "modifiers": [
+            {
+              "name": "Finite shell thickness",
+              "type": "SOLIDIFY",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            },
+            {
+              "name": "Controlled edge transition",
+              "type": "BEVEL",
+              "show_viewport": true,
+              "show_render": true,
+              "levels": null,
+              "render_levels": null
+            }
+          ]
+        },
+        {
+          "name": "MR1_CONTEXT_front",
+          "type": "CAMERA",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST",
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_profile",
+          "type": "CAMERA",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST",
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_three_quarter",
+          "type": "CAMERA",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST",
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_opposite",
+          "type": "CAMERA",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST",
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_rear",
+          "type": "CAMERA",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST",
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_top",
+          "type": "CAMERA",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST",
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_Key",
+          "type": "LIGHT",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST",
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MR1_CONTEXT_Fill",
+          "type": "LIGHT",
+          "hide_render": false,
+          "hide_viewport": false,
+          "hide_get": false,
+          "collections": [
+            "MR1_CONTEXT_BASELINE_ALLOWLIST",
+            "MR1_CONTEXT_CANDIDATE_ALLOWLIST"
+          ],
+          "modifiers": []
+        }
+      ],
+      "collection_exclusions": [
+        {
+          "name": "MR1_CONTEXT_BASELINE_ALLOWLIST",
+          "exclude": false,
+          "hide_viewport": false
+        }
+      ],
+      "cameras": [
+        {
+          "name": "MR1_CONTEXT_front",
+          "matrix_world": [
+            [
+              -1,
+              -1.5099580252808664e-7,
+              1.1399865765455465e-14,
+              0
+            ],
+            [
+              0,
+              7.549790126404332e-8,
+              1,
+              0.699999988079071
+            ],
+            [
+              -1.5099580252808664e-7,
+              1,
+              -7.549790126404332e-8,
+              1.7039999961853027
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "projection": "ORTHO",
+          "ortho_scale": 0.3400000035762787,
+          "lens": 50,
+          "clip": [
+            0.0010000000474974513,
+            20
+          ],
+          "depth_of_field": false
+        },
+        {
+          "name": "MR1_CONTEXT_profile",
+          "matrix_world": [
+            [
+              -4.371138828673793e-8,
+              4.371138828673793e-8,
+              1,
+              0.699999988079071
+            ],
+            [
+              1,
+              1.910685676922942e-15,
+              4.371138828673793e-8,
+              -0.009999999776482582
+            ],
+            [
+              0,
+              1,
+              -4.371138828673793e-8,
+              1.7039999961853027
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "projection": "ORTHO",
+          "ortho_scale": 0.3400000035762787,
+          "lens": 50,
+          "clip": [
+            0.0010000000474974513,
+            20
+          ],
+          "depth_of_field": false
+        },
+        {
+          "name": "MR1_CONTEXT_three_quarter",
+          "matrix_world": [
+            [
+              -0.7951222658157349,
+              -0.04968710243701935,
+              0.6044102907180786,
+              0.44999998807907104
+            ],
+            [
+              0.6064491271972656,
+              -0.06514527648687363,
+              0.7924490571022034,
+              0.5799999833106995
+            ],
+            [
+              -2.4376566543082845e-8,
+              0.9966380000114441,
+              0.08193115890026093,
+              1.7649999856948853
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "projection": "ORTHO",
+          "ortho_scale": 0.3400000035762787,
+          "lens": 50,
+          "clip": [
+            0.0010000000474974513,
+            20
+          ],
+          "depth_of_field": false
+        },
+        {
+          "name": "MR1_CONTEXT_opposite",
+          "matrix_world": [
+            [
+              -0.7951222658157349,
+              0.04968710243701935,
+              -0.6044102907180786,
+              -0.44999998807907104
+            ],
+            [
+              -0.6064491271972656,
+              -0.06514527648687363,
+              0.7924490571022034,
+              0.5799999833106995
+            ],
+            [
+              2.4376566543082845e-8,
+              0.9966380000114441,
+              0.08193115890026093,
+              1.7649999856948853
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "projection": "ORTHO",
+          "ortho_scale": 0.3400000035762787,
+          "lens": 50,
+          "clip": [
+            0.0010000000474974513,
+            20
+          ],
+          "depth_of_field": false
+        },
+        {
+          "name": "MR1_CONTEXT_rear",
+          "matrix_world": [
+            [
+              1,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              -1.6292068494294654e-7,
+              -1,
+              -0.699999988079071
+            ],
+            [
+              0,
+              1,
+              -1.6292068494294654e-7,
+              1.7039999961853027
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "projection": "ORTHO",
+          "ortho_scale": 0.3400000035762787,
+          "lens": 50,
+          "clip": [
+            0.0010000000474974513,
+            20
+          ],
+          "depth_of_field": false
+        },
+        {
+          "name": "MR1_CONTEXT_top",
+          "matrix_world": [
+            [
+              1,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0,
+              -0.009999999776482582
+            ],
+            [
+              0,
+              0,
+              1,
+              2.4000000953674316
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "projection": "ORTHO",
+          "ortho_scale": 0.3400000035762787,
+          "lens": 50,
+          "clip": [
+            0.0010000000474974513,
+            20
+          ],
+          "depth_of_field": false
+        }
+      ],
+      "lights": [
+        {
+          "name": "MR1_CONTEXT_Key",
+          "matrix_world": [
+            [
+              -0.8123238682746887,
+              0.34737199544906616,
+              -0.46846839785575867,
+              -0.2800000011920929
+            ],
+            [
+              -0.5832065939903259,
+              -0.483839750289917,
+              0.652509868144989,
+              0.3799999952316284
+            ],
+            [
+              3.9954439756684224e-8,
+              0.8032631874084473,
+              0.5956242084503174,
+              2.059999942779541
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "type": "AREA",
+          "energy": 3.4000000953674316,
+          "size": 0.3499999940395355,
+          "color": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "MR1_CONTEXT_Fill",
+          "matrix_world": [
+            [
+              -0.6156441569328308,
+              -0.2335285246372223,
+              0.7526265382766724,
+              0.3199999928474426
+            ],
+            [
+              0.7880242466926575,
+              -0.18244412541389465,
+              0.5879896879196167,
+              0.23999999463558197
+            ],
+            [
+              -8.265165263310337e-8,
+              0.9550803899765015,
+              0.2963468134403229,
+              1.8300000429153442
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "type": "AREA",
+          "energy": 0.800000011920929,
+          "size": 0.3499999940395355,
+          "color": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    }
+  ],
+  "reverse_light_recipe": {
+    "face": {
+      "key_location": [
+        0.328,
+        0.35,
+        1.95
+      ],
+      "fill_location": [
+        -0.202,
+        0.23,
+        1.77
+      ],
+      "aim": [
+        0.039,
+        0.025,
+        1.687
+      ]
+    },
+    "context": {
+      "key_location": [
+        0.28,
+        0.38,
+        2.06
+      ],
+      "fill_location": [
+        -0.32,
+        0.24,
+        1.83
+      ],
+      "aim": [
+        0,
+        -0.01,
+        1.704
+      ]
+    },
+    "energies_unchanged": true
+  },
+  "human_approval_written": false
+}
