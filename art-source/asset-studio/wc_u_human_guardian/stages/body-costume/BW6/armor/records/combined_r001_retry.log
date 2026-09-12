@@ -1,0 +1,18 @@
+00:03.188  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\asset-studio\wc_u_human_guardian\stages\body-costume\BW6\armor\ada_bw6_upper_color_layout_work.blend"
+C:\Users\iputu\Documents\Wonder Chess\art-source\asset-studio\wc_u_human_guardian\stages\body-costume\BW6\armor\operations\26_combine_shoulder_and_review.py:9: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  clay.use_fake_user=True;clay.use_nodes=True;clay.diffuse_color=(.43,.43,.43,1)
+00:23.454  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\art-source\asset-studio\wc_u_human_guardian\stages\body-costume\BW6\armor\captures\combined_r001_rest_clay_three_quarter.png'
+00:41.657  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\art-source\asset-studio\wc_u_human_guardian\stages\body-costume\BW6\armor\captures\combined_r001_rest_color_layout_three_quarter.png'
+Traceback (most recent call last):
+  File "C:\Users\iputu\Documents\Wonder Chess\art-source\asset-studio\wc_u_human_guardian\stages\body-costume\BW6\armor\operations\26_combine_shoulder_and_review.py", line 34, in <module>
+    ha=helper.apply_lowered_support_pose();bpy.context.view_layer.update()
+  File "C:\Users\iputu\Documents\Wonder Chess\art-source\asset-studio\wc_u_human_guardian\stages\body-costume\BW6\shoulder\operations\append_bw6_shoulder_r003.py", line 38, in apply_lowered_support_pose
+    helper=bpy.data.objects['BW6_R_Cap_SecondaryHinge']
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: "bpy_prop_collection[id, lib]: lib filepath 'BW6_R_CapRelative_LameAnchor' does not reference a valid library"
+Info: Saved as "ada_bw6_upper_combined_r001.blend"
+
+Error: script failed, file: 'art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW6/armor/operations/26_combine_shoulder_and_review.py', exiting.
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

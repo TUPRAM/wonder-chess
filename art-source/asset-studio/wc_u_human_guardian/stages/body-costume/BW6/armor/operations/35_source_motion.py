@@ -1,0 +1,19 @@
+import bpy,json,hashlib
+from pathlib import Path
+R=Path(__file__).resolve().parents[1];source=R/'ada_bw6_upper_checkpoint_r004_ART_REVISE.blend';sha=hashlib.sha256(source.read_bytes()).hexdigest()
+bpy.ops.wm.open_mainfile(filepath=str(source),use_scripts=False);s=bpy.data.scenes['BW4_ARMOR_LOCAL_AUTHORING_ONLY'];bpy.context.window.scene=s;s.frame_set(1)
+rig=bpy.data.objects['BW4_Armor_Independent_Rig'];action=rig.animation_data.action.name
+folder=R/'motion/final/frames';folder.mkdir(parents=True,exist_ok=True)
+s.render.engine='BLENDER_WORKBENCH';s.display.shading.light='STUDIO';s.display.shading.color_type='SINGLE';s.display.shading.single_color=(.55,.55,.55);s.display.shading.show_shadows=True;s.display.shading.show_cavity=True;s.display.shading.cavity_type='BOTH';s.display.shading.background_type='WORLD';s.world.color=(.06,.06,.06)
+s.render.resolution_x=800;s.render.resolution_y=800;s.render.resolution_percentage=100;s.render.film_transparent=False;s.render.image_settings.media_type='IMAGE';s.render.image_settings.file_format='PNG';s.render.image_settings.color_mode='RGB';s.render.use_sequencer=False;s.use_nodes=False;s.view_settings.view_transform='Standard';s.view_settings.look='None';s.view_settings.exposure=0;s.render.threads=4
+s.camera=bpy.data.objects['BW4_Camera_three_quarter'];matrices=[]
+for frame in range(1,98):
+ s.frame_set(frame);bpy.context.view_layer.update();s.render.filepath=str(folder/f'frame_{frame:04}.png');bpy.ops.render.render(write_still=True)
+ matrices.append({'frame':frame,'right_forearm_world':[list(v) for v in rig.matrix_world@rig.pose.bones['lowerarm02.R'].matrix],'right_upperarm_world':[list(v) for v in rig.matrix_world@rig.pose.bones['upperarm01.R'].matrix]})
+video=bpy.data.scenes.new('BW6_TEMP_UPPER_AUTHORING_MOVIE');bpy.context.window.scene=video;video.frame_start=1;video.frame_end=97;video.render.resolution_x=800;video.render.resolution_y=800;video.render.resolution_percentage=100;video.render.fps=24;video.render.image_settings.media_type='VIDEO';video.render.image_settings.file_format='FFMPEG';video.render.ffmpeg.format='MPEG4';video.render.ffmpeg.codec='H264';video.render.ffmpeg.constant_rate_factor='MEDIUM';video.render.ffmpeg.audio_codec='NONE';video.view_settings.view_transform='Standard';video.view_settings.look='None'
+movie=folder.parent/'BW6_UPPER_97_AUTHORING_FRAMES_NOT_GAME_CLIPS.mp4';video.render.filepath=str(movie);ed=video.sequence_editor_create();files=[folder/f'frame_{f:04}.png' for f in range(1,98)];assert all(p.exists() for p in files);strip=ed.strips.new_image('Actual native frame sequence',str(files[0]),channel=1,frame_start=1)
+for p in files[1:]:strip.elements.append(p.name)
+label=ed.strips.new_effect('Scope',type='TEXT',channel=2,frame_start=1,length=97);label.text='BW6 UPPER ASSEMBLY | ART_REVISE | AUTHORING ONLY';label.font_size=19;label.location=(.5,.975);label.color=(1,1,1,1);label.use_shadow=True;video.render.use_sequencer=True;bpy.ops.render.render(animation=True,scene=video.name)
+assert hashlib.sha256(source.read_bytes()).hexdigest()==sha
+clip=bpy.data.movieclips.load(str(movie));assert clip.frame_duration==97
+(folder.parent/'source_record.json').write_text(json.dumps({'source':str(source),'source_sha256':sha,'movie':str(movie),'movie_sha256':hashlib.sha256(movie.read_bytes()).hexdigest(),'frames':97,'native_reopened_movie_frame_duration':clip.frame_duration,'fps':24,'dimensions':[800,800],'action':action,'camera':s.camera.name,'camera_matrix':[list(v) for v in s.camera.matrix_world],'pose_matrices':matrices,'render_engine':'BLENDER_WORKBENCH','scope':'All97 integer authoring frames; 24fps playback; not canonical seven game animations, Unreal, or mathematically continuous collision proof. Actual frame images remain alongside movie.'},indent=2));print('BW6_UPPER_SOURCE_MOTION_COMPLETE')

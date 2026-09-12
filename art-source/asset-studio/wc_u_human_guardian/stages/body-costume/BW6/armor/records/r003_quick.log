@@ -1,0 +1,11 @@
+00:02.250  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\asset-studio\wc_u_human_guardian\stages\body-costume\BW6\armor\ada_bw6_upper_side_integrated_r003.blend"
+Traceback (most recent call last):
+  File "C:\Users\iputu\Documents\Wonder Chess\art-source\asset-studio\wc_u_human_guardian\stages\body-costume\BW6\armor\operations\23_candidate_probe.py", line 16, in <module>
+    s.frame_set(fr);bpy.context.view_layer.update();gs={n:geom(bpy.data.objects[n]) for n in set(owned+[body])};row={a+'__'+b:screen(gs[a],gs[b]) for a,b in pairs};row['coat_self']=screen(gs[cloth],gs[cloth],True)
+                                                                                                                                     ~~^^^
+KeyError: 'BW6_NavyWaist'
+
+Error: script failed, file: 'art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW6/armor/operations/23_candidate_probe.py', exiting.
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

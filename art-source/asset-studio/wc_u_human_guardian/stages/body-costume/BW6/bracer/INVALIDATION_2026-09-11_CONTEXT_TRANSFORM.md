@@ -1,0 +1,7 @@
+# Bracer garment-fit evidence invalidated
+
+The retained right r002 and left r001 frozen candidates remain preserved as executed studies. Their garment-fit claim is invalid for Ada's actual padded sleeve.
+
+The parent task's current native comparison (`../analysis/bracer_context_compare.json`) found the copied bracer coat context evaluated with the MPFB body transform: diagonal approximately (-1.1438, -1.1438, +1.1438), Y offset -0.07 m. The correct original coat object evaluates with identity world transform. Bone world matrices and bracer evaluated vertices agree with the integrated source, but the equal-count 8,832-vertex coat arrays differ by up to 1.05987 m. No copied-coat points occupied the relevant forearm sections. Consequently the reported zero bracer/coat crossings were against the wrong located padding and cannot establish sleeve fit. The resulting steel is buried inside the real sleeve.
+
+The reported finite query executions, renders, geometry, hashes and saves still describe their recorded sources. They are not silently rewritten. The bracer construction needs a new independent corrected-context fitting pass, with evaluated world-coordinate equivalence verified before fitting and the actual garment included in all section measurements. This is a setup defect, not evidence that the sleeve should shrink or that the entire bracer should be scaled arbitrarily. Previous right/left frozen binaries and their reports stay unchanged; a successor will be stored separately.
