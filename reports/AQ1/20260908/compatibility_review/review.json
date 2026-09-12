@@ -1,0 +1,407 @@
+{
+  "status": "PRESERVED_GAMEPLAY_AND_SOURCE_RIG_INTERFACES_IMPORT_STRUCTURE_REVIEWED_ART_ACCEPTANCE_PENDING",
+  "reviewed_utc": "2026-09-08T01:57:15.184826+00:00",
+  "git_head": "9623fd82f98ff80a90985b9f552d8851ccece30f",
+  "baseline_hash_checks": [
+    {
+      "path": "art-source\\heroes\\wc_u_human_guardian\\wc_u_human_guardian.blend",
+      "expected": "54f04b8f28fd819eb22b7a4f6c8051484c6466513e6cd43d419c835b67d950b3",
+      "actual": "54f04b8f28fd819eb22b7a4f6c8051484c6466513e6cd43d419c835b67d950b3",
+      "match": true
+    },
+    {
+      "path": "art-source\\heroes\\wc_u_human_guardian\\candidates\\AQ1\\before_canonical.blend",
+      "expected": "54f04b8f28fd819eb22b7a4f6c8051484c6466513e6cd43d419c835b67d950b3",
+      "actual": "54f04b8f28fd819eb22b7a4f6c8051484c6466513e6cd43d419c835b67d950b3",
+      "match": true
+    },
+    {
+      "path": "C:\\Users\\iputu\\Downloads\\ChatGPT Image Sep 8, 2026, 08_37_00 AM.png",
+      "expected": "88b137d44a26af7f97cc47cd26c57db4182a2fa56142319d5e3995d633b23370",
+      "actual": "88b137d44a26af7f97cc47cd26c57db4182a2fa56142319d5e3995d633b23370",
+      "match": true
+    },
+    {
+      "path": "data\\units.json",
+      "expected": "7dbf08ec21daef3c63c4e6cfd1302b508b44df771ee91322f50a95fe9dc31e05",
+      "actual": "7dbf08ec21daef3c63c4e6cfd1302b508b44df771ee91322f50a95fe9dc31e05",
+      "match": true
+    },
+    {
+      "path": "data\\rules.alpha.json",
+      "expected": "d28926bf6da7ef9f13528397ee0b182fa249c30a959fab099cb43aef7e57d45f",
+      "actual": "d28926bf6da7ef9f13528397ee0b182fa249c30a959fab099cb43aef7e57d45f",
+      "match": true
+    },
+    {
+      "path": "data\\traits.json",
+      "expected": "102263fc7b73c776b35dc2fffbee0f4805d41b85a935f6b8c0cf2b9d2922525f",
+      "actual": "102263fc7b73c776b35dc2fffbee0f4805d41b85a935f6b8c0cf2b9d2922525f",
+      "match": true
+    },
+    {
+      "path": "data\\asset_manifest.json",
+      "expected": "07cda72611cb78b46f7e50656aa5ba807966cbdd71a64ce507858633c5bb571f",
+      "actual": "07cda72611cb78b46f7e50656aa5ba807966cbdd71a64ce507858633c5bb571f",
+      "match": true
+    }
+  ],
+  "tracked_changed_files": [
+    "game/Source/WonderChessRuntime/Private/WCBoardPresenter.cpp",
+    "game/Source/WonderChessRuntime/Private/WCFrontEndScene.cpp",
+    "reports/blender-mcp/20260908T072720-blender.log"
+  ],
+  "tracked_cpp_review": "Only WCBoardPresenter.cpp and WCFrontEndScene.cpp; optional WCAQ1HeroRoot selects Ada candidate mesh/clips, preserves canonical portraits and all definitions; no combat/economy/timing edits.",
+  "rest_and_action_invariants_match_loaded_baseline": true,
+  "baseline_invariants": {
+    "rest_skeleton_sha256": "f68ec623265e008026f982875d973907580e600d2e7a215980e2c4bf6cb6c73e",
+    "actions_sha256": "d3022161e3068284babb6f598ca2b136cbc4bc17e5e092552531b940098c4ad7",
+    "action_names": [
+      "AN_wc_u_human_guardian_Active",
+      "AN_wc_u_human_guardian_Attack",
+      "AN_wc_u_human_guardian_Defeat",
+      "AN_wc_u_human_guardian_Hit",
+      "AN_wc_u_human_guardian_Idle",
+      "AN_wc_u_human_guardian_Move",
+      "AN_wc_u_human_guardian_Victory"
+    ],
+    "unit_scale_m": 1.0,
+    "fps": 60
+  },
+  "candidate_invariants": {
+    "rest_skeleton_sha256": "f68ec623265e008026f982875d973907580e600d2e7a215980e2c4bf6cb6c73e",
+    "actions_sha256": "d3022161e3068284babb6f598ca2b136cbc4bc17e5e092552531b940098c4ad7",
+    "action_names": [
+      "AN_wc_u_human_guardian_Active",
+      "AN_wc_u_human_guardian_Attack",
+      "AN_wc_u_human_guardian_Defeat",
+      "AN_wc_u_human_guardian_Hit",
+      "AN_wc_u_human_guardian_Idle",
+      "AN_wc_u_human_guardian_Move",
+      "AN_wc_u_human_guardian_Victory"
+    ],
+    "unit_scale_m": 1.0,
+    "fps": 60
+  },
+  "source_hash_checks": {
+    "form_source": "art-source/heroes/wc_u_human_guardian/candidates/AQ1/ada_forms_r08.blend",
+    "form_source_sha256_expected": "823cc10c1f1c4bfe81c92928a60e8dfb5e56d53ae46421ddbeb932af0b2829bb",
+    "form_source_sha256_actual": "823cc10c1f1c4bfe81c92928a60e8dfb5e56d53ae46421ddbeb932af0b2829bb",
+    "baked_source": "C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\heroes\\wc_u_human_guardian\\candidates\\AQ1\\ada_baked_r06.blend",
+    "baked_source_sha256_expected": "b284de03f89e1506048eb7e62427dafde9f90eb0eb2ef5141089ff6ef91f0c37",
+    "baked_source_sha256_actual": "b284de03f89e1506048eb7e62427dafde9f90eb0eb2ef5141089ff6ef91f0c37",
+    "export_manifest_report_sha256": "b61b2c07b64f8706a89b236c6ecb52d03192435acf4f994e75f3acd59c3fea9d",
+    "import_expected_manifest_sha256": "b61b2c07b64f8706a89b236c6ecb52d03192435acf4f994e75f3acd59c3fea9d"
+  },
+  "export_file_hash_checks": [
+    {
+      "path": "art-source\\heroes\\wc_u_human_guardian\\candidates\\AQ1\\exports\\r06\\AN_wc_u_human_guardian_Active.fbx",
+      "expected": "2118c14e80658731047bab70c6da2c6b1193b160152196a76848262da03a5532",
+      "actual": "2118c14e80658731047bab70c6da2c6b1193b160152196a76848262da03a5532",
+      "match": true
+    },
+    {
+      "path": "art-source\\heroes\\wc_u_human_guardian\\candidates\\AQ1\\exports\\r06\\AN_wc_u_human_guardian_Attack.fbx",
+      "expected": "57307fb725db701596e8cc86414787ba43ca578d7425a3ac3cb3639db1ff2615",
+      "actual": "57307fb725db701596e8cc86414787ba43ca578d7425a3ac3cb3639db1ff2615",
+      "match": true
+    },
+    {
+      "path": "art-source\\heroes\\wc_u_human_guardian\\candidates\\AQ1\\exports\\r06\\AN_wc_u_human_guardian_Defeat.fbx",
+      "expected": "72c4d72100f82854875ccec8493ed521b2692890e9478cc050e31b82cc1489fa",
+      "actual": "72c4d72100f82854875ccec8493ed521b2692890e9478cc050e31b82cc1489fa",
+      "match": true
+    },
+    {
+      "path": "art-source\\heroes\\wc_u_human_guardian\\candidates\\AQ1\\exports\\r06\\AN_wc_u_human_guardian_Hit.fbx",
+      "expected": "d4999894d4c08d56e78c50d6bb2c39b9b0235ed4ad44c650ede6e7eae4bd47ed",
+      "actual": "d4999894d4c08d56e78c50d6bb2c39b9b0235ed4ad44c650ede6e7eae4bd47ed",
+      "match": true
+    },
+    {
+      "path": "art-source\\heroes\\wc_u_human_guardian\\candidates\\AQ1\\exports\\r06\\AN_wc_u_human_guardian_Idle.fbx",
+      "expected": "d8b1bcb4828933094694658cbd2ca3038371e747ee0983206714edf8d01d41b2",
+      "actual": "d8b1bcb4828933094694658cbd2ca3038371e747ee0983206714edf8d01d41b2",
+      "match": true
+    },
+    {
+      "path": "art-source\\heroes\\wc_u_human_guardian\\candidates\\AQ1\\exports\\r06\\AN_wc_u_human_guardian_Move.fbx",
+      "expected": "e05ead06625f455a615d0b6c3e4348c7886ed3f142173d139c80085edd8dd3e1",
+      "actual": "e05ead06625f455a615d0b6c3e4348c7886ed3f142173d139c80085edd8dd3e1",
+      "match": true
+    },
+    {
+      "path": "art-source\\heroes\\wc_u_human_guardian\\candidates\\AQ1\\exports\\r06\\AN_wc_u_human_guardian_Victory.fbx",
+      "expected": "22732de9f5ca5f14968c9849d4cafbff8eb64e2e037e57f2f653b252b420ae76",
+      "actual": "22732de9f5ca5f14968c9849d4cafbff8eb64e2e037e57f2f653b252b420ae76",
+      "match": true
+    },
+    {
+      "path": "art-source\\heroes\\wc_u_human_guardian\\candidates\\AQ1\\exports\\r06\\SK_wc_u_human_guardian.fbx",
+      "expected": "1c7228c2d32b596b0a0272e66197695d4e85a108280664b7f85e7e9c2fbbbd24",
+      "actual": "1c7228c2d32b596b0a0272e66197695d4e85a108280664b7f85e7e9c2fbbbd24",
+      "match": true
+    },
+    {
+      "path": "art-source\\heroes\\wc_u_human_guardian\\candidates\\AQ1\\exports\\r06\\T_wc_u_human_guardian_BaseColor.png",
+      "expected": "ae61baa59af23ca4088bfe57e1d92a81dfba0413ec845bb4deb21de7db13cb9f",
+      "actual": "ae61baa59af23ca4088bfe57e1d92a81dfba0413ec845bb4deb21de7db13cb9f",
+      "match": true
+    },
+    {
+      "path": "art-source\\heroes\\wc_u_human_guardian\\candidates\\AQ1\\exports\\r06\\T_wc_u_human_guardian_Normal.png",
+      "expected": "3ea6f3cbdc864f8d376336b77ad587a3401b04e7aadb25b60c6f15ff98ff9888",
+      "actual": "3ea6f3cbdc864f8d376336b77ad587a3401b04e7aadb25b60c6f15ff98ff9888",
+      "match": true
+    },
+    {
+      "path": "art-source\\heroes\\wc_u_human_guardian\\candidates\\AQ1\\exports\\r06\\T_wc_u_human_guardian_ORM.png",
+      "expected": "7d8469d955f8703516326dbb51ab1fc308b3840aad0043f57b2ba59b65391d7e",
+      "actual": "7d8469d955f8703516326dbb51ab1fc308b3840aad0043f57b2ba59b65391d7e",
+      "match": true
+    }
+  ],
+  "candidate_import_file_current_hash_checks": [
+    {
+      "path": "game\\Content\\WonderChess\\Candidates\\AQ1\\Ada_r01\\AN_wc_u_human_guardian_Active.uasset",
+      "expected_import_time": "e069991b93d7b1b6d33e6010097b2758758fcfce15f393b5de46e12344b1c9bc",
+      "actual": "e069991b93d7b1b6d33e6010097b2758758fcfce15f393b5de46e12344b1c9bc",
+      "match": true
+    },
+    {
+      "path": "game\\Content\\WonderChess\\Candidates\\AQ1\\Ada_r01\\AN_wc_u_human_guardian_Attack.uasset",
+      "expected_import_time": "66a0660e3f36b92269d5507e2cc702f31e28442f15670a3b6f3fb0f58b570143",
+      "actual": "66a0660e3f36b92269d5507e2cc702f31e28442f15670a3b6f3fb0f58b570143",
+      "match": true
+    },
+    {
+      "path": "game\\Content\\WonderChess\\Candidates\\AQ1\\Ada_r01\\AN_wc_u_human_guardian_Defeat.uasset",
+      "expected_import_time": "3fef6874312b3452dcc8d65731d05e9a64111da7922e8f60391b68fc2f8e3a60",
+      "actual": "3fef6874312b3452dcc8d65731d05e9a64111da7922e8f60391b68fc2f8e3a60",
+      "match": true
+    },
+    {
+      "path": "game\\Content\\WonderChess\\Candidates\\AQ1\\Ada_r01\\AN_wc_u_human_guardian_Hit.uasset",
+      "expected_import_time": "20e651f1b78a744329b3b2a23206465c422a73ab18ecefb4d4a3cc9acc2dc647",
+      "actual": "20e651f1b78a744329b3b2a23206465c422a73ab18ecefb4d4a3cc9acc2dc647",
+      "match": true
+    },
+    {
+      "path": "game\\Content\\WonderChess\\Candidates\\AQ1\\Ada_r01\\AN_wc_u_human_guardian_Idle.uasset",
+      "expected_import_time": "2097ae84a6a317cc72ff6d1a474c9801caad776433afcb23a580f61c215c52ed",
+      "actual": "2097ae84a6a317cc72ff6d1a474c9801caad776433afcb23a580f61c215c52ed",
+      "match": true
+    },
+    {
+      "path": "game\\Content\\WonderChess\\Candidates\\AQ1\\Ada_r01\\AN_wc_u_human_guardian_Move.uasset",
+      "expected_import_time": "2245b373cc6c567d8ed8de182086056f123d9854a00472cfbc93ec666f974208",
+      "actual": "2245b373cc6c567d8ed8de182086056f123d9854a00472cfbc93ec666f974208",
+      "match": true
+    },
+    {
+      "path": "game\\Content\\WonderChess\\Candidates\\AQ1\\Ada_r01\\AN_wc_u_human_guardian_Victory.uasset",
+      "expected_import_time": "5db7a900c5e081204685744705dd3814b01b0f166783018063c510ff74e09226",
+      "actual": "5db7a900c5e081204685744705dd3814b01b0f166783018063c510ff74e09226",
+      "match": true
+    },
+    {
+      "path": "game\\Content\\WonderChess\\Candidates\\AQ1\\Ada_r01\\M_AQ1_Ada.uasset",
+      "expected_import_time": "e6e6ccd64281ec8a0416d98781a3851e080d2cce88732cf01150c3f88024998e",
+      "actual": "e6e6ccd64281ec8a0416d98781a3851e080d2cce88732cf01150c3f88024998e",
+      "match": true
+    },
+    {
+      "path": "game\\Content\\WonderChess\\Candidates\\AQ1\\Ada_r01\\MI_wc_u_human_guardian.uasset",
+      "expected_import_time": "f0bd78296e56f0c6067acbdcb2fbf61bcbcf1030fe3d75afe4b3c7d9b392c137",
+      "actual": "f0bd78296e56f0c6067acbdcb2fbf61bcbcf1030fe3d75afe4b3c7d9b392c137",
+      "match": true
+    },
+    {
+      "path": "game\\Content\\WonderChess\\Candidates\\AQ1\\Ada_r01\\SK_wc_u_human_guardian.uasset",
+      "expected_import_time": "79fd7b980cdb4470bddc98706cb84e3f068704144ffbd6fb52d10a83e2987818",
+      "actual": "79fd7b980cdb4470bddc98706cb84e3f068704144ffbd6fb52d10a83e2987818",
+      "match": true
+    },
+    {
+      "path": "game\\Content\\WonderChess\\Candidates\\AQ1\\Ada_r01\\SK_wc_u_human_guardian_Skeleton.uasset",
+      "expected_import_time": "9bb0e3292148d95aaab618c01eada0795de8e741fb0d61d971785beb23bc27fb",
+      "actual": "9bb0e3292148d95aaab618c01eada0795de8e741fb0d61d971785beb23bc27fb",
+      "match": true
+    },
+    {
+      "path": "game\\Content\\WonderChess\\Candidates\\AQ1\\Ada_r01\\T_wc_u_human_guardian_BaseColor.uasset",
+      "expected_import_time": "01e2f0742d7a6944d15e07370c520f65e0ffffe183d492d66d8acbda14774369",
+      "actual": "01e2f0742d7a6944d15e07370c520f65e0ffffe183d492d66d8acbda14774369",
+      "match": true
+    },
+    {
+      "path": "game\\Content\\WonderChess\\Candidates\\AQ1\\Ada_r01\\T_wc_u_human_guardian_Normal.uasset",
+      "expected_import_time": "e60c3e445abe613bcb13db5e5a9afcd26e577203070c224f715471a93cdc0ebe",
+      "actual": "e60c3e445abe613bcb13db5e5a9afcd26e577203070c224f715471a93cdc0ebe",
+      "match": true
+    },
+    {
+      "path": "game\\Content\\WonderChess\\Candidates\\AQ1\\Ada_r01\\T_wc_u_human_guardian_ORM.uasset",
+      "expected_import_time": "9b41a27609fda5f848500944d6fb285d3fe31b22708ee8fe527ee3f8881b381c",
+      "actual": "9b41a27609fda5f848500944d6fb285d3fe31b22708ee8fe527ee3f8881b381c",
+      "match": true
+    }
+  ],
+  "import_record_path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AQ1\\20260908\\import-r01.json",
+  "import_structure_status": "PASS_IMPORT_STRUCTURE_VISUAL_REVIEW_PENDING",
+  "imported_bone_count": 27,
+  "imported_bones": [
+    "root",
+    "pelvis",
+    "spine_01",
+    "spine_02",
+    "spine_03",
+    "neck",
+    "head",
+    "head_ui",
+    "clavicle_l",
+    "upperarm_l",
+    "lowerarm_l",
+    "hand_l",
+    "weapon_l",
+    "clavicle_r",
+    "upperarm_r",
+    "lowerarm_r",
+    "hand_r",
+    "weapon_r",
+    "cast_origin",
+    "thigh_l",
+    "calf_l",
+    "foot_l",
+    "toe_l",
+    "thigh_r",
+    "calf_r",
+    "foot_r",
+    "toe_r"
+  ],
+  "head_reference_z_cm": 154.7000037091948,
+  "head_ui_z_cm": 186.54999266445495,
+  "bounds_extent_cm": [
+    29.710145950317383,
+    78.57040405273438,
+    91.08117520809174
+  ],
+  "bounds_origin_cm": [
+    8.262083053588867,
+    8.293777465820312,
+    92.28117525577545
+  ],
+  "bounds_height_cm": 182.16235041618347,
+  "bounds_min_z_cm": 1.2000000476837158,
+  "bounds_max_z_cm": 183.3623504638672,
+  "lod0_render_vertices": 22803,
+  "lod_count": 1,
+  "export_triangles": 24280,
+  "imported_material_slot_count": 1,
+  "texture_size": 1024,
+  "clips": [
+    {
+      "clip": "Idle",
+      "duration_seconds": 2.0,
+      "expected_duration_seconds": 2.0,
+      "matches": true,
+      "imported_compressed_pose_sample_count": 5
+    },
+    {
+      "clip": "Move",
+      "duration_seconds": 1.0,
+      "expected_duration_seconds": 1.0,
+      "matches": true,
+      "imported_compressed_pose_sample_count": 5
+    },
+    {
+      "clip": "Attack",
+      "duration_seconds": 0.6499999761581421,
+      "expected_duration_seconds": 0.65,
+      "matches": true,
+      "imported_compressed_pose_sample_count": 5
+    },
+    {
+      "clip": "Active",
+      "duration_seconds": 0.6000000238418579,
+      "expected_duration_seconds": 0.6,
+      "matches": true,
+      "imported_compressed_pose_sample_count": 5
+    },
+    {
+      "clip": "Hit",
+      "duration_seconds": 0.4000000059604645,
+      "expected_duration_seconds": 0.4,
+      "matches": true,
+      "imported_compressed_pose_sample_count": 5
+    },
+    {
+      "clip": "Defeat",
+      "duration_seconds": 1.0,
+      "expected_duration_seconds": 1.0,
+      "matches": true,
+      "imported_compressed_pose_sample_count": 5
+    },
+    {
+      "clip": "Victory",
+      "duration_seconds": 1.5,
+      "expected_duration_seconds": 1.5,
+      "matches": true,
+      "imported_compressed_pose_sample_count": 5
+    }
+  ],
+  "import_normal_settings": {
+    "saved_normal_import_method": "<FBXNormalImportMethod.FBXNIM_IMPORT_NORMALS: 1>",
+    "saved_normal_generation_method": "<FBXNormalGenerationMethod.MIKK_T_SPACE: 1>",
+    "textures": {
+      "BaseColor": {
+        "asset": "/Game/WonderChess/Candidates/AQ1/Ada_r01/T_wc_u_human_guardian_BaseColor.T_wc_u_human_guardian_BaseColor",
+        "srgb": true,
+        "compression": "<TextureCompressionSettings.TC_DEFAULT: 0>",
+        "flip_green_channel": false
+      },
+      "ORM": {
+        "asset": "/Game/WonderChess/Candidates/AQ1/Ada_r01/T_wc_u_human_guardian_ORM.T_wc_u_human_guardian_ORM",
+        "srgb": false,
+        "compression": "<TextureCompressionSettings.TC_DEFAULT: 0>",
+        "flip_green_channel": false
+      },
+      "Normal": {
+        "asset": "/Game/WonderChess/Candidates/AQ1/Ada_r01/T_wc_u_human_guardian_Normal.T_wc_u_human_guardian_Normal",
+        "srgb": false,
+        "compression": "<TextureCompressionSettings.TC_NORMALMAP: 1>",
+        "flip_green_channel": true
+      }
+    }
+  },
+  "protected_scope_at_import": {
+    "count": 604,
+    "unchanged": true,
+    "differences": {
+      "modified": [],
+      "created": [],
+      "deleted": []
+    },
+    "boundary": "Importer before/after snapshots reviewed; this lane freshly hashes the seven AQ1 baseline entries and fourteen imported candidate binaries, not every protected historical content file."
+  },
+  "pending": [
+    "Pram reference character approval",
+    "24,280 triangle comparison budget exception approval; 15k target exceeded",
+    "candidate LOD1/LOD2 (imported lod_count1)",
+    "final corrected material/normal/tangent visual proof",
+    "deliberate source edit and reimport identity/placed-reference proof (initial import record has reimportfalse)",
+    "full continuous playback review; contact sheets are frame-sequence inspection",
+    "audio listening/review",
+    "candidate normal-board and crowded-combat review",
+    "candidate/baseline isolated profile comparison at named hardware/settings",
+    "candidate packaged launch/full-match elimination/spectating/restart proof",
+    "candidate portrait finalization",
+    "final source/cooked-candidate synchronization after further material fixes"
+  ],
+  "boundaries": [
+    "Read-only provenance and executed-report inspection; this reviewer did not reopen Blender/Unreal or execute binaries.",
+    "Source action/rest digests match; exporter may bake constraints into export copies, so this does not assert imported compressed animation bytes equal old assets.",
+    "No art score or automated aesthetic acceptance.",
+    "Interim material motion review is a separate record; use newest evidence if root fixes material."
+  ]
+}

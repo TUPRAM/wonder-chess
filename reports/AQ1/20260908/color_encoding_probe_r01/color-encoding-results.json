@@ -1,0 +1,52 @@
+{
+  "status": "FAIL",
+  "blender_version": "5.1.1",
+  "source_script_sha256": "cecc31c99681e46ed8a589fd47b372f7d52e9f6538b88c6feaa7f4387a7b6c09",
+  "bake_helper_sha256": "b7b4c325f264f25cb181a027e12ccaff9251de69438ffa118131e757e1a091e4",
+  "method": "actual Cycles EMIT bake through aq1_bake._image/_save_image; raw PNG decode and Blender reload",
+  "cases": [
+    {
+      "name": "NavyBaseColor",
+      "color_space": "sRGB",
+      "source_linear_rgb": [
+        0.018500220128379697,
+        0.06124605423161761,
+        0.14702726649759498
+      ],
+      "target_is_float": false,
+      "saved": {
+        "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AQ1\\20260908\\color_encoding_probe_r01\\AQ1_Encoding_NavyBaseColor.png",
+        "sha256": "e70586f599a9c9edb36450defe70df23b4970507b7b38166226ff76ec8b310dd",
+        "png_bit_depth": 8,
+        "width": 32,
+        "height": 32,
+        "color_space": "sRGB"
+      },
+      "png": {
+        "width": 32,
+        "height": 32,
+        "bit_depth": 8,
+        "color_type": 2,
+        "center_rgb_integer": [
+          37,
+          70,
+          107
+        ],
+        "center_rgb_normalized": [
+          0.1450980392156863,
+          0.27450980392156865,
+          0.4196078431372549
+        ]
+      },
+      "blender_reloaded_linear_rgb": [
+        0.14509804546833038,
+        0.27450981736183167,
+        0.41960787773132324
+      ],
+      "max_reloaded_linear_error": 0.27258061123372823,
+      "max_encoded_byte_error": 0
+    }
+  ],
+  "original_scene_restored": true,
+  "error": "AssertionError('Blender reload does not recover the expected linear navy')"
+}

@@ -1,0 +1,156 @@
+{
+  "status": "PASS_ACTUAL_BAKE_SAVE_RELOAD",
+  "regression_revision": 2,
+  "blender_version": "5.1.1",
+  "source_script_sha256": "99dfafce7ca88d2ed3bc3d77a12de187220211863ce89dd95e89b03bacf8c47e",
+  "bake_helper_sha256": "b7b4c325f264f25cb181a027e12ccaff9251de69438ffa118131e757e1a091e4",
+  "method": "Cycles EMIT bake/save; raw PNG decode; reloaded image sampled by a shader and EMIT-baked into a linear readback image",
+  "oracle_correction": "Revision 1 incorrectly treated byte-image Image.pixels as shader-linear values; that retained failure does not invalidate its correct RGB8 PNG bytes",
+  "cases": [
+    {
+      "name": "NavyBaseColor",
+      "color_space": "sRGB",
+      "source_linear_rgb": [
+        0.018500220128379697,
+        0.06124605423161761,
+        0.14702726649759498
+      ],
+      "target_is_float": false,
+      "saved": {
+        "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AQ1\\20260908\\color_encoding_probe_r02\\AQ1_Encoding_NavyBaseColor.png",
+        "sha256": "e70586f599a9c9edb36450defe70df23b4970507b7b38166226ff76ec8b310dd",
+        "png_bit_depth": 8,
+        "width": 32,
+        "height": 32,
+        "color_space": "sRGB"
+      },
+      "png": {
+        "width": 32,
+        "height": 32,
+        "bit_depth": 8,
+        "color_type": 2,
+        "center_rgb_integer": [
+          37,
+          70,
+          107
+        ],
+        "center_rgb_normalized": [
+          0.1450980392156863,
+          0.27450980392156865,
+          0.4196078431372549
+        ]
+      },
+      "blender_reloaded_raw_pixels": [
+        0.14509804546833038,
+        0.27450981736183167,
+        0.41960787773132324
+      ],
+      "raw_pixel_interpretation": "storage-level inspection only; shader readback is the linear oracle",
+      "shader_readback_saved": {
+        "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AQ1\\20260908\\color_encoding_probe_r02\\AQ1_Encoding_NavyBaseColor_ShaderLinear.png",
+        "sha256": "0375b9f82f898bfa483bd75082cbee9bbbe102dcb48bd1665c62ffabbf1be7ae",
+        "png_bit_depth": 16,
+        "width": 32,
+        "height": 32,
+        "color_space": "Non-Color"
+      },
+      "shader_readback_png": {
+        "width": 32,
+        "height": 32,
+        "bit_depth": 16,
+        "color_type": 2,
+        "center_rgb_integer": [
+          1212,
+          4014,
+          9635
+        ],
+        "center_rgb_normalized": [
+          0.018493934538796063,
+          0.061249713893339434,
+          0.14702067597467003
+        ]
+      },
+      "blender_shader_reloaded_linear_rgb": [
+        0.018493934538796063,
+        0.061249713893339434,
+        0.14702067597467003
+      ],
+      "max_shader_reloaded_linear_error": 6.590522924954101e-06,
+      "max_encoded_byte_error": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "LinearORM",
+      "color_space": "Non-Color",
+      "source_linear_rgb": [
+        0.77,
+        0.83,
+        0
+      ],
+      "target_is_float": true,
+      "saved": {
+        "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AQ1\\20260908\\color_encoding_probe_r02\\AQ1_Encoding_LinearORM.png",
+        "sha256": "71d118d922b6896d8a2a31b93a47709e3488926f2bce50132282258acc3eb840",
+        "png_bit_depth": 16,
+        "width": 32,
+        "height": 32,
+        "color_space": "Non-Color"
+      },
+      "png": {
+        "width": 32,
+        "height": 32,
+        "bit_depth": 16,
+        "color_type": 2,
+        "center_rgb_integer": [
+          50462,
+          54394,
+          0
+        ],
+        "center_rgb_normalized": [
+          0.7700007629510949,
+          0.8299992370489052,
+          0.0
+        ]
+      },
+      "blender_reloaded_raw_pixels": [
+        0.7700007557868958,
+        0.8299992084503174,
+        0.0
+      ],
+      "raw_pixel_interpretation": "storage-level inspection only; shader readback is the linear oracle",
+      "shader_readback_saved": {
+        "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AQ1\\20260908\\color_encoding_probe_r02\\AQ1_Encoding_LinearORM_ShaderLinear.png",
+        "sha256": "71d118d922b6896d8a2a31b93a47709e3488926f2bce50132282258acc3eb840",
+        "png_bit_depth": 16,
+        "width": 32,
+        "height": 32,
+        "color_space": "Non-Color"
+      },
+      "shader_readback_png": {
+        "width": 32,
+        "height": 32,
+        "bit_depth": 16,
+        "color_type": 2,
+        "center_rgb_integer": [
+          50462,
+          54394,
+          0
+        ],
+        "center_rgb_normalized": [
+          0.7700007629510949,
+          0.8299992370489052,
+          0.0
+        ]
+      },
+      "blender_shader_reloaded_linear_rgb": [
+        0.7700007629510949,
+        0.8299992370489052,
+        0.0
+      ],
+      "max_shader_reloaded_linear_error": 7.629510948570228e-07,
+      "max_raw_linear_channel_error": 7.629510948570228e-07,
+      "status": "PASS"
+    }
+  ],
+  "original_scene_restored": true
+}

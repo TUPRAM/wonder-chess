@@ -1,0 +1,132 @@
+{
+  "id": "wc_u_human_guardian",
+  "slug": "ada-brightshield",
+  "name": "Ada Brightshield",
+  "title": "The Gatekeeper",
+  "race": "human",
+  "unit_class": "guardian",
+  "region": "brighthaven",
+  "faction": "dawn_compact",
+  "role": "Defender",
+  "cost": 1,
+  "rarity": "Common",
+  "production_phase": "alpha",
+  "implementation_status": "designed_not_built",
+  "height_m": 1.82,
+  "rig_family": "humanoid_standard",
+  "stats": {
+    "health_cp": 105000,
+    "attack_damage_cp": 4800,
+    "attack_rate_milli": 700,
+    "attack_range_tiles": 1,
+    "physical_armor": 35,
+    "magic_resistance": 15,
+    "movement_rate_milli": 1000,
+    "attack_delivery": "melee",
+    "attack_damage_type": "physical",
+    "attack_windup_ms": 250,
+    "projectile_travel_ms": 0
+  },
+  "ability": {
+    "name": "Sun Guard",
+    "tooltip_en": "Gains a shield for three seconds.",
+    "target_rule": "self",
+    "first_cast_ms": 2000,
+    "cooldown_ms": 8000,
+    "cast_ms": 300,
+    "radius_tiles": 0,
+    "range_tiles": 0,
+    "allow_self": true,
+    "id": "wc_a_human_guardian",
+    "recovery_ms": 300,
+    "max_targets": 12,
+    "max_dash_tiles": 0,
+    "travel_ms": 0,
+    "interrupt_policy": "consume_committed_cooldown_cancel_unreleased_effect",
+    "no_target_policy": "remain_ready_continue_basics",
+    "effect_snapshot": "capture_at_release_except_reserved_dash_destination",
+    "delivery": "instant",
+    "tooltip_id": "Memberikan perisai sementara kepada diri sendiri.",
+    "effects": [
+      {
+        "effect": "shield",
+        "damage_type": null,
+        "magnitude_unit": "centipoints",
+        "magnitude_by_star": [
+          20000,
+          36000,
+          64800
+        ],
+        "stat": null,
+        "duration_ms": 3000
+      }
+    ]
+  },
+  "art": {
+    "silhouette": "A broad inverted-triangle shoulder line over a compact waist, anchored by an oversized rounded kite shield on the left. The shield rises to eyebrow height when guarding, but stays below her eyes at rest.",
+    "face": "Warm brown skin, square brows, dark eyes and a short black braid tucked behind the neck. Her calm, alert expression is readable without exaggerated facial animation.",
+    "costume": "An ivory quilted coat sits under simplified steel breast and shoulder plates. A split navy tabard ends above the knees, leaving the leg silhouettes clear. Heavy boots and broad bracers make her planted stance apparent.",
+    "palette": "Navy #25466B; ivory #E9E2CD; brushed steel #9EAAB5; restrained gold #C7A25B. Gold covers only the shield crest and two fasteners.",
+    "equipment": "Left-hand kite shield with a raised rising-sun disk; short, broad fantasy sword in the right hand. Build the emblem as shallow geometry with a baked bevel, not dense engraving.",
+    "signature": "The high curved shield, squared shoulder line, and single sun disk must survive a 96-pixel hero render.",
+    "materials": "Use a shared armor master, a cloth instance and a small emissive crest mask. Keep roughness separation between plate, fabric and the leather shield grip; no mirror-polished surfaces.",
+    "back": "A navy crossed strap carries a plain bedroll clasp; the braid sits clear of the shoulder plates. No long cape hides the back silhouette.",
+    "animation": "Idle with weight on the rear foot and shield angled outward. Walk with measured short steps. Basic attacks use one readable right-hand sweep. The active lifts the shield before the crest lights; return to guard without whole-body root motion.",
+    "vfx": "A thin warm-gold shell follows the shield silhouette and a brief low-opacity arc wraps the torso. Do not use a solid sphere that obscures nearby heroes.",
+    "audio": "A firm boot placement, restrained metal knock, and short rounded shield chime. Avoid a booming impact on every basic attack.",
+    "risk": "Shield/forearm intersections during attack recovery are the main deformation risk. Test full left-arm elevation and adjacent-hero visibility."
+  },
+  "biography": "Ada kept Brighthaven\u00e2\u20ac\u2122s river gate open during the evacuation of a flooded caravan road. She joins the Compact trials to teach young captains that protecting an ally is a deliberate choice, not a consolation role. Mira maintained the roadside aid station beside her gate, and the two trust each other without always agreeing on when to advance.",
+  "tactics": {
+    "placement": "Front row, one cell ahead of a damage dealer; center-left leaves room for her shield silhouette.",
+    "partner": "Mira Dawnwell extends Ada\u00e2\u20ac\u2122s time on the frontline; Rowan Emberwick uses the space she buys.",
+    "counter": "Zura Stormcall applies magic damage against Ada\u00e2\u20ac\u2122s lower resistance; sustained focused attacks can exhaust the shield before its duration ends.",
+    "weakness": "Low offensive output and a self-only shield: she cannot rescue a distant backline unit.",
+    "contrast": "Unlike Borin, Ada prevents damage to herself instead of interrupting surrounding enemies.",
+    "test": "Check that a shielded Ada still takes overflow damage correctly and cannot refresh a stronger shield with a weaker cast."
+  },
+  "localization_status": "draft_en_id_review_required",
+  "asset_paths": {
+    "blender": "art-source/heroes/wc_u_human_guardian/wc_u_human_guardian.blend",
+    "mesh_fbx": "exports/heroes/wc_u_human_guardian/SK_wc_u_human_guardian.fbx",
+    "unreal_folder": "/Game/WonderChess/Heroes/wc_u_human_guardian",
+    "portrait": "exports/heroes/wc_u_human_guardian/portrait.png"
+  },
+  "animation_contract": {
+    "fps": 60,
+    "in_place": true,
+    "required_clips": [
+      "Idle",
+      "Move",
+      "Attack",
+      "Active",
+      "Hit",
+      "Defeat",
+      "Victory"
+    ],
+    "root_bone": "root",
+    "root_motion": false,
+    "socket_names": [
+      "weapon_r",
+      "weapon_l",
+      "cast_origin",
+      "head_ui"
+    ],
+    "deformation_review_required": true
+  },
+  "art_budget": {
+    "lod0_triangles_max": 15000,
+    "material_slots_max": 2,
+    "texture_size_default": 1024,
+    "deform_bones_target_max": 60,
+    "skin_influences_max": 4,
+    "lod1_target_ratio": 0.5,
+    "lod2_target_ratio": 0.25,
+    "budget_status": "unprofiled_starting_target"
+  },
+  "model_sheet_prompt": "Original Wonder Chess high-fantasy character production sheet for Ada Brightshield, The Gatekeeper. Human Guardian, adult character, height 1.82 m. Front, true side, back and three-quarter views at matching scale, neutral A-pose plus one action pose. A broad inverted-triangle shoulder line over a compact waist, anchored by an oversized rounded kite shield on the left. The shield rises to eyebrow height when guarding, but stays below her eyes at rest. Warm brown skin, square brows, dark eyes and a short black braid tucked behind the neck. Her calm, alert expression is readable without exaggerated facial animation. An ivory quilted coat sits under simplified steel breast and shoulder plates. A split navy tabard ends above the knees, leaving the leg silhouettes clear. Heavy boots and broad bracers make her planted stance apparent. Left-hand kite shield with a raised rising-sun disk; short, broad fantasy sword in the right hand. Build the emblem as shallow geometry with a baked bevel, not dense engraving. Palette: Navy #25466B; ivory #E9E2CD; brushed steel #9EAAB5; restrained gold #C7A25B. Gold covers only the shield crest and two fasteners. Flat neutral background, orthographic construction views, equipment inset, readable seams, non-graphic stylized fantasy. No copied franchise designs, text baked into textures, cinematic fog, invented extra limbs or altered gear between views. These are concept directions, not generated images.",
+  "display_name": "Ada",
+  "role_tags": [
+    "tank"
+  ]
+}
