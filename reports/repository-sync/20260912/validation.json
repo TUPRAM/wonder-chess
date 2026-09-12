@@ -1,0 +1,27 @@
+{
+  "utc": "2026-09-12T06:11:31.754466+00:00",
+  "python_tests_passed": 194,
+  "checks": [
+    {
+      "check": "validate-kit",
+      "exit_code": 0,
+      "output": "PASS: 400 specification/data checks. No game or Blender execution is implied."
+    },
+    {
+      "check": "documents",
+      "exit_code": 0,
+      "output": "28 generated documents match canonical data"
+    },
+    {
+      "check": "catalog",
+      "exit_code": 0,
+      "output": "6 catalog artifacts match canonical data"
+    },
+    {
+      "check": "vnext-catalog",
+      "exit_code": 0,
+      "output": "7 successor artifacts match canonical source; art, balance and release acceptance not established"
+    }
+  ],
+  "boundary": "Publication validation only. No new Unreal build, tournament batch or human art/gameplay acceptance was run."
+}
