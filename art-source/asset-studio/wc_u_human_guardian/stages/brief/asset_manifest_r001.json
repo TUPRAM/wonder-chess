@@ -1,0 +1,68 @@
+{
+  "asset_id": "wc_u_human_guardian",
+  "contract": {
+    "scope": "art_only_no_gameplay_changes",
+    "source_forward": "+Y",
+    "source_up": "+Z",
+    "authoring_unit": "meter",
+    "height_m": 1.82,
+    "gameplay_id": "wc_u_human_guardian",
+    "rig_family_interface": "humanoid_standard",
+    "max_candidates_per_stage": 2,
+    "max_external_spend": 0,
+    "geometry_start": "empty original source; no current Ada reuse",
+    "logical_tile_footprint": 1,
+    "equipment_handedness": {
+      "shield": "anatomical_left",
+      "sword": "anatomical_right"
+    },
+    "required_clips": [
+      "Idle",
+      "Move",
+      "Attack",
+      "Active",
+      "Hit",
+      "Defeat",
+      "Victory"
+    ],
+    "sockets": [
+      "weapon_r",
+      "weapon_l",
+      "cast_origin",
+      "head_ui"
+    ],
+    "fps": 60,
+    "root_motion": false,
+    "budget": {
+      "lod0_triangles_max": 15000,
+      "material_slots_max": 2,
+      "texture_size_default": 1024,
+      "deform_bones_target_max": 60,
+      "skin_influences_max": 4,
+      "lod1_target_ratio": 0.5,
+      "lod2_target_ratio": 0.25,
+      "budget_status": "unprofiled_starting_target"
+    },
+    "reference_choices": "stages/references/construction_decisions_r001.md",
+    "canonical_snapshot": "stages/brief/canonical_snapshot_r001.json",
+    "runtime_timing_authority": "data/units.json; copied snapshot is evidence, never independent gameplay authority"
+  },
+  "design_revision": "ada_as1_scratch_r001",
+  "kind": "hero",
+  "name": "Ada Brightshield",
+  "notes": [
+    "Reference, modeled forms, and final in-game release require actual owner approval.",
+    "Illustrated gold trim, braid, tabard, and hidden construction are proposed art amendments pending reference approval; canonical data remains unchanged.",
+    "All geometry, rig, textures, and motion will be created from scratch; existing runtime contracts are retained.",
+    "The bust is an early method checkpoint and cannot pass the full-hero forms gate."
+  ],
+  "rights": {
+    "status": "user_supplied_for_private_task_no_independent_clearance",
+    "external_upload_authorized": false,
+    "built_in_reference_generation_authorized": true,
+    "third_party_jobs_authorized": false,
+    "public_publishing_authorized": false
+  },
+  "rules_version": "1.0.0",
+  "schema_version": "1.0.0"
+}

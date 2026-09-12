@@ -1,0 +1,845 @@
+{
+  "asset_id": "wc_u_human_guardian",
+  "status": "reference_candidate_not_approved",
+  "parts": [
+    {
+      "id": "body",
+      "parent": "root",
+      "type": "organic",
+      "symmetry": "bilateral across local X=0",
+      "treatment": "connected torso and limbs with joint loops",
+      "runtime_policy": "skinned",
+      "reference_ids": [
+        "construction_turnaround"
+      ],
+      "dimensional_relationship": "1.82 m floor to crown; one logical tile",
+      "risks": [
+        "shoulder and hip volume"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "head_surface",
+      "parent": "neck",
+      "type": "organic",
+      "symmetry": "bilateral base; expression deliberate",
+      "treatment": "connected polygon surface with controlled facial planes",
+      "runtime_policy": "skinned",
+      "reference_ids": [
+        "face-primary"
+      ],
+      "dimensional_relationship": "Adult stylized proportions anchored to supplied face",
+      "risks": [
+        "lid/socket fit",
+        "jaw/profile likeness"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "neck",
+      "parent": "body",
+      "type": "organic",
+      "symmetry": "bilateral base; expression deliberate",
+      "treatment": "connected polygon surface with controlled facial planes",
+      "runtime_policy": "skinned",
+      "reference_ids": [
+        "face-primary",
+        "torso-layering"
+      ],
+      "dimensional_relationship": "Adult stylized proportions anchored to supplied face",
+      "risks": [
+        "collar clearance"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "arm_l",
+      "parent": "body",
+      "type": "organic",
+      "symmetry": "bilateral foundation; no forced pose symmetry",
+      "treatment": "deliberate polygon loops",
+      "runtime_policy": "skinned",
+      "reference_ids": [
+        "construction_turnaround",
+        "hands_contact"
+      ],
+      "dimensional_relationship": "joint positions fit 1.82 m body; hand fits separate grip",
+      "risks": [
+        "joint collapse",
+        "contact"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "hand_l",
+      "parent": "arm_l",
+      "type": "organic",
+      "symmetry": "bilateral foundation; no forced pose symmetry",
+      "treatment": "deliberate polygon loops",
+      "runtime_policy": "skinned",
+      "reference_ids": [
+        "construction_turnaround",
+        "hands_contact"
+      ],
+      "dimensional_relationship": "joint positions fit 1.82 m body; hand fits separate grip",
+      "risks": [
+        "joint collapse",
+        "contact"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "leg_l",
+      "parent": "body",
+      "type": "organic",
+      "symmetry": "bilateral foundation; no forced pose symmetry",
+      "treatment": "deliberate polygon loops",
+      "runtime_policy": "skinned",
+      "reference_ids": [
+        "construction_turnaround",
+        "hands_contact"
+      ],
+      "dimensional_relationship": "joint positions fit 1.82 m body; hand fits separate grip",
+      "risks": [
+        "joint collapse",
+        "contact"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "foot_l",
+      "parent": "leg_l",
+      "type": "organic",
+      "symmetry": "bilateral foundation; no forced pose symmetry",
+      "treatment": "deliberate polygon loops",
+      "runtime_policy": "skinned",
+      "reference_ids": [
+        "construction_turnaround",
+        "hands_contact"
+      ],
+      "dimensional_relationship": "joint positions fit 1.82 m body; hand fits separate grip",
+      "risks": [
+        "joint collapse",
+        "contact"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "arm_r",
+      "parent": "body",
+      "type": "organic",
+      "symmetry": "bilateral foundation; no forced pose symmetry",
+      "treatment": "deliberate polygon loops",
+      "runtime_policy": "skinned",
+      "reference_ids": [
+        "construction_turnaround",
+        "hands_contact"
+      ],
+      "dimensional_relationship": "joint positions fit 1.82 m body; hand fits separate grip",
+      "risks": [
+        "joint collapse",
+        "contact"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "hand_r",
+      "parent": "arm_r",
+      "type": "organic",
+      "symmetry": "bilateral foundation; no forced pose symmetry",
+      "treatment": "deliberate polygon loops",
+      "runtime_policy": "skinned",
+      "reference_ids": [
+        "construction_turnaround",
+        "hands_contact"
+      ],
+      "dimensional_relationship": "joint positions fit 1.82 m body; hand fits separate grip",
+      "risks": [
+        "joint collapse",
+        "contact"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "leg_r",
+      "parent": "body",
+      "type": "organic",
+      "symmetry": "bilateral foundation; no forced pose symmetry",
+      "treatment": "deliberate polygon loops",
+      "runtime_policy": "skinned",
+      "reference_ids": [
+        "construction_turnaround",
+        "hands_contact"
+      ],
+      "dimensional_relationship": "joint positions fit 1.82 m body; hand fits separate grip",
+      "risks": [
+        "joint collapse",
+        "contact"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "foot_r",
+      "parent": "leg_r",
+      "type": "organic",
+      "symmetry": "bilateral foundation; no forced pose symmetry",
+      "treatment": "deliberate polygon loops",
+      "runtime_policy": "skinned",
+      "reference_ids": [
+        "construction_turnaround",
+        "hands_contact"
+      ],
+      "dimensional_relationship": "joint positions fit 1.82 m body; hand fits separate grip",
+      "risks": [
+        "joint collapse",
+        "contact"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "hair_main",
+      "parent": "head_surface",
+      "type": "hair",
+      "symmetry": "asymmetric swept masses",
+      "treatment": "original mesh clumps",
+      "runtime_policy": "rigid to head",
+      "reference_ids": [
+        "face-primary",
+        "hair-back"
+      ],
+      "dimensional_relationship": "follows skull; no helmet-like sphere",
+      "risks": [
+        "hairline likeness"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "hair_braid",
+      "parent": "hair_main",
+      "type": "hair",
+      "symmetry": "single central braid",
+      "treatment": "interwoven tapered clumps",
+      "runtime_policy": "accessory bones only if tested",
+      "reference_ids": [
+        "hair-back"
+      ],
+      "dimensional_relationship": "ends at upper back; clear of collar",
+      "risks": [
+        "shoulder intersection"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "quilted_coat",
+      "parent": "body",
+      "type": "costume",
+      "symmetry": "bilateral base",
+      "treatment": "tailored shell and broad folds",
+      "runtime_policy": "skinned; no cloth simulation",
+      "reference_ids": [
+        "torso-layering"
+      ],
+      "dimensional_relationship": "ivory padded underlayer ending above knee",
+      "risks": [
+        "layer clearance",
+        "fold deformation"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "collar_inner",
+      "parent": "neck",
+      "type": "costume",
+      "symmetry": "bilateral base",
+      "treatment": "tailored shell and broad folds",
+      "runtime_policy": "skinned; no cloth simulation",
+      "reference_ids": [
+        "face-primary"
+      ],
+      "dimensional_relationship": "ivory padded upright collar",
+      "risks": [
+        "layer clearance",
+        "fold deformation"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "collar_outer",
+      "parent": "neck",
+      "type": "costume",
+      "symmetry": "bilateral base",
+      "treatment": "tailored shell and broad folds",
+      "runtime_policy": "skinned; no cloth simulation",
+      "reference_ids": [
+        "torso-layering"
+      ],
+      "dimensional_relationship": "short navy inner facing",
+      "risks": [
+        "layer clearance",
+        "fold deformation"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "tabard_front",
+      "parent": "body",
+      "type": "costume",
+      "symmetry": "bilateral base",
+      "treatment": "tailored shell and broad folds",
+      "runtime_policy": "skinned; no cloth simulation",
+      "reference_ids": [
+        "front-panel-candidate"
+      ],
+      "dimensional_relationship": "navy above-knee pointed front panel",
+      "risks": [
+        "layer clearance",
+        "fold deformation"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "tabard_back",
+      "parent": "body",
+      "type": "costume",
+      "symmetry": "bilateral base",
+      "treatment": "tailored shell and broad folds",
+      "runtime_policy": "skinned; no cloth simulation",
+      "reference_ids": [
+        "back-panel-candidate"
+      ],
+      "dimensional_relationship": "navy split rear panel with above-knee hem",
+      "risks": [
+        "layer clearance",
+        "fold deformation"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "trousers",
+      "parent": "body",
+      "type": "costume",
+      "symmetry": "bilateral base",
+      "treatment": "tailored shell and broad folds",
+      "runtime_policy": "skinned; no cloth simulation",
+      "reference_ids": [
+        "boot-knee-context"
+      ],
+      "dimensional_relationship": "brown fitted trousers",
+      "risks": [
+        "layer clearance",
+        "fold deformation"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "breastplate",
+      "parent": "body",
+      "type": "hard_surface",
+      "symmetry": "bilateral shell",
+      "treatment": "controlled shell thickness and bevel",
+      "runtime_policy": "rigid regions with tested waist articulation",
+      "reference_ids": [
+        "torso-layering",
+        "back-panel-candidate"
+      ],
+      "dimensional_relationship": "central sternum ridge and chest planes",
+      "risks": [
+        "armor bending",
+        "layer intersections"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "backplate",
+      "parent": "body",
+      "type": "hard_surface",
+      "symmetry": "bilateral shell",
+      "treatment": "controlled shell thickness and bevel",
+      "runtime_policy": "rigid regions with tested waist articulation",
+      "reference_ids": [
+        "torso-layering",
+        "back-panel-candidate"
+      ],
+      "dimensional_relationship": "fitted rear shell clear of braid",
+      "risks": [
+        "armor bending",
+        "layer intersections"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "pauldron_l",
+      "parent": "arm_l",
+      "type": "hard_surface",
+      "symmetry": "paired source; final side-specific clearance",
+      "treatment": "purpose-built polygon shells",
+      "runtime_policy": "skinned soft parts; rigid armor attachment to be pose-tested",
+      "reference_ids": [
+        "construction_turnaround",
+        "boot-knee-context",
+        "torso-layering"
+      ],
+      "dimensional_relationship": "three overlapping shaped plates",
+      "risks": [
+        "rigid bending",
+        "attachment contact"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "bracer_l",
+      "parent": "arm_l",
+      "type": "hard_surface",
+      "symmetry": "paired source; final side-specific clearance",
+      "treatment": "purpose-built polygon shells",
+      "runtime_policy": "skinned soft parts; rigid armor attachment to be pose-tested",
+      "reference_ids": [
+        "construction_turnaround",
+        "boot-knee-context",
+        "torso-layering"
+      ],
+      "dimensional_relationship": "forearm shell with wrist opening",
+      "risks": [
+        "rigid bending",
+        "attachment contact"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "glove_l",
+      "parent": "hand_l",
+      "type": "costume",
+      "symmetry": "paired source; final side-specific clearance",
+      "treatment": "purpose-built polygon shells",
+      "runtime_policy": "skinned soft parts; rigid armor attachment to be pose-tested",
+      "reference_ids": [
+        "construction_turnaround",
+        "boot-knee-context",
+        "torso-layering"
+      ],
+      "dimensional_relationship": "brown fitted leather five-finger glove",
+      "risks": [
+        "rigid bending",
+        "attachment contact"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "knee_guard_l",
+      "parent": "leg_l",
+      "type": "hard_surface",
+      "symmetry": "paired source; final side-specific clearance",
+      "treatment": "purpose-built polygon shells",
+      "runtime_policy": "skinned soft parts; rigid armor attachment to be pose-tested",
+      "reference_ids": [
+        "construction_turnaround",
+        "boot-knee-context",
+        "torso-layering"
+      ],
+      "dimensional_relationship": "separate shaped knee shell",
+      "risks": [
+        "rigid bending",
+        "attachment contact"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "greave_l",
+      "parent": "leg_l",
+      "type": "hard_surface",
+      "symmetry": "paired source; final side-specific clearance",
+      "treatment": "purpose-built polygon shells",
+      "runtime_policy": "skinned soft parts; rigid armor attachment to be pose-tested",
+      "reference_ids": [
+        "construction_turnaround",
+        "boot-knee-context",
+        "torso-layering"
+      ],
+      "dimensional_relationship": "shin shell over leather boot",
+      "risks": [
+        "rigid bending",
+        "attachment contact"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "boot_l",
+      "parent": "foot_l",
+      "type": "costume",
+      "symmetry": "paired source; final side-specific clearance",
+      "treatment": "purpose-built polygon shells",
+      "runtime_policy": "skinned soft parts; rigid armor attachment to be pose-tested",
+      "reference_ids": [
+        "construction_turnaround",
+        "boot-knee-context",
+        "torso-layering"
+      ],
+      "dimensional_relationship": "thick flat sole and strapped upper",
+      "risks": [
+        "rigid bending",
+        "attachment contact"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "pauldron_r",
+      "parent": "arm_r",
+      "type": "hard_surface",
+      "symmetry": "paired source; final side-specific clearance",
+      "treatment": "purpose-built polygon shells",
+      "runtime_policy": "skinned soft parts; rigid armor attachment to be pose-tested",
+      "reference_ids": [
+        "construction_turnaround",
+        "boot-knee-context",
+        "torso-layering"
+      ],
+      "dimensional_relationship": "three overlapping shaped plates",
+      "risks": [
+        "rigid bending",
+        "attachment contact"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "bracer_r",
+      "parent": "arm_r",
+      "type": "hard_surface",
+      "symmetry": "paired source; final side-specific clearance",
+      "treatment": "purpose-built polygon shells",
+      "runtime_policy": "skinned soft parts; rigid armor attachment to be pose-tested",
+      "reference_ids": [
+        "construction_turnaround",
+        "boot-knee-context",
+        "torso-layering"
+      ],
+      "dimensional_relationship": "forearm shell with wrist opening",
+      "risks": [
+        "rigid bending",
+        "attachment contact"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "glove_r",
+      "parent": "hand_r",
+      "type": "costume",
+      "symmetry": "paired source; final side-specific clearance",
+      "treatment": "purpose-built polygon shells",
+      "runtime_policy": "skinned soft parts; rigid armor attachment to be pose-tested",
+      "reference_ids": [
+        "construction_turnaround",
+        "boot-knee-context",
+        "torso-layering"
+      ],
+      "dimensional_relationship": "brown fitted leather five-finger glove",
+      "risks": [
+        "rigid bending",
+        "attachment contact"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "knee_guard_r",
+      "parent": "leg_r",
+      "type": "hard_surface",
+      "symmetry": "paired source; final side-specific clearance",
+      "treatment": "purpose-built polygon shells",
+      "runtime_policy": "skinned soft parts; rigid armor attachment to be pose-tested",
+      "reference_ids": [
+        "construction_turnaround",
+        "boot-knee-context",
+        "torso-layering"
+      ],
+      "dimensional_relationship": "separate shaped knee shell",
+      "risks": [
+        "rigid bending",
+        "attachment contact"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "greave_r",
+      "parent": "leg_r",
+      "type": "hard_surface",
+      "symmetry": "paired source; final side-specific clearance",
+      "treatment": "purpose-built polygon shells",
+      "runtime_policy": "skinned soft parts; rigid armor attachment to be pose-tested",
+      "reference_ids": [
+        "construction_turnaround",
+        "boot-knee-context",
+        "torso-layering"
+      ],
+      "dimensional_relationship": "shin shell over leather boot",
+      "risks": [
+        "rigid bending",
+        "attachment contact"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "boot_r",
+      "parent": "foot_r",
+      "type": "costume",
+      "symmetry": "paired source; final side-specific clearance",
+      "treatment": "purpose-built polygon shells",
+      "runtime_policy": "skinned soft parts; rigid armor attachment to be pose-tested",
+      "reference_ids": [
+        "construction_turnaround",
+        "boot-knee-context",
+        "torso-layering"
+      ],
+      "dimensional_relationship": "thick flat sole and strapped upper",
+      "risks": [
+        "rigid bending",
+        "attachment contact"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "belt",
+      "parent": "body",
+      "type": "costume",
+      "symmetry": "local centered",
+      "treatment": "polygon strip or solid fitting",
+      "runtime_policy": "waist-following",
+      "reference_ids": [
+        "front-panel-candidate"
+      ],
+      "dimensional_relationship": "one brown waist strap with square buckle",
+      "risks": [
+        "tabard attachment"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "belt_buckle",
+      "parent": "belt",
+      "type": "costume",
+      "symmetry": "local centered",
+      "treatment": "polygon strip or solid fitting",
+      "runtime_policy": "waist-following",
+      "reference_ids": [
+        "front-panel-candidate"
+      ],
+      "dimensional_relationship": "simple square fitting",
+      "risks": [
+        "tabard attachment"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "shield_shell",
+      "parent": "hand_l",
+      "type": "equipment",
+      "symmetry": "local shield centerline",
+      "treatment": "purpose-built solid/shell",
+      "runtime_policy": "weapon_l rigid attachment candidate",
+      "reference_ids": [
+        "shield-detail",
+        "shield_construction"
+      ],
+      "dimensional_relationship": "shield below eyes at rest; convex navy rounded-kite shell",
+      "risks": [
+        "grip and forearm contact",
+        "neighbor occlusion"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "shield_rim",
+      "parent": "shield_shell",
+      "type": "equipment",
+      "symmetry": "local shield centerline",
+      "treatment": "purpose-built solid/shell",
+      "runtime_policy": "weapon_l rigid attachment candidate",
+      "reference_ids": [
+        "shield-detail",
+        "shield_construction"
+      ],
+      "dimensional_relationship": "shield below eyes at rest; steel perimeter rim with bevel",
+      "risks": [
+        "grip and forearm contact",
+        "neighbor occlusion"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "shield_sun_crest",
+      "parent": "shield_shell",
+      "type": "equipment",
+      "symmetry": "local shield centerline",
+      "treatment": "purpose-built solid/shell",
+      "runtime_policy": "weapon_l rigid attachment candidate",
+      "reference_ids": [
+        "shield-detail",
+        "shield_construction"
+      ],
+      "dimensional_relationship": "shield below eyes at rest; one shallow gold disk and broad rays",
+      "risks": [
+        "grip and forearm contact",
+        "neighbor occlusion"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "shield_grip",
+      "parent": "shield_shell",
+      "type": "equipment",
+      "symmetry": "local shield centerline",
+      "treatment": "purpose-built solid/shell",
+      "runtime_policy": "weapon_l rigid attachment candidate",
+      "reference_ids": [
+        "shield-detail",
+        "shield_construction"
+      ],
+      "dimensional_relationship": "shield below eyes at rest; leather-wrapped grip in left palm",
+      "risks": [
+        "grip and forearm contact",
+        "neighbor occlusion"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "shield_forearm_straps",
+      "parent": "shield_shell",
+      "type": "equipment",
+      "symmetry": "local shield centerline",
+      "treatment": "purpose-built solid/shell",
+      "runtime_policy": "weapon_l rigid attachment candidate",
+      "reference_ids": [
+        "shield-detail",
+        "shield_construction"
+      ],
+      "dimensional_relationship": "shield below eyes at rest; two brown leather loops on reverse",
+      "risks": [
+        "grip and forearm contact",
+        "neighbor occlusion"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "sword_blade",
+      "parent": "sword_grip",
+      "type": "equipment",
+      "symmetry": "local blade axes",
+      "treatment": "purpose-built polygon solid",
+      "runtime_policy": "weapon_r rigid attachment candidate",
+      "reference_ids": [
+        "sword-detail",
+        "hands_contact"
+      ],
+      "dimensional_relationship": "short broad steel blade with center ridge and bevel",
+      "risks": [
+        "swing clearance",
+        "finger contact"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "sword_guard",
+      "parent": "sword_grip",
+      "type": "equipment",
+      "symmetry": "local blade axes",
+      "treatment": "purpose-built polygon solid",
+      "runtime_policy": "weapon_r rigid attachment candidate",
+      "reference_ids": [
+        "sword-detail",
+        "hands_contact"
+      ],
+      "dimensional_relationship": "compact curved crossguard",
+      "risks": [
+        "swing clearance",
+        "finger contact"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "sword_grip",
+      "parent": "hand_r",
+      "type": "equipment",
+      "symmetry": "local blade axes",
+      "treatment": "purpose-built polygon solid",
+      "runtime_policy": "weapon_r rigid attachment candidate",
+      "reference_ids": [
+        "sword-detail",
+        "hands_contact"
+      ],
+      "dimensional_relationship": "leather-wrapped grip sized to closed hand",
+      "risks": [
+        "swing clearance",
+        "finger contact"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    },
+    {
+      "id": "sword_pommel",
+      "parent": "sword_grip",
+      "type": "equipment",
+      "symmetry": "local blade axes",
+      "treatment": "purpose-built polygon solid",
+      "runtime_policy": "weapon_r rigid attachment candidate",
+      "reference_ids": [
+        "sword-detail",
+        "hands_contact"
+      ],
+      "dimensional_relationship": "compact terminal cap",
+      "risks": [
+        "swing clearance",
+        "finger contact"
+      ],
+      "owner": "Codex root Ada AS1 lane",
+      "authoring_source": "new original editable geometry; existing Ada source prohibited"
+    }
+  ],
+  "axes": {
+    "forward": "+Y",
+    "up": "+Z",
+    "anatomical_right": "-X",
+    "anatomical_left": "+X"
+  },
+  "symmetry_plane": "local X=0, explicit origin or mirror object; apply only to paired foundations",
+  "source_start": "empty source scene, no old Ada assets appended or imported"
+}

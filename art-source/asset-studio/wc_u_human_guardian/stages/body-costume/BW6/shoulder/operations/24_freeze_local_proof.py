@@ -1,0 +1,6 @@
+import bpy,sys,json,hashlib
+from pathlib import Path
+R=Path(__file__).resolve().parents[1];sys.path.insert(0,str(R/'operations'));import check_shoulder as ck
+s=ck.load(R/'ada_bw6_shoulder_authored_support.blend');s['BW6_SHOULDER_STATUS']='LOCAL_AUTHORING_PROOF_REVIEW_NOT_APPROVED';s['BW6_SHOULDER_FAILURE']='Whole-character forms, style fit, unseen directions, new actions and runtime integration are unapproved/unverified. This local support uses a source-bound 97-frame authoring action.'
+work=R/'ada_bw6_shoulder_work.blend';frozen=R/'ada_bw6_shoulder_checkpoint_r002_LOCAL_REVIEW.blend';bpy.ops.wm.save_as_mainfile(filepath=str(work));bpy.ops.wm.save_as_mainfile(filepath=str(frozen))
+record={'work':str(work),'work_sha256':hashlib.sha256(work.read_bytes()).hexdigest(),'frozen':str(frozen),'frozen_sha256':hashlib.sha256(frozen.read_bytes()).hexdigest(),'status':s['BW6_SHOULDER_STATUS'],'coat_context':s['BW6_COAT_CONTEXT_SOURCE'],'coat_context_sha256':s['BW6_COAT_CONTEXT_SHA256'],'local_support_action':bpy.data.objects['BW6_R_Cap_SecondaryHinge'].animation_data.action.name,'human_approval':False,'runtime_verified':False};(R/'records/freeze_r002.json').write_text(json.dumps(record,indent=2));print(json.dumps(record,indent=2))

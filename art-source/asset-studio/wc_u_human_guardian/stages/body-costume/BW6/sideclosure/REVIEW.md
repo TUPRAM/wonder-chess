@@ -1,0 +1,13 @@
+# BW6 right side return — local review candidate
+
+The new three-part side return improves the front plate connection and removes the old independently floating side-box edge. The front and rear flanges tuck behind their adjacent plates. Its dipped upper boundary follows the armhole, and one controlled lateral crown per section replaces a wavy surface inherited from point-by-point coat projection.
+
+This is one initial construction plus one substantive correction. The initial candidate had 58 backplate crossing pairs and 67 upper-strap/carrier pairs in each of five sampled poses; those failed files and records remain. The correction returned only the rear flange 6 mm toward the torso and rebuilt both straps on the actual evaluated carrier at their predeclared parametric positions.
+
+`ada_bw6_side_return_checkpoint_r001_REVIEW_CANDIDATE.blend` and `ada_bw6_side_return_work.blend` contain the retained geometry in the main integrated r002 context, including its rebuilt backplate. The main front/back plates, padded coat and body geometry/weights were verified unchanged during replay. The exact source and frozen hashes are in `records/r002_context_replay.json` and `records/verification.json`.
+
+All 97 integer authoring frames were evaluated against the r002 body, padded coat, front plate, backplate and navy underlayer. All three new parts returned zero confirmed transverse self, context and interpart crossing pairs. The raw cages also returned zero. See `records/r002_context_surface_checks.json`. This finite test does not establish containment, coplanar contact quality, continuous collision freedom or game-animation compatibility.
+
+Actual native renders were inspected in three-quarter, profile, back, reversed clay and raw cage views. Frames 49 and 73 are also captured. The upper rear termination still reads as an exposed narrow return, and the straps lack final fastening design. The rest of the character in these images is context, including the separately diagnosed invalid bracer-to-sleeve fit and unfinished collar. No human forms approval is issued. No separate motion movie was made for this small lane; the parent task owns the integrated motion recording.
+
+`append_side_return.py` appends only `BW6_R_FittedSideReturn`, `BW6_R_FittedSideStrap_1` and `BW6_R_FittedSideStrap_2`, verifies the frozen hash and torso bind-space, and does not apply an action or hide old parts. The returned old-part list identifies the three right-side context objects to replace deliberately. `records/append_verification.json` records an executed append into the r002 rig with matching surface signatures and unchanged target action. It does not adapt or approve the opposite side.
