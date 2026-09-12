@@ -1,0 +1,122 @@
+{
+  "source_blend": "C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_u_human_guardian\\stages\\body-costume\\BW5\\armor\\ada_bw5_armor_checkpoint_ART_REVISE.blend",
+  "sha256": "fe4dda1a1e25da6821f1b81788c25c411f5fc771b5cf737ee7a1d5c6ca96ce85",
+  "scene": "BW5_REFERENCE_POSE_APPROXIMATE",
+  "frame": 1,
+  "camera": "BW5_Reference_front",
+  "camera_world_matrix": [
+    [
+      -1.0,
+      -1.5099580252808664e-07,
+      1.1399865765455465e-14,
+      0.0
+    ],
+    [
+      0.0,
+      7.549790126404332e-08,
+      1.0,
+      3.0
+    ],
+    [
+      -1.5099580252808664e-07,
+      1.0,
+      -7.549790126404332e-08,
+      1.340000033378601
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "resolution": [
+    960,
+    960
+  ],
+  "ortho_scale_m": 0.9200000166893005,
+  "anchors": {
+    "clavicle_midpoint": {
+      "world_m": [
+        -3.725290298461914e-09,
+        -0.04501035809516907,
+        1.4618959426879883
+      ],
+      "render_px": [
+        479.9999713897705,
+        352.80452728271484
+      ],
+      "reference_proxy_px": [
+        255,
+        214
+      ],
+      "reference_uncertainty_px": [
+        5,
+        12
+      ],
+      "reference_visibility": "Occluded by collar; inferred anatomical placement, not a measured bone in the artwork."
+    },
+    "natural_waist_spine03_head": {
+      "world_m": [
+        7.866772337716821e-12,
+        -0.07005210220813751,
+        1.0986446142196655
+      ],
+      "render_px": [
+        480.000057220459,
+        731.8493843078613
+      ],
+      "reference_proxy_px": [
+        255,
+        350
+      ],
+      "reference_uncertainty_px": [
+        5,
+        8
+      ],
+      "reference_visibility": "Occluded by belt/underlayer; inferred natural-waist placement, not a measured bone in the artwork."
+    }
+  },
+  "uniform_model_to_reference_transform": {
+    "scale_xy_same": 0.35879658430763917,
+    "translation_px": [
+      82.77763439970688,
+      87.41494068269063
+    ],
+    "rotation_degrees": 0
+  },
+  "scale_uncertainty_interval_from_proxy_vertical_allowances": [
+    0.30603238073298633,
+    0.41156078788229195
+  ],
+  "policy": "One uniform image scale and translation, chosen from occluded body-landmark proxies. No plate corner is used to register. The residual artwork perspective and proxy uncertainty prevent exact silhouette matching or likeness scoring. The upper arm pose is approximate; not a changed shared rest pose.",
+  "image_sources": {
+    "reference": {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\production\\asset-studio\\supplements\\BW5\\Wonder_Chess_Proportion_Fit_BW5\\references\\Ada_supplied_turnaround.png",
+      "sha256": "508e02269072c0703b7b4c50cfb805e3481b43d0ff1d445bc6ad14f1f96b9fc2",
+      "native_size": [
+        1658,
+        949
+      ]
+    },
+    "model": {
+      "path": "C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_u_human_guardian\\stages\\body-costume\\BW5\\armor\\captures\\reference_pose_front.png",
+      "sha256": "7866e557371406d372413045730d0148a2c4e61eb2305b2a75bed2cde616949d",
+      "native_size": [
+        960,
+        960
+      ]
+    }
+  },
+  "display": {
+    "reference_crop_xyxy": [
+      100,
+      145,
+      405,
+      390
+    ],
+    "display_enlargement_same_both_panels": 2.8,
+    "output": "C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_u_human_guardian\\stages\\body-costume\\BW5\\analysis\\BW5_body_anchored_reference_comparison.png",
+    "interpolation": "Bicubic uniform registration, Lanczos display enlargement; no redraw or generated visual content."
+  }
+}

@@ -1,0 +1,5386 @@
+{
+  "status": "CONFIRMED_MAJOR_CROSSINGS_ART_REVISE",
+  "source_sha256": "2dd8ddbd0fcd2183a26319a185cca81be39a64b7b1e76f4eb8176b5b05123244",
+  "raw_region_counts": {
+    "reconstructed web / thumb": 43,
+    "thumb / thumb": 5,
+    "palm/base transition / thumb": 12,
+    "ring / ring": 1,
+    "reconstructed web / reconstructed web": 3
+  },
+  "raw_region_examples": {
+    "reconstructed web / thumb": {
+      "triangles": [
+        200,
+        1675
+      ],
+      "intersection_span_mm": 1.7266333425258864,
+      "acute_plane_angle_degrees": 71.94818667625712,
+      "point_m": [
+        0.02742502936449158,
+        0.0696310795181149,
+        0.030828405897458527
+      ],
+      "vertices": [
+        [
+          505,
+          472,
+          474
+        ],
+        [
+          802,
+          1045,
+          1163
+        ]
+      ],
+      "approximate_source_region": "reconstructed web / thumb"
+    },
+    "thumb / thumb": {
+      "triangles": [
+        905,
+        1666
+      ],
+      "intersection_span_mm": 0.6509990370030837,
+      "acute_plane_angle_degrees": 76.69913479435415,
+      "point_m": [
+        0.04381914749809731,
+        0.06811440590958762,
+        0.039510377660487636
+      ],
+      "vertices": [
+        [
+          501,
+          480,
+          503
+        ],
+        [
+          967,
+          957,
+          958
+        ]
+      ],
+      "approximate_source_region": "thumb / thumb"
+    },
+    "palm/base transition / thumb": {
+      "triangles": [
+        907,
+        2013
+      ],
+      "intersection_span_mm": 1.781197530631735,
+      "acute_plane_angle_degrees": 79.92245117473831,
+      "point_m": [
+        0.021971324148939216,
+        0.07115281793887082,
+        0.030234366447979673
+      ],
+      "vertices": [
+        [
+          483,
+          504,
+          474
+        ],
+        [
+          986,
+          802,
+          778
+        ]
+      ],
+      "approximate_source_region": "palm/base transition / thumb"
+    },
+    "ring / ring": {
+      "triangles": [
+        1275,
+        1732
+      ],
+      "intersection_span_mm": 0.28921391642312533,
+      "acute_plane_angle_degrees": 61.19079247640862,
+      "point_m": [
+        -0.027745631640071523,
+        0.09468489055847998,
+        0.026182072205553575
+      ],
+      "vertices": [
+        [
+          881,
+          880,
+          656
+        ],
+        [
+          655,
+          245,
+          376
+        ]
+      ],
+      "approximate_source_region": "ring / ring"
+    },
+    "reconstructed web / reconstructed web": {
+      "triangles": [
+        1638,
+        1645
+      ],
+      "intersection_span_mm": 1.940601031259335,
+      "acute_plane_angle_degrees": 27.58963820743667,
+      "point_m": [
+        0.04643522857154414,
+        0.0517746505424745,
+        0.05176652887340124
+      ],
+      "vertices": [
+        [
+          943,
+          952,
+          1151
+        ],
+        [
+          961,
+          1155,
+          971
+        ]
+      ],
+      "approximate_source_region": "reconstructed web / reconstructed web"
+    }
+  },
+  "crossing_span_and_angle": {
+    "raw": {
+      "confirmed_pairs": 64,
+      "minimum_plane_angle_degrees": 23.164821499801384,
+      "minimum_intersection_span_mm": 0.06555773797772402,
+      "maximum_intersection_span_mm": 5.612457054023791,
+      "pairs_with_span_above_0_01mm_and_angle_above1degree": 64,
+      "pairs": [
+        {
+          "triangles": [
+            200,
+            1675
+          ],
+          "intersection_span_mm": 1.7266333425258864,
+          "acute_plane_angle_degrees": 71.94818667625712,
+          "point_m": [
+            0.02742502936449158,
+            0.0696310795181149,
+            0.030828405897458527
+          ],
+          "vertices": [
+            [
+              505,
+              472,
+              474
+            ],
+            [
+              802,
+              1045,
+              1163
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            200,
+            2294
+          ],
+          "intersection_span_mm": 2.651238092511063,
+          "acute_plane_angle_degrees": 70.67453468819002,
+          "point_m": [
+            0.025517912803729934,
+            0.0706808545143702,
+            0.03061668122425531
+          ],
+          "vertices": [
+            [
+              505,
+              472,
+              474
+            ],
+            [
+              778,
+              802,
+              1163
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            201,
+            2294
+          ],
+          "intersection_span_mm": 0.9836059122293439,
+          "acute_plane_angle_degrees": 81.48086401671664,
+          "point_m": [
+            0.02389435146361137,
+            0.07146136673219171,
+            0.03040628919647903
+          ],
+          "vertices": [
+            [
+              505,
+              474,
+              504
+            ],
+            [
+              778,
+              802,
+              1163
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            902,
+            2297
+          ],
+          "intersection_span_mm": 0.43725708132114605,
+          "acute_plane_angle_degrees": 51.05926923680078,
+          "point_m": [
+            0.03698170962544231,
+            0.05058396684331146,
+            0.04114455255822827
+          ],
+          "vertices": [
+            [
+              499,
+              467,
+              471
+            ],
+            [
+              981,
+              1165,
+              791
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            902,
+            2341
+          ],
+          "intersection_span_mm": 2.108966634948634,
+          "acute_plane_angle_degrees": 63.86123478923039,
+          "point_m": [
+            0.03808882177345053,
+            0.050806329790726086,
+            0.04171025749215114
+          ],
+          "vertices": [
+            [
+              499,
+              467,
+              471
+            ],
+            [
+              973,
+              1165,
+              981
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            902,
+            2342
+          ],
+          "intersection_span_mm": 1.909468876791552,
+          "acute_plane_angle_degrees": 71.59562137569382,
+          "point_m": [
+            0.03958277438024507,
+            0.050879104154767485,
+            0.042976454278512044
+          ],
+          "vertices": [
+            [
+              499,
+              467,
+              471
+            ],
+            [
+              973,
+              981,
+              1159
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            903,
+            2297
+          ],
+          "intersection_span_mm": 4.563972218302063,
+          "acute_plane_angle_degrees": 64.03320990853825,
+          "point_m": [
+            0.03458640423222109,
+            0.0504456936854297,
+            0.040469358081175286
+          ],
+          "vertices": [
+            [
+              499,
+              471,
+              498
+            ],
+            [
+              981,
+              1165,
+              791
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            903,
+            2299
+          ],
+          "intersection_span_mm": 1.146153298341632,
+          "acute_plane_angle_degrees": 56.58934826881345,
+          "point_m": [
+            0.030474212911263225,
+            0.05036908457413738,
+            0.03905310782978107
+          ],
+          "vertices": [
+            [
+              499,
+              471,
+              498
+            ],
+            [
+              808,
+              1182,
+              791
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            903,
+            2300
+          ],
+          "intersection_span_mm": 1.5044959379105085,
+          "acute_plane_angle_degrees": 56.39318528535532,
+          "point_m": [
+            0.03170708426269239,
+            0.05037853485608167,
+            0.039533510497066375
+          ],
+          "vertices": [
+            [
+              499,
+              471,
+              498
+            ],
+            [
+              808,
+              791,
+              1165
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            903,
+            2334
+          ],
+          "intersection_span_mm": 0.16927260769225705,
+          "acute_plane_angle_degrees": 55.604909387681715,
+          "point_m": [
+            0.029847056305542796,
+            0.05035288719819334,
+            0.038855744415213514
+          ],
+          "vertices": [
+            [
+              499,
+              471,
+              498
+            ],
+            [
+              801,
+              791,
+              1182
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            905,
+            1666
+          ],
+          "intersection_span_mm": 0.6509990370030837,
+          "acute_plane_angle_degrees": 76.69913479435415,
+          "point_m": [
+            0.04381914749809731,
+            0.06811440590958762,
+            0.039510377660487636
+          ],
+          "vertices": [
+            [
+              501,
+              480,
+              503
+            ],
+            [
+              967,
+              957,
+              958
+            ]
+          ],
+          "approximate_source_region": "thumb / thumb"
+        },
+        {
+          "triangles": [
+            905,
+            1676
+          ],
+          "intersection_span_mm": 1.132431583690881,
+          "acute_plane_angle_degrees": 58.76834974778035,
+          "point_m": [
+            0.037898630742276174,
+            0.06508187879980312,
+            0.03520871666445721
+          ],
+          "vertices": [
+            [
+              501,
+              480,
+              503
+            ],
+            [
+              980,
+              1167,
+              982
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            905,
+            1677
+          ],
+          "intersection_span_mm": 0.8559335789694855,
+          "acute_plane_angle_degrees": 61.22824956000604,
+          "point_m": [
+            0.0386890608451947,
+            0.06526119679997688,
+            0.03573359451561545
+          ],
+          "vertices": [
+            [
+              501,
+              480,
+              503
+            ],
+            [
+              980,
+              982,
+              1161
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            905,
+            2237
+          ],
+          "intersection_span_mm": 1.0906294888218044,
+          "acute_plane_angle_degrees": 62.053606640090834,
+          "point_m": [
+            0.03930285449445749,
+            0.06581330377498668,
+            0.036231648763753926
+          ],
+          "vertices": [
+            [
+              501,
+              480,
+              503
+            ],
+            [
+              980,
+              1161,
+              970
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            905,
+            2238
+          ],
+          "intersection_span_mm": 0.917492445039928,
+          "acute_plane_angle_degrees": 79.3884969741092,
+          "point_m": [
+            0.040002844613859265,
+            0.06611589075401351,
+            0.03672797866590762
+          ],
+          "vertices": [
+            [
+              501,
+              480,
+              503
+            ],
+            [
+              980,
+              970,
+              1157
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            905,
+            2253
+          ],
+          "intersection_span_mm": 0.7069303904788212,
+          "acute_plane_angle_degrees": 82.12273736509235,
+          "point_m": [
+            0.04068908095185732,
+            0.06610663290115937,
+            0.03714752467344037
+          ],
+          "vertices": [
+            [
+              501,
+              480,
+              503
+            ],
+            [
+              967,
+              1157,
+              970
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            905,
+            2254
+          ],
+          "intersection_span_mm": 1.9344054996086073,
+          "acute_plane_angle_degrees": 89.66155858611131,
+          "point_m": [
+            0.04172672157635693,
+            0.06647766315293516,
+            0.037866280946053425
+          ],
+          "vertices": [
+            [
+              501,
+              480,
+              503
+            ],
+            [
+              967,
+              970,
+              1153
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            905,
+            2262
+          ],
+          "intersection_span_mm": 1.698863618792815,
+          "acute_plane_angle_degrees": 84.08976031991433,
+          "point_m": [
+            0.04308489494994683,
+            0.06750970962091463,
+            0.03892679815775095
+          ],
+          "vertices": [
+            [
+              501,
+              480,
+              503
+            ],
+            [
+              957,
+              967,
+              1153
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            905,
+            2277
+          ],
+          "intersection_span_mm": 0.399775378567897,
+          "acute_plane_angle_degrees": 63.15149096320614,
+          "point_m": [
+            0.03724550090698016,
+            0.0651406467863512,
+            0.03482035808647418
+          ],
+          "vertices": [
+            [
+              501,
+              480,
+              503
+            ],
+            [
+              982,
+              1167,
+              809
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            907,
+            2013
+          ],
+          "intersection_span_mm": 1.781197530631735,
+          "acute_plane_angle_degrees": 79.92245117473831,
+          "point_m": [
+            0.021971324148939216,
+            0.07115281793887082,
+            0.030234366447979673
+          ],
+          "vertices": [
+            [
+              483,
+              504,
+              474
+            ],
+            [
+              986,
+              802,
+              778
+            ]
+          ],
+          "approximate_source_region": "palm/base transition / thumb"
+        },
+        {
+          "triangles": [
+            907,
+            2294
+          ],
+          "intersection_span_mm": 0.6633626697776009,
+          "acute_plane_angle_degrees": 80.53692778592034,
+          "point_m": [
+            0.02311758136464527,
+            0.07152762681614305,
+            0.03038043055608311
+          ],
+          "vertices": [
+            [
+              483,
+              504,
+              474
+            ],
+            [
+              778,
+              802,
+              1163
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            908,
+            1686
+          ],
+          "intersection_span_mm": 0.8755922108768043,
+          "acute_plane_angle_degrees": 83.17372748145988,
+          "point_m": [
+            0.019068378917481726,
+            0.05629718260422816,
+            0.03294107129375301
+          ],
+          "vertices": [
+            [
+              507,
+              485,
+              476
+            ],
+            [
+              802,
+              986,
+              985
+            ]
+          ],
+          "approximate_source_region": "palm/base transition / thumb"
+        },
+        {
+          "triangles": [
+            908,
+            1687
+          ],
+          "intersection_span_mm": 4.7477967005860595,
+          "acute_plane_angle_degrees": 83.32831403767709,
+          "point_m": [
+            0.02110780756665079,
+            0.054898541424712635,
+            0.034275329421831646
+          ],
+          "vertices": [
+            [
+              507,
+              485,
+              476
+            ],
+            [
+              802,
+              985,
+              801
+            ]
+          ],
+          "approximate_source_region": "palm/base transition / thumb"
+        },
+        {
+          "triangles": [
+            908,
+            2036
+          ],
+          "intersection_span_mm": 0.34075907382770193,
+          "acute_plane_angle_degrees": 85.02549934715076,
+          "point_m": [
+            0.022946636103611265,
+            0.053644887699217825,
+            0.03550780314475446
+          ],
+          "vertices": [
+            [
+              507,
+              485,
+              476
+            ],
+            [
+              802,
+              801,
+              1182
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            909,
+            2036
+          ],
+          "intersection_span_mm": 2.202946159956309,
+          "acute_plane_angle_degrees": 86.15129395082933,
+          "point_m": [
+            0.023969041708920023,
+            0.053112037969072184,
+            0.03604144879655712
+          ],
+          "vertices": [
+            [
+              507,
+              476,
+              498
+            ],
+            [
+              802,
+              801,
+              1182
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            909,
+            2334
+          ],
+          "intersection_span_mm": 5.612457054023791,
+          "acute_plane_angle_degrees": 85.90424441204932,
+          "point_m": [
+            0.027164671941057317,
+            0.051511055116743434,
+            0.037620582773146755
+          ],
+          "vertices": [
+            [
+              507,
+              476,
+              498
+            ],
+            [
+              801,
+              791,
+              1182
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            925,
+            2334
+          ],
+          "intersection_span_mm": 0.31605781353736095,
+          "acute_plane_angle_degrees": 53.85007804631706,
+          "point_m": [
+            0.029614564383960318,
+            0.0503525656880187,
+            0.038786451289920996
+          ],
+          "vertices": [
+            [
+              476,
+              499,
+              498
+            ],
+            [
+              801,
+              791,
+              1182
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            926,
+            1686
+          ],
+          "intersection_span_mm": 1.6304703846755941,
+          "acute_plane_angle_degrees": 70.44250114180674,
+          "point_m": [
+            0.01833591986052561,
+            0.057154582868780904,
+            0.03243383547869047
+          ],
+          "vertices": [
+            [
+              476,
+              485,
+              495
+            ],
+            [
+              802,
+              986,
+              985
+            ]
+          ],
+          "approximate_source_region": "palm/base transition / thumb"
+        },
+        {
+          "triangles": [
+            930,
+            2014
+          ],
+          "intersection_span_mm": 2.8040975343837986,
+          "acute_plane_angle_degrees": 85.17085400765451,
+          "point_m": [
+            0.01775419649168141,
+            0.06758859243244625,
+            0.02982371573431809
+          ],
+          "vertices": [
+            [
+              477,
+              483,
+              494
+            ],
+            [
+              986,
+              778,
+              780
+            ]
+          ],
+          "approximate_source_region": "palm/base transition / thumb"
+        },
+        {
+          "triangles": [
+            931,
+            2013
+          ],
+          "intersection_span_mm": 0.3959105034887744,
+          "acute_plane_angle_degrees": 73.11845117127383,
+          "point_m": [
+            0.017287416957845355,
+            0.06399996657264051,
+            0.030303298771062206
+          ],
+          "vertices": [
+            [
+              477,
+              494,
+              487
+            ],
+            [
+              986,
+              802,
+              778
+            ]
+          ],
+          "approximate_source_region": "palm/base transition / thumb"
+        },
+        {
+          "triangles": [
+            931,
+            2014
+          ],
+          "intersection_span_mm": 2.121824446224093,
+          "acute_plane_angle_degrees": 71.26790074224012,
+          "point_m": [
+            0.017263240335555527,
+            0.0652409618171392,
+            0.030093484340559515
+          ],
+          "vertices": [
+            [
+              477,
+              494,
+              487
+            ],
+            [
+              986,
+              778,
+              780
+            ]
+          ],
+          "approximate_source_region": "palm/base transition / thumb"
+        },
+        {
+          "triangles": [
+            946,
+            1686
+          ],
+          "intersection_span_mm": 3.46137265842014,
+          "acute_plane_angle_degrees": 79.33139653384453,
+          "point_m": [
+            0.01771499966811338,
+            0.05938737445750368,
+            0.03150084359014853
+          ],
+          "vertices": [
+            [
+              495,
+              485,
+              477
+            ],
+            [
+              802,
+              986,
+              985
+            ]
+          ],
+          "approximate_source_region": "palm/base transition / thumb"
+        },
+        {
+          "triangles": [
+            946,
+            2013
+          ],
+          "intersection_span_mm": 0.4089563469794213,
+          "acute_plane_angle_degrees": 79.03019759489905,
+          "point_m": [
+            0.01746218072366984,
+            0.06119150071642253,
+            0.0308537896727871
+          ],
+          "vertices": [
+            [
+              495,
+              485,
+              477
+            ],
+            [
+              986,
+              802,
+              778
+            ]
+          ],
+          "approximate_source_region": "palm/base transition / thumb"
+        },
+        {
+          "triangles": [
+            947,
+            2013
+          ],
+          "intersection_span_mm": 2.4668860789947153,
+          "acute_plane_angle_degrees": 73.32009878576108,
+          "point_m": [
+            0.01735677445541478,
+            0.06259623991309715,
+            0.030573768367506617
+          ],
+          "vertices": [
+            [
+              495,
+              477,
+              487
+            ],
+            [
+              986,
+              802,
+              778
+            ]
+          ],
+          "approximate_source_region": "palm/base transition / thumb"
+        },
+        {
+          "triangles": [
+            948,
+            2329
+          ],
+          "intersection_span_mm": 3.1647873984951542,
+          "acute_plane_angle_degrees": 46.94014910093082,
+          "point_m": [
+            0.03316557476042539,
+            0.06712768718014908,
+            0.0324194922263452
+          ],
+          "vertices": [
+            [
+              501,
+              473,
+              472
+            ],
+            [
+              1045,
+              1181,
+              809
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            949,
+            1674
+          ],
+          "intersection_span_mm": 2.1445289845129345,
+          "acute_plane_angle_degrees": 79.7575120104861,
+          "point_m": [
+            0.030408274448125272,
+            0.06834497361166661,
+            0.031292155557526936
+          ],
+          "vertices": [
+            [
+              501,
+              472,
+              505
+            ],
+            [
+              802,
+              1181,
+              1045
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            949,
+            1675
+          ],
+          "intersection_span_mm": 1.3987302399788606,
+          "acute_plane_angle_degrees": 74.25789733212694,
+          "point_m": [
+            0.028801853969473386,
+            0.06889879361769778,
+            0.03089997841126109
+          ],
+          "vertices": [
+            [
+              501,
+              472,
+              505
+            ],
+            [
+              802,
+              1045,
+              1163
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            949,
+            2329
+          ],
+          "intersection_span_mm": 0.5977517764684773,
+          "acute_plane_angle_degrees": 80.47723267041295,
+          "point_m": [
+            0.03165626260765526,
+            0.06800634085871846,
+            0.03174655896393115
+          ],
+          "vertices": [
+            [
+              501,
+              472,
+              505
+            ],
+            [
+              1045,
+              1181,
+              809
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            951,
+            1645
+          ],
+          "intersection_span_mm": 1.3031773621385836,
+          "acute_plane_angle_degrees": 23.164821499801384,
+          "point_m": [
+            0.04670304723010374,
+            0.05101788779530007,
+            0.051165844493875415
+          ],
+          "vertices": [
+            [
+              943,
+              484,
+              952
+            ],
+            [
+              961,
+              1155,
+              971
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            952,
+            1645
+          ],
+          "intersection_span_mm": 0.3838101415733092,
+          "acute_plane_angle_degrees": 24.58775532629261,
+          "point_m": [
+            0.04611357620183618,
+            0.05087083440259875,
+            0.05058113955812156
+          ],
+          "vertices": [
+            [
+              952,
+              484,
+              471
+            ],
+            [
+              961,
+              1155,
+              971
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            952,
+            2260
+          ],
+          "intersection_span_mm": 1.5579997241431023,
+          "acute_plane_angle_degrees": 29.597547231817043,
+          "point_m": [
+            0.045592303229702175,
+            0.05064453261407803,
+            0.049802936465256256
+          ],
+          "vertices": [
+            [
+              952,
+              484,
+              471
+            ],
+            [
+              963,
+              971,
+              1155
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            953,
+            2259
+          ],
+          "intersection_span_mm": 1.8005348794914284,
+          "acute_plane_angle_degrees": 59.877779063987354,
+          "point_m": [
+            0.04442128148067387,
+            0.05042361357684147,
+            0.04810600215872761
+          ],
+          "vertices": [
+            [
+              952,
+              471,
+              950
+            ],
+            [
+              963,
+              1159,
+              971
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            953,
+            2260
+          ],
+          "intersection_span_mm": 0.4132928356206786,
+          "acute_plane_angle_degrees": 64.24849760823992,
+          "point_m": [
+            0.045074935718794215,
+            0.050438369831641766,
+            0.04899808174871515
+          ],
+          "vertices": [
+            [
+              952,
+              471,
+              950
+            ],
+            [
+              963,
+              971,
+              1155
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            953,
+            2270
+          ],
+          "intersection_span_mm": 3.6151261976705182,
+          "acute_plane_angle_degrees": 82.10006396612354,
+          "point_m": [
+            0.042622705474034815,
+            0.05033205841422034,
+            0.04609664593982914
+          ],
+          "vertices": [
+            [
+              952,
+              471,
+              950
+            ],
+            [
+              971,
+              1159,
+              981
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            954,
+            1650
+          ],
+          "intersection_span_mm": 0.7987315755274116,
+          "acute_plane_angle_degrees": 47.69323564722584,
+          "point_m": [
+            0.04734461150016951,
+            0.06289390031893347,
+            0.0411631414058733
+          ],
+          "vertices": [
+            [
+              948,
+              468,
+              480
+            ],
+            [
+              960,
+              947,
+              957
+            ]
+          ],
+          "approximate_source_region": "thumb / thumb"
+        },
+        {
+          "triangles": [
+            954,
+            1666
+          ],
+          "intersection_span_mm": 0.10643665460337004,
+          "acute_plane_angle_degrees": 87.3059465853111,
+          "point_m": [
+            0.044194669947224235,
+            0.06814128095960353,
+            0.03974456682887202
+          ],
+          "vertices": [
+            [
+              948,
+              468,
+              480
+            ],
+            [
+              967,
+              957,
+              958
+            ]
+          ],
+          "approximate_source_region": "thumb / thumb"
+        },
+        {
+          "triangles": [
+            955,
+            1666
+          ],
+          "intersection_span_mm": 2.1234919791104705,
+          "acute_plane_angle_degrees": 61.40869688915829,
+          "point_m": [
+            0.04513721454383707,
+            0.06820893652036594,
+            0.04033513367267354
+          ],
+          "vertices": [
+            [
+              948,
+              480,
+              949
+            ],
+            [
+              967,
+              957,
+              958
+            ]
+          ],
+          "approximate_source_region": "thumb / thumb"
+        },
+        {
+          "triangles": [
+            958,
+            2270
+          ],
+          "intersection_span_mm": 0.7698339438708047,
+          "acute_plane_angle_degrees": 78.29551181788466,
+          "point_m": [
+            0.041051138717315756,
+            0.05035398959552326,
+            0.044594733295178594
+          ],
+          "vertices": [
+            [
+              950,
+              471,
+              467
+            ],
+            [
+              971,
+              1159,
+              981
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            958,
+            2342
+          ],
+          "intersection_span_mm": 0.9342391100895192,
+          "acute_plane_angle_degrees": 75.12989342854083,
+          "point_m": [
+            0.04046622479320776,
+            0.050627795857615496,
+            0.04404438373671668
+          ],
+          "vertices": [
+            [
+              950,
+              471,
+              467
+            ],
+            [
+              973,
+              981,
+              1159
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            968,
+            2013
+          ],
+          "intersection_span_mm": 0.9110619039278328,
+          "acute_plane_angle_degrees": 72.89451207268975,
+          "point_m": [
+            0.02077051664834712,
+            0.07061664236094747,
+            0.03001868296512178
+          ],
+          "vertices": [
+            [
+              494,
+              483,
+              474
+            ],
+            [
+              986,
+              802,
+              778
+            ]
+          ],
+          "approximate_source_region": "palm/base transition / thumb"
+        },
+        {
+          "triangles": [
+            968,
+            2014
+          ],
+          "intersection_span_mm": 2.5995123778875593,
+          "acute_plane_angle_degrees": 71.06127653041263,
+          "point_m": [
+            0.01933359973612309,
+            0.06962306524640663,
+            0.029848705283914076
+          ],
+          "vertices": [
+            [
+              494,
+              483,
+              474
+            ],
+            [
+              986,
+              778,
+              780
+            ]
+          ],
+          "approximate_source_region": "palm/base transition / thumb"
+        },
+        {
+          "triangles": [
+            1240,
+            1666
+          ],
+          "intersection_span_mm": 0.06555773797772402,
+          "acute_plane_angle_degrees": 85.97367169614147,
+          "point_m": [
+            0.044119969138820145,
+            0.06813633545903672,
+            0.03970350364739128
+          ],
+          "vertices": [
+            [
+              468,
+              503,
+              480
+            ],
+            [
+              967,
+              957,
+              958
+            ]
+          ],
+          "approximate_source_region": "thumb / thumb"
+        },
+        {
+          "triangles": [
+            1240,
+            2254
+          ],
+          "intersection_span_mm": 0.10575786082233425,
+          "acute_plane_angle_degrees": 79.99892191003022,
+          "point_m": [
+            0.04251084408170181,
+            0.06681495100847024,
+            0.038424719278526975
+          ],
+          "vertices": [
+            [
+              468,
+              503,
+              480
+            ],
+            [
+              967,
+              970,
+              1153
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            1240,
+            2262
+          ],
+          "intersection_span_mm": 0.13408732396203574,
+          "acute_plane_angle_degrees": 85.45620775236523,
+          "point_m": [
+            0.042587908132892385,
+            0.06687841738099073,
+            0.0384859693222428
+          ],
+          "vertices": [
+            [
+              468,
+              503,
+              480
+            ],
+            [
+              957,
+              967,
+              1153
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            1275,
+            1732
+          ],
+          "intersection_span_mm": 0.28921391642312533,
+          "acute_plane_angle_degrees": 61.19079247640862,
+          "point_m": [
+            -0.027745631640071523,
+            0.09468489055847998,
+            0.026182072205553575
+          ],
+          "vertices": [
+            [
+              881,
+              880,
+              656
+            ],
+            [
+              655,
+              245,
+              376
+            ]
+          ],
+          "approximate_source_region": "ring / ring"
+        },
+        {
+          "triangles": [
+            1283,
+            2277
+          ],
+          "intersection_span_mm": 2.1320029688106135,
+          "acute_plane_angle_degrees": 63.5680408957985,
+          "point_m": [
+            0.036183297134692254,
+            0.065463311519493,
+            0.03421210592735056
+          ],
+          "vertices": [
+            [
+              501,
+              503,
+              479
+            ],
+            [
+              982,
+              1167,
+              809
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            1284,
+            2277
+          ],
+          "intersection_span_mm": 0.20296608904995989,
+          "acute_plane_angle_degrees": 58.825152563057024,
+          "point_m": [
+            0.03521645892964785,
+            0.06577330826791065,
+            0.033638591192162434
+          ],
+          "vertices": [
+            [
+              501,
+              479,
+              473
+            ],
+            [
+              982,
+              1167,
+              809
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            1284,
+            2278
+          ],
+          "intersection_span_mm": 0.17176199240910744,
+          "acute_plane_angle_degrees": 29.988373741860247,
+          "point_m": [
+            0.035080082136596996,
+            0.06578331386063474,
+            0.03352620376036458
+          ],
+          "vertices": [
+            [
+              501,
+              479,
+              473
+            ],
+            [
+              982,
+              809,
+              1166
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            1284,
+            2301
+          ],
+          "intersection_span_mm": 0.33287975892870486,
+          "acute_plane_angle_degrees": 41.64288360787563,
+          "point_m": [
+            0.034791812708173345,
+            0.06587833275624494,
+            0.03329449355710315
+          ],
+          "vertices": [
+            [
+              501,
+              479,
+              473
+            ],
+            [
+              809,
+              1181,
+              808
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            1284,
+            2302
+          ],
+          "intersection_span_mm": 0.16055762104493737,
+          "acute_plane_angle_degrees": 34.275039164242486,
+          "point_m": [
+            0.03495631140584796,
+            0.06576480458215672,
+            0.03342201951879688
+          ],
+          "vertices": [
+            [
+              501,
+              479,
+              473
+            ],
+            [
+              809,
+              808,
+              1166
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            1284,
+            2329
+          ],
+          "intersection_span_mm": 0.4983363821762272,
+          "acute_plane_angle_degrees": 40.25057546230372,
+          "point_m": [
+            0.03454502100040108,
+            0.0661579639206846,
+            0.03311182910933051
+          ],
+          "vertices": [
+            [
+              501,
+              479,
+              473
+            ],
+            [
+              1045,
+              1181,
+              809
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / thumb"
+        },
+        {
+          "triangles": [
+            1638,
+            1645
+          ],
+          "intersection_span_mm": 1.940601031259335,
+          "acute_plane_angle_degrees": 27.58963820743667,
+          "point_m": [
+            0.04643522857154414,
+            0.0517746505424745,
+            0.05176652887340124
+          ],
+          "vertices": [
+            [
+              943,
+              952,
+              1151
+            ],
+            [
+              961,
+              1155,
+              971
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / reconstructed web"
+        },
+        {
+          "triangles": [
+            1638,
+            2249
+          ],
+          "intersection_span_mm": 2.6590779998034098,
+          "acute_plane_angle_degrees": 25.98016935119039,
+          "point_m": [
+            0.045240005050495545,
+            0.053070698181746354,
+            0.05296289622650324
+          ],
+          "vertices": [
+            [
+              943,
+              952,
+              1151
+            ],
+            [
+              953,
+              1155,
+              961
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / reconstructed web"
+        },
+        {
+          "triangles": [
+            1638,
+            2250
+          ],
+          "intersection_span_mm": 0.9953493607174476,
+          "acute_plane_angle_degrees": 31.845075086877635,
+          "point_m": [
+            0.044432911133556206,
+            0.054052770361108136,
+            0.05420097758030372
+          ],
+          "vertices": [
+            [
+              943,
+              952,
+              1151
+            ],
+            [
+              953,
+              961,
+              1150
+            ]
+          ],
+          "approximate_source_region": "reconstructed web / reconstructed web"
+        }
+      ]
+    },
+    "evaluated": {
+      "confirmed_pairs": 141,
+      "minimum_plane_angle_degrees": 15.17729061397621,
+      "minimum_intersection_span_mm": 0.002926687765485527,
+      "maximum_intersection_span_mm": 2.9666414455072125,
+      "pairs_with_span_above_0_01mm_and_angle_above1degree": 137,
+      "pairs": [
+        {
+          "triangles": [
+            802,
+            6710
+          ],
+          "intersection_span_mm": 0.9182795289162826,
+          "acute_plane_angle_degrees": 69.8231753918639,
+          "point_m": [
+            0.02777533938528516,
+            0.06903366477412984,
+            0.03106209914714522
+          ],
+          "vertices": [
+            [
+              1228,
+              472,
+              1229
+            ],
+            [
+              3474,
+              4399,
+              3475
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            802,
+            6711
+          ],
+          "intersection_span_mm": 0.5116675313809328,
+          "acute_plane_angle_degrees": 67.83946173767744,
+          "point_m": [
+            0.027139466186144014,
+            0.06934094726171017,
+            0.030961406494834816
+          ],
+          "vertices": [
+            [
+              1228,
+              472,
+              1229
+            ],
+            [
+              3474,
+              3475,
+              1163
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            803,
+            6711
+          ],
+          "intersection_span_mm": 0.18619927115649706,
+          "acute_plane_angle_degrees": 73.21096449525159,
+          "point_m": [
+            0.026830938108577652,
+            0.06950191856736179,
+            0.03093930605163501
+          ],
+          "vertices": [
+            [
+              1228,
+              1229,
+              3660
+            ],
+            [
+              3474,
+              3475,
+              1163
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            803,
+            9229
+          ],
+          "intersection_span_mm": 1.1461074951880181,
+          "acute_plane_angle_degrees": 72.38106034011207,
+          "point_m": [
+            0.02621693895405468,
+            0.06974613963920775,
+            0.030858028691326707
+          ],
+          "vertices": [
+            [
+              1228,
+              1229,
+              3660
+            ],
+            [
+              1163,
+              4719,
+              3474
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            804,
+            9224
+          ],
+          "intersection_span_mm": 0.9580337650153358,
+          "acute_plane_angle_degrees": 73.29167005972359,
+          "point_m": [
+            0.02390223157765774,
+            0.07028943609031606,
+            0.03061980563474251
+          ],
+          "vertices": [
+            [
+              3660,
+              1229,
+              474
+            ],
+            [
+              778,
+              1954,
+              4719
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            804,
+            9225
+          ],
+          "intersection_span_mm": 0.47764024910366243,
+          "acute_plane_angle_degrees": 76.16439895203372,
+          "point_m": [
+            0.0246042891958414,
+            0.07016660338182609,
+            0.030702981005352948
+          ],
+          "vertices": [
+            [
+              3660,
+              1229,
+              474
+            ],
+            [
+              778,
+              4719,
+              3473
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            804,
+            9228
+          ],
+          "intersection_span_mm": 0.4258559810582686,
+          "acute_plane_angle_degrees": 76.2672110673348,
+          "point_m": [
+            0.025046171634492027,
+            0.07007770927621297,
+            0.030731895133686765
+          ],
+          "vertices": [
+            [
+              3660,
+              1229,
+              474
+            ],
+            [
+              1163,
+              3473,
+              4719
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            804,
+            9229
+          ],
+          "intersection_span_mm": 0.44287074002322685,
+          "acute_plane_angle_degrees": 78.24576789908912,
+          "point_m": [
+            0.02547105306928136,
+            0.06999310226096019,
+            0.03076145124162981
+          ],
+          "vertices": [
+            [
+              3660,
+              1229,
+              474
+            ],
+            [
+              1163,
+              4719,
+              3474
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            805,
+            9224
+          ],
+          "intersection_span_mm": 0.26779740352735837,
+          "acute_plane_angle_degrees": 78.09578275575349,
+          "point_m": [
+            0.023301910121492728,
+            0.07038217361705064,
+            0.030539141055936435
+          ],
+          "vertices": [
+            [
+              3660,
+              474,
+              1763
+            ],
+            [
+              778,
+              1954,
+              4719
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3612,
+            9432
+          ],
+          "intersection_span_mm": 0.34610456894549085,
+          "acute_plane_angle_degrees": 74.33531422127307,
+          "point_m": [
+            0.03687417989375708,
+            0.051380998633181275,
+            0.0412205077465255
+          ],
+          "vertices": [
+            [
+              4011,
+              2169,
+              471
+            ],
+            [
+              3483,
+              1165,
+              3482
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3612,
+            9433
+          ],
+          "intersection_span_mm": 1.1410733608974446,
+          "acute_plane_angle_degrees": 76.85639260544777,
+          "point_m": [
+            0.03745921812587519,
+            0.05142536033760435,
+            0.04167276911060549
+          ],
+          "vertices": [
+            [
+              4011,
+              2169,
+              471
+            ],
+            [
+              3483,
+              3482,
+              4747
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3612,
+            9434
+          ],
+          "intersection_span_mm": 0.7658164590661204,
+          "acute_plane_angle_degrees": 84.91703674474397,
+          "point_m": [
+            0.03821651872978915,
+            0.05148485909976005,
+            0.042244865192469054
+          ],
+          "vertices": [
+            [
+              4011,
+              2169,
+              471
+            ],
+            [
+              4747,
+              3482,
+              981
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3612,
+            9435
+          ],
+          "intersection_span_mm": 0.5877023210304981,
+          "acute_plane_angle_degrees": 88.51073577082268,
+          "point_m": [
+            0.038755674602837645,
+            0.05152806438220299,
+            0.0426467333055813
+          ],
+          "vertices": [
+            [
+              4011,
+              2169,
+              471
+            ],
+            [
+              4747,
+              981,
+              3456
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3612,
+            9436
+          ],
+          "intersection_span_mm": 0.95583288253991,
+          "acute_plane_angle_degrees": 88.19634735387491,
+          "point_m": [
+            0.03932443377809661,
+            0.05155857023599364,
+            0.04316750707179705
+          ],
+          "vertices": [
+            [
+              4011,
+              2169,
+              471
+            ],
+            [
+              3459,
+              4747,
+              3456
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3613,
+            9240
+          ],
+          "intersection_span_mm": 0.7507510056527618,
+          "acute_plane_angle_degrees": 79.45078963933335,
+          "point_m": [
+            0.03602935639374437,
+            0.051359618037186375,
+            0.04079000565295778
+          ],
+          "vertices": [
+            [
+              4011,
+              471,
+              3284
+            ],
+            [
+              3482,
+              1165,
+              3481
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3613,
+            9432
+          ],
+          "intersection_span_mm": 0.4015149811742819,
+          "acute_plane_angle_degrees": 85.23397485213621,
+          "point_m": [
+            0.03654801204149849,
+            0.05136346121936382,
+            0.04103954374856941
+          ],
+          "vertices": [
+            [
+              4011,
+              471,
+              3284
+            ],
+            [
+              3483,
+              1165,
+              3482
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3614,
+            9240
+          ],
+          "intersection_span_mm": 2.3076546447455533,
+          "acute_plane_angle_degrees": 79.46690809496995,
+          "point_m": [
+            0.03463077288244383,
+            0.05134707640048351,
+            0.04017172736843186
+          ],
+          "vertices": [
+            [
+              1878,
+              4011,
+              3284
+            ],
+            [
+              3482,
+              1165,
+              3481
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3614,
+            9251
+          ],
+          "intersection_span_mm": 0.3502370953550778,
+          "acute_plane_angle_degrees": 77.7910550580328,
+          "point_m": [
+            0.032932611400084875,
+            0.05133212635397545,
+            0.03940342841685064
+          ],
+          "vertices": [
+            [
+              1878,
+              4011,
+              3284
+            ],
+            [
+              4722,
+              791,
+              3481
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3614,
+            9252
+          ],
+          "intersection_span_mm": 0.21816458393024066,
+          "acute_plane_angle_degrees": 74.4283215724197,
+          "point_m": [
+            0.033193480062322506,
+            0.051334587837131504,
+            0.039515732093030276
+          ],
+          "vertices": [
+            [
+              1878,
+              4011,
+              3284
+            ],
+            [
+              3480,
+              4722,
+              3481
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3614,
+            9253
+          ],
+          "intersection_span_mm": 0.3180727433439484,
+          "acute_plane_angle_degrees": 75.11483802777829,
+          "point_m": [
+            0.03343548947841892,
+            0.051336586446305926,
+            0.03962980315591195
+          ],
+          "vertices": [
+            [
+              1878,
+              4011,
+              3284
+            ],
+            [
+              3480,
+              3481,
+              1165
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3615,
+            9250
+          ],
+          "intersection_span_mm": 1.1031660839220592,
+          "acute_plane_angle_degrees": 81.83391856415678,
+          "point_m": [
+            0.030931385641564127,
+            0.05150459820194235,
+            0.03852015817311684
+          ],
+          "vertices": [
+            [
+              1878,
+              3284,
+              498
+            ],
+            [
+              4722,
+              3550,
+              791
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3615,
+            9251
+          ],
+          "intersection_span_mm": 1.4719283232126996,
+          "acute_plane_angle_degrees": 83.5836125551972,
+          "point_m": [
+            0.03211359133084052,
+            0.05139237288151903,
+            0.03901031833077587
+          ],
+          "vertices": [
+            [
+              1878,
+              3284,
+              498
+            ],
+            [
+              4722,
+              791,
+              3481
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3621,
+            8979
+          ],
+          "intersection_span_mm": 0.015461917355030694,
+          "acute_plane_angle_degrees": 80.9887298557295,
+          "point_m": [
+            0.04048233117319036,
+            0.0657367099870035,
+            0.03749687491816244
+          ],
+          "vertices": [
+            [
+              4012,
+              480,
+              1330
+            ],
+            [
+              4685,
+              970,
+              3449
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3621,
+            9050
+          ],
+          "intersection_span_mm": 0.54757344845468,
+          "acute_plane_angle_degrees": 81.00520107606185,
+          "point_m": [
+            0.040704905302360664,
+            0.06580440765136075,
+            0.03765539881982624
+          ],
+          "vertices": [
+            [
+              4012,
+              480,
+              1330
+            ],
+            [
+              4695,
+              3449,
+              970
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3621,
+            9051
+          ],
+          "intersection_span_mm": 0.6045776339543749,
+          "acute_plane_angle_degrees": 89.06026400790276,
+          "point_m": [
+            0.04111969033884688,
+            0.0660204012456344,
+            0.03798135834498146
+          ],
+          "vertices": [
+            [
+              4012,
+              480,
+              1330
+            ],
+            [
+              4695,
+              970,
+              3432
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3621,
+            9052
+          ],
+          "intersection_span_mm": 0.48832668977054006,
+          "acute_plane_angle_degrees": 87.71685007809053,
+          "point_m": [
+            0.041502662512124866,
+            0.06624907557127374,
+            0.03829225962672142
+          ],
+          "vertices": [
+            [
+              4012,
+              480,
+              1330
+            ],
+            [
+              3435,
+              4695,
+              3432
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3621,
+            9053
+          ],
+          "intersection_span_mm": 0.6617046339200776,
+          "acute_plane_angle_degrees": 85.13522882891934,
+          "point_m": [
+            0.04190247086628637,
+            0.06649467679820134,
+            0.03861916539349846
+          ],
+          "vertices": [
+            [
+              4012,
+              480,
+              1330
+            ],
+            [
+              3435,
+              3432,
+              1153
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3621,
+            9085
+          ],
+          "intersection_span_mm": 0.6759024780950387,
+          "acute_plane_angle_degrees": 89.07075343651252,
+          "point_m": [
+            0.043099945364286206,
+            0.06698813542713557,
+            0.03951597425075502
+          ],
+          "vertices": [
+            [
+              4012,
+              480,
+              1330
+            ],
+            [
+              957,
+              4700,
+              3434
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3621,
+            9088
+          ],
+          "intersection_span_mm": 0.5554266244190045,
+          "acute_plane_angle_degrees": 86.3857784442869,
+          "point_m": [
+            0.042613548389661055,
+            0.06696374089810822,
+            0.03921154548849755
+          ],
+          "vertices": [
+            [
+              4012,
+              480,
+              1330
+            ],
+            [
+              1153,
+              3434,
+              4700
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3621,
+            9089
+          ],
+          "intersection_span_mm": 0.43000009526083455,
+          "acute_plane_angle_degrees": 85.91898843614511,
+          "point_m": [
+            0.04226774421975458,
+            0.06675440446255954,
+            0.03892984702231444
+          ],
+          "vertices": [
+            [
+              4012,
+              480,
+              1330
+            ],
+            [
+              1153,
+              4700,
+              3435
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3622,
+            6719
+          ],
+          "intersection_span_mm": 0.04928537623098386,
+          "acute_plane_angle_degrees": 65.2679148135117,
+          "point_m": [
+            0.03899805038287186,
+            0.0651621390070016,
+            0.036259386143828995
+          ],
+          "vertices": [
+            [
+              2723,
+              4012,
+              1330
+            ],
+            [
+              3467,
+              3464,
+              1161
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3622,
+            8976
+          ],
+          "intersection_span_mm": 0.19819729741773137,
+          "acute_plane_angle_degrees": 65.3775828756256,
+          "point_m": [
+            0.03907681039448005,
+            0.06522029346149937,
+            0.0363350455407714
+          ],
+          "vertices": [
+            [
+              2723,
+              4012,
+              1330
+            ],
+            [
+              3467,
+              1161,
+              3466
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3622,
+            8977
+          ],
+          "intersection_span_mm": 0.7888911574450241,
+          "acute_plane_angle_degrees": 73.7799439972643,
+          "point_m": [
+            0.03944670590648858,
+            0.06533654442243578,
+            0.03663387632888154
+          ],
+          "vertices": [
+            [
+              2723,
+              4012,
+              1330
+            ],
+            [
+              3467,
+              3466,
+              4685
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3622,
+            8978
+          ],
+          "intersection_span_mm": 0.42222776690784675,
+          "acute_plane_angle_degrees": 72.40184007816043,
+          "point_m": [
+            0.03988569167491757,
+            0.06550880745505377,
+            0.03700087747754985
+          ],
+          "vertices": [
+            [
+              2723,
+              4012,
+              1330
+            ],
+            [
+              4685,
+              3466,
+              970
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3622,
+            8979
+          ],
+          "intersection_span_mm": 0.5973221624177885,
+          "acute_plane_angle_degrees": 80.50908412076566,
+          "point_m": [
+            0.04024719983827749,
+            0.06567289023606514,
+            0.037311110118616334
+          ],
+          "vertices": [
+            [
+              2723,
+              4012,
+              1330
+            ],
+            [
+              4685,
+              970,
+              3449
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3623,
+            6712
+          ],
+          "intersection_span_mm": 0.002926687765485527,
+          "acute_plane_angle_degrees": 64.9735112206096,
+          "point_m": [
+            0.03822522437981314,
+            0.06500050418447151,
+            0.035697335296603586
+          ],
+          "vertices": [
+            [
+              2723,
+              1330,
+              503
+            ],
+            [
+              980,
+              3489,
+              4400
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3623,
+            6713
+          ],
+          "intersection_span_mm": 0.0119063028344697,
+          "acute_plane_angle_degrees": 67.32474206298639,
+          "point_m": [
+            0.038231055342465126,
+            0.0650018504873427,
+            0.03570158460454344
+          ],
+          "vertices": [
+            [
+              2723,
+              1330,
+              503
+            ],
+            [
+              980,
+              4400,
+              3467
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3623,
+            6714
+          ],
+          "intersection_span_mm": 0.21850550620675901,
+          "acute_plane_angle_degrees": 61.0024982714149,
+          "point_m": [
+            0.037473626536770124,
+            0.06486260542232511,
+            0.03515660972291789
+          ],
+          "vertices": [
+            [
+              2723,
+              1330,
+              503
+            ],
+            [
+              3489,
+              1167,
+              3488
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3623,
+            6715
+          ],
+          "intersection_span_mm": 0.8336039236299116,
+          "acute_plane_angle_degrees": 61.284097238801536,
+          "point_m": [
+            0.03789392783302385,
+            0.0649200716422576,
+            0.03545512930968594
+          ],
+          "vertices": [
+            [
+              2723,
+              1330,
+              503
+            ],
+            [
+              3489,
+              3488,
+              4400
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3623,
+            6718
+          ],
+          "intersection_span_mm": 0.8558831990547032,
+          "acute_plane_angle_degrees": 56.36953189649248,
+          "point_m": [
+            0.03858185754424691,
+            0.06505372458684071,
+            0.0359515104995438
+          ],
+          "vertices": [
+            [
+              2723,
+              1330,
+              503
+            ],
+            [
+              3467,
+              4400,
+              3464
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3623,
+            6719
+          ],
+          "intersection_span_mm": 0.08514575221844839,
+          "acute_plane_angle_degrees": 59.326489739258776,
+          "point_m": [
+            0.03895537821341963,
+            0.06512706707654203,
+            0.03622117934186651
+          ],
+          "vertices": [
+            [
+              2723,
+              1330,
+              503
+            ],
+            [
+              3467,
+              3464,
+              1161
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3623,
+            9152
+          ],
+          "intersection_span_mm": 0.4304505273924082,
+          "acute_plane_angle_degrees": 61.96584181641772,
+          "point_m": [
+            0.03720664280913989,
+            0.06494000781676135,
+            0.03498936022092129
+          ],
+          "vertices": [
+            [
+              2723,
+              1330,
+              503
+            ],
+            [
+              3488,
+              1167,
+              3491
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3623,
+            9153
+          ],
+          "intersection_span_mm": 0.07749575061922007,
+          "acute_plane_angle_degrees": 49.78440208709017,
+          "point_m": [
+            0.03699786941420492,
+            0.0649945017157014,
+            0.034857391005771135
+          ],
+          "vertices": [
+            [
+              2723,
+              1330,
+              503
+            ],
+            [
+              3488,
+              3491,
+              4709
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3631,
+            9224
+          ],
+          "intersection_span_mm": 0.5497155289081455,
+          "acute_plane_angle_degrees": 88.46415120599484,
+          "point_m": [
+            0.02290023280336906,
+            0.07034772340717531,
+            0.030502920858987207
+          ],
+          "vertices": [
+            [
+              1879,
+              1763,
+              474
+            ],
+            [
+              778,
+              1954,
+              4719
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3634,
+            6757
+          ],
+          "intersection_span_mm": 1.3608016518394428,
+          "acute_plane_angle_degrees": 79.77221009119087,
+          "point_m": [
+            0.02061970286752893,
+            0.056235837994415894,
+            0.03359629139339043
+          ],
+          "vertices": [
+            [
+              2682,
+              485,
+              2452
+            ],
+            [
+              802,
+              4406,
+              1687
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3634,
+            6762
+          ],
+          "intersection_span_mm": 0.2807372614396316,
+          "acute_plane_angle_degrees": 76.13760202628988,
+          "point_m": [
+            0.021162767022591393,
+            0.05573728978317563,
+            0.0339566228691867
+          ],
+          "vertices": [
+            [
+              2682,
+              485,
+              2452
+            ],
+            [
+              1687,
+              4406,
+              1689
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3635,
+            6762
+          ],
+          "intersection_span_mm": 1.203399469663066,
+          "acute_plane_angle_degrees": 76.15585018287216,
+          "point_m": [
+            0.021682887672300265,
+            0.05529713099902886,
+            0.034250072354133174
+          ],
+          "vertices": [
+            [
+              2682,
+              2452,
+              4014
+            ],
+            [
+              1687,
+              4406,
+              1689
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3635,
+            6763
+          ],
+          "intersection_span_mm": 0.4330455944294125,
+          "acute_plane_angle_degrees": 75.78283207349668,
+          "point_m": [
+            0.022260690555204708,
+            0.05482260887450292,
+            0.03458207239599903
+          ],
+          "vertices": [
+            [
+              2682,
+              2452,
+              4014
+            ],
+            [
+              1687,
+              1689,
+              801
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3636,
+            6763
+          ],
+          "intersection_span_mm": 0.38560072377656807,
+          "acute_plane_angle_degrees": 84.158918606572,
+          "point_m": [
+            0.02255943262794993,
+            0.05460725841266857,
+            0.03475943458920948
+          ],
+          "vertices": [
+            [
+              4014,
+              2452,
+              476
+            ],
+            [
+              1687,
+              1689,
+              801
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3636,
+            8167
+          ],
+          "intersection_span_mm": 1.0689313106222587,
+          "acute_plane_angle_degrees": 85.29669492418599,
+          "point_m": [
+            0.023118014399614313,
+            0.054252784456015675,
+            0.03506138718579831
+          ],
+          "vertices": [
+            [
+              4014,
+              2452,
+              476
+            ],
+            [
+              801,
+              4583,
+              1687
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3637,
+            8166
+          ],
+          "intersection_span_mm": 0.914570960059965,
+          "acute_plane_angle_degrees": 85.45364947211237,
+          "point_m": [
+            0.024426837464630705,
+            0.05350769013840934,
+            0.03575727004058998
+          ],
+          "vertices": [
+            [
+              4014,
+              476,
+              2453
+            ],
+            [
+              801,
+              3549,
+              4583
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3637,
+            8167
+          ],
+          "intersection_span_mm": 0.6685033778316514,
+          "acute_plane_angle_degrees": 86.20550108879343,
+          "point_m": [
+            0.02379815240566742,
+            0.0538451775706946,
+            0.03541525923444119
+          ],
+          "vertices": [
+            [
+              4014,
+              476,
+              2453
+            ],
+            [
+              801,
+              4583,
+              1687
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3638,
+            8166
+          ],
+          "intersection_span_mm": 0.49148693758218265,
+          "acute_plane_angle_degrees": 81.60116111880683,
+          "point_m": [
+            0.024989204210932797,
+            0.05322953280584479,
+            0.03607345033054671
+          ],
+          "vertices": [
+            [
+              1874,
+              4014,
+              2453
+            ],
+            [
+              801,
+              3549,
+              4583
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3638,
+            8169
+          ],
+          "intersection_span_mm": 0.6687745456750476,
+          "acute_plane_angle_degrees": 84.25609831132597,
+          "point_m": [
+            0.025471856543850604,
+            0.05301796136052488,
+            0.03631546642261299
+          ],
+          "vertices": [
+            [
+              1874,
+              4014,
+              2453
+            ],
+            [
+              1182,
+              4583,
+              3549
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3638,
+            9401
+          ],
+          "intersection_span_mm": 0.6953243101386968,
+          "acute_plane_angle_degrees": 84.20952707518204,
+          "point_m": [
+            0.026044077539982502,
+            0.05276244339719274,
+            0.036584657887249586
+          ],
+          "vertices": [
+            [
+              1874,
+              4014,
+              2453
+            ],
+            [
+              3549,
+              3550,
+              1182
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3639,
+            9401
+          ],
+          "intersection_span_mm": 2.476307497646875,
+          "acute_plane_angle_degrees": 85.86228082636217,
+          "point_m": [
+            0.027414586454583376,
+            0.05225069223962494,
+            0.03719473370104427
+          ],
+          "vertices": [
+            [
+              1874,
+              2453,
+              498
+            ],
+            [
+              3549,
+              3550,
+              1182
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3703,
+            9248
+          ],
+          "intersection_span_mm": 0.008522763343307128,
+          "acute_plane_angle_degrees": 72.97472666020339,
+          "point_m": [
+            0.029207765232128965,
+            0.0517515043680663,
+            0.0379385316239637
+          ],
+          "vertices": [
+            [
+              2453,
+              1878,
+              498
+            ],
+            [
+              3551,
+              1182,
+              3550
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3703,
+            9249
+          ],
+          "intersection_span_mm": 0.009431250695194753,
+          "acute_plane_angle_degrees": 73.8553027576227,
+          "point_m": [
+            0.029215894330595397,
+            0.05175014324445121,
+            0.037942054470398126
+          ],
+          "vertices": [
+            [
+              2453,
+              1878,
+              498
+            ],
+            [
+              3551,
+              3550,
+              4722
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3703,
+            9250
+          ],
+          "intersection_span_mm": 1.271357005850732,
+          "acute_plane_angle_degrees": 78.92502900634533,
+          "point_m": [
+            0.02981470226232353,
+            0.05165233125341363,
+            0.03814678524735847
+          ],
+          "vertices": [
+            [
+              2453,
+              1878,
+              498
+            ],
+            [
+              4722,
+              3550,
+              791
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3703,
+            9401
+          ],
+          "intersection_span_mm": 0.7687409674622643,
+          "acute_plane_angle_degrees": 73.51327943700076,
+          "point_m": [
+            0.02884854812027214,
+            0.05181076889055085,
+            0.03780257094650967
+          ],
+          "vertices": [
+            [
+              2453,
+              1878,
+              498
+            ],
+            [
+              3549,
+              3550,
+              1182
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3706,
+            6756
+          ],
+          "intersection_span_mm": 1.232761497804168,
+          "acute_plane_angle_degrees": 87.90282414605952,
+          "point_m": [
+            0.019695970781686153,
+            0.05725922486362687,
+            0.03296252106778655
+          ],
+          "vertices": [
+            [
+              2452,
+              485,
+              2728
+            ],
+            [
+              802,
+              1949,
+              4406
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3706,
+            6757
+          ],
+          "intersection_span_mm": 0.22645930846193046,
+          "acute_plane_angle_degrees": 89.30761285576074,
+          "point_m": [
+            0.02010901527752236,
+            0.05672647456763037,
+            0.03324073578326636
+          ],
+          "vertices": [
+            [
+              2452,
+              485,
+              2728
+            ],
+            [
+              802,
+              4406,
+              1687
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3706,
+            6759
+          ],
+          "intersection_span_mm": 0.44322439481220843,
+          "acute_plane_angle_degrees": 87.33544034175044,
+          "point_m": [
+            0.019222673839739843,
+            0.05787009150383877,
+            0.03263934315842931
+          ],
+          "vertices": [
+            [
+              2452,
+              485,
+              2728
+            ],
+            [
+              1949,
+              1688,
+              4406
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3722,
+            8075
+          ],
+          "intersection_span_mm": 0.2514368479152973,
+          "acute_plane_angle_degrees": 85.65221910158724,
+          "point_m": [
+            0.018741532215956293,
+            0.06808815110433106,
+            0.030127802136969403
+          ],
+          "vertices": [
+            [
+              2730,
+              483,
+              2178
+            ],
+            [
+              4571,
+              778,
+              1955
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3722,
+            8076
+          ],
+          "intersection_span_mm": 0.2042093178337032,
+          "acute_plane_angle_degrees": 81.3360827482448,
+          "point_m": [
+            0.018620149226959384,
+            0.06789555836956565,
+            0.030130430500278558
+          ],
+          "vertices": [
+            [
+              2730,
+              483,
+              2178
+            ],
+            [
+              2556,
+              4571,
+              1955
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3723,
+            8076
+          ],
+          "intersection_span_mm": 1.3603211779637596,
+          "acute_plane_angle_degrees": 84.05511549913184,
+          "point_m": [
+            0.018288823252253138,
+            0.06718792828292824,
+            0.030133431009485265
+          ],
+          "vertices": [
+            [
+              2730,
+              2178,
+              4025
+            ],
+            [
+              2556,
+              4571,
+              1955
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3724,
+            8071
+          ],
+          "intersection_span_mm": 0.15897016047754148,
+          "acute_plane_angle_degrees": 86.28436389884223,
+          "point_m": [
+            0.0179209530575555,
+            0.06631798550906293,
+            0.03015151098847996
+          ],
+          "vertices": [
+            [
+              4025,
+              2178,
+              494
+            ],
+            [
+              986,
+              4571,
+              2556
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3724,
+            8076
+          ],
+          "intersection_span_mm": 0.1857518478175746,
+          "acute_plane_angle_degrees": 83.89575175932382,
+          "point_m": [
+            0.01798030444954124,
+            0.06647946519843767,
+            0.030142193687125826
+          ],
+          "vertices": [
+            [
+              4025,
+              2178,
+              494
+            ],
+            [
+              2556,
+              4571,
+              1955
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3725,
+            8071
+          ],
+          "intersection_span_mm": 0.09864074162039738,
+          "acute_plane_angle_degrees": 81.22114093481171,
+          "point_m": [
+            0.0178830807464676,
+            0.0661960302207843,
+            0.030164571466009312
+          ],
+          "vertices": [
+            [
+              4025,
+              494,
+              3292
+            ],
+            [
+              986,
+              4571,
+              2556
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3726,
+            8070
+          ],
+          "intersection_span_mm": 0.7029246234347997,
+          "acute_plane_angle_degrees": 84.40600904888213,
+          "point_m": [
+            0.017670107362774093,
+            0.0642426261443724,
+            0.030487316048230538
+          ],
+          "vertices": [
+            [
+              2729,
+              4025,
+              3292
+            ],
+            [
+              986,
+              1949,
+              4571
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3726,
+            8071
+          ],
+          "intersection_span_mm": 1.5908028358523483,
+          "acute_plane_angle_degrees": 82.17742119294635,
+          "point_m": [
+            0.01779112633769739,
+            0.0653672656091153,
+            0.030298251503156175
+          ],
+          "vertices": [
+            [
+              2729,
+              4025,
+              3292
+            ],
+            [
+              986,
+              4571,
+              2556
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3727,
+            8070
+          ],
+          "intersection_span_mm": 0.22633803987119505,
+          "acute_plane_angle_degrees": 80.64681230505984,
+          "point_m": [
+            0.0176267985936577,
+            0.06378801613733254,
+            0.03057169310882578
+          ],
+          "vertices": [
+            [
+              2729,
+              3292,
+              487
+            ],
+            [
+              986,
+              1949,
+              4571
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3786,
+            6759
+          ],
+          "intersection_span_mm": 1.5977958485163637,
+          "acute_plane_angle_degrees": 79.6129410047156,
+          "point_m": [
+            0.018789174428629957,
+            0.058690070166468156,
+            0.03222194861788087
+          ],
+          "vertices": [
+            [
+              2728,
+              485,
+              2681
+            ],
+            [
+              1949,
+              1688,
+              4406
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3787,
+            6758
+          ],
+          "intersection_span_mm": 1.4774931788502434,
+          "acute_plane_angle_degrees": 83.39908204100064,
+          "point_m": [
+            0.018126394540860694,
+            0.06032207153862408,
+            0.03151146860583583
+          ],
+          "vertices": [
+            [
+              2728,
+              2681,
+              4033
+            ],
+            [
+              1949,
+              986,
+              1688
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3787,
+            6759
+          ],
+          "intersection_span_mm": 0.36443250578118797,
+          "acute_plane_angle_degrees": 81.3212738610328,
+          "point_m": [
+            0.018420890649447786,
+            0.059509888871117286,
+            0.031829960657289665
+          ],
+          "vertices": [
+            [
+              2728,
+              2681,
+              4033
+            ],
+            [
+              1949,
+              1688,
+              4406
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3788,
+            6758
+          ],
+          "intersection_span_mm": 0.07523835695261859,
+          "acute_plane_angle_degrees": 80.21995343468551,
+          "point_m": [
+            0.017883568770402425,
+            0.061011545366776276,
+            0.031252116776991586
+          ],
+          "vertices": [
+            [
+              4033,
+              2681,
+              477
+            ],
+            [
+              1949,
+              986,
+              1688
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3788,
+            8070
+          ],
+          "intersection_span_mm": 0.22756201769931247,
+          "acute_plane_angle_degrees": 80.29491929634284,
+          "point_m": [
+            0.017862609148834852,
+            0.061156180767847165,
+            0.031212678163300478
+          ],
+          "vertices": [
+            [
+              4033,
+              2681,
+              477
+            ],
+            [
+              986,
+              1949,
+              4571
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3789,
+            8070
+          ],
+          "intersection_span_mm": 1.382084876060762,
+          "acute_plane_angle_degrees": 81.18074767348733,
+          "point_m": [
+            0.017765320787396212,
+            0.06193032970388624,
+            0.031015380366663542
+          ],
+          "vertices": [
+            [
+              4033,
+              477,
+              2729
+            ],
+            [
+              986,
+              1949,
+              4571
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3790,
+            8070
+          ],
+          "intersection_span_mm": 0.920216348025196,
+          "acute_plane_angle_degrees": 81.43315988020221,
+          "point_m": [
+            0.017657762217687716,
+            0.06304277225110615,
+            0.03074197286430669
+          ],
+          "vertices": [
+            [
+              3294,
+              4033,
+              2729
+            ],
+            [
+              986,
+              1949,
+              4571
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3791,
+            8070
+          ],
+          "intersection_span_mm": 0.19227482024085685,
+          "acute_plane_angle_degrees": 80.9899417532067,
+          "point_m": [
+            0.017626927333829187,
+            0.06358363084276784,
+            0.03061577133764582
+          ],
+          "vertices": [
+            [
+              3294,
+              2729,
+              487
+            ],
+            [
+              986,
+              1949,
+              4571
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3792,
+            9380
+          ],
+          "intersection_span_mm": 0.30341070178182294,
+          "acute_plane_angle_degrees": 57.43935413172717,
+          "point_m": [
+            0.0321975339599479,
+            0.06678141037950353,
+            0.03238254546131744
+          ],
+          "vertices": [
+            [
+              501,
+              1622,
+              4034
+            ],
+            [
+              3544,
+              1181,
+              3547
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3792,
+            9381
+          ],
+          "intersection_span_mm": 1.0801487359647597,
+          "acute_plane_angle_degrees": 66.12699269028744,
+          "point_m": [
+            0.032783414062697386,
+            0.06647829101932898,
+            0.03258910591644214
+          ],
+          "vertices": [
+            [
+              501,
+              1622,
+              4034
+            ],
+            [
+              3544,
+              3547,
+              4740
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3792,
+            9382
+          ],
+          "intersection_span_mm": 0.378088458097882,
+          "acute_plane_angle_degrees": 62.80635026672287,
+          "point_m": [
+            0.03340216908425939,
+            0.06616692958293915,
+            0.03281263564879028
+          ],
+          "vertices": [
+            [
+              501,
+              1622,
+              4034
+            ],
+            [
+              4740,
+              3547,
+              809
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3795,
+            6706
+          ],
+          "intersection_span_mm": 0.4661397489821224,
+          "acute_plane_angle_degrees": 60.41595638268276,
+          "point_m": [
+            0.031002100730020868,
+            0.06737036315064233,
+            0.03186753397333297
+          ],
+          "vertices": [
+            [
+              1622,
+              1334,
+              4034
+            ],
+            [
+              3545,
+              1181,
+              3544
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3795,
+            9380
+          ],
+          "intersection_span_mm": 1.0441799916732817,
+          "acute_plane_angle_degrees": 61.24096519137184,
+          "point_m": [
+            0.03163211540718415,
+            0.06705855196198032,
+            0.03214320211657716
+          ],
+          "vertices": [
+            [
+              1622,
+              1334,
+              4034
+            ],
+            [
+              3544,
+              1181,
+              3547
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3796,
+            6706
+          ],
+          "intersection_span_mm": 0.0734700332237541,
+          "acute_plane_angle_degrees": 61.92888898892864,
+          "point_m": [
+            0.030775805906453582,
+            0.06747610611939685,
+            0.03176558026332007
+          ],
+          "vertices": [
+            [
+              4034,
+              1334,
+              472
+            ],
+            [
+              3545,
+              1181,
+              3544
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3796,
+            6707
+          ],
+          "intersection_span_mm": 0.6189223034061578,
+          "acute_plane_angle_degrees": 61.60557170820681,
+          "point_m": [
+            0.03048940863058696,
+            0.06764897551142929,
+            0.03167903824340747
+          ],
+          "vertices": [
+            [
+              4034,
+              1334,
+              472
+            ],
+            [
+              3545,
+              3544,
+              4399
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3797,
+            6707
+          ],
+          "intersection_span_mm": 0.6146811385314445,
+          "acute_plane_angle_degrees": 69.96486509874966,
+          "point_m": [
+            0.02996516885049726,
+            0.06794208976235697,
+            0.03154201388507395
+          ],
+          "vertices": [
+            [
+              4034,
+              472,
+              1228
+            ],
+            [
+              3545,
+              3544,
+              4399
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3797,
+            6708
+          ],
+          "intersection_span_mm": 0.6255733516077996,
+          "acute_plane_angle_degrees": 72.8667408300588,
+          "point_m": [
+            0.02942084008719724,
+            0.06820475859516908,
+            0.03140368650022423
+          ],
+          "vertices": [
+            [
+              4034,
+              472,
+              1228
+            ],
+            [
+              4399,
+              3544,
+              1045
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3797,
+            6709
+          ],
+          "intersection_span_mm": 0.24791482493506461,
+          "acute_plane_angle_degrees": 70.89186716898315,
+          "point_m": [
+            0.02904142803440904,
+            0.06840015190577212,
+            0.03132096685723351
+          ],
+          "vertices": [
+            [
+              4034,
+              472,
+              1228
+            ],
+            [
+              4399,
+              1045,
+              3475
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3797,
+            6710
+          ],
+          "intersection_span_mm": 0.8581026752806726,
+          "acute_plane_angle_degrees": 68.13819728456288,
+          "point_m": [
+            0.028562353512956426,
+            0.06865799325893182,
+            0.031228900168870352
+          ],
+          "vertices": [
+            [
+              4034,
+              472,
+              1228
+            ],
+            [
+              3474,
+              4399,
+              3475
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3807,
+            9064
+          ],
+          "intersection_span_mm": 0.07316926018493163,
+          "acute_plane_angle_degrees": 25.921271004382696,
+          "point_m": [
+            0.04457972730141372,
+            0.052759203001559465,
+            0.05096077845681681
+          ],
+          "vertices": [
+            [
+              3295,
+              2457,
+              952
+            ],
+            [
+              3443,
+              1155,
+              3442
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3807,
+            9077
+          ],
+          "intersection_span_mm": 0.6193423611649311,
+          "acute_plane_angle_degrees": 30.08086543740258,
+          "point_m": [
+            0.04443806195377308,
+            0.05267452316764364,
+            0.05065659569347903
+          ],
+          "vertices": [
+            [
+              3295,
+              2457,
+              952
+            ],
+            [
+              3443,
+              3440,
+              1155
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3808,
+            9071
+          ],
+          "intersection_span_mm": 0.0076808509352104095,
+          "acute_plane_angle_degrees": 41.378982353136884,
+          "point_m": [
+            0.043276114382605396,
+            0.05214105783124415,
+            0.048686932746042064
+          ],
+          "vertices": [
+            [
+              952,
+              2457,
+              4036
+            ],
+            [
+              963,
+              4698,
+              3443
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3808,
+            9076
+          ],
+          "intersection_span_mm": 1.4311818373732177,
+          "acute_plane_angle_degrees": 32.665718603661794,
+          "point_m": [
+            0.043667206917369986,
+            0.0522947100835016,
+            0.049270698807951284
+          ],
+          "vertices": [
+            [
+              952,
+              2457,
+              4036
+            ],
+            [
+              3443,
+              4698,
+              3440
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3808,
+            9077
+          ],
+          "intersection_span_mm": 0.609992131998543,
+          "acute_plane_angle_degrees": 29.92479549266333,
+          "point_m": [
+            0.04418270027997329,
+            0.05252339693285159,
+            0.05011830602026231
+          ],
+          "vertices": [
+            [
+              952,
+              2457,
+              4036
+            ],
+            [
+              3443,
+              3440,
+              1155
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3809,
+            9070
+          ],
+          "intersection_span_mm": 0.2467160364266749,
+          "acute_plane_angle_degrees": 58.07076814432694,
+          "point_m": [
+            0.04307096384023343,
+            0.05205214461787239,
+            0.048213988916037474
+          ],
+          "vertices": [
+            [
+              952,
+              4036,
+              3008
+            ],
+            [
+              963,
+              3458,
+              4698
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3809,
+            9071
+          ],
+          "intersection_span_mm": 0.3965675613766223,
+          "acute_plane_angle_degrees": 55.3147410402397,
+          "point_m": [
+            0.04320194862320526,
+            0.052106616215105865,
+            0.048502129246611625
+          ],
+          "vertices": [
+            [
+              952,
+              4036,
+              3008
+            ],
+            [
+              963,
+              4698,
+              3443
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3809,
+            9073
+          ],
+          "intersection_span_mm": 0.6832555487969293,
+          "acute_plane_angle_degrees": 58.25989181357058,
+          "point_m": [
+            0.04285188479092637,
+            0.051972610027042496,
+            0.04781163326753782
+          ],
+          "vertices": [
+            [
+              952,
+              4036,
+              3008
+            ],
+            [
+              3458,
+              3457,
+              4698
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3813,
+            9072
+          ],
+          "intersection_span_mm": 1.7064487497119611,
+          "acute_plane_angle_degrees": 64.73901802304655,
+          "point_m": [
+            0.04169567533903269,
+            0.051740107597280004,
+            0.04602813926439367
+          ],
+          "vertices": [
+            [
+              4036,
+              471,
+              3296
+            ],
+            [
+              3458,
+              1159,
+              3457
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3813,
+            9073
+          ],
+          "intersection_span_mm": 0.5216825479110098,
+          "acute_plane_angle_degrees": 62.45477786300521,
+          "point_m": [
+            0.042330142885635524,
+            0.05185687722108708,
+            0.046935537403762745
+          ],
+          "vertices": [
+            [
+              4036,
+              471,
+              3296
+            ],
+            [
+              3458,
+              3457,
+              4698
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3813,
+            9122
+          ],
+          "intersection_span_mm": 0.2836026567225549,
+          "acute_plane_angle_degrees": 72.43368791425236,
+          "point_m": [
+            0.04110312096273911,
+            0.05163346954968602,
+            0.04523652607955837
+          ],
+          "vertices": [
+            [
+              4036,
+              471,
+              3296
+            ],
+            [
+              3457,
+              1159,
+              3456
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3813,
+            9437
+          ],
+          "intersection_span_mm": 0.8365601402690853,
+          "acute_plane_angle_degrees": 77.35779767116777,
+          "point_m": [
+            0.04076677841188023,
+            0.05157320544472877,
+            0.04479332043608526
+          ],
+          "vertices": [
+            [
+              4036,
+              471,
+              3296
+            ],
+            [
+              3459,
+              3456,
+              1159
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3814,
+            9073
+          ],
+          "intersection_span_mm": 0.4250860932960163,
+          "acute_plane_angle_degrees": 61.97066301889721,
+          "point_m": [
+            0.04257773635413989,
+            0.05189854859230175,
+            0.04733678488470906
+          ],
+          "vertices": [
+            [
+              3008,
+              4036,
+              3296
+            ],
+            [
+              3458,
+              3457,
+              4698
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3816,
+            6581
+          ],
+          "intersection_span_mm": 0.052494572748275424,
+          "acute_plane_angle_degrees": 15.17729061397621,
+          "point_m": [
+            0.048179032910668856,
+            0.06313503466534698,
+            0.04180661957425125
+          ],
+          "vertices": [
+            [
+              948,
+              2459,
+              4037
+            ],
+            [
+              2242,
+              2181,
+              4383
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3819,
+            6578
+          ],
+          "intersection_span_mm": 2.9666414455072125,
+          "acute_plane_angle_degrees": 25.457802401476794,
+          "point_m": [
+            0.047140131919481305,
+            0.06435577737680212,
+            0.04138540810662726
+          ],
+          "vertices": [
+            [
+              2459,
+              2460,
+              4037
+            ],
+            [
+              957,
+              2242,
+              4383
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3819,
+            6581
+          ],
+          "intersection_span_mm": 0.15250935917506384,
+          "acute_plane_angle_degrees": 26.318673838744285,
+          "point_m": [
+            0.04811960407070649,
+            0.06321386424438671,
+            0.04178976552270253
+          ],
+          "vertices": [
+            [
+              2459,
+              2460,
+              4037
+            ],
+            [
+              2242,
+              2181,
+              4383
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3820,
+            6578
+          ],
+          "intersection_span_mm": 1.1598513108260853,
+          "acute_plane_angle_degrees": 26.481861515332124,
+          "point_m": [
+            0.045782512141925476,
+            0.06580670965506505,
+            0.04084007106224316
+          ],
+          "vertices": [
+            [
+              4037,
+              2460,
+              480
+            ],
+            [
+              957,
+              2242,
+              4383
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3820,
+            6579
+          ],
+          "intersection_span_mm": 0.5418235504678033,
+          "acute_plane_angle_degrees": 47.146168002101966,
+          "point_m": [
+            0.04514844750703141,
+            0.06631109417576442,
+            0.04059326963626973
+          ],
+          "vertices": [
+            [
+              4037,
+              2460,
+              480
+            ],
+            [
+              957,
+              4383,
+              2796
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3820,
+            6674
+          ],
+          "intersection_span_mm": 0.2684787754909174,
+          "acute_plane_angle_degrees": 74.92832358088306,
+          "point_m": [
+            0.04481131668105752,
+            0.06645466348333226,
+            0.04043849410498092
+          ],
+          "vertices": [
+            [
+              4037,
+              2460,
+              480
+            ],
+            [
+              2799,
+              957,
+              2796
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3820,
+            9084
+          ],
+          "intersection_span_mm": 0.19671296885959996,
+          "acute_plane_angle_degrees": 76.41669939056385,
+          "point_m": [
+            0.0446065550608285,
+            0.06648910109763233,
+            0.040334516765228305
+          ],
+          "vertices": [
+            [
+              4037,
+              2460,
+              480
+            ],
+            [
+              957,
+              2799,
+              4700
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3820,
+            9085
+          ],
+          "intersection_span_mm": 0.5419961519364401,
+          "acute_plane_angle_degrees": 81.78167465942889,
+          "point_m": [
+            0.04428512991120438,
+            0.06658272065076216,
+            0.0401787751525129
+          ],
+          "vertices": [
+            [
+              4037,
+              2460,
+              480
+            ],
+            [
+              957,
+              4700,
+              3434
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3834,
+            9436
+          ],
+          "intersection_span_mm": 0.3540887597130422,
+          "acute_plane_angle_degrees": 87.95380231554073,
+          "point_m": [
+            0.03980906872799299,
+            0.051576325794611834,
+            0.04360749493340761
+          ],
+          "vertices": [
+            [
+              3296,
+              471,
+              2169
+            ],
+            [
+              3459,
+              4747,
+              3456
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3834,
+            9437
+          ],
+          "intersection_span_mm": 0.935369943288716,
+          "acute_plane_angle_degrees": 87.0798341160364,
+          "point_m": [
+            0.04023208645261435,
+            0.05155193585979809,
+            0.04409087280961461
+          ],
+          "vertices": [
+            [
+              3296,
+              471,
+              2169
+            ],
+            [
+              3459,
+              3456,
+              1159
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3874,
+            8075
+          ],
+          "intersection_span_mm": 0.9142085634867764,
+          "acute_plane_angle_degrees": 86.76700528943542,
+          "point_m": [
+            0.019172765677977897,
+            0.06847056906646556,
+            0.03013405406526211
+          ],
+          "vertices": [
+            [
+              2178,
+              483,
+              1879
+            ],
+            [
+              4571,
+              778,
+              1955
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3875,
+            8074
+          ],
+          "intersection_span_mm": 0.38656278717774845,
+          "acute_plane_angle_degrees": 88.40815271331769,
+          "point_m": [
+            0.02050087256890698,
+            0.06949365998695184,
+            0.030181539248598843
+          ],
+          "vertices": [
+            [
+              2178,
+              1879,
+              4044
+            ],
+            [
+              4571,
+              1954,
+              778
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3875,
+            8075
+          ],
+          "intersection_span_mm": 1.0268631708359124,
+          "acute_plane_angle_degrees": 87.65279053547984,
+          "point_m": [
+            0.01994282429127861,
+            0.06906077318083151,
+            0.03015840458957367
+          ],
+          "vertices": [
+            [
+              2178,
+              1879,
+              4044
+            ],
+            [
+              4571,
+              778,
+              1955
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3876,
+            8074
+          ],
+          "intersection_span_mm": 2.083795067386714,
+          "acute_plane_angle_degrees": 79.06555838749384,
+          "point_m": [
+            0.02162739434071058,
+            0.06995123614302488,
+            0.030337090756917408
+          ],
+          "vertices": [
+            [
+              4044,
+              1879,
+              474
+            ],
+            [
+              4571,
+              1954,
+              778
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            3876,
+            9224
+          ],
+          "intersection_span_mm": 0.02979247005697286,
+          "acute_plane_angle_degrees": 77.62958886101394,
+          "point_m": [
+            0.022616313193059866,
+            0.07029400258912488,
+            0.030482722219802093
+          ],
+          "vertices": [
+            [
+              4044,
+              1879,
+              474
+            ],
+            [
+              778,
+              1954,
+              4719
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            4965,
+            9085
+          ],
+          "intersection_span_mm": 0.8097197167310132,
+          "acute_plane_angle_degrees": 84.22091686524146,
+          "point_m": [
+            0.043720253031686376,
+            0.06677564522915938,
+            0.03986358527052157
+          ],
+          "vertices": [
+            [
+              2460,
+              1330,
+              480
+            ],
+            [
+              957,
+              4700,
+              3434
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            5134,
+            9153
+          ],
+          "intersection_span_mm": 0.1006104286759078,
+          "acute_plane_angle_degrees": 62.776241339592566,
+          "point_m": [
+            0.03639205472000577,
+            0.06502492187835895,
+            0.03441682738679845
+          ],
+          "vertices": [
+            [
+              501,
+              2723,
+              4202
+            ],
+            [
+              3488,
+              3491,
+              4709
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            5134,
+            9154
+          ],
+          "intersection_span_mm": 1.1365278804504033,
+          "acute_plane_angle_degrees": 68.44975863470792,
+          "point_m": [
+            0.03585113712955734,
+            0.06516007045208563,
+            0.03415394020449346
+          ],
+          "vertices": [
+            [
+              501,
+              2723,
+              4202
+            ],
+            [
+              4709,
+              3491,
+              809
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            5134,
+            9155
+          ],
+          "intersection_span_mm": 0.4405984362232165,
+          "acute_plane_angle_degrees": 57.231981334915,
+          "point_m": [
+            0.03516190206798746,
+            0.06531052326969966,
+            0.033808622266011064
+          ],
+          "vertices": [
+            [
+              501,
+              2723,
+              4202
+            ],
+            [
+              4709,
+              809,
+              3484
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            5134,
+            9255
+          ],
+          "intersection_span_mm": 0.22042110684413288,
+          "acute_plane_angle_degrees": 57.64894671713346,
+          "point_m": [
+            0.03487516452373576,
+            0.06533286787726644,
+            0.03364581606373519
+          ],
+          "vertices": [
+            [
+              501,
+              2723,
+              4202
+            ],
+            [
+              809,
+              4723,
+              3484
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            5135,
+            9254
+          ],
+          "intersection_span_mm": 0.7240664732252476,
+          "acute_plane_angle_degrees": 54.87527756271419,
+          "point_m": [
+            0.03443903128644439,
+            0.06553588348108949,
+            0.03338629384621969
+          ],
+          "vertices": [
+            [
+              501,
+              4202,
+              1622
+            ],
+            [
+              809,
+              3547,
+              4723
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            5135,
+            9255
+          ],
+          "intersection_span_mm": 0.08334690995603283,
+          "acute_plane_angle_degrees": 52.16954177324668,
+          "point_m": [
+            0.03474616827521152,
+            0.06535122469218033,
+            0.0335686934189823
+          ],
+          "vertices": [
+            [
+              501,
+              4202,
+              1622
+            ],
+            [
+              809,
+              4723,
+              3484
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            5135,
+            9382
+          ],
+          "intersection_span_mm": 0.7944382267162471,
+          "acute_plane_angle_degrees": 54.56817317099189,
+          "point_m": [
+            0.033865234307110435,
+            0.06590618934943826,
+            0.03305450204664447
+          ],
+          "vertices": [
+            [
+              501,
+              4202,
+              1622
+            ],
+            [
+              4740,
+              3547,
+              809
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            5136,
+            9153
+          ],
+          "intersection_span_mm": 0.3121974257577009,
+          "acute_plane_angle_degrees": 49.77993384341055,
+          "point_m": [
+            0.036836794931276236,
+            0.06499532705368795,
+            0.034747757524140735
+          ],
+          "vertices": [
+            [
+              2723,
+              503,
+              3140
+            ],
+            [
+              3488,
+              3491,
+              4709
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            5137,
+            9153
+          ],
+          "intersection_span_mm": 0.34982494539373404,
+          "acute_plane_angle_degrees": 45.45856102511837,
+          "point_m": [
+            0.036571185225747815,
+            0.06501142702470156,
+            0.03455174503325389
+          ],
+          "vertices": [
+            [
+              2723,
+              3140,
+              4202
+            ],
+            [
+              3488,
+              3491,
+              4709
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            6558,
+            9064
+          ],
+          "intersection_span_mm": 1.2415621582878495,
+          "acute_plane_angle_degrees": 84.50593697837567,
+          "point_m": [
+            0.04438565275481402,
+            0.05314010897974639,
+            0.05144699338028273
+          ],
+          "vertices": [
+            [
+              952,
+              3425,
+              3295
+            ],
+            [
+              3443,
+              1155,
+              3442
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            6558,
+            9065
+          ],
+          "intersection_span_mm": 0.19306165143268406,
+          "acute_plane_angle_degrees": 78.5821632617119,
+          "point_m": [
+            0.044153966237343634,
+            0.0535793528827915,
+            0.05196341125447931
+          ],
+          "vertices": [
+            [
+              952,
+              3425,
+              3295
+            ],
+            [
+              3443,
+              3442,
+              4697
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            6559,
+            9028
+          ],
+          "intersection_span_mm": 0.05537493459344706,
+          "acute_plane_angle_degrees": 37.50601126962916,
+          "point_m": [
+            0.04455587337511153,
+            0.0535752642949965,
+            0.052482568679204325
+          ],
+          "vertices": [
+            [
+              3425,
+              4380,
+              3295
+            ],
+            [
+              3442,
+              1155,
+              3441
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            6559,
+            9064
+          ],
+          "intersection_span_mm": 0.16750070079764248,
+          "acute_plane_angle_degrees": 35.27757141213225,
+          "point_m": [
+            0.04447069586420116,
+            0.05358899828224853,
+            0.05241340164584064
+          ],
+          "vertices": [
+            [
+              3425,
+              4380,
+              3295
+            ],
+            [
+              3443,
+              1155,
+              3442
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            6559,
+            9065
+          ],
+          "intersection_span_mm": 0.43643268626291015,
+          "acute_plane_angle_degrees": 44.517209141837334,
+          "point_m": [
+            0.0442690937191572,
+            0.053623170709168916,
+            0.05219169414052135
+          ],
+          "vertices": [
+            [
+              3425,
+              4380,
+              3295
+            ],
+            [
+              3443,
+              3442,
+              4697
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            6560,
+            9026
+          ],
+          "intersection_span_mm": 0.47162654782017993,
+          "acute_plane_angle_degrees": 23.981671562091076,
+          "point_m": [
+            0.043941317717374924,
+            0.05420707881551638,
+            0.05290161617751603
+          ],
+          "vertices": [
+            [
+              1151,
+              3424,
+              4380
+            ],
+            [
+              953,
+              3442,
+              4692
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            6560,
+            9027
+          ],
+          "intersection_span_mm": 0.18373107404122474,
+          "acute_plane_angle_degrees": 25.290442083327118,
+          "point_m": [
+            0.04384873621741407,
+            0.05440113162784957,
+            0.05314145432079999
+          ],
+          "vertices": [
+            [
+              1151,
+              3424,
+              4380
+            ],
+            [
+              953,
+              4692,
+              3423
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            6560,
+            9407
+          ],
+          "intersection_span_mm": 0.054615253016407454,
+          "acute_plane_angle_degrees": 35.442868607539296,
+          "point_m": [
+            0.04384252967633201,
+            0.05444792482652596,
+            0.0532500307122629
+          ],
+          "vertices": [
+            [
+              1151,
+              3424,
+              4380
+            ],
+            [
+              4743,
+              953,
+              3423
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            6561,
+            9026
+          ],
+          "intersection_span_mm": 0.6753524647245005,
+          "acute_plane_angle_degrees": 29.948821336139094,
+          "point_m": [
+            0.044268103014772166,
+            0.053842592160783284,
+            0.05264032965431781
+          ],
+          "vertices": [
+            [
+              1151,
+              4380,
+              3425
+            ],
+            [
+              953,
+              3442,
+              4692
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            6561,
+            9028
+          ],
+          "intersection_span_mm": 0.0803359045218162,
+          "acute_plane_angle_degrees": 32.67257589626128,
+          "point_m": [
+            0.044552431088229774,
+            0.053595900167449834,
+            0.05251023245093023
+          ],
+          "vertices": [
+            [
+              1151,
+              4380,
+              3425
+            ],
+            [
+              3442,
+              1155,
+              3441
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            6561,
+            9029
+          ],
+          "intersection_span_mm": 0.02107544583002791,
+          "acute_plane_angle_degrees": 29.294034346558945,
+          "point_m": [
+            0.044517716183212014,
+            0.05362621134948009,
+            0.052531130512580806
+          ],
+          "vertices": [
+            [
+              1151,
+              4380,
+              3425
+            ],
+            [
+              3442,
+              3441,
+              4692
+            ]
+          ]
+        },
+        {
+          "triangles": [
+            9404,
+            9407
+          ],
+          "intersection_span_mm": 0.1275751267384045,
+          "acute_plane_angle_degrees": 19.09902490947679,
+          "point_m": [
+            0.04382249748467977,
+            0.054475251566587835,
+            0.053332409713737275
+          ],
+          "vertices": [
+            [
+              3424,
+              1151,
+              3427
+            ],
+            [
+              4743,
+              953,
+              3423
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "worst_handle_vertex_source": {
+    "candidate_index": 709,
+    "original_full_glove_vertex_index": 1856,
+    "original_open_point_m": [
+      -0.0014540553092956543,
+      0.10270658135414124,
+      0.026391908526420593
+    ],
+    "original_weights": {
+      "metacarpal1.R": 0.06443329155445099,
+      "finger2-1.R": 0.014345040544867516,
+      "metacarpal2.R": 0.3419920802116394,
+      "finger3-1.R": 0.4728173017501831,
+      "metacarpal3.R": 0.046555254608392715,
+      "finger4-1.R": 0.05985705181956291
+    },
+    "final_raw_point_m": [
+      0.001355935470201075,
+      0.0855606272816658,
+      0.03251614794135094
+    ],
+    "final_evaluated_point_m": [
+      0.0017229464137926698,
+      0.08546460419893265,
+      0.03171886131167412
+    ],
+    "region_inference": "Middle proximal finger / metacarpal transition. Not one of the predeclared distal-pad regions."
+  },
+  "classification_limits": [
+    "Raw region names aggregate original MPFB weights; they are anatomical approximations, not exact semantic segmentation.",
+    "A triangle containing newly inserted web vertices is labeled reconstructed web.",
+    "Evaluated subdivision indices are not reused as original source vertex IDs; exact region classification is therefore reported for the raw cage only.",
+    "The reused segment-triangle test rejects parallel/coplanar determinant cases; coplanar and tangential overlap is unclassified rather than certified clear."
+  ]
+}
