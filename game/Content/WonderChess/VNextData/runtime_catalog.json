@@ -1,0 +1,1491 @@
+{
+  "schema_version": "wonder_vnext.catalog.1",
+  "profile_id": "wonder_vnext",
+  "balance_version": "wonder_vnext_lab_0.1.0",
+  "rules": {
+    "columns": 8,
+    "rows": 8,
+    "deploymentRows": 4,
+    "tileSizeCm": 200,
+    "tickMs": 50,
+    "minAttackRate": 250,
+    "maxAttackRate": 2500,
+    "maxHealth": 100000000,
+    "maxArmor": 10000,
+    "maxRawDamage": 10000000,
+    "starMultiplierBp": [
+      10000,
+      18000,
+      32400
+    ],
+    "seatCount": 8,
+    "startingHealth": 100,
+    "maxRounds": 45,
+    "firstPreparationMs": 60000,
+    "preparationMs": 45000,
+    "combatTimeoutMs": 45000,
+    "settlementMs": 5000,
+    "drawDamage": 2,
+    "lossStages": [
+      {
+        "start": 1,
+        "end": 9,
+        "damage": 1
+      },
+      {
+        "start": 10,
+        "end": 19,
+        "damage": 3
+      },
+      {
+        "start": 20,
+        "end": 29,
+        "damage": 5
+      },
+      {
+        "start": 30,
+        "end": 45,
+        "damage": 8
+      }
+    ],
+    "startingGold": 10,
+    "benchCapacity": 10,
+    "shopSlots": 5,
+    "rerollCost": 2,
+    "baseIncome": 5,
+    "winIncome": 1,
+    "interestDivisor": 10,
+    "interestCap": 5,
+    "startingLevel": 3,
+    "maximumLevel": 10,
+    "buyXpGold": 4,
+    "buyXpAmount": 4,
+    "passiveXp": 2,
+    "xpToNext": {
+      "3": 4,
+      "4": 8,
+      "5": 16,
+      "6": 24,
+      "7": 32,
+      "8": 48,
+      "9": 64
+    },
+    "shopWeights": {
+      "3": [
+        7500,
+        2500,
+        0,
+        0,
+        0
+      ],
+      "4": [
+        5500,
+        3500,
+        1000,
+        0,
+        0
+      ],
+      "5": [
+        4000,
+        3500,
+        2300,
+        200,
+        0
+      ],
+      "6": [
+        3000,
+        3500,
+        3000,
+        500,
+        0
+      ],
+      "7": [
+        2000,
+        3000,
+        3500,
+        1400,
+        100
+      ],
+      "8": [
+        1500,
+        2000,
+        3500,
+        2500,
+        500
+      ],
+      "9": [
+        1000,
+        1500,
+        3000,
+        3500,
+        1000
+      ],
+      "10": [
+        500,
+        1000,
+        2500,
+        4000,
+        2000
+      ]
+    },
+    "botObservationMs": 1000,
+    "botRepositionCutoffMs": 5000,
+    "neutralOpeningRounds": 3,
+    "neutralEvery": 5,
+    "neutralWinIncome": 2,
+    "neutralLossDamage": 2,
+    "neutralOpeningDamage": 0,
+    "relicRounds": [
+      3,
+      15,
+      25
+    ],
+    "maximumRelics": 3
+  },
+  "bots": [
+    {
+      "id": "wc_vn_bot_1",
+      "label": "Hearthkeeper",
+      "frontline": 1.4,
+      "damage": 1,
+      "support": 1.2,
+      "upgrade": 1.1,
+      "synergy": 1,
+      "level": 0.8,
+      "save": 1,
+      "decisionIntervalMs": 500,
+      "observationMs": 1000,
+      "maxCommands": 40,
+      "maxRerolls": 4,
+      "noiseBp": 500,
+      "honesty": "same_commands_same_information_same_shop_rules"
+    },
+    {
+      "id": "wc_vn_bot_2",
+      "label": "Pathfinder",
+      "frontline": 0.8,
+      "damage": 1.5,
+      "support": 0.7,
+      "upgrade": 1.2,
+      "synergy": 0.8,
+      "level": 0.9,
+      "save": 0.8,
+      "decisionIntervalMs": 500,
+      "observationMs": 1000,
+      "maxCommands": 40,
+      "maxRerolls": 4,
+      "noiseBp": 500,
+      "honesty": "same_commands_same_information_same_shop_rules"
+    },
+    {
+      "id": "wc_vn_bot_3",
+      "label": "Orchard Tender",
+      "frontline": 1,
+      "damage": 1,
+      "support": 1.5,
+      "upgrade": 1,
+      "synergy": 1.2,
+      "level": 0.8,
+      "save": 1,
+      "decisionIntervalMs": 500,
+      "observationMs": 1000,
+      "maxCommands": 40,
+      "maxRerolls": 4,
+      "noiseBp": 500,
+      "honesty": "same_commands_same_information_same_shop_rules"
+    },
+    {
+      "id": "wc_vn_bot_4",
+      "label": "Glass Listener",
+      "frontline": 1,
+      "damage": 1.4,
+      "support": 1.1,
+      "upgrade": 1,
+      "synergy": 1.1,
+      "level": 1.2,
+      "save": 0.8,
+      "decisionIntervalMs": 500,
+      "observationMs": 1000,
+      "maxCommands": 40,
+      "maxRerolls": 4,
+      "noiseBp": 500,
+      "honesty": "same_commands_same_information_same_shop_rules"
+    },
+    {
+      "id": "wc_vn_bot_5",
+      "label": "Patient Tinkerer",
+      "frontline": 1.2,
+      "damage": 0.9,
+      "support": 1.1,
+      "upgrade": 1.4,
+      "synergy": 0.8,
+      "level": 0.8,
+      "save": 1.3,
+      "decisionIntervalMs": 500,
+      "observationMs": 1000,
+      "maxCommands": 40,
+      "maxRerolls": 4,
+      "noiseBp": 500,
+      "honesty": "same_commands_same_information_same_shop_rules"
+    },
+    {
+      "id": "wc_vn_bot_6",
+      "label": "Current Reader",
+      "frontline": 0.9,
+      "damage": 1.2,
+      "support": 1.4,
+      "upgrade": 1,
+      "synergy": 0.9,
+      "level": 1.1,
+      "save": 1,
+      "decisionIntervalMs": 500,
+      "observationMs": 1000,
+      "maxCommands": 40,
+      "maxRerolls": 4,
+      "noiseBp": 500,
+      "honesty": "same_commands_same_information_same_shop_rules"
+    },
+    {
+      "id": "wc_vn_bot_7",
+      "label": "Night Wanderer",
+      "frontline": 1,
+      "damage": 1.2,
+      "support": 1,
+      "upgrade": 1.1,
+      "synergy": 1,
+      "level": 1.4,
+      "save": 0.7,
+      "decisionIntervalMs": 500,
+      "observationMs": 1000,
+      "maxCommands": 40,
+      "maxRerolls": 4,
+      "noiseBp": 500,
+      "honesty": "same_commands_same_information_same_shop_rules"
+    }
+  ],
+  "neutrals": [
+    {
+      "id": "wc_vn_n_seedpod",
+      "name": "Skittering Seedpod",
+      "display_name": "Skittering Seedpod",
+      "footprint_cells": 1,
+      "production_status": "basic_combat_lab_only",
+      "stats": {
+        "health": 21000,
+        "attackDamage": 2100,
+        "attackRate": 800,
+        "range": 1,
+        "armor": 10,
+        "resistance": 10,
+        "movementRate": 900,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 0,
+        "damageType": "physical"
+      },
+      "ability": null
+    },
+    {
+      "id": "wc_vn_n_reed_archer",
+      "name": "Reed Archer",
+      "display_name": "Reed Archer",
+      "footprint_cells": 1,
+      "production_status": "basic_combat_lab_only",
+      "stats": {
+        "health": 18000,
+        "attackDamage": 2800,
+        "attackRate": 800,
+        "range": 4,
+        "armor": 10,
+        "resistance": 10,
+        "movementRate": 900,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": null
+    },
+    {
+      "id": "wc_vn_n_lantern_bulb",
+      "name": "Lantern Bulb",
+      "display_name": "Lantern Bulb",
+      "footprint_cells": 1,
+      "production_status": "basic_combat_lab_only",
+      "stats": {
+        "health": 28000,
+        "attackDamage": 1800,
+        "attackRate": 800,
+        "range": 2,
+        "armor": 10,
+        "resistance": 10,
+        "movementRate": 900,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": null
+    },
+    {
+      "id": "wc_vn_n_slate_ram",
+      "name": "Slate Ram",
+      "display_name": "Slate Ram",
+      "footprint_cells": 1,
+      "production_status": "basic_combat_lab_only",
+      "stats": {
+        "health": 80000,
+        "attackDamage": 5500,
+        "attackRate": 800,
+        "range": 1,
+        "armor": 10,
+        "resistance": 10,
+        "movementRate": 900,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 0,
+        "damageType": "physical"
+      },
+      "ability": null
+    },
+    {
+      "id": "wc_vn_n_glass_moth",
+      "name": "Glass Moth",
+      "display_name": "Glass Moth",
+      "footprint_cells": 1,
+      "production_status": "basic_combat_lab_only",
+      "stats": {
+        "health": 45000,
+        "attackDamage": 6000,
+        "attackRate": 800,
+        "range": 4,
+        "armor": 10,
+        "resistance": 10,
+        "movementRate": 900,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": null
+    },
+    {
+      "id": "wc_vn_n_root_sentinel",
+      "name": "Root Sentinel",
+      "display_name": "Root Sentinel",
+      "footprint_cells": 1,
+      "production_status": "basic_combat_lab_only",
+      "stats": {
+        "health": 135000,
+        "attackDamage": 8000,
+        "attackRate": 800,
+        "range": 1,
+        "armor": 10,
+        "resistance": 10,
+        "movementRate": 900,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 0,
+        "damageType": "physical"
+      },
+      "ability": null
+    },
+    {
+      "id": "wc_vn_n_hollow_bellkeeper",
+      "name": "Hollow Bellkeeper",
+      "display_name": "Hollow Bellkeeper",
+      "footprint_cells": 1,
+      "production_status": "basic_combat_lab_only",
+      "stats": {
+        "health": 220000,
+        "attackDamage": 10000,
+        "attackRate": 800,
+        "range": 3,
+        "armor": 10,
+        "resistance": 10,
+        "movementRate": 900,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": null
+    }
+  ],
+  "waves": [
+    {
+      "id": "wc_vn_wave_01",
+      "name": "Screen the Seedpod",
+      "round": 1,
+      "hpScaleBp": 10000,
+      "damageScaleBp": 10000,
+      "slots": [
+        {
+          "definition": 0,
+          "column": 2,
+          "row": 2
+        }
+      ],
+      "teaching_status": "layout_authored_teaching_not_human_verified",
+      "boss_mechanics": "not_applicable"
+    },
+    {
+      "id": "wc_vn_wave_02",
+      "name": "Spread against Reeds",
+      "round": 2,
+      "hpScaleBp": 10000,
+      "damageScaleBp": 10000,
+      "slots": [
+        {
+          "definition": 0,
+          "column": 2,
+          "row": 2
+        },
+        {
+          "definition": 1,
+          "column": 3,
+          "row": 0
+        }
+      ],
+      "teaching_status": "layout_authored_teaching_not_human_verified",
+      "boss_mechanics": "not_applicable"
+    },
+    {
+      "id": "wc_vn_wave_03",
+      "name": "Protect the Lantern",
+      "round": 3,
+      "hpScaleBp": 10000,
+      "damageScaleBp": 10000,
+      "slots": [
+        {
+          "definition": 0,
+          "column": 2,
+          "row": 2
+        },
+        {
+          "definition": 1,
+          "column": 3,
+          "row": 0
+        },
+        {
+          "definition": 2,
+          "column": 4,
+          "row": 2
+        }
+      ],
+      "teaching_status": "layout_authored_teaching_not_human_verified",
+      "boss_mechanics": "not_applicable"
+    },
+    {
+      "id": "wc_vn_wave_05",
+      "name": "Wondergrove Trial 5",
+      "round": 5,
+      "hpScaleBp": 10000,
+      "damageScaleBp": 10000,
+      "slots": [
+        {
+          "definition": 3,
+          "column": 2,
+          "row": 2
+        },
+        {
+          "definition": 4,
+          "column": 3,
+          "row": 2
+        },
+        {
+          "definition": 5,
+          "column": 4,
+          "row": 2
+        }
+      ],
+      "teaching_status": "layout_authored_teaching_not_human_verified",
+      "boss_mechanics": "not_applicable"
+    },
+    {
+      "id": "wc_vn_wave_10",
+      "name": "Wondergrove Trial 10",
+      "round": 10,
+      "hpScaleBp": 14000,
+      "damageScaleBp": 12500,
+      "slots": [
+        {
+          "definition": 3,
+          "column": 2,
+          "row": 2
+        },
+        {
+          "definition": 4,
+          "column": 3,
+          "row": 2
+        },
+        {
+          "definition": 5,
+          "column": 4,
+          "row": 2
+        }
+      ],
+      "teaching_status": "layout_authored_teaching_not_human_verified",
+      "boss_mechanics": "not_applicable"
+    },
+    {
+      "id": "wc_vn_wave_15",
+      "name": "Wondergrove Trial 15",
+      "round": 15,
+      "hpScaleBp": 18000,
+      "damageScaleBp": 15000,
+      "slots": [
+        {
+          "definition": 3,
+          "column": 2,
+          "row": 2
+        },
+        {
+          "definition": 4,
+          "column": 3,
+          "row": 2
+        },
+        {
+          "definition": 5,
+          "column": 4,
+          "row": 2
+        }
+      ],
+      "teaching_status": "layout_authored_teaching_not_human_verified",
+      "boss_mechanics": "planned"
+    },
+    {
+      "id": "wc_vn_wave_20",
+      "name": "Wondergrove Trial 20",
+      "round": 20,
+      "hpScaleBp": 22000,
+      "damageScaleBp": 17500,
+      "slots": [
+        {
+          "definition": 3,
+          "column": 2,
+          "row": 2
+        },
+        {
+          "definition": 4,
+          "column": 3,
+          "row": 2
+        },
+        {
+          "definition": 5,
+          "column": 4,
+          "row": 2
+        }
+      ],
+      "teaching_status": "layout_authored_teaching_not_human_verified",
+      "boss_mechanics": "not_applicable"
+    },
+    {
+      "id": "wc_vn_wave_25",
+      "name": "Wondergrove Trial 25",
+      "round": 25,
+      "hpScaleBp": 26000,
+      "damageScaleBp": 20000,
+      "slots": [
+        {
+          "definition": 3,
+          "column": 2,
+          "row": 2
+        },
+        {
+          "definition": 4,
+          "column": 3,
+          "row": 2
+        },
+        {
+          "definition": 5,
+          "column": 4,
+          "row": 2
+        },
+        {
+          "definition": 6,
+          "column": 5,
+          "row": 2
+        }
+      ],
+      "teaching_status": "layout_authored_teaching_not_human_verified",
+      "boss_mechanics": "planned"
+    },
+    {
+      "id": "wc_vn_wave_30",
+      "name": "Wondergrove Trial 30",
+      "round": 30,
+      "hpScaleBp": 30000,
+      "damageScaleBp": 22500,
+      "slots": [
+        {
+          "definition": 3,
+          "column": 2,
+          "row": 2
+        },
+        {
+          "definition": 4,
+          "column": 3,
+          "row": 2
+        },
+        {
+          "definition": 5,
+          "column": 4,
+          "row": 2
+        },
+        {
+          "definition": 6,
+          "column": 5,
+          "row": 2
+        }
+      ],
+      "teaching_status": "layout_authored_teaching_not_human_verified",
+      "boss_mechanics": "not_applicable"
+    },
+    {
+      "id": "wc_vn_wave_35",
+      "name": "Wondergrove Trial 35",
+      "round": 35,
+      "hpScaleBp": 34000,
+      "damageScaleBp": 25000,
+      "slots": [
+        {
+          "definition": 3,
+          "column": 2,
+          "row": 2
+        },
+        {
+          "definition": 4,
+          "column": 3,
+          "row": 2
+        },
+        {
+          "definition": 5,
+          "column": 4,
+          "row": 2
+        },
+        {
+          "definition": 6,
+          "column": 5,
+          "row": 2
+        }
+      ],
+      "teaching_status": "layout_authored_teaching_not_human_verified",
+      "boss_mechanics": "not_applicable"
+    },
+    {
+      "id": "wc_vn_wave_40",
+      "name": "Wondergrove Trial 40",
+      "round": 40,
+      "hpScaleBp": 38000,
+      "damageScaleBp": 27500,
+      "slots": [
+        {
+          "definition": 3,
+          "column": 2,
+          "row": 2
+        },
+        {
+          "definition": 4,
+          "column": 3,
+          "row": 2
+        },
+        {
+          "definition": 5,
+          "column": 4,
+          "row": 2
+        },
+        {
+          "definition": 6,
+          "column": 5,
+          "row": 2
+        }
+      ],
+      "teaching_status": "layout_authored_teaching_not_human_verified",
+      "boss_mechanics": "planned"
+    },
+    {
+      "id": "wc_vn_wave_45",
+      "name": "Wondergrove Trial 45",
+      "round": 45,
+      "hpScaleBp": 42000,
+      "damageScaleBp": 30000,
+      "slots": [
+        {
+          "definition": 3,
+          "column": 2,
+          "row": 2
+        },
+        {
+          "definition": 4,
+          "column": 3,
+          "row": 2
+        },
+        {
+          "definition": 5,
+          "column": 4,
+          "row": 2
+        },
+        {
+          "definition": 6,
+          "column": 5,
+          "row": 2
+        }
+      ],
+      "teaching_status": "layout_authored_teaching_not_human_verified",
+      "boss_mechanics": "not_applicable"
+    }
+  ],
+  "world": {
+    "name": "Aurelune",
+    "arena": "Wondergrove",
+    "direction": "mythic_storybook",
+    "board_materials": [
+      "carved sanctuary stone",
+      "living roots",
+      "restrained bronze",
+      "soft moss"
+    ],
+    "visual_status": "authored_not_built"
+  },
+  "locales": {
+    "en": {
+      "game.title": "Wonder Chess",
+      "profile.label": "Wonder vNext gameplay laboratory"
+    },
+    "id": {
+      "game.title": "Wonder Chess",
+      "profile.label": "Laboratorium permainan Wonder vNext"
+    }
+  },
+  "source_sha256": "6f9a4178ec78d48c8f6fb8d487d88069327a5ca526652724dc12a8654f574ebb",
+  "heroes": [
+    {
+      "id": "wc_vn_bellback",
+      "name": "Bellback",
+      "display_name": "Bellback",
+      "race": "beast",
+      "unit_class": "guardian",
+      "cost": 1,
+      "body_family": "grounded_quadruped",
+      "role_tags": [
+        "frontline"
+      ],
+      "archetype": "protected carries",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Moss-and-bronze grazing giant with a suspended bell beneath its chest.",
+        "decision": "Protect a chosen ally through a directional guarded sector.",
+        "positioning": "Put a vulnerable ally behind the guarded shoulder; point the bell toward likely projectiles.",
+        "allies": "Prism Organ benefits from time to cast; Grandmother Root prolongs the defensive line.",
+        "counterplay": "Flank the guard or displace it away from its protected ally.",
+        "recognition": "The chest bell tips forward and a short arc of bronze light marks the guarded sector."
+      },
+      "stats": {
+        "health": 95000,
+        "attackDamage": 5500,
+        "attackRate": 700,
+        "range": 1,
+        "armor": 35,
+        "resistance": 15,
+        "movementRate": 1000,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 0,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_bellback",
+        "name": "Sheltering Bell",
+        "mechanic": "directional_guard",
+        "effect": "shield",
+        "selector": "self",
+        "damageType": "physical",
+        "firstCastMs": 1500,
+        "cooldownMs": 6000,
+        "castMs": 350,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 0,
+        "radius": 1,
+        "range": 1,
+        "maxTargets": 1,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          0,
+          0,
+          0
+        ],
+        "guardReductionBp": 3000,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Protect a chosen ally through a directional guarded sector. Flank the guard or displace it away from its protected ally.",
+        "tooltip_id": "Lindungi rekan di belakang sektor penjagaan. Serang dari samping atau pisahkan pelindung."
+      }
+    },
+    {
+      "id": "wc_vn_cragstoat",
+      "name": "Cragstoat",
+      "display_name": "Cragstoat",
+      "race": "beast",
+      "unit_class": "warrior",
+      "cost": 1,
+      "body_family": "elongated_quadruped",
+      "role_tags": [
+        "frontline"
+      ],
+      "archetype": "momentum rush",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Long low predator with rocklike shoulder ridges and an elastic, expressive spine.",
+        "decision": "Convert a clear approach into a committed burst of momentum.",
+        "positioning": "Leave a short open approach; a crowded front row denies its charge.",
+        "allies": "Reefglass clears a path; Bellback shelters the charge recovery.",
+        "counterplay": "Screen the intended target and deny free landing cells.",
+        "recognition": "A rising tail and successive footfall sparks count its momentum before the lunge."
+      },
+      "stats": {
+        "health": 65000,
+        "attackDamage": 7000,
+        "attackRate": 1000,
+        "range": 1,
+        "armor": 15,
+        "resistance": 15,
+        "movementRate": 1300,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 0,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_cragstoat",
+        "name": "Stonebound Lunge",
+        "mechanic": "momentum_charge",
+        "effect": "damage",
+        "selector": "current_enemy",
+        "damageType": "physical",
+        "firstCastMs": 1500,
+        "cooldownMs": 6000,
+        "castMs": 350,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 0,
+        "radius": 0,
+        "range": 4,
+        "maxTargets": 1,
+        "maxDash": 3,
+        "allowSelf": false,
+        "magnitude": [
+          13000,
+          21000,
+          33000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 1500,
+        "maxMomentumSteps": 4,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Convert a clear approach into a committed burst of momentum. Screen the intended target and deny free landing cells.",
+        "tooltip_id": "Bangun momentum dengan bergerak lalu menerjang. Tutup jalur dan petak pendaratan."
+      }
+    },
+    {
+      "id": "wc_vn_grandmother_root",
+      "name": "Grandmother Root",
+      "display_name": "Grandmother Root",
+      "race": "plant",
+      "unit_class": "healer",
+      "cost": 2,
+      "body_family": "root_walker",
+      "role_tags": [
+        "support"
+      ],
+      "archetype": "positional sustain",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "An orchard elder walking on broad roots, with a small sheltered garden in her torso.",
+        "decision": "Establish a healing position that rewards holding ground.",
+        "positioning": "Anchor beside several allies without exposing the whole group to artillery.",
+        "allies": "Bellback protects the grove; Prism Organ turns the protected time into damage.",
+        "counterplay": "Displace or interrupt her; concentrate burst before the grove pulses.",
+        "recognition": "Roots settle, petals open and a restrained ground ring pulses with each heal."
+      },
+      "stats": {
+        "health": 70000,
+        "attackDamage": 4200,
+        "attackRate": 650,
+        "range": 3,
+        "armor": 10,
+        "resistance": 15,
+        "movementRate": 800,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_grandmother_root",
+        "name": "Stay and Blossom",
+        "mechanic": "stationary_grove",
+        "effect": "heal",
+        "selector": "adjacent_allies",
+        "damageType": "physical",
+        "firstCastMs": 1500,
+        "cooldownMs": 6000,
+        "castMs": 350,
+        "recoveryMs": 300,
+        "durationMs": 4000,
+        "travelMs": 0,
+        "radius": 2,
+        "range": 1,
+        "maxTargets": 10,
+        "maxDash": 0,
+        "allowSelf": true,
+        "magnitude": [
+          3500,
+          5500,
+          9000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 1500,
+        "pulseMs": 1000,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Establish a healing position that rewards holding ground. Displace or interrupt her; concentrate burst before the grove pulses.",
+        "tooltip_id": "Diam untuk membuat taman penyembuhan. Dorong atau hentikan sebelum penyembuhan."
+      }
+    },
+    {
+      "id": "wc_vn_snapvine",
+      "name": "Snapvine",
+      "display_name": "Snapvine",
+      "race": "plant",
+      "unit_class": "assassin",
+      "cost": 3,
+      "body_family": "creeping_vine",
+      "role_tags": [
+        "damage"
+      ],
+      "archetype": "backline pressure",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "A low creeping flower whose folded petals conceal a thorn-lined jaw.",
+        "decision": "Threaten a distant unit through a screened line strike.",
+        "positioning": "Choose a lane where defenders do not lie between it and the backline.",
+        "allies": "Reefglass removes screens; Cragstoat pressures the intercepted defender.",
+        "counterplay": "Place a durable defender on its strike lane; alter the backline angle.",
+        "recognition": "A thin root line traces the committed path before the jaw snaps along it."
+      },
+      "stats": {
+        "health": 70000,
+        "attackDamage": 7500,
+        "attackRate": 850,
+        "range": 2,
+        "armor": 15,
+        "resistance": 15,
+        "movementRate": 1100,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_snapvine",
+        "name": "Thornline",
+        "mechanic": "screened_strike",
+        "effect": "damage",
+        "selector": "farthest_enemy_adjacent",
+        "damageType": "physical",
+        "firstCastMs": 1500,
+        "cooldownMs": 6000,
+        "castMs": 350,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 0,
+        "radius": 0,
+        "range": 6,
+        "maxTargets": 1,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          20000,
+          32000,
+          50000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Threaten a distant unit through a screened line strike. Place a durable defender on its strike lane; alter the backline angle.",
+        "tooltip_id": "Serang sasaran jauh melalui garis akar. Pelindung di jalur dapat mencegat."
+      }
+    },
+    {
+      "id": "wc_vn_prism_organ",
+      "name": "Prism Organ",
+      "display_name": "Prism Organ",
+      "race": "construct",
+      "unit_class": "mage",
+      "cost": 4,
+      "body_family": "floating_assembly",
+      "role_tags": [
+        "damage"
+      ],
+      "archetype": "artillery",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Suspended ceramic organ pipes arranged around a stained-glass resonator.",
+        "decision": "Punish enemies sharing crossing rows and columns.",
+        "positioning": "Protect its long setup while scouting clustered opposing lines.",
+        "allies": "Bellback absorbs approach pressure; Root sustains the protected casting position.",
+        "counterplay": "Spread across rows and columns; interrupt the marked setup.",
+        "recognition": "Two different musical notes and crossing ground lines announce the ordered beams."
+      },
+      "stats": {
+        "health": 80000,
+        "attackDamage": 6000,
+        "attackRate": 700,
+        "range": 4,
+        "armor": 20,
+        "resistance": 15,
+        "movementRate": 850,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_prism_organ",
+        "name": "Crossing Hymn",
+        "mechanic": "crossing_beams",
+        "effect": "damage",
+        "selector": "current_enemy",
+        "damageType": "magic",
+        "firstCastMs": 1500,
+        "cooldownMs": 6000,
+        "castMs": 1000,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 0,
+        "radius": 3,
+        "range": 6,
+        "maxTargets": 20,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          17000,
+          27000,
+          42000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 400,
+        "tooltip_en": "Punish enemies sharing crossing rows and columns. Spread across rows and columns; interrupt the marked setup.",
+        "tooltip_id": "Tandai baris dan kolom lalu lepaskan sinar berurutan. Menyebar atau hentikan persiapan."
+      }
+    },
+    {
+      "id": "wc_vn_reefglass",
+      "name": "Reefglass",
+      "display_name": "Reefglass",
+      "race": "tidekin",
+      "unit_class": "controller",
+      "cost": 5,
+      "body_family": "cuttlefish",
+      "role_tags": [
+        "support"
+      ],
+      "archetype": "displacement",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Glass-shelled cuttlefish drifting on ribbonlike fins, with visible currents inside.",
+        "decision": "Push the first enemy in a directional tide and strike the occupied lane.",
+        "positioning": "Orient toward a contested lane; leave a legal destination if the displacement matters.",
+        "allies": "Snapvine exploits the opened lane; Root opponents lose their stationary setup.",
+        "counterplay": "Stagger formations; block the push destination or attack from another side.",
+        "recognition": "Its fins cup forward, a narrow current marks the lane, then the leading wave breaks."
+      },
+      "stats": {
+        "health": 100000,
+        "attackDamage": 6500,
+        "attackRate": 800,
+        "range": 3,
+        "armor": 25,
+        "resistance": 15,
+        "movementRate": 1000,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_reefglass",
+        "name": "Leading Tide",
+        "mechanic": "tidal_push",
+        "effect": "damage",
+        "selector": "current_enemy",
+        "damageType": "magic",
+        "firstCastMs": 1500,
+        "cooldownMs": 6000,
+        "castMs": 350,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 0,
+        "radius": 0,
+        "range": 6,
+        "maxTargets": 8,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          18000,
+          29000,
+          46000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 2,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Push the first enemy in a directional tide and strike the occupied lane. Stagger formations; block the push destination or attack from another side.",
+        "tooltip_id": "Hantam jalur depan dan dorong musuh pertama. Formasi berselang mengurangi dampaknya."
+      }
+    }
+  ],
+  "relics": [
+    {
+      "id": "wc_vn_r_heavy_bloom",
+      "name": "Heavy Bloom",
+      "description": "Greater ability impact after a longer visible commitment.",
+      "compatible_mechanics": [
+        "momentum_charge",
+        "screened_strike",
+        "crossing_beams",
+        "tidal_push"
+      ],
+      "modifiers": {
+        "magnitudeBp": 12000,
+        "rangeDelta": 0,
+        "radiusDelta": 0,
+        "durationBp": 10000,
+        "castBp": 15000,
+        "cooldownBp": 10000
+      },
+      "runtime_enabled": true,
+      "status": "laboratory_candidate",
+      "acceptance": [
+        "At least two compatible hero mechanics.",
+        "Effective ability uses canonical modifiers exactly once.",
+        "Benefit and drawback both affect a compatible formation.",
+        "Selling returns relic; merge survivor keeps own and returns extras."
+      ]
+    },
+    {
+      "id": "wc_vn_r_quick_wick",
+      "name": "Quick Wick",
+      "description": "More frequent abilities with weaker individual effects.",
+      "compatible_mechanics": [
+        "momentum_charge",
+        "screened_strike",
+        "crossing_beams",
+        "tidal_push",
+        "stationary_grove"
+      ],
+      "modifiers": {
+        "magnitudeBp": 8500,
+        "rangeDelta": 0,
+        "radiusDelta": 0,
+        "durationBp": 10000,
+        "castBp": 10000,
+        "cooldownBp": 8000
+      },
+      "runtime_enabled": true,
+      "status": "laboratory_candidate",
+      "acceptance": [
+        "At least two compatible hero mechanics.",
+        "Effective ability uses canonical modifiers exactly once.",
+        "Benefit and drawback both affect a compatible formation.",
+        "Selling returns relic; merge survivor keeps own and returns extras."
+      ]
+    },
+    {
+      "id": "wc_vn_r_long_lens",
+      "name": "Long Lens",
+      "description": "One extra cell of reach, with lower impact.",
+      "compatible_mechanics": [
+        "screened_strike",
+        "crossing_beams",
+        "tidal_push"
+      ],
+      "modifiers": {
+        "magnitudeBp": 8500,
+        "rangeDelta": 1,
+        "radiusDelta": 0,
+        "durationBp": 10000,
+        "castBp": 10000,
+        "cooldownBp": 10000
+      },
+      "runtime_enabled": true,
+      "status": "laboratory_candidate",
+      "acceptance": [
+        "At least two compatible hero mechanics.",
+        "Effective ability uses canonical modifiers exactly once.",
+        "Benefit and drawback both affect a compatible formation.",
+        "Selling returns relic; merge survivor keeps own and returns extras."
+      ]
+    },
+    {
+      "id": "wc_vn_r_broad_canopy",
+      "name": "Broad Canopy",
+      "description": "A wider supported area with less concentrated potency.",
+      "compatible_mechanics": [
+        "stationary_grove",
+        "crossing_beams",
+        "directional_guard"
+      ],
+      "modifiers": {
+        "magnitudeBp": 7500,
+        "rangeDelta": 0,
+        "radiusDelta": 1,
+        "durationBp": 10000,
+        "castBp": 10000,
+        "cooldownBp": 10000
+      },
+      "runtime_enabled": true,
+      "status": "laboratory_candidate",
+      "acceptance": [
+        "At least two compatible hero mechanics.",
+        "Effective ability uses canonical modifiers exactly once.",
+        "Benefit and drawback both affect a compatible formation.",
+        "Selling returns relic; merge survivor keeps own and returns extras."
+      ]
+    },
+    {
+      "id": "wc_vn_r_close_focus",
+      "name": "Close Focus",
+      "description": "A stronger commitment restricted to a shorter lane.",
+      "compatible_mechanics": [
+        "screened_strike",
+        "crossing_beams",
+        "tidal_push"
+      ],
+      "modifiers": {
+        "magnitudeBp": 12000,
+        "rangeDelta": -1,
+        "radiusDelta": 0,
+        "durationBp": 10000,
+        "castBp": 10000,
+        "cooldownBp": 10000
+      },
+      "runtime_enabled": true,
+      "status": "laboratory_candidate",
+      "acceptance": [
+        "At least two compatible hero mechanics.",
+        "Effective ability uses canonical modifiers exactly once.",
+        "Benefit and drawback both affect a compatible formation.",
+        "Selling returns relic; merge survivor keeps own and returns extras."
+      ]
+    },
+    {
+      "id": "wc_vn_r_tight_choir",
+      "name": "Tight Choir",
+      "description": "Concentrate power into a smaller area.",
+      "compatible_mechanics": [
+        "stationary_grove",
+        "crossing_beams"
+      ],
+      "modifiers": {
+        "magnitudeBp": 12500,
+        "rangeDelta": 0,
+        "radiusDelta": -1,
+        "durationBp": 10000,
+        "castBp": 10000,
+        "cooldownBp": 10000
+      },
+      "runtime_enabled": true,
+      "status": "laboratory_candidate",
+      "acceptance": [
+        "At least two compatible hero mechanics.",
+        "Effective ability uses canonical modifiers exactly once.",
+        "Benefit and drawback both affect a compatible formation.",
+        "Selling returns relic; merge survivor keeps own and returns extras."
+      ]
+    },
+    {
+      "id": "wc_vn_r_silk_trigger",
+      "name": "Silk Trigger",
+      "description": "Release much sooner with reduced damage.",
+      "compatible_mechanics": [
+        "momentum_charge",
+        "screened_strike",
+        "crossing_beams",
+        "tidal_push"
+      ],
+      "modifiers": {
+        "magnitudeBp": 8000,
+        "rangeDelta": 0,
+        "radiusDelta": 0,
+        "durationBp": 10000,
+        "castBp": 5000,
+        "cooldownBp": 10000
+      },
+      "runtime_enabled": true,
+      "status": "laboratory_candidate",
+      "acceptance": [
+        "At least two compatible hero mechanics.",
+        "Effective ability uses canonical modifiers exactly once.",
+        "Benefit and drawback both affect a compatible formation.",
+        "Selling returns relic; merge survivor keeps own and returns extras."
+      ]
+    },
+    {
+      "id": "wc_vn_r_patient_lantern",
+      "name": "Patient Lantern",
+      "description": "Stronger effects separated by longer gaps.",
+      "compatible_mechanics": [
+        "momentum_charge",
+        "screened_strike",
+        "crossing_beams",
+        "tidal_push",
+        "stationary_grove"
+      ],
+      "modifiers": {
+        "magnitudeBp": 12500,
+        "rangeDelta": 0,
+        "radiusDelta": 0,
+        "durationBp": 10000,
+        "castBp": 10000,
+        "cooldownBp": 13000
+      },
+      "runtime_enabled": true,
+      "status": "laboratory_candidate",
+      "acceptance": [
+        "At least two compatible hero mechanics.",
+        "Effective ability uses canonical modifiers exactly once.",
+        "Benefit and drawback both affect a compatible formation.",
+        "Selling returns relic; merge survivor keeps own and returns extras."
+      ]
+    },
+    {
+      "id": "wc_vn_r_far_hourglass",
+      "name": "Far Hourglass",
+      "description": "Reach farther but wait longer between casts.",
+      "compatible_mechanics": [
+        "screened_strike",
+        "crossing_beams",
+        "tidal_push"
+      ],
+      "modifiers": {
+        "magnitudeBp": 10000,
+        "rangeDelta": 1,
+        "radiusDelta": 0,
+        "durationBp": 10000,
+        "castBp": 10000,
+        "cooldownBp": 13000
+      },
+      "runtime_enabled": true,
+      "status": "laboratory_candidate",
+      "acceptance": [
+        "At least two compatible hero mechanics.",
+        "Effective ability uses canonical modifiers exactly once.",
+        "Benefit and drawback both affect a compatible formation.",
+        "Selling returns relic; merge survivor keeps own and returns extras."
+      ]
+    },
+    {
+      "id": "wc_vn_r_wide_hourglass",
+      "name": "Wide Hourglass",
+      "description": "Cover a wider area with less frequent activations.",
+      "compatible_mechanics": [
+        "stationary_grove",
+        "crossing_beams"
+      ],
+      "modifiers": {
+        "magnitudeBp": 10000,
+        "rangeDelta": 0,
+        "radiusDelta": 1,
+        "durationBp": 10000,
+        "castBp": 10000,
+        "cooldownBp": 14000
+      },
+      "runtime_enabled": true,
+      "status": "laboratory_candidate",
+      "acceptance": [
+        "At least two compatible hero mechanics.",
+        "Effective ability uses canonical modifiers exactly once.",
+        "Benefit and drawback both affect a compatible formation.",
+        "Selling returns relic; merge survivor keeps own and returns extras."
+      ]
+    },
+    {
+      "id": "wc_vn_r_narrow_metronome",
+      "name": "Narrow Metronome",
+      "description": "Repeat a smaller area effect more frequently.",
+      "compatible_mechanics": [
+        "stationary_grove",
+        "crossing_beams"
+      ],
+      "modifiers": {
+        "magnitudeBp": 10000,
+        "rangeDelta": 0,
+        "radiusDelta": -1,
+        "durationBp": 10000,
+        "castBp": 10000,
+        "cooldownBp": 7500
+      },
+      "runtime_enabled": true,
+      "status": "laboratory_candidate",
+      "acceptance": [
+        "At least two compatible hero mechanics.",
+        "Effective ability uses canonical modifiers exactly once.",
+        "Benefit and drawback both affect a compatible formation.",
+        "Selling returns relic; merge survivor keeps own and returns extras."
+      ]
+    },
+    {
+      "id": "wc_vn_r_urgent_shard",
+      "name": "Urgent Shard",
+      "description": "Commit faster now at the cost of a longer following cooldown.",
+      "compatible_mechanics": [
+        "momentum_charge",
+        "screened_strike",
+        "crossing_beams",
+        "tidal_push"
+      ],
+      "modifiers": {
+        "magnitudeBp": 10000,
+        "rangeDelta": 0,
+        "radiusDelta": 0,
+        "durationBp": 10000,
+        "castBp": 7000,
+        "cooldownBp": 12500
+      },
+      "runtime_enabled": true,
+      "status": "laboratory_candidate",
+      "acceptance": [
+        "At least two compatible hero mechanics.",
+        "Effective ability uses canonical modifiers exactly once.",
+        "Benefit and drawback both affect a compatible formation.",
+        "Selling returns relic; merge survivor keeps own and returns extras."
+      ]
+    }
+  ],
+  "traits": [],
+  "status": "gameplay_laboratory_not_release"
+}

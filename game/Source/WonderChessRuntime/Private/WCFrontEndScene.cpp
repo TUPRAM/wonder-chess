@@ -16,6 +16,33 @@
 #include "Dom/JsonObject.h"
 #include "SkeletalRenderPublic.h"
 #include "WCMatchRuntime.h"
+#include "Misc/CommandLine.h"
+#include "Misc/Parse.h"
+
+namespace {
+FString AQ1HeroFolder(const FString& UnitId) {
+  const FString DefaultFolder = TEXT("/Game/WonderChess/Heroes/") + UnitId + TEXT("/");
+  if (UnitId != TEXT("wc_u_human_guardian")) return DefaultFolder;
+  static const FString Candidate = []() {
+    FString Root;
+    if (!FParse::Value(FCommandLine::Get(), TEXT("WCAQ1HeroRoot="), Root)) return FString();
+    const FString Prefix = TEXT("/Game/WonderChess/Candidates/AQ1/");
+    const FString Revision = Root.Mid(Prefix.Len());
+    bool Valid = Root.StartsWith(Prefix, ESearchCase::CaseSensitive) && Revision.Len() > 0 && Revision.Len() <= 64;
+    for (TCHAR Character : Revision)
+      Valid &= (Character >= 'A' && Character <= 'Z') || (Character >= 'a' && Character <= 'z') ||
+               (Character >= '0' && Character <= '9') || Character == '_';
+    if (!Valid) {
+      UE_LOG(LogTemp, Error, TEXT("WC_AQ1_INVALID_ROOT: expected one revision below /Game/WonderChess/Candidates/AQ1/"));
+      FPlatformMisc::RequestExitWithStatus(false, 2);
+      return FString();
+    }
+    UE_LOG(LogTemp, Display, TEXT("WC_AQ1_GALLERY_ROOT %s; Ada mesh/clips only"), *Root);
+    return Root + TEXT("/");
+  }();
+  return Candidate.IsEmpty() ? DefaultFolder : Candidate;
+}
+}
 
 AWCFrontEndScene::AWCFrontEndScene() {
   PrimaryActorTick.bCanEverTick = true;
@@ -130,7 +157,7 @@ void AWCFrontEndScene::ShowHero(const FString& UnitId, int32 Star, bool ReducedM
     HeroId = UnitId;
     ResidentAssets.Reset();
     const FString Name = TEXT("SK_") + UnitId;
-    const FString Path = TEXT("/Game/WonderChess/Heroes/") + UnitId + TEXT("/") + Name + TEXT(".") + Name;
+    const FString Path = AQ1HeroFolder(UnitId) + Name + TEXT(".") + Name;
     auto* Mesh = LoadObject<USkeletalMesh>(nullptr, *Path);
     Hero->SetSkeletalMesh(Mesh);
     AssetMessage = Mesh ? FString() : TEXT("This hero's skeletal mesh is not present in this build.");
@@ -154,7 +181,7 @@ void AWCFrontEndScene::ShowHero(const FString& UnitId, int32 Star, bool ReducedM
 bool AWCFrontEndScene::PlayClip(const FString& Clip, bool ReducedMotion) {
   SelectedClip = Clip;
   const FString Name = TEXT("AN_") + HeroId + TEXT("_") + Clip;
-  const FString Path = TEXT("/Game/WonderChess/Heroes/") + HeroId + TEXT("/") + Name + TEXT(".") + Name;
+  const FString Path = AQ1HeroFolder(HeroId) + Name + TEXT(".") + Name;
   auto* Animation = LoadObject<UAnimSequence>(nullptr, *Path);
   if (!Animation || !Hero->GetSkeletalMeshAsset()) {
     AssetMessage = FString::Printf(TEXT("Preview unavailable: %s / %s. Imported content is required."), *HeroId, *Clip);

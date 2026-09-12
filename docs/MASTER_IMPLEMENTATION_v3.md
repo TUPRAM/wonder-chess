@@ -1,4 +1,5 @@
 # Wonder Chess — Master Implementation v3
+> Historical baseline from 2026-09-10: the user adopted the successor blueprint in `vnext/README.md`. This contract continues to govern preserved `alpha_24` fixtures and assets; its exact roster and visual-only equipment limits do not govern `wonder_vnext`.
 ## A playable-first eight-seat auto-battler
 
 **Adopted update, 2026-09-06:** the user authorized the 24-hero implementation package in `updates/2026-09-auto-chess-inspired/README.md`. Execute WC-U400–460. This document incorporates its explicit amendments; unchanged v3 rules and prior evidence remain in force.

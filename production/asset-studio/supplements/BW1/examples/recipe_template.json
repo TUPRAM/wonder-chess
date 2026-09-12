@@ -1,0 +1,59 @@
+{
+  "schema_version": "bw1.0",
+  "status": "TEMPLATE_NOT_IMPLEMENTED_OR_EXECUTED",
+  "recipe_id": "wc_glove_fit_candidate",
+  "version": "0.0.0",
+  "purpose": "Fit a five-digit glove to a supported hand and validate required grips.",
+  "source_ids": [
+    "mpfb_license",
+    "mpfb_gloves"
+  ],
+  "source_archive_sha256": null,
+  "source_topology_sha256": null,
+  "supported_body_families": [],
+  "supported_body_parameter_ranges": {},
+  "required_rest_pose": null,
+  "semantic_parts": [
+    "hand_surface",
+    "thumb",
+    "four_fingers",
+    "glove_shell",
+    "cuff"
+  ],
+  "parameters": {
+    "cuff_length_m": null,
+    "nominal_clearance_m": null,
+    "handle_radius_m": null
+  },
+  "parameter_status": "VALUES_REQUIRE_MEASUREMENT_NOT_DEFAULTS",
+  "preconditions": [
+    "Rights reviewed for selected exact files",
+    "Input and body rest poses aligned",
+    "Independent editable copy",
+    "Mapping and deformation groups distinguished"
+  ],
+  "planned_steps": [
+    "Inspect template and hand",
+    "Fit outer shape preserving openings",
+    "Initialize then correct weights",
+    "Pose open/relaxed/equipment grips",
+    "Capture matched views",
+    "Review defects"
+  ],
+  "implementation_entrypoint": null,
+  "tests_required": [
+    "source_preservation",
+    "five_digit_readability",
+    "thumb_opposition",
+    "grip_clearance",
+    "cuff_motion",
+    "independent_replay",
+    "second_body_fit"
+  ],
+  "actual_test_results": [],
+  "human_acceptance": null,
+  "known_limits": [
+    "No validated body range yet",
+    "Not a callable tool"
+  ]
+}

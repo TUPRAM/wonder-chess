@@ -31,17 +31,34 @@ int CountCopies(int star)
 bool EqualCommand(const Command &a, const Command &b)
 {
     return std::tie(a.type, a.seat, a.requestId, a.sequence, a.revision, a.unit, a.slot, a.toBoard,
-                    a.cell.column, a.cell.row) == std::tie(b.type, b.seat, b.requestId, b.sequence,
+                    a.cell.column, a.cell.row, a.facing) == std::tie(b.type, b.seat, b.requestId, b.sequence,
                                                            b.revision, b.unit, b.slot, b.toBoard,
-                                                           b.cell.column, b.cell.row);
+                                                           b.cell.column, b.cell.row, b.facing);
+}
+void OfferRelics(const Catalog &catalog, SeatState &seat)
+{
+    if (seat.pendingRelicDrafts <= 0 || !seat.relicOffers.empty()) return;
+    std::vector<int> available;
+    for (int i = 0; i < int(catalog.relics.size()); ++i)
+        if (std::find(seat.ownedRelics.begin(), seat.ownedRelics.end(), i) == seat.ownedRelics.end() &&
+            std::any_of(catalog.units.begin(), catalog.units.end(), [&](const UnitDef &unit) {
+                return RelicCompatible(catalog.relics[i], unit.ability.mechanic);
+            }))
+            available.push_back(i);
+    while (!available.empty() && seat.relicOffers.size() < 3)
+    {
+        const int choice = seat.relicRng.Below(int(available.size()));
+        seat.relicOffers.push_back(available[choice]);
+        available.erase(available.begin() + choice);
+    }
 }
 struct Features
 {
     double budget = 0, upgrades = 0, traits = 0, pairs = 0, roles = 0, bench = 0;
 };
-double SkillBudget(const UnitDef &unit, int star, int capacity, const Catalog &catalog)
+double SkillBudget(const UnitDef &unit, int star, int capacity, const Catalog &catalog, int relic = -1)
 {
-    const auto &ability = unit.ability;
+    const auto ability = catalog.profileId == "wonder_vnext" ? EffectiveAbility(catalog, unit, relic) : unit.ability;
     const int horizon = std::min(20000, catalog.rules.combatTimeoutMs);
     const int firstRelease = ability.firstCastMs + ability.castMs + ability.travelMs;
     if (!ability.enabled || firstRelease >= horizon)
@@ -57,7 +74,29 @@ double SkillBudget(const UnitDef &unit, int star, int capacity, const Catalog &c
     const double basicPerSecond = double(StarValue(unit.attackDamage, star, 0, catalog.rules)) *
                                   unit.attackRate / 1000.0;
     double potential = 0;
-    for (const auto &effect : ability.effects)
+    if (catalog.profileId == "wonder_vnext" && ability.mechanic != AbilityMechanic::Standard)
+    {
+        // Authored opportunity estimates for shopping; actual battles always use Combat.
+        const double magnitude = double(ability.magnitude[star - 1]);
+        switch (ability.mechanic)
+        {
+        case AbilityMechanic::DirectionalGuard:
+            return capacity > 1 ? double(StarValue(unit.health, star, 0, catalog.rules)) / 100000.0 *
+                ability.guardReductionBp / 10000.0 * 0.5 : 0.0;
+        case AbilityMechanic::MomentumCharge:
+            potential = magnitude * (1.0 + std::min(2, ability.maxMomentumSteps) * ability.momentumPerStepBp / 10000.0);
+            break;
+        case AbilityMechanic::StationaryGrove:
+            potential = magnitude * std::min(3, std::max(1, capacity)) * 0.6 *
+                ((ability.durationMs + ability.pulseMs - 1) / std::max(1, ability.pulseMs));
+            break;
+        case AbilityMechanic::ScreenedStrike: potential = magnitude; break;
+        case AbilityMechanic::CrossingBeams: potential = magnitude * std::min(3, std::max(1, capacity)); break;
+        case AbilityMechanic::TidalPush: potential = magnitude * std::min(2, std::max(1, capacity)); break;
+        case AbilityMechanic::Standard: break;
+        }
+    }
+    else for (const auto &effect : ability.effects)
     {
         const double magnitude = double(effect.magnitude[star - 1]);
         switch (effect.effect)
@@ -88,12 +127,13 @@ Features Evaluate(const SeatState &s, const Catalog &c, const BotDef &b)
     for (const auto &u : s.roster)
     {
         const auto &d = c.units[u.definition];
+        const bool successor = c.profileId == "wonder_vnext";
         double weight = d.unitClass == "guardian" ? b.frontline
-                        : d.unitClass == "priest" ? b.support
+                        : d.unitClass == "priest" || (successor && d.unitClass == "healer") ? b.support
                                                   : b.damage;
         double budget = (double(StarValue(d.health, u.star, 0, c.rules)) / 100000.0 +
                          double(StarValue(d.attackDamage, u.star, 0, c.rules)) * d.attackRate / 10000000.0 +
-                         SkillBudget(d, u.star, s.level, c)) *
+                          SkillBudget(d, u.star, s.level, c, u.relic)) *
                         weight;
         choices.push_back({budget, &u});
         copies[u.definition] += CountCopies(u.star);
@@ -113,8 +153,9 @@ Features Evaluate(const SeatState &s, const Catalog &c, const BotDef &b)
         counts[d.race].insert(u.definition);
         counts[d.unitClass].insert(u.definition);
         frontline |= d.unitClass == "guardian" || d.unitClass == "warrior";
-        support |= d.unitClass == "priest";
-        damage |= d.unitClass == "ranger" || d.unitClass == "mage" || d.unitClass == "rogue";
+        support |= d.unitClass == "priest" || (c.profileId == "wonder_vnext" && d.unitClass == "healer");
+        damage |= d.unitClass == "ranger" || d.unitClass == "mage" || d.unitClass == "rogue" ||
+            (c.profileId == "wonder_vnext" && (d.unitClass == "assassin" || d.unitClass == "controller"));
     }
     for (const auto &t : c.traits)
     {
@@ -126,6 +167,93 @@ Features Evaluate(const SeatState &s, const Catalog &c, const BotDef &b)
         f.pairs += std::min(2, pair.second % 3) / 6.0;
     f.roles = (frontline ? 0.6 : 0) + (damage ? 0.3 : 0) + (support ? 0.1 : 0);
     return f;
+}
+Cell FacingDirection(Facing facing)
+{
+    switch (facing)
+    {
+    case Facing::Forward: return {0, 1};
+    case Facing::Right: return {1, 0};
+    case Facing::Backward: return {0, -1};
+    case Facing::Left: return {-1, 0};
+    }
+    return {0, 1};
+}
+double SpatialOpportunity(const OwnedUnit &unit, const SeatState &seat, const PublicSeat *opponent,
+                          const Catalog &catalog)
+{
+    const auto ability = EffectiveAbility(catalog, catalog.units[unit.definition], unit.relic);
+    const Cell forward = FacingDirection(unit.facing);
+    auto friendlyAt = [&](Cell cell) {
+        return std::any_of(seat.roster.begin(), seat.roster.end(), [&](const OwnedUnit &ally) {
+            return ally.onBoard && ally.id != unit.id && ally.cell == cell;
+        });
+    };
+    if (ability.mechanic == AbilityMechanic::DirectionalGuard)
+    {
+        const bool recipient = std::any_of(seat.roster.begin(), seat.roster.end(), [&](const OwnedUnit &ally) {
+            const int x = ally.cell.column - unit.cell.column, y = ally.cell.row - unit.cell.row;
+            const int behind = -(x * forward.column + y * forward.row);
+            return ally.onBoard && ally.id != unit.id && behind > 0 &&
+                std::abs(x * forward.row - y * forward.column) <= behind &&
+                Distance(unit.cell, ally.cell) <= ability.radius;
+        });
+        // All rival deployment is in the forward half of local preparation space.
+        return recipient ? (forward.row > 0 ? 0.8 : forward.row == 0 ? 0.15 : 0.0) : 0.0;
+    }
+    if (ability.mechanic == AbilityMechanic::StationaryGrove)
+    {
+        int allies = 0;
+        for (const auto &ally : seat.roster)
+            if (ally.onBoard && ally.id != unit.id && Distance(unit.cell, ally.cell) <= ability.radius) ++allies;
+        return std::min(3, allies) * 0.2;
+    }
+    if (ability.mechanic == AbilityMechanic::MomentumCharge)
+        return !friendlyAt({unit.cell.column, unit.cell.row + 1}) ? 0.25 : -0.25;
+    if (!opponent || opponent->deployment.empty()) return 0;
+    std::vector<Cell> enemies;
+    for (const auto &enemy : opponent->deployment) enemies.push_back(EncounterCell(enemy.cell, 1, catalog.rules));
+    if (ability.mechanic == AbilityMechanic::TidalPush)
+    {
+        int aligned = 0;
+        for (Cell enemy : enemies)
+        {
+            const int x = enemy.column - unit.cell.column, y = enemy.row - unit.cell.row;
+            const int distance = x * forward.column + y * forward.row;
+            if (distance > 0 && distance <= ability.range && x * forward.row == y * forward.column) ++aligned;
+        }
+        return std::min(3, aligned) * 0.3;
+    }
+    const bool backline = ability.mechanic == AbilityMechanic::ScreenedStrike;
+    if (!backline && ability.mechanic != AbilityMechanic::CrossingBeams) return 0;
+    std::stable_sort(enemies.begin(), enemies.end(), [&](Cell a, Cell b) {
+        return backline ? Distance(unit.cell, a) > Distance(unit.cell, b) : Distance(unit.cell, a) < Distance(unit.cell, b);
+    });
+    auto target = std::find_if(enemies.begin(), enemies.end(), [&](Cell cell) { return Distance(unit.cell, cell) <= ability.range; });
+    if (target == enemies.end()) return 0;
+    if (!backline)
+    {
+        int crossings = 0;
+        for (Cell enemy : enemies)
+        {
+            if (Distance(enemy, *target) > ability.radius) continue;
+            crossings += enemy.column == target->column;
+            crossings += enemy.row == target->row;
+        }
+        return std::min(4, crossings) * 0.12;
+    }
+    Cell at = unit.cell;
+    const int dx = std::abs(target->column - at.column), dy = -std::abs(target->row - at.row);
+    const int sx = at.column < target->column ? 1 : -1, sy = at.row < target->row ? 1 : -1;
+    int error = dx + dy;
+    while (!(at == *target))
+    {
+        const int twice = 2 * error;
+        if (twice >= dy) { error += dy; at.column += sx; }
+        if (twice <= dx) { error += dx; at.row += sy; }
+        if (!(at == *target) && std::find(enemies.begin(), enemies.end(), at) != enemies.end()) return 0;
+    }
+    return 0.3;
 }
 double TacticalScore(const SeatState &seat, const PublicSeat *opponent, const Catalog &catalog)
 {
@@ -140,12 +268,14 @@ double TacticalScore(const SeatState &seat, const PublicSeat *opponent, const Ca
         const bool frontline = definition.unitClass == "guardian" || definition.unitClass == "warrior";
         if (frontline)
             score += double(unit.cell.row) / 3.0;
-        else if (definition.unitClass == "priest")
+        else if (definition.unitClass == "priest" ||
+                 (catalog.profileId == "wonder_vnext" && definition.unitClass == "healer"))
         {
             int supportRecipients = 0;
             for (const auto &ally : seat.roster)
                 if (ally.onBoard && ally.id != unit.id &&
-                    Distance(unit.cell, ally.cell) <= definition.ability.range)
+                    Distance(unit.cell, ally.cell) <= (definition.ability.mechanic == AbilityMechanic::StationaryGrove ?
+                        EffectiveAbility(catalog, definition, unit.relic).radius : definition.ability.range))
                     ++supportRecipients;
             score += std::min(3, supportRecipients) / 3.0;
         }
@@ -176,7 +306,9 @@ double TacticalScore(const SeatState &seat, const PublicSeat *opponent, const Ca
             for (const auto &enemy : opponent->deployment)
             {
                 closestColumn = std::min(closestColumn, std::abs(unit.cell.column - (7 - enemy.cell.column)));
-                enemyArea |= catalog.Definition(enemy.definition, enemy.neutral).ability.selector == Selector::CurrentEnemyArea;
+                const auto &enemyAbility = catalog.Definition(enemy.definition, enemy.neutral).ability;
+                enemyArea |= enemyAbility.selector == Selector::CurrentEnemyArea ||
+                    (catalog.profileId == "wonder_vnext" && enemyAbility.mechanic == AbilityMechanic::CrossingBeams);
             }
             if (frontline)
                 score += 0.3 / (1 + closestColumn);
@@ -185,20 +317,23 @@ double TacticalScore(const SeatState &seat, const PublicSeat *opponent, const Ca
                     if (ally.onBoard && ally.id != unit.id && Distance(unit.cell, ally.cell) <= 1)
                         score -= 0.04;
         }
+        if (catalog.profileId == "wonder_vnext") score += SpatialOpportunity(unit, seat, opponent, catalog);
     }
     return score / std::max(1, deployed);
 }
 } // namespace
-Match::Match(Catalog catalog, Id seed, int humans) : catalog_(std::move(catalog))
+Match::Match(Catalog catalog, Id seed, int humans, bool networked) : catalog_(std::move(catalog))
 {
-    Restart(seed, humans);
+    Restart(seed, humans, networked);
 }
-void Match::Restart(Id seed, int humans)
+void Match::Restart(Id seed, int humans, bool networked)
 {
     matchNamespace_ = NextMatchNamespace.fetch_add(1);
     if (matchNamespace_ >= (Id(1) << 23))
         throw std::overflow_error("Match namespace exceeds exact snapshot integer range");
     seed_ = seed;
+    originalHumans_ = humans;
+    networked_ = networked || humans > 1;
     nextUnit_ = 1;
     nextRequest_ = 1;
     round_ = 0;
@@ -222,7 +357,7 @@ void Match::Restart(Id seed, int humans)
     botObservationRevision_.fill(0);
     for (auto &observation : botObservations_)
         observation.clear();
-    if (!catalog_.Validate().empty() || humans < 0 || humans > 2)
+    if (!catalog_.Validate().empty() || humans < 0 || humans > (catalog_.profileId == "wonder_vnext" ? 8 : 2))
     {
         phase_ = Phase::Aborted;
         remainingMs_ = 0;
@@ -243,6 +378,7 @@ void Match::Restart(Id seed, int humans)
                           : catalog_.bots[(i - humans) % catalog_.bots.size()].label;
         s.shopRng.state = HashValue(seed ^ Id(i + 1) * 0x51ed2705ULL);
         s.botRng.state = HashValue(seed ^ Id(i + 1) * 0xa0761d6478bd642fULL);
+        s.relicRng.state = HashValue(seed ^ Id(i + 1) * 0xe7037ed1a0b428dbULL);
         seats_.push_back(s);
     }
     Prepare();
@@ -254,7 +390,7 @@ void Match::Refresh(SeatState &s)
     for (int slot = 0; slot < catalog_.rules.shopSlots; ++slot)
     {
         int draw = s.shopRng.Below(10000), tier = 0;
-        while (tier < 2 && draw >= weights[tier])
+        while (tier < int(weights.size()) - 1 && draw >= weights[tier])
         {
             draw -= weights[tier];
             ++tier;
@@ -337,11 +473,27 @@ bool LegalRoster(const Catalog &catalog, const SeatState &s)
     std::set<int> bench;
     std::set<std::pair<int, int>> cells;
     std::set<Id> ids;
+    std::set<int> ownedRelics(s.ownedRelics.begin(), s.ownedRelics.end()), assignedRelics, offers;
+    if (ownedRelics.size() != s.ownedRelics.size() ||
+        int(ownedRelics.size()) > catalog.rules.maximumRelics || s.pendingRelicDrafts < 0 ||
+        int(ownedRelics.size()) + s.pendingRelicDrafts > catalog.rules.maximumRelics ||
+        s.relicOffers.size() > 3 || (!s.relicOffers.empty() && s.pendingRelicDrafts == 0))
+        return false;
+    for (int relic : ownedRelics)
+        if (relic < 0 || relic >= int(catalog.relics.size())) return false;
+    for (int relic : s.relicOffers)
+        if (relic < 0 || relic >= int(catalog.relics.size()) || ownedRelics.count(relic) ||
+            !offers.insert(relic).second) return false;
     int deployed = 0;
     for (const auto &u : s.roster)
     {
-        if (u.id >= (Id(1) << 20) || !ids.insert(u.id).second || u.definition < 0 || u.definition >= int(catalog.units.size()) ||
-            u.star < 1 || u.star > 3 || u.neutral)
+        if (u.id == 0 || u.id >= (Id(1) << 20) || !ids.insert(u.id).second || u.definition < 0 || u.definition >= int(catalog.units.size()) ||
+            u.star < 1 || u.star > 3 || u.neutral || u.hpScaleBp != 10000 || u.damageScaleBp != 10000 ||
+            int(u.facing) < 0 || int(u.facing) > 3)
+            return false;
+        if (u.relic < -1 || (u.relic >= 0 &&
+            (!ownedRelics.count(u.relic) || !assignedRelics.insert(u.relic).second ||
+             !RelicCompatible(catalog.relics[u.relic], catalog.units[u.definition].ability.mechanic))))
             return false;
         if (u.onBoard)
         {
@@ -485,12 +637,46 @@ bool Match::ApplyCommand(SeatState &s, const Command &cmd, Id &nextUnit, std::st
         s.gold -= r.buyXpGold;
         GainXp(s, r.buyXpAmount);
     }
+    else if (cmd.type == CommandType::SetFacing)
+    {
+        if (catalog_.profileId != "wonder_vnext") return reject("Orientation is unavailable in this profile");
+        if (int(cmd.facing) < 0 || int(cmd.facing) > 3) return reject("Invalid orientation");
+        auto unit = std::find_if(s.roster.begin(), s.roster.end(), [&](const OwnedUnit &u) { return u.id == cmd.unit; });
+        if (unit == s.roster.end()) return reject("Unit is not owned");
+        unit->facing = cmd.facing;
+    }
+    else if (cmd.type == CommandType::ChooseRelic)
+    {
+        if (s.pendingRelicDrafts <= 0 || cmd.slot < 0 || cmd.slot >= int(s.relicOffers.size()) ||
+            int(s.ownedRelics.size()) >= r.maximumRelics) return reject("Relic choice is unavailable");
+        s.ownedRelics.push_back(s.relicOffers[cmd.slot]);
+        s.relicOffers.clear();
+        --s.pendingRelicDrafts;
+        OfferRelics(catalog_, s);
+    }
+    else if (cmd.type == CommandType::EquipRelic || cmd.type == CommandType::UnequipRelic)
+    {
+        auto unit = std::find_if(s.roster.begin(), s.roster.end(), [&](const OwnedUnit &u) { return u.id == cmd.unit; });
+        if (unit == s.roster.end()) return reject("Unit is not owned");
+        if (cmd.type == CommandType::UnequipRelic) unit->relic = -1;
+        else
+        {
+            if (cmd.slot < 0 || cmd.slot >= int(catalog_.relics.size()) ||
+                std::find(s.ownedRelics.begin(), s.ownedRelics.end(), cmd.slot) == s.ownedRelics.end())
+                return reject("Relic is not owned");
+            if (!RelicCompatible(catalog_.relics[cmd.slot], catalog_.units[unit->definition].ability.mechanic))
+                return reject("Relic is incompatible with this ability");
+            for (auto &other : s.roster) if (other.relic == cmd.slot) other.relic = -1;
+            unit->relic = cmd.slot;
+        }
+    }
     else if (cmd.type == CommandType::Ready)
         s.ready = true;
     else
         return reject("Unknown command");
     if (cmd.type != CommandType::Ready)
         s.ready = false;
+    if (!Legal(s)) return reject("Command would produce invalid owned state");
     return true;
 }
 Reply Match::Submit(int authenticatedSeat, const Command &cmd)
@@ -666,6 +852,11 @@ void Match::Prepare()
             }
             if (!s.shopLocked || round_ == 1)
                 Refresh(s);
+            if (std::find(catalog_.rules.relicRounds.begin(), catalog_.rules.relicRounds.end(), round_ - 1) !=
+                catalog_.rules.relicRounds.end() &&
+                int(s.ownedRelics.size()) + s.pendingRelicDrafts < catalog_.rules.maximumRelics)
+                ++s.pendingRelicDrafts;
+            OfferRelics(catalog_, s);
             s.ready = false;
             ++s.revision;
         }
@@ -738,6 +929,11 @@ Id Match::StateHash() const
     add(nextUnit_);
     add(nextRequest_);
     add(Id(remainingMs_));
+    if (catalog_.profileId == "wonder_vnext")
+    {
+        add(Id(originalHumans_));
+        add(networked_);
+    }
     for (const auto &s : seats_)
     {
         add(Id(s.id));
@@ -760,6 +956,15 @@ Id Match::StateHash() const
         add(s.sequence);
         add(s.shopRng.state);
         add(s.botRng.state);
+        if (catalog_.profileId == "wonder_vnext")
+        {
+            add(s.relicRng.state);
+            add(Id(s.pendingRelicDrafts));
+            add(Id(s.ownedRelics.size()));
+            for (int relic : s.ownedRelics) add(Id(relic + 1));
+            add(Id(s.relicOffers.size()));
+            for (int relic : s.relicOffers) add(Id(relic + 1));
+        }
         for (int offer : s.shop)
             add(Id(offer + 1));
         for (const auto &u : s.roster)
@@ -771,6 +976,7 @@ Id Match::StateHash() const
             add(Id(u.cell.column + 1));
             add(Id(u.cell.row + 1));
             add(Id(u.bench + 1));
+            if (catalog_.profileId == "wonder_vnext") { add(Id(u.facing)); add(Id(u.relic + 1)); }
         }
     }
     for (auto pair : pairs_)
@@ -936,6 +1142,60 @@ void Match::BotTurn(int seat)
     const auto &bot = catalog_.bots[s.botIndex];
     if (s.human || s.health <= 0 || s.ready)
         return;
+    if (catalog_.profileId == "wonder_vnext" && botCommands_[seat] < bot.maxCommands - 1)
+    {
+        Command relicCommand;
+        std::string relicAction;
+        if (!s.relicOffers.empty())
+        {
+            relicCommand.type = CommandType::ChooseRelic;
+            relicCommand.slot = 0;
+            int bestMatches = -1;
+            for (int slot = 0; slot < int(s.relicOffers.size()); ++slot)
+            {
+                int matches = 0;
+                for (const auto &unit : s.roster)
+                    if (RelicCompatible(catalog_.relics[s.relicOffers[slot]], catalog_.units[unit.definition].ability.mechanic))
+                        matches += unit.onBoard ? 2 : 1;
+                if (matches > bestMatches) { bestMatches = matches; relicCommand.slot = slot; }
+            }
+            relicAction = "choose_relic";
+        }
+        else
+            for (int relic : s.ownedRelics)
+            {
+                if (std::any_of(s.roster.begin(), s.roster.end(), [&](const OwnedUnit &unit) { return unit.relic == relic; }))
+                    continue;
+                const OwnedUnit *holder = nullptr;
+                for (const auto &unit : s.roster)
+                    if (unit.onBoard && unit.relic < 0 &&
+                        RelicCompatible(catalog_.relics[relic], catalog_.units[unit.definition].ability.mechanic) &&
+                        (!holder || unit.star > holder->star || (unit.star == holder->star && unit.id < holder->id)))
+                        holder = &unit;
+                if (holder)
+                {
+                    relicCommand.type = CommandType::EquipRelic;
+                    relicCommand.slot = relic;
+                    relicCommand.unit = holder->id;
+                    relicAction = "equip_relic";
+                    break;
+                }
+            }
+        if (!relicAction.empty())
+        {
+            relicCommand.seat = seat;
+            relicCommand.requestId = (Id(1) << 63) | nextRequest_++;
+            relicCommand.sequence = s.sequence + 1;
+            relicCommand.revision = s.revision;
+            BotDecision log;
+            log.round = round_; log.seat = seat; log.action = relicAction;
+            log.observationRevision = botObservationRevision_[seat];
+            log.reply = Submit(seat, relicCommand); log.goldAfter = seats_[seat].gold;
+            botLog_.push_back(log);
+            if (log.reply.accepted) ++botCommands_[seat];
+            return;
+        }
+    }
     Command chosen;
     chosen.type = CommandType::Ready;
     std::string action = "ready";
@@ -1241,11 +1501,18 @@ std::string Match::InvariantError() const
         return catalog_.Validate();
     if (seats_.size() != 8)
         return "Missing persistent seats";
+    if (catalog_.profileId == "wonder_vnext" &&
+        (originalHumans_ < 0 || originalHumans_ > int(seats_.size()) || (!networked_ && originalHumans_ > 1)))
+        return "Invalid original match mode";
     std::set<Id> identities;
     for (const auto &s : seats_)
     {
         if (!Legal(s))
             return "Invalid owned roster or economy for seat " + std::to_string(s.id);
+        if (catalog_.profileId == "wonder_vnext" &&
+            ((s.id < originalHumans_ && s.human == s.takeover) ||
+             (s.id >= originalHumans_ && (s.human || s.takeover))))
+            return "Seat authority does not match the original human configuration";
         for (const auto &u : s.roster)
             if (!identities.insert(u.id).second || u.id >= nextUnit_)
                 return "Duplicated or invalid instance ID";

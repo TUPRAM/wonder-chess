@@ -1,0 +1,70 @@
+{
+  "example_only": true,
+  "description": "Synthetic open right-hand landmarks, not extracted from Ada.",
+  "coordinate_space": "WORLD_METERS",
+  "pose_kind": "OPEN_CALIBRATION",
+  "landmarks": {
+    "wrist": [
+      0,
+      0,
+      0
+    ],
+    "middle_mcp": [
+      0,
+      0.08,
+      0
+    ],
+    "index_mcp": [
+      0.025,
+      0.075,
+      0
+    ],
+    "little_mcp": [
+      -0.025,
+      0.065,
+      0
+    ],
+    "middle_tip": [
+      0,
+      0.16,
+      0
+    ],
+    "palmar_point": [
+      0,
+      0.04,
+      0.01
+    ]
+  },
+  "cylinder": {
+    "start_m": [
+      -0.0525,
+      0.05,
+      0.025
+    ],
+    "end_m": [
+      0.0525,
+      0.05,
+      0.025
+    ],
+    "radius_m": 0.014
+  },
+  "contact_patches": {
+    "synthetic_example_only": [
+      [
+        0,
+        0.0642,
+        0.025
+      ],
+      [
+        0.005,
+        0.0643,
+        0.025
+      ],
+      [
+        -0.005,
+        0.0641,
+        0.025
+      ]
+    ]
+  }
+}

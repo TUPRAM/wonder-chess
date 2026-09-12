@@ -1,0 +1,238 @@
+{
+  "research_date": "2026-09-10",
+  "sources": [
+    {
+      "id": "S01",
+      "title": "Proko — Muscle Anatomy of the Hand",
+      "url": "https://www.proko.com/course-lesson/how-to-draw-hands-muscle-anatomy-of-the-hand/",
+      "kind": "Original instructor; publicly readable lesson text",
+      "reviewed_access": "Public lesson text reviewed; premium downloads not obtained",
+      "source_supported_observation": "The lesson distinguishes palmar thumb mass, dorsal thumb mass, pinky-side mass, and the changing web relationship.",
+      "proposed_application": "Shape a substantial thenar pad and a rounded thumb/index web rather than a stretched flat membrane.",
+      "limitation": "An art-anatomy lesson, not a Blender recipe or a numeric contact standard. Do not redistribute its protected lesson media."
+    },
+    {
+      "id": "S02",
+      "title": "Proko — Hands Holding Stuff N Things",
+      "url": "https://www.proko.com/course-lesson/hands-holding-stuff-n-things",
+      "kind": "Original instructor; premium lesson",
+      "reviewed_access": "Public description only; full lesson NOT viewed",
+      "source_supported_observation": "The public description concerns hands holding objects.",
+      "proposed_application": "Optional further study of enclosure and contact; not a dependency for this task.",
+      "limitation": "Premium material. No purchase, access, timestamped procedure or full-video analysis is claimed."
+    },
+    {
+      "id": "S03",
+      "title": "Blender — Human Base Meshes v1.4.1",
+      "url": "https://www.blender.org/download/demo-files/",
+      "kind": "Official downloadable asset listing",
+      "reviewed_access": "Indexed official listing reviewed; archive NOT downloaded",
+      "source_supported_observation": "The listing identifies a 49 MB CC0 bundle requiring Blender 4.2 LTS or newer.",
+      "proposed_application": "An optional alternative editable foundation if the existing derived glove cannot be remodeled efficiently.",
+      "limitation": "Inspect the actual archive and its component inventory before choosing a hand. This bundle is not a pre-fitted Ada grip."
+    },
+    {
+      "id": "S04",
+      "title": "Blender 5.1 — Poly Build",
+      "url": "https://docs.blender.org/manual/id/5.1/modeling/meshes/tools/poly_build.html",
+      "kind": "Official tool documentation",
+      "reviewed_access": "Documentation reviewed; title/interface text partly localized",
+      "source_supported_observation": "Poly Build combines vertex/face creation, moving and edge extrusion for mesh construction and retopology.",
+      "proposed_application": "Rebuild the thumb web and reconnect digit roots with explicit faces.",
+      "limitation": "Use the installed keymap and preview each operation. The tool does not determine anatomy."
+    },
+    {
+      "id": "S05",
+      "title": "Blender 5.1 — Bevel Modifier",
+      "url": "https://docs.blender.org/manual/en/5.1/modeling/modifiers/generate/bevel.html",
+      "kind": "Official tool documentation",
+      "reviewed_access": "Documentation reviewed",
+      "source_supported_observation": "Bevel has selectable edge control, width interpretation, overlap clamping and normal-treatment options.",
+      "proposed_application": "Author a restrained edge highlight on plate rims without rounding away the entire shape.",
+      "limitation": "Overlap clamping is not an assembly-level collision solver. A shading fix cannot repair a bad silhouette."
+    },
+    {
+      "id": "S06",
+      "title": "Blender 5.1 — Solidify",
+      "url": "https://docs.blender.org/manual/pt/5.1/modeling/modifiers/generate/solidify.html",
+      "kind": "Official tool documentation",
+      "reviewed_access": "Documentation reviewed; localized page with English technical passages",
+      "source_supported_observation": "Thickness is computed in local coordinates; uniform thickness remains an approximation.",
+      "proposed_application": "Make measured armor shells on new candidates; inspect real section thickness and normals.",
+      "limitation": "Do not re-enable the known failing even-offset settings on the preserved BW1 garments. No guarantee of collision-free thickness."
+    },
+    {
+      "id": "S07",
+      "title": "Blender 5.1 — Apply Pose",
+      "url": "https://docs.blender.org/manual/id/5.1/animation/armatures/posing/editing/apply.html",
+      "kind": "Official tool documentation",
+      "reviewed_access": "Documentation reviewed",
+      "source_supported_observation": "Pose as Rest Pose changes the armature rest state and affects the skinning relationship.",
+      "proposed_application": "Avoid changing the shared rig merely to freeze a hand; transform independent geometry into its verified bind space.",
+      "limitation": "This is not a command to apply the current MPFB pose to the shared game skeleton."
+    },
+    {
+      "id": "S08",
+      "title": "Blender — PoseBone matrix semantics",
+      "url": "https://docs.blender.org/api/4.5/bpy.types.PoseBone.html",
+      "kind": "Official API documentation",
+      "reviewed_access": "Matrix semantics reviewed in the documented 4.5 API; local 5.1 API still to verify",
+      "source_supported_observation": "PoseBone.matrix is the final matrix in armature object space, distinct from matrix_basis.",
+      "proposed_application": "Include the armature world transform exactly once in hand-local capture and bind-space reconstruction.",
+      "limitation": "The equations in this kit are a proposed transform contract, not code executed on Ada; verify installed API and actual objects."
+    },
+    {
+      "id": "S09",
+      "title": "MPFB — Export Copy",
+      "url": "https://static.makehumancommunity.org/mpfb/docs/exporting/export_copy.html",
+      "kind": "Official project documentation",
+      "reviewed_access": "Documentation reviewed",
+      "source_supported_observation": "Export-copy operations preserve the original character while preparing a derived output hierarchy.",
+      "proposed_application": "Keep indexed MPFB masters intact and explicitly author a separate fixed-hand output representation.",
+      "limitation": "Choose operations deliberately; baked subdivision, modifiers and masks can change output geometry. No installed-version test performed here."
+    },
+    {
+      "id": "S10",
+      "title": "Epic — Skeletal Mesh Sockets",
+      "url": "https://dev.epicgames.com/documentation/unreal-engine/skeletal-mesh-sockets-in-unreal-engine",
+      "kind": "Official engine documentation",
+      "reviewed_access": "Documentation reviewed",
+      "source_supported_observation": "Sockets carry bone-relative attachment offsets; mesh-specific sockets can be used when a shared skeleton needs asset-specific attachments.",
+      "proposed_application": "Verify the actual sword attachment and isolate any candidate offset instead of editing all characters' shared socket.",
+      "limitation": "Docs may describe a newer engine than the local project. Do not upgrade or mutate the canonical skeleton implicitly."
+    },
+    {
+      "id": "S11",
+      "title": "Epic — FBX Import Options Reference",
+      "url": "https://dev.epicgames.com/documentation/en-us/unreal-engine/fbx-import-options-reference-in-unreal-engine",
+      "kind": "Official engine documentation",
+      "reviewed_access": "Documentation reviewed",
+      "source_supported_observation": "Import settings include skeleton/reference-pose changes and separate normal/tangent policies.",
+      "proposed_application": "Use an isolated import, preserve reference pose, and verify the selected normal convention.",
+      "limitation": "An import success is not an art or animation pass; map settings to the actual installed importer."
+    },
+    {
+      "id": "S12",
+      "title": "Epic — FBX Skeletal Mesh Pipeline",
+      "url": "https://dev.epicgames.com/documentation/en-us/unreal-engine/fbx-skeletal-mesh-pipeline-in-unreal-engine",
+      "kind": "Official engine documentation",
+      "reviewed_access": "Documentation reviewed",
+      "source_supported_observation": "The pipeline supports skeletal meshes/animations and recommends controlling triangulation.",
+      "proposed_application": "Export a reviewed runtime copy with explicit triangulation and test it on the existing clips.",
+      "limitation": "The documented FBX 2020.2 pipeline does not imply Blender exports an identical SDK/version; use the already calibrated local profile."
+    },
+    {
+      "id": "S13",
+      "title": "The Met — Gauntlet for the Right Hand, 29.158.215",
+      "url": "https://www.metmuseum.org/art/collection/search/23255",
+      "kind": "Museum collection; construction reference",
+      "reviewed_access": "Collection page and search-returned palm image reviewed",
+      "source_supported_observation": "The record identifies a Milanese steel-and-gold gauntlet; the palm image shows construction unlike the plated dorsal side.",
+      "proposed_application": "Study separation of the palm covering, finger backing and cuff; keep Ada's palm comparatively simple.",
+      "limitation": "Do not infer a complete moving mechanism from one still. This is historical structure inspiration, not Ada's final design."
+    },
+    {
+      "id": "S14",
+      "title": "The Met — Right Gauntlet, 2002.507",
+      "url": "https://www.metmuseum.org/art/collection/search/26586",
+      "kind": "Museum collection; Public Domain images",
+      "reviewed_access": "Collection text and dorsal image reviewed; alternate image endpoints located",
+      "source_supported_observation": "The listed gauntlet combines steel, textile/leather and rich surface decoration; its image distinguishes cuff, hand plates and finger defenses.",
+      "proposed_application": "Use the large-to-small plate hierarchy, not its densely ornamented visual treatment.",
+      "limitation": "The historic object does not validate our closed-hand geometry. Do not reproduce all engraving on Ada."
+    },
+    {
+      "id": "S15",
+      "title": "The Met — Locking Gauntlet, 36.149.13",
+      "url": "https://www.metmuseum.org/art/collection/search/24645",
+      "kind": "Museum collection; Public Domain image record",
+      "reviewed_access": "Detailed curator text reviewed",
+      "source_supported_observation": "A specific mitten-type example has articulated metacarpal/finger lames and could be secured closed.",
+      "proposed_application": "Study overlapping protection and cuff construction. It reinforces the distinction between a designed closed shape and a universal articulated hand.",
+      "limitation": "Not a requirement to give Ada a mitten or add a locking mechanism; no physical weapon-making guidance intended."
+    },
+    {
+      "id": "S16",
+      "title": "The Met — Breastplate, 2014.673",
+      "url": "https://www.metmuseum.org/art/collection/search/667458",
+      "kind": "Museum collection; Public Domain image record",
+      "reviewed_access": "Detailed curator text reviewed; front/back image endpoints located",
+      "source_supported_observation": "The record describes a main shell, movable armhole gussets, turned edges, shoulder fastening and lower overlapping lames.",
+      "proposed_application": "Construct breast/back interfaces, edges and waist transition as assemblies, not a single inflated torso.",
+      "limitation": "Museum dimensions are not Ada dimensions. Some surviving/replaced hardware is explicitly modern; do not infer all original kinematics."
+    },
+    {
+      "id": "S17",
+      "title": "The Met — Breastplate, German or Austrian",
+      "url": "https://www.metmuseum.org/art/collection/search/23143",
+      "kind": "Museum collection; Public Domain image reference",
+      "reviewed_access": "Collection page and front image reviewed",
+      "source_supported_observation": "The image provides a readable example of a broad central shell, arm openings and separately readable lower bands.",
+      "proposed_application": "Study cross-sectional curvature and restrained form hierarchy before adding decoration.",
+      "limitation": "Not a female-body fitting blueprint or an exact costume match; use Ada's own approved reference for identity."
+    },
+    {
+      "id": "S18",
+      "title": "The Met — Breastplate with Tassets, 2013.28",
+      "url": "https://www.metmuseum.org/art/collection/search/35917",
+      "kind": "Museum collection; Public Domain image record",
+      "reviewed_access": "Collection description reviewed",
+      "source_supported_observation": "The description distinguishes the breastplate, movable gussets, waist plate, skirt and tassets.",
+      "proposed_application": "Keep hip/waist protection separate from the chest shell so stepping can be designed.",
+      "limitation": "Do not add all these elements if absent from Ada's approved design."
+    },
+    {
+      "id": "S19",
+      "title": "Cleveland Museum — Pauldron (right), 1916.1816.c",
+      "url": "https://www.clevelandart.org/art/1916.1816.c",
+      "kind": "Museum collection; Public Domain record",
+      "reviewed_access": "Object text reviewed; extracted page reported image unavailable",
+      "source_supported_observation": "The record identifies shoulder armor with etched decorative bands and roundels.",
+      "proposed_application": "A research target for shoulder silhouette and later restrained surface accents.",
+      "limitation": "No detailed image or motion was obtained here. The gallery links to the object rather than inventing a plate arrangement."
+    },
+    {
+      "id": "S20",
+      "title": "Blue Spirit — Fantasy Armor",
+      "url": "https://sketchfab.com/3d-models/fantasy-armor-2ee22efb91424935a633a735884f04a0",
+      "kind": "Original artist model listing",
+      "reviewed_access": "Indexed creator description reviewed; viewer/archive NOT inspected",
+      "source_supported_observation": "The creator lists Blender 3.5, Substance texturing, 15.5k triangles and CC Attribution licensing.",
+      "proposed_application": "Optional one-model inspection of part organization and material hierarchy.",
+      "limitation": "License/archive must be checked on acquisition. No claim that the model is rigged, compatible, high quality under motion, or licensed for every intended use."
+    },
+    {
+      "id": "S21",
+      "title": "Customizable Armor set with damage — original ArtStation breakdown",
+      "url": "https://www.artstation.com/artwork/NqAZaP",
+      "kind": "Original artist process description",
+      "reviewed_access": "Indexed creator text reviewed; full page/visual breakdown not loaded",
+      "source_supported_observation": "The author describes staged damage layers, planned UVs and packed masks for Unreal materials.",
+      "proposed_application": "Defer damage variants; retain intentional UV/material-mask planning after the undamaged silhouette works.",
+      "limitation": "Do not claim the videos/images were reviewed. This is optional pipeline inspiration, not instructions copied from a paid course."
+    },
+    {
+      "id": "S22",
+      "title": "The Met — Open Access image/data policy",
+      "url": "https://www.metmuseum.org/policies/image-resources",
+      "kind": "Primary rights statement",
+      "reviewed_access": "Policy reviewed",
+      "source_supported_observation": "The Met makes designated public-domain images available under CC0; other images may have restrictions.",
+      "proposed_application": "Use only individually verified Public Domain/OA images when caching references.",
+      "limitation": "A museum-wide policy is not blanket clearance for every page image. No third-party media is bundled in this kit."
+    },
+    {
+      "id": "S23",
+      "title": "Blender 5.1 — Render Baking",
+      "url": "https://docs.blender.org/manual/it/5.1/render/cycles/baking.html",
+      "kind": "Official tool documentation",
+      "reviewed_access": "Documentation reviewed; localized title, relevant technical passages readable",
+      "source_supported_observation": "Selected-to-active transfers surface detail; tangent-space normals can be used on animated objects.",
+      "proposed_application": "Bake fine quilting, shallow engraving and edge treatment after geometry and the runtime mesh are stable.",
+      "limitation": "Normal detail does not change silhouette or solve collision; inspect cage, rays, seams and engine convention."
+    }
+  ],
+  "private_assets_uploaded_to_external_services": false,
+  "third_party_meshes_downloaded": false,
+  "complete_videos_watched": false
+}

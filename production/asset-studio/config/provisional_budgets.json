@@ -1,0 +1,50 @@
+{
+  "status": "starting hypotheses; no measured performance claim",
+  "hero": {
+    "lod0_triangles_max": 15000,
+    "optional_comparison_triangles_max": 25000,
+    "optional_comparison_requires_approval": true,
+    "material_slots_target": 2,
+    "texture_authoring_max_dimension": 2048,
+    "shipping_texture_dimension_candidates": [
+      1024,
+      2048
+    ],
+    "deform_bones_target_max": 60,
+    "skin_influences_target_max": 4,
+    "face_test_image_px": [
+      256,
+      512
+    ],
+    "full_body_test_height_px": [
+      96,
+      192,
+      512
+    ]
+  },
+  "equipment": {
+    "lod0_triangles_guidance": [
+      500,
+      4000
+    ],
+    "material_slots_target": 1
+  },
+  "prop": {
+    "lod0_triangles_guidance": [
+      100,
+      3000
+    ]
+  },
+  "arena": {
+    "one_visible_encounter_initial": true,
+    "max_visible_heroes_initial": 12,
+    "offscreen_simulation_not_visual_tick_dependent": true
+  },
+  "notes": [
+    "No minimum triangle count.",
+    "Authoring source is not the shipping mesh.",
+    "No fixed decimation ratio constitutes a visual pass.",
+    "Budgets must be rechecked against the live game configuration.",
+    "Treat transparent overdraw, sections, texture residency and animation cost separately."
+  ]
+}

@@ -5,6 +5,8 @@ description: Create, refine, validate or export a Wonder Chess hero or modular a
 
 # wc-blender-asset
 
+For new asset production or substantial likeness correction, begin with `$wca-orchestrate` and the active `art-source/asset-studio/<asset_id>/` manifest; use this skill for the bounded Blender operations selected by that workflow.
+
 1. Read `docs/BLENDER_PRODUCTION.md`, `tools/blender/README.md`, the relevant hero dossier and actual installed API docs.
 2. Confirm exclusive ownership of the .blend and rig family; inspect the current scene before edits.
 3. Use a bounded script/authoring operation with an explicit source/output path. The supplied scripts are unexecuted scaffolds until verified locally.

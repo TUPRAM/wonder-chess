@@ -5,7 +5,10 @@
 #include "Animation/AnimSingleNodeInstance.h"
 #include "Animation/AnimSequence.h"
 #include "Components/SkeletalMeshComponent.h"
+#include "ContentStreaming.h"
+#include "Engine/Texture.h"
 #include "HAL/FileManager.h"
+#include "Materials/MaterialInterface.h"
 #include "Misc/App.h"
 #include "Misc/CommandLine.h"
 #include "Misc/FileHelper.h"
@@ -19,7 +22,7 @@ using Object = TSharedPtr<FJsonObject>;
 struct MotionCapture {
   bool Started = false, Finished = false, Pending = false, Failed = false;
   bool PreviousFixed = false;
-  double PreviousDelta = 0, StartWall = 0;
+  double PreviousDelta = 0, StartWall = 0, TextureWaitStart = 0;
   int Index = 0, Frame = 0, FramesRequired = 0, Warmup = 0;
   FString Directory, PendingPath, ClipDirectory;
   TArray<TPair<FString, FString>> Jobs;
@@ -147,9 +150,43 @@ void WCTickAnimationReview(AWCMatchController* Player) {
     }
     IFileManager::Get().MakeDirectory(*Capture.ClipDirectory, true);
     FFileHelper::SaveStringToFile(TEXT("frame,animation_seconds,wall_seconds,bytes,file\n"), *(Capture.ClipDirectory / TEXT("frames.csv")), FFileHelper::EEncodingOptions::ForceUTF8WithoutBOM);
+    Capture.Mesh->PrestreamTextures(60.f, true);
+    Capture.TextureWaitStart = FPlatformTime::Seconds();
     Capture.Warmup = 6; return;
   }
   if (Capture.Warmup > 0) {
+    if (Capture.Warmup == 6 && Capture.Mesh.IsValid()) {
+      IStreamingManager::Get().StreamAllResources(.01f);
+      TArray<UTexture*> Textures;
+      for (auto* Material : Capture.Mesh->GetMaterials()) if (Material) {
+        TArray<UTexture*> MaterialTextures;
+        Material->GetUsedTextures(MaterialTextures);
+        for (auto* Texture : MaterialTextures) Textures.AddUnique(Texture);
+      }
+      TArray<FString> PendingTextures, TexturePaths;
+      for (auto* Texture : Textures) {
+        const FString Path = Texture ? Texture->GetPathName() : TEXT("<null>");
+        TexturePaths.AddUnique(Path);
+        bool Ready = Texture && Texture->GetResource() && Texture->IsFullyStreamedIn();
+#if WITH_EDITOR
+        Ready = Ready && !Texture->IsCompiling();
+#endif
+        if (!Ready) PendingTextures.AddUnique(Path);
+      }
+      const double WaitSeconds = FPlatformTime::Seconds() - Capture.TextureWaitStart;
+      Capture.Current->SetNumberField(TEXT("texture_ready_wait_seconds"), WaitSeconds);
+      Capture.Current->SetStringField(TEXT("used_textures"), FString::Join(TexturePaths, TEXT(";")));
+      if (Textures.IsEmpty() || !PendingTextures.IsEmpty()) {
+        Capture.Current->SetStringField(TEXT("pending_textures"), FString::Join(PendingTextures, TEXT(";")));
+        if (WaitSeconds >= 30) {
+          Capture.Current->SetStringField(TEXT("status"), TEXT("FAIL_TEXTURE_STREAMING_TIMEOUT"));
+          Capture.Failed = true; Finish(TEXT("FAIL_TEXTURE_STREAMING_TIMEOUT"));
+        }
+        return;
+      }
+      Capture.Current->RemoveField(TEXT("pending_textures"));
+      Capture.Current->SetBoolField(TEXT("textures_fully_streamed_before_capture"), true);
+    }
     if (--Capture.Warmup == 0 && Capture.Mesh.IsValid()) Capture.Mesh->SetPosition(0, false);
     return;
   }

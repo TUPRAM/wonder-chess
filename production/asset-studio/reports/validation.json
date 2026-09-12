@@ -1,0 +1,44 @@
+{
+  "package": "Wonder Chess Asset Studio AS1",
+  "version": "1.0.0",
+  "prepared_date": "2026-09-08",
+  "status": "standalone_helpers_tested_editor_helpers_not_executed",
+  "environment": {
+    "python": "3.13.5",
+    "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+    "Pillow": "12.3.0",
+    "jsonschema": "4.26.0"
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tests -v",
+    "exit_code": 0,
+    "tests_passed": 52,
+    "synthetic_asset_routes": 9,
+    "log": "reports/standalone-tests.txt"
+  },
+  "content_checks": {
+    "skill_count": 22,
+    "helper_script_count": 6,
+    "helper_python_ast_parse": "pass",
+    "native_crops": 11,
+    "crop_operation": "executed on user-supplied image with no upscaling",
+    "json_parse": "pass"
+  },
+  "not_executed": [
+    "Blender reference setup",
+    "Blender scene audit",
+    "Blender fixed-camera rendering",
+    "Unreal import or gameplay",
+    "image generation or image-to-3D",
+    "new mesh/rig/animation production",
+    "live MCP connection",
+    "protected human approval infrastructure"
+  ],
+  "trust_boundaries": [
+    "Synthetic human approvals in tests are not real asset approvals.",
+    "The local ledger does not authenticate reviewer identity or resist a writer bypassing the files.",
+    "Hashes prove file identity, not artistic quality or renderer authenticity.",
+    "The ledger does not implement cross-asset invalidation or editor session locking.",
+    "Blender helpers were syntax-checked, not executed in Blender."
+  ]
+}

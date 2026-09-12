@@ -1,0 +1,71 @@
+{
+  "status": "candidate_requires_family_mapping",
+  "angles_are_degrees": true,
+  "poses": [
+    {
+      "id": "elbow_bend",
+      "samples": [
+        45,
+        90,
+        130
+      ]
+    },
+    {
+      "id": "shoulder_raise",
+      "samples": [
+        90,
+        130
+      ]
+    },
+    {
+      "id": "knee_bend",
+      "samples": [
+        45,
+        90,
+        120
+      ]
+    },
+    {
+      "id": "torso_twist",
+      "samples": [
+        -30,
+        30
+      ]
+    },
+    {
+      "id": "neck_turn",
+      "samples": [
+        -45,
+        45
+      ]
+    },
+    {
+      "id": "grip_open_closed",
+      "samples": [
+        "open",
+        "closed_on_actual_handle"
+      ]
+    },
+    {
+      "id": "shield_action",
+      "samples": [
+        "anticipation",
+        "raise",
+        "peak",
+        "recovery"
+      ]
+    }
+  ],
+  "required_checks": [
+    "left_and_right",
+    "hidden_side",
+    "continuous_interpolation",
+    "volume",
+    "penetration",
+    "foot_or_hand_contact",
+    "runtime_compatible_skinning"
+  ],
+  "notes": [
+    "Map axes and limits from actual rig. Do not apply these as universal bone Euler rotations."
+  ]
+}

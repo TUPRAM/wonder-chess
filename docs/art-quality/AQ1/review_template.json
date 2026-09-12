@@ -1,0 +1,162 @@
+{
+  "schema_version": "AQ1-review-1",
+  "asset_id": "wc_u_human_guardian",
+  "status": "not_started",
+  "source_commit": null,
+  "source_sha256": null,
+  "candidate_sha256": null,
+  "engine_version": null,
+  "blender_version": null,
+  "before_assets": [],
+  "candidate_assets": [],
+  "human_concept_approval": {
+    "status": "pending",
+    "selected_candidate": null,
+    "reviewer": null,
+    "date": null,
+    "evidence": []
+  },
+  "human_reference_approval": {
+    "status": "pending",
+    "reviewer": null,
+    "date": null,
+    "evidence": []
+  },
+  "checks": [
+    {
+      "id": "baseline",
+      "requirement": "Current revision, saved before-copy, actual metadata and matched camera captures",
+      "status": "not_run",
+      "evidence": [],
+      "observations": null,
+      "reviewer": null
+    },
+    {
+      "id": "silhouette",
+      "requirement": "Three proposed silhouettes compared; approved design recognizable at small size",
+      "status": "not_run",
+      "evidence": [],
+      "observations": null,
+      "reviewer": null
+    },
+    {
+      "id": "head",
+      "requirement": "Coherent facial/neck forms; character identity and eye direction preserved",
+      "status": "not_run",
+      "evidence": [],
+      "observations": null,
+      "reviewer": null
+    },
+    {
+      "id": "armor",
+      "requirement": "Shaped shoulder/chest surfaces; intended sharp edges without unintended faceting",
+      "status": "not_run",
+      "evidence": [],
+      "observations": null,
+      "reviewer": null
+    },
+    {
+      "id": "shield",
+      "requirement": "Convex face, clear crest, plausible grip/back and eye clearance",
+      "status": "not_run",
+      "evidence": [],
+      "observations": null,
+      "reviewer": null
+    },
+    {
+      "id": "sword",
+      "requirement": "Blade cross-section, bevel/taper, guard and grip read in oblique views",
+      "status": "not_run",
+      "evidence": [],
+      "observations": null,
+      "reviewer": null
+    },
+    {
+      "id": "hands",
+      "requirement": "Palm, fingers, thumb and wrist read as coherent grip without stacked-loop appearance",
+      "status": "not_run",
+      "evidence": [],
+      "observations": null,
+      "reviewer": null
+    },
+    {
+      "id": "costume",
+      "requirement": "Layering, folds, material boundaries and quiet low-priority details",
+      "status": "not_run",
+      "evidence": [],
+      "observations": null,
+      "reviewer": null
+    },
+    {
+      "id": "materials",
+      "requirement": "Real surface content, appropriate normals/data color spaces and matched Unreal interpretation",
+      "status": "not_run",
+      "evidence": [],
+      "observations": null,
+      "reviewer": null
+    },
+    {
+      "id": "topology",
+      "requirement": "No obsolete count-based surgery; silhouette/deformation support and measured geometry",
+      "status": "not_run",
+      "evidence": [],
+      "observations": null,
+      "reviewer": null
+    },
+    {
+      "id": "rig",
+      "requirement": "Rest/bone/socket compatibility or reviewed isolated retarget migration",
+      "status": "not_run",
+      "evidence": [],
+      "observations": null,
+      "reviewer": null
+    },
+    {
+      "id": "animation",
+      "requirement": "All seven clips reviewed continuously and at extrema, with real evidence",
+      "status": "not_run",
+      "evidence": [],
+      "observations": null,
+      "reviewer": null
+    },
+    {
+      "id": "engine",
+      "requirement": "Candidate import plus normal gameplay/crowded encounter inspection",
+      "status": "not_run",
+      "evidence": [],
+      "observations": null,
+      "reviewer": null
+    },
+    {
+      "id": "lods",
+      "requirement": "Actual screen-distance comparisons and transitions, not ratio-only acceptance",
+      "status": "not_run",
+      "evidence": [],
+      "observations": null,
+      "reviewer": null
+    },
+    {
+      "id": "reimport",
+      "requirement": "Deliberate source change/reimport preserves expected references and appearance",
+      "status": "not_run",
+      "evidence": [],
+      "observations": null,
+      "reviewer": null
+    },
+    {
+      "id": "performance",
+      "requirement": "Measured actual target hardware/preset and busy-fight cost; no inferred mobile results",
+      "status": "not_run",
+      "evidence": [],
+      "observations": null,
+      "reviewer": null
+    }
+  ],
+  "blocking_issues": [],
+  "known_nonblocking_issues": [],
+  "promotion": {
+    "allowed": false,
+    "reason": "Actual visual, technical and human approvals have not been performed."
+  },
+  "notice": "This template is not a schema-enforced validator or evidence of asset quality. Fill only from actual inspection."
+}

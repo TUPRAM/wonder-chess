@@ -39,9 +39,12 @@ def main():
     parser.add_argument("--package", required=True, help="Actual folder containing top-level WonderChess.exe")
     parser.add_argument("--package-report", required=True, help="Specific completed UAT JSON report")
     parser.add_argument("--configuration", choices=("Development", "Shipping"), default="Shipping")
+    parser.add_argument("--profile", choices=("alpha_24", "wonder_vnext"), default="alpha_24")
     parser.add_argument("--output", required=True, help="New immutable JSON path under reports")
     parser.add_argument("--runtime-only", action="store_true", help="Early slice: capture runtime inputs; art-source acceptance and export checks remain separate")
     args = parser.parse_args()
+    if args.profile == "wonder_vnext" and not args.runtime_only:
+        parser.error("Successor art/export acceptance is separate; use --runtime-only for the laboratory")
     package = scoped(args.package, ROOT / "builds")
     report_path = scoped(args.package_report, ROOT / "reports")
     output = scoped(args.output, ROOT / "reports")
@@ -53,7 +56,9 @@ def main():
         raise ValueError("Specified package report is not successful for the requested configuration")
     completed = datetime.fromisoformat(report["utc"].replace("Z", "+00:00")).timestamp()
     log_path = scoped(report_path.parent / report["log_file"], report_path.parent)
-    log = log_path.read_text(encoding="utf-8-sig", errors="replace")
+    log_bytes = log_path.read_bytes()
+    log_encoding = "utf-16" if log_bytes.startswith((b"\xff\xfe", b"\xfe\xff")) else "utf-8-sig"
+    log = log_bytes.decode(log_encoding, errors="replace")
     normalized_log = log.replace("\\", "/").casefold()
     possible_archives = (package, package.parent) if package.name == "Windows" else (package,)
     if ("-archivedirectory=" not in normalized_log
@@ -132,6 +137,21 @@ def main():
 
     stage_path = ROOT / "game/Content/WonderChess/SourceData/runtime_stage_manifest.json"
     stage = read_json(stage_path)
+    active_comparisons = []
+    active_digest = stage["catalog_digest"]
+    if args.profile == "wonder_vnext":
+        active_path = ROOT / "game/Content/WonderChess/VNextData/runtime_catalog.json"
+        active = read_json(active_path)
+        authored = capture(ROOT / "data/vnext/catalog.json", "canonical_data")
+        generated = capture(ROOT / "data/vnext/generated/runtime_catalog.json", "generated_data")
+        staged_active = capture(active_path, "staged_source_data", True)
+        if (active.get("profile_id") != "wonder_vnext" or active.get("source_sha256") != authored["sha256"]
+                or staged_active["sha256"] != generated["sha256"]):
+            raise ValueError("Successor source/generated/staged identities differ")
+        active_digest = active["source_sha256"]
+        active_comparisons.append({"source": authored["path"], "source_sha256": active_digest,
+                                   "generated": generated["path"], "staged": staged_active["path"],
+                                   "runtime_sha256": staged_active["sha256"], "matches": True})
     alpha_ids = read_json(ROOT / "data/rules.alpha.json")["alpha_unit_ids"]
     if stage["alpha_unit_ids"] != alpha_ids or len(alpha_ids) != 24 or len(set(alpha_ids)) != 24:
         raise ValueError("Staged alpha roster does not match the twenty-four canonical IDs")
@@ -245,7 +265,9 @@ def main():
               "data_boundary": "Canonical and loose staged bytes match. Container hashes identify cooked payload; runtime catalog loading is a separate execution check.",
               "art_boundary": "Runtime-only early slice: source art/export comparisons NOT_RUN; missing heroes/neutrals are internal grayboxes, never completed art." if args.runtime_only else "Current authored source/export hashes checked; no implication of visual approval from hashing.",
               "excluded_package_paths": ["Runtime Saved directories"],
-              "catalog_digest": stage["catalog_digest"], "staged_source_comparisons": comparisons,
+              "profile_id": args.profile, "catalog_digest": active_digest,
+              "legacy_catalog_digest": stage["catalog_digest"], "active_source_comparisons": active_comparisons,
+              "staged_source_comparisons": comparisons,
               "hero_export_comparisons": art_comparisons, "neutral_export_comparisons": neutral_comparisons, "groups": groups,
               "cooked_file_formats": formats, "manifested_file_set_sha256": fingerprint.hexdigest(), "files": rows}
     output.parent.mkdir(parents=True, exist_ok=True)

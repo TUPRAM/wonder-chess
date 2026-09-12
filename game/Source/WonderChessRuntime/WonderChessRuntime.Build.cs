@@ -6,6 +6,7 @@ public class WonderChessRuntime : ModuleRules
         PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
         CppStandard = CppStandardVersion.Cpp20;
         bEnableExceptions = true;
-        PublicDependencyModuleNames.AddRange(new [] {"Core", "CoreUObject", "Engine", "InputCore", "Json", "JsonUtilities", "UMG", "Slate", "SlateCore", "NetCore", "RenderCore", "RHI"});
+        bUseUnity = false;
+        PublicDependencyModuleNames.AddRange(new [] {"Core", "CoreUObject", "Engine", "EngineSettings", "InputCore", "Json", "JsonUtilities", "UMG", "Slate", "SlateCore", "NetCore", "RenderCore", "RHI"});
     }
 }

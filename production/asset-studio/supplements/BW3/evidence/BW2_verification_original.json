@@ -1,0 +1,171 @@
+{
+  "schema_version": "bw2.local_result.1",
+  "status": "EXECUTED_ART_REVISE",
+  "utc": "2026-09-09T08:20:39.715717+00:00",
+  "scope": "anatomical-right fixed-handle grip only",
+  "scene": "BW2_RIGHT_GRIP",
+  "inspection_frame": 37,
+  "source_parent_sha256": "03829ab406d6bd5e6a1c5f86e045e9f2edc720b05e620e70017667c59be8b3f8",
+  "files": {
+    "ada_bw2_grip_work.blend": {
+      "sha256": "5c639f70facb63f5cc16f5a6ee57917606968e31170a41366c9f4a588d47750c",
+      "bytes": 5260829
+    },
+    "ada_bw2_grip_checkpoint_r001_ART_REVISE.blend": {
+      "sha256": "d64d5900317541710d5ef29939d12559e5ecef31777a7e9261158cbccb7a41cf",
+      "bytes": 5260565
+    },
+    "REVIEW.md": {
+      "sha256": "ae3a884133bc33871c67d920fcb89af40f4fc14839a423b56719851cf6e21e11",
+      "bytes": 12982
+    },
+    "records/frozen_scene_contract.json": {
+      "sha256": "42477b14ca530c78ac3f368aa09ed8e7fedb7fdcdee7343c882a3fd773219f52",
+      "bytes": 27384
+    },
+    "captures/comparison_BW2_initial_vs_retained.png": {
+      "sha256": "3671046746f6fee365b8f6920b4a94f46db8097be92dae27c079fc68f62f6f8d",
+      "bytes": 254209
+    },
+    "baseline-r003/comparison_BW1_r003_vs_BW2.png": {
+      "sha256": "07549d90f162f80a591b7f1130040ef5416d0be83c42abc128b45f27e5596141",
+      "bytes": 265381
+    },
+    "captures/actual_posed_cage_axial.png": {
+      "sha256": "400b4faa8e9888dfdcfff93f535f862a4fb7d83a8d30075eff714c4ba73df89e",
+      "bytes": 726521
+    },
+    "captures/actual_posed_cage_back.png": {
+      "sha256": "68fd0229cc04ad6b77b780499de069dc2b1b8b63ba42cd9dbbc172bf864b90bf",
+      "bytes": 753810
+    },
+    "captures/grip_retained_reversed_light.png": {
+      "sha256": "fdcecf4fe1c8e7d4ac7b4cb7b1ff315980047487912523d410770e32d0337dde",
+      "bytes": 669854
+    },
+    "captures/integrated_axial_handle_hidden.png": {
+      "sha256": "5f1805984ec35eb9e3f56a21a0fb15787b4ea3047fd7cd4c02c2dfbde896710f",
+      "bytes": 653571
+    },
+    "motion-carry-final/ada_bw2_fixed_handle_ART_REVISE.mp4": {
+      "sha256": "acce52246f19720f0bc6b7f28c54dd94eb3f4016931ff1bab751c2ca29c21eb0",
+      "bytes": 194820
+    }
+  },
+  "evidence": {
+    "frame_axes": "calibration-independent/finger_axis_calibration.json",
+    "joint_probes": 90,
+    "frozen_preservation": "reviews/final_frozen_audit.json",
+    "work_preservation": "reviews/final_work_audit.json",
+    "source_chain": "reviews/final_source_chain_and_equivalence.json",
+    "contact": "reviews/carry_contact_measurements.json",
+    "geometry": "integrated-independent/integrated_geometry_audit.json",
+    "local_weight_diagnosis": "integrated-independent/web_weight_diagnosis.json",
+    "movie_decode": "motion-carry-final/video_verification.json",
+    "all_frame_visual_review": "records/temporal_visual_review.json",
+    "static_geometry_binding": "reviews/static_geometry_to_final_binding.json"
+  },
+  "preservation": {
+    "files_unchanged": 62,
+    "original_mesh_records_exact": 61,
+    "old_animation_curves_exact": 492,
+    "original_body_vertices": 19158,
+    "original_shape_keys": 38,
+    "candidate_shape_keys": 44,
+    "coat_even_offset": false,
+    "coat_inward_thickness_m": 0.006,
+    "leggings_even_offset": false,
+    "leggings_inward_thickness_m": 0.002
+  },
+  "gates": {
+    "F01": "PASS_COORDINATE_AND_VISUAL_CALIBRATION",
+    "F02": "PASS_REVERSIBLE_SMALL_ANGLE_PROBES_ONLY",
+    "G01": "FAIL_SELF_INTERSECTION_ART_REVISE",
+    "G02": "FIXTURE_ATTACHMENT_MEASURED_FULL_GRIP_FAIL_ART_REVISE",
+    "G03": "NOT_RUN",
+    "A01": "NOT_RUN",
+    "C01": "NOT_RUN",
+    "K01": "NOT_RUN",
+    "B01": "NOT_RUN",
+    "V01": "NOT_RUN_FULL_CHARACTER",
+    "T01": "GRIP_DIAGNOSTIC_145_FRAMES_EXECUTED_OLD_169_PROBE_PRESERVED_FULL_COSTUME_RETEST_NOT_RUN",
+    "P01": "PASS_REOPEN_AND_PRESERVATION",
+    "R01": "AUTHORING_ONLY_RUNTIME_NOT_RUN",
+    "RP1": "NOT_RUN",
+    "RP2": "NOT_RUN"
+  },
+  "contact_sample_screens": {
+    "thumb": {
+      "held_frames": 121,
+      "passed_frames": 121,
+      "failed_frames": [],
+      "min_gap_mm": -0.3760853591453176,
+      "maximum_median_gap_mm": 0.2875803769512991,
+      "maximum_p95_gap_mm": 0.8292204846719057,
+      "max_gap_mm": 0.8788295940184762,
+      "minimum_band_fraction": 1.0,
+      "all_held_usable_axial_spans_valid": true
+    },
+    "index": {
+      "held_frames": 121,
+      "passed_frames": 121,
+      "failed_frames": [],
+      "min_gap_mm": -0.3497776431679762,
+      "maximum_median_gap_mm": -0.0953274900207541,
+      "maximum_p95_gap_mm": 1.250900296453728,
+      "max_gap_mm": 1.612772755296598,
+      "minimum_band_fraction": 0.8571428571428571,
+      "all_held_usable_axial_spans_valid": true
+    },
+    "middle": {
+      "held_frames": 121,
+      "passed_frames": 121,
+      "failed_frames": [],
+      "min_gap_mm": -0.3417579485752564,
+      "maximum_median_gap_mm": 0.11853108027544586,
+      "maximum_p95_gap_mm": 1.0811818845693653,
+      "max_gap_mm": 1.2807139620723031,
+      "minimum_band_fraction": 0.8888888888888888,
+      "all_held_usable_axial_spans_valid": true
+    },
+    "ring": {
+      "held_frames": 121,
+      "passed_frames": 121,
+      "failed_frames": [],
+      "min_gap_mm": -0.49232222805112824,
+      "maximum_median_gap_mm": 0.3919880027895336,
+      "maximum_p95_gap_mm": 1.3193286039537655,
+      "max_gap_mm": 1.489841971405871,
+      "minimum_band_fraction": 0.7777777777777778,
+      "all_held_usable_axial_spans_valid": true
+    },
+    "little": {
+      "held_frames": 121,
+      "passed_frames": 121,
+      "failed_frames": [],
+      "min_gap_mm": -0.2511630301040308,
+      "maximum_median_gap_mm": 0.04385119097818739,
+      "maximum_p95_gap_mm": 1.301727568600904,
+      "max_gap_mm": 1.3304443843566802,
+      "minimum_band_fraction": 0.8333333333333334,
+      "all_held_usable_axial_spans_valid": true
+    }
+  },
+  "held_frames": 121,
+  "max_handle_drift_mm": 0.0003049873222574174,
+  "max_handle_drift_deg": 6.391045973206879e-06,
+  "static_ideal_cylinder_max_triangle_depth_mm": [
+    0.4919204711914063,
+    0.49197387695312506
+  ],
+  "glove_self_crossing_pairs": 375,
+  "body_self_crossing_pairs": 567,
+  "actual_sword_fit": "NOT_RUN_FAILED_GRIP_GATE",
+  "human_forms_approval": false,
+  "recipes_promoted": 0,
+  "canonical_skeleton_changed": false,
+  "runtime_integration": "NOT_RUN",
+  "neural_training": "NOT_RUN",
+  "next_intervention": "Collision-free thumb opposition and web construction on an isolated body/glove copy; separately resolve middle/ring neighbor clearance before contact optimization.",
+  "standalone_numerical_tests_passed": 30
+}

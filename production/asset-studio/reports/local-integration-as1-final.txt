@@ -1,0 +1,60 @@
+test_empty_mask_rejected (test_studio.ImageTests.test_empty_mask_rejected) ... C:\Users\iputu\Documents\Wonder Chess\production\asset-studio\tools\asset_studio\image_review.py:61: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  av=[v>=128 for v in ai.convert('L').getdata()];bv=[v>=128 for v in bi.convert('L').getdata()]
+ok
+test_mask_identity (test_studio.ImageTests.test_mask_identity) ... ok
+test_native_crop (test_studio.ImageTests.test_native_crop) ... ok
+test_no_auto_resize (test_studio.ImageTests.test_no_auto_resize) ... ok
+test_no_crop_overwrite (test_studio.ImageTests.test_no_crop_overwrite) ... ok
+test_out_of_bounds (test_studio.ImageTests.test_out_of_bounds) ... ok
+test_registration_required (test_studio.ImageTests.test_registration_required) ... ok
+test_sheet (test_studio.ImageTests.test_sheet) ... ok
+test_absolute_path (test_studio.LedgerTests.test_absolute_path) ... ok
+test_ack_required (test_studio.LedgerTests.test_ack_required) ... ok
+test_author_cannot_self_technical_review (test_studio.LedgerTests.test_author_cannot_self_technical_review) ... ok
+test_blank_observation_blocks (test_studio.LedgerTests.test_blank_observation_blocks) ... ok
+test_changed_before_approval_rejected (test_studio.LedgerTests.test_changed_before_approval_rejected) ... ok
+test_downstream_invalidated (test_studio.LedgerTests.test_downstream_invalidated) ... ok
+test_drive_path (test_studio.LedgerTests.test_drive_path) ... ok
+test_duplicate_check_blocks (test_studio.LedgerTests.test_duplicate_check_blocks) ... ok
+test_every_asset_route_synthetic_flow (test_studio.LedgerTests.test_every_asset_route_synthetic_flow) ... ok
+test_evidence_change_invalidates (test_studio.LedgerTests.test_evidence_change_invalidates) ... ok
+test_explicit_minor_exception (test_studio.LedgerTests.test_explicit_minor_exception) ... ok
+test_failed_check_blocks (test_studio.LedgerTests.test_failed_check_blocks) ... ok
+test_human_declaration_not_authenticated (test_studio.LedgerTests.test_human_declaration_not_authenticated) ... ok
+test_inapplicable_stage (test_studio.LedgerTests.test_inapplicable_stage) ... ok
+test_init_refuses_nonempty (test_studio.LedgerTests.test_init_refuses_nonempty) ... ok
+test_invalid_id (test_studio.LedgerTests.test_invalid_id) ... ok
+test_invalid_kind (test_studio.LedgerTests.test_invalid_kind) ... ok
+test_lock_exclusive (test_studio.LedgerTests.test_lock_exclusive) ... ok
+test_major_cannot_be_minor_exception (test_studio.LedgerTests.test_major_cannot_be_minor_exception) ... ok
+test_major_defect_blocks (test_studio.LedgerTests.test_major_defect_blocks) ... ok
+test_manifest_change_detected_in_long_lived_instance (test_studio.LedgerTests.test_manifest_change_detected_in_long_lived_instance) ... ok
+test_minor_exception_requires_complete_disposition (test_studio.LedgerTests.test_minor_exception_requires_complete_disposition) ... ok
+test_missing_artifact_blocks (test_studio.LedgerTests.test_missing_artifact_blocks) ... ok
+test_missing_check_blocks (test_studio.LedgerTests.test_missing_check_blocks) ... ok
+test_missing_source_blocks (test_studio.LedgerTests.test_missing_source_blocks) ... ok
+test_new_workspace_pending (test_studio.LedgerTests.test_new_workspace_pending) ... ok
+test_path_escape (test_studio.LedgerTests.test_path_escape) ... ok
+test_prepare_is_not_approval (test_studio.LedgerTests.test_prepare_is_not_approval) ... ok
+test_refuse_overwrite (test_studio.LedgerTests.test_refuse_overwrite) ... ok
+test_report_change_invalidates (test_studio.LedgerTests.test_report_change_invalidates) ... ok
+test_role_enforced (test_studio.LedgerTests.test_role_enforced) ... ok
+test_symlink_escape (test_studio.LedgerTests.test_symlink_escape) ... skipped 'Symlink unavailable'
+test_template_unexecuted (test_studio.LedgerTests.test_template_unexecuted) ... ok
+test_unexecuted_cannot_prepare (test_studio.LedgerTests.test_unexecuted_cannot_prepare) ... ok
+test_unlisted_evidence_blocks (test_studio.LedgerTests.test_unlisted_evidence_blocks) ... ok
+test_upstream_required (test_studio.LedgerTests.test_upstream_required) ... ok
+test_blender_command_no_shell_and_autoexec_disabled (test_studio.PackageTests.test_blender_command_no_shell_and_autoexec_disabled) ... ok
+test_blender_runner_allowlist (test_studio.PackageTests.test_blender_runner_allowlist) ... ok
+test_blender_runner_rejects_missing_source (test_studio.PackageTests.test_blender_runner_rejects_missing_source) ... ok
+test_json_valid (test_studio.PackageTests.test_json_valid) ... ok
+test_manifest_schema (test_studio.PackageTests.test_manifest_schema) ... ok
+test_python_syntax (test_studio.PackageTests.test_python_syntax) ... ok
+test_report_template_schema (test_studio.PackageTests.test_report_template_schema) ... ok
+test_routes_topological_order (test_studio.PackageTests.test_routes_topological_order) ... ok
+test_skill_inventory (test_studio.PackageTests.test_skill_inventory) ... ok
+
+----------------------------------------------------------------------
+Ran 53 tests in 32.671s
+
+OK (skipped=1)

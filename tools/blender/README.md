@@ -15,3 +15,19 @@ The third example acknowledges an **unverified** profile for a calibration exper
 The included profile exports only the current action and scene frame range. Select/assign the intended action explicitly in a per-hero script and export one named animation at a time. Current Blender action-slot behavior must be checked in the installed version. Do not turn on “all actions” and treat the resulting clip names as intentional.
 
 Structural inspection is deliberately incomplete: review UV intent, deformation, appearance, animation and gameplay-camera readability manually/in screenshots. Material count is per mesh; also inspect final imported per-hero draw-call/material totals. For socket props use a separate inspection run rather than falsely requiring an armature modifier. Set a higher triangle budget for an entire arena collection only when documented.
+
+## Visible MCP editing
+
+`Start-Mcp.ps1` opens an explicit existing repository `.blend` in a normal visible Blender window. Choose a writable live candidate, preserving sealed stage snapshots. It refuses to start when Blender is already open; inspect that session before using its MCP sidebar. The launcher uses factory settings only for the new process, disables embedded script auto-execution, and enables the reviewed local MCP add-on without saving user preferences or the blend.
+
+```powershell
+./tools/blender/Start-Mcp.ps1 -BlendFile 'C:/absolute/path/inside/Wonder Chess/candidate.blend'
+```
+
+Run verification with the Python interpreter declared in `.codex/config.toml` (it contains the MCP SDK). `--expected-blend` and the user's verbatim `--user-prompt` are required. `--output-dir` is optional; if supplied it must be a new repository directory. The verifier confirms the actual open filename, all five enabled tools, protocol status, disabled telemetry, a real scene object, viewport PNG delivery, and unchanged on-disk candidate hash. It writes failures even when a tool returns error text with `isError=false`. Open and inspect the saved viewport separately; capture delivery does not establish visual quality.
+
+```powershell
+& 'C:/Users/iputu/Documents/Project Support/Wonder Chess/blender-mcp-1.9.1/blender-mcp-main/.venv/Scripts/python.exe' tools/blender/verify_mcp.py --expected-blend 'C:/absolute/path/inside/Wonder Chess/candidate.blend' --user-prompt 'Paste the user instruction verbatim here'
+```
+
+Use one mutation queue, verify the open candidate before each bounded edit, and inspect the scene after a timeout before retrying. The configured endpoint remains loopback and safe mode stays enabled. Live connection acceptance and reference/forms/release approval remain separate. See `reports/AS1/live-mcp/` for this workflow's actual execution evidence; the introductory scaffold status above does not certify these newer helpers.

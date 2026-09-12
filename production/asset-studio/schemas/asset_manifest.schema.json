@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "asset_id",
+    "name",
+    "kind",
+    "design_revision",
+    "rules_version",
+    "contract",
+    "rights"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "asset_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]{2,79}$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kind": {
+      "enum": [
+        "hero",
+        "creature",
+        "equipment",
+        "prop",
+        "modular_environment",
+        "foliage",
+        "vfx",
+        "ui",
+        "audio"
+      ]
+    },
+    "design_revision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rules_version": {
+      "const": "1.0.0"
+    },
+    "contract": {
+      "type": "object"
+    },
+    "rights": {
+      "type": "object"
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

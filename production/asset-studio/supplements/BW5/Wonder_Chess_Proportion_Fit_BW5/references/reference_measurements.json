@@ -1,0 +1,488 @@
+{
+  "schema": "bw5.reference_observations.v1",
+  "status": "MANUALLY_SELECTED_REVIEW_GUIDES_NOT_APPROVED_METRIC_BLUEPRINT",
+  "sources": {
+    "reference": {
+      "path": "references/Ada_supplied_turnaround.png",
+      "native_size": [
+        1658,
+        949
+      ],
+      "sha256": "508e02269072c0703b7b4c50cfb805e3481b43d0ff1d445bc6ad14f1f96b9fc2"
+    },
+    "bw4_comparison": {
+      "path": "evidence/BW4_armor_comparison.png",
+      "native_size": [
+        918,
+        2048
+      ],
+      "sha256": "84dfffa071640c29029a62579bea373ff9f1e6b0743036a6724a9f8e6ec85f74",
+      "matches_supplied_report_hash": false
+    }
+  },
+  "coordinate_convention": "Original uploaded pixels: origin top-left, x right, y down; uncertainties are hand-selection allowances, NOT statistical confidence intervals.",
+  "view_note": "Front plate span is a selected wide visible span, excluding shoulders/straps. No naked-body silhouette or shoulder-joint width is inferred. BW4 and reference have different arm poses; use the internal torso ratios as review guidance only. No registration, 3D recovery, runtime measurement, or mesh editing performed.",
+  "points": {
+    "reference_front": {
+      "plate_left_rib": {
+        "xy": [
+          183,
+          290
+        ],
+        "uncertainty_px": [
+          4,
+          3
+        ]
+      },
+      "plate_right_rib": {
+        "xy": [
+          332,
+          290
+        ],
+        "uncertainty_px": [
+          4,
+          3
+        ]
+      },
+      "neckline_center": {
+        "xy": [
+          255,
+          230
+        ],
+        "uncertainty_px": [
+          2,
+          3
+        ]
+      },
+      "hem_center": {
+        "xy": [
+          255,
+          320
+        ],
+        "uncertainty_px": [
+          2,
+          3
+        ]
+      },
+      "hem_left": {
+        "xy": [
+          195,
+          316
+        ],
+        "uncertainty_px": [
+          3,
+          3
+        ]
+      },
+      "hem_right": {
+        "xy": [
+          315,
+          315
+        ],
+        "uncertainty_px": [
+          3,
+          3
+        ]
+      },
+      "collar_left": {
+        "xy": [
+          208,
+          179
+        ],
+        "uncertainty_px": [
+          4,
+          4
+        ]
+      },
+      "collar_right": {
+        "xy": [
+          305,
+          179
+        ],
+        "uncertainty_px": [
+          4,
+          4
+        ]
+      },
+      "belt_top_center": {
+        "xy": [
+          255,
+          333
+        ],
+        "uncertainty_px": [
+          2,
+          3
+        ]
+      }
+    },
+    "bw4_front": {
+      "plate_left_rib": {
+        "xy": [
+          590,
+          335
+        ],
+        "uncertainty_px": [
+          3,
+          4
+        ]
+      },
+      "plate_right_rib": {
+        "xy": [
+          798,
+          335
+        ],
+        "uncertainty_px": [
+          3,
+          4
+        ]
+      },
+      "neckline_center": {
+        "xy": [
+          690,
+          274
+        ],
+        "uncertainty_px": [
+          2,
+          3
+        ]
+      },
+      "hem_center": {
+        "xy": [
+          690,
+          427
+        ],
+        "uncertainty_px": [
+          2,
+          3
+        ]
+      },
+      "hem_left": {
+        "xy": [
+          607,
+          411
+        ],
+        "uncertainty_px": [
+          4,
+          3
+        ]
+      },
+      "hem_right": {
+        "xy": [
+          785,
+          411
+        ],
+        "uncertainty_px": [
+          4,
+          3
+        ]
+      },
+      "collar_left": {
+        "xy": [
+          642,
+          219
+        ],
+        "uncertainty_px": [
+          4,
+          4
+        ]
+      },
+      "collar_right": {
+        "xy": [
+          742,
+          219
+        ],
+        "uncertainty_px": [
+          4,
+          4
+        ]
+      },
+      "belt_top_center": {
+        "xy": [
+          690,
+          430
+        ],
+        "uncertainty_px": [
+          2,
+          4
+        ]
+      }
+    },
+    "reference_back": {
+      "hem_center": {
+        "xy": [
+          1034,
+          292
+        ],
+        "uncertainty_px": [
+          3,
+          4
+        ]
+      },
+      "hem_left": {
+        "xy": [
+          976,
+          315
+        ],
+        "uncertainty_px": [
+          4,
+          4
+        ]
+      },
+      "hem_right": {
+        "xy": [
+          1091,
+          315
+        ],
+        "uncertainty_px": [
+          4,
+          4
+        ]
+      }
+    },
+    "reference_side_left": {
+      "chest_outer_max": {
+        "xy": [
+          568,
+          260
+        ],
+        "uncertainty_px": [
+          3,
+          4
+        ]
+      },
+      "front_hem": {
+        "xy": [
+          580,
+          309
+        ],
+        "uncertainty_px": [
+          3,
+          3
+        ]
+      },
+      "upper_plate_start": {
+        "xy": [
+          598,
+          220
+        ],
+        "uncertainty_px": [
+          4,
+          4
+        ]
+      },
+      "rear_shell_extent": null
+    }
+  },
+  "measurements": {
+    "reference_front": {
+      "plate_span": {
+        "nominal_px": 149,
+        "interval_px": [
+          141,
+          157
+        ],
+        "endpoints": [
+          "plate_left_rib",
+          "plate_right_rib"
+        ],
+        "axis": "x"
+      },
+      "centerline_height": {
+        "nominal_px": 90,
+        "interval_px": [
+          84,
+          96
+        ],
+        "endpoints": [
+          "neckline_center",
+          "hem_center"
+        ],
+        "axis": "y"
+      },
+      "hem_span": {
+        "nominal_px": 120,
+        "interval_px": [
+          114,
+          126
+        ],
+        "endpoints": [
+          "hem_left",
+          "hem_right"
+        ],
+        "axis": "x"
+      },
+      "collar_span": {
+        "nominal_px": 97,
+        "interval_px": [
+          89,
+          105
+        ],
+        "endpoints": [
+          "collar_left",
+          "collar_right"
+        ],
+        "axis": "x"
+      },
+      "center_underlayer_height": {
+        "nominal_px": 13,
+        "interval_px": [
+          7,
+          19
+        ],
+        "endpoints": [
+          "hem_center",
+          "belt_top_center"
+        ],
+        "axis": "y"
+      }
+    },
+    "bw4_front": {
+      "plate_span": {
+        "nominal_px": 208,
+        "interval_px": [
+          202,
+          214
+        ],
+        "endpoints": [
+          "plate_left_rib",
+          "plate_right_rib"
+        ],
+        "axis": "x"
+      },
+      "centerline_height": {
+        "nominal_px": 153,
+        "interval_px": [
+          147,
+          159
+        ],
+        "endpoints": [
+          "neckline_center",
+          "hem_center"
+        ],
+        "axis": "y"
+      },
+      "hem_span": {
+        "nominal_px": 178,
+        "interval_px": [
+          170,
+          186
+        ],
+        "endpoints": [
+          "hem_left",
+          "hem_right"
+        ],
+        "axis": "x"
+      },
+      "collar_span": {
+        "nominal_px": 100,
+        "interval_px": [
+          92,
+          108
+        ],
+        "endpoints": [
+          "collar_left",
+          "collar_right"
+        ],
+        "axis": "x"
+      },
+      "center_underlayer_height": {
+        "nominal_px": 3,
+        "interval_px": [
+          0,
+          10
+        ],
+        "endpoints": [
+          "hem_center",
+          "belt_top_center"
+        ],
+        "axis": "y"
+      }
+    }
+  },
+  "ratios": {
+    "reference_front": {
+      "centerline_height_over_plate_span": {
+        "nominal": 0.6040268456375839,
+        "conservative_interval": [
+          0.535031847133758,
+          0.6808510638297872
+        ],
+        "definition": "centerline_height / plate_span",
+        "status": "MANUAL_PROJECTED_IMAGE_ESTIMATE_NOT_3D_TARGET"
+      },
+      "hem_span_over_plate_span": {
+        "nominal": 0.8053691275167785,
+        "conservative_interval": [
+          0.7261146496815286,
+          0.8936170212765957
+        ],
+        "definition": "hem_span / plate_span",
+        "status": "MANUAL_PROJECTED_IMAGE_ESTIMATE_NOT_3D_TARGET"
+      },
+      "collar_span_over_plate_span": {
+        "nominal": 0.6510067114093959,
+        "conservative_interval": [
+          0.5668789808917197,
+          0.7446808510638298
+        ],
+        "definition": "collar_span / plate_span",
+        "status": "MANUAL_PROJECTED_IMAGE_ESTIMATE_NOT_3D_TARGET"
+      },
+      "underlayer_over_centerline_height": {
+        "nominal": 0.14444444444444443,
+        "conservative_interval": [
+          0.07291666666666667,
+          0.2261904761904762
+        ],
+        "definition": "center_underlayer_height / centerline_height",
+        "status": "MANUAL_PROJECTED_IMAGE_ESTIMATE_NOT_3D_TARGET"
+      }
+    },
+    "bw4_front": {
+      "centerline_height_over_plate_span": {
+        "nominal": 0.7355769230769231,
+        "conservative_interval": [
+          0.6869158878504673,
+          0.7871287128712872
+        ],
+        "definition": "centerline_height / plate_span",
+        "status": "MANUAL_PROJECTED_IMAGE_ESTIMATE_NOT_3D_TARGET"
+      },
+      "hem_span_over_plate_span": {
+        "nominal": 0.8557692307692307,
+        "conservative_interval": [
+          0.794392523364486,
+          0.9207920792079208
+        ],
+        "definition": "hem_span / plate_span",
+        "status": "MANUAL_PROJECTED_IMAGE_ESTIMATE_NOT_3D_TARGET"
+      },
+      "collar_span_over_plate_span": {
+        "nominal": 0.4807692307692308,
+        "conservative_interval": [
+          0.42990654205607476,
+          0.5346534653465347
+        ],
+        "definition": "collar_span / plate_span",
+        "status": "MANUAL_PROJECTED_IMAGE_ESTIMATE_NOT_3D_TARGET"
+      },
+      "underlayer_over_centerline_height": {
+        "nominal": 0.0196078431372549,
+        "conservative_interval": [
+          0.0,
+          0.06802721088435375
+        ],
+        "definition": "center_underlayer_height / centerline_height",
+        "status": "MANUAL_PROJECTED_IMAGE_ESTIMATE_NOT_3D_TARGET"
+      }
+    }
+  },
+  "unknowns": {
+    "body_width_under_clothing": null,
+    "exact_reference_height_m": null,
+    "reference_total_shell_depth_m": null,
+    "current_body_to_armor_clearance_m": null,
+    "reference_camera_calibration": null
+  },
+  "acceptance_note": "No automatic pass from ratios. A candidate must separately satisfy viable coat/body enclosure, silhouette, motion, and source preservation. Re-mark uncertain boundaries locally before use."
+}

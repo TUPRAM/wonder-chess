@@ -3,8 +3,11 @@
 #include "Misc/FileHelper.h"
 #include "Misc/Paths.h"
 #include "Misc/SecureHash.h"
+#include "Misc/CommandLine.h"
+#include "Misc/Parse.h"
 #include "Serialization/JsonReader.h"
 #include "Serialization/JsonSerializer.h"
+#include "VNext/WonderVNextCatalog.generated.h"
 #include <cmath>
 #include <set>
 #include <stdexcept>
@@ -424,6 +427,53 @@ void VerifyRows(const FString& Directory, const TArray<FObject>& Units)
         }
     }
 }
+
+bool LoadSuccessorCatalog(wc::Catalog& OutCatalog, FWCDefinitionText* Text)
+{
+    const FString Path = FPaths::ProjectContentDir() / TEXT("WonderChess/VNextData/runtime_catalog.json");
+    TArray<uint8> Bytes;
+    Require(FFileHelper::LoadFileToArray(Bytes, *Path), TEXT("Successor catalog is not staged. Run python tools/vnext/catalog.py --stage before building."));
+    const FString Hash = FSHA1::HashBuffer(Bytes.GetData(), Bytes.Num()).ToString().ToLower();
+    Require(Hash == UTF8_TO_TCHAR(wcvnext::RuntimeSha1), TEXT("Successor executable/catalog mismatch. Regenerate, stage and rebuild the same source revision."));
+    const FObject Source = ReadObject(Path);
+    Source.Expect(TEXT("schema_version"), TEXT("wonder_vnext.catalog.1"));
+    Source.Expect(TEXT("profile_id"), TEXT("wonder_vnext"));
+    Source.Expect(TEXT("source_sha256"), UTF8_TO_TCHAR(wcvnext::SourceSha256));
+    wc::Catalog Next = wcvnext::WonderVNextCatalog();
+    Source.Expect(TEXT("balance_version"), UTF8_TO_TCHAR(Next.balanceVersion.c_str()));
+    const std::string Failure = Next.Validate();
+    Require(Failure.empty(), FString(TEXT("Successor catalog invariant: ")) + UTF8_TO_TCHAR(Failure.c_str()));
+    FWCDefinitionText NextText;
+    NextText.Rules = Source.Object(TEXT("rules")).Value;
+    NextText.World = Source.Object(TEXT("world")).Value;
+    NextText.Traits = MakeShared<FJsonObject>();
+    NextText.Traits->SetArrayField(TEXT("traits"), Source.Array(TEXT("traits")));
+    NextText.Bots = MakeShared<FJsonObject>();
+    NextText.Bots->SetArrayField(TEXT("bots"), Source.Array(TEXT("bots")));
+    NextText.Neutrals = MakeShared<FJsonObject>();
+    NextText.Neutrals->SetArrayField(TEXT("creatures"), Source.Array(TEXT("neutrals")));
+    NextText.Neutrals->SetArrayField(TEXT("waves"), Source.Array(TEXT("waves")));
+    for (const auto& Value : Source.Array(TEXT("heroes")))
+    {
+        const FObject Hero = AsObject(Value, TEXT("successor.hero"));
+        NextText.Units.Add(Hero.String(TEXT("id")), Hero.Value);
+    }
+    for (const auto& Value : Source.Array(TEXT("neutrals")))
+    {
+        const FObject Neutral = AsObject(Value, TEXT("successor.neutral"));
+        NextText.NeutralUnits.Add(Neutral.String(TEXT("id")), Neutral.Value);
+    }
+    const FObject Locales = Source.Object(TEXT("locales"));
+    for (const FString Language : {FString(TEXT("en")), FString(TEXT("id"))})
+    {
+        const FObject Locale = Locales.Object(Language);
+        auto& Strings = NextText.Locales.Add(Language);
+        for (const auto& Entry : Locale.Value->Values) Strings.Add(Entry.Key, Locale.String(Entry.Key));
+    }
+    OutCatalog = std::move(Next);
+    if (Text) *Text = MoveTemp(NextText);
+    return true;
+}
 }
 
 FString FWCDefinitionText::Localized(const FString& Key, const FString& Language) const
@@ -450,6 +500,10 @@ bool wc::LoadCatalog(Catalog& OutCatalog, FString& Error, FWCDefinitionText* Tex
     Error.Reset();
     try
     {
+        FString Profile = TEXT("alpha_24");
+        FParse::Value(FCommandLine::Get(), TEXT("WCProfileName="), Profile);
+        if (Profile == TEXT("wonder_vnext")) return LoadSuccessorCatalog(OutCatalog, Text);
+        Require(Profile == TEXT("alpha_24"), TEXT("Unsupported WCProfileName. Expected alpha_24 or wonder_vnext."));
         const FString Directory = FPaths::ProjectContentDir() / TEXT("WonderChess/SourceData");
         const FObject Manifest = ReadObject(Directory / TEXT("runtime_stage_manifest.json"));
         const FObject Digest = ReadObject(Directory / TEXT("generated/catalog_digest.json"));
@@ -653,6 +707,40 @@ bool wc::LoadCatalog(Catalog& OutCatalog, FString& Error, FWCDefinitionText* Tex
 
 #if WITH_DEV_AUTOMATION_TESTS
 #include "Misc/AutomationTest.h"
+
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FWCVNextCatalogLoadTest, "WonderChess.Data.SuccessorCatalog", EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
+bool FWCVNextCatalogLoadTest::RunTest(const FString& Parameters)
+{
+    wc::Catalog Catalog;
+    FWCDefinitionText Text;
+    try
+    {
+        LoadSuccessorCatalog(Catalog, &Text);
+    }
+    catch (const FDataError& Failure)
+    {
+        AddError(Failure.Message);
+        return false;
+    }
+    catch (const std::exception& Failure)
+    {
+        AddError(UTF8_TO_TCHAR(Failure.what()));
+        return false;
+    }
+    TestTrue(TEXT("Explicit successor identity"), Catalog.profileId == "wonder_vnext");
+    TestEqual(TEXT("Executable laboratory definitions"), static_cast<int32>(Catalog.units.size()), 6);
+    TestEqual(TEXT("Behavioral traits remain inactive until implemented"), static_cast<int32>(Catalog.traits.size()), 0);
+    TestEqual(TEXT("Executable relic definitions"), static_cast<int32>(Catalog.relics.size()), 12);
+    TestEqual(TEXT("Successor bench capacity"), Catalog.rules.benchCapacity, 10);
+    TestEqual(TEXT("Successor level cap"), Catalog.rules.maximumLevel, 10);
+    for (const auto& Unit : Catalog.units)
+    {
+        const FString Id = UTF8_TO_TCHAR(Unit.id.c_str());
+        TestFalse(TEXT("English skill metadata"), Text.AbilityTooltip(Id).IsEmpty());
+        TestFalse(TEXT("Indonesian skill metadata"), Text.AbilityTooltip(Id, TEXT("id")).IsEmpty());
+    }
+    return !HasAnyErrors();
+}
 
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FWCCatalogLoadTest, "WonderChess.Data.CanonicalCatalog", EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
 bool FWCCatalogLoadTest::RunTest(const FString& Parameters)

@@ -1,0 +1,1195 @@
+{
+  "version": "1.0.0",
+  "routes": {
+    "hero": {
+      "gates": {
+        "brief": {
+          "deps": [],
+          "role": "technical_reviewer",
+          "visual": false,
+          "checks": [
+            "scope_and_asset_type",
+            "rights_and_upload_policy",
+            "dimensions_and_camera",
+            "budgets_and_dependencies"
+          ]
+        },
+        "references": {
+          "deps": [
+            "brief"
+          ],
+          "role": "human",
+          "visual": true,
+          "checks": [
+            "identity_locked",
+            "views_reconciled",
+            "handedness_and_parts",
+            "construction_gaps_decided"
+          ]
+        },
+        "blockout": {
+          "deps": [
+            "references"
+          ],
+          "role": "art_reviewer",
+          "visual": true,
+          "checks": [
+            "silhouette_and_proportions",
+            "camera_alignment",
+            "major_part_clearance",
+            "method_is_capable"
+          ]
+        },
+        "forms": {
+          "deps": [
+            "blockout"
+          ],
+          "role": "human",
+          "visual": true,
+          "checks": [
+            "likeness_in_clay",
+            "primary_and_secondary_forms",
+            "part_construction",
+            "no_critical_form_defects"
+          ]
+        },
+        "topology": {
+          "deps": [
+            "forms"
+          ],
+          "role": "technical_reviewer",
+          "visual": true,
+          "checks": [
+            "topology_audit",
+            "deformation_or_surface_flow",
+            "silhouette_preserved",
+            "early_pose_or_assembly_test"
+          ]
+        },
+        "uv": {
+          "deps": [
+            "topology"
+          ],
+          "role": "technical_reviewer",
+          "visual": true,
+          "checks": [
+            "uv_layout_and_declared_overlaps",
+            "density_and_padding",
+            "triangulation_and_bake_recipe",
+            "bake_artifacts_reviewed"
+          ]
+        },
+        "materials": {
+          "deps": [
+            "uv"
+          ],
+          "role": "art_reviewer",
+          "visual": true,
+          "checks": [
+            "material_separation",
+            "color_management",
+            "mip_and_lighting_review",
+            "identity_preserved"
+          ]
+        },
+        "rig": {
+          "deps": [
+            "topology"
+          ],
+          "role": "technical_reviewer",
+          "visual": true,
+          "checks": [
+            "joint_placement_and_roll",
+            "authoring_export_separation",
+            "hierarchy_and_socket_contract",
+            "control_behavior"
+          ]
+        },
+        "skin": {
+          "deps": [
+            "rig"
+          ],
+          "role": "technical_reviewer",
+          "visual": true,
+          "checks": [
+            "weight_normalization_and_influences",
+            "pose_suite",
+            "rigid_parts_and_contacts",
+            "engine_compatible_deformation"
+          ]
+        },
+        "motion": {
+          "deps": [
+            "skin"
+          ],
+          "role": "art_reviewer",
+          "visual": true,
+          "checks": [
+            "clip_inventory_or_motion_spec",
+            "timing_and_contacts",
+            "continuous_review",
+            "no_runtime_logic_in_art"
+          ]
+        },
+        "optimization": {
+          "deps": [
+            "materials",
+            "motion"
+          ],
+          "role": "technical_reviewer",
+          "visual": true,
+          "checks": [
+            "lod_or_representation_review",
+            "memory_and_render_budget",
+            "required_features_survive",
+            "platform_limits_declared"
+          ]
+        },
+        "engine": {
+          "deps": [
+            "optimization"
+          ],
+          "role": "technical_reviewer",
+          "visual": true,
+          "checks": [
+            "import_and_scale",
+            "shading_motion_and_sockets",
+            "crowded_scene_and_profile",
+            "reimport_and_packaged_run"
+          ]
+        },
+        "release": {
+          "deps": [
+            "engine"
+          ],
+          "role": "human",
+          "visual": true,
+          "checks": [
+            "final_art_acceptance",
+            "all_required_engine_tests",
+            "provenance_and_source_package",
+            "known_issues_and_rollback"
+          ]
+        }
+      }
+    },
+    "creature": {
+      "gates": {
+        "brief": {
+          "deps": [],
+          "role": "technical_reviewer",
+          "visual": false,
+          "checks": [
+            "scope_and_asset_type",
+            "rights_and_upload_policy",
+            "dimensions_and_camera",
+            "budgets_and_dependencies"
+          ]
+        },
+        "references": {
+          "deps": [
+            "brief"
+          ],
+          "role": "human",
+          "visual": true,
+          "checks": [
+            "identity_locked",
+            "views_reconciled",
+            "handedness_and_parts",
+            "construction_gaps_decided"
+          ]
+        },
+        "blockout": {
+          "deps": [
+            "references"
+          ],
+          "role": "art_reviewer",
+          "visual": true,
+          "checks": [
+            "silhouette_and_proportions",
+            "camera_alignment",
+            "major_part_clearance",
+            "method_is_capable"
+          ]
+        },
+        "forms": {
+          "deps": [
+            "blockout"
+          ],
+          "role": "human",
+          "visual": true,
+          "checks": [
+            "likeness_in_clay",
+            "primary_and_secondary_forms",
+            "part_construction",
+            "no_critical_form_defects"
+          ]
+        },
+        "topology": {
+          "deps": [
+            "forms"
+          ],
+          "role": "technical_reviewer",
+          "visual": true,
+          "checks": [
+            "topology_audit",
+            "deformation_or_surface_flow",
+            "silhouette_preserved",
+            "early_pose_or_assembly_test"
+          ]
+        },
+        "uv": {
+          "deps": [
+            "topology"
+          ],
+          "role": "technical_reviewer",
+          "visual": true,
+          "checks": [
+            "uv_layout_and_declared_overlaps",
+            "density_and_padding",
+            "triangulation_and_bake_recipe",
+            "bake_artifacts_reviewed"
+          ]
+        },
+        "materials": {
+          "deps": [
+            "uv"
+          ],
+          "role": "art_reviewer",
+          "visual": true,
+          "checks": [
+            "material_separation",
+            "color_management",
+            "mip_and_lighting_review",
+            "identity_preserved"
+          ]
+        },
+        "rig": {
+          "deps": [
+            "topology"
+          ],
+          "role": "technical_reviewer",
+          "visual": true,
+          "checks": [
+            "joint_placement_and_roll",
+            "authoring_export_separation",
+            "hierarchy_and_socket_contract",
+            "control_behavior"
+          ]
+        },
+        "skin": {
+          "deps": [
+            "rig"
+          ],
+          "role": "technical_reviewer",
+          "visual": true,
+          "checks": [
+            "weight_normalization_and_influences",
+            "pose_suite",
+            "rigid_parts_and_contacts",
+            "engine_compatible_deformation"
+          ]
+        },
+        "motion": {
+          "deps": [
+            "skin"
+          ],
+          "role": "art_reviewer",
+          "visual": true,
+          "checks": [
+            "clip_inventory_or_motion_spec",
+            "timing_and_contacts",
+            "continuous_review",
+            "no_runtime_logic_in_art"
+          ]
+        },
+        "optimization": {
+          "deps": [
+            "materials",
+            "motion"
+          ],
+          "role": "technical_reviewer",
+          "visual": true,
+          "checks": [
+            "lod_or_representation_review",
+            "memory_and_render_budget",
+            "required_features_survive",
+            "platform_limits_declared"
+          ]
+        },
+        "engine": {
+          "deps": [
+            "optimization"
+          ],
+          "role": "technical_reviewer",
+          "visual": true,
+          "checks": [
+            "import_and_scale",
+            "shading_motion_and_sockets",
+            "crowded_scene_and_profile",
+            "reimport_and_packaged_run"
+          ]
+        },
+        "release": {
+          "deps": [
+            "engine"
+          ],
+          "role": "human",
+          "visual": true,
+          "checks": [
+            "final_art_acceptance",
+            "all_required_engine_tests",
+            "provenance_and_source_package",
+            "known_issues_and_rollback"
+          ]
+        }
+      }
+    },
+    "equipment": {
+      "gates": {
+        "brief": {
+          "deps": [],
+          "role": "technical_reviewer",
+          "visual": false,
+          "checks": [
+            "scope_and_asset_type",
+            "rights_and_upload_policy",
+            "dimensions_and_camera",
+            "budgets_and_dependencies"
+          ]
+        },
+        "references": {
+          "deps": [
+            "brief"
+          ],
+          "role": "human",
+          "visual": true,
+          "checks": [
+            "identity_locked",
+            "views_reconciled",
+            "handedness_and_parts",
+            "construction_gaps_decided"
+          ]
+        },
+        "blockout": {
+          "deps": [
+            "references"
+          ],
+          "role": "art_reviewer",
+          "visual": true,
+          "checks": [
+            "silhouette_and_proportions",
+            "camera_alignment",
+            "major_part_clearance",
+            "method_is_capable"
+          ]
+        },
+        "forms": {
+          "deps": [
+            "blockout"
+          ],
+          "role": "human",
+          "visual": true,
+          "checks": [
+            "likeness_in_clay",
+            "primary_and_secondary_forms",
+            "part_construction",
+            "no_critical_form_defects"
+          ]
+        },
+        "topology": {
+          "deps": [
+            "forms"
+          ],
+          "role": "technical_reviewer",
+          "visual": true,
+          "checks": [
+            "topology_audit",
+            "deformation_or_surface_flow",
+            "silhouette_preserved",
+            "early_pose_or_assembly_test"
+          ]
+        },
+        "uv": {
+          "deps": [
+            "topology"
+          ],
+          "role": "technical_reviewer",
+          "visual": true,
+          "checks": [
+            "uv_layout_and_declared_overlaps",
+            "density_and_padding",
+            "triangulation_and_bake_recipe",
+            "bake_artifacts_reviewed"
+          ]
+        },
+        "materials": {
+          "deps": [
+            "uv"
+          ],
+          "role": "art_reviewer",
+          "visual": true,
+          "checks": [
+            "material_separation",
+            "color_management",
+            "mip_and_lighting_review",
+            "identity_preserved"
+          ]
+        },
+        "optimization": {
+          "deps": [
+            "materials"
+          ],
+          "role": "technical_reviewer",
+          "visual": true,
+          "checks": [
+            "lod_or_representation_review",
+            "memory_and_render_budget",
+            "required_features_survive",
+            "platform_limits_declared"
+          ]
+        },
+        "engine": {
+          "deps": [
+            "optimization"
+          ],
+          "role": "technical_reviewer",
+          "visual": true,
+          "checks": [
+            "import_and_scale",
+            "shading_motion_and_sockets",
+            "crowded_scene_and_profile",
+            "reimport_and_packaged_run"
+          ]
+        },
+        "release": {
+          "deps": [
+            "engine"
+          ],
+          "role": "human",
+          "visual": true,
+          "checks": [
+            "final_art_acceptance",
+            "all_required_engine_tests",
+            "provenance_and_source_package",
+            "known_issues_and_rollback"
+          ]
+        }
+      }
+    },
+    "prop": {
+      "gates": {
+        "brief": {
+          "deps": [],
+          "role": "technical_reviewer",
+          "visual": false,
+          "checks": [
+            "scope_and_asset_type",
+            "rights_and_upload_policy",
+            "dimensions_and_camera",
+            "budgets_and_dependencies"
+          ]
+        },
+        "references": {
+          "deps": [
+            "brief"
+          ],
+          "role": "human",
+          "visual": true,
+          "checks": [
+            "identity_locked",
+            "views_reconciled",
+            "handedness_and_parts",
+            "construction_gaps_decided"
+          ]
+        },
+        "blockout": {
+          "deps": [
+            "references"
+          ],
+          "role": "art_reviewer",
+          "visual": true,
+          "checks": [
+            "silhouette_and_proportions",
+            "camera_alignment",
+            "major_part_clearance",
+            "method_is_capable"
+          ]
+        },
+        "forms": {
+          "deps": [
+            "blockout"
+          ],
+          "role": "human",
+          "visual": true,
+          "checks": [
+            "likeness_in_clay",
+            "primary_and_secondary_forms",
+            "part_construction",
+            "no_critical_form_defects"
+          ]
+        },
+        "topology": {
+          "deps": [
+            "forms"
+          ],
+          "role": "technical_reviewer",
+          "visual": true,
+          "checks": [
+            "topology_audit",
+            "deformation_or_surface_flow",
+            "silhouette_preserved",
+            "early_pose_or_assembly_test"
+          ]
+        },
+        "uv": {
+          "deps": [
+            "topology"
+          ],
+          "role": "technical_reviewer",
+          "visual": true,
+          "checks": [
+            "uv_layout_and_declared_overlaps",
+            "density_and_padding",
+            "triangulation_and_bake_recipe",
+            "bake_artifacts_reviewed"
+          ]
+        },
+        "materials": {
+          "deps": [
+            "uv"
+          ],
+          "role": "art_reviewer",
+          "visual": true,
+          "checks": [
+            "material_separation",
+            "color_management",
+            "mip_and_lighting_review",
+            "identity_preserved"
+          ]
+        },
+        "optimization": {
+          "deps": [
+            "materials"
+          ],
+          "role": "technical_reviewer",
+          "visual": true,
+          "checks": [
+            "lod_or_representation_review",
+            "memory_and_render_budget",
+            "required_features_survive",
+            "platform_limits_declared"
+          ]
+        },
+        "engine": {
+          "deps": [
+            "optimization"
+          ],
+          "role": "technical_reviewer",
+          "visual": true,
+          "checks": [
+            "import_and_scale",
+            "shading_motion_and_sockets",
+            "crowded_scene_and_profile",
+            "reimport_and_packaged_run"
+          ]
+        },
+        "release": {
+          "deps": [
+            "engine"
+          ],
+          "role": "human",
+          "visual": true,
+          "checks": [
+            "final_art_acceptance",
+            "all_required_engine_tests",
+            "provenance_and_source_package",
+            "known_issues_and_rollback"
+          ]
+        }
+      }
+    },
+    "modular_environment": {
+      "gates": {
+        "brief": {
+          "deps": [],
+          "role": "technical_reviewer",
+          "visual": false,
+          "checks": [
+            "scope_and_asset_type",
+            "rights_and_upload_policy",
+            "dimensions_and_camera",
+            "budgets_and_dependencies"
+          ]
+        },
+        "references": {
+          "deps": [
+            "brief"
+          ],
+          "role": "human",
+          "visual": true,
+          "checks": [
+            "identity_locked",
+            "views_reconciled",
+            "handedness_and_parts",
+            "construction_gaps_decided"
+          ]
+        },
+        "blockout": {
+          "deps": [
+            "references"
+          ],
+          "role": "art_reviewer",
+          "visual": true,
+          "checks": [
+            "silhouette_and_proportions",
+            "camera_alignment",
+            "major_part_clearance",
+            "method_is_capable"
+          ]
+        },
+        "forms": {
+          "deps": [
+            "blockout"
+          ],
+          "role": "human",
+          "visual": true,
+          "checks": [
+            "likeness_in_clay",
+            "primary_and_secondary_forms",
+            "part_construction",
+            "no_critical_form_defects"
+          ]
+        },
+        "topology": {
+          "deps": [
+            "forms"
+          ],
+          "role": "technical_reviewer",
+          "visual": true,
+          "checks": [
+            "topology_audit",
+            "pivot_snap_and_tiling",
+            "silhouette_preserved",
+            "collision_and_walkability_test"
+          ]
+        },
+        "uv": {
+          "deps": [
+            "topology"
+          ],
+          "role": "technical_reviewer",
+          "visual": true,
+          "checks": [
+            "uv_layout_and_declared_overlaps",
+            "density_and_padding",
+            "triangulation_and_bake_recipe",
+            "bake_artifacts_reviewed"
+          ]
+        },
+        "materials": {
+          "deps": [
+            "uv"
+          ],
+          "role": "art_reviewer",
+          "visual": true,
+          "checks": [
+            "material_separation",
+            "color_management",
+            "mip_and_lighting_review",
+            "identity_preserved"
+          ]
+        },
+        "optimization": {
+          "deps": [
+            "materials"
+          ],
+          "role": "technical_reviewer",
+          "visual": true,
+          "checks": [
+            "lod_or_representation_review",
+            "memory_and_render_budget",
+            "required_features_survive",
+            "platform_limits_declared"
+          ]
+        },
+        "engine": {
+          "deps": [
+            "optimization"
+          ],
+          "role": "technical_reviewer",
+          "visual": true,
+          "checks": [
+            "import_and_scale",
+            "shading_motion_and_sockets",
+            "crowded_scene_and_profile",
+            "reimport_and_packaged_run"
+          ]
+        },
+        "release": {
+          "deps": [
+            "engine"
+          ],
+          "role": "human",
+          "visual": true,
+          "checks": [
+            "final_art_acceptance",
+            "all_required_engine_tests",
+            "provenance_and_source_package",
+            "known_issues_and_rollback"
+          ]
+        }
+      }
+    },
+    "foliage": {
+      "gates": {
+        "brief": {
+          "deps": [],
+          "role": "technical_reviewer",
+          "visual": false,
+          "checks": [
+            "scope_and_asset_type",
+            "rights_and_upload_policy",
+            "dimensions_and_camera",
+            "budgets_and_dependencies"
+          ]
+        },
+        "references": {
+          "deps": [
+            "brief"
+          ],
+          "role": "human",
+          "visual": true,
+          "checks": [
+            "identity_locked",
+            "views_reconciled",
+            "handedness_and_parts",
+            "construction_gaps_decided"
+          ]
+        },
+        "blockout": {
+          "deps": [
+            "references"
+          ],
+          "role": "art_reviewer",
+          "visual": true,
+          "checks": [
+            "silhouette_and_proportions",
+            "camera_alignment",
+            "major_part_clearance",
+            "method_is_capable"
+          ]
+        },
+        "forms": {
+          "deps": [
+            "blockout"
+          ],
+          "role": "human",
+          "visual": true,
+          "checks": [
+            "likeness_in_clay",
+            "primary_and_secondary_forms",
+            "part_construction",
+            "no_critical_form_defects"
+          ]
+        },
+        "topology": {
+          "deps": [
+            "forms"
+          ],
+          "role": "technical_reviewer",
+          "visual": true,
+          "checks": [
+            "topology_audit",
+            "deformation_or_surface_flow",
+            "silhouette_preserved",
+            "early_pose_or_assembly_test"
+          ]
+        },
+        "uv": {
+          "deps": [
+            "topology"
+          ],
+          "role": "technical_reviewer",
+          "visual": true,
+          "checks": [
+            "uv_layout_and_declared_overlaps",
+            "density_and_padding",
+            "triangulation_and_bake_recipe",
+            "bake_artifacts_reviewed"
+          ]
+        },
+        "materials": {
+          "deps": [
+            "uv"
+          ],
+          "role": "art_reviewer",
+          "visual": true,
+          "checks": [
+            "material_separation",
+            "color_management",
+            "mip_and_lighting_review",
+            "identity_preserved"
+          ]
+        },
+        "optimization": {
+          "deps": [
+            "materials"
+          ],
+          "role": "technical_reviewer",
+          "visual": true,
+          "checks": [
+            "lod_and_wind_review",
+            "overdraw_and_shadow_budget",
+            "silhouette_survives",
+            "platform_limits_declared"
+          ]
+        },
+        "engine": {
+          "deps": [
+            "optimization"
+          ],
+          "role": "technical_reviewer",
+          "visual": true,
+          "checks": [
+            "import_and_scale",
+            "shading_motion_and_sockets",
+            "crowded_scene_and_profile",
+            "reimport_and_packaged_run"
+          ]
+        },
+        "release": {
+          "deps": [
+            "engine"
+          ],
+          "role": "human",
+          "visual": true,
+          "checks": [
+            "final_art_acceptance",
+            "all_required_engine_tests",
+            "provenance_and_source_package",
+            "known_issues_and_rollback"
+          ]
+        }
+      }
+    },
+    "vfx": {
+      "gates": {
+        "brief": {
+          "deps": [],
+          "role": "technical_reviewer",
+          "visual": false,
+          "checks": [
+            "scope_and_asset_type",
+            "rights_and_upload_policy",
+            "dimensions_and_camera",
+            "budgets_and_dependencies"
+          ]
+        },
+        "references": {
+          "deps": [
+            "brief"
+          ],
+          "role": "human",
+          "visual": true,
+          "checks": [
+            "identity_locked",
+            "views_reconciled",
+            "handedness_and_parts",
+            "construction_gaps_decided"
+          ]
+        },
+        "blockout": {
+          "deps": [
+            "references"
+          ],
+          "role": "art_reviewer",
+          "visual": true,
+          "checks": [
+            "silhouette_and_proportions",
+            "camera_alignment",
+            "major_part_clearance",
+            "method_is_capable"
+          ]
+        },
+        "forms": {
+          "deps": [
+            "blockout"
+          ],
+          "role": "human",
+          "visual": true,
+          "checks": [
+            "likeness_in_clay",
+            "primary_and_secondary_forms",
+            "part_construction",
+            "no_critical_form_defects"
+          ]
+        },
+        "materials": {
+          "deps": [
+            "forms"
+          ],
+          "role": "art_reviewer",
+          "visual": true,
+          "checks": [
+            "material_separation",
+            "color_management",
+            "mip_and_lighting_review",
+            "identity_preserved"
+          ]
+        },
+        "motion": {
+          "deps": [
+            "materials"
+          ],
+          "role": "art_reviewer",
+          "visual": true,
+          "checks": [
+            "clip_inventory_or_motion_spec",
+            "timing_and_contacts",
+            "continuous_review",
+            "no_runtime_logic_in_art"
+          ]
+        },
+        "optimization": {
+          "deps": [
+            "motion"
+          ],
+          "role": "technical_reviewer",
+          "visual": true,
+          "checks": [
+            "lod_or_representation_review",
+            "memory_and_render_budget",
+            "required_features_survive",
+            "platform_limits_declared"
+          ]
+        },
+        "engine": {
+          "deps": [
+            "optimization"
+          ],
+          "role": "technical_reviewer",
+          "visual": true,
+          "checks": [
+            "import_and_scale",
+            "shading_motion_and_sockets",
+            "crowded_scene_and_profile",
+            "reimport_and_packaged_run"
+          ]
+        },
+        "release": {
+          "deps": [
+            "engine"
+          ],
+          "role": "human",
+          "visual": true,
+          "checks": [
+            "final_art_acceptance",
+            "all_required_engine_tests",
+            "provenance_and_source_package",
+            "known_issues_and_rollback"
+          ]
+        }
+      }
+    },
+    "ui": {
+      "gates": {
+        "brief": {
+          "deps": [],
+          "role": "technical_reviewer",
+          "visual": false,
+          "checks": [
+            "scope_and_asset_type",
+            "rights_and_upload_policy",
+            "dimensions_and_camera",
+            "budgets_and_dependencies"
+          ]
+        },
+        "references": {
+          "deps": [
+            "brief"
+          ],
+          "role": "human",
+          "visual": true,
+          "checks": [
+            "identity_locked",
+            "views_reconciled",
+            "handedness_and_parts",
+            "construction_gaps_decided"
+          ]
+        },
+        "blockout": {
+          "deps": [
+            "references"
+          ],
+          "role": "art_reviewer",
+          "visual": true,
+          "checks": [
+            "silhouette_and_proportions",
+            "camera_alignment",
+            "major_part_clearance",
+            "method_is_capable"
+          ]
+        },
+        "forms": {
+          "deps": [
+            "blockout"
+          ],
+          "role": "human",
+          "visual": true,
+          "checks": [
+            "likeness_in_clay",
+            "primary_and_secondary_forms",
+            "part_construction",
+            "no_critical_form_defects"
+          ]
+        },
+        "materials": {
+          "deps": [
+            "forms"
+          ],
+          "role": "art_reviewer",
+          "visual": true,
+          "checks": [
+            "material_separation",
+            "color_management",
+            "mip_and_lighting_review",
+            "identity_preserved"
+          ]
+        },
+        "optimization": {
+          "deps": [
+            "materials"
+          ],
+          "role": "technical_reviewer",
+          "visual": true,
+          "checks": [
+            "lod_or_representation_review",
+            "memory_and_render_budget",
+            "required_features_survive",
+            "platform_limits_declared"
+          ]
+        },
+        "engine": {
+          "deps": [
+            "optimization"
+          ],
+          "role": "technical_reviewer",
+          "visual": true,
+          "checks": [
+            "import_and_scale",
+            "shading_motion_and_sockets",
+            "crowded_scene_and_profile",
+            "reimport_and_packaged_run"
+          ]
+        },
+        "release": {
+          "deps": [
+            "engine"
+          ],
+          "role": "human",
+          "visual": true,
+          "checks": [
+            "final_art_acceptance",
+            "all_required_engine_tests",
+            "provenance_and_source_package",
+            "known_issues_and_rollback"
+          ]
+        }
+      }
+    },
+    "audio": {
+      "gates": {
+        "brief": {
+          "deps": [],
+          "role": "technical_reviewer",
+          "visual": false,
+          "checks": [
+            "scope_and_asset_type",
+            "rights_and_upload_policy",
+            "dimensions_and_camera",
+            "budgets_and_dependencies"
+          ]
+        },
+        "references": {
+          "deps": [
+            "brief"
+          ],
+          "role": "human",
+          "visual": false,
+          "checks": [
+            "sound_identity_locked",
+            "reference_rights_reviewed",
+            "variation_plan",
+            "loudness_target_decided"
+          ]
+        },
+        "blockout": {
+          "deps": [
+            "references"
+          ],
+          "role": "art_reviewer",
+          "visual": false,
+          "checks": [
+            "dry_signal_review",
+            "silence_and_loop_policy",
+            "event_readability",
+            "method_is_capable"
+          ]
+        },
+        "forms": {
+          "deps": [
+            "blockout"
+          ],
+          "role": "human",
+          "visual": false,
+          "checks": [
+            "timbre_and_envelope",
+            "variation_consistency",
+            "no_clicks_or_unwanted_noise",
+            "listening_approval"
+          ]
+        },
+        "optimization": {
+          "deps": [
+            "forms"
+          ],
+          "role": "technical_reviewer",
+          "visual": false,
+          "checks": [
+            "codec_and_sample_format",
+            "peak_loudness_and_duration",
+            "loop_and_variants",
+            "voice_budget"
+          ]
+        },
+        "engine": {
+          "deps": [
+            "optimization"
+          ],
+          "role": "technical_reviewer",
+          "visual": false,
+          "checks": [
+            "cue_attenuation_and_mix",
+            "event_timing",
+            "crowded_mix_and_profile",
+            "reimport_and_packaged_run"
+          ]
+        },
+        "release": {
+          "deps": [
+            "engine"
+          ],
+          "role": "human",
+          "visual": false,
+          "checks": [
+            "final_art_acceptance",
+            "all_required_engine_tests",
+            "provenance_and_source_package",
+            "known_issues_and_rollback"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "audit_date": "2026-09-08",
+  "scope": "Targeted source inspection plus user screenshots; no Blender/Unreal execution or repo writes.",
+  "repository": {
+    "name": "TUPRAM/wonder-chess",
+    "commit": "9623fd82f98ff80a90985b9f552d8851ccece30f",
+    "sources": [
+      {
+        "id": "R1",
+        "path": "tools/blender/author_alpha.py",
+        "git_blob_sha": "685c1a85750f3f6a654cc5134fd4a048b6f1455e",
+        "url": "https://github.com/TUPRAM/wonder-chess/blob/9623fd82f98ff80a90985b9f552d8851ccece30f/tools/blender/author_alpha.py",
+        "scope": "Targeted ranges spanning generator geometry, materials, UVs, smoothing, export, and save flow."
+      },
+      {
+        "id": "R2",
+        "path": "exports/heroes/wc_u_human_guardian/export_manifest.json",
+        "git_blob_sha": "fa32f3e12544ec13924edbbee977e493968ae5ea",
+        "url": "https://github.com/TUPRAM/wonder-chess/blob/9623fd82f98ff80a90985b9f552d8851ccece30f/exports/heroes/wc_u_human_guardian/export_manifest.json",
+        "scope": "Source revision 9; reported mesh statistics and open acceptance items."
+      },
+      {
+        "id": "R3",
+        "path": "tools/blender/polish_ada_gallery.py",
+        "git_blob_sha": "ca574eaf75144f19b0c513ea75bb08aecfbc0765",
+        "url": "https://github.com/TUPRAM/wonder-chess/blob/9623fd82f98ff80a90985b9f552d8851ccece30f/tools/blender/polish_ada_gallery.py",
+        "scope": "Latest fitted face/fused hand candidate workflow and explicitly preserved parts."
+      },
+      {
+        "id": "R4",
+        "path": "data/units.json",
+        "git_blob_sha": "4bdc2d784f2560e9cdd8c8d6b1d299fe89d980a0",
+        "url": "https://github.com/TUPRAM/wonder-chess/blob/9623fd82f98ff80a90985b9f552d8851ccece30f/data/units.json",
+        "scope": "Current Ada identity/art record and alpha_24 version header; not a complete game-data audit."
+      },
+      {
+        "id": "R5",
+        "path": ".agents/skills/wc-blender-asset/SKILL.md",
+        "git_blob_sha": "9a56ab1651f9f570a7fe5a68162d7eeab0514558",
+        "url": "https://github.com/TUPRAM/wonder-chess/blob/9623fd82f98ff80a90985b9f552d8851ccece30f/.agents/skills/wc-blender-asset/SKILL.md",
+        "scope": "Existing image, deformation, export and acceptance guidance."
+      }
+    ]
+  },
+  "uploaded_archive": {
+    "name": "blender-mcp-main (1).zip",
+    "sha256": "a7576e30ee43bc379af2c6bab27749c48b8b1a1380068112910498e5d672f005",
+    "declared_pyproject_version": "1.9.1",
+    "live_installation_verified": false
+  },
+  "technical_sources": [
+    {
+      "id": "T1",
+      "title": "Blender Subdivision Surface Modifier",
+      "url": "https://docs.blender.org/manual/en/3.6/modeling/modifiers/generate/subdivision_surface.html",
+      "use": "Stable conceptual distinction between subdivision and smoothing; verify installed-version APIs."
+    },
+    {
+      "id": "T2",
+      "title": "Blender Bevel Modifier",
+      "url": "https://docs.blender.org/manual/sr/5.1/modeling/modifiers/generate/bevel.html",
+      "use": "Controlled bevel construction; localized indexed documentation, not a runtime test."
+    },
+    {
+      "id": "T3",
+      "title": "Blender Render Baking",
+      "url": "https://docs.blender.org/manual/id/5.0/render/cycles/baking.html",
+      "use": "High/low geometry normal baking concepts; verify installed-version settings."
+    },
+    {
+      "id": "T4",
+      "title": "Epic FBX Import Options Reference",
+      "url": "https://dev.epicgames.com/documentation/unreal-engine/fbx-import-options-reference-in-unreal-engine",
+      "use": "Normals/tangents/import handling; settings depend on actual importer/version."
+    },
+    {
+      "id": "T5",
+      "title": "Build Skills — OpenAI",
+      "url": "https://learn.chatgpt.com/docs/build-skills",
+      "use": "Reusable instructions/resources/scripts via SKILL.md; not a new connector."
+    }
+  ],
+  "screenshots": [
+    {
+      "filename": "79c082f2-c759-4bf8-8a34-453793bdb9ae.png",
+      "use": "User-supplied gray Blender overall character view; unknown exact scene revision."
+    },
+    {
+      "filename": "72ef50eb-5b31-49af-a33b-72b35b3ed2c6.png",
+      "use": "User-supplied weapon/grip closeup."
+    },
+    {
+      "filename": "ac.dragonest.com-英雄库-Auto ChessOfficial website-fpscreenshot.jpeg",
+      "use": "User-supplied visual reference only; no inference about model topology or licenses."
+    }
+  ]
+}

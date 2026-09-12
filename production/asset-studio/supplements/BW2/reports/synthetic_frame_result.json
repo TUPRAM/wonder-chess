@@ -1,0 +1,69 @@
+{
+  "frame": {
+    "origin_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "x_transverse": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "y_distal": [
+      0.0,
+      1.0,
+      0.0
+    ],
+    "z_palmar": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "x_points_toward_index": true
+  },
+  "matrix_rows": [
+    [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "input_example_only": true,
+  "measured_asset_validation": false,
+  "art_approval": false,
+  "patch_screens": {
+    "synthetic_example_only": {
+      "status": "PASS_SAMPLED_NUMERIC_SCREEN",
+      "samples": 3,
+      "contact_fraction": 1.0,
+      "axial_region_valid": true,
+      "min_gap_mm": 0.10000000000000113,
+      "median_gap_mm": 0.19999999999999013,
+      "p95_gap_mm": 0.2899999999999927,
+      "max_gap_mm": 0.299999999999993,
+      "max_sampled_penetration_mm": 0,
+      "visual_approval": false,
+      "limits": "Only supplied points against an ideal cylinder; not continuous mesh collision, gripping-force, motion, or art validation."
+    }
+  }
+}

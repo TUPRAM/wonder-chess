@@ -52,6 +52,8 @@ Obj Owned(const wc::OwnedUnit &U) {
   O->SetNumberField("col", U.cell.column);
   O->SetNumberField("row", U.cell.row);
   O->SetNumberField("bench", U.bench);
+  O->SetNumberField("facing", int(U.facing));
+  O->SetNumberField("relic", U.relic);
   return O;
 }
 Obj Pair(const wc::Pairing &P) {
@@ -109,6 +111,12 @@ void AWCMatchMode::BeginPlay() {
   int32 Count = 0;
   if (FParse::Value(FCommandLine::Get(), TEXT("WCRegression="), Count)) {
     Regression(FMath::Clamp(Count, 1, 1000));
+    return;
+  }
+  if (Catalog.profileId == "wonder_vnext") {
+    LoadError = TEXT("The successor tournament frontend is not integrated yet. Launch the tactical laboratory with -WCLab -WCProfileName=wonder_vnext.");
+    UE_LOG(LogTemp, Warning, TEXT("WC_VNEXT_FRONTEND_NOT_READY %s"), *LoadError);
+    Publish();
     return;
   }
   const auto *Session = Cast<UWCNetworkSession>(GetGameInstance());
@@ -205,7 +213,7 @@ void AWCMatchMode::StartTournament(AWCMatchController *Requester, int32 Humans,
     return;
   }
   try {
-    Match = MakeUnique<wc::Match>(Catalog, uint64(uint32(Seed)), Humans);
+    Match = MakeUnique<wc::Match>(Catalog, uint64(uint32(Seed)), Humans, GetNetMode() != NM_Standalone);
   } catch (const std::exception &E) {
     LoadError = Str(E.what());
     UE_LOG(LogTemp, Error, TEXT("WC_START_FAILED %s"), *LoadError);
@@ -617,8 +625,9 @@ void AWCMatchMode::Regression(int32 Count) {
            "not a compiled-artifact manifest. Record delivered executable and "
            "source snapshot SHA256 externally. This is simulation timing, "
            "not rendered frame performance."));
-  const FString DataDirectory =
-      FPaths::ProjectContentDir() / TEXT("WonderChess/SourceData");
+  const bool Successor = Catalog.profileId == "wonder_vnext";
+  const FString DataDirectory = FPaths::ProjectContentDir() /
+      (Successor ? TEXT("WonderChess/VNextData") : TEXT("WonderChess/SourceData"));
   FString ManifestText;
   Obj Manifest;
   if (FFileHelper::LoadFileToString(
@@ -656,12 +665,16 @@ void AWCMatchMode::Regression(int32 Count) {
     }
     Inputs->SetObjectField(Key, Item);
   };
+  if (Successor) {
+    RecordFile(TEXT("runtime_catalog.json"), DataDirectory / TEXT("runtime_catalog.json"));
+  } else {
   for (const FString Name :
        {TEXT("rules.alpha.json"), TEXT("units.json"), TEXT("traits.json"),
         TEXT("bots.json"), TEXT("world.json"), TEXT("neutrals.json")})
     RecordFile(Name, DataDirectory / Name);
   RecordFile(TEXT("runtime_stage_manifest.json"),
              DataDirectory / TEXT("runtime_stage_manifest.json"));
+  }
   const FString CurrentSource = TEXT(__FILE__);
   RecordFile(TEXT("observed_WCMatchRuntime.cpp"), CurrentSource);
   for (const FString Name :
@@ -669,15 +682,7 @@ void AWCMatchMode::Regression(int32 Count) {
     RecordFile(TEXT("observed_") + Name,
                FPaths::GetPath(CurrentSource) / TEXT("Simulation") / Name);
   Report->SetObjectField("input_files", Inputs);
-  FString ProfileText;
-  if (FFileHelper::LoadFileToString(
-          ProfileText, *(DataDirectory / TEXT("rules.alpha.json")))) {
-    const auto Profile = Decode(ProfileText);
-    FString ProfileId;
-    if (Profile.IsValid() &&
-        Profile->TryGetStringField(TEXT("profile_id"), ProfileId))
-      Report->SetStringField("profile_id", ProfileId);
-  }
+  Report->SetStringField("profile_id", Str(Catalog.profileId));
   TArray<Val> Trials;
   int Failures = 0;
   bool WriteFailed = false;

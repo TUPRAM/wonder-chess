@@ -22,6 +22,43 @@ bool Alive(const CombatUnit &u)
 {
     return u.health > 0;
 }
+Cell FacingStep(Facing facing)
+{
+    switch (facing)
+    {
+    case Facing::Forward: return {0, 1};
+    case Facing::Right: return {1, 0};
+    case Facing::Backward: return {0, -1};
+    case Facing::Left: return {-1, 0};
+    }
+    return {0, 1};
+}
+std::vector<Cell> LineCells(Cell from, Cell to)
+{
+    std::vector<Cell> cells;
+    const int dx = std::abs(to.column - from.column), dy = -std::abs(to.row - from.row);
+    const int sx = from.column < to.column ? 1 : -1, sy = from.row < to.row ? 1 : -1;
+    int error = dx + dy;
+    while (!(from == to))
+    {
+        const int twice = 2 * error;
+        if (twice >= dy) { error += dy; from.column += sx; }
+        if (twice <= dx) { error += dx; from.row += sy; }
+        cells.push_back(from);
+    }
+    return cells;
+}
+std::vector<Cell> BeamCells(Cell center, int radius, bool vertical, const Rules &rules)
+{
+    std::vector<Cell> cells;
+    for (int offset = -radius; offset <= radius; ++offset)
+    {
+        Cell cell{center.column + (vertical ? 0 : offset), center.row + (vertical ? offset : 0)};
+        if (cell.column >= 0 && cell.column < rules.columns && cell.row >= 0 && cell.row < rules.rows)
+            cells.push_back(cell);
+    }
+    return cells;
+}
 bool SameCommand(const Command &a, const Command &b)
 {
     return std::tie(a.type, a.seat, a.requestId, a.sequence, a.revision, a.unit, a.slot, a.toBoard,
@@ -143,6 +180,12 @@ int Random::Below(int exclusive)
 }
 int TraitValue(const TraitDef &trait, int count)
 {
+    if (!trait.tiers.empty())
+    {
+        int value = 0;
+        for (const auto &tier : trait.tiers) if (count >= tier.first) value = tier.second;
+        return value;
+    }
     if (trait.threshold4 > trait.threshold && count >= trait.threshold4 && trait.value4 != 0)
         return trait.value4;
     return count >= trait.threshold ? trait.value : 0;
@@ -161,20 +204,56 @@ const NeutralWave *Catalog::Wave(int round) const
     for (const auto &wave : waves) if (wave.round == round) return &wave;
     return nullptr;
 }
+bool RelicCompatible(const RelicDef &relic, AbilityMechanic mechanic)
+{
+    return std::find(relic.compatibleMechanics.begin(), relic.compatibleMechanics.end(), mechanic) !=
+           relic.compatibleMechanics.end();
+}
+AbilityDef EffectiveAbility(const Catalog &catalog, const UnitDef &unit, int relic)
+{
+    auto ability = unit.ability;
+    if (relic < 0) return ability;
+    if (relic >= int(catalog.relics.size()) || !RelicCompatible(catalog.relics[relic], ability.mechanic))
+        throw std::invalid_argument("Incompatible or unknown equipped relic");
+    const auto &item = catalog.relics[relic];
+    auto duration = [&](int ms, int bp, bool positive) {
+        return std::max(positive ? catalog.rules.tickMs : 0,
+            Ticks(int(HalfUp(Int(ms) * bp, 10000)), catalog.rules) * catalog.rules.tickMs);
+    };
+    for (auto &amount : ability.magnitude) amount = HalfUp(amount * item.magnitudeBp, 10000);
+    for (auto &effect : ability.effects)
+    {
+        for (auto &amount : effect.magnitude) amount = HalfUp(amount * item.magnitudeBp, 10000);
+        effect.durationMs = duration(effect.durationMs, item.durationBp, false);
+    }
+    ability.guardReductionBp = std::min(9000, int(HalfUp(Int(ability.guardReductionBp) * item.magnitudeBp, 10000)));
+    ability.momentumPerStepBp = int(HalfUp(Int(ability.momentumPerStepBp) * item.magnitudeBp, 10000));
+    ability.range = std::clamp(ability.range + item.rangeDelta, 1, 8);
+    ability.radius = std::clamp(ability.radius + item.radiusDelta, 0, 8);
+    ability.durationMs = duration(ability.durationMs, item.durationBp, false);
+    ability.castMs = duration(ability.castMs, item.castBp, true);
+    ability.cooldownMs = duration(ability.cooldownMs, item.cooldownBp, true);
+    return ability;
+}
 std::string Catalog::Validate() const
 {
     const auto &r = rules;
+    const bool vnext = profileId == "wonder_vnext";
+    if (!vnext && profileId != "alpha_24") return "Unsupported gameplay profile";
     if (r.columns != 8 || r.rows != 8 || r.deploymentRows != 4 || r.tickMs != 50 || r.seatCount != 8)
         return "Unsupported board, tick or seat contract";
-    if (units.size() != 24 || bots.size() != 7 || r.benchCapacity != 8 || r.shopSlots != 5)
+    if ((!vnext && units.size() != 24) || units.empty() || bots.size() != 7 ||
+        r.benchCapacity != (vnext ? 10 : 8) || r.shopSlots != 5)
         return "Update requires twenty-four units, seven personas, eight bench and five shop slots";
-    if (r.startingHealth <= 0 || r.maximumLevel > 6 || r.startingLevel < 1 ||
+    if (r.startingHealth <= 0 || r.maximumLevel > (vnext ? 10 : 6) || r.startingLevel < 1 ||
         r.startingLevel > r.maximumLevel || r.interestDivisor <= 0 || r.combatTimeoutMs <= 0 ||
         r.maxRounds <= 0 || r.minAttackRate <= 0 || r.maxAttackRate < r.minAttackRate)
         return "Invalid numeric rules";
     if (r.maxHealth <= 0 || r.maxHealth > 100000000 || r.maxRawDamage <= 0 || r.maxRawDamage > 10000000 ||
         r.maxArmor < 0 || r.maxArmor > 10000)
         return "Unsafe integer bounds";
+    if (vnext && std::any_of(units.begin(), units.end(), [](const UnitDef &u) { return u.cost < 1; }))
+        return "Recruited heroes must have a positive cost";
     std::set<std::string> ids, abilities;
     std::vector<UnitDef> allDefinitions = units;
     allDefinitions.insert(allDefinitions.end(), neutrals.begin(), neutrals.end());
@@ -183,15 +262,37 @@ std::string Catalog::Validate() const
         if (!ids.insert(u.id).second || (u.ability.enabled && !abilities.insert(u.ability.id).second) || u.id.empty() ||
             (u.ability.enabled && u.ability.id.empty()))
             return "Duplicate or empty unit/ability ID";
-        if (u.cost < 0 || u.cost > 3 || u.health <= 0 || u.health > r.maxHealth || u.attackDamage < 0 ||
+        if (u.cost < 0 || u.cost > (vnext ? 5 : 3) || u.health <= 0 || u.health > r.maxHealth || u.attackDamage < 0 ||
             u.attackDamage > r.maxRawDamage || u.armor < 0 || u.armor > r.maxArmor || u.resistance < 0 ||
             u.resistance > r.maxArmor || u.attackRate <= 0 || u.movementRate <= 0 || u.range < 1)
             return "Invalid unit numeric field: " + u.id;
         const auto &a = u.ability;
-        if ((a.enabled && (a.castMs <= 0 || a.cooldownMs <= 0 || a.maxTargets <= 0 || a.maxTargets > 12 ||
+        if ((a.enabled && (a.castMs <= 0 || a.cooldownMs <= 0 || a.maxTargets <= 0 || a.maxTargets > (vnext ? 24 : 12) ||
             a.firstCastMs < 0 || a.recoveryMs < 0 || a.travelMs < 0 || a.durationMs < 0)) ||
             u.attackWindupMs <= 0)
             return "Invalid ability timing: " + u.id;
+        if (a.mechanic < AbilityMechanic::Standard || a.mechanic > AbilityMechanic::TidalPush ||
+            (!vnext && a.mechanic != AbilityMechanic::Standard)) return "Unsupported ability mechanic: " + u.id;
+        if (a.mechanic != AbilityMechanic::Standard)
+        {
+            if (!a.enabled || a.range < 1 || a.range > 8 || a.radius < 0 || a.radius > 8 ||
+                !a.effects.empty()) return "Invalid mechanic shape/effects: " + u.id;
+            if (a.mechanic == AbilityMechanic::DirectionalGuard &&
+                (a.guardReductionBp < 1 || a.guardReductionBp > 9000 || a.radius < 1))
+                return "Invalid directional guard: " + u.id;
+            if (a.mechanic == AbilityMechanic::MomentumCharge &&
+                (a.maxDash < 1 || a.maxDash > 3 || a.maxMomentumSteps < 1 || a.maxMomentumSteps > 8 ||
+                 a.momentumPerStepBp < 0 || a.momentumPerStepBp > 3000))
+                return "Invalid momentum charge: " + u.id;
+            if (a.mechanic == AbilityMechanic::StationaryGrove &&
+                (a.stationaryMs < r.tickMs || a.pulseMs < r.tickMs || a.durationMs < a.pulseMs ||
+                 a.durationMs / a.pulseMs > 32)) return "Invalid stationary grove: " + u.id;
+            if (a.mechanic == AbilityMechanic::CrossingBeams &&
+                (a.secondaryDelayMs < r.tickMs || a.secondaryDelayMs > 5000))
+                return "Invalid crossing beam delay: " + u.id;
+            if (a.mechanic == AbilityMechanic::TidalPush &&
+                (a.displacementCells < 1 || a.displacementCells > 2)) return "Invalid displacement: " + u.id;
+        }
         if (Ticks(u.attackWindupMs, r) >= AttackInterval(r.maxAttackRate, 0, r))
             return "Attack windup leaves no recovery at maximum rate: " + u.id;
         auto effects = a.effects;
@@ -221,9 +322,40 @@ std::string Catalog::Validate() const
         "ability_damage_bonus_bp", "support_power_bonus_bp", "movement_bonus_bp"};
     std::set<std::string> traitIds;
     for (const auto &trait : traits)
+    {
         if (!traitIds.insert(trait.id).second || !supportedStats.count(trait.stat) ||
-            trait.threshold != 2 || trait.threshold4 != 4 || trait.value < 0 || trait.value4 < 0)
+            (!vnext && (trait.threshold != 2 || trait.threshold4 != 4 || !trait.tiers.empty())) ||
+            trait.value < 0 || trait.value4 < 0)
             return "Invalid trait definition";
+        int previous = 0;
+        for (const auto &tier : trait.tiers)
+        {
+            if (tier.first <= previous || tier.first > r.maximumLevel || tier.second < 0 || tier.second > 10000)
+                return "Invalid ordered trait tiers";
+            previous = tier.first;
+        }
+    }
+    if (!vnext && (!relics.empty() || !r.relicRounds.empty())) return "Relics require wonder_vnext";
+    std::set<std::string> relicIds;
+    for (const auto &relic : relics)
+    {
+        if (relic.id.empty() || !relicIds.insert(relic.id).second || relic.compatibleMechanics.empty() ||
+            relic.magnitudeBp < 5000 || relic.magnitudeBp > 15000 || std::abs(relic.rangeDelta) > 2 ||
+            std::abs(relic.radiusDelta) > 2 || relic.durationBp < 5000 || relic.durationBp > 20000 ||
+            relic.castBp < 5000 || relic.castBp > 20000 || relic.cooldownBp < 5000 || relic.cooldownBp > 20000)
+            return "Invalid relic definition";
+        for (auto mechanic : relic.compatibleMechanics)
+            if (mechanic <= AbilityMechanic::Standard || mechanic > AbilityMechanic::TidalPush)
+                return "Unsupported relic compatibility";
+    }
+    if (vnext && r.maximumRelics != 3) return "VNext requires three relic slots";
+    int previousRelicRound = 0;
+    for (int round : r.relicRounds)
+    {
+        if (round <= previousRelicRound || round > r.maxRounds || relics.size() < 3)
+            return "Invalid relic draft rounds";
+        previousRelicRound = round;
+    }
     std::set<int> waveRounds;
     std::set<std::string> waveIds;
     for (const auto &wave : waves)
@@ -257,10 +389,10 @@ std::string Catalog::Validate() const
         if (it == r.shopWeights.end())
             return "Missing shop weights";
         int sum = 0;
-        for (int tier = 0; tier < 3; ++tier)
+        for (int tier = 0; tier < 5; ++tier)
         {
             int w = it->second[tier];
-            if (w < 0)
+            if (w < 0 || (!vnext && tier >= 3 && w != 0))
                 return "Negative shop weight";
             sum += w;
             if (w > 0 && std::none_of(units.begin(), units.end(),
@@ -309,6 +441,11 @@ Combat::Combat(const Catalog &c, const std::vector<OwnedUnit> &a, const std::vec
                 u.side = side;
                 u.star = o.star;
                 u.cell = EncounterCell(o.cell, side, c.rules);
+                if (o.facing < Facing::Forward || o.facing > Facing::Left)
+                    throw std::invalid_argument("Invalid preparation orientation");
+                u.facing = Facing((int(o.facing) + side * 2) % 4);
+                u.relic = o.relic;
+                u.ability = EffectiveAbility(c, d, o.relic);
                 u.armor = d.armor;
                 u.resistance = d.resistance;
                 int healthBonus = 0;
@@ -337,7 +474,7 @@ Combat::Combat(const Catalog &c, const std::vector<OwnedUnit> &a, const std::vec
                     }
                 u.health = u.maxHealth = StarValue(HalfUp(d.health * o.hpScaleBp, 10000), o.star, healthBonus, c.rules);
                 u.basicDamage = StarValue(HalfUp(d.attackDamage * o.damageScaleBp, 10000), o.star, 0, c.rules);
-                u.cooldownTick = Ticks(d.ability.firstCastMs, c.rules);
+                u.cooldownTick = Ticks(u.ability.firstCastMs, c.rules);
                 units_.push_back(u);
             }
     }
@@ -572,9 +709,10 @@ bool Combat::DashLanding(int source, const AbilityDef &a, int &target, Cell &cel
 bool Combat::CommitAbility(int source)
 {
     auto &s = units_[source];
-    const auto &a = catalog_->Definition(s.definition, s.neutral).ability;
+    const auto &a = s.ability;
     if (!a.enabled || tick_ < s.cooldownTick)
         return false;
+    if (a.mechanic != AbilityMechanic::Standard) return CommitMechanic(source, a);
     if ((a.effects.empty() ? a.effect : a.effects.front().effect) == Effect::Dash)
     {
         int target;
@@ -593,6 +731,186 @@ bool Combat::CommitAbility(int source)
     s.cooldownTick = tick_ + Ticks(a.cooldownMs, catalog_->rules);
     return true;
 }
+bool Combat::ChargeLanding(int source, const AbilityDef &a, int target, Cell &landing) const
+{
+    const auto &s = units_[source];
+    if (target < 0 || !Alive(units_[target]) || Distance(s.cell, units_[target].cell) > a.range)
+        return false;
+    const auto path = LineCells(s.cell, units_[target].cell);
+    if (path.empty() || int(path.size()) - 1 > a.maxDash) return false;
+    if (path.size() == 1)
+    {
+        landing = s.cell;
+        return s.momentumSteps > 0;
+    }
+    Cell previous = s.cell;
+    for (std::size_t i = 0; i + 1 < path.size(); ++i)
+    {
+        const auto cell = path[i];
+        if (!Free(cell, source)) return false;
+        if (cell.column != previous.column && cell.row != previous.row &&
+            (!Free({cell.column, previous.row}, source) || !Free({previous.column, cell.row}, source)))
+            return false;
+        previous = cell;
+    }
+    landing = previous;
+    return true;
+}
+bool Combat::CommitMechanic(int source, const AbilityDef &a)
+{
+    auto &s = units_[source];
+    if (a.mechanic == AbilityMechanic::DirectionalGuard) return false;
+    if (a.mechanic == AbilityMechanic::MomentumCharge)
+    {
+        Cell landing;
+        if (!ChargeLanding(source, a, s.target, landing)) return false;
+        if (!(landing == s.cell)) s.destination = landing;
+        s.abilityAim = units_[s.target].cell;
+    }
+    else if (a.mechanic == AbilityMechanic::StationaryGrove)
+    {
+        if (tick_ - s.lastMovementTick < Ticks(a.stationaryMs, catalog_->rules)) return false;
+        bool injured = false;
+        for (const auto &u : units_)
+            if (Alive(u) && u.side == s.side && (u.id != s.id || a.allowSelf) &&
+                u.health < u.maxHealth && Distance(u.cell, s.cell) <= a.radius) injured = true;
+        if (!injured) return false;
+        s.abilityAim = s.cell;
+    }
+    else if (a.mechanic == AbilityMechanic::TidalPush)
+    {
+        const Cell step = FacingStep(s.facing);
+        bool target = false;
+        for (const auto &u : units_)
+        {
+            const int x = u.cell.column - s.cell.column, y = u.cell.row - s.cell.row;
+            const int distance = x * step.column + y * step.row;
+            if (Alive(u) && u.side != s.side && distance > 0 && distance <= a.range &&
+                x * step.row - y * step.column == 0) target = true;
+        }
+        if (!target) return false;
+        s.abilityAim = {std::clamp(s.cell.column + step.column * a.range, 0, catalog_->rules.columns - 1),
+                       std::clamp(s.cell.row + step.row * a.range, 0, catalog_->rules.rows - 1)};
+    }
+    else
+    {
+        int target = -1;
+        for (int i = 0; i < int(units_.size()); ++i)
+        {
+            const auto &u = units_[i];
+            if (!Alive(u) || u.side == s.side || Distance(s.cell, u.cell) > a.range) continue;
+            if (target < 0 || std::make_tuple(a.mechanic == AbilityMechanic::ScreenedStrike ?
+                    -Distance(s.cell, u.cell) : Distance(s.cell, u.cell), u.initiative, u.id) <
+                std::make_tuple(a.mechanic == AbilityMechanic::ScreenedStrike ?
+                    -Distance(s.cell, units_[target].cell) : Distance(s.cell, units_[target].cell),
+                    units_[target].initiative, units_[target].id)) target = i;
+        }
+        if (target < 0) return false;
+        s.target = target;
+        s.abilityAim = units_[target].cell;
+    }
+    s.actionId = nextAction_++;
+    s.state = ActionState::CastWindup;
+    s.releaseTick = tick_ + Ticks(a.castMs, catalog_->rules);
+    s.recoveryTick = s.releaseTick + Ticks(a.recoveryMs, catalog_->rules);
+    s.cooldownTick = tick_ + Ticks(a.cooldownMs, catalog_->rules);
+    return true;
+}
+void Combat::MoveUnit(int unit, Cell cell, AbilityMechanic mechanic, Id action, int source)
+{
+    auto &u = units_[unit];
+    if (u.cell == cell) return;
+    CombatEvent event;
+    event.tick = tick_; event.source = units_[source].id; event.target = u.id;
+    event.action = action; event.effect = Effect::Dash; event.mechanic = mechanic;
+    event.origin = u.cell; event.cell = cell;
+    u.cell = cell;
+    u.lastMovementTick = tick_;
+    ++u.positionEpoch;
+    if (u.ability.mechanic == AbilityMechanic::MomentumCharge && mechanic == AbilityMechanic::Standard)
+        u.momentumSteps = std::min(u.ability.maxMomentumSteps, u.momentumSteps + 1);
+    if (catalog_->profileId == "wonder_vnext") events_.push_back(event);
+}
+std::vector<int> Combat::PacketTargets(const Packet &packet) const
+{
+    std::vector<int> targets;
+    const auto &source = units_[packet.source];
+    if (packet.tethered && (!Alive(source) || source.state == ActionState::Stunned ||
+        source.positionEpoch != packet.positionEpoch || !(source.cell == packet.origin))) return targets;
+    for (int i = 0; i < int(units_.size()); ++i)
+    {
+        const auto &u = units_[i];
+        if (!Alive(u) || (packet.allied ? u.side != source.side : u.side == source.side) ||
+            (packet.allied && i == packet.source && !packet.allowSelf)) continue;
+        const bool within = packet.cells.empty() ? Distance(u.cell, packet.center) <= packet.radius :
+            std::find(packet.cells.begin(), packet.cells.end(), u.cell) != packet.cells.end();
+        if (within && (packet.effect != Effect::Heal || u.health < u.maxHealth)) targets.push_back(i);
+    }
+    std::sort(targets.begin(), targets.end(), [&](int x, int y) {
+        if (packet.mechanic == AbilityMechanic::ScreenedStrike || packet.mechanic == AbilityMechanic::TidalPush)
+            return std::make_tuple(Distance(packet.origin, units_[x].cell), units_[x].initiative) <
+                   std::make_tuple(Distance(packet.origin, units_[y].cell), units_[y].initiative);
+        return units_[x].initiative < units_[y].initiative;
+    });
+    if (int(targets.size()) > packet.maxTargets) targets.resize(packet.maxTargets);
+    return targets;
+}
+void Combat::ReleaseMechanic(int source, const AbilityDef &a)
+{
+    auto &s = units_[source];
+    const auto &rules = catalog_->rules;
+    s.state = ActionState::CastRecovery;
+    Packet packet;
+    packet.source = source; packet.action = s.actionId; packet.releasedAt = tick_;
+    packet.due = tick_ + Ticks(a.travelMs, rules); packet.origin = s.cell;
+    packet.center = s.abilityAim; packet.key = a.id; packet.mechanic = a.mechanic;
+    packet.damageType = a.damageType; packet.effect = a.effect;
+    packet.magnitude = a.magnitude[s.star - 1]; packet.radius = a.radius;
+    packet.bonus = s.abilityBonus + s.allBonus; packet.maxTargets = a.maxTargets;
+    packet.duration = Ticks(a.durationMs, rules);
+    if (a.mechanic == AbilityMechanic::MomentumCharge)
+    {
+        Cell landing;
+        if (!ChargeLanding(source, a, s.target, landing) || !(units_[s.target].cell == s.abilityAim))
+        { CancelReservation(source); return; }
+        const int steps = std::min(a.maxMomentumSteps, s.momentumSteps + Distance(s.cell, landing));
+        packet.bonus += steps * a.momentumPerStepBp;
+        MoveUnit(source, landing, a.mechanic, s.actionId, source);
+        CancelReservation(source);
+        s.momentumSteps = 0;
+        packet.target = s.target;
+        packets_.push_back(packet);
+    }
+    else if (a.mechanic == AbilityMechanic::StationaryGrove)
+    {
+        if (!(s.cell == s.abilityAim)) return;
+        packet.area = packet.allied = packet.tethered = true;
+        packet.allowSelf = a.allowSelf; packet.positionEpoch = s.positionEpoch;
+        packet.magnitude = HalfUp(packet.magnitude * (10000 + s.supportBonus), 10000);
+        for (int elapsed = 0; elapsed < Ticks(a.durationMs, rules); elapsed += Ticks(a.pulseMs, rules))
+        {
+            packet.due = tick_ + elapsed;
+            packets_.push_back(packet);
+        }
+    }
+    else if (a.mechanic == AbilityMechanic::CrossingBeams)
+    {
+        packet.area = true;
+        packet.cells = BeamCells(s.abilityAim, a.radius, false, rules);
+        packets_.push_back(packet);
+        packet.cells = BeamCells(s.abilityAim, a.radius, true, rules);
+        packet.due += Ticks(a.secondaryDelayMs, rules);
+        packets_.push_back(packet);
+    }
+    else if (a.mechanic == AbilityMechanic::ScreenedStrike || a.mechanic == AbilityMechanic::TidalPush)
+    {
+        packet.area = true;
+        packet.cells = LineCells(s.cell, s.abilityAim);
+        if (a.mechanic == AbilityMechanic::ScreenedStrike) packet.maxTargets = 1;
+        else packet.displacementCells = a.displacementCells;
+        packets_.push_back(packet);
+    }
+}
 std::vector<VisualAction> Combat::VisualActions() const
 {
     std::vector<VisualAction> result;
@@ -602,10 +920,11 @@ std::vector<VisualAction> Combat::VisualActions() const
         v.source = source.id; v.action = source.actionId;
         v.definition = source.definition; v.neutral = source.neutral; v.basicAttack = basic;
         v.origin = v.center = source.cell; v.releaseTick = source.releaseTick;
-        v.impactTick = v.releaseTick + Ticks(basic ? definition.projectileTravelMs : definition.ability.travelMs, catalog_->rules);
-        v.radius = basic ? 0 : definition.ability.radius;
-        v.effect = basic ? Effect::Damage : (definition.ability.effects.empty() ? definition.ability.effect : definition.ability.effects.front().effect);
-        v.damageType = basic ? definition.damageType : (definition.ability.effects.empty() ? definition.ability.damageType : definition.ability.effects.front().damageType);
+        v.impactTick = v.releaseTick + Ticks(basic ? definition.projectileTravelMs : source.ability.travelMs, catalog_->rules);
+        v.radius = basic ? 0 : source.ability.radius;
+        v.effect = basic ? Effect::Damage : (source.ability.effects.empty() ? source.ability.effect : source.ability.effects.front().effect);
+        v.damageType = basic ? definition.damageType : (source.ability.effects.empty() ? source.ability.damageType : source.ability.effects.front().damageType);
+        v.mechanic = basic ? AbilityMechanic::Standard : source.ability.mechanic;
         return v;
     };
     auto areaRecipients = [&](VisualAction& visual, int side, int maximum) {
@@ -621,7 +940,11 @@ std::vector<VisualAction> Combat::VisualActions() const
     {
         if (packet.effectOrder != 0 || packet.due <= tick_) continue;
         const auto& source = units_[packet.source];
-        auto found = std::find_if(result.begin(), result.end(), [&](const VisualAction& v) { return v.source == source.id && v.action == packet.action; });
+        if (packet.tethered && (!Alive(source) || source.positionEpoch != packet.positionEpoch)) continue;
+        auto found = std::find_if(result.begin(), result.end(), [&](const VisualAction& v) {
+            return v.source == source.id && v.action == packet.action &&
+                (packet.mechanic == AbilityMechanic::StationaryGrove || v.impactTick == packet.due);
+        });
         if (found == result.end())
         {
             auto visual = describe(source, packet.basicAttack);
@@ -630,7 +953,9 @@ std::vector<VisualAction> Combat::VisualActions() const
             visual.releaseTick = packet.releasedAt; visual.impactTick = packet.due;
             visual.released = true; visual.provisional = false;
             visual.fixedArea = packet.area; visual.recipientsProvisional = packet.area;
-            if (packet.area) areaRecipients(visual, source.side, packet.maxTargets);
+            visual.cells = packet.cells;
+            if (packet.area)
+                for (int target : PacketTargets(packet)) visual.recipients.push_back(units_[target].id);
             result.push_back(visual); found = result.end() - 1;
         }
         if (packet.target >= 0)
@@ -647,7 +972,48 @@ std::vector<VisualAction> Combat::VisualActions() const
         if (!Alive(source) || (source.state != ActionState::AttackWindup && source.state != ActionState::CastWindup)) continue;
         const bool basic = source.state == ActionState::AttackWindup;
         auto visual = describe(source, basic);
-        const auto& ability = catalog_->Definition(source.definition, source.neutral).ability;
+        const auto& ability = source.ability;
+        if (!basic && ability.mechanic != AbilityMechanic::Standard)
+        {
+            Packet packet;
+            packet.source = i; packet.origin = source.cell; packet.center = source.abilityAim;
+            packet.mechanic = ability.mechanic; packet.radius = ability.radius;
+            packet.maxTargets = ability.maxTargets; packet.effect = ability.effect;
+            visual.center = source.abilityAim;
+            visual.fixedArea = true;
+            if (ability.mechanic == AbilityMechanic::MomentumCharge)
+            {
+                visual.center = source.destination.column >= 0 ? source.destination : source.cell;
+                visual.cells = LineCells(source.cell, visual.center);
+                if (source.target >= 0 && Alive(units_[source.target]))
+                { visual.target = units_[source.target].id; visual.recipients.push_back(visual.target); }
+            }
+            else
+            {
+                if (ability.mechanic == AbilityMechanic::StationaryGrove)
+                { packet.allied = true; packet.allowSelf = ability.allowSelf; }
+                else if (ability.mechanic == AbilityMechanic::CrossingBeams)
+                    packet.cells = BeamCells(source.abilityAim, ability.radius, false, catalog_->rules);
+                else
+                {
+                    packet.cells = LineCells(source.cell, source.abilityAim);
+                    if (ability.mechanic == AbilityMechanic::ScreenedStrike) packet.maxTargets = 1;
+                }
+                visual.cells = packet.cells;
+                for (int target : PacketTargets(packet)) visual.recipients.push_back(units_[target].id);
+                if (ability.mechanic == AbilityMechanic::CrossingBeams)
+                {
+                    result.push_back(visual);
+                    visual.impactTick += Ticks(ability.secondaryDelayMs, catalog_->rules);
+                    packet.cells = BeamCells(source.abilityAim, ability.radius, true, catalog_->rules);
+                    visual.cells = packet.cells;
+                    visual.recipients.clear();
+                    for (int target : PacketTargets(packet)) visual.recipients.push_back(units_[target].id);
+                }
+            }
+            result.push_back(visual);
+            continue;
+        }
         if (basic || visual.effect == Effect::Dash)
         {
             if (source.target >= 0 && Alive(units_[source.target]))
@@ -682,7 +1048,7 @@ void Combat::Release(int source)
     p.due = tick_;
     p.releasedAt = tick_;
     p.origin = p.center = s.cell;
-    p.key = d.ability.id;
+    p.key = s.ability.id;
     if (s.state == ActionState::AttackWindup)
     {
         s.state = ActionState::AttackRecovery;
@@ -698,13 +1064,14 @@ void Combat::Release(int source)
         packets_.push_back(p);
         return;
     }
-    const auto &a = d.ability;
+    const auto &a = s.ability;
+    if (a.mechanic != AbilityMechanic::Standard) { ReleaseMechanic(source, a); return; }
     s.state = ActionState::CastRecovery;
     if ((a.effects.empty() ? a.effect : a.effects.front().effect) == Effect::Dash)
     {
         if (s.target >= 0 && Alive(units_[s.target]) && Free(s.destination, source))
         {
-            s.cell = s.destination;
+            MoveUnit(source, s.destination, AbilityMechanic::Standard, s.actionId, source);
             CombatEvent event;
             event.tick = tick_;
             event.source = event.target = s.id;
@@ -769,10 +1136,46 @@ void Combat::Apply(const Packet &p, int target)
     e.radius = p.radius;
     e.requested = p.magnitude;
     e.cell = p.radius > 0 ? p.center : t.cell;
+    e.origin = p.origin;
+    e.mechanic = p.mechanic;
     switch (p.effect)
     {
     case Effect::Damage: {
         e.resolved = ResolveDamage(p.magnitude, p.damageType, t.armor, t.resistance, p.bonus);
+        int guard = -1;
+        for (int i = 0; i < int(units_.size()); ++i)
+        {
+            const auto &g = units_[i];
+            const auto &a = g.ability;
+            if (!Alive(g) || g.state == ActionState::Stunned || g.side != t.side || i == target ||
+                a.mechanic != AbilityMechanic::DirectionalGuard || !a.enabled) continue;
+            const Cell step = FacingStep(g.facing);
+            auto sector = [&](Cell cell, bool behind) {
+                const int x = cell.column - g.cell.column, y = cell.row - g.cell.row;
+                const int dot = (x * step.column + y * step.row) * (behind ? -1 : 1);
+                return dot > 0 && std::abs(x * step.row - y * step.column) <= dot;
+            };
+            if (!sector(p.origin, false) || !sector(t.cell, true) || Distance(g.cell, t.cell) > a.radius) continue;
+            int recipient = -1;
+            for (int ally = 0; ally < int(units_.size()); ++ally)
+            {
+                const auto &u = units_[ally];
+                if (!Alive(u) || u.side != g.side || ally == i || !sector(u.cell, true) ||
+                    Distance(g.cell, u.cell) > a.radius) continue;
+                if (recipient < 0 || std::make_tuple(Distance(g.cell, u.cell), u.initiative) <
+                    std::make_tuple(Distance(g.cell, units_[recipient].cell), units_[recipient].initiative)) recipient = ally;
+            }
+            if (recipient != target) continue;
+            if (guard < 0 || std::make_tuple(-a.guardReductionBp, g.initiative) <
+                std::make_tuple(-units_[guard].ability.guardReductionBp, units_[guard].initiative)) guard = i;
+        }
+        if (guard >= 0)
+        {
+            const Int remaining = HalfUp(e.resolved * (10000 - units_[guard].ability.guardReductionBp), 10000);
+            e.prevented = e.resolved - remaining;
+            e.resolved = remaining;
+            e.guardedBy = units_[guard].id;
+        }
         e.absorbed = std::min(t.shield, e.resolved);
         e.absorbedFrom = e.absorbed ? t.shieldSource : 0;
         t.shield -= e.absorbed;
@@ -808,6 +1211,8 @@ void Combat::Apply(const Packet &p, int target)
             t.stunExpiry = std::max(t.stunExpiry, tick_ + p.duration);
             t.state = ActionState::Stunned;
             CancelReservation(target);
+            ++t.positionEpoch;
+            t.lastMovementTick = tick_;
             e.resolved = p.duration * catalog_->rules.tickMs;
         }
         break;
@@ -839,6 +1244,26 @@ void Combat::Apply(const Packet &p, int target)
         break;
     }
     events_.push_back(e);
+    if (p.displacementCells > 0 && Alive(t))
+    {
+        const Cell direction{(p.center.column > p.origin.column) - (p.center.column < p.origin.column),
+                             (p.center.row > p.origin.row) - (p.center.row < p.origin.row)};
+        Cell destination = t.cell;
+        for (int step = 0; step < p.displacementCells; ++step)
+        {
+            Cell next{destination.column + direction.column, destination.row + direction.row};
+            if (!Free(next, target)) break;
+            destination = next;
+        }
+        if (!(destination == t.cell))
+        {
+            CancelReservation(target);
+            MoveUnit(target, destination, p.mechanic, p.action, p.source);
+            if (t.state == ActionState::Moving) t.state = ActionState::Idle;
+            else if (t.state == ActionState::AttackWindup) t.state = ActionState::AttackRecovery;
+            else if (t.state == ActionState::CastWindup) t.state = ActionState::CastRecovery;
+        }
+    }
 }
 void Combat::Assess(bool timeout)
 {
@@ -877,12 +1302,7 @@ void Combat::Assess(bool timeout)
             {
                 if (p.area)
                 {
-                    for (const auto &u : units_)
-                        if (Alive(u) && u.side == livingSide && Distance(u.cell, p.center) <= p.radius)
-                        {
-                            draining_ = true;
-                            return;
-                        }
+                    if (!PacketTargets(p).empty()) { draining_ = true; return; }
                 }
                 else if (p.target >= 0 && Alive(units_[p.target]))
                 {
@@ -923,7 +1343,7 @@ void Combat::Tick()
             if (Alive(u) && u.state == ActionState::Moving && u.movementTick <= tick_)
             {
                 if (Free(u.destination, i))
-                    u.cell = u.destination;
+                    MoveUnit(i, u.destination, AbilityMechanic::Standard, 0, i);
                 CancelReservation(i);
                 u.state = ActionState::Idle;
             }
@@ -952,11 +1372,13 @@ void Combat::Tick()
         }
         if (p.area)
         {
-            int applied = 0;
-            for (int i : order)
-                if (Alive(units_[i]) && units_[i].side != units_[p.source].side &&
-                    Distance(units_[i].cell, p.center) <= p.radius && applied < p.maxTargets)
-                { Apply(p, i); ++applied; }
+            const auto targets = PacketTargets(p);
+            for (std::size_t index = 0; index < targets.size(); ++index)
+            {
+                Packet impact = p;
+                if (index > 0) impact.displacementCells = 0;
+                Apply(impact, targets[index]);
+            }
         }
         else if (p.target >= 0)
             Apply(p, p.target);

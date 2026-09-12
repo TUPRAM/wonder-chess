@@ -1,0 +1,64 @@
+{
+  "status": "candidate_unmeasured",
+  "source_forward": "+Y",
+  "height_m": 1.82,
+  "center": [
+    0,
+    0,
+    0.91
+  ],
+  "ortho_scale": 2.25,
+  "resolution": [
+    1024,
+    1024
+  ],
+  "engine": "CYCLES",
+  "samples": 32,
+  "views": [
+    {
+      "id": "front",
+      "location": [
+        0,
+        5,
+        0.91
+      ]
+    },
+    {
+      "id": "right_side",
+      "location": [
+        -5,
+        0,
+        0.91
+      ]
+    },
+    {
+      "id": "back",
+      "location": [
+        0,
+        -5,
+        0.91
+      ]
+    },
+    {
+      "id": "left_side",
+      "location": [
+        5,
+        0,
+        0.91
+      ]
+    },
+    {
+      "id": "three_quarter",
+      "location": [
+        3,
+        5,
+        2.4
+      ]
+    }
+  ],
+  "notes": [
+    "Calibrate cameras against actual coordinates and pose.",
+    "Front assumes the inherited +Y source convention; do not rename left/right without checking.",
+    "Use dedicated closeup camera configs for hands and face; do not repeatedly zoom the whole-body image."
+  ]
+}

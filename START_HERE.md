@@ -1,10 +1,18 @@
 # Wonder Chess — Codex Production Kit v3
 
+## Active development: Wonder Chess successor
+
+On 2026-09-10 the user adopted the new gameplay, roster, and production blueprint. Start with [the successor contract](docs/vnext/README.md) and `reports/implementation_state.json`. Its `wonder_vnext` profile is developed beside the preserved `alpha_24` game. The existing 24 heroes and their packages remain a historical baseline; they are not the new roster. The initial six-hero gameplay laboratory uses explicitly unapproved development proxies. Local implementation never substitutes for human art or playtest acceptance.
+
+The instructions below describe the retained v3/24-hero project and its evidence.
+
 **First deliverable: a presentable, packaged Windows auto-battler with one human and seven persistent bots.**
 
 This repository contains the original kit and subsequent authored assets, Unreal source and a packaged twelve-hero candidate. Read `reports/UPDATE24_CHECKPOINT_HANDOFF.md` and `reports/implementation_state.json` for the current 24-hero checkpoint and open gates. `reports/RELEASE_HANDOFF.md` retains the historical twelve-hero handoff. The user adopted the 24-hero update on 2026-09-06; its implementation package is `docs/updates/2026-09-auto-chess-inspired/README.md`. Historical kit-only statements do not erase real progress.
 
 ## Use this package
+
+For the focused Ada AQ1 art experiment requested on 2026-09-08, resume [the executed candidate handoff](docs/art-quality/AQ1/RUN_HANDOFF.md) and `reports/AQ1/20260908/review.json`. It preserves the production Ada and 24-hero runtime. The supplied reference direction is selected; the resulting 3D candidate, its budget exception and any bulk art rollout still require Pram's approval.
 
 1. Resume this existing Wonder Chess workspace and `game/WonderChess.uproject`. Preserve source, imported art and prior evidence; do not extract a replacement checkout or access VEILMARK.
 2. Open that directory in a Codex environment that can actually execute the locally installed Blender, Unreal Editor and Windows C++ build tools. A remote Linux environment without those tools can validate data, but cannot certify the Windows game or its imported art.

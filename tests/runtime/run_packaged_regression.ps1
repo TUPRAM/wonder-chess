@@ -1,12 +1,16 @@
 param([Parameter(Mandatory=$true)][string]$ProvenancePath,
       [Parameter(Mandatory=$true)][string]$EvidenceName,
       [string]$OutputDirectory,
+      [ValidateSet('', 'alpha_24', 'wonder_vnext')][string]$ProfileName = '',
       [ValidateRange(30,3600)][int]$TimeoutSeconds=900)
 $ErrorActionPreference = 'Stop'
 . (Join-Path $PSScriptRoot 'packaged_payload.ps1')
 $taskRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../..'))
 $manifestPath = [IO.Path]::GetFullPath($ProvenancePath)
 $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
+if (-not $ProfileName) { $ProfileName = if ($manifest.profile_id) { $manifest.profile_id } else { 'alpha_24' } }
+if ($ProfileName -notin @('alpha_24', 'wonder_vnext')) { throw 'Unsupported package profile.' }
+if ($ProfileName -and $manifest.profile_id -and $ProfileName -ne $manifest.profile_id) { throw 'Requested profile differs from package provenance.' }
 if ($manifest.package_report.exit_code -ne 0 -or -not $manifest.input_files_stable_during_capture) { throw 'Successful packaging and stable immutable provenance are required' }
 if ($EvidenceName -notmatch '^[a-z0-9-]+$') { throw 'Evidence name must be a simple report directory name' }
 $directory = if ($OutputDirectory) { [IO.Path]::GetFullPath($OutputDirectory) } else { Join-Path $taskRoot ('reports/WC-360/' + $EvidenceName) }
@@ -19,6 +23,7 @@ if (-not $recorded -or $hash -ne $recorded.sha256) { throw 'Packaged executable 
 $payloadVerification = Test-WCPackagedPayload -Manifest $manifest -PackageRoot $manifest.package_root
 New-Item -ItemType Directory -Path $directory | Out-Null
 $arguments = @('WonderChess', '-nullrhi', '-nosound', '-WCRegression=100', ('-WCEvidenceDir="' + $directory + '"'))
+$arguments += "-WCProfileName=$ProfileName"
 $started = [DateTime]::UtcNow.ToString('o')
 $process = Start-Process -FilePath $executable -WorkingDirectory $manifest.package_root -WindowStyle Hidden -PassThru -ArgumentList $arguments
 $null = $process.Handle

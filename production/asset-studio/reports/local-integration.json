@@ -1,0 +1,170 @@
+{
+  "integration_id": "AS1-local-20260908",
+  "recorded_utc": "2026-09-08T03:50:47.994126+00:00",
+  "source_archive": "C:\\Users\\iputu\\Downloads\\Wonder_Chess_Asset_Studio_AS1.zip",
+  "source_archive_sha256": "6dd0f7752330ecf6155696ab01c939ef77ef9ff4b10e72d7da0e6c42442a61cf",
+  "archive_file_count": 113,
+  "archive_crc": "passed",
+  "source_manifest_file_count": 112,
+  "source_manifest_verification": "all file sizes and SHA256 hashes passed before extraction",
+  "path_safety": "single root, no traversal, drive names, duplicate/case-fold entries, symlinks, reparse ancestors or destination collisions",
+  "package_root": "C:\\Users\\iputu\\Documents\\Wonder Chess\\production\\asset-studio",
+  "installed_skill_count": 22,
+  "installed_skills": [
+    "wca-audio",
+    "wca-blockout",
+    "wca-brief",
+    "wca-concept",
+    "wca-costume",
+    "wca-environment",
+    "wca-hard-surface",
+    "wca-material",
+    "wca-motion",
+    "wca-optimize",
+    "wca-orchestrate",
+    "wca-organic",
+    "wca-reference",
+    "wca-release",
+    "wca-retopo",
+    "wca-review",
+    "wca-rig",
+    "wca-skin",
+    "wca-ui",
+    "wca-unreal",
+    "wca-uv-bake",
+    "wca-vfx"
+  ],
+  "skill_installation": "copied identical bytes; fresh interface discovery not yet verified",
+  "original_package_modifications": [
+    {
+      "path": "docs/07_TOOLS_AND_COMMANDS.md",
+      "source_sha256": "f99aab4299b693d8c6006a3a2049152487da1eaf9b79c2db5379f462e4092e01",
+      "local_sha256": "85d2d922443a7b7dcc96549644745bf060a623ca2a765832675b78f397e2f066"
+    },
+    {
+      "path": "schemas/review_report.schema.json",
+      "source_sha256": "4cd23992725bf1f7b803a03de7f59e4678d957aa211f29d46eb44e8cc699b995",
+      "local_sha256": "a06444788b456e8424999c4f09a9ec576929f5344aae4e75a1c8eab39137e151"
+    },
+    {
+      "path": "tests/test_studio.py",
+      "source_sha256": "dc7d23defafc087b80b052792866ae90105fb0b0da5ab666163e7dcbc9f01d45",
+      "local_sha256": "e299b5a3e6e1bcaa278cbac2e9758ac32f8b1707cba451c21d082e614645f5dd"
+    },
+    {
+      "path": "tools/asset_studio/assetctl.py",
+      "source_sha256": "e2ee3fdf31c0f3287e7a96b3d90f6ca73eeb0b557f658964a6a1d510e09d2abe",
+      "local_sha256": "921f50d690ab6c9f0390194ab92882c290c6e1b7782a382b14f0adae60a32245"
+    },
+    {
+      "path": "tools/asset_studio/run_blender.py",
+      "source_sha256": "b3399734715b302aecdcc4a33471c885265037d3c107c86f7b78b0b943873b66",
+      "local_sha256": "04aca90bdbd9b370dacbb534a714bfcb1572d96f035ea3815975365081eba46e"
+    }
+  ],
+  "agents_before_sha256": "ab78d79730ba0df32067553d81e214fe8fda88c55bb53b409a43257cfbac017e",
+  "agents_after_sha256": "fcfe559ad5f12689a1ea4b6c95d98e556790f9fc60f7544465b2364def077a01",
+  "wc_blender_skill_before_sha256": "66eead98d77e1ceb15697d5dd8cd7baea51e6c37b46be4fd4a10373ec8f95c64",
+  "wc_blender_skill_after_sha256": "5ddc95eb2c1dae00fccb1d7ee09168d35f4786db40230c5c0001214105eabf58",
+  "preexisting_git_status": " M START_HERE.md\n M game/Source/WonderChessRuntime/Private/WCAnimationReview.cpp\n M game/Source/WonderChessRuntime/Private/WCBoardPresenter.cpp\n M game/Source/WonderChessRuntime/Private/WCFrontEndScene.cpp\n M reports/blender-mcp/20260908T072720-blender.log\n M reports/implementation_state.json\n?? art-source/heroes/wc_u_human_guardian/candidates/\n?? docs/art-quality/\n?? game/Content/WonderChess/Candidates/\n?? reports/AQ1/\n?? reports/blender-mcp/20260908T004353Z/\n?? tools/blender/aq1_author_forms.py\n?? tools/blender/aq1_bake.py\n?? tools/blender/aq1_candidate_pass.py\n?? tools/blender/aq1_capture.py\n?? tools/blender/aq1_color_encoding_probe.py\n?? tools/blender/aq1_equipment.py\n?? tools/blender/aq1_export_candidate.py\n?? tools/blender/aq1_finish_forms.py\n?? tools/blender/aq1_live_snapshot.py\n?? tools/blender/aq1_motion_fit.py\n?? tools/blender/aq1_motion_review.py\n?? tools/blender/aq1_normal_probe.py\n?? tools/blender/aq1_orient_surfaces.py\n?? tools/blender/aq1_reencode_source.py\n?? tools/blender/aq1_refine_costume.py\n?? tools/blender/aq1_refine_forms.py\n?? tools/blender/aq1_refine_head.py\n?? tools/blender/aq1_runtime_geometry.py\n?? tools/qa/\n?? tools/unreal/aq1_import_candidate.py\n?? tools/unreal/aq1_launch_proof.ps1\n?? tools/unreal/aq1_normal_probe.py\n?? tools/unreal/aq1_test_import_preflight.py\n?? tools/unreal/aq1_unreal_proof.md\n",
+  "actual_checks": [
+    {
+      "command": "python -m unittest discover -s tests -v",
+      "cwd": "production/asset-studio",
+      "revision": "original archive",
+      "exit_code": 0,
+      "tests_run": 52,
+      "passed": 51,
+      "skipped": 1,
+      "skip_reason": "Windows symlink creation unavailable",
+      "elapsed_seconds": 30.883,
+      "log": "reports/local-integration-as1-original.txt"
+    },
+    {
+      "command": "python -m unittest discover -s tests -v",
+      "cwd": "production/asset-studio",
+      "revision": "local minor-waiver and isolated-runner corrections",
+      "exit_code": 0,
+      "tests_run": 53,
+      "passed": 52,
+      "skipped": 1,
+      "skip_reason": "Windows symlink creation unavailable",
+      "elapsed_seconds": 32.671,
+      "log": "reports/local-integration-as1-final.txt"
+    },
+    {
+      "command": "python tools/validate_kit.py",
+      "cwd": ".",
+      "exit_code": 0,
+      "checks_passed": 400,
+      "log": "reports/local-integration-root-validate-kit.txt"
+    },
+    {
+      "command": "python -m unittest discover -s tests -v",
+      "cwd": ".",
+      "exit_code": 0,
+      "tests_run": 147,
+      "passed": 147,
+      "elapsed_seconds": 2.52,
+      "log": "reports/local-integration-root-unit-tests.txt"
+    },
+    {
+      "command": "python tools/build_documents.py --check",
+      "cwd": ".",
+      "exit_code": 0,
+      "artifacts_matched": 28,
+      "log": "reports/local-integration-root-build-documents.txt"
+    },
+    {
+      "command": "python tools/compile_catalog.py --check",
+      "cwd": ".",
+      "exit_code": 0,
+      "artifacts_matched": 6,
+      "log": "reports/local-integration-root-compile-catalog.txt"
+    },
+    {
+      "command": "git diff --check -- AGENTS.md .agents/skills/wc-blender-asset/SKILL.md",
+      "cwd": ".",
+      "exit_code": 0,
+      "scope": "tracked integration instruction edits only"
+    }
+  ],
+  "inherited_claims": "reports/VALIDATION.md and reports/validation.json remain as supplied; not current local execution evidence",
+  "human_asset_approvals_created": 0,
+  "python": {
+    "executable": "C:\\Users\\iputu\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+    "version": "3.11.8 (tags/v3.11.8:db85d51, Feb  6 2024, 22:03:32) [MSC v.1937 64 bit (AMD64)]",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "Pillow": "12.2.0",
+    "jsonschema": "4.26.0"
+  },
+  "local_corrections": [
+    {
+      "change": "Require complete scoped minor defect exception",
+      "reason": "System contract requires reason, affected use, owner and later action; shipped helper accepted reason alone.",
+      "verification": "Valid fixture accepted; 16 malformed values rejected by helper and schema; critical/major defects remain blocked."
+    },
+    {
+      "change": "Start isolated Blender helpers with --factory-startup before explicit source",
+      "reason": "Original local helper smoke showed saved user add-ons including BlenderMCP registering during background helper execution. --disable-autoexec alone did not isolate preferences.",
+      "verification": "Command ordering regression passed. Five fresh Blender 5.1.1 fixture operations passed, source hashes unchanged and saved addon registration messages absent; tool lane inspected four final rendered captures."
+    }
+  ],
+  "completion_status": "package integration, standalone checks and isolated Blender fixture smoke complete; human Ada art gates remain separate",
+  "unchanged_manifest_listed_files": 107,
+  "source_manifest_sha256": "a9d3dad4f978952ec585516b13179640ece36198b7bdf0a7c983187cbf9a9580",
+  "installed_skill_files_verified": 44,
+  "last_updated_utc": "2026-09-08T03:57:49.732415+00:00",
+  "blender_fixture_verification": {
+    "report": "reports/AS1/tool-verification/final-execution-results.json",
+    "report_sha256": "2ad72985997e4a3ea0c0576674933692dec4034773e04e076544080bccae4df0",
+    "status": "PASS_local_fixture_only",
+    "operation_count": 5,
+    "all_exit_codes": 0,
+    "source_files_unchanged": true,
+    "saved_addon_messages_absent": true,
+    "actual_captures_reviewed_by": "tool_verification agent; see reports/AS1/tool-verification/VISUAL_REVIEW.md",
+    "unreal_executed": false,
+    "ada_art_approval": false
+  }
+}

@@ -1,0 +1,428 @@
+{
+  "schema": "BW3_local_delivery_v1",
+  "created_utc": "2026-09-09T09:39:35.239708+00:00",
+  "status": "ART_REVISE",
+  "human_approval_issued": false,
+  "scope": "Independent anatomical-right thumb approach/posture and retained wrist/arm carrying diagnostic; other digits OPEN. Not a closed grip.",
+  "source_zip_sha256": "2831209c3d6cfca3e296516d07f2227d160c1c38898b1274559064918ecb33ae",
+  "blender_version": "5.1.1",
+  "source_bw2_sha256": "d64d5900317541710d5ef29939d12559e5ecef31777a7e9261158cbccb7a41cf",
+  "execution": {
+    "method": "Staged thumb trajectory and proximal/distal flexion distribution",
+    "initial_constructions": 1,
+    "corrective_iterations": 2,
+    "stop_limit_reached": true,
+    "pose_action_edited": true,
+    "independent_mesh_rig_action_shape_keys_verified": true,
+    "rest_geometry_edited": false,
+    "topology_edited": false,
+    "weights_edited": false,
+    "subdivision_increased": false,
+    "fixture_changed": false,
+    "middle_ring_closure_executed": false,
+    "live_blender_mcp_edits": true,
+    "computer_use_playback_observed": true,
+    "interpolation": "LINEAR",
+    "fps": 24,
+    "normal_subdivision": 1,
+    "render_subdivision": 1
+  },
+  "fixture": {
+    "diameter_mm": 28,
+    "total_span_mm": 109,
+    "usable_span_mm": 105,
+    "contact_map": "BW2 original evaluated glove pad indices and anatomical intent retained; unchanged correspondence verified",
+    "band_mm": [
+      -0.5,
+      1.0
+    ],
+    "parent_chain": [
+      "wrist.R",
+      "BW3_FixedHandFrame_R",
+      "BW3_Locked_Handle_28mm"
+    ]
+  },
+  "numeric_summary": {
+    "status": "ART_REVISE",
+    "scope": "Thumb approach/carry only; other digits OPEN; no full grip or sword pass",
+    "source_sha256": "2dad0803a3e8bfd1974b3bf86dbf5377cd462807f02fb9e76f45463205ba2a1d",
+    "unique_surface_states": 604,
+    "integer_frames_per_surface": 145,
+    "matched_adaptive_frames": [
+      13.25,
+      13.5,
+      13.75,
+      18.25,
+      18.5,
+      18.75
+    ],
+    "intersurface_integer_frames": 145,
+    "source_saved": false,
+    "pose_or_weight_optimization": false,
+    "human_approval": false,
+    "surfaces": [
+      {
+        "object": "BW3_Derived_Glove",
+        "surface": "evaluated_level1",
+        "onsets": {
+          "any_self_crossing": {
+            "first_detected_frame": null,
+            "previous_sample_frame": null
+          },
+          "palm_thumb_crossing": {
+            "first_detected_frame": null,
+            "previous_sample_frame": null
+          },
+          "thumb_other_digit_crossing": {
+            "first_detected_frame": null,
+            "previous_sample_frame": null
+          },
+          "middle_ring_crossing": {
+            "first_detected_frame": null,
+            "previous_sample_frame": null
+          },
+          "handle_entry": {
+            "first_detected_frame": null,
+            "previous_sample_frame": null
+          },
+          "handle_deeper_than0_5mm": {
+            "first_detected_frame": null,
+            "previous_sample_frame": null
+          }
+        },
+        "maximum_self_crossing_pairs": 0,
+        "endpoint_self_crossings": {},
+        "any_handle_triangle_entry": false,
+        "minimum_vertex_sdf_mm": 0.4887713350740005
+      },
+      {
+        "object": "BW3_Derived_Glove",
+        "surface": "raw_posed_cage",
+        "onsets": {
+          "any_self_crossing": {
+            "first_detected_frame": null,
+            "previous_sample_frame": null
+          },
+          "palm_thumb_crossing": {
+            "first_detected_frame": null,
+            "previous_sample_frame": null
+          },
+          "thumb_other_digit_crossing": {
+            "first_detected_frame": null,
+            "previous_sample_frame": null
+          },
+          "middle_ring_crossing": {
+            "first_detected_frame": null,
+            "previous_sample_frame": null
+          },
+          "handle_entry": {
+            "first_detected_frame": null,
+            "previous_sample_frame": null
+          },
+          "handle_deeper_than0_5mm": {
+            "first_detected_frame": null,
+            "previous_sample_frame": null
+          }
+        },
+        "maximum_self_crossing_pairs": 0,
+        "endpoint_self_crossings": {},
+        "any_handle_triangle_entry": false,
+        "minimum_vertex_sdf_mm": 0.3764788897868462
+      },
+      {
+        "object": "BW3_Derived_Body",
+        "surface": "evaluated_level1",
+        "onsets": {
+          "any_self_crossing": {
+            "first_detected_frame": 19,
+            "previous_sample_frame": 18.75
+          },
+          "palm_thumb_crossing": {
+            "first_detected_frame": 19,
+            "previous_sample_frame": 18.75
+          },
+          "thumb_other_digit_crossing": {
+            "first_detected_frame": null,
+            "previous_sample_frame": null
+          },
+          "middle_ring_crossing": {
+            "first_detected_frame": null,
+            "previous_sample_frame": null
+          },
+          "handle_entry": {
+            "first_detected_frame": null,
+            "previous_sample_frame": null
+          },
+          "handle_deeper_than0_5mm": {
+            "first_detected_frame": null,
+            "previous_sample_frame": null
+          }
+        },
+        "maximum_self_crossing_pairs": 14,
+        "endpoint_self_crossings": {
+          "palm/thumb": 9,
+          "thumb/thumb": 4,
+          "palm/palm": 1
+        },
+        "any_handle_triangle_entry": false,
+        "minimum_vertex_sdf_mm": 1.4900323342311328
+      },
+      {
+        "object": "BW3_Derived_Body",
+        "surface": "raw_posed_cage",
+        "onsets": {
+          "any_self_crossing": {
+            "first_detected_frame": 13.75,
+            "previous_sample_frame": 13.5
+          },
+          "palm_thumb_crossing": {
+            "first_detected_frame": 13.75,
+            "previous_sample_frame": 13.5
+          },
+          "thumb_other_digit_crossing": {
+            "first_detected_frame": null,
+            "previous_sample_frame": null
+          },
+          "middle_ring_crossing": {
+            "first_detected_frame": null,
+            "previous_sample_frame": null
+          },
+          "handle_entry": {
+            "first_detected_frame": null,
+            "previous_sample_frame": null
+          },
+          "handle_deeper_than0_5mm": {
+            "first_detected_frame": null,
+            "previous_sample_frame": null
+          }
+        },
+        "maximum_self_crossing_pairs": 9,
+        "endpoint_self_crossings": {
+          "thumb/thumb": 9
+        },
+        "any_handle_triangle_entry": false,
+        "minimum_vertex_sdf_mm": 1.4497454801536291
+      }
+    ],
+    "held_thumb": {
+      "minimum_gap_mm": 27.591239408185455,
+      "maximum_gap_mm": 31.63490317240588,
+      "minimum_band_fraction": 0.0,
+      "maximum_band_fraction": 0.0,
+      "minimum_usable_axial_fraction": 1.0,
+      "mean_normal_dot_toward_fixture_range": [
+        -0.9117739122763948,
+        -0.9117660337189343
+      ]
+    },
+    "fixture_and_pose": {
+      "maximum_endpoint_drift_mm": 0.000488733127162469,
+      "maximum_center_drift_mm": 0.0004829677602840022,
+      "maximum_axis_drift_degrees": 1.5320420339170408e-05,
+      "maximum_other_digit_OPEN_error": 0.0,
+      "maximum_pose_scale_error": 0.0,
+      "constant_rig_world_scale": [
+        1.1438040733337402,
+        1.1438040733337402,
+        1.1438040733337402
+      ],
+      "topology_and_group_identity_checked": true
+    },
+    "glove_body_fit": {
+      "pair_count_range": [
+        131,
+        170
+      ],
+      "open_pairs": 137,
+      "endpoint_pairs": 163,
+      "endpoint_pairs_touching_boundary_vertices": 42,
+      "geometry_degeneracy": {
+        "glove": {
+          "maximum_nonfinite_vertices": 0,
+          "maximum_triangles_area_below_1e_14_m2": 0
+        },
+        "body": {
+          "maximum_nonfinite_vertices": 0,
+          "maximum_triangles_area_below_1e_14_m2": 0
+        }
+      },
+      "containment_certified": false,
+      "reference_zone_counts": {
+        "1": {
+          "wrist_band_Y_lt25mm": 125,
+          "palm_thenar_Y25to125mm": 0,
+          "distal_Y_ge125mm": 12
+        },
+        "25": {
+          "wrist_band_Y_lt25mm": 127,
+          "palm_thenar_Y25to125mm": 24,
+          "distal_Y_ge125mm": 12
+        },
+        "145": {
+          "wrist_band_Y_lt25mm": 127,
+          "palm_thenar_Y25to125mm": 24,
+          "distal_Y_ge125mm": 12
+        }
+      }
+    },
+    "source_sha256_after": "2dad0803a3e8bfd1974b3bf86dbf5377cd462807f02fb9e76f45463205ba2a1d"
+  },
+  "gate_results": {
+    "source_independence_and_preservation": "PASS",
+    "save_reopen_and_C_evidence_binding": "PASS",
+    "glove_sampled_self_and_handle_screen": "NO_DETECTED_CROSSING_IN_RECORDED_STATES",
+    "body_web": "FAIL",
+    "glove_body_fit": "FAIL",
+    "thumb_opposition_contact": "FAIL",
+    "complete_animated_grip": "FAIL_ART_REVISE",
+    "human_forms_approval": "NOT_ISSUED",
+    "real_sword_guard_pommel": "NOT_RUN",
+    "canonical_skeleton_changed": false,
+    "runtime_integration": "NOT_RUN",
+    "recipe_replay": "NOT_RUN",
+    "second_body_or_fixture_test": "NOT_RUN",
+    "recipes_promoted": 0,
+    "fixed_game_grip": "READ_ONLY_PROPOSAL_ASSESSED_NOT_ADOPTED"
+  },
+  "preservation": {
+    "bw2_files_checked": 498,
+    "earlier_protected_checks": 62,
+    "all_unchanged": true,
+    "retained_master_meshes": 69,
+    "retained_master_actions": 3,
+    "reopen_record": "records/reopen_and_preservation.json",
+    "binding": {
+      "all_core_data_equal": true,
+      "all10_pose_samples_equal": true,
+      "frames": [
+        1,
+        7,
+        15,
+        20,
+        25,
+        49,
+        85,
+        109,
+        121,
+        145
+      ]
+    }
+  },
+  "motion": {
+    "movie": "reviews/route_C_visual/BW3_C_thumb_approach_OTHER_FINGERS_OPEN_NOT_A_GRIP.mp4",
+    "sha256": "587e738750da2212fd1a3c87b3be18de9e4515017c68f5e1c457136054bd1df0",
+    "native_frames": 145,
+    "decoded_frames": 145,
+    "size": [
+      800,
+      800
+    ],
+    "fps": 24,
+    "root_visual_review": "All145 native frames in5 unskipped sheets;19,25,97 at native size; body/glove/cage/reversed diagnostics and final comparison inspected. Two live UI playback snapshots do not substitute for full recording review."
+  },
+  "tooling_tests": "Only the provided8 BW3 summarizer tests were run; pass record in reviews/preflight/provided8_tests.txt. No unrelated game suite or new toolkit.",
+  "limits": [
+    "604 sampled surface states do not certify continuous-time collision freedom.",
+    "Glove/body fit query covers integer frames only.",
+    "Open boundaries, tangency, coplanar overlap and containment are not certified.",
+    "Clear glove geometry does not approve body deformation or pad contact.",
+    "Fixed game option is source-inspected only and requires a separate decision; actual equipment differs from the fixture."
+  ],
+  "artifacts": [
+    {
+      "path": "ada_bw3_grip_work.blend",
+      "sha256": "cf15051c9d31885b1c6c4cd2d97de70716f87dbe0e4d3cc667f24a00413d664c",
+      "bytes": 7520816
+    },
+    {
+      "path": "ada_bw3_grip_checkpoint_r001_ART_REVISE.blend",
+      "sha256": "d195b2870e7974665efd3ae03dd3ac88dc5ba2b8a7dbfcc76accbf8b4de3ac60",
+      "bytes": 7520401
+    },
+    {
+      "path": "thumb_route_C_final_method_input.blend",
+      "sha256": "2dad0803a3e8bfd1974b3bf86dbf5377cd462807f02fb9e76f45463205ba2a1d",
+      "bytes": 7523290
+    },
+    {
+      "path": "REVIEW.md",
+      "sha256": "df7536c19512225afaa94c489b6ca4a03fe5cb17b71ca0449f2c1e68be2053b6",
+      "bytes": 11353
+    },
+    {
+      "path": "records/reopen_and_preservation.json",
+      "sha256": "3432884b66968409e8e64881f9d87ab0d036945dbb460057d29133297aabfe6f",
+      "bytes": 239654
+    },
+    {
+      "path": "reviews/route_C/SUMMARY.json",
+      "sha256": "07ed83b8d1e044669813cecc29fb6f1bf962b597892fa9348d10595099253547",
+      "bytes": 6733
+    },
+    {
+      "path": "reviews/route_C/route_C_results.json",
+      "sha256": "69f3714dc0370ac531787372eb93059075c06f4dcd860f36a203c3d693bc4c80",
+      "bytes": 1799542
+    },
+    {
+      "path": "reviews/route_C/glove_body_fit_results.json",
+      "sha256": "818d2401dc756f229329d4a1921ab1f1bc8cd6edee4aefe53386108d44d0c701",
+      "bytes": 646882
+    },
+    {
+      "path": "reviews/route_C/REVIEW.md",
+      "sha256": "139c75674cc8983191b64007f2f7a6a61887aec24d7f082e8a19942637c21c6c",
+      "bytes": 8109
+    },
+    {
+      "path": "reviews/route_C_visual/REVIEW.md",
+      "sha256": "ae4ade62c162f66e537c1bead5200747e00e8ca58296929adf6e9f8dc96b4667",
+      "bytes": 8486
+    },
+    {
+      "path": "reviews/route_C_visual/comparison_verified_BW2_thumb_vs_C_final_labels.png",
+      "sha256": "78c20e16618b848e81c5a0ac8717acb79055c6856de3f3049c55fdead333720d",
+      "bytes": 286949
+    },
+    {
+      "path": "reviews/route_C_visual/BW3_C_thumb_approach_OTHER_FINGERS_OPEN_NOT_A_GRIP.mp4",
+      "sha256": "587e738750da2212fd1a3c87b3be18de9e4515017c68f5e1c457136054bd1df0",
+      "bytes": 246851
+    },
+    {
+      "path": "reviews/route_C_visual/motion_metadata.json",
+      "sha256": "f6a73aad42b3c77458bdbf795ada2dc8e4a5ecd6c179f1942f95154cdb506dab",
+      "bytes": 133047
+    },
+    {
+      "path": "reviews/route_C_visual/video_verification.json",
+      "sha256": "d7bba25e728f9feaa93bd3e4117cbb3bf7bc272f754734dfb93278c8ad7f26c6",
+      "bytes": 47612
+    },
+    {
+      "path": "reviews/route_C_visual/stills_metadata.json",
+      "sha256": "babddfc122cab2e1592f0f0617ba853b1423c5a291acad56e19eb1c1af3d98d6",
+      "bytes": 13668
+    },
+    {
+      "path": "reviews/route_C_visual/visual_packet_manifest.json",
+      "sha256": "deb80e9428bbb7e4af3267775c20adb412a731e5cce60b361d292a142ffa452d",
+      "bytes": 7008
+    },
+    {
+      "path": "reviews/fixed_option/REVIEW.md",
+      "sha256": "6fe887e177e29082b63977009e7434fa9f86c36dec64c7dbf96f68130af609a8",
+      "bytes": 9245
+    },
+    {
+      "path": "reviews/fixed_option/actual_game_grip_source_audit.json",
+      "sha256": "0384d6770eff99330f48a25a41e899860c567a025a47b817aa38bfe96ff290e0",
+      "bytes": 218987
+    },
+    {
+      "path": "reviews/fixed_option/source_provenance.json",
+      "sha256": "0a1093732649f274eaed4d4e2772051f24b6d509f510be0db8a83ce6d2291c1a",
+      "bytes": 12204
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [ValidateSet('Play','Listen','Join','Regression')][string]$Mode='Play',
-    [string]$Executable=(Join-Path $PSScriptRoot '../../builds/WonderChess-Alpha-Candidate/Windows/WonderChess.exe'),
+    [string]$Executable=(Join-Path $PSScriptRoot '../../builds/WonderChess-Update24-Checkpoint-r4/Windows/WonderChess.exe'),
     [string]$HostAddress='127.0.0.1',
     [ValidateRange(1,65535)][int]$Port=7777,
     [ValidateRange(1,1000)][int]$Trials=100,

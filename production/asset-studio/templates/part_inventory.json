@@ -1,0 +1,88 @@
+{
+  "status": "draft",
+  "asset_id": "wc_u_human_guardian",
+  "parts": [
+    {
+      "id": "head_surface",
+      "parent": "body",
+      "type": "organic",
+      "symmetry": "bilateral_base_with_approved_expression",
+      "reference_ids": [
+        "head_primary"
+      ],
+      "treatment": "modeled_or_sculpted_geometry",
+      "runtime_policy": "skinned",
+      "risks": [
+        "lid/socket fit",
+        "jaw/profile likeness"
+      ]
+    },
+    {
+      "id": "hair_main",
+      "parent": "head_surface",
+      "type": "hair",
+      "symmetry": "asymmetric",
+      "reference_ids": [
+        "hair_front",
+        "hair_back"
+      ],
+      "treatment": "mesh_clumps",
+      "runtime_policy": "rigid_to_head_initial",
+      "risks": [
+        "collar clearance",
+        "identity drift"
+      ]
+    },
+    {
+      "id": "armor_pauldron_l",
+      "parent": "torso",
+      "type": "hard_surface",
+      "symmetry": "paired_not_blindly_identical",
+      "reference_ids": [
+        "shoulder_front",
+        "shoulder_side"
+      ],
+      "treatment": "layered_shell",
+      "runtime_policy": "weight_or_helper_bone_after_test",
+      "risks": [
+        "arm raise clearance"
+      ]
+    },
+    {
+      "id": "shield_shell",
+      "parent": "hand_l",
+      "type": "equipment",
+      "symmetry": "local_centered",
+      "reference_ids": [
+        "shield_front",
+        "shield_side",
+        "shield_back"
+      ],
+      "treatment": "convex_shell",
+      "runtime_policy": "approved_socket_or_embedded_mapping",
+      "risks": [
+        "face occlusion",
+        "arm contact"
+      ]
+    },
+    {
+      "id": "sword_blade",
+      "parent": "sword_grip",
+      "type": "equipment",
+      "symmetry": "local_cross_section",
+      "reference_ids": [
+        "sword_front",
+        "sword_side"
+      ],
+      "treatment": "controlled_profile",
+      "runtime_policy": "approved_socket_or_embedded_mapping",
+      "risks": [
+        "guard/hand contact",
+        "thin edge aliasing"
+      ]
+    }
+  ],
+  "notes": [
+    "Example inventory is not complete. Add torso, limbs, hands, feet, costume layers and every required equipment part before references gate."
+  ]
+}

@@ -35,6 +35,18 @@ enum class Effect
     Dash,
     StatModifier
 };
+enum class AbilityMechanic
+{
+    Standard,
+    DirectionalGuard,
+    MomentumCharge,
+    StationaryGrove,
+    ScreenedStrike,
+    CrossingBeams,
+    TidalPush
+};
+// Preparation orientation is local; the opposing formation is rotated by 180 degrees.
+enum class Facing { Forward, Right, Backward, Left };
 enum class Selector
 {
     Self,
@@ -76,7 +88,11 @@ enum class CommandType
     ToggleLock,
     BuyXp,
     Move,
-    Ready
+    Ready,
+    ChooseRelic,
+    EquipRelic,
+    UnequipRelic,
+    SetFacing
 };
 struct AbilityEffect
 {
@@ -97,6 +113,9 @@ struct AbilityDef
     std::array<Int, 3> magnitude{};
     bool enabled = true;
     std::vector<AbilityEffect> effects;
+    AbilityMechanic mechanic = AbilityMechanic::Standard;
+    int guardReductionBp = 0, momentumPerStepBp = 0, maxMomentumSteps = 0,
+        stationaryMs = 0, pulseMs = 0, displacementCells = 0, secondaryDelayMs = 0;
 };
 struct UnitDef
 {
@@ -110,11 +129,20 @@ struct UnitDef
     std::string displayName;
     std::vector<std::string> roleTags;
 };
+struct RelicDef
+{
+    std::string id, name, description;
+    std::vector<AbilityMechanic> compatibleMechanics;
+    int magnitudeBp = 10000, rangeDelta = 0, radiusDelta = 0, durationBp = 10000,
+        castBp = 10000, cooldownBp = 10000;
+};
+bool RelicCompatible(const RelicDef &relic, AbilityMechanic mechanic);
 struct TraitDef
 {
     std::string id, stat;
     int threshold = 0, value = 0;
     int threshold4 = 4, value4 = 0;
+    std::vector<std::pair<int, int>> tiers;
 };
 int TraitValue(const TraitDef &trait, int distinctCount);
 struct BotDef
@@ -140,10 +168,12 @@ struct Rules
         interestDivisor = 0, interestCap = 0;
     int startingLevel = 0, maximumLevel = 0, buyXpGold = 0, buyXpAmount = 0, passiveXp = 0;
     std::map<int, int> xpToNext;
-    std::map<int, std::array<int, 3>> shopWeights;
+    std::map<int, std::array<int, 5>> shopWeights;
     int botObservationMs = 0, botRepositionCutoffMs = 0;
     int neutralOpeningRounds = 3, neutralEvery = 5, neutralWinIncome = 2,
         neutralLossDamage = 2, neutralOpeningDamage = 0;
+    std::vector<int> relicRounds;
+    int maximumRelics = 3;
 };
 struct NeutralSlot
 {
@@ -165,10 +195,13 @@ struct Catalog
     std::vector<BotDef> bots;
     std::vector<UnitDef> neutrals;
     std::vector<NeutralWave> waves;
+    std::string profileId = "alpha_24";
+    std::vector<RelicDef> relics;
     const UnitDef &Definition(int index, bool neutral = false) const;
     const NeutralWave *Wave(int round) const;
     std::string Validate() const;
 };
+AbilityDef EffectiveAbility(const Catalog &catalog, const UnitDef &unit, int relic = -1);
 bool IsNeutralRound(int round, const Rules &rules);
 Int HalfUp(Int numerator, Int denominator);
 Int ResolveDamage(Int raw, DamageType type, int armor, int resistance, int bonusBp = 0);
@@ -192,6 +225,8 @@ struct OwnedUnit
     int bench = -1;
     bool neutral = false;
     int hpScaleBp = 10000, damageScaleBp = 10000;
+    Facing facing = Facing::Forward;
+    int relic = -1;
 };
 struct Command
 {
@@ -201,6 +236,7 @@ struct Command
     int slot = -1;
     bool toBoard = false;
     Cell cell;
+    Facing facing = Facing::Forward;
 };
 struct Reply
 {
@@ -218,6 +254,9 @@ struct SeatState
     std::vector<OwnedUnit> roster;
     Random shopRng, botRng;
     int neutralWins = 0, neutralLosses = 0, neutralDraws = 0;
+    std::vector<int> ownedRelics, relicOffers;
+    Random relicRng;
+    int pendingRelicDrafts = 0;
 };
 struct PublicSeat
 {
@@ -280,6 +319,11 @@ struct CombatUnit
     std::vector<Modifier> modifiers;
     bool neutral = false;
     int movementBonus = 0, hpScaleBp = 10000, damageScaleBp = 10000;
+    Facing facing = Facing::Forward;
+    int momentumSteps = 0, lastMovementTick = 0, positionEpoch = 0;
+    Cell abilityAim;
+    int relic = -1;
+    AbilityDef ability;
 };
 struct CombatEvent
 {
@@ -292,6 +336,10 @@ struct CombatEvent
     DamageType damageType = DamageType::Physical;
     bool basicAttack = false;
     int radius = 0;
+    AbilityMechanic mechanic = AbilityMechanic::Standard;
+    Cell origin;
+    Id guardedBy = 0;
+    Int prevented = 0;
 };
 struct CombatResult
 {
@@ -309,6 +357,8 @@ struct VisualAction
     bool neutral = false, basicAttack = false, released = false, provisional = true,
          recipientsProvisional = true, fixedArea = false;
     std::vector<Id> recipients;
+    AbilityMechanic mechanic = AbilityMechanic::Standard;
+    std::vector<Cell> cells;
 };
 class Combat
 {
@@ -348,6 +398,10 @@ class Combat
         bool area = false, basicAttack = false;
         std::string key;
         int effectOrder = 0, maxTargets = 12;
+        AbilityMechanic mechanic = AbilityMechanic::Standard;
+        std::vector<Cell> cells;
+        bool allied = false, allowSelf = false, tethered = false;
+        int positionEpoch = 0, displacementCells = 0;
     };
     const Catalog *catalog_;
     std::vector<CombatUnit> units_;
@@ -364,6 +418,11 @@ class Combat
     bool FindPath(int source, int target, Cell &next, int &length) const;
     int ChooseEnemy(int source, Cell &next, int &pathLength) const;
     bool CommitAbility(int source);
+    bool CommitMechanic(int source, const AbilityDef &ability);
+    void ReleaseMechanic(int source, const AbilityDef &ability);
+    void MoveUnit(int unit, Cell cell, AbilityMechanic mechanic, Id action, int source);
+    bool ChargeLanding(int source, const AbilityDef &ability, int target, Cell &landing) const;
+    std::vector<int> PacketTargets(const Packet &packet) const;
     void Release(int source);
     void Apply(const Packet &packet, int target);
     void Assess(bool timeout);
@@ -413,8 +472,8 @@ struct RoundRecord
 class Match
 {
   public:
-    Match(Catalog catalog, Id seed, int humans);
-    void Restart(Id seed, int humans);
+    Match(Catalog catalog, Id seed, int humans, bool networked = false);
+    void Restart(Id seed, int humans, bool networked = false);
     void Tick(int elapsedMs);
     Reply Submit(int authenticatedSeat, const Command &command);
     void TakeOver(int seat);
@@ -477,6 +536,9 @@ class Match
     }
     std::string InvariantError() const;
 
+    std::string SavePreparation() const;
+    bool RestorePreparation(const std::string &saved, std::string &error);
+
   private:
     struct CacheEntry
     {
@@ -487,6 +549,8 @@ class Match
     Id seed_ = 0, nextUnit_ = 1, nextRequest_ = 1, matchNamespace_ = 0;
     int round_ = 0, remainingMs_ = 0, elapsedMs_ = 0, accumulatorMs_ = 0, previousGhost_ = -1;
     int pvpRoundIndex_ = 0;
+    int originalHumans_ = 0;
+    bool networked_ = false;
     Phase phase_ = Phase::Preparation;
     bool capped_ = false;
     std::vector<SeatState> seats_;
