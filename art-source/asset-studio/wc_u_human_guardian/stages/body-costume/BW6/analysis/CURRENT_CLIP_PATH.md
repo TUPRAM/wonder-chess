@@ -1,0 +1,16 @@
+# Current source and shortest truthful seven-clip path
+
+Fresh read-only Blender 5.1.1 inspection reopened `art-source/heroes/wc_u_human_guardian/wc_u_human_guardian.blend`. SHA256 remained `54f04b8f28fd819eb22b7a4f6c8051484c6466513e6cd43d419c835b67d950b3` before and after. The current source has one `Armature`, 27 bones, no digit bones and no pose constraints. This is preserved alpha_24 Ada, not the wonder_vnext art pilot.
+
+At 60 fps the actual actions are Idle 1–121, Move 1–61, Attack 1–40, Active 1–37, Hit 1–25, Defeat 1–61 and Victory 1–91. Each has 162 bone curves. Directly evaluated all seven at half-frame intervals, 865 samples in total. Hand-to-weapon matrices remained constant within a maximum 2.683e-7 element delta. This is an attachment-contract check on the original source, not visual or collision acceptance of BW6. See `canonical_seven_clip_contract.json` for exact bones, bind matrices, action paths and sample counts.
+
+The 163-bone MPFB authoring rig is materially different. Canonical `upperarm_r` begins at world X=-0.3367 m, whereas the MPFB anatomical-right shoulder begins around X=+0.18185 m. Canonical neck starts at Z=1.4378 m; MPFB neck starts at Z=1.53953 m. Names, side signs, rest orientations and proportions require explicit reconciliation. Simply assigning those action names to the MPFB rig, or copying Euler values, is not the game clip test.
+
+1. Once a local part is viable, make an independently owned copy of the canonical 27-bone rig, its actions and a context mesh in a candidate scene. Keep shared rest pose, original source and all game content unchanged.
+2. Fit the candidate representation into that rig's bind space using inspected body landmarks and verified anatomical directions. For a rigid part, a fixed world alignment C and source posed-bone world transform Ts give `local = inverse(Ts) * source_world_point`; destination rest placement is `Td * C * local` when C is deliberately defined between the two bone-local frames. Record the definition of C; do not assume identity. Applying the source pose twice is invalid.
+3. Weight a rigid plate completely to its intended existing owner, e.g. upper chest `spine_03`, cuff/bracer `lowerarm_r`, fixed palm/digits `hand_r`. Preserve the one hand/equipment attachment. Do not blend a steel plate like skin to reach another bone.
+4. Cloth, wrist transitions, body and pauldron overlap need their own fitting/deformation. A rigid torso-only run must be labeled as such; it cannot pass the rest of the character. The large skeleton proportion difference makes full-assembly compatibility an actual fitting task.
+5. Inspect the fitted candidate on the seven existing actions at their original timing, then selected transitions. Render actual contact areas and check evaluated geometry. The 97-frame MPFB diagnostic is useful authoring evidence but not a replacement for these clips.
+6. Only after that construction is viable, use the isolated Unreal 5.7 candidate import and explicit existing-Skeleton/reference-pose options. Check the asset on real clips in Unreal and verify reimport. Do not silently promote or replace canonical assets.
+
+No candidate seven-clip test, Unreal import or canonical modification was executed by this read-only lane. This path is proposed; only the original-source inspection above was executed.
