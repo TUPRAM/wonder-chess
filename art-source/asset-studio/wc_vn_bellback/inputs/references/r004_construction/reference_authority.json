@@ -1,0 +1,60 @@
+{
+  "schema": "wonder_vnext.reference_authority.2",
+  "asset_id": "wc_vn_bellback",
+  "revision": "r004",
+  "status": "internally_reconciled_proposal_pending_independent_and_human_review",
+  "formal_reference_approval": false,
+  "reference_review_request_ready": true,
+  "overall_game_development_blocker": false,
+  "scope": "Proposed construction reference, not a modeled or measured asset.",
+  "precedence": [
+    {
+      "component": "creature identity, expression, material character",
+      "source": "inputs/direction_r001.png and inputs/references/r001/bellback_reference_candidate.png",
+      "role": "selected direction and per-asset aesthetic candidate",
+      "restrictions": "Perspective artwork, not measured orthographic geometry."
+    },
+    {
+      "component": "body proportions, front/back/both sides, handedness and neutral limb landmarks",
+      "source": "inputs/references/r004_construction/construction_spec.json and full_body_landmarks.svg",
+      "role": "proposed engineering construction",
+      "restrictions": "Ellipsoid and capsule outlines control approximate envelope relationships, not finished sculpt topology or final animal surface."
+    },
+    {
+      "component": "exact four-toe count, paw contacts and digit placement",
+      "source": "inputs/references/r003_manual/construction_geometry.json and paw_four_toe_proposal.svg",
+      "role": "proposed engineering construction",
+      "restrictions": "Overrides r002 three-toe inset and r001 three-toe prompt; hidden or superimposed toes do not change count."
+    },
+    {
+      "component": "longitudinal shell/body/clapper sweep",
+      "source": "inputs/references/r003_manual/bell_internal_clearance_proposal.svg",
+      "role": "proposed engineering construction",
+      "restrictions": "The fixed crown hanger is added explicitly by r004. It does not move the r003 pivot or alter its swing geometry."
+    },
+    {
+      "component": "transverse shell, mount, saddle contact, fixed crown hanger",
+      "source": "inputs/references/r004_construction/transverse_mount_sections.svg and construction_spec.json",
+      "role": "proposed engineering construction",
+      "restrictions": "Overrides the wrong exterior-clapper inset in r002 and completes the previously omitted fixed hinge support."
+    },
+    {
+      "component": "gait intent and bounded limb/foot kinematics",
+      "source": "inputs/references/r004_construction/gait_contacts_and_sweep.svg and construction_spec.json",
+      "role": "animation planning construction",
+      "restrictions": "Not continuous animation, physical balance, mesh deformation, rig or engine evidence."
+    }
+  ],
+  "historical_superseded_notes": [
+    "r001 missing-reference report remains historical. Its local construction questions are answered by r003+r004; owner reference approval remains pending.",
+    "r002 construction image is retained as rejected local construction evidence. Wrong paw and clapper insets have no target authority.",
+    "r003 local unfinished transverse/gait notes are superseded by r004. Its original source/drawings/hashes remain unchanged."
+  ],
+  "later_stage_checks": [
+    "Rendered actual 3D orthographic/camera alignment during blockout",
+    "Sculpt likeness and full forms",
+    "Actual mount intersections and deforming limb clearances",
+    "Normal-speed walk, turning, attack brace, hit and defeat motion",
+    "Crowded game-camera readability, import and packaged presentation"
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "status": "observations_only_not_acceptance",
+  "blender_version": "5.1.1",
+  "source_blend_name": "ada_reference_scene_r001.blend",
+  "source_blend_sha256": "b304de05d93d3ba78562ccc80551750f03e8ba27b81d7e1e19ef55ce33d6306b",
+  "collection": "AS1_REFERENCES_R001",
+  "objects": [
+    {
+      "name": "AS1_REF_body_back",
+      "type": "EMPTY",
+      "semantic_part_id": "body",
+      "negative_transform_determinant": false,
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "AS1_REF_body_front",
+      "type": "EMPTY",
+      "semantic_part_id": "body",
+      "negative_transform_determinant": false,
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "AS1_REF_body_left",
+      "type": "EMPTY",
+      "semantic_part_id": "body",
+      "negative_transform_determinant": false,
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "AS1_REF_body_right",
+      "type": "EMPTY",
+      "semantic_part_id": "body",
+      "negative_transform_determinant": false,
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "modifiers": []
+    }
+  ],
+  "file_images": [
+    {
+      "name": "body-back.png",
+      "size": [
+        405,
+        805
+      ],
+      "color_space": "sRGB",
+      "packed": true,
+      "external_file_exists": true
+    },
+    {
+      "name": "body-front.png",
+      "size": [
+        415,
+        805
+      ],
+      "color_space": "sRGB",
+      "packed": true,
+      "external_file_exists": true
+    },
+    {
+      "name": "body-left.png",
+      "size": [
+        210,
+        805
+      ],
+      "color_space": "sRGB",
+      "packed": true,
+      "external_file_exists": true
+    },
+    {
+      "name": "body-right.png",
+      "size": [
+        225,
+        805
+      ],
+      "color_space": "sRGB",
+      "packed": true,
+      "external_file_exists": true
+    }
+  ],
+  "limitations": [
+    "No exhaustive self-intersection check.",
+    "Boundary edges are not automatically errors on open garments.",
+    "No UV overlap or texel-density calculation.",
+    "No visual likeness or continuous-motion judgement.",
+    "Source/evaluated mesh counts may differ."
+  ]
+}

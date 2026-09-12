@@ -1,0 +1,187 @@
+{
+  "schema_version": "1.0.0",
+  "asset_id": "wc_vn_bellback",
+  "stage": "references",
+  "author": "Codex vnext_catalog",
+  "method": "Preserved generated identity/reference artwork; replaced failed generated construction method with new explicit SVG geometry. Derived matched front/back/both sides, longitudinal/transverse cavity, open mount and contact/gait proposals. Executed bounded numeric checks, rendered and actually inspected PNGs. Authored component precedence and semantic completion. This is a reviewed candidate proposal for a human gate, not human signoff or a model measurement.",
+  "checks": [
+    {
+      "id": "identity_locked",
+      "status": "pass",
+      "notes": "One per-asset aesthetic candidate is selected in this review proposal and paired with the owner-selected shared direction. The dorsal bell, moss quadruped body and animal expression remain fixed for this candidate; human acceptance is pending.",
+      "evidence": [
+        "inputs/direction_r001.png",
+        "inputs/references/r001/bellback_reference_candidate.png",
+        "inputs/references/r004_construction/README.md"
+      ]
+    },
+    {
+      "id": "views_reconciled",
+      "status": "pass",
+      "notes": "Four orthogonal construction views now derive from the same coordinate source; original perspective sheets are aesthetic only. Geometry checks assert shared r003/r004 dimensions and actual author image review confirms readable correspondence.",
+      "evidence": [
+        "inputs/references/r004_construction/construction_spec.json",
+        "inputs/references/r004_construction/full_body_landmarks.png",
+        "inputs/references/r004_construction/geometry_verification.json",
+        "inputs/references/r004_construction/visual_review.json"
+      ]
+    },
+    {
+      "id": "handedness_and_parts",
+      "status": "pass",
+      "notes": "Anatomical +X right branch, four digits per paw, inherited parts and the open carrier/pads/fixed hanger additions are explicit. Incorrect r002 insets have no construction authority.",
+      "evidence": [
+        "inputs/semantic_parts_r001.json",
+        "inputs/references/r004_construction/semantic_parts_addendum.json",
+        "inputs/references/r004_construction/reference_authority.json",
+        "inputs/references/r003_manual/paw_four_toe_proposal.png"
+      ]
+    },
+    {
+      "id": "construction_gaps_decided",
+      "status": "pass",
+      "notes": "Body, head, both-side landmarks, hollow bell, fixed hanger and internal clapper, transverse carrier/pads and bounded gait now have explicit proposed decisions. Actual mesh, deformation, motion and game camera evidence are later gates, not claimed here.",
+      "evidence": [
+        "inputs/references/r004_construction/transverse_mount_sections.png",
+        "inputs/references/r004_construction/gait_contacts_and_sweep.png",
+        "inputs/references/r004_construction/construction_spec.json",
+        "inputs/references/r004_construction/geometry_verification.json",
+        "inputs/references/r004_construction/README.md"
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "inputs/direction_r001.png",
+      "category": "image"
+    },
+    {
+      "path": "inputs/references/r001/bellback_reference_candidate.png",
+      "category": "image"
+    },
+    {
+      "path": "inputs/references/r001/provenance.json",
+      "category": "source"
+    },
+    {
+      "path": "inputs/semantic_parts_r001.json",
+      "category": "source"
+    },
+    {
+      "path": "inputs/references/r003_manual/bell_internal_clearance_proposal.png",
+      "category": "image"
+    },
+    {
+      "path": "inputs/references/r003_manual/bell_internal_clearance_proposal.svg",
+      "category": "source"
+    },
+    {
+      "path": "inputs/references/r003_manual/construction_geometry.json",
+      "category": "source"
+    },
+    {
+      "path": "inputs/references/r003_manual/draw_construction.py",
+      "category": "source"
+    },
+    {
+      "path": "inputs/references/r003_manual/geometry_verification.json",
+      "category": "report"
+    },
+    {
+      "path": "inputs/references/r003_manual/paw_four_toe_proposal.png",
+      "category": "image"
+    },
+    {
+      "path": "inputs/references/r003_manual/paw_four_toe_proposal.svg",
+      "category": "source"
+    },
+    {
+      "path": "inputs/references/r003_manual/README.md",
+      "category": "source"
+    },
+    {
+      "path": "inputs/references/r003_manual/reference_authority.json",
+      "category": "source"
+    },
+    {
+      "path": "inputs/references/r003_manual/visual_review.json",
+      "category": "report"
+    },
+    {
+      "path": "inputs/references/r004_construction/construction_spec.json",
+      "category": "source"
+    },
+    {
+      "path": "inputs/references/r004_construction/draw_construction.py",
+      "category": "source"
+    },
+    {
+      "path": "inputs/references/r004_construction/full_body_landmarks.png",
+      "category": "image"
+    },
+    {
+      "path": "inputs/references/r004_construction/full_body_landmarks.svg",
+      "category": "source"
+    },
+    {
+      "path": "inputs/references/r004_construction/gait_contacts_and_sweep.png",
+      "category": "image"
+    },
+    {
+      "path": "inputs/references/r004_construction/gait_contacts_and_sweep.svg",
+      "category": "source"
+    },
+    {
+      "path": "inputs/references/r004_construction/geometry_verification.json",
+      "category": "report"
+    },
+    {
+      "path": "inputs/references/r004_construction/README.md",
+      "category": "source"
+    },
+    {
+      "path": "inputs/references/r004_construction/reference_authority.json",
+      "category": "source"
+    },
+    {
+      "path": "inputs/references/r004_construction/semantic_parts_addendum.json",
+      "category": "source"
+    },
+    {
+      "path": "inputs/references/r004_construction/transverse_mount_sections.png",
+      "category": "image"
+    },
+    {
+      "path": "inputs/references/r004_construction/transverse_mount_sections.svg",
+      "category": "source"
+    },
+    {
+      "path": "inputs/references/r004_construction/visual_review.json",
+      "category": "report"
+    }
+  ],
+  "defects": [
+    {
+      "id": "REF-001",
+      "severity": "major",
+      "status": "fixed",
+      "description": "Contradictory uncalibrated raster projections replaced as construction authority by four shared-coordinate engineering views; original art remains aesthetic, not falsely certified."
+    },
+    {
+      "id": "REF-002",
+      "severity": "major",
+      "status": "fixed",
+      "description": "Four-toe/right-branch decisions, mount/cavity/fixed hanger and bounded gait are explicitly resolved in the proposed reference packet."
+    }
+  ],
+  "executed_commands": [
+    "python art-source/asset-studio/wc_vn_bellback/inputs/references/r004_construction/draw_construction.py",
+    "view_image final transverse_mount_sections.png, full_body_landmarks.png, gait_contacts_and_sweep.png",
+    "Read and compare existing r001/r002/r003 provenance and authority"
+  ],
+  "notes": [
+    "All check passes are the author review of a concrete proposed reference packet. They do not issue the required human acceptance.",
+    "Prepare only against current accepted brief. Root retains independent technical acceptance ownership.",
+    "No Blender, mesh, rig, engine import or human approval executed."
+  ]
+}

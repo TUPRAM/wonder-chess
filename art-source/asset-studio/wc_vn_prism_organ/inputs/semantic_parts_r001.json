@@ -1,0 +1,237 @@
+{
+  "asset_id": "wc_vn_prism_organ",
+  "status": "proposed_not_approved",
+  "assembly_root": "nonrendering floor-centered +Y-forward +Z-up root",
+  "parts": [
+    {
+      "id": "pipe_p1",
+      "diagram_id": "P1",
+      "role": "ceramic resonator pipe with framed glass aperture",
+      "parent": "cradle_p1",
+      "symmetry": "unique indexed height and position; do not mirror identity",
+      "material": "ivory ceramic, aged brass trim, framed teal/amber glass",
+      "export": "rigid part with one declared transform driver",
+      "dimensional_relationship": "five-pipe shallow-arc proposal; exact ratios and plan positions unresolved",
+      "authoring_source": "selected direction plus r001 proposal, not approved geometry",
+      "risk": "assembled/exploded height order conflicts"
+    },
+    {
+      "id": "cradle_p1",
+      "role": "individual pipe support collar",
+      "parent": "hoop_h1",
+      "symmetry": "indexed attachment",
+      "material": "aged brass",
+      "export": "rigid attachment, preserve clearance",
+      "dimensional_relationship": "must not penetrate glass aperture",
+      "authoring_source": "written proposal only; generated diagram does not resolve it",
+      "risk": "missing detailed interface"
+    },
+    {
+      "id": "pipe_p2",
+      "diagram_id": "P2",
+      "role": "ceramic resonator pipe with framed glass aperture",
+      "parent": "cradle_p2",
+      "symmetry": "unique indexed height and position; do not mirror identity",
+      "material": "ivory ceramic, aged brass trim, framed teal/amber glass",
+      "export": "rigid part with one declared transform driver",
+      "dimensional_relationship": "five-pipe shallow-arc proposal; exact ratios and plan positions unresolved",
+      "authoring_source": "selected direction plus r001 proposal, not approved geometry",
+      "risk": "assembled/exploded height order conflicts"
+    },
+    {
+      "id": "cradle_p2",
+      "role": "individual pipe support collar",
+      "parent": "hoop_h1",
+      "symmetry": "indexed attachment",
+      "material": "aged brass",
+      "export": "rigid attachment, preserve clearance",
+      "dimensional_relationship": "must not penetrate glass aperture",
+      "authoring_source": "written proposal only; generated diagram does not resolve it",
+      "risk": "missing detailed interface"
+    },
+    {
+      "id": "pipe_p3",
+      "diagram_id": "P3",
+      "role": "ceramic resonator pipe with framed glass aperture",
+      "parent": "cradle_p3",
+      "symmetry": "unique indexed height and position; do not mirror identity",
+      "material": "ivory ceramic, aged brass trim, framed teal/amber glass",
+      "export": "rigid part with one declared transform driver",
+      "dimensional_relationship": "five-pipe shallow-arc proposal; exact ratios and plan positions unresolved",
+      "authoring_source": "selected direction plus r001 proposal, not approved geometry",
+      "risk": "assembled/exploded height order conflicts"
+    },
+    {
+      "id": "cradle_p3",
+      "role": "individual pipe support collar",
+      "parent": "hoop_h1",
+      "symmetry": "indexed attachment",
+      "material": "aged brass",
+      "export": "rigid attachment, preserve clearance",
+      "dimensional_relationship": "must not penetrate glass aperture",
+      "authoring_source": "written proposal only; generated diagram does not resolve it",
+      "risk": "missing detailed interface"
+    },
+    {
+      "id": "pipe_p4",
+      "diagram_id": "P4",
+      "role": "ceramic resonator pipe with framed glass aperture",
+      "parent": "cradle_p4",
+      "symmetry": "unique indexed height and position; do not mirror identity",
+      "material": "ivory ceramic, aged brass trim, framed teal/amber glass",
+      "export": "rigid part with one declared transform driver",
+      "dimensional_relationship": "five-pipe shallow-arc proposal; exact ratios and plan positions unresolved",
+      "authoring_source": "selected direction plus r001 proposal, not approved geometry",
+      "risk": "assembled/exploded height order conflicts"
+    },
+    {
+      "id": "cradle_p4",
+      "role": "individual pipe support collar",
+      "parent": "hoop_h1",
+      "symmetry": "indexed attachment",
+      "material": "aged brass",
+      "export": "rigid attachment, preserve clearance",
+      "dimensional_relationship": "must not penetrate glass aperture",
+      "authoring_source": "written proposal only; generated diagram does not resolve it",
+      "risk": "missing detailed interface"
+    },
+    {
+      "id": "pipe_p5",
+      "diagram_id": "P5",
+      "role": "ceramic resonator pipe with framed glass aperture",
+      "parent": "cradle_p5",
+      "symmetry": "unique indexed height and position; do not mirror identity",
+      "material": "ivory ceramic, aged brass trim, framed teal/amber glass",
+      "export": "rigid part with one declared transform driver",
+      "dimensional_relationship": "five-pipe shallow-arc proposal; exact ratios and plan positions unresolved",
+      "authoring_source": "selected direction plus r001 proposal, not approved geometry",
+      "risk": "assembled/exploded height order conflicts"
+    },
+    {
+      "id": "cradle_p5",
+      "role": "individual pipe support collar",
+      "parent": "hoop_h1",
+      "symmetry": "indexed attachment",
+      "material": "aged brass",
+      "export": "rigid attachment, preserve clearance",
+      "dimensional_relationship": "must not penetrate glass aperture",
+      "authoring_source": "written proposal only; generated diagram does not resolve it",
+      "risk": "missing detailed interface"
+    },
+    {
+      "id": "hoop_h1",
+      "role": "upper retaining hoop",
+      "parent": "assembly_root",
+      "symmetry": "named distinct part",
+      "material": "aged brass",
+      "export": "rigid indexed transform; emitter sockets contain no gameplay logic",
+      "dimensional_relationship": "review against proposed assembled bounds; no measurement accepted",
+      "authoring_source": "selected direction and r001 construction proposal",
+      "risk": "cradle height and attachment unresolved"
+    },
+    {
+      "id": "hoop_h2",
+      "role": "lower retaining hoop and emitter carrier",
+      "parent": "assembly_root",
+      "symmetry": "named distinct part",
+      "material": "aged brass",
+      "export": "rigid indexed transform; emitter sockets contain no gameplay logic",
+      "dimensional_relationship": "review against proposed assembled bounds; no measurement accepted",
+      "authoring_source": "selected direction and r001 construction proposal",
+      "risk": "image ambiguously puts emitters on both hoops"
+    },
+    {
+      "id": "resonator_c1",
+      "role": "suspended stained-glass chamber",
+      "parent": "assembly_root",
+      "symmetry": "named distinct part",
+      "material": "framed stained glass and ceramic",
+      "export": "rigid indexed transform; emitter sockets contain no gameplay logic",
+      "dimensional_relationship": "review against proposed assembled bounds; no measurement accepted",
+      "authoring_source": "selected direction and r001 construction proposal",
+      "risk": "image shows opaque urn instead of resolved glass core"
+    },
+    {
+      "id": "emitter_e1",
+      "role": "first ordered-beam visual channel, single amber band",
+      "parent": "hoop_h2",
+      "symmetry": "named distinct part",
+      "material": "amber crystal and brass gimbal",
+      "export": "rigid indexed transform; emitter sockets contain no gameplay logic",
+      "dimensional_relationship": "review against proposed assembled bounds; no measurement accepted",
+      "authoring_source": "selected direction and r001 construction proposal",
+      "risk": "upper/lower attachment conflict"
+    },
+    {
+      "id": "emitter_e2",
+      "role": "second ordered-beam visual channel, double teal band",
+      "parent": "hoop_h2",
+      "symmetry": "named distinct part",
+      "material": "teal crystal and brass gimbal",
+      "export": "rigid indexed transform; emitter sockets contain no gameplay logic",
+      "dimensional_relationship": "review against proposed assembled bounds; no measurement accepted",
+      "authoring_source": "selected direction and r001 construction proposal",
+      "risk": "orthogonal relation unproven"
+    },
+    {
+      "id": "containment_k1",
+      "diagram_id": "K1",
+      "role": "finite floating containment key",
+      "parent": "resonator_c1",
+      "symmetry": "four indexed radial positions",
+      "material": "faceted muted stone/glass",
+      "export": "rigid child driver with bounded float envelope",
+      "dimensional_relationship": "must remain outside chamber and hoop envelope",
+      "authoring_source": "written four-part proposal; image count inconsistent",
+      "risk": "front image shows six fragments"
+    },
+    {
+      "id": "containment_k2",
+      "diagram_id": "K2",
+      "role": "finite floating containment key",
+      "parent": "resonator_c1",
+      "symmetry": "four indexed radial positions",
+      "material": "faceted muted stone/glass",
+      "export": "rigid child driver with bounded float envelope",
+      "dimensional_relationship": "must remain outside chamber and hoop envelope",
+      "authoring_source": "written four-part proposal; image count inconsistent",
+      "risk": "front image shows six fragments"
+    },
+    {
+      "id": "containment_k3",
+      "diagram_id": "K3",
+      "role": "finite floating containment key",
+      "parent": "resonator_c1",
+      "symmetry": "four indexed radial positions",
+      "material": "faceted muted stone/glass",
+      "export": "rigid child driver with bounded float envelope",
+      "dimensional_relationship": "must remain outside chamber and hoop envelope",
+      "authoring_source": "written four-part proposal; image count inconsistent",
+      "risk": "front image shows six fragments"
+    },
+    {
+      "id": "containment_k4",
+      "diagram_id": "K4",
+      "role": "finite floating containment key",
+      "parent": "resonator_c1",
+      "symmetry": "four indexed radial positions",
+      "material": "faceted muted stone/glass",
+      "export": "rigid child driver with bounded float envelope",
+      "dimensional_relationship": "must remain outside chamber and hoop envelope",
+      "authoring_source": "written four-part proposal; image count inconsistent",
+      "risk": "front image shows six fragments"
+    }
+  ],
+  "budget_targets": {
+    "lod_triangles": [
+      18000,
+      9000,
+      3000
+    ],
+    "material_slots": 3,
+    "atlas_max_px": 2048,
+    "transform_joints": 20
+  },
+  "budget_status": "authoring_targets_not_measured",
+  "runtime_authority": "actual core events and committed cells only"
+}

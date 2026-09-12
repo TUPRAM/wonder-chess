@@ -1,0 +1,62 @@
+{
+  "schema": "wonder_vnext.reference_candidate.1",
+  "asset_id": "wc_vn_bellback",
+  "revision": "r001",
+  "classification": "generated_construction_candidate_not_measured_orthographic",
+  "created_utc": "2026-09-10T15:30:32.601926+00:00",
+  "source_image": {
+    "original_path": "C:\\Users\\iputu\\.codex\\generated_images\\01a08b7d-1b22-7fb2-b30a-2dea2ea02ac3\\exec-c2ff7dc6-3835-4897-8102-7b77b4bccfda.png",
+    "path": "bellback_reference_candidate.png",
+    "sha256": "88d536f58cd0196a9d5a24e1713fd570e68a27b73db420e40e4de32422720912",
+    "dimensions_px": [
+      1536,
+      1024
+    ],
+    "bytes": 2543306,
+    "copied_without_modification": true
+  },
+  "input_direction_sha256": "5ebd4b6de67d15174b15226d53cefc83994712f02aee505e894c2e85f78cc95e",
+  "prompt": {
+    "path": "generation_prompt.txt",
+    "sha256": "ce0e9a57443c2bd1c2cceb4e9685c4508845493d5952b76c000dcf0f8910abe1"
+  },
+  "generation": {
+    "tool": "builtin image_gen.imagegen",
+    "referenced_image": "owner-selected direction plate",
+    "source": "Root task generation result and recorded exact prompt",
+    "seed": "not_returned",
+    "model_version": "not_returned"
+  },
+  "human_reference_approval": "not_received",
+  "image_viewed_by": [
+    "root agent",
+    "vnext_catalog agent"
+  ],
+  "proposed_reconciliation": [
+    {
+      "component": "paw_toes",
+      "prompt": "three broad toes",
+      "observed": "Front and three-quarter paws visually suggest four grouped broad toes; other views occlude some toes.",
+      "decision": "Model four broad toes per foot consistently as an explicit proposed construction decision, not a claim all views prove it."
+    },
+    {
+      "component": "shoulder_branch",
+      "prompt": "left shoulder",
+      "observed": "Branch is viewer-left in front and viewer-right in back.",
+      "decision": "Place the one short branch on anatomical right (+X in +Y-forward/+Z-up source), and retain that convention across views."
+    },
+    {
+      "component": "bell",
+      "prompt": "two broad bands and bark saddles",
+      "observed": "Dominant dorsal bell and bands are readable; concealed mount/shoulder clearance is unresolved.",
+      "decision": "Keep dorsal identity; author mount cross-section and clearance in a later reconciled view/blockout."
+    }
+  ],
+  "remaining_gaps": [
+    "View labels are not measured orthographic cameras.",
+    "Neutral pose and dimensions must be reconciled before overlay measurement.",
+    "Four-toe and anatomical-right branch corrections need explicit owner review in the formal packet.",
+    "Bell mount, underside/clapper and gait clearance are partly hidden.",
+    "Moss and bark remain detailed; simplify for gameplay-camera readability."
+  ]
+}

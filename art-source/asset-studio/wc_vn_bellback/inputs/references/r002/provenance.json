@@ -1,0 +1,90 @@
+{
+  "schema": "wonder_vnext.reference_candidate.1",
+  "asset_id": "wc_vn_bellback",
+  "revision": "r002",
+  "classification": "generated_hidden_construction_proposal",
+  "operational_status": "ART_REVISE",
+  "status_scope": "Bellback construction-reference sheet only",
+  "created_utc": "2026-09-10T15:37:57.046835+00:00",
+  "source_image": {
+    "original_path": "C:\\Users\\iputu\\.codex\\generated_images\\01a08b7d-1b22-7fb2-b30a-2dea2ea02ac3\\exec-4ea70bc1-d78a-45ff-b4b6-fadd75fcc352.png",
+    "path": "bellback_construction_proposal.png",
+    "sha256": "f8031903c6891e678f5f869177b4f4b5aeedf95c73014ee9d1d5813e863d7880",
+    "dimensions_px": [
+      1536,
+      1024
+    ],
+    "bytes": 2464649,
+    "copied_without_modification": true
+  },
+  "input_reference_sha256": "88d536f58cd0196a9d5a24e1713fd570e68a27b73db420e40e4de32422720912",
+  "prompt": {
+    "path": "generation_prompt.txt",
+    "sha256": "8f11a05e799ce04f6469d257044c640351a674de9555ef2c2e9f838f498dd943"
+  },
+  "generation": {
+    "tool": "builtin image_gen.imagegen",
+    "referenced_image": "Bellback r001 reference candidate",
+    "source": "Root task generation result and recorded exact prompt",
+    "seed": "not_returned",
+    "model_version": "not_returned"
+  },
+  "review": {
+    "reviewer": "Codex vnext_catalog bounded visual review",
+    "image_viewed": true,
+    "human_direction_approval": "received_direction_only",
+    "human_reference_approval": "not_received",
+    "reference_approval_request_ready": false,
+    "user_input_blocker": false,
+    "overall_game_development_blocker": false
+  },
+  "improvements": [
+    "Paired side views allow better appendage-side comparison.",
+    "Body-under-bell proposal exposes the intended continuous quadruped torso.",
+    "Separate shell, mount bands and saddle pads expose assembly intent.",
+    "Paw/contact and head panels provide more targeted construction information."
+  ],
+  "defects": [
+    {
+      "id": "REF-R002-01",
+      "severity": "major",
+      "status": "open",
+      "part": "paw_pairs",
+      "observation": "Front and underside paw insets show three toes; the agreed construction proposal requires four. Full-body feet also vary in apparent count.",
+      "next_correction": "Author one explicit four-toe front/underside paw construction drawing, then derive mirrored left/right and front/hind drawings from it rather than regenerating an entire sheet."
+    },
+    {
+      "id": "REF-R002-02",
+      "severity": "major",
+      "status": "open",
+      "part": "bell_clapper",
+      "observation": "The clapper callout points below an exterior miniature hanging bell rather than defining the main dorsal bell internal clapper.",
+      "next_correction": "Author a labeled longitudinal main-bell section showing crown suspension, internal rod/weight, shell, saddle, body clearance and bounded swing. Treat the separate front pendant bells as separate optional parts."
+    },
+    {
+      "id": "REF-R002-03",
+      "severity": "major",
+      "status": "open",
+      "part": "dorsal_mount",
+      "observation": "The body occupies the dorsal bell opening region; no section establishes a collision-free internal clapper cavity.",
+      "next_correction": "Resolve bell/mount/body cavity and swing envelope in a construction section before approving the internal clapper or committing geometry."
+    },
+    {
+      "id": "REF-R002-04",
+      "severity": "major",
+      "status": "open",
+      "part": "views",
+      "observation": "Paired panels remain generated illustrations. Their perspective, pose, scale and source camera are not measured or certified orthographic.",
+      "next_correction": "Use consistent construction landmarks and explicit declared drawing projection; do not use generated panel labels as calibration evidence."
+    }
+  ],
+  "method_decision": "Stop broad full-sheet image-generation retries for these defects. Use bounded manually authored 2D construction drawings with explicit part labels and shared views; review the corrected packet before complex modeling.",
+  "next_action": "Complete the local construction corrections described in CONSTRUCTION_CORRECTIONS.md, then reassess formal-reference readiness. Do not request owner approval of the known-bad packet.",
+  "prohibited_claims": [
+    "Formal reference acceptance",
+    "Measured orthographic images",
+    "Actual hidden anatomy recovered",
+    "3D construction, rig or engine import",
+    "Whole game blocked on the owner"
+  ]
+}

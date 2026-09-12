@@ -1,0 +1,61 @@
+{
+  "schema": "wonder_vnext.bellback_geometry_check.2",
+  "status": "pass_proposed_geometry_only",
+  "source_geometry_sha256": "f75caa3650f0360e210ee659b341e053e53a71fefcd0f69d68326b7328cdb9a8",
+  "construction_spec_sha256": "fe748c1a1229f9b6c85a8296137753d21d354ca6791f62dd7bab474d57eb4a13",
+  "checks": {
+    "four_unique_toes": true,
+    "r003_dimension_consistency": true,
+    "clapper_inside_elliptical_cavity": true,
+    "leg_lengths_reconstructed": true,
+    "three_stance_feet_each_sample": true,
+    "contact_floor_nonnegative": true,
+    "root_travel_cancels_stance_sliding_in_declared_equations": true,
+    "neutral_contact_envelope_within_1700": true,
+    "stride_envelope_within_2000": true
+  },
+  "sample_counts": {
+    "gait_phases": 193,
+    "clapper_angles": 97,
+    "striker_sphere_latitude_step_degrees": 6,
+    "striker_sphere_longitude_step_degrees": 6,
+    "rod_samples_per_angle": 101
+  },
+  "results": {
+    "minimum_striker_elliptical_shell_implicit_margin": 0.9239364560902794,
+    "max_ik_length_error_mm": 1.7053025658242404e-13,
+    "max_stance_world_drift_error_mm": 1.2580127911610006e-13,
+    "max_limb_capsule_z_mm": 970,
+    "minimum_limb_to_carrier_vertical_gap_mm": 300,
+    "minimum_body_to_carrier_vertical_gap_mm": 100,
+    "neutral_foot_envelope_xy_mm": [
+      1540.0,
+      1622.5
+    ],
+    "stride_foot_bounds_xxyy_mm": [
+      -770.0,
+      770.0,
+      -917.5,
+      945.0
+    ],
+    "stance_count_range": [
+      3,
+      3
+    ]
+  },
+  "limits": [
+    "Authored mathematical envelopes and kinematics only; not measurements of a mesh, rig, mass, physical joint, or game engine.",
+    "Finite sampling is not a formal continuous collision proof. Capsule ranges and frame gap are separate analytic bounds for the stated no-bob pose.",
+    "Anatomy, actual contact deformation, turning/attack/hit/defeat, camera visibility and animation quality remain later stage tests.",
+    "No human reference approval has been issued."
+  ],
+  "renderer": "PyMuPDF 1.28.0",
+  "artifacts": {
+    "full_body_landmarks.svg": "d2ba585fa379507597181c70c24c5f580bb3fed5d09faf9f79cc1a9de799642f",
+    "gait_contacts_and_sweep.svg": "1387c8695e20fe33f1af0e7f424feba1959b26af3f605ac9c767fcaeb9958a4e",
+    "transverse_mount_sections.svg": "a175cc4659bd9a03d3f7da21c48d82f346ac0ab91b09bace952e38937006335b",
+    "full_body_landmarks.png": "f9fe07cd710f8b1d28f07be3d125b192bada5b6aafbf180c2d4ddadc9e9c0775",
+    "gait_contacts_and_sweep.png": "d4e84b71827c658c27cd4d6f32ad41da985f7663fb65ffc2d451e61fe75eedaf",
+    "transverse_mount_sections.png": "b348bd612f2a78bf4d3495cf7f518831184457b93e3a3aea444c386b8466556f"
+  }
+}

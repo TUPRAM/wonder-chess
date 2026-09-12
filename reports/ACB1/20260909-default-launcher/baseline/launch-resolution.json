@@ -1,0 +1,33 @@
+{
+  "status": "FAIL",
+  "utc": "2026-09-08T17:05:35.8873067Z",
+  "launcher_source": "C:\\Users\\iputu\\Documents\\Wonder Chess\\tools\\unreal\\launch_alpha.ps1",
+  "launcher_source_sha256": "acb9b1fc9cd8df0b213da871417c50b94feae1178ba09711e80356b989ca10f1",
+  "resolved_default": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Alpha-Candidate\\Windows\\WonderChess.exe",
+  "expected_current_launcher": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Update24-Checkpoint-r4\\Windows\\WonderChess.exe",
+  "inner_executable": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-Alpha-Candidate\\Windows\\WonderChess\\Binaries\\Win64\\WonderChess-Win64-Shipping.exe",
+  "inner_executable_sha256": "b3114876d3d75e6d89677f42b2a6117b5989ba8dfe91d4f50ef50e965a2103ac",
+  "provenance": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\WC-U430\\20260907T171400Z-protocol-fix\\provenance.json",
+  "provenance_sha256": "803716ab43aeb861d5efffd13c348438a651a2d676240a40c49492b47be35d33",
+  "checks": [
+    {
+      "name": "Default resolves to the recorded current Update24 launcher",
+      "pass": false
+    },
+    {
+      "name": "Resolved launcher exists",
+      "pass": true
+    },
+    {
+      "name": "Default launcher belongs to the current immutable payload",
+      "pass": false
+    },
+    {
+      "name": "Default package contains the recorded current Shipping executable",
+      "pass": false
+    }
+  ],
+  "passed": 1,
+  "failed": 3,
+  "boundary": "Parsed launch-path and existing payload identity only. No launcher or game executed; no gameplay, rendering, network or release acceptance."
+}

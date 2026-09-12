@@ -1,0 +1,91 @@
+{
+  "artifacts": [
+    {
+      "path": "BRIEF.md",
+      "category": "source"
+    },
+    {
+      "path": "asset.json",
+      "category": "source"
+    },
+    {
+      "path": "inputs/semantic_parts_r001.json",
+      "category": "source"
+    },
+    {
+      "path": "inputs/canonical_hero_snapshot_r001.json",
+      "category": "source"
+    },
+    {
+      "path": "inputs/direction_r001.png",
+      "category": "image"
+    },
+    {
+      "path": "inputs/references/r001/generation_prompt.txt",
+      "category": "source"
+    },
+    {
+      "path": "inputs/references/r001/provenance.json",
+      "category": "report"
+    }
+  ],
+  "asset_id": "wc_vn_prism_organ",
+  "author": "Codex art_pipeline_audit",
+  "checks": [
+    {
+      "evidence": [
+        "BRIEF.md",
+        "asset.json",
+        "inputs/semantic_parts_r001.json"
+      ],
+      "id": "scope_and_asset_type",
+      "notes": "Original stable gameplay identity and full creature route retained; independent art-only workspace.",
+      "status": "pass"
+    },
+    {
+      "evidence": [
+        "BRIEF.md",
+        "asset.json",
+        "inputs/semantic_parts_r001.json"
+      ],
+      "id": "rights_and_upload_policy",
+      "notes": "Selected input and exact prompt/output provenance recorded; only requested built-in reference use; no API fallback or extra purchase.",
+      "status": "pass"
+    },
+    {
+      "evidence": [
+        "BRIEF.md",
+        "asset.json",
+        "inputs/semantic_parts_r001.json"
+      ],
+      "id": "dimensions_and_camera",
+      "notes": "Meters, +Y/+Z, one-cell occupancy, proposed bounds and actual strategy-camera review requirement declared; no measurements claimed.",
+      "status": "pass"
+    },
+    {
+      "evidence": [
+        "BRIEF.md",
+        "asset.json",
+        "inputs/semantic_parts_r001.json"
+      ],
+      "id": "budgets_and_dependencies",
+      "notes": "Finite indexed parts, provisional LOD/material/texture/joint targets, movement requirements and human gate dependencies declared.",
+      "status": "pass"
+    }
+  ],
+  "defects": [],
+  "executed_commands": [
+    "assetctl.py init (new wc_vn_prism_organ creature lane)",
+    "assetctl.py report-template brief/references",
+    "image_gen.imagegen with actual owner-selected local reference",
+    "view_image original direction and candidate",
+    "SHA256 original/copy comparison"
+  ],
+  "method": "Read canonical hero and owner-selected direction, initialized separate AS1 creature lane, defined proposed dimensions/parts/budgets, used one built-in image request, verified native image copy hashes and viewed actual result.",
+  "notes": [
+    "Brief observations complete; independent technical review pending. This is not a reference approval.",
+    "Generated reference has major defects; they are tracked in the separate references ART_REVISE report and do not represent achieved construction."
+  ],
+  "schema_version": "1.0.0",
+  "stage": "brief"
+}

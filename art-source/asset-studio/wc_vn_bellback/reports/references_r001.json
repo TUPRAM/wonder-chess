@@ -1,0 +1,81 @@
+{
+  "artifacts": [
+    {
+      "path": "inputs/references/r001/provenance.json",
+      "category": "source"
+    },
+    {
+      "path": "inputs/references/r001/bellback_reference_candidate.png",
+      "category": "image"
+    },
+    {
+      "path": "inputs/semantic_parts_r001.json",
+      "category": "source"
+    }
+  ],
+  "asset_id": "wc_vn_bellback",
+  "author": "Codex vnext_catalog",
+  "checks": [
+    {
+      "evidence": [
+        "inputs/references/r001/provenance.json",
+        "inputs/references/r001/bellback_reference_candidate.png"
+      ],
+      "id": "identity_locked",
+      "notes": "Shared direction selected by owner, but this per-asset construction interpretation has not received formal approval.",
+      "status": "not_run"
+    },
+    {
+      "evidence": [
+        "inputs/references/r001/provenance.json",
+        "inputs/references/r001/bellback_reference_candidate.png"
+      ],
+      "id": "views_reconciled",
+      "notes": "Generated perspective views remain unmeasured; labeled side/back is not certified camera geometry.",
+      "status": "not_run"
+    },
+    {
+      "evidence": [
+        "inputs/references/r001/provenance.json",
+        "inputs/references/r001/bellback_reference_candidate.png"
+      ],
+      "id": "handedness_and_parts",
+      "notes": "Parts authored; proposed four toes and anatomical-right branch need formal review.",
+      "status": "not_run"
+    },
+    {
+      "evidence": [
+        "inputs/references/r001/provenance.json",
+        "inputs/references/r001/bellback_reference_candidate.png"
+      ],
+      "id": "construction_gaps_decided",
+      "notes": "Bell attachment, underside/clapper and gait clearances remain unresolved.",
+      "status": "not_run"
+    }
+  ],
+  "defects": [
+    {
+      "id": "REF-001",
+      "severity": "major",
+      "status": "open",
+      "description": "Camera, pose and body dimensions are not reconciled measured construction."
+    },
+    {
+      "id": "REF-002",
+      "severity": "major",
+      "status": "open",
+      "description": "Four-toe and anatomical-right branch interpretations require review; hidden mount/gait construction remains unresolved."
+    }
+  ],
+  "executed_commands": [
+    "view_image original Bellback reference candidate",
+    "Hash-verified native copy into inputs/references/r001"
+  ],
+  "method": "Viewed generated r001 front/side/back/three-quarter candidate, compared with owner-selected plate, recorded prompt/image contradictions and explicit proposed reconciliation. No orthographic measurement or human approval.",
+  "notes": [
+    "Direction approval received only. Formal reference approval not received.",
+    "Do not prepare or approve this references report until the missing construction decisions and actual human review are complete."
+  ],
+  "schema_version": "1.0.0",
+  "stage": "references"
+}

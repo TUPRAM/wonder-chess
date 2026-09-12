@@ -1,0 +1,25 @@
+00:03.907  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_human_guardian\candidates\AQ1\ada_forms_r05.blend"
+Traceback (most recent call last):
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\aq1_export_candidate.py", line 47, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\aq1_export_candidate.py", line 21, in main
+    parts=[o for o in parts if o.type=='MESH'];mesh,bake=bake_candidate(parts,arm,export,texture_size=1024)
+                                                         ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\aq1_bake.py", line 384, in bake_candidate
+    uv_validation = _validate_uv(low, texture_size)
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\aq1_bake.py", line 172, in _validate_uv
+    raise RuntimeError("Packed candidate UV validation failed: " + json.dumps(result))
+RuntimeError: Packed candidate UV validation failed: {"method": "triangle interiors sampled at atlas pixel centers; excludes shared edges", "resolution": 1024, "covered_texels": 230780, "coverage_fraction": 0.22008895874023438, "overlapping_texels": 48, "out_of_bounds_triangles": 0, "zero_area_uv_triangles": 14, "triangles_without_pixel_center": 5618, "limitation": "subpixel overlaps and distortion still require visual UV inspection"}
+Reloading external rigs...
+Reloading external metarigs...
+BlenderMCP: cannot start server in background mode (blender -b) - commands would never execute
+BlenderMCP: run Blender with a GUI, or use a virtual display: xvfb-run -a blender
+BlenderMCP addon registered
+
+Error: script failed, file: 'tools/blender/aq1_export_candidate.py', exiting.
+BlenderMCP server stopped
+BlenderMCP addon unregistered
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

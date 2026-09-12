@@ -1,0 +1,117 @@
+{
+  "artifacts": [
+    {
+      "path": "inputs/references/r001/prism_organ_reference_candidate.png",
+      "category": "image"
+    },
+    {
+      "path": "inputs/references/r001/generation_prompt.txt",
+      "category": "source"
+    },
+    {
+      "path": "inputs/references/r001/provenance.json",
+      "category": "report"
+    },
+    {
+      "path": "inputs/references/r001/VISUAL_REVIEW.md",
+      "category": "report"
+    }
+  ],
+  "asset_id": "wc_vn_prism_organ",
+  "author": "Codex art_pipeline_audit",
+  "checks": [
+    {
+      "evidence": [
+        "inputs/references/r001/VISUAL_REVIEW.md",
+        "inputs/references/r001/prism_organ_reference_candidate.png"
+      ],
+      "id": "identity_locked",
+      "notes": "Specific reference has no human approval.",
+      "status": "not_run"
+    },
+    {
+      "evidence": [
+        "inputs/references/r001/VISUAL_REVIEW.md",
+        "inputs/references/r001/prism_organ_reference_candidate.png"
+      ],
+      "id": "views_reconciled",
+      "notes": "Major visible construction contradictions remain; see the exact per-defect visual review.",
+      "status": "fail"
+    },
+    {
+      "evidence": [
+        "inputs/references/r001/VISUAL_REVIEW.md",
+        "inputs/references/r001/prism_organ_reference_candidate.png"
+      ],
+      "id": "handedness_and_parts",
+      "notes": "Major visible construction contradictions remain; see the exact per-defect visual review.",
+      "status": "fail"
+    },
+    {
+      "evidence": [
+        "inputs/references/r001/VISUAL_REVIEW.md",
+        "inputs/references/r001/prism_organ_reference_candidate.png"
+      ],
+      "id": "construction_gaps_decided",
+      "notes": "Major visible construction contradictions remain; see the exact per-defect visual review.",
+      "status": "fail"
+    }
+  ],
+  "defects": [
+    {
+      "id": "PR-REF-001",
+      "severity": "major",
+      "status": "open",
+      "description": "Front/three-quarter floating key inventory exceeds exploded K1-K4."
+    },
+    {
+      "id": "PR-REF-002",
+      "severity": "major",
+      "status": "open",
+      "description": "Two emitter identities, hoop attachment and orthogonal relation are ambiguous across views."
+    },
+    {
+      "id": "PR-REF-003",
+      "severity": "major",
+      "status": "open",
+      "description": "Pipe heights/order do not reconcile between assembled and exploded views."
+    },
+    {
+      "id": "PR-REF-004",
+      "severity": "major",
+      "status": "open",
+      "description": "Lower resonator appears opaque; dossier stained-glass core is unresolved."
+    },
+    {
+      "id": "PR-REF-005",
+      "severity": "major",
+      "status": "open",
+      "description": "Individual cradle interfaces and hoop/pipe clearances are unresolved."
+    },
+    {
+      "id": "PR-REF-006",
+      "severity": "major",
+      "status": "open",
+      "description": "Generated view labels do not establish shared orthographic camera or measurements."
+    },
+    {
+      "id": "PR-REF-007",
+      "severity": "minor",
+      "status": "open",
+      "description": "Stray numeral after proposed-construction title."
+    }
+  ],
+  "executed_commands": [
+    "One image_gen.imagegen request",
+    "Native Copy-Item without resampling",
+    "Get-FileHash original/copy",
+    "view_image candidate"
+  ],
+  "method": "Viewed the generated full sheet, compared visible assembled and exploded components to the selected direction and declared finite inventory, and recorded contradictions without certifying orthographic geometry.",
+  "notes": [
+    "ART_REVISE. Do not prepare or approve the references gate with these major defects open.",
+    "Direction only was selected by the owner. No modeling, camera calibration or human reference review occurred."
+  ],
+  "schema_version": "1.0.0",
+  "stage": "references"
+}

@@ -1,0 +1,53 @@
+{
+  "schema": "wonder_vnext.bellback_construction.2",
+  "asset_id": "wc_vn_bellback",
+  "revision": "r004_construction",
+  "status": "proposed_reference_construction_not_measured_model",
+  "units": "millimeter",
+  "coordinate_convention": {"X": "anatomical right", "Y": "forward", "Z": "up"},
+  "source_geometry": "../r003_manual/construction_geometry.json",
+  "source_geometry_sha256": "f75caa3650f0360e210ee659b341e053e53a71fefcd0f69d68326b7328cdb9a8",
+  "body": {"center": [0, 0, 770], "radii": [800, 900, 400]},
+  "head": {"center": [0, 900, 950], "radii": [330, 250, 230], "eye_centers": [[-230, 1060, 1025], [230, 1060, 1025]], "muzzle_center": [0, 1065, 880], "muzzle_radii": [235, 85, 100]},
+  "tail": {"base": [0, -850, 800], "tip": [0, -1060, 760], "radius": 55},
+  "branch": {"side": "anatomical_right_only", "base": [600, 440, 1000], "elbow": [690, 465, 1230], "tip": [700, 500, 1370], "radius": 35},
+  "bell": {"x_to_y_radius_ratio": 0.92, "swing_plane": "YZ", "roll_degrees": 0, "clapper_hanger": {"anchor": [0, 0, 2160], "pivot": [0, 0, 2020], "radius": 18, "attachment": "Fixed crown eye-bolt/yoke, embedded in shell crown. Hinge at Z2020 rotates around X; below it the clapper rod swings only in YZ."}, "optional_neck_pendants": "Separate small decorative bells. Never substitute for the internal clapper."},
+  "mount": {
+    "type": "open_bark_carrier_frame",
+    "ring_outer_radii_xy": [662.4, 720],
+    "ring_width": 50,
+    "spine_half_width_x": 45,
+    "crossbeam_centers_y": [-450, 450],
+    "crossbeam_half_width_y": 45,
+    "saddle_half_width_x": 350,
+    "saddle_half_length_y": 90,
+    "bottom_z": 1270,
+    "top_z": 1320,
+    "saddle_contact": "Lower surface conforms to proposed body ellipsoid; upper surface reaches frame bottom. Pads and frame follow body root rigidly; no loose strap physics."
+  },
+  "legs": [
+    {"id": "FL", "side": "left", "foot": [-550, 550, 0], "joint": [-550, 580, 900], "segment_lengths": [260, 260], "bend_sign": 1, "paw_scale": 1.0, "phase_offset": 0.0},
+    {"id": "HR", "side": "right", "foot": [490, -550, 0], "joint": [490, -560, 830], "segment_lengths": [250, 240], "bend_sign": -1, "paw_scale": 0.9, "phase_offset": 0.25},
+    {"id": "FR", "side": "right", "foot": [550, 550, 0], "joint": [550, 580, 900], "segment_lengths": [260, 260], "bend_sign": 1, "paw_scale": 1.0, "phase_offset": 0.5},
+    {"id": "HL", "side": "left", "foot": [-490, -550, 0], "joint": [-490, -560, 830], "segment_lengths": [250, 240], "bend_sign": -1, "paw_scale": 0.9, "phase_offset": 0.75}
+  ],
+  "gait": {
+    "purpose": "Reference intent for a slow grounded four-beat walk; not finished animation or runtime speed tuning.",
+    "cycle_seconds": 1.6,
+    "stance_fraction": 0.75,
+    "stride_half_y": 120,
+    "swing_lift_z": 70,
+    "root_forward_per_cycle": 320,
+    "upper_limb_capsule_radius": 70,
+    "lower_limb_capsule_radius": 55,
+    "support_target": "Centroid of the three declared stance foot centers; reference planning aid only, not an estimated center of mass or dynamic balance proof.",
+    "body_motion": "No bob, pitch or lateral sway in this clearance proposal. Add those only during rig/animation review and repeat clearance/contact tests."
+  },
+  "limits": {
+    "declared_neutral_contact_envelope_xy": [1700, 1700],
+    "board_tile_xy": [2000, 2000],
+    "logical_occupancy_cells": 1,
+    "camera": "Orthogonal engineering projections of this shared proposal. Raster source camera geometry remains unknown. Gameplay camera review occurs on the later actual blockout.",
+    "not_established": ["actual 3D mesh", "deformation", "physical mass or bell acoustics", "continuous animation quality", "Unreal import", "gameplay camera visibility", "human reference approval"]
+  }
+}

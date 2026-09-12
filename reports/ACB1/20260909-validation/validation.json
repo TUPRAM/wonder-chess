@@ -1,0 +1,72 @@
+{
+  "status": "PASS_REPOSITORY_VALIDATION_ONLY",
+  "cwd": "C:\\Users\\iputu\\Documents\\Wonder Chess",
+  "python": "C:\\Users\\iputu\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+  "results": [
+    {
+      "name": "validate-kit",
+      "command": "python tools/validate_kit.py",
+      "argv": [
+        "python",
+        "tools/validate_kit.py"
+      ],
+      "started_utc": "2026-09-08T17:23:41.9552604Z",
+      "ended_utc": "2026-09-08T17:23:43.7973818Z",
+      "exit_code": 0,
+      "log": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\ACB1\\20260909-validation\\validate-kit.log",
+      "log_sha256": "60bd9ba5cb6bfee31454a92b2052f8460391b3e7212009608c7dd738b506a6b5"
+    },
+    {
+      "name": "unittest",
+      "command": "python -m unittest discover -s tests -v",
+      "argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "started_utc": "2026-09-08T17:23:43.8202393Z",
+      "ended_utc": "2026-09-08T17:23:51.1902649Z",
+      "exit_code": 0,
+      "log": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\ACB1\\20260909-validation\\unittest.log",
+      "log_sha256": "e66edc57d94eb4f4adfb3f0c917b0c6cc97007fd9dd67b4012245450a4b4590b"
+    },
+    {
+      "name": "documents-check",
+      "command": "python tools/build_documents.py --check",
+      "argv": [
+        "python",
+        "tools/build_documents.py",
+        "--check"
+      ],
+      "started_utc": "2026-09-08T17:23:51.2002929Z",
+      "ended_utc": "2026-09-08T17:23:53.2713617Z",
+      "exit_code": 0,
+      "log": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\ACB1\\20260909-validation\\documents-check.log",
+      "log_sha256": "933c458bf7acb74c8087ec95fece61b75e63f0896376ff5b930d13325b03ff6d"
+    },
+    {
+      "name": "catalog-check",
+      "command": "python tools/compile_catalog.py --check",
+      "argv": [
+        "python",
+        "tools/compile_catalog.py",
+        "--check"
+      ],
+      "started_utc": "2026-09-08T17:23:53.2798688Z",
+      "ended_utc": "2026-09-08T17:23:55.5913843Z",
+      "exit_code": 0,
+      "log": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\ACB1\\20260909-validation\\catalog-check.log",
+      "log_sha256": "5829a87dba4c6928fea135d328bce026d66fab616676a42b011c3a84556b773a"
+    }
+  ],
+  "scoped_diff_check": {
+    "command": "git diff --check -- tools/unreal/launch_alpha.ps1 tests/runtime/test_default_launch.ps1",
+    "exit_code": 0,
+    "log": "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\ACB1\\20260909-validation\\scoped-diff-check.log"
+  },
+  "boundary": "Repository/data/generated-artifact and unit checks only. No engine compile, game launch, UI, Blender execution, gameplay or release acceptance. Existing unrelated failures and dirty files remain untouched."
+}

@@ -1,0 +1,155 @@
+{
+  "schema": "wonder_vnext.bellback_construction_geometry.1",
+  "asset_id": "wc_vn_bellback",
+  "revision": "r003_manual",
+  "units": "millimeter",
+  "status": "proposed_engineering_geometry_not_measured_from_images",
+  "coordinate_convention": {
+    "X": "anatomical right",
+    "Y": "forward",
+    "Z": "up"
+  },
+  "paw": {
+    "width": 440,
+    "length": 550,
+    "height": 420,
+    "hind_scale": 0.9,
+    "pad_center": [
+      0,
+      -65
+    ],
+    "pad_radii": [
+      160,
+      145
+    ],
+    "toe_radius_x": 43,
+    "toe_radius_y": 70,
+    "toe_center_z": 85,
+    "toe_radius_z": 85,
+    "toes": [
+      {
+        "id": "T1",
+        "center_x": -165,
+        "center_y": 155
+      },
+      {
+        "id": "T2",
+        "center_x": -55,
+        "center_y": 175
+      },
+      {
+        "id": "T3",
+        "center_x": 55,
+        "center_y": 175
+      },
+      {
+        "id": "T4",
+        "center_x": 165,
+        "center_y": 155
+      }
+    ]
+  },
+  "bell_section": {
+    "body_ellipse_center_y": 0,
+    "body_ellipse_center_z": 770,
+    "body_ellipse_radius_y": 900,
+    "body_ellipse_radius_z": 400,
+    "outer_profile_yz": [
+      [
+        -720,
+        1320
+      ],
+      [
+        -665,
+        1500
+      ],
+      [
+        -535,
+        1750
+      ],
+      [
+        -350,
+        2000
+      ],
+      [
+        -200,
+        2120
+      ],
+      [
+        -80,
+        2200
+      ],
+      [
+        80,
+        2200
+      ],
+      [
+        200,
+        2120
+      ],
+      [
+        350,
+        2000
+      ],
+      [
+        535,
+        1750
+      ],
+      [
+        665,
+        1500
+      ],
+      [
+        720,
+        1320
+      ]
+    ],
+    "inner_profile_width_by_z": [
+      [
+        1320,
+        625
+      ],
+      [
+        1500,
+        560
+      ],
+      [
+        1750,
+        430
+      ],
+      [
+        2000,
+        255
+      ],
+      [
+        2120,
+        100
+      ]
+    ],
+    "pivot_y": 0,
+    "pivot_z": 2020,
+    "clapper_length": 360,
+    "clapper_striker_radius": 55,
+    "clapper_rod_radius": 8,
+    "swing_limit_degrees": 12,
+    "carrier_frame_y_range": [
+      -720,
+      720
+    ],
+    "carrier_frame_bottom_z": 1270,
+    "carrier_frame_top_z": 1320,
+    "saddle_centers_y": [
+      -450,
+      450
+    ],
+    "saddle_half_length": 90,
+    "saddle_top_z": 1270,
+    "front_pendant_bells": "separate optional decorative parts, never the internal clapper"
+  },
+  "limits": [
+    "These are newly authored engineering proposals, not dimensions recovered from raster artwork.",
+    "Clearance verification covers the declared static longitudinal section and clapper sweep only.",
+    "Transverse shape, shoulder/gait sweeps and final body proportions still require reconciled construction work.",
+    "No Blender geometry, rig, physical bell acoustics or Unreal performance is established."
+  ]
+}

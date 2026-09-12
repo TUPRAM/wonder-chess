@@ -1,0 +1,56 @@
+{
+  "asset_id": "wc_vn_prism_organ",
+  "author": "Codex art_pipeline_audit",
+  "contract_sha256": "f9cdb6f05b6788b187fbcbfc345c0103b6111f7db949cd38192f037a12aa393b",
+  "created_utc": "2026-09-10T16:07:02.523240+00:00",
+  "dependencies": {},
+  "evidence": [
+    {
+      "bytes": 6077,
+      "category": "source",
+      "path": "BRIEF.md",
+      "sha256": "f067425c4c717de77ff67f4974b81b3aa10176f455dbaf824d99c6edeb2a53ff"
+    },
+    {
+      "bytes": 1553,
+      "category": "source",
+      "path": "asset.json",
+      "sha256": "5d42951e9f58de23fd25d8f08760f51d761c234242b9ea23a3d1804a676962f4"
+    },
+    {
+      "bytes": 10904,
+      "category": "source",
+      "path": "inputs/semantic_parts_r001.json",
+      "sha256": "670edf608fba34cb9aed5c75c6f28aa281e79264fa7e742785641da677e1372b"
+    },
+    {
+      "bytes": 2130,
+      "category": "source",
+      "path": "inputs/canonical_hero_snapshot_r001.json",
+      "sha256": "429dbc893c57f53b1d97e79b784588bdd589530d366cccc73c48c0e288319d17"
+    },
+    {
+      "bytes": 3152940,
+      "category": "image",
+      "path": "inputs/direction_r001.png",
+      "sha256": "5ebd4b6de67d15174b15226d53cefc83994712f02aee505e894c2e85f78cc95e"
+    },
+    {
+      "bytes": 4209,
+      "category": "source",
+      "path": "inputs/references/r001/generation_prompt.txt",
+      "sha256": "3b452d3b06bdd2b552694003731fad4376e1058d94bad6770fb868a40affb476"
+    },
+    {
+      "bytes": 2303,
+      "category": "report",
+      "path": "inputs/references/r001/provenance.json",
+      "sha256": "431c8a4c1010a25657ab0bcd1839e0d8d2c3f2b63bd1463573c6cbd171e425ba"
+    }
+  ],
+  "method": "Read canonical hero and owner-selected direction, initialized separate AS1 creature lane, defined proposed dimensions/parts/budgets, used one built-in image request, verified native image copy hashes and viewed actual result.",
+  "report_path": "reports/brief_r001.json",
+  "report_sha256": "ce8a1111cb97060d347de59b642d0cd0fb10c701be4fddcafa0621cddb3015b1",
+  "schema_version": "1.0.0",
+  "stage": "brief"
+}

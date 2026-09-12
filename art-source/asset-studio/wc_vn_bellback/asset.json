@@ -1,0 +1,54 @@
+{
+  "asset_id": "wc_vn_bellback",
+  "contract": {
+    "max_candidates_per_stage": 2,
+    "max_external_spend": 0,
+    "scope": "art_only_no_gameplay_changes",
+    "gameplay_id": "wc_vn_bellback",
+    "profile_id": "wonder_vnext",
+    "source_forward": "+Y",
+    "source_up": "+Z",
+    "authoring_unit": "meter",
+    "dimensions": {
+      "height_including_bell_m": 2.2,
+      "body_length_m": 1.8,
+      "body_width_m": 1.6,
+      "foot_contact_envelope_m": [
+        1.7,
+        1.7
+      ],
+      "status": "proposed_construction_targets_not_measured_or_approved"
+    },
+    "logical_footprint_cells": 1,
+    "board_tile_m": 2.0,
+    "body_family": "grounded_quadruped",
+    "target_camera": "Strategy camera from current successor laboratory; actual pixel coverage to be measured in the approved camera before forms acceptance.",
+    "design_anchor": "Large dorsal bell on mossy quadruped, expressive face, simplified secondary growth.",
+    "budgets": {
+      "lod0_triangles_target_max": 35000,
+      "lod1_triangles_target_max": 15000,
+      "lod2_triangles_target_max": 6000,
+      "material_slots_target_max": 4,
+      "texture_sets_target_max": 2,
+      "max_texture_dimension_target": 2048,
+      "status": "provisional_budget_targets_not_performance_acceptance"
+    },
+    "direction_source_sha256": "5ebd4b6de67d15174b15226d53cefc83994712f02aee505e894c2e85f78cc95e"
+  },
+  "design_revision": "bellback_dorsal_bell_r001",
+  "kind": "creature",
+  "name": "Bellback",
+  "notes": [
+    "Owner selected shared visual direction by saying Use this direction; formal reference/forms/release approval not received.",
+    "Dorsal bell is a compatible art amendment to the older chest-bell wording; no mechanics or numeric changes.",
+    "Do not import or replace legacy Ada or other assets. No Blender source exists in this lane yet."
+  ],
+  "rights": {
+    "status": "generated_source_provenance_recorded_reference_review_pending",
+    "source": "Current task builtin imagegen; exact source and prompt retained.",
+    "external_upload_authorized": false,
+    "external_spend_authorized": 0
+  },
+  "rules_version": "1.0.0",
+  "schema_version": "1.0.0"
+}

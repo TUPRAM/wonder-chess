@@ -1,0 +1,86 @@
+{
+  "artifacts": [
+    {
+      "path": "BRIEF.md",
+      "category": "source"
+    },
+    {
+      "path": "asset.json",
+      "category": "source"
+    },
+    {
+      "path": "inputs/semantic_parts_r001.json",
+      "category": "source"
+    },
+    {
+      "path": "inputs/direction_r001.png",
+      "category": "image"
+    },
+    {
+      "path": "inputs/references/r001/bellback_reference_candidate.png",
+      "category": "image"
+    },
+    {
+      "path": "inputs/references/r001/provenance.json",
+      "category": "report"
+    }
+  ],
+  "asset_id": "wc_vn_bellback",
+  "author": "Codex vnext_catalog",
+  "checks": [
+    {
+      "evidence": [
+        "BRIEF.md",
+        "asset.json",
+        "inputs/semantic_parts_r001.json"
+      ],
+      "id": "scope_and_asset_type",
+      "notes": "New independent Bellback creature lane with original stable ID and presentation-only dorsal-bell amendment; legacy assets untouched.",
+      "status": "pass"
+    },
+    {
+      "evidence": [
+        "BRIEF.md",
+        "asset.json",
+        "inputs/semantic_parts_r001.json"
+      ],
+      "id": "rights_and_upload_policy",
+      "notes": "Exact builtin-generated source/prompt identity retained; no external upload or spend authorized by this intake. Formal rights/reference review remains pending.",
+      "status": "pass"
+    },
+    {
+      "evidence": [
+        "BRIEF.md",
+        "asset.json",
+        "inputs/semantic_parts_r001.json"
+      ],
+      "id": "dimensions_and_camera",
+      "notes": "Manifest declares provisional one-cell footprint, +Y/+Z meter convention and dimensional targets; actual strategy-camera projection is explicitly not yet measured.",
+      "status": "pass"
+    },
+    {
+      "evidence": [
+        "BRIEF.md",
+        "asset.json",
+        "inputs/semantic_parts_r001.json"
+      ],
+      "id": "budgets_and_dependencies",
+      "notes": "Provisional LOD/material/texture budgets and full creature route declared. Direction selection does not clear references; semantic parts and missing construction views recorded.",
+      "status": "pass"
+    }
+  ],
+  "defects": [],
+  "executed_commands": [
+    "assetctl.py init --workspace art-source/asset-studio/wc_vn_bellback --asset-id wc_vn_bellback --kind creature --name Bellback",
+    "assetctl.py report-template --stage brief --output reports/brief_r001.json",
+    "view_image original direction and Bellback reference candidate",
+    "SHA256 original/copy identity comparison"
+  ],
+  "method": "Read current canonical hero brief and AS1 route, initialized new creature workspace, copied exact generated input, viewed direction/reference candidate and authored bounded intake and parts. No Blender/editor operation.",
+  "notes": [
+    "Brief candidate only. No technical reviewer acceptance or formal human reference approval.",
+    "Proposed dimensions/budgets are explicitly targets, not measurements; reference gaps are open and block references, not the authored intake."
+  ],
+  "schema_version": "1.0.0",
+  "stage": "brief"
+}

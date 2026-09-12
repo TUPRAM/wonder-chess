@@ -1,0 +1,83 @@
+{
+  "schema": "wonder_vnext.reference_authority.1",
+  "asset_id": "wc_vn_bellback",
+  "revision": "r003_manual",
+  "human_direction_approval": "received_direction_only",
+  "human_reference_approval": "not_received",
+  "formal_reference_request_ready": false,
+  "user_input_blocker": false,
+  "overall_game_development_blocker": false,
+  "component_authority": [
+    {
+      "component": "identity_and_materials",
+      "source": "owner-selected wc_vn_direction_r001 plate",
+      "status": "owner_selected_direction",
+      "controls": [
+        "creature appeal",
+        "large dorsal bell identity",
+        "bark/moss/brass language"
+      ],
+      "does_not_control": [
+        "measured dimensions",
+        "hidden construction",
+        "toe count where contradictory"
+      ]
+    },
+    {
+      "component": "paw_pairs",
+      "source": "paw_four_toe_proposal.svg",
+      "sha256": "4e9a94f0c2abef985da9aab5f894b534b0cb0e1e28a179ea4e6a4b1cd0bfb866",
+      "status": "proposed_construction",
+      "controls": [
+        "exactly four named toes",
+        "shared front/side/sole coordinates",
+        "hind-foot scale proposal"
+      ],
+      "overrides": "r002 three-toe insets and earlier contradictory prompt wording"
+    },
+    {
+      "component": "main_bell_clapper_and_mount",
+      "source": "bell_internal_clearance_proposal.svg",
+      "sha256": "4ecf6dcdb1c82d57b009871c0c644b66ed87f23ff93ca89ab5df54cb7698a24b",
+      "status": "proposed_construction",
+      "controls": [
+        "main internal clapper hierarchy",
+        "longitudinal cavity",
+        "carrier/saddles",
+        "bounded static-section swing"
+      ],
+      "overrides": "r002 exterior pendant substituted for the main clapper",
+      "does_not_control": [
+        "final creature anatomy",
+        "transverse assembly",
+        "gait deformation",
+        "physical sound simulation"
+      ]
+    },
+    {
+      "component": "shoulder_branch",
+      "source": "r001 semantic reconciliation",
+      "status": "proposed_construction",
+      "controls": [
+        "anatomical right +X"
+      ]
+    },
+    {
+      "component": "gameplay",
+      "source": "data/vnext/catalog.json",
+      "status": "unchanged",
+      "controls": [
+        "stable identity",
+        "mechanic",
+        "statistics",
+        "authoritative event timing"
+      ]
+    }
+  ],
+  "remaining_local_work": [
+    "Transverse assembly section with lateral body/shoulder/mount clearance.",
+    "Reconciled full-body front/side landmarks and consistent proposed dimensions.",
+    "Gait/contact and shoulder-sweep construction proof."
+  ],
+  "method": "Continue bounded authored construction views; no broad full-sheet generation retries."
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "wonder_vnext.semantic_parts_addendum.1",
+  "asset_id": "wc_vn_bellback",
+  "base_inventory": "inputs/semantic_parts_r001.json",
+  "scope": "Reference construction decisions only; original intake remains immutable.",
+  "parts": [
+    {
+      "id": "bell_carrier_frame",
+      "role": "Open support ring, central spine and two crossbeams",
+      "symmetry": "bilateral",
+      "parent": "body_core",
+      "dimensions": "Z1270..1320; ring outer X/Y radii662.4/720; spine halfwidth45; crossbeams Y+/-450",
+      "material": "weathered bark/wood with minimal metal joins",
+      "runtime_policy": "Rigid body-root child, export only after approval and integration",
+      "source": "construction_spec.json",
+      "risk": "Do not replace with a solid box or fill clapper cavity."
+    },
+    {
+      "id": "saddle_pad_pair",
+      "role": "Transfer carrier into broad back contacts",
+      "symmetry": "paired along Y",
+      "parent": "body_core",
+      "dimensions": "Centers Y+/-450, X halfwidth350, Y halflength90; conforming body contact to Z1270",
+      "material": "thick shaped bark/wood, no loose cloth simulation",
+      "runtime_policy": "Rigid body-root child, export only after approval and integration",
+      "source": "construction_spec.json",
+      "risk": "Contact region intentional; limb skin must be tested later."
+    },
+    {
+      "id": "clapper_crown_hanger",
+      "role": "Connect pivot to shell crown",
+      "symmetry": "centered",
+      "parent": "dorsal_bell",
+      "dimensions": "Anchor[0,0,2160] to hinge[0,0,2020], radius18; clapper hinge axis X",
+      "material": "weathered metal",
+      "runtime_policy": "Fixed bell child; clapper below it rotates separately",
+      "source": "construction_spec.json",
+      "risk": "Do not leave floating hinge or substitute an exterior hanging bell."
+    }
+  ],
+  "inherited_part_decisions": {
+    "paws": "Four broad digits each; hind scale0.9; r003 is authoritative.",
+    "branch": "Anatomical right +X only.",
+    "head_shell": "Closed neutral animal expression; r001 aesthetic source and r004 envelope.",
+    "body_core": "Approximate coherent quadruped mass; schematic ellipsoid is not the final sculpt."
+  }
+}

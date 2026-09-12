@@ -1,0 +1,112 @@
+{
+  "schema_version": "wonder_vnext.direction_packet.1",
+  "packet_id": "wc_vn_direction_r001",
+  "profile_id": "wonder_vnext",
+  "created_utc": "2026-09-10T14:22:42.943061+00:00",
+  "classification": "owner_selected_creative_direction",
+  "human_direction_approval": "received_direction_only",
+  "formal_reference_gate": "not_ready_missing_reconciled_views",
+  "scope": "Review visual identity and body-family direction; no modeling, engine import, shipped texture or geometry claim.",
+  "source": {
+    "original_path": "C:\\Users\\iputu\\.codex\\generated_images\\01a08b7d-1b22-7fb2-b30a-2dea2ea02ac3\\exec-4b9fad0d-67b6-4e31-9073-06283c72af6e.png",
+    "packet_path": "inputs/wonder_vnext_direction_r001.png",
+    "sha256": "5ebd4b6de67d15174b15226d53cefc83994712f02aee505e894c2e85f78cc95e",
+    "bytes": 3152940,
+    "dimensions_px": [
+      1536,
+      1024
+    ],
+    "format": "PNG",
+    "copied_without_modification": true
+  },
+  "generation": {
+    "tool": "builtin image_gen.imagegen",
+    "execution_evidence": "Parent tool response in current task; succeeded after initial network failure.",
+    "referenced_input_images": [],
+    "prompt_path": "inputs/generation_prompt_r001.txt",
+    "prompt_sha256": "c5ee0a522366c40debcadcbc8d687ebc90196f6f1815db6c3e894980875f431f",
+    "model_version": "not_returned",
+    "seed": "not_returned",
+    "editable_layers": false,
+    "orthographic_guarantee": false
+  },
+  "review": {
+    "reviewer": "Codex vnext_catalog bounded visual review",
+    "review_type": "agent_visual_critique_not_human_approval",
+    "image_viewed": true,
+    "method": "Viewed native copied-source image through view_image; no image edit, crop or inferred orthographic measurement.",
+    "approval_record": {
+      "reviewer": "Pram (user)",
+      "decision_verbatim": "Use this direction",
+      "source": "User response to the current root task direction-selection question; relayed by root agent on 2026-09-10.",
+      "recorded_utc": "2026-09-10T15:26:25Z",
+      "approval_event_exact_timestamp": "not_exposed_to_subagent",
+      "scope": "Select the shared mythic-storybook direction only. Formal per-asset reference, forms and release gates remain pending.",
+      "image_sha256": "5ebd4b6de67d15174b15226d53cefc83994712f02aee505e894c2e85f78cc95e"
+    }
+  },
+  "intended_assets": [
+    {
+      "asset_id": "wc_vn_bellback",
+      "kind": "creature",
+      "label": "Bellback",
+      "role": "Directional guardian, grounded quadruped",
+      "source_region": "upper-left illustration",
+      "route": "brief -> references -> blockout -> forms -> topology -> materials/rig/skin/motion -> optimization -> engine -> release",
+      "construction_gaps": [
+        "Author true side/back and locomotion/contact views.",
+        "Simplify moss and bell attachments for camera scale.",
+        "Owner-selected direction retains the large dorsal bell; compatible art amendment supersedes the earlier chest-bell art brief. Reconcile actual mount and clapper in construction views."
+      ]
+    },
+    {
+      "asset_id": "wc_vn_prism_organ",
+      "kind": "creature",
+      "label": "Prism Organ",
+      "role": "Floating assembly, spatial beam caster",
+      "source_region": "upper-middle illustration",
+      "route": "full creature route; articulated floating parts, not a human skeleton",
+      "construction_gaps": [
+        "Resolve pipe count and ring attachment/clearance.",
+        "Define floating hierarchy, beam sockets and animated motion envelope.",
+        "Reconcile front/side/back dimensions."
+      ]
+    },
+    {
+      "asset_id": "wc_vn_thimblewake",
+      "kind": "creature",
+      "label": "Thimblewake",
+      "role": "Flower-mantis duelist",
+      "source_region": "upper-right illustration",
+      "route": "full creature route; insect joint directions and contact proof",
+      "construction_gaps": [
+        "Resolve limb count and neutral rest pose in matched views.",
+        "Define petal overlap, forearm attack arcs and ground contacts.",
+        "Keep insect anatomy and avoid human armature assumptions."
+      ]
+    },
+    {
+      "asset_id": "wc_vn_wondergrove",
+      "kind": "modular_environment",
+      "label": "Wondergrove",
+      "role": "Readable sanctuary battlefield",
+      "source_region": "lower decorative scene",
+      "route": "environment route without rig/skin/motion for static kit",
+      "construction_gaps": [
+        "Author measured 8x8 200-cm grid and preparation bench separately.",
+        "Set module pivots, collision and connectors from measured geometry.",
+        "Reduce foliage/frame detail near tactical cells."
+      ]
+    }
+  ],
+  "prohibited_claims": [
+    "Human creative approval",
+    "Approved model reference or reconciled orthographic sheet",
+    "Exact creature dimensions or geometry measurement",
+    "Correct 8x8 board geometry from illustration",
+    "Blender source or rig",
+    "Unreal import or game capture",
+    "Finished art or release acceptance"
+  ],
+  "next_action": "Author Bellback reconciled-view candidates and semantic part inventory using the selected dorsal-bell direction; formal human reference approval is still required."
+}

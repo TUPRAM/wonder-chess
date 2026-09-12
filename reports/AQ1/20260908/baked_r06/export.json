@@ -1,0 +1,140 @@
+{
+  "unit_id": "wc_u_human_guardian",
+  "status": "AQ1_unapproved_comparison_candidate",
+  "source_sha256": "b284de03f89e1506048eb7e62427dafde9f90eb0eb2ef5141089ff6ef91f0c37",
+  "form_source": "art-source/heroes/wc_u_human_guardian/candidates/AQ1/ada_forms_r08.blend",
+  "form_source_sha256": "823cc10c1f1c4bfe81c92928a60e8dfb5e56d53ae46421ddbeb932af0b2829bb",
+  "units_source_sha256": "7dbf08ec21daef3c63c4e6cfd1302b508b44df771ee91322f50a95fe9dc31e05",
+  "source_revision": "AQ1",
+  "fps": 60,
+  "clips": {
+    "Idle": {
+      "action": "AN_wc_u_human_guardian_Idle",
+      "frames": [
+        1,
+        121
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Move": {
+      "action": "AN_wc_u_human_guardian_Move",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Attack": {
+      "action": "AN_wc_u_human_guardian_Attack",
+      "frames": [
+        1,
+        40
+      ],
+      "release_frame": 16,
+      "support_hand_bake_samples": 14,
+      "maximum_support_reach_clamp_m": 0,
+      "sampled_width_m": 1.6944987773895264,
+      "minimum_eye_above_shield_m": 0.17307162284851074
+    },
+    "Active": {
+      "action": "AN_wc_u_human_guardian_Active",
+      "frames": [
+        1,
+        37
+      ],
+      "release_frame": 19,
+      "support_hand_bake_samples": 0,
+      "maximum_support_reach_clamp_m": 0
+    },
+    "Hit": {
+      "action": "AN_wc_u_human_guardian_Hit",
+      "frames": [
+        1,
+        25
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 9,
+      "maximum_support_reach_clamp_m": 0.00644206684694959,
+      "sampled_width_m": 1.6139345169067383,
+      "minimum_eye_above_shield_m": 0.1326993703842163
+    },
+    "Defeat": {
+      "action": "AN_wc_u_human_guardian_Defeat",
+      "frames": [
+        1,
+        61
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 21,
+      "maximum_support_reach_clamp_m": 0.015616439757611955
+    },
+    "Victory": {
+      "action": "AN_wc_u_human_guardian_Victory",
+      "frames": [
+        1,
+        91
+      ],
+      "release_frame": null,
+      "support_hand_bake_samples": 31,
+      "maximum_support_reach_clamp_m": 0,
+      "sampled_width_m": 1.5995298624038696,
+      "minimum_eye_above_shield_m": 0.0803227424621582
+    }
+  },
+  "invariants": {
+    "rest_skeleton_sha256": "f68ec623265e008026f982875d973907580e600d2e7a215980e2c4bf6cb6c73e",
+    "actions_sha256": "d3022161e3068284babb6f598ca2b136cbc4bc17e5e092552531b940098c4ad7",
+    "action_names": [
+      "AN_wc_u_human_guardian_Active",
+      "AN_wc_u_human_guardian_Attack",
+      "AN_wc_u_human_guardian_Defeat",
+      "AN_wc_u_human_guardian_Hit",
+      "AN_wc_u_human_guardian_Idle",
+      "AN_wc_u_human_guardian_Move",
+      "AN_wc_u_human_guardian_Victory"
+    ],
+    "unit_scale_m": 1.0,
+    "fps": 60
+  },
+  "triangles": 24280,
+  "materials": 1,
+  "texture_size": 1024,
+  "fbx_profile": "tools/blender/profiles/fbx_skeletal_cm_v1.json",
+  "lods": [],
+  "budget_status": "15k target; up-to25k comparison experiment needs Pram acceptance before promotion",
+  "author_scripts": {
+    "aq1_author_forms.py": "8de38fd3ac77d3cc47f49503ef1c5ef15b61e287bd9a6de9fb8d0549ee6b14f2",
+    "aq1_bake.py": "77da13b18529d007c536cadb681848baf9e342c40f44914da9def446c04c1c68",
+    "aq1_candidate_pass.py": "0b7c2e4dcf20e49f89e597131f162178ce383e565a0061de7e372e747973c522",
+    "aq1_capture.py": "e816a518f94a1de7dce02c9f971a0cb5997746a90d73840aeb7e63c532ecdcf8",
+    "aq1_equipment.py": "b20bb0ac626b437e34bbe7a363aaf0c2f3e5e01fe2fff581fce9912f50461a22",
+    "aq1_export_candidate.py": "eaa374caee652374cdb4089f1a6835f8683389dd4e02605e2a2d607188c02248",
+    "aq1_finish_forms.py": "c78233b7b648eb9807c816c62ddfdee1bd554f902a39ed727979458c9d1206da",
+    "aq1_live_snapshot.py": "00527a5fec5e86a96a6ecfa37d187c79bdd2d71d385cab16aff9182e9ca25f36",
+    "aq1_motion_fit.py": "e4f0779c9ec43b7fc1ab26268b90920cd0078fa6bf29417f6591537da004677e",
+    "aq1_motion_review.py": "2271a6db91ec54d7e429062911a97192ca9c7d50be9d4b58471ce727a84e0f7b",
+    "aq1_normal_probe.py": "75fa070884e7b968c8c6b2e3472aefb461990a1712086bb6d590d09b970e9b12",
+    "aq1_orient_surfaces.py": "7bcf2c0d0b4129d0f74c28bcca0726a6273bbb68f0a40b969dd500f1d2574e14",
+    "aq1_refine_costume.py": "c0a8d5da043df070492809c2424a4c43876184e73ac111d9840462ca952a370f",
+    "aq1_refine_forms.py": "43b93d28946409a75d6f95b99563c25a1a3e0b38d772e9792617c77d49bd8390",
+    "aq1_refine_head.py": "54699dc8125faa981ff9925e37683d4bb4615bddf46895d920076ec860851da1",
+    "aq1_runtime_geometry.py": "9891dc3509a0fabf375850cb400abe53efa6949e100fe3929541d76e4bfe05af"
+  },
+  "files": {
+    "AN_wc_u_human_guardian_Active.fbx": "2118c14e80658731047bab70c6da2c6b1193b160152196a76848262da03a5532",
+    "AN_wc_u_human_guardian_Attack.fbx": "57307fb725db701596e8cc86414787ba43ca578d7425a3ac3cb3639db1ff2615",
+    "AN_wc_u_human_guardian_Defeat.fbx": "72c4d72100f82854875ccec8493ed521b2692890e9478cc050e31b82cc1489fa",
+    "AN_wc_u_human_guardian_Hit.fbx": "d4999894d4c08d56e78c50d6bb2c39b9b0235ed4ad44c650ede6e7eae4bd47ed",
+    "AN_wc_u_human_guardian_Idle.fbx": "d8b1bcb4828933094694658cbd2ca3038371e747ee0983206714edf8d01d41b2",
+    "AN_wc_u_human_guardian_Move.fbx": "e05ead06625f455a615d0b6c3e4348c7886ed3f142173d139c80085edd8dd3e1",
+    "AN_wc_u_human_guardian_Victory.fbx": "22732de9f5ca5f14968c9849d4cafbff8eb64e2e037e57f2f653b252b420ae76",
+    "SK_wc_u_human_guardian.fbx": "1c7228c2d32b596b0a0272e66197695d4e85a108280664b7f85e7e9c2fbbbd24",
+    "T_wc_u_human_guardian_BaseColor.png": "ae61baa59af23ca4088bfe57e1d92a81dfba0413ec845bb4deb21de7db13cb9f",
+    "T_wc_u_human_guardian_Normal.png": "3ea6f3cbdc864f8d376336b77ad587a3401b04e7aadb25b60c6f15ff98ff9888",
+    "T_wc_u_human_guardian_ORM.png": "7d8469d955f8703516326dbb51ab1fc308b3840aad0043f57b2ba59b65391d7e"
+  }
+}

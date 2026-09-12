@@ -1,0 +1,62 @@
+00:24.688  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\heroes\wc_u_human_guardian\candidates\AQ1\ada_forms_r06.blend"
+Reloading external rigs...
+Reloading external metarigs...
+BlenderMCP: cannot start server in background mode (blender -b) - commands would never execute
+BlenderMCP: run Blender with a GUI, or use a virtual display: xvfb-run -a blender
+BlenderMCP addon registered
+AQ1_BAKE_CHANNEL_START BaseColor
+Info: Baking map saved to internal image, save it externally or pack it
+AQ1_BAKE_CHANNEL_DONE BaseColor
+AQ1_BAKE_CHANNEL_START Normal
+Info: Baking map saved to internal image, save it externally or pack it
+AQ1_BAKE_CHANNEL_DONE Normal
+AQ1_BAKE_CHANNEL_START AO
+Info: Baking map saved to internal image, save it externally or pack it
+AQ1_BAKE_CHANNEL_DONE AO
+AQ1_BAKE_CHANNEL_START Roughness
+Info: Baking map saved to internal image, save it externally or pack it
+AQ1_BAKE_CHANNEL_DONE Roughness
+AQ1_BAKE_CHANNEL_START Metallic
+Info: Baking map saved to internal image, save it externally or pack it
+AQ1_BAKE_CHANNEL_DONE Metallic
+Traceback (most recent call last):
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\aq1_export_candidate.py", line 47, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "C:\Users\iputu\Documents\Wonder Chess\tools\blender\aq1_export_candidate.py", line 40, in main
+    if bake['triangles']>25000:raise RuntimeError('Candidate exceeds AQ1 comparison envelope; inspect topology before importing')
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Candidate exceeds AQ1 comparison envelope; inspect topology before importing
+Info: Saved as "ada_baked_r05.blend"
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\heroes\\wc_u_human_guardian\\candidates\\AQ1\\exports\\r05\\SK_wc_u_human_guardian.fbx'
+(bpy.data.armatures['WC_humanoid_standard_v1.001'], 'POSE')
+export finished in 0.2105 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\heroes\\wc_u_human_guardian\\candidates\\AQ1\\exports\\r05\\AN_wc_u_human_guardian_Idle.fbx'
+export finished in 1.3782 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\heroes\\wc_u_human_guardian\\candidates\\AQ1\\exports\\r05\\AN_wc_u_human_guardian_Move.fbx'
+export finished in 0.9477 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\heroes\\wc_u_human_guardian\\candidates\\AQ1\\exports\\r05\\AN_wc_u_human_guardian_Attack.fbx'
+export finished in 0.4989 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\heroes\\wc_u_human_guardian\\candidates\\AQ1\\exports\\r05\\AN_wc_u_human_guardian_Active.fbx'
+export finished in 0.5591 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\heroes\\wc_u_human_guardian\\candidates\\AQ1\\exports\\r05\\AN_wc_u_human_guardian_Hit.fbx'
+export finished in 0.4838 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\heroes\\wc_u_human_guardian\\candidates\\AQ1\\exports\\r05\\AN_wc_u_human_guardian_Defeat.fbx'
+export finished in 0.7755 sec.
+
+FBX export starting... 'C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\heroes\\wc_u_human_guardian\\candidates\\AQ1\\exports\\r05\\AN_wc_u_human_guardian_Victory.fbx'
+export finished in 1.0385 sec.
+
+Error: script failed, file: 'tools/blender/aq1_export_candidate.py', exiting.
+BlenderMCP server stopped
+BlenderMCP addon unregistered
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

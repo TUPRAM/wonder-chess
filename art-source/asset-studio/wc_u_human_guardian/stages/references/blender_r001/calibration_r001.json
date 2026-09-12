@@ -1,0 +1,220 @@
+{
+  "status": "calibrated_candidate",
+  "asset_id": "wc_u_human_guardian",
+  "height_m": 1.82,
+  "source_image": "stages/references/ada_construction_r002.png",
+  "source_image_sha256": "c65d1d5093f9b15d71cf1e3dfaed059253d659a17a02fc4949533a532486e05b",
+  "source_image_dimensions_px": [
+    1658,
+    949
+  ],
+  "source_forward": "+Y",
+  "source_up": "+Z",
+  "anatomical_left": "-X",
+  "anatomical_right": "+X",
+  "projection_status": "Generated artwork; no mathematical orthographic certification.",
+  "landmark_measurement": "At least 3 body-band pixels with max(R,G,B)<110 per row; crown/sole endpoints visually inspected. Side centerline is a construction choice.",
+  "rear_panel_authority": "r002 is a hem-length candidate; original back reference plus proposed construction decisions control center split.",
+  "views": [
+    {
+      "path": "stages/references/blender_r001/native-crops/body-front.png",
+      "image_sha256": "ad65e46308dd96414a7c0471622e7ee54079dc081427d12cc46cbaeff0bf6811",
+      "part_id": "body",
+      "view": "front",
+      "image_dimensions_px": [
+        415,
+        805
+      ],
+      "source_crop_xyxy": [
+        45,
+        45,
+        460,
+        850
+      ],
+      "crown_source_y_px": 69,
+      "sole_source_y_px": 833,
+      "centerline_source_x_px": 255,
+      "meters_per_pixel": 0.002382198952879581,
+      "display_size_m": 1.9176701570680628,
+      "matrix_world": [
+        [
+          -1,
+          0,
+          0,
+          0.005955497382198953
+        ],
+        [
+          0,
+          0,
+          1,
+          0.75
+        ],
+        [
+          0,
+          1,
+          0,
+          0.9183376963350786
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "view_direction": "observer +Y looking -Y",
+      "calibration_method": "Uniform whole-image scale, manually interpreted centerline; crown/sole dark-pixel extent measured in source body band.",
+      "landmark_uncertainty_px": 3
+    },
+    {
+      "path": "stages/references/blender_r001/native-crops/body-left.png",
+      "image_sha256": "2e8094a2573460b40c869cc6b87d6ff0c1eb5d210f7fe0f0dbbefbcf775b863a",
+      "part_id": "body",
+      "view": "left",
+      "image_dimensions_px": [
+        210,
+        805
+      ],
+      "source_crop_xyxy": [
+        545,
+        45,
+        755,
+        850
+      ],
+      "crown_source_y_px": 69,
+      "sole_source_y_px": 825,
+      "centerline_source_x_px": 650,
+      "meters_per_pixel": 0.0024074074074074076,
+      "display_size_m": 1.937962962962963,
+      "matrix_world": [
+        [
+          0,
+          0,
+          -1,
+          -0.75
+        ],
+        [
+          -1,
+          0,
+          0,
+          0.0
+        ],
+        [
+          0,
+          1,
+          0,
+          0.9087962962962963
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "view_direction": "observer -X looking +X; anatomical left",
+      "calibration_method": "Uniform whole-image scale, manually interpreted centerline; crown/sole dark-pixel extent measured in source body band.",
+      "landmark_uncertainty_px": 3
+    },
+    {
+      "path": "stages/references/blender_r001/native-crops/body-back.png",
+      "image_sha256": "0b9380b883b6d68fd479448102bcd4ea7b0635c7431e645fd5246f6f745e25fb",
+      "part_id": "body",
+      "view": "back",
+      "image_dimensions_px": [
+        405,
+        805
+      ],
+      "source_crop_xyxy": [
+        835,
+        45,
+        1240,
+        850
+      ],
+      "crown_source_y_px": 68,
+      "sole_source_y_px": 827,
+      "centerline_source_x_px": 1035,
+      "meters_per_pixel": 0.0023978919631093545,
+      "display_size_m": 1.9303030303030304,
+      "matrix_world": [
+        [
+          1,
+          0,
+          0,
+          0.005994729907773387
+        ],
+        [
+          0,
+          0,
+          -1,
+          -0.75
+        ],
+        [
+          0,
+          1,
+          0,
+          0.91
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "view_direction": "observer -Y looking +Y",
+      "calibration_method": "Uniform whole-image scale, manually interpreted centerline; crown/sole dark-pixel extent measured in source body band.",
+      "landmark_uncertainty_px": 3
+    },
+    {
+      "path": "stages/references/blender_r001/native-crops/body-right.png",
+      "image_sha256": "e33cb5f59bffe8f5bdf42ab2f315a3d9783a3d73a88513866cf2c28fefba01a9",
+      "part_id": "body",
+      "view": "right",
+      "image_dimensions_px": [
+        225,
+        805
+      ],
+      "source_crop_xyxy": [
+        1300,
+        45,
+        1525,
+        850
+      ],
+      "crown_source_y_px": 69,
+      "sole_source_y_px": 826,
+      "centerline_source_x_px": 1404,
+      "meters_per_pixel": 0.002404227212681638,
+      "display_size_m": 1.9354029062087186,
+      "matrix_world": [
+        [
+          0,
+          0,
+          1,
+          0.75
+        ],
+        [
+          1,
+          0,
+          0,
+          0.020435931307793923
+        ],
+        [
+          0,
+          1,
+          0,
+          0.91
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "view_direction": "observer +X looking -X; anatomical right",
+      "calibration_method": "Uniform whole-image scale, manually interpreted centerline; crown/sole dark-pixel extent measured in source body band.",
+      "landmark_uncertainty_px": 3
+    }
+  ]
+}

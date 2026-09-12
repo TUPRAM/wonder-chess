@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "asset_id": "wc_vn_prism_organ",
+  "name": "Prism Organ",
+  "kind": "creature",
+  "design_revision": "prism_organ_reference_candidate_r001",
+  "rules_version": "1.0.0",
+  "contract": {
+    "scope": "art_only_no_gameplay_changes",
+    "gameplay_id": "wc_vn_prism_organ",
+    "source_forward": "+Y",
+    "source_up": "+Z",
+    "authoring_unit": "meter",
+    "proposed_bounds_m": [
+      1.35,
+      0.9,
+      2.2
+    ],
+    "proposed_hover_clearance_m": 0.25,
+    "dimensions_status": "provisional_targets_not_measured_or_approved",
+    "body_family": "floating_assembly",
+    "gameplay_footprint_cells": 1,
+    "reference_authority": "owner_selected_direction_only_specific_reference_candidate_unapproved",
+    "max_candidates_per_stage": 2,
+    "authorized_generations_this_task": 1,
+    "max_external_spend": 0
+  },
+  "rights": {
+    "status": "generated_reference_provenance_recorded_human_reference_review_pending",
+    "external_upload_authorized": false,
+    "authorized_builtin_reference_use": "Current root task explicitly authorized built-in image generation using the owner-selected local direction; no unrelated upload or API fallback."
+  },
+  "notes": [
+    "One owner: Codex art_pipeline_audit. Independent asset lane; no legacy/Bellback changes.",
+    "Full creature gate route retained; rigid assembly treatment requires a later compatible skeleton contract.",
+    "Reference r001 is ART_REVISE; direction approval is not reference, forms or release approval."
+  ]
+}

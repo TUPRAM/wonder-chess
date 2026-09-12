@@ -1,0 +1,558 @@
+{
+  "control": {
+    "vertices": 4271,
+    "faces": 4246,
+    "triangles": 8492,
+    "quads": 4234,
+    "edges_with_more_than_two_faces": 0,
+    "loose_edges": 0,
+    "degenerate_faces": 0,
+    "boundary_loops": [
+      {
+        "vertices": 48,
+        "world_z_min": 1.5649038553237915,
+        "world_z_max": 1.5649038553237915
+      }
+    ],
+    "raw_nonadjacent_bvh_overlap_count": 0,
+    "overlap_examples": []
+  },
+  "evaluated": {
+    "vertices": 68033,
+    "faces": 67936,
+    "triangles": 135872,
+    "quads": 67936,
+    "edges_with_more_than_two_faces": 0,
+    "loose_edges": 0,
+    "degenerate_faces": 0,
+    "boundary_loops": [
+      {
+        "vertices": 192,
+        "world_z_min": 1.564903974533081,
+        "world_z_max": 1.564903974533081
+      }
+    ],
+    "raw_nonadjacent_bvh_overlap_count": 0,
+    "overlap_examples": []
+  },
+  "cameras_lights": {
+    "HP1_HEAD_POLISH_primary_fit": {
+      "type": "CAMERA",
+      "matrix": [
+        [
+          -0.7990875244140625,
+          0.13501906394958496,
+          0.5858575105667114,
+          0.3290637731552124
+        ],
+        [
+          0.5978102087974548,
+          0.07488522678613663,
+          0.7981323003768921,
+          0.4141600728034973
+        ],
+        [
+          0.06389100104570389,
+          0.9880091547966003,
+          -0.14055562019348145,
+          1.6089117527008057
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "data": {
+        "lens": 50,
+        "ortho_scale": 0.32791203260421753,
+        "type": "ORTHO"
+      }
+    },
+    "HP1_HEAD_POLISH_front": {
+      "type": "CAMERA",
+      "matrix": [
+        [
+          -1,
+          -1.5099580252808664e-7,
+          1.1399865765455465e-14,
+          0
+        ],
+        [
+          0,
+          7.549790126404332e-8,
+          1,
+          0.492000013589859
+        ],
+        [
+          -1.5099580252808664e-7,
+          1,
+          -7.549790126404332e-8,
+          1.6799999475479126
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "data": {
+        "lens": 50,
+        "ortho_scale": 0.28999999165534973,
+        "type": "ORTHO"
+      }
+    },
+    "HP1_HEAD_POLISH_profile": {
+      "type": "CAMERA",
+      "matrix": [
+        [
+          -4.371138828673793e-8,
+          4.371138828673793e-8,
+          1,
+          0.5
+        ],
+        [
+          1,
+          1.910685676922942e-15,
+          4.371138828673793e-8,
+          -0.00800000037997961
+        ],
+        [
+          0,
+          1,
+          -4.371138828673793e-8,
+          1.6799999475479126
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "data": {
+        "lens": 50,
+        "ortho_scale": 0.28999999165534973,
+        "type": "ORTHO"
+      }
+    },
+    "HP1_HEAD_POLISH_three_quarter": {
+      "type": "CAMERA",
+      "matrix": [
+        [
+          -0.8022332787513733,
+          -0.0278150774538517,
+          0.5963624119758606,
+          0.3199999928474426
+        ],
+        [
+          0.5970107316970825,
+          -0.037376657128334045,
+          0.8013620972633362,
+          0.4220000207424164
+        ],
+        [
+          8.46958130296116e-8,
+          0.9989140629768372,
+          0.04659069702029228,
+          1.7049999237060547
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "data": {
+        "lens": 50,
+        "ortho_scale": 0.28999999165534973,
+        "type": "ORTHO"
+      }
+    },
+    "HP1_HEAD_POLISH_underside": {
+      "type": "CAMERA",
+      "matrix": [
+        [
+          -0.9191450476646423,
+          0.20039056241512299,
+          0.3391401469707489,
+          0.18000000715255737
+        ],
+        [
+          0.39391928911209106,
+          0.46757832169532776,
+          0.7913268208503723,
+          0.41200000047683716
+        ],
+        [
+          -1.5099580252808664e-7,
+          0.8609379529953003,
+          -0.5087100267410278,
+          1.409999966621399
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "data": {
+        "lens": 50,
+        "ortho_scale": 0.28999999165534973,
+        "type": "ORTHO"
+      }
+    },
+    "HP1_HEAD_POLISH_Key": {
+      "type": "LIGHT",
+      "matrix": [
+        [
+          -0.7936064004898071,
+          0.32611116766929626,
+          -0.5136538743972778,
+          -0.23000000417232513
+        ],
+        [
+          -0.6084315180778503,
+          -0.42536231875419617,
+          0.669983446598053,
+          0.29200002551078796
+        ],
+        [
+          6.913710848266419e-8,
+          0.8442262411117554,
+          0.535986602306366,
+          1.9199999570846558
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "data": {
+        "type": "AREA",
+        "energy": 2.5
+      }
+    },
+    "HP1_HEAD_POLISH_Fill": {
+      "type": "LIGHT",
+      "matrix": [
+        [
+          -0.6459421515464783,
+          -0.06698201596736908,
+          0.7604420781135559,
+          0.25999999046325684
+        ],
+        [
+          0.7633863687515259,
+          -0.056677065789699554,
+          0.6434508562088013,
+          0.21199999749660492
+        ],
+        [
+          -1.2398142956726588e-8,
+          0.9961430430412292,
+          0.08774326741695404,
+          1.709999918937683
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "data": {
+        "type": "AREA",
+        "energy": 0.6499999761581421
+      }
+    },
+    "HP1_HEAD_POLISH_portrait": {
+      "type": "CAMERA",
+      "matrix": [
+        [
+          -0.749329149723053,
+          -0.0858173593878746,
+          0.6566134095191956,
+          0.3799999952316284
+        ],
+        [
+          0.6621977090835571,
+          -0.09710925072431564,
+          0.7430101037025452,
+          0.45000001788139343
+        ],
+        [
+          7.214011077394389e-8,
+          0.9915670156478882,
+          0.1295948475599289,
+          1.7400000095367432
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "data": {
+        "lens": 50,
+        "ortho_scale": 0.24500000476837158,
+        "type": "ORTHO"
+      }
+    },
+    "HP1_HEAD_POLISH_back": {
+      "type": "CAMERA",
+      "matrix": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          -1.6292068494294654e-7,
+          -1,
+          -0.47999998927116394
+        ],
+        [
+          0,
+          1,
+          -1.6292068494294654e-7,
+          1.6649999618530273
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "data": {
+        "lens": 50,
+        "ortho_scale": 0.28999999165534973,
+        "type": "ORTHO"
+      }
+    },
+    "HP1_HEAD_POLISH_other_three_quarter": {
+      "type": "CAMERA",
+      "matrix": [
+        [
+          -0.8022332787513733,
+          0.0278150774538517,
+          -0.5963624119758606,
+          -0.3199999928474426
+        ],
+        [
+          -0.5970107316970825,
+          -0.037376657128334045,
+          0.8013620972633362,
+          0.45000001788139343
+        ],
+        [
+          -8.46958130296116e-8,
+          0.9989140629768372,
+          0.04659069702029228,
+          1.6899999380111694
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "data": {
+        "lens": 50,
+        "ortho_scale": 0.28999999165534973,
+        "type": "ORTHO"
+      }
+    }
+  },
+  "source": {
+    "vertices": 19158,
+    "shape_keys": [
+      [
+        "Basis",
+        1
+      ],
+      [
+        "$md-$as-$fe-$yn",
+        0.3267660140991211
+      ],
+      [
+        "$md-$ca-$fe-$yn",
+        0.3267660140991211
+      ],
+      [
+        "$md-$af-$fe-$yn",
+        0.3267660140991211
+      ],
+      [
+        "$md-universal-$fe-$yn-$av$mu-$av$wg",
+        0.9901999831199646
+      ],
+      [
+        "$md-$fe-$yn-$av$mu-$av$wg-$avcup-max$fi",
+        0.08856657892465591
+      ],
+      [
+        "$md-$fe-$yn-$av$mu-$av$wg-maxcup-$av$fi",
+        0.088466577231884
+      ],
+      [
+        "head-invertedtriangular",
+        0.11999999731779099
+      ],
+      [
+        "head-back-scale-depth-decr",
+        0.11999999731779099
+      ],
+      [
+        "chin-height-incr",
+        0.1599999964237213
+      ],
+      [
+        "chin-prominent-incr",
+        0.11999999731779099
+      ],
+      [
+        "chin-width-decr",
+        0.07999999821186066
+      ],
+      [
+        "r-cheek-bones-incr",
+        0.10000000149011612
+      ],
+      [
+        "l-cheek-bones-incr",
+        0.10000000149011612
+      ],
+      [
+        "r-cheek-inner-decr",
+        0.07999999821186066
+      ],
+      [
+        "l-cheek-inner-decr",
+        0.07999999821186066
+      ],
+      [
+        "nose-scale-vert-decr",
+        0.10000000149011612
+      ],
+      [
+        "nose-scale-depth-decr",
+        0.07999999821186066
+      ],
+      [
+        "nose-point-width-incr",
+        0.05999999865889549
+      ],
+      [
+        "mouth-trans-backward",
+        0.18000000715255737
+      ],
+      [
+        "mouth-philtrum-volume-incr",
+        0.10000000149011612
+      ],
+      [
+        "mouth-upperlip-height-decr",
+        0.10000000149011612
+      ],
+      [
+        "mouth-lowerlip-height-decr",
+        0.11999999731779099
+      ],
+      [
+        "mouth-lowerlip-middle-up",
+        0.44999998807907104
+      ],
+      [
+        "mouth-cupidsbow-incr",
+        0.10000000149011612
+      ],
+      [
+        "r-eye-scale-incr",
+        0.20000000298023224
+      ],
+      [
+        "l-eye-scale-incr",
+        0.20000000298023224
+      ],
+      [
+        "r-eye-corner2-up",
+        0.15000000596046448
+      ],
+      [
+        "l-eye-corner2-up",
+        0.15000000596046448
+      ],
+      [
+        "r-eye-height1-decr",
+        0.10000000149011612
+      ],
+      [
+        "l-eye-height1-decr",
+        0.10000000149011612
+      ],
+      [
+        "r-eye-height2-incr",
+        0.05000000074505806
+      ],
+      [
+        "l-eye-height2-incr",
+        0.05000000074505806
+      ],
+      [
+        "r-eye-height3-decr",
+        0.07999999821186066
+      ],
+      [
+        "l-eye-height3-decr",
+        0.07999999821186066
+      ],
+      [
+        "mouth-upperlip-middle-down",
+        0.18000000715255737
+      ],
+      [
+        "mouth-upperlip-volume-decr",
+        0.25
+      ],
+      [
+        "mouth-lowerlip-volume-decr",
+        0.10000000149011612
+      ]
+    ]
+  },
+  "visible_meshes": [
+    "MP1_Head_r002",
+    "MP1_Eye_R",
+    "MP1_Eye_L"
+  ],
+  "texture_images": [
+    "Render Result",
+    "Viewer Node"
+  ],
+  "human_approval": false,
+  "camera_light_deltas": {
+    "HP1_HEAD_POLISH_primary_fit": 0,
+    "HP1_HEAD_POLISH_front": 0,
+    "HP1_HEAD_POLISH_profile": 0,
+    "HP1_HEAD_POLISH_three_quarter": 0,
+    "HP1_HEAD_POLISH_underside": 0,
+    "HP1_HEAD_POLISH_Key": 5.960464477539063e-8,
+    "HP1_HEAD_POLISH_Fill": 0,
+    "HP1_HEAD_POLISH_portrait": 0,
+    "HP1_HEAD_POLISH_back": 0,
+    "HP1_HEAD_POLISH_other_three_quarter": 0
+  },
+  "integrity_limits": "Static mesh observations only; BVH nonadjacent face-pair screening is not exhaustive collision certification. Eye and mouth recesses have interior surfaces; neck is sole mesh-boundary loop. No deformation tests."
+}

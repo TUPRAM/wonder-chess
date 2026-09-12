@@ -1,0 +1,95 @@
+{
+  "artifacts": [
+    {
+      "path": "inputs/references/r002/provenance.json",
+      "category": "source"
+    },
+    {
+      "path": "inputs/references/r002/bellback_construction_proposal.png",
+      "category": "image"
+    },
+    {
+      "path": "inputs/references/r002/CONSTRUCTION_CORRECTIONS.md",
+      "category": "report"
+    }
+  ],
+  "asset_id": "wc_vn_bellback",
+  "author": "Codex vnext_catalog",
+  "checks": [
+    {
+      "evidence": [
+        "inputs/references/r002/provenance.json",
+        "inputs/references/r002/bellback_construction_proposal.png"
+      ],
+      "id": "identity_locked",
+      "notes": "Direction selected; this per-asset construction packet has not received formal approval.",
+      "status": "not_run"
+    },
+    {
+      "evidence": [
+        "inputs/references/r002/provenance.json",
+        "inputs/references/r002/bellback_construction_proposal.png"
+      ],
+      "id": "views_reconciled",
+      "notes": "Paired generated views improve coverage but projection/scale/pose remain unmeasured.",
+      "status": "fail"
+    },
+    {
+      "evidence": [
+        "inputs/references/r002/provenance.json",
+        "inputs/references/r002/bellback_construction_proposal.png"
+      ],
+      "id": "handedness_and_parts",
+      "notes": "The four-toe contract is contradicted by the three-toe paw insets; main clapper is incorrectly illustrated as an external pendant.",
+      "status": "fail"
+    },
+    {
+      "evidence": [
+        "inputs/references/r002/provenance.json",
+        "inputs/references/r002/bellback_construction_proposal.png"
+      ],
+      "id": "construction_gaps_decided",
+      "notes": "Internal main-bell cavity, clapper and body clearance remain unresolved; bounded manual construction correction is required.",
+      "status": "fail"
+    }
+  ],
+  "defects": [
+    {
+      "id": "REF-R002-01",
+      "severity": "major",
+      "status": "open",
+      "description": "Front and underside paw insets show three toes; the agreed construction proposal requires four. Full-body feet also vary in apparent count."
+    },
+    {
+      "id": "REF-R002-02",
+      "severity": "major",
+      "status": "open",
+      "description": "The clapper callout points below an exterior miniature hanging bell rather than defining the main dorsal bell internal clapper."
+    },
+    {
+      "id": "REF-R002-03",
+      "severity": "major",
+      "status": "open",
+      "description": "The body occupies the dorsal bell opening region; no section establishes a collision-free internal clapper cavity."
+    },
+    {
+      "id": "REF-R002-04",
+      "severity": "major",
+      "status": "open",
+      "description": "Paired panels remain generated illustrations. Their perspective, pose, scale and source camera are not measured or certified orthographic."
+    }
+  ],
+  "executed_commands": [
+    "view_image original r002 construction proposal",
+    "Hash-verified native copy and prompt preservation"
+  ],
+  "method": "Viewed r002 construction proposal after r001 and inspected paired sides, body-under-bell, paw/contact, bell/saddle and head panels. Recorded observed improvement and unresolved major defects. No modeling or calibration was performed.",
+  "notes": [
+    "ART_REVISE is local to the Bellback construction-reference stage.",
+    "This is unfinished local work, not a request for user action and not a blocker for independent game development.",
+    "Do not prepare/approve this report or request human approval of known-bad construction.",
+    "Change the correction method; do not keep regenerating full sheets."
+  ],
+  "schema_version": "1.0.0",
+  "stage": "references"
+}

@@ -1,0 +1,69 @@
+{
+  "id": "wc_vn_prism_organ",
+  "name": "Prism Organ",
+  "display_name": "Prism Organ",
+  "race": "construct",
+  "unit_class": "mage",
+  "cost": 4,
+  "body_family": "floating_assembly",
+  "role_tags": [
+    "damage"
+  ],
+  "archetype": "artillery",
+  "enabled": true,
+  "production_status": "laboratory_candidate",
+  "art_status": "brief_only",
+  "dossier": {
+    "form": "Suspended ceramic organ pipes arranged around a stained-glass resonator.",
+    "decision": "Punish enemies sharing crossing rows and columns.",
+    "positioning": "Protect its long setup while scouting clustered opposing lines.",
+    "allies": "Bellback absorbs approach pressure; Root sustains the protected casting position.",
+    "counterplay": "Spread across rows and columns; interrupt the marked setup.",
+    "recognition": "Two different musical notes and crossing ground lines announce the ordered beams."
+  },
+  "stats": {
+    "health": 80000,
+    "attackDamage": 6000,
+    "attackRate": 700,
+    "range": 4,
+    "armor": 20,
+    "resistance": 15,
+    "movementRate": 850,
+    "attackWindupMs": 150,
+    "projectileTravelMs": 200,
+    "damageType": "physical"
+  },
+  "ability": {
+    "id": "wc_vn_a_prism_organ",
+    "name": "Crossing Hymn",
+    "mechanic": "crossing_beams",
+    "effect": "damage",
+    "selector": "current_enemy",
+    "damageType": "magic",
+    "firstCastMs": 1500,
+    "cooldownMs": 6000,
+    "castMs": 1000,
+    "recoveryMs": 300,
+    "durationMs": 0,
+    "travelMs": 0,
+    "radius": 3,
+    "range": 6,
+    "maxTargets": 20,
+    "maxDash": 0,
+    "allowSelf": false,
+    "magnitude": [
+      17000,
+      27000,
+      42000
+    ],
+    "guardReductionBp": 0,
+    "momentumPerStepBp": 0,
+    "maxMomentumSteps": 0,
+    "stationaryMs": 0,
+    "pulseMs": 0,
+    "displacementCells": 0,
+    "secondaryDelayMs": 400,
+    "tooltip_en": "Punish enemies sharing crossing rows and columns. Spread across rows and columns; interrupt the marked setup.",
+    "tooltip_id": "Tandai baris dan kolom lalu lepaskan sinar berurutan. Menyebar atau hentikan persiapan."
+  }
+}

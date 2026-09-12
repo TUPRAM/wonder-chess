@@ -1,0 +1,135 @@
+{
+  "status": "owner_reference_candidate",
+  "references": [
+    {
+      "id": "back-panel-candidate",
+      "role": "native original aesthetic/construction context, not geometrically certified",
+      "sources": [
+        {
+          "path": "inputs/crops/back-panel-candidate.png",
+          "sha256": "a578ced66cfef03a049b987de7362e9a29b69242dd36f2d1ebf70376c0edfa56"
+        }
+      ]
+    },
+    {
+      "id": "boot-knee-context",
+      "role": "native original aesthetic/construction context, not geometrically certified",
+      "sources": [
+        {
+          "path": "inputs/crops/boot-knee-context.png",
+          "sha256": "934cd98d7594aed207e1146e2f6b671fa87975769d73cd0ef9b2f80b6f0cd095"
+        }
+      ]
+    },
+    {
+      "id": "construction_turnaround",
+      "role": "generated visual candidate, not exact projection",
+      "sources": [
+        {
+          "path": "stages/references/ada_construction_r002.png",
+          "sha256": "c65d1d5093f9b15d71cf1e3dfaed059253d659a17a02fc4949533a532486e05b"
+        }
+      ]
+    },
+    {
+      "id": "face-primary",
+      "role": "native original aesthetic/construction context, not geometrically certified",
+      "sources": [
+        {
+          "path": "inputs/crops/face-primary.png",
+          "sha256": "007bb9f56c127d44a3d8d2c6cb850485fb00664348af6716f18b75d8448e2236"
+        }
+      ]
+    },
+    {
+      "id": "front-panel-candidate",
+      "role": "native original aesthetic/construction context, not geometrically certified",
+      "sources": [
+        {
+          "path": "inputs/crops/front-panel-candidate.png",
+          "sha256": "5dd4945eb8f4c514daad6afa07a8acc344d4f0b8be1f60cdf4fa44342656df4b"
+        }
+      ]
+    },
+    {
+      "id": "hair-back",
+      "role": "native original aesthetic/construction context, not geometrically certified",
+      "sources": [
+        {
+          "path": "inputs/crops/hair-back.png",
+          "sha256": "958e093703b9c0255a24a1708263a58303e502285c1cbfa2c44d939a2a7bf0d4"
+        }
+      ]
+    },
+    {
+      "id": "hands_contact",
+      "role": "visible grip and relaxed glove context; hidden palm/thumb contact is proposed construction to test in model",
+      "sources": [
+        {
+          "path": "inputs/crops/action-context.png",
+          "sha256": "354378b270194277b0a5ddd75bee01709a631fdd39f66da56e77b2570c8fd566"
+        },
+        {
+          "path": "stages/references/ada_construction_r002.png",
+          "sha256": "c65d1d5093f9b15d71cf1e3dfaed059253d659a17a02fc4949533a532486e05b"
+        },
+        {
+          "path": "stages/references/construction_decisions_r002.md",
+          "sha256": "dc2ad675c381b66381dbb915db762160123a96d6c017d69b90e64f9bf4e919d1"
+        }
+      ]
+    },
+    {
+      "id": "shield-detail",
+      "role": "native original aesthetic/construction context, not geometrically certified",
+      "sources": [
+        {
+          "path": "inputs/crops/shield-detail.png",
+          "sha256": "eba09dad51eb5b1f0d0d6bcc4cbbeda2ea823311757af60e2015bb4056024001"
+        }
+      ]
+    },
+    {
+      "id": "shield_construction",
+      "role": "front aesthetic source plus explicitly proposed back grip/strap construction",
+      "sources": [
+        {
+          "path": "inputs/crops/shield-detail.png",
+          "sha256": "eba09dad51eb5b1f0d0d6bcc4cbbeda2ea823311757af60e2015bb4056024001"
+        },
+        {
+          "path": "stages/references/construction_decisions_r002.md",
+          "sha256": "dc2ad675c381b66381dbb915db762160123a96d6c017d69b90e64f9bf4e919d1"
+        }
+      ]
+    },
+    {
+      "id": "sword-detail",
+      "role": "native original aesthetic/construction context, not geometrically certified",
+      "sources": [
+        {
+          "path": "inputs/crops/sword-detail.png",
+          "sha256": "c56a0e2e0336123ecf072160396e6d6a56236e5b2299f9eeff8dee244f5358bc"
+        }
+      ]
+    },
+    {
+      "id": "torso-layering",
+      "role": "native original aesthetic/construction context, not geometrically certified",
+      "sources": [
+        {
+          "path": "inputs/crops/torso-layering.png",
+          "sha256": "fc525a536af496477df808644fe92d74b5fa726b8ffa4c8ee85eceb06ab34c52"
+        }
+      ]
+    }
+  ],
+  "priority": "construction_decisions_r002.md defines explicit component choices; supplied face/equipment remain identity masters; generated sheet supplies unarmed proportions and above-knee length only",
+  "not_demonstrated": [
+    "same measured 3D pose across generated views",
+    "full hand contact geometry",
+    "shield back geometry",
+    "normal-gameplay likeness",
+    "deformation"
+  ]
+}
