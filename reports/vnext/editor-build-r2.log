@@ -1,0 +1,46 @@
+Using bundled DotNet SDK version: 8.0.412 win-x64
+Running UnrealBuildTool: dotnet "..\..\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" WonderChessEditor Win64 Development "C:/Users/iputu/Documents/Wonder Chess/game/WonderChess.uproject" -WaitMutex -NoHotReloadFromIDE -NoLiveCoding
+Log file: C:\Users\iputu\AppData\Local\UnrealBuildTool\Log.txt
+Using 'git status' to determine working set for adaptive non-unity build (C:\Users\iputu\Documents\Wonder Chess).
+Invalidating makefile for WonderChessEditor (WonderChessRuntime.Build.cs modified)
+UHT compiled-in object format Default
+Parsing headers for WonderChessEditor
+  Running Internal UnrealHeaderTool "C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject" "C:\Users\iputu\Documents\Wonder Chess\game\Intermediate\Build\Win64\WonderChessEditor\Development\WonderChessEditor.uhtmanifest" -WarningsAsErrors -installed
+UHT processed WonderChessEditor in 2.7686057 seconds (3 files written)
+Building WonderChessEditor...
+Using Visual Studio 2022 14.44.35226 toolchain (C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[Adaptive Build] Excluded from WonderChessRuntime unity file: WCAnimationReview.cpp, WCBoardPresenter.cpp, WCDefinitionRegistry.cpp, WCFrontEndScene.cpp, WCVNextLab.cpp, WonderChessRuntime.cpp, WonderSave.cpp, WonderSimulation.cpp, WonderTournament.cpp
+Determining max actions to execute in parallel (8 physical cores, 16 logical cores)
+  Executing up to 8 processes, one per physical core
+  Requested 1.5 GB memory per action, 4.41 GB available: limiting max parallel actions to 2
+Using Unreal Build Accelerator local executor to run 21 action(s)
+  Storage capacity 40Gb
+---- Starting trace: 260910_222014 ----
+UbaServer - Listening on 0.0.0.0:1345
+[1/21] Compile [x64] PerModuleInline.gen.cpp
+[2/21] Compile [x64] WCAttackPresentation.cpp
+[3/21] Compile [x64] WCAttackWindowTests.cpp
+[4/21] Compile [x64] Module.WonderChessRuntime.gen.cpp
+[5/21] Compile [x64] WCFrontEndAudit.cpp
+[6/21] Compile [x64] WCFrontEnd.cpp
+[7/21] Compile [x64] WCGameMode.cpp
+[8/21] Compile [x64] WCFrontEndProfile.cpp
+[9/21] Compile [x64] WCImportedAssetTests.cpp
+[10/21] Compile [x64] WCMatchRuntime.cpp
+[11/21] Compile [x64] WCNetworkSession.cpp
+[12/21] Compile [x64] WCNetworkStartupTests.cpp
+[13/21] Compile [x64] WCMatchHUD.cpp
+[14/21] Compile [x64] WCNeutralAssetTests.cpp
+[15/21] Compile [x64] WCVNextLab.cpp
+[16/21] Compile [x64] WCVerification.cpp
+[17/21] Compile [x64] WonderSave.cpp
+[18/21] Compile [x64] WonderSimulationTests.cpp
+[19/21] Link [x64] UnrealEditor-WonderChessRuntime.lib
+[20/21] Link [x64] UnrealEditor-WonderChessRuntime.dll
+[21/21] WriteMetadata WonderChessEditor.target [NoUba]
+
+Trace written to file C:/Users/iputu/AppData/Local/UnrealBuildTool/Log.uba with size 10.0kb
+Total time in Unreal Build Accelerator local executor: 35.95 seconds
+
+Result: Succeeded
+Total execution time: 48.90 seconds

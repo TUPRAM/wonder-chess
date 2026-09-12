@@ -1,0 +1,60 @@
+<frozen runpy>:128: RuntimeWarning: 'blender_mcp.server' found in sys.modules after import of package 'blender_mcp', but prior to execution of 'blender_mcp.server'; this may result in unpredictable behaviour
+2026-09-08 12:30:56,900 - BlenderMCPServer - INFO - BlenderMCP server starting up
+2026-09-08 12:30:56,919 - BlenderMCPServer - INFO - Blender addon on disk is current (protocol 5).
+2026-09-08 12:30:56,920 - blender-mcp-telemetry - WARNING - Telemetry disabled via environment variable
+2026-09-08 12:30:56,933 - BlenderMCPServer - INFO - Connected to Blender at 127.0.0.1:9876
+2026-09-08 12:30:56,933 - BlenderMCPServer - INFO - Created new persistent connection to Blender
+2026-09-08 12:30:56,933 - BlenderMCPServer - INFO - Sending command: get_addon_info with params: None
+2026-09-08 12:30:56,933 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-08 12:30:56,950 - BlenderMCPServer - INFO - Received complete response (354 bytes)
+2026-09-08 12:30:56,950 - BlenderMCPServer - INFO - Received 354 bytes of data
+2026-09-08 12:30:56,950 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-08 12:30:56,950 - BlenderMCPServer - INFO - Blender addon up to date (protocol 5, addon [1, 6], Blender 5.1.1)
+2026-09-08 12:30:56,950 - BlenderMCPServer - INFO - Successfully connected to Blender on startup
+2026-09-08 12:30:56,956 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-09-08 12:30:56,961 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-09-08 12:30:56,962 - BlenderMCPServer - INFO - Sending command: get_addon_info with params: None
+2026-09-08 12:30:56,962 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-08 12:30:57,000 - BlenderMCPServer - INFO - Received complete response (354 bytes)
+2026-09-08 12:30:57,000 - BlenderMCPServer - INFO - Received 354 bytes of data
+2026-09-08 12:30:57,001 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-08 12:30:57,001 - BlenderMCPServer - INFO - Blender addon up to date (protocol 5, addon [1, 6], Blender 5.1.1)
+2026-09-08 12:30:57,002 - BlenderMCPServer - INFO - Connected to Blender at 127.0.0.1:9876
+2026-09-08 12:30:57,002 - BlenderMCPServer - INFO - Created new persistent connection to Blender
+2026-09-08 12:30:57,002 - BlenderMCPServer - INFO - Sending command: get_addon_info with params: None
+2026-09-08 12:30:57,002 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-08 12:30:57,050 - BlenderMCPServer - INFO - Received complete response (354 bytes)
+2026-09-08 12:30:57,051 - BlenderMCPServer - INFO - Received 354 bytes of data
+2026-09-08 12:30:57,051 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-08 12:30:57,051 - BlenderMCPServer - INFO - Blender addon up to date (protocol 5, addon [1, 6], Blender 5.1.1)
+2026-09-08 12:30:57,051 - BlenderMCPServer - INFO - Sending command: get_telemetry_consent with params: None
+2026-09-08 12:30:57,051 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-08 12:30:57,101 - BlenderMCPServer - INFO - Received complete response (51 bytes)
+2026-09-08 12:30:57,101 - BlenderMCPServer - INFO - Received 51 bytes of data
+2026-09-08 12:30:57,101 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-08 12:30:57,105 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-09-08 12:30:57,110 - BlenderMCPServer - INFO - Sending command: execute_code with params: {'code': 'import bpy\nimport json\nprint(json.dumps({"file": bpy.data.filepath, "version": bpy.app.version_string, "dirty": bpy.data.is_dirty, "objects": [{"name": o.name, "type": o.type} for o in bpy.context.scene.objects]}))'}
+2026-09-08 12:30:57,110 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-08 12:30:57,152 - BlenderMCPServer - INFO - Received complete response (826 bytes)
+2026-09-08 12:30:57,152 - BlenderMCPServer - INFO - Received 826 bytes of data
+2026-09-08 12:30:57,152 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-08 12:30:57,156 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-09-08 12:30:57,157 - BlenderMCPServer - INFO - Sending command: get_scene_info with params: None
+2026-09-08 12:30:57,157 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-08 12:30:57,203 - BlenderMCPServer - INFO - Received complete response (881 bytes)
+2026-09-08 12:30:57,203 - BlenderMCPServer - INFO - Received 881 bytes of data
+2026-09-08 12:30:57,203 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-08 12:30:57,209 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-09-08 12:30:57,210 - BlenderMCPServer - INFO - Sending command: get_object_info with params: {'name': 'ANATOMICAL_RIGHT_POS_X'}
+2026-09-08 12:30:57,210 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-08 12:30:57,252 - BlenderMCPServer - INFO - Received complete response (217 bytes)
+2026-09-08 12:30:57,252 - BlenderMCPServer - INFO - Received 217 bytes of data
+2026-09-08 12:30:57,253 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-08 12:30:57,257 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-09-08 12:30:57,258 - BlenderMCPServer - INFO - Sending command: get_viewport_screenshot with params: {'max_size': 1400, 'filepath': 'C:\\Users\\iputu\\AppData\\Local\\Temp\\blender_screenshot_65900.png', 'format': 'png'}
+2026-09-08 12:30:57,258 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-08 12:30:57,393 - BlenderMCPServer - INFO - Received complete response (187 bytes)
+2026-09-08 12:30:57,393 - BlenderMCPServer - INFO - Received 187 bytes of data
+2026-09-08 12:30:57,393 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-08 12:30:57,411 - BlenderMCPServer - INFO - Disconnecting from Blender on shutdown
+2026-09-08 12:30:57,411 - BlenderMCPServer - INFO - BlenderMCP server shut down

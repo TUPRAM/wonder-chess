@@ -1,0 +1,107 @@
+{
+  "schema": "wonder_vnext.lab_visual_review.1",
+  "reviewed_utc": "2026-09-10T16:36:04.827287+00:00",
+  "candidate": "WonderChess-VNext-Lab-r3",
+  "reviewer": "root AI technical reviewer",
+  "human_art_approval": false,
+  "input_boundary": "Scripted exercise calls native UI command handlers; geometry projection/deprojection is tested. Physical pointer gestures, keyboard navigation, external-player usability and full continuous-motion review were not performed.",
+  "observations": [
+    "All 64 cell centers remain inside the board pane at all three sizes; sidebar scroll keeps controls separate from the board.",
+    "Viewed Reefglass preparation captures contain complete Health and Armor lines after selection changes, with explicit inactive-trait wording.",
+    "Guard and tide preview geometry is backed by current authoritative definitions and exercise checks.",
+    "1920 combat capture shows bounded cell telegraphs and locked editing; the bodies are engine-primitive proxies."
+  ],
+  "open_visual_defects": [
+    "Creature and arena forms, materials, animation, effects grammar and sound are unfinished and unapproved.",
+    "Battle labels and telegraphs can overlap and need a clarity pass during normal-speed play; static images do not certify continuous motion.",
+    "Temporal trails and thin-line artifacts need rendering/continuous-motion investigation before presentation acceptance."
+  ],
+  "exercises": [
+    {
+      "exercise": "reports\\vnext\\engine-lab\\package-r3-1280\\lab-exercise.json",
+      "exercise_sha256": "bca3dae5e8189c12a2ba4a50d55feea5918e3b66bc129f7cd4ea323409478b9e",
+      "viewport": [
+        1280,
+        720
+      ],
+      "boolean_checks_passed": 39,
+      "capture_count": 5,
+      "capture_checks_passed": true,
+      "visible_cell_centers": 64,
+      "projection_roundtrips": 64,
+      "board_height_fraction": 0.7978599543478436,
+      "first_signature": "486bfbd4785d7b281700d390a12a9e1360a23191",
+      "replay_signature": "486bfbd4785d7b281700d390a12a9e1360a23191",
+      "ticks": 434,
+      "event_count": 238,
+      "winner": 0,
+      "timeout": false,
+      "images_actually_viewed_by_root": [
+        {
+          "path": "reports\\vnext\\engine-lab\\package-r3-1280\\lab-tidal-preparation.png",
+          "sha256": "ca1a71e86e7f3e6a8526492fce61b5f6628711be28d8188fa4d5e7d9a478db99"
+        },
+        {
+          "path": "reports\\vnext\\engine-lab\\package-r3-1280\\lab-guard-relic-preparation.png",
+          "sha256": "bbbc012560f7e8b3068307f8441ab25ed6a1c8e593b23d4fd044282ac7df32cf"
+        }
+      ]
+    },
+    {
+      "exercise": "reports\\vnext\\engine-lab\\package-r3-1600\\lab-exercise.json",
+      "exercise_sha256": "97cfe5f2f83b2cc86a0c7f69eb54fface26eeb71652872492e9d6e7f7dff6a22",
+      "viewport": [
+        1600,
+        1000
+      ],
+      "boolean_checks_passed": 39,
+      "capture_count": 5,
+      "capture_checks_passed": true,
+      "visible_cell_centers": 64,
+      "projection_roundtrips": 64,
+      "board_height_fraction": 0.7978600291520231,
+      "first_signature": "486bfbd4785d7b281700d390a12a9e1360a23191",
+      "replay_signature": "486bfbd4785d7b281700d390a12a9e1360a23191",
+      "ticks": 434,
+      "event_count": 238,
+      "winner": 0,
+      "timeout": false,
+      "images_actually_viewed_by_root": [
+        {
+          "path": "reports\\vnext\\engine-lab\\package-r3-1600\\lab-tidal-preparation.png",
+          "sha256": "644c34cb484b06d529d5ec7c3d815cd6e02738b5c6821f466465e3fc98694d85"
+        }
+      ]
+    },
+    {
+      "exercise": "reports\\vnext\\engine-lab\\package-r3-1920\\lab-exercise.json",
+      "exercise_sha256": "67937d1d8f7af50868bbd835e70a5ee8f3d0acad70090207de28d627586c7b4b",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "boolean_checks_passed": 39,
+      "capture_count": 5,
+      "capture_checks_passed": true,
+      "visible_cell_centers": 64,
+      "projection_roundtrips": 64,
+      "board_height_fraction": 0.7978599874954977,
+      "first_signature": "486bfbd4785d7b281700d390a12a9e1360a23191",
+      "replay_signature": "486bfbd4785d7b281700d390a12a9e1360a23191",
+      "ticks": 434,
+      "event_count": 238,
+      "winner": 0,
+      "timeout": false,
+      "images_actually_viewed_by_root": [
+        {
+          "path": "reports\\vnext\\engine-lab\\package-r3-1920\\lab-tidal-preparation.png",
+          "sha256": "fa1a5c22fc58fea88720ae29d26c0f7b8ce23ca04cc87e42d6343430bcb4060c"
+        },
+        {
+          "path": "reports\\vnext\\engine-lab\\package-r3-1920\\lab-combat.png",
+          "sha256": "c4a612c2b7328014732c2681c979643a8ba72ad3613078d0c4f9fe52accb7a81"
+        }
+      ]
+    }
+  ]
+}

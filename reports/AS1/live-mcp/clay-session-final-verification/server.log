@@ -1,0 +1,60 @@
+<frozen runpy>:128: RuntimeWarning: 'blender_mcp.server' found in sys.modules after import of package 'blender_mcp', but prior to execution of 'blender_mcp.server'; this may result in unpredictable behaviour
+2026-09-08 13:41:09,183 - BlenderMCPServer - INFO - BlenderMCP server starting up
+2026-09-08 13:41:09,193 - BlenderMCPServer - INFO - Blender addon on disk is current (protocol 5).
+2026-09-08 13:41:09,194 - blender-mcp-telemetry - WARNING - Telemetry disabled via environment variable
+2026-09-08 13:41:09,202 - BlenderMCPServer - INFO - Connected to Blender at 127.0.0.1:9876
+2026-09-08 13:41:09,202 - BlenderMCPServer - INFO - Created new persistent connection to Blender
+2026-09-08 13:41:09,202 - BlenderMCPServer - INFO - Sending command: get_addon_info with params: None
+2026-09-08 13:41:09,202 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-08 13:41:09,244 - BlenderMCPServer - INFO - Received complete response (354 bytes)
+2026-09-08 13:41:09,244 - BlenderMCPServer - INFO - Received 354 bytes of data
+2026-09-08 13:41:09,244 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-08 13:41:09,244 - BlenderMCPServer - INFO - Blender addon up to date (protocol 5, addon [1, 6], Blender 5.1.1)
+2026-09-08 13:41:09,244 - BlenderMCPServer - INFO - Successfully connected to Blender on startup
+2026-09-08 13:41:09,252 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-09-08 13:41:09,259 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-09-08 13:41:09,259 - BlenderMCPServer - INFO - Sending command: get_addon_info with params: None
+2026-09-08 13:41:09,259 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-08 13:41:09,298 - BlenderMCPServer - INFO - Received complete response (354 bytes)
+2026-09-08 13:41:09,298 - BlenderMCPServer - INFO - Received 354 bytes of data
+2026-09-08 13:41:09,298 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-08 13:41:09,298 - BlenderMCPServer - INFO - Blender addon up to date (protocol 5, addon [1, 6], Blender 5.1.1)
+2026-09-08 13:41:09,298 - BlenderMCPServer - INFO - Connected to Blender at 127.0.0.1:9876
+2026-09-08 13:41:09,298 - BlenderMCPServer - INFO - Created new persistent connection to Blender
+2026-09-08 13:41:09,298 - BlenderMCPServer - INFO - Sending command: get_addon_info with params: None
+2026-09-08 13:41:09,298 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-08 13:41:09,353 - BlenderMCPServer - INFO - Received complete response (354 bytes)
+2026-09-08 13:41:09,353 - BlenderMCPServer - INFO - Received 354 bytes of data
+2026-09-08 13:41:09,353 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-08 13:41:09,353 - BlenderMCPServer - INFO - Blender addon up to date (protocol 5, addon [1, 6], Blender 5.1.1)
+2026-09-08 13:41:09,353 - BlenderMCPServer - INFO - Sending command: get_telemetry_consent with params: None
+2026-09-08 13:41:09,353 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-08 13:41:09,408 - BlenderMCPServer - INFO - Received complete response (51 bytes)
+2026-09-08 13:41:09,408 - BlenderMCPServer - INFO - Received 51 bytes of data
+2026-09-08 13:41:09,408 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-08 13:41:09,413 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-09-08 13:41:09,417 - BlenderMCPServer - INFO - Sending command: execute_code with params: {'code': 'import bpy\nimport json\nprint(json.dumps({"file": bpy.data.filepath, "version": bpy.app.version_string, "dirty": bpy.data.is_dirty, "objects": [{"name": o.name, "type": o.type} for o in bpy.context.scene.objects]}))'}
+2026-09-08 13:41:09,419 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-08 13:41:09,464 - BlenderMCPServer - INFO - Received complete response (6384 bytes)
+2026-09-08 13:41:09,464 - BlenderMCPServer - INFO - Received 6384 bytes of data
+2026-09-08 13:41:09,464 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-08 13:41:09,470 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-09-08 13:41:09,470 - BlenderMCPServer - INFO - Sending command: get_scene_info with params: None
+2026-09-08 13:41:09,471 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-08 13:41:09,514 - BlenderMCPServer - INFO - Received complete response (882 bytes)
+2026-09-08 13:41:09,514 - BlenderMCPServer - INFO - Received 882 bytes of data
+2026-09-08 13:41:09,514 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-08 13:41:09,518 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-09-08 13:41:09,518 - BlenderMCPServer - INFO - Sending command: get_object_info with params: {'name': 'ADA_Backplate'}
+2026-09-08 13:41:09,518 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-08 13:41:09,569 - BlenderMCPServer - INFO - Received complete response (429 bytes)
+2026-09-08 13:41:09,569 - BlenderMCPServer - INFO - Received 429 bytes of data
+2026-09-08 13:41:09,569 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-08 13:41:09,573 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-09-08 13:41:09,574 - BlenderMCPServer - INFO - Sending command: get_viewport_screenshot with params: {'max_size': 1400, 'filepath': 'C:\\Users\\iputu\\AppData\\Local\\Temp\\blender_screenshot_76660.png', 'format': 'png'}
+2026-09-08 13:41:09,574 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-08 13:41:09,801 - BlenderMCPServer - INFO - Received complete response (187 bytes)
+2026-09-08 13:41:09,801 - BlenderMCPServer - INFO - Received 187 bytes of data
+2026-09-08 13:41:09,801 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-08 13:41:09,816 - BlenderMCPServer - INFO - Disconnecting from Blender on shutdown
+2026-09-08 13:41:09,816 - BlenderMCPServer - INFO - BlenderMCP server shut down

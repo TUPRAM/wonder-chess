@@ -1,0 +1,40 @@
+{
+  "status": "observations_only_not_acceptance",
+  "blender_version": "5.1.1",
+  "source_blend_name": "final-fixture-with-references.blend",
+  "source_blend_sha256": "66faadfdac8f9d53be925adebd1bd0c2f9e4d01261d547c4cd12191d5e1f7313",
+  "collection": "AS1_REFERENCES",
+  "objects": [
+    {
+      "name": "AS1_REF_tool_fixture_front",
+      "type": "EMPTY",
+      "semantic_part_id": "tool_fixture",
+      "negative_transform_determinant": false,
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "modifiers": []
+    }
+  ],
+  "file_images": [
+    {
+      "name": "reference-fixture.png",
+      "size": [
+        320,
+        512
+      ],
+      "color_space": "sRGB",
+      "packed": false,
+      "external_file_exists": true
+    }
+  ],
+  "limitations": [
+    "No exhaustive self-intersection check.",
+    "Boundary edges are not automatically errors on open garments.",
+    "No UV overlap or texel-density calculation.",
+    "No visual likeness or continuous-motion judgement.",
+    "Source/evaluated mesh counts may differ."
+  ]
+}

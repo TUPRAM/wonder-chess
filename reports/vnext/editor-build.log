@@ -1,0 +1,871 @@
+Using bundled DotNet SDK version: 8.0.412 win-x64
+Running UnrealBuildTool: dotnet "..\..\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" WonderChessEditor Win64 Development "C:/Users/iputu/Documents/Wonder Chess/game/WonderChess.uproject" -WaitMutex -NoHotReloadFromIDE -NoLiveCoding
+Log file: C:\Users\iputu\AppData\Local\UnrealBuildTool\Log.txt
+Using 'git status' to determine working set for adaptive non-unity build (C:\Users\iputu\Documents\Wonder Chess).
+Creating makefile for WonderChessEditor (command line arguments changed)
+UHT compiled-in object format Default
+Parsing headers for WonderChessEditor
+  Running Internal UnrealHeaderTool "C:\Users\iputu\Documents\Wonder Chess\game\WonderChess.uproject" "C:\Users\iputu\Documents\Wonder Chess\game\Intermediate\Build\Win64\WonderChessEditor\Development\WonderChessEditor.uhtmanifest" -WarningsAsErrors -installed
+UHT processed WonderChessEditor in 8.1677971 seconds (3 files written)
+Building WonderChessEditor...
+Using Visual Studio 2022 14.44.35226 toolchain (C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[Adaptive Build] Excluded from WonderChessRuntime unity file: WCAnimationReview.cpp, WCBoardPresenter.cpp, WCDefinitionRegistry.cpp, WCFrontEndScene.cpp, WCVNextLab.cpp, WonderChessRuntime.cpp, WonderSave.cpp, WonderSimulation.cpp, WonderTournament.cpp
+Determining max actions to execute in parallel (8 physical cores, 16 logical cores)
+  Executing up to 8 processes, one per physical core
+  Requested 1.5 GB memory per action, 1.97 GB available: limiting max parallel actions to 1
+Using Unreal Build Accelerator local executor to run 16 action(s)
+  Storage capacity 40Gb
+---- Starting trace: 260910_221504 ----
+UbaServer - Listening on 0.0.0.0:1345
+[1/16] Compile [x64] SharedPCH.UnrealEd.Project.ValApi.ValExpApi.Cpp20.cpp
+[2/16] Resource Default.rc2
+[3/16] Compile [x64] Module.WonderChessRuntime.1.cpp
+[4/16] Compile [x64] Module.WonderChessRuntime.2.cpp
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(17,5): error C2374: '`anonymous-namespace'::Gold': redefinition; multiple initialization
+    Gold(.91, .71, .33), Muted(.60, .69, .71), Teal(.12, .52, .54);
+    ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(36,20): note: see declaration of '`anonymous-namespace'::Gold'
+const FLinearColor Gold(.92f, .72f, .37f);
+                   ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(17,5): error C2086: 'const FLinearColor `anonymous-namespace'::Gold': redefinition
+    Gold(.91, .71, .33), Muted(.60, .69, .71), Teal(.12, .52, .54);
+    ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(36,20): note: see declaration of '`anonymous-namespace'::Gold'
+const FLinearColor Gold(.92f, .72f, .37f);
+                   ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(17,48): error C2374: '`anonymous-namespace'::Teal': redefinition; multiple initialization
+    Gold(.91, .71, .33), Muted(.60, .69, .71), Teal(.12, .52, .54);
+                                               ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(37,20): note: see declaration of '`anonymous-namespace'::Teal'
+const FLinearColor Teal(.065f, .28f, .31f);
+                   ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchHUD.cpp(17,48): error C2086: 'const FLinearColor `anonymous-namespace'::Teal': redefinition
+    Gold(.91, .71, .33), Muted(.60, .69, .71), Teal(.12, .52, .54);
+                                               ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(37,20): note: see declaration of '`anonymous-namespace'::Teal'
+const FLinearColor Teal(.065f, .28f, .31f);
+                   ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(227,24): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+                       Number(Unit, TEXT("hp")) > 0;
+                       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(227,24): note: while trying to match the argument list '(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [3])'
+                       Number(Unit, TEXT("hp")) > 0;
+                       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(265,11): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+      if (Number(Unit, TEXT("hp")) <= 0)
+          ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(265,11): note: while trying to match the argument list '(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [3])'
+      if (Number(Unit, TEXT("hp")) <= 0)
+          ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(269,24): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+        Target = int64(Number(Unit, TEXT("id")));
+                       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(269,24): note: while trying to match the argument list '(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [3])'
+        Target = int64(Number(Unit, TEXT("id")));
+                       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(335,9): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+    if (Number(Unit, TEXT("hp")) <= 0)
+        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(335,9): note: while trying to match the argument list '(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [3])'
+    if (Number(Unit, TEXT("hp")) <= 0)
+        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(337,28): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+    const int64 Id = int64(Number(Unit, TEXT("id")));
+                           ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(337,28): note: while trying to match the argument list '(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [3])'
+    const int64 Id = int64(Number(Unit, TEXT("id")));
+                           ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(337,17): error C2737: 'Id': const object must be initialized
+    const int64 Id = int64(Number(Unit, TEXT("id")));
+                ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(350,46): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+    Item->SetNumberField(TEXT("definition"), Number(Unit, TEXT("def")));
+                                             ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(350,46): note: while trying to match the argument list '(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [4])'
+    Item->SetNumberField(TEXT("definition"), Number(Unit, TEXT("def")));
+                                             ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(553,24): error C2668: '`anonymous-namespace'::Encode': ambiguous call to overloaded function
+  const FString Text = Encode(Json);
+                       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(157,9): note: could be 'FString `anonymous-namespace'::Encode(const `anonymous-namespace'::Object &)'
+FString Encode(const Object &Json) {
+        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchRuntime.cpp(33,9): note: or       'FString `anonymous-namespace'::Encode(`anonymous-namespace'::Obj)'
+FString Encode(Obj O) {
+        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(553,24): note: while trying to match the argument list '(`anonymous-namespace'::Object)'
+  const FString Text = Encode(Json);
+                       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(618,11): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+          Number(Before, TEXT("sequence")) == Number(State, TEXT("sequence")) &&
+          ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(618,11): note: while trying to match the argument list '(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [9])'
+          Number(Before, TEXT("sequence")) == Number(State, TEXT("sequence")) &&
+          ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(618,47): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+          Number(Before, TEXT("sequence")) == Number(State, TEXT("sequence")) &&
+                                              ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(618,47): note: while trying to match the argument list '(TSharedRef<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [9])'
+          Number(Before, TEXT("sequence")) == Number(State, TEXT("sequence")) &&
+                                              ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(621,30): error C2668: '`anonymous-namespace'::Encode': ambiguous call to overloaded function
+      const bool Preserved = Encode(BeforeResources) == Encode(AfterResources);
+                             ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(157,9): note: could be 'FString `anonymous-namespace'::Encode(const `anonymous-namespace'::Object &)'
+FString Encode(const Object &Json) {
+        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchRuntime.cpp(33,9): note: or       'FString `anonymous-namespace'::Encode(`anonymous-namespace'::Obj)'
+FString Encode(Obj O) {
+        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(621,30): note: while trying to match the argument list '(TSharedRef<FJsonObject,ESPMode::ThreadSafe>)'
+      const bool Preserved = Encode(BeforeResources) == Encode(AfterResources);
+                             ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(621,57): error C2668: '`anonymous-namespace'::Encode': ambiguous call to overloaded function
+      const bool Preserved = Encode(BeforeResources) == Encode(AfterResources);
+                                                        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(157,9): note: could be 'FString `anonymous-namespace'::Encode(const `anonymous-namespace'::Object &)'
+FString Encode(const Object &Json) {
+        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchRuntime.cpp(33,9): note: or       'FString `anonymous-namespace'::Encode(`anonymous-namespace'::Obj)'
+FString Encode(Obj O) {
+        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(621,57): note: while trying to match the argument list '(TSharedRef<FJsonObject,ESPMode::ThreadSafe>)'
+      const bool Preserved = Encode(BeforeResources) == Encode(AfterResources);
+                                                        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(621,54): error C2088: built-in operator '==' cannot be applied to an operand of type '_T'
+        with
+        [
+            _T=FString
+        ]
+      const bool Preserved = Encode(BeforeResources) == Encode(AfterResources);
+                                                     ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(640,14): error C2668: '`anonymous-namespace'::Encode': ambiguous call to overloaded function
+             Encode(Event) + TEXT("\n"));
+             ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(157,9): note: could be 'FString `anonymous-namespace'::Encode(const `anonymous-namespace'::Object &)'
+FString Encode(const Object &Json) {
+        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchRuntime.cpp(33,9): note: or       'FString `anonymous-namespace'::Encode(`anonymous-namespace'::Obj)'
+FString Encode(Obj O) {
+        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(640,14): note: while trying to match the argument list '(`anonymous-namespace'::Object)'
+             Encode(Event) + TEXT("\n"));
+             ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(640,28): error C2088: built-in operator '+' cannot be applied to an operand of type '_T'
+        with
+        [
+            _T=FString
+        ]
+             Encode(Event) + TEXT("\n"));
+                           ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(639,7): error C2660: '`anonymous-namespace'::Append': function does not take 1 arguments
+      Append(E.Directory / (Prefix(E, P) + TEXT("-authority.jsonl")),
+      ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(165,6): note: see declaration of '`anonymous-namespace'::Append'
+void Append(const FString &Path, const FString &Text) {
+     ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(639,7): note: while trying to match the argument list '(FString)'
+      Append(E.Directory / (Prefix(E, P) + TEXT("-authority.jsonl")),
+      ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(670,10): error C2668: '`anonymous-namespace'::Encode': ambiguous call to overloaded function
+         Encode(Json) + TEXT("\n"));
+         ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(157,9): note: could be 'FString `anonymous-namespace'::Encode(const `anonymous-namespace'::Object &)'
+FString Encode(const Object &Json) {
+        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchRuntime.cpp(33,9): note: or       'FString `anonymous-namespace'::Encode(`anonymous-namespace'::Obj)'
+FString Encode(Obj O) {
+        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(670,10): note: while trying to match the argument list '(`anonymous-namespace'::Object)'
+         Encode(Json) + TEXT("\n"));
+         ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(670,23): error C2088: built-in operator '+' cannot be applied to an operand of type '_T'
+        with
+        [
+            _T=FString
+        ]
+         Encode(Json) + TEXT("\n"));
+                      ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(669,3): error C2660: '`anonymous-namespace'::Append': function does not take 1 arguments
+  Append(E.Directory / (Prefix(E, P) + TEXT("-snapshots.jsonl")),
+  ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(165,6): note: see declaration of '`anonymous-namespace'::Append'
+void Append(const FString &Path, const FString &Text) {
+     ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(669,3): note: while trying to match the argument list '(FString)'
+  Append(E.Directory / (Prefix(E, P) + TEXT("-snapshots.jsonl")),
+  ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(684,53): error C2668: '`anonymous-namespace'::Encode': ambiguous call to overloaded function
+  Json->SetStringField(TEXT("owner_private_after"), Encode(P->Private));
+                                                    ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(157,9): note: could be 'FString `anonymous-namespace'::Encode(const `anonymous-namespace'::Object &)'
+FString Encode(const Object &Json) {
+        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchRuntime.cpp(33,9): note: or       'FString `anonymous-namespace'::Encode(`anonymous-namespace'::Obj)'
+FString Encode(Obj O) {
+        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(684,53): note: while trying to match the argument list '(TSharedPtr<FJsonObject,ESPMode::ThreadSafe>)'
+  Json->SetStringField(TEXT("owner_private_after"), Encode(P->Private));
+                                                    ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(689,10): error C2668: '`anonymous-namespace'::Encode': ambiguous call to overloaded function
+         Encode(Json) + TEXT("\n"));
+         ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(157,9): note: could be 'FString `anonymous-namespace'::Encode(const `anonymous-namespace'::Object &)'
+FString Encode(const Object &Json) {
+        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchRuntime.cpp(33,9): note: or       'FString `anonymous-namespace'::Encode(`anonymous-namespace'::Obj)'
+FString Encode(Obj O) {
+        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(689,10): note: while trying to match the argument list '(`anonymous-namespace'::Object)'
+         Encode(Json) + TEXT("\n"));
+         ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(689,23): error C2088: built-in operator '+' cannot be applied to an operand of type '_T'
+        with
+        [
+            _T=FString
+        ]
+         Encode(Json) + TEXT("\n"));
+                      ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(688,3): error C2660: '`anonymous-namespace'::Append': function does not take 1 arguments
+  Append(E.Directory / (Prefix(E, P) + TEXT("-commands.jsonl")),
+  ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(165,6): note: see declaration of '`anonymous-namespace'::Append'
+void Append(const FString &Path, const FString &Text) {
+     ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(688,3): note: while trying to match the argument list '(FString)'
+  Append(E.Directory / (Prefix(E, P) + TEXT("-commands.jsonl")),
+  ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(694,32): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+  const int64 Sequence = int64(Number(P->Private, TEXT("sequence")));
+                               ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(694,32): note: while trying to match the argument list '(TSharedPtr<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [9])'
+  const int64 Sequence = int64(Number(P->Private, TEXT("sequence")));
+                               ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(694,15): error C2737: 'Sequence': const object must be initialized
+  const int64 Sequence = int64(Number(P->Private, TEXT("sequence")));
+              ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(695,32): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+  const int64 Revision = int64(Number(P->Private, TEXT("revision")));
+                               ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(695,32): note: while trying to match the argument list '(TSharedPtr<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [9])'
+  const int64 Revision = int64(Number(P->Private, TEXT("revision")));
+                               ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(695,15): error C2737: 'Revision': const object must be initialized
+  const int64 Revision = int64(Number(P->Private, TEXT("revision")));
+              ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(701,21): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+  E.ProbeGold = int(Number(P->Private, TEXT("gold")));
+                    ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(701,21): note: while trying to match the argument list '(TSharedPtr<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [5])'
+  E.ProbeGold = int(Number(P->Private, TEXT("gold")));
+                    ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(751,15): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+      if (int(Number(Seat, TEXT("id"))) == P->AssignedSeat)
+              ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(751,15): note: while trying to match the argument list '(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [3])'
+      if (int(Number(Seat, TEXT("id"))) == P->AssignedSeat)
+              ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(755,30): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+        Command.unit = int64(Number(Units[0]->AsObject(), TEXT("id")));
+                             ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(755,30): note: while trying to match the argument list '(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [3])'
+        Command.unit = int64(Number(Units[0]->AsObject(), TEXT("id")));
+                             ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(756,30): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+        E.ForeignOwner = int(Number(Seat, TEXT("id")));
+                             ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(756,30): note: while trying to match the argument list '(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [3])'
+        E.ForeignOwner = int(Number(Seat, TEXT("id")));
+                             ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(772,26): error C2668: '`anonymous-namespace'::Encode': ambiguous call to overloaded function
+  E.ProbePrivateBefore = Encode(P->Private);
+                         ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(157,9): note: could be 'FString `anonymous-namespace'::Encode(const `anonymous-namespace'::Object &)'
+FString Encode(const Object &Json) {
+        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchRuntime.cpp(33,9): note: or       'FString `anonymous-namespace'::Encode(`anonymous-namespace'::Obj)'
+FString Encode(Obj O) {
+        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(772,26): note: while trying to match the argument list '(TSharedPtr<FJsonObject,ESPMode::ThreadSafe>)'
+  E.ProbePrivateBefore = Encode(P->Private);
+                         ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(783,10): error C2668: '`anonymous-namespace'::Encode': ambiguous call to overloaded function
+         Encode(Json) + TEXT("\n"));
+         ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(157,9): note: could be 'FString `anonymous-namespace'::Encode(const `anonymous-namespace'::Object &)'
+FString Encode(const Object &Json) {
+        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchRuntime.cpp(33,9): note: or       'FString `anonymous-namespace'::Encode(`anonymous-namespace'::Obj)'
+FString Encode(Obj O) {
+        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(783,10): note: while trying to match the argument list '(`anonymous-namespace'::Object)'
+         Encode(Json) + TEXT("\n"));
+         ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(783,23): error C2088: built-in operator '+' cannot be applied to an operand of type '_T'
+        with
+        [
+            _T=FString
+        ]
+         Encode(Json) + TEXT("\n"));
+                      ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(782,3): error C2660: '`anonymous-namespace'::Append': function does not take 1 arguments
+  Append(E.Directory / (Prefix(E, P) + TEXT("-commands.jsonl")),
+  ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(165,6): note: see declaration of '`anonymous-namespace'::Append'
+void Append(const FString &Path, const FString &Text) {
+     ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(782,3): note: while trying to match the argument list '(FString)'
+  Append(E.Directory / (Prefix(E, P) + TEXT("-commands.jsonl")),
+  ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(806,9): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+        Number(P->Private, TEXT("sequence")) < double(E.Probe.sequence)) {
+        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(806,9): note: while trying to match the argument list '(TSharedPtr<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [9])'
+        Number(P->Private, TEXT("sequence")) < double(E.Probe.sequence)) {
+        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(823,59): error C2668: '`anonymous-namespace'::Encode': ambiguous call to overloaded function
+                                : E.ProbePrivateBefore == Encode(P->Private);
+                                                          ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(157,9): note: could be 'FString `anonymous-namespace'::Encode(const `anonymous-namespace'::Object &)'
+FString Encode(const Object &Json) {
+        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchRuntime.cpp(33,9): note: or       'FString `anonymous-namespace'::Encode(`anonymous-namespace'::Obj)'
+FString Encode(Obj O) {
+        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(823,59): note: while trying to match the argument list '(TSharedPtr<FJsonObject,ESPMode::ThreadSafe>)'
+                                : E.ProbePrivateBefore == Encode(P->Private);
+                                                          ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(823,56): error C2088: built-in operator '==' cannot be applied to an operand of type 'FString'
+                                : E.ProbePrivateBefore == Encode(P->Private);
+                                                       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(825,27): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+        ExactState && int(Number(P->Private, TEXT("gold"))) == E.ProbeGold &&
+                          ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(825,27): note: while trying to match the argument list '(TSharedPtr<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [5])'
+        ExactState && int(Number(P->Private, TEXT("gold"))) == E.ProbeGold &&
+                          ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(824,16): error C2737: 'State': const object must be initialized
+    const bool State =
+               ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(862,36): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+  E.NormalExpectedSequence = int64(Number(P->Private, TEXT("sequence"))) + 1;
+                                   ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(862,36): note: while trying to match the argument list '(TSharedPtr<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [9])'
+  E.NormalExpectedSequence = int64(Number(P->Private, TEXT("sequence"))) + 1;
+                                   ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(873,10): error C2668: '`anonymous-namespace'::Encode': ambiguous call to overloaded function
+         Encode(Json) + TEXT("\n"));
+         ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(157,9): note: could be 'FString `anonymous-namespace'::Encode(const `anonymous-namespace'::Object &)'
+FString Encode(const Object &Json) {
+        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchRuntime.cpp(33,9): note: or       'FString `anonymous-namespace'::Encode(`anonymous-namespace'::Obj)'
+FString Encode(Obj O) {
+        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(873,10): note: while trying to match the argument list '(`anonymous-namespace'::Object)'
+         Encode(Json) + TEXT("\n"));
+         ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(873,23): error C2088: built-in operator '+' cannot be applied to an operand of type '_T'
+        with
+        [
+            _T=FString
+        ]
+         Encode(Json) + TEXT("\n"));
+                      ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(872,3): error C2660: '`anonymous-namespace'::Append': function does not take 1 arguments
+  Append(E.Directory / (Prefix(E, P) + TEXT("-commands.jsonl")),
+  ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(165,6): note: see declaration of '`anonymous-namespace'::Append'
+void Append(const FString &Path, const FString &Text) {
+     ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(872,3): note: while trying to match the argument list '(FString)'
+  Append(E.Directory / (Prefix(E, P) + TEXT("-commands.jsonl")),
+  ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(911,10): error C2668: '`anonymous-namespace'::Encode': ambiguous call to overloaded function
+         Encode(Json) + TEXT("\n"));
+         ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(157,9): note: could be 'FString `anonymous-namespace'::Encode(const `anonymous-namespace'::Object &)'
+FString Encode(const Object &Json) {
+        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchRuntime.cpp(33,9): note: or       'FString `anonymous-namespace'::Encode(`anonymous-namespace'::Obj)'
+FString Encode(Obj O) {
+        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(911,10): note: while trying to match the argument list '(`anonymous-namespace'::Object)'
+         Encode(Json) + TEXT("\n"));
+         ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(911,23): error C2088: built-in operator '+' cannot be applied to an operand of type '_T'
+        with
+        [
+            _T=FString
+        ]
+         Encode(Json) + TEXT("\n"));
+                      ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(910,3): error C2660: '`anonymous-namespace'::Append': function does not take 1 arguments
+  Append(E.Directory / (Prefix(E, P) + TEXT("-commands.jsonl")),
+  ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(165,6): note: see declaration of '`anonymous-namespace'::Append'
+void Append(const FString &Path, const FString &Text) {
+     ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(910,3): note: while trying to match the argument list '(FString)'
+  Append(E.Directory / (Prefix(E, P) + TEXT("-commands.jsonl")),
+  ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(928,33): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+  const int64 Namespace = int64(Number(P->Public, TEXT("matchNamespace")));
+                                ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(928,33): note: while trying to match the argument list '(TSharedPtr<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [15])'
+  const int64 Namespace = int64(Number(P->Public, TEXT("matchNamespace")));
+                                ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(928,15): error C2737: 'Namespace': const object must be initialized
+  const int64 Namespace = int64(Number(P->Public, TEXT("matchNamespace")));
+              ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(964,25): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+  const int Round = int(Number(P->Public, TEXT("round")));
+                        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(964,25): note: while trying to match the argument list '(TSharedPtr<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [6])'
+  const int Round = int(Number(P->Public, TEXT("round")));
+                        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(964,13): error C2737: 'Round': const object must be initialized
+  const int Round = int(Number(P->Public, TEXT("round")));
+            ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(991,11): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+      if (Number(Unit->AsObject(), TEXT("hp")) > 0)
+          ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(991,11): note: while trying to match the argument list '(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [3])'
+      if (Number(Unit->AsObject(), TEXT("hp")) > 0)
+          ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1001,13): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+        if (Number(Unit->AsObject(), TEXT("hp")) > 0)
+            ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1001,13): note: while trying to match the argument list '(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [3])'
+        if (Number(Unit->AsObject(), TEXT("hp")) > 0)
+            ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1022,11): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+      if (Number(Unit, TEXT("hp")) <= 0 ||
+          ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1022,11): note: while trying to match the argument list '(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [3])'
+      if (Number(Unit, TEXT("hp")) <= 0 ||
+          ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1023,11): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+          Number(Unit, TEXT("state")) != int(wc::ActionState::CastRecovery))
+          ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1023,11): note: while trying to match the argument list '(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [6])'
+          Number(Unit, TEXT("state")) != int(wc::ActionState::CastRecovery))
+          ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1026,47): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+                                          int(Number(Unit, TEXT("def"))));
+                                              ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1026,47): note: while trying to match the argument list '(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [4])'
+                                          int(Number(Unit, TEXT("def"))));
+                                              ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1025,43): error C7595: 'UE::Core::Private::FormatStringSan::TCheckedFormatStringPrivate<FString::FmtCharType>::TCheckedFormatStringPrivate': call to immediate function is not a constant expression
+      const FString Key = FString::Printf(TEXT("active-def-%d"),
+                                          ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\String\FormatStringSanErrors.inl(39,1): note: failure was caused by call of undefined function or one not declared 'constexpr'
+X(NotEnoughArguments, "not enough arguments provided to format string.")
+^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\String\FormatStringSanErrors.inl(39,1): note: see usage of 'UE::Core::Private::FormatStringSan::TCheckedFormatStringPrivate<FString::FmtCharType>::PRINTF_FORMAT_STRING_ERROR'
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1025,43): note: the call stack of the evaluation (the oldest call first) is
+      const FString Key = FString::Printf(TEXT("active-def-%d"),
+                                          ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1025,43): note: while evaluating function 'UE::Core::Private::FormatStringSan::TCheckedFormatStringPrivate<FString::FmtCharType>::TCheckedFormatStringPrivate<14>(const CharType (&)[14])'
+        with
+        [
+            CharType=FString::FmtCharType
+        ]
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\String\FormatStringSanErrors.inl(39,1): note: while evaluating function 'void UE::Core::Private::FormatStringSan::TCheckedFormatStringPrivate<FString::FmtCharType>::PRINTF_FORMAT_STRING_ERROR(const char *)'
+X(NotEnoughArguments, "not enough arguments provided to format string.")
+^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1041,14): error C2668: '`anonymous-namespace'::Encode': ambiguous call to overloaded function
+             Encode(Record) + TEXT("\n"));
+             ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(157,9): note: could be 'FString `anonymous-namespace'::Encode(const `anonymous-namespace'::Object &)'
+FString Encode(const Object &Json) {
+        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCMatchRuntime.cpp(33,9): note: or       'FString `anonymous-namespace'::Encode(`anonymous-namespace'::Obj)'
+FString Encode(Obj O) {
+        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1041,14): note: while trying to match the argument list '(`anonymous-namespace'::Object)'
+             Encode(Record) + TEXT("\n"));
+             ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1041,29): error C2088: built-in operator '+' cannot be applied to an operand of type '_T'
+        with
+        [
+            _T=FString
+        ]
+             Encode(Record) + TEXT("\n"));
+                            ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1040,7): error C2660: '`anonymous-namespace'::Append': function does not take 1 arguments
+      Append(E.Directory / (Prefix(E, P) + TEXT("-skill-shots.jsonl")),
+      ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(165,6): note: see declaration of '`anonymous-namespace'::Append'
+void Append(const FString &Path, const FString &Text) {
+     ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1040,7): note: while trying to match the argument list '(FString)'
+      Append(E.Directory / (Prefix(E, P) + TEXT("-skill-shots.jsonl")),
+      ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1135,9): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+        Number(P->Private, TEXT("sequence")) < E.NormalExpectedSequence)
+        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1135,9): note: while trying to match the argument list '(TSharedPtr<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [9])'
+        Number(P->Private, TEXT("sequence")) < E.NormalExpectedSequence)
+        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1154,21): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+    if (!Network || Number(P->Public, TEXT("connected")) == 2)
+                    ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1154,21): note: while trying to match the argument list '(TSharedPtr<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [10])'
+    if (!Network || Number(P->Public, TEXT("connected")) == 2)
+                    ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1161,14): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+  if ((int64(Number(P->Private, TEXT("revision"))) >> 32) != E.Namespace)
+             ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1161,14): note: while trying to match the argument list '(TSharedPtr<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [9])'
+  if ((int64(Number(P->Private, TEXT("revision"))) >> 32) != E.Namespace)
+             ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1165,7): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+      Number(Seats[P->AssignedSeat]->AsObject(), TEXT("health")) <= 0 ||
+      ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1165,7): note: while trying to match the argument list '(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [7])'
+      Number(Seats[P->AssignedSeat]->AsObject(), TEXT("health")) <= 0 ||
+      ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1177,25): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+  const int Level = int(Number(P->Private, TEXT("level"))),
+                        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1177,25): note: while trying to match the argument list '(TSharedPtr<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [6])'
+  const int Level = int(Number(P->Private, TEXT("level"))),
+                        ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1177,13): error C2737: 'Level': const object must be initialized
+  const int Level = int(Number(P->Private, TEXT("level"))),
+            ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1178,13): error C4459: declaration of 'Gold' hides global declaration
+            Gold = int(Number(P->Private, TEXT("gold")));
+            ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(36,20): note: see declaration of '`anonymous-namespace'::Gold'
+const FLinearColor Gold(.92f, .72f, .37f);
+                   ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1178,24): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+            Gold = int(Number(P->Private, TEXT("gold")));
+                       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1178,24): note: while trying to match the argument list '(TSharedPtr<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [5])'
+            Gold = int(Number(P->Private, TEXT("gold")));
+                       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1178,13): error C2737: 'Gold': const object must be initialized
+            Gold = int(Number(P->Private, TEXT("gold")));
+            ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1186,21): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+      Cells.Add(int(Number(Unit, TEXT("row"))) * 8 +
+                    ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1186,21): note: while trying to match the argument list '(TSharedPtr<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [4])'
+      Cells.Add(int(Number(Unit, TEXT("row"))) * 8 +
+                    ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1187,21): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+                int(Number(Unit, TEXT("col"))));
+                    ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1187,21): note: while trying to match the argument list '(TSharedPtr<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [4])'
+                int(Number(Unit, TEXT("col"))));
+                    ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1192,32): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+    const int Definition = int(Number(Bench, TEXT("def")));
+                               ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1192,32): note: while trying to match the argument list '(`anonymous-namespace'::Object, const wchar_t [4])'
+    const int Definition = int(Number(Bench, TEXT("def")));
+                               ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1192,15): error C2737: 'Definition': const object must be initialized
+    const int Definition = int(Number(Bench, TEXT("def")));
+              ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1200,30): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+                       int64(Number(Bench, TEXT("id"))), -1, true, Column, Row);
+                             ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1200,30): note: while trying to match the argument list '(`anonymous-namespace'::Object, const wchar_t [3])'
+                       int64(Number(Bench, TEXT("id"))), -1, true, Column, Row);
+                             ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1200,68): error C4800: Implicit conversion from 'int' to bool. Possible information loss
+                       int64(Number(Bench, TEXT("id"))), -1, true, Column, Row);
+                                                                   ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1200,68): note: consider using explicit cast or comparison to 0 to avoid this warning
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1212,15): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+      if (int(Number(Entry->AsObject(), TEXT("def"))) == Definition &&
+              ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1212,15): note: while trying to match the argument list '(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [4])'
+      if (int(Number(Entry->AsObject(), TEXT("def"))) == Definition &&
+              ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1213,11): error C2668: '`anonymous-namespace'::Number': ambiguous call to overloaded function
+          Number(Entry->AsObject(), TEXT("star")) == 1)
+          ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(145,8): note: could be 'double `anonymous-namespace'::Number(const `anonymous-namespace'::Object &,const TCHAR *,double)'
+double Number(const Object &Json, const TCHAR *Key, double Default = 0) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCFrontEnd.cpp(64,8): note: or       'double `anonymous-namespace'::Number(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe> &,const TCHAR *)'
+double Number(const TSharedPtr<FJsonObject>& Object, const TCHAR* Key) {
+       ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVerification.cpp(1213,11): note: while trying to match the argument list '(const TSharedPtr<FJsonObject,ESPMode::ThreadSafe>, const wchar_t [5])'
+          Number(Entry->AsObject(), TEXT("star")) == 1)
+          ^
+[5/16] Compile [x64] WCAnimationReview.cpp
+[6/16] Compile [x64] WCBoardPresenter.cpp
+[7/16] Compile [x64] WCDefinitionRegistry.cpp
+[8/16] Compile [x64] WCFrontEndScene.cpp
+[9/16] Compile [x64] WCVNextLab.cpp
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVNextLab.cpp(136,49): error C4458: declaration of 'Owner' hides class member
+UStaticMeshComponent* AWCVNextLab::Mesh(AActor* Owner, const TCHAR* Shape, FVector Location, FVector Scale, FLinearColor Color, FRotator Rotation)
+                                                ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h(802,21): note: see declaration of 'AActor::Owner'
+	TObjectPtr<AActor> Owner;
+	                   ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVNextLab.cpp(725,98): error C2039: 'ToSharedRef': is not a member of 'TSharedRef<FJsonObject,ESPMode::ThreadSafe>'
+    FString Json;auto Writer=TJsonWriterFactory<>::Create(&Json);FJsonSerializer::Serialize(Root.ToSharedRef(),Writer);
+                                                                                                 ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(152,7): note: see declaration of 'TSharedRef<FJsonObject,ESPMode::ThreadSafe>'
+class TSharedRef
+      ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVNextLab.cpp(725,83): error C2672: 'TJsonSerializer<FJsonSerializerPolicy_JsonObject>::Serialize': no matching overloaded function found
+    FString Json;auto Writer=TJsonWriterFactory<>::Create(&Json);FJsonSerializer::Serialize(Root.ToSharedRef(),Writer);
+                                                                                  ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Json\Public\Serialization\JsonSerializer.h(601,14): note: could be 'bool TJsonSerializer<FJsonSerializerPolicy_JsonObject>::Serialize(const TSharedRef<FJsonSerializerPolicy_JsonObject::FElement,ESPMode::ThreadSafe> &,TJsonWriter<CharType,PrintPolicy> &,bool)'
+	static bool Serialize(const TSharedRef<typename Policy::FElement>& StartingElement, TJsonWriter<CharType, PrintPolicy>& Writer, bool bCloseWriter)
+	            ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVNextLab.cpp(725,83): note: 'bool TJsonSerializer<FJsonSerializerPolicy_JsonObject>::Serialize(const TSharedRef<FJsonSerializerPolicy_JsonObject::FElement,ESPMode::ThreadSafe> &,TJsonWriter<CharType,PrintPolicy> &,bool)': expects 3 arguments - 2 provided
+    FString Json;auto Writer=TJsonWriterFactory<>::Create(&Json);FJsonSerializer::Serialize(Root.ToSharedRef(),Writer);
+                                                                                  ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Json\Public\Serialization\JsonSerializer.h(469,14): note: or       'bool TJsonSerializer<FJsonSerializerPolicy_JsonObject>::Serialize(const FJsonSerializerPolicy_JsonObject::FMapOfValues &,TJsonWriter<CharType,PrintPolicy> &,bool)'
+	static bool Serialize(const typename Policy::FMapOfValues& Object, TJsonWriter<CharType, PrintPolicy>& Writer, bool bCloseWriter = true)
+	            ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Json\Public\Serialization\JsonSerializer.h(449,14): note: or       'bool TJsonSerializer<FJsonSerializerPolicy_JsonObject>::Serialize(const FJsonSerializerPolicy_JsonObject::FMapOfValues &,const TSharedRef<TJsonWriter<CharType,PrintPolicy>,ESPMode::ThreadSafe> &,bool)'
+	static bool Serialize(const typename Policy::FMapOfValues& Object, const TSharedRef<TJsonWriter<CharType, PrintPolicy>>& Writer, bool bCloseWriter = true )
+	            ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Json\Public\Serialization\JsonSerializer.h(428,14): note: or       'bool TJsonSerializer<FJsonSerializerPolicy_JsonObject>::Serialize(const FJsonSerializerPolicy_JsonObject::FArrayOfValues &,TJsonWriter<CharType,PrintPolicy> &,bool)'
+	static bool Serialize(const typename Policy::FArrayOfValues& Array, TJsonWriter<CharType, PrintPolicy>& Writer, bool bCloseWriter = true )
+	            ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Json\Public\Serialization\JsonSerializer.h(408,14): note: or       'bool TJsonSerializer<FJsonSerializerPolicy_JsonObject>::Serialize(const FJsonSerializerPolicy_JsonObject::FArrayOfValues &,const TSharedRef<TJsonWriter<CharType,PrintPolicy>,ESPMode::ThreadSafe> &,bool)'
+	static bool Serialize(const typename Policy::FArrayOfValues& Array, const TSharedRef<TJsonWriter<CharType, PrintPolicy>>& Writer, bool bCloseWriter = true)
+	            ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Json\Public\Serialization\JsonSerializer.h(387,14): note: or       'bool TJsonSerializer<FJsonSerializerPolicy_JsonObject>::Serialize(const FJsonSerializerPolicy_JsonObject::FValue &,const FString &,TJsonWriter<CharType,PrintPolicy> &,bool)'
+	static bool Serialize(const typename Policy::FValue& Value, const FString& Identifier, TJsonWriter<CharType, PrintPolicy>& Writer, bool bCloseWriter = true)
+	            ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVNextLab.cpp(725,83): note: 'bool TJsonSerializer<FJsonSerializerPolicy_JsonObject>::Serialize(const FJsonSerializerPolicy_JsonObject::FValue &,const FString &,TJsonWriter<CharType,PrintPolicy> &,bool)': expects 4 arguments - 2 provided
+    FString Json;auto Writer=TJsonWriterFactory<>::Create(&Json);FJsonSerializer::Serialize(Root.ToSharedRef(),Writer);
+                                                                                  ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Json\Public\Serialization\JsonSerializer.h(359,14): note: or       'bool TJsonSerializer<FJsonSerializerPolicy_JsonObject>::Serialize(const FJsonSerializerPolicy_JsonObject::FValue &,const FString &,const TSharedRef<TJsonWriter<CharType,PrintPolicy>,ESPMode::ThreadSafe> &,bool)'
+	static bool Serialize(const typename Policy::FValue& Value, const FString& Identifier, const TSharedRef<TJsonWriter<CharType, PrintPolicy>>& Writer, bool bCloseWriter = true)
+	            ^
+C:\Users\iputu\Documents\Wonder Chess\game\Source\WonderChessRuntime\Private\WCVNextLab.cpp(725,83): note: 'bool TJsonSerializer<FJsonSerializerPolicy_JsonObject>::Serialize(const FJsonSerializerPolicy_JsonObject::FValue &,const FString &,const TSharedRef<TJsonWriter<CharType,PrintPolicy>,ESPMode::ThreadSafe> &,bool)': expects 4 arguments - 2 provided
+    FString Json;auto Writer=TJsonWriterFactory<>::Create(&Json);FJsonSerializer::Serialize(Root.ToSharedRef(),Writer);
+                                                                                  ^
+[10/16] Compile [x64] WonderChessRuntime.cpp
+[11/16] Compile [x64] WonderSave.cpp
+[12/16] Compile [x64] WonderSimulation.cpp
+[13/16] Compile [x64] WonderTournament.cpp
+Trace written to file C:/Users/iputu/AppData/Local/UnrealBuildTool/Log.uba with size 31.2kb
+Total time in Unreal Build Accelerator local executor: 113.51 seconds
+
+Result: Failed (OtherCompilationError)
+Total execution time: 137.10 seconds

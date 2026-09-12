@@ -1,0 +1,188 @@
+{
+  "timestamp_utc": "2026-09-08T03:54:04.104456+00:00",
+  "scope": "New factory-startup calibration fixture only; never Ada or active GUI scene",
+  "status": "helper_execution_smoke_pass_visual_review_recorded_separately",
+  "blender": "C:\\Program Files\\Blender Foundation\\Blender 5.1\\blender.exe",
+  "commands": [
+    {
+      "command": [
+        "C:\\Program Files\\Blender Foundation\\Blender 5.1\\blender.exe",
+        "--background",
+        "--factory-startup",
+        "--disable-autoexec",
+        "--python-exit-code",
+        "23",
+        "--python",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AS1\\tool-verification\\create_fixture.py",
+        "--",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AS1\\tool-verification"
+      ],
+      "exit_code": 0,
+      "log": "create-fixture.log"
+    },
+    {
+      "command": [
+        "C:\\Users\\iputu\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\production\\asset-studio\\tools\\asset_studio\\run_blender.py",
+        "--blender",
+        "C:\\Program Files\\Blender Foundation\\Blender 5.1\\blender.exe",
+        "--source",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AS1\\tool-verification\\fixture.blend",
+        "--tool",
+        "scene_audit",
+        "--",
+        "--collection",
+        "AS1_FIXTURE",
+        "--output",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AS1\\tool-verification\\dry-run-must-not-exist.json"
+      ],
+      "exit_code": 0,
+      "log": "dry-run.json"
+    },
+    {
+      "command": [
+        "C:\\Users\\iputu\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\production\\asset-studio\\tools\\asset_studio\\run_blender.py",
+        "--blender",
+        "C:\\Program Files\\Blender Foundation\\Blender 5.1\\blender.exe",
+        "--source",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AS1\\tool-verification\\fixture.blend",
+        "--tool",
+        "reference_setup",
+        "--execute",
+        "--timeout",
+        "180",
+        "--log",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AS1\\tool-verification\\reference-setup.log",
+        "--",
+        "--workspace",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AS1\\tool-verification",
+        "--spec",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AS1\\tool-verification\\reference-calibration.json",
+        "--output-blend",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AS1\\tool-verification\\fixture-with-references.blend"
+      ],
+      "exit_code": 0,
+      "log": "reference-setup.log.runner.txt"
+    },
+    {
+      "command": [
+        "C:\\Users\\iputu\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\production\\asset-studio\\tools\\asset_studio\\run_blender.py",
+        "--blender",
+        "C:\\Program Files\\Blender Foundation\\Blender 5.1\\blender.exe",
+        "--source",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AS1\\tool-verification\\fixture.blend",
+        "--tool",
+        "reference_setup",
+        "--execute",
+        "--timeout",
+        "180",
+        "--log",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AS1\\tool-verification\\reference-reject.log",
+        "--",
+        "--workspace",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AS1\\tool-verification",
+        "--spec",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AS1\\tool-verification\\reference-bad-hash.json",
+        "--output-blend",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AS1\\tool-verification\\rejected-must-not-exist.blend"
+      ],
+      "exit_code": 23,
+      "log": "reference-reject.log.runner.txt"
+    },
+    {
+      "command": [
+        "C:\\Users\\iputu\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\production\\asset-studio\\tools\\asset_studio\\run_blender.py",
+        "--blender",
+        "C:\\Program Files\\Blender Foundation\\Blender 5.1\\blender.exe",
+        "--source",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AS1\\tool-verification\\fixture-with-references.blend",
+        "--tool",
+        "scene_audit",
+        "--execute",
+        "--timeout",
+        "180",
+        "--log",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AS1\\tool-verification\\scene-audit.log",
+        "--",
+        "--collection",
+        "AS1_FIXTURE",
+        "--output",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AS1\\tool-verification\\scene-audit.json"
+      ],
+      "exit_code": 0,
+      "log": "scene-audit.log.runner.txt"
+    },
+    {
+      "command": [
+        "C:\\Users\\iputu\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\production\\asset-studio\\tools\\asset_studio\\run_blender.py",
+        "--blender",
+        "C:\\Program Files\\Blender Foundation\\Blender 5.1\\blender.exe",
+        "--source",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AS1\\tool-verification\\fixture-with-references.blend",
+        "--tool",
+        "render_review",
+        "--execute",
+        "--timeout",
+        "180",
+        "--log",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AS1\\tool-verification\\render-material.log",
+        "--",
+        "--collection",
+        "AS1_FIXTURE",
+        "--cameras",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AS1\\tool-verification\\review-cameras.json",
+        "--out",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AS1\\tool-verification\\renders-material"
+      ],
+      "exit_code": 0,
+      "log": "render-material.log.runner.txt"
+    },
+    {
+      "command": [
+        "C:\\Users\\iputu\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\production\\asset-studio\\tools\\asset_studio\\run_blender.py",
+        "--blender",
+        "C:\\Program Files\\Blender Foundation\\Blender 5.1\\blender.exe",
+        "--source",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AS1\\tool-verification\\fixture-with-references.blend",
+        "--tool",
+        "render_review",
+        "--execute",
+        "--timeout",
+        "180",
+        "--log",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AS1\\tool-verification\\render-clay.log",
+        "--",
+        "--collection",
+        "AS1_FIXTURE",
+        "--cameras",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AS1\\tool-verification\\review-cameras.json",
+        "--out",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AS1\\tool-verification\\renders-clay",
+        "--clay"
+      ],
+      "exit_code": 0,
+      "log": "render-clay.log.runner.txt"
+    }
+  ],
+  "fixture_sha256": "63ed5d74faf051ffe331c8972f9dc2dfb4a44e7e3cc3825ef5aa85f28ca99ecb",
+  "reference_fixture_sha256": "ccd91c727c69cb293d9dbb8005bb6c7f79bb915a613916af4a691c84f43d68bb",
+  "source_files_unchanged": true,
+  "helper_hashes": {
+    "production\\asset-studio\\tools\\asset_studio\\blender\\reference_setup.py": "c33b998e0de595e5b3b7ff902fffe24138f9f6e07a000a9cd87b96e60badbe18",
+    "production\\asset-studio\\tools\\asset_studio\\blender\\render_review.py": "3c81cfb5d025c14e11c6d4f7ac4235318de9c22c375c54b226f030279d03123b",
+    "production\\asset-studio\\tools\\asset_studio\\blender\\scene_audit.py": "41283ffb2c5944cee99ecdca97b49d1bca1919dbdefc644372f277960185789c",
+    "production\\asset-studio\\tools\\asset_studio\\run_blender.py": "b3399734715b302aecdcc4a33471c885265037d3c107c86f7b78b0b943873b66"
+  },
+  "claims_not_made": [
+    "Ada art approval",
+    "rig quality",
+    "Unreal import",
+    "reimport",
+    "packaged gameplay"
+  ]
+}

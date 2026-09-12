@@ -1,0 +1,26 @@
+{
+  "utc": "2026-09-10T16:28:58.5791107Z",
+  "checks": [
+    {
+      "check": "validate-kit",
+      "exit_code": 0,
+      "output": "PASS: 400 specification/data checks. No game or Blender execution is implied."
+    },
+    {
+      "check": "documents",
+      "exit_code": 0,
+      "output": "28 generated documents match canonical data"
+    },
+    {
+      "check": "legacy-catalog",
+      "exit_code": 0,
+      "output": "6 catalog artifacts match canonical data"
+    },
+    {
+      "check": "successor-catalog",
+      "exit_code": 0,
+      "output": "7 successor artifacts match canonical source; art, balance and release acceptance not established"
+    }
+  ],
+  "passed": true
+}

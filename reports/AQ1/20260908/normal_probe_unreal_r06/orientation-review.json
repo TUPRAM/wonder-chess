@@ -1,0 +1,37 @@
+{
+  "status": "PASS_ORIENTATION_CONTROL_COMPARISON",
+  "reviewer": "Codex actual rendered pixel inspection",
+  "selected_green_setting": "flip",
+  "observation": "Flip matches the raised control on the upper sloping dark bevel, lower inner bright bevel, and asymmetric marker. Keep reverses these light/dark relationships. This supports one green-channel flip for this +Y Blender bake and UE imported-normal/Mikk configuration; not blanket approval of all character shading.",
+  "images": {
+    "control": {
+      "dimensions": [
+        768,
+        768
+      ],
+      "bytes": 609202,
+      "sha256": "5708b75a2364b90e039ce53356b557d02cc7ebbe52592af4a08b6501d381c325"
+    },
+    "keep": {
+      "dimensions": [
+        768,
+        768
+      ],
+      "bytes": 609202,
+      "sha256": "9b8873e5a7ba1b5568ff8ef9c49ab3a39b10c9c963c34298a6baf234a69194a3"
+    },
+    "flip": {
+      "dimensions": [
+        768,
+        768
+      ],
+      "bytes": 609202,
+      "sha256": "3b604841acf15842ec3df5fd774ec17a4c4b295d58cadbec4554b300b5e6e8c7"
+    }
+  },
+  "mean_absolute_rgb_error_on_shared_nonblack_pixels": {
+    "keep": 1.2329299604983288,
+    "flip": 0.6186113643269523
+  },
+  "prior_attempts": "r01-r05 failed/incomplete; retained. r06 full Editor capture is valid and inspected."
+}

@@ -1,0 +1,147 @@
+{
+  "status": "ALL_150_FRAMES_REVIEWED_GEOMETRY_DEFECTS_OPEN_MATERIAL_REVISION_PENDING",
+  "review_method": "All 150 actual r03 renders through12 chronological contact sheets;8 original-resolution hero crops; r03 and grayr02 full Idle0 views; four-revision matched Idle0 and Idle40 composites; six-frame real shading-transition crop comparison. Frame-sequence inspection, not video playback.",
+  "actual_unique_r03_frames_viewed": 150,
+  "r03_contact_sheets": 12,
+  "r03_native_hero_crops_viewed": 8,
+  "comparison_other_revision_scope": "Prior baseline and r01 sequence reviews retained; this task explicitly re-viewed canonical/r01 Idle0 and Idle40, grayr02 Idle0 and Idle40 only. No claim to have reviewed all grayr02 frames.",
+  "clips": [
+    {
+      "clip": "Idle",
+      "frames": 41,
+      "seconds": 2
+    },
+    {
+      "clip": "Move",
+      "frames": 21,
+      "seconds": 1
+    },
+    {
+      "clip": "Attack",
+      "frames": 14,
+      "seconds": 0.6499999761581421
+    },
+    {
+      "clip": "Active",
+      "frames": 13,
+      "seconds": 0.6000000238418579
+    },
+    {
+      "clip": "Hit",
+      "frames": 9,
+      "seconds": 0.4000000059604645
+    },
+    {
+      "clip": "Defeat",
+      "frames": 21,
+      "seconds": 1
+    },
+    {
+      "clip": "Victory",
+      "frames": 31,
+      "seconds": 1.5
+    }
+  ],
+  "source_digest": "95509d001ca0e6c55fa64a616df6e2e9a01a3809a9b9c82d9bd0a725dad3a1ec",
+  "reimport_evidence": {
+    "record": "reimport-r03.json",
+    "record_sha256": "ed2073b664883fcaefb18c4842f3cd569fb927b52f33f4372fdbb28738cbe689",
+    "source_sha256": "cd6bb6ddb3a54aaa15be3112a804caf0820f9ad1162b7cb8ee345f646bef8a67",
+    "export_manifest_sha256": "4aa7e2dbc0d779587d6702b31ad83ec0ce2f9b78abcd59929cb50ced10a32ab7",
+    "reimport": true,
+    "same_mesh_identity": true,
+    "same_skeleton_identity": true,
+    "protected_unchanged": true,
+    "boundary": "Read executed importer record; does not replace visual/placed-instance proof."
+  },
+  "temporal_surface_finding": {
+    "initial_defective_captures": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "first_clearly_changed_capture": 9,
+    "initial_animation_times_seconds": [
+      0.050000001,
+      0.450000048
+    ],
+    "changed_animation_time_seconds": 0.50000006,
+    "elapsed_capture_wall_seconds_to_change": 2.1109324991703033,
+    "appearance": "Initial dark blue/gray nose, streaky pale hair, blotchy breastplate and reflective shield gradient change abruptly to smoother warm face/blackhair/clear gold clasps around Idle9. At Idle40 face remains clear.",
+    "cause": "UNESTABLISHED; investigate startup readiness/streaming before concluding persistent wrong normal map.",
+    "evidence": "idle_shading_transition.jpg"
+  },
+  "persistent_issues": [
+    {
+      "id": "R03-G01",
+      "clip": "Move",
+      "captures": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "finding": "Sharp ivory patch visibly intrudes into navy tabard by its slit, clearest native Move5."
+    },
+    {
+      "id": "R03-G02",
+      "clip": "Hit",
+      "captures": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "finding": "Broad ivory crescent appears between tilted breastplate and belt; layered torso reads separated."
+    },
+    {
+      "id": "R03-G03",
+      "clip": "Active",
+      "captures": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "finding": "Shield occludes frontal gallery face; capture4 hides both eyes and face. View-specific: earlier Blender three-quarter was clear."
+    },
+    {
+      "id": "R03-G04",
+      "clip": "Defeat",
+      "captures": [
+        10,
+        18
+      ],
+      "finding": "Stiff skirt/tabard lifts above thighs; light dotted seam/patches remain at knee/thigh edges, and shield-side fingers appear as open arcs around grip. Other-angle contact validation pending."
+    }
+  ],
+  "improvements_observed": [
+    "r03 settled palette restores navy, warm skin, blackhair, gold and ivory distinction lost in r01/r02.",
+    "Compared with canonical before, silhouette has curved shield/raised crest, convex chest and curved armor, shaped knees/boots and articulated face/hair.",
+    "Attack4 shows horizontal blade attached to grip; no whole weapon detachment in reviewed frames.",
+    "Crown skin aperture from older Blender r06 not visible in this engine revision."
+  ],
+  "remaining_art_limits": [
+    "Domed disc-like pauldrons, smooth tube-like upper sleeves, simple front cloth panels and stacked glove fingers remain more schematic than approved reference.",
+    "No blanket normal-map correctness or final material approval; startup shading change is retained as a defect.",
+    "No floor contact geometry measurement in Unreal by this lane; rendered foot alternation alone is not exact zero penetration."
+  ],
+  "not_reviewed": [
+    "continuousvideo playback",
+    "audio",
+    "final materialrevision afterr03",
+    "board/crowded candidate camera",
+    "alternate gallery angles",
+    "Pram visual acceptance"
+  ]
+}

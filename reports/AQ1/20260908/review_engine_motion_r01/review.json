@@ -1,0 +1,114 @@
+{
+  "status": "ALL_CAPTURED_FRAMES_REVIEWED_INTERIM_MATERIAL_DEFECTS_OPEN_NOT_APPROVED",
+  "source": "engine_candidate_motion_r01",
+  "candidate": "/Game/WonderChess/Candidates/AQ1/Ada_r01",
+  "review_method": "All 150 unique screenshots inspected in 12 chronological cropped contact sheets; one full Idle screenshot and eight native hero crops inspected separately. Frame-sequence inspection only, not continuous video playback or audio review.",
+  "material_status": "INTERIM_WASHED_OUT_APPEARANCE_UNDER_OWNER_DIAGNOSIS",
+  "unique_frames_viewed": 150,
+  "sheets_viewed": 12,
+  "full_screenshots_viewed": 1,
+  "native_crops_viewed": 8,
+  "clips": [
+    {
+      "clip": "Idle",
+      "frames_viewed": 41,
+      "duration_seconds": 2
+    },
+    {
+      "clip": "Move",
+      "frames_viewed": 21,
+      "duration_seconds": 1
+    },
+    {
+      "clip": "Attack",
+      "frames_viewed": 14,
+      "duration_seconds": 0.6499999761581421
+    },
+    {
+      "clip": "Active",
+      "frames_viewed": 13,
+      "duration_seconds": 0.6000000238418579
+    },
+    {
+      "clip": "Hit",
+      "frames_viewed": 9,
+      "duration_seconds": 0.4000000059604645
+    },
+    {
+      "clip": "Defeat",
+      "frames_viewed": 21,
+      "duration_seconds": 1
+    },
+    {
+      "clip": "Victory",
+      "frames_viewed": 31,
+      "duration_seconds": 1.5
+    }
+  ],
+  "source_digest": "95509d001ca0e6c55fa64a616df6e2e9a01a3809a9b9c82d9bd0a725dad3a1ec",
+  "defects": [
+    {
+      "clip": "Move",
+      "captures": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "finding": "Angular ivory patch cuts into lower navy tabard near the slit; clearest native capture5. Needs skirt/tabard separation/skin weights review."
+    },
+    {
+      "clip": "Active",
+      "captures": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "finding": "Front gallery camera shows shield across the face; capture4 completely covers it. Blender three-quarter clearance claim must remain camera-specific."
+    },
+    {
+      "clip": "Hit",
+      "captures": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "finding": "Broad ivory waist crescent exposed beneath breastplate; surface layers read separated."
+    },
+    {
+      "clip": "Defeat",
+      "captures": [
+        10,
+        18
+      ],
+      "finding": "Thighs now emerge beneath lifted panels rather than earlier gross source cut-through; pale seam/patch lines remain on knees/thighs, and skirt/tabard is stiff. Crown skin aperture not visible here."
+    },
+    {
+      "clip": "All",
+      "captures": [],
+      "finding": "Material is visibly pale and desaturated; skin warmth/navy/gold distinction reduced. Shiny gradients and visible faceting persist. Cause is not inferred from screenshots alone."
+    }
+  ],
+  "other_observations": [
+    "Attack blade stays attached and horizontal slash is visible at capture4; imported tangent/shading acceptance still pending.",
+    "Move alternates stance/lift without obvious gross floor cuts in this camera; no engine foot-contact geometry measurements were made here.",
+    "Defeat18 to19 transitions from held crouch to stand because gallery clip wraps; not evidence of gameplay resurrection.",
+    "Ghosted edge trails occur during motion captures; no attribution or numerical performance claim.",
+    "Idle and Victory remain in view; no obvious missing whole hero or weapon."
+  ],
+  "not_reviewed": [
+    "continuous playback",
+    "audio",
+    "other gallery camera angles",
+    "board/crowded fight in candidate",
+    "corrected final material pass",
+    "newer imports after r01",
+    "Pram art approval"
+  ]
+}

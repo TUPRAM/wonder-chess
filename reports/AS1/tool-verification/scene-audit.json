@@ -1,0 +1,153 @@
+{
+  "status": "observations_only_not_acceptance",
+  "blender_version": "5.1.1",
+  "source_blend_name": "fixture-with-references.blend",
+  "source_blend_sha256": "ccd91c727c69cb293d9dbb8005bb6c7f79bb915a613916af4a691c84f43d68bb",
+  "collection": "AS1_FIXTURE",
+  "objects": [
+    {
+      "name": "FixtureRig",
+      "type": "ARMATURE",
+      "semantic_part_id": null,
+      "negative_transform_determinant": false,
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "modifiers": [],
+      "bones": [
+        {
+          "name": "root",
+          "parent": null,
+          "deform": true,
+          "matrix_local": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              -1.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "deform_bones": 1,
+      "rest_skeleton_sha256": "d69c5337fa1013e02646b8cdeef38b31d538f9dfb42a2c9ec08f4f3c7c7f7d25"
+    },
+    {
+      "name": "FixtureSphere",
+      "type": "MESH",
+      "semantic_part_id": "fixture_unskinned_sphere",
+      "negative_transform_determinant": false,
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "modifiers": [],
+      "vertices_source": 266,
+      "triangles_source": 528,
+      "polygons_source": 288,
+      "degenerate_source_triangles": 0,
+      "wire_edges": 0,
+      "boundary_edges": 0,
+      "edges_over_two_faces": 0,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "FixtureRed"
+      ],
+      "unweighted_vertices": null,
+      "non_normalized_vertices": null,
+      "max_deform_influences": null,
+      "preserve_volume_enabled": false,
+      "finite_coordinates": true,
+      "triangles_evaluated": 528,
+      "world_bbox_dimensions": [
+        0.7599999904632568,
+        0.7599999904632568,
+        0.7599999904632568
+      ]
+    },
+    {
+      "name": "FixtureWeightedBox",
+      "type": "MESH",
+      "semantic_part_id": "fixture_weighted_box",
+      "negative_transform_determinant": false,
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "modifiers": [
+        {
+          "name": "FixtureSkin",
+          "type": "ARMATURE",
+          "enabled": true
+        }
+      ],
+      "vertices_source": 8,
+      "triangles_source": 12,
+      "polygons_source": 6,
+      "degenerate_source_triangles": 0,
+      "wire_edges": 0,
+      "boundary_edges": 0,
+      "edges_over_two_faces": 0,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "FixtureBlue"
+      ],
+      "unweighted_vertices": 0,
+      "non_normalized_vertices": 0,
+      "max_deform_influences": 1,
+      "preserve_volume_enabled": false,
+      "finite_coordinates": true,
+      "triangles_evaluated": 12,
+      "world_bbox_dimensions": [
+        0.5500000417232513,
+        0.4000000059604645,
+        1.2000000476837158
+      ]
+    }
+  ],
+  "file_images": [
+    {
+      "name": "reference-fixture.png",
+      "size": [
+        320,
+        512
+      ],
+      "color_space": "sRGB",
+      "packed": false,
+      "external_file_exists": true
+    }
+  ],
+  "limitations": [
+    "No exhaustive self-intersection check.",
+    "Boundary edges are not automatically errors on open garments.",
+    "No UV overlap or texel-density calculation.",
+    "No visual likeness or continuous-motion judgement.",
+    "Source/evaluated mesh counts may differ."
+  ]
+}

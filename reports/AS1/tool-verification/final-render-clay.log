@@ -1,0 +1,14 @@
+{"command": ["C:\\Program Files\\Blender Foundation\\Blender 5.1\\blender.exe", "--background", "--factory-startup", "--disable-autoexec", "--python-exit-code", "23", "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AS1\\tool-verification\\final-fixture-with-references.blend", "--python", "C:\\Users\\iputu\\Documents\\Wonder Chess\\production\\asset-studio\\tools\\asset_studio\\blender\\render_review.py", "--", "--collection", "AS1_FIXTURE", "--cameras", "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AS1\\tool-verification\\review-cameras.json", "--out", "C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AS1\\tool-verification\\final-renders-clay", "--clay"]}
+00:02.203  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\reports\AS1\tool-verification\final-fixture-with-references.blend"
+C:\Users\iputu\Documents\Wonder Chess\production\asset-studio\tools\asset_studio\blender\render_review.py:30: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  world=bpy.data.worlds.new(scene.name+'_World');world.use_nodes=True;scene.world=world
+C:\Users\iputu\Documents\Wonder Chess\production\asset-studio\tools\asset_studio\blender\render_review.py:41: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  clay=bpy.data.materials.new(scene.name+'_Clay');clay.use_nodes=True
+00:02.984  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\AS1\tool-verification\final-renders-clay\front.png'
+00:03.593  render           | Saved: 'C:\Users\iputu\Documents\Wonder Chess\reports\AS1\tool-verification\final-renders-clay\three-quarter.png'
+AS1_REVIEW_RENDERED C:\Users\iputu\Documents\Wonder Chess\reports\AS1\tool-verification\final-renders-clay
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit
+
+EXIT_CODE=0

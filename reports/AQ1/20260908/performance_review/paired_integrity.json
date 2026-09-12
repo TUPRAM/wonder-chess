@@ -1,0 +1,50 @@
+{
+  "status": "DESCRIPTIVE_PROFILE_COMPARISON_WITH_KNOWN_RENDER_WARNING_NO_ACCEPTANCE",
+  "settings_match": true,
+  "settings_mismatches": [],
+  "seed": 828301,
+  "frame_counter_gaps": {
+    "baseline": 0,
+    "candidate": 0
+  },
+  "session_parity": {
+    "baseline": {
+      "frame_ms": true,
+      "game_ms": true,
+      "render_ms": true,
+      "gpu_ms": true
+    },
+    "candidate": {
+      "frame_ms": true,
+      "game_ms": true,
+      "render_ms": true,
+      "gpu_ms": true
+    }
+  },
+  "logs": {
+    "baseline": {
+      "warning_lines": [
+        "[2026.09.08-01.51.07:939][  0]LogStreaming: Warning: Failed to read file '../../../Engine/Platforms/VisionOS/Content/Editor/Slate/Launcher/Platform_VisionOS_24x.png' error.",
+        "[2026.09.08-01.51.07:939][  0]LogStreaming: Warning: Failed to read file '../../../Engine/Platforms/VisionOS/Content/Editor/Slate/Launcher/Platform_VisionOS_128x.png' error.",
+        "[2026.09.08-01.51.35:489][812]LogMaterial: Warning: Material /Game/WonderChess/Maps/L_WC_Menu.L_WC_Menu:PersistentLevel.WCBoardPresenter_0.MID_M_WC_Surface_5 missing bUsedWithInstancedStaticMeshes=True! Default Material will be used in game.",
+        "[2026.09.08-01.51.35:489][812]LogMaterial: Warning:      The material will recompile every editor launch until resaved."
+      ],
+      "error_lines": [],
+      "write_failure_lines": []
+    },
+    "candidate": {
+      "warning_lines": [
+        "[2026.09.08-02.42.42:745][  0]LogStreaming: Warning: Failed to read file '../../../Engine/Platforms/VisionOS/Content/Editor/Slate/Launcher/Platform_VisionOS_128x.png' error.",
+        "[2026.09.08-02.42.42:745][  0]LogStreaming: Warning: Failed to read file '../../../Engine/Platforms/VisionOS/Content/Editor/Slate/Launcher/Platform_VisionOS_24x.png' error.",
+        "[2026.09.08-02.43.09:092][812]LogMaterial: Warning: Material /Game/WonderChess/Maps/L_WC_Menu.L_WC_Menu:PersistentLevel.WCBoardPresenter_0.MID_M_WC_Surface_5 missing bUsedWithInstancedStaticMeshes=True! Default Material will be used in game.",
+        "[2026.09.08-02.43.09:092][812]LogMaterial: Warning:      The material will recompile every editor launch until resaved."
+      ],
+      "error_lines": [],
+      "write_failure_lines": []
+    }
+  },
+  "retained_warning_boundary": "Both runs log the same WCBoardPresenter MID_M_WC_Surface_5 missing bUsedWithInstancedStaticMeshes=True with default-material fallback; not silently treated as a fully correct production render. Two missing VisionOS launcher icon warnings also recur.",
+  "causal_attribution": "Single capped run per revision, uncooked Editor target with scripted inputs and unresolved cache/background/thermal differences; timing deltas cannot isolate Ada mesh cost.",
+  "new_tests_run": [],
+  "action": "Existing paired analyzer executed once after candidate process exit; no repeats or GPU processes launched."
+}

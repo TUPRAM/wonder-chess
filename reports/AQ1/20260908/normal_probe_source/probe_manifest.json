@@ -1,0 +1,972 @@
+{
+  "status": "BLENDER_BAKED_RENDERED_EXPORTED; UNREAL_PARITY_PENDING",
+  "blender_version": "5.1.1",
+  "source_script_sha256": "75fa070884e7b968c8c6b2e3472aefb461990a1712086bb6d590d09b970e9b12",
+  "source": "original procedural known-asymmetric raised test geometry; no external asset",
+  "source_unit_m": 1,
+  "plane_extent_m": [
+    0.4,
+    0.4
+  ],
+  "plane_normal": "+Z",
+  "uv0": {
+    "u": "+X",
+    "v": "+Y",
+    "domain": "entire square maps (0,0)..(1,1)"
+  },
+  "chevron_outline_xy_m": [
+    [
+      -0.13,
+      -0.105
+    ],
+    [
+      -0.095,
+      -0.13
+    ],
+    [
+      0.03,
+      0.035
+    ],
+    [
+      0.122,
+      -0.018
+    ],
+    [
+      0.142,
+      0.022
+    ],
+    [
+      0.018,
+      0.11
+    ]
+  ],
+  "chevron_height_m": 0.026,
+  "marker_outline_xy_m": [
+    [
+      -0.15,
+      0.105
+    ],
+    [
+      -0.11,
+      0.105
+    ],
+    [
+      -0.15,
+      0.155
+    ]
+  ],
+  "marker_height_m": 0.014,
+  "geometry": {
+    "AQ1_NormalProbe_Low": {
+      "vertices": 4,
+      "triangles": 2,
+      "bounds_min_m": [
+        -0.20000000298023224,
+        -0.20000000298023224,
+        0.0
+      ],
+      "bounds_max_m": [
+        0.20000000298023224,
+        0.20000000298023224,
+        0.0
+      ]
+    },
+    "AQ1_NormalProbe_ControlBase": {
+      "vertices": 4,
+      "triangles": 2,
+      "bounds_min_m": [
+        -0.20000000298023224,
+        -0.20000000298023224,
+        0.00019999999494757503
+      ],
+      "bounds_max_m": [
+        0.20000000298023224,
+        0.20000000298023224,
+        0.00019999999494757503
+      ]
+    },
+    "AQ1_NormalProbe_RaisedChevron": {
+      "vertices": 36,
+      "triangles": 68,
+      "bounds_min_m": [
+        -0.12999999523162842,
+        -0.12999999523162842,
+        0.00039999998989515007
+      ],
+      "bounds_max_m": [
+        0.1420000046491623,
+        0.10999999940395355,
+        0.026000000536441803
+      ]
+    },
+    "AQ1_NormalProbe_UpperLeftMarker": {
+      "vertices": 18,
+      "triangles": 32,
+      "bounds_min_m": [
+        -0.15000000596046448,
+        0.10499999672174454,
+        0.00039999998989515007
+      ],
+      "bounds_max_m": [
+        -0.10999999940395355,
+        0.1550000011920929,
+        0.014000000432133675
+      ]
+    }
+  },
+  "bake": {
+    "type": "actual Cycles selected-to-active tangent normal bake",
+    "size_px": 1024,
+    "space": "TANGENT",
+    "channels": [
+      "+X",
+      "+Y",
+      "+Z"
+    ],
+    "colorspace": "Non-Color",
+    "cage_extrusion_m": 0.04,
+    "max_ray_distance_m": 0.09,
+    "margin_px": 4
+  },
+  "normal_measurements": {
+    "pixel_green_min": 0.007843137718737125,
+    "pixel_green_max": 0.8980392813682556,
+    "sample_count": 32,
+    "green_sign_match_count": 32,
+    "samples_within_18_degrees": 32,
+    "interpretation": "Measured bake diagnostic; not engine orientation acceptance",
+    "samples": [
+      {
+        "object": "AQ1_NormalProbe_RaisedChevron",
+        "source_face": 12,
+        "source_xy_m": [
+          -0.11701703071594238,
+          -0.11281480640172958
+        ],
+        "uv": [
+          0.20745742321014407,
+          0.21796298399567607
+        ],
+        "raised_surface_normal_xyz": [
+          -0.4832823872566223,
+          -0.6765950322151184,
+          0.5555692911148071
+        ],
+        "baked_normal_xyz": [
+          -0.48267215490341187,
+          -0.6788803935050964,
+          0.553307294845581
+        ],
+        "green": 0.16078431904315948,
+        "green_sign_matches_source": true,
+        "angular_error_degrees": 0.18819243739217273
+      },
+      {
+        "object": "AQ1_NormalProbe_RaisedChevron",
+        "source_face": 13,
+        "source_xy_m": [
+          -0.053593676537275314,
+          -0.07337792217731476
+        ],
+        "uv": [
+          0.3660158086568117,
+          0.3165551945567131
+        ],
+        "raised_surface_normal_xyz": [
+          0.6627582907676697,
+          -0.5020896196365356,
+          0.5555695295333862
+        ],
+        "baked_normal_xyz": [
+          0.6624497175216675,
+          -0.5056567192077637,
+          0.5526947379112244
+        ],
+        "green": 0.24705883860588074,
+        "green_sign_matches_source": true,
+        "angular_error_degrees": 0.2639295804557845
+      },
+      {
+        "object": "AQ1_NormalProbe_RaisedChevron",
+        "source_face": 14,
+        "source_xy_m": [
+          0.06007811054587364,
+          0.019709425047039986
+        ],
+        "uv": [
+          0.6501952763646841,
+          0.5492735626176
+        ],
+        "raised_surface_normal_xyz": [
+          -0.41505205631256104,
+          -0.7204676866531372,
+          0.5555700063705444
+        ],
+        "baked_normal_xyz": [
+          -0.4137739837169647,
+          -0.7211489677429199,
+          0.5556395053863525
+        ],
+        "green": 0.1411764770746231,
+        "green_sign_matches_source": true,
+        "angular_error_degrees": 0.08451020516434651
+      },
+      {
+        "object": "AQ1_NormalProbe_RaisedChevron",
+        "source_face": 15,
+        "source_xy_m": [
+          0.12799398601055145,
+          -0.003357758279889822
+        ],
+        "uv": [
+          0.8199849650263786,
+          0.49160560430027544
+        ],
+        "raised_surface_normal_xyz": [
+          0.743689239025116,
+          -0.37184467911720276,
+          0.5555698871612549
+        ],
+        "baked_normal_xyz": [
+          0.743455171585083,
+          -0.3736943304538727,
+          0.5546412467956543
+        ],
+        "green": 0.3137255012989044,
+        "green_sign_matches_source": true,
+        "angular_error_degrees": 0.11951548913628497
+      },
+      {
+        "object": "AQ1_NormalProbe_RaisedChevron",
+        "source_face": 16,
+        "source_xy_m": [
+          0.09960341453552246,
+          0.049923501908779144
+        ],
+        "uv": [
+          0.7490085363388062,
+          0.6248087547719479
+        ],
+        "raised_surface_normal_xyz": [
+          0.4812110662460327,
+          0.6780701875686646,
+          0.5555688738822937
+        ],
+        "baked_normal_xyz": [
+          0.48267215490341187,
+          0.6788804531097412,
+          0.5533072352409363
+        ],
+        "green": 0.8392157554626465,
+        "green_sign_matches_source": true,
+        "angular_error_degrees": 0.16040788132958436
+      },
+      {
+        "object": "AQ1_NormalProbe_RaisedChevron",
+        "source_face": 17,
+        "source_xy_m": [
+          -0.0308084636926651,
+          0.037002354860305786
+        ],
+        "uv": [
+          0.42297884076833725,
+          0.5925058871507645
+        ],
+        "raised_surface_normal_xyz": [
+          -0.6848865747451782,
+          0.4714567959308624,
+          0.555570662021637
+        ],
+        "baked_normal_xyz": [
+          -0.685631513595581,
+          0.47406524419784546,
+          0.5524232387542725
+        ],
+        "green": 0.7372549176216125,
+        "green_sign_matches_source": true,
+        "angular_error_degrees": 0.23964427249295864
+      },
+      {
+        "object": "AQ1_NormalProbe_RaisedChevron",
+        "source_face": 18,
+        "source_xy_m": [
+          -0.11514542996883392,
+          -0.11166775226593018
+        ],
+        "uv": [
+          0.21213642507791522,
+          0.2208306193351746
+        ],
+        "raised_surface_normal_xyz": [
+          -0.3229188323020935,
+          -0.4520862400531769,
+          0.8314694762229919
+        ],
+        "baked_normal_xyz": [
+          -0.32434991002082825,
+          -0.4494004547595978,
+          0.832368016242981
+        ],
+        "green": 0.27450981736183167,
+        "green_sign_matches_source": true,
+        "angular_error_degrees": 0.17995414811326307
+      },
+      {
+        "object": "AQ1_NormalProbe_RaisedChevron",
+        "source_face": 19,
+        "source_xy_m": [
+          -0.054049715399742126,
+          -0.07063266634941101
+        ],
+        "uv": [
+          0.3648757115006447,
+          0.3234183341264725
+        ],
+        "raised_surface_normal_xyz": [
+          0.4428413212299347,
+          -0.3354858160018921,
+          0.8314691185951233
+        ],
+        "baked_normal_xyz": [
+          0.4419899880886078,
+          -0.3324702978134155,
+          0.8331316113471985
+        ],
+        "green": 0.3333333432674408,
+        "green_sign_matches_source": true,
+        "angular_error_degrees": 0.20319084652614794
+      },
+      {
+        "object": "AQ1_NormalProbe_RaisedChevron",
+        "source_face": 20,
+        "source_xy_m": [
+          0.05933269113302231,
+          0.022802812978625298
+        ],
+        "uv": [
+          0.6483317278325558,
+          0.5570070324465632
+        ],
+        "raised_surface_normal_xyz": [
+          -0.2773287296295166,
+          -0.48140081763267517,
+          0.8314697742462158
+        ],
+        "baked_normal_xyz": [
+          -0.27733737230300903,
+          -0.48045769333839417,
+          0.8320122361183167
+        ],
+        "green": 0.25882354378700256,
+        "green_sign_matches_source": true,
+        "angular_error_degrees": 0.0644825456926278
+      },
+      {
+        "object": "AQ1_NormalProbe_RaisedChevron",
+        "source_face": 21,
+        "source_xy_m": [
+          0.12664921581745148,
+          -0.001527669606730342
+        ],
+        "uv": [
+          0.8166230395436287,
+          0.49618082598317415
+        ],
+        "raised_surface_normal_xyz": [
+          0.49691739678382874,
+          -0.2484588772058487,
+          0.8314693570137024
+        ],
+        "baked_normal_xyz": [
+          0.4963550567626953,
+          -0.24622328579425812,
+          0.8324695825576782
+        ],
+        "green": 0.3764706254005432,
+        "green_sign_matches_source": true,
+        "angular_error_degrees": 0.14570607873889196
+      },
+      {
+        "object": "AQ1_NormalProbe_RaisedChevron",
+        "source_face": 22,
+        "source_xy_m": [
+          0.09797438234090805,
+          0.04824906215071678
+        ],
+        "uv": [
+          0.7449359558522701,
+          0.620622655376792
+        ],
+        "raised_surface_normal_xyz": [
+          0.32153409719467163,
+          0.4530707895755768,
+          0.831470251083374
+        ],
+        "baked_normal_xyz": [
+          0.3173300325870514,
+          0.4505302608013153,
+          0.834460437297821
+        ],
+        "green": 0.7254902124404907,
+        "green_sign_matches_source": true,
+        "angular_error_degrees": 0.32894693680793796
+      },
+      {
+        "object": "AQ1_NormalProbe_RaisedChevron",
+        "source_face": 23,
+        "source_xy_m": [
+          -0.02965153381228447,
+          0.03511832281947136
+        ],
+        "uv": [
+          0.4258711654692888,
+          0.5877958070486784
+        ],
+        "raised_surface_normal_xyz": [
+          -0.4576265215873718,
+          0.31501734256744385,
+          0.8314697742462158
+        ],
+        "baked_normal_xyz": [
+          -0.4567420184612274,
+          0.31620606780052185,
+          0.8315048813819885
+        ],
+        "green": 0.658823549747467,
+        "green_sign_matches_source": true,
+        "angular_error_degrees": 0.08651241697112283
+      },
+      {
+        "object": "AQ1_NormalProbe_RaisedChevron",
+        "source_face": 44,
+        "source_xy_m": [
+          -0.10579468309879303,
+          -0.12012039870023727
+        ],
+        "uv": [
+          0.23551329225301745,
+          0.19969900324940684
+        ],
+        "raised_surface_normal_xyz": [
+          -0.4832817614078522,
+          -0.6765943169593811,
+          0.5555707216262817
+        ],
+        "baked_normal_xyz": [
+          -0.48267215490341187,
+          -0.6788803935050964,
+          0.553307294845581
+        ],
+        "green": 0.16078431904315948,
+        "green_sign_matches_source": true,
+        "angular_error_degrees": 0.18819243739217273
+      },
+      {
+        "object": "AQ1_NormalProbe_RaisedChevron",
+        "source_face": 45,
+        "source_xy_m": [
+          -0.012091157957911491,
+          -0.017637312412261963
+        ],
+        "uv": [
+          0.46977210510522127,
+          0.4559067189693451
+        ],
+        "raised_surface_normal_xyz": [
+          0.6627578735351562,
+          -0.5020893216133118,
+          0.5555701851844788
+        ],
+        "baked_normal_xyz": [
+          0.6624497175216675,
+          -0.5056567192077637,
+          0.5526947379112244
+        ],
+        "green": 0.24705883860588074,
+        "green_sign_matches_source": true,
+        "angular_error_degrees": 0.26466991865372924
+      },
+      {
+        "object": "AQ1_NormalProbe_RaisedChevron",
+        "source_face": 46,
+        "source_xy_m": [
+          0.09086629003286362,
+          0.0013056367170065641
+        ],
+        "uv": [
+          0.727165725082159,
+          0.5032640917925164
+        ],
+        "raised_surface_normal_xyz": [
+          -0.41505205631256104,
+          -0.7204676866531372,
+          0.555570125579834
+        ],
+        "baked_normal_xyz": [
+          -0.4137739837169647,
+          -0.7211489677429199,
+          0.5556395053863525
+        ],
+        "green": 0.1411764770746231,
+        "green_sign_matches_source": true,
+        "angular_error_degrees": 0.08216223966148652
+      },
+      {
+        "object": "AQ1_NormalProbe_RaisedChevron",
+        "source_face": 47,
+        "source_xy_m": [
+          0.13374793529510498,
+          0.009442701004445553
+        ],
+        "uv": [
+          0.8343698382377625,
+          0.5236067525111139
+        ],
+        "raised_surface_normal_xyz": [
+          0.7436900734901428,
+          -0.3718452751636505,
+          0.5555683374404907
+        ],
+        "baked_normal_xyz": [
+          0.743455171585083,
+          -0.3736943304538727,
+          0.5546412467956543
+        ],
+        "green": 0.3137255012989044,
+        "green_sign_matches_source": true,
+        "angular_error_degrees": 0.11910548610202558
+      },
+      {
+        "object": "AQ1_NormalProbe_RaisedChevron",
+        "source_face": 48,
+        "source_xy_m": [
+          0.05931851267814636,
+          0.07922162115573883
+        ],
+        "uv": [
+          0.6482962816953659,
+          0.6980540528893471
+        ],
+        "raised_surface_normal_xyz": [
+          0.4812104403972626,
+          0.6780692934989929,
+          0.5555704832077026
+        ],
+        "baked_normal_xyz": [
+          0.48267215490341187,
+          0.6788804531097412,
+          0.5533072352409363
+        ],
+        "green": 0.8392157554626465,
+        "green_sign_matches_source": true,
+        "angular_error_degrees": 0.16132016159732973
+      },
+      {
+        "object": "AQ1_NormalProbe_RaisedChevron",
+        "source_face": 49,
+        "source_xy_m": [
+          -0.07911364734172821,
+          -0.03419019654393196
+        ],
+        "uv": [
+          0.3022158816456795,
+          0.4145245086401701
+        ],
+        "raised_surface_normal_xyz": [
+          -0.6848877668380737,
+          0.4714575707912445,
+          0.5555686354637146
+        ],
+        "baked_normal_xyz": [
+          -0.685631513595581,
+          0.47406524419784546,
+          0.5524232387542725
+        ],
+        "green": 0.7372549176216125,
+        "green_sign_matches_source": true,
+        "angular_error_degrees": 0.2386214568151402
+      },
+      {
+        "object": "AQ1_NormalProbe_RaisedChevron",
+        "source_face": 50,
+        "source_xy_m": [
+          -0.10490298271179199,
+          -0.11792062222957611
+        ],
+        "uv": [
+          0.23774254322052005,
+          0.20519844442605975
+        ],
+        "raised_surface_normal_xyz": [
+          -0.3229188323020935,
+          -0.45208626985549927,
+          0.8314694762229919
+        ],
+        "baked_normal_xyz": [
+          -0.32434991002082825,
+          -0.4494004547595978,
+          0.832368016242981
+        ],
+        "green": 0.27450981736183167,
+        "green_sign_matches_source": true,
+        "angular_error_degrees": 0.17968210820608443
+      },
+      {
+        "object": "AQ1_NormalProbe_RaisedChevron",
+        "source_face": 51,
+        "source_xy_m": [
+          -0.012654852122068405,
+          -0.014558772556483746
+        ],
+        "uv": [
+          0.468362869694829,
+          0.46360306860879064
+        ],
+        "raised_surface_normal_xyz": [
+          0.4428407549858093,
+          -0.33548539876937866,
+          0.8314694762229919
+        ],
+        "baked_normal_xyz": [
+          0.4419899880886078,
+          -0.3324702978134155,
+          0.8331316113471985
+        ],
+        "green": 0.3333333432674408,
+        "green_sign_matches_source": true,
+        "angular_error_degrees": 0.20463023449693923
+      },
+      {
+        "object": "AQ1_NormalProbe_RaisedChevron",
+        "source_face": 52,
+        "source_xy_m": [
+          0.09010709822177887,
+          0.004075660370290279
+        ],
+        "uv": [
+          0.7252677455544472,
+          0.5101891509257257
+        ],
+        "raised_surface_normal_xyz": [
+          -0.27732884883880615,
+          -0.4814009666442871,
+          0.8314696550369263
+        ],
+        "baked_normal_xyz": [
+          -0.27733737230300903,
+          -0.48045769333839417,
+          0.8320122361183167
+        ],
+        "green": 0.25882354378700256,
+        "green_sign_matches_source": true,
+        "angular_error_degrees": 0.06486074572481255
+      },
+      {
+        "object": "AQ1_NormalProbe_RaisedChevron",
+        "source_face": 53,
+        "source_xy_m": [
+          0.13154052197933197,
+          0.010189441964030266
+        ],
+        "uv": [
+          0.8288513049483299,
+          0.5254736049100757
+        ],
+        "raised_surface_normal_xyz": [
+          0.49691659212112427,
+          -0.24845834076404572,
+          0.8314700126647949
+        ],
+        "baked_normal_xyz": [
+          0.4963550567626953,
+          -0.24622328579425812,
+          0.8324695825576782
+        ],
+        "green": 0.3764706254005432,
+        "green_sign_matches_source": true,
+        "angular_error_degrees": 0.14562212243275927
+      },
+      {
+        "object": "AQ1_NormalProbe_RaisedChevron",
+        "source_face": 54,
+        "source_xy_m": [
+          0.05893855541944504,
+          0.07701274752616882
+        ],
+        "uv": [
+          0.6473463885486126,
+          0.6925318688154221
+        ],
+        "raised_surface_normal_xyz": [
+          0.32153427600860596,
+          0.45307105779647827,
+          0.8314700126647949
+        ],
+        "baked_normal_xyz": [
+          0.3173300325870514,
+          0.4505302608013153,
+          0.834460437297821
+        ],
+        "green": 0.7254902124404907,
+        "green_sign_matches_source": true,
+        "angular_error_degrees": 0.32894693680793796
+      },
+      {
+        "object": "AQ1_NormalProbe_RaisedChevron",
+        "source_face": 55,
+        "source_xy_m": [
+          -0.07690566778182983,
+          -0.035053640604019165
+        ],
+        "uv": [
+          0.3077358305454254,
+          0.4123658984899521
+        ],
+        "raised_surface_normal_xyz": [
+          -0.45762738585472107,
+          0.3150179088115692,
+          0.8314691781997681
+        ],
+        "baked_normal_xyz": [
+          -0.4567420184612274,
+          0.31620606780052185,
+          0.8315048813819885
+        ],
+        "green": 0.658823549747467,
+        "green_sign_matches_source": true,
+        "angular_error_degrees": 0.08537404588308817
+      },
+      {
+        "object": "AQ1_NormalProbe_UpperLeftMarker",
+        "source_face": 6,
+        "source_xy_m": [
+          -0.13698719441890717,
+          0.10588254034519196
+        ],
+        "uv": [
+          0.15753201395273211,
+          0.7647063508629799
+        ],
+        "raised_surface_normal_xyz": [
+          0.0,
+          -0.8314718008041382,
+          0.5555669069290161
+        ],
+        "baked_normal_xyz": [
+          0.003914830274879932,
+          -0.8338462114334106,
+          0.5519828200340271
+        ],
+        "green": 0.08235294371843338,
+        "green_sign_matches_source": true,
+        "angular_error_degrees": 0.3339648250912153
+      },
+      {
+        "object": "AQ1_NormalProbe_UpperLeftMarker",
+        "source_face": 7,
+        "source_xy_m": [
+          -0.1239665150642395,
+          0.12104539573192596
+        ],
+        "uv": [
+          0.19008371233940127,
+          0.8026134893298149
+        ],
+        "raised_surface_normal_xyz": [
+          0.649267852306366,
+          0.5194140672683716,
+          0.5555720329284668
+        ],
+        "baked_normal_xyz": [
+          0.6482061743736267,
+          0.5224935412406921,
+          0.5539216995239258
+        ],
+        "green": 0.760784387588501,
+        "green_sign_matches_source": true,
+        "angular_error_degrees": 0.20935673428581142
+      },
+      {
+        "object": "AQ1_NormalProbe_UpperLeftMarker",
+        "source_face": 9,
+        "source_xy_m": [
+          -0.1371656060218811,
+          0.10703670233488083
+        ],
+        "uv": [
+          0.15708598494529727,
+          0.7675917558372021
+        ],
+        "raised_surface_normal_xyz": [
+          0.0,
+          -0.5555669069290161,
+          0.831471860408783
+        ],
+        "baked_normal_xyz": [
+          0.003914830274879932,
+          -0.5519826412200928,
+          0.8338463306427002
+        ],
+        "green": 0.22352942824363708,
+        "green_sign_matches_source": true,
+        "angular_error_degrees": 0.3339648250912153
+      },
+      {
+        "object": "AQ1_NormalProbe_UpperLeftMarker",
+        "source_face": 10,
+        "source_xy_m": [
+          -0.1250353306531906,
+          0.12053382396697998
+        ],
+        "uv": [
+          0.1874116733670235,
+          0.80133455991745
+        ],
+        "raised_surface_normal_xyz": [
+          0.43382853269577026,
+          0.3470627963542938,
+          0.8314687013626099
+        ],
+        "baked_normal_xyz": [
+          0.43334585428237915,
+          0.34745749831199646,
+          0.8315556049346924
+        ],
+        "green": 0.6745098233222961,
+        "green_sign_matches_source": true,
+        "angular_error_degrees": 0.03426402009603798
+      },
+      {
+        "object": "AQ1_NormalProbe_UpperLeftMarker",
+        "source_face": 23,
+        "source_xy_m": [
+          -0.12425555288791656,
+          0.10559350252151489
+        ],
+        "uv": [
+          0.18936111778020862,
+          0.7639837563037872
+        ],
+        "raised_surface_normal_xyz": [
+          0.0,
+          -0.831471860408783,
+          0.5555669069290161
+        ],
+        "baked_normal_xyz": [
+          0.003914830274879932,
+          -0.8338462114334106,
+          0.5519828200340271
+        ],
+        "green": 0.08235294371843338,
+        "green_sign_matches_source": true,
+        "angular_error_degrees": 0.3333784053795558
+      },
+      {
+        "object": "AQ1_NormalProbe_UpperLeftMarker",
+        "source_face": 24,
+        "source_xy_m": [
+          -0.13638582825660706,
+          0.13703221082687378
+        ],
+        "uv": [
+          0.1590354293584824,
+          0.8425805270671844
+        ],
+        "raised_surface_normal_xyz": [
+          0.6492711305618286,
+          0.5194169878959656,
+          0.5555655360221863
+        ],
+        "baked_normal_xyz": [
+          0.6482061743736267,
+          0.5224935412406921,
+          0.5539216995239258
+        ],
+        "green": 0.760784387588501,
+        "green_sign_matches_source": true,
+        "angular_error_degrees": 0.2088888969045935
+      },
+      {
+        "object": "AQ1_NormalProbe_UpperLeftMarker",
+        "source_face": 26,
+        "source_xy_m": [
+          -0.12546789646148682,
+          0.10660412907600403
+        ],
+        "uv": [
+          0.186330258846283,
+          0.7665103226900101
+        ],
+        "raised_surface_normal_xyz": [
+          0.0,
+          -0.5555669069290161,
+          0.831471860408783
+        ],
+        "baked_normal_xyz": [
+          0.003914830274879932,
+          -0.5519826412200928,
+          0.8338463306427002
+        ],
+        "green": 0.22352942824363708,
+        "green_sign_matches_source": true,
+        "angular_error_degrees": 0.3339648250912153
+      },
+      {
+        "object": "AQ1_NormalProbe_UpperLeftMarker",
+        "source_face": 27,
+        "source_xy_m": [
+          -0.1362656056880951,
+          0.13526412844657898
+        ],
+        "uv": [
+          0.1593359857797623,
+          0.8381603211164474
+        ],
+        "raised_surface_normal_xyz": [
+          0.4338268041610718,
+          0.34706127643585205,
+          0.8314703106880188
+        ],
+        "baked_normal_xyz": [
+          0.43334585428237915,
+          0.34745749831199646,
+          0.8315556049346924
+        ],
+        "green": 0.6745098233222961,
+        "green_sign_matches_source": true,
+        "angular_error_degrees": 0.025217635811709393
+      }
+    ]
+  },
+  "render": {
+    "camera": "orthographic +Z, screen right +X and screen up +Y",
+    "light_source_direction_xyz": [
+      -0.3713906705379486,
+      -0.5570859909057617,
+      0.7427813410758972
+    ],
+    "sun_energy": 2.2,
+    "shadows": "disabled on meshes and light when API supports it",
+    "surface": "same diffuse gray roughness .72, metallic 0",
+    "comparison_limit": "normal map reproduces slopes, not geometric height/parallax"
+  },
+  "fbx": {
+    "mesh_coordinate_units": "centimeters from independent 100x copies",
+    "scene_unit_m": 0.01,
+    "global_scale": 1,
+    "axis_forward": "-Y",
+    "axis_up": "Z",
+    "apply_scale_options": "FBX_SCALE_UNITS",
+    "use_tspace": true,
+    "intended_engine_path": "legacy static, import normals, compute MikkTSpace tangents; retain UV0"
+  },
+  "unreal_review": "pending actual geometry/control/keep-green/flip-green capture; do not infer pass",
+  "files": {
+    "SM_AQ1_NormalProbe_Low.fbx": "675ef9df80c54e2e14fe5fc6871752e393f4ba097fd7630e2228ac5c48289765",
+    "SM_AQ1_NormalProbe_Control.fbx": "474f0640c761b8ee05d0df8cabad9e8bcbd6ccb15280070d53653ff854cd5dc1",
+    "T_AQ1_NormalProbe_PosY.png": "77bc6bacacbeba2f8bb53fe97e63602a7a7590925d0ea7bf3e0c2a4e38c2c461",
+    "AQ1_NormalProbe_Source.blend": "0a425af92293f8bf17d5bcd5f6b4bb35ebb7e11b937b9e13ef3aeabc490bde42",
+    "blender_geometry_control.png": "c658a1d76c6b230906c28e492b35a6dd23eba3babf9044fdb5410a6987e7c8e4",
+    "blender_pos_y_normal.png": "0025006a41b42eed745e5f5213d3fb09201abfa3297d4aefe872dd7db1b018ca"
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "schema": "wonder_vnext.batch_analysis.1",
+  "catalog_digest": "6f9a4178ec78d48c8f6fb8d487d88069327a5ca526652724dc12a8654f574ebb",
+  "native_tournaments": 1000,
+  "first_seed": 1,
+  "last_seed": 1000,
+  "native_encounters": 187141,
+  "native_timeouts": 26434,
+  "timeout_rate": 0.14125178341464456,
+  "capped_tournaments": 199,
+  "median_simulated_minutes": 31.331666666666667,
+  "median_phase_minutes": {
+    "preparation": 2.91125,
+    "combat": 24.945833333333333,
+    "settlement": 3.5
+  },
+  "native_relic_choices": 23716,
+  "native_relic_equips": 25192,
+  "sample_targets": {
+    "median_duration_35_to_45": false,
+    "combat_timeout_below_two_percent": false
+  },
+  "source_hashes": {
+    "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Simulation\\WonderSimulation.cpp": "a561519e6033823ccc5e1e1115ec5aa390eb958e96620c0ab1259305c7c5750f",
+    "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Simulation\\WonderTournament.cpp": "1924f36e9115a6f3d07caa702549f44ee60fc5045e19e2cd77ba0713311c4304",
+    "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Private\\Simulation\\WonderSave.cpp": "587eb84bd2dfafedfada1eef82ee8dba0a5200760bb5bba0dbf7267a3420ee59",
+    "C:\\Users\\iputu\\Documents\\Wonder Chess\\tests\\runtime\\vnext_tournament_tests.cpp": "51d984b781213bb0370bf758adffcb95b59c7983a3ab02a572499fc1d23ef0c3",
+    "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Public\\Simulation\\WonderSimulation.h": "50ba6abcc2660d7fec7c2d3d199dc06218335f167f2e07cb4cacc6f835c8b40a",
+    "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\Source\\WonderChessRuntime\\Public\\VNext\\WonderVNextCatalog.generated.h": "71937644cfbf2e20b2bdf1cdff656849411f370f892e74e035f65366e23943fc",
+    "C:\\Users\\iputu\\Documents\\Wonder Chess\\tests\\runtime\\vnext_bot_tests.h": "8336d225e36588ca5244a947f09fc1a9eb3d3ae29dfa994fe0dc5138c4f239c4"
+  },
+  "batches": [
+    {
+      "schema": "wonder_vnext.run_analysis.1",
+      "catalog_digest": "6f9a4178ec78d48c8f6fb8d487d88069327a5ca526652724dc12a8654f574ebb",
+      "native_tournaments": 250,
+      "first_seed": 1,
+      "last_seed": 250,
+      "native_encounters": 46896,
+      "native_timeouts": 6623,
+      "timeout_rate": 0.14122739679290344,
+      "capped_tournaments": 56,
+      "median_simulated_minutes": 31.498333333333335,
+      "median_phase_minutes": {
+        "preparation": 2.8975,
+        "combat": 25.035,
+        "settlement": 3.5
+      },
+      "native_relic_choices": 5916,
+      "native_relic_equips": 6284,
+      "sample_targets": {
+        "median_duration_35_to_45": false,
+        "combat_timeout_below_two_percent": false
+      },
+      "inputs_sha256": {
+        "reports\\vnext\\native\\final-1-250\\summary.json": "71ec701a3e49845b7664407d1c991fa1aa1a53ab3f936cfd6cbe02262a9df3c9",
+        "reports\\vnext\\native\\final-1-250\\process.json": "57943c16df215cade57bdfb796ebab53195f90966514a3748f8a3461b9b017af",
+        "reports\\vnext\\native\\final-1-250\\tournaments.csv": "2ab37049a7900caf5110717f307512507af598866b43ea31745d601ca315bfba",
+        "reports\\vnext\\native\\final-1-250\\rounds.csv": "21ab31acbabe713fb80d74b66d102bfd2b09902aa931a7abf22a747f6e6e02aa",
+        "reports\\vnext\\native\\final-1-250\\encounters.csv": "d80a17e60e4dd62f402b82def352014c07b2041125ff23fb6ef63a8610af5e98",
+        "reports\\vnext\\engine-tournaments\\r2\\regression.json": "5c93603aaa195d95f0b5c99ca022fcc08f97b5c0e2008509edbf7b0e5760cf92"
+      },
+      "boundary": "Six-hero laboratory sample with provisional traits and neutral behavior; accelerated simulated clocks. No human duration, fun, performance or full-roster release acceptance.",
+      "engine_comparison": {
+        "tournaments": 100,
+        "rounds": 4317,
+        "encounters": 18777,
+        "executable": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-VNext-Lab-r2\\Windows\\WonderChess\\Binaries\\Win64\\WonderChess.exe"
+      },
+      "verification_errors": [],
+      "technical_reconciliation_passed": true
+    },
+    {
+      "schema": "wonder_vnext.run_analysis.1",
+      "catalog_digest": "6f9a4178ec78d48c8f6fb8d487d88069327a5ca526652724dc12a8654f574ebb",
+      "native_tournaments": 250,
+      "first_seed": 251,
+      "last_seed": 500,
+      "native_encounters": 46802,
+      "native_timeouts": 6479,
+      "timeout_rate": 0.13843425494636982,
+      "capped_tournaments": 53,
+      "median_simulated_minutes": 31.32208333333333,
+      "median_phase_minutes": {
+        "preparation": 2.91125,
+        "combat": 25.02708333333333,
+        "settlement": 3.5
+      },
+      "native_relic_choices": 5934,
+      "native_relic_equips": 6303,
+      "sample_targets": {
+        "median_duration_35_to_45": false,
+        "combat_timeout_below_two_percent": false
+      },
+      "inputs_sha256": {
+        "reports\\vnext\\native\\final-251-500\\summary.json": "5067077e7a465cd31d3f761a7ae5d72bd3412b8d350425c0007c07f50c6fb15a",
+        "reports\\vnext\\native\\final-251-500\\process.json": "b90cb1fb67568c5bee5287b98cf40742956689b032978ef9192d87ace4e07161",
+        "reports\\vnext\\native\\final-251-500\\tournaments.csv": "b05c079e26f50b64dd3c336112409241b4504b72940ddee6a7ebd943cf909601",
+        "reports\\vnext\\native\\final-251-500\\rounds.csv": "0304c55d300fa3dd8b69ab4fbdffb76f20ad25508270a6174ea70a4afd6fef76",
+        "reports\\vnext\\native\\final-251-500\\encounters.csv": "2e84acfeff999395e5904fec89163af01670489d6a82afc1a876f3b75ce7dc11"
+      },
+      "boundary": "Six-hero laboratory sample with provisional traits and neutral behavior; accelerated simulated clocks. No human duration, fun, performance or full-roster release acceptance.",
+      "verification_errors": [],
+      "technical_reconciliation_passed": true
+    },
+    {
+      "schema": "wonder_vnext.run_analysis.1",
+      "catalog_digest": "6f9a4178ec78d48c8f6fb8d487d88069327a5ca526652724dc12a8654f574ebb",
+      "native_tournaments": 250,
+      "first_seed": 501,
+      "last_seed": 750,
+      "native_encounters": 46705,
+      "native_timeouts": 6655,
+      "timeout_rate": 0.14249009741997645,
+      "capped_tournaments": 50,
+      "median_simulated_minutes": 31.343333333333334,
+      "median_phase_minutes": {
+        "preparation": 2.90375,
+        "combat": 24.902083333333334,
+        "settlement": 3.5
+      },
+      "native_relic_choices": 5925,
+      "native_relic_equips": 6283,
+      "sample_targets": {
+        "median_duration_35_to_45": false,
+        "combat_timeout_below_two_percent": false
+      },
+      "inputs_sha256": {
+        "reports\\vnext\\native\\final-501-750\\summary.json": "e77525a540eebe537ece023d160f59dbb80da1122d1325432a0b93e2f87a6167",
+        "reports\\vnext\\native\\final-501-750\\process.json": "c6fbdfb35ef475dbb41c16d81e15c31b3eb343f97b59afc9582e1334e0d183d6",
+        "reports\\vnext\\native\\final-501-750\\tournaments.csv": "9071e8bc0c5fc907a0dbba6cb46fcb71db9dfbbef35c754f08bf8f5224ea956d",
+        "reports\\vnext\\native\\final-501-750\\rounds.csv": "f7ad0acb7b485413d3af10719c15ff98ebb91acabcef116ab4aecafa7435c681",
+        "reports\\vnext\\native\\final-501-750\\encounters.csv": "5453698d8cc7a9f0b76422e648726dbb175d42a06335d0193e3b093c3539455e"
+      },
+      "boundary": "Six-hero laboratory sample with provisional traits and neutral behavior; accelerated simulated clocks. No human duration, fun, performance or full-roster release acceptance.",
+      "verification_errors": [],
+      "technical_reconciliation_passed": true
+    },
+    {
+      "schema": "wonder_vnext.run_analysis.1",
+      "catalog_digest": "6f9a4178ec78d48c8f6fb8d487d88069327a5ca526652724dc12a8654f574ebb",
+      "native_tournaments": 250,
+      "first_seed": 751,
+      "last_seed": 1000,
+      "native_encounters": 46738,
+      "native_timeouts": 6677,
+      "timeout_rate": 0.1428601994094741,
+      "capped_tournaments": 40,
+      "median_simulated_minutes": 31.215,
+      "median_phase_minutes": {
+        "preparation": 2.9366666666666665,
+        "combat": 24.851666666666667,
+        "settlement": 3.5
+      },
+      "native_relic_choices": 5941,
+      "native_relic_equips": 6322,
+      "sample_targets": {
+        "median_duration_35_to_45": false,
+        "combat_timeout_below_two_percent": false
+      },
+      "inputs_sha256": {
+        "reports\\vnext\\native\\final-751-1000\\summary.json": "f0ba361d1140b3a9805ed2d851728aee25317d120ca33c1d4761012119912d3a",
+        "reports\\vnext\\native\\final-751-1000\\process.json": "f4cba2697816fa8f2e54edd79dbfeb8798d37e162c446b6713f8f97c1ddca3bb",
+        "reports\\vnext\\native\\final-751-1000\\tournaments.csv": "65a1114f79e48882fdc3f67e085c1dc7796419165a33c10f4b6ead88f52402aa",
+        "reports\\vnext\\native\\final-751-1000\\rounds.csv": "4e14b16471869c578edb2112751b830d4957021925089dedf39deac15b79e147",
+        "reports\\vnext\\native\\final-751-1000\\encounters.csv": "f31b6ff7aad35d5be70db147b0aae2fc2298e6f24ba96213217afcf9b600de7e"
+      },
+      "boundary": "Six-hero laboratory sample with provisional traits and neutral behavior; accelerated simulated clocks. No human duration, fun, performance or full-roster release acceptance.",
+      "verification_errors": [],
+      "technical_reconciliation_passed": true
+    }
+  ],
+  "boundary": "Six-hero laboratory sample with provisional traits and neutral behavior; accelerated simulated clocks. No human duration, fun, performance or full-roster release acceptance.",
+  "verification_errors": [],
+  "technical_reconciliation_passed": true,
+  "engine_comparison": {
+    "tournaments": 100,
+    "rounds": 4317,
+    "encounters": 18777,
+    "executable": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-VNext-Lab-r2\\Windows\\WonderChess\\Binaries\\Win64\\WonderChess.exe"
+  }
+}

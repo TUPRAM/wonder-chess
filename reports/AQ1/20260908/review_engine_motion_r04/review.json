@@ -1,0 +1,139 @@
+{
+  "status": "FRAME_SEQUENCE_REVIEW_COMPLETE_DEFECTS_OPEN_OWNER_ACCEPTANCE_PENDING",
+  "source": "reports\\AQ1\\20260908\\engine_candidate_motion_r04",
+  "metadata_sha256": "5235886221fc2630664e543f369f7fbff9213e33ec01eab4ccae0447ee1c38b5",
+  "content_digest": "95509d001ca0e6c55fa64a616df6e2e9a01a3809a9b9c82d9bd0a725dad3a1ec",
+  "method": "All 150 actual Unreal frames inspected chronologically as 12 contact sheets, plus eight native crop extrema and full Idle capture 0. Comparison inspected r03 Idle 0/40 against r04 Idle 0/40. No MP4 playback review.",
+  "counts": {
+    "Idle": 41,
+    "Move": 21,
+    "Attack": 14,
+    "Active": 13,
+    "Hit": 9,
+    "Defeat": 21,
+    "Victory": 31
+  },
+  "total_source_frames_reviewed": 150,
+  "contact_sheets_reviewed": 12,
+  "native_crop_extrema_reviewed": 8,
+  "full_original_frames_reviewed": [
+    "Idle/frame-00000.png"
+  ],
+  "texture_readiness_metadata": [
+    {
+      "clip": "Idle",
+      "texture_ready_wait_seconds": 0.1364578977227211,
+      "textures_fully_streamed_before_capture": true,
+      "used_textures": "/Game/WonderChess/Candidates/AQ1/Ada_r01/T_wc_u_human_guardian_Normal.T_wc_u_human_guardian_Normal;/Game/WonderChess/Candidates/AQ1/Ada_r01/T_wc_u_human_guardian_BaseColor.T_wc_u_human_guardian_BaseColor;/Game/WonderChess/Candidates/AQ1/Ada_r01/T_wc_u_human_guardian_ORM.T_wc_u_human_guardian_ORM"
+    },
+    {
+      "clip": "Move",
+      "texture_ready_wait_seconds": 0.006657101213932037,
+      "textures_fully_streamed_before_capture": true,
+      "used_textures": "/Game/WonderChess/Candidates/AQ1/Ada_r01/T_wc_u_human_guardian_Normal.T_wc_u_human_guardian_Normal;/Game/WonderChess/Candidates/AQ1/Ada_r01/T_wc_u_human_guardian_BaseColor.T_wc_u_human_guardian_BaseColor;/Game/WonderChess/Candidates/AQ1/Ada_r01/T_wc_u_human_guardian_ORM.T_wc_u_human_guardian_ORM"
+    },
+    {
+      "clip": "Attack",
+      "texture_ready_wait_seconds": 0.006820499897003174,
+      "textures_fully_streamed_before_capture": true,
+      "used_textures": "/Game/WonderChess/Candidates/AQ1/Ada_r01/T_wc_u_human_guardian_Normal.T_wc_u_human_guardian_Normal;/Game/WonderChess/Candidates/AQ1/Ada_r01/T_wc_u_human_guardian_BaseColor.T_wc_u_human_guardian_BaseColor;/Game/WonderChess/Candidates/AQ1/Ada_r01/T_wc_u_human_guardian_ORM.T_wc_u_human_guardian_ORM"
+    },
+    {
+      "clip": "Active",
+      "texture_ready_wait_seconds": 0.0070993006229400635,
+      "textures_fully_streamed_before_capture": true,
+      "used_textures": "/Game/WonderChess/Candidates/AQ1/Ada_r01/T_wc_u_human_guardian_Normal.T_wc_u_human_guardian_Normal;/Game/WonderChess/Candidates/AQ1/Ada_r01/T_wc_u_human_guardian_BaseColor.T_wc_u_human_guardian_BaseColor;/Game/WonderChess/Candidates/AQ1/Ada_r01/T_wc_u_human_guardian_ORM.T_wc_u_human_guardian_ORM"
+    },
+    {
+      "clip": "Hit",
+      "texture_ready_wait_seconds": 0.006326798349618912,
+      "textures_fully_streamed_before_capture": true,
+      "used_textures": "/Game/WonderChess/Candidates/AQ1/Ada_r01/T_wc_u_human_guardian_Normal.T_wc_u_human_guardian_Normal;/Game/WonderChess/Candidates/AQ1/Ada_r01/T_wc_u_human_guardian_BaseColor.T_wc_u_human_guardian_BaseColor;/Game/WonderChess/Candidates/AQ1/Ada_r01/T_wc_u_human_guardian_ORM.T_wc_u_human_guardian_ORM"
+    },
+    {
+      "clip": "Defeat",
+      "texture_ready_wait_seconds": 0.007173798978328705,
+      "textures_fully_streamed_before_capture": true,
+      "used_textures": "/Game/WonderChess/Candidates/AQ1/Ada_r01/T_wc_u_human_guardian_Normal.T_wc_u_human_guardian_Normal;/Game/WonderChess/Candidates/AQ1/Ada_r01/T_wc_u_human_guardian_BaseColor.T_wc_u_human_guardian_BaseColor;/Game/WonderChess/Candidates/AQ1/Ada_r01/T_wc_u_human_guardian_ORM.T_wc_u_human_guardian_ORM"
+    },
+    {
+      "clip": "Victory",
+      "texture_ready_wait_seconds": 0.007769297808408737,
+      "textures_fully_streamed_before_capture": true,
+      "used_textures": "/Game/WonderChess/Candidates/AQ1/Ada_r01/T_wc_u_human_guardian_Normal.T_wc_u_human_guardian_Normal;/Game/WonderChess/Candidates/AQ1/Ada_r01/T_wc_u_human_guardian_BaseColor.T_wc_u_human_guardian_BaseColor;/Game/WonderChess/Candidates/AQ1/Ada_r01/T_wc_u_human_guardian_ORM.T_wc_u_human_guardian_ORM"
+    }
+  ],
+  "startup_observation": "The previous r03 Idle 0-8 dark blue/gray nose, pale hair streaks, muddy clasps and blotchy shield/armor are absent from r04 from capture 0. All 41 Idle captures remain materially coherent. Same content digest is recorded in r03/r04, so this closes the observed startup capture-readiness symptom, not a geometry or AO revision.",
+  "positive_observations": [
+    "Navy shield/tabard, ivory cloth, steel armor, gold crest/guard/clasps and warm skin are distinct from the first capture.",
+    "Attack capture 4 presents the attached blade as a horizontal slash; equipment does not visibly detach across these sequences.",
+    "Move alternates lift and stance without a gross visible floor cut from this view. No geometric floor clearance measurement is claimed.",
+    "Earlier Blender r06 crown skin aperture is not visible in this gallery series."
+  ],
+  "open_issues": [
+    {
+      "id": "MOVE_TABARD_INTRUSION",
+      "clip": "Move",
+      "captures": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "detail": "Sharp ivory patch intersects the navy lower tabard near its slit, clearest capture 5. Persists from r03."
+    },
+    {
+      "id": "HIT_TORSO_LAYER_GAP",
+      "clip": "Hit",
+      "captures": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "detail": "Broad ivory crescent opens between leaning breastplate and dark waist/belt, leaving torso as visibly stacked layers. Persists from r03."
+    },
+    {
+      "id": "ACTIVE_FRONTAL_FACE_OCCLUSION",
+      "clip": "Active",
+      "captures": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "detail": "Raised shield occludes face in this frontal gallery camera; both eyes/face are fully hidden at capture 4. Earlier Blender three-quarter clearance is view-specific."
+    },
+    {
+      "id": "DEFEAT_COSTUME_AND_GRIP",
+      "clip": "Defeat",
+      "captures": [
+        10,
+        18
+      ],
+      "detail": "Thighs emerge under raised rigid costume panels; small pale dotted seam/patch lines remain at thigh/knee. Shield-side fingers read as open arcs from this angle, so true back-grip contact requires a different view."
+    },
+    {
+      "id": "REFERENCE_POLISH_GAP",
+      "clip": "all",
+      "captures": [],
+      "detail": "Cap-like shoulders, uniform sleeves, simple panel cloth, schematic stacked fingers and broad stare remain substantially simpler than the approved original reference. No art acceptance inferred."
+    }
+  ],
+  "loop_boundary": "Defeat capture 18 to 19 wraps from crouch to standing in the looping gallery preview. This is not evidence of runtime resurrection.",
+  "not_performed": [
+    "Continuous MP4 playback inspection or audio review",
+    "Alternative gallery angles/back-side hand contact verification",
+    "Crowded match or packaged runtime review in this folder",
+    "Engine geometry floor-clearance query",
+    "Numeric art rating or Pram character/budget approval"
+  ],
+  "evidence_files": [
+    "contact_sheet_manifest.json",
+    "matched_startup_and_settled.jpg"
+  ]
+}

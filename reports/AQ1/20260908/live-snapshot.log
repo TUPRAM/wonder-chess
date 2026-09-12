@@ -1,0 +1,36 @@
+<frozen runpy>:128: RuntimeWarning: 'blender_mcp.server' found in sys.modules after import of package 'blender_mcp', but prior to execution of 'blender_mcp.server'; this may result in unpredictable behaviour
+2026-09-08 09:10:24,763 - BlenderMCPServer - INFO - BlenderMCP server starting up
+2026-09-08 09:10:24,771 - BlenderMCPServer - INFO - Blender addon on disk is current (protocol 5).
+2026-09-08 09:10:24,773 - blender-mcp-telemetry - WARNING - Telemetry disabled via environment variable
+2026-09-08 09:10:24,778 - BlenderMCPServer - INFO - Connected to Blender at 127.0.0.1:9876
+2026-09-08 09:10:24,778 - BlenderMCPServer - INFO - Created new persistent connection to Blender
+2026-09-08 09:10:24,778 - BlenderMCPServer - INFO - Sending command: get_addon_info with params: None
+2026-09-08 09:10:24,778 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-08 09:10:24,798 - BlenderMCPServer - INFO - Received complete response (354 bytes)
+2026-09-08 09:10:24,798 - BlenderMCPServer - INFO - Received 354 bytes of data
+2026-09-08 09:10:24,798 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-08 09:10:24,798 - BlenderMCPServer - INFO - Blender addon up to date (protocol 5, addon [1, 6], Blender 5.1.1)
+2026-09-08 09:10:24,798 - BlenderMCPServer - INFO - Successfully connected to Blender on startup
+2026-09-08 09:10:24,807 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-09-08 09:10:24,812 - BlenderMCPServer - INFO - Sending command: execute_code with params: {'code': 'import bpy\nimport json\nold_path=bpy.data.filepath\nstats=[]\nfor o in bpy.context.scene.objects:\n if o.type == "MESH":\n  o.data.calc_loop_triangles()\n  stats.append({"name":o.name,"vertices":len(o.data.vertices),"triangles":len(o.data.loop_triangles),"materials":[m.name for m in o.data.materials if m]})\nbpy.ops.wm.save_as_mainfile(filepath=\'C:\\\\Users\\\\iputu\\\\Documents\\\\Wonder Chess\\\\art-source\\\\heroes\\\\wc_u_human_guardian\\\\candidates\\\\AQ1\\\\before_live_scene.blend\',copy=True)\nprint(json.dumps({"loaded_path_before":old_path,"loaded_path_after":bpy.data.filepath,"meshes":stats,"copy_saved":True}))\n'}
+2026-09-08 09:10:24,812 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-08 09:10:24,971 - BlenderMCPServer - INFO - Received complete response (1358 bytes)
+2026-09-08 09:10:24,971 - BlenderMCPServer - INFO - Received 1358 bytes of data
+2026-09-08 09:10:24,971 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-08 09:10:24,972 - BlenderMCPServer - INFO - Connected to Blender at 127.0.0.1:9876
+2026-09-08 09:10:24,972 - BlenderMCPServer - INFO - Created new persistent connection to Blender
+2026-09-08 09:10:24,972 - BlenderMCPServer - INFO - Sending command: get_addon_info with params: None
+2026-09-08 09:10:24,972 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-08 09:10:25,010 - BlenderMCPServer - INFO - Received complete response (354 bytes)
+2026-09-08 09:10:25,010 - BlenderMCPServer - INFO - Received 354 bytes of data
+2026-09-08 09:10:25,010 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-08 09:10:25,010 - BlenderMCPServer - INFO - Blender addon up to date (protocol 5, addon [1, 6], Blender 5.1.1)
+2026-09-08 09:10:25,010 - BlenderMCPServer - INFO - Sending command: get_telemetry_consent with params: None
+2026-09-08 09:10:25,010 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-08 09:10:25,063 - BlenderMCPServer - INFO - Received complete response (51 bytes)
+2026-09-08 09:10:25,063 - BlenderMCPServer - INFO - Received 51 bytes of data
+2026-09-08 09:10:25,063 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-08 09:10:25,066 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-09-08 09:10:25,073 - BlenderMCPServer - INFO - Disconnecting from Blender on shutdown
+2026-09-08 09:10:25,074 - BlenderMCPServer - INFO - BlenderMCP server shut down
+C:\Users\iputu\Documents\Wonder Chess\reports\AQ1\20260908\live_snapshot.json

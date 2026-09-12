@@ -1,0 +1,22 @@
+{
+  "utc": "2026-09-08T02:16:43.987458+00:00",
+  "analyzer": "C:\\Users\\iputu\\Documents\\Wonder Chess\\tools\\qa\\aq1_compare_performance.py",
+  "analyzer_sha256": "367c817914dba48c47a4303a910bf031443e08e274895f35010c0cc5c38be0f5",
+  "command": "python tools/qa/aq1_compare_performance.py --baseline reports/AQ1/20260908/profile_before --out reports/AQ1/20260908/performance_review",
+  "exit_code": 0,
+  "checks": {
+    "actual_csv_percentile_parity_against_engine_session": {
+      "frame_ms": true,
+      "game_ms": true,
+      "render_ms": true,
+      "gpu_ms": true
+    },
+    "exact_all_samples": 20547,
+    "exact_twelve_visible_samples": 1106,
+    "exact_eight_neutral_samples": 900,
+    "frame_counter_gaps": 0,
+    "empty_metric_unavailable_case": "PASS",
+    "same_input_comparison_settings_and_zero_delta": "PASS"
+  },
+  "candidate_comparison": "NOT_RUN"
+}

@@ -1,0 +1,336 @@
+{
+  "launch": {
+    "started_utc": "2026-09-08T02:31:34.0983701Z",
+    "mode": "MatchCapture",
+    "baseline": false,
+    "candidate_revision": "Ada_r01",
+    "executable": "C:/Program Files/Epic Games/UE_5.7/Engine/Binaries/Win64/UnrealEditor.exe",
+    "arguments": [
+      "C:\\Users\\iputu\\Documents\\Wonder Chess\\game\\WonderChess.uproject",
+      "-game",
+      "-windowed",
+      "-ResX=1920",
+      "-ResY=1080",
+      "-ForceRes",
+      "-WCEvidenceDir=C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AQ1\\20260908\\engine_candidate_match_r01",
+      "-abslog=C:\\Users\\iputu\\Documents\\Wonder Chess\\reports\\AQ1\\20260908\\engine_candidate_match_r01\\game.log",
+      "-WCAQ1HeroRoot=/Game/WonderChess/Candidates/AQ1/Ada_r01",
+      "-WCExercise",
+      "-WCShots",
+      "-WCExerciseSeed=828301",
+      "-WCFollowHero=0",
+      "-WCExitAfter=600"
+    ],
+    "boundary": "Unreal -game with current compiled Editor target and uncooked candidate content. Scripted human-seat input in match modes. Not a packaged build or manual human test. Visual captures and normal-speed profiling run separately.",
+    "status": "PROCESS_EXITED_INSPECTION_REQUIRED",
+    "process_id": 68392,
+    "exit_code": 0,
+    "ended_utc": "2026-09-08T02:41:56.0294848Z",
+    "candidate_load_errors": []
+  },
+  "session": {
+    "utc": "2026-09-08T02:41:50.589Z",
+    "elapsed_wall_seconds": 590.819489300251,
+    "round": 15,
+    "phase": 1,
+    "complete": false,
+    "aborted": false,
+    "process_exit_requested": true,
+    "host_disconnected": false,
+    "network_error": "",
+    "simulation_speed_multiplier": 1,
+    "scripted_client": true,
+    "max_living_visible_units": 12,
+    "max_living_logical_units": 80,
+    "max_simultaneous_encounters": 8,
+    "restart_count_requested": 0
+  },
+  "content_digest": "95509d001ca0e6c55fa64a616df6e2e9a01a3809a9b9c82d9bd0a725dad3a1ec",
+  "snapshot_count": 1206,
+  "parse_errors": [],
+  "phase_counts": {
+    "0": 276,
+    "1": 808,
+    "2": 122
+  },
+  "rounds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "settled_rounds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  "eight_live_neutral_snapshot_count": 76,
+  "eight_live_neutral_rounds": [
+    1,
+    2,
+    3,
+    5,
+    10,
+    15
+  ],
+  "ada_actual_visible_selected_encounter_12_count": 69,
+  "ada_actual_visible_selected_encounter_12_rounds": [
+    7,
+    8,
+    9,
+    11,
+    12,
+    13,
+    14
+  ],
+  "any_seat_eliminated_in_recorded_snapshots": false,
+  "final_seat_health": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      32
+    ],
+    [
+      2,
+      60
+    ],
+    [
+      3,
+      30
+    ],
+    [
+      4,
+      25
+    ],
+    [
+      5,
+      45
+    ],
+    [
+      6,
+      22
+    ],
+    [
+      7,
+      43
+    ]
+  ],
+  "png_count": 62,
+  "skill_shot_count": 18,
+  "ada_skill_records": [
+    {
+      "utc": "2026-09-08T02:32:29.598Z",
+      "match_namespace": 1,
+      "process_id": 68392,
+      "seat": 0,
+      "observed_seat": 1,
+      "exercise_seed_requested": "828301",
+      "exercise_seed_override_present": true,
+      "exercise_seed_override_valid": true,
+      "exercise_seed_effective_initial": 828301,
+      "exercise_seed_restart": 271828,
+      "exercise_seed_restart_second": 161803,
+      "restart_count_requested": 0,
+      "match_seed_authority": 828301,
+      "exercise_seed_boundary": "Initial scripted ServerStart accepts decimal seeds 1-2147483647; absent or invalid values use271828. Actual match seed is recorded only where the authoritative Match is available and cached for that namespace. The first restart uses271828 and the second restart uses161803. WCAutoStart initializes314159 independently of the scripted-start seed override.",
+      "follow_hero_requested": "0",
+      "follow_hero_override_present": true,
+      "follow_hero_override_valid": true,
+      "follow_hero_definition": 0,
+      "follow_hero_candidate_encounters": 4,
+      "follow_hero_selected_encounter_a": 1,
+      "follow_hero_selected_encounter_b": -1,
+      "follow_hero_selected_encounter_ghost": false,
+      "follow_hero_selected_encounter_alive": 5,
+      "follow_hero_selected_unit": 1111490561,
+      "follow_hero_actual_visible": true,
+      "follow_hero_boundary": "Read-only public scouting selects an existing unfinished encounter containing a living requested definition. ObservedSeat changes only the viewport; the presenter may reflect that change on the next frame. Actual visible membership is recorded separately.",
+      "elapsed_wall_seconds": 29.827857103198767,
+      "phase": 1,
+      "round": 2,
+      "capture": "C:/Users/iputu/Documents/Wonder Chess/reports/AQ1/20260908/engine_candidate_match_r01/match-1-seat-0-pid-68392-active-def-0.png",
+      "boundary": "Screenshot requested on the first observed active-skill recovery for this definition. The next rendered frame supplies the image; this is not frame-exact video.",
+      "observed_unit": {
+        "id": 1111490561,
+        "def": 0,
+        "neutral": false,
+        "movementBonus": 0,
+        "star": 1,
+        "side": 0,
+        "col": 4,
+        "row": 3,
+        "destCol": -1,
+        "destRow": -1,
+        "state": 6,
+        "hp": 115500,
+        "maxHp": 115500,
+        "attack": 4800,
+        "basicDamage": 4800,
+        "basicBonus": 0,
+        "abilityBonus": 0,
+        "allBonus": 0,
+        "supportBonus": 0,
+        "armor": 35,
+        "resistance": 15,
+        "rateBonus": 0,
+        "effectiveRateBonus": 0,
+        "target": 1112539137,
+        "shield": 20000,
+        "action": 9,
+        "basicAttackOrdinal": 0,
+        "snapshotTick": 47,
+        "releaseTick": 47,
+        "stun": 0
+      }
+    }
+  ],
+  "snapshot_first": {
+    "line": 1,
+    "utc": "2026-09-08T02:31:59.774Z",
+    "elapsed": 0.003588501363992691,
+    "round": 1,
+    "phase": 0,
+    "neutral_live": 0,
+    "followed_encounter_alive": 0,
+    "ada_actual_visible": false,
+    "observed_seat": 0
+  },
+  "snapshot_last": {
+    "line": 1206,
+    "utc": "2026-09-08T02:41:50.212Z",
+    "elapsed": 590.4423778019845,
+    "round": 15,
+    "phase": 1,
+    "neutral_live": 6,
+    "followed_encounter_alive": 8,
+    "ada_actual_visible": true,
+    "observed_seat": 1
+  },
+  "snapshot_largest_gaps": [
+    {
+      "from_line": 956,
+      "to_line": 957,
+      "from_utc": "2026-09-08T02:39:46.934Z",
+      "to_utc": "2026-09-08T02:39:47.944Z",
+      "seconds": 1.0102469995617867,
+      "round": 12,
+      "phase": 1
+    },
+    {
+      "from_line": 740,
+      "to_line": 741,
+      "from_utc": "2026-09-08T02:38:00.092Z",
+      "to_utc": "2026-09-08T02:38:00.749Z",
+      "seconds": 0.6562690995633602,
+      "round": 10,
+      "phase": 1
+    },
+    {
+      "from_line": 145,
+      "to_line": 146,
+      "from_utc": "2026-09-08T02:33:07.450Z",
+      "to_utc": "2026-09-08T02:33:08.092Z",
+      "seconds": 0.6417367979884148,
+      "round": 4,
+      "phase": 1
+    },
+    {
+      "from_line": 190,
+      "to_line": 191,
+      "from_utc": "2026-09-08T02:33:30.388Z",
+      "to_utc": "2026-09-08T02:33:30.973Z",
+      "seconds": 0.5861724019050598,
+      "round": 4,
+      "phase": 1
+    },
+    {
+      "from_line": 1104,
+      "to_line": 1105,
+      "from_utc": "2026-09-08T02:40:59.753Z",
+      "to_utc": "2026-09-08T02:41:00.327Z",
+      "seconds": 0.5738455019891262,
+      "round": 14,
+      "phase": 1
+    },
+    {
+      "from_line": 66,
+      "to_line": 67,
+      "from_utc": "2026-09-08T02:32:30.271Z",
+      "to_utc": "2026-09-08T02:32:30.833Z",
+      "seconds": 0.5631473995745182,
+      "round": 2,
+      "phase": 1
+    },
+    {
+      "from_line": 1062,
+      "to_line": 1063,
+      "from_utc": "2026-09-08T02:40:39.740Z",
+      "to_utc": "2026-09-08T02:40:40.297Z",
+      "seconds": 0.5570482015609741,
+      "round": 13,
+      "phase": 1
+    },
+    {
+      "from_line": 64,
+      "to_line": 65,
+      "from_utc": "2026-09-08T02:32:29.216Z",
+      "to_utc": "2026-09-08T02:32:29.761Z",
+      "seconds": 0.5447287000715733,
+      "round": 2,
+      "phase": 1
+    }
+  ],
+  "snapshot_gaps_over_0_75_seconds": [
+    {
+      "from_line": 956,
+      "to_line": 957,
+      "from_utc": "2026-09-08T02:39:46.934Z",
+      "to_utc": "2026-09-08T02:39:47.944Z",
+      "seconds": 1.0102469995617867,
+      "round": 12,
+      "phase": 1
+    }
+  ],
+  "snapshot_nonmonotonic_gap_count": 0,
+  "logged_write_failures": [
+    "[2026.09.08-02.39.47:454][490]LogTemp: Warning: WC_EVIDENCE_WRITE_FAILED C:/Users/iputu/Documents/Wonder Chess/reports/AQ1/20260908/engine_candidate_match_r01/match-1-seat-0-pid-68392-snapshots.jsonl"
+  ],
+  "timing_samples": {
+    "frame_interval": 0,
+    "game_thread_active": 0,
+    "render_thread_active": 0,
+    "gpu": 0
+  },
+  "hashes": {
+    "launch.json": "f99bd28765e79cd272fb09c3f8dc47e4219a96ab156bc997cc75aacc9d4aa6b2",
+    "session.json": "e6182b981696ee2f5f66102d89c050cec2f4825cf331f4fd0ee8224dea017118",
+    "game.log": "b7fd49eb3ac2b81e53838931a33bef73618283bcb84e54a71272a68db611d5b2",
+    "match-1-seat-0-pid-68392-snapshots.jsonl": "d94138c6c530ea80f7f9cb437ec09bb7b6692638e53e5e856ef4489d0370573d",
+    "match-1-seat-0-pid-68392-skill-shots.jsonl": "3c1698c57358e96cd49bcb6de51f9a8bf5e02c096231ba8448d8300271c49f1e"
+  }
+}

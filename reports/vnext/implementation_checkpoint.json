@@ -1,0 +1,159 @@
+{
+  "schema": "wonder_vnext.implementation_checkpoint.1",
+  "recorded_utc": "2026-09-10T16:38:58.302097+00:00",
+  "status": "PACKAGED_SIX_CREATURE_LAB_VERIFIED_PROGRAMME_IN_PROGRESS",
+  "profile": "wonder_vnext",
+  "balance_version": "wonder_vnext_lab_0.1.0",
+  "candidate": "WonderChess-VNext-Lab-r3",
+  "launcher": "Launch Wonder vNext.cmd",
+  "playguide": "docs/vnext/LAB_PLAYGUIDE.md",
+  "handoff": "reports/vnext/IMPLEMENTATION_HANDOFF.md",
+  "implementation_matrix": "docs/vnext/IMPLEMENTATION_MATRIX.md",
+  "git": {
+    "branch": "codex/wonder-vnext",
+    "head": "9623fd82f98ff80a90985b9f552d8851ccece30f",
+    "committed": false,
+    "boundary": "Preexisting dirty and untracked work preserved; this is a source-hashed working-tree checkpoint."
+  },
+  "identity": {
+    "catalog_sha256": "6f9a4178ec78d48c8f6fb8d487d88069327a5ca526652724dc12a8654f574ebb",
+    "runtime_json_sha256": "2264f260087e5f40f08512f6066245b9058add7290f2f67d0e5c47a109aa797d",
+    "inner_executable_sha256": "55ff18047e8a21216ddcd8121f883da9b1d5f0a2bd2bd5081e8c7247170c6333",
+    "provenance_sha256": "673138d984989a27971983d072aa67ff43bb0315176ffd6f60637bc89c3ee583"
+  },
+  "verification": {
+    "python_tests_passed": 194,
+    "native_combat_assertions_passed": 21597,
+    "native_tournaments": 1000,
+    "native_seed_range": [
+      1,
+      1000
+    ],
+    "engine_comparison": {
+      "tournaments": 100,
+      "rounds": 4317,
+      "encounters": 18777,
+      "executable": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-VNext-Lab-r3\\Windows\\WonderChess\\Binaries\\Win64\\WonderChess.exe"
+    },
+    "technical_reconciliation_passed": true,
+    "lab_boolean_checks_per_resolution": 39,
+    "lab_resolutions": [
+      [
+        1280,
+        720
+      ],
+      [
+        1600,
+        1000
+      ],
+      [
+        1920,
+        1080
+      ]
+    ],
+    "legacy_tournaments_passed": 100,
+    "source_inputs_stable": 47,
+    "physical_pointer_and_keyboard_usability": "NOT_RUN",
+    "human_playtests": "NOT_RUN",
+    "continuous_animation_audio_review": "NOT_RUN",
+    "performance_acceptance": "NOT_RUN",
+    "remote_multiplayer": "NOT_RUN",
+    "clean_machine_acceptance": "NOT_RUN"
+  },
+  "balance": {
+    "native_encounters": 187141,
+    "native_timeouts": 26434,
+    "timeout_rate": 0.14125178341464456,
+    "capped_tournaments": 199,
+    "median_simulated_minutes": 31.331666666666667,
+    "median_phase_minutes": {
+      "preparation": 2.91125,
+      "combat": 24.945833333333333,
+      "settlement": 3.5
+    },
+    "native_relic_choices": 23716,
+    "native_relic_equips": 25192
+  },
+  "balance_acceptance": {
+    "timeout_below_two_percent": "FAIL",
+    "human_duration_35_to_45_minutes": "NOT_RUN",
+    "bot_simulated_duration_target_met": false,
+    "fun_or_superiority_claim": "NOT_ESTABLISHED"
+  },
+  "art": {
+    "shared_direction": "OWNER_APPROVED_DIRECTION_ONLY",
+    "owner_reply": "Use this direction",
+    "bellback_references": "SEALED_PENDING_HUMAN_APPROVAL",
+    "bellback_snapshot_sha256": "83de2292eeb1195963b1d479e194be171a87dd3c5eb960d47de870250fb2f842",
+    "bellback_reference_packet": "art-source/asset-studio/wc_vn_bellback/inputs/references/r004_construction/README.md",
+    "prism_organ_reference": "ART_REVISE",
+    "successor_blender_modeling": "NOT_STARTED",
+    "known_contract_mismatch": "Bellback dorsal-bell art direction versus chest-bell prose in frozen catalogue; reconcile next version."
+  },
+  "milestones": {
+    "M0": "CONTRACT_AND_CATALOGUE_DELIVERED_RECONCILIATION_OPEN",
+    "M1": "PACKAGED_COMBAT_LAB_DELIVERED_PREPARATION_FRONTEND_AND_HUMAN_ACCEPTANCE_OPEN",
+    "M2": "DIRECTION_APPROVED_REFERENCES_IN_PROGRESS_FINISHED_SLICE_OPEN",
+    "M3": "NATIVE_FOUNDATIONS_TESTED_FRONTEND_SAVE_UI_AND_PACING_OPEN",
+    "M4": "FULL_ROSTER_PRODUCTION_OPEN",
+    "M5": "SOLO_BETA_OPEN",
+    "M6": "ONLINE_BETA_OPEN",
+    "M7": "RELEASE_ACCEPTANCE_OPEN"
+  },
+  "next_tasks": [
+    "Controlled 75 percent Grove pulse candidate versus preserved current tuning; separately test Cragstoat approach-lane incentives.",
+    "Implement successor recruitment, relic draft/inventory and scouting frontend for complete M1 tasks.",
+    "Reconcile Bellback prose at deliberate content revision; await formal reference decision before complex modeling.",
+    "Reconcile Prism Organ reference geometry and complete serial art pilots/Wondergrove before scaling production."
+  ],
+  "evidence": [
+    {
+      "path": "reports/vnext/package/r3/provenance.json",
+      "sha256": "673138d984989a27971983d072aa67ff43bb0315176ffd6f60637bc89c3ee583"
+    },
+    {
+      "path": "reports/vnext/package/r3/source-verification.json",
+      "sha256": "4027c5ffb5e6ec9caf3198c643df9d22e2b0e1c0a489c8c05df80c6ae9ca6c9a"
+    },
+    {
+      "path": "reports/vnext/native/final-analysis.json",
+      "sha256": "4f1cfd9242d51fa8d003e7b12b614d5ca4a0b4591dbdeb2343b2d5b24a96da9a"
+    },
+    {
+      "path": "reports/vnext/engine-tournaments/r3/reconciliation.json",
+      "sha256": "7595364c7652f46699629a4190b7600353ddd2698ad950dbccbf9a84c50ab98d"
+    },
+    {
+      "path": "reports/vnext/engine-tournaments/r3/process-exit.json",
+      "sha256": "6728548b254cffb5ad70bef72c439c5c445353f3b9d4906702722560e61d5f7e"
+    },
+    {
+      "path": "reports/vnext/engine-lab/r3-visual-review.json",
+      "sha256": "d13a04f9ee4975f23dc6eb69e79014e66d928ac6493e213af695ed0a0cca5b8f"
+    },
+    {
+      "path": "reports/vnext/python-tests-final-194.log",
+      "sha256": "60abf69eb62795a9e95899c7bb2e125eda797e2f152b3e66b1bc76de2b38cf23"
+    },
+    {
+      "path": "reports/vnext/authoring-validation-final.json",
+      "sha256": "c2c3afe6c152a647b042b2e86bf9356c910e7b24a8805d97c6db4fb1d1053b85"
+    },
+    {
+      "path": "reports/vnext/native-combat-final/tests.log",
+      "sha256": "fc5d17f3446be71f728dd52d951efc59c43f36247562a2e7db8095c93a87899b"
+    },
+    {
+      "path": "reports/vnext/native/legacy-final/runtime-tests.log",
+      "sha256": "9053a230104430b1b870a49743291e0857b6eab2aaeabab551da7a988f97fbdb"
+    },
+    {
+      "path": "reports/vnext/TIMEOUT_FINDINGS.md",
+      "sha256": "c80471b3a731bf311bd83d933f731f650c1c268b43072e45af8a6dcb3ee979de"
+    },
+    {
+      "path": "reports/vnext/IMPLEMENTATION_HANDOFF.md",
+      "sha256": "96380b02c8fabdc26437cdcea4e44612b8bde9fb139f7b5c47025f0b48b73027"
+    }
+  ]
+}

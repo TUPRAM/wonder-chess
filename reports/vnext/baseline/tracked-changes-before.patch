@@ -1,0 +1,1452 @@
+diff --git a/.agents/skills/wc-blender-asset/SKILL.md b/.agents/skills/wc-blender-asset/SKILL.md
+index 9a56ab16..d21810ed 100644
+--- a/.agents/skills/wc-blender-asset/SKILL.md
++++ b/.agents/skills/wc-blender-asset/SKILL.md
+@@ -5,6 +5,8 @@ description: Create, refine, validate or export a Wonder Chess hero or modular a
+ 
+ # wc-blender-asset
+ 
++For new asset production or substantial likeness correction, begin with `$wca-orchestrate` and the active `art-source/asset-studio/<asset_id>/` manifest; use this skill for the bounded Blender operations selected by that workflow.
++
+ 1. Read `docs/BLENDER_PRODUCTION.md`, `tools/blender/README.md`, the relevant hero dossier and actual installed API docs.
+ 2. Confirm exclusive ownership of the .blend and rig family; inspect the current scene before edits.
+ 3. Use a bounded script/authoring operation with an explicit source/output path. The supplied scripts are unexecuted scaffolds until verified locally.
+diff --git a/AGENTS.md b/AGENTS.md
+index 7a955d93..c1a7ee3e 100644
+--- a/AGENTS.md
++++ b/AGENTS.md
+@@ -11,3 +11,15 @@
+ - No paid services, unlicensed media, public deployment, secret exposure or security bypass. No hidden bot stat/economy advantages or runtime LLM dependency.
+ - Record actual state in `reports/implementation_state.json`. Continue unblocked implementation within the authorized task; leave a precise handoff on real limits. Do not promise asynchronous work.
+ - Use installed versions and official docs; do not assume a model name or third-party bridge grants editor access. Local Windows launch wrappers are candidates until actually run.
++
++## Asset Studio AS1 art workflow
++
++For art production or substantial likeness correction, use `$wca-orchestrate` and the active asset manifest under `art-source/asset-studio/<asset_id>/`. Read only the relevant stage manual and direct dependencies.
++
++Treat `production/asset-studio/` as an art workflow package, not a new game master. Preserve stable gameplay IDs, abilities, stats, runtime behavior and existing canonical assets unless a reviewed art change explicitly requires a compatible integration update. Never restart the repository or silently reduce an already implemented roster.
++
++Source art, tool execution, technical acceptance and human art acceptance are distinct. Do not claim quality from file count, polygon count, a successful script, or an image path not actually viewed. Do not self-issue human approval. Keep candidate outputs separate until approval and measured Unreal review. Never fake model sheets, measured profile results, source hashes, imports or capture metadata.
++
++One writer per `.blend`/rig family and one queue per Blender session. Inspect before retry after timeout. Do not execute remote scripts, expose MCP on public interfaces, upload private art, purchase services or change broad permissions without authorization.
++
++If two bounded revisions do not improve a critical visual defect, change the modeling method or escalate; do not keep smoothing the same failed design. Stop the affected stage at a hard gate while continuing independent authorized work. A tool not present is blocked, not passed.
+diff --git a/START_HERE.md b/START_HERE.md
+index 361c2094..c703a2c4 100644
+--- a/START_HERE.md
++++ b/START_HERE.md
+@@ -6,6 +6,8 @@ This repository contains the original kit and subsequent authored assets, Unreal
+ 
+ ## Use this package
+ 
++For the focused Ada AQ1 art experiment requested on 2026-09-08, resume [the executed candidate handoff](docs/art-quality/AQ1/RUN_HANDOFF.md) and `reports/AQ1/20260908/review.json`. It preserves the production Ada and 24-hero runtime. The supplied reference direction is selected; the resulting 3D candidate, its budget exception and any bulk art rollout still require Pram's approval.
++
+ 1. Resume this existing Wonder Chess workspace and `game/WonderChess.uproject`. Preserve source, imported art and prior evidence; do not extract a replacement checkout or access VEILMARK.
+ 2. Open that directory in a Codex environment that can actually execute the locally installed Blender, Unreal Editor and Windows C++ build tools. A remote Linux environment without those tools can validate data, but cannot certify the Windows game or its imported art.
+ 3. Execute the adopted `docs/updates/2026-09-auto-chess-inspired/INITIAL_IMPLEMENTATION_PROMPT.md` and WC-U400–460 sequence. The original FIRST_MESSAGE_TO_CODEX is historical bootstrap context.
+diff --git a/docs/BLENDER_MCP_CONNECTION.md b/docs/BLENDER_MCP_CONNECTION.md
+index 923a2250..f3da57dc 100644
+--- a/docs/BLENDER_MCP_CONNECTION.md
++++ b/docs/BLENDER_MCP_CONNECTION.md
+@@ -1,6 +1,6 @@
+ # Wonder Chess Blender MCP connection
+ 
+-Verified 2026-09-08 Singapore time. The supplied Blender MCP server connects to the actual Blender 5.1.1 process and Ada source scene. The Codex desktop tool list still needs a restart to load the new project configuration.
++Installation first verified 2026-09-08 Singapore time; original evidence is retained below. The current AS1 live-editing check uses a separate new Ada candidate. Native Codex Blender MCP calls and visible Computer Use were exercised in this session; see `reports/AS1/live-mcp/` for current evidence.
+ 
+ ## Installed connection
+ 
+@@ -20,33 +20,33 @@ The ZIP is missing `src/blender_mcp/config.py`, which its telemetry module impor
+ 
+ For a fresh Git clone, the machine-specific `.codex/config.toml` is intentionally ignored. Copy `.codex/config.example.toml` to `.codex/config.toml` and set `command` to the Python executable in your installed Blender MCP environment. The example does not install the server or add-on. The absolute installation and launcher paths below describe the verified original workstation; adjust them for another PC.
+ 
+-1. Leave Blender open. Ada's existing source file is loaded; no `.blend` file was saved or modified.
+-2. Restart Codex and reopen this Wonder Chess workspace. Verify the `blender` server in MCP settings. The current conversation cannot hot-load a new native tool list merely by editing configuration.
+-3. Ask: **“Use Blender MCP to inspect the open Wonder Chess scene and take a viewport screenshot before editing.”**
++1. Open an explicit writable candidate with the visible launcher below. Preserve sealed stage snapshots and existing character sources.
++2. If Blender is already open, inspect its actual filename and MCP status before editing. Do not launch another instance over an existing session.
++3. Ask: **“Use Blender MCP to inspect the open Wonder Chess scene and take a viewport screenshot before editing.”** If a new installation's native tools are absent, refresh/restart Codex and verify its project MCP settings; editing configuration alone does not prove tool access.
+ 
+ Enabled tools: `get_addon_status`, `get_scene_info`, `get_object_info`, `get_viewport_screenshot`, `execute_blender_code`. Scene/object calls require `user_prompt`; the verifier passes the user's actual connection request.
+ 
+-Telemetry is disabled in both the server environment and saved Blender add-on preferences. Asset-service integrations are disabled. `BLENDER_MCP_SAFE_MODE=1` enables upstream AST validation for code tools; it permits Blender modeling, materials, rendering, saving and import/export, and rejects arbitrary OS/network/subprocess code. It is a code validator, not an OS sandbox. No firewall, global permission policy, or remote access settings were broadened.
++Telemetry is disabled in the server environment and in the active Blender add-on preferences. The visible launcher sets preferences in memory and disables their auto-save, preserving saved user defaults. Asset-service integrations are disabled. `BLENDER_MCP_SAFE_MODE=1` enables upstream AST validation for code tools; it permits Blender modeling, materials, rendering, saving and import/export, and rejects arbitrary OS/network/subprocess code. It is a code validator, not an OS sandbox. No firewall, global permission policy, or remote access settings were broadened.
+ 
+ ## Reopen Blender later
+ 
+ From the Wonder Chess workspace in PowerShell:
+ 
+ ```powershell
+-& '.\tools\blender\Start-Mcp.ps1'
++& '.\tools\blender\Start-Mcp.ps1' -BlendFile '.\art-source\asset-studio\wc_u_human_guardian\live\ada_live_mcp_r001.blend'
+ ```
+ 
+-The launcher opens the canonical Ada file, disables embedded-file script auto-execution, enables the installed add-on, turns off telemetry and optional asset services, and writes startup logs under `reports/blender-mcp`. It preserves an already open Blender session by refusing to launch another instance. It does not save the source file. An optional `-BlendFile` selects another existing source file.
++`-BlendFile` is required and must select an existing repository `.blend` without symbolic-link/junction traversal. The launcher opens it in a normal visible window with factory settings for this new process, disables embedded-file script auto-execution, enables the installed add-on, turns off telemetry and optional asset services, and writes startup logs under `reports/blender-mcp`. It preserves an already open Blender session by refusing to launch another instance. It does not save the blend or user preferences. The command above selects the AS1 live candidate, not a sealed approval snapshot.
+ 
+ If Blender is already open, use its **MCP for Blender** sidebar on port 9876. The upstream add-on normally auto-starts on activation; use **Start MCP Server** if it is stopped. Do not start the separate Codex MCP bridge as a substitute for this server.
+ 
+ Repeat the live check with the installed environment:
+ 
+ ```powershell
+-& 'C:\Users\iputu\Documents\Project Support\Wonder Chess\blender-mcp-1.9.1\blender-mcp-main\.venv\Scripts\python.exe' '.\tools\blender\verify_mcp.py'
++& 'C:\Users\iputu\Documents\Project Support\Wonder Chess\blender-mcp-1.9.1\blender-mcp-main\.venv\Scripts\python.exe' '.\tools\blender\verify_mcp.py' --expected-blend '.\art-source\asset-studio\wc_u_human_guardian\live\ada_live_mcp_r001.blend' --user-prompt 'Paste the user instruction verbatim here'
+ ```
+ 
+-This creates a fresh evidence folder, performs real MCP initialize/list-tools/tool calls, and checks the Ada source hash before and after. Run it while the scene contains Ada; the object-detail check intentionally targets `SK_wc_u_human_guardian`.
++This creates a fresh evidence folder, performs real MCP initialize/list-tools/all-five-tool calls, reads the actual open file and object inventory, and checks the selected candidate's on-disk hash before and after. The object-detail check selects an object actually present in that scene. A wrong file, disabled tool, stale protocol, telemetry consent, tool error text, missing PNG, or changed file fails verification. Optional `--output-dir` must be a new directory inside this repository; existing evidence is never overwritten. Inspect the saved viewport image separately for visual acceptance.
+ 
+ ## Evidence and limits
+ 
+@@ -55,7 +55,7 @@ This creates a fresh evidence folder, performs real MCP initialize/list-tools/to
+ - Initial run `20260907T232735Z` retained: `get_scene_info` failed because the verifier omitted required `user_prompt`. The verifier was corrected, and the fresh run above passed.
+ - Viewport inspection proves access to the live scene; it is not character art approval or continuous animation review.
+ - Full game tests, packaging and LAN acceptance were not rerun for this connection-only task. Existing release evidence remains separate.
+-- Direct integration into the restarted Codex desktop tool list remains to be observed. The current task successfully verified the same configured server through an actual MCP stdio client.
++- The original installation only verified an MCP stdio client. The later AS1 session exercised native Codex MCP tools and the visible Blender window; `reports/AS1/live-mcp/verification-before-restart/verification.json` records all five tools against the separate live candidate.
+ 
+ ## Recovery
+ 
+diff --git a/game/Source/WonderChessRuntime/Private/WCAnimationReview.cpp b/game/Source/WonderChessRuntime/Private/WCAnimationReview.cpp
+index 86f37df0..9ff67abb 100644
+--- a/game/Source/WonderChessRuntime/Private/WCAnimationReview.cpp
++++ b/game/Source/WonderChessRuntime/Private/WCAnimationReview.cpp
+@@ -5,7 +5,10 @@
+ #include "Animation/AnimSingleNodeInstance.h"
+ #include "Animation/AnimSequence.h"
+ #include "Components/SkeletalMeshComponent.h"
++#include "ContentStreaming.h"
++#include "Engine/Texture.h"
+ #include "HAL/FileManager.h"
++#include "Materials/MaterialInterface.h"
+ #include "Misc/App.h"
+ #include "Misc/CommandLine.h"
+ #include "Misc/FileHelper.h"
+@@ -19,7 +22,7 @@ using Object = TSharedPtr<FJsonObject>;
+ struct MotionCapture {
+   bool Started = false, Finished = false, Pending = false, Failed = false;
+   bool PreviousFixed = false;
+-  double PreviousDelta = 0, StartWall = 0;
++  double PreviousDelta = 0, StartWall = 0, TextureWaitStart = 0;
+   int Index = 0, Frame = 0, FramesRequired = 0, Warmup = 0;
+   FString Directory, PendingPath, ClipDirectory;
+   TArray<TPair<FString, FString>> Jobs;
+@@ -147,9 +150,43 @@ void WCTickAnimationReview(AWCMatchController* Player) {
+     }
+     IFileManager::Get().MakeDirectory(*Capture.ClipDirectory, true);
+     FFileHelper::SaveStringToFile(TEXT("frame,animation_seconds,wall_seconds,bytes,file\n"), *(Capture.ClipDirectory / TEXT("frames.csv")), FFileHelper::EEncodingOptions::ForceUTF8WithoutBOM);
++    Capture.Mesh->PrestreamTextures(60.f, true);
++    Capture.TextureWaitStart = FPlatformTime::Seconds();
+     Capture.Warmup = 6; return;
+   }
+   if (Capture.Warmup > 0) {
++    if (Capture.Warmup == 6 && Capture.Mesh.IsValid()) {
++      IStreamingManager::Get().StreamAllResources(.01f);
++      TArray<UTexture*> Textures;
++      for (auto* Material : Capture.Mesh->GetMaterials()) if (Material) {
++        TArray<UTexture*> MaterialTextures;
++        Material->GetUsedTextures(MaterialTextures);
++        for (auto* Texture : MaterialTextures) Textures.AddUnique(Texture);
++      }
++      TArray<FString> PendingTextures, TexturePaths;
++      for (auto* Texture : Textures) {
++        const FString Path = Texture ? Texture->GetPathName() : TEXT("<null>");
++        TexturePaths.AddUnique(Path);
++        bool Ready = Texture && Texture->GetResource() && Texture->IsFullyStreamedIn();
++#if WITH_EDITOR
++        Ready = Ready && !Texture->IsCompiling();
++#endif
++        if (!Ready) PendingTextures.AddUnique(Path);
++      }
++      const double WaitSeconds = FPlatformTime::Seconds() - Capture.TextureWaitStart;
++      Capture.Current->SetNumberField(TEXT("texture_ready_wait_seconds"), WaitSeconds);
++      Capture.Current->SetStringField(TEXT("used_textures"), FString::Join(TexturePaths, TEXT(";")));
++      if (Textures.IsEmpty() || !PendingTextures.IsEmpty()) {
++        Capture.Current->SetStringField(TEXT("pending_textures"), FString::Join(PendingTextures, TEXT(";")));
++        if (WaitSeconds >= 30) {
++          Capture.Current->SetStringField(TEXT("status"), TEXT("FAIL_TEXTURE_STREAMING_TIMEOUT"));
++          Capture.Failed = true; Finish(TEXT("FAIL_TEXTURE_STREAMING_TIMEOUT"));
++        }
++        return;
++      }
++      Capture.Current->RemoveField(TEXT("pending_textures"));
++      Capture.Current->SetBoolField(TEXT("textures_fully_streamed_before_capture"), true);
++    }
+     if (--Capture.Warmup == 0 && Capture.Mesh.IsValid()) Capture.Mesh->SetPosition(0, false);
+     return;
+   }
+diff --git a/game/Source/WonderChessRuntime/Private/WCBoardPresenter.cpp b/game/Source/WonderChessRuntime/Private/WCBoardPresenter.cpp
+index f6f944aa..5af2ce07 100644
+--- a/game/Source/WonderChessRuntime/Private/WCBoardPresenter.cpp
++++ b/game/Source/WonderChessRuntime/Private/WCBoardPresenter.cpp
+@@ -23,6 +23,27 @@
+ #include "WCMatchRuntime.h"
+ 
+ namespace {
++FString AQ1HeroFolder(const FString& UnitId, const FString& DefaultFolder) {
++  if (UnitId != TEXT("wc_u_human_guardian")) return DefaultFolder;
++  static const FString Candidate = []() {
++    FString Root;
++    if (!FParse::Value(FCommandLine::Get(), TEXT("WCAQ1HeroRoot="), Root)) return FString();
++    const FString Prefix = TEXT("/Game/WonderChess/Candidates/AQ1/");
++    const FString Revision = Root.Mid(Prefix.Len());
++    bool Valid = Root.StartsWith(Prefix, ESearchCase::CaseSensitive) && Revision.Len() > 0 && Revision.Len() <= 64;
++    for (TCHAR Character : Revision)
++      Valid &= (Character >= 'A' && Character <= 'Z') || (Character >= 'a' && Character <= 'z') ||
++               (Character >= '0' && Character <= '9') || Character == '_';
++    if (!Valid) {
++      UE_LOG(LogTemp, Error, TEXT("WC_AQ1_INVALID_ROOT: expected one revision below /Game/WonderChess/Candidates/AQ1/"));
++      FPlatformMisc::RequestExitWithStatus(false, 2);
++      return FString();
++    }
++    UE_LOG(LogTemp, Display, TEXT("WC_AQ1_PRESENTATION_ROOT %s; Ada mesh/clips only; gameplay unchanged"), *Root);
++    return Root + TEXT("/");
++  }();
++  return Candidate.IsEmpty() ? DefaultFolder : Candidate;
++}
+ FString ActionKey(int64 Source, int64 Action) {
+   return FString::Printf(TEXT("%lld:%lld"), Source, Action);
+ }
+@@ -96,13 +117,20 @@ void AWCBoardPresenter::Initialize() {
+     for (const auto& Definition : List) {
+       const FString Id = UTF8_TO_TCHAR(Definition.id.c_str());
+       const FString Folder = FString(Kind ? TEXT("/Game/WonderChess/Neutrals/") : TEXT("/Game/WonderChess/Heroes/")) + Id + TEXT("/");
++      const FString PresentationFolder = AQ1HeroFolder(Id, Folder);
+       TArray<FString> Names = {TEXT("SK_") + Id, TEXT("T_") + Id + TEXT("_Portrait")};
+       for (const TCHAR* Clip : {TEXT("Idle"),TEXT("Move"),TEXT("Attack"),TEXT("Active"),TEXT("Hit"),TEXT("Defeat"),TEXT("Victory")}) {
+         if (Kind && (FCString::Strcmp(Clip,TEXT("Victory")) == 0 || (!Definition.ability.enabled && FCString::Strcmp(Clip,TEXT("Active")) == 0))) continue;
+         Names.Add(TEXT("AN_") + Id + TEXT("_") + Clip);
+       }
+-      for (const auto& Name : Names)
+-        if (auto* Asset = LoadObject<UObject>(nullptr, *(Folder + Name + TEXT(".") + Name))) ResidentAssets.Add(Asset);
++      for (const auto& Name : Names) {
++        const FString& AssetFolder = Name.StartsWith(TEXT("SK_")) || Name.StartsWith(TEXT("AN_")) ? PresentationFolder : Folder;
++        if (auto* Asset = LoadObject<UObject>(nullptr, *(AssetFolder + Name + TEXT(".") + Name))) ResidentAssets.Add(Asset);
++        else if (AssetFolder != Folder) {
++          UE_LOG(LogTemp, Error, TEXT("WC_AQ1_MISSING_ASSET %s%s"), *AssetFolder, *Name);
++          FPlatformMisc::RequestExitWithStatus(false, 2);
++        }
++      }
+     }
+   }
+   for (const TCHAR *Name : {TEXT("SM_WC_ArrowGlyph"), TEXT("SM_WC_BoltGlyph")})
+@@ -346,7 +374,7 @@ void AWCBoardPresenter::Refresh(float Delta) {
+     const auto& List = Neutral ? Definitions.neutrals : Definitions.units;
+     if (Def < 0 || Def >= int(List.size())) continue;
+     const FString UnitId = UTF8_TO_TCHAR(Definitions.Definition(Def, Neutral).id.c_str());
+-    const FString AssetFolder = FString(Neutral ? TEXT("/Game/WonderChess/Neutrals/") : TEXT("/Game/WonderChess/Heroes/")) + UnitId + TEXT("/");
++    const FString AssetFolder = AQ1HeroFolder(UnitId, FString(Neutral ? TEXT("/Game/WonderChess/Neutrals/") : TEXT("/Game/WonderChess/Heroes/")) + UnitId + TEXT("/"));
+     const int State = int(O->GetNumberField(TEXT("state")));
+     Alive.Add(Id);
+     int Side = int(O->GetNumberField(TEXT("side")));
+diff --git a/game/Source/WonderChessRuntime/Private/WCFrontEndScene.cpp b/game/Source/WonderChessRuntime/Private/WCFrontEndScene.cpp
+index 99964f98..4599b560 100644
+--- a/game/Source/WonderChessRuntime/Private/WCFrontEndScene.cpp
++++ b/game/Source/WonderChessRuntime/Private/WCFrontEndScene.cpp
+@@ -16,6 +16,33 @@
+ #include "Dom/JsonObject.h"
+ #include "SkeletalRenderPublic.h"
+ #include "WCMatchRuntime.h"
++#include "Misc/CommandLine.h"
++#include "Misc/Parse.h"
++
++namespace {
++FString AQ1HeroFolder(const FString& UnitId) {
++  const FString DefaultFolder = TEXT("/Game/WonderChess/Heroes/") + UnitId + TEXT("/");
++  if (UnitId != TEXT("wc_u_human_guardian")) return DefaultFolder;
++  static const FString Candidate = []() {
++    FString Root;
++    if (!FParse::Value(FCommandLine::Get(), TEXT("WCAQ1HeroRoot="), Root)) return FString();
++    const FString Prefix = TEXT("/Game/WonderChess/Candidates/AQ1/");
++    const FString Revision = Root.Mid(Prefix.Len());
++    bool Valid = Root.StartsWith(Prefix, ESearchCase::CaseSensitive) && Revision.Len() > 0 && Revision.Len() <= 64;
++    for (TCHAR Character : Revision)
++      Valid &= (Character >= 'A' && Character <= 'Z') || (Character >= 'a' && Character <= 'z') ||
++               (Character >= '0' && Character <= '9') || Character == '_';
++    if (!Valid) {
++      UE_LOG(LogTemp, Error, TEXT("WC_AQ1_INVALID_ROOT: expected one revision below /Game/WonderChess/Candidates/AQ1/"));
++      FPlatformMisc::RequestExitWithStatus(false, 2);
++      return FString();
++    }
++    UE_LOG(LogTemp, Display, TEXT("WC_AQ1_GALLERY_ROOT %s; Ada mesh/clips only"), *Root);
++    return Root + TEXT("/");
++  }();
++  return Candidate.IsEmpty() ? DefaultFolder : Candidate;
++}
++}
+ 
+ AWCFrontEndScene::AWCFrontEndScene() {
+   PrimaryActorTick.bCanEverTick = true;
+@@ -130,7 +157,7 @@ void AWCFrontEndScene::ShowHero(const FString& UnitId, int32 Star, bool ReducedM
+     HeroId = UnitId;
+     ResidentAssets.Reset();
+     const FString Name = TEXT("SK_") + UnitId;
+-    const FString Path = TEXT("/Game/WonderChess/Heroes/") + UnitId + TEXT("/") + Name + TEXT(".") + Name;
++    const FString Path = AQ1HeroFolder(UnitId) + Name + TEXT(".") + Name;
+     auto* Mesh = LoadObject<USkeletalMesh>(nullptr, *Path);
+     Hero->SetSkeletalMesh(Mesh);
+     AssetMessage = Mesh ? FString() : TEXT("This hero's skeletal mesh is not present in this build.");
+@@ -154,7 +181,7 @@ void AWCFrontEndScene::ShowHero(const FString& UnitId, int32 Star, bool ReducedM
+ bool AWCFrontEndScene::PlayClip(const FString& Clip, bool ReducedMotion) {
+   SelectedClip = Clip;
+   const FString Name = TEXT("AN_") + HeroId + TEXT("_") + Clip;
+-  const FString Path = TEXT("/Game/WonderChess/Heroes/") + HeroId + TEXT("/") + Name + TEXT(".") + Name;
++  const FString Path = AQ1HeroFolder(HeroId) + Name + TEXT(".") + Name;
+   auto* Animation = LoadObject<UAnimSequence>(nullptr, *Path);
+   if (!Animation || !Hero->GetSkeletalMeshAsset()) {
+     AssetMessage = FString::Printf(TEXT("Preview unavailable: %s / %s. Imported content is required."), *HeroId, *Clip);
+diff --git a/game/Source/WonderChessRuntime/Public/Simulation/WonderSimulation.h b/game/Source/WonderChessRuntime/Public/Simulation/WonderSimulation.h
+index 331f92d9..637780d5 100644
+--- a/game/Source/WonderChessRuntime/Public/Simulation/WonderSimulation.h
++++ b/game/Source/WonderChessRuntime/Public/Simulation/WonderSimulation.h
+@@ -35,6 +35,18 @@ enum class Effect
+     Dash,
+     StatModifier
+ };
++enum class AbilityMechanic
++{
++    Standard,
++    DirectionalGuard,
++    MomentumCharge,
++    StationaryGrove,
++    ScreenedStrike,
++    CrossingBeams,
++    TidalPush
++};
++// Preparation orientation is local; the opposing formation is rotated by 180 degrees.
++enum class Facing { Forward, Right, Backward, Left };
+ enum class Selector
+ {
+     Self,
+@@ -97,6 +109,9 @@ struct AbilityDef
+     std::array<Int, 3> magnitude{};
+     bool enabled = true;
+     std::vector<AbilityEffect> effects;
++    AbilityMechanic mechanic = AbilityMechanic::Standard;
++    int guardReductionBp = 0, momentumPerStepBp = 0, maxMomentumSteps = 0,
++        stationaryMs = 0, pulseMs = 0, displacementCells = 0, secondaryDelayMs = 0;
+ };
+ struct UnitDef
+ {
+@@ -115,6 +130,7 @@ struct TraitDef
+     std::string id, stat;
+     int threshold = 0, value = 0;
+     int threshold4 = 4, value4 = 0;
++    std::vector<std::pair<int, int>> tiers;
+ };
+ int TraitValue(const TraitDef &trait, int distinctCount);
+ struct BotDef
+@@ -140,7 +156,7 @@ struct Rules
+         interestDivisor = 0, interestCap = 0;
+     int startingLevel = 0, maximumLevel = 0, buyXpGold = 0, buyXpAmount = 0, passiveXp = 0;
+     std::map<int, int> xpToNext;
+-    std::map<int, std::array<int, 3>> shopWeights;
++    std::map<int, std::array<int, 5>> shopWeights;
+     int botObservationMs = 0, botRepositionCutoffMs = 0;
+     int neutralOpeningRounds = 3, neutralEvery = 5, neutralWinIncome = 2,
+         neutralLossDamage = 2, neutralOpeningDamage = 0;
+@@ -165,6 +181,7 @@ struct Catalog
+     std::vector<BotDef> bots;
+     std::vector<UnitDef> neutrals;
+     std::vector<NeutralWave> waves;
++    std::string profileId = "alpha_24";
+     const UnitDef &Definition(int index, bool neutral = false) const;
+     const NeutralWave *Wave(int round) const;
+     std::string Validate() const;
+@@ -192,6 +209,7 @@ struct OwnedUnit
+     int bench = -1;
+     bool neutral = false;
+     int hpScaleBp = 10000, damageScaleBp = 10000;
++    Facing facing = Facing::Forward;
+ };
+ struct Command
+ {
+@@ -201,6 +219,7 @@ struct Command
+     int slot = -1;
+     bool toBoard = false;
+     Cell cell;
++    Facing facing = Facing::Forward;
+ };
+ struct Reply
+ {
+@@ -280,6 +299,9 @@ struct CombatUnit
+     std::vector<Modifier> modifiers;
+     bool neutral = false;
+     int movementBonus = 0, hpScaleBp = 10000, damageScaleBp = 10000;
++    Facing facing = Facing::Forward;
++    int momentumSteps = 0, lastMovementTick = 0, positionEpoch = 0;
++    Cell abilityAim;
+ };
+ struct CombatEvent
+ {
+@@ -292,6 +314,10 @@ struct CombatEvent
+     DamageType damageType = DamageType::Physical;
+     bool basicAttack = false;
+     int radius = 0;
++    AbilityMechanic mechanic = AbilityMechanic::Standard;
++    Cell origin;
++    Id guardedBy = 0;
++    Int prevented = 0;
+ };
+ struct CombatResult
+ {
+@@ -309,6 +335,8 @@ struct VisualAction
+     bool neutral = false, basicAttack = false, released = false, provisional = true,
+          recipientsProvisional = true, fixedArea = false;
+     std::vector<Id> recipients;
++    AbilityMechanic mechanic = AbilityMechanic::Standard;
++    std::vector<Cell> cells;
+ };
+ class Combat
+ {
+@@ -348,6 +376,10 @@ class Combat
+         bool area = false, basicAttack = false;
+         std::string key;
+         int effectOrder = 0, maxTargets = 12;
++        AbilityMechanic mechanic = AbilityMechanic::Standard;
++        std::vector<Cell> cells;
++        bool allied = false, allowSelf = false, tethered = false;
++        int positionEpoch = 0, displacementCells = 0;
+     };
+     const Catalog *catalog_;
+     std::vector<CombatUnit> units_;
+@@ -364,6 +396,11 @@ class Combat
+     bool FindPath(int source, int target, Cell &next, int &length) const;
+     int ChooseEnemy(int source, Cell &next, int &pathLength) const;
+     bool CommitAbility(int source);
++    bool CommitMechanic(int source, const AbilityDef &ability);
++    void ReleaseMechanic(int source, const AbilityDef &ability);
++    void MoveUnit(int unit, Cell cell, AbilityMechanic mechanic, Id action, int source);
++    bool ChargeLanding(int source, const AbilityDef &ability, int target, Cell &landing) const;
++    std::vector<int> PacketTargets(const Packet &packet) const;
+     void Release(int source);
+     void Apply(const Packet &packet, int target);
+     void Assess(bool timeout);
+diff --git a/reports/blender-mcp/20260908T072720-blender.log b/reports/blender-mcp/20260908T072720-blender.log
+index cc3b33f5..0cc9c507 100644
+--- a/reports/blender-mcp/20260908T072720-blender.log
++++ b/reports/blender-mcp/20260908T072720-blender.log
+@@ -7,3 +7,127 @@ BlenderMCP server started on localhost:9876
+ BlenderMCP addon registered
+ Info: Preferences saved
+ WONDER_CHESS_MCP_READY {"file": "C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\heroes\\wc_u_human_guardian\\wc_u_human_guardian.blend", "blender": "5.1.1", "objects": 12, "port": 9876, "telemetry_consent": false, "running": true}
++01:54:56.625  blend            | Saved session recovery to "C:\Users\iputu\AppData\Local\Temp\quit.blend"
++01:54:56.672  blend            | Writing user preferences: "C:\Users\iputu\AppData\Roaming\Blender Foundation\Blender\5.1\config\userpref.blend" 
++01:54:56.688  reports          | Preferences saved
++Connected to client: ('127.0.0.1', 63263)
++Client handler started
++Queued command: get_addon_info
++Executing handler for get_addon_info
++Handler execution complete
++Queued command: get_addon_info
++Executing handler for get_addon_info
++Handler execution complete
++Connected to client: ('127.0.0.1', 63264)
++Client handler started
++Queued command: get_addon_info
++Executing handler for get_addon_info
++Handler execution complete
++Queued command: get_telemetry_consent
++Executing handler for get_telemetry_consent
++Handler execution complete
++Queued command: execute_code
++Executing handler for execute_code
++Handler execution complete
++Queued command: get_viewport_screenshot
++Executing handler for get_viewport_screenshot
++Handler execution complete
++Client disconnected
++Client handler stopped
++Client disconnected
++Client handler stopped
++Connected to client: ('127.0.0.1', 63285)
++Client handler started
++Queued command: get_addon_info
++Executing handler for get_addon_info
++Handler execution complete
++Queued command: get_addon_info
++Executing handler for get_addon_info
++Handler execution complete
++Connected to client: ('127.0.0.1', 63286)
++Client handler started
++Queued command: get_addon_info
++Executing handler for get_addon_info
++Handler execution complete
++Queued command: get_telemetry_consent
++Executing handler for get_telemetry_consent
++Handler execution complete
++Queued command: get_scene_info
++Executing handler for get_scene_info
++Getting scene info...
++Scene info collected: 10 objects
++Handler execution complete
++Queued command: get_object_info
++Executing handler for get_object_info
++Handler execution complete
++Queued command: execute_code
++Executing handler for execute_code
++Handler execution complete
++Queued command: get_viewport_screenshot
++Executing handler for get_viewport_screenshot
++Handler execution complete
++Client disconnected
++Client handler stopped
++Client disconnected
++Client handler stopped
++Repository data: C:\Users\iputu\AppData\Roaming\Blender Foundation\Blender\5.1\extensions\blender_org not found, sync required!
++Connected to client: ('127.0.0.1', 54233)
++Client handler started
++Queued command: get_addon_info
++Executing handler for get_addon_info
++Handler execution complete
++Queued command: get_addon_info
++Executing handler for get_addon_info
++Handler execution complete
++Connected to client: ('127.0.0.1', 54234)
++Client handler started
++Queued command: get_addon_info
++Executing handler for get_addon_info
++Handler execution complete
++Queued command: get_telemetry_consent
++Executing handler for get_telemetry_consent
++Handler execution complete
++Queued command: get_scene_info
++Executing handler for get_scene_info
++Getting scene info...
++Scene info collected: 10 objects
++Handler execution complete
++Queued command: get_object_info
++Executing handler for get_object_info
++Handler execution complete
++Queued command: execute_code
++Executing handler for execute_code
++Handler execution complete
++Queued command: get_viewport_screenshot
++Executing handler for get_viewport_screenshot
++Handler execution complete
++Client disconnected
++Client handler stopped
++Client disconnected
++Client handler stopped
++Connected to client: ('127.0.0.1', 58991)
++Client handler started
++Queued command: get_addon_info
++Executing handler for get_addon_info
++Handler execution complete
++Queued command: execute_code
++Executing handler for execute_code
++Handler execution complete
++Connected to client: ('127.0.0.1', 58992)
++Client handler started
++Queued command: get_addon_info
++Executing handler for get_addon_info
++Handler execution complete
++Queued command: get_telemetry_consent
++Executing handler for get_telemetry_consent
++Handler execution complete
++Client disconnected
++Client handler stopped
++Client disconnected
++Client handler stopped
++Error accepting connection: [WinError 10038] An operation was attempted on something that is not a socket
++Server thread stopped
++BlenderMCP server stopped
++BlenderMCP addon unregistered
++
++Blender quit
+diff --git a/reports/implementation_state.json b/reports/implementation_state.json
+index ab2b4aef..655e9b7e 100644
+--- a/reports/implementation_state.json
++++ b/reports/implementation_state.json
+@@ -445,11 +445,11 @@
+     "integration_status": "PROTOCOL6_SHARED_CONSTANT_EDITOR_SHIPPING_BUILT_CURRENT_PACKAGE_AUDITS_PASS"
+   },
+   "current_access_constraints": {
+-    "checked_utc": "2026-09-07T17:20:11.259869+00:00",
+-    "native_computer_use": "Native APIs explicitly disabled in current CUA instructions. Scripted Unreal test inputs are available; manual computer-use game review is not.",
++    "checked_utc": "2026-09-08T05:43:52.547360+00:00",
++    "native_computer_use": "Windows @oai/sky Computer Use available and executed for visible Blender. No new manual gameplay or audiovisual acceptance claimed.",
+     "physical_lan": "No second physical LAN machine/address/access supplied. Actual same-PC two-process loopback is separately labeled.",
+     "boundary": "No security setting broadened. Scripted Unreal commands and captured frame sequences remain distinct from manual play and continuous audiovisual acceptance.",
+-    "check_time_boundary": "Current callable tool metadata inspected in closeout; CUA native surfaces disabled; no callable Blender bridge found. User deferred bridge discussion.",
++    "check_time_boundary": "Blender MCP five-tool verification passed against actual current live candidate after visible launcher restart. CUA_REPL native APIs are a different surface and remain disabled.",
+     "misplaced_review_files": "Automatic approval review rejected moving/cleaning70PNG files under C:/reports/WC-U440/20260906T162705Z-elf-shoulders, reason blocked by policy. Files left untouched; exact handoff reports/WC-U440/20260906T162705Z-elf-shoulders/elf-source8-handoff.md."
+   },
+   "historical_update_deliveries": [
+@@ -487,7 +487,7 @@
+       "network_result": "PASS56_CHECKS_ROUND33_BOTH_INNER_EXITS0_LOOPBACK_ONLY"
+     }
+   ],
+-  "last_updated_utc": "2026-09-07T17:30:32.953183+00:00",
++  "last_updated_utc": "2026-09-08T17:35:54.4897976Z",
+   "closeout_steering": {
+     "utc": "2026-09-07T17:20:11.259869+00:00",
+     "request": "Finish current run quickly; defer real-time MCP bridge discussion",
+@@ -501,17 +501,507 @@
+   },
+   "final_validation": "reports/WC-U460/20260907T173100Z-final-checks",
+   "blender_mcp_connection": {
+-    "status": "LIVE_PROTOCOL_VERIFIED_DESKTOP_RESTART_PENDING",
+-    "verified_utc": "2026-09-07T23:29:42.174439+00:00",
++    "status": "VISIBLE_GUI_EDIT_SAVE_AND_POST_RESTART_MCP_VERIFIED",
++    "verified_utc": "2026-09-08T05:41:09.998826+00:00",
+     "configuration": ".codex/config.toml",
+     "launcher": "tools/blender/Start-Mcp.ps1",
+     "guide": "docs/BLENDER_MCP_CONNECTION.md",
+-    "evidence": "reports/blender-mcp/20260907T232817Z/verification.json",
++    "evidence": "reports/AS1/live-mcp/clay-session-final-verification/verification.json",
+     "blender_version": "5.1.1",
+     "server_version": "1.9.1",
+     "listener": "127.0.0.1:9876",
+     "telemetry": false,
+     "code_safe_mode": true,
+-    "source_assets_modified": false
++    "source_assets_modified": true,
++    "source_scope": "New isolated AS1 clay study only; canonical Ada and AQ1 unchanged",
++    "active_blend": "art-source/asset-studio/wc_u_human_guardian/live/ada_clay_study_r003.blend",
++    "addon_protocol": 5,
++    "native_computer_use": "Blender window selected and captured using @oai/sky",
++    "prior_verification": "reports/blender-mcp/20260907T232817Z/verification.json"
++  },
++  "aq1_ada_art": {
++    "status": "EXECUTED_CANDIDATE_REVIEW_HANDOFF_ART_AND_PERFORMANCE_GATES_OPEN",
++    "requested_phases": [
++      "A",
++      "B",
++      "C",
++      "D",
++      "E"
++    ],
++    "base_commit": "9623fd82f98ff80a90985b9f552d8851ccece30f",
++    "asset_id": "wc_u_human_guardian",
++    "direction": "Pram selected the attached Ada reference. Final approval of the 3D candidate is pending.",
++    "handoff": "docs/art-quality/AQ1/RUN_HANDOFF.md",
++    "review": "reports/AQ1/20260908/review.json",
++    "editable_source": "art-source/heroes/wc_u_human_guardian/candidates/AQ1/ada_forms_r08.blend",
++    "baked_source": "art-source/heroes/wc_u_human_guardian/candidates/AQ1/ada_baked_r07.blend",
++    "candidate_unreal_folder": "/Game/WonderChess/Candidates/AQ1/Ada_r01",
++    "source_sha256": "cd6bb6ddb3a54aaa15be3112a804caf0820f9ad1162b7cb8ee345f646bef8a67",
++    "canonical_ada_and_gameplay_preserved": true,
++    "candidate_promoted": false,
++    "candidate_packaged_executable": null,
++    "technical_checks": "Fresh baseline:400 spec/data checks and147 Python tests;11 importer preflight tests; real Editor builds/import/reimport/cold; seven-clip Blender and Unreal frame review; normal control and color regression; crowded capture and matched baseline/candidate frame-time runs executed.",
++    "open_gates": [
++      "Reference likeness, polish and Pram approval",
++      "Named cloth/contact defects and view-dependent face occlusion",
++      "Approval of the25k comparison exception and lower LODs",
++      "Continuous human audiovisual review",
++      "Candidate packaging and release acceptance",
++      "235.061ms candidate hitch and eight-neutral performance tail need investigation before acceptance"
++    ],
++    "boundary": "Focused art candidate only. Existing24-hero runtime and release evidence retained. No new manual human, physical LAN or100-tournament claim. No push.",
++    "performance_evidence": "reports/AQ1/20260908/performance_review/PERFORMANCE.md"
++  },
++  "acb1_game_resume": {
++    "status": "NATIVE_NORMAL_SPEED_MATCH_AND_RESTART_VERIFIED_LAUNCHER_ISSUE_CLOSED_BETA_GATES_OPEN",
++    "updated_utc": "2026-09-09T04:10:55Z",
++    "handoff": "reports/ACB1/ACB1_HANDOFF.md",
++    "reconciliation": "reports/ACB1/read_only_reconciliation.md",
++    "package_launcher": "builds/WonderChess-Update24-Checkpoint-r4/Windows/WonderChess.exe",
++    "inner_executable_sha256": "67b00eeca8f60f6f8bc62df95fb833f1174f3a3c086ef9c452b39ea0262af0f0",
++    "source_head": "9623fd82f98ff80a90985b9f552d8851ccece30f",
++    "dirty_state_boundary": "Existing AQ1 presentation C++ changes and art/tool work retained; those source edits and ACB1 head are not in this preserved r4 binary.",
++    "profile": "alpha_24",
++    "balance": "alpha_24_v0.4.1",
++    "schema": "3.1.0",
++    "protocol": 6,
++    "catalog_digest": "95509d001ca0e6c55fa64a616df6e2e9a01a3809a9b9c82d9bd0a725dad3a1ec",
++    "issue": {
++      "id": "ACB1-GAME-001",
++      "status": "CLOSED_LOCAL_VERIFIED",
++      "problem": "Default launch_alpha.ps1 selected the obsolete twelve-hero Alpha-Candidate package.",
++      "fix": "Default executable changed to current Update24 checkpoint r4; explicit override and flags retained.",
++      "source": "tools/unreal/launch_alpha.ps1",
++      "test": "tests/runtime/test_default_launch.ps1",
++      "baseline": "reports/ACB1/20260909-default-launcher/baseline/launch-resolution.json",
++      "fixed": "reports/ACB1/20260909-default-launcher/fixed/launch-resolution.json",
++      "native_verification": "reports/ACB1/20260909-default-launcher/native-launch.json",
++      "native_process": 32260,
++      "runtime_rebuild": "NOT_REQUIRED_NO_RUNTIME_OR_COOKED_ASSET_CHANGE"
++    },
++    "interactive_match": {
++      "input": "Native Computer Use agent interaction; no scripted game command injection; not a human/newcomer playtest",
++      "simulation_speed_multiplier": 1,
++      "options_pauses_used": true,
++      "process": 36432,
++      "namespace": 1,
++      "authority_seed": 846842640,
++      "finished_round": 38,
++      "wall_seconds_to_first_finished_state": 1804.716,
++      "interactive_seat_eliminated_round": 13,
++      "winner": "Highbanner Bot",
++      "winner_hp": 4,
++      "unique_final_places": 8,
++      "accepted_replies": 13,
++      "rejected_replies": 0,
++      "journal": "reports/ACB1/20260909-native-r4/interaction_journal.md",
++      "results_capture": "reports/ACB1/20260909-native-r4/captures/26_results_screen.png",
++      "boundary": "One whole interactive tournament including elimination and continued spectating. Pauses and early weak player board prevent balance/newcomer or uninterrupted-play claims. Reply records alone lack request payloads."
++    },
++    "restart": {
++      "status": "VERIFIED_NATIVE_RESTART_AFTER_FINISH",
++      "namespace": 2,
++      "authority_seed": 2061823456,
++      "observed": "Round 1, eight positive-health seats, zero placements, owner sequence 0, empty units, level 3, gold 10; native buy and sell; continued to round 2 before normal exit",
++      "second_full_match": false,
++      "capture": "reports/ACB1/20260909-native-r4/captures/28_restart_round_one.png"
++    },
++    "gallery": {
++      "status": "VERIFIED_THIS_RUN_24_GRID_CARDS_AND_PORTRAITS",
++      "boundary": "All four rows inspected natively; not all 72 star-stat combinations, model details or continuous per-hero motion acceptance"
++    },
++    "performance": {
++      "status": "ONE_MATCH_MEASURED_HITCHES_REMAIN_BETA_GATE_OPEN",
++      "report": "reports/ACB1/20260909-native-r4/run_analysis.md",
++      "details": "reports/ACB1/20260909-native-r4/run_analysis.json",
++      "spikes": "reports/ACB1/20260909-native-r4/run_analysis_spikes.csv",
++      "all_namespaces_recorded_frames": 119892,
++      "completed_match_recorded_frames": 106155,
++      "frame_interval_p99_ms": 16.753799,
++      "frame_interval_max_ms": 185.648209,
++      "frame_intervals_over_50_ms": 311,
++      "frame_intervals_over_100_ms": 196,
++      "busy_visible_combat_samples": 5654,
++      "busy_visible_combat_p99_ms": 17.2279,
++      "boundary": "All recorded samples and spikes retained. Unidentified Solo Options pauses included. Engine omits first five seconds per namespace and profiling after completion/abort. One machine and one full tournament; no broad performance approval."
++    },
++    "timeout_diagnosis": {
++      "status": "CURRENT_TRACE_RECONCILED_CAUSAL_AND_BALANCE_GATES_OPEN",
++      "report": "reports/ACB1/20260909-native-r4/current_encounter_review.md",
++      "boundary": "Fixed run prefix through round 20 only: 104 settled fights, 9 PvP timeouts. Named round-14 timeout retained damage through ticks 792/795 before cutoff 800; not proof of a frozen fight or cause for tuning."
++    },
++    "validation": "reports/ACB1/20260909-validation/validation.json",
++    "validation_counts": {
++      "spec_data_checks": 400,
++      "python_tests": 154,
++      "matching_documents": 28,
++      "matching_catalog_artifacts": 6,
++      "focused_launcher_checks": 4
++    },
++    "preservation": "reports/ACB1/final_preservation.json",
++    "physical_2H6B": "BLOCKED_USER_CONFIRMED_ONLY_ONE_PC",
++    "remote_8H0B": "NOT_IMPLEMENTED_NOT_TESTED_CURRENT_TWO_HUMAN_CAP_AND_NO_AUTHENTICATED_RECLAIM",
++    "audio_listening": "NOT_RUN_NO_DIRECT_LISTENING_EVIDENCE",
++    "human_art_approval": false,
++    "beta_acceptance": false
++  },
++  "as1_asset_studio": {
++    "updated_utc": "2026-09-10T13:25:15.284041+00:00",
++    "integration": "implemented_locally_verified",
++    "integration_report": "production/asset-studio/reports/local-integration.json",
++    "ada_candidate_workspace": "art-source/asset-studio/wc_u_human_guardian",
++    "ada_geometry_start": "separate_user_authorized_MPFB_core_foundation_no_previous_Ada_geometry",
++    "ada_status": "BW5_ARMOR_PROPORTION_FIT_EXECUTED_ART_REVISE",
++    "technical_brief": "accepted_current",
++    "human_approvals": {
++      "references": true,
++      "forms": false,
++      "release": false
++    },
++    "reference_candidate": "art-source/asset-studio/wc_u_human_guardian/reviews/references/candidate_5f81fc931e05488c942bb0d175830670.json",
++    "review_packet": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW5/REVIEW.md",
++    "checkpoint": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW5/verification.json",
++    "next_required_action": "Bounded methods parked. Reconstruct upper plate/neckline and side closure against a designed padded-collar interface; separately redesign cap suspension and thickness-safe edge. Hand needs local palm/thenar/proximal-knuckle sculpt/control surface, not tighter repeated rings. No canonical promotion or dependent runtime work until local construction is credible.",
++    "reference_gate": "accepted_current",
++    "reference_acceptance": "art-source/asset-studio/wc_u_human_guardian/reviews/references/accepted_f6ea0a9d2e1f427790481f24f4b6b346.json",
++    "active_blend": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW5/armor/ada_bw5_armor_work.blend",
++    "frozen_blend": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW5/armor/ada_bw5_armor_checkpoint_r003_ART_REVISE.blend",
++    "user_feedback": "BW5 armor proportion and fit primary; independent fixed-hand root/web repair. Retain selected 30x26mm, 110mm exposed candidate hilt. Preserve masters and game; no approval claims.",
++    "separate_art_review": "All lanes ART_REVISE. Torso shorter/shallower but upper gap, flat planes, old collar and waist/side/bending conflicts remain. Separate shoulder self-folds and suspension fail. Hand transverse screen clears but anatomy/contact fail.",
++    "ada_mpfb_mp1": {
++      "status": "FOUNDATION_RETAINED_LIKENESS_ART_REVISE",
++      "method": "MPFB 2.0.17 core CC0 foundation, native target controls, separately derived editable head; Blender 5.1.1",
++      "revision": "r002",
++      "corrective_attempts": 2,
++      "frozen_sha256": "9ccfd9fdd87ddeac89761809f9ea725e50c0e874e6ca8f3a9bc539430badac5a",
++      "verification": "art-source/asset-studio/wc_u_human_guardian/stages/mpfb-pilot/MP1/verification.json",
++      "independent_review": "art-source/asset-studio/wc_u_human_guardian/stages/mpfb-pilot/MP1/independent_review.md",
++      "head_control_vertices": 4271,
++      "head_control_faces": 4246,
++      "head_evaluated_triangles": 135872,
++      "r016_and_acb1_hashes_preserved": true,
++      "approved_reference_gate": "accepted_current",
++      "head_and_source_scenes_reopened": true,
++      "save_retention_correction": "Initial checkpoint omitted zero-user head scene. Explicit scene retention fixed saving; new verified checkpoint and work file independently reopened. Geometry unchanged.",
++      "hair_family_work": "NOT_RUN",
++      "runtime_integration": "NOT_RUN",
++      "new_reusable_toolkit": "NOT_BUILT_TRIAL_ONLY",
++      "human_forms_approval": false
++    },
++    "ada_closure_acb1": {
++      "status": "PARKED_ART_REVISE",
++      "baseline": "art-source/asset-studio/wc_u_human_guardian/stages/head-polish/HP1/r001/ada_head_polish_checkpoint_r016.blend",
++      "baseline_sha256": "775815688dc4aa30dce7085b78ef79bf9ff89f603f243af9110d8ef7b8d00b6b",
++      "frozen_sha256": "5deb2ead3d282a6ea0646452f2ee85a35506a5f4b1a1d275b8711623dbe96e2c",
++      "method": "Evaluated separate sculpt target; bounded native Blender Clay Strips, Clay and local Smooth strokes; unchanged input cage",
++      "corrective_attempts": 2,
++      "sculpt_target_vertices": 26042,
++      "sculpt_target_faces": 25816,
++      "changed_target_vertices": 2074,
++      "protected_opening_collar_vertices_changed": 0,
++      "saved_camera_and_light_matrices_unchanged": true,
++      "approved_references_preserved": true,
++      "preservation_report": "art-source/asset-studio/wc_u_human_guardian/stages/head-closure/ACB1/reviews/preservation_review.md",
++      "new_editable_surface_reconstruction": "NOT_RUN_FAILED_TARGET_GATE",
++      "bilateral_extension": "NOT_RUN_FAILED_TARGET_GATE",
++      "contextual_head": "NOT_RUN_FAILED_TARGET_GATE",
++      "runtime_integration": "NOT_RUN",
++      "human_forms_approval": false
++    },
++    "r003_baseline": {
++      "ada_status": "clay_study_revise_method_limit",
++      "review_packet": "art-source/asset-studio/wc_u_human_guardian/REVIEW_CLAY.md",
++      "checkpoint": "art-source/asset-studio/wc_u_human_guardian/stages/clay-study/r003/session_report.json",
++      "active_blend": "art-source/asset-studio/wc_u_human_guardian/live/ada_clay_study_r003.blend",
++      "frozen_blend": "art-source/asset-studio/wc_u_human_guardian/stages/clay-study/r003/ada_clay_checkpoint.blend",
++      "separate_art_review": "REVISE; facial likeness and hair construction not demonstrated"
++    },
++    "ada_method_recovery": {
++      "stage": "MR1",
++      "revision": "r001",
++      "workspace": "art-source/asset-studio/wc_u_human_guardian/stages/method-recovery/MR1/r001",
++      "status": "EXECUTED_LOCAL_METHODS_ACCEPTED_CONTEXT_REVISE",
++      "baseline_source_sha256": "15f7fdc7c842d57ff05873a7cd988637411ad8985eadf852757ebbd62877043b",
++      "original_files_preserved": true,
++      "face_method_status": "METHOD_PROOF_ACCEPTED",
++      "hair_method_status": "METHOD_PROOF_ACCEPTED",
++      "contextual_head_status": "REVISE",
++      "human_forms_approval": false,
++      "runtime_integration_status": "NOT_RUN",
++      "verification": "art-source/asset-studio/wc_u_human_guardian/stages/method-recovery/MR1/r001/verification.json",
++      "review": "art-source/asset-studio/wc_u_human_guardian/stages/method-recovery/MR1/r001/reviews/context_final_review.md"
++    },
++    "fh1_previous_checkpoint": {
++      "ada_status": "local_methods_accepted_contextual_head_revise",
++      "review_packet": "art-source/asset-studio/wc_u_human_guardian/stages/method-recovery/MR1/r001/REVIEW_MR1.md",
++      "checkpoint": "art-source/asset-studio/wc_u_human_guardian/stages/method-recovery/MR1/r001/session_report.json",
++      "active_blend": "art-source/asset-studio/wc_u_human_guardian/stages/method-recovery/MR1/r001/ada_method_proof_work.blend",
++      "frozen_blend": "art-source/asset-studio/wc_u_human_guardian/stages/method-recovery/MR1/r001/contextual_head_candidate_final.blend",
++      "next_required_action": "Prove one anatomical-right nasal-to-upper-cheek transition band with compatible sampling and surface tangents; then verify counter-sweep and rear-gathering contacts individually",
++      "separate_art_review": "Local eye and single hair methods accepted by independent agent review; connected head, expanded hairstyle, likeness and human forms approval remain REVISE/unapproved"
++    },
++    "ada_features_head": {
++      "stage": "FH1",
++      "revision": "r001",
++      "retained_geometry_revision": "r004",
++      "status": "EXECUTED_COMBINED_REVISE",
++      "original_geometry": true,
++      "protected_sources_preserved": true,
++      "current_skin_vertices": 1621,
++      "current_skin_faces": 1564,
++      "human_forms_approval": false,
++      "runtime_integration": "NOT_RUN",
++      "verification": "art-source/asset-studio/wc_u_human_guardian/stages/features-head/FH1/r001/verification.json",
++      "independent_review": "art-source/asset-studio/wc_u_human_guardian/stages/features-head/FH1/r001/reviews/independent_features_review.md"
++    },
++    "hp1_previous_checkpoint": {
++      "ada_status": "features_and_head_executed_combined_forms_revise",
++      "review_packet": "art-source/asset-studio/wc_u_human_guardian/stages/features-head/FH1/r001/REVIEW_FH1.md",
++      "checkpoint": "art-source/asset-studio/wc_u_human_guardian/stages/features-head/FH1/r001/verification.json",
++      "active_blend": "art-source/asset-studio/wc_u_human_guardian/stages/features-head/FH1/r001/ada_features_work.blend",
++      "frozen_blend": "art-source/asset-studio/wc_u_human_guardian/stages/features-head/FH1/r001/ada_features_checkpoint_r004.blend",
++      "next_required_action": "Directly edit one inner-brow/nasal-root and nasal-base/philtrum study; preserve FH1 R004 and review matched views. Ear and skull/jaw structure remain revision items.",
++      "separate_art_review": "FH1 independent review: all regions remain REVISE despite visible component and interface improvements. No human forms approval."
++    },
++    "ada_head_polish": {
++      "stage": "HP1",
++      "revision": "r001",
++      "retained_geometry_revision": "r016",
++      "status": "EXECUTED_LOCAL_CORRECTION_REVISE",
++      "protected_sources_preserved": true,
++      "hair_eyebrows_eyelashes_touched": false,
++      "current_skin_vertices": 1670,
++      "current_skin_faces": 1612,
++      "neutral_pose_nonadjacent_self_overlap_pairs": 0,
++      "human_forms_approval": false,
++      "near_perfect_reference_match": false,
++      "runtime_integration": "NOT_RUN",
++      "verification": "art-source/asset-studio/wc_u_human_guardian/stages/head-polish/HP1/r001/local-correction/verification.json",
++      "independent_review": "art-source/asset-studio/wc_u_human_guardian/stages/head-polish/HP1/r001/reviews/local_correction_review.md",
++      "bounded_local_attempts": 2,
++      "local_changed_cage_vertices": 142,
++      "shared_midline_controls": [
++        248,
++        767,
++        1030,
++        1064,
++        1098
++      ]
++    },
++    "bw1_previous_mp1_context": {
++      "ada_status": "MP1_FOUNDATION_RETAINED_LIKENESS_ART_REVISE",
++      "review_packet": "art-source/asset-studio/wc_u_human_guardian/stages/mpfb-pilot/MP1/REVIEW.md",
++      "checkpoint": "art-source/asset-studio/wc_u_human_guardian/stages/mpfb-pilot/MP1/geometry_audit.json",
++      "active_blend": "art-source/asset-studio/wc_u_human_guardian/stages/mpfb-pilot/MP1/ada_mpfb_work.blend",
++      "frozen_blend": "art-source/asset-studio/wc_u_human_guardian/stages/mpfb-pilot/MP1/ada_mpfb_checkpoint_r002_verified.blend",
++      "next_required_action": "Review the separate MPFB r002 foundation. Trial stopped after initial construction and two bounded passes; no forms approval. Recommended next art task is one eye aperture/corner correction with matched openings and reversed-light evidence before propagation; lip contact remains a separate defect. Do not build a broader toolkit yet.",
++      "user_feedback": "Priority eyes/sockets, then nose-to-mouth profile, then jaw/lower cheek. Strict one-region correction, two attempts, no hair-family work.",
++      "separate_art_review": "MPFB visibly improves nasal-base/philtrum continuity, independent cheek volume and ear anatomy over r016. r002 remains ART_REVISE: eyes too compact/rounded with a raised lower-lid rim, mouth parted/projecting, jaw too soft/generic. The last lip-control pass produced only modest change and did not achieve closure. No human approval."
++    },
++    "ada_body_costume_bw1": {
++      "status": "EXECUTED_ART_REVISE",
++      "technical_revision": "r003",
++      "frozen_sha256": "03829ab406d6bd5e6a1c5f86e045e9f2edc720b05e620e70017667c59be8b3f8",
++      "source_indexed_vertices": 19158,
++      "original_shape_keys_preserved": 38,
++      "candidate_shape_keys": 44,
++      "complete_arm_proof": "FAIL_ART_REVISE",
++      "complete_leg_proof": "FAIL_ART_REVISE",
++      "original_files_preserved": true,
++      "approved_reference": "accepted_current",
++      "local_rig_bones": 163,
++      "canonical_skeleton_changed": false,
++      "source_adaptations": [
++        "MRT toigo_gloves_short CC0",
++        "MRT toigo_ankle_boots_male CC0"
++      ],
++      "human_forms_approval": false,
++      "runtime_integration": "NOT_RUN",
++      "independent_replay": "NOT_RUN",
++      "second_body_fit": "NOT_RUN",
++      "recipes_promoted": 0,
++      "neural_training": "NOT_RUN",
++      "verification": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW1/r001/verification.json",
++      "review": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW1/r001/REVIEW.md",
++      "movie": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW1/r001/motion-r003/ada_bw1_articulation_r003_review.mp4"
++    },
++    "bw2_previous_bw1_context": {
++      "ada_status": "BW1_BODY_COSTUME_EXECUTED_ART_REVISE",
++      "review_packet": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW1/r001/REVIEW.md",
++      "checkpoint": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW1/r001/verification.json",
++      "active_blend": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW1/r001/ada_body_costume_work.blend",
++      "frozen_blend": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW1/r001/ada_body_costume_checkpoint_r003_ART_REVISE.blend",
++      "next_required_action": "Retain indexed foundation, continuous garment and right footprint sole. A new bounded intervention must solve one fixed-dimension hand/handle contact before recipe promotion; shoulder/knee suspension and moving panels remain separate ART_REVISE tasks.",
++      "separate_art_review": "Neither complete arm/grip nor leg/boot proof passed. Grip and knee stop rules reached. Technical r003 fixed Solidify miter spikes; no human art approval."
++    },
++    "ada_body_contact_bw2": {
++      "status": "EXECUTED_ART_REVISE",
++      "revision": "r001",
++      "frozen_sha256": "d64d5900317541710d5ef29939d12559e5ecef31777a7e9261158cbccb7a41cf",
++      "protected_files_unchanged": 62,
++      "approved_reference": "accepted_current",
++      "right_grip": "FAIL_ART_REVISE",
++      "sampled_contact_held_frames": 121,
++      "motion_frames": 145,
++      "movie_decoded_frames": 145,
++      "glove_self_crossing_pairs": 375,
++      "body_self_crossing_pairs": 567,
++      "local_rig_bones": 163,
++      "canonical_skeleton_changed": false,
++      "human_forms_approval": false,
++      "runtime_integration": "NOT_RUN",
++      "independent_replay": "NOT_RUN",
++      "second_body_fit": "NOT_RUN",
++      "recipes_promoted": 0,
++      "neural_training": "NOT_RUN",
++      "verification": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW2/r001/verification.json",
++      "review": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW2/r001/REVIEW.md",
++      "movie": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW2/r001/motion-carry-final/ada_bw2_fixed_handle_ART_REVISE.mp4"
++    },
++    "bw3_previous_bw2_context": {
++      "ada_status": "BW2_RIGHT_GRIP_EXECUTED_ART_REVISE",
++      "review_packet": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW2/r001/REVIEW.md",
++      "checkpoint": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW2/r001/verification.json",
++      "active_blend": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW2/r001/ada_bw2_grip_work.blend",
++      "frozen_blend": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW2/r001/ada_bw2_grip_checkpoint_r001_ART_REVISE.blend",
++      "next_required_action": "Collision-free thumb opposition and web construction on an isolated body/glove copy; separately resolve middle/ring neighbor clearance before contact optimization.",
++      "separate_art_review": "Verified frame, fixed fixture and improved pad wrap. Complete grasp fails:375 glove self-crossing pairs including middle/ring and thumb/web; no sword fit or human approval."
++    },
++    "ada_body_contact_bw3": {
++      "status": "EXECUTED_ART_REVISE",
++      "revision": "r001",
++      "frozen_sha256": "d195b2870e7974665efd3ae03dd3ac88dc5ba2b8a7dbfcc76accbf8b4de3ac60",
++      "scope": "THUMB_APPROACH_OTHER_DIGITS_OPEN_NOT_A_GRIP",
++      "method": "STAGED_TRAJECTORY_ONLY",
++      "initial_constructions": 1,
++      "corrective_iterations": 2,
++      "protected_bw2_files": 498,
++      "earlier_protected_checks": 62,
++      "original_files_preserved": true,
++      "source_independence_verified": true,
++      "mesh_or_weight_reconstruction_executed": false,
++      "sampled_integer_frames": 145,
++      "sampled_surface_states": 604,
++      "adaptive_frames": [
++        13.25,
++        13.5,
++        13.75,
++        18.25,
++        18.5,
++        18.75
++      ],
++      "motion_decoded_frames": 145,
++      "glove_self_crossing_screen": "NO_DETECTED_CROSSINGS",
++      "body_raw_first_crossing": 13.75,
++      "body_evaluated_first_crossing": 19,
++      "body_evaluated_endpoint_pairs": 14,
++      "held_thumb_contact": "FAIL_0_OF_9",
++      "held_thumb_gap_mm": [
++        27.591239408185455,
++        31.63490317240588
++      ],
++      "human_forms_approval": false,
++      "canonical_skeleton_changed": false,
++      "runtime_integration": "NOT_RUN",
++      "recipes_promoted": 0,
++      "fixed_grip_option": "ASSESSED_NOT_ADOPTED",
++      "review": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW3/r001/REVIEW.md",
++      "verification": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW3/r001/verification.json",
++      "movie": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW3/r001/reviews/route_C_visual/BW3_C_thumb_approach_OTHER_FINGERS_OPEN_NOT_A_GRIP.mp4"
++    },
++    "bw4_previous_bw3_context": {
++      "ada_status": "BW3_THUMB_APPROACH_EXECUTED_ART_REVISE",
++      "active_blend": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW3/r001/ada_bw3_grip_work.blend",
++      "frozen_blend": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW3/r001/ada_bw3_grip_checkpoint_r001_ART_REVISE.blend",
++      "review_packet": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW3/r001/REVIEW.md",
++      "checkpoint": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW3/r001/verification.json",
++      "next_required_action": "Two corrective iterations exhausted. Retain C as a partial external thumb approach with other fingers OPEN. A separate animated intervention must resolve body-web deformation, consistent glove fit and useful pad-facing opposition before contact or finger extension; separately decide whether Ada production should use an explicitly adopted fixed grip with actual equipment and wrist/animation validation.",
++      "user_feedback": "User authorized independent BW1 full-body/costume study from retained MP1 source; preserve head ART_REVISE, no hair/game changes."
++    },
++    "ada_production_grip_armor_bw4": {
++      "status": "ART_REVISE",
++      "hand_substantive_corrections": 2,
++      "armor_substantive_corrections": 2,
++      "equipment_selection": "User selected narrower30x26mm handle with110mm exposed length, candidate only",
++      "hand_self_crossings_raw_evaluated": [
++        64,
++        141
++      ],
++      "hand_handle_crossings_raw_evaluated": [
++        301,
++        527
++      ],
++      "hand_guard_crossings_raw_evaluated": [
++        25,
++        30
++      ],
++      "worst_sampled_handle_penetration_mm": 11.814,
++      "armor_work": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW4/r001/armor/ada_armor_work.blend",
++      "armor_frozen": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW4/r001/armor/ada_armor_checkpoint_FINAL_ART_REVISE.blend",
++      "armor_authoring_frames": 97,
++      "armor_coat_crossing_max": {
++        "front": 0,
++        "back": 84,
++        "cap": 372,
++        "lame1": 0,
++        "lame2": 95
++      },
++      "hand_local_turntable_frames": 96,
++      "current_canonical_clip_contract_reverified": true,
++      "new_candidate_seven_clips": "NOT_RUN",
++      "new_cuff_bracer": "NOT_RUN_LOCAL_HAND_GATE_FAILED",
++      "bind_conversion": "NOT_RUN_LOCAL_HAND_GATE_FAILED",
++      "unreal": "NOT_RUN",
++      "canonical_replacement": false,
++      "human_forms_approval": false,
++      "recipe_promoted": false,
++      "desktop_screen_control_used": false,
++      "preserved_unique_paths_checked": 77
++    },
++    "bw5_previous_bw4_context": {
++      "ada_status": "BW4_FIXED_HAND_AND_UPPER_ARMOR_EXECUTED_ART_REVISE",
++      "active_blend": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW4/r001/ada_fixed_hand_work.blend",
++      "frozen_blend": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW4/r001/ada_fixed_hand_checkpoint_ART_REVISE.blend",
++      "review_packet": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW4/r001/REVIEW.md",
++      "checkpoint": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW4/r001/verification.json",
++      "next_required_action": "Bounded method stopped: replace local thumb/web and middle palm-base surface against actual selected hilt; independently refit upper back/cap/lower lame. No further equivalent correction pass.",
++      "user_feedback": "User authorized independent BW1 full-body/costume study from retained MP1 source; preserve head ART_REVISE, no hair/game changes.",
++      "separate_art_review": "Final glove clears sampled self/handle checks, but body web crosses, glove/body fit fails, thumb pads remain27.591â€“31.635mm away and face away. ART_REVISE; no full grip, sword fit, human approval or reusable recipe."
++    },
++    "ada_proportion_fit_bw5": {
++      "status": "EXECUTED_ART_REVISE",
++      "primary_lane": "ARMOR_PROPORTION_AND_FIT",
++      "armor_revision": "r003_integrity_repair_after_bounded_construction",
++      "armor_frozen_sha256": "e1acb1cb3e11be218b7a0f381921e8da7e81a46a87a4f68f35151e28ab657899",
++      "shoulder_frozen_sha256": "1fcbb99c3cd43aca40054b4753b2838d49c73601a7c3ab6d2881c0b1e9e46d43",
++      "hand_frozen_sha256": "bbd06c025af7ab848bd5e52e001e62b25d7a13edecd9bd70e75fd7650dd5d563",
++      "protected_inputs_unchanged": 169,
++      "plate_H_over_W": {
++        "BW4": 0.7308205862752117,
++        "BW5": 0.6141531536139956
++      },
++      "collar_fullspan_over_W": 0.499737411973332,
++      "waist_exposure_over_plate_H": 0.19388087813285712,
++      "armor_integer_frames": 97,
++      "armor_extra_subframes": 8,
++      "separate_static_torso_diagnostics": 2,
++      "armor_owned_part_self_query": "19 parts, zero raw/evaluated confirmed transverse pairs at frame1; not complete fit acceptance",
++      "torso_fit": "FAILED_UPPER_GAP_FLAT_PLANES_COLLAR_SIDE_WAIST_AND_BENDING",
++      "shoulder": "SEPARATE_REJECTED_STUDY_SELF_FOLDS_AND_SUSPENSION_FAILURE_NOT_ADOPTED",
++      "hand": "SEPARATE_CORRECTION1_RETAINED_TRANSVERSE_SCREEN_CLEAR_FORMS_AND_ALL_PAD_GROUP_CONTACT_FAIL",
++      "collar": "FAILED_BW5_EXPERIMENT_HIDDEN_OLD_BW4_CONTEXT_RESTORED_UNAPPROVED",
++      "source_save_reopen": "EXECUTED_ALL_THREE_LANES",
++      "motion": "Armor and shoulder native97-frame authoring diagnostics; hand48-frame static camera orbit. Not seven game clips.",
++      "reference_gate_changed": false,
++      "human_forms_approval": false,
++      "canonical_assets_replaced": false,
++      "canonical_skeleton_changed": false,
++      "new_cuff_bracer_integration": "NOT_RUN_LOCAL_GATE_FAILED",
++      "seven_game_clips_and_transitions": "NOT_RUN",
++      "unreal_import_reimport_packaged": "NOT_RUN",
++      "recipes_promoted": 0,
++      "review": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW5/REVIEW.md",
++      "verification": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW5/verification.json"
++    }
+   }
+ }
+diff --git a/tools/blender/README.md b/tools/blender/README.md
+index 97ed2dca..2ae9037b 100644
+--- a/tools/blender/README.md
++++ b/tools/blender/README.md
+@@ -15,3 +15,19 @@ The third example acknowledges an **unverified** profile for a calibration exper
+ The included profile exports only the current action and scene frame range. Select/assign the intended action explicitly in a per-hero script and export one named animation at a time. Current Blender action-slot behavior must be checked in the installed version. Do not turn on “all actions” and treat the resulting clip names as intentional.
+ 
+ Structural inspection is deliberately incomplete: review UV intent, deformation, appearance, animation and gameplay-camera readability manually/in screenshots. Material count is per mesh; also inspect final imported per-hero draw-call/material totals. For socket props use a separate inspection run rather than falsely requiring an armature modifier. Set a higher triangle budget for an entire arena collection only when documented.
++
++## Visible MCP editing
++
++`Start-Mcp.ps1` opens an explicit existing repository `.blend` in a normal visible Blender window. Choose a writable live candidate, preserving sealed stage snapshots. It refuses to start when Blender is already open; inspect that session before using its MCP sidebar. The launcher uses factory settings only for the new process, disables embedded script auto-execution, and enables the reviewed local MCP add-on without saving user preferences or the blend.
++
++```powershell
++./tools/blender/Start-Mcp.ps1 -BlendFile 'C:/absolute/path/inside/Wonder Chess/candidate.blend'
++```
++
++Run verification with the Python interpreter declared in `.codex/config.toml` (it contains the MCP SDK). `--expected-blend` and the user's verbatim `--user-prompt` are required. `--output-dir` is optional; if supplied it must be a new repository directory. The verifier confirms the actual open filename, all five enabled tools, protocol status, disabled telemetry, a real scene object, viewport PNG delivery, and unchanged on-disk candidate hash. It writes failures even when a tool returns error text with `isError=false`. Open and inspect the saved viewport separately; capture delivery does not establish visual quality.
++
++```powershell
++& 'C:/Users/iputu/Documents/Project Support/Wonder Chess/blender-mcp-1.9.1/blender-mcp-main/.venv/Scripts/python.exe' tools/blender/verify_mcp.py --expected-blend 'C:/absolute/path/inside/Wonder Chess/candidate.blend' --user-prompt 'Paste the user instruction verbatim here'
++```
++
++Use one mutation queue, verify the open candidate before each bounded edit, and inspect the scene after a timeout before retrying. The configured endpoint remains loopback and safe mode stays enabled. Live connection acceptance and reference/forms/release approval remain separate. See `reports/AS1/live-mcp/` for this workflow's actual execution evidence; the introductory scaffold status above does not certify these newer helpers.
+diff --git a/tools/blender/Start-Mcp.ps1 b/tools/blender/Start-Mcp.ps1
+index 0d6ad521..21c769c2 100644
+--- a/tools/blender/Start-Mcp.ps1
++++ b/tools/blender/Start-Mcp.ps1
+@@ -1,17 +1,28 @@
+-param([string]$BlendFile)
++param([Parameter(Mandatory = $true)][ValidateNotNullOrEmpty()][string]$BlendFile)
+ $ErrorActionPreference = 'Stop'
+ $repoRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
+ $blenderExe = 'C:\Program Files\Blender Foundation\Blender 5.1\blender.exe'
+ if (Get-Process blender -ErrorAction SilentlyContinue) {
+     throw 'Blender is already open. Use its MCP for Blender sidebar to start port 9876; this launcher preserves the existing session.'
+ }
+-if (-not $BlendFile) {
+-    $BlendFile = Join-Path $repoRoot 'art-source\heroes\wc_u_human_guardian\wc_u_human_guardian.blend'
+-}
+ $resolvedBlend = (Resolve-Path -LiteralPath $BlendFile).Path
++if (-not $resolvedBlend.StartsWith($repoRoot + [IO.Path]::DirectorySeparatorChar, [StringComparison]::OrdinalIgnoreCase) -or
++    -not (Test-Path -LiteralPath $resolvedBlend -PathType Leaf) -or
++    [IO.Path]::GetExtension($resolvedBlend) -ine '.blend') {
++    throw 'BlendFile must be an existing .blend file inside this repository.'
++}
++$checkedPath = Get-Item -LiteralPath $resolvedBlend
++while ($checkedPath.FullName -ne $repoRoot) {
++    if ($checkedPath.Attributes -band [IO.FileAttributes]::ReparsePoint) {
++        throw 'BlendFile must not traverse a symbolic link or junction.'
++    }
++    $checkedPath = if ($checkedPath -is [IO.DirectoryInfo]) { $checkedPath.Parent } else { $checkedPath.Directory }
++    if (-not $checkedPath) { throw 'Could not establish repository ownership of BlendFile.' }
++}
+ $bootstrap = Join-Path $PSScriptRoot 'start_mcp.py'
+ $logRoot = Join-Path $repoRoot 'reports\blender-mcp'
+ New-Item -ItemType Directory -Path $logRoot -Force | Out-Null
+-$stamp = Get-Date -Format 'yyyyMMddTHHmmss'
++$stamp = Get-Date -Format 'yyyyMMddTHHmmssfff'
+ $env:BLENDER_MCP_DISABLE_TELEMETRY = '1'
+-Start-Process -FilePath $blenderExe -WindowStyle Hidden -ArgumentList @('--disable-autoexec', ('"' + $resolvedBlend + '"'), '--python', ('"' + $bootstrap + '"')) -WorkingDirectory $repoRoot -RedirectStandardOutput (Join-Path $logRoot "$stamp-blender.log") -RedirectStandardError (Join-Path $logRoot "$stamp-blender-errors.log") -PassThru
++# This launcher is explicitly for the user's visible, interactive editing session.
++Start-Process -FilePath $blenderExe -WindowStyle Normal -ArgumentList @('--factory-startup', '--disable-autoexec', ('"' + $resolvedBlend + '"'), '--python', ('"' + $bootstrap + '"')) -WorkingDirectory $repoRoot -RedirectStandardOutput (Join-Path $logRoot "$stamp-blender.log") -RedirectStandardError (Join-Path $logRoot "$stamp-blender-errors.log") -PassThru
+diff --git a/tools/blender/start_mcp.py b/tools/blender/start_mcp.py
+index a38e267b..4d7ecc4f 100644
+--- a/tools/blender/start_mcp.py
++++ b/tools/blender/start_mcp.py
+@@ -1,8 +1,10 @@
+-"""Enable the reviewed local MCP add-on without saving the opened .blend file."""
++"""Enable the reviewed local MCP add-on for this visible session only."""
+ import json
+ import addon_utils
+ import bpy
+ 
++# Create the add-on's preference entry in memory without persisting factory defaults.
++bpy.context.preferences.use_preferences_save = False
+ addon_utils.enable("blender_mcp", default_set=True, persistent=True)
+ preferences = bpy.context.preferences.addons["blender_mcp"].preferences
+ preferences.telemetry_consent = False
+@@ -10,8 +12,8 @@ scene = bpy.context.scene
+ scene.blendermcp_port = 9876
+ for integration in ("polyhaven", "sketchfab", "polypizza", "hyper3d", "hunyuan3d"):
+     setattr(scene, "blendermcp_use_" + integration, False)
+-bpy.ops.wm.save_userpref()
+-if not bpy.types.blendermcp_server.running:
++server = getattr(bpy.types, "blendermcp_server", None)
++if server is None or not server.running:
+     bpy.ops.blendermcp.start_server()
+ print("WONDER_CHESS_MCP_READY " + json.dumps({
+     "file": bpy.data.filepath,
+@@ -19,5 +21,6 @@ print("WONDER_CHESS_MCP_READY " + json.dumps({
+     "objects": len(scene.objects),
+     "port": scene.blendermcp_port,
+     "telemetry_consent": preferences.telemetry_consent,
++    "preferences_auto_save": bpy.context.preferences.use_preferences_save,
+     "running": bpy.types.blendermcp_server.running,
+ }), flush=True)
+diff --git a/tools/blender/verify_mcp.py b/tools/blender/verify_mcp.py
+index 796f2bce..50a00bcd 100644
+--- a/tools/blender/verify_mcp.py
++++ b/tools/blender/verify_mcp.py
+@@ -1,72 +1,180 @@
+-"""Read-only live MCP handshake/scene/viewport check using project configuration."""
++"""Read-only MCP verification against an explicit, already-open candidate."""
++import argparse
+ import asyncio
+ import base64
++from datetime import datetime, timezone
+ import hashlib
+ import json
+ import os
+ from pathlib import Path
++import re
+ import tomllib
+-from datetime import datetime, timezone
+ 
+-from mcp import ClientSession, StdioServerParameters
+-from mcp.client.stdio import stdio_client
+-
+-
+-async def main():
+-    root = Path(__file__).resolve().parents[2]
+-    config = tomllib.loads((root / '.codex/config.toml').read_text())['mcp_servers']['blender']
+-    folder = root / 'reports/blender-mcp' / datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
+-    folder.mkdir(parents=True)
+-    source = root / 'art-source/heroes/wc_u_human_guardian/wc_u_human_guardian.blend'
+-    before = hashlib.sha256(source.read_bytes()).hexdigest()
+-    results = {'started_utc': datetime.now(timezone.utc).isoformat(), 'source_sha256_before': before}
+-    params = StdioServerParameters(command=config['command'], args=config['args'],
+-                                  cwd=config.get('cwd', str(root)), env={**os.environ, **config['env']})
+-    with (folder / 'server.log').open('w', encoding='utf-8') as log:
+-        async with stdio_client(params, errlog=log) as streams:
+-            async with ClientSession(*streams) as session:
+-                results['initialize'] = (await session.initialize()).model_dump(mode='json')
+-                listing = await session.list_tools()
+-                results['advertised_tools'] = [tool.name for tool in listing.tools]
+-                results['codex_enabled_tools'] = config['enabled_tools']
+-                results['tool_schemas'] = {tool.name: tool.inputSchema for tool in listing.tools if tool.name in config['enabled_tools']}
+-                for name, arguments in [
+-                    ('get_addon_status', {}),
+-                    ('get_scene_info', {}),
+-                    ('get_object_info', {'object_name': 'SK_wc_u_human_guardian'}),
+-                    ('execute_blender_code', {'code': 'import bpy\nimport json\nprint(json.dumps({"file": bpy.data.filepath, "version": bpy.app.version_string, "objects": len(bpy.context.scene.objects), "meshes": [o.name for o in bpy.context.scene.objects if o.type == "MESH"], "actions": [a.name for a in bpy.data.actions]}))'}),
+-                    ('get_viewport_screenshot', {'max_size': 1400}),
+-                ]:
+-                    arguments['user_prompt'] = 'lets conect this repo to blender using blender mcp'
+-                    result = await session.call_tool(name, arguments)
+-                    saved = result.model_dump(mode='json')
+-                    for block in saved.get('content', []):
+-                        if block['type'] == 'image':
+-                            path = folder / 'viewport.png'
+-                            path.write_bytes(base64.b64decode(block.pop('data')))
+-                            block['saved_path'] = str(path)
+-                    results[name] = saved
+-                    print(name, 'MCP_ERROR' if result.isError else 'returned', flush=True)
+-    results['source_sha256_after'] = hashlib.sha256(source.read_bytes()).hexdigest()
+-    results['source_unchanged'] = before == results['source_sha256_after']
+-    failures = []
+-    for name in config['enabled_tools']:
+-        result = results[name]
+-        texts = [block['text'] for block in result.get('content', []) if block['type'] == 'text']
+-        if result.get('isError') or any(text.lower().startswith(('error', 'failed', 'could not')) for text in texts):
+-            failures.append(name)
+-    if not results['source_unchanged']:
+-        failures.append('source_file_changed')
+-    status = json.loads(results['get_addon_status']['content'][0]['text'])
+-    if not status['up_to_date'] or status['telemetry_consent'] is not False:
+-        failures.append('protocol_or_telemetry')
+-    results['failures'] = failures
+-    results['passed'] = not failures
+-    (folder / 'verification.json').write_text(json.dumps(results, indent=2), encoding='utf-8')
++
++REQUIRED_TOOLS = (
++    "get_addon_status", "execute_blender_code", "get_scene_info",
++    "get_object_info", "get_viewport_screenshot",
++)
++INSPECT_CODE = (
++    'import bpy\nimport json\n'
++    'print(json.dumps({"file": bpy.data.filepath, "version": bpy.app.version_string, '
++    '"dirty": bpy.data.is_dirty, "objects": [{"name": o.name, "type": o.type} '
++    'for o in bpy.context.scene.objects]}))'
++)
++
++
++def checked_blend(path, root):
++    resolved = Path(path).resolve(strict=True)
++    if not resolved.is_relative_to(root.resolve()) or resolved.suffix.lower() != ".blend" or not resolved.is_file():
++        raise ValueError("Expected blend must be an existing .blend file inside this repository")
++    return resolved
++
++
++def tool_text(result):
++    return "\n".join(block["text"] for block in result.get("content", []) if block.get("type") == "text")
++
++
++def require_success(result):
++    message = tool_text(result).strip()
++    if result.get("isError") or re.match(r"(?:error|failed|could not|unable|rejected by safe mode|traceback)\b", message, re.I):
++        raise ValueError(message or "MCP returned isError without error text")
++    if not result.get("content"):
++        raise ValueError("MCP returned no content")
++
++
++def json_result(result, prefix=""):
++    require_success(result)
++    message = tool_text(result).strip()
++    if prefix:
++        if not message.startswith(prefix):
++            raise ValueError("Missing successful execution prefix: " + message)
++        message = message[len(prefix):].strip()
++    parsed = json.loads(message)
++    if not isinstance(parsed, dict):
++        raise ValueError("Expected a JSON object from MCP")
++    if parsed.get("error") or parsed.get("status") == "error":
++        raise ValueError(str(parsed.get("error") or parsed))
++    return parsed
++
++
++def assert_expected_scene(snapshot, expected):
++    actual = snapshot.get("file")
++    if not actual or Path(actual).resolve() != expected:
++        raise ValueError(f"Wrong live Blender file: expected {expected}; actual {actual!r}")
++
++
++def save_capture(result, folder):
++    require_success(result)
++    captures = [block for block in result["content"] if block.get("type") == "image"]
++    if len(captures) != 1 or captures[0].get("mimeType") != "image/png":
++        raise ValueError("Expected exactly one PNG viewport capture")
++    block = captures[0]
++    image_bytes = base64.b64decode(block["data"], validate=True)
++    if not image_bytes.startswith(b"\x89PNG\r\n\x1a\n"):
++        raise ValueError("Viewport capture has no PNG signature")
++    path = folder / "viewport.png"
++    with path.open("xb") as output:
++        output.write(image_bytes)
++    block.pop("data")
++    block["saved_path"] = str(path)
++    block["sha256"] = hashlib.sha256(image_bytes).hexdigest()
++    return path
++
++
++async def verify_session(session, config, expected, folder, user_prompt, results):
++    results["initialize"] = (await session.initialize()).model_dump(mode="json")
++    listing = await session.list_tools()
++    results["advertised_tools"] = [tool.name for tool in listing.tools]
++    results["codex_enabled_tools"] = config["enabled_tools"]
++    missing = set(REQUIRED_TOOLS) - (set(results["advertised_tools"]) & set(config["enabled_tools"]))
++    if missing:
++        raise ValueError("Required tools unavailable or disabled: " + ", ".join(sorted(missing)))
++
++    async def call(name, arguments):
++        response = await session.call_tool(name, {**arguments, "user_prompt": user_prompt})
++        saved = response.model_dump(mode="json")
++        results[name] = saved
++        require_success(saved)
++        return saved
++
++    status = json_result(await call("get_addon_status", {}))
++    if status.get("up_to_date") is not True or status.get("telemetry_consent") is not False:
++        raise ValueError("Addon protocol is not current or telemetry is not disabled: " + json.dumps(status))
++    snapshot = json_result(await call("execute_blender_code", {"code": INSPECT_CODE}), "Code executed successfully:")
++    results["live_snapshot"] = snapshot
++    assert_expected_scene(snapshot, expected)
++    json_result(await call("get_scene_info", {}))
++    objects = snapshot.get("objects", [])
++    if not objects:
++        raise ValueError("Live scene has no object available for get_object_info verification")
++    object_name = sorted(item["name"] for item in objects)[0]
++    results["inspected_object"] = object_name
++    info = json_result(await call("get_object_info", {"object_name": object_name}))
++    if info.get("name") != object_name:
++        raise ValueError("get_object_info returned a different object")
++    capture = await call("get_viewport_screenshot", {"max_size": 1400})
++    results["viewport_path"] = str(save_capture(capture, folder))
++
++
++async def run(args, root):
++    from mcp import ClientSession, StdioServerParameters
++    from mcp.client.stdio import stdio_client
++
++    expected = checked_blend(args.expected_blend, root)
++    folder = (Path(args.output_dir) if args.output_dir else root / "reports/blender-mcp" / datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")).resolve()
++    if not folder.is_relative_to(root.resolve()):
++        raise ValueError("Output directory must be inside this repository")
++    folder.mkdir(parents=True, exist_ok=False)
++    config = tomllib.loads((root / ".codex/config.toml").read_text(encoding="utf-8"))["mcp_servers"]["blender"]
++    before = hashlib.sha256(expected.read_bytes()).hexdigest()
++    results = {
++        "started_utc": datetime.now(timezone.utc).isoformat(),
++        "expected_blend": str(expected), "source_sha256_before": before,
++        "user_prompt": args.user_prompt, "passed": False, "failures": [],
++        "visual_review": "not_run; actual viewport image must be inspected separately",
++    }
++    try:
++        params = StdioServerParameters(command=config["command"], args=config["args"], cwd=config.get("cwd", str(root)), env={**os.environ, **config["env"]})
++        with (folder / "server.log").open("x", encoding="utf-8") as log:
++            async with asyncio.timeout(120):
++                async with stdio_client(params, errlog=log) as streams:
++                    async with ClientSession(*streams) as session:
++                        await verify_session(session, config, expected, folder, args.user_prompt, results)
++    except Exception as exc:
++        results["failures"].append(f"{type(exc).__name__}: {exc}")
++        # TaskGroup errors can hide the actionable tool message in nested exceptions.
++        pending = list(getattr(exc, "exceptions", []))
++        while pending:
++            nested = pending.pop(0)
++            results["failures"].append(f"{type(nested).__name__}: {nested}")
++            pending.extend(getattr(nested, "exceptions", []))
++    finally:
++        try:
++            results["source_sha256_after"] = hashlib.sha256(expected.read_bytes()).hexdigest()
++            results["source_unchanged"] = before == results["source_sha256_after"]
++        except OSError as exc:
++            results["source_unchanged"] = False
++            results["failures"].append(str(exc))
++        if not results["source_unchanged"]:
++            results["failures"].append("Expected blend changed on disk during read-only verification")
++        results["passed"] = not results["failures"]
++        results["finished_utc"] = datetime.now(timezone.utc).isoformat()
++        with (folder / "verification.json").open("x", encoding="utf-8") as output:
++            json.dump(results, output, indent=2)
+     print(folder, flush=True)
+-    if failures:
+-        raise SystemExit('MCP verification failed: ' + ', '.join(failures))
++    if not results["passed"]:
++        raise SystemExit("MCP verification failed: " + "; ".join(results["failures"]))
++    print("MCP read-only verification passed; visual review remains separate.", flush=True)
++
++
++def main():
++    parser = argparse.ArgumentParser(description=__doc__)
++    parser.add_argument("--expected-blend", required=True)
++    parser.add_argument("--output-dir", help="New evidence directory inside the repository; never overwritten")
++    parser.add_argument("--user-prompt", required=True, help="The user's actual instruction, quoted verbatim")
++    args = parser.parse_args()
++    asyncio.run(run(args, Path(__file__).resolve().parents[2]))
+ 
+ 
+-if __name__ == '__main__':
+-    asyncio.run(asyncio.wait_for(main(), timeout=120))
++if __name__ == "__main__":
++    main()
+diff --git a/tools/unreal/launch_alpha.ps1 b/tools/unreal/launch_alpha.ps1
+index de033ab3..f3085df5 100644
+--- a/tools/unreal/launch_alpha.ps1
++++ b/tools/unreal/launch_alpha.ps1
+@@ -1,7 +1,7 @@
+ [CmdletBinding()]
+ param(
+     [ValidateSet('Play','Listen','Join','Regression')][string]$Mode='Play',
+-    [string]$Executable=(Join-Path $PSScriptRoot '../../builds/WonderChess-Alpha-Candidate/Windows/WonderChess.exe'),
++    [string]$Executable=(Join-Path $PSScriptRoot '../../builds/WonderChess-Update24-Checkpoint-r4/Windows/WonderChess.exe'),
+     [string]$HostAddress='127.0.0.1',
+     [ValidateRange(1,65535)][int]$Port=7777,
+     [ValidateRange(1,1000)][int]$Trials=100,

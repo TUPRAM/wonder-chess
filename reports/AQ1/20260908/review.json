@@ -1,0 +1,243 @@
+{
+  "schema_version": "AQ1-review-1",
+  "asset_id": "wc_u_human_guardian",
+  "status": "CANDIDATE_EXECUTED_REFERENCE_APPROVAL_PENDING",
+  "source_commit": "9623fd82f98ff80a90985b9f552d8851ccece30f",
+  "source_sha256": "54f04b8f28fd819eb22b7a4f6c8051484c6466513e6cd43d419c835b67d950b3",
+  "candidate_sha256": "cd6bb6ddb3a54aaa15be3112a804caf0820f9ad1162b7cb8ee345f646bef8a67",
+  "engine_version": "5.7.4-51494982",
+  "blender_version": "5.1.1",
+  "before_assets": [
+    "art-source/heroes/wc_u_human_guardian/candidates/AQ1/before_canonical.blend",
+    "art-source/heroes/wc_u_human_guardian/candidates/AQ1/before_live_scene.blend"
+  ],
+  "candidate_assets": [
+    "art-source/heroes/wc_u_human_guardian/candidates/AQ1/ada_forms_r08.blend",
+    "art-source/heroes/wc_u_human_guardian/candidates/AQ1/ada_baked_r07.blend",
+    "art-source/heroes/wc_u_human_guardian/candidates/AQ1/exports/r07/export_manifest.json",
+    "/Game/WonderChess/Candidates/AQ1/Ada_r01"
+  ],
+  "human_concept_approval": {
+    "status": "USER_SELECTED_ATTACHED_REFERENCE",
+    "selected_candidate": "approved_reference.png",
+    "reviewer": "Pram",
+    "date": "2026-09-08",
+    "evidence": [
+      "Current user assignment explicitly chooses the attached Ada reference; supersedes generic three-silhouette selection gate.",
+      "art-source/heroes/wc_u_human_guardian/candidates/AQ1/approved_reference.png"
+    ]
+  },
+  "human_reference_approval": {
+    "status": "pending",
+    "reviewer": null,
+    "date": null,
+    "evidence": []
+  },
+  "checks": [
+    {
+      "id": "baseline",
+      "requirement": "Current revision, saved before-copy, actual metadata and matched camera captures",
+      "status": "PASS_EXECUTED",
+      "evidence": [
+        "reports/AQ1/20260908/baseline_hashes.json",
+        "reports/AQ1/20260908/live_snapshot.json",
+        "reports/AQ1/20260908/before_relinked/loaded_metadata.json",
+        "reports/AQ1/20260908/comparison/provenance.json"
+      ],
+      "observations": "Loaded canonical asset9068tris,4787verts,27bones,sevenactions. Initial copied-source material render had unresolved relative textures; corrected copies retained. Actual MCP screenshot and saved before-copy obtained.",
+      "reviewer": "Codex observed tooling/pixels; Pram art approval pending"
+    },
+    {
+      "id": "silhouette",
+      "requirement": "Three proposed silhouettes compared; approved design recognizable at small size",
+      "status": "REBUILT_HUMAN_APPROVAL_PENDING",
+      "evidence": [
+        "reports/AQ1/20260908/comparison/material_before_after.png",
+        "reports/AQ1/20260908/reference_review/REVIEW.md"
+      ],
+      "observations": "Reference chosen by user; candidate remains simpler in expression, hair, armor and tailoring. No numeric self-approval.",
+      "reviewer": "Codex observed tooling/pixels; Pram art approval pending"
+    },
+    {
+      "id": "head",
+      "requirement": "Coherent facial/neck forms; character identity and eye direction preserved",
+      "status": "REVISED_VISUAL_DEFECTS_OPEN",
+      "evidence": [
+        "reports/AQ1/20260908/after_matched_r07/material_face.png",
+        "reports/AQ1/20260908/after_matched_r07/clay_face.png"
+      ],
+      "observations": "New continuous head/neck/nose topology replaces the112vertex shell. Eyes/expression/hair masses remain schematic compared with reference.",
+      "reviewer": "Codex observed tooling/pixels; Pram art approval pending"
+    },
+    {
+      "id": "armor",
+      "requirement": "Shaped shoulder/chest surfaces; intended sharp edges without unintended faceting",
+      "status": "REVISED_VISUAL_DEFECTS_OPEN",
+      "evidence": [
+        "reports/AQ1/20260908/after_matched_r07/clay_three_quarter.png",
+        "reports/AQ1/20260908/reference_review/REVIEW.md"
+      ],
+      "observations": "Curved chest/pauldrons replace flat/faceted blockout; shoulders and sleeves still cap/tube-like, construction boundaries need polish.",
+      "reviewer": "Codex observed tooling/pixels; Pram art approval pending"
+    },
+    {
+      "id": "shield",
+      "requirement": "Convex face, clear crest, plausible grip/back and eye clearance",
+      "status": "REVISED_VIEW_DEPENDENT_OCCLUSION",
+      "evidence": [
+        "reports/AQ1/20260908/after_matched_r07/material_shield_back.png",
+        "reports/AQ1/20260908/review_engine_motion_r03/REVIEW.md"
+      ],
+      "observations": "Convex peaked kite with raised crest and rear straps; Active capture4 obscures face in frontal gallery, although Blender three-quarter active19 clears it.",
+      "reviewer": "Codex observed tooling/pixels; Pram art approval pending"
+    },
+    {
+      "id": "sword",
+      "requirement": "Blade cross-section, bevel/taper, guard and grip read in oblique views",
+      "status": "REVISED_APPROVAL_PENDING",
+      "evidence": [
+        "reports/AQ1/20260908/after_matched_r07/material_blade_edge.png",
+        "reports/AQ1/20260908/after_matched_r07/material_grip.png"
+      ],
+      "observations": "Tapered forged ridge, bevel, guard and downward idle blade improved. Grip/guard finish still needs visual refinement.",
+      "reviewer": "Codex observed tooling/pixels; Pram art approval pending"
+    },
+    {
+      "id": "hands",
+      "requirement": "Palm, fingers, thumb and wrist read as coherent grip without stacked-loop appearance",
+      "status": "REVISED_CONTACT_REVIEW_OPEN",
+      "evidence": [
+        "reports/AQ1/20260908/after_matched_r07/material_grip.png",
+        "reports/AQ1/20260908/review_blender_motion_r06/REVIEW.md"
+      ],
+      "observations": "Named connected palm/thumb/fingers, not old count surgery. Repetitive finger bands and wrist/contact construction remain visible.",
+      "reviewer": "Codex observed tooling/pixels; Pram art approval pending"
+    },
+    {
+      "id": "costume",
+      "requirement": "Layering, folds, material boundaries and quiet low-priority details",
+      "status": "REVISED_DEFORMATION_DEFECTS_OPEN",
+      "evidence": [
+        "reports/AQ1/20260908/review_blender_motion_r06/REVIEW.md",
+        "reports/AQ1/20260908/review_engine_motion_r03/REVIEW.md"
+      ],
+      "observations": "Source r08 fixes gross crown/defeat cut-through, but Move ivory/tabard intersection, Hit waist crescent and stiff defeat panels remain.",
+      "reviewer": "Codex observed tooling/pixels; Pram art approval pending"
+    },
+    {
+      "id": "materials",
+      "requirement": "Real surface content, appropriate normals/data color spaces and matched Unreal interpretation",
+      "status": "BAKE_IMPORT_REIMPORT_EXECUTED",
+      "evidence": [
+        "reports/AQ1/20260908/color_encoding_probe_r02/color-encoding-results.json",
+        "reports/AQ1/20260908/normal_probe_unreal_r06/orientation-review.json",
+        "reports/AQ1/20260908/reimport-r03.json",
+        "reports/AQ1/20260908/after_matched_r07/material_three_quarter.png"
+      ],
+      "observations": "Actual1K selected-to-active normal/AO/channel bakes. BaseColor RGB8 corrected16bit import washout; ORM/Normal linear. One green flip verified against asymmetric physical control. No AO-source alteration executed. Fresh r04 records all referenced textures fully ready before all seven clips, and frame0 no longer shows the transient detail artifact.",
+      "reviewer": "Codex observed tooling/pixels; Pram art approval pending"
+    },
+    {
+      "id": "topology",
+      "requirement": "No obsolete count-based surgery; silhouette/deformation support and measured geometry",
+      "status": "MEASURED_EXPERIMENT_BUDGET_APPROVAL_PENDING",
+      "evidence": [
+        "reports/AQ1/20260908/baked_r06/export.json"
+      ],
+      "observations": "24,280 triangles,22,803 UE render vertices, one actual material/LOD0section; two retained name slots reference same MI afterreimport. Exceeds15k ordinary target, within25k comparison allowance; not approved forshipping. UV sampledcoverage41.42%,overlap0/OOB0,but14zeroareaUVtris and2710subpixel triangles remain limitations.",
+      "reviewer": "Codex observed tooling/pixels; Pram art approval pending"
+    },
+    {
+      "id": "rig",
+      "requirement": "Rest/bone/socket compatibility or reviewed isolated retarget migration",
+      "status": "PASS_REST_ACTION_IMPORT_COMPATIBILITY",
+      "evidence": [
+        "reports/AQ1/20260908/before_relinked/loaded_metadata.json",
+        "reports/AQ1/20260908/cold-r03.json",
+        "reports/AQ1/20260908/compatibility_review/REVIEW.md"
+      ],
+      "observations": "27bones and root/rest/action hashes retained. Head154.7cm,height182.162cm,reference rootzero. Existing animation semantics/windows preserved; no retarget/scale migration.",
+      "reviewer": "Codex observed tooling/pixels; Pram art approval pending"
+    },
+    {
+      "id": "animation",
+      "requirement": "All seven clips reviewed continuously and at extrema, with real evidence",
+      "status": "FRAME_SEQUENCE_REVIEWED_CONTINUOUS_HUMAN_REVIEW_PENDING",
+      "evidence": [
+        "reports/AQ1/20260908/review_blender_motion_r06/REVIEW.md",
+        "reports/AQ1/20260908/review_engine_motion_r03/REVIEW.md",
+        "reports/AQ1/20260908/videos_before/encoding-report.json",
+        "reports/AQ1/20260908/engine_candidate_motion_r04/engine-motion.json",
+        "reports/AQ1/20260908/videos_candidate_r04/encoding-report.json",
+        "reports/AQ1/20260908/review_engine_motion_r04/REVIEW.md"
+      ],
+      "observations": "436 source frames measured;154 Blender images and150 actual engine frames over7clips inspected in chronological sequences. No real-time audiovisual playback approval claimed. All7candidateMP4s encoded and decoderchecked from r04actualframes; human real-time visual/audio approval remains pending.",
+      "reviewer": "Codex observed tooling/pixels; Pram art approval pending"
+    },
+    {
+      "id": "engine",
+      "requirement": "Candidate import plus normal gameplay/crowded encounter inspection",
+      "status": "PASS_IMPORT_AND_CROWDED_CAPTURE_WITH_RETAINED_EVIDENCE_GAP",
+      "evidence": [
+        "reports/AQ1/20260908/reimport-r03.json",
+        "reports/AQ1/20260908/cold-r03.json",
+        "reports/AQ1/20260908/engine_candidate_motion_r03/engine-motion.json",
+        "reports/AQ1/20260908/engine_candidate_match_r01/launch.json",
+        "reports/AQ1/20260908/review_candidate_match/run_summary.json"
+      ],
+      "observations": "Actual compiled Unreal-game gallery and combat show candidate Ada, shield effect and friendly/enemy views.600-second timed capture reaches round15, settlements1-14, complete=false.69 sampled states have Ada and>=12 living units;76 states have eight neutral encounters. One snapshot-write warning leaves a1.010247-second gap; no candidate-load errors. This is uncooked scripted-seat evidence, not a completed manual/packaged tournament.",
+      "reviewer": "Codex observed tooling/pixels; Pram art approval pending"
+    },
+    {
+      "id": "lods",
+      "requirement": "Actual screen-distance comparisons and transitions, not ratio-only acceptance",
+      "status": "PENDING_PRAM_LOD0_APPROVAL",
+      "evidence": [],
+      "observations": "Contract requires LOD0 art approval before lower LODs; current candidate has onlyLOD0. No blanket decimation or shippingcap update.",
+      "reviewer": "Codex observed tooling/pixels; Pram art approval pending"
+    },
+    {
+      "id": "reimport",
+      "requirement": "Deliberate source change/reimport preserves expected references and appearance",
+      "status": "PASS_EXECUTED_SAME_IDENTITIES_COLD",
+      "evidence": [
+        "reports/AQ1/20260908/baked_r07/source-change.json",
+        "reports/AQ1/20260908/reimport-r03.json",
+        "reports/AQ1/20260908/cold-r03.json"
+      ],
+      "observations": "Deliberate source BaseColor encoding change, FBX/texture reexport, samepath reimport and separateprocess load. Mesh/skeleton identities and protectedcontent retained. Gray r02 exposed slot remapping and stalegraph; repairedr03 loaded actualcorrectpalette.",
+      "reviewer": "Codex observed tooling/pixels; Pram art approval pending"
+    },
+    {
+      "id": "performance",
+      "requirement": "Measured actual target hardware/preset and busy-fight cost; no inferred mobile results",
+      "status": "MEASURED_HITCH_AND_APPROVAL_OPEN",
+      "evidence": [
+        "reports/AQ1/20260908/performance_review/PERFORMANCE.md",
+        "reports/AQ1/20260908/performance_review/PAIRED_OBSERVATIONS.md",
+        "reports/AQ1/20260908/performance_review/performance.json",
+        "reports/AQ1/20260908/profile-candidate-start-context.json"
+      ],
+      "observations": "Same recorded hardware/settings/seed: Ryzen7 6800H, RTX3060 Laptop, D3D11 1080p100%,60FPS cap, VSync off. Baseline20,547 versus candidate20,583 samples. Frame p95 16.693/16.679ms; GPU p95 21.444/21.801ms; eight-neutral frame p99 24.121/29.589ms. Candidate maximum235.061ms versus baseline100.018ms is retained. One descriptive capped pair does not isolate Ada cost or approve the25k experiment. Neither profile contains a completed tournament.",
+      "reviewer": "Codex observed tooling/pixels; Pram art approval pending"
+    }
+  ],
+  "blocking_issues": [
+    "Reference likeness and polish not accepted by Pram; source remains visibly simplified.",
+    "Named animation deformation/contact defects remain.",
+    "25k comparison exception and LOD0 art approval pending; shipping15k cap unchanged.",
+    "Continuous audiovisual human review and candidate packaging notperformed.",
+    "Paired profile retains a235.061ms candidate hitch and worse eight-neutral tail; investigate/repeat before performance acceptance."
+  ],
+  "known_nonblocking_issues": [
+    "Source and failed candidates retained; canonical log contains original trailing whitespace and was not rewritten.",
+    "Invalid-root request was refused, but UEgraceful startup exited0 despite requested2; wrapper also examines namederrors.",
+    "Combat capture has one snapshot-write warning/gap; mutable-log reader contention is possible, not proven. No missing snapshot was fabricated.",
+    "Both profiles retain the same MID_M_WC_Surface_5 material-usage/fallback warning; not established as Ada-specific."
+  ],
+  "promotion": {
+    "allowed": false,
+    "reason": "Candidate-only experiment: visual issues and Pram approval remain open. No production asset, balance file or shared rig was replaced."
+  },
+  "notice": "This template is not a schema-enforced validator or evidence of asset quality. Fill only from actual inspection."
+}

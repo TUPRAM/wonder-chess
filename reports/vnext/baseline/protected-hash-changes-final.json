@@ -1,0 +1,32 @@
+{
+  "schema": "wonder_vnext.protected_baseline_verification.1",
+  "verified_utc": "2026-09-10T16:39:34.697250+00:00",
+  "checked_files": 717,
+  "unchanged_files": 713,
+  "changed": [
+    {
+      "path": "AGENTS.md",
+      "before_sha256": "fcfe559ad5f12689a1ea4b6c95d98e556790f9fc60f7544465b2364def077a01",
+      "after_sha256": "7e5925cee3202824b4055117f0c97b0d4e21ebd9a1dc9affbecbf16cfdd53235"
+    },
+    {
+      "path": "game/Source/WonderChessRuntime/Public/Simulation/WonderSimulation.h",
+      "before_sha256": "a5bc6c38be0317e3cab1be97c6e94d6700e8cee50d4add6868f4a8872f809a27",
+      "after_sha256": "50ba6abcc2660d7fec7c2d3d199dc06218335f167f2e07cb4cacc6f835c8b40a"
+    },
+    {
+      "path": "reports/implementation_state.json",
+      "before_sha256": "cfabd0fc4f438e22fd0ec31a8064c1200e2bda6bc7af55151c266c06c7c95e4f",
+      "after_sha256": "9549508470ac14636309875881d8b95908366eed70dc5043766279a4be6fc62c"
+    },
+    {
+      "path": "START_HERE.md",
+      "before_sha256": "1ec350acf64951ed3c69f5e24fae094c2fb2bbe5dd3525af91cab92459384ead",
+      "after_sha256": "8fdcd07186619b25aaad11ef7c573f54898ed7a952e1c066395ae3f26683e7a5"
+    }
+  ],
+  "missing": [],
+  "unexpected_changes": [],
+  "passed": true,
+  "boundary": "These four explicit contract/runtime/ledger edits are authorized. Baseline snapshot includes an early successor header edit; it is not a pristine Git tree. Other selected preexisting dirty files and legacy assets/package remain byte-identical."
+}
