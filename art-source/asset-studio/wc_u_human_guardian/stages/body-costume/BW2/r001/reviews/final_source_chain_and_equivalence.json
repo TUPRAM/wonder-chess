@@ -1,0 +1,77 @@
+{
+  "status": "SOURCE_CHAIN_AND_SAVE_SEMANTICS_VERIFIED",
+  "required_checks": {
+    "frozen16_preservation_checks_pass": true,
+    "work16_preservation_checks_pass": true,
+    "frozen_work_inspected_semantics_equal": true,
+    "measured_input_matches_final_original_meshes": true,
+    "measured_input_matches_final_new_meshes": true,
+    "measured_input_matches_final_actions": true,
+    "measured_input_matches_final_rig_pose": true,
+    "measured_input_matches_final_holder": true,
+    "measured_input_matches_final_handle": true,
+    "measured_input_matches_final_modifier_changes": true,
+    "measured_input_matches_final_hand_contract": true,
+    "measurement_62_inputs_preserved": true
+  },
+  "identity_observation": {
+    "byte_identical": false,
+    "semantic_equality": true,
+    "frozen_sha256": "d64d5900317541710d5ef29939d12559e5ecef31777a7e9261158cbccb7a41cf",
+    "work_sha256": "5c639f70facb63f5cc16f5a6ee57917606968e31170a41366c9f4a588d47750c",
+    "measured_input_sha256": "4103457fe00a2b1ebe5477d3d8e633e0985f4b0fef8ea16cc820b51c04e4f224"
+  },
+  "frozen_work_observed_differences": [
+    {
+      "path": "/candidate",
+      "before": "C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_u_human_guardian\\stages\\body-costume\\BW2\\r001\\ada_bw2_grip_checkpoint_r001_ART_REVISE.blend",
+      "after": "C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_u_human_guardian\\stages\\body-costume\\BW2\\r001\\ada_bw2_grip_work.blend"
+    },
+    {
+      "path": "/candidate_sha256",
+      "before": "d64d5900317541710d5ef29939d12559e5ecef31777a7e9261158cbccb7a41cf",
+      "after": "5c639f70facb63f5cc16f5a6ee57917606968e31170a41366c9f4a588d47750c"
+    },
+    {
+      "path": "/utc",
+      "before": "2026-09-09T08:11:06.078430+00:00",
+      "after": "2026-09-09T08:11:06.399789+00:00"
+    }
+  ],
+  "measured_input_to_final_scene_changes": [
+    {
+      "path": "/properties/BW2_candidate_status",
+      "before": "MISSING",
+      "after": "ART_REVISE"
+    },
+    {
+      "path": "/properties/BW2_capture_note",
+      "before": "MISSING",
+      "after": "Matched captures grip_initial versus grip_integrated use unchanged cameras and clay. Actual posed cage uses original editable glove base with armature, subdivision disabled and wire overlay; handle hidden. Reversed lighting swaps key/fill locations only."
+    },
+    {
+      "path": "/properties/BW2_human_approval",
+      "before": "MISSING",
+      "after": "NOT_ISSUED"
+    },
+    {
+      "path": "/properties/BW2_recipe_status",
+      "before": "MISSING",
+      "after": "NOT_PROMOTED; replay and second body NOT_RUN"
+    },
+    {
+      "path": "/properties/BW2_runtime_path",
+      "before": "MISSING",
+      "after": "AUTHORING_ONLY; proposed fixed posed grip in derived hand export requires rest-space conversion and wrist seam checks; no game skeleton changes or import."
+    },
+    {
+      "path": "/properties/BW2_stop_reason",
+      "before": "MISSING",
+      "after": "Retained calibrated contact improvement fails anatomical enclosure: confirmed nonadjacent hand self intersections and severe thumb-web fold. Stop pose search; no actual sword adaptation."
+    }
+  ],
+  "source_array_mesh_count": 61,
+  "new_meshes_compared": 8,
+  "art_approval": false,
+  "acceptance_boundary": "Contact sampling and preserved source data do not override thumb/web self-intersection failure. G02 remains ART_REVISE."
+}

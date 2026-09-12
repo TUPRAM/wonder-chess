@@ -1,0 +1,60 @@
+{
+  "source_sha256": "d64d5900317541710d5ef29939d12559e5ecef31777a7e9261158cbccb7a41cf",
+  "native_render_metadata_sha256": "000d591f5b18148c1b90bb42dbcc5769204fcdfd110647c1a20b0c4389e65f19",
+  "final_source_audit_sha256": "7fea8a8a87d697f7fac7fff0f8cf0d25f4945c8b8558e27c567d2883f01b2c09",
+  "resolution": [
+    800,
+    800
+  ],
+  "frame_range": [
+    1,
+    145
+  ],
+  "fps": 24,
+  "camera": "BW2_cam_carry_close",
+  "projection": "ORTHO",
+  "ortho_scale_m": 0.3199999928474426,
+  "camera_matrices": "metadata.json:camera_matrices_every_frame",
+  "engine": "BLENDER_WORKBENCH",
+  "light": "STUDIO",
+  "studio_light_name": "Default",
+  "studiolight_rotate_z": 0.4000000059604645,
+  "shadows": true,
+  "cavity": "BOTH",
+  "specular_highlight": true,
+  "single_color": [
+    0.55,
+    0.55,
+    0.55
+  ],
+  "world_background": [
+    0.09,
+    0.09,
+    0.09
+  ],
+  "view_transform": "Standard",
+  "look": "None",
+  "exposure": 0,
+  "gamma": 1,
+  "metadata_field_clarification": "The original renderer metadata key lighting.studio_light contains its numeric rotation. This addendum separates the verified saved studio-light name from studiolight_rotate_z; neither was altered by the renderer.",
+  "actual_frames_visually_inspected": [
+    1,
+    25,
+    93,
+    121
+  ],
+  "visual_observation": "The full hand and fixture fit within these four inspected native frames; the thumb/web remains distorted. This is not a continuous visual review or art approval.",
+  "movie_sha256": "acce52246f19720f0bc6b7f28c54dd94eb3f4016931ff1bab751c2ca29c21eb0",
+  "native_encoder_reported_frames": 145,
+  "independent_movie_decode": {
+    "status": "PASS",
+    "method": "Fresh factory-startup native Blender VSE movie strip, every frame rendered from MP4 to verify actual decode",
+    "decoded_frames": 145,
+    "fps": 24.0,
+    "dimensions": [
+      800,
+      800
+    ],
+    "evidence": "video_verification.json"
+  }
+}

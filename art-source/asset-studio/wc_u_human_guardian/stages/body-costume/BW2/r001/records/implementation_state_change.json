@@ -1,0 +1,20 @@
+{
+  "scope": "Only current AS1 art pointers and new BW2 record; previous BW1 pointers retained.",
+  "before_sha256": "7a80bb792272ceb7744398dbb5ba38cd10f4fb94251c6bfe4115c8e1845fe84e",
+  "after_sha256": "b4ab1fd9eaefeafa214e6aabcfdeb6d12e05a4767e7676bc7cd46009eb3ac647",
+  "outside_as1_unchanged": true,
+  "historical_as1_members_unchanged": true,
+  "changed_existing_as1_fields": [
+    "ada_status",
+    "review_packet",
+    "checkpoint",
+    "active_blend",
+    "frozen_blend",
+    "next_required_action",
+    "separate_art_review"
+  ],
+  "added_as1_fields": [
+    "bw2_previous_bw1_context",
+    "ada_body_contact_bw2"
+  ]
+}

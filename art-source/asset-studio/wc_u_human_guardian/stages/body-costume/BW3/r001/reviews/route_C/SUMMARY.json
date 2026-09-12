@@ -1,0 +1,225 @@
+{
+  "status": "ART_REVISE",
+  "scope": "Thumb approach/carry only; other digits OPEN; no full grip or sword pass",
+  "source_sha256": "2dad0803a3e8bfd1974b3bf86dbf5377cd462807f02fb9e76f45463205ba2a1d",
+  "unique_surface_states": 604,
+  "integer_frames_per_surface": 145,
+  "matched_adaptive_frames": [
+    13.25,
+    13.5,
+    13.75,
+    18.25,
+    18.5,
+    18.75
+  ],
+  "intersurface_integer_frames": 145,
+  "source_saved": false,
+  "pose_or_weight_optimization": false,
+  "human_approval": false,
+  "surfaces": [
+    {
+      "object": "BW3_Derived_Glove",
+      "surface": "evaluated_level1",
+      "onsets": {
+        "any_self_crossing": {
+          "first_detected_frame": null,
+          "previous_sample_frame": null
+        },
+        "palm_thumb_crossing": {
+          "first_detected_frame": null,
+          "previous_sample_frame": null
+        },
+        "thumb_other_digit_crossing": {
+          "first_detected_frame": null,
+          "previous_sample_frame": null
+        },
+        "middle_ring_crossing": {
+          "first_detected_frame": null,
+          "previous_sample_frame": null
+        },
+        "handle_entry": {
+          "first_detected_frame": null,
+          "previous_sample_frame": null
+        },
+        "handle_deeper_than0_5mm": {
+          "first_detected_frame": null,
+          "previous_sample_frame": null
+        }
+      },
+      "maximum_self_crossing_pairs": 0,
+      "endpoint_self_crossings": {},
+      "any_handle_triangle_entry": false,
+      "minimum_vertex_sdf_mm": 0.4887713350740005
+    },
+    {
+      "object": "BW3_Derived_Glove",
+      "surface": "raw_posed_cage",
+      "onsets": {
+        "any_self_crossing": {
+          "first_detected_frame": null,
+          "previous_sample_frame": null
+        },
+        "palm_thumb_crossing": {
+          "first_detected_frame": null,
+          "previous_sample_frame": null
+        },
+        "thumb_other_digit_crossing": {
+          "first_detected_frame": null,
+          "previous_sample_frame": null
+        },
+        "middle_ring_crossing": {
+          "first_detected_frame": null,
+          "previous_sample_frame": null
+        },
+        "handle_entry": {
+          "first_detected_frame": null,
+          "previous_sample_frame": null
+        },
+        "handle_deeper_than0_5mm": {
+          "first_detected_frame": null,
+          "previous_sample_frame": null
+        }
+      },
+      "maximum_self_crossing_pairs": 0,
+      "endpoint_self_crossings": {},
+      "any_handle_triangle_entry": false,
+      "minimum_vertex_sdf_mm": 0.3764788897868462
+    },
+    {
+      "object": "BW3_Derived_Body",
+      "surface": "evaluated_level1",
+      "onsets": {
+        "any_self_crossing": {
+          "first_detected_frame": 19,
+          "previous_sample_frame": 18.75
+        },
+        "palm_thumb_crossing": {
+          "first_detected_frame": 19,
+          "previous_sample_frame": 18.75
+        },
+        "thumb_other_digit_crossing": {
+          "first_detected_frame": null,
+          "previous_sample_frame": null
+        },
+        "middle_ring_crossing": {
+          "first_detected_frame": null,
+          "previous_sample_frame": null
+        },
+        "handle_entry": {
+          "first_detected_frame": null,
+          "previous_sample_frame": null
+        },
+        "handle_deeper_than0_5mm": {
+          "first_detected_frame": null,
+          "previous_sample_frame": null
+        }
+      },
+      "maximum_self_crossing_pairs": 14,
+      "endpoint_self_crossings": {
+        "palm/thumb": 9,
+        "thumb/thumb": 4,
+        "palm/palm": 1
+      },
+      "any_handle_triangle_entry": false,
+      "minimum_vertex_sdf_mm": 1.4900323342311328
+    },
+    {
+      "object": "BW3_Derived_Body",
+      "surface": "raw_posed_cage",
+      "onsets": {
+        "any_self_crossing": {
+          "first_detected_frame": 13.75,
+          "previous_sample_frame": 13.5
+        },
+        "palm_thumb_crossing": {
+          "first_detected_frame": 13.75,
+          "previous_sample_frame": 13.5
+        },
+        "thumb_other_digit_crossing": {
+          "first_detected_frame": null,
+          "previous_sample_frame": null
+        },
+        "middle_ring_crossing": {
+          "first_detected_frame": null,
+          "previous_sample_frame": null
+        },
+        "handle_entry": {
+          "first_detected_frame": null,
+          "previous_sample_frame": null
+        },
+        "handle_deeper_than0_5mm": {
+          "first_detected_frame": null,
+          "previous_sample_frame": null
+        }
+      },
+      "maximum_self_crossing_pairs": 9,
+      "endpoint_self_crossings": {
+        "thumb/thumb": 9
+      },
+      "any_handle_triangle_entry": false,
+      "minimum_vertex_sdf_mm": 1.4497454801536291
+    }
+  ],
+  "held_thumb": {
+    "minimum_gap_mm": 27.591239408185455,
+    "maximum_gap_mm": 31.63490317240588,
+    "minimum_band_fraction": 0.0,
+    "maximum_band_fraction": 0.0,
+    "minimum_usable_axial_fraction": 1.0,
+    "mean_normal_dot_toward_fixture_range": [
+      -0.9117739122763948,
+      -0.9117660337189343
+    ]
+  },
+  "fixture_and_pose": {
+    "maximum_endpoint_drift_mm": 0.000488733127162469,
+    "maximum_center_drift_mm": 0.0004829677602840022,
+    "maximum_axis_drift_degrees": 1.5320420339170408e-05,
+    "maximum_other_digit_OPEN_error": 0.0,
+    "maximum_pose_scale_error": 0.0,
+    "constant_rig_world_scale": [
+      1.1438040733337402,
+      1.1438040733337402,
+      1.1438040733337402
+    ],
+    "topology_and_group_identity_checked": true
+  },
+  "glove_body_fit": {
+    "pair_count_range": [
+      131,
+      170
+    ],
+    "open_pairs": 137,
+    "endpoint_pairs": 163,
+    "endpoint_pairs_touching_boundary_vertices": 42,
+    "geometry_degeneracy": {
+      "glove": {
+        "maximum_nonfinite_vertices": 0,
+        "maximum_triangles_area_below_1e_14_m2": 0
+      },
+      "body": {
+        "maximum_nonfinite_vertices": 0,
+        "maximum_triangles_area_below_1e_14_m2": 0
+      }
+    },
+    "containment_certified": false,
+    "reference_zone_counts": {
+      "1": {
+        "wrist_band_Y_lt25mm": 125,
+        "palm_thenar_Y25to125mm": 0,
+        "distal_Y_ge125mm": 12
+      },
+      "25": {
+        "wrist_band_Y_lt25mm": 127,
+        "palm_thenar_Y25to125mm": 24,
+        "distal_Y_ge125mm": 12
+      },
+      "145": {
+        "wrist_band_Y_lt25mm": 127,
+        "palm_thenar_Y25to125mm": 24,
+        "distal_Y_ge125mm": 12
+      }
+    }
+  },
+  "source_sha256_after": "2dad0803a3e8bfd1974b3bf86dbf5377cd462807f02fb9e76f45463205ba2a1d"
+}

@@ -1,0 +1,58 @@
+{
+  "source_sha256": "983311ca1c50a44779982b455ca17c2d3db346950a90d59c82b177f9aaeed3f4",
+  "method": "Evaluated glove triangles clipped against capped cylinder axial slabs; minimum radial distance of the resulting projected convex polygon. Bisection tests intersection with an inward-offset cylinder, bounding the deepest signed-cylinder penetration over triangle interiors, not only vertices.",
+  "numerical_depth_interval_width_m": 5.340576171875e-08,
+  "proxy": "Locked ideal circular cylinder radius0.014m, span0.109m. Actual96-sided proxy differs radially by <=0.0075mm.",
+  "results": [
+    {
+      "label": "initial",
+      "triangle_count_right_hand_screened": 9088,
+      "triangles_intersecting_cylinder_solid": 9,
+      "triangles_penetrating_deeper_than_0_5mm": 0,
+      "deep_triangles": [],
+      "maximum_triangle_penetration_depth_mm_interval": [
+        0.3668975830078125,
+        0.36695098876953125
+      ],
+      "worst_triangle": {
+        "index": 9154,
+        "vertices": [
+          2595,
+          1331,
+          4287
+        ],
+        "point_hand_m": [
+          -0.004027197504502311,
+          0.10591992324150912,
+          0.04817304439511494
+        ]
+      }
+    },
+    {
+      "label": "best",
+      "triangle_count_right_hand_screened": 9088,
+      "triangles_intersecting_cylinder_solid": 11,
+      "triangles_penetrating_deeper_than_0_5mm": 0,
+      "deep_triangles": [],
+      "maximum_triangle_penetration_depth_mm_interval": [
+        0.3376846313476562,
+        0.33773803710937494
+      ],
+      "worst_triangle": {
+        "index": 10708,
+        "vertices": [
+          8196,
+          4361,
+          1371
+        ],
+        "point_hand_m": [
+          -0.006910327288292495,
+          0.09960562799089137,
+          0.05224479147287743
+        ]
+      }
+    }
+  ],
+  "not_tested": "Glove self-intersection, other posed fingers, moving grip, bone length change, skin changes; no changes were made to these.",
+  "source_sha256_after": "983311ca1c50a44779982b455ca17c2d3db346950a90d59c82b177f9aaeed3f4"
+}
