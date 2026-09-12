@@ -1,0 +1,63 @@
+{
+  "recorded_utc": "2026-09-08T04:12:11.542153+00:00",
+  "task": "AS1 integration and new Ada original-source pipeline",
+  "pipeline_integration": "implemented_and_locally_tested",
+  "ada_status": "reference_candidate_ready_awaiting_owner_approval",
+  "brief": "accepted_current_technical_reviewer_only",
+  "reference_candidate": "reviews/references/candidate_5f81fc931e05488c942bb0d175830670.json",
+  "owner_approvals": {
+    "references": false,
+    "forms": false,
+    "release": false
+  },
+  "geometry_start": "no current Ada geometry, rig, texture, material or animation reused",
+  "new_ada_anatomy_meshes": 0,
+  "reference_scene": "executed_and_audited_only",
+  "evidence_sha256": {
+    "asset.json": "bcf236683e1a61c4afc1755d42828047ed0644201e17657cf629025a2ae5789e",
+    "reviews/references/candidate_5f81fc931e05488c942bb0d175830670.json": "723ade9ba7066efbff22afc028669547ec1ea24e1974c689c4ede8ca48285761",
+    "reports/references_r002.json": "2d592f40f03c795c4affcbbfcb39fd76fe43ca214758238099ec63973ff82bd1",
+    "stages/references/ada_construction_r002.png": "c65d1d5093f9b15d71cf1e3dfaed059253d659a17a02fc4949533a532486e05b",
+    "stages/references/blender_r001/ada_reference_scene_r001.blend": "b304de05d93d3ba78562ccc80551750f03e8ba27b81d7e1e19ef55ce33d6306b",
+    "stages/references/construction_decisions_r002.md": "dc2ad675c381b66381dbb915db762160123a96d6c017d69b90e64f9bf4e919d1",
+    "reports/brief_independent_review_r001.md": "994758dc6ea79ec14248d176ac8f8d1235ba437cfdc8305b1da1aafeff5e6794"
+  },
+  "not_run": [
+    "head_and_torso_clay_study_pending_reference_approval",
+    "full_body_forms",
+    "production_topology",
+    "UV_baking_materials",
+    "rig_skin_animation",
+    "LOD_optimization",
+    "Unreal_import_reimport",
+    "packaged_encounter_and_final_release"
+  ],
+  "next_step": "Obtain owner reference approval for r002 composite identity/construction decisions; then create new head/torso and one shoulder clay study in a distinct original source file. Do not mark bust as complete forms gate.",
+  "test_results": {
+    "as1_corrected_suite": {
+      "run": 53,
+      "passed": 52,
+      "skipped": 1,
+      "skip_reason": "Windows symlink creation unavailable"
+    },
+    "repository_validation_checks": 400,
+    "repository_unit_tests": 147,
+    "generated_documents_match": 28,
+    "generated_catalogs_match": 6,
+    "blender_three_helpers": "actual isolated fixture execution, audit and clay/material views passed",
+    "ada_reference_scene_operations": 5
+  },
+  "limitations": [
+    "Blender MCP scene read failed to connect; isolated background CLI verified.",
+    "Generated image is not a certified orthographic projection; rear split uses original back source with shortened r002 hem.",
+    "Unreal5.7.4 installation metadata only, no Ada engine execution.",
+    "New skill files read directly; fresh Codex interface auto-discovery not tested.",
+    "Full git diff --check found preexisting trailing whitespace in reports/blender-mcp/20260908T072720-blender.log:11; scoped AS1 instruction check passed and unrelated log was preserved."
+  ],
+  "git": {
+    "branch": "main",
+    "staged_by_task": false,
+    "committed_by_task": false,
+    "preexisting_changes_preserved": true
+  }
+}

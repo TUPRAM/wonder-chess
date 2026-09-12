@@ -1,0 +1,44 @@
+{
+  "frame": 129,
+  "engine": "CYCLES",
+  "samples": 8,
+  "scene": "BW1_BODY_COSTUME",
+  "camera": "BW1_Camera_three_quarter",
+  "failed_knee_objects": [
+    {
+      "name": "BW1_KneeSurfaceAnchor_R",
+      "hide_render": true,
+      "hide_viewport": false
+    }
+  ],
+  "leggings_outlier_data": [
+    {
+      "evaluated_index": 4638,
+      "world": [
+        -1.2326322793960571,
+        3.9150538444519043,
+        0.21877044439315796
+      ]
+    }
+  ],
+  "leggings_modifiers": [
+    {
+      "name": "Temporary articulation",
+      "type": "ARMATURE",
+      "show_viewport": true,
+      "show_render": true
+    },
+    {
+      "name": "Editable surface subdivision",
+      "type": "SUBSURF",
+      "show_viewport": true,
+      "show_render": true
+    },
+    {
+      "name": "Garment thickness",
+      "type": "SOLIDIFY",
+      "show_viewport": true,
+      "show_render": true
+    }
+  ]
+}

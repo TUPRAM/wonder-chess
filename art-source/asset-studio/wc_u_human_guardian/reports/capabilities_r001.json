@@ -1,0 +1,9 @@
+{
+  "status": "actual_probes_recorded",
+  "blender": {"version": "5.1.1", "binary": "C:/Program Files/Blender Foundation/Blender 5.1/blender.exe", "background_execution_verified": true, "evidence": "reports/AS1/tool-verification/final-execution-results.json", "evidence_path_base": "repository"},
+  "unreal": {"version": "5.7.4", "installation_metadata_verified": true, "execution_verified_this_task": false, "evidence": "reports/AS1/tool-verification/unreal-read-only.json", "evidence_path_base": "repository"},
+  "image_generation": {"available": true, "provider": "built-in image_gen", "image_input_verified": true, "response_received": true, "seed": null, "model_id": null, "metadata_note": "No seed or model ID returned; do not invent reproducibility metadata."},
+  "blender_mcp": {"scene_read_verified": false, "image_return_verified": false, "code_execution_verified": false, "tool": "mcp__blender__get_scene_info", "actual_response": "Error getting scene info: Could not connect to Blender. Make sure the Blender addon is running.", "status": "connection_failed; isolated background CLI verified as fallback", "live_scene_modified": false},
+  "skill_installation": {"files_installed": true, "skills": 22, "fresh_interface_auto_discovery_verified": false, "direct_skill_reading_verified": true},
+  "trust_boundary": "Fixture operations verify helper execution only. They are not new Ada modeling, artistic approval, import, or release evidence."
+}

@@ -1,0 +1,28 @@
+{
+  "source": "ada_body_costume_checkpoint_r002_ART_REVISE.blend",
+  "status": "COMPLETE",
+  "frame_count": 169,
+  "objects": [
+    "BW1_CoatUpper_Continuous"
+  ],
+  "thresholds": {
+    "world": "abs(X)>1.4m or abs(Y)>1.4m or Z>2.2m or Z<\u22120.3m, or nonfinite",
+    "temporal": "a corresponding evaluated vertex moves >0.12m between adjacent 24fps frames; flags require interpretation"
+  },
+  "extreme_vertex_events": [],
+  "temporal_flags": [],
+  "object_summaries": {
+    "BW1_CoatUpper_Continuous": {
+      "max_adjacent_frame_vertex_step_m": 0.04885120970313985,
+      "solidify": [
+        {
+          "name": "Padded garment thickness",
+          "thickness": 0.006000000052154064,
+          "use_even_offset": false,
+          "clamp": 0.0
+        }
+      ]
+    }
+  },
+  "limits": "Finite/bounds and temporal screening only; not cloth/body intersection clearance or artistic acceptance. No scene or file mutation saved."
+}

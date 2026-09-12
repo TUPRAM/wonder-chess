@@ -1,0 +1,86 @@
+{
+  "artifacts": [
+    {
+      "path": "stages/brief/brief_r001.md",
+      "category": "source"
+    },
+    {
+      "path": "stages/brief/canonical_snapshot_r001.json",
+      "category": "source"
+    },
+    {
+      "path": "stages/brief/part_inventory_r001.json",
+      "category": "source"
+    },
+    {
+      "path": "inputs/provenance_r001.json",
+      "category": "source"
+    },
+    {
+      "path": "stages/references/construction_decisions_r001.md",
+      "category": "source"
+    }
+  ],
+  "asset_id": "wc_u_human_guardian",
+  "author": "Codex root Ada AS1 author",
+  "checks": [
+    {
+      "id": "scope_and_asset_type",
+      "status": "pass",
+      "evidence": [
+        "stages/brief/brief_r001.md",
+        "stages/brief/canonical_snapshot_r001.json",
+        "stages/brief/part_inventory_r001.json",
+        "inputs/provenance_r001.json",
+        "stages/references/construction_decisions_r001.md"
+      ],
+      "notes": "44 semantic parts enumerate complete body, costume, hair and equipment; original source only; stable hero ID retained."
+    },
+    {
+      "id": "rights_and_upload_policy",
+      "status": "pass",
+      "evidence": [
+        "stages/brief/brief_r001.md",
+        "stages/brief/canonical_snapshot_r001.json",
+        "stages/brief/part_inventory_r001.json",
+        "inputs/provenance_r001.json",
+        "stages/references/construction_decisions_r001.md"
+      ],
+      "notes": "User-supplied images used for requested private workflow; built-in reference generation only, no third-party uploads, paid external jobs or publishing."
+    },
+    {
+      "id": "dimensions_and_camera",
+      "status": "pass",
+      "evidence": [
+        "stages/brief/brief_r001.md",
+        "stages/brief/canonical_snapshot_r001.json",
+        "stages/brief/part_inventory_r001.json",
+        "inputs/provenance_r001.json",
+        "stages/references/construction_decisions_r001.md"
+      ],
+      "notes": "Height 1.82 m, source +Y/+Z/meters and one tile retained; source camera snapshot distinguishes normal 4300 cm width from 2300 cm art review override."
+    },
+    {
+      "id": "budgets_and_dependencies",
+      "status": "pass",
+      "evidence": [
+        "stages/brief/brief_r001.md",
+        "stages/brief/canonical_snapshot_r001.json",
+        "stages/brief/part_inventory_r001.json",
+        "inputs/provenance_r001.json",
+        "stages/references/construction_decisions_r001.md"
+      ],
+      "notes": "Canonical unprofiled art budgets, seven clips, root/socket requirements, runtime timing authority and three human gates documented; no source art-data edits approved."
+    }
+  ],
+  "defects": [],
+  "executed_commands": [
+    "python stages/brief/prepare_packet.py (from repository root using full relative script path), exit 0"
+  ],
+  "method": "Read canonical source and supplied AS1 files, inspected both original images, created isolated intake and original-source contract without loading any prior Ada geometry.",
+  "notes": [
+    "Technical brief candidate only; all human approvals remain unset."
+  ],
+  "schema_version": "1.0.0",
+  "stage": "brief"
+}

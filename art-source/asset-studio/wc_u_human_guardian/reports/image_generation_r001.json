@@ -1,0 +1,79 @@
+{
+  "recorded_utc": "2026-09-08T04:07:41.993875+00:00",
+  "operations": [
+    {
+      "operation_id": "AS1-ADA-REF-IMAGE-r001",
+      "tool": "image_gen.imagegen",
+      "mode": "built-in reference-guided generation",
+      "input": {
+        "path": "inputs/ada_selected_concept.png",
+        "sha256": "891ecb33ae496156c2824578ab0b92daafdefa00c48070072899c720939fa432",
+        "bytes": 2882926,
+        "dimensions": [
+          1448,
+          1086
+        ]
+      },
+      "prompt": {
+        "path": "stages/references/generation_prompt_r001.txt",
+        "sha256": "6892deef153f45ba2a00be6e88636021d63ec8f37332a86952009cc13fce94d3",
+        "bytes": 2785,
+        "dimensions": null
+      },
+      "output": {
+        "path": "stages/references/ada_construction_r001.png",
+        "sha256": "5f1640b44b8fabdbf04e3a7c8b3de5f1cd528a0f85d062358619cd23889b71bc",
+        "bytes": 1932170,
+        "dimensions": [
+          1658,
+          949
+        ]
+      },
+      "returned_filename": "exec-730028e5-acd8-4e7e-805d-c2cb84024e10.png",
+      "output_received_and_visually_inspected": true,
+      "seed": null,
+      "model_id": null,
+      "source_geometry": null,
+      "status": "superseded_candidate"
+    },
+    {
+      "operation_id": "AS1-ADA-REF-IMAGE-r002",
+      "tool": "image_gen.imagegen",
+      "mode": "built-in targeted edit",
+      "input": {
+        "path": "stages/references/ada_construction_r001.png",
+        "sha256": "5f1640b44b8fabdbf04e3a7c8b3de5f1cd528a0f85d062358619cd23889b71bc",
+        "bytes": 1932170,
+        "dimensions": [
+          1658,
+          949
+        ]
+      },
+      "prompt": {
+        "path": "stages/references/generation_prompt_r002.txt",
+        "sha256": "803f0ac8710b8c353e10f56637e4270f3a33adcbe3f36f6b658038d42cec4688",
+        "bytes": 1393,
+        "dimensions": null
+      },
+      "output": {
+        "path": "stages/references/ada_construction_r002.png",
+        "sha256": "c65d1d5093f9b15d71cf1e3dfaed059253d659a17a02fc4949533a532486e05b",
+        "bytes": 1908830,
+        "dimensions": [
+          1658,
+          949
+        ]
+      },
+      "returned_filename": "exec-1495c9d4-386c-4191-a98d-58c8ba272135.png",
+      "output_received_and_visually_inspected": true,
+      "seed": null,
+      "model_id": null,
+      "source_geometry": null,
+      "status": "candidate_awaiting_owner_reference_approval"
+    }
+  ],
+  "native_crops_resampled": false,
+  "external_api_jobs": false,
+  "paid_external_services": false,
+  "reproduction_limit": "Actual prompts and returned bytes retained; no seed/model metadata or deterministic reproduction asserted."
+}

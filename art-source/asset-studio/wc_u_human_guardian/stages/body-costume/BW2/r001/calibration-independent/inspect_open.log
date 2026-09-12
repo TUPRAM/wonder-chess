@@ -1,0 +1,15 @@
+00:06.265  blend            | Read blend: "C:\Users\iputu\Documents\Wonder Chess\art-source\asset-studio\wc_u_human_guardian\stages\body-costume\BW1\r001\ada_body_costume_checkpoint_r003_ART_REVISE.blend"
+Traceback (most recent call last):
+  File "C:\Users\iputu\Documents\Wonder Chess\art-source\asset-studio\wc_u_human_guardian\stages\body-costume\BW2\r001\calibration-independent\inspect_open.py", line 9, in <module>
+    assert hashlib.sha256(source.read_bytes()).hexdigest()==expected
+                          ~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\Blender Foundation\Blender 5.1\5.1\python\Lib\pathlib\_abc.py", line 625, in read_bytes
+    with self.open(mode='rb') as f:
+         ~~~~~~~~~^^^^^^^^^^^
+  File "C:\Program Files\Blender Foundation\Blender 5.1\5.1\python\Lib\pathlib\_local.py", line 537, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_u_human_guardian\\stages\\BW1\\r001\\ada_body_costume_checkpoint_r003_ART_REVISE.blend'
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

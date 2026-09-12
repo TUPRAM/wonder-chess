@@ -1,0 +1,169 @@
+{
+  "status": "EXECUTED_REVIEWABLE_ART_REVISE",
+  "checked_utc": "2026-09-09T06:38:09.833898+00:00",
+  "frozen_file": "ada_body_costume_checkpoint_r003_ART_REVISE.blend",
+  "frozen_sha256": "03829ab406d6bd5e6a1c5f86e045e9f2edc720b05e620e70017667c59be8b3f8",
+  "work_file_sha256": "d059c91cf29a5bee5d8dcd60536a8d904ba58e79df8cca4fa932e55a13357579",
+  "work_file_identical_to_frozen": false,
+  "work_file_semantically_equal_to_frozen": true,
+  "protected_inputs": {
+    "count": 44,
+    "all_unchanged": true,
+    "details": "preservation_after.json"
+  },
+  "reopen_audit": "reviews/final_reopen_r003_audit.json",
+  "source_measurements": "reviews/body_measurements.json",
+  "art_review": "reviews/independent_visual_review.md",
+  "human_forms_approval": false,
+  "brief_and_references": "accepted_current",
+  "downstream_gates": "pending",
+  "failed_gate_rejected_as_expected": true,
+  "actual_motion": {
+    "file": "motion-r003/ada_bw1_articulation_r003_review.mp4",
+    "sha256": "3d5c96ee9007ec21bbd2e533a2e8ad6433e46ce02e5b19230fad4b0439a84172",
+    "frames": 169,
+    "fps": 24,
+    "seconds": 7.041666666666667,
+    "source_sha256": "03829ab406d6bd5e6a1c5f86e045e9f2edc720b05e620e70017667c59be8b3f8",
+    "scope": "Temporary FK range diagnostic, not retargeted runtime Move"
+  },
+  "art_outcomes": {
+    "body_foundation": "retained_candidate",
+    "continuous_cloth": "static_improvement_only",
+    "footprint_sole": "local_improvement_only",
+    "grips": "failed_two_corrections",
+    "arm_assembly": "ART_REVISE",
+    "knee_attachment": "failed_two_corrections",
+    "leg_assembly": "ART_REVISE"
+  },
+  "technical_fixes": [
+    {
+      "object": "BW1_CoatUpper_Continuous",
+      "modifier": "Padded garment thickness",
+      "property": "use_even_offset",
+      "before": true,
+      "after": false,
+      "thickness_m": 0.006,
+      "offset": -1,
+      "old_spike_evidence": "motion-r002/coat_even_offset_false_temporal_audit.json"
+    },
+    {
+      "object": "BW1_Leggings",
+      "modifier": "Garment thickness",
+      "property": "use_even_offset",
+      "before": true,
+      "after": false,
+      "thickness_m": 0.002,
+      "offset": -1,
+      "old_spike_evidence": "motion-final/leggings_modifier_isolation.json"
+    }
+  ],
+  "not_run": [
+    "second_body_fit",
+    "independent_recipe_replay",
+    "neural_training",
+    "final_textures",
+    "production_animation_bank",
+    "runtime_skeleton_change",
+    "export_import_reimport",
+    "Unreal_package_tests",
+    "human_approval"
+  ],
+  "game_state_preserved": true,
+  "runtime_source_edited": false,
+  "test_scope": "Targeted Blender source/reopen/numeric/visual/motion checks only. No full game or infrastructure suite rerun because no gameplay/tool implementation changed.",
+  "artifact_hashes": [
+    {
+      "path": "ada_body_costume_checkpoint_r003_ART_REVISE.blend",
+      "sha256": "03829ab406d6bd5e6a1c5f86e045e9f2edc720b05e620e70017667c59be8b3f8"
+    },
+    {
+      "path": "reviews/reference_comparison_r003.png",
+      "sha256": "683f0ca957bcb89c6a631374ea0bce6efa56490656882adb8df32bfcabfc0d2f"
+    },
+    {
+      "path": "captures/r003_context_front.png",
+      "sha256": "0b13f42790938640b3d0c787e15a622149d2ddffecc46ec1645301e06240483c"
+    },
+    {
+      "path": "captures/r003_context_profile.png",
+      "sha256": "c9633888defa43911fc6901aa1a65fd459eb5de9a5b7367a5b650ed787c6e9a2"
+    },
+    {
+      "path": "captures/r003_context_reversed_key.png",
+      "sha256": "aa0029e1faf6b7f0f820c182bcb1947f1335931d8dc2d43f21f791e437b11986"
+    },
+    {
+      "path": "captures/arm_pose_shoulder_raise.png",
+      "sha256": "556a272e21e10b9ecdf6e1c1bbeb6562356f93f6208b9b8ee7a6b9deb8114abe"
+    },
+    {
+      "path": "captures/technical_r002_frame_129.png",
+      "sha256": "d976919cc0c2e4adf59b92ee01c0249b6fdab3a861c1dbf06e04d1e61d1d8ebf"
+    },
+    {
+      "path": "hand-pose-study/sword_grip_final.png",
+      "sha256": "d3c44e0425ef2d09cab20c29d7cf5fbbd047901930d4a349ba2f6a2310f5cbf1"
+    },
+    {
+      "path": "motion-r003/ada_bw1_articulation_r003_review.mp4",
+      "sha256": "3d5c96ee9007ec21bbd2e533a2e8ad6433e46ce02e5b19230fad4b0439a84172"
+    },
+    {
+      "path": "REVIEW.md",
+      "sha256": "2dda587ddf8a6673552cf7bb512027137e5e6bcab0a2f4d707ceb0c48ae1d187"
+    },
+    {
+      "path": "reviews/independent_visual_review.md",
+      "sha256": "09839d86a27eb8ea8164ffacfc166e9937d8932c2061873de9134130f37e36ef"
+    },
+    {
+      "path": "reviews/final_reopen_r003_audit.json",
+      "sha256": "8b48f9343ab5c63bdd9b9cdb3bd17852da4867d3ea68a09e3b1ae32fc5f348a1"
+    },
+    {
+      "path": "body_preset_r003.json",
+      "sha256": "3b17fbd55b17d3777e42dc4fbeae4f0ebc43041996692da784151ef49c1a33a5"
+    },
+    {
+      "path": "construction_records.json",
+      "sha256": "3725281658056a083c388538a0fcbef71a059b088fd9f6255e35ff5829bd84a6"
+    },
+    {
+      "path": "captures/edit_glove.png",
+      "sha256": "07ebc97c58aa3d2367d9f5f1d42c3f8aa0452f98537a2e1bc46ee187dc6e5bc0"
+    },
+    {
+      "path": "captures/edit_sleeve.png",
+      "sha256": "9b471f03f35689f50c6fd9a86a451b2b05320913c5c45839a51daa2dc2785ad3"
+    },
+    {
+      "path": "captures/edit_boot.png",
+      "sha256": "3c16582aa9020f3929d7273915a281aeb40fcd8040f612743ae853dbbce41428"
+    },
+    {
+      "path": "captures/edit_pauldron_clear.png",
+      "sha256": "8da1f93462b1f12d5b8be637db5504cd679a66ee4b8e1fb3f80c37d69ac3c9c7"
+    },
+    {
+      "path": "captures/edit_greave_clear.png",
+      "sha256": "cdbf5db7566a1ace2e0d98ed873e547dee936d5fa6f51f4aa4b731be96099798"
+    },
+    {
+      "path": "captures/edit_sole.png",
+      "sha256": "aaba99f5af17f2c807990c321bce7127f1f00a02c95254bd90d05fc4cdb4f10c"
+    },
+    {
+      "path": "motion-r003/MOTION_REVIEW.md",
+      "sha256": "e03e0947cb169bb4d55a9f1e88f8424ec7dbea930382b7de22efe30bca71d5b4"
+    },
+    {
+      "path": "motion-r003/clothing_temporal_audit.json",
+      "sha256": "b899d3cf645dfc6b703e3eb0ed276cd8d124b4e22d56aa5616dc344379e9691c"
+    },
+    {
+      "path": "motion-r003/video_verification.json",
+      "sha256": "9fc6c3549363e027b8494df6f7e013198226d8c86545c83a3ac3586bd514abfa"
+    }
+  ]
+}

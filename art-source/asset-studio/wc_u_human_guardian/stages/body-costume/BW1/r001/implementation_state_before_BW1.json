@@ -1,0 +1,792 @@
+{
+  "kit_version": "3.0",
+  "scope": "24_hero_native_windows_unreal_update_in_progress",
+  "actual_game_status": "24_HERO_PACKAGED_IMPLEMENTATION_CHECKPOINT_FULL_ART_MANUAL_LAN_ACCEPTANCE_OPEN",
+  "reference_playthrough_preparation": {
+    "status": "COMPLETED_REFERENCE_MATCH",
+    "prepared_utc": "2026-09-06T11:03:20.414Z",
+    "game": "Auto Chess (standalone Epic client)",
+    "plan": "research/playthroughs/DOTA_AUTO_CHESS_RUN_PLAN.md",
+    "session": "research/playthroughs/runs/next-dota-auto-chess/session.json",
+    "helper_check": "research/playthroughs/preparation-check.json",
+    "boundary": "One shared/assisted Casual Solo reference match; original request named Dota Auto Chess but the opened standalone client was identified. Observation gaps and user input recorded. Research does not change Wonder Chess release acceptance.",
+    "completed_utc": "2026-09-06T12:00:51.549Z",
+    "result": "1st of8; round42; HP90; displayed W-L38-4",
+    "observed_duration_seconds": 2920,
+    "screenshots": 93,
+    "observations": 25,
+    "findings": "research/playthroughs/runs/next-dota-auto-chess/findings.md",
+    "gallery": "research/playthroughs/runs/next-dota-auto-chess/gallery.md",
+    "verification": "research/playthroughs/runs/next-dota-auto-chess/verification.json"
+  },
+  "prepared_24_hero_update": {
+    "status": "ADOPTED_IMPLEMENTATION_IN_PROGRESS",
+    "prepared_utc": "2026-09-06T12:38:02.214843+00:00",
+    "plan": "docs/updates/2026-09-auto-chess-inspired/README.md",
+    "implementation_prompt": "docs/updates/2026-09-auto-chess-inspired/INITIAL_IMPLEMENTATION_PROMPT.md",
+    "confirmed_playable_heroes": 24,
+    "equipment": "visual_weapons_and_armor_only_no_item_inventory",
+    "requested_features": [
+      "monster_rounds_1_2_3_and_every_positive_multiple_of_5",
+      "graphical_lobby_and_session_transition",
+      "full_hero_gallery_and_details",
+      "simplified_names_and_clearer_race_class_synergies",
+      "individual_skill_model_gear_animation_appearance_improvements"
+    ],
+    "validation": "docs/updates/2026-09-auto-chess-inspired/preparation-validation.json",
+    "boundary": "User adopted explicit amendments. WC-U400 data migration verified; native and Unreal integration in progress. Prior candidate evidence remains unchanged and does not certify the update.",
+    "adopted_utc": "2026-09-06T13:09:46.582515+00:00"
+  },
+  "tasks": {
+    "WC-300": {
+      "status": "PASS_MINIMAL_PACKAGE",
+      "title": "Toolchain and first package",
+      "evidence": [
+        "reports/WC-300/environment-native.json",
+        "reports/WC-300/build-and-package-no-hotreload.log",
+        "reports/WC-300/launch-evidence.md"
+      ]
+    },
+    "WC-310": {
+      "status": "PASS_8_UNREAL_TESTS_138_TRAIT_GROUPS_100_REAL_COMBAT_TOURNAMENTS",
+      "title": "Combat and eight-seat runtime",
+      "evidence": [
+        "reports/WC-360/alpha-candidate-automation/index.json",
+        "reports/WC-310/runtime/trait-native/validation.json",
+        "reports/WC-310/runtime/targeted-native/validation.json"
+      ]
+    },
+    "WC-320": {
+      "status": "PASS_100_PACKAGED_COMBAT_REGRESSION",
+      "title": "Tournament and persistent bot policies",
+      "evidence": [
+        "reports/WC-360/alpha-candidate-regression/regression.json",
+        "reports/WC-360/100-engine-matches.json"
+      ]
+    },
+    "WC-330": {
+      "status": "PASS_CALIBRATION_AND_ISOLATED_COSTUME_REIMPORT_COLD_LOAD_SAMPLED_POSES",
+      "title": "Ada and calibration/courtyard",
+      "evidence": [
+        "reports/WC-330/calibration-unreal.json",
+        "reports/WC-330/ada-costume-roundtrip/run_v2-summary.md",
+        "reports/WC-330/unreal-visual-review-revision6.md"
+      ]
+    },
+    "WC-340": {
+      "status": "TWELVE_ORIGINAL_HEROES_84_CLIPS_SAMPLED_ALL_12_LIVE_REVIEW_PASS_CONTINUOUS_PRESENTATION_OPEN",
+      "title": "Remaining eleven authored heroes",
+      "evidence": [
+        "reports/WC-330/hero-readiness-matrix.json",
+        "reports/WC-330/84-clip-review.md",
+        "reports/WC-330/shipping-normal1080-taa-review.json"
+      ]
+    },
+    "WC-350": {
+      "status": "FINAL_SHIPPING_2H6B_47_AND_RESTART_36_PASS_MANUAL_BLOCKED",
+      "title": "Player experience and network integration",
+      "evidence": [
+        "reports/WC-360/alpha-candidate-network/audit/network-analysis.json",
+        "reports/WC-360/alpha-candidate-restart/functional-audit/audit.json",
+        "reports/WC-360/native-taa-disconnect",
+        "reports/WC-360/shipping-manual-recheck/blocked.json"
+      ]
+    },
+    "WC-360": {
+      "status": "PACKAGED_FUNCTIONAL_AND_PERFORMANCE_MEASURED_MANUAL_AND_CONTINUOUS_ACCEPTANCE_OPEN",
+      "title": "Packaged alpha verification and handoff",
+      "evidence": [
+        "reports/WC-360/alpha-candidate-provenance.json",
+        "reports/WC-360/alpha-candidate-final-byte-audit.json",
+        "reports/WC-360/100-engine-matches.json",
+        "reports/WC-360/alpha-candidate-restart/functional-audit/audit.json",
+        "reports/WC-360/alpha-candidate-network/audit/network-analysis.json",
+        "reports/WC-360/alpha-candidate-normal1080/frame-analysis.json",
+        "reports/WC-360/alpha-candidate-manual/blocked.json",
+        "reports/RELEASE_HANDOFF.md"
+      ]
+    },
+    "WC-U400": {
+      "status": "PASS_SCHEMA3_1_PROTOCOL6_400_BASELINE_CHECKS_147_TESTS_28_DOCS_6_CATALOG",
+      "evidence": [
+        "reports/WC-U400/20260906T125729Z/baseline.json",
+        "reports/WC-U400/20260906T125729Z/environment.json",
+        "reports/WC-U400/20260906T125729Z/data-migration/result.json",
+        "reports/WC-U400/20260906T154848Z/protocol5-stage/sync.log",
+        "reports/WC-U400/20260906T154931Z/protocol5-validation/python-tests.log",
+        "reports/WC-U400/20260907T165200Z-closeout",
+        "reports/UPDATE24_CHECKPOINT_HANDOFF.md"
+      ]
+    },
+    "WC-U410": {
+      "status": "PASS_CURRENT_PACKAGED100_ACTUAL_COMBAT_581951_AUDIT_CHECKS",
+      "evidence": [
+        "reports/WC-U410/20260906T132749Z/early-package/early-provenance.json",
+        "reports/WC-U410/20260906T133515Z/early-packaged100/regression.json",
+        "reports/WC-U410/20260906T133515Z/early-packaged100/process-exit.json",
+        "reports/WC-U450/20260906T140347Z/early-package-audit-final-02/regression-analysis.json",
+        "reports/WC-U430/20260906T150228Z/integrated-package/integrated-provenance.json",
+        "reports/WC-U450/20260906T151630Z/integrated-package-audit-fixed/audit/regression-analysis.json",
+        "reports/UPDATE24_CHECKPOINT_HANDOFF.md"
+      ]
+    },
+    "WC-U420": {
+      "status": "PASS_CURRENT_PVE_TOURNAMENT_RESTART_AND_LOOPBACK_FUNCTIONAL_CHECKS",
+      "evidence": [
+        "reports/WC-U420/20260906T133504Z/early-restart/functional-audit/audit.json",
+        "reports/WC-U450/20260906T152237Z/integrated-two-restarts/functional-audit/audit.json",
+        "reports/UPDATE24_CHECKPOINT_HANDOFF.md"
+      ]
+    },
+    "WC-U430": {
+      "status": "PASS_CURRENT_PACKAGED_GALLERY531_CHECKS_24_MESHES_168_CLIPS_MANUAL_USABILITY_OPEN",
+      "evidence": [
+        "reports/WC-U430/20260906T133231Z/frontend-720/launch.json",
+        "reports/WC-U430/20260906T134858Z/editor-build/build.log",
+        "reports/WC-U430/20260906T142256Z/editor-build-roster/process-exit.json",
+        "reports/WC-U430/20260906T142602Z/frontend-all1080/20260906T142621-frontend-audit.json",
+        "reports/WC-U430/20260906T144218Z/approach-all720/20260906T144234-frontend-audit.json",
+        "reports/WC-U430/20260906T145119Z/editor-build-sky-motion/process-exit.json",
+        "reports/WC-U430/20260906T145849Z/composition1080/lobby-visual-review.json",
+        "reports/WC-U430/20260906T150922Z/packaged-gallery1080/20260906T150926-frontend-audit.json",
+        "reports/WC-U430/20260906T154907Z/editor-build-protocol5-ui/build.log",
+        "reports/WC-U430/20260906T160956Z/editor-build-motion-api-fixed/process.json",
+        "reports/WC-U430/20260906T161052Z/selection-ui/selection-rejection-audit.json",
+        "reports/WC-U430/20260906T161534Z/network-recovery-ui/host/launch.json",
+        "reports/UPDATE24_CHECKPOINT_HANDOFF.md"
+      ]
+    },
+    "WC-U440": {
+      "status": "24_HERO_7_NEUTRAL_ASSETS_IMPORTED_COLD_PASS_168_MOVIES_RECORDED_FINISHED_ART_NOT_ACCEPTED",
+      "evidence": [
+        "reports/WC-U440/20260906T133639Z/neutral-import/neutral-import.json",
+        "reports/WC-U440/20260906T133019Z/neutrals/HANDOFF.md",
+        "reports/WC-U440/20260906T140230Z/cold-assets-data/automation/index.json",
+        "reports/WC-U440/20260906T133433Z/six-hero-source-handoff.md",
+        "reports/WC-U440/20260906T141605Z/dwarves/HANDOFF.md",
+        "reports/WC-U440/20260906T142908Z/elves-dwarves-import/import_alpha_assets.json",
+        "reports/WC-U440/20260906T141653Z-orcs/orc-source-handoff.json",
+        "reports/WC-U440/20260906T144057Z/import_alpha_assets/import-selected.json",
+        "reports/WC-U440/20260906T144057Z/import_lobby_assets/lobby-import.json",
+        "reports/WC-U450/20260906T144303Z/asset-readiness-final/HANDOFF.md",
+        "reports/WC-U440/20260906T152237Z/cass-orla-import/import-selected.json",
+        "reports/WC-U440/20260906T153339Z/neris-tala-import/import-selected.json",
+        "reports/WC-U440/20260906T153814Z/cold-sixteen/automation/index.json",
+        "reports/WC-U440/20260906T160431Z/ada9-import/import-wc_u_human_guardian.json",
+        "reports/WC-U440/20260906T160653Z/pippa7-import/import-wc_u_halfling_warrior.json",
+        "reports/WC-U440/20260906T161053Z/cold-pippa/automation/index.json",
+        "reports/WC-U450/20260906T161205Z/pippa-engine-motion-pilot/engine-motion.json",
+        "reports/WC-U450/20260906T161426Z/pippa-encoder-repaired/encoded/encoding-report.json",
+        "reports/WC-U440/20260906T165849Z/kesh-sora-import/import-selected.json",
+        "reports/WC-U440/20260906T170048Z/sora-engine-pilot/root-visual-review.json",
+        "reports/WC-U440/20260907T165200Z-closeout/asset-matrix-complete-inputs/asset-readiness.json",
+        "reports/UPDATE24_CHECKPOINT_HANDOFF.md"
+      ]
+    },
+    "WC-U450": {
+      "status": "FUNCTIONAL_BOTS_UI_AUDIO_INTEGRATED_BALANCE_AND_CONTINUOUS_AV_REVIEW_OPEN",
+      "evidence": [
+        "reports/WC-U450/20260906T134242Z/tuning-adoption/adoption.json",
+        "reports/WC-U450/20260906T134818Z/native-tuned-100/summary.json",
+        "reports/WC-U450/20260906T135016Z/audio/audio.json",
+        "reports/WC-U450/20260906T142228Z/skill-aware-bots-current/summary.json",
+        "reports/WC-U450/20260906T142228Z/skill-aware-bots-current/policy-comparison.json",
+        "reports/WC-U450/20260906T142613Z/current-validation/results.json",
+        "reports/WC-U430/20260906T135823Z/ada8-audio-import/import_alpha_assets.json",
+        "reports/WC-U450/20260906T143445Z/equal-investment-counters-final/HANDOFF.md",
+        "reports/WC-U450/20260906T154431Z/protocol5-native100/summary.json",
+        "reports/WC-U450/20260906T153043Z-frame-fixture-repair",
+        "reports/WC-U450/20260906T155430Z/inventory-preview-native100/summary.json",
+        "reports/WC-U450/20260906T155430Z/inventory-preview-native100/inventory-refactor-gameplay-parity.json",
+        "reports/WC-U450/20260906T155430Z/inventory-preview-native100/inventory-refactor-byte-parity-failed.json",
+        "reports/UPDATE24_CHECKPOINT_HANDOFF.md"
+      ]
+    },
+    "WC-U460": {
+      "status": "CHECKPOINT_TECHNICAL_PASSES_PHYSICAL_LAN_MANUAL_PLAY_FULL_PERFORMANCE_AND_ART_GATES_OPEN",
+      "blockers": [
+        "Varek, Iri and Oren production pending; Sora costume reimport and five authored alternating Attack updates active.",
+        "Full current168-clip Unreal recording and continuous visual/audio/manual usability review remain open.",
+        "Protocol6 source requires compilation, final24 packaging and fresh actual-combat/network/normal1H7B/performance evidence.",
+        "Two physical LAN machines/access not established; current native CUA surface disabled."
+      ],
+      "evidence": [
+        "reports/WC-U450/20260907T170300Z-closeout/retained-failures.json",
+        "reports/UPDATE24_CHECKPOINT_HANDOFF.md"
+      ]
+    }
+  },
+  "design_roster": {
+    "count": 24,
+    "status": "AUTHORED"
+  },
+  "alpha_roster": {
+    "count": 24,
+    "assets_status": "SEVENTEEN_HEROES_119_CLIPS_IMPORTED;7_NEUTRALS_40_CLIPS_IMPORTED;LOBBY_IMPORTED;7_HEROES_IN_PRODUCTION;CASS5_SOURCE_AHEAD_OF_IMPORT",
+    "runtime_status": "PROTOCOL5_NATIVE100_AND_REAL_SELECTION_UI_PASS;PROTOCOL4_PACKAGE100_AND_TWO_RESTARTS_PASS;PROTOCOL5_RECOVERY_AND_CORRECTED_PACKAGE_PENDING"
+  },
+  "warnings": [
+    "This is a tested implementation checkpoint, not full user-requested release acceptance.",
+    "All24 source/export/import records exist; finished anatomy/material/motion/FX/audio quality is not accepted.",
+    "168 engine movies are captured and encoded; continuous visual and audio review NOT_RUN.",
+    "1H7B evidence uses scripted legal controller commands at20x; complete manual normal-speed play NOT_RUN.",
+    "Actual2H6B is same-machine loopback only. Two physical LAN machines NOT_RUN.",
+    "Final timing is a150-second normal-speed opening sample; full-match/busy-PvP/lobby/gallery performance NOT_RUN.",
+    "Real-time MCP bridge setup explicitly deferred by user; enabled add-on screenshot is not connection proof."
+  ],
+  "updated_utc": "2026-09-07T17:30:32.953183+00:00",
+  "task_numbering_authority": "docs/MASTER_IMPLEMENTATION_v3.md; legacy task-card numbering is retained in source kit and differs from master sequence",
+  "delivery": {
+    "package_launcher": "builds/WonderChess-Alpha-Candidate/Windows/WonderChess.exe",
+    "inner_executable_sha256": "b3114876d3d75e6d89677f42b2a6117b5989ba8dfe91d4f50ef50e965a2103ac",
+    "tested_provenance": "reports/WC-360/alpha-candidate-provenance.json",
+    "acceptance": "CANDIDATE_NOT_FINAL_PLAYABLE_OR_PRESENTABLE_ACCEPTANCE",
+    "source_checkpoint": "67c165b66af5b1c0132c275b1613b7482b2acf8b",
+    "tested_provenance_sha256": "89d6e2129cf28e491fb69d9d2fb2c68f2f50e0562dcdbc792322c2fe04786415",
+    "packaged_payload_bytes": 592741060,
+    "packaged_payload_files": 31,
+    "final_byte_audit": "reports/WC-360/alpha-candidate-final-byte-audit.json",
+    "remaining_task_game_processes": 2,
+    "manual_resume": "reports/WC-360/alpha-candidate-manual-resume/attempt.json",
+    "historical_build_scope": "Retained 12-hero candidate only. The 24-hero update has not inherited these match, manual or performance results."
+  },
+  "performance": {
+    "status": "PASS_MEASURED_WITH_RETAINED_HITCHES",
+    "evidence": "reports/WC-360/alpha-candidate-normal1080/frame-analysis.json",
+    "cpu": "AMD Ryzen 7 6800H",
+    "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU, 6144 MiB",
+    "driver": "580.88",
+    "system_ram_bytes": 16312393728,
+    "resolution": [
+      1920,
+      1080
+    ],
+    "rhi": "D3D11",
+    "anti_aliasing": "native TAA, method 2, 100 percent screen scale",
+    "simulation_speed": 1,
+    "window_style": "Hidden",
+    "automatic_screenshots": false,
+    "required_busy_frames": 1551,
+    "frame_p50_ms": 16.6668,
+    "frame_p95_ms": 16.667002,
+    "frame_p99_ms": 16.727901,
+    "busy_frames_over_33_33_ms": 8,
+    "busy_frames_over_100_ms": 0,
+    "all_frames": 35455,
+    "all_frames_over_100_ms": 1,
+    "peak_process_physical_bytes": 414691328,
+    "inner_exit_code": 0,
+    "boundary": "Bounded 600-second rendered viewport observation ended during round13; not a whole-match, foreground interactive, physical two-PC or clean-machine test. Separate final rendered runs completed two tournaments.",
+    "historical_build_scope": "Retained 12-hero candidate only; no current 24-hero performance acceptance yet."
+  },
+  "update_tasks": {
+    "WC-U400": {
+      "status": "PASS_SCHEMA3_1_PROTOCOL6_400_BASELINE_CHECKS_147_TESTS_28_DOCS_6_CATALOG",
+      "evidence": [
+        "reports/WC-U400/20260906T125729Z/baseline.json",
+        "reports/WC-U400/20260906T125729Z/environment.json",
+        "reports/WC-U400/20260906T125729Z/data-migration/result.json",
+        "reports/WC-U400/20260906T154848Z/protocol5-stage/sync.log",
+        "reports/WC-U400/20260906T154931Z/protocol5-validation/python-tests.log",
+        "reports/WC-U400/20260907T165200Z-closeout",
+        "reports/UPDATE24_CHECKPOINT_HANDOFF.md"
+      ]
+    },
+    "WC-U410": {
+      "status": "PASS_CURRENT_PACKAGED100_ACTUAL_COMBAT_581951_AUDIT_CHECKS",
+      "evidence": [
+        "reports/WC-U410/20260906T132749Z/early-package/early-provenance.json",
+        "reports/WC-U410/20260906T133515Z/early-packaged100/regression.json",
+        "reports/WC-U410/20260906T133515Z/early-packaged100/process-exit.json",
+        "reports/WC-U450/20260906T140347Z/early-package-audit-final-02/regression-analysis.json",
+        "reports/WC-U430/20260906T150228Z/integrated-package/integrated-provenance.json",
+        "reports/WC-U450/20260906T151630Z/integrated-package-audit-fixed/audit/regression-analysis.json",
+        "reports/UPDATE24_CHECKPOINT_HANDOFF.md"
+      ]
+    },
+    "WC-U420": {
+      "status": "PASS_CURRENT_PVE_TOURNAMENT_RESTART_AND_LOOPBACK_FUNCTIONAL_CHECKS",
+      "evidence": [
+        "reports/WC-U420/20260906T133504Z/early-restart/functional-audit/audit.json",
+        "reports/WC-U450/20260906T152237Z/integrated-two-restarts/functional-audit/audit.json",
+        "reports/UPDATE24_CHECKPOINT_HANDOFF.md"
+      ]
+    },
+    "WC-U430": {
+      "status": "PASS_CURRENT_PACKAGED_GALLERY531_CHECKS_24_MESHES_168_CLIPS_MANUAL_USABILITY_OPEN",
+      "evidence": [
+        "reports/WC-U430/20260906T133231Z/frontend-720/launch.json",
+        "reports/WC-U430/20260906T134858Z/editor-build/build.log",
+        "reports/WC-U430/20260906T142256Z/editor-build-roster/process-exit.json",
+        "reports/WC-U430/20260906T142602Z/frontend-all1080/20260906T142621-frontend-audit.json",
+        "reports/WC-U430/20260906T144218Z/approach-all720/20260906T144234-frontend-audit.json",
+        "reports/WC-U430/20260906T145119Z/editor-build-sky-motion/process-exit.json",
+        "reports/WC-U430/20260906T145849Z/composition1080/lobby-visual-review.json",
+        "reports/WC-U430/20260906T150922Z/packaged-gallery1080/20260906T150926-frontend-audit.json",
+        "reports/WC-U430/20260906T154907Z/editor-build-protocol5-ui/build.log",
+        "reports/WC-U430/20260906T160956Z/editor-build-motion-api-fixed/process.json",
+        "reports/WC-U430/20260906T161052Z/selection-ui/selection-rejection-audit.json",
+        "reports/WC-U430/20260906T161534Z/network-recovery-ui/host/launch.json",
+        "reports/WC-U430/20260906T162515Z/editor-build-recovery-compact/process.json",
+        "reports/WC-U430/20260906T162849Z/network-recovery-fixed/recovery-visual-review.json",
+        "reports/WC-U430/20260906T162849Z/network-recovery-fixed/client/network-recovery-audit.json",
+        "reports/UPDATE24_CHECKPOINT_HANDOFF.md"
+      ]
+    },
+    "WC-U440": {
+      "status": "24_HERO_7_NEUTRAL_ASSETS_IMPORTED_COLD_PASS_168_MOVIES_RECORDED_FINISHED_ART_NOT_ACCEPTED",
+      "evidence": [
+        "reports/WC-U440/20260906T133639Z/neutral-import/neutral-import.json",
+        "reports/WC-U440/20260906T133019Z/neutrals/HANDOFF.md",
+        "reports/WC-U440/20260906T140230Z/cold-assets-data/automation/index.json",
+        "reports/WC-U440/20260906T133433Z/six-hero-source-handoff.md",
+        "reports/WC-U440/20260906T141605Z/dwarves/HANDOFF.md",
+        "reports/WC-U440/20260906T142908Z/elves-dwarves-import/import_alpha_assets.json",
+        "reports/WC-U440/20260906T141653Z-orcs/orc-source-handoff.json",
+        "reports/WC-U440/20260906T144057Z/import_alpha_assets/import-selected.json",
+        "reports/WC-U440/20260906T144057Z/import_lobby_assets/lobby-import.json",
+        "reports/WC-U450/20260906T144303Z/asset-readiness-final/HANDOFF.md",
+        "reports/WC-U440/20260906T152237Z/cass-orla-import/import-selected.json",
+        "reports/WC-U440/20260906T153339Z/neris-tala-import/import-selected.json",
+        "reports/WC-U440/20260906T153814Z/cold-sixteen/automation/index.json",
+        "reports/WC-U440/20260906T160431Z/ada9-import/import-wc_u_human_guardian.json",
+        "reports/WC-U440/20260906T160653Z/pippa7-import/import-wc_u_halfling_warrior.json",
+        "reports/WC-U440/20260906T161053Z/cold-pippa/automation/index.json",
+        "reports/WC-U450/20260906T161205Z/pippa-engine-motion-pilot/engine-motion.json",
+        "reports/WC-U450/20260906T161426Z/pippa-encoder-repaired/encoded/encoding-report.json",
+        "reports/WC-U440/20260906T162134Z/cass5-import/editor.log",
+        "reports/WC-U440/20260906T162235Z/cass5-import-path-fixed/import-wc_u_human_warrior.json",
+        "reports/WC-U440/20260906T162355Z/three-face-import/import-selected.json",
+        "reports/WC-U440/20260906T163210Z/cold-seventeen/automation/index.json",
+        "reports/WC-U440/20260906T162841Z/halfling-face-fit/finn-readback/fbx-video-validation.json",
+        "reports/WC-U440/20260906T163812Z/finn-milo-import/import-selected.json",
+        "reports/WC-U440/20260906T163949Z/nella4-import/import-wc_u_halfling_rogue.json",
+        "reports/WC-U440/20260906T164048Z/elf-shoulder-import/import-selected.json",
+        "reports/WC-U440/20260907T165200Z-closeout/asset-matrix-complete-inputs/asset-readiness.json",
+        "reports/UPDATE24_CHECKPOINT_HANDOFF.md"
+      ]
+    },
+    "WC-U450": {
+      "status": "FUNCTIONAL_BOTS_UI_AUDIO_INTEGRATED_BALANCE_AND_CONTINUOUS_AV_REVIEW_OPEN",
+      "evidence": [
+        "reports/WC-U450/20260906T134242Z/tuning-adoption/adoption.json",
+        "reports/WC-U450/20260906T134818Z/native-tuned-100/summary.json",
+        "reports/WC-U450/20260906T135016Z/audio/audio.json",
+        "reports/WC-U450/20260906T142228Z/skill-aware-bots-current/summary.json",
+        "reports/WC-U450/20260906T142228Z/skill-aware-bots-current/policy-comparison.json",
+        "reports/WC-U450/20260906T142613Z/current-validation/results.json",
+        "reports/WC-U430/20260906T135823Z/ada8-audio-import/import_alpha_assets.json",
+        "reports/WC-U450/20260906T143445Z/equal-investment-counters-final/HANDOFF.md",
+        "reports/WC-U450/20260906T154431Z/protocol5-native100/summary.json",
+        "reports/WC-U450/20260906T153043Z-frame-fixture-repair",
+        "reports/WC-U450/20260906T155430Z/inventory-preview-native100/summary.json",
+        "reports/WC-U450/20260906T155430Z/inventory-preview-native100/inventory-refactor-gameplay-parity.json",
+        "reports/WC-U450/20260906T155430Z/inventory-preview-native100/inventory-refactor-byte-parity-failed.json",
+        "reports/WC-U450/20260906T162435Z/current-validation/results.json",
+        "reports/WC-U450/20260906T1633Z-editor-wrapper-fixed-refusals/result.json",
+        "reports/WC-U450/20260906T164029Z/r2-package-audit/audit/regression-analysis.json",
+        "reports/UPDATE24_CHECKPOINT_HANDOFF.md"
+      ]
+    },
+    "WC-U460": {
+      "status": "CHECKPOINT_TECHNICAL_PASSES_PHYSICAL_LAN_MANUAL_PLAY_FULL_PERFORMANCE_AND_ART_GATES_OPEN",
+      "blockers": [
+        "Seven remaining Halfling/Dragonkin production heroes outstanding.",
+        "Complete168-clip current Unreal movies and continuous visual review still outstanding; Pippa7 recorded/encoded only.",
+        "Current source needs corrected package, packaged regression/network/normal1H7B and final performance.",
+        "Two physical LAN machines/access not established; native CUA disabled by current tool surface.",
+        "Final art/audio/normal-speed manual usability approval remains open."
+      ],
+      "evidence": [
+        "reports/WC-U450/20260907T170300Z-closeout/retained-failures.json",
+        "reports/UPDATE24_CHECKPOINT_HANDOFF.md"
+      ]
+    }
+  },
+  "historical_12_hero_warnings": [
+    "Final Shipping completed 100 real all-bot tournaments, with zero failed or unresolved fights and zero rejected bot commands. Actual inner process exit 0; batch time 49.827053 seconds. This headless run is not rendering or performance evidence.",
+    "Final Shipping completed a two-process loopback 2H6B tournament at round 23: 47 checks passed. Both bootstrap exits were 0; observed inner-process exits have uncaptured/UNKNOWN codes. Two physical PCs were not tested.",
+    "Final Shipping completed two rendered scripted 1H7B matches, rounds 23 and 20, with human elimination and bot continuation. Restart audit passed 36 checks and actual process exit 0. Cached seed summaries now agree with snapshots: 314159 and 271828.",
+    "The 22 client-loss/late-join and 16 host-loss checks passed on the preceding native-TAA binary. The final change only corrected evidence seed bookkeeping; network and game core files remain byte-identical. Those disconnect executions are not relabeled as runs of the final binary.",
+    "All ten active alpha traits passed 138 native groups, 2289 assertions and 266 actual Combat constructions. Stars 1-3 cover snapshot recipients; controlled impact cases use star 1. Actual rate-bonus attack intervals and unchanged skill cooldowns were verified separately.",
+    "All twelve heroes now have reviewed living active-recovery images; the final package also supplied reviewed crowded images. Continuous animation/effect timing and human audio audition remain unverified. One approximately 3-pixel conservative Rok safe-margin excursion is retained without claiming visible occlusion.",
+    "Final measured busy frame p95 is 16.667002 ms and p99 is 16.727901 ms. Eight busy frames exceeded 33.33 ms, none exceeded 100 ms; the full capture contains one frame over 100 ms. These observations are not a guarantee of smooth 60 FPS on every frame or other hardware.",
+    "The user explicitly authorized dismissing Windows Security. Computer Use rejected the Cancel click because PickerHost owns the dialog, then reported no targetable PickerHost windows. The current obstacle is tool targeting, not lack of authorization. Fresh final game bootstrap55768/inner55080 is left open pending the user clicking Cancel; no successful permission action or security setting change occurred."
+  ],
+  "update_delivery": {
+    "package_launcher": "builds/WonderChess-Update24-Checkpoint-r4/Windows/WonderChess.exe",
+    "inner_executable_sha256": "67b00eeca8f60f6f8bc62df95fb833f1174f3a3c086ef9c452b39ea0262af0f0",
+    "source_commit": "7f50c6c",
+    "schema": "3.1.0",
+    "balance_version": "alpha_24_v0.4.1",
+    "protocol": 6,
+    "catalog_digest": "95509d001ca0e6c55fa64a616df6e2e9a01a3809a9b9c82d9bd0a725dad3a1ec",
+    "acceptance": "VERIFIED_IMPLEMENTATION_CHECKPOINT_NOT_FULL_RELEASE_ACCEPTANCE",
+    "launch": "Run WonderChess.exe from the intact Windows package folder. Play > Solo starts one human and seven bots. Heroes opens the gallery.",
+    "manual_1H7B": "NOT_RUN_NATIVE_COMPUTER_USE_DISABLED",
+    "physical_2H6B": "BLOCKED_SECOND_PHYSICAL_MACHINE_NOT_SUPPLIED",
+    "continuous_art_audio_acceptance": "NOT_RUN",
+    "provenance": "reports/WC-U430/20260907T171400Z-protocol-fix/provenance.json",
+    "asset_matrix": "reports/WC-U440/20260907T165200Z-closeout/asset-matrix-complete-inputs/asset-readiness.json",
+    "hero_clip_matrix": "reports/WC-U440/20260907T165200Z-closeout/asset-matrix-complete-inputs/hero-clips-168.csv",
+    "regression_audit": "reports/WC-U450/20260907T172100Z-r4/regression-audit-complete/regression-analysis.json",
+    "restart_audit": "reports/WC-U450/20260907T172100Z-r4/restart/functional-audit/audit.json",
+    "network_audit": "reports/WC-U450/20260907T172100Z-r4/loopback/audit/network-analysis.json",
+    "gallery_audit": "reports/WC-U430/20260907T171400Z-protocol-fix/gallery1080/20260907T172238-frontend-audit.json",
+    "frame_times": "reports/WC-U450/20260907T172100Z-r4/normal1080-opening/frame-summary.json",
+    "movies": "reports/WC-U440/20260907T165200Z-closeout/engine-movies168/encoding-report.json"
+  },
+  "current_data": {
+    "schema": "3.1.0",
+    "profile": "alpha_24",
+    "balance": "alpha_24_v0.4.1",
+    "digest": "95509d001ca0e6c55fa64a616df6e2e9a01a3809a9b9c82d9bd0a725dad3a1ec",
+    "protocol": 6,
+    "integration_status": "PROTOCOL6_SHARED_CONSTANT_EDITOR_SHIPPING_BUILT_CURRENT_PACKAGE_AUDITS_PASS"
+  },
+  "current_access_constraints": {
+    "checked_utc": "2026-09-08T05:43:52.547360+00:00",
+    "native_computer_use": "Windows @oai/sky Computer Use available and executed for visible Blender. No new manual gameplay or audiovisual acceptance claimed.",
+    "physical_lan": "No second physical LAN machine/address/access supplied. Actual same-PC two-process loopback is separately labeled.",
+    "boundary": "No security setting broadened. Scripted Unreal commands and captured frame sequences remain distinct from manual play and continuous audiovisual acceptance.",
+    "check_time_boundary": "Blender MCP five-tool verification passed against actual current live candidate after visible launcher restart. CUA_REPL native APIs are a different surface and remain disabled.",
+    "misplaced_review_files": "Automatic approval review rejected moving/cleaning70PNG files under C:/reports/WC-U440/20260906T162705Z-elf-shoulders, reason blocked by policy. Files left untouched; exact handoff reports/WC-U440/20260906T162705Z-elf-shoulders/elf-source8-handoff.md."
+  },
+  "historical_update_deliveries": [
+    {
+      "package_launcher": "builds/WonderChess-Update24-Early/Windows/WonderChess.exe",
+      "inner_executable_sha256": "56da89fcfac07f59b5ea0ac9a895ea979d5fafcd585806128bbe8548d08ab371",
+      "provenance": "reports/WC-U410/20260906T132749Z/early-package/early-provenance.json",
+      "balance_version": "alpha_24_v0.4.0",
+      "catalog_digest": "18ba21c7245750ab01fdc8d37d713daa27e8723a6ffab86b3bd0323a909f2122",
+      "acceptance": "EARLY_SLICE_ONLY_MISSING12HERO_AND7NEUTRAL_MODELS_IN_THIS_PACKAGE",
+      "launch": "Run packaged WonderChess.exe; Play then Solo. Native gallery available. Current source/cooked assets have advanced beyond this immutable early package."
+    },
+    {
+      "package_launcher": "builds/WonderChess-Update24-IntegratedSlice/Windows/WonderChess.exe",
+      "inner_executable_sha256": "03ea5cd1179299fc02ea568239f7f0d06c5cfe6cc36ac66ae1ce5cce708ff005",
+      "provenance": "reports/WC-U430/20260906T150228Z/integrated-package/integrated-provenance.json",
+      "balance_version": "alpha_24_v0.4.1",
+      "catalog_digest": "5ba20f6687bcd100616cd095c9741f1ad29bbb19b22c47204c0526adb8f3931a",
+      "protocol": 4,
+      "acceptance": "INTERMEDIATE_SLICE_ONLY_12_HERO_MODELS_7_NEUTRALS_LOBBY_COOK_FAILURE_RETAINED",
+      "launch": "Run packaged WonderChess.exe; Play then Solo. This immutable slice has the lobby cook defect and missing expansion models. Current source is ahead."
+    },
+    {
+      "package_launcher": "builds/WonderChess-Update24-IntegratedSlice-r2/Windows/WonderChess.exe",
+      "inner_executable_sha256": "f6f298267f01c53eb9f8a3cc9a9041abc0d2dda65f2a2de7dbd7098113713fe5",
+      "provenance": "reports/WC-U430/20260906T163348Z/integrated-package-r2/provenance.json",
+      "balance_version": "alpha_24_v0.4.1",
+      "catalog_digest": "a0fc03fd31260f245a795233aa00d3959e7f80be37dcc7affe3500d4346fc101",
+      "protocol": 5,
+      "acceptance": "INTERMEDIATE17HERO_SLICE_ONLY_LOBBY_COOK_FIX_PROVED_100ACTUAL_COMBAT_PASS",
+      "launch": "Run packaged WonderChess.exe, Play then Solo. This immutable intermediate slice still lacks7 expansion models; current source/imports are ahead.",
+      "gallery_audit": "reports\\WC-U430\\20260906T163733Z\\r2-packaged-gallery1080\\packaged-visual-review.json",
+      "regression_audit": "reports/WC-U450/20260906T164029Z/r2-package-audit/audit/regression-analysis.json",
+      "network_audit": "reports/WC-U450/20260906T164139Z/r2-loopback-2h6b/audit-console.log",
+      "network_result": "PASS56_CHECKS_ROUND33_BOTH_INNER_EXITS0_LOOPBACK_ONLY"
+    }
+  ],
+  "last_updated_utc": "2026-09-08T17:35:54.4897976Z",
+  "closeout_steering": {
+    "utc": "2026-09-07T17:20:11.259869+00:00",
+    "request": "Finish current run quickly; defer real-time MCP bridge discussion",
+    "scope_boundary": "Close current implementation checkpoint with real package/test evidence. Do not convert unreviewed artwork, scripted input, loopback or short timing samples into full release acceptance."
+  },
+  "update_performance": {
+    "report": "reports/WC-U450/20260907T172100Z-r4/normal1080-opening/frame-summary.json",
+    "boundary": "150-second normal-speed opening sample; not full-match/busy-PvP/lobby/gallery acceptance",
+    "eight_neutral_encounters": "OBSERVED",
+    "required_busy_load": "NOT_RUN"
+  },
+  "final_validation": "reports/WC-U460/20260907T173100Z-final-checks",
+  "blender_mcp_connection": {
+    "status": "VISIBLE_GUI_EDIT_SAVE_AND_POST_RESTART_MCP_VERIFIED",
+    "verified_utc": "2026-09-08T05:41:09.998826+00:00",
+    "configuration": ".codex/config.toml",
+    "launcher": "tools/blender/Start-Mcp.ps1",
+    "guide": "docs/BLENDER_MCP_CONNECTION.md",
+    "evidence": "reports/AS1/live-mcp/clay-session-final-verification/verification.json",
+    "blender_version": "5.1.1",
+    "server_version": "1.9.1",
+    "listener": "127.0.0.1:9876",
+    "telemetry": false,
+    "code_safe_mode": true,
+    "source_assets_modified": true,
+    "source_scope": "New isolated AS1 clay study only; canonical Ada and AQ1 unchanged",
+    "active_blend": "art-source/asset-studio/wc_u_human_guardian/live/ada_clay_study_r003.blend",
+    "addon_protocol": 5,
+    "native_computer_use": "Blender window selected and captured using @oai/sky",
+    "prior_verification": "reports/blender-mcp/20260907T232817Z/verification.json"
+  },
+  "aq1_ada_art": {
+    "status": "EXECUTED_CANDIDATE_REVIEW_HANDOFF_ART_AND_PERFORMANCE_GATES_OPEN",
+    "requested_phases": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "base_commit": "9623fd82f98ff80a90985b9f552d8851ccece30f",
+    "asset_id": "wc_u_human_guardian",
+    "direction": "Pram selected the attached Ada reference. Final approval of the 3D candidate is pending.",
+    "handoff": "docs/art-quality/AQ1/RUN_HANDOFF.md",
+    "review": "reports/AQ1/20260908/review.json",
+    "editable_source": "art-source/heroes/wc_u_human_guardian/candidates/AQ1/ada_forms_r08.blend",
+    "baked_source": "art-source/heroes/wc_u_human_guardian/candidates/AQ1/ada_baked_r07.blend",
+    "candidate_unreal_folder": "/Game/WonderChess/Candidates/AQ1/Ada_r01",
+    "source_sha256": "cd6bb6ddb3a54aaa15be3112a804caf0820f9ad1162b7cb8ee345f646bef8a67",
+    "canonical_ada_and_gameplay_preserved": true,
+    "candidate_promoted": false,
+    "candidate_packaged_executable": null,
+    "technical_checks": "Fresh baseline:400 spec/data checks and147 Python tests;11 importer preflight tests; real Editor builds/import/reimport/cold; seven-clip Blender and Unreal frame review; normal control and color regression; crowded capture and matched baseline/candidate frame-time runs executed.",
+    "open_gates": [
+      "Reference likeness, polish and Pram approval",
+      "Named cloth/contact defects and view-dependent face occlusion",
+      "Approval of the25k comparison exception and lower LODs",
+      "Continuous human audiovisual review",
+      "Candidate packaging and release acceptance",
+      "235.061ms candidate hitch and eight-neutral performance tail need investigation before acceptance"
+    ],
+    "boundary": "Focused art candidate only. Existing24-hero runtime and release evidence retained. No new manual human, physical LAN or100-tournament claim. No push.",
+    "performance_evidence": "reports/AQ1/20260908/performance_review/PERFORMANCE.md"
+  },
+  "acb1_game_resume": {
+    "status": "NATIVE_NORMAL_SPEED_MATCH_AND_RESTART_VERIFIED_LAUNCHER_ISSUE_CLOSED_BETA_GATES_OPEN",
+    "updated_utc": "2026-09-09T04:10:55Z",
+    "handoff": "reports/ACB1/ACB1_HANDOFF.md",
+    "reconciliation": "reports/ACB1/read_only_reconciliation.md",
+    "package_launcher": "builds/WonderChess-Update24-Checkpoint-r4/Windows/WonderChess.exe",
+    "inner_executable_sha256": "67b00eeca8f60f6f8bc62df95fb833f1174f3a3c086ef9c452b39ea0262af0f0",
+    "source_head": "9623fd82f98ff80a90985b9f552d8851ccece30f",
+    "dirty_state_boundary": "Existing AQ1 presentation C++ changes and art/tool work retained; those source edits and ACB1 head are not in this preserved r4 binary.",
+    "profile": "alpha_24",
+    "balance": "alpha_24_v0.4.1",
+    "schema": "3.1.0",
+    "protocol": 6,
+    "catalog_digest": "95509d001ca0e6c55fa64a616df6e2e9a01a3809a9b9c82d9bd0a725dad3a1ec",
+    "issue": {
+      "id": "ACB1-GAME-001",
+      "status": "CLOSED_LOCAL_VERIFIED",
+      "problem": "Default launch_alpha.ps1 selected the obsolete twelve-hero Alpha-Candidate package.",
+      "fix": "Default executable changed to current Update24 checkpoint r4; explicit override and flags retained.",
+      "source": "tools/unreal/launch_alpha.ps1",
+      "test": "tests/runtime/test_default_launch.ps1",
+      "baseline": "reports/ACB1/20260909-default-launcher/baseline/launch-resolution.json",
+      "fixed": "reports/ACB1/20260909-default-launcher/fixed/launch-resolution.json",
+      "native_verification": "reports/ACB1/20260909-default-launcher/native-launch.json",
+      "native_process": 32260,
+      "runtime_rebuild": "NOT_REQUIRED_NO_RUNTIME_OR_COOKED_ASSET_CHANGE"
+    },
+    "interactive_match": {
+      "input": "Native Computer Use agent interaction; no scripted game command injection; not a human/newcomer playtest",
+      "simulation_speed_multiplier": 1,
+      "options_pauses_used": true,
+      "process": 36432,
+      "namespace": 1,
+      "authority_seed": 846842640,
+      "finished_round": 38,
+      "wall_seconds_to_first_finished_state": 1804.716,
+      "interactive_seat_eliminated_round": 13,
+      "winner": "Highbanner Bot",
+      "winner_hp": 4,
+      "unique_final_places": 8,
+      "accepted_replies": 13,
+      "rejected_replies": 0,
+      "journal": "reports/ACB1/20260909-native-r4/interaction_journal.md",
+      "results_capture": "reports/ACB1/20260909-native-r4/captures/26_results_screen.png",
+      "boundary": "One whole interactive tournament including elimination and continued spectating. Pauses and early weak player board prevent balance/newcomer or uninterrupted-play claims. Reply records alone lack request payloads."
+    },
+    "restart": {
+      "status": "VERIFIED_NATIVE_RESTART_AFTER_FINISH",
+      "namespace": 2,
+      "authority_seed": 2061823456,
+      "observed": "Round 1, eight positive-health seats, zero placements, owner sequence 0, empty units, level 3, gold 10; native buy and sell; continued to round 2 before normal exit",
+      "second_full_match": false,
+      "capture": "reports/ACB1/20260909-native-r4/captures/28_restart_round_one.png"
+    },
+    "gallery": {
+      "status": "VERIFIED_THIS_RUN_24_GRID_CARDS_AND_PORTRAITS",
+      "boundary": "All four rows inspected natively; not all 72 star-stat combinations, model details or continuous per-hero motion acceptance"
+    },
+    "performance": {
+      "status": "ONE_MATCH_MEASURED_HITCHES_REMAIN_BETA_GATE_OPEN",
+      "report": "reports/ACB1/20260909-native-r4/run_analysis.md",
+      "details": "reports/ACB1/20260909-native-r4/run_analysis.json",
+      "spikes": "reports/ACB1/20260909-native-r4/run_analysis_spikes.csv",
+      "all_namespaces_recorded_frames": 119892,
+      "completed_match_recorded_frames": 106155,
+      "frame_interval_p99_ms": 16.753799,
+      "frame_interval_max_ms": 185.648209,
+      "frame_intervals_over_50_ms": 311,
+      "frame_intervals_over_100_ms": 196,
+      "busy_visible_combat_samples": 5654,
+      "busy_visible_combat_p99_ms": 17.2279,
+      "boundary": "All recorded samples and spikes retained. Unidentified Solo Options pauses included. Engine omits first five seconds per namespace and profiling after completion/abort. One machine and one full tournament; no broad performance approval."
+    },
+    "timeout_diagnosis": {
+      "status": "CURRENT_TRACE_RECONCILED_CAUSAL_AND_BALANCE_GATES_OPEN",
+      "report": "reports/ACB1/20260909-native-r4/current_encounter_review.md",
+      "boundary": "Fixed run prefix through round 20 only: 104 settled fights, 9 PvP timeouts. Named round-14 timeout retained damage through ticks 792/795 before cutoff 800; not proof of a frozen fight or cause for tuning."
+    },
+    "validation": "reports/ACB1/20260909-validation/validation.json",
+    "validation_counts": {
+      "spec_data_checks": 400,
+      "python_tests": 154,
+      "matching_documents": 28,
+      "matching_catalog_artifacts": 6,
+      "focused_launcher_checks": 4
+    },
+    "preservation": "reports/ACB1/final_preservation.json",
+    "physical_2H6B": "BLOCKED_USER_CONFIRMED_ONLY_ONE_PC",
+    "remote_8H0B": "NOT_IMPLEMENTED_NOT_TESTED_CURRENT_TWO_HUMAN_CAP_AND_NO_AUTHENTICATED_RECLAIM",
+    "audio_listening": "NOT_RUN_NO_DIRECT_LISTENING_EVIDENCE",
+    "human_art_approval": false,
+    "beta_acceptance": false
+  },
+  "as1_asset_studio": {
+    "updated_utc": "2026-09-08T17:35:54.4897976Z",
+    "integration": "implemented_locally_verified",
+    "integration_report": "production/asset-studio/reports/local-integration.json",
+    "ada_candidate_workspace": "art-source/asset-studio/wc_u_human_guardian",
+    "ada_geometry_start": "separate_user_authorized_MPFB_core_foundation_no_previous_Ada_geometry",
+    "ada_status": "MP1_FOUNDATION_RETAINED_LIKENESS_ART_REVISE",
+    "technical_brief": "accepted_current",
+    "human_approvals": {
+      "references": true,
+      "forms": false,
+      "release": false
+    },
+    "reference_candidate": "art-source/asset-studio/wc_u_human_guardian/reviews/references/candidate_5f81fc931e05488c942bb0d175830670.json",
+    "review_packet": "art-source/asset-studio/wc_u_human_guardian/stages/mpfb-pilot/MP1/REVIEW.md",
+    "checkpoint": "art-source/asset-studio/wc_u_human_guardian/stages/mpfb-pilot/MP1/geometry_audit.json",
+    "next_required_action": "Review the separate MPFB r002 foundation. Trial stopped after initial construction and two bounded passes; no forms approval. Recommended next art task is one eye aperture/corner correction with matched openings and reversed-light evidence before propagation; lip contact remains a separate defect. Do not build a broader toolkit yet.",
+    "reference_gate": "accepted_current",
+    "reference_acceptance": "art-source/asset-studio/wc_u_human_guardian/reviews/references/accepted_f6ea0a9d2e1f427790481f24f4b6b346.json",
+    "active_blend": "art-source/asset-studio/wc_u_human_guardian/stages/mpfb-pilot/MP1/ada_mpfb_work.blend",
+    "frozen_blend": "art-source/asset-studio/wc_u_human_guardian/stages/mpfb-pilot/MP1/ada_mpfb_checkpoint_r002_verified.blend",
+    "user_feedback": "Priority eyes/sockets, then nose-to-mouth profile, then jaw/lower cheek. Strict one-region correction, two attempts, no hair-family work.",
+    "separate_art_review": "MPFB visibly improves nasal-base/philtrum continuity, independent cheek volume and ear anatomy over r016. r002 remains ART_REVISE: eyes too compact/rounded with a raised lower-lid rim, mouth parted/projecting, jaw too soft/generic. The last lip-control pass produced only modest change and did not achieve closure. No human approval.",
+    "ada_mpfb_mp1": {
+      "status": "FOUNDATION_RETAINED_LIKENESS_ART_REVISE",
+      "method": "MPFB 2.0.17 core CC0 foundation, native target controls, separately derived editable head; Blender 5.1.1",
+      "revision": "r002",
+      "corrective_attempts": 2,
+      "frozen_sha256": "9ccfd9fdd87ddeac89761809f9ea725e50c0e874e6ca8f3a9bc539430badac5a",
+      "verification": "art-source/asset-studio/wc_u_human_guardian/stages/mpfb-pilot/MP1/verification.json",
+      "independent_review": "art-source/asset-studio/wc_u_human_guardian/stages/mpfb-pilot/MP1/independent_review.md",
+      "head_control_vertices": 4271,
+      "head_control_faces": 4246,
+      "head_evaluated_triangles": 135872,
+      "r016_and_acb1_hashes_preserved": true,
+      "approved_reference_gate": "accepted_current",
+      "head_and_source_scenes_reopened": true,
+      "save_retention_correction": "Initial checkpoint omitted zero-user head scene. Explicit scene retention fixed saving; new verified checkpoint and work file independently reopened. Geometry unchanged.",
+      "hair_family_work": "NOT_RUN",
+      "runtime_integration": "NOT_RUN",
+      "new_reusable_toolkit": "NOT_BUILT_TRIAL_ONLY",
+      "human_forms_approval": false
+    },
+    "ada_closure_acb1": {
+      "status": "PARKED_ART_REVISE",
+      "baseline": "art-source/asset-studio/wc_u_human_guardian/stages/head-polish/HP1/r001/ada_head_polish_checkpoint_r016.blend",
+      "baseline_sha256": "775815688dc4aa30dce7085b78ef79bf9ff89f603f243af9110d8ef7b8d00b6b",
+      "frozen_sha256": "5deb2ead3d282a6ea0646452f2ee85a35506a5f4b1a1d275b8711623dbe96e2c",
+      "method": "Evaluated separate sculpt target; bounded native Blender Clay Strips, Clay and local Smooth strokes; unchanged input cage",
+      "corrective_attempts": 2,
+      "sculpt_target_vertices": 26042,
+      "sculpt_target_faces": 25816,
+      "changed_target_vertices": 2074,
+      "protected_opening_collar_vertices_changed": 0,
+      "saved_camera_and_light_matrices_unchanged": true,
+      "approved_references_preserved": true,
+      "preservation_report": "art-source/asset-studio/wc_u_human_guardian/stages/head-closure/ACB1/reviews/preservation_review.md",
+      "new_editable_surface_reconstruction": "NOT_RUN_FAILED_TARGET_GATE",
+      "bilateral_extension": "NOT_RUN_FAILED_TARGET_GATE",
+      "contextual_head": "NOT_RUN_FAILED_TARGET_GATE",
+      "runtime_integration": "NOT_RUN",
+      "human_forms_approval": false
+    },
+    "r003_baseline": {
+      "ada_status": "clay_study_revise_method_limit",
+      "review_packet": "art-source/asset-studio/wc_u_human_guardian/REVIEW_CLAY.md",
+      "checkpoint": "art-source/asset-studio/wc_u_human_guardian/stages/clay-study/r003/session_report.json",
+      "active_blend": "art-source/asset-studio/wc_u_human_guardian/live/ada_clay_study_r003.blend",
+      "frozen_blend": "art-source/asset-studio/wc_u_human_guardian/stages/clay-study/r003/ada_clay_checkpoint.blend",
+      "separate_art_review": "REVISE; facial likeness and hair construction not demonstrated"
+    },
+    "ada_method_recovery": {
+      "stage": "MR1",
+      "revision": "r001",
+      "workspace": "art-source/asset-studio/wc_u_human_guardian/stages/method-recovery/MR1/r001",
+      "status": "EXECUTED_LOCAL_METHODS_ACCEPTED_CONTEXT_REVISE",
+      "baseline_source_sha256": "15f7fdc7c842d57ff05873a7cd988637411ad8985eadf852757ebbd62877043b",
+      "original_files_preserved": true,
+      "face_method_status": "METHOD_PROOF_ACCEPTED",
+      "hair_method_status": "METHOD_PROOF_ACCEPTED",
+      "contextual_head_status": "REVISE",
+      "human_forms_approval": false,
+      "runtime_integration_status": "NOT_RUN",
+      "verification": "art-source/asset-studio/wc_u_human_guardian/stages/method-recovery/MR1/r001/verification.json",
+      "review": "art-source/asset-studio/wc_u_human_guardian/stages/method-recovery/MR1/r001/reviews/context_final_review.md"
+    },
+    "fh1_previous_checkpoint": {
+      "ada_status": "local_methods_accepted_contextual_head_revise",
+      "review_packet": "art-source/asset-studio/wc_u_human_guardian/stages/method-recovery/MR1/r001/REVIEW_MR1.md",
+      "checkpoint": "art-source/asset-studio/wc_u_human_guardian/stages/method-recovery/MR1/r001/session_report.json",
+      "active_blend": "art-source/asset-studio/wc_u_human_guardian/stages/method-recovery/MR1/r001/ada_method_proof_work.blend",
+      "frozen_blend": "art-source/asset-studio/wc_u_human_guardian/stages/method-recovery/MR1/r001/contextual_head_candidate_final.blend",
+      "next_required_action": "Prove one anatomical-right nasal-to-upper-cheek transition band with compatible sampling and surface tangents; then verify counter-sweep and rear-gathering contacts individually",
+      "separate_art_review": "Local eye and single hair methods accepted by independent agent review; connected head, expanded hairstyle, likeness and human forms approval remain REVISE/unapproved"
+    },
+    "ada_features_head": {
+      "stage": "FH1",
+      "revision": "r001",
+      "retained_geometry_revision": "r004",
+      "status": "EXECUTED_COMBINED_REVISE",
+      "original_geometry": true,
+      "protected_sources_preserved": true,
+      "current_skin_vertices": 1621,
+      "current_skin_faces": 1564,
+      "human_forms_approval": false,
+      "runtime_integration": "NOT_RUN",
+      "verification": "art-source/asset-studio/wc_u_human_guardian/stages/features-head/FH1/r001/verification.json",
+      "independent_review": "art-source/asset-studio/wc_u_human_guardian/stages/features-head/FH1/r001/reviews/independent_features_review.md"
+    },
+    "hp1_previous_checkpoint": {
+      "ada_status": "features_and_head_executed_combined_forms_revise",
+      "review_packet": "art-source/asset-studio/wc_u_human_guardian/stages/features-head/FH1/r001/REVIEW_FH1.md",
+      "checkpoint": "art-source/asset-studio/wc_u_human_guardian/stages/features-head/FH1/r001/verification.json",
+      "active_blend": "art-source/asset-studio/wc_u_human_guardian/stages/features-head/FH1/r001/ada_features_work.blend",
+      "frozen_blend": "art-source/asset-studio/wc_u_human_guardian/stages/features-head/FH1/r001/ada_features_checkpoint_r004.blend",
+      "next_required_action": "Directly edit one inner-brow/nasal-root and nasal-base/philtrum study; preserve FH1 R004 and review matched views. Ear and skull/jaw structure remain revision items.",
+      "separate_art_review": "FH1 independent review: all regions remain REVISE despite visible component and interface improvements. No human forms approval."
+    },
+    "ada_head_polish": {
+      "stage": "HP1",
+      "revision": "r001",
+      "retained_geometry_revision": "r016",
+      "status": "EXECUTED_LOCAL_CORRECTION_REVISE",
+      "protected_sources_preserved": true,
+      "hair_eyebrows_eyelashes_touched": false,
+      "current_skin_vertices": 1670,
+      "current_skin_faces": 1612,
+      "neutral_pose_nonadjacent_self_overlap_pairs": 0,
+      "human_forms_approval": false,
+      "near_perfect_reference_match": false,
+      "runtime_integration": "NOT_RUN",
+      "verification": "art-source/asset-studio/wc_u_human_guardian/stages/head-polish/HP1/r001/local-correction/verification.json",
+      "independent_review": "art-source/asset-studio/wc_u_human_guardian/stages/head-polish/HP1/r001/reviews/local_correction_review.md",
+      "bounded_local_attempts": 2,
+      "local_changed_cage_vertices": 142,
+      "shared_midline_controls": [
+        248,
+        767,
+        1030,
+        1064,
+        1098
+      ]
+    }
+  }
+}

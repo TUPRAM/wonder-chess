@@ -1,0 +1,210 @@
+{
+  "artifacts": [
+    {
+      "path": "stages/body-costume/BW1/r001/ada_body_costume_checkpoint_r003_ART_REVISE.blend",
+      "category": "source"
+    },
+    {
+      "path": "stages/body-costume/BW1/r001/reviews/reference_comparison_r003.png",
+      "category": "image"
+    },
+    {
+      "path": "stages/body-costume/BW1/r001/captures/r003_context_front.png",
+      "category": "image"
+    },
+    {
+      "path": "stages/body-costume/BW1/r001/captures/r003_context_profile.png",
+      "category": "image"
+    },
+    {
+      "path": "stages/body-costume/BW1/r001/captures/r003_context_reversed_key.png",
+      "category": "image"
+    },
+    {
+      "path": "stages/body-costume/BW1/r001/captures/arm_pose_shoulder_raise.png",
+      "category": "image"
+    },
+    {
+      "path": "stages/body-costume/BW1/r001/captures/technical_r002_frame_129.png",
+      "category": "image"
+    },
+    {
+      "path": "stages/body-costume/BW1/r001/hand-pose-study/sword_grip_final.png",
+      "category": "image"
+    },
+    {
+      "path": "stages/body-costume/BW1/r001/motion-r003/ada_bw1_articulation_r003_review.mp4",
+      "category": "video"
+    },
+    {
+      "path": "stages/body-costume/BW1/r001/REVIEW.md",
+      "category": "report"
+    },
+    {
+      "path": "stages/body-costume/BW1/r001/reviews/independent_visual_review.md",
+      "category": "report"
+    },
+    {
+      "path": "stages/body-costume/BW1/r001/reviews/final_reopen_r003_audit.json",
+      "category": "report"
+    },
+    {
+      "path": "stages/body-costume/BW1/r001/body_preset_r003.json",
+      "category": "report"
+    },
+    {
+      "path": "stages/body-costume/BW1/r001/construction_records.json",
+      "category": "report"
+    },
+    {
+      "path": "stages/body-costume/BW1/r001/captures/edit_glove.png",
+      "category": "image"
+    },
+    {
+      "path": "stages/body-costume/BW1/r001/captures/edit_sleeve.png",
+      "category": "image"
+    },
+    {
+      "path": "stages/body-costume/BW1/r001/captures/edit_boot.png",
+      "category": "image"
+    },
+    {
+      "path": "stages/body-costume/BW1/r001/captures/edit_pauldron_clear.png",
+      "category": "image"
+    },
+    {
+      "path": "stages/body-costume/BW1/r001/captures/edit_greave_clear.png",
+      "category": "image"
+    },
+    {
+      "path": "stages/body-costume/BW1/r001/captures/edit_sole.png",
+      "category": "image"
+    },
+    {
+      "path": "stages/body-costume/BW1/r001/motion-r003/MOTION_REVIEW.md",
+      "category": "report"
+    },
+    {
+      "path": "stages/body-costume/BW1/r001/motion-r003/clothing_temporal_audit.json",
+      "category": "report"
+    },
+    {
+      "path": "stages/body-costume/BW1/r001/motion-r003/video_verification.json",
+      "category": "report"
+    }
+  ],
+  "asset_id": "wc_u_human_guardian",
+  "author": "Codex BW1 authoring pass",
+  "checks": [
+    {
+      "evidence": [
+        "stages/body-costume/BW1/r001/reviews/reference_comparison_r003.png"
+      ],
+      "id": "silhouette_and_proportions",
+      "notes": "Adult foundation exists, but armor/tailoring silhouette diverges materially from Ada; no accepted likeness score.",
+      "status": "fail"
+    },
+    {
+      "evidence": [
+        "stages/body-costume/BW1/r001/captures/r003_context_front.png",
+        "stages/body-costume/BW1/r001/captures/r003_context_profile.png"
+      ],
+      "id": "camera_alignment",
+      "notes": "Fixed orthographic cameras and both three-quarter views executed. Painted reference/candidate pose are not pixel-registered; no perfect alignment claimed.",
+      "status": "fail"
+    },
+    {
+      "evidence": [
+        "stages/body-costume/BW1/r001/captures/arm_pose_shoulder_raise.png",
+        "stages/body-costume/BW1/r001/captures/technical_r002_frame_129.png",
+        "stages/body-costume/BW1/r001/hand-pose-study/sword_grip_final.png"
+      ],
+      "id": "major_part_clearance",
+      "notes": "Shoulder/bracer gaps, failed grips, moving thigh/coat penetration and knee/greave coverage defects remain.",
+      "status": "fail"
+    },
+    {
+      "evidence": [
+        "stages/body-costume/BW1/r001/reviews/independent_visual_review.md",
+        "stages/body-costume/BW1/r001/motion-r003/ada_bw1_articulation_r003_review.mp4"
+      ],
+      "id": "method_is_capable",
+      "notes": "Continuous cloth and footprint sole helped locally, but complete arm and leg methods failed; stop rules reached; no recipe promotion.",
+      "status": "fail"
+    }
+  ],
+  "defects": [
+    {
+      "id": "BW1-GRIP",
+      "severity": "major",
+      "status": "open",
+      "description": "Incorrect handle enclosure/opposing thumb; stopped after two corrective attempts."
+    },
+    {
+      "id": "BW1-ARM",
+      "severity": "major",
+      "status": "open",
+      "description": "Shoulder and bracer attachment/clearance fails raised-arm proof."
+    },
+    {
+      "id": "BW1-CLOTH",
+      "severity": "major",
+      "status": "open",
+      "description": "Root-weighted hanging panels intersect moving thighs."
+    },
+    {
+      "id": "BW1-KNEE",
+      "severity": "major",
+      "status": "open",
+      "description": "Cup coverage and greave overlap fail bend/kneel; two attachment corrections rejected."
+    },
+    {
+      "id": "BW1-SILHOUETTE",
+      "severity": "major",
+      "status": "open",
+      "description": "Floating torso panels, broad band-like armor, rough openings and boot junctions remain."
+    },
+    {
+      "id": "BW1-SPIKE",
+      "severity": "major",
+      "status": "fixed",
+      "description": "Reproducible leggings and coat Solidify spikes fixed by disabling even offset in technical r002 and r003 respectively; all-frame checks are separate evidence."
+    }
+  ],
+  "executed_commands": [
+    "stages/body-costume/BW1/r001/operations/01_independent_body.py",
+    "stages/body-costume/BW1/r001/operations/02_body_scale_cameras.py",
+    "stages/body-costume/BW1/r001/operations/03_correct_display_neck.py",
+    "stages/body-costume/BW1/r001/operations/04_native_body_fit_and_rig.py",
+    "stages/body-costume/BW1/r001/operations/05_fit_selected_glove_boot.py",
+    "stages/body-costume/BW1/r001/operations/06_helper_derived_cloth.py",
+    "stages/body-costume/BW1/r001/operations/07_correct_cloth_envelope.py",
+    "stages/body-costume/BW1/r001/operations/08_original_armor_shells.py",
+    "stages/body-costume/BW1/r001/operations/09_plate_clearance_boot_adaptation.py",
+    "stages/body-costume/BW1/r001/operations/10_local_construction_refinements.py",
+    "stages/body-costume/BW1/r001/operations/11_leg_pose_probes.py",
+    "stages/body-costume/BW1/r001/operations/12_footprint_sole_rebuild.py",
+    "stages/body-costume/BW1/r001/operations/13_dimensioned_equipment_blockout.py",
+    "stages/body-costume/BW1/r001/operations/14_arm_and_grounded_kneel_tests.py",
+    "stages/body-costume/BW1/r001/operations/15_motion_diagnostic.py",
+    "stages/body-costume/BW1/r001/operations/16_normalize_and_render_motion.py",
+    "stages/body-costume/BW1/r001/operations/17_knee_attachment_test.py",
+    "stages/body-costume/BW1/r001/operations/18_knee_pivot_correction.py",
+    "stages/body-costume/BW1/r001/operations/19_knee_surface_attachment.py",
+    "stages/body-costume/BW1/r001/operations/20_final_clay_views.py",
+    "stages/body-costume/BW1/r001/operations/21_freeze_candidate.py",
+    "stages/body-costume/BW1/r001/operations/22_fix_leggings_even_offset.py",
+    "stages/body-costume/BW1/r001/operations/23_finalize_review_packet.py",
+    "stages/body-costume/BW1/r001/operations/24_fix_coat_even_offset.py",
+    "stages/body-costume/BW1/r001/operations/25_render_r003_context.py"
+  ],
+  "method": "Native MPFB full-source fitting; helper-derived coat; one CC0 glove/boot adaptation; original armor/equipment cages; actual temporary FK poses; two failed grip and knee corrections; independent image review. Technical r002 and r003 disable leggings and coat Solidify even-offset spikes without cage/weight/action edits.",
+  "notes": [
+    "ART_REVISE. No human approval.",
+    "AS1 human reference approval remains unchanged. Body work independently authorized by BW1.",
+    "Independent image review: reviews/independent_visual_review.md. The frozen candidate retains major art and motion defects.",
+    "No replay/second-body fit or recipe promotion."
+  ],
+  "schema_version": "1.0.0",
+  "stage": "blockout"
+}

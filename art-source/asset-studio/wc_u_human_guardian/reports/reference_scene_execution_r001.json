@@ -1,0 +1,407 @@
+{
+  "timestamp_utc": "2026-09-08T04:09:55.047707+00:00",
+  "status": "executed_reference_placement_owner_approval_pending",
+  "operations": [
+    {
+      "command": [
+        "C:\\Users\\iputu\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\production\\asset-studio\\tools\\asset_studio\\image_review.py",
+        "crop",
+        "--image",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_u_human_guardian\\stages\\references\\ada_construction_r002.png",
+        "--boxes",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_u_human_guardian\\stages\\references\\blender_r001\\crop_plan_r001.json",
+        "--out",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_u_human_guardian\\stages\\references\\blender_r001\\native-crops"
+      ],
+      "exit_code": 0,
+      "log": "stages\\references\\blender_r001\\crop.log"
+    },
+    {
+      "command": [
+        "C:\\Program Files\\Blender Foundation\\Blender 5.1\\blender.exe",
+        "--background",
+        "--factory-startup",
+        "--disable-autoexec",
+        "--python-exit-code",
+        "23",
+        "--python",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_u_human_guardian\\stages\\references\\blender_r001\\create_empty_source.py",
+        "--",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_u_human_guardian\\stages\\references\\blender_r001"
+      ],
+      "exit_code": 0,
+      "log": "stages\\references\\blender_r001\\create_empty_source.log"
+    },
+    {
+      "command": [
+        "C:\\Users\\iputu\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\production\\asset-studio\\tools\\asset_studio\\run_blender.py",
+        "--blender",
+        "C:\\Program Files\\Blender Foundation\\Blender 5.1\\blender.exe",
+        "--source",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_u_human_guardian\\stages\\references\\blender_r001\\ada_reference_empty_source_r001.blend",
+        "--tool",
+        "reference_setup",
+        "--execute",
+        "--timeout",
+        "120",
+        "--log",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_u_human_guardian\\stages\\references\\blender_r001\\reference_setup.log",
+        "--",
+        "--workspace",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_u_human_guardian",
+        "--spec",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_u_human_guardian\\stages\\references\\blender_r001\\calibration_r001.json",
+        "--output-blend",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_u_human_guardian\\stages\\references\\blender_r001\\ada_reference_import_candidate_r001.blend",
+        "--collection",
+        "AS1_REFERENCES_R001"
+      ],
+      "exit_code": 0,
+      "log": "stages\\references\\blender_r001\\reference_setup_runner.log"
+    },
+    {
+      "command": [
+        "C:\\Program Files\\Blender Foundation\\Blender 5.1\\blender.exe",
+        "--background",
+        "--factory-startup",
+        "--disable-autoexec",
+        "--python-exit-code",
+        "23",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_u_human_guardian\\stages\\references\\blender_r001\\ada_reference_import_candidate_r001.blend",
+        "--python",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_u_human_guardian\\stages\\references\\blender_r001\\lock_and_inspect_reference_scene.py",
+        "--",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_u_human_guardian\\stages\\references\\blender_r001"
+      ],
+      "exit_code": 0,
+      "log": "stages\\references\\blender_r001\\lock_inspect.log"
+    },
+    {
+      "command": [
+        "C:\\Users\\iputu\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\production\\asset-studio\\tools\\asset_studio\\run_blender.py",
+        "--blender",
+        "C:\\Program Files\\Blender Foundation\\Blender 5.1\\blender.exe",
+        "--source",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_u_human_guardian\\stages\\references\\blender_r001\\ada_reference_scene_r001.blend",
+        "--tool",
+        "scene_audit",
+        "--execute",
+        "--timeout",
+        "120",
+        "--log",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_u_human_guardian\\stages\\references\\blender_r001\\scene_audit.log",
+        "--",
+        "--collection",
+        "AS1_REFERENCES_R001",
+        "--output",
+        "C:\\Users\\iputu\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_u_human_guardian\\stages\\references\\blender_r001\\as1_reference_audit_r001.json"
+      ],
+      "exit_code": 0,
+      "log": "stages\\references\\blender_r001\\scene_audit_runner.log"
+    }
+  ],
+  "source": "stages/references/blender_r001/ada_reference_empty_source_r001.blend",
+  "source_sha256": "71e634a3494df5c6c903edc251f06ff85191f755f3945c5a93d8207fad0f9729",
+  "import_candidate": "stages/references/blender_r001/ada_reference_import_candidate_r001.blend",
+  "import_candidate_sha256": "a87f0a31ecb74cc5128150ef7935a80391e5d91665f354237e2f75995e0398d8",
+  "final": "stages/references/blender_r001/ada_reference_scene_r001.blend",
+  "final_sha256": "b304de05d93d3ba78562ccc80551750f03e8ba27b81d7e1e19ef55ce33d6306b",
+  "source_files_unchanged_after_import_review": true,
+  "scene_observations": {
+    "status": "reference_placement_executed_not_art_approval",
+    "blender_version": "5.1.1",
+    "candidate": "ada_reference_scene_r001.blend",
+    "candidate_sha256": "b304de05d93d3ba78562ccc80551750f03e8ba27b81d7e1e19ef55ce33d6306b",
+    "scene_unit": "meter",
+    "source_forward": "+Y",
+    "source_up": "+Z",
+    "anatomical_left": "-X",
+    "anatomical_right": "+X",
+    "object_count": 9,
+    "image_empty_count": 4,
+    "mesh_objects": 0,
+    "armature_objects": 0,
+    "camera_objects": 0,
+    "references": [
+      {
+        "name": "AS1_REF_body_front",
+        "view": "front",
+        "dimensions_px": [
+          415,
+          805
+        ],
+        "image_sha256": "ad65e46308dd96414a7c0471622e7ee54079dc081427d12cc46cbaeff0bf6811",
+        "matrix_world": [
+          [
+            -1.0,
+            6.6002361555513294e-15,
+            -8.742277657347586e-08,
+            0.005955497268587351
+          ],
+          [
+            -8.742277657347586e-08,
+            -7.549790126404332e-08,
+            1.0,
+            0.75
+          ],
+          [
+            0.0,
+            1.0,
+            7.549790126404332e-08,
+            0.9183377027511597
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "display_size_m": 1.9176701307296753,
+        "empty_image_offset": [
+          -0.5,
+          -0.5
+        ],
+        "ground_world": [
+          -6.061123825062964e-15,
+          0.7500000596046448,
+          0.0
+        ],
+        "crown_world": [
+          5.950968884338437e-15,
+          0.7499999403953552,
+          1.8199999332427979
+        ],
+        "hide_render": true,
+        "hide_select": true,
+        "locked_location_rotation_scale": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "image_side": "FRONT",
+        "packed_image": true
+      },
+      {
+        "name": "AS1_REF_body_left",
+        "view": "left",
+        "dimensions_px": [
+          210,
+          805
+        ],
+        "image_sha256": "2e8094a2573460b40c869cc6b87d6ff0c1eb5d210f7fe0f0dbbefbcf775b863a",
+        "matrix_world": [
+          [
+            -4.371138828673793e-08,
+            -4.371138828673793e-08,
+            -1.0,
+            -0.75
+          ],
+          [
+            -1.0,
+            1.910685676922942e-15,
+            4.371138828673793e-08,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            -4.371138828673793e-08,
+            0.9087963104248047
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "display_size_m": 1.9379630088806152,
+        "empty_image_offset": [
+          -0.5,
+          -0.5
+        ],
+        "ground_world": [
+          -0.7499999403953552,
+          -1.736424106376657e-15,
+          0.0
+        ],
+        "crown_world": [
+          -0.7500000596046448,
+          1.741023812917603e-15,
+          1.8199999332427979
+        ],
+        "hide_render": true,
+        "hide_select": true,
+        "locked_location_rotation_scale": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "image_side": "FRONT",
+        "packed_image": true
+      },
+      {
+        "name": "AS1_REF_body_back",
+        "view": "back",
+        "dimensions_px": [
+          405,
+          805
+        ],
+        "image_sha256": "0b9380b883b6d68fd479448102bcd4ea7b0635c7431e645fd5246f6f745e25fb",
+        "matrix_world": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.005994729697704315
+          ],
+          [
+            0.0,
+            7.549790126404332e-08,
+            -1.0,
+            -0.75
+          ],
+          [
+            0.0,
+            1.0,
+            7.549790126404332e-08,
+            0.9100000262260437
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "display_size_m": 1.9303029775619507,
+        "empty_image_offset": [
+          -0.5,
+          -0.5
+        ],
+        "ground_world": [
+          0.0,
+          -0.7500000596046448,
+          0.0
+        ],
+        "crown_world": [
+          0.0,
+          -0.7499999403953552,
+          1.8200000524520874
+        ],
+        "hide_render": true,
+        "hide_select": true,
+        "locked_location_rotation_scale": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "image_side": "FRONT",
+        "packed_image": true
+      },
+      {
+        "name": "AS1_REF_body_right",
+        "view": "right",
+        "dimensions_px": [
+          225,
+          805
+        ],
+        "image_sha256": "e33cb5f59bffe8f5bdf42ab2f315a3d9783a3d73a88513866cf2c28fefba01a9",
+        "matrix_world": [
+          [
+            -4.371138828673793e-08,
+            4.371138828673793e-08,
+            1.0,
+            0.75
+          ],
+          [
+            1.0,
+            1.910685676922942e-15,
+            4.371138828673793e-08,
+            0.020435931161046028
+          ],
+          [
+            0.0,
+            1.0,
+            -4.371138828673793e-08,
+            0.9100000262260437
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "display_size_m": 1.9354028701782227,
+        "empty_image_offset": [
+          -0.5,
+          -0.5
+        ],
+        "ground_world": [
+          0.7499999403953552,
+          -1.7381929229287607e-15,
+          0.0
+        ],
+        "crown_world": [
+          0.7500000596046448,
+          1.7381929229287607e-15,
+          1.8200000524520874
+        ],
+        "hide_render": true,
+        "hide_select": true,
+        "locked_location_rotation_scale": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "image_side": "FRONT",
+        "packed_image": true
+      }
+    ],
+    "human_approval": false,
+    "old_ada_source_loaded": false,
+    "limitations": [
+      "Generated views are approximate artwork, not certified orthographic projections.",
+      "Crown-to-sole scale is a chosen 1.82 m construction interpretation, not recovered physical data.",
+      "Rear split conflict remains controlled by written decisions and original reference priority.",
+      "No model, rig, texture, motion, export or Unreal integration exists in this scene."
+    ]
+  },
+  "source_image_sha256": "c65d1d5093f9b15d71cf1e3dfaed059253d659a17a02fc4949533a532486e05b",
+  "calibration_sha256": "056403e9467e7cb2b7e016b6b1f5ac45d0f24e6886e2323f18ab0e22a3cac142",
+  "reference_setup_helper_sha256": "c33b998e0de595e5b3b7ff902fffe24138f9f6e07a000a9cd87b96e60badbe18",
+  "runner_sha256": "04aca90bdbd9b370dacbb534a714bfcb1572d96f035ea3815975365081eba46e",
+  "human_approval": false,
+  "orthographic_image_certification": false,
+  "modeling_started": false,
+  "old_ada_source_loaded": false
+}

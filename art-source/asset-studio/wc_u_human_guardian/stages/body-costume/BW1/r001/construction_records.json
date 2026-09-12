@@ -1,0 +1,134 @@
+{
+  "schema_version": "bw1.construction_records.1",
+  "status": "CANDIDATE_OBSERVATIONS_ONLY_NO_RECIPE_PROMOTION",
+  "body_family": "MPFB hm08 full indexed 19158-vertex source",
+  "input_rest_pose": "BW1 A-pose with identity local pose rotations on temporary MPFB standard rig",
+  "units": "metres unless named dimensionless native MPFB targets",
+  "records": [
+    {
+      "id": "continuous_coat_envelope",
+      "source": "MPFB helper-tights indexed source; core graphics provenance preserved from MP1",
+      "observed": "Separate initial sleeve/torso extraction left jagged shoulder interfaces. Continuous extraction visibly closed those interfaces in static clay.",
+      "inferred_method": "Use the coherent helper envelope to preserve shoulder/armpit flow, then independently shape padded volume and openings.",
+      "executed_operations": [
+        "06_helper_derived_cloth.py",
+        "07_correct_cloth_envelope.py",
+        "10_local_construction_refinements.py"
+      ],
+      "parameters": {
+        "inner_thickness_m": 0.006,
+        "source_index_attribute": "mpfb_source_index",
+        "matching_weights": "exact source correspondence",
+        "symmetry": "source A-pose with independently edited right sleeve fullness"
+      },
+      "evidence": [
+        "captures/cloth_blockout_r000.png",
+        "captures/cloth_blockout_r001.png",
+        "captures/edit_sleeve.png",
+        "captures/arm_pose_shoulder_raise.png"
+      ],
+      "outcome": "STATIC_ENCLOSURE_IMPROVED_MOVEMENT_AND_TAILORING_REVISE",
+      "failure_cases": [
+        "jagged neckline and cuffs",
+        "shoulder armor gaps",
+        "root-weighted hanging panels intersect thighs"
+      ],
+      "independent_replay": "NOT_RUN",
+      "second_body_fit": "NOT_RUN",
+      "promoted": false
+    },
+    {
+      "id": "glove_native_fit",
+      "source": "source-quarantine/selected/clothes/toigo_gloves_short; MRT CC0 corroborated file/page/registry",
+      "observed": "Connected glove pair, 2294 vertices and 2272 quads, fingers and cuff openings; no creator rig/history delivered.",
+      "inferred_method": "Native MHCLO correspondence can fit the existing envelope without splicing limbs; imported bone weights still need contact review.",
+      "executed_operations": [
+        "05_fit_selected_glove_boot.py",
+        "16_normalize_and_render_motion.py"
+      ],
+      "parameters": {
+        "sword_handle_diameter_m": 0.032,
+        "sword_handle_length_m": 0.13,
+        "shield_handle_diameter_m": 0.03,
+        "shield_handle_length_m": 0.12,
+        "subdivision": 1
+      },
+      "evidence": [
+        "captures/sourcefit_body_gloves_boots.png",
+        "captures/edit_glove.png",
+        "hand-pose-study/sword_grip_final.png",
+        "hand-pose-study/shield_grip_final.png"
+      ],
+      "outcome": "FIT_EXECUTED_GRIPS_FAILED_STOPPED_AFTER_TWO_CORRECTIONS",
+      "failure_cases": [
+        "wrong inferred hand coordinate frame",
+        "thumb penetration",
+        "digits curl below cylinder"
+      ],
+      "independent_replay": "NOT_RUN",
+      "second_body_fit": "NOT_RUN",
+      "promoted": false
+    },
+    {
+      "id": "footprint_sole",
+      "source": "Adapted toigo_ankle_boots_male boot envelope MRT CC0; new sole cage authored in BW1",
+      "observed": "Broad initial sole overshot toe/heel silhouette; a 24-point contour derived from the evaluated boot fit reduced that overshoot.",
+      "inferred_method": "Separate foot-following sole can use a measured footprint plus shallow closed loft while the boot shaft retains ankle deformation.",
+      "executed_operations": [
+        "09_plate_clearance_boot_adaptation.py",
+        "12_footprint_sole_rebuild.py"
+      ],
+      "parameters": {
+        "footprint_sample_max_z_m": 0.018,
+        "contour_points": 24,
+        "loft_rings": 3,
+        "bevel_m": 0.0015,
+        "rim_offsets_m": [
+          0.0015,
+          0.002,
+          0.0005
+        ]
+      },
+      "evidence": [
+        "captures/leg_stance_r000.png",
+        "captures/footprint_sole_stance.png",
+        "captures/footprint_sole_ankle.png",
+        "captures/edit_sole.png"
+      ],
+      "outcome": "LOCAL_STATIC_AND_SAMPLED_ANKLE_IMPROVEMENT_NOT_COMPLETE_BOOT_ACCEPTANCE",
+      "failure_cases": [
+        "heel/upper/sole junction artifacts",
+        "greave/ankle interaction unresolved"
+      ],
+      "independent_replay": "NOT_RUN",
+      "second_body_fit": "NOT_RUN",
+      "promoted": false
+    },
+    {
+      "id": "rigid_knee_attachment",
+      "source": "Original BW1 cup and temporary local rig",
+      "observed": "Shin attachment lost coverage. Thigh-side cup retained for inspection. Blended pivot and surface-parent proxy made attachment worse.",
+      "inferred_method": "A rigid patella attachment must follow the actual knee surface and maintain overlap without copying shin rotation wholesale.",
+      "executed_operations": [
+        "17_knee_attachment_test.py",
+        "18_knee_pivot_correction.py",
+        "19_knee_surface_attachment.py"
+      ],
+      "outcome": "FAILED_TWO_CORRECTIONS_RETAINED_BEST_THIGH_ATTACHMENT",
+      "evidence": [
+        "captures/knee_attachment_bend.png",
+        "captures/knee_pivot_kneel.png",
+        "captures/knee_surface_stance.png"
+      ],
+      "failure_cases": [
+        "pivot offset in kneel",
+        "surface parent placement error",
+        "insufficient bent-knee plate coverage"
+      ],
+      "independent_replay": "NOT_RUN",
+      "second_body_fit": "NOT_RUN",
+      "promoted": false
+    }
+  ],
+  "next_gate": "Correct one contact/articulation method with actual posed evidence before replay or another body."
+}
