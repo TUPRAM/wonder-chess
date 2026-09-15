@@ -4,7 +4,7 @@
 
 The owner requested: "commit every stuff here to the github repo" after consolidating Wonder Chess into one transferable folder.
 
-Destination: the existing public [TUPRAM/wonder-chess](https://github.com/TUPRAM/wonder-chess) repository. Target branches are `main` and `codex/milestones-b0-m7-20260912`, starting from the verified remote/base commit `d80635f615810a93c3161c6bfd6c34c758b08260`. This record is prepared before the payload push; the closing publication record will report the verified remote result.
+Destination: the existing public [TUPRAM/wonder-chess](https://github.com/TUPRAM/wonder-chess) repository. The payload commit **`6f73ad6b27b6c8180d4bfaac20fa85bd36152964`** was pushed atomically to both `main` and `codex/milestones-b0-m7-20260912`, advancing from `d80635f615810a93c3161c6bfd6c34c758b08260`. GitHub's API verified both refs and five representative file blobs, including the original kit ZIP. This closing commit adds the verified publication record and ledger entry; it does not change the gameplay/art payload. See [remote-payload-verification.json](remote-payload-verification.json).
 
 ## Included
 
@@ -26,10 +26,12 @@ The physical transfer folder remains more complete than the Git repository:
 - Python environments/caches, disposable compiler products and copied test dependencies.
 - Duplicate historical checkout contents, original Git-internal index/configuration/reflog recovery snapshots, machine-specific MCP configuration, Blender preferences and AppData state.
 - Previously ignored Auto Chess reference screenshots and generated export sidecars/native build outputs.
-- The full `gloves01_cc0.zip`, `shoes01_cc0.zip` and incomplete download in both copies of the documented source quarantine. The selected cleared assets and rights review remain versioned; publication does not resolve the recorded license-header conflict.
+- The full `gloves01_cc0.zip`, `shoes01_cc0.zip` and incomplete download retained under the documented source-quarantine paths, including the historical checkout archive. The selected cleared assets and rights review remain versioned; publication does not resolve the recorded license-header conflict.
 - The local transfer manifest, which binds mutable local Git metadata and must be refreshed after publication.
 
 No source archive was deleted, no Git history was rewritten, no repository visibility was changed, and no paid storage or release upload was introduced. GitHub [blocks ordinary Git files larger than 100 MiB](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github). No file in this publication payload reaches that limit.
+
+The [local-only inventory summary](local-only-summary.json) records 31,978 ignored files totaling 57,176,612,766 bytes at its checkpoint. Of those, 134 exceed 100 MiB. Local operational receipts and refreshed transfer inventories added afterward remain local as well.
 
 ## Verification
 
@@ -42,4 +44,4 @@ No source archive was deleted, no Git history was rewritten, no repository visib
 - The preceding consolidation verified the preserved Storybook r20 package against 122 source files and 49 package files, 11 launcher paths, all moved payload hashes, and Git integrity. Those results remain scoped to the recorded checks.
 - **NOT RUN for publication:** new Unreal build, game launch, tournament campaign, physical-input review, new-PC installation, human study or release acceptance. Product and art gates remain unchanged.
 
-After both branches are verified on GitHub, the local transfer manifest is refreshed separately to include the new commits and refs. The original pre-publication manifest remains preserved locally for provenance.
+After both branches are verified on GitHub, the local transfer manifest is refreshed separately to include the new commits and refs. The original pre-publication manifest remains preserved as `TRANSFER_MANIFEST-before-publication.jsonl` locally for provenance. The final remote and transfer verification receipt is retained in `support/operations/github-20260915/` because it is generated after the closing commit.
