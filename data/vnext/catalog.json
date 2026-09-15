@@ -1,7 +1,7 @@
 {
   "schema_version": "wonder_vnext.catalog.1",
   "profile_id": "wonder_vnext",
-  "balance_version": "wonder_vnext_lab_0.1.0",
+  "balance_version": "wonder_vnext_solo_0.1.0",
   "status": "M0_authored_M1_candidate_not_release",
   "target_match_minutes": [
     35,
@@ -162,6 +162,7 @@
     "per_hero_limit": 1,
     "awarded_to": "survivors_regardless_of_neutral_result",
     "merge_policy": "survivor_keeps_extras_return",
+    "offer_policy": "one_owned_compatible_if_available",
     "runtime_status": "laboratory_candidate"
   },
   "heroes": [
@@ -181,12 +182,12 @@
       "production_status": "laboratory_candidate",
       "art_status": "brief_only",
       "dossier": {
-        "form": "Moss-and-bronze grazing giant with a suspended bell beneath its chest.",
+        "form": "Moss-and-bronze grazing giant with a suspended dorsal bell in a wooden mount.",
         "decision": "Protect a chosen ally through a directional guarded sector.",
-        "positioning": "Put a vulnerable ally behind the guarded shoulder; point the bell toward likely projectiles.",
+        "positioning": "Put a vulnerable ally behind the guarded shoulder; face Bellback toward likely projectiles.",
         "allies": "Prism Organ benefits from time to cast; Grandmother Root prolongs the defensive line.",
         "counterplay": "Flank the guard or displace it away from its protected ally.",
-        "recognition": "The chest bell tips forward and a short arc of bronze light marks the guarded sector."
+        "recognition": "The dorsal bell swings within its mount and a short arc of bronze light marks the guarded sector."
       },
       "stats": {
         "health": 95000,
@@ -2096,5 +2097,45 @@
       "game.title": "Wonder Chess",
       "profile.label": "Laboratorium permainan Wonder vNext"
     }
+  },
+  "experiments": {
+    "mana100_v1": {
+      "status": "opt_in_unaccepted_experiment",
+      "heroes": [
+        "wc_vn_snapvine",
+        "wc_vn_prism_organ",
+        "wc_vn_reefglass"
+      ],
+      "maximum": 10000,
+      "starting": 0,
+      "basicAttackGain": 1000,
+      "damageGainAtFullHealth": 10000,
+      "damageEventCap": 2000,
+      "damageWindowCap": 4000,
+      "damageWindowMs": 1000,
+      "relicTiming": "inverse_gain"
+    },
+    "mana100_hit20_v1": {
+      "status": "opt_in_unaccepted_experiment",
+      "heroes": [
+        "wc_vn_snapvine",
+        "wc_vn_prism_organ",
+        "wc_vn_reefglass"
+      ],
+      "maximum": 10000,
+      "starting": 0,
+      "basicAttackGain": 2000,
+      "damageGainAtFullHealth": 10000,
+      "damageEventCap": 2000,
+      "damageWindowCap": 4000,
+      "damageWindowMs": 1000,
+      "relicTiming": "inverse_gain"
+    }
+  },
+  "combat_clarity": {
+    "status": "opt_in_unaccepted_experiment",
+    "base": "mana100_hit20_v1",
+    "nearestReachableTarget": true,
+    "mobileAttackRecovery": true
   }
 }

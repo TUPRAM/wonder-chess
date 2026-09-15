@@ -1,0 +1,137 @@
+Running AutomationTool...
+Using bundled DotNet SDK version: 8.0.412 win-x64
+Starting AutomationTool...
+Parsing command line: BuildCookRun -project=C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\game\WonderChess.uproject -noP4 -platform=Win64 -clientconfig=Development -build -cook -stage -pak -archive -archivedirectory=C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\builds\WonderChess-Storybook-r16 -prereqs -utf8output -ubtargs=-NoHotReloadFromIDE
+Initializing script modules...
+Total script module initialization time: 1.08 s.
+Using C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MSBuild.exe
+Executing commands...
+Setting up ProjectParams for C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\game\WonderChess.uproject
+********** BUILD COMMAND STARTED **********
+Running: C:\Program Files\Epic Games\UE_5.7\Engine\Binaries\ThirdParty\DotNet\8.0.412\win-x64\dotnet.exe "C:\Program Files\Epic Games\UE_5.7\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" -Target="WonderChessEditor Win64 Development -Project=C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\game\WonderChess.uproject" -Target="WonderChess Win64 Development -Project=C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\game\WonderChess.uproject  -remoteini=\"C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\game\"  -NoHotReloadFromIDE " -log="C:\Users\iputu\AppData\Roaming\Unreal Engine\AutomationTool\Logs\C+Program+Files+Epic+Games+UE_5.7\UBA-WonderChessEditor-Win64-Development.txt"
+Log file: C:\Users\iputu\AppData\Roaming\Unreal Engine\AutomationTool\Logs\C+Program+Files+Epic+Games+UE_5.7\UBA-WonderChessEditor-Win64-Development.txt
+Using 'git status' to determine working set for adaptive non-unity build (C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7).
+Invalidating makefile for WonderChessEditor (DefaultGame.ini modified)
+UHT compiled-in object format Default
+Parsing headers for WonderChessEditor
+  Running Internal UnrealHeaderTool C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\game\WonderChess.uproject C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\game\Intermediate\Build\Win64\WonderChessEditor\Development\WonderChessEditor.uhtmanifest -WarningsAsErrors -installed
+UHT processed WonderChessEditor in 6.0778137 seconds (2 files written)
+Creating makefile for WonderChess (command line arguments changed)
+UHT compiled-in object format Default
+Parsing headers for WonderChess
+  Running Internal UnrealHeaderTool C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\game\WonderChess.uproject C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\game\Intermediate\Build\Win64\WonderChess\Development\WonderChess.uhtmanifest -WarningsAsErrors -installed
+UHT processed WonderChess in 0.9941877 seconds (0 files written)
+Building WonderChessEditor and WonderChess...
+WonderChessEditor: Using Visual Studio 2022 14.44.35226 toolchain (C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+WonderChessEditor: [Adaptive Build] Excluded from WonderChessRuntime unity file: WCDefinitionRegistry.cpp, WCMatchRuntime.cpp, WCVNextArtStyle.cpp, WCVNextCombatPresentation.cpp, WCVNextLab.cpp, WCVNextScenarios.cpp, WCVNextSolo.cpp, WonderChessRuntime.cpp, WonderSave.cpp, WonderSaveFile.cpp, WonderScenario.cpp, WonderScenarioFile.cpp, WonderSimulation.cpp, WonderSimulationTests.cpp, WonderTournament.cpp
+WonderChess: Using Visual Studio 2022 14.44.35226 toolchain (C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+WonderChess: [Adaptive Build] Excluded from WonderChessRuntime unity file: WCDefinitionRegistry.cpp, WCMatchRuntime.cpp, WCVNextArtStyle.cpp, WCVNextCombatPresentation.cpp, WCVNextLab.cpp, WCVNextScenarios.cpp, WCVNextSolo.cpp, WonderChessRuntime.cpp, WonderSave.cpp, WonderSaveFile.cpp, WonderScenario.cpp, WonderScenarioFile.cpp, WonderSimulation.cpp, WonderSimulationTests.cpp, WonderTournament.cpp
+Determining max actions to execute in parallel (8 physical cores, 16 logical cores)
+  Executing up to 8 processes, one per physical core
+  Requested 1.5 GB memory per action, 1.52 GB available: limiting max parallel actions to 1
+Using Unreal Build Accelerator local executor to run 17 action(s)
+  Storage capacity 40Gb
+---- Starting trace: 260913_222905 ----
+UbaServer - Listening on 0.0.0.0:1345
+** For WonderChessEditor-Win64-Development **
+[1/17] Compile [x64] Module.WonderChessRuntime.gen.cpp
+[2/17] Compile [x64] WCVNextArtStyle.cpp
+[3/17] Compile [x64] WCVNextCombatPresentation.cpp
+[4/17] Compile [x64] WCVNextLab.cpp
+C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\WCVNextLab.cpp(1173,100): error C2039: 'ToSharedRef': is not a member of 'TSharedRef<FJsonObject,ESPMode::ThreadSafe>'
+    FString Json;auto Writer=TJsonWriterFactory<>::Create(&Json);FJsonSerializer::Serialize(Report.ToSharedRef(),Writer);
+                                                                                                   ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(152,7): note: see declaration of 'TSharedRef<FJsonObject,ESPMode::ThreadSafe>'
+class TSharedRef
+      ^
+C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\WCVNextLab.cpp(1173,83): error C2672: 'TJsonSerializer<FJsonSerializerPolicy_JsonObject>::Serialize': no matching overloaded function found
+    FString Json;auto Writer=TJsonWriterFactory<>::Create(&Json);FJsonSerializer::Serialize(Report.ToSharedRef(),Writer);
+                                                                                  ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Json\Public\Serialization\JsonSerializer.h(601,14): note: could be 'bool TJsonSerializer<FJsonSerializerPolicy_JsonObject>::Serialize(const TSharedRef<FJsonSerializerPolicy_JsonObject::FElement,ESPMode::ThreadSafe> &,TJsonWriter<CharType,PrintPolicy> &,bool)'
+	static bool Serialize(const TSharedRef<typename Policy::FElement>& StartingElement, TJsonWriter<CharType, PrintPolicy>& Writer, bool bCloseWriter)
+	            ^
+C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\WCVNextLab.cpp(1173,83): note: 'bool TJsonSerializer<FJsonSerializerPolicy_JsonObject>::Serialize(const TSharedRef<FJsonSerializerPolicy_JsonObject::FElement,ESPMode::ThreadSafe> &,TJsonWriter<CharType,PrintPolicy> &,bool)': expects 3 arguments - 2 provided
+    FString Json;auto Writer=TJsonWriterFactory<>::Create(&Json);FJsonSerializer::Serialize(Report.ToSharedRef(),Writer);
+                                                                                  ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Json\Public\Serialization\JsonSerializer.h(469,14): note: or       'bool TJsonSerializer<FJsonSerializerPolicy_JsonObject>::Serialize(const FJsonSerializerPolicy_JsonObject::FMapOfValues &,TJsonWriter<CharType,PrintPolicy> &,bool)'
+	static bool Serialize(const typename Policy::FMapOfValues& Object, TJsonWriter<CharType, PrintPolicy>& Writer, bool bCloseWriter = true)
+	            ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Json\Public\Serialization\JsonSerializer.h(449,14): note: or       'bool TJsonSerializer<FJsonSerializerPolicy_JsonObject>::Serialize(const FJsonSerializerPolicy_JsonObject::FMapOfValues &,const TSharedRef<TJsonWriter<CharType,PrintPolicy>,ESPMode::ThreadSafe> &,bool)'
+	static bool Serialize(const typename Policy::FMapOfValues& Object, const TSharedRef<TJsonWriter<CharType, PrintPolicy>>& Writer, bool bCloseWriter = true )
+	            ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Json\Public\Serialization\JsonSerializer.h(428,14): note: or       'bool TJsonSerializer<FJsonSerializerPolicy_JsonObject>::Serialize(const FJsonSerializerPolicy_JsonObject::FArrayOfValues &,TJsonWriter<CharType,PrintPolicy> &,bool)'
+	static bool Serialize(const typename Policy::FArrayOfValues& Array, TJsonWriter<CharType, PrintPolicy>& Writer, bool bCloseWriter = true )
+	            ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Json\Public\Serialization\JsonSerializer.h(408,14): note: or       'bool TJsonSerializer<FJsonSerializerPolicy_JsonObject>::Serialize(const FJsonSerializerPolicy_JsonObject::FArrayOfValues &,const TSharedRef<TJsonWriter<CharType,PrintPolicy>,ESPMode::ThreadSafe> &,bool)'
+	static bool Serialize(const typename Policy::FArrayOfValues& Array, const TSharedRef<TJsonWriter<CharType, PrintPolicy>>& Writer, bool bCloseWriter = true)
+	            ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Json\Public\Serialization\JsonSerializer.h(387,14): note: or       'bool TJsonSerializer<FJsonSerializerPolicy_JsonObject>::Serialize(const FJsonSerializerPolicy_JsonObject::FValue &,const FString &,TJsonWriter<CharType,PrintPolicy> &,bool)'
+	static bool Serialize(const typename Policy::FValue& Value, const FString& Identifier, TJsonWriter<CharType, PrintPolicy>& Writer, bool bCloseWriter = true)
+	            ^
+C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\WCVNextLab.cpp(1173,83): note: 'bool TJsonSerializer<FJsonSerializerPolicy_JsonObject>::Serialize(const FJsonSerializerPolicy_JsonObject::FValue &,const FString &,TJsonWriter<CharType,PrintPolicy> &,bool)': expects 4 arguments - 2 provided
+    FString Json;auto Writer=TJsonWriterFactory<>::Create(&Json);FJsonSerializer::Serialize(Report.ToSharedRef(),Writer);
+                                                                                  ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Json\Public\Serialization\JsonSerializer.h(359,14): note: or       'bool TJsonSerializer<FJsonSerializerPolicy_JsonObject>::Serialize(const FJsonSerializerPolicy_JsonObject::FValue &,const FString &,const TSharedRef<TJsonWriter<CharType,PrintPolicy>,ESPMode::ThreadSafe> &,bool)'
+	static bool Serialize(const typename Policy::FValue& Value, const FString& Identifier, const TSharedRef<TJsonWriter<CharType, PrintPolicy>>& Writer, bool bCloseWriter = true)
+	            ^
+C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\WCVNextLab.cpp(1173,83): note: 'bool TJsonSerializer<FJsonSerializerPolicy_JsonObject>::Serialize(const FJsonSerializerPolicy_JsonObject::FValue &,const FString &,const TSharedRef<TJsonWriter<CharType,PrintPolicy>,ESPMode::ThreadSafe> &,bool)': expects 4 arguments - 2 provided
+    FString Json;auto Writer=TJsonWriterFactory<>::Create(&Json);FJsonSerializer::Serialize(Report.ToSharedRef(),Writer);
+                                                                                  ^
+[5/17] Compile [x64] WCVNextScenarios.cpp
+[6/17] Compile [x64] WCVNextSolo.cpp
+** For WonderChess-Win64-Development **
+[7/17] Compile [x64] Module.WonderChessRuntime.gen.cpp
+[8/17] Compile [x64] WCVNextArtStyle.cpp
+[9/17] Compile [x64] WCVNextCombatPresentation.cpp
+[10/17] Compile [x64] WCVNextLab.cpp
+C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\WCVNextLab.cpp(1173,100): error C2039: 'ToSharedRef': is not a member of 'TSharedRef<FJsonObject,ESPMode::ThreadSafe>'
+    FString Json;auto Writer=TJsonWriterFactory<>::Create(&Json);FJsonSerializer::Serialize(Report.ToSharedRef(),Writer);
+                                                                                                   ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Core\Public\Templates\SharedPointer.h(152,7): note: see declaration of 'TSharedRef<FJsonObject,ESPMode::ThreadSafe>'
+class TSharedRef
+      ^
+C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\WCVNextLab.cpp(1173,83): error C2672: 'TJsonSerializer<FJsonSerializerPolicy_JsonObject>::Serialize': no matching overloaded function found
+    FString Json;auto Writer=TJsonWriterFactory<>::Create(&Json);FJsonSerializer::Serialize(Report.ToSharedRef(),Writer);
+                                                                                  ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Json\Public\Serialization\JsonSerializer.h(601,14): note: could be 'bool TJsonSerializer<FJsonSerializerPolicy_JsonObject>::Serialize(const TSharedRef<FJsonSerializerPolicy_JsonObject::FElement,ESPMode::ThreadSafe> &,TJsonWriter<CharType,PrintPolicy> &,bool)'
+	static bool Serialize(const TSharedRef<typename Policy::FElement>& StartingElement, TJsonWriter<CharType, PrintPolicy>& Writer, bool bCloseWriter)
+	            ^
+C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\WCVNextLab.cpp(1173,83): note: 'bool TJsonSerializer<FJsonSerializerPolicy_JsonObject>::Serialize(const TSharedRef<FJsonSerializerPolicy_JsonObject::FElement,ESPMode::ThreadSafe> &,TJsonWriter<CharType,PrintPolicy> &,bool)': expects 3 arguments - 2 provided
+    FString Json;auto Writer=TJsonWriterFactory<>::Create(&Json);FJsonSerializer::Serialize(Report.ToSharedRef(),Writer);
+                                                                                  ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Json\Public\Serialization\JsonSerializer.h(469,14): note: or       'bool TJsonSerializer<FJsonSerializerPolicy_JsonObject>::Serialize(const FJsonSerializerPolicy_JsonObject::FMapOfValues &,TJsonWriter<CharType,PrintPolicy> &,bool)'
+	static bool Serialize(const typename Policy::FMapOfValues& Object, TJsonWriter<CharType, PrintPolicy>& Writer, bool bCloseWriter = true)
+	            ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Json\Public\Serialization\JsonSerializer.h(449,14): note: or       'bool TJsonSerializer<FJsonSerializerPolicy_JsonObject>::Serialize(const FJsonSerializerPolicy_JsonObject::FMapOfValues &,const TSharedRef<TJsonWriter<CharType,PrintPolicy>,ESPMode::ThreadSafe> &,bool)'
+	static bool Serialize(const typename Policy::FMapOfValues& Object, const TSharedRef<TJsonWriter<CharType, PrintPolicy>>& Writer, bool bCloseWriter = true )
+	            ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Json\Public\Serialization\JsonSerializer.h(428,14): note: or       'bool TJsonSerializer<FJsonSerializerPolicy_JsonObject>::Serialize(const FJsonSerializerPolicy_JsonObject::FArrayOfValues &,TJsonWriter<CharType,PrintPolicy> &,bool)'
+	static bool Serialize(const typename Policy::FArrayOfValues& Array, TJsonWriter<CharType, PrintPolicy>& Writer, bool bCloseWriter = true )
+	            ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Json\Public\Serialization\JsonSerializer.h(408,14): note: or       'bool TJsonSerializer<FJsonSerializerPolicy_JsonObject>::Serialize(const FJsonSerializerPolicy_JsonObject::FArrayOfValues &,const TSharedRef<TJsonWriter<CharType,PrintPolicy>,ESPMode::ThreadSafe> &,bool)'
+	static bool Serialize(const typename Policy::FArrayOfValues& Array, const TSharedRef<TJsonWriter<CharType, PrintPolicy>>& Writer, bool bCloseWriter = true)
+	            ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Json\Public\Serialization\JsonSerializer.h(387,14): note: or       'bool TJsonSerializer<FJsonSerializerPolicy_JsonObject>::Serialize(const FJsonSerializerPolicy_JsonObject::FValue &,const FString &,TJsonWriter<CharType,PrintPolicy> &,bool)'
+	static bool Serialize(const typename Policy::FValue& Value, const FString& Identifier, TJsonWriter<CharType, PrintPolicy>& Writer, bool bCloseWriter = true)
+	            ^
+C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\WCVNextLab.cpp(1173,83): note: 'bool TJsonSerializer<FJsonSerializerPolicy_JsonObject>::Serialize(const FJsonSerializerPolicy_JsonObject::FValue &,const FString &,TJsonWriter<CharType,PrintPolicy> &,bool)': expects 4 arguments - 2 provided
+    FString Json;auto Writer=TJsonWriterFactory<>::Create(&Json);FJsonSerializer::Serialize(Report.ToSharedRef(),Writer);
+                                                                                  ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Json\Public\Serialization\JsonSerializer.h(359,14): note: or       'bool TJsonSerializer<FJsonSerializerPolicy_JsonObject>::Serialize(const FJsonSerializerPolicy_JsonObject::FValue &,const FString &,const TSharedRef<TJsonWriter<CharType,PrintPolicy>,ESPMode::ThreadSafe> &,bool)'
+	static bool Serialize(const typename Policy::FValue& Value, const FString& Identifier, const TSharedRef<TJsonWriter<CharType, PrintPolicy>>& Writer, bool bCloseWriter = true)
+	            ^
+C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\WCVNextLab.cpp(1173,83): note: 'bool TJsonSerializer<FJsonSerializerPolicy_JsonObject>::Serialize(const FJsonSerializerPolicy_JsonObject::FValue &,const FString &,const TSharedRef<TJsonWriter<CharType,PrintPolicy>,ESPMode::ThreadSafe> &,bool)': expects 4 arguments - 2 provided
+    FString Json;auto Writer=TJsonWriterFactory<>::Create(&Json);FJsonSerializer::Serialize(Report.ToSharedRef(),Writer);
+                                                                                  ^
+[11/17] Compile [x64] WCVNextScenarios.cpp
+[12/17] Compile [x64] WCVNextSolo.cpp
+Trace written to file C:/Users/iputu/AppData/Roaming/Unreal Engine/AutomationTool/Logs/C+Program+Files+Epic+Games+UE_5.7/UBA-WonderChessEditor-Win64-Development.uba with size 26.6kb
+Total time in Unreal Build Accelerator local executor: 99.18 seconds
+
+Result: Failed (OtherCompilationError)
+Total execution time: 120.40 seconds
+Took 120.74s to run dotnet.exe, ExitCode=6
+UnrealBuildTool failed. See log for more details. (C:\Users\iputu\AppData\Roaming\Unreal Engine\AutomationTool\Logs\C+Program+Files+Epic+Games+UE_5.7\UBA-WonderChessEditor-Win64-Development.txt)
+AutomationTool executed for 0h 2m 4s
+AutomationTool exiting with ExitCode=6 (6)
+BUILD FAILED

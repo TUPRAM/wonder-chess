@@ -1,0 +1,172 @@
+{
+  "source_sha256": "5a2931e42bbb8523f3e84ba39f02a5ceab0b1fa31abc3e8319fcf6a1c0d6066b",
+  "blender_version": "5.1.1",
+  "source_unchanged": true,
+  "floor_contact_vertices": 5268,
+  "contact_bounds_m": {
+    "min": [
+      -0.7420237064361572,
+      -0.6925199627876282,
+      0.0
+    ],
+    "max": [
+      0.7420237064361572,
+      0.7670642733573914,
+      0.0
+    ]
+  },
+  "source_material_ID_count": 7,
+  "camera_basis": {
+    "source": "game/Source/WonderChessRuntime/Private/WCVNextLab.cpp UpdateCamera/BoardPixelBounds fallback",
+    "direction_source_units": [
+      0,
+      1900,
+      2700
+    ],
+    "declared_viewport": [
+      1920,
+      1080
+    ],
+    "fallback_board_pixels": [
+      1600,
+      880
+    ],
+    "orthographic_width_m": 35.78181818181818,
+    "measured_live_slate_bounds": false,
+    "engine_capture": false
+  },
+  "renders": [
+    {
+      "view": "face_closeup_clay",
+      "type": "Blender render",
+      "camera": [
+        1.7,
+        4,
+        1.25
+      ],
+      "target": [
+        0,
+        1,
+        0.98
+      ],
+      "orthographic_scale_m": 0.93,
+      "resolution": [
+        960,
+        960
+      ],
+      "source_sha256": "5a2931e42bbb8523f3e84ba39f02a5ceab0b1fa31abc3e8319fcf6a1c0d6066b",
+      "material_mode": "neutral clay"
+    },
+    {
+      "view": "paw_contact_clay",
+      "type": "Blender render",
+      "camera": [
+        1.5,
+        3,
+        0.85
+      ],
+      "target": [
+        0.53,
+        0.57,
+        0.24
+      ],
+      "orthographic_scale_m": 0.9,
+      "resolution": [
+        960,
+        960
+      ],
+      "source_sha256": "5a2931e42bbb8523f3e84ba39f02a5ceab0b1fa31abc3e8319fcf6a1c0d6066b",
+      "material_mode": "neutral clay"
+    },
+    {
+      "view": "bell_cavity_and_carrier",
+      "type": "Blender render",
+      "camera": [
+        3,
+        4,
+        0.15
+      ],
+      "target": [
+        0,
+        0,
+        1.6
+      ],
+      "orthographic_scale_m": 2.1,
+      "resolution": [
+        960,
+        960
+      ],
+      "source_sha256": "5a2931e42bbb8523f3e84ba39f02a5ceab0b1fa31abc3e8319fcf6a1c0d6066b",
+      "material_mode": "neutral clay"
+    },
+    {
+      "view": "crowded12_lab_projection_1920x1080",
+      "type": "Blender render",
+      "camera": [
+        0,
+        19,
+        27
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "orthographic_scale_m": 35.78181818181818,
+      "resolution": [
+        1920,
+        1080
+      ],
+      "source_sha256": "5a2931e42bbb8523f3e84ba39f02a5ceab0b1fa31abc3e8319fcf6a1c0d6066b",
+      "material_mode": "material IDs"
+    },
+    {
+      "view": "crowded12_lab_elevation_detail",
+      "type": "Blender render",
+      "camera": [
+        0,
+        19,
+        27
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "orthographic_scale_m": 11.8,
+      "resolution": [
+        1280,
+        960
+      ],
+      "source_sha256": "5a2931e42bbb8523f3e84ba39f02a5ceab0b1fa31abc3e8319fcf6a1c0d6066b",
+      "material_mode": "material IDs"
+    },
+    {
+      "view": "native96_preview",
+      "type": "Blender render",
+      "camera": [
+        4,
+        6,
+        3.2
+      ],
+      "target": [
+        0,
+        0,
+        1.05
+      ],
+      "orthographic_scale_m": 2.75,
+      "resolution": [
+        96,
+        96
+      ],
+      "source_sha256": "5a2931e42bbb8523f3e84ba39f02a5ceab0b1fa31abc3e8319fcf6a1c0d6066b",
+      "material_mode": "material IDs"
+    }
+  ],
+  "limitations": [
+    "12 static linked models; no rig or combat movement",
+    "Original dimensions include modeled secondary geometry; no automatic proportion acceptance",
+    "No clipping-free animation or engine performance claim",
+    "Material colors are source identification only; no texture, UV or material acceptance"
+  ]
+}

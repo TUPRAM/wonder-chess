@@ -1,0 +1,46 @@
+[
+  {
+    "arguments": [
+      "tools/validate_kit.py"
+    ],
+    "exit_code": 0,
+    "log": "validate_kit.log"
+  },
+  {
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "exit_code": 0,
+    "log": "python-tests.log"
+  },
+  {
+    "arguments": [
+      "tools/build_documents.py",
+      "--check"
+    ],
+    "exit_code": 0,
+    "log": "build_documents.log"
+  },
+  {
+    "arguments": [
+      "tools/compile_catalog.py",
+      "--check"
+    ],
+    "exit_code": 0,
+    "log": "compile_catalog.log"
+  },
+  {
+    "arguments": [
+      "tools/vnext/catalog.py",
+      "--check",
+      "--stage"
+    ],
+    "exit_code": 0,
+    "log": "catalog.log"
+  }
+]

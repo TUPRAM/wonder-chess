@@ -1,0 +1,229 @@
+{
+  "schema": "wonder-vnext-actual-input-review-1",
+  "recorded_utc": "2026-09-13T04:50:38.123834+00:00",
+  "candidate": "WonderChess-Milestones-r5",
+  "inner_executable_sha256": "fe6ce54720c16f0991f410652911cc366660e1856e30b3063ba0ab4ee4173db6",
+  "status": "SCOPED_INPUT_PASS_WITH_INSPECTOR_CLARITY_DEFECT",
+  "operator": "Codex via native Windows pointer/keyboard",
+  "external_participants": 0,
+  "checks": [
+    {
+      "case": "purchase_feedback",
+      "resolution": "1280x800",
+      "mode": "completed exercise, then actual pointer",
+      "result": "Bellback purchased for 1g; gold 10 to 9; bench and specific message updated",
+      "evidence": "purchase-feedback-1280x800.png"
+    },
+    {
+      "case": "normal_load_legal_relic_fixture",
+      "resolution": "1280x720",
+      "mode": "normal",
+      "result": "Loaded seed 234 preparation round 4, HP 100, gold 27, level 4 with 2 XP, Cragstoat one-star and three offers",
+      "evidence": "relic-preparation-loaded-1280x720.png"
+    },
+    {
+      "case": "draft_equip_unequip",
+      "resolution": "1280x720",
+      "mode": "normal",
+      "result": "Patient Lantern drafted, equipped, unequipped back to inventory and re-equipped through actual controls",
+      "evidence": [
+        "relic-drafted-1280x720.png",
+        "relic-equipped-1280x720.png",
+        "relic-unequipped-1280x720.png"
+      ]
+    },
+    {
+      "case": "deployment_keyboard_facing",
+      "resolution": "1280x720",
+      "mode": "normal",
+      "result": "Clicked C2 to deploy, Right then Return moved to D2, Rotate changed facing to Right",
+      "evidence": [
+        "equipped-keyboard-move-1280x720.png",
+        "facing-rotated-1280x720.png"
+      ]
+    },
+    {
+      "case": "equipped_three_copy_merge",
+      "resolution": "1280x720",
+      "mode": "normal",
+      "result": "Two actual Cragstoat purchases: owned-copy preview announced merges now; upgraded deployed creature to two stars; gold 27 to 25; Patient Lantern, D2 and facing Right retained",
+      "evidence": [
+        "upgrade-preview-1280x720.png",
+        "equipped-three-copy-upgrade-1280x720.png",
+        "relic-stat-tradeoff-1280x720.png"
+      ]
+    },
+    {
+      "case": "save_exit_cold_resume",
+      "resolution": "1280x720 then 1600x1000",
+      "mode": "separate normal processes",
+      "result": "Saved and exited. Cold startup blocked orders pending choice. Load restored round 4, gold 25, HP 100, level 4/2 XP, 45 seconds, shop purchases and equipped two-star Cragstoat at D2 facing Right",
+      "evidence": [
+        "equipped-upgrade-saved-1280x720.png",
+        "cold-start-choice-1600x1000.png",
+        "cold-resume-equipped-upgrade-1600x1000.png",
+        "cold-restored-relic-1600x1000.png"
+      ]
+    },
+    {
+      "case": "ready_combat_loss_and_purchase_cutoff",
+      "resolution": "1600x1000",
+      "mode": "normal speed",
+      "result": "Actual Ready and Resume reached combat and round 4 settlement. Captain HP 100 to 94; round 5 gold 32, 4 XP. Pause occurred after round 5 combat began. Actual click on disabled Bellback shop card kept gold 32, empty bench and roster unchanged",
+      "evidence": [
+        "ready-feedback-1600x1000.png",
+        "normal-clock-observation-1600x1000.png",
+        "post-loss-pause-1600x1000.png",
+        "combat-purchase-disabled-1600x1000.png"
+      ]
+    },
+    {
+      "case": "combat_relic_applied",
+      "resolution": "1600x1000",
+      "mode": "normal, paused combat observation",
+      "result": "Selecting actual combat Cragstoat displayed Patient Lantern, health 800/1170, cooldown 7.80s, magnitude 262.50 and facing Right",
+      "evidence": "combat-selected-relic-1600x1000.png"
+    },
+    {
+      "case": "incompatible_save_feedback",
+      "resolution": "1920x1080",
+      "mode": "normal, isolated modified copy",
+      "result": "Load rejected checksum-valid old balance version with specific mismatch text; stayed at round 1, gold 10, HP 100, level 3, no recruits and paused. Engine reports success=0 status=5 round=1. Valid source save preserved",
+      "evidence": "incompatible-save-rejected-1920x1080.png"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "captain-loss-recap-1600x1000.png",
+      "sha256": "f7ed0df2d7c098f42936c156cdb613ce9ae456e43ebd26df6653b26555e89bf5",
+      "bytes": 169849
+    },
+    {
+      "file": "cold-restored-relic-1600x1000.png",
+      "sha256": "333cab62a163591d2ef4af2e65ce62f6ee0cc1b557cc93d8f11bcef16c64ea7f",
+      "bytes": 179551
+    },
+    {
+      "file": "cold-resume-equipped-upgrade-1600x1000.png",
+      "sha256": "90b406bdabaa2dcda13dee9e53cce0321b1afcf327933d3b85816a7c9c1a76aa",
+      "bytes": 179959
+    },
+    {
+      "file": "cold-start-choice-1600x1000.png",
+      "sha256": "a102381c0303491b5ccb67f240bd9e272fdfab96e140175c53efa9b0e3fba58d",
+      "bytes": 162551
+    },
+    {
+      "file": "combat-purchase-disabled-1600x1000.png",
+      "sha256": "4f0c63f952e8649e3349147368689b550aec10094322ed399c09d2fd01d8f455",
+      "bytes": 171356
+    },
+    {
+      "file": "combat-selected-relic-1600x1000.png",
+      "sha256": "1165dfd03c6cd266da2dccf755d20f3e0278184c34e5de7c74b9333154879d5e",
+      "bytes": 170269
+    },
+    {
+      "file": "equipped-keyboard-move-1280x720.png",
+      "sha256": "ae55dc02018948f8fd403bcc73931579b39a340d90899e1d855bcb90e2e45661",
+      "bytes": 121405
+    },
+    {
+      "file": "equipped-three-copy-upgrade-1280x720.png",
+      "sha256": "83a908a5bff8d87c6259e6fe0d944e406a42e94a28cb6a4a23071f560d0d26e1",
+      "bytes": 122673
+    },
+    {
+      "file": "equipped-upgrade-inspector-1280x720.png",
+      "sha256": "40be81343c7c3ea805c263858672b4ac9bbe64025cfd1f78a4b67bc25d714ac5",
+      "bytes": 124507
+    },
+    {
+      "file": "equipped-upgrade-saved-1280x720.png",
+      "sha256": "860924956eac6a5a1a6faba3f351c5a00cdd0988d50a6bf84f2d144767a39fe4",
+      "bytes": 121491
+    },
+    {
+      "file": "facing-rotated-1280x720.png",
+      "sha256": "ae50fbd1e730373d44188dea7e419273b285d456dc064a6f7e52f5fa1d31b136",
+      "bytes": 122413
+    },
+    {
+      "file": "incompatible-save-rejected-1920x1080.png",
+      "sha256": "e351b0981e990f3a2ad45ce96cdcd2c07c327cc6476cb9a53b8d8bfbfc9f216b",
+      "bytes": 178957
+    },
+    {
+      "file": "normal-clock-observation-1600x1000.png",
+      "sha256": "0a3e77b1b8f546d379c06d320a9bf8e6c75a130c494a05630d2b2fdcc849e057",
+      "bytes": 164643
+    },
+    {
+      "file": "normal-loss-followup-1600x1000.png",
+      "sha256": "2de15d3a04c9df818c069c77ea15750536097b42d72bee046934ec1018f7157a",
+      "bytes": 164551
+    },
+    {
+      "file": "post-loss-pause-1600x1000.png",
+      "sha256": "6844bb716763116ab73c0d52ef830f797ecca17752e31a397f7c37ad88a625f8",
+      "bytes": 170705
+    },
+    {
+      "file": "purchase-feedback-1280x800.png",
+      "sha256": "5702f5023bab4f1cd6af34e5ecb28efb946d9e2e0bdb18720d2237c458f18d8b",
+      "bytes": 122704
+    },
+    {
+      "file": "ready-feedback-1600x1000.png",
+      "sha256": "72f23718de9e4470cf1e0e349ba0652c4c309288cf11b977f179af0d473215c6",
+      "bytes": 174148
+    },
+    {
+      "file": "relic-drafted-1280x720.png",
+      "sha256": "503048c85b7eb2816f6e01c48336b5590930100a4dd49479544209f423e24888",
+      "bytes": 120231
+    },
+    {
+      "file": "relic-equipped-1280x720.png",
+      "sha256": "6ab3dc8a39d2298f9c9677d853eb085d6ced53b9aeb221b94b4344b0a7b6f68b",
+      "bytes": 120906
+    },
+    {
+      "file": "relic-preparation-loaded-1280x720.png",
+      "sha256": "e21790dac7eb712e7596945740e2511a1ae6c7d56249ef92ae51dd86c1f77b4f",
+      "bytes": 122318
+    },
+    {
+      "file": "relic-stat-tradeoff-1280x720.png",
+      "sha256": "97cea88c76f1b5511cf8af2d1662826a788a700201816ff501c09e2e2fda6c48",
+      "bytes": 122459
+    },
+    {
+      "file": "relic-unequipped-1280x720.png",
+      "sha256": "a2aa106279346fa5f3d5a53b052dbc5a90192c57548214fbc442335b80287f5e",
+      "bytes": 121808
+    },
+    {
+      "file": "upgrade-preview-1280x720.png",
+      "sha256": "4e9d83b5c3907437ec7103578a82a45280ecc2e8d6c59a66561cfb6a06b27e49",
+      "bytes": 121719
+    }
+  ],
+  "fixture_provenance": "save-fixture-provenance.json",
+  "source_fixture": "../native-lifecycle/relic-study-preparation.wcsave",
+  "source_fixture_boundary": "Reached seed 234 round 4 through ordinary native Match ticks, purchase and ready commands. Loaded by actual normal-mode UI; not a human journey from round 1.",
+  "observed_defect": {
+    "description": "After a phase transition cleared selection, InspectorText fell back to the previous lab palette creature and showed base stats/Relic None. Selecting the actual creature correctly showed live stats and its equipped relic.",
+    "classification": "misleading unselected presentation; no observed inventory loss",
+    "next_candidate": "r6 adds explicit selection prompt and regression checks"
+  },
+  "not_run": [
+    "Full-bench actual merge",
+    "Complete normal-speed tournament to final winner through actual controls at each resolution",
+    "External novice comprehension, adaptation, pacing, enjoyment and retention",
+    "Actual eliminated spectator, final results and restart full journey",
+    "Full accessibility and motion/audio acceptance"
+  ],
+  "security_dialog": "Initial r5 firewall prompt cleared before input checks. No security UI action or setting change was performed.",
+  "processes": "All three normal-mode r5 processes and the earlier exercise process closed through actual Exit controls; logs preserved."
+}

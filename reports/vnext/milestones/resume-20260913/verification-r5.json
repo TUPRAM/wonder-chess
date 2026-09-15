@@ -1,0 +1,128 @@
+{
+  "schema": "wonder-vnext-resumed-engineering-1",
+  "recorded_utc": "2026-09-13T05:00:16.607876+00:00",
+  "status": "R5_ENGINEERING_VERIFIED_ACCEPTANCE_OPEN",
+  "candidate": "WonderChess-Milestones-r5",
+  "profile": "wonder_vnext",
+  "balance_version": "wonder_vnext_solo_0.1.0",
+  "identity": {
+    "source_sha256": "6e80932173071ef05e58d90a44db3490cfcfde86d48edf33f4a940ff1748efa0",
+    "runtime_sha256": "6988edee019a8eec6be64e0611dd3b9ec2da2942786374e0a6e3f5efa123e46b",
+    "inner_executable_sha256": "fe6ce54720c16f0991f410652911cc366660e1856e30b3063ba0ab4ee4173db6",
+    "manifest": "reports/vnext/milestones/resume-20260913/package-identity-r5/package-manifest.json"
+  },
+  "python": {
+    "status": "PASS",
+    "tests": 228,
+    "seconds": 22.43,
+    "record": "authoring/process.json"
+  },
+  "native_combat": {
+    "status": "PASS",
+    "assertions": 21875,
+    "record": "combat-diagnostics-02/process.json"
+  },
+  "native_lifecycle": {
+    "status": "PASS",
+    "assertions": 240572,
+    "tournaments": 1,
+    "record": "native-lifecycle/process.json"
+  },
+  "native_scenarios_and_acquisition": {
+    "status": "PASS",
+    "assertions": 7390,
+    "scenario_records": 29,
+    "unique_initial_scenario_combats": 28,
+    "acquisition_trials": 400,
+    "unique_shop_seeds": 100,
+    "width_sensitivity_encounters": 384,
+    "unique_width_combat_seeds": 32,
+    "record": "width-sensitivity/process.json"
+  },
+  "legacy_native": {
+    "status": "PASS",
+    "tournaments": 100,
+    "assertions": 3379152,
+    "record": "legacy-native-100"
+  },
+  "diagnostic_tournaments": {
+    "status": "RECONCILED",
+    "control_tournaments": 100,
+    "root75_tournaments": 100,
+    "control_encounters": 18685,
+    "root75_encounters": 19221,
+    "source_stable": true,
+    "record": "mechanic-comparison-v2.json",
+    "balance_promotion": "NONE"
+  },
+  "packaged_engine": {
+    "status": "PASS",
+    "tournaments": 100,
+    "rounds": 4288,
+    "encounters": 18685,
+    "reconciliation": "engine-100-r5/reconciliation.json"
+  },
+  "solo_handlers": {
+    "status": "PASS",
+    "checks": 17,
+    "rounds": 43,
+    "captain_placement": 8,
+    "record": "solo-smoke-r5/solo-exercise.json",
+    "boundary": "Accelerated same-handler exercise; not real input or human acceptance"
+  },
+  "package": {
+    "status": "PASS",
+    "source_files": 81,
+    "payload_files": 49,
+    "configuration": "Development",
+    "engine": "5.7.4",
+    "build_cook_run_seconds": 133.01
+  },
+  "clean_checkout": {
+    "status": "PASS_PROJECT_CHECKOUT_BUILD_IDENTITY_AND_ENGINE",
+    "source_inputs_identical": 80,
+    "initial_project_intermediate_binaries_saved": false,
+    "snapshot_commit": "5df9876255c5d68c2105a9f01d01a14fe5dd50b9",
+    "record": "C:/Users/iputu/Documents/Project Support/Wonder Chess/study-builds/r5-clean-20260913/snapshot.json",
+    "first_checkout": "FAILED_WINDOWS_GIT_LONG_PATH_LIMIT",
+    "retry": "PASS_COMMAND_SCOPED_LONG_PATH_SUPPORT",
+    "clean_machine_install": "NOT_RUN",
+    "engine_tournaments": 10,
+    "engine_rounds": 427,
+    "engine_encounters": 1852,
+    "temporary_checkout": "REMOVED_AFTER_CLEANLINESS_CHECK",
+    "cleanup_record": "C:/Users/iputu/Documents/Project Support/Wonder Chess/study-builds/r5-clean-20260913/cleanup.json"
+  },
+  "actual_r5_input": {
+    "status": "SCOPED_PASS_WITH_INSPECTOR_CLARITY_DEFECT",
+    "cases": 9,
+    "screenshots": 23,
+    "external_participants": 0,
+    "record": "actual-input-r5/review.json",
+    "correction": "Unselected palette fallback corrected and covered in r6; actual r6 input review separate."
+  },
+  "failed_attempts": [
+    {
+      "stage": "native diagnostic fixture 01",
+      "reason": "Establishment test was already past its configured wait at tick 1; corrected isolated fixture passed."
+    },
+    {
+      "stage": "r5 build 01",
+      "reason": "New test called private StateHash; switched to public save/seat evidence and rebuild passed."
+    },
+    {
+      "stage": "isolated checkout 01",
+      "reason": "Long archived paths exceeded default Git Windows support; retry with command-scoped core.longpaths=true succeeded."
+    }
+  ],
+  "external_participants": 0,
+  "human_pacing": "NOT_RUN",
+  "art": "Bellback reference accepted; forms ART_REVISE; no stage advancement",
+  "remote_real_devices": "NOT_RUN",
+  "release_acceptance": "NOT_RUN",
+  "boundaries": [
+    "Active canonical balance unchanged; held-out confirmation seeds remain unused.",
+    "r4 and earlier source/package evidence remains historical and preserved.",
+    "B0-M7 programme is not complete; six-creature engineering proof does not certify later roster, art, network, enjoyment or release acceptance."
+  ]
+}

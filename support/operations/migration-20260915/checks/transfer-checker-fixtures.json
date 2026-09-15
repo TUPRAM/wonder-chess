@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "checks": [
+    "valid payload passes",
+    "changed payload fails",
+    "missing payload fails",
+    "path traversal and absolute paths refused",
+    "truncated inventory refused",
+    "duplicate manifest rows refused"
+  ],
+  "output": "{\"status\": \"CREATED\", \"files\": 1, \"bytes\": 7, \"manifest_sha256\": \"8e768209f435214e47a56f99fdee4cc7e8cd5f00eba0879e09efb38dc3ce82c1\"}\n{\"status\": \"PASS\", \"files\": 1, \"bytes\": 7, \"failures\": 0, \"manifest_sha256\": \"8e768209f435214e47a56f99fdee4cc7e8cd5f00eba0879e09efb38dc3ce82c1\"}\n{\"path\": \"nested/file.dat\", \"error\": \"changed\"}\n{\"status\": \"FAIL\", \"files\": 1, \"bytes\": 7, \"failures\": 1, \"manifest_sha256\": \"8e768209f435214e47a56f99fdee4cc7e8cd5f00eba0879e09efb38dc3ce82c1\"}\n{\"path\": \"nested/file.dat\", \"error\": \"[WinError 2] The system cannot find the file specified: 'C:\\\\\\\\Users\\\\\\\\iputu\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\wc-transfer-check-51w4lqc1\\\\\\\\nested\\\\\\\\file.dat'\"}\n{\"status\": \"FAIL\", \"files\": 1, \"bytes\": 7, \"failures\": 1, \"manifest_sha256\": \"8e768209f435214e47a56f99fdee4cc7e8cd5f00eba0879e09efb38dc3ce82c1\"}\n"
+}

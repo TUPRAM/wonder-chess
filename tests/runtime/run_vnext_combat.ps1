@@ -22,7 +22,7 @@ cl /nologo /std:c++20 /EHsc /O2 /W4 /I"$includeRoot" /I"$generated" "$combat" "$
 @exit /b %errorlevel%
 "@ | Set-Content -LiteralPath $script -Encoding ascii
 $record = [ordered]@{ started_utc=[DateTime]::UtcNow.ToString('o'); compile_exit=$null; test_exit=$null; boundary='Native deterministic synthetic combat, not Unreal or human acceptance'; source_hashes=[ordered]@{} }
-foreach ($source in @($combat,$testSource,(Join-Path $includeRoot 'Simulation/WonderSimulation.h'),(Join-Path $generated 'WonderVNextCatalog.h'))) {
+foreach ($source in @($combat,$testSource,(Join-Path $projectRoot 'game/Source/WonderChessRuntime/Private/Simulation/WonderManaTests.h'),(Join-Path $includeRoot 'Simulation/WonderSimulation.h'),(Join-Path $generated 'WonderVNextCatalog.h'))) {
     $record.source_hashes[$source]=(Get-FileHash -LiteralPath $source -Algorithm SHA256).Hash.ToLowerInvariant()
 }
 Push-Location $buildRoot

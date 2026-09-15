@@ -1,0 +1,186 @@
+{
+  "schema": "wonder_vnext.mana_experiment_verification.1",
+  "recorded_utc": "2026-09-13T06:52:09.523804+00:00",
+  "status": "TECHNICAL_CHECKS_PASS_TUNING_REVISE_HUMAN_INPUT_OPEN",
+  "candidate": "WonderChess-Mana-r9",
+  "profile": "wonder_vnext",
+  "balance_version": "wonder_vnext_solo_0.1.0+mana100_v1",
+  "default_promoted": false,
+  "experiment": {
+    "status": "opt_in_unaccepted_experiment",
+    "heroes": [
+      "wc_vn_snapvine",
+      "wc_vn_prism_organ",
+      "wc_vn_reefglass"
+    ],
+    "maximum": 10000,
+    "starting": 0,
+    "basicAttackGain": 1000,
+    "damageGainAtFullHealth": 10000,
+    "damageEventCap": 2000,
+    "damageWindowCap": 4000,
+    "damageWindowMs": 1000,
+    "relicTiming": "inverse_gain"
+  },
+  "protected_original_catalogue_values": {
+    "unchanged_original_catalogue_fields": true,
+    "only_added_field": "experiments",
+    "experiment": {
+      "mana100_v1": {
+        "status": "opt_in_unaccepted_experiment",
+        "heroes": [
+          "wc_vn_snapvine",
+          "wc_vn_prism_organ",
+          "wc_vn_reefglass"
+        ],
+        "maximum": 10000,
+        "starting": 0,
+        "basicAttackGain": 1000,
+        "damageGainAtFullHealth": 10000,
+        "damageEventCap": 2000,
+        "damageWindowCap": 4000,
+        "damageWindowMs": 1000,
+        "relicTiming": "inverse_gain"
+      }
+    },
+    "boundary": "Existing hero stats, ability effects/timing/targeting, costs, relic modifiers, economy and bot rules are byte-value equivalent after JSON parsing."
+  },
+  "identity": {
+    "profile_id": "wonder_vnext",
+    "balance_version": "wonder_vnext_solo_0.1.0",
+    "source_sha256": "7019a75f985c6f3ab613fb402beda986d2a715db2aeea1c9b055fd56b6a60a67",
+    "runtime_sha1": "eaa122b1ecfab2846480791e6db7c49a9d9e6b5c",
+    "runtime_sha256": "b5e0f0c5309c3e61c0d186bedc79413b34c4ef0e64cb05b817678a3986eda8fe",
+    "experiment_digest": "1446245d77df94c98eff3fe6b5d53d83629aa12b248dd1bbade05971c6099a1a",
+    "inner_executable_sha256": "5052d358b812528e21e6812e56064ba08521f433f458a94092a0c3228a7a8d70",
+    "manifest": "reports/vnext/milestones/mana-20260913/package-identity-r9/package-manifest.json",
+    "source_files": 82,
+    "payload_files": 49
+  },
+  "python": {
+    "status": "PASS",
+    "tests": 229,
+    "all_required_authoring_generation_staging_checks": "PASS",
+    "record": "authoring-final/process.json"
+  },
+  "native_contracts": {
+    "status": "PASS",
+    "assertions": 22320,
+    "record": "native-contract-final/process.json"
+  },
+  "legacy_regression": {
+    "status": "PASS",
+    "tournaments": 10,
+    "assertions": 446047,
+    "record": "legacy-regression"
+  },
+  "native_experiment": {
+    "status": "PASS_EXECUTION",
+    "arms": 2,
+    "tournaments_per_arm": 100,
+    "fixed_mana_encounters_per_arm": 576,
+    "other_formation_fixtures_per_arm": 192,
+    "activity_records_conservation_audited": 387803,
+    "record": "comparison.json",
+    "held_out_seeds_used": false
+  },
+  "engine_mana_contracts": {
+    "status": "PASS",
+    "assertions": 445,
+    "record": "engine-r9-contracts/automation/index.json",
+    "html_report": "Optional Unreal HTML template unavailable; JSON and log preserved"
+  },
+  "engine_native_reconciliation": {
+    "control": {
+      "status": "PASS",
+      "tournaments": 10,
+      "rounds": 427,
+      "encounters": 1852,
+      "digest": "7019a75f985c6f3ab613fb402beda986d2a715db2aeea1c9b055fd56b6a60a67",
+      "comparison": "Every encounter kind, winner, timeout, ticks and survivors; tournament duration, cap and counts; no rejected commands. Does not compare full combat event streams or round state hashes."
+    },
+    "mana100": {
+      "status": "PASS",
+      "tournaments": 10,
+      "rounds": 429,
+      "encounters": 1893,
+      "digest": "1446245d77df94c98eff3fe6b5d53d83629aa12b248dd1bbade05971c6099a1a",
+      "comparison": "Every encounter kind, winner, timeout, ticks and survivors; tournament duration, cap and counts; no rejected commands. Does not compare full combat event streams or round state hashes."
+    },
+    "build_sources_unchanged": 56
+  },
+  "laboratory": {
+    "720": {
+      "status": "PASS",
+      "checks": 41,
+      "captures": 5,
+      "record": "lab-r9-720/lab-exercise.json",
+      "rendered_combat_capture_visually_inspected": true,
+      "physical_input": false
+    },
+    "1080": {
+      "status": "PASS",
+      "checks": 41,
+      "captures": 5,
+      "record": "lab-r9-1080/lab-exercise.json",
+      "rendered_combat_capture_visually_inspected": true,
+      "physical_input": false
+    }
+  },
+  "solo": {
+    "status": "PASS",
+    "checks": 20,
+    "rounds": 45,
+    "captain_placement": 8,
+    "record": "solo-r9-1600/solo-exercise.json",
+    "save_slot": "solo-r9-slot/preparation.wcsave",
+    "boundary": "Accelerated same-handler package smoke; not human or real input evidence."
+  },
+  "balance": {
+    "decision": "REVISE",
+    "control_caps": 14,
+    "mana_caps": 25,
+    "tournaments_per_arm": 100,
+    "control_timeouts": 2552,
+    "control_encounters": 18685,
+    "mana_timeouts": 2653,
+    "mana_encounters": 18955,
+    "fixed_control_timeouts": 24,
+    "fixed_mana_timeouts": 39,
+    "fixed_pairs": 576,
+    "mana_longer_pairs": 406,
+    "timeout_screen": "FAIL_BOTH_ARMS"
+  },
+  "physical_input": {
+    "status": "BLOCKED_WINDOWS_SECURITY_DIALOG",
+    "attempted_package": "r7",
+    "actions_performed": 0,
+    "security_settings_changed": false,
+    "later_packages": "Same-handler and rendered capture verification only"
+  },
+  "acceptance": {
+    "human_participants": 0,
+    "human_enjoyment": "NOT_TESTED",
+    "r9_clean_checkout": "NOT_RUN",
+    "independent_clean_machine": "NOT_RUN",
+    "final_content_performance": "NOT_RUN",
+    "release_accepted": false
+  },
+  "preserved_intermediates": {
+    "r7": "445 package contracts and20 engine tournaments pass; inspector check used preparation ID during combat and is not live-selection evidence.",
+    "r8": "Correct live Prism20/100 and20 reconciled tournaments; rendered review found mana bar obscured by nameplate.",
+    "r9": "Display corrected and scoped package checks passed."
+  },
+  "next_recommendation": {
+    "basic_attack_mana": 20,
+    "other_parameters": "unchanged",
+    "implemented": false
+  },
+  "git": {
+    "branch": "codex/milestones-b0-m7-20260912",
+    "base_commit": "d80635f615810a93c3161c6bfd6c34c758b08260",
+    "committed": false,
+    "published": false
+  },
+  "boundary": "Deterministic engineering and same-machine package evidence. Human input, enjoyment, balance, clean-machine, art, remote and release acceptance remain separate."
+}

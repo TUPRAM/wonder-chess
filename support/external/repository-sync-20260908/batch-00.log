@@ -1,0 +1,78 @@
+warning: in the working copy of '.gitignore', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/BLENDER_MCP_CONNECTION.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'exports/lobby/review/diagnose_lod2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'exports/lobby/review/refine_backdrop.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'exports/lobby/review/repair_duplicate_lod_faces.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'exports/lobby/review/repair_export_topology.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'exports/lobby/review/revision1/author_brighthaven_approach.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'exports/lobby/review/verify_fbx_readback.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tools/blender/Start-Mcp.ps1', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tools/blender/start_mcp.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tools/blender/verify_mcp.py', LF will be replaced by CRLF the next time Git touches it
+[main 69fc3ef] Publish Wonder Chess source assets, Unreal project and Blender MCP setup
+ 64 files changed, 3002 insertions(+), 1 deletion(-)
+ create mode 100644 art-source/heroes/wc_u_dwarf_guardian/wc_u_dwarf_guardian_revision7.blend
+ create mode 100644 art-source/heroes/wc_u_dwarf_ranger/wc_u_dwarf_ranger_revision7.blend
+ create mode 100644 art-source/heroes/wc_u_dwarf_warrior/wc_u_dwarf_warrior_revision7.blend
+ create mode 100644 art-source/heroes/wc_u_elf_priest/wc_u_elf_priest_revision7.blend
+ create mode 100644 art-source/heroes/wc_u_elf_ranger/wc_u_elf_ranger_revision7.blend
+ create mode 100644 art-source/heroes/wc_u_elf_rogue/wc_u_elf_rogue_revision7.blend
+ create mode 100644 art-source/heroes/wc_u_human_guardian/wc_u_human_guardian_revision7.blend
+ create mode 100644 art-source/heroes/wc_u_human_guardian/wc_u_human_guardian_revision8.blend
+ create mode 100644 art-source/heroes/wc_u_human_mage/wc_u_human_mage_revision7.blend
+ create mode 100644 art-source/heroes/wc_u_human_priest/wc_u_human_priest_revision7.blend
+ create mode 100644 art-source/heroes/wc_u_orc_mage/wc_u_orc_mage_revision7.blend
+ create mode 100644 art-source/heroes/wc_u_orc_rogue/wc_u_orc_rogue_revision7.blend
+ create mode 100644 art-source/heroes/wc_u_orc_warrior/wc_u_orc_warrior_revision7.blend
+ create mode 100644 docs/BLENDER_MCP_CONNECTION.md
+ create mode 100644 exports/lobby/review/approach-back.png
+ create mode 100644 exports/lobby/review/approach-front.png
+ create mode 100644 exports/lobby/review/approach-three-quarter.png
+ create mode 100644 exports/lobby/review/diagnose_lod2.py
+ create mode 100644 exports/lobby/review/fbx-readback.json
+ create mode 100644 exports/lobby/review/lod2-topology-diagnostic.json
+ create mode 100644 exports/lobby/review/refine_backdrop.py
+ create mode 100644 exports/lobby/review/repair_duplicate_lod_faces.py
+ create mode 100644 exports/lobby/review/repair_export_topology.py
+ create mode 100644 exports/lobby/review/revision1/SM_WC_ApproachBeacon.fbx
+ create mode 100644 exports/lobby/review/revision1/SM_WC_ApproachEastHouse.fbx
+ create mode 100644 exports/lobby/review/revision1/SM_WC_ApproachGardenArch.fbx
+ create mode 100644 exports/lobby/review/revision1/SM_WC_ApproachGardenWalls.fbx
+ create mode 100644 exports/lobby/review/revision1/SM_WC_ApproachPlatform.fbx
+ create mode 100644 exports/lobby/review/revision1/SM_WC_ApproachWestHouse.fbx
+ create mode 100644 exports/lobby/review/revision1/SM_WC_BrighthavenApproach.fbx
+ create mode 100644 exports/lobby/review/revision1/SM_WC_BrighthavenApproach_LOD1.fbx
+ create mode 100644 exports/lobby/review/revision1/SM_WC_BrighthavenApproach_LOD2.fbx
+ create mode 100644 exports/lobby/review/revision1/T_wc_brighthaven_approach_BaseColor.png
+ create mode 100644 exports/lobby/review/revision1/T_wc_brighthaven_approach_Normal.png
+ create mode 100644 exports/lobby/review/revision1/T_wc_brighthaven_approach_ORM.png
+ create mode 100644 exports/lobby/review/revision1/approach-back.png
+ create mode 100644 exports/lobby/review/revision1/approach-front.png
+ create mode 100644 exports/lobby/review/revision1/approach-three-quarter.png
+ create mode 100644 exports/lobby/review/revision1/author_brighthaven_approach.py
+ create mode 100644 exports/lobby/review/revision1/brighthaven_approach.blend
+ create mode 100644 exports/lobby/review/revision1/lobby_manifest.json
+ create mode 100644 exports/lobby/review/revision2/SM_WC_ApproachBeacon.fbx
+ create mode 100644 exports/lobby/review/revision2/SM_WC_ApproachEastHouse.fbx
+ create mode 100644 exports/lobby/review/revision2/SM_WC_ApproachGardenArch.fbx
+ create mode 100644 exports/lobby/review/revision2/SM_WC_ApproachGardenWalls.fbx
+ create mode 100644 exports/lobby/review/revision2/SM_WC_ApproachPlatform.fbx
+ create mode 100644 exports/lobby/review/revision2/SM_WC_ApproachWestHouse.fbx
+ create mode 100644 exports/lobby/review/revision2/SM_WC_BrighthavenApproach.fbx
+ create mode 100644 exports/lobby/review/revision2/SM_WC_BrighthavenApproach_LOD1.fbx
+ create mode 100644 exports/lobby/review/revision2/SM_WC_BrighthavenApproach_LOD2.fbx
+ create mode 100644 exports/lobby/review/revision2/approach-back.png
+ create mode 100644 exports/lobby/review/revision2/approach-front.png
+ create mode 100644 exports/lobby/review/revision2/approach-three-quarter.png
+ create mode 100644 exports/lobby/review/revision2/brighthaven_approach.blend
+ create mode 100644 exports/lobby/review/revision2/lobby_manifest.json
+ create mode 100644 exports/lobby/review/revision3/SM_WC_BrighthavenApproach_LOD2.fbx
+ create mode 100644 exports/lobby/review/revision3/brighthaven_approach.blend
+ create mode 100644 exports/lobby/review/revision3/lobby_manifest.json
+ create mode 100644 exports/lobby/review/verify_fbx_readback.py
+ create mode 100644 tools/blender/Start-Mcp.ps1
+ create mode 100644 tools/blender/start_mcp.py
+ create mode 100644 tools/blender/verify_mcp.py
+To https://github.com/TUPRAM/wonder-chess.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.

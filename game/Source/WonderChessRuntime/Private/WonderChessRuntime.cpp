@@ -8,7 +8,7 @@ class FWonderChessRuntimeModule : public FDefaultGameModuleImpl
 public:
     virtual void StartupModule() override
     {
-        if (FParse::Param(FCommandLine::Get(), TEXT("WCLab")))
+        if (FParse::Param(FCommandLine::Get(), TEXT("WCLab")) || FParse::Param(FCommandLine::Get(), TEXT("WCSolo")))
         {
             UGameMapsSettings::SetGlobalDefaultGameMode(TEXT("/Script/WonderChessRuntime.WCVNextLabMode"));
             UGameMapsSettings::SetGameDefaultMap(TEXT("/Engine/Maps/Entry"));

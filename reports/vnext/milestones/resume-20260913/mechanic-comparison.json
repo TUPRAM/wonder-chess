@@ -1,0 +1,1022 @@
+{
+  "schema": "wonder-vnext-mechanic-diagnostics-1",
+  "status": "RECONCILED",
+  "control": {
+    "directory": "C:\\Users\\iputu\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\CodexWorktrees\\wc\\m7\\reports\\vnext\\milestones\\b1-balance\\resumed-diagnostics-control-20260913T034708422Z",
+    "variant": "control",
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100
+    ],
+    "tournaments": 100,
+    "caps": 14,
+    "encounters": 18685,
+    "timeouts": 2552,
+    "median_simulated_minutes": 31.255416666666665,
+    "strata": {
+      "pvp": {
+        "encounters": 10205,
+        "timeouts": 2270,
+        "timeout_percent": 22.243998040176383,
+        "draws": 2,
+        "mean_deaths": 7.9572758451739345,
+        "timeout_screen": "FAIL"
+      },
+      "ghost": {
+        "encounters": 706,
+        "timeouts": 282,
+        "timeout_percent": 39.94334277620396,
+        "draws": 0,
+        "mean_deaths": 8.798866855524079,
+        "timeout_screen": "FAIL"
+      },
+      "neutral": {
+        "encounters": 7774,
+        "timeouts": 0,
+        "timeout_percent": 0.0,
+        "draws": 0,
+        "mean_deaths": 3.109724723437098,
+        "timeout_screen": "PASS"
+      }
+    },
+    "mechanic_outcomes": {
+      "wc_vn_cragstoat": {
+        "attempt/ready": 49338,
+        "committed/ready": 49338,
+        "released/ready": 46531,
+        "impact/resolved": 46162,
+        "attempt/path_occupied": 18059,
+        "cancelled/combat_ended": 590,
+        "cancelled/no_living_target": 512,
+        "impact/target_defeated": 369,
+        "attempt/corner_occupied": 11780,
+        "attempt/no_momentum": 495732,
+        "cancelled/target_moved": 751,
+        "cancelled/corner_occupied": 499,
+        "cancelled/no_momentum": 95,
+        "cancelled/source_defeated": 124,
+        "attempt/target_out_of_range": 803,
+        "attempt/no_living_target": 715,
+        "cancelled/path_occupied": 230,
+        "cancelled/target_out_of_range": 6
+      },
+      "wc_vn_grandmother_root": {
+        "attempt/ready": 238393,
+        "attempt/not_established": 16269,
+        "committed/ready": 238393,
+        "cancelled/combat_ended": 1536,
+        "released/ready": 235707,
+        "impact/combat_ended": 41903,
+        "impact/resolved": 855988,
+        "impact/source_moved": 8370,
+        "impact/no_injured_ally": 23062,
+        "attempt/no_injured_ally": 27628,
+        "impact/source_defeated": 13363,
+        "cancelled/source_defeated": 1150,
+        "impact/tether_invalidated": 142
+      }
+    },
+    "impact_totals": {
+      "wc_vn_cragstoat": {
+        "recipients": 46162,
+        "full_health_ally_pulses": 0,
+        "requested_cp": 1388213600,
+        "resolved_cp": 1478558413
+      },
+      "wc_vn_grandmother_root": {
+        "recipients": 1852586,
+        "full_health_ally_pulses": 2055871,
+        "requested_cp": 16026332725,
+        "resolved_cp": 15388797753
+      }
+    },
+    "round_damage": [
+      {
+        "rounds": [
+          1,
+          10
+        ],
+        "seat_rounds": 4000,
+        "damaged_seat_rounds": 2001,
+        "mean_positive_damage": 4.677161419290355
+      },
+      {
+        "rounds": [
+          11,
+          20
+        ],
+        "seat_rounds": 6400,
+        "damaged_seat_rounds": 3201,
+        "mean_positive_damage": 6.287722586691659
+      },
+      {
+        "rounds": [
+          21,
+          30
+        ],
+        "seat_rounds": 6095,
+        "damaged_seat_rounds": 3039,
+        "mean_positive_damage": 8.452451464297466
+      },
+      {
+        "rounds": [
+          31,
+          40
+        ],
+        "seat_rounds": 3920,
+        "damaged_seat_rounds": 1967,
+        "mean_positive_damage": 10.480935434672089
+      },
+      {
+        "rounds": [
+          41,
+          45
+        ],
+        "seat_rounds": 701,
+        "damaged_seat_rounds": 340,
+        "mean_positive_damage": 13.617647058823529
+      }
+    ],
+    "recruitment_by_observed_level": {
+      "wc_vn_bellback/level_3": {
+        "new_offer_slots": 1511,
+        "affordable_at_first_observed_offer": 1511,
+        "legal_buy_at_first_observed_offer": 1511,
+        "purchased_copies": 1028,
+        "deployed_unit_rounds": 25
+      },
+      "wc_vn_cragstoat/level_3": {
+        "new_offer_slots": 1610,
+        "affordable_at_first_observed_offer": 1610,
+        "legal_buy_at_first_observed_offer": 1610,
+        "purchased_copies": 1142,
+        "deployed_unit_rounds": 21
+      },
+      "wc_vn_grandmother_root/level_3": {
+        "new_offer_slots": 1064,
+        "affordable_at_first_observed_offer": 1064,
+        "legal_buy_at_first_observed_offer": 1064,
+        "purchased_copies": 701,
+        "deployed_unit_rounds": 68
+      },
+      "wc_vn_bellback/level_4": {
+        "new_offer_slots": 2178,
+        "affordable_at_first_observed_offer": 2178,
+        "legal_buy_at_first_observed_offer": 2178,
+        "purchased_copies": 1687,
+        "deployed_unit_rounds": 1969
+      },
+      "wc_vn_cragstoat/level_4": {
+        "new_offer_slots": 2197,
+        "affordable_at_first_observed_offer": 2197,
+        "legal_buy_at_first_observed_offer": 2197,
+        "purchased_copies": 1634,
+        "deployed_unit_rounds": 2105
+      },
+      "wc_vn_grandmother_root/level_4": {
+        "new_offer_slots": 2744,
+        "affordable_at_first_observed_offer": 2744,
+        "legal_buy_at_first_observed_offer": 2744,
+        "purchased_copies": 1329,
+        "deployed_unit_rounds": 1517
+      },
+      "wc_vn_snapvine/level_4": {
+        "new_offer_slots": 776,
+        "affordable_at_first_observed_offer": 776,
+        "legal_buy_at_first_observed_offer": 776,
+        "purchased_copies": 345,
+        "deployed_unit_rounds": 278
+      },
+      "wc_vn_bellback/level_5": {
+        "new_offer_slots": 4748,
+        "affordable_at_first_observed_offer": 4748,
+        "legal_buy_at_first_observed_offer": 4748,
+        "purchased_copies": 4076,
+        "deployed_unit_rounds": 6960
+      },
+      "wc_vn_cragstoat/level_5": {
+        "new_offer_slots": 4976,
+        "affordable_at_first_observed_offer": 4976,
+        "legal_buy_at_first_observed_offer": 4976,
+        "purchased_copies": 4451,
+        "deployed_unit_rounds": 7640
+      },
+      "wc_vn_grandmother_root/level_5": {
+        "new_offer_slots": 8681,
+        "affordable_at_first_observed_offer": 8681,
+        "legal_buy_at_first_observed_offer": 8681,
+        "purchased_copies": 4720,
+        "deployed_unit_rounds": 5685
+      },
+      "wc_vn_snapvine/level_5": {
+        "new_offer_slots": 5790,
+        "affordable_at_first_observed_offer": 5790,
+        "legal_buy_at_first_observed_offer": 5790,
+        "purchased_copies": 1863,
+        "deployed_unit_rounds": 3256
+      },
+      "wc_vn_prism_organ/level_5": {
+        "new_offer_slots": 505,
+        "affordable_at_first_observed_offer": 505,
+        "legal_buy_at_first_observed_offer": 505,
+        "purchased_copies": 164,
+        "deployed_unit_rounds": 421
+      },
+      "wc_vn_bellback/level_6": {
+        "new_offer_slots": 6606,
+        "affordable_at_first_observed_offer": 6606,
+        "legal_buy_at_first_observed_offer": 6566,
+        "purchased_copies": 5774,
+        "deployed_unit_rounds": 12419
+      },
+      "wc_vn_cragstoat/level_6": {
+        "new_offer_slots": 6603,
+        "affordable_at_first_observed_offer": 6603,
+        "legal_buy_at_first_observed_offer": 6583,
+        "purchased_copies": 5983,
+        "deployed_unit_rounds": 13470
+      },
+      "wc_vn_grandmother_root/level_6": {
+        "new_offer_slots": 15397,
+        "affordable_at_first_observed_offer": 15397,
+        "legal_buy_at_first_observed_offer": 15258,
+        "purchased_copies": 9603,
+        "deployed_unit_rounds": 12902
+      },
+      "wc_vn_snapvine/level_6": {
+        "new_offer_slots": 13283,
+        "affordable_at_first_observed_offer": 13283,
+        "legal_buy_at_first_observed_offer": 13147,
+        "purchased_copies": 4039,
+        "deployed_unit_rounds": 8322
+      },
+      "wc_vn_prism_organ/level_6": {
+        "new_offer_slots": 2181,
+        "affordable_at_first_observed_offer": 2181,
+        "legal_buy_at_first_observed_offer": 2151,
+        "purchased_copies": 271,
+        "deployed_unit_rounds": 810
+      },
+      "wc_vn_bellback/level_7": {
+        "new_offer_slots": 5830,
+        "affordable_at_first_observed_offer": 5830,
+        "legal_buy_at_first_observed_offer": 4895,
+        "purchased_copies": 4867,
+        "deployed_unit_rounds": 17721
+      },
+      "wc_vn_cragstoat/level_7": {
+        "new_offer_slots": 5805,
+        "affordable_at_first_observed_offer": 5805,
+        "legal_buy_at_first_observed_offer": 4852,
+        "purchased_copies": 4854,
+        "deployed_unit_rounds": 18247
+      },
+      "wc_vn_grandmother_root/level_7": {
+        "new_offer_slots": 17656,
+        "affordable_at_first_observed_offer": 17656,
+        "legal_buy_at_first_observed_offer": 14170,
+        "purchased_copies": 10222,
+        "deployed_unit_rounds": 24864
+      },
+      "wc_vn_snapvine/level_7": {
+        "new_offer_slots": 20499,
+        "affordable_at_first_observed_offer": 20499,
+        "legal_buy_at_first_observed_offer": 15998,
+        "purchased_copies": 6121,
+        "deployed_unit_rounds": 10933
+      },
+      "wc_vn_prism_organ/level_7": {
+        "new_offer_slots": 8081,
+        "affordable_at_first_observed_offer": 8081,
+        "legal_buy_at_first_observed_offer": 6240,
+        "purchased_copies": 496,
+        "deployed_unit_rounds": 332
+      },
+      "wc_vn_reefglass/level_7": {
+        "new_offer_slots": 569,
+        "affordable_at_first_observed_offer": 569,
+        "legal_buy_at_first_observed_offer": 451,
+        "purchased_copies": 18,
+        "deployed_unit_rounds": 38
+      },
+      "wc_vn_bellback/level_8": {
+        "new_offer_slots": 1588,
+        "affordable_at_first_observed_offer": 1588,
+        "legal_buy_at_first_observed_offer": 494,
+        "purchased_copies": 713,
+        "deployed_unit_rounds": 7562
+      },
+      "wc_vn_cragstoat/level_8": {
+        "new_offer_slots": 1530,
+        "affordable_at_first_observed_offer": 1530,
+        "legal_buy_at_first_observed_offer": 496,
+        "purchased_copies": 714,
+        "deployed_unit_rounds": 7592
+      },
+      "wc_vn_grandmother_root/level_8": {
+        "new_offer_slots": 4149,
+        "affordable_at_first_observed_offer": 4149,
+        "legal_buy_at_first_observed_offer": 1129,
+        "purchased_copies": 1385,
+        "deployed_unit_rounds": 12893
+      },
+      "wc_vn_snapvine/level_8": {
+        "new_offer_slots": 7209,
+        "affordable_at_first_observed_offer": 7209,
+        "legal_buy_at_first_observed_offer": 1791,
+        "purchased_copies": 1402,
+        "deployed_unit_rounds": 5033
+      },
+      "wc_vn_prism_organ/level_8": {
+        "new_offer_slots": 5216,
+        "affordable_at_first_observed_offer": 5216,
+        "legal_buy_at_first_observed_offer": 1173,
+        "purchased_copies": 438,
+        "deployed_unit_rounds": 43
+      },
+      "wc_vn_reefglass/level_8": {
+        "new_offer_slots": 1043,
+        "affordable_at_first_observed_offer": 1043,
+        "legal_buy_at_first_observed_offer": 241,
+        "purchased_copies": 38,
+        "deployed_unit_rounds": 13
+      },
+      "wc_vn_bellback/level_9": {
+        "new_offer_slots": 8,
+        "affordable_at_first_observed_offer": 8,
+        "legal_buy_at_first_observed_offer": 2,
+        "purchased_copies": 7,
+        "deployed_unit_rounds": 76
+      },
+      "wc_vn_cragstoat/level_9": {
+        "new_offer_slots": 5,
+        "affordable_at_first_observed_offer": 5,
+        "legal_buy_at_first_observed_offer": 4,
+        "purchased_copies": 7,
+        "deployed_unit_rounds": 81
+      },
+      "wc_vn_grandmother_root/level_9": {
+        "new_offer_slots": 15,
+        "affordable_at_first_observed_offer": 15,
+        "legal_buy_at_first_observed_offer": 3,
+        "purchased_copies": 18,
+        "deployed_unit_rounds": 126
+      },
+      "wc_vn_snapvine/level_9": {
+        "new_offer_slots": 27,
+        "affordable_at_first_observed_offer": 27,
+        "legal_buy_at_first_observed_offer": 11,
+        "purchased_copies": 31,
+        "deployed_unit_rounds": 46
+      },
+      "wc_vn_prism_organ/level_9": {
+        "new_offer_slots": 37,
+        "affordable_at_first_observed_offer": 37,
+        "legal_buy_at_first_observed_offer": 9,
+        "purchased_copies": 17,
+        "deployed_unit_rounds": 4
+      },
+      "wc_vn_reefglass/level_9": {
+        "new_offer_slots": 13,
+        "affordable_at_first_observed_offer": 13,
+        "legal_buy_at_first_observed_offer": 1,
+        "purchased_copies": 2,
+        "deployed_unit_rounds": 0
+      }
+    },
+    "captains_alive_at_cap": 28,
+    "median_health_at_cap": 13.5,
+    "source_hashes": {
+      "C:\\Users\\iputu\\AppData\\Local\\CodexWorktrees\\wc\\m7\\game\\Source\\WonderChessRuntime\\Private\\Simulation\\WonderSimulation.cpp": "d2de1011a69dc4669447b643969aa0921c6bcbed587db13767a8d40ab1b953ad",
+      "C:\\Users\\iputu\\AppData\\Local\\CodexWorktrees\\wc\\m7\\game\\Source\\WonderChessRuntime\\Private\\Simulation\\WonderTournament.cpp": "ce1c59d03eacc6526d8e0a04d0276b443aa5941d6f77301eb25a93d0221f2e83",
+      "C:\\Users\\iputu\\AppData\\Local\\CodexWorktrees\\wc\\m7\\game\\Source\\WonderChessRuntime\\Private\\Simulation\\WonderSave.cpp": "28dfa13f56069d8f406d0ffc3fc00f496f7dee5a51fcbc5af3fcec5af51bb44c",
+      "C:\\Users\\iputu\\AppData\\Local\\CodexWorktrees\\wc\\m7\\tests\\runtime\\vnext_balance_experiment.cpp": "108c9085615d5edcb44ca81213451119c8d64c4bc3468e8ca87ac6808d203660",
+      "C:\\Users\\iputu\\AppData\\Local\\CodexWorktrees\\wc\\m7\\game\\Source\\WonderChessRuntime\\Public\\Simulation\\WonderSimulation.h": "b9255757c0fb9b5f33dc013e9825dcbda36b415a22fe31ff2e33583f89ff3beb",
+      "C:\\Users\\iputu\\AppData\\Local\\CodexWorktrees\\wc\\m7\\game\\Source\\WonderChessRuntime\\Public\\VNext\\WonderVNextCatalog.generated.h": "14c82b4184576d4cd929e45a10522db6b16498681b2848fdc131ce8e2eafdcb5",
+      "C:\\Users\\iputu\\AppData\\Local\\CodexWorktrees\\wc\\m7\\data\\vnext\\catalog.json": "6e80932173071ef05e58d90a44db3490cfcfde86d48edf33f4a940ff1748efa0"
+    },
+    "evidence_sha256": {
+      "process.json": "ccea0ba0d3a228d08d15da4c342656380b1034c8f20db663469cb961a63b1847",
+      "variant.json": "be2ac14a91dbc32cdf11b54f377148f9eee146314d268ac7bc8759613f12926f",
+      "tournaments.csv": "275a70bd1e98e2b40522d3aa166c1ba5fd195794f114b470a2c1cfda14464945",
+      "encounters.csv": "74e94dddbf72344bacf49015c945344f159888e352bddd4c07a06c6dbcb1fc6e",
+      "mechanic_outcomes.csv": "095e339480ab5bf69f46705ca85cdbdbe0395e89d73e957148f398520eab0d9a",
+      "seat_rounds.csv": "458e241d6ec4adf788c5829706f04503fe7048b30566d4add2be1437e8191572",
+      "recruitment_by_level.csv": "f9dadfa2fd121c03217dd272f39ea0b5f7141df8959050e2136b984758b08737",
+      "recruitment.csv": "4b37feb3f3e04849d7229188af5a207710c9184be2dd7a5d3b8df3b82d1d0454",
+      "fixtures.csv": "a83ac2f7eed779f0671901e4cfd81ee4d6ce66ef54e37fe763af3ac86fe4a969"
+    }
+  },
+  "root75": {
+    "directory": "C:\\Users\\iputu\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\CodexWorktrees\\wc\\m7\\reports\\vnext\\milestones\\b1-balance\\resumed-diagnostics-root75-20260913T034708429Z",
+    "variant": "root75",
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100
+    ],
+    "tournaments": 100,
+    "caps": 35,
+    "encounters": 19221,
+    "timeouts": 1689,
+    "median_simulated_minutes": 31.032083333333333,
+    "strata": {
+      "pvp": {
+        "encounters": 10507,
+        "timeouts": 1524,
+        "timeout_percent": 14.50461597030551,
+        "draws": 1,
+        "mean_deaths": 8.652517369372799,
+        "timeout_screen": "FAIL"
+      },
+      "ghost": {
+        "encounters": 745,
+        "timeouts": 165,
+        "timeout_percent": 22.14765100671141,
+        "draws": 1,
+        "mean_deaths": 10.232214765100672,
+        "timeout_screen": "FAIL"
+      },
+      "neutral": {
+        "encounters": 7969,
+        "timeouts": 0,
+        "timeout_percent": 0.0,
+        "draws": 0,
+        "mean_deaths": 3.1985192621407954,
+        "timeout_screen": "PASS"
+      }
+    },
+    "mechanic_outcomes": {
+      "wc_vn_cragstoat": {
+        "attempt/ready": 56199,
+        "committed/ready": 56199,
+        "released/ready": 52811,
+        "impact/resolved": 52403,
+        "attempt/path_occupied": 23524,
+        "cancelled/combat_ended": 639,
+        "attempt/corner_occupied": 13040,
+        "cancelled/no_living_target": 539,
+        "attempt/no_momentum": 456768,
+        "cancelled/target_moved": 1041,
+        "cancelled/corner_occupied": 566,
+        "impact/target_defeated": 408,
+        "attempt/target_out_of_range": 1003,
+        "cancelled/source_defeated": 189,
+        "cancelled/target_out_of_range": 2,
+        "cancelled/path_occupied": 290,
+        "cancelled/no_momentum": 122,
+        "attempt/no_living_target": 538
+      },
+      "wc_vn_grandmother_root": {
+        "attempt/ready": 205955,
+        "attempt/not_established": 17816,
+        "committed/ready": 205955,
+        "cancelled/combat_ended": 1293,
+        "released/ready": 203476,
+        "impact/combat_ended": 34525,
+        "impact/resolved": 740495,
+        "attempt/no_injured_ally": 27229,
+        "impact/no_injured_ally": 15036,
+        "impact/source_moved": 8691,
+        "cancelled/source_defeated": 1186,
+        "impact/source_defeated": 15044,
+        "impact/tether_invalidated": 113
+      }
+    },
+    "impact_totals": {
+      "wc_vn_cragstoat": {
+        "recipients": 52403,
+        "full_health_ally_pulses": 0,
+        "requested_cp": 1581741850,
+        "resolved_cp": 1694639021
+      },
+      "wc_vn_grandmother_root": {
+        "recipients": 1641741,
+        "full_health_ally_pulses": 1543887,
+        "requested_cp": 10671311293,
+        "resolved_cp": 10433583280
+      }
+    },
+    "round_damage": [
+      {
+        "rounds": [
+          1,
+          10
+        ],
+        "seat_rounds": 4000,
+        "damaged_seat_rounds": 2000,
+        "mean_positive_damage": 4.5025
+      },
+      {
+        "rounds": [
+          11,
+          20
+        ],
+        "seat_rounds": 6400,
+        "damaged_seat_rounds": 3200,
+        "mean_positive_damage": 5.9865625
+      },
+      {
+        "rounds": [
+          21,
+          30
+        ],
+        "seat_rounds": 6178,
+        "damaged_seat_rounds": 3088,
+        "mean_positive_damage": 8.031411917098445
+      },
+      {
+        "rounds": [
+          31,
+          40
+        ],
+        "seat_rounds": 4224,
+        "damaged_seat_rounds": 2119,
+        "mean_positive_damage": 9.692779613025012
+      },
+      {
+        "rounds": [
+          41,
+          45
+        ],
+        "seat_rounds": 957,
+        "damaged_seat_rounds": 486,
+        "mean_positive_damage": 12.748971193415638
+      }
+    ],
+    "recruitment_by_observed_level": {
+      "wc_vn_bellback/level_3": {
+        "new_offer_slots": 1512,
+        "affordable_at_first_observed_offer": 1512,
+        "legal_buy_at_first_observed_offer": 1512,
+        "purchased_copies": 1059,
+        "deployed_unit_rounds": 25
+      },
+      "wc_vn_cragstoat/level_3": {
+        "new_offer_slots": 1610,
+        "affordable_at_first_observed_offer": 1610,
+        "legal_buy_at_first_observed_offer": 1610,
+        "purchased_copies": 1168,
+        "deployed_unit_rounds": 20
+      },
+      "wc_vn_grandmother_root/level_3": {
+        "new_offer_slots": 1063,
+        "affordable_at_first_observed_offer": 1063,
+        "legal_buy_at_first_observed_offer": 1063,
+        "purchased_copies": 609,
+        "deployed_unit_rounds": 69
+      },
+      "wc_vn_bellback/level_4": {
+        "new_offer_slots": 2185,
+        "affordable_at_first_observed_offer": 2185,
+        "legal_buy_at_first_observed_offer": 2185,
+        "purchased_copies": 1722,
+        "deployed_unit_rounds": 2003
+      },
+      "wc_vn_cragstoat/level_4": {
+        "new_offer_slots": 2195,
+        "affordable_at_first_observed_offer": 2195,
+        "legal_buy_at_first_observed_offer": 2195,
+        "purchased_copies": 1599,
+        "deployed_unit_rounds": 2183
+      },
+      "wc_vn_grandmother_root/level_4": {
+        "new_offer_slots": 2740,
+        "affordable_at_first_observed_offer": 2740,
+        "legal_buy_at_first_observed_offer": 2740,
+        "purchased_copies": 1386,
+        "deployed_unit_rounds": 1378
+      },
+      "wc_vn_snapvine/level_4": {
+        "new_offer_slots": 780,
+        "affordable_at_first_observed_offer": 780,
+        "legal_buy_at_first_observed_offer": 780,
+        "purchased_copies": 383,
+        "deployed_unit_rounds": 308
+      },
+      "wc_vn_bellback/level_5": {
+        "new_offer_slots": 4720,
+        "affordable_at_first_observed_offer": 4720,
+        "legal_buy_at_first_observed_offer": 4720,
+        "purchased_copies": 4049,
+        "deployed_unit_rounds": 7081
+      },
+      "wc_vn_cragstoat/level_5": {
+        "new_offer_slots": 4950,
+        "affordable_at_first_observed_offer": 4950,
+        "legal_buy_at_first_observed_offer": 4950,
+        "purchased_copies": 4350,
+        "deployed_unit_rounds": 7764
+      },
+      "wc_vn_grandmother_root/level_5": {
+        "new_offer_slots": 8590,
+        "affordable_at_first_observed_offer": 8590,
+        "legal_buy_at_first_observed_offer": 8590,
+        "purchased_copies": 4819,
+        "deployed_unit_rounds": 5313
+      },
+      "wc_vn_snapvine/level_5": {
+        "new_offer_slots": 5780,
+        "affordable_at_first_observed_offer": 5780,
+        "legal_buy_at_first_observed_offer": 5780,
+        "purchased_copies": 1872,
+        "deployed_unit_rounds": 3367
+      },
+      "wc_vn_prism_organ/level_5": {
+        "new_offer_slots": 505,
+        "affordable_at_first_observed_offer": 505,
+        "legal_buy_at_first_observed_offer": 505,
+        "purchased_copies": 166,
+        "deployed_unit_rounds": 458
+      },
+      "wc_vn_bellback/level_6": {
+        "new_offer_slots": 6499,
+        "affordable_at_first_observed_offer": 6499,
+        "legal_buy_at_first_observed_offer": 6463,
+        "purchased_copies": 5806,
+        "deployed_unit_rounds": 12361
+      },
+      "wc_vn_cragstoat/level_6": {
+        "new_offer_slots": 6507,
+        "affordable_at_first_observed_offer": 6507,
+        "legal_buy_at_first_observed_offer": 6486,
+        "purchased_copies": 5915,
+        "deployed_unit_rounds": 13878
+      },
+      "wc_vn_grandmother_root/level_6": {
+        "new_offer_slots": 15283,
+        "affordable_at_first_observed_offer": 15283,
+        "legal_buy_at_first_observed_offer": 15183,
+        "purchased_copies": 9599,
+        "deployed_unit_rounds": 12381
+      },
+      "wc_vn_snapvine/level_6": {
+        "new_offer_slots": 13138,
+        "affordable_at_first_observed_offer": 13138,
+        "legal_buy_at_first_observed_offer": 13015,
+        "purchased_copies": 4060,
+        "deployed_unit_rounds": 8389
+      },
+      "wc_vn_prism_organ/level_6": {
+        "new_offer_slots": 2158,
+        "affordable_at_first_observed_offer": 2158,
+        "legal_buy_at_first_observed_offer": 2134,
+        "purchased_copies": 265,
+        "deployed_unit_rounds": 891
+      },
+      "wc_vn_bellback/level_7": {
+        "new_offer_slots": 5969,
+        "affordable_at_first_observed_offer": 5969,
+        "legal_buy_at_first_observed_offer": 5000,
+        "purchased_copies": 4891,
+        "deployed_unit_rounds": 18248
+      },
+      "wc_vn_cragstoat/level_7": {
+        "new_offer_slots": 5945,
+        "affordable_at_first_observed_offer": 5945,
+        "legal_buy_at_first_observed_offer": 4990,
+        "purchased_copies": 4888,
+        "deployed_unit_rounds": 20079
+      },
+      "wc_vn_grandmother_root/level_7": {
+        "new_offer_slots": 17961,
+        "affordable_at_first_observed_offer": 17961,
+        "legal_buy_at_first_observed_offer": 14397,
+        "purchased_copies": 10474,
+        "deployed_unit_rounds": 23214
+      },
+      "wc_vn_snapvine/level_7": {
+        "new_offer_slots": 20839,
+        "affordable_at_first_observed_offer": 20839,
+        "legal_buy_at_first_observed_offer": 16282,
+        "purchased_copies": 6261,
+        "deployed_unit_rounds": 11461
+      },
+      "wc_vn_prism_organ/level_7": {
+        "new_offer_slots": 8212,
+        "affordable_at_first_observed_offer": 8212,
+        "legal_buy_at_first_observed_offer": 6266,
+        "purchased_copies": 538,
+        "deployed_unit_rounds": 472
+      },
+      "wc_vn_reefglass/level_7": {
+        "new_offer_slots": 569,
+        "affordable_at_first_observed_offer": 569,
+        "legal_buy_at_first_observed_offer": 416,
+        "purchased_copies": 17,
+        "deployed_unit_rounds": 47
+      },
+      "wc_vn_bellback/level_8": {
+        "new_offer_slots": 1786,
+        "affordable_at_first_observed_offer": 1786,
+        "legal_buy_at_first_observed_offer": 554,
+        "purchased_copies": 841,
+        "deployed_unit_rounds": 9496
+      },
+      "wc_vn_cragstoat/level_8": {
+        "new_offer_slots": 1807,
+        "affordable_at_first_observed_offer": 1807,
+        "legal_buy_at_first_observed_offer": 609,
+        "purchased_copies": 823,
+        "deployed_unit_rounds": 10094
+      },
+      "wc_vn_grandmother_root/level_8": {
+        "new_offer_slots": 4817,
+        "affordable_at_first_observed_offer": 4817,
+        "legal_buy_at_first_observed_offer": 1229,
+        "purchased_copies": 1553,
+        "deployed_unit_rounds": 12139
+      },
+      "wc_vn_snapvine/level_8": {
+        "new_offer_slots": 8340,
+        "affordable_at_first_observed_offer": 8340,
+        "legal_buy_at_first_observed_offer": 1995,
+        "purchased_copies": 1596,
+        "deployed_unit_rounds": 6412
+      },
+      "wc_vn_prism_organ/level_8": {
+        "new_offer_slots": 6170,
+        "affordable_at_first_observed_offer": 6170,
+        "legal_buy_at_first_observed_offer": 1330,
+        "purchased_copies": 605,
+        "deployed_unit_rounds": 99
+      },
+      "wc_vn_reefglass/level_8": {
+        "new_offer_slots": 1160,
+        "affordable_at_first_observed_offer": 1160,
+        "legal_buy_at_first_observed_offer": 260,
+        "purchased_copies": 44,
+        "deployed_unit_rounds": 0
+      },
+      "wc_vn_bellback/level_9": {
+        "new_offer_slots": 3,
+        "affordable_at_first_observed_offer": 3,
+        "legal_buy_at_first_observed_offer": 1,
+        "purchased_copies": 9,
+        "deployed_unit_rounds": 102
+      },
+      "wc_vn_cragstoat/level_9": {
+        "new_offer_slots": 3,
+        "affordable_at_first_observed_offer": 3,
+        "legal_buy_at_first_observed_offer": 1,
+        "purchased_copies": 3,
+        "deployed_unit_rounds": 90
+      },
+      "wc_vn_grandmother_root/level_9": {
+        "new_offer_slots": 16,
+        "affordable_at_first_observed_offer": 16,
+        "legal_buy_at_first_observed_offer": 7,
+        "purchased_copies": 18,
+        "deployed_unit_rounds": 114
+      },
+      "wc_vn_snapvine/level_9": {
+        "new_offer_slots": 38,
+        "affordable_at_first_observed_offer": 38,
+        "legal_buy_at_first_observed_offer": 10,
+        "purchased_copies": 22,
+        "deployed_unit_rounds": 42
+      },
+      "wc_vn_prism_organ/level_9": {
+        "new_offer_slots": 42,
+        "affordable_at_first_observed_offer": 42,
+        "legal_buy_at_first_observed_offer": 9,
+        "purchased_copies": 25,
+        "deployed_unit_rounds": 3
+      },
+      "wc_vn_reefglass/level_9": {
+        "new_offer_slots": 8,
+        "affordable_at_first_observed_offer": 8,
+        "legal_buy_at_first_observed_offer": 2,
+        "purchased_copies": 3,
+        "deployed_unit_rounds": 0
+      }
+    },
+    "captains_alive_at_cap": 72,
+    "median_health_at_cap": 15.0,
+    "source_hashes": {
+      "C:\\Users\\iputu\\AppData\\Local\\CodexWorktrees\\wc\\m7\\game\\Source\\WonderChessRuntime\\Private\\Simulation\\WonderSimulation.cpp": "d2de1011a69dc4669447b643969aa0921c6bcbed587db13767a8d40ab1b953ad",
+      "C:\\Users\\iputu\\AppData\\Local\\CodexWorktrees\\wc\\m7\\game\\Source\\WonderChessRuntime\\Private\\Simulation\\WonderTournament.cpp": "ce1c59d03eacc6526d8e0a04d0276b443aa5941d6f77301eb25a93d0221f2e83",
+      "C:\\Users\\iputu\\AppData\\Local\\CodexWorktrees\\wc\\m7\\game\\Source\\WonderChessRuntime\\Private\\Simulation\\WonderSave.cpp": "28dfa13f56069d8f406d0ffc3fc00f496f7dee5a51fcbc5af3fcec5af51bb44c",
+      "C:\\Users\\iputu\\AppData\\Local\\CodexWorktrees\\wc\\m7\\tests\\runtime\\vnext_balance_experiment.cpp": "108c9085615d5edcb44ca81213451119c8d64c4bc3468e8ca87ac6808d203660",
+      "C:\\Users\\iputu\\AppData\\Local\\CodexWorktrees\\wc\\m7\\game\\Source\\WonderChessRuntime\\Public\\Simulation\\WonderSimulation.h": "b9255757c0fb9b5f33dc013e9825dcbda36b415a22fe31ff2e33583f89ff3beb",
+      "C:\\Users\\iputu\\AppData\\Local\\CodexWorktrees\\wc\\m7\\game\\Source\\WonderChessRuntime\\Public\\VNext\\WonderVNextCatalog.generated.h": "14c82b4184576d4cd929e45a10522db6b16498681b2848fdc131ce8e2eafdcb5",
+      "C:\\Users\\iputu\\AppData\\Local\\CodexWorktrees\\wc\\m7\\data\\vnext\\catalog.json": "6e80932173071ef05e58d90a44db3490cfcfde86d48edf33f4a940ff1748efa0"
+    },
+    "evidence_sha256": {
+      "process.json": "c1a6b10d21e4db1006f0e853b3d212256e9790a4b1420af10120870d4c312256",
+      "variant.json": "52af1b62419647148e766c2eb1b17bff5695290cfce55270a06c0deabf28a525",
+      "tournaments.csv": "179b9e34f0cabd703ba14580fd49dd29f7c820f8a1984f75be36ad52d10c1afb",
+      "encounters.csv": "9c7d0b753f22854eb90bf053833d2b35b7b6d01b05b44734147cf9cc375589e6",
+      "mechanic_outcomes.csv": "805b21a76630fb729ce3e85c6b0ca9bc29b31df90ec3019cd0aac38214782306",
+      "seat_rounds.csv": "108a58281f8209661740a66737b4140d6a632b3f1fa3da2e5a71c5a6c748af50",
+      "recruitment_by_level.csv": "57d55f810e6a72b5d59083c36cb05ab238825ecf4e9a5278b1ba1a7b4f6b1f84",
+      "recruitment.csv": "60382ad55b31c9774a94755b5924f59817b90688bea3c0f2b5fb0396330608df",
+      "fixtures.csv": "46698c5003dca79bf0f0096867e698101ae7ed5600d8d15edc64e3bdea336e29"
+    }
+  },
+  "balance_promotion": "NONE",
+  "held_out_seeds_used": false,
+  "boundaries": [
+    "Development seeds and automated bot policies; no human playtest or enjoyment evidence.",
+    "Attempt means a cooldown-ready decision opportunity, not an independent encounter or unique creature.",
+    "Full-health ally-pulses count geometric exclusions, not discarded healing packets or a quantified heal budget.",
+    "Grove requested/resolved are summed selected-recipient centipoints; charge requested is base magnitude before momentum bonuses and resolved is actual health loss.",
+    "Recruitment level is the level when the shop transition was observed; a bot may level between the offer and purchase observations.",
+    "Root75 changes only in-memory pulse magnitude. Recruitment and later combat composition can respond to that change."
+  ]
+}

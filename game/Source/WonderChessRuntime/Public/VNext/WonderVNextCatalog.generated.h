@@ -2,13 +2,14 @@
 #pragma once
 #include "Simulation/WonderSimulation.h"
 namespace wcvnext {
-inline constexpr const char* RuntimeSha1 = "54849e2823d578eb7f1bed5f897a41f9a05c692f";
-inline constexpr const char* SourceSha256 = "6f9a4178ec78d48c8f6fb8d487d88069327a5ca526652724dc12a8654f574ebb";
+inline constexpr const char* RuntimeSha1 = "cc3f5bbe911130a6ec0eb035f46c29db7580b5be";
+inline constexpr const char* SourceSha256 = "ec031fb21f7ddcce1bd37cc38e3277788208767e78e05f51eead8e71f106d350";
 inline wc::Catalog WonderVNextCatalog() { wc::Catalog c;
 c.profileId = "wonder_vnext";
 c.schemaVersion = "wonder_vnext.catalog.1";
-c.balanceVersion = "wonder_vnext_lab_0.1.0";
+c.balanceVersion = "wonder_vnext_solo_0.1.0";
 c.contentDigest = SourceSha256;
+c.ownedTeamRelicOffers = true;
 c.rules.columns = 8;
 c.rules.rows = 8;
 c.rules.deploymentRows = 4;
@@ -851,5 +852,75 @@ r.compatibleMechanics.push_back(wc::AbilityMechanic::ScreenedStrike);
 r.compatibleMechanics.push_back(wc::AbilityMechanic::CrossingBeams);
 r.compatibleMechanics.push_back(wc::AbilityMechanic::TidalPush);
 c.relics.push_back(r); }
+return c; }
+inline wc::Catalog WonderVNextManaCatalog() { auto c = WonderVNextCatalog();
+c.contentDigest = "f86dfc465a3600f53d5042e300e02b6fb21e2d6a2c89695e86de04a7a3614572";
+c.balanceVersion += "+mana100_v1";
+for (auto &u : c.units) if (u.id == "wc_vn_snapvine") {
+u.ability.mana.maximum = 10000;
+u.ability.mana.starting = 0;
+u.ability.mana.basicAttackGain = 1000;
+u.ability.mana.damageGainAtFullHealth = 10000;
+u.ability.mana.damageEventCap = 2000;
+u.ability.mana.damageWindowCap = 4000;
+u.ability.mana.damageWindowMs = 1000;
+}
+for (auto &u : c.units) if (u.id == "wc_vn_prism_organ") {
+u.ability.mana.maximum = 10000;
+u.ability.mana.starting = 0;
+u.ability.mana.basicAttackGain = 1000;
+u.ability.mana.damageGainAtFullHealth = 10000;
+u.ability.mana.damageEventCap = 2000;
+u.ability.mana.damageWindowCap = 4000;
+u.ability.mana.damageWindowMs = 1000;
+}
+for (auto &u : c.units) if (u.id == "wc_vn_reefglass") {
+u.ability.mana.maximum = 10000;
+u.ability.mana.starting = 0;
+u.ability.mana.basicAttackGain = 1000;
+u.ability.mana.damageGainAtFullHealth = 10000;
+u.ability.mana.damageEventCap = 2000;
+u.ability.mana.damageWindowCap = 4000;
+u.ability.mana.damageWindowMs = 1000;
+}
+return c; }
+inline wc::Catalog WonderVNextMana20Catalog() { auto c = WonderVNextCatalog();
+c.contentDigest = "a9430deb74b94f0e752f6a2499483df27078f7244c9c4f06ce030894b58d83d8";
+c.balanceVersion += "+mana100_hit20_v1";
+for (auto &u : c.units) if (u.id == "wc_vn_snapvine") {
+u.ability.mana.maximum = 10000;
+u.ability.mana.starting = 0;
+u.ability.mana.basicAttackGain = 2000;
+u.ability.mana.damageGainAtFullHealth = 10000;
+u.ability.mana.damageEventCap = 2000;
+u.ability.mana.damageWindowCap = 4000;
+u.ability.mana.damageWindowMs = 1000;
+}
+for (auto &u : c.units) if (u.id == "wc_vn_prism_organ") {
+u.ability.mana.maximum = 10000;
+u.ability.mana.starting = 0;
+u.ability.mana.basicAttackGain = 2000;
+u.ability.mana.damageGainAtFullHealth = 10000;
+u.ability.mana.damageEventCap = 2000;
+u.ability.mana.damageWindowCap = 4000;
+u.ability.mana.damageWindowMs = 1000;
+}
+for (auto &u : c.units) if (u.id == "wc_vn_reefglass") {
+u.ability.mana.maximum = 10000;
+u.ability.mana.starting = 0;
+u.ability.mana.basicAttackGain = 2000;
+u.ability.mana.damageGainAtFullHealth = 10000;
+u.ability.mana.damageEventCap = 2000;
+u.ability.mana.damageWindowCap = 4000;
+u.ability.mana.damageWindowMs = 1000;
+}
+return c; }
+inline wc::Catalog WonderVNextCombatClarityCatalog(bool mobileRecovery = true) { auto c = WonderVNextMana20Catalog();
+if (mobileRecovery) {
+c.contentDigest = "490a24c9e0b4b5341c5b4ef8695b29b6932ac746ccc576dc7c8ff665c10cb77b"; c.balanceVersion += "+combat_clarity_v1"; }
+else {
+c.contentDigest = "97da61e9ecc356a03b3f4b26ea96cdcca4037e3fb1aed2d3d00a72a347c11b45"; c.balanceVersion += "+nearest_target_v1"; }
+c.rules.nearestReachableTarget = true;
+c.rules.mobileAttackRecovery = mobileRecovery && true;
 return c; }
 } // namespace wcvnext

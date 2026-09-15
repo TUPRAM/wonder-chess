@@ -1,0 +1,18 @@
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\art-source\asset-studio\wc_vn_bellback\stages\blockout\r001\operations\build_bellback.py:50: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m.use_nodes = True
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\art-source\asset-studio\wc_vn_bellback\stages\blockout\r001\operations\build_bellback.py:329: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  world=bpy.data.worlds.new("Neutral_review_world");world.use_nodes=True;scene.world=world
+Traceback (most recent call last):
+  File "C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\art-source\asset-studio\wc_vn_bellback\stages\blockout\r001\operations\build_bellback.py", line 337, in <module>
+    floor=box("Review_floor",(-200,-200,-.04),(200,200,-.012),"review_helper",floor_mat,0)
+  File "C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\art-source\asset-studio\wc_vn_bellback\stages\blockout\r001\operations\build_bellback.py", line 282, in box
+    bpy.context.view_layer.objects.active=ob;bpy.ops.object.modifier_apply(modifier=mod.name)
+                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+RuntimeError: Error: Modifier is disabled, skipping apply
+
+Error: Modifier is disabled, skipping apply
+
+Error: script failed, file: 'art-source/asset-studio/wc_vn_bellback/stages/blockout/r001/operations/build_bellback.py', exiting.
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit

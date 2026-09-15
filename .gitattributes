@@ -1,0 +1,18 @@
+# The frozen Windows authoring input and generated runtime bytes have distinct identities.
+/data/*.json text eol=crlf
+/data/locales/*.json text eol=crlf
+/generated/catalog_digest.json text eol=crlf
+/generated/unreal/* text eol=crlf
+/game/Content/WonderChess/SourceData/** text eol=crlf
+/game/Content/WonderChess/SourceData/runtime_stage_manifest.json text eol=lf
+/game/Source/WonderChessRuntime/Public/WCDataRows.h text eol=crlf
+/data/vnext/catalog.json text eol=crlf
+# AS1 seals exact evidence bytes; Git must not convert accepted Bellback sources.
+/art-source/asset-studio/wc_vn_bellback/** -text
+/data/vnext/generated/runtime_catalog.json text eol=lf
+/data/vnext/generated/WonderVNextCatalog.h text eol=lf
+/game/Source/WonderChessRuntime/Public/VNext/WonderVNextCatalog.generated.h text eol=lf
+/docs/vnext/generated/hero_dossiers.md text eol=lf
+/docs/vnext/generated/relic_catalogue.md text eol=lf
+/docs/vnext/generated/coverage.json text eol=lf
+/game/Content/WonderChess/VNextData/runtime_catalog.json text eol=lf

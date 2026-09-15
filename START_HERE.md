@@ -1,5 +1,7 @@
 # Wonder Chess — Codex Production Kit v3
 
+**Folder consolidated on 2026-09-15:** start with [README.md](README.md) for the current layout and [TRANSFER_TO_NEW_PC.md](TRANSFER_TO_NEW_PC.md) before moving computers. Current milestone source is now at this repository root; old external checkout paths in historical records are superseded.
+
 ## Active development: Wonder Chess successor
 
 On 2026-09-10 the user adopted the new gameplay, roster, and production blueprint. Start with [the successor contract](docs/vnext/README.md) and `reports/implementation_state.json`. Its `wonder_vnext` profile is developed beside the preserved `alpha_24` game. The existing 24 heroes and their packages remain a historical baseline; they are not the new roster. The initial six-hero gameplay laboratory uses explicitly unapproved development proxies. Local implementation never substitutes for human art or playtest acceptance.

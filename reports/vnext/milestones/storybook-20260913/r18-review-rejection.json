@@ -1,0 +1,9 @@
+{
+  "candidate": "WonderChess-Storybook-r18",
+  "status": "REJECTED_VISUAL_AND_MODAL_FOCUS",
+  "evidence": "r18-visual-720-a1/solo-recruited-preparation.png and engine.log",
+  "observed": "Six modal siblings were visible and enabled; Save dialog painted over actual preparation. Native log explicitly recorded WC_STORYBOOK_MODAL_NONEXCLUSIVE.",
+  "automated_result_limit": "Initial eight exercise results passed simulation and capture timing checks but did not consume modal diagnostics. These initial records are preserved and do not establish visual correctness.",
+  "correction": "Bind visibility and enabled attributes on the actual custom Slate modal widget. Enhanced graphical runner rejects nonexclusive modal logs and verifies reported native focus/sibling counts.",
+  "delivery": "Do not distribute r18. Subsequent corrected r19 requires a fresh build, captures, engine checks and exact identity."
+}

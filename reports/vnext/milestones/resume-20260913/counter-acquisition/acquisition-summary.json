@@ -1,0 +1,56 @@
+{
+  "status": "RECONCILED",
+  "trials": 400,
+  "unique_shop_seeds": 100,
+  "shop_seed_interval": [
+    61001,
+    61100
+  ],
+  "commands": 2080,
+  "rejected_commands": 0,
+  "held_out_seeds_used": false,
+  "groups": {
+    "('F07-L3-pressure', 4)": {
+      "trials": 100,
+      "acquired": 23,
+      "failed": 77,
+      "wins_after_acquisition": 23,
+      "timeouts_after_acquisition": 0,
+      "median_total_gold_if_acquired": 4,
+      "mean_rerolls_if_acquired": 0
+    },
+    "('F07-L3-pressure', 10)": {
+      "trials": 100,
+      "acquired": 100,
+      "failed": 0,
+      "wins_after_acquisition": 100,
+      "timeouts_after_acquisition": 0,
+      "median_total_gold_if_acquired": 6.0,
+      "mean_rerolls_if_acquired": 0.97
+    },
+    "('F07-L3-width', 4)": {
+      "trials": 100,
+      "acquired": 56,
+      "failed": 44,
+      "wins_after_acquisition": 37,
+      "timeouts_after_acquisition": 0,
+      "median_total_gold_if_acquired": 3.0,
+      "mean_rerolls_if_acquired": 0
+    },
+    "('F07-L3-width', 10)": {
+      "trials": 100,
+      "acquired": 100,
+      "failed": 0,
+      "wins_after_acquisition": 51,
+      "timeouts_after_acquisition": 0,
+      "median_total_gold_if_acquired": 3.0,
+      "mean_rerolls_if_acquired": 0.49
+    }
+  },
+  "boundaries": [
+    "Scripted visible-shop policy at round 1 and level 3; no income/XP grants, no elapsed preparation, no external participants.",
+    "F07 army investment limit is separate from a total acquisition budget including rerolls.",
+    "Acquired armies use actual purchased instance identities in the fixed F07 pressure combat at combat seed 42007. Failed acquisitions are retained and do not run a substitute combat.",
+    "These are two selected response plans; no general counter availability, balance or enjoyment acceptance."
+  ]
+}

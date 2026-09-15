@@ -1,0 +1,47 @@
+{
+  "utc": "2026-09-13T06:19:27.474858+00:00",
+  "commands": [
+    {
+      "command": [
+        "python",
+        "tools/validate_kit.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "python",
+        "tools/build_documents.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "python",
+        "tools/compile_catalog.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "python",
+        "tools/vnext/catalog.py",
+        "--check",
+        "--stage"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 1
+    }
+  ]
+}

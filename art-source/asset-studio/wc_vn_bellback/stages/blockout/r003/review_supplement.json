@@ -1,0 +1,92 @@
+{
+  "source_sha256": "5a2931e42bbb8523f3e84ba39f02a5ceab0b1fa31abc3e8319fcf6a1c0d6066b",
+  "source_unchanged": true,
+  "renders": [
+    {
+      "view": "open_cavity_underside",
+      "type": "Blender render",
+      "camera": [
+        0,
+        0,
+        -2
+      ],
+      "target": [
+        0,
+        0,
+        1.7
+      ],
+      "orthographic_scale_m": 1.85,
+      "resolution": [
+        960,
+        960
+      ],
+      "source_sha256": "5a2931e42bbb8523f3e84ba39f02a5ceab0b1fa31abc3e8319fcf6a1c0d6066b"
+    },
+    {
+      "view": "clapper_and_open_carrier_saddles_hidden",
+      "type": "Blender render",
+      "camera": [
+        0.18,
+        0.12,
+        0.8
+      ],
+      "target": [
+        0,
+        0,
+        1.8
+      ],
+      "orthographic_scale_m": 1.25,
+      "resolution": [
+        960,
+        960
+      ],
+      "source_sha256": "5a2931e42bbb8523f3e84ba39f02a5ceab0b1fa31abc3e8319fcf6a1c0d6066b"
+    },
+    {
+      "view": "crowded12_board_lab_projection_1920x1080",
+      "type": "Blender render",
+      "camera": [
+        0,
+        19,
+        27
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "orthographic_scale_m": 35.78181818181818,
+      "resolution": [
+        1920,
+        1080
+      ],
+      "source_sha256": "5a2931e42bbb8523f3e84ba39f02a5ceab0b1fa31abc3e8319fcf6a1c0d6066b"
+    },
+    {
+      "view": "crowded12_board_lab_elevation_detail",
+      "type": "Blender render",
+      "camera": [
+        0,
+        19,
+        27
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "orthographic_scale_m": 11.8,
+      "resolution": [
+        1280,
+        960
+      ],
+      "source_sha256": "5a2931e42bbb8523f3e84ba39f02a5ceab0b1fa31abc3e8319fcf6a1c0d6066b"
+    }
+  ],
+  "correction": "First crowded review tiles were below the review floor and invisible; these captures hide that floor and put explicit board helpers outside source collection.",
+  "limitations": [
+    "Static Blender projection proxy with source fallback camera, not a measured live Slate or Unreal capture.",
+    "Cavity isolation hides the organic body; one interior view also hides saddle pads as labeled.",
+    "No source geometry, saved scene, rig, animation or gate was changed."
+  ]
+}

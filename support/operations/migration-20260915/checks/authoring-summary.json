@@ -1,0 +1,55 @@
+[
+  {
+    "command": [
+      "python",
+      "tools/validate_kit.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.84,
+    "log": "authoring-0.log"
+  },
+  {
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "exit_code": 1,
+    "seconds": 22.67,
+    "log": "authoring-1.log"
+  },
+  {
+    "command": [
+      "python",
+      "tools/build_documents.py",
+      "--check"
+    ],
+    "exit_code": 0,
+    "seconds": 0.39,
+    "log": "authoring-2.log"
+  },
+  {
+    "command": [
+      "python",
+      "tools/compile_catalog.py",
+      "--check"
+    ],
+    "exit_code": 0,
+    "seconds": 1.24,
+    "log": "authoring-3.log"
+  },
+  {
+    "command": [
+      "python",
+      "tools/vnext/catalog.py",
+      "--check"
+    ],
+    "exit_code": 0,
+    "seconds": 0.48,
+    "log": "authoring-4.log"
+  }
+]

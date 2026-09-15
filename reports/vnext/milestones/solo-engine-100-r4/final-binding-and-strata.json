@@ -1,0 +1,80 @@
+{
+  "schema": "wonder_vnext.milestone_final_binding.1",
+  "recorded_utc": "2026-09-12T16:35:12.499264+00:00",
+  "status": "PASS",
+  "catalog_digest": "6e80932173071ef05e58d90a44db3490cfcfde86d48edf33f4a940ff1748efa0",
+  "shared_compiled_sources": [
+    {
+      "path": "game/Source/WonderChessRuntime/Private/Simulation/WonderSimulation.cpp",
+      "sha256": "d8c1e0f0a86a2f30774e3b17fa00f9c53c5c2cb83116ce7a2837d069c74cde76"
+    },
+    {
+      "path": "game/Source/WonderChessRuntime/Private/Simulation/WonderTournament.cpp",
+      "sha256": "ce1c59d03eacc6526d8e0a04d0276b443aa5941d6f77301eb25a93d0221f2e83"
+    },
+    {
+      "path": "game/Source/WonderChessRuntime/Private/Simulation/WonderSave.cpp",
+      "sha256": "28dfa13f56069d8f406d0ffc3fc00f496f7dee5a51fcbc5af3fcec5af51bb44c"
+    },
+    {
+      "path": "game/Source/WonderChessRuntime/Public/Simulation/WonderSimulation.h",
+      "sha256": "121476952bb9bf3dda6eda68d3c17943a84bde9e20510104ddd97e22880ce750"
+    },
+    {
+      "path": "game/Source/WonderChessRuntime/Public/VNext/WonderVNextCatalog.generated.h",
+      "sha256": "14c82b4184576d4cd929e45a10522db6b16498681b2848fdc131ce8e2eafdcb5"
+    }
+  ],
+  "native_only_harness_files": [
+    {
+      "path": "tests/runtime/vnext_tournament_tests.cpp",
+      "sha256": "fb89bd82a29cbf941c50334396b60c0a9b2edb8b49e7b604aa141e1e50e18c53"
+    },
+    {
+      "path": "tests/runtime/vnext_bot_tests.h",
+      "sha256": "b49e3dc3685aa8aa904943886df9cf1b424593238190e9ee5341a13e78a50bed"
+    }
+  ],
+  "engine_executable_matches_manifest": true,
+  "native_source_stable": true,
+  "technical_reconciliation_passed": true,
+  "native_tournaments": 1000,
+  "round_caps": 187,
+  "strata": {
+    "overall": {
+      "encounters": 186984,
+      "timeouts": 26219,
+      "timeout_rate": 0.14022055363025712,
+      "required_for_timeout_screen": true
+    },
+    "pvp": {
+      "encounters": 101862,
+      "timeouts": 23377,
+      "timeout_rate": 0.2294967701399933,
+      "required_for_timeout_screen": true
+    },
+    "ghost": {
+      "encounters": 7219,
+      "timeouts": 2842,
+      "timeout_rate": 0.3936833356420557,
+      "required_for_timeout_screen": true
+    },
+    "neutral": {
+      "encounters": 77903,
+      "timeouts": 0,
+      "timeout_rate": 0.0,
+      "required_for_timeout_screen": false
+    }
+  },
+  "inputs_sha256": {
+    "reports/vnext/milestones/package-identity-r4/package-manifest.json": "50b958699c146928fe7175ab9511e7e22c44ac81b613120828b973b182f256ad",
+    "reports/vnext/milestones/solo-native-1000/process.json": "df545186163055b988c66600859d63486247285481d6fa4035a124a21fb0b211",
+    "reports/vnext/milestones/solo-native-1000/summary.json": "e7eaff0b2f8f14aa3d34ad6c7cfa8df699f61f638aa36190d30ad17ff67f8827",
+    "reports/vnext/milestones/solo-native-1000/tournaments.csv": "fad924df09f65be1a4c7049510ef7511a44b84097580156f0680115cab4d3193",
+    "reports/vnext/milestones/solo-native-1000/encounters.csv": "36bfe5b8c450e1742f7cdfd294fce6bb1a95e40d940357da97651bd7bc201b00",
+    "reports/vnext/milestones/solo-engine-100-r4/process.json": "435dab32a42da81ac689326b06a694cd447d1406c5baee3eea175ff7999d5f66",
+    "reports/vnext/milestones/solo-engine-100-r4/regression.json": "2ab4b3f80fb281a1275d11f4e032fc4713b5b43c5414cf7a3092d149162077fc",
+    "reports/vnext/milestones/solo-engine-100-r4/reconciliation.json": "1295d29a3c4fc0a8c132b5f3c19a12fc7c8ee564aa4389a570e2b14645c47918"
+  },
+  "boundary": "No excluded encounters. Rates are sum(timeout)/encounter count by recorded kind. Technical identity/reconciliation PASS does not mean the below-2-percent timeout or human/release gates passed."
+}

@@ -5,8 +5,8 @@ Installation first verified 2026-09-08 Singapore time; original evidence is reta
 ## Installed connection
 
 - Project configuration: `.codex/config.toml`, server name `blender`. It is scoped to this trusted Wonder Chess workspace. The global Codex configuration was not changed.
-- Supplied ZIP: `C:\Users\iputu\Downloads\blender-mcp-main (1).zip`, SHA-256 `a7576e30ee43bc379af2c6bab27749c48b8b1a1380068112910498e5d672f005`.
-- Reviewed source and isolated Python environment: `C:\Users\iputu\Documents\Project Support\Wonder Chess\blender-mcp-1.9.1\blender-mcp-main`.
+- Supplied ZIP: `support\archives\downloads\blender-mcp-main (1).zip`, SHA-256 `a7576e30ee43bc379af2c6bab27749c48b8b1a1380068112910498e5d672f005`.
+- Reviewed source and isolated Python environment: `support\external\blender-mcp-1.9.1\blender-mcp-main`.
 - Server package 1.9.1; bundled add-on declares 1.6; both agree on protocol 5. Python 3.11.8, MCP SDK 1.29.0, uv 0.11.28, Codex CLI 0.153.4.
 - Add-on: `C:\Users\iputu\AppData\Roaming\Blender Foundation\Blender\5.1\scripts\addons\blender_mcp.py`. Byte-identical to the supplied bundled add-on.
 - Transport: Codex stdio server connects to Blender's TCP listener on `127.0.0.1:9876`.
@@ -43,7 +43,7 @@ If Blender is already open, use its **MCP for Blender** sidebar on port 9876. Th
 Repeat the live check with the installed environment:
 
 ```powershell
-& 'C:\Users\iputu\Documents\Project Support\Wonder Chess\blender-mcp-1.9.1\blender-mcp-main\.venv\Scripts\python.exe' '.\tools\blender\verify_mcp.py' --expected-blend '.\art-source\asset-studio\wc_u_human_guardian\live\ada_live_mcp_r001.blend' --user-prompt 'Paste the user instruction verbatim here'
+& 'support\external\blender-mcp-1.9.1\blender-mcp-main\.venv\Scripts\python.exe' '.\tools\blender\verify_mcp.py' --expected-blend '.\art-source\asset-studio\wc_u_human_guardian\live\ada_live_mcp_r001.blend' --user-prompt 'Paste the user instruction verbatim here'
 ```
 
 This creates a fresh evidence folder, performs real MCP initialize/list-tools/all-five-tool calls, reads the actual open file and object inventory, and checks the selected candidate's on-disk hash before and after. The object-detail check selects an object actually present in that scene. A wrong file, disabled tool, stale protocol, telemetry consent, tool error text, missing PNG, or changed file fails verification. Optional `--output-dir` must be a new directory inside this repository; existing evidence is never overwritten. Inspect the saved viewport image separately for visual acceptance.
@@ -59,6 +59,6 @@ This creates a fresh evidence folder, performs real MCP initialize/list-tools/al
 
 ## Recovery
 
-The pre-install Blender preferences backup is at `C:\Users\iputu\Documents\Project Support\Wonder Chess\blender-mcp-1.9.1\pre-install\userpref.blend`. To disconnect normally, stop/disable **MCP for Blender** and set `enabled = false` in the project's `[mcp_servers.blender]` table, then restart Codex. Keep the older custom bridge and source assets intact. Do not restore old preferences over newer unrelated settings without reviewing the differences.
+The pre-install Blender preferences backup is at `support\external\blender-mcp-1.9.1\pre-install\userpref.blend`. To disconnect normally, stop/disable **MCP for Blender** and set `enabled = false` in the project's `[mcp_servers.blender]` table, then restart Codex. Keep the older custom bridge and source assets intact. Do not restore old preferences over newer unrelated settings without reviewing the differences.
 
 Configuration syntax follows [OpenAI's MCP documentation](https://learn.chatgpt.com/docs/extend/mcp?surface=cli), including project-scoped configuration, tool allowlists and stdio environment variables.

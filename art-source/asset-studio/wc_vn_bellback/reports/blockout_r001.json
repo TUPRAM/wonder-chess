@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0.0",
+  "asset_id": "wc_vn_bellback",
+  "stage": "blockout",
+  "author": "Codex /root/balance_experiment",
+  "method": "Custom longitudinal anatomy cage, joint-constrained swept limbs, four-toe masses, voxel-fused continuous sculpt, actual concave eye sockets, related muzzle/brow/jaw forms; separately lathed hollow bell and open carrier with conforming saddles. Preserved editable masses.",
+  "checks": [
+    {
+      "id": "silhouette_and_proportions",
+      "status": "fail",
+      "evidence": [
+        "stages/blockout/r001/renders/front_clay.png",
+        "stages/blockout/r001/renders/right_clay.png",
+        "stages/blockout/r001/renders/threequarter_clay.png"
+      ],
+      "notes": "Reference dimensions and planted stance exist, but face and integrated organic proportions do not meet the approved aesthetic target."
+    },
+    {
+      "id": "camera_alignment",
+      "status": "fail",
+      "evidence": [
+        "stages/blockout/r001/model_audit.json"
+      ],
+      "notes": "Four fixed orthographic directions and three-quarter captures executed. Raster aesthetic reference is not registered; no camera-alignment or likeness-overlay pass is claimed."
+    },
+    {
+      "id": "major_part_clearance",
+      "status": "not_run",
+      "evidence": [
+        "stages/blockout/r001/model_audit.json"
+      ],
+      "notes": "Static construction only. No animation or complete motion-clearance check. R003 supplementary views reveal existing carrier and clapper without certifying motion."
+    },
+    {
+      "id": "method_is_capable",
+      "status": "fail",
+      "evidence": [
+        "stages/blockout/r001/renders/front_clay.png",
+        "stages/blockout/r001/renders/right_clay.png",
+        "stages/blockout/r001/renders/threequarter_clay.png"
+      ],
+      "notes": "Actual required visual result is poor. Stop this construction method; no advancement based on successful script execution."
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "stages/blockout/r001/Bellback_forms_r001.blend",
+      "category": "source"
+    },
+    {
+      "path": "stages/blockout/r001/model_audit.json",
+      "category": "report"
+    },
+    {
+      "path": "stages/blockout/r001/visual_review.json",
+      "category": "report"
+    },
+    {
+      "path": "stages/blockout/r001/renders/front_clay.png",
+      "category": "image"
+    },
+    {
+      "path": "stages/blockout/r001/renders/right_clay.png",
+      "category": "image"
+    },
+    {
+      "path": "stages/blockout/r001/renders/threequarter_clay.png",
+      "category": "image"
+    }
+  ],
+  "defects": [
+    {
+      "severity": "major",
+      "status": "open",
+      "observation": "Toy anatomy, applied eyes/brows and bark strips fail primary-form likeness."
+    }
+  ],
+  "executed_commands": [
+    {
+      "operation": "Blender factory-startup background build",
+      "script": "stages/blockout/r001/operations/build_bellback.py",
+      "log": "stages/blockout/r001/operations/blender-build.log",
+      "exit_code": 0
+    }
+  ],
+  "notes": [
+    "Diagnostic failed report only; not prepared or approved.",
+    "Human forms gate and downstream production stages were not run.",
+    "See reports/FORMS_METHOD_REVIEW.md for observed discrepancies and retry stop."
+  ]
+}

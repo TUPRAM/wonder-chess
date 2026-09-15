@@ -1,0 +1,88 @@
+{
+  "stage": "blockout",
+  "verdict": "ART_REVISE",
+  "reviewed_utc": "2026-09-12T16:17:28.851732+00:00",
+  "source_sha256": "5a2931e42bbb8523f3e84ba39f02a5ceab0b1fa31abc3e8319fcf6a1c0d6066b",
+  "author": "Codex /root/balance_experiment",
+  "review_kind": "Actual pixel self-critique; independent parent corroborated r002 and bounded r003 method change.",
+  "viewed": [
+    "renders/front_clay.png",
+    "renders/back_clay.png",
+    "renders/right_clay.png",
+    "renders/left_clay.png",
+    "renders/threequarter_clay.png",
+    "renders/threequarter_ids.png",
+    "review/face_closeup_clay.png",
+    "review/paw_contact_clay.png",
+    "review/bell_cavity_and_carrier.png",
+    "review/native96_preview.png",
+    "review_supplement/open_cavity_underside.png",
+    "review_supplement/clapper_and_open_carrier_saddles_hidden.png",
+    "review_crowded_aligned/crowded12_board_lab_projection_1920x1080.png",
+    "review_crowded_aligned/crowded12_board_lab_elevation_detail.png"
+  ],
+  "defects": [
+    {
+      "id": "face_identity",
+      "severity": "major",
+      "status": "open",
+      "category": "shape",
+      "observation": "Flattened oval head, projecting button eyes and thin curved mouth remain toy-like rather than aged animal anatomy.",
+      "evidence": [
+        "renders/front_clay.png",
+        "review/face_closeup_clay.png"
+      ],
+      "next_operation": "Focused controlled sculpt of inset orbit/lids, muzzle projection, brow and jaw planes."
+    },
+    {
+      "id": "bark_root_anatomy",
+      "severity": "major",
+      "status": "open",
+      "category": "shape",
+      "observation": "Displaced grooves form serrated trenches; inflated shoulder masses and blocky limb transitions remain.",
+      "evidence": [
+        "renders/right_clay.png",
+        "renders/left_clay.png",
+        "review/paw_contact_clay.png"
+      ],
+      "next_operation": "Sculpt broad continuous root planes and load-bearing taper before any bark detail; abandon point-distance cuts."
+    },
+    {
+      "id": "bell_body_relationship",
+      "severity": "major",
+      "status": "open",
+      "category": "shape",
+      "observation": "Clean oversized-looking bell and boxy support dominate; dimensional compliance has not produced the integrated organic identity.",
+      "evidence": [
+        "renders/right_clay.png",
+        "review/bell_cavity_and_carrier.png"
+      ],
+      "next_operation": "Retain accepted bell dimensions and clearance; reshape support integration and adjacent body forms."
+    },
+    {
+      "id": "board_identity",
+      "severity": "major",
+      "status": "open",
+      "category": "readability",
+      "observation": "Bell is visible in static board proxy; organic identity, face and facing distinctions remain weak.",
+      "evidence": [
+        "review_crowded_aligned/crowded12_board_lab_projection_1920x1080.png"
+      ],
+      "next_operation": "After fixing primary forms, review native board scale and then actual gameplay; static Blender evidence is insufficient for acceptance."
+    }
+  ],
+  "positive_observations": [
+    "Four toes per paw and planted stance are visible.",
+    "Right-side branch and dorsal bell silhouette exist.",
+    "Supplementary views reveal actual open carrier and clapper."
+  ],
+  "source_mesh_count": 20,
+  "source_triangle_count": 488052,
+  "remaining_gate": "No blockout approval; no human forms submission. All downstream gates pending.",
+  "next_method": "Stop procedural iteration. Focused direct creature sculpt intervention; see reports/FORMS_METHOD_REVIEW.md.",
+  "limitations": [
+    "Aesthetic reference is not registered to model cameras.",
+    "Static Blender lab-camera proxy, not Unreal gameplay capture.",
+    "Source-ID materials are not an accepted material or texture pass."
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "candidate": "WonderChess-Storybook-r19",
+  "status": "REJECTED_MODAL_ENABLED_STATE",
+  "visual_findings": "720p shop names and availability labels fit, sanctuary upright, exactly one modal visible.",
+  "failure": "Native focus diagnostics record visible_modals=1 but enabled_modals=6, so the stricter runner rejects Solo and visual exercises.",
+  "evidence": "r19-graphics-a1.json and r19-visual-720-a1/engine.log",
+  "delivery": "Preserve this diagnostic candidate. Correct collapsed-modal enabled-state handling and rerun in r20."
+}

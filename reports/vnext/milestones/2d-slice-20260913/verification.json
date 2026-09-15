@@ -1,0 +1,221 @@
+{
+  "schema": "wonder_vnext.2d_slice_verification.1",
+  "utc": "2026-09-13T13:28:23.306563+00:00",
+  "status": "PASS_SCOPED_PACKAGE_OWNER_ART_REVIEW_OPEN",
+  "candidate": "WonderChess-2DSlice-r15",
+  "package": "C:\\Users\\iputu\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\CodexWorktrees\\wc\\m7\\builds\\WonderChess-2DSlice-r15\\Windows\\WonderChess\\Binaries\\Win64\\WonderChess.exe",
+  "game_binary_sha256": "3c20c2b70cdc9eb6e0edb9d6614663ff69e624b0486d97387dd7374244fb9b7f",
+  "baseline": "Preserved WonderChess-CombatClarity-r13",
+  "artwork": [
+    {
+      "path": "art-source/2d-slice/r001/sources/bellback_portrait.png",
+      "sha256": "8e9e340d541d5a25a1586e0fe7f44aa3484c1c6bfdba47aa14be1d53ca3961ea",
+      "bytes": 2389568,
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_mode": "RGB",
+      "cooked_size": [
+        1024,
+        1024
+      ],
+      "opaque": true
+    },
+    {
+      "path": "art-source/2d-slice/r001/sources/heavy_bloom.png",
+      "sha256": "4b0e5d8dae08327ef290b436b1b4d4ca3c4a73e2760b930e2d70577173ec716b",
+      "bytes": 1818722,
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_mode": "RGB",
+      "cooked_size": [
+        512,
+        512
+      ],
+      "opaque": true
+    },
+    {
+      "path": "art-source/2d-slice/r001/sources/quiet_stone.png",
+      "sha256": "f9600bc8aea263eebb5f002ac90a8fcce6694cb8d4d5dc00fd249ffef6436244",
+      "bytes": 3093559,
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_mode": "RGB",
+      "cooked_size": [
+        1024,
+        1024
+      ],
+      "opaque": true
+    }
+  ],
+  "graphics": [
+    {
+      "case": "lab-720",
+      "passed": true,
+      "boolean_checks": 49
+    },
+    {
+      "case": "lab-1080",
+      "passed": true,
+      "boolean_checks": 49
+    },
+    {
+      "case": "status-1080",
+      "passed": true,
+      "boolean_checks": 15
+    },
+    {
+      "case": "solo-720",
+      "passed": true,
+      "boolean_checks": 24
+    },
+    {
+      "case": "solo-1080",
+      "passed": true,
+      "boolean_checks": 24
+    },
+    {
+      "case": "comparison-lab-720",
+      "passed": true,
+      "boolean_checks": 41
+    }
+  ],
+  "python_tests": 230,
+  "authoring_checks": 400,
+  "required_generation_checks": "PASS",
+  "package_identity": {
+    "status": "PASS",
+    "verified_utc": "2026-09-13T13:24:11.450546+00:00",
+    "source_files": 93,
+    "package_files": 49,
+    "catalogue": {
+      "profile_id": "wonder_vnext",
+      "balance_version": "wonder_vnext_solo_0.1.0",
+      "source_sha256": "ec031fb21f7ddcce1bd37cc38e3277788208767e78e05f51eead8e71f106d350",
+      "runtime_sha1": "cc3f5bbe911130a6ec0eb035f46c29db7580b5be",
+      "runtime_sha256": "189d20ebbf0ff26c03d4c50006dbecd417989079aeee43e4236199a2ade0ddb1"
+    },
+    "boundary": "Exact file identity and membership, source/generated/staged runtime consistency, and embedded binary identity markers. Not bit-reproducible build proof, art/human acceptance, network acceptance, or clean-machine testing. A cold launch on the development computer is same-machine evidence only."
+  },
+  "engine_contracts": {
+    "succeeded": 2,
+    "failed": 0,
+    "combat_clarity_assertions": 2929,
+    "mana_assertions": 581
+  },
+  "gameplay_code_and_data_preserved": {
+    "files": [
+      {
+        "path": "game/Source/WonderChessRuntime/Private/WCDefinitionRegistry.cpp",
+        "unchanged": true
+      },
+      {
+        "path": "game/Source/WonderChessRuntime/Private/Simulation/WonderCombatClarityTests.h",
+        "unchanged": true
+      },
+      {
+        "path": "game/Source/WonderChessRuntime/Private/Simulation/WonderManaTests.h",
+        "unchanged": true
+      },
+      {
+        "path": "game/Source/WonderChessRuntime/Private/Simulation/WonderSave.cpp",
+        "unchanged": true
+      },
+      {
+        "path": "game/Source/WonderChessRuntime/Private/Simulation/WonderSaveFile.cpp",
+        "unchanged": true
+      },
+      {
+        "path": "game/Source/WonderChessRuntime/Private/Simulation/WonderScenario.cpp",
+        "unchanged": true
+      },
+      {
+        "path": "game/Source/WonderChessRuntime/Private/Simulation/WonderScenarioFile.cpp",
+        "unchanged": true
+      },
+      {
+        "path": "game/Source/WonderChessRuntime/Private/Simulation/WonderSimulation.cpp",
+        "unchanged": true
+      },
+      {
+        "path": "game/Source/WonderChessRuntime/Private/Simulation/WonderSimulationTests.cpp",
+        "unchanged": true
+      },
+      {
+        "path": "game/Source/WonderChessRuntime/Private/Simulation/WonderTournament.cpp",
+        "unchanged": true
+      },
+      {
+        "path": "game/Source/WonderChessRuntime/Public/Simulation/WonderSaveFile.h",
+        "unchanged": true
+      },
+      {
+        "path": "game/Source/WonderChessRuntime/Public/Simulation/WonderScenario.h",
+        "unchanged": true
+      },
+      {
+        "path": "game/Source/WonderChessRuntime/Public/Simulation/WonderScenarioFile.h",
+        "unchanged": true
+      },
+      {
+        "path": "game/Source/WonderChessRuntime/Public/Simulation/WonderSimulation.h",
+        "unchanged": true
+      },
+      {
+        "path": "game/Source/WonderChessRuntime/Public/VNext/WonderVNextCatalog.generated.h",
+        "unchanged": true
+      },
+      {
+        "path": "data/vnext/catalog.json",
+        "unchanged": true
+      },
+      {
+        "path": "data/vnext/generated/runtime_catalog.json",
+        "unchanged": true
+      },
+      {
+        "path": "game/Content/WonderChess/VNext/M_CombatCue.uasset",
+        "unchanged": true
+      }
+    ],
+    "all_unchanged": true,
+    "canonical_sha256": "ec031fb21f7ddcce1bd37cc38e3277788208767e78e05f51eead8e71f106d350"
+  },
+  "manual_input": {
+    "r14": "Actual pointer pause, three Bellback purchases, live owned/merge feedback, gold 10 to 7 and automatic 2-star bench merge observed. Found and preserved focus overlay defect.",
+    "r15": "Source fix compiled and packaged; final actual pointer/keyboard focus recheck NOT_RUN after user stopped Computer Use with Escape.",
+    "r15_launch": "Launcher invoked; engine log confirms READY, all artwork loaded, and correct combat-clarity digest. Screen control stopped before capture."
+  },
+  "visual_review": {
+    "r15": "Root and separate reviewer inspected packaged Lab720 and status1080 captures. Contrast revision resolves pale semantic cues; no further new screenshot defect found requiring another revision before owner review.",
+    "limit": "Screenshot review does not certify continuous animation, human enjoyment or final modeled identity."
+  },
+  "remaining": [
+    "Owner review of integrated style at actual play size.",
+    "Final r15 physical keyboard-focus/purchase visual recheck interrupted.",
+    "Existing thin grid-line speckling in combat predates slice.",
+    "Final character forms, full artwork production, pacing acceptance and release gates remain open."
+  ],
+  "failed_attempts": [
+    "Heavy Bloom first output painted checkerboard; rejected and revised to opaque ink.",
+    "Initial compile name-shadowing and narrowing errors fixed.",
+    "Initial Python child invocation selected Unreal Python without Pillow; rerun with exact authoring interpreter passed.",
+    "r14 Lab HUD check ran before first presentation update; moved identical check after settled capture.",
+    "r14 manual focus overlay white fill fixed with explicit transparent tint in r15; physical r15 recheck interrupted."
+  ],
+  "launchers": [
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Project Support\\Wonder Chess\\Play Combat Clarity - Lab.cmd",
+      "sha256": "71a9eb1c692297fb0f1bebaca00a6271a01e800cbec5bbd98080bf47197eb9a1"
+    },
+    {
+      "path": "C:\\Users\\iputu\\Documents\\Project Support\\Wonder Chess\\Play Combat Clarity - Solo.cmd",
+      "sha256": "cf30a5b24f5adef4caa858b2547d78118f56bdf88370077015579f30845243c7"
+    }
+  ]
+}

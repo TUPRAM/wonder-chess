@@ -1,0 +1,40 @@
+{
+  "schema": "wonder_vnext.run_analysis.1",
+  "catalog_digest": "6e80932173071ef05e58d90a44db3490cfcfde86d48edf33f4a940ff1748efa0",
+  "native_tournaments": 1000,
+  "first_seed": 1,
+  "last_seed": 1000,
+  "native_encounters": 186984,
+  "native_timeouts": 26219,
+  "timeout_rate": 0.14022055363025712,
+  "capped_tournaments": 187,
+  "median_simulated_minutes": 31.360833333333332,
+  "median_phase_minutes": {
+    "preparation": 2.90375,
+    "combat": 24.931666666666665,
+    "settlement": 3.5
+  },
+  "native_relic_choices": 23719,
+  "native_relic_equips": 25176,
+  "sample_targets": {
+    "median_duration_35_to_45": false,
+    "combat_timeout_below_two_percent": false
+  },
+  "inputs_sha256": {
+    "reports\\vnext\\milestones\\solo-native-1000\\summary.json": "e7eaff0b2f8f14aa3d34ad6c7cfa8df699f61f638aa36190d30ad17ff67f8827",
+    "reports\\vnext\\milestones\\solo-native-1000\\process.json": "df545186163055b988c66600859d63486247285481d6fa4035a124a21fb0b211",
+    "reports\\vnext\\milestones\\solo-native-1000\\tournaments.csv": "fad924df09f65be1a4c7049510ef7511a44b84097580156f0680115cab4d3193",
+    "reports\\vnext\\milestones\\solo-native-1000\\rounds.csv": "39e5bea9f9733122fc486e94ecc086a40e2106feb63a5cddd8f37869aae5c259",
+    "reports\\vnext\\milestones\\solo-native-1000\\encounters.csv": "36bfe5b8c450e1742f7cdfd294fce6bb1a95e40d940357da97651bd7bc201b00",
+    "reports\\vnext\\milestones\\resume-20260913\\engine-10-r6\\regression.json": "49b35a506c6cb8ff7159941a8abaf4eef14de7f8e91d459cac054ddacf8e2868"
+  },
+  "boundary": "Six-hero laboratory sample with provisional traits and neutral behavior; accelerated simulated clocks. No human duration, fun, performance or full-roster release acceptance.",
+  "engine_comparison": {
+    "tournaments": 10,
+    "rounds": 427,
+    "encounters": 1852,
+    "executable": "C:\\Users\\iputu\\AppData\\Local\\CodexWorktrees\\wc\\m7\\builds\\WonderChess-Milestones-r6\\Windows\\WonderChess\\Binaries\\Win64\\WonderChess.exe"
+  },
+  "verification_errors": [],
+  "technical_reconciliation_passed": true
+}

@@ -7,6 +7,8 @@
 #include "Misc/Paths.h"
 #include "Simulation/WonderSimulation.h"
 #include "WCDefinitionRegistry.h"
+#include "WonderManaTests.h"
+#include "WonderCombatClarityTests.h"
 
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FWCArithmeticTest, "WonderChess.Runtime.IntegerContracts",
                                  EAutomationTestFlags_ApplicationContextMask |
@@ -119,8 +121,10 @@ bool FWCAllBotCombatTest::RunTest(const FString &Parameters)
     for (int Seed = 1; Seed <= 100; ++Seed)
     {
         wc::Match Match(Catalog, Seed, 0);
+        const int MaximumSimulationMs = Catalog.rules.firstPreparationMs + Catalog.rules.maxRounds *
+            (Catalog.rules.preparationMs + Catalog.rules.combatTimeoutMs + Catalog.rules.settlementMs + Catalog.rules.tickMs);
         while (Match.CurrentPhase() != wc::Phase::Finished && Match.CurrentPhase() != wc::Phase::Aborted &&
-               Match.ElapsedMs() < 2000000)
+               Match.ElapsedMs() < MaximumSimulationMs)
         {
             Match.Tick(50);
             const auto Invariant = Match.InvariantError();
@@ -169,5 +173,19 @@ bool FWCAllBotCombatTest::RunTest(const FString &Parameters)
     AddInfo(FString::Printf(TEXT("Executed 100 actual combat tournaments, %lld encounters; %s"),
                             TotalEncounters, *Directory));
     return true;
+}
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FWCManaContractTest, "WonderChess.VNext.ManaContracts",
+    EAutomationTestFlags_ApplicationContextMask | EAutomationTestFlags::EngineFilter)
+bool FWCManaContractTest::RunTest(const FString& Parameters)
+{
+    try { const int Checks=wctest::RunManaContractChecks(); AddInfo(FString::Printf(TEXT("Mana contract assertions: %d"),Checks)); return true; }
+    catch(const std::exception& Failure) { AddError(UTF8_TO_TCHAR(Failure.what())); return false; }
+}
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FWCCombatClarityTest, "WonderChess.VNext.CombatClarityContracts",
+    EAutomationTestFlags_ApplicationContextMask | EAutomationTestFlags::EngineFilter)
+bool FWCCombatClarityTest::RunTest(const FString& Parameters)
+{
+    try { const int Checks=wctest::RunCombatClarityChecks(); AddInfo(FString::Printf(TEXT("Combat clarity assertions: %d"),Checks)); return true; }
+    catch(const std::exception& Error){AddError(UTF8_TO_TCHAR(Error.what()));return false;}
 }
 #endif

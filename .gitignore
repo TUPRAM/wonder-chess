@@ -32,7 +32,24 @@ __pycache__/
 /reports/**/vnext_combat_tests.exe
 /reports/**/wonder_vnext_tournaments.exe
 /reports/**/timeout_probe.exe
+/reports/**/vnext_scenario_tests.exe
+/reports/**/vnext_balance_experiment.exe
+/reports/**/vnext_save_file_tests.exe
+/reports/**/vnext_online_contract_tests.exe
 # Retain full third-party acquisition packs locally; selected cleared sources and rights evidence are versioned.
 /art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW1/r001/source-quarantine/*_cc0.zip
 /art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW1/r001/source-quarantine/*.incomplete
 # Keep canonical data, generated catalog, docs and source assets versioned.
+
+# Keep transferable support sources/reviews versioned; bulky/generated/private state stays local.
+/support/archives/previous-checkout-20260915/
+/support/local-state/
+/support/external/study-builds/
+/support/external/blender-mcp-1.9.1/pre-install/
+/support/external/validation/**/*.obj
+/support/external/validation/**/*.exe
+/support/operations/migration-20260915/git-main-before/
+/support/operations/migration-20260915/git-linked-before/
+/support/operations/github-20260915/
+/TRANSFER_MANIFEST*.jsonl
+/.venv-mcp/

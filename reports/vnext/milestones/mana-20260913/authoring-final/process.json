@@ -1,0 +1,50 @@
+{
+  "utc": "2026-09-13T06:24:47.409115+00:00",
+  "pythonpath": "C:\\Users\\iputu\\AppData\\Local\\WonderChess\\test-deps\\py312-mana-20260913",
+  "commands": [
+    {
+      "command": [
+        "C:\\Users\\iputu\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "tools/validate_kit.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "C:\\Users\\iputu\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "C:\\Users\\iputu\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "tools/build_documents.py",
+        "--check"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "C:\\Users\\iputu\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "tools/compile_catalog.py",
+        "--check"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "C:\\Users\\iputu\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "tools/vnext/catalog.py",
+        "--check",
+        "--stage"
+      ],
+      "exit_code": 0
+    }
+  ]
+}

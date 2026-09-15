@@ -441,6 +441,17 @@ bool LoadSuccessorCatalog(wc::Catalog& OutCatalog, FWCDefinitionText* Text)
     Source.Expect(TEXT("source_sha256"), UTF8_TO_TCHAR(wcvnext::SourceSha256));
     wc::Catalog Next = wcvnext::WonderVNextCatalog();
     Source.Expect(TEXT("balance_version"), UTF8_TO_TCHAR(Next.balanceVersion.c_str()));
+    const bool Mana10=FParse::Param(FCommandLine::Get(), TEXT("WCManaExperiment"));
+    const bool Mana20=FParse::Param(FCommandLine::Get(), TEXT("WCMana20Experiment"));
+    Require(!(Mana10&&Mana20), TEXT("Choose one mana experiment, 10 or 20 per basic hit."));
+    const bool Clarity=FParse::Param(FCommandLine::Get(), TEXT("WCCombatClarityExperiment"));
+    Require(!(Clarity&&(Mana10||Mana20)), TEXT("Combat clarity includes 20 mana; choose one experiment."));
+    if (Clarity)
+        Next = wcvnext::WonderVNextCombatClarityCatalog();
+    else if (Mana20)
+        Next = wcvnext::WonderVNextMana20Catalog();
+    else if (Mana10)
+        Next = wcvnext::WonderVNextManaCatalog();
     const std::string Failure = Next.Validate();
     Require(Failure.empty(), FString(TEXT("Successor catalog invariant: ")) + UTF8_TO_TCHAR(Failure.c_str()));
     FWCDefinitionText NextText;

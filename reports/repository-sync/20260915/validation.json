@@ -1,0 +1,45 @@
+{
+  "checks": [
+    {
+      "command": [
+        "python",
+        "tools/validate_kit.py"
+      ],
+      "exit_code": 0,
+      "summary": "PASS: 400 specification/data checks. No game or Blender execution is implied."
+    },
+    {
+      "command": [
+        "python",
+        "tools/build_documents.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "summary": "28 generated documents match canonical data"
+    },
+    {
+      "command": [
+        "python",
+        "tools/compile_catalog.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "summary": "6 catalog artifacts match canonical data"
+    },
+    {
+      "command": [
+        "python",
+        "tools/vnext/catalog.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "summary": "6 successor artifacts match canonical source; art, balance and release acceptance not established"
+    }
+  ],
+  "python_tests": 230,
+  "python_test_log": "tests.log",
+  "python_test_exit": 0,
+  "python": "bundled CPython 3.12.14",
+  "Pillow": "12.3.0",
+  "jsonschema": "4.26.0"
+}

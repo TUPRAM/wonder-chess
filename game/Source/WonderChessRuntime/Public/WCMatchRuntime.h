@@ -33,7 +33,7 @@ public:
   UFUNCTION(Server, Reliable)
   void ServerIntent(int32 Type, int64 Request, int64 Sequence, int64 Revision,
                     int64 Unit, int32 Slot, bool ToBoard, int32 Column,
-                    int32 Row);
+                    int32 Row, int32 Facing = 0);
   UFUNCTION(Server, Reliable) void ServerStart(int32 Humans, int32 Seed);
   UFUNCTION(Server, Reliable) void ServerPractice();
   UFUNCTION(Server, Reliable) void ServerCatalogReady(const FString& Schema, const FString& Digest, int32 Protocol);
@@ -45,7 +45,8 @@ public:
   void ClientReply(bool Accepted, const FString &Reason, int64 Request = 0);
   UFUNCTION(Client, Reliable) void ClientRejectSession(const FString &Reason);
   void Intent(wc::CommandType Type, int64 Unit = 0, int32 Slot = -1,
-              bool ToBoard = false, int32 Column = -1, int32 Row = -1);
+              bool ToBoard = false, int32 Column = -1, int32 Row = -1,
+              wc::Facing Facing = wc::Facing::Forward);
   void Sound(const FString &Name);
   void Cancel();
   void Ready();
@@ -83,6 +84,7 @@ private:
     bool ToBoard;
     int32 Column, Row;
     int32 ExpectedDefinition = -1;
+    wc::Facing Facing = wc::Facing::Forward;
   };
   TArray<QueuedIntent> IntentQueue;
   bool bCommandPending = false;

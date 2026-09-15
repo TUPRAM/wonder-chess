@@ -1,0 +1,23 @@
+{
+  "unchanged_original_catalogue_fields": true,
+  "only_added_field": "experiments",
+  "experiment": {
+    "mana100_v1": {
+      "status": "opt_in_unaccepted_experiment",
+      "heroes": [
+        "wc_vn_snapvine",
+        "wc_vn_prism_organ",
+        "wc_vn_reefglass"
+      ],
+      "maximum": 10000,
+      "starting": 0,
+      "basicAttackGain": 1000,
+      "damageGainAtFullHealth": 10000,
+      "damageEventCap": 2000,
+      "damageWindowCap": 4000,
+      "damageWindowMs": 1000,
+      "relicTiming": "inverse_gain"
+    }
+  },
+  "boundary": "Existing hero stats, ability effects/timing/targeting, costs, relic modifiers, economy and bot rules are byte-value equivalent after JSON parsing."
+}

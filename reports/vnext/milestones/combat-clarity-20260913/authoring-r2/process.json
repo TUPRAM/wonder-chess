@@ -1,0 +1,44 @@
+{
+  "python": "C:\\Users\\iputu\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+  "commands": [
+    {
+      "command": [
+        "tools/validate_kit.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tools/build_documents.py",
+        "--check"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tools/compile_catalog.py",
+        "--check"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tools/vnext/catalog.py",
+        "--check",
+        "--stage"
+      ],
+      "exit_code": 0
+    }
+  ]
+}

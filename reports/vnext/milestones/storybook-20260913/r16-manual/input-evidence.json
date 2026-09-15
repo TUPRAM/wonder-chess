@@ -1,0 +1,20 @@
+{
+  "candidate": "WonderChess-Storybook-r16",
+  "method": "Physical pointer/keyboard input through native Computer Use, observed after each action",
+  "checks": {
+    "pause_preparation_clock": true,
+    "first_bellback_purchase_gold_10_to_9": true,
+    "second_purchase_gold_9_to_8_and_two_bench_copies": true,
+    "third_purchase_gold_8_to_7_and_two_star_merge": true,
+    "shop_merge_preview_visible_before_third_copy": true,
+    "bench_selection_updates_portrait_and_ability_inspector": true,
+    "pointer_deployment_to_c3": true,
+    "keyboard_right_enter_moves_c3_to_d3": true,
+    "menu_opens_collection": true,
+    "all_six_heroes_and_ability_symbols_inspected_in_native_collection": true
+  },
+  "captures": ["three-copy-merge.png", "keyboard-placement.png", "collection-heroes-a.png", "collection-heroes-b.png"],
+  "visual_findings": ["Scenery vertically flipped; corrected in subsequent source", "Stock blue standings and disabled-card wash; subsequent UI correction pending build"],
+  "interruption": "Later scrolling and close action were rejected because user input was detected. Refreshed state; left r16 window open for owner inspection.",
+  "boundary": "Executed r16 input evidence only. Subsequent r17 presentation and new camera require their own package checks. Not human acceptance. Full relic collection was not inspected in this session."
+}

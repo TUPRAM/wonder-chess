@@ -1,0 +1,144 @@
+Running AutomationTool...
+Using bundled DotNet SDK version: 8.0.412 win-x64
+Starting AutomationTool...
+Parsing command line: BuildCookRun -project=C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\game\WonderChess.uproject -noP4 -platform=Win64 -clientconfig=Development -build -cook -stage -pak -archive -archivedirectory=C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\builds\WonderChess-2DSlice-r14 -prereqs -utf8output -ubtargs=-NoHotReloadFromIDE
+Initializing script modules...
+Total script module initialization time: 0.95 s.
+Using C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MSBuild.exe
+Executing commands...
+Setting up ProjectParams for C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\game\WonderChess.uproject
+********** BUILD COMMAND STARTED **********
+Running: C:\Program Files\Epic Games\UE_5.7\Engine\Binaries\ThirdParty\DotNet\8.0.412\win-x64\dotnet.exe "C:\Program Files\Epic Games\UE_5.7\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" -Target="WonderChessEditor Win64 Development -Project=C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\game\WonderChess.uproject" -Target="WonderChess Win64 Development -Project=C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\game\WonderChess.uproject  -remoteini=\"C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\game\"  -NoHotReloadFromIDE " -log="C:\Users\iputu\AppData\Roaming\Unreal Engine\AutomationTool\Logs\C+Program+Files+Epic+Games+UE_5.7\UBA-WonderChessEditor-Win64-Development.txt"
+Log file: C:\Users\iputu\AppData\Roaming\Unreal Engine\AutomationTool\Logs\C+Program+Files+Epic+Games+UE_5.7\UBA-WonderChessEditor-Win64-Development.txt
+Using 'git status' to determine working set for adaptive non-unity build (C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7).
+Invalidating makefile for WonderChessEditor (source file added)
+UHT compiled-in object format Default
+Parsing headers for WonderChessEditor
+  Running Internal UnrealHeaderTool C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\game\WonderChess.uproject C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\game\Intermediate\Build\Win64\WonderChessEditor\Development\WonderChessEditor.uhtmanifest -WarningsAsErrors -installed
+UHT processed WonderChessEditor in 7.6857332 seconds (15 files written)
+Creating makefile for WonderChess (command line arguments changed)
+UHT compiled-in object format Default
+Parsing headers for WonderChess
+  Running Internal UnrealHeaderTool C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\game\WonderChess.uproject C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\game\Intermediate\Build\Win64\WonderChess\Development\WonderChess.uhtmanifest -WarningsAsErrors -installed
+UHT processed WonderChess in 0.8275425 seconds (15 files written)
+Building WonderChessEditor and WonderChess...
+WonderChessEditor: Using Visual Studio 2022 14.44.35226 toolchain (C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+WonderChessEditor: [Adaptive Build] Excluded from WonderChessRuntime unity file: WCDefinitionRegistry.cpp, WCMatchRuntime.cpp, WCVNextArtStyle.cpp, WCVNextCombatPresentation.cpp, WCVNextLab.cpp, WCVNextScenarios.cpp, WCVNextSolo.cpp, WonderChessRuntime.cpp, WonderSave.cpp, WonderSaveFile.cpp, WonderScenario.cpp, WonderScenarioFile.cpp, WonderSimulation.cpp, WonderSimulationTests.cpp, WonderTournament.cpp
+WonderChess: Using Visual Studio 2022 14.44.35226 toolchain (C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+WonderChess: [Adaptive Build] Excluded from WonderChessRuntime unity file: WCDefinitionRegistry.cpp, WCMatchRuntime.cpp, WCVNextArtStyle.cpp, WCVNextCombatPresentation.cpp, WCVNextLab.cpp, WCVNextScenarios.cpp, WCVNextSolo.cpp, WonderChessRuntime.cpp, WonderSave.cpp, WonderSaveFile.cpp, WonderScenario.cpp, WonderScenarioFile.cpp, WonderSimulation.cpp, WonderSimulationTests.cpp, WonderTournament.cpp
+Determining max actions to execute in parallel (8 physical cores, 16 logical cores)
+  Executing up to 8 processes, one per physical core
+  Requested 1.5 GB memory per action, 1.06 GB available: limiting max parallel actions to 1
+Using Unreal Build Accelerator local executor to run 77 action(s)
+  Storage capacity 40Gb
+---- Starting trace: 260913_210321 ----
+UbaServer - Listening on 0.0.0.0:1345
+** For WonderChessEditor-Win64-Development **
+[1/77] Compile [x64] SharedPCH.UnrealEd.Project.ValApi.ValExpApi.Cpp20.cpp
+** For WonderChess-Win64-Development **
+[2/77] Compile [x64] SharedPCH.Engine.Project.Exceptions.ValApi.ValExpApi.Cpp20.cpp
+** For WonderChessEditor-Win64-Development **
+[3/77] Resource Default.rc2
+[4/77] Compile [x64] Module.WonderChessRuntime.gen.cpp
+[5/77] Compile [x64] PerModuleInline.gen.cpp
+[6/77] Compile [x64] WCAnimationReview.cpp
+[7/77] Compile [x64] WCAttackPresentation.cpp
+[8/77] Compile [x64] WCAttackWindowTests.cpp
+[9/77] Compile [x64] WCBoardPresenter.cpp
+[10/77] Compile [x64] WCDefinitionRegistry.cpp
+[11/77] Compile [x64] WCFrontEnd.cpp
+[12/77] Compile [x64] WCFrontEndAudit.cpp
+[13/77] Compile [x64] WCFrontEndProfile.cpp
+[14/77] Compile [x64] WCFrontEndScene.cpp
+[15/77] Compile [x64] WCGameMode.cpp
+[16/77] Compile [x64] WCImportedAssetTests.cpp
+[17/77] Compile [x64] WCMatchHUD.cpp
+[18/77] Compile [x64] WCMatchRuntime.cpp
+[19/77] Compile [x64] WCNetworkSession.cpp
+[20/77] Compile [x64] WCNetworkStartupTests.cpp
+[21/77] Compile [x64] WCNeutralAssetTests.cpp
+[22/77] Compile [x64] WCVNextArtStyle.cpp
+C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\WCVNextArtStyle.cpp(50,17): warning C4996: 'FReferenceCollector::AddReferencedObject': WARNING: Your program will randomly crash if this function is called when incremental gc is enabled. Pass TObjectPtr<...> instead of UObject* to AddReferencedObject(s) API's. - Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+    { Collector.AddReferencedObject(Portrait);Collector.AddReferencedObject(Relic); }
+                ^
+C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\WCVNextArtStyle.cpp(60,75): error C4458: declaration of 'Style' hides class member
+        FSlateWindowElementList& Elements,int32 Layer,const FWidgetStyle& Style,bool ParentEnabled) const override
+                                                                          ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Slate\Public\Widgets\Input\SButton.h(336,22): note: see declaration of 'SButton::Style'
+	const FButtonStyle* Style;
+	                    ^
+[23/77] Compile [x64] WCVNextCombatPresentation.cpp
+C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\WCVNextCombatPresentation.cpp(88,21): error C4458: declaration of 'Owner' hides class member
+        const auto& Owner=SoloMatch->Seats()[0];
+                    ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h(802,21): note: see declaration of 'AActor::Owner'
+	TObjectPtr<AActor> Owner;
+	                   ^
+C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\WCVNextCombatPresentation.cpp(113,80): error C2397: conversion from 'int64' to 'int' requires a narrowing conversion
+            if(T>=0){const FVector P=Origin+Direction*T;Cell={FMath::FloorToInt((P.X+800)/200),FMath::FloorToInt((800-P.Y)/200)};}
+                                                                               ^
+C:\Users\iputu\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\WCVNextCombatPresentation.cpp(113,113): error C2397: conversion from 'int64' to 'int' requires a narrowing conversion
+            if(T>=0){const FVector P=Origin+Direction*T;Cell={FMath::FloorToInt((P.X+800)/200),FMath::FloorToInt((800-P.Y)/200)};}
+                                                                                                                ^
+[24/77] Compile [x64] WCVNextLab.cpp
+[25/77] Compile [x64] WCVNextScenarios.cpp
+[26/77] Compile [x64] WCVNextSolo.cpp
+[27/77] Compile [x64] WCVerification.cpp
+[28/77] Compile [x64] WonderChessRuntime.cpp
+[29/77] Compile [x64] WonderSave.cpp
+[30/77] Compile [x64] WonderSaveFile.cpp
+[31/77] Compile [x64] WonderScenario.cpp
+[32/77] Compile [x64] WonderScenarioFile.cpp
+[33/77] Compile [x64] WonderSimulation.cpp
+[34/77] Compile [x64] WonderSimulationTests.cpp
+[35/77] Compile [x64] WonderTournament.cpp
+** For WonderChess-Win64-Development **
+[36/77] Compile [x64] Module.WonderChessRuntime.gen.cpp
+[37/77] Compile [x64] WCAnimationReview.cpp
+[38/77] Compile [x64] WCAttackPresentation.cpp
+[39/77] Compile [x64] WCAttackWindowTests.cpp
+[40/77] Compile [x64] WCBoardPresenter.cpp
+[41/77] Compile [x64] WCDefinitionRegistry.cpp
+[42/77] Compile [x64] WCFrontEnd.cpp
+[43/77] Compile [x64] WCFrontEndAudit.cpp
+[44/77] Compile [x64] WCFrontEndProfile.cpp
+[45/77] Compile [x64] WCFrontEndScene.cpp
+[46/77] Compile [x64] WCGameMode.cpp
+[47/77] Compile [x64] WCImportedAssetTests.cpp
+[48/77] Compile [x64] WCMatchHUD.cpp
+[49/77] Compile [x64] WCMatchRuntime.cpp
+[50/77] Compile [x64] WCNetworkSession.cpp
+[51/77] Compile [x64] WCNetworkStartupTests.cpp
+[52/77] Compile [x64] WCNeutralAssetTests.cpp
+[53/77] Compile [x64] WCVNextArtStyle.cpp
+[54/77] Compile [x64] WCVNextCombatPresentation.cpp
+[55/77] Compile [x64] WCVNextLab.cpp
+[56/77] Compile [x64] WCVNextScenarios.cpp
+[57/77] Compile [x64] WCVNextSolo.cpp
+[58/77] Compile [x64] WCVerification.cpp
+[59/77] Compile [x64] WonderChessRuntime.cpp
+[60/77] Compile [x64] WonderSave.cpp
+[61/77] Compile [x64] WonderSaveFile.cpp
+[62/77] Compile [x64] WonderScenario.cpp
+[63/77] Compile [x64] WonderScenarioFile.cpp
+[64/77] Compile [x64] WonderSimulation.cpp
+[65/77] Compile [x64] WonderSimulationTests.cpp
+[66/77] Compile [x64] WonderTournament.cpp
+[67/77] Resource Default.rc2
+[68/77] Link [x64] WonderChess.exe
+[69/77] Copy D3D12Core.dll
+[70/77] Copy d3d12SDKLayers.dll
+[71/77] Copy DirectML.dll
+[72/77] Copy tbb12.dll
+[73/77] Copy tbbmalloc.dll
+[74/77] WriteMetadata WonderChess.target [NoUba]
+Trace written to file C:/Users/iputu/AppData/Roaming/Unreal Engine/AutomationTool/Logs/C+Program+Files+Epic+Games+UE_5.7/UBA-WonderChessEditor-Win64-Development.uba with size 51.3kb
+Total time in Unreal Build Accelerator local executor: 344.91 seconds
+
+Result: Failed (OtherCompilationError)
+Total execution time: 369.94 seconds
+Took 370.22s to run dotnet.exe, ExitCode=6
+UnrealBuildTool failed. See log for more details. (C:\Users\iputu\AppData\Roaming\Unreal Engine\AutomationTool\Logs\C+Program+Files+Epic+Games+UE_5.7\UBA-WonderChessEditor-Win64-Development.txt)
+AutomationTool executed for 0h 6m 13s
+AutomationTool exiting with ExitCode=6 (6)
+BUILD FAILED

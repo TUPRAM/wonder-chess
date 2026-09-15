@@ -6,17 +6,17 @@ Source: `data/vnext/catalog.json`. Numeric data below is provisional and unbalan
 
 `wc_vn_bellback` | beast / guardian | cost 1 | laboratory_candidate
 
-**Form:** Moss-and-bronze grazing giant with a suspended bell beneath its chest.
+**Form:** Moss-and-bronze grazing giant with a suspended dorsal bell in a wooden mount.
 
 **Decision:** Protect a chosen ally through a directional guarded sector.
 
-**Positioning:** Put a vulnerable ally behind the guarded shoulder; point the bell toward likely projectiles.
+**Positioning:** Put a vulnerable ally behind the guarded shoulder; face Bellback toward likely projectiles.
 
 **Allies:** Prism Organ benefits from time to cast; Grandmother Root prolongs the defensive line.
 
 **Counterplay:** Flank the guard or displace it away from its protected ally.
 
-**Recognition:** The chest bell tips forward and a short arc of bronze light marks the guarded sector.
+**Recognition:** The dorsal bell swings within its mount and a short arc of bronze light marks the guarded sector.
 
 Ability: **Sheltering Bell** (`directional_guard`); art: `brief_only`.
 

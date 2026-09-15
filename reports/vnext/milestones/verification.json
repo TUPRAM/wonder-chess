@@ -1,0 +1,206 @@
+{
+  "recorded_utc": "2026-09-12T16:35:54.609442+00:00",
+  "status": "ENGINEERING_CHECKS_PASS_ACCEPTANCE_GATES_OPEN",
+  "candidate": "WonderChess-Milestones-r4",
+  "authoring": {
+    "validate_kit": {
+      "status": "PASS",
+      "checks": 400
+    },
+    "build_documents_check": {
+      "status": "PASS",
+      "artifacts": 28
+    },
+    "compile_catalog_check": {
+      "status": "PASS",
+      "artifacts": 6
+    },
+    "vnext_catalog_check": {
+      "status": "PASS",
+      "artifacts": 6
+    },
+    "runtime_stage_check": {
+      "status": "PASS",
+      "files": 13,
+      "reflected_header": true
+    }
+  },
+  "python": {
+    "status": "PASS",
+    "tests": 221,
+    "seconds": 24.255,
+    "log": "reports/vnext/milestones/python-final-02.log"
+  },
+  "native_combat": {
+    "status": "PASS",
+    "assertions": 21597,
+    "record": "reports/vnext/milestones/solo-native-combat-final/process.json"
+  },
+  "native_scenarios": {
+    "status": "PASS",
+    "assertions": 2732,
+    "events": 2421,
+    "record": "reports/vnext/native-scenarios",
+    "scenario_records": 29,
+    "unique_combat_inputs": 28,
+    "context_note": "F07 level5/level6 records use identical combat input with different acquisition context."
+  },
+  "native_durable_saves": {
+    "status": "PASS",
+    "assertions": 61,
+    "record": "C:/Users/iputu/Documents/Project Support/Wonder Chess/validation/2026-09-12-b0-m7/save-files-04/process.json"
+  },
+  "native_online_contract": {
+    "status": "PASS",
+    "assertions": 248,
+    "static_transport_checks": 6,
+    "human_remote": false,
+    "readout": "docs/vnext/milestones/M6_ENGINEERING_EVIDENCE.md"
+  },
+  "legacy_native": {
+    "status": "PASS",
+    "tournaments": 100,
+    "assertions": 3379152,
+    "record": "reports/vnext/milestones/legacy-native-100-final/process.json"
+  },
+  "package": {
+    "status": "PASS",
+    "uat_exit": 0,
+    "build_cook_run_seconds": 395.91,
+    "record": "reports/vnext/milestones/package-r4-run.log",
+    "manifest": "reports/vnext/milestones/package-identity-r4/package-manifest.json",
+    "source_files": 81,
+    "payload_files": 49
+  },
+  "solo_scripted": {
+    "status": "PASS",
+    "boolean_checks": 9,
+    "rounds": 43,
+    "record": "reports/vnext/milestones/solo-smoke-r4/solo-exercise.json"
+  },
+  "lab_scripted": {
+    "1280": {
+      "status": "PASS",
+      "boolean_checks": 39,
+      "record": "reports/vnext/milestones/lab-exercise-r4-1280/lab-exercise.json"
+    },
+    "1600": {
+      "status": "PASS",
+      "boolean_checks": 39,
+      "record": "reports/vnext/milestones/lab-exercise-r4-1600/lab-exercise.json"
+    },
+    "1920": {
+      "status": "PASS",
+      "boolean_checks": 39,
+      "record": "reports/vnext/milestones/lab-exercise-r4-1920/lab-exercise.json"
+    }
+  },
+  "actual_input": {
+    "status": "PASS_SCOPED",
+    "record": "reports/vnext/milestones/actual-input-review.json",
+    "external_participants": 0,
+    "complete_human_acceptance": "NOT_RUN"
+  },
+  "native_1000": {
+    "status": "PASS",
+    "requested": 1000,
+    "completed": 1000,
+    "first_seed": 1,
+    "last_seed": 1000,
+    "source_stable": true,
+    "compile_exit": 0,
+    "process_exit": 0,
+    "encounters": 186984,
+    "timeouts": 26219,
+    "timeout_rate": 0.14022055363025712,
+    "capped_tournaments": 187,
+    "median_accelerated_simulated_minutes": 31.360833333333332,
+    "bot_command_rejects": 0,
+    "stdout_checks": 37673775,
+    "summary_checks": 37673774,
+    "count_boundary": "Summary serialized before final bot draft/equip assertion; final stdout includes that passing assertion.",
+    "record": "reports/vnext/milestones/solo-native-1000/process.json",
+    "executable_sha256": "cb68840deee67cf011095f427e43ad8c7be9073ffdc5994244a256a4b107853b"
+  },
+  "engine_100": {
+    "status": "PASS",
+    "tournaments": 100,
+    "rounds": 4288,
+    "encounters": 18685,
+    "failed_trials": 0,
+    "record": "reports/vnext/milestones/solo-engine-100-r4/process.json"
+  },
+  "reconciliation": {
+    "status": "PASS",
+    "tournaments": 100,
+    "rounds": 4288,
+    "encounters": 18685,
+    "executable": "C:\\Users\\iputu\\AppData\\Local\\CodexWorktrees\\wc\\m7\\builds\\WonderChess-Milestones-r4\\Windows\\WonderChess\\Binaries\\Win64\\WonderChess.exe",
+    "errors": [],
+    "record": "reports/vnext/milestones/solo-engine-100-r4/reconciliation.json",
+    "boundary": "Shared deterministic seeds1-100; not independent balance samples."
+  },
+  "acceptance": {
+    "root75_balance": "FAIL",
+    "bellback_forms": "ART_REVISE",
+    "external_human": "NOT_RUN",
+    "remote_devices": "NOT_RUN",
+    "clean_checkout_unreal_build": "NOT_RUN",
+    "independent_clean_machine": "NOT_RUN",
+    "final_content_performance": "NOT_RUN",
+    "release": "NOT_ACCEPTED",
+    "final_solo_timeout_screen": "FAIL"
+  },
+  "git_diff_check": "PASS",
+  "remaining_task_game_processes": 0,
+  "evidence": [
+    {
+      "path": "reports/vnext/milestones/solo-native-1000/process.json",
+      "sha256": "df545186163055b988c66600859d63486247285481d6fa4035a124a21fb0b211"
+    },
+    {
+      "path": "reports/vnext/milestones/solo-native-1000/summary.json",
+      "sha256": "e7eaff0b2f8f14aa3d34ad6c7cfa8df699f61f638aa36190d30ad17ff67f8827"
+    },
+    {
+      "path": "reports/vnext/milestones/solo-native-1000/tests.log",
+      "sha256": "9124921e21bfa504699b8ea0953e86cb9b1a95c84a25dcc78ca50782224defce"
+    },
+    {
+      "path": "reports/vnext/milestones/solo-engine-100-r4/process.json",
+      "sha256": "435dab32a42da81ac689326b06a694cd447d1406c5baee3eea175ff7999d5f66"
+    },
+    {
+      "path": "reports/vnext/milestones/solo-engine-100-r4/regression.json",
+      "sha256": "2ab4b3f80fb281a1275d11f4e032fc4713b5b43c5414cf7a3092d149162077fc"
+    },
+    {
+      "path": "reports/vnext/milestones/solo-engine-100-r4/reconciliation.json",
+      "sha256": "1295d29a3c4fc0a8c132b5f3c19a12fc7c8ee564aa4389a570e2b14645c47918"
+    },
+    {
+      "path": "reports/vnext/milestones/package-identity-r4/package-manifest.json",
+      "sha256": "50b958699c146928fe7175ab9511e7e22c44ac81b613120828b973b182f256ad"
+    },
+    {
+      "path": "reports/vnext/milestones/solo-smoke-r4/solo-exercise.json",
+      "sha256": "d5f4b18acd413a59b0ff5df5a5767917c859fd4b9aa27682c0ac18a6f6a4d667"
+    },
+    {
+      "path": "reports/vnext/milestones/actual-input-review.json",
+      "sha256": "956e7a508069d649b3dbe6d4ef091a2aba068eebce9d8d8da74e565d7345cd0d"
+    },
+    {
+      "path": "reports/vnext/milestones/python-final-02.log",
+      "sha256": "026b76d9d66cd02d64e32b961e6e36a9b81385e08c1bc279fe1db6ec3b6b455c"
+    }
+  ],
+  "development_status": "PAUSED_BY_OWNER",
+  "paused_utc": "2026-09-12T16:40:47.723494+00:00",
+  "pause_record": "PAUSED.md",
+  "latest_component_verification": {
+    "candidate": "WonderChess-Storybook-r20",
+    "record": "reports/vnext/milestones/storybook-20260913/verification.json",
+    "boundary": "Separate current presentation component. Historical r4 results and pause metadata above remain unchanged."
+  }
+}

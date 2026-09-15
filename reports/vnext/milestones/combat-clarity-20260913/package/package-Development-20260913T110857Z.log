@@ -1,0 +1,525 @@
+Running AutomationTool...
+Using bundled DotNet SDK version: 8.0.412 win-x64
+Starting AutomationTool...
+Parsing command line: BuildCookRun -project=C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\WonderChess.uproject -noP4 -platform=Win64 -clientconfig=Development -build -cook -stage -pak -archive -archivedirectory=C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\builds\WonderChess-CombatClarity-r11 -prereqs -utf8output -ubtargs=-NoHotReloadFromIDE
+Initializing script modules...
+Total script module initialization time: 1.58 s.
+Using C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MSBuild.exe
+Executing commands...
+Setting up ProjectParams for C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\WonderChess.uproject
+********** BUILD COMMAND STARTED **********
+Running: C:\Program Files\Epic Games\UE_5.7\Engine\Binaries\ThirdParty\DotNet\8.0.412\win-x64\dotnet.exe "C:\Program Files\Epic Games\UE_5.7\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" -Target="WonderChessEditor Win64 Development -Project=C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\WonderChess.uproject" -Target="WonderChess Win64 Development -Project=C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\WonderChess.uproject  -remoteini=\"C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\"  -NoHotReloadFromIDE " -log="C:\Users\iputu\AppData\Roaming\Unreal Engine\AutomationTool\Logs\C+Program+Files+Epic+Games+UE_5.7\UBA-WonderChessEditor-Win64-Development.txt"
+Log file: C:\Users\iputu\AppData\Roaming\Unreal Engine\AutomationTool\Logs\C+Program+Files+Epic+Games+UE_5.7\UBA-WonderChessEditor-Win64-Development.txt
+Using 'git status' to determine working set for adaptive non-unity build (C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7).
+Invalidating makefile for WonderChessEditor (source file added)
+UHT compiled-in object format Default
+Parsing headers for WonderChessEditor
+  Running Internal UnrealHeaderTool C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\WonderChess.uproject C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Intermediate\Build\Win64\WonderChessEditor\Development\WonderChessEditor.uhtmanifest -WarningsAsErrors -installed
+UHT processed WonderChessEditor in 12.1391275 seconds (0 files written)
+Invalidating makefile for WonderChess (source file added)
+UHT compiled-in object format Default
+Parsing headers for WonderChess
+  Running Internal UnrealHeaderTool C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\WonderChess.uproject C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Intermediate\Build\Win64\WonderChess\Development\WonderChess.uhtmanifest -WarningsAsErrors -installed
+UHT processed WonderChess in 1.2238451 seconds (0 files written)
+Building WonderChessEditor and WonderChess...
+WonderChessEditor: Using Visual Studio 2022 14.44.35226 toolchain (C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+WonderChessEditor: [Adaptive Build] Excluded from WonderChessRuntime unity file: WCDefinitionRegistry.cpp, WCMatchRuntime.cpp, WCVNextCombatPresentation.cpp, WCVNextLab.cpp, WCVNextScenarios.cpp, WCVNextSolo.cpp, WonderChessRuntime.cpp, WonderSave.cpp, WonderSaveFile.cpp, WonderScenario.cpp, WonderScenarioFile.cpp, WonderSimulation.cpp, WonderSimulationTests.cpp, WonderTournament.cpp
+WonderChess: Using Visual Studio 2022 14.44.35226 toolchain (C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+WonderChess: [Adaptive Build] Excluded from WonderChessRuntime unity file: WCDefinitionRegistry.cpp, WCMatchRuntime.cpp, WCVNextCombatPresentation.cpp, WCVNextLab.cpp, WCVNextScenarios.cpp, WCVNextSolo.cpp, WonderChessRuntime.cpp, WonderSave.cpp, WonderSaveFile.cpp, WonderScenario.cpp, WonderScenarioFile.cpp, WonderSimulation.cpp, WonderSimulationTests.cpp, WonderTournament.cpp
+Determining max actions to execute in parallel (8 physical cores, 16 logical cores)
+  Executing up to 8 processes, one per physical core
+  Requested 1.5 GB memory per action, 1.22 GB available: limiting max parallel actions to 1
+Using Unreal Build Accelerator local executor to run 53 action(s)
+  Storage capacity 40Gb
+---- Starting trace: 260913_190937 ----
+UbaServer - Listening on 0.0.0.0:1345
+** For WonderChessEditor-Win64-Development **
+[1/53] Compile [x64] Module.WonderChessRuntime.gen.cpp
+[2/53] Compile [x64] WCAnimationReview.cpp
+[3/53] Compile [x64] WCBoardPresenter.cpp
+[4/53] Compile [x64] WCDefinitionRegistry.cpp
+[5/53] Compile [x64] WCFrontEnd.cpp
+[6/53] Compile [x64] WCFrontEndAudit.cpp
+[7/53] Compile [x64] WCFrontEndProfile.cpp
+[8/53] Compile [x64] WCFrontEndScene.cpp
+[9/53] Compile [x64] WCImportedAssetTests.cpp
+[10/53] Compile [x64] WCMatchHUD.cpp
+[11/53] Compile [x64] WCMatchRuntime.cpp
+[12/53] Compile [x64] WCNetworkSession.cpp
+[13/53] Compile [x64] WCNeutralAssetTests.cpp
+[14/53] Compile [x64] WCVNextCombatPresentation.cpp
+[15/53] Compile [x64] WCVNextLab.cpp
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(31,5): error C4002: too many arguments for function-like macro invocation 'check'
+    check(!base.rules.nearestReachableTarget&&!base.rules.mobileAttackRecovery,"Mana20 control retains both old rules");
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(32,5): error C4002: too many arguments for function-like macro invocation 'check'
+    check(candidate.Validate().empty()&&candidate.contentDigest!=base.contentDigest,"Clarity identity validates and separates saves");
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(37,9): error C4002: too many arguments for function-like macro invocation 'check'
+        check(f.Units()[source.target].cell==wc::Cell{3,4},"Nearest ranged target wins over initiative among in-range enemies");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(37,9): error C2187: syntax error: ')' was unexpected here
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(37,9): error C2958: the left brace '{' found at 'C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(37)' was not matched correctly
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(37,9): error C3329: syntax error: expected '}' not ')'
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(37,9): error C2059: syntax error: 'if'
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(37,9): error C2143: syntax error: missing ';' before '{'
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(38,31): error C2065: 'f': undeclared identifier
+        for(int n=0;n<60;++n){f.Tick();check(f.InvariantError().empty(),"Clarity combat preserves invariants");}
+                              ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(38,40): error C4002: too many arguments for function-like macro invocation 'check'
+        for(int n=0;n<60;++n){f.Tick();check(f.InvariantError().empty(),"Clarity combat preserves invariants");}
+                                       ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(38,40): error C2065: 'f': undeclared identifier
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(39,9): error C4002: too many arguments for function-like macro invocation 'check'
+        check(f.Units()[0].target==chosen,"In-range engagement remains stable");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(39,9): error C2065: 'f': undeclared identifier
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(39,9): error C2065: 'chosen': undeclared identifier
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(41,5): error C2447: '{': missing function header (old-style formal list?)
+    {
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(47,9): error C4002: too many arguments for function-like macro invocation 'check'
+        check(hits[2]==4,"Four independent basic attacks release on the same tick");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(49,5): error C2447: '{': missing function header (old-style formal list?)
+    {
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(56,9): error C4002: too many arguments for function-like macro invocation 'check'
+        check(fast.Units()[0].state==wc::ActionState::Moving,"Defeated target permits movement immediately after release");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(57,9): error C4002: too many arguments for function-like macro invocation 'check'
+        check(control.Units()[0].state==wc::ActionState::AttackRecovery,"Recovery-only comparison waits in place");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(59,69): error C4002: too many arguments for function-like macro invocation 'check'
+        for(int i=0;i<240&&!fast.Result().complete;++i){fast.Tick();check(fast.InvariantError().empty(),"Moving recovery preserves reservations");}
+                                                                    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(61,13): error C4002: too many arguments for function-like macro invocation 'check'
+            check(e.tick-previous>=80,"Movement never bypasses the original four-second attack interval");previous=e.tick;
+            ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(64,5): error C2447: '{': missing function header (old-style formal list?)
+    {
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(69,22): error C4002: too many arguments for function-like macro invocation 'check'
+            f.Tick();check(f.InvariantError().empty(),"Synthetic status effects preserve combat invariants");
+                     ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(73,9): error C4002: too many arguments for function-like macro invocation 'check'
+        check(stunned&&shielded&&healed&&modified,"Status demo exercises actual stun, shield, effective heal and modifier");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(74,37): error C4002: too many arguments for function-like macro invocation 'check'
+        for(const auto& u:f.Units())check(u.state!=wc::ActionState::Stunned&&u.shield==0&&u.modifiers.empty(),"Temporary status cues expire with authoritative states");
+                                    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(76,5): error C2447: '{': missing function header (old-style formal list?)
+    {
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(82,13): error C4002: too many arguments for function-like macro invocation 'check'
+            check(observed.InvariantError().empty(),"Visual observation preserves invariants");
+            ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(84,9): error C4002: too many arguments for function-like macro invocation 'check'
+        check(observed.Events().size()==unobserved.Events().size(),"Repeated presentation reads do not add events");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(86,13): error C4002: too many arguments for function-like macro invocation 'check'
+            check(std::tie(a0.tick,a0.source,a0.target,a0.action,a0.resolved,a0.healthLoss)==std::tie(b0.tick,b0.source,b0.target,b0.action,b0.resolved,b0.healthLoss),"Visual observation preserves every combat event");}
+            ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(88,5): error C2059: syntax error: 'return'
+    return checks;
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(90,1): error C2059: syntax error: '}'
+}
+^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(90,1): error C2143: syntax error: missing ';' before '}'
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Engine\Classes\Camera\CameraActor.h(18,2): error C2039: 'Z_Construct_UClass_ACameraActor_Statics': is not a member of '`global namespace''
+	GENERATED_UCLASS_BODY()
+	^
+[16/53] Compile [x64] WCVNextScenarios.cpp
+[17/53] Compile [x64] WCVNextSolo.cpp
+[18/53] Compile [x64] WCVerification.cpp
+[19/53] Compile [x64] WonderSave.cpp
+[20/53] Compile [x64] WonderSaveFile.cpp
+[21/53] Compile [x64] WonderScenario.cpp
+[22/53] Compile [x64] WonderScenarioFile.cpp
+[23/53] Compile [x64] WonderSimulation.cpp
+[24/53] Compile [x64] WonderSimulationTests.cpp
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(31,5): error C4002: too many arguments for function-like macro invocation 'check'
+    check(!base.rules.nearestReachableTarget&&!base.rules.mobileAttackRecovery,"Mana20 control retains both old rules");
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(32,5): error C4002: too many arguments for function-like macro invocation 'check'
+    check(candidate.Validate().empty()&&candidate.contentDigest!=base.contentDigest,"Clarity identity validates and separates saves");
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(37,9): error C4002: too many arguments for function-like macro invocation 'check'
+        check(f.Units()[source.target].cell==wc::Cell{3,4},"Nearest ranged target wins over initiative among in-range enemies");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(37,9): error C2187: syntax error: ')' was unexpected here
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(37,9): error C2958: the left brace '{' found at 'C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(37)' was not matched correctly
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(37,9): error C3329: syntax error: expected '}' not ')'
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(37,9): error C2059: syntax error: 'if'
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(37,9): error C2143: syntax error: missing ';' before '{'
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(38,31): error C2065: 'f': undeclared identifier
+        for(int n=0;n<60;++n){f.Tick();check(f.InvariantError().empty(),"Clarity combat preserves invariants");}
+                              ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(38,40): error C4002: too many arguments for function-like macro invocation 'check'
+        for(int n=0;n<60;++n){f.Tick();check(f.InvariantError().empty(),"Clarity combat preserves invariants");}
+                                       ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(38,40): error C2065: 'f': undeclared identifier
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(39,9): error C4002: too many arguments for function-like macro invocation 'check'
+        check(f.Units()[0].target==chosen,"In-range engagement remains stable");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(39,9): error C2065: 'f': undeclared identifier
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(39,9): error C2065: 'chosen': undeclared identifier
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(41,5): error C2447: '{': missing function header (old-style formal list?)
+    {
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(47,9): error C4002: too many arguments for function-like macro invocation 'check'
+        check(hits[2]==4,"Four independent basic attacks release on the same tick");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(49,5): error C2447: '{': missing function header (old-style formal list?)
+    {
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(56,9): error C4002: too many arguments for function-like macro invocation 'check'
+        check(fast.Units()[0].state==wc::ActionState::Moving,"Defeated target permits movement immediately after release");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(57,9): error C4002: too many arguments for function-like macro invocation 'check'
+        check(control.Units()[0].state==wc::ActionState::AttackRecovery,"Recovery-only comparison waits in place");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(59,69): error C4002: too many arguments for function-like macro invocation 'check'
+        for(int i=0;i<240&&!fast.Result().complete;++i){fast.Tick();check(fast.InvariantError().empty(),"Moving recovery preserves reservations");}
+                                                                    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(61,13): error C4002: too many arguments for function-like macro invocation 'check'
+            check(e.tick-previous>=80,"Movement never bypasses the original four-second attack interval");previous=e.tick;
+            ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(64,5): error C2447: '{': missing function header (old-style formal list?)
+    {
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(69,22): error C4002: too many arguments for function-like macro invocation 'check'
+            f.Tick();check(f.InvariantError().empty(),"Synthetic status effects preserve combat invariants");
+                     ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(73,9): error C4002: too many arguments for function-like macro invocation 'check'
+        check(stunned&&shielded&&healed&&modified,"Status demo exercises actual stun, shield, effective heal and modifier");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(74,37): error C4002: too many arguments for function-like macro invocation 'check'
+        for(const auto& u:f.Units())check(u.state!=wc::ActionState::Stunned&&u.shield==0&&u.modifiers.empty(),"Temporary status cues expire with authoritative states");
+                                    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(76,5): error C2447: '{': missing function header (old-style formal list?)
+    {
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(82,13): error C4002: too many arguments for function-like macro invocation 'check'
+            check(observed.InvariantError().empty(),"Visual observation preserves invariants");
+            ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(84,9): error C4002: too many arguments for function-like macro invocation 'check'
+        check(observed.Events().size()==unobserved.Events().size(),"Repeated presentation reads do not add events");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(86,13): error C4002: too many arguments for function-like macro invocation 'check'
+            check(std::tie(a0.tick,a0.source,a0.target,a0.action,a0.resolved,a0.healthLoss)==std::tie(b0.tick,b0.source,b0.target,b0.action,b0.resolved,b0.healthLoss),"Visual observation preserves every combat event");}
+            ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(88,5): error C2059: syntax error: 'return'
+    return checks;
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(90,1): error C2059: syntax error: '}'
+}
+^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(90,1): error C2143: syntax error: missing ';' before '}'
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(13,1): error C2059: syntax error: 'public'
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FWCArithmeticTest, "WonderChess.Runtime.IntegerContracts",
+^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(13,1): error C2143: syntax error: missing ';' before '{'
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(13,1): error C2447: '{': missing function header (old-style formal list?)
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(13,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(13,1): error C2146: syntax error: missing ';' before identifier 'FWCArithmeticTestAutomationTestInstance'
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(16,6): error C2825: '`anonymous-namespace'::FWCArithmeticTest': must be a class or namespace when followed by '::'
+bool FWCArithmeticTest::RunTest(const FString &Parameters)
+     ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(16,25): error C2510: 'FWCArithmeticTest': left of '::' must be a class/struct/union
+bool FWCArithmeticTest::RunTest(const FString &Parameters)
+                        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(20,10): error C3861: 'TestTrue': identifier not found
+    if (!TestTrue(TEXT("Load staged canonical catalog"), wc::LoadCatalog(Catalog, Error)))
+         ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(22,9): error C3861: 'AddError': identifier not found
+        AddError(Error);
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(25,5): error C3861: 'TestEqual': identifier not found
+    TestEqual(TEXT("Twenty-four alpha definitions"), static_cast<int32>(Catalog.units.size()), 24);
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(26,5): error C3861: 'TestEqual': identifier not found
+    TestEqual(TEXT("Physical mitigation"), wc::ResolveDamage(12000, wc::DamageType::Physical, 50, 0),
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(28,5): error C3861: 'TestEqual': identifier not found
+    TestEqual(TEXT("Magic mitigation"), wc::ResolveDamage(12000, wc::DamageType::Magic, 0, 20),
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(30,5): error C3861: 'TestEqual': identifier not found
+    TestEqual(TEXT("True bypass"), wc::ResolveDamage(9000, wc::DamageType::True, 100, 100), wc::Int(9000));
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(31,5): error C3861: 'TestEqual': identifier not found
+    TestEqual(TEXT("Additive rate bonuses"), wc::AttackInterval(800, 2500, Catalog.rules), 20);
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(32,5): error C3861: 'TestEqual': identifier not found
+    TestEqual(TEXT("Star health with additive bonus"), wc::StarValue(100000, 2, 2500, Catalog.rules),
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(42,5): error C3861: 'TestFalse': identifier not found
+    TestFalse(TEXT("Reject unauthenticated seat"), Match.Submit(1, Buy).accepted);
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(43,5): error C3861: 'TestTrue': identifier not found
+    TestTrue(TEXT("Accept authenticated purchase"), Match.Submit(0, Buy).accepted);
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(45,5): error C3861: 'TestTrue': identifier not found
+    TestTrue(TEXT("Idempotent replay"), Match.Submit(0, Buy).accepted);
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(46,5): error C3861: 'TestEqual': identifier not found
+    TestEqual(TEXT("Replay pays once"), Match.Seats()[0].gold, Gold);
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(47,5): error C3861: 'TestTrue': identifier not found
+    TestTrue(TEXT("Persistent state valid"), Match.InvariantError().empty());
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(184,1): error C2838: 'ApplicationContextMask': illegal qualified name in member declaration
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FWCCombatClarityTest, "WonderChess.VNext.CombatClarityContracts",
+^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(184,1): error C2065: 'ApplicationContextMask': undeclared identifier
+[25/53] Compile [x64] WonderTournament.cpp
+** For WonderChess-Win64-Development **
+[26/53] Compile [x64] Module.WonderChessRuntime.gen.cpp
+[27/53] Compile [x64] WCAnimationReview.cpp
+[28/53] Compile [x64] WCBoardPresenter.cpp
+[29/53] Compile [x64] WCDefinitionRegistry.cpp
+[30/53] Compile [x64] WCFrontEnd.cpp
+[31/53] Compile [x64] WCFrontEndAudit.cpp
+[32/53] Compile [x64] WCFrontEndProfile.cpp
+[33/53] Compile [x64] WCFrontEndScene.cpp
+[34/53] Compile [x64] WCMatchHUD.cpp
+[35/53] Compile [x64] WCMatchRuntime.cpp
+[36/53] Compile [x64] WCNetworkSession.cpp
+[37/53] Compile [x64] WCVNextCombatPresentation.cpp
+[38/53] Compile [x64] WCVNextLab.cpp
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(31,5): error C4002: too many arguments for function-like macro invocation 'check'
+    check(!base.rules.nearestReachableTarget&&!base.rules.mobileAttackRecovery,"Mana20 control retains both old rules");
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(32,5): error C4002: too many arguments for function-like macro invocation 'check'
+    check(candidate.Validate().empty()&&candidate.contentDigest!=base.contentDigest,"Clarity identity validates and separates saves");
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(37,9): error C4002: too many arguments for function-like macro invocation 'check'
+        check(f.Units()[source.target].cell==wc::Cell{3,4},"Nearest ranged target wins over initiative among in-range enemies");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(37,9): error C2187: syntax error: ')' was unexpected here
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(37,9): error C2958: the left brace '{' found at 'C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(37)' was not matched correctly
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(37,9): error C3329: syntax error: expected '}' not ')'
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(37,9): error C2059: syntax error: 'if'
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(37,9): error C2143: syntax error: missing ';' before '{'
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(38,31): error C2065: 'f': undeclared identifier
+        for(int n=0;n<60;++n){f.Tick();check(f.InvariantError().empty(),"Clarity combat preserves invariants");}
+                              ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(38,40): error C4002: too many arguments for function-like macro invocation 'check'
+        for(int n=0;n<60;++n){f.Tick();check(f.InvariantError().empty(),"Clarity combat preserves invariants");}
+                                       ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(38,40): error C2065: 'f': undeclared identifier
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(39,9): error C4002: too many arguments for function-like macro invocation 'check'
+        check(f.Units()[0].target==chosen,"In-range engagement remains stable");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(39,9): error C2065: 'f': undeclared identifier
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(39,9): error C2065: 'chosen': undeclared identifier
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(41,5): error C2447: '{': missing function header (old-style formal list?)
+    {
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(47,9): error C4002: too many arguments for function-like macro invocation 'check'
+        check(hits[2]==4,"Four independent basic attacks release on the same tick");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(49,5): error C2447: '{': missing function header (old-style formal list?)
+    {
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(56,9): error C4002: too many arguments for function-like macro invocation 'check'
+        check(fast.Units()[0].state==wc::ActionState::Moving,"Defeated target permits movement immediately after release");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(57,9): error C4002: too many arguments for function-like macro invocation 'check'
+        check(control.Units()[0].state==wc::ActionState::AttackRecovery,"Recovery-only comparison waits in place");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(59,69): error C4002: too many arguments for function-like macro invocation 'check'
+        for(int i=0;i<240&&!fast.Result().complete;++i){fast.Tick();check(fast.InvariantError().empty(),"Moving recovery preserves reservations");}
+                                                                    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(61,13): error C4002: too many arguments for function-like macro invocation 'check'
+            check(e.tick-previous>=80,"Movement never bypasses the original four-second attack interval");previous=e.tick;
+            ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(64,5): error C2447: '{': missing function header (old-style formal list?)
+    {
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(69,22): error C4002: too many arguments for function-like macro invocation 'check'
+            f.Tick();check(f.InvariantError().empty(),"Synthetic status effects preserve combat invariants");
+                     ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(73,9): error C4002: too many arguments for function-like macro invocation 'check'
+        check(stunned&&shielded&&healed&&modified,"Status demo exercises actual stun, shield, effective heal and modifier");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(74,37): error C4002: too many arguments for function-like macro invocation 'check'
+        for(const auto& u:f.Units())check(u.state!=wc::ActionState::Stunned&&u.shield==0&&u.modifiers.empty(),"Temporary status cues expire with authoritative states");
+                                    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(76,5): error C2447: '{': missing function header (old-style formal list?)
+    {
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(82,13): error C4002: too many arguments for function-like macro invocation 'check'
+            check(observed.InvariantError().empty(),"Visual observation preserves invariants");
+            ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(84,9): error C4002: too many arguments for function-like macro invocation 'check'
+        check(observed.Events().size()==unobserved.Events().size(),"Repeated presentation reads do not add events");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(86,13): error C4002: too many arguments for function-like macro invocation 'check'
+            check(std::tie(a0.tick,a0.source,a0.target,a0.action,a0.resolved,a0.healthLoss)==std::tie(b0.tick,b0.source,b0.target,b0.action,b0.resolved,b0.healthLoss),"Visual observation preserves every combat event");}
+            ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(88,5): error C2059: syntax error: 'return'
+    return checks;
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(90,1): error C2059: syntax error: '}'
+}
+^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(90,1): error C2143: syntax error: missing ';' before '}'
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Engine\Classes\Camera\CameraActor.h(18,2): error C2039: 'Z_Construct_UClass_ACameraActor_Statics': is not a member of '`global namespace''
+	GENERATED_UCLASS_BODY()
+	^
+[39/53] Compile [x64] WCVNextScenarios.cpp
+[40/53] Compile [x64] WCVNextSolo.cpp
+[41/53] Compile [x64] WCVerification.cpp
+[42/53] Compile [x64] WonderSave.cpp
+[43/53] Compile [x64] WonderSaveFile.cpp
+[44/53] Compile [x64] WonderScenario.cpp
+[45/53] Compile [x64] WonderScenarioFile.cpp
+[46/53] Compile [x64] WonderSimulation.cpp
+[47/53] Compile [x64] WonderSimulationTests.cpp
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(31,5): error C4002: too many arguments for function-like macro invocation 'check'
+    check(!base.rules.nearestReachableTarget&&!base.rules.mobileAttackRecovery,"Mana20 control retains both old rules");
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(32,5): error C4002: too many arguments for function-like macro invocation 'check'
+    check(candidate.Validate().empty()&&candidate.contentDigest!=base.contentDigest,"Clarity identity validates and separates saves");
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(37,9): error C4002: too many arguments for function-like macro invocation 'check'
+        check(f.Units()[source.target].cell==wc::Cell{3,4},"Nearest ranged target wins over initiative among in-range enemies");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(37,9): error C2187: syntax error: ')' was unexpected here
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(37,9): error C2958: the left brace '{' found at 'C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(37)' was not matched correctly
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(37,9): error C3329: syntax error: expected '}' not ')'
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(37,9): error C2059: syntax error: 'if'
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(37,9): error C2143: syntax error: missing ';' before '{'
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(38,31): error C2065: 'f': undeclared identifier
+        for(int n=0;n<60;++n){f.Tick();check(f.InvariantError().empty(),"Clarity combat preserves invariants");}
+                              ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(38,40): error C4002: too many arguments for function-like macro invocation 'check'
+        for(int n=0;n<60;++n){f.Tick();check(f.InvariantError().empty(),"Clarity combat preserves invariants");}
+                                       ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(38,40): error C2065: 'f': undeclared identifier
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(39,9): error C4002: too many arguments for function-like macro invocation 'check'
+        check(f.Units()[0].target==chosen,"In-range engagement remains stable");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(39,9): error C2065: 'f': undeclared identifier
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(39,9): error C2065: 'chosen': undeclared identifier
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(41,5): error C2447: '{': missing function header (old-style formal list?)
+    {
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(47,9): error C4002: too many arguments for function-like macro invocation 'check'
+        check(hits[2]==4,"Four independent basic attacks release on the same tick");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(49,5): error C2447: '{': missing function header (old-style formal list?)
+    {
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(56,9): error C4002: too many arguments for function-like macro invocation 'check'
+        check(fast.Units()[0].state==wc::ActionState::Moving,"Defeated target permits movement immediately after release");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(57,9): error C4002: too many arguments for function-like macro invocation 'check'
+        check(control.Units()[0].state==wc::ActionState::AttackRecovery,"Recovery-only comparison waits in place");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(59,69): error C4002: too many arguments for function-like macro invocation 'check'
+        for(int i=0;i<240&&!fast.Result().complete;++i){fast.Tick();check(fast.InvariantError().empty(),"Moving recovery preserves reservations");}
+                                                                    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(61,13): error C4002: too many arguments for function-like macro invocation 'check'
+            check(e.tick-previous>=80,"Movement never bypasses the original four-second attack interval");previous=e.tick;
+            ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(64,5): error C2447: '{': missing function header (old-style formal list?)
+    {
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(69,22): error C4002: too many arguments for function-like macro invocation 'check'
+            f.Tick();check(f.InvariantError().empty(),"Synthetic status effects preserve combat invariants");
+                     ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(73,9): error C4002: too many arguments for function-like macro invocation 'check'
+        check(stunned&&shielded&&healed&&modified,"Status demo exercises actual stun, shield, effective heal and modifier");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(74,37): error C4002: too many arguments for function-like macro invocation 'check'
+        for(const auto& u:f.Units())check(u.state!=wc::ActionState::Stunned&&u.shield==0&&u.modifiers.empty(),"Temporary status cues expire with authoritative states");
+                                    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(76,5): error C2447: '{': missing function header (old-style formal list?)
+    {
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(82,13): error C4002: too many arguments for function-like macro invocation 'check'
+            check(observed.InvariantError().empty(),"Visual observation preserves invariants");
+            ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(84,9): error C4002: too many arguments for function-like macro invocation 'check'
+        check(observed.Events().size()==unobserved.Events().size(),"Repeated presentation reads do not add events");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(86,13): error C4002: too many arguments for function-like macro invocation 'check'
+            check(std::tie(a0.tick,a0.source,a0.target,a0.action,a0.resolved,a0.healthLoss)==std::tie(b0.tick,b0.source,b0.target,b0.action,b0.resolved,b0.healthLoss),"Visual observation preserves every combat event");}
+            ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(88,5): error C2059: syntax error: 'return'
+    return checks;
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(90,1): error C2059: syntax error: '}'
+}
+^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderCombatClarityTests.h(90,1): error C2143: syntax error: missing ';' before '}'
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(13,1): error C2059: syntax error: 'public'
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FWCArithmeticTest, "WonderChess.Runtime.IntegerContracts",
+^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(13,1): error C2143: syntax error: missing ';' before '{'
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(13,1): error C2447: '{': missing function header (old-style formal list?)
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(13,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(13,1): error C2146: syntax error: missing ';' before identifier 'FWCArithmeticTestAutomationTestInstance'
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(16,6): error C2825: '`anonymous-namespace'::FWCArithmeticTest': must be a class or namespace when followed by '::'
+bool FWCArithmeticTest::RunTest(const FString &Parameters)
+     ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(16,25): error C2510: 'FWCArithmeticTest': left of '::' must be a class/struct/union
+bool FWCArithmeticTest::RunTest(const FString &Parameters)
+                        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(20,10): error C3861: 'TestTrue': identifier not found
+    if (!TestTrue(TEXT("Load staged canonical catalog"), wc::LoadCatalog(Catalog, Error)))
+         ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(22,9): error C3861: 'AddError': identifier not found
+        AddError(Error);
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(25,5): error C3861: 'TestEqual': identifier not found
+    TestEqual(TEXT("Twenty-four alpha definitions"), static_cast<int32>(Catalog.units.size()), 24);
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(26,5): error C3861: 'TestEqual': identifier not found
+    TestEqual(TEXT("Physical mitigation"), wc::ResolveDamage(12000, wc::DamageType::Physical, 50, 0),
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(28,5): error C3861: 'TestEqual': identifier not found
+    TestEqual(TEXT("Magic mitigation"), wc::ResolveDamage(12000, wc::DamageType::Magic, 0, 20),
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(30,5): error C3861: 'TestEqual': identifier not found
+    TestEqual(TEXT("True bypass"), wc::ResolveDamage(9000, wc::DamageType::True, 100, 100), wc::Int(9000));
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(31,5): error C3861: 'TestEqual': identifier not found
+    TestEqual(TEXT("Additive rate bonuses"), wc::AttackInterval(800, 2500, Catalog.rules), 20);
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(32,5): error C3861: 'TestEqual': identifier not found
+    TestEqual(TEXT("Star health with additive bonus"), wc::StarValue(100000, 2, 2500, Catalog.rules),
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(42,5): error C3861: 'TestFalse': identifier not found
+    TestFalse(TEXT("Reject unauthenticated seat"), Match.Submit(1, Buy).accepted);
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(43,5): error C3861: 'TestTrue': identifier not found
+    TestTrue(TEXT("Accept authenticated purchase"), Match.Submit(0, Buy).accepted);
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(45,5): error C3861: 'TestTrue': identifier not found
+    TestTrue(TEXT("Idempotent replay"), Match.Submit(0, Buy).accepted);
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(46,5): error C3861: 'TestEqual': identifier not found
+    TestEqual(TEXT("Replay pays once"), Match.Seats()[0].gold, Gold);
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(47,5): error C3861: 'TestTrue': identifier not found
+    TestTrue(TEXT("Persistent state valid"), Match.InvariantError().empty());
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(184,1): error C2838: 'ApplicationContextMask': illegal qualified name in member declaration
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FWCCombatClarityTest, "WonderChess.VNext.CombatClarityContracts",
+^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulationTests.cpp(184,1): error C2065: 'ApplicationContextMask': undeclared identifier
+[48/53] Compile [x64] WonderTournament.cpp
+Trace written to file C:/Users/iputu/AppData/Roaming/Unreal Engine/AutomationTool/Logs/C+Program+Files+Epic+Games+UE_5.7/UBA-WonderChessEditor-Win64-Development.uba with size 84.6kb
+Total time in Unreal Build Accelerator local executor: 353.01 seconds
+
+Result: Failed (OtherCompilationError)
+Total execution time: 386.81 seconds
+Took 387.21s to run dotnet.exe, ExitCode=6
+UnrealBuildTool failed. See log for more details. (C:\Users\iputu\AppData\Roaming\Unreal Engine\AutomationTool\Logs\C+Program+Files+Epic+Games+UE_5.7\UBA-WonderChessEditor-Win64-Development.txt)
+AutomationTool executed for 0h 6m 32s
+AutomationTool exiting with ExitCode=6 (6)
+BUILD FAILED

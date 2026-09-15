@@ -1,0 +1,154 @@
+{
+  "recorded_utc": "2026-09-12T16:30:11.844687+00:00",
+  "boundary": "Agent-operated real Windows pointer/keyboard checks on the development PC. Zero external participants; partial journeys, not human acceptance.",
+  "candidate": "WonderChess-Milestones-r4",
+  "executable_sha256": "a17818ab35991d069027a6c8f6a6725fb2ca64095942ce0e5f78331d9cad3139",
+  "resolutions": {
+    "1280x720": {
+      "status": "PASS_SCOPED",
+      "actions": [
+        "cold launch with existing checkpoint",
+        "Load saved preparation",
+        "Scout 2",
+        "Your board",
+        "select Bellback D2",
+        "Right keyboard cursor to E2",
+        "Exit"
+      ],
+      "observed": "Gold9; 50.5s paused; purchased slot0; Bellback1star D2; private shop/bench/draft masked when scouting; adjacent Root labels fit",
+      "evidence": "solo-cold-resume-r4",
+      "save_sha256": "0b4c2d46ad9e1b1423c78b46c9a25f8fed2fbd9e18a54f0dd1fc1d00c1cd7a0c"
+    },
+    "1600x1000": {
+      "status": "PASS_SCOPED",
+      "actions": [
+        "Pause",
+        "buy Bellback slots0,3,4",
+        "select merged bench recruit",
+        "deploy C3",
+        "Right then Enter to D3",
+        "buy4XP",
+        "reject second XP purchase without sufficient gold",
+        "Save preparation",
+        "Exit"
+      ],
+      "observed": "Three purchases cost3gold and merged to one2star Bellback; level4 cost4gold; rejected purchase preserved3gold/level4/formation; pause28.9s; saved",
+      "evidence": "solo-input-r4-1600",
+      "save_sha256": "b3481abc84c4ae7a72f6ef2ec74a7f9e349b70be535672a8d62b37e50448f3c3"
+    },
+    "1920x1080": {
+      "status": "PASS_SCOPED",
+      "actions": [
+        "cold launch",
+        "Load saved preparation",
+        "Exit"
+      ],
+      "observed": "Restored2star Bellback D3, gold3, level4,28.9s paused, three purchased slots",
+      "evidence": "solo-input-r4-1920"
+    }
+  },
+  "laboratory_1280x720": {
+    "status": "PASS_SCOPED",
+    "actions": [
+      "Next scenario",
+      "Compare A/B",
+      "Save formation",
+      "Mirror current",
+      "Load formation"
+    ],
+    "observed": "F01seed41001 loaded; guard prevention60.710/0.000; mirrored teams and creatures updated; disk restored original two-v-two formation with seed;639byte physicalfile",
+    "evidence": "lab-exercise-r4-1280"
+  },
+  "still_not_run": [
+    "complete normal-speed tournament through actual controls at every resolution",
+    "actual relic draft/equip input journey",
+    "full-bench merge input journey",
+    "external novice comprehension",
+    "continuous motion/audio acceptance",
+    "final-content performance"
+  ],
+  "known_usability_issues": [
+    "terse command rejection feedback",
+    "scroll navigation for inspector and recap",
+    "onboarding and accessibility acceptance incomplete"
+  ],
+  "security_dialog": {
+    "earlier_status": "BLOCKED",
+    "final_status": "NO_LONGER_PRESENT",
+    "explanation": "Older r2 process closed; final r4 window exposed normally. No security UI or firewall settings were changed."
+  },
+  "screenshots": [
+    {
+      "path": "reports/vnext/milestones/solo-cold-resume-r4/01-startup-save-choice.png",
+      "sha256": "41cc4fb414e12cf54c290dcca9f69d08de96a4ff1fd9d00ce2d76e8bf049c183"
+    },
+    {
+      "path": "reports/vnext/milestones/solo-cold-resume-r4/02-restored-bellback-d2.png",
+      "sha256": "d7b75d12ccc2c9744c3ce9b8533f526cfe38ec87587d8e5711c8f2f3cea6f07c"
+    },
+    {
+      "path": "reports/vnext/milestones/solo-cold-resume-r4/03-scout-private-masked-labels-fit.png",
+      "sha256": "fb0e8280085e0be34734c759e2efdf2f20dbe7bd09ffceada548c4f6c610c64b"
+    },
+    {
+      "path": "reports/vnext/milestones/solo-cold-resume-r4/04-keyboard-cursor-e2.png",
+      "sha256": "f2930107ad15c510499e0de45146733b7fa2910cd0bfd4af185115ab73a7081f"
+    },
+    {
+      "path": "reports/vnext/milestones/solo-input-r4-1600/01-three-copy-upgrade.png",
+      "sha256": "1d0ee505432bf8a07596d401468355f48d05eb53a273d013fece997136a90d9e"
+    },
+    {
+      "path": "reports/vnext/milestones/solo-input-r4-1600/02-keyboard-move-d3.png",
+      "sha256": "0d29b3c3ed649b7a992499bb2eb8a0f90fb1ff13c4cdfd001d9959f6654f9444"
+    },
+    {
+      "path": "reports/vnext/milestones/solo-input-r4-1600/03-xp-rejection-state-preserved.png",
+      "sha256": "4da5557b3de03164f9ca45da6215af57bc3fbf8243c16bb94cd1bc17627b4fd6"
+    },
+    {
+      "path": "reports/vnext/milestones/solo-input-r4-1600/04-save-completed.png",
+      "sha256": "3b3459ad0697e1dc2a9264efa26b3500c198984d32067305cc92d21a3171e3b5"
+    },
+    {
+      "path": "reports/vnext/milestones/solo-input-r4-1920/01-startup.png",
+      "sha256": "c4afedef7674470fd40b88347e059db45c6b2b7d8171be42de5697cfbb8987a3"
+    },
+    {
+      "path": "reports/vnext/milestones/solo-input-r4-1920/02-restored-2star-d3-level4.png",
+      "sha256": "c7be1eb8c1c0fe1d85b5edd1b353ae04c07b96dffdc58f721964766cd13c4177"
+    },
+    {
+      "path": "reports/vnext/milestones/lab-exercise-r4-1280/input-ab-comparison.png",
+      "sha256": "3c69b20db706985213f060ce1fe292e20dddf743baf425ca99dfaa0d58068930"
+    },
+    {
+      "path": "reports/vnext/milestones/lab-exercise-r4-1280/input-disk-restored.png",
+      "sha256": "37140670140cd7544fcff28de6865f1163e4681b4d2af80628a623ec70f31d18"
+    },
+    {
+      "path": "reports/vnext/milestones/lab-exercise-r4-1280/input-mirrored.png",
+      "sha256": "ac5ca6b7b5adf897b7d5f45c713d188259b41ef9ff1ac708910bf4332a20a26c"
+    },
+    {
+      "path": "reports/vnext/milestones/lab-exercise-r4-1280/lab-combat.png",
+      "sha256": "7545d1e23e2697f1bfda906f6b2183b833ee0ddf62618ac36e326fdf2b97ac5c"
+    },
+    {
+      "path": "reports/vnext/milestones/lab-exercise-r4-1280/lab-guard-relic-preparation.png",
+      "sha256": "a3ff047c424e7a6b776570821485c7b7cb79caa3c37e9aac2eca301348c0a1ad"
+    },
+    {
+      "path": "reports/vnext/milestones/lab-exercise-r4-1280/lab-preparation.png",
+      "sha256": "897a8991b97fac9045b753cb33cf421263248f0d888259447552749c92072ff4"
+    },
+    {
+      "path": "reports/vnext/milestones/lab-exercise-r4-1280/lab-replay-result.png",
+      "sha256": "38069d99ce0bdfa24cba606a596bf4fdd6b3a0287a83414cf36c0b3f1ae8ab5f"
+    },
+    {
+      "path": "reports/vnext/milestones/lab-exercise-r4-1280/lab-tidal-preparation.png",
+      "sha256": "f9cf43814e5d1356748c02056891ca074dcfa538becc13ec2c0e1246dfaa79f8"
+    }
+  ]
+}

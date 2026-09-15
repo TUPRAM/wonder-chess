@@ -1,0 +1,249 @@
+Running AutomationTool...
+Using bundled DotNet SDK version: 8.0.412 win-x64
+Starting AutomationTool...
+Parsing command line: BuildCookRun -project=C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\WonderChess.uproject -noP4 -platform=Win64 -clientconfig=Development -build -cook -stage -pak -archive -archivedirectory=C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\builds\WonderChess-Mana-r7 -prereqs -utf8output -ubtargs=-NoHotReloadFromIDE
+Initializing script modules...
+Total script module initialization time: 1.45 s.
+Using C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MSBuild.exe
+Executing commands...
+Setting up ProjectParams for C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\WonderChess.uproject
+********** BUILD COMMAND STARTED **********
+Running: C:\Program Files\Epic Games\UE_5.7\Engine\Binaries\ThirdParty\DotNet\8.0.412\win-x64\dotnet.exe "C:\Program Files\Epic Games\UE_5.7\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" -Target="WonderChessEditor Win64 Development -Project=C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\WonderChess.uproject" -Target="WonderChess Win64 Development -Project=C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\WonderChess.uproject  -remoteini=\"C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\"  -NoHotReloadFromIDE " -log="C:\Users\iputu\AppData\Roaming\Unreal Engine\AutomationTool\Logs\C+Program+Files+Epic+Games+UE_5.7\UBA-WonderChessEditor-Win64-Development.txt"
+Log file: C:\Users\iputu\AppData\Roaming\Unreal Engine\AutomationTool\Logs\C+Program+Files+Epic+Games+UE_5.7\UBA-WonderChessEditor-Win64-Development.txt
+Using 'git status' to determine working set for adaptive non-unity build (C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7).
+Invalidating makefile for WonderChessEditor (working set of source files changed)
+UHT compiled-in object format Default
+Parsing headers for WonderChessEditor
+  Running Internal UnrealHeaderTool C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\WonderChess.uproject C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Intermediate\Build\Win64\WonderChessEditor\Development\WonderChessEditor.uhtmanifest -WarningsAsErrors -installed
+UHT processed WonderChessEditor in 12.8989973 seconds (0 files written)
+Invalidating makefile for WonderChess (working set of source files changed)
+UHT compiled-in object format Default
+Parsing headers for WonderChess
+  Running Internal UnrealHeaderTool C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\WonderChess.uproject C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Intermediate\Build\Win64\WonderChess\Development\WonderChess.uhtmanifest -WarningsAsErrors -installed
+UHT processed WonderChess in 1.4898438 seconds (0 files written)
+Building WonderChessEditor and WonderChess...
+WonderChessEditor: Using Visual Studio 2022 14.44.35226 toolchain (C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+WonderChessEditor: [Adaptive Build] Excluded from WonderChessRuntime unity file: WCDefinitionRegistry.cpp, WCMatchRuntime.cpp, WCVNextLab.cpp, WCVNextScenarios.cpp, WCVNextSolo.cpp, WonderChessRuntime.cpp, WonderSave.cpp, WonderSaveFile.cpp, WonderScenario.cpp, WonderScenarioFile.cpp, WonderSimulation.cpp, WonderSimulationTests.cpp, WonderTournament.cpp
+WonderChess: Using Visual Studio 2022 14.44.35226 toolchain (C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+WonderChess: [Adaptive Build] Excluded from WonderChessRuntime unity file: WCDefinitionRegistry.cpp, WCMatchRuntime.cpp, WCVNextLab.cpp, WCVNextScenarios.cpp, WCVNextSolo.cpp, WonderChessRuntime.cpp, WonderSave.cpp, WonderSaveFile.cpp, WonderScenario.cpp, WonderScenarioFile.cpp, WonderSimulation.cpp, WonderSimulationTests.cpp, WonderTournament.cpp
+Determining max actions to execute in parallel (8 physical cores, 16 logical cores)
+  Executing up to 8 processes, one per physical core
+  Requested 1.5 GB memory per action, 2.89 GB available: limiting max parallel actions to 1
+Using Unreal Build Accelerator local executor to run 51 action(s)
+  Storage capacity 40Gb
+---- Starting trace: 260913_142046 ----
+UbaServer - Listening on 0.0.0.0:1345
+** For WonderChessEditor-Win64-Development **
+[1/51] Compile [x64] Module.WonderChessRuntime.gen.cpp
+[2/51] Compile [x64] WCAnimationReview.cpp
+[3/51] Compile [x64] WCBoardPresenter.cpp
+[4/51] Compile [x64] WCDefinitionRegistry.cpp
+[5/51] Compile [x64] WCFrontEnd.cpp
+[6/51] Compile [x64] WCFrontEndAudit.cpp
+[7/51] Compile [x64] WCFrontEndProfile.cpp
+[8/51] Compile [x64] WCFrontEndScene.cpp
+[9/51] Compile [x64] WCImportedAssetTests.cpp
+[10/51] Compile [x64] WCMatchHUD.cpp
+[11/51] Compile [x64] WCMatchRuntime.cpp
+[12/51] Compile [x64] WCNetworkSession.cpp
+[13/51] Compile [x64] WCNeutralAssetTests.cpp
+[14/51] Compile [x64] WCVNextLab.cpp
+[15/51] Compile [x64] WCVNextScenarios.cpp
+[16/51] Compile [x64] WCVNextSolo.cpp
+[17/51] Compile [x64] WCVerification.cpp
+[18/51] Compile [x64] WonderSave.cpp
+[19/51] Compile [x64] WonderSaveFile.cpp
+[20/51] Compile [x64] WonderScenario.cpp
+[21/51] Compile [x64] WonderScenarioFile.cpp
+[22/51] Compile [x64] WonderSimulation.cpp
+[23/51] Compile [x64] WonderSimulationTests.cpp
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(14,5): error C4002: too many arguments for function-like macro invocation 'verify'
+    verify(base.Validate().empty() && mana.Validate().empty(), "Both activation variants validate");
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(15,5): error C4002: too many arguments for function-like macro invocation 'verify'
+    verify(base.contentDigest != mana.contentDigest && base.balanceVersion != mana.balanceVersion, "Experiment identity isolates saves and replay");
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(19,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(base.units[i].ability.mana.maximum == 0, "Default control has no mana");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(20,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(b.ability.mana.maximum == (i >= 3 ? 10000 : 0), "Only the three named heroes use mana");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(21,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(std::tie(a.cost,a.health,a.attackDamage,a.attackRate,a.range,a.armor,a.resistance,a.movementRate) ==
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(23,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(std::tie(a.ability.mechanic,a.ability.selector,a.ability.magnitude,a.ability.range,a.ability.radius,a.ability.castMs,a.ability.recoveryMs) ==
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(33,113): error C4002: too many arguments for function-like macro invocation 'verify'
+    const auto tick=[&](wc::Combat& combat,int n){for(int i=0;i<n&&!combat.Result().complete;++i){combat.Tick();verify(combat.InvariantError().empty(),"Mana ledger and occupancy hold every tick");}};
+                                                                                                                ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(41,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(u.manaFromAttacks==10000&&u.manaFromDamage==0,"Exactly ten landed basics earn 100 mana");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(43,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(find(fight,1).castsCommitted==1&&find(fight,1).manaSpent==10000,"100 mana is spent once on an automatic cast");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(44,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(find(fight,1).firstCastTick>=180,"Zero start prevents a free opening cast");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(46,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(find(reset,1).mana==0&&find(reset,1).castsCommitted==0,"New encounter resets mana and activity");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(52,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(find(fight,1).health==900000&&find(fight,1).mana==1000,"Losing ten percent actual HP earns ten mana");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(55,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(find(capped,1).mana==2000,"Incoming per-event cap applies after mitigation");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(58,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(find(lethal,1).mana==0&&find(lethal,1).manaOnDeath==7000&&find(lethal,1).manaFromDamage==0,"Death clears held mana and grants none for lethal damage");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(63,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(find(fight,1).mana==4000,"Three incoming twenty-mana events obey the forty-mana window cap");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(69,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(find(fight,1).mana==10000&&find(fight,1).castsCommitted==0&&find(fight,1).manaBlockedAttempts>0,"Full mana is held for an empty facing lane");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(77,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(find(fight,1).castsCommitted==1&&find(fight,1).mana==0&&find(fight,1).manaSpent==10000,"Interrupted commitment does not refund mana");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(78,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(find(fight,1).state==wc::ActionState::Stunned,"Actual hostile stun interrupts the cast");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(79,42): error C4002: too many arguments for function-like macro invocation 'verify'
+        for(const auto& e:fight.Events())verify(e.mechanic!=wc::AbilityMechanic::CrossingBeams,"Unreleased interrupted beams do not hit");
+                                         ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(85,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(find(fight,1).manaFromAttacks==0&&find(fight,1).manaFromDamage==0,"Cast and recovery pause gain; area spell gives no outgoing mana");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(87,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(damage,"No-outgoing-mana assertion includes a real damaging beam");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(103,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(true,"Shield-only damage gives no incoming mana");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(104,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(find(fight,1).manaFromAttacks>0,"Landed basic attacks into a shield earn outgoing mana");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(109,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(effective.mana.maximum==10000&&effective.mana.gainDivisorBp==mana.relics[relic].cooldownBp,"Relic cadence transforms gain without changing 100 cost");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(110,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(effective.magnitude==wc::EffectiveAbility(base,base.units[4],relic).magnitude,"Relic impact unchanged across activation variants");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(113,5): error C4002: too many arguments for function-like macro invocation 'verify'
+    verify(!invalid.Validate().empty(),"Invalid mana caps are rejected");
+    ^
+[24/51] Compile [x64] WonderTournament.cpp
+** For WonderChess-Win64-Development **
+[25/51] Compile [x64] Module.WonderChessRuntime.gen.cpp
+[26/51] Compile [x64] WCAnimationReview.cpp
+[27/51] Compile [x64] WCBoardPresenter.cpp
+[28/51] Compile [x64] WCDefinitionRegistry.cpp
+[29/51] Compile [x64] WCFrontEnd.cpp
+[30/51] Compile [x64] WCFrontEndAudit.cpp
+[31/51] Compile [x64] WCFrontEndProfile.cpp
+[32/51] Compile [x64] WCFrontEndScene.cpp
+[33/51] Compile [x64] WCMatchHUD.cpp
+[34/51] Compile [x64] WCMatchRuntime.cpp
+[35/51] Compile [x64] WCNetworkSession.cpp
+[36/51] Compile [x64] WCVNextLab.cpp
+[37/51] Compile [x64] WCVNextScenarios.cpp
+[38/51] Compile [x64] WCVNextSolo.cpp
+[39/51] Compile [x64] WCVerification.cpp
+[40/51] Compile [x64] WonderSave.cpp
+[41/51] Compile [x64] WonderSaveFile.cpp
+[42/51] Compile [x64] WonderScenario.cpp
+[43/51] Compile [x64] WonderScenarioFile.cpp
+[44/51] Compile [x64] WonderSimulation.cpp
+[45/51] Compile [x64] WonderSimulationTests.cpp
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(14,5): error C4002: too many arguments for function-like macro invocation 'verify'
+    verify(base.Validate().empty() && mana.Validate().empty(), "Both activation variants validate");
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(15,5): error C4002: too many arguments for function-like macro invocation 'verify'
+    verify(base.contentDigest != mana.contentDigest && base.balanceVersion != mana.balanceVersion, "Experiment identity isolates saves and replay");
+    ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(19,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(base.units[i].ability.mana.maximum == 0, "Default control has no mana");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(20,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(b.ability.mana.maximum == (i >= 3 ? 10000 : 0), "Only the three named heroes use mana");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(21,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(std::tie(a.cost,a.health,a.attackDamage,a.attackRate,a.range,a.armor,a.resistance,a.movementRate) ==
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(23,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(std::tie(a.ability.mechanic,a.ability.selector,a.ability.magnitude,a.ability.range,a.ability.radius,a.ability.castMs,a.ability.recoveryMs) ==
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(33,113): error C4002: too many arguments for function-like macro invocation 'verify'
+    const auto tick=[&](wc::Combat& combat,int n){for(int i=0;i<n&&!combat.Result().complete;++i){combat.Tick();verify(combat.InvariantError().empty(),"Mana ledger and occupancy hold every tick");}};
+                                                                                                                ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(41,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(u.manaFromAttacks==10000&&u.manaFromDamage==0,"Exactly ten landed basics earn 100 mana");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(43,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(find(fight,1).castsCommitted==1&&find(fight,1).manaSpent==10000,"100 mana is spent once on an automatic cast");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(44,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(find(fight,1).firstCastTick>=180,"Zero start prevents a free opening cast");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(46,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(find(reset,1).mana==0&&find(reset,1).castsCommitted==0,"New encounter resets mana and activity");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(52,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(find(fight,1).health==900000&&find(fight,1).mana==1000,"Losing ten percent actual HP earns ten mana");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(55,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(find(capped,1).mana==2000,"Incoming per-event cap applies after mitigation");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(58,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(find(lethal,1).mana==0&&find(lethal,1).manaOnDeath==7000&&find(lethal,1).manaFromDamage==0,"Death clears held mana and grants none for lethal damage");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(63,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(find(fight,1).mana==4000,"Three incoming twenty-mana events obey the forty-mana window cap");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(69,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(find(fight,1).mana==10000&&find(fight,1).castsCommitted==0&&find(fight,1).manaBlockedAttempts>0,"Full mana is held for an empty facing lane");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(77,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(find(fight,1).castsCommitted==1&&find(fight,1).mana==0&&find(fight,1).manaSpent==10000,"Interrupted commitment does not refund mana");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(78,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(find(fight,1).state==wc::ActionState::Stunned,"Actual hostile stun interrupts the cast");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(79,42): error C4002: too many arguments for function-like macro invocation 'verify'
+        for(const auto& e:fight.Events())verify(e.mechanic!=wc::AbilityMechanic::CrossingBeams,"Unreleased interrupted beams do not hit");
+                                         ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(85,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(find(fight,1).manaFromAttacks==0&&find(fight,1).manaFromDamage==0,"Cast and recovery pause gain; area spell gives no outgoing mana");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(87,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(damage,"No-outgoing-mana assertion includes a real damaging beam");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(103,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(true,"Shield-only damage gives no incoming mana");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(104,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(find(fight,1).manaFromAttacks>0,"Landed basic attacks into a shield earn outgoing mana");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(109,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(effective.mana.maximum==10000&&effective.mana.gainDivisorBp==mana.relics[relic].cooldownBp,"Relic cadence transforms gain without changing 100 cost");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(110,9): error C4002: too many arguments for function-like macro invocation 'verify'
+        verify(effective.magnitude==wc::EffectiveAbility(base,base.units[4],relic).magnitude,"Relic impact unchanged across activation variants");
+        ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderManaTests.h(113,5): error C4002: too many arguments for function-like macro invocation 'verify'
+    verify(!invalid.Validate().empty(),"Invalid mana caps are rejected");
+    ^
+[46/51] Compile [x64] WonderTournament.cpp
+Trace written to file C:/Users/iputu/AppData/Roaming/Unreal Engine/AutomationTool/Logs/C+Program+Files+Epic+Games+UE_5.7/UBA-WonderChessEditor-Win64-Development.uba with size 61.5kb
+Total time in Unreal Build Accelerator local executor: 399.38 seconds
+
+Result: Failed (OtherCompilationError)
+Total execution time: 437.80 seconds
+Took 438.29s to run dotnet.exe, ExitCode=6
+UnrealBuildTool failed. See log for more details. (C:\Users\iputu\AppData\Roaming\Unreal Engine\AutomationTool\Logs\C+Program+Files+Epic+Games+UE_5.7\UBA-WonderChessEditor-Win64-Development.txt)
+AutomationTool executed for 0h 7m 23s
+AutomationTool exiting with ExitCode=6 (6)
+BUILD FAILED

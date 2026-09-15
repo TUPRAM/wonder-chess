@@ -1,7 +1,10 @@
 #include "WCVNextLab.h"
+#include "WCVNextArtStyle.h"
+#include "Simulation/WonderCombatClarityTests.h"
 #include "Camera/CameraActor.h"
 #include "Camera/CameraComponent.h"
 #include "Components/DirectionalLightComponent.h"
+#include "Components/InstancedStaticMeshComponent.h"
 #include "Components/SceneComponent.h"
 #include "Components/SkyLightComponent.h"
 #include "Components/StaticMeshComponent.h"
@@ -11,6 +14,7 @@
 #include "Engine/GameViewportClient.h"
 #include "Engine/SkyLight.h"
 #include "Engine/StaticMesh.h"
+#include "Engine/Texture2D.h"
 #include "Engine/World.h"
 #include "Framework/Application/SlateApplication.h"
 #include "Materials/MaterialInstanceDynamic.h"
@@ -31,6 +35,7 @@
 #include "Widgets/Layout/SWrapBox.h"
 #include "Widgets/SBoxPanel.h"
 #include "Widgets/SOverlay.h"
+#include "Widgets/SNullWidget.h"
 #include "Widgets/SViewport.h"
 #include "Widgets/Text/STextBlock.h"
 #include <algorithm>
@@ -89,17 +94,39 @@ AWCVNextLab::AWCVNextLab()
     static ConstructorHelpers::FObjectFinder<UStaticMesh> Sphere(TEXT("/Engine/BasicShapes/Sphere.Sphere"));
     static ConstructorHelpers::FObjectFinder<UStaticMesh> Cylinder(TEXT("/Engine/BasicShapes/Cylinder.Cylinder"));
     static ConstructorHelpers::FObjectFinder<UStaticMesh> Cone(TEXT("/Engine/BasicShapes/Cone.Cone"));
-    static ConstructorHelpers::FObjectFinder<UMaterialInterface> Surface(TEXT("/Engine/BasicShapes/BasicShapeMaterial.BasicShapeMaterial"));
+    static ConstructorHelpers::FObjectFinder<UStaticMesh> Plane(TEXT("/Engine/BasicShapes/Plane.Plane"));
+    static ConstructorHelpers::FObjectFinder<UMaterialInterface> Surface(TEXT("/Game/WonderChess/Materials/M_WC_Surface.M_WC_Surface"));
     ProxyMeshes.Add(TEXT("Cube"),Cube.Object);ProxyMeshes.Add(TEXT("Sphere"),Sphere.Object);
     ProxyMeshes.Add(TEXT("Cylinder"),Cylinder.Object);ProxyMeshes.Add(TEXT("Cone"),Cone.Object);
+    ProxyMeshes.Add(TEXT("Plane"),Plane.Object);
     ProxyMaterial=Surface.Object;
+    static ConstructorHelpers::FObjectFinder<UMaterialInterface> CueSurface(TEXT("/Game/WonderChess/VNext/M_CombatCue.M_CombatCue"));
+    CombatCueMaterial=CueSurface.Object;
 }
 AWCVNextLab::~AWCVNextLab() = default;
 
 void AWCVNextLab::Initialize()
 {
+    ArtSlice = FWCArtSlice::IsEnabled();
+    Storybook = FWCArtSlice::IsStorybook();
+    if(Storybook){
+        SanctuaryMaterial=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/WonderChess/VNext/ArtExpansionR001/M_SanctuaryBackground.M_SanctuaryBackground"));
+        UE_LOG(LogTemp,Display,TEXT("WC_STORYBOOK_SANCTUARY material=%d"),SanctuaryMaterial!=nullptr);
+    }
+    if(ArtSlice){
+        QuietStoneMaterial=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/WonderChess/VNext/ArtSliceR001/M_QuietStone.M_QuietStone"));
+        const auto* StoneTexture=LoadObject<UTexture2D>(nullptr,TEXT("/Game/WonderChess/VNext/ArtSliceR001/T_QuietStone.T_QuietStone"));
+        UE_LOG(LogTemp,Display,TEXT("WC_ART_SLICE_STONE texture=%d size=%dx%d material=%d"),StoneTexture!=nullptr,
+            StoneTexture?StoneTexture->GetSizeX():0,StoneTexture?StoneTexture->GetSizeY():0,QuietStoneMaterial!=nullptr);
+    }
     Controller = Cast<AWCVNextLabController>(GetWorld()->GetFirstPlayerController());
     Exercise = FParse::Param(FCommandLine::Get(), TEXT("WCLabExercise"));
+    CueExercise=FParse::Param(FCommandLine::Get(), TEXT("WCCueExercise"));
+    if(CueExercise){Exercise=true;ExerciseStage=100;}
+    SoloMode = FParse::Param(FCommandLine::Get(), TEXT("WCSolo"));
+    SoloExercise = SoloMode && FParse::Param(FCommandLine::Get(), TEXT("WCSoloExercise"));
+    SoloVisualExercise=SoloMode&&Storybook&&FParse::Param(FCommandLine::Get(),TEXT("WCSoloVisualExercise"));
+    if(SoloVisualExercise){SoloExercise=false;Exercise=true;ExerciseStage=200;}
     EvidenceDirectory = FPaths::ProjectSavedDir() / TEXT("WonderVNext/Lab");
     FParse::Value(FCommandLine::Get(), TEXT("WCEvidenceDir="), EvidenceDirectory);
     FParse::Value(FCommandLine::Get(), TEXT("WCSeed="), Seed);
@@ -112,23 +139,40 @@ void AWCVNextLab::Initialize()
     else if (Catalog.units.size() < 6 || Catalog.rules.columns != 8 || Catalog.rules.rows != 8 || Catalog.rules.deploymentRows != 4)
         LoadError = TEXT("The vNext lab needs its six pilot definitions and an 8 by 8 board with four deployment rows.");
     if(LoadError.IsEmpty()){
+        if(ArtSlice&&(!QuietStoneMaterial||!FWCArtSlice::ResourcesReady()))LoadError=TEXT("The 2D art slice requires its stone material and UI artwork in this package.");
+        if(Storybook&&!SanctuaryMaterial)LoadError=TEXT("The storybook sanctuary material is missing from this package.");
+        if(Storybook&&!FWCArtSlice::StorybookResourcesReady())LoadError=TEXT("The storybook portraits, ability icons or relic artwork are missing from this package.");
+        if(!CombatCueMaterial)LoadError=TEXT("Combat cue material is missing.");
         if(!ProxyMaterial)LoadError=TEXT("The lab's engine proxy material is missing from this build.");
         for(const auto& Entry:ProxyMeshes)if(!Entry.Value)LoadError=TEXT("A required engine proxy mesh is missing from this build: ")+Entry.Key;
     }
     if (LoadError.IsEmpty()) {
         BuildScene();
-        Preset();
+        if (SoloMode) StartSolo(); else Preset();
         UE_LOG(LogTemp, Display, TEXT("WC_VNEXT_LAB_READY profile=wonder_vnext units=%d digest=%s proxy_art=UNAPPROVED"), int(Catalog.units.size()), *Str(Catalog.contentDigest));
     } else {
         Message = LoadError;
         UE_LOG(LogTemp, Error, TEXT("WC_VNEXT_LAB_REJECTED %s"), *LoadError);
     }
-    BuildInterface();
+    if (SoloMode) BuildSoloInterface(); else BuildInterface();
     if (Exercise) {
         ExerciseChecks = MakeShared<FJsonObject>();
         ExerciseChecks->SetBoolField(TEXT("native_slate_created"), Interface.IsValid());
         ExerciseChecks->SetBoolField(TEXT("vnext_profile_loaded"), LoadError.IsEmpty());
-        if (!LoadError.IsEmpty()) { WriteEvidence(false); ExerciseDone = true; }
+        if(ArtSlice){
+            ExerciseChecks->SetBoolField(TEXT("art_slice_resources_loaded"),QuietStoneMaterial&&FWCArtSlice::ResourcesReady());
+            bool StoneApplied=Cells.Num()==64;
+            for(const auto* Cell:Cells)StoneApplied&=Cell&&Cell->GetMaterial(0)&&Cell->GetMaterial(0)->GetMaterial()==QuietStoneMaterial->GetMaterial();
+            ExerciseChecks->SetBoolField(TEXT("quiet_stone_applied_to_64_cells"),StoneApplied);
+        }
+        if(Storybook){
+            ExerciseChecks->SetBoolField(TEXT("storybook_sanctuary_backdrop_loaded"),SanctuaryBackdrop&&SanctuaryMaterial);
+            ExerciseChecks->SetBoolField(TEXT("storybook_expanded_illustrations_loaded"),FWCArtSlice::StorybookResourcesReady());
+        }
+        if (!LoadError.IsEmpty()) {
+            if(SoloVisualExercise)FinishSoloVisualExercise(LoadError);else WriteEvidence(false);
+            ExerciseDone = true;
+        }
     }
 }
 
@@ -150,6 +194,15 @@ UMaterialInstanceDynamic* AWCVNextLab::Material(FLinearColor Color)
     auto* Result = UMaterialInstanceDynamic::Create(ProxyMaterial, this);
     Result->SetVectorParameterValue(TEXT("Color"), Color);
     Materials.Add(Key, Result);
+    return Result;
+}
+UMaterialInstanceDynamic* AWCVNextLab::StoneMaterial(FLinearColor Color)
+{
+    const uint32 Key=Color.ToFColor(false).ToPackedRGBA();
+    if(auto* Existing=StoneMaterials.Find(Key))return *Existing;
+    auto* Result=UMaterialInstanceDynamic::Create(QuietStoneMaterial,this);
+    Result->SetVectorParameterValue(TEXT("Color"),Color);
+    StoneMaterials.Add(Key,Result);
     return Result;
 }
 UStaticMeshComponent* AWCVNextLab::Mesh(AActor* ParentActor, const TCHAR* Shape, FVector Location, FVector Scale, FLinearColor Color, FRotator Rotation)
@@ -174,11 +227,58 @@ FVector AWCVNextLab::Position(wc::Cell Cell) const
 void AWCVNextLab::BuildScene()
 {
     auto* Ground = SceneActor();
-    Mesh(Ground, TEXT("Cube"), FVector(0,0,-45), FVector(17.2,17.2,.7), FLinearColor(.10f,.16f,.14f));
+    auto* Foundation=Mesh(Ground, TEXT("Cube"), FVector(0,0,-45), FVector(17.2,17.2,.7), FLinearColor(.10f,.16f,.14f));
+    if(Storybook){
+        Foundation->SetRelativeLocation(FVector(0,0,-19));
+        Foundation->SetRelativeScale3D(FVector(17.45,17.45,.28));
+        auto* FoundationInk=UMaterialInstanceDynamic::Create(CombatCueMaterial,this);
+        FoundationInk->SetVectorParameterValue(TEXT("Color"),FLinearColor(.20f,.17f,.105f));
+        Foundation->SetMaterial(0,FoundationInk);
+        Foundation->SetCastShadow(false);
+        for(int Edge=0;Edge<4;++Edge){
+            const bool Vertical=Edge>1;
+            const FVector P=Vertical?FVector(Edge==2?-842:842,0,-2):FVector(0,Edge==0?-842:842,-2);
+            auto* Rim=Mesh(Ground,TEXT("Cube"),P,Vertical?FVector(.80,17.6,.22):FVector(17.6,.80,.22),Paper);
+            Rim->SetMaterial(0,StoneMaterial(FLinearColor(.56f,.53f,.41f)));
+            auto* Inlay=Mesh(Ground,TEXT("Cube"),P+FVector(0,0,13),Vertical?FVector(.04,17.4,.025):FVector(17.4,.04,.025),FLinearColor(.38f,.29f,.12f));
+            Inlay->SetCastShadow(false);
+        }
+        // A single instanced mesh draws the quiet etched corner medallions.
+        auto* Etch=NewObject<UInstancedStaticMeshComponent>(Ground);
+        Ground->AddInstanceComponent(Etch);Etch->SetupAttachment(Ground->GetRootComponent());
+        Etch->SetStaticMesh(ProxyMeshes.FindChecked(TEXT("Cube")));Etch->SetMobility(EComponentMobility::Movable);
+        Etch->SetCollisionEnabled(ECollisionEnabled::NoCollision);Etch->SetCastShadow(false);
+        Etch->SetMaterial(0,Material(FLinearColor(.54f,.47f,.30f)));Etch->RegisterComponent();
+        const auto Engrave=[Etch](FVector A,FVector B){
+            const FVector Delta=B-A;
+            Etch->AddInstance(FTransform(Delta.Rotation(),(A+B)*.5,FVector(Delta.Size()/100,.024,.008)));
+        };
+        for(int Row:{0,7})for(int Column:{0,7}){
+            const FVector Center=Position({Column,Row})+FVector(0,0,7.2);
+            for(int I=0;I<16;++I){
+                const float A=I*UE_TWO_PI/16,B=(I+1)*UE_TWO_PI/16;
+                Engrave(Center+FVector(FMath::Cos(A)*64,FMath::Sin(A)*64,0),Center+FVector(FMath::Cos(B)*64,FMath::Sin(B)*64,0));
+            }
+            Engrave(Center+FVector(0,-33,0),Center+FVector(0,36,0));
+            for(int Side:{-1,1})for(int Leaf=0;Leaf<2;++Leaf){
+                const FVector Stem=Center+FVector(0,-15+Leaf*22,0),Tip=Stem+FVector(Side*27,21,0);
+                Engrave(Stem,Stem+FVector(Side*18,1,0));Engrave(Stem+FVector(Side*18,1,0),Tip);
+                Engrave(Tip,Stem+FVector(Side*7,23,0));Engrave(Stem+FVector(Side*7,23,0),Stem);
+            }
+        }
+        auto* BackdropActor=SceneActor();
+        SanctuaryBackdrop=Mesh(BackdropActor,TEXT("Plane"),FVector(0,0,-2000),FVector(100),FLinearColor::White);
+        SanctuaryBackdrop->SetMaterial(0,SanctuaryMaterial);
+        SanctuaryBackdrop->SetCastShadow(false);
+    }
     for (int Row = 0; Row < 8; ++Row) for (int Column = 0; Column < 8; ++Column) {
         const FVector P = Position({Column, Row});
         const FLinearColor Color = (Row+Column)%2 ? FLinearColor(.23f,.30f,.25f) : FLinearColor(.32f,.39f,.31f);
-        Cells.Add(Mesh(Ground, TEXT("Cube"), P, FVector(1.94,1.94,.12), Color));
+        auto* Tile=Mesh(Ground, TEXT("Cube"), P, FVector(Storybook?1.985:1.94,Storybook?1.985:1.94,.12), Color);
+        if(ArtSlice)Tile->SetMaterial(0,StoneMaterial(Storybook?
+            ((Row+Column)%2?FLinearColor(.64f,.62f,.52f):FLinearColor(.87f,.82f,.68f)):
+            ((Row+Column)%2?FLinearColor(.69f,.74f,.67f):FLinearColor(.87f,.89f,.80f))));
+        Cells.Add(Tile);
         for (int Edge = 0; Edge < 4; ++Edge) {
             const bool Vertical = Edge > 1;
             const FVector Offset = Vertical ? FVector(Edge == 2 ? -89 : 89,0,10) : FVector(0,Edge == 0 ? -89 : 89,10);
@@ -189,7 +289,7 @@ void AWCVNextLab::BuildScene()
         }
     }
     for (int Side=0; Side<2; ++Side)
-        Mesh(Ground, TEXT("Cube"), FVector(0, Side ? -826 : 826, 8), FVector(16.8,.12,.1), Teams[Side]);
+        Mesh(Ground, TEXT("Cube"), FVector(0, Side ? -826 : 826, Storybook?13:8), FVector(Storybook?2.2:16.8,.12,.1), Teams[Side]);
     auto* Light = GetWorld()->SpawnActor<ADirectionalLight>(FVector(0,0,1000), FRotator(-55,-35,0));
     Light->GetLightComponent()->SetIntensity(4);
     SceneActors.Add(Light);
@@ -199,7 +299,13 @@ void AWCVNextLab::BuildScene()
     Sky->GetLightComponent()->bRealTimeCapture = true;
     SceneActors.Add(Sky);
     Camera = GetWorld()->SpawnActor<ACameraActor>();
-    Camera->GetCameraComponent()->SetProjectionMode(ECameraProjectionMode::Orthographic);
+    Camera->GetCameraComponent()->SetProjectionMode(Storybook?ECameraProjectionMode::Perspective:ECameraProjectionMode::Orthographic);
+    if(Storybook)Camera->GetCameraComponent()->SetFieldOfView(34);
+    auto& Exposure=Camera->GetCameraComponent()->PostProcessSettings;
+    Exposure.bOverride_AutoExposureMethod=true;Exposure.AutoExposureMethod=EAutoExposureMethod::AEM_Manual;
+    Exposure.bOverride_AutoExposureApplyPhysicalCameraExposure=true;Exposure.AutoExposureApplyPhysicalCameraExposure=false;
+    Exposure.bOverride_AutoExposureBias=true;Exposure.AutoExposureBias=0;
+    Camera->GetCameraComponent()->PostProcessBlendWeight=1;
     Camera->GetCameraComponent()->bConstrainAspectRatio = false;
     Camera->GetCameraComponent()->bOverrideAspectRatioAxisConstraint = true;
     Camera->GetCameraComponent()->SetAspectRatioAxisConstraint(AspectRatio_MaintainXFOV);
@@ -233,6 +339,53 @@ void AWCVNextLab::UpdateCamera()
     const FSlateRect Bounds=BoardPixelBounds();
     const FVector2D BoardSize(Bounds.Right-Bounds.Left,Bounds.Bottom-Bounds.Top);
     const FVector2D BoardCenter((Bounds.Left+Bounds.Right)*.5,(Bounds.Top+Bounds.Bottom)*.5);
+    if(Storybook){
+        const FVector Forward=FVector(0,-2700,-1890).GetSafeNormal(),Right(1,0,0),Up=FVector::CrossProduct(Forward,Right).GetSafeNormal();
+        const double Tangent=FMath::Tan(FMath::DegreesToRadians(17.)),Focal=Width/(2*Tangent);
+        const FVector2D DesiredCenter(BoardCenter.X,BoardCenter.Y+BoardSize.Y*.055);
+        const auto CameraAt=[&](double Distance){
+            const double Near=Distance+Forward.Y*800,Far=Distance-Forward.Y*800;
+            const double ShiftX=(Width*.5-DesiredCenter.X)*Near/Focal;
+            const double UnshiftedMid=Height*.5-Focal*.5*(Up.Y*800/Near-Up.Y*800/Far);
+            const double ShiftY=(DesiredCenter.Y-UnshiftedMid)/(Focal*.5*(1/Near+1/Far));
+            return -Forward*Distance+Right*ShiftX+Up*ShiftY;
+        };
+        const auto Project=[&](FVector Point,FVector Location){
+            const FVector Relative=Point-Location;
+            const double Depth=FVector::DotProduct(Relative,Forward);
+            return FVector2D(Width*.5+Focal*FVector::DotProduct(Relative,Right)/Depth,
+                Height*.5-Focal*FVector::DotProduct(Relative,Up)/Depth);
+        };
+        const auto Fits=[&](double Distance){
+            const FVector Location=CameraAt(Distance);
+            FVector2D Minimum(MAX_dbl,MAX_dbl),Maximum(-MAX_dbl,-MAX_dbl);
+            for(int X:{-1,1})for(int Y:{-1,1}){
+                const auto P=Project(FVector(X*800,Y*800,0),Location);
+                Minimum.X=FMath::Min(Minimum.X,P.X);Minimum.Y=FMath::Min(Minimum.Y,P.Y);
+                Maximum.X=FMath::Max(Maximum.X,P.X);Maximum.Y=FMath::Max(Maximum.Y,P.Y);
+                const auto Rim=Project(FVector(X*880,Y*880,14),Location);
+                if(Rim.X<Bounds.Left+4||Rim.X>Bounds.Right-4||Rim.Y<Bounds.Top+4||Rim.Y>Bounds.Bottom-4)return false;
+                const auto Headroom=Project(FVector(X*780,Y*700,320),Location);
+                if(Headroom.X<Bounds.Left+3||Headroom.X>Bounds.Right-3||Headroom.Y<Bounds.Top+3||Headroom.Y>Bounds.Bottom-3)return false;
+            }
+            return Maximum.X-Minimum.X<=BoardSize.X*.93&&Maximum.Y-Minimum.Y<=BoardSize.Y*.82;
+        };
+        double Low=1800,High=30000;
+        for(int I=0;I<24;++I){
+            const double Mid=(Low+High)*.5;
+            if(Fits(Mid))High=Mid;else Low=Mid;
+        }
+        const FVector Location=CameraAt(High);
+        Camera->SetActorLocation(Location);Camera->SetActorRotation(Forward.Rotation());
+        Camera->GetCameraComponent()->SetOrthoWidth(2*High*Tangent);
+        if(SanctuaryBackdrop){
+            const double Depth=High+5000,PlateWidth=2*Depth*Tangent;
+            SanctuaryBackdrop->SetWorldLocation(Location+Forward*Depth);
+            SanctuaryBackdrop->SetWorldRotation(FRotationMatrix::MakeFromXY(Right,-Up).Rotator());
+            SanctuaryBackdrop->SetWorldScale3D(FVector(PlateWidth/100,PlateWidth*Height/Width/100,1));
+        }
+        return;
+    }
     const float WorldPerPixel=FMath::Max(1740.f/FMath::Max(1.f,float(BoardSize.X)),1640.f/FMath::Max(1.f,float(BoardSize.Y)));
     Camera->GetCameraComponent()->SetOrthoWidth(WorldPerPixel*Width);
     const FVector2D Offset=BoardCenter-FVector2D(Width,Height)*.5f;
@@ -240,6 +393,48 @@ void AWCVNextLab::UpdateCamera()
     const FVector Location=Target+FVector(0,1900,2700);
     Camera->SetActorLocation(Location);
     Camera->SetActorRotation((Target-Location).Rotation());
+}
+
+float AWCVNextLab::WorldUnitsPerPixel(FVector Location) const
+{
+    int Width=0,Height=0;if(Controller)Controller->GetViewportSize(Width,Height);
+    if(!Camera||Width<=0)return 2;
+    const auto* View=Camera->GetCameraComponent();
+    if(View->ProjectionMode==ECameraProjectionMode::Orthographic)return View->OrthoWidth/Width;
+    const double Depth=FMath::Max(1.,FVector::DotProduct(Location-Camera->GetActorLocation(),Camera->GetActorForwardVector()));
+    return 2*Depth*FMath::Tan(FMath::DegreesToRadians(View->FieldOfView*.5f))/Width;
+}
+
+bool AWCVNextLab::CaptureBoardProjection(TSharedRef<FJsonObject> Record) const
+{
+    if(!Controller||!Camera)return false;
+    const auto Bounds=BoardPixelBounds();
+    int Visible=0,RoundTrips=0,Corners=0;
+    const auto Inside=[Bounds](FVector2D Pixel){
+        return Pixel.X>Bounds.Left&&Pixel.X<Bounds.Right&&Pixel.Y>Bounds.Top&&Pixel.Y<Bounds.Bottom;
+    };
+    for(int Row=0;Row<Catalog.rules.rows;++Row)for(int Column=0;Column<Catalog.rules.columns;++Column){
+        FVector2D Pixel;
+        if(Controller->ProjectWorldLocationToScreen(Position({Column,Row}),Pixel)){
+            Visible+=Inside(Pixel);
+            FVector Origin,Direction;
+            if(Controller->DeprojectScreenPositionToWorld(Pixel.X,Pixel.Y,Origin,Direction)&&FMath::Abs(Direction.Z)>.0001){
+                const FVector Point=Origin-Direction*(Origin.Z/Direction.Z);
+                RoundTrips+=FMath::FloorToInt((Point.X+800)/200)==Column&&FMath::FloorToInt((800-Point.Y)/200)==Row;
+            }
+        }
+    }
+    for(int X:{-1,1})for(int Y:{-1,1}){
+        FVector2D Pixel;
+        Corners+=Controller->ProjectWorldLocationToScreen(FVector(X*800,Y*800,0),Pixel)&&Inside(Pixel);
+    }
+    Record->SetStringField(TEXT("camera_projection"),Storybook?TEXT("perspective_34_degrees"):TEXT("orthographic"));
+    Record->SetNumberField(TEXT("board_centers_visible"),Visible);
+    Record->SetNumberField(TEXT("board_click_roundtrips"),RoundTrips);
+    Record->SetNumberField(TEXT("board_corners_visible"),Corners);
+    const bool Passed=Visible==64&&RoundTrips==64&&Corners==4;
+    Record->SetBoolField(TEXT("board_projection_verified"),Passed);
+    return Passed;
 }
 
 void AWCVNextLab::BuildInterface()
@@ -255,6 +450,16 @@ void AWCVNextLab::BuildInterface()
     auto PaletteBox = SNew(SVerticalBox);
     for (int Index=0; Index<FMath::Min(6, int(Catalog.units.size())); ++Index) {
         const auto& Def = Catalog.units[Index];
+        if(ArtSlice&&(Storybook||Def.id=="wc_vn_bellback")){
+            PaletteBox->AddSlot().AutoHeight().Padding(0,2)[FWCArtSlice::MakeShopCard([this,Index]{
+                const auto& Unit=Catalog.units[Index];FWCArtCardData Data;
+                Data.UnitId=Str(Unit.id);Data.Name=Str(Unit.displayName);Data.Cost=Unit.cost;
+                Data.Detail=Str(Unit.race)+TEXT(" / ")+Str(Unit.unitClass);
+                Data.Footer=Palette==Index?TEXT("SELECTED · click an empty cell"):TEXT("LAB PALETTE · choose to place");Data.Tooltip=TEXT("Reusable shop card study. This lab palette places a test creature; it does not spend gold.");
+                return Data;
+            },[this,Index]{ChooseHero(Index);},[this]{return !Fight&&LoadError.IsEmpty();})];
+            continue;
+        }
         PaletteBox->AddSlot().AutoHeight().Padding(0,2)
         [SNew(SButton).ContentPadding(FMargin(9,7))
             .IsEnabled_Lambda([this]{ return !Fight; })
@@ -269,12 +474,37 @@ void AWCVNextLab::BuildInterface()
     Controls->AddSlot()[Button(TEXT("Step 1 tick"), [this]{Step();})];
     Controls->AddSlot()[Button(TEXT("Reset to formation"), [this]{Reset();})];
     Controls->AddSlot()[Button(TEXT("Replay same seed"), [this]{Start(true);})];
+    Controls->AddSlot()[Button(TEXT("Status effect test"), [this]{StartStatusTest();})];
+    auto Scenarios = SNew(SWrapBox).UseAllottedSize(true).InnerSlotPadding(FVector2D(4,4));
+    Scenarios->AddSlot()[Button(TEXT("Next scenario"),[this]{NextScenario();})];
+    Scenarios->AddSlot()[Button(TEXT("Formation A"),[this]{LoadScenarioVariant(false);})];
+    Scenarios->AddSlot()[Button(TEXT("Formation B"),[this]{LoadScenarioVariant(true);})];
+    Scenarios->AddSlot()[Button(TEXT("Compare A/B"),[this]{CompareScenario();})];
+    Scenarios->AddSlot()[Button(TEXT("Mirror current"),[this]{MirrorFormation();})];
+    Scenarios->AddSlot()[Button(TEXT("Save formation"),[this]{SaveFormationScenario();})];
+    Scenarios->AddSlot()[Button(TEXT("Load formation"),[this]{LoadFormationScenario();})];
     const auto EditEnabled = [this]{return !Fight && LoadError.IsEmpty();};
     auto Sidebar = SNew(SScrollBox)
     +SScrollBox::Slot().Padding(12,10)
     [SNew(SVerticalBox)
         +SVerticalBox::Slot().AutoHeight().Padding(0,0,0,7)
         [SNew(STextBlock).Font(FCoreStyle::GetDefaultFontStyle(TEXT("Bold"),17)).ColorAndOpacity(Gold).Text(Txt(TEXT("FORMATION WORKBENCH")))]
+        +SVerticalBox::Slot().AutoHeight().Padding(0,0,0,7)
+        [ArtSlice?FWCArtSlice::MakeStudyPanel([this]{
+            int Definition=Palette;
+            if(const auto* Combat=CurrentCombat()){for(const auto& Unit:Combat->Units())if(Unit.id==Selected&&!Unit.neutral){Definition=Unit.definition;break;}}
+            else if(const auto* Unit=SelectedPiece())Definition=Unit->definition;
+            return Definition>=0&&Definition<int(Catalog.units.size())?Str(Catalog.units[Definition].id):FString();
+        },[this]{
+            int Definition=Palette;
+            if(const auto* Combat=CurrentCombat()){for(const auto& Unit:Combat->Units())if(Unit.id==Selected&&!Unit.neutral){Definition=Unit.definition;break;}}
+            else if(const auto* Unit=SelectedPiece())Definition=Unit->definition;
+            return Definition>=0&&Definition<int(Catalog.units.size())?Str(Catalog.units[Definition].displayName):FString();
+        }):SNullWidget::NullWidget]
+        +SVerticalBox::Slot().AutoHeight()[SNew(STextBlock).Font(SmallFont).ColorAndOpacity(Paper).AutoWrapText(true)
+            .Text(Txt(TEXT("COMBAT KEY\nMelee: amber slash | Ranged: traveling shot\nHeal: green + | Shield: blue shell\nStun: violet swirl | Push: cyan trail\nSelect a creature to see its target and action.")))]
+        +SVerticalBox::Slot().AutoHeight()[Scenarios]
+        +SVerticalBox::Slot().AutoHeight().Padding(0,7)[SNew(STextBlock).Font(SmallFont).ColorAndOpacity(Paper).AutoWrapText(true).Text_Lambda([this]{return Txt(ScenarioText());})]
         +SVerticalBox::Slot().AutoHeight()[SNew(STextBlock).Font(BodyFont).ColorAndOpacity(Paper).AutoWrapText(true)
             .Text(Txt(TEXT("Choose a creature, then click an empty cell. Teal half = A; coral half = B. Click a piece to inspect. Right-click removes. Ten pieces per side.")))]
         +SVerticalBox::Slot().AutoHeight().Padding(0,8)[PaletteBox]
@@ -373,7 +603,7 @@ bool AWCVNextLab::BoardClick(bool Remove)
     const FVector P=Origin+Direction*T;
     const wc::Cell Cell{FMath::FloorToInt((P.X+800)/200),FMath::FloorToInt((800-P.Y)/200)};
     if(Cell.column<0||Cell.column>=8||Cell.row<0||Cell.row>=8)return false;
-    return EditCell(Cell,Remove);
+    return SoloMode ? SoloCell(Cell) : EditCell(Cell,Remove);
 }
 bool AWCVNextLab::EditCell(wc::Cell Cell,bool Remove)
 {
@@ -480,6 +710,7 @@ void AWCVNextLab::Preset()
 }
 bool AWCVNextLab::Start(bool FromReplay)
 {
+    if(StatusTest){Reset();FromReplay=false;}
     if(!LoadError.IsEmpty())return false;
     if(FromReplay){
         if(ReplayFormation[0].empty()||ReplayFormation[1].empty()){Message=TEXT("Start a battle first to record its replay inputs.");return false;}
@@ -497,7 +728,7 @@ bool AWCVNextLab::Start(bool FromReplay)
 }
 void AWCVNextLab::TogglePause(){if(Fight&&!Fight->Result().complete&&!CombatInvariantFailed){Paused=!Paused;Message=Paused?TEXT("Paused. Step advances exactly one authoritative tick."):TEXT("Combat resumed.");}}
 void AWCVNextLab::Step(){if(!Fight&&!Start())return;Paused=true;Advance();}
-void AWCVNextLab::Reset(){Fight.reset();Paused=false;Accumulator=0;Selected=0;CombatInvariantFailed=false;PreparationDirty=true;Message=TEXT("Preparation restored. Both original formations are editable.");}
+void AWCVNextLab::Reset(){Fight.reset();StatusTest=false;StatusTestCatalog.reset();Paused=false;Accumulator=0;Selected=0;CombatInvariantFailed=false;PreparationDirty=true;ClearUpgradePresentation();Message=TEXT("Preparation restored. Both original formations are editable.");}
 void AWCVNextLab::Advance()
 {
     if(!Fight||Fight->Result().complete||CombatInvariantFailed)return;
@@ -567,13 +798,33 @@ void AWCVNextLab::AddPieceView(uint64 Id,int Definition,int Side)
     Actor->AddInstanceComponent(Label);Label->SetupAttachment(Actor->GetRootComponent());
     Label->SetRelativeLocation(FVector(0,0,220));Label->SetHorizontalAlignment(EHTA_Center);Label->SetVerticalAlignment(EVRTA_TextCenter);Label->SetWorldSize(32);
     Label->SetTextRenderColor(FColor(236,242,217));Label->SetCastShadow(false);Label->RegisterComponent();
+    auto* ManaBar=Mesh(Actor,TEXT("Cube"),FVector(0,0,164),FVector(.001,.045,.045),FLinearColor(.15,.55,1.0));
+    ManaBar->SetCastShadow(false);ManaBar->SetVisibility(false);
     Pieces.Add(Id,FPieceView{Actor,Bar,Backing,Label,Definition,Side});
+    Pieces.FindChecked(Id).Mana=ManaBar;
+    if(ArtSlice){
+        auto& View=Pieces.FindChecked(Id);
+        const auto Unlit=[this](UStaticMeshComponent* Component,FLinearColor Tint){
+            auto* Instance=UMaterialInstanceDynamic::Create(CombatCueMaterial,this);
+            Instance->SetVectorParameterValue(TEXT("Color"),Tint);Component->SetMaterial(0,Instance);
+            Component->SetCastShadow(false);
+        };
+        View.HealthTrack=Part(TEXT("Cube"),FVector::ZeroVector,FVector(.02),Ink);
+        View.ManaTrack=Part(TEXT("Cube"),FVector::ZeroVector,FVector(.02),Ink);
+        Unlit(View.HealthTrack,FLinearColor(.035f,.055f,.05f));Unlit(View.ManaTrack,FLinearColor(.035f,.055f,.05f));
+        Unlit(Bar,Teams[Side]);Unlit(ManaBar,FLinearColor(.22f,.62f,.83f));
+        Unlit(Backing,FLinearColor(.035f,.055f,.05f));
+        for(int I=0;I<3;++I){
+            auto* Pip=Part(TEXT("Cube"),FVector::ZeroVector,FVector(.02),Gold);
+            Unlit(Pip,FLinearColor(.78f,.61f,.32f));View.TierPips.Add(Pip);
+        }
+    }
 }
 
 void AWCVNextLab::UpdatePreparationPreview()
 {
     PreparationCells.Reset();PreparationRecipient=0;PreparationHint.Empty();
-    if(Fight)return;
+    if(CurrentCombat())return;
     if(PreparationDirty){
         PreparationState=std::make_unique<wc::Combat>(Catalog,Formation[0],Formation[1],uint64(Seed),1);
         PreparationDirty=false;
@@ -593,12 +844,19 @@ void AWCVNextLab::UpdatePreparationPreview()
                 PreparationCells.Add(Row*8+Column);
         }
         const wc::CombatUnit* Recipient=nullptr;
+        int NearestDistance=MAX_int32,NearestCount=0;
         for(const auto& Unit:PreparationState->Units())if(Unit.side==Source->side&&Unit.id!=Source->id&&PreparationCells.Contains(Unit.cell.row*8+Unit.cell.column)){
+            const int Distance=wc::Distance(Source->cell,Unit.cell);
+            if(Distance<NearestDistance){NearestDistance=Distance;NearestCount=1;}
+            else if(Distance==NearestDistance)++NearestCount;
             if(!Recipient||std::make_tuple(wc::Distance(Source->cell,Unit.cell),Unit.initiative)<std::make_tuple(wc::Distance(Source->cell,Recipient->cell),Recipient->initiative))Recipient=&Unit;
         }
+        const bool UnresolvedTie=SoloMode&&NearestCount>1;
+        if(UnresolvedTie)Recipient=nullptr;
         PreparationRecipient=Recipient?OwnedId(Recipient->id):0;
         PreparationHint=TEXT("Spatial intent: teal = eligible rear cells. ");
-        PreparationHint+=Recipient?TEXT("Gold = current eligible ally, ")+Str(Catalog.units[Recipient->definition].displayName)+TEXT(". "):TEXT("No ally currently occupies them. ");
+        PreparationHint+=UnresolvedTie?TEXT("Several allies share the nearest distance. Actual encounter initiative resolves that tie at combat start. "):
+            Recipient?TEXT("Gold = current eligible ally, ")+Str(Catalog.units[Recipient->definition].displayName)+TEXT(". "):TEXT("No ally currently occupies them. ");
         PreparationHint+=TEXT("Protection still requires damage arriving from the front at resolution; movement can change the recipient.");
     }else if(Ability.mechanic==wc::AbilityMechanic::TidalPush){
         for(int Distance=1;Distance<=Ability.range;++Distance){
@@ -612,31 +870,78 @@ void AWCVNextLab::UpdatePreparationPreview()
 
 void AWCVNextLab::UpdatePresentation(float DeltaSeconds)
 {
+    const auto* Combat = CurrentCombat();
+    if(Combat!=DefeatClockCombat||(Combat&&Combat->CurrentTick()!=DefeatClockTick)){
+        DefeatClockCombat=Combat;
+        DefeatClockTick=Combat?Combat->CurrentTick():-1;
+        DefeatClockHeldAt=Elapsed;
+    }
     UpdatePreparationPreview();
-    int Width=0,Height=0;if(Controller)Controller->GetViewportSize(Width,Height);
-    const float PixelWorld=Camera&&Width>0?Camera->GetCameraComponent()->OrthoWidth/Width:2;
     TSet<uint64> Alive;
-    const auto Present=[&](uint64 Id,int Def,int Side,int Star,wc::Cell Cell,wc::Facing Facing,wc::Int Health,wc::Int MaxHealth,wc::ActionState State){
+    const auto Present=[&](uint64 Id,int Def,int Side,int Star,wc::Cell Cell,wc::Facing Facing,wc::Int Health,wc::Int MaxHealth,wc::ActionState State,bool Neutral){
+        const float PixelWorld=WorldUnitsPerPixel(Position(Cell)+FVector(0,0,220));
         Alive.Add(Id);
+        if(const auto* Existing=Pieces.Find(Id);Existing&&(Existing->Definition!=Def||Existing->Side!=Side||Existing->Neutral!=Neutral)){
+            if(auto* OldActor=Existing->Actor.Get()){SceneActors.Remove(OldActor);OldActor->Destroy();}
+            Pieces.Remove(Id);
+        }
         if(!Pieces.Contains(Id))AddPieceView(Id,Def,Side);
         auto& View=Pieces.FindChecked(Id);
+        View.Neutral=Neutral;
         auto* Actor=View.Actor.Get();if(!Actor)return;
+        float DefeatProgress=0;
+        if(Storybook&&Combat&&Health<=0){
+            const auto Defeated=std::find_if(Combat->Units().begin(),Combat->Units().end(),[&](const auto& Unit){return Unit.id==Id;});
+            if(Defeated!=Combat->Units().end())DefeatProgress=FMath::Clamp(DefeatAge(*Defeated)/.72f,0.f,1.f);
+        }
+        Actor->SetActorHiddenInGame(Storybook&&Health<=0&&DefeatProgress>=1);
         FVector Target=Position(Cell);
-        if(Fight&&Health>0)Target.Z=(Def%6==4||Def%6==5)?FMath::Sin(Elapsed*2+Id)*5:0;
-        const FVector Location=Fight?FMath::VInterpTo(Actor->GetActorLocation(),Target,DeltaSeconds,18):Target;
+        if(Combat&&Health>0){
+            const auto Found=std::find_if(Combat->Units().begin(),Combat->Units().end(),[&](const wc::CombatUnit& U){return U.id==Id;});
+            if(Found!=Combat->Units().end()){
+                const auto& U=*Found;const auto& D=Catalog.Definition(Def,Neutral);
+                if(State==wc::ActionState::Moving&&U.destination.column>=0){
+                    const int Duration=wc::MovementInterval(D.movementRate,U.movementBonus,Catalog.rules);
+                    const float Progress=FMath::Clamp(1.f-float(U.movementTick-Combat->CurrentTick())/Duration,0.f,1.f);
+                    Target=FMath::Lerp(Target,Position(U.destination),Progress);
+                }
+                if((State==wc::ActionState::AttackWindup||State==wc::ActionState::AttackRecovery)&&U.target>=0){
+                    const auto& Enemy=Combat->Units()[U.target];
+                    const float SinceRelease=(Combat->CurrentTick()-U.releaseTick)*Catalog.rules.tickMs/1000.f;
+                    const float Motion=SinceRelease<0?-10.f:FMath::Max(0.f,1-SinceRelease/.22f)*22;
+                    Target+=(Position(Enemy.cell)-Position(Cell)).GetSafeNormal2D()*Motion;
+                }
+                if(Def%6==4||Def%6==5)Target.Z=FMath::Sin(Combat->CurrentTick()*.1+Id)*5;
+            }
+        }
+        const FVector Location=Combat?FMath::VInterpTo(Actor->GetActorLocation(),Target,DeltaSeconds,18):Target;
         Actor->SetActorLocation(Location);
-        Actor->SetActorRotation(FRotator(0,int(Facing)*90+180,0));
-        Actor->SetActorScale3D(Health>0?FVector(1):FVector(1,1,.22));
+        Actor->SetActorRotation(FRotator(0,int(Facing)*90+180,Storybook&&Health<=0?DefeatProgress*22:0));
+        const float Remaining=FMath::Max(.001f,1-DefeatProgress*DefeatProgress);
+        Actor->SetActorScale3D(Health>0?FVector(1):Storybook?
+            FVector(Remaining,Remaining,Remaining*FMath::Lerp(1.f,.18f,DefeatProgress)):FVector(1,1,.22));
         const float Fraction=MaxHealth>0?FMath::Clamp(float(double(Health)/MaxHealth),0.f,1.f):1;
         View.Health->SetRelativeScale3D(FVector(Fraction*1.12,.065,.065));
         View.Health->SetWorldRotation(FRotator::ZeroRotator);
         View.Health->SetVisibility(Health>0);
-        const FString Name=Str(Catalog.units[Def].displayName);
-        const TCHAR* Mark=State==wc::ActionState::CastWindup?TEXT("  CAST"):State==wc::ActionState::Stunned?TEXT("  STUN"):TEXT("");
-        View.Label->SetText(Txt(FString::Printf(TEXT("%s\n%s *%d%s"),*Name,Side?TEXT("B"):TEXT("A"),Star,Mark)));
-        View.Label->SetWorldSize(PixelWorld*18);
+        int Mana=0,MaximumMana=0;
+        if(Combat){for(const auto& U:Combat->Units())if(U.id==Id){Mana=U.mana;MaximumMana=U.ability.mana.maximum;break;}}
+        else if(!Neutral){MaximumMana=Catalog.units[Def].ability.mana.maximum;Mana=Catalog.units[Def].ability.mana.starting;}
+        View.Mana->SetVisibility(Health>0&&MaximumMana>0);
+        View.Mana->SetRelativeScale3D(FVector(FMath::Max(.015f,MaximumMana>0?float(Mana)/MaximumMana*1.12f:0.f),.045,.045));
+        View.Mana->SetWorldRotation(FRotator::ZeroRotator);
+        const auto& Definition = Catalog.Definition(Def, Neutral);
+        FString Name=Str(Definition.displayName.empty()?Definition.name:Definition.displayName);
+        if(Definition.id=="wc_vn_grandmother_root")Name=TEXT("Root");
+        if(Definition.id=="wc_vn_prism_organ")Name=TEXT("Prism");
+        const TCHAR* Reach=Definition.projectileTravelMs>0?TEXT("Ranged"):TEXT("Melee");
+        const FString ManaLabel=!ArtSlice&&MaximumMana>0?FString::Printf(TEXT("\nMana %.0f/100"),Mana/100.):FString();
+        View.Label->SetText(Txt(ArtSlice?FString::Printf(TEXT("%s\n%s %s"),*Name,Side?TEXT("B"):TEXT("A"),Reach):
+            FString::Printf(TEXT("%s\n%s *%d %s%s"),*Name,Side?TEXT("B"):TEXT("A"),Star,Reach,*ManaLabel)));
+        View.Label->SetWorldSize(PixelWorld*(ArtSlice?15:18));
         const float LabelWidth=View.Label->GetTextLocalSize().Y;
-        if(LabelWidth>PixelWorld*130)View.Label->SetWorldSize(PixelWorld*18*(PixelWorld*130/LabelWidth));
+        const float MaximumLabelWidth=Catalog.rules.tileSizeCm*.90f;
+        if(LabelWidth>MaximumLabelWidth)View.Label->SetWorldSize(PixelWorld*(ArtSlice?15:18)*(MaximumLabelWidth/LabelWidth));
         View.Label->SetVisibility(Health>0);
         View.LabelBacking->SetVisibility(Health>0);
         if(Camera){
@@ -646,15 +951,45 @@ void AWCVNextLab::UpdatePresentation(float DeltaSeconds)
             View.LabelBacking->SetWorldRotation(Rotation);
             View.LabelBacking->SetWorldLocation(View.Label->GetComponentLocation()-Rotation.Vector()*3);
             View.LabelBacking->SetWorldScale3D(FVector(.03,(Size.Y+PixelWorld*8)/100,(Size.Z+PixelWorld*4)/100));
+            if(MaximumMana>0){
+                View.Mana->SetWorldRotation(Rotation);
+                View.Mana->SetWorldLocation(View.Label->GetComponentLocation()+Rotation.RotateVector(FVector(2,0,Size.Z*.5f+PixelWorld*5)));
+                View.Mana->SetWorldScale3D(FVector(.02,FMath::Max(.015f,float(Mana)/MaximumMana)*MaximumLabelWidth/100,PixelWorld*4/100));
+            }
+            if(ArtSlice){
+                const float BarWidth=FMath::Min(MaximumLabelWidth,PixelWorld*66);
+                const FVector LabelPosition=View.Label->GetComponentLocation();
+                const float Top=Size.Z*.5f+PixelWorld*8;
+                const auto Bar=[&](UStaticMeshComponent* Fill,UStaticMeshComponent* Track,float Value,float Z,float Pixels,bool Visible){
+                    Value=FMath::Clamp(Value,0.f,1.f);
+                    Track->SetWorldRotation(Rotation);
+                    Track->SetWorldLocation(LabelPosition+Rotation.RotateVector(FVector(1,0,Z)));
+                    Track->SetWorldScale3D(FVector(.018,(BarWidth+PixelWorld*3)/100,PixelWorld*(Pixels+2)/100));
+                    Track->SetVisibility(Visible);
+                    Fill->SetWorldRotation(Rotation);
+                    Fill->SetWorldLocation(LabelPosition+Rotation.RotateVector(FVector(3,(Value-1)*BarWidth*.5f,Z)));
+                    Fill->SetWorldScale3D(FVector(.012,FMath::Max(.0001f,Value)*BarWidth/100,PixelWorld*Pixels/100));
+                    Fill->SetVisibility(Visible&&Value>0);
+                };
+                Bar(View.Health,View.HealthTrack,Fraction,Top,5,Health>0);
+                Bar(View.Mana,View.ManaTrack,MaximumMana>0?float(Mana)/MaximumMana:0,Top+PixelWorld*8,3,Health>0&&MaximumMana>0);
+                for(int I=0;I<View.TierPips.Num();++I){
+                    auto* Pip=View.TierPips[I];
+                    Pip->SetWorldRotation((Rotation.Quaternion()*FRotator(0,0,45).Quaternion()).Rotator());
+                    Pip->SetWorldLocation(LabelPosition+Rotation.RotateVector(FVector(4,(I-(Star-1)*.5f)*PixelWorld*9,-Size.Z*.5f-PixelWorld*5)));
+                    Pip->SetWorldScale3D(FVector(.012,PixelWorld*4/100,PixelWorld*4/100));
+                    Pip->SetVisibility(Health>0&&I<Star);
+                }
+            }
         }
     };
-    if(Fight){
-        for(const auto& U:Fight->Units())Present(U.id,U.definition,U.side,U.star,U.cell,U.facing,U.health,U.maxHealth,U.state);
+    if(Combat){
+        for(const auto& U:Combat->Units())Present(U.id,U.definition,U.side,U.star,U.cell,U.facing,U.health,U.maxHealth,U.state,U.neutral);
     }else{
         for(int Side=0;Side<2;++Side)for(const auto& U:Formation[Side]){
             const auto Facing=static_cast<wc::Facing>((int(U.facing)+Side*2)%4);
             const auto HP=wc::StarValue(Catalog.units[U.definition].health,U.star,0,Catalog.rules);
-            Present(U.id,U.definition,Side,U.star,wc::EncounterCell(U.cell,Side,Catalog.rules),Facing,HP,HP,wc::ActionState::Idle);
+            Present(U.id,U.definition,Side,U.star,wc::EncounterCell(U.cell,Side,Catalog.rules),Facing,HP,HP,wc::ActionState::Idle,false);
         }
     }
     for(auto It=Pieces.CreateIterator();It;++It)if(!Alive.Contains(It.Key())){
@@ -663,13 +998,15 @@ void AWCVNextLab::UpdatePresentation(float DeltaSeconds)
     }
     TSet<int> Marked;
     int RecipientCell=-1;
-    if(Fight)for(const auto& Action:Fight->VisualActions())if(!Action.basicAttack){
+    if(Combat)for(const auto& Action:Combat->VisualActions())if(!Action.basicAttack){
+        // Grove's exact green perimeter already communicates its cells without inset tile frames.
+        if(Storybook&&Action.mechanic==wc::AbilityMechanic::StationaryGrove)continue;
         for(const auto& Cell:Action.cells)if(Cell.column>=0&&Cell.column<8&&Cell.row>=0&&Cell.row<8)Marked.Add(Cell.row*8+Cell.column);
         if(Action.cells.empty()&&Action.center.column>=0&&Action.center.column<8&&Action.center.row>=0&&Action.center.row<8)
             for(int Row=0;Row<8;++Row)for(int Column=0;Column<8;++Column)
                 if(wc::Distance({Column,Row},Action.center)<=Action.radius)Marked.Add(Row*8+Column);
     }
-    if(!Fight){
+    if(!Combat){
         Marked=PreparationCells;
         for(int Side=0;Side<2;++Side)for(const auto& Owned:Formation[Side]){
             const auto Cell=wc::EncounterCell(Owned.cell,Side,Catalog.rules);
@@ -678,28 +1015,50 @@ void AWCVNextLab::UpdatePresentation(float DeltaSeconds)
         }
     }
     for(int Index=0;Index<Telegraphs.Num();++Index){
-        Telegraphs[Index]->SetVisibility(Marked.Contains(Index/4));
-        const auto Color=!Fight&&PreparationCells.Contains(Index/4)&&RecipientCell!=Index/4?Teams[0]:Gold;
-        Telegraphs[Index]->SetMaterial(0,Material(Color));
+        const bool KeyboardCell=SoloMode&&BoardInput.IsValid()&&BoardInput->HasKeyboardFocus()&&Index/4==KeyboardRow*8+KeyboardColumn;
+        Telegraphs[Index]->SetVisibility(Marked.Contains(Index/4)||KeyboardCell);
+        const auto Color=KeyboardCell?Paper:!Combat&&PreparationCells.Contains(Index/4)&&RecipientCell!=Index/4?Teams[0]:Gold;
+        if(Storybook){
+            const FLinearColor Tint=Color==Teams[0]?FLinearColor(.008f,.24f,.22f):
+                KeyboardCell?FLinearColor(.56f,.43f,.18f):FLinearColor(.43f,.28f,.08f);
+            const uint32 Key=Tint.ToFColor(false).ToPackedRGBA();
+            if(!CueMaterials.Contains(Key)){
+                auto* Instance=UMaterialInstanceDynamic::Create(CombatCueMaterial,this);
+                Instance->SetVectorParameterValue(TEXT("Color"),Tint);CueMaterials.Add(Key,Instance);
+            }
+            Telegraphs[Index]->SetMaterial(0,CueMaterials.FindChecked(Key));
+            const float Width=FMath::Max(3.5f,WorldUnitsPerPixel(Telegraphs[Index]->GetComponentLocation())*1.6f)/100;
+            Telegraphs[Index]->SetRelativeScale3D(Index%4>1?FVector(Width,1.78,.008):FVector(1.78,Width,.008));
+        }else Telegraphs[Index]->SetMaterial(0,Material(Color));
     }
+    UpdateCombatCues();
     ++PresentationFrames;
 }
 
 FString AWCVNextLab::StatusText() const
 {
     if(!LoadError.IsEmpty())return TEXT("PROFILE REJECTED: ")+LoadError;
-    if(!Fight)return FString::Printf(TEXT("PREPARATION  ·  A %d/10  |  B %d/10  ·  Seed %d  ·  Choose positions and facing before combat"),int(Formation[0].size()),int(Formation[1].size()),Seed);
-    return FString::Printf(TEXT("%s  ·  %.2fs  ·  Tick %d  ·  Events %d  ·  Seed %d"),Fight->Result().complete?TEXT("RESOLVED"):Paused?TEXT("PAUSED"):TEXT("COMBAT"),Fight->CurrentTick()*Catalog.rules.tickMs/1000.,Fight->CurrentTick(),int(Fight->Events().size()),Seed);
+    if(StatusTest)return TEXT("STATUS EFFECT TEST · Synthetic abilities for this demonstration only · Reset returns to your formation");
+    const FString Variant=Catalog.rules.nearestReachableTarget?TEXT("COMBAT CLARITY · MANA 20/HIT · "):
+        Catalog.balanceVersion.find("+mana100_hit20_v1")!=std::string::npos?TEXT("MANA 20/HIT EXPERIMENT · "):
+        Catalog.balanceVersion.find("+mana100_v1")!=std::string::npos?TEXT("MANA EXPERIMENT · "):TEXT("COOLDOWN CONTROL · ");
+    if(SoloMode)return Variant+SoloStatusText();
+    if(!Fight)return Variant+FString::Printf(TEXT("PREPARATION  ·  A %d/10  |  B %d/10  ·  Seed %d  ·  Choose positions and facing before combat"),int(Formation[0].size()),int(Formation[1].size()),Seed);
+    return Variant+FString::Printf(TEXT("%s  ·  %.2fs  ·  Tick %d  ·  Events %d  ·  Seed %d"),Fight->Result().complete?TEXT("RESOLVED"):Paused?TEXT("PAUSED"):TEXT("COMBAT"),Fight->CurrentTick()*Catalog.rules.tickMs/1000.,Fight->CurrentTick(),int(Fight->Events().size()),Seed);
 }
 FString AWCVNextLab::InspectorText() const
 {
+    const auto* Combat = CurrentCombat();
     if(!LoadError.IsEmpty())return LoadError;
     int Def=Palette,Star=BrushStar,Relic=-1;
+    bool HasSelection=false;
     const wc::CombatUnit* CombatPiece=nullptr;
-    if(Fight)for(const auto& U:Fight->Units())if(U.id==Selected){CombatPiece=&U;Def=U.definition;Star=U.star;Relic=U.relic;}
-    if(!Fight)for(const auto& Side:Formation)for(const auto& U:Side)if(U.id==Selected){Def=U.definition;Star=U.star;Relic=U.relic;}
-    if(Def<0||Def>=int(Catalog.units.size()))return FString();
-    const auto& D=Catalog.units[Def];
+    if(Combat)for(const auto& U:Combat->Units())if(U.id==Selected){HasSelection=true;CombatPiece=&U;Def=U.definition;Star=U.star;Relic=U.relic;}
+    if(!Combat)for(const auto& Side:Formation)for(const auto& U:Side)if(U.id==Selected){HasSelection=true;Def=U.definition;Star=U.star;Relic=U.relic;}
+    if(!Combat&&SoloMode&&SoloMatch&&ViewedSeat==0)for(const auto& U:SoloMatch->Seats()[0].roster)if(U.id==Selected){HasSelection=true;Def=U.definition;Star=U.star;Relic=U.relic;}
+    if(SoloMode&&!HasSelection)return TEXT("Select a creature to inspect its stats, ability and equipped relic.");
+    if(Def<0||Def>=int(CombatPiece&&CombatPiece->neutral?Catalog.neutrals.size():Catalog.units.size()))return FString();
+    const auto& D=Catalog.Definition(Def,CombatPiece&&CombatPiece->neutral);
     const auto HP=CombatPiece?CombatPiece->health:wc::StarValue(D.health,Star,0,Catalog.rules);
     const auto Maximum=CombatPiece?CombatPiece->maxHealth:HP;
     const auto Damage=CombatPiece?CombatPiece->basicDamage:wc::StarValue(D.attackDamage,Star,0,Catalog.rules);
@@ -709,34 +1068,83 @@ FString AWCVNextLab::InspectorText() const
         FString Tooltip;
         if((*Full)->TryGetObjectField(TEXT("ability"),Ability)&&Ability&&(*Ability)->TryGetStringField(TEXT("tooltip_en"),Tooltip))Result+=Tooltip+TEXT("\n");
     }
+    Result+=FString::Printf(TEXT("%s basic attack · %.2fs between attacks\n"),D.projectileTravelMs>0?TEXT("Ranged projectile"):TEXT("Melee strike"),wc::AttackInterval(D.attackRate,CombatPiece?CombatPiece->rateBonus:0,Catalog.rules)*Catalog.rules.tickMs/1000.);
+    if(CombatPiece){
+        const TCHAR* State=CombatPiece->state==wc::ActionState::Moving?TEXT("Moving to attack range"):
+            CombatPiece->state==wc::ActionState::AttackWindup?TEXT("Basic attack windup"):
+            CombatPiece->state==wc::ActionState::AttackRecovery?TEXT("Recovering from own attack"):
+            CombatPiece->state==wc::ActionState::CastWindup?TEXT("Casting skill"):
+            CombatPiece->state==wc::ActionState::CastRecovery?TEXT("Recovering from skill"):
+            CombatPiece->state==wc::ActionState::Stunned?TEXT("Stunned"):
+            CombatPiece->health<=0?TEXT("Defeated"):TEXT("Seeking an enemy");
+        Result+=FString(TEXT("State: "))+State+TEXT("\n");
+        if(CombatPiece->target>=0){const auto& T=Combat->Units()[CombatPiece->target];Result+=FString(TEXT("Target: "))+Str(Catalog.Definition(T.definition,T.neutral).displayName)+TEXT("\n");}
+    }
+    switch(D.ability.mechanic){
+    case wc::AbilityMechanic::DirectionalGuard:Result+=TEXT("Visual: gold arc and ally link show damage prevented.\n");break;
+    case wc::AbilityMechanic::MomentumCharge:Result+=TEXT("Visual: amber arrow aims the charge; a trail shows movement.\n");break;
+    case wc::AbilityMechanic::StationaryGrove:Result+=TEXT("Visual: green ring marks the grove; + numbers show health restored.\n");break;
+    case wc::AbilityMechanic::ScreenedStrike:Result+=TEXT("Visual: pink aim line becomes a lash to the first enemy hit.\n");break;
+    case wc::AbilityMechanic::CrossingBeams:Result+=TEXT("Visual: violet lane markings precede crossing beam impacts.\n");break;
+    case wc::AbilityMechanic::TidalPush:Result+=TEXT("Visual: cyan lane and wave; PUSH appears only on displacement.\n");break;
+    default:break;
+    }
     const auto A=CombatPiece?CombatPiece->ability:wc::EffectiveAbility(Catalog,D,Relic);
     if(A.mechanic==wc::AbilityMechanic::DirectionalGuard)
         Result+=FString::Printf(TEXT("Passive guard · no activation timer\nPrevents %.1f%% damage from frontal sources\nRear radius %d · nearest eligible ally"),A.guardReductionBp/100.,A.radius);
     else{
+        if(A.mana.maximum>0){
+            const int Mana=CombatPiece?CombatPiece->mana:A.mana.starting;
+            const TCHAR* Readiness=CombatPiece&&CombatPiece->state==wc::ActionState::CastWindup?TEXT("Casting"):
+                CombatPiece&&Combat->CurrentTick()<CombatPiece->manaResumeTick?TEXT("Recovering; gain paused"):
+                Mana>=A.mana.maximum?TEXT("Ready; waiting for action / valid target"):TEXT("Charging");
+            Result+=FString::Printf(TEXT("Mana %.1f / %.0f · %s\nGain %.1f per basic hit; HP loss also charges\nWindup %.2fs | Reach %d | Effect %.2f | Radius %d"),
+                Mana/100.,A.mana.maximum/100.,Readiness,A.mana.basicAttackGain*100./A.mana.gainDivisorBp,
+                A.castMs/1000.,A.range,A.magnitude[Star-1]/100.,A.radius);
+        }else
         Result+=FString::Printf(TEXT("First %.2fs  |  Cooldown %.2fs\nWindup %.2fs  |  Reach %d\n%s %.2f  |  Radius %d"),A.firstCastMs/1000.,A.cooldownMs/1000.,A.castMs/1000.,A.range,A.mechanic==wc::AbilityMechanic::StationaryGrove?TEXT("Heal per pulse"):A.effect==wc::Effect::Heal?TEXT("Heal"):TEXT("Base effect"),A.magnitude[Star-1]/100.,A.radius);
         if(A.mechanic==wc::AbilityMechanic::StationaryGrove)
             Result+=FString::Printf(TEXT("\nPulse interval %.2fs  |  Area duration %.2fs"),A.pulseMs/1000.,A.durationMs/1000.);
-        if(CombatPiece)Result+=FString::Printf(TEXT("\nNext readiness in %.2fs"),FMath::Max(0,CombatPiece->cooldownTick-Fight->CurrentTick())*Catalog.rules.tickMs/1000.);
+        if(CombatPiece&&A.mana.maximum==0)Result+=FString::Printf(TEXT("\nNext readiness in %.2fs"),FMath::Max(0,CombatPiece->cooldownTick-Combat->CurrentTick())*Catalog.rules.tickMs/1000.);
     }
     if(CombatPiece)Result+=FString::Printf(TEXT("\nShield %.0f  |  Facing %s"),CombatPiece->shield/100.,FacingName(CombatPiece->facing));
+    if(CombatPiece&&A.mechanic==wc::AbilityMechanic::MomentumCharge)
+        Result+=FString::Printf(TEXT("\nApproach steps: %d / %d\nA released charge consumes its stored steps."),CombatPiece->momentumSteps,A.maxMomentumSteps);
+    if(CombatPiece&&A.mechanic==wc::AbilityMechanic::StationaryGrove)
+        Result+=FString::Printf(TEXT("\nEstablishment: %.2f / %.2fs\nMovement and stun reset establishment; live pulses require the source to remain valid."),
+            FMath::Min(A.stationaryMs,(Combat->CurrentTick()-CombatPiece->lastMovementTick)*Catalog.rules.tickMs)/1000.,A.stationaryMs/1000.);
+    if(CombatPiece)for(const auto& Action:Combat->VisualActions())if(Action.source==CombatPiece->id&&!Action.basicAttack){
+        Result+=FString::Printf(TEXT("\n%s effect at %c%d · %d marked cells"),Action.released?TEXT("Released"):TEXT("Preparing"),
+            TCHAR('A'+Action.center.column),Action.center.row+1,int(Action.cells.size()));
+        break;
+    }
+    if(A.mana.maximum>0&&Relic>=0)Result+=TEXT("\nRelic timing adjusts mana gain; mana cost stays 100.");
     Result+=TEXT("\n\nRelic: ");
     if(Relic>=0&&Relic<int(Catalog.relics.size()))Result+=Str(Catalog.relics[Relic].name)+TEXT("\n")+Str(Catalog.relics[Relic].description)+TEXT("\nValues above include its actual transforms.");
     else Result+=TEXT("None");
-    if(!Fight&&!PreparationHint.IsEmpty())Result+=TEXT("\n\n")+PreparationHint;
+    if(!Combat&&!PreparationHint.IsEmpty())Result+=TEXT("\n\n")+PreparationHint;
     return Result;
 }
 FString AWCVNextLab::EventText() const
 {
-    if(!Fight)return TEXT("Start or Step to inspect real combat events. No predicted winner is substituted.");
-    const auto& Events=Fight->Events();
+    const auto* Combat = CurrentCombat();
+    if(SoloMode&&SoloMatch&&(SoloMatch->CurrentPhase()==wc::Phase::Settlement||SoloMatch->CurrentPhase()==wc::Phase::Finished))return SoloRecap;
+    if(SoloMode&&!Combat)return SoloRecap;
+    if(!Combat)return TEXT("Start or Step to inspect real combat events. No predicted winner is substituted.");
+    const auto& Events=Combat->Events();
+    const auto Name=[this,Combat](wc::Id Id){
+        for(const auto& Unit:Combat->Units())if(Unit.id==Id)
+            return Str(Catalog.Definition(Unit.definition,Unit.neutral).displayName)+FString(Unit.side?TEXT(" B"):TEXT(" A"));
+        return FString(TEXT("effect"));
+    };
     FString Result;
     const int StartIndex=FMath::Max(0,int(Events.size())-8);
     for(int Index=int(Events.size())-1;Index>=StartIndex;--Index){
         const auto& E=Events[Index];
-        Result+=FString::Printf(TEXT("t%d  #%llu → #%llu  %s  %.2f"),E.tick,E.source,E.target,EffectName(E.effect),E.resolved/100.);
+        Result+=FString::Printf(TEXT("%.2fs  %s → %s\n%s %.2f at %c%d"),E.tick*Catalog.rules.tickMs/1000.,*Name(E.source),*Name(E.target),EffectName(E.effect),E.resolved/100.,TCHAR('A'+E.cell.column),E.cell.row+1);
         if(E.absorbed)Result+=FString::Printf(TEXT("  absorbed %.2f"),E.absorbed/100.);
-        if(E.prevented)Result+=FString::Printf(TEXT("  guarded %.2f"),E.prevented/100.);
-        Result+=TEXT("\n");
+        if(E.prevented)Result+=FString::Printf(TEXT("  %s prevented %.2f"),*Name(E.guardedBy),E.prevented/100.);
+        Result+=TEXT("\n\n");
     }
     return Result.IsEmpty()?TEXT("No effect has resolved yet."):Result;
 }
@@ -754,6 +1162,14 @@ void AWCVNextLab::Tick(float DeltaSeconds)
     Super::Tick(DeltaSeconds);Elapsed+=DeltaSeconds;
     if(!LoadError.IsEmpty())return;
     UpdateCamera();
+    if(SoloMode){
+        if(SoloVisualExercise){
+            if(CapturePhase==ECapturePhase::None&&!ExerciseDone)TickSoloVisualExercise();
+            SoloPaused=true;TickSolo(0);
+            UpdatePresentation(DeltaSeconds);UpdateInterfaceText();TickCapture();return;
+        }
+        TickSolo(DeltaSeconds);UpdatePresentation(DeltaSeconds);UpdateInterfaceText();return;
+    }
     if(Exercise&&!ExerciseDone){if(CapturePhase==ECapturePhase::None)TickExercise();}
     else if(CapturePhase==ECapturePhase::None&&Fight&&!Paused&&!Fight->Result().complete){
         Accumulator+=DeltaSeconds;
@@ -780,7 +1196,10 @@ void AWCVNextLab::QueueCapture(const FString& Filename,int ResumeStage)
     CaptureFilename=EvidenceDirectory/Filename;
     CapturePreviousWrite=IFileManager::Get().GetTimeStamp(*CaptureFilename);
     CaptureQueuedAt=Elapsed;CapturePresentedAt=-1;
-    CaptureSelected=Selected;CaptureCombatTick=Fight?Fight->CurrentTick():-1;
+    CaptureSelected=Selected;CaptureCombatTick=CurrentCombat()?CurrentCombat()->CurrentTick():-1;
+    CaptureSoloRound=SoloMatch?SoloMatch->Round():-1;
+    CaptureSoloPhase=SoloMatch?int(SoloMatch->CurrentPhase()):-1;
+    CaptureSoloSeat=SoloMatch?ViewedSeat:-1;
     CaptureResumeStage=ResumeStage;CaptureStateStable=true;
     CapturePhase=ECapturePhase::Settling;
     CaptureRecord=MakeShared<FJsonObject>();
@@ -788,18 +1207,26 @@ void AWCVNextLab::QueueCapture(const FString& Filename,int ResumeStage)
     CaptureRecord->SetNumberField(TEXT("queued_at_seconds"),Elapsed);
     CaptureRecord->SetNumberField(TEXT("selected_id"),Selected);
     CaptureRecord->SetNumberField(TEXT("combat_tick"),CaptureCombatTick);
+    if(SoloMode){
+        CaptureRecord->SetNumberField(TEXT("round"),CaptureSoloRound);
+        CaptureRecord->SetNumberField(TEXT("phase"),CaptureSoloPhase);
+        CaptureRecord->SetNumberField(TEXT("viewed_seat"),CaptureSoloSeat);
+        CaptureRecord->SetBoolField(TEXT("cosmetic_upgrade_time_held"),SoloVisualExercise);
+    }
     CaptureRecords.Add(MakeShared<FJsonValueObject>(CaptureRecord));
 }
 void AWCVNextLab::TickCapture()
 {
     if(CapturePhase==ECapturePhase::None)return;
-    CaptureStateStable&=Selected==CaptureSelected&&(Fight?Fight->CurrentTick():-1)==CaptureCombatTick;
+    CaptureStateStable&=Selected==CaptureSelected&&(CurrentCombat()?CurrentCombat()->CurrentTick():-1)==CaptureCombatTick;
+    if(SoloMatch)CaptureStateStable&=SoloMatch->Round()==CaptureSoloRound&&int(SoloMatch->CurrentPhase())==CaptureSoloPhase&&ViewedSeat==CaptureSoloSeat;
     if(Elapsed-CaptureQueuedAt>15){
         CaptureRecord->SetBoolField(TEXT("completed"),false);
         ExerciseChecks->SetBoolField(TEXT("all_captures_completed"),false);
         CapturePhase=ECapturePhase::None;ExerciseDone=true;Paused=true;
         Message=TEXT("Screenshot processing timed out. Capture evidence failed; inspect lab-exercise.json.");
-        WriteEvidence(false);return;
+        if(SoloVisualExercise)FinishSoloVisualExercise(TEXT("Screenshot processing timed out."));else WriteEvidence(false);
+        return;
     }
     if(CapturePhase==ECapturePhase::Settling){
         if(CapturePresentedAt<0){
@@ -810,6 +1237,7 @@ void AWCVNextLab::TickCapture()
         if(Elapsed-CapturePresentedAt<.15||PresentationFrames-CaptureFirstPresentedFrame<2||FScreenshotRequest::IsScreenshotRequested())return;
         CaptureRecord->SetNumberField(TEXT("presentation_ticks_before_request"),PresentationFrames-CaptureFirstPresentedFrame);
         CaptureRecord->SetNumberField(TEXT("settled_seconds_before_request"),Elapsed-CapturePresentedAt);
+        CaptureBoardProjection(CaptureRecord.ToSharedRef());
         int MarkedCells=0;
         for(int Index=0;Index<Telegraphs.Num();Index+=4)if(Telegraphs[Index]->IsVisible())++MarkedCells;
         CaptureRecord->SetNumberField(TEXT("presented_marked_cells"),MarkedCells);
@@ -821,11 +1249,17 @@ void AWCVNextLab::TickCapture()
         CaptureRecord->SetStringField(TEXT("inspector_widget_text"),InspectorBlock?InspectorBlock->GetText().ToString():FString());
         CaptureRecord->SetStringField(TEXT("status_widget_text"),StatusBlock?StatusBlock->GetText().ToString():FString());
         CaptureRecord->SetStringField(TEXT("event_widget_text"),EventBlock?EventBlock->GetText().ToString():FString());
-        CaptureRecord->SetBoolField(TEXT("text_widgets_match_current_sources"),
+        CaptureRecord->SetBoolField(TEXT("text_widgets_match_current_sources"),SoloMode?
+            MessageBlock&&MessageBlock->GetText().ToString()==Message:
             InspectorBlock&&InspectorBlock->GetText().ToString()==InspectorSource&&
             EventBlock&&EventBlock->GetText().ToString()==EventText()&&
             StatusBlock&&StatusBlock->GetText().ToString()==StatusText()&&
             MessageBlock&&MessageBlock->GetText().ToString()==Message);
+        if(SoloMode){
+            CaptureRecord->SetStringField(TEXT("text_verification_scope"),TEXT("Message widget read back; other Storybook fields use live Slate attributes and need visual review."));
+            CaptureRecord->SetStringField(TEXT("solo_status_source"),SoloStatusText());
+            CaptureRecord->SetStringField(TEXT("solo_summary_source"),SoloSummaryText());
+        }
         FScreenshotRequest::RequestScreenshot(CaptureFilename,true,false);
         CaptureRecord->SetNumberField(TEXT("requested_at_seconds"),Elapsed);
         CapturePhase=ECapturePhase::Requested;
@@ -844,17 +1278,219 @@ void AWCVNextLab::TickCapture()
     }
 }
 
+void AWCVNextLab::FinishSoloVisualExercise(const FString& Failure)
+{
+    if(!ExerciseChecks)ExerciseChecks=MakeShared<FJsonObject>();
+    if(!Failure.IsEmpty())ExerciseChecks->SetBoolField(TEXT("completed_without_error"),false);
+    bool Passed=Failure.IsEmpty();
+    for(const auto& Check:ExerciseChecks->Values)if(Check.Value->Type==EJson::Boolean)Passed&=Check.Value->AsBool();
+    auto Report=MakeShared<FJsonObject>();
+    Report->SetStringField(TEXT("schema"),TEXT("wonder_vnext.solo_visual_exercise.1"));
+    Report->SetBoolField(TEXT("passed"),Passed);
+    Report->SetStringField(TEXT("failure"),Failure);
+    Report->SetStringField(TEXT("utc"),FDateTime::UtcNow().ToIso8601());
+    Report->SetStringField(TEXT("boundary"),TEXT("Native packaged UI captures from real local command handlers; accelerated tournament. Not physical input or human art acceptance."));
+    Report->SetStringField(TEXT("save_path"),SavePath);
+    Report->SetStringField(TEXT("catalog_digest"),Str(Catalog.contentDigest));
+    Report->SetNumberField(TEXT("wall_seconds"),Elapsed);
+    Report->SetObjectField(TEXT("checks"),ExerciseChecks);
+    Report->SetArrayField(TEXT("captures"),CaptureRecords);
+    FString Json;auto Writer=TJsonWriterFactory<>::Create(&Json);FJsonSerializer::Serialize(Report,Writer);
+    IFileManager::Get().MakeDirectory(*EvidenceDirectory,true);
+    const bool Written=FFileHelper::SaveStringToFile(Json,*(EvidenceDirectory/TEXT("solo-visual-exercise.json")),FFileHelper::EEncodingOptions::ForceUTF8WithoutBOM);
+    ExerciseDone=true;SoloPaused=true;
+    UE_LOG(LogTemp,Display,TEXT("WC_SOLO_VISUAL_EXERCISE_COMPLETE passed=%d report_written=%d captures=%d"),Passed,Written,CaptureRecords.Num());
+    FPlatformMisc::RequestExit(false);
+}
+
+void AWCVNextLab::TickSoloVisualExercise()
+{
+    if(ExerciseDone||!SoloMatch)return;
+    if(Elapsed>180){FinishSoloVisualExercise(TEXT("Visual exercise exceeded 180 seconds."));return;}
+    if(!SoloMatch->InvariantError().empty()){FinishSoloVisualExercise(Str(SoloMatch->InvariantError()));return;}
+    const auto Check=[this](const TCHAR* Name,bool Value){ExerciseChecks->SetBoolField(Name,Value);};
+    const auto CaptureUpgrade=[this](int Resume){
+        if(ExerciseChecks->HasField(TEXT("actual_merge_captured")))return false;
+        for(const auto& Entry:UpgradeStarted)if(UpgradePulse(Entry.Key)>0){
+            Selected=Entry.Key;
+            ExerciseChecks->SetBoolField(TEXT("actual_merge_captured"),true);
+            QueueCapture(TEXT("solo-upgrade.png"),Resume);
+            return true;
+        }
+        return false;
+    };
+    const auto BuyOne=[this]{
+        if(ViewedSeat!=0||SoloMatch->Seats()[0].health<=0)return false;
+        const auto& Captain=SoloMatch->Seats()[0];
+        int Best=-1,BestScore=-1;
+        for(int Slot=0;Slot<int(Captain.shop.size());++Slot){
+            wc::Command Buy;Buy.type=wc::CommandType::Buy;Buy.slot=Slot;
+            const auto Preview=wc::PreviewRosterCommand(Catalog,Captain,Buy);
+            if(!Preview.accepted)continue;
+            int Score=Preview.mergeSteps.empty()?0:100;
+            for(const auto& Unit:Captain.roster)if(Unit.definition==Captain.shop[Slot]&&Unit.star==1)Score+=10;
+            if(Score>BestScore){Best=Slot;BestScore=Score;}
+        }
+        if(Best<0)return false;
+        wc::Command Buy;Buy.type=wc::CommandType::Buy;Buy.slot=Best;
+        return SoloCommand(Buy);
+    };
+    const auto Deploy=[this]{
+        const auto& Captain=SoloMatch->Seats()[0];
+        std::vector<wc::Id> Bench;
+        int Count=0;for(const auto& Unit:Captain.roster){if(Unit.onBoard)++Count;else Bench.push_back(Unit.id);}
+        for(const auto Id:Bench){
+            if(Count>=FMath::Min(2,Captain.level))break;
+            Selected=Id;
+            if(SoloCell({Count?4:2,2}))++Count;
+        }
+    };
+    if(ExerciseStage==200){
+        FString ExplicitSave;
+        const bool Fresh=FParse::Value(FCommandLine::Get(),TEXT("WCSavePath="),ExplicitSave)&&
+            FPaths::IsUnderDirectory(FPaths::ConvertRelativePathToFull(SavePath),FPaths::ConvertRelativePathToFull(EvidenceDirectory))&&
+            !IFileManager::Get().FileExists(*SavePath)&&!IFileManager::Get().FileExists(*(SavePath+TEXT(".previous")));
+        if(!Fresh){FinishSoloVisualExercise(TEXT("Visual exercise requires a fresh explicit WCSavePath inside its evidence directory."));return;}
+        Check(TEXT("storybook_resources_ready"),FWCArtSlice::StorybookResourcesReady()&&SanctuaryBackdrop);
+        SoloVisualSavedState=SoloMatch->SavePreparation();
+        SaveSolo();StartSolo();
+        Check(TEXT("saved_preparation_opens_choice"),AwaitingSaveDecision);
+        QueueCapture(TEXT("solo-save-choice.png"),201);
+        return;
+    }
+    if(ExerciseStage==201){
+        ResumeSolo();Check(TEXT("resume_restores_exact_preparation"),!AwaitingSaveDecision&&SoloMatch->SavePreparation()==SoloVisualSavedState);
+        Check(TEXT("resume_does_not_trigger_upgrade"),UpgradeStarted.IsEmpty());
+        QueueCapture(TEXT("solo-loaded-preparation.png"),202);return;
+    }
+    if(ExerciseStage==202){
+        if(SoloVisualOrders<10&&BuyOne()){
+            ++SoloVisualOrders;Deploy();
+            if(CaptureUpgrade(202))return;
+            return;
+        }
+        if(SoloVisualOrders<10&&SoloMatch->Seats()[0].gold>=Catalog.rules.rerollCost+1){
+            wc::Command Reroll;Reroll.type=wc::CommandType::Reroll;
+            if(SoloCommand(Reroll)){++SoloVisualOrders;return;}
+        }
+        Deploy();
+        int Deployed=0,Benched=0;for(const auto& Unit:SoloMatch->Seats()[0].roster){if(Unit.onBoard)++Deployed;else ++Benched;}
+        Check(TEXT("preparation_has_real_deployed_and_bench_units"),Deployed>=2&&Benched>=1);
+        ExerciseChecks->SetNumberField(TEXT("preparation_deployed"),Deployed);
+        ExerciseChecks->SetNumberField(TEXT("preparation_benched"),Benched);
+        SoloPaused=true;QueueCapture(TEXT("solo-recruited-preparation.png"),204);return;
+    }
+    if(ExerciseStage==204){
+        ScoutSolo(1);Check(TEXT("scouting_clears_upgrade"),UpgradeStarted.IsEmpty());
+        const auto Before=SoloMatch->SavePreparation();
+        wc::Command Buy;Buy.type=wc::CommandType::Buy;Buy.slot=0;
+        Check(TEXT("scouting_rejects_orders_without_mutation"),!SoloCommand(Buy)&&Before==SoloMatch->SavePreparation());
+        QueueCapture(TEXT("solo-scouting.png"),205);return;
+    }
+    if(ExerciseStage==206){
+        const auto& Captain=SoloMatch->Seats()[0];
+        int Choice=-1;wc::Id Recipient=0;
+        for(int Slot=0;Slot<int(Captain.relicOffers.size())&&Choice<0;++Slot)for(const auto& Unit:Captain.roster)
+            if(wc::RelicCompatible(Catalog.relics[Captain.relicOffers[Slot]],Catalog.units[Unit.definition].ability.mechanic)){Choice=Slot;Recipient=Unit.id;break;}
+        if(Choice<0){FinishSoloVisualExercise(TEXT("No first-draft relic fits the actually recruited roster."));return;}
+        const int Relic=Captain.relicOffers[Choice];
+        wc::Command Draft;Draft.type=wc::CommandType::ChooseRelic;Draft.slot=Choice;
+        const bool Drafted=SoloCommand(Draft);Selected=Recipient;
+        wc::Command Equip;Equip.type=wc::CommandType::EquipRelic;Equip.slot=Relic;Equip.unit=Recipient;
+        Check(TEXT("real_draft_and_equipment_accepted"),Drafted&&SoloCommand(Equip));
+        Check(TEXT("equipped_relic_in_live_inspector"),InspectorText().Contains(TEXT("Relic: ")+Str(Catalog.relics[Relic].name)));
+        QueueCapture(TEXT("solo-equipped-relic.png"),205);return;
+    }
+    if(ExerciseStage==208){
+        const auto Records=SoloMatch->Records().size();NewSolo();
+        Check(TEXT("restart_clears_results_and_upgrade"),Records>0&&SoloMatch->Round()==1&&SoloMatch->Records().empty()&&!AwaitingSaveDecision&&UpgradeStarted.IsEmpty());
+        QueueCapture(TEXT("solo-restarted.png"),209);return;
+    }
+    if(ExerciseStage==209){
+        bool Complete=CaptureRecords.Num()==9;
+        for(const auto& Value:CaptureRecords){
+            const auto Record=Value->AsObject();
+            Complete&=Record->GetBoolField(TEXT("completed"))&&Record->GetBoolField(TEXT("new_file_saved"))&&
+                Record->GetBoolField(TEXT("state_stable_through_capture"))&&Record->GetBoolField(TEXT("text_widgets_match_current_sources"))&&
+                Record->GetBoolField(TEXT("board_projection_verified"))&&
+                Record->GetNumberField(TEXT("presentation_ticks_before_request"))>=2;
+        }
+        Check(TEXT("nine_stable_native_ui_captures_written"),Complete);
+        Check(TEXT("actual_merge_captured"),ExerciseChecks->HasField(TEXT("actual_merge_captured")));
+        FinishSoloVisualExercise();return;
+    }
+    if(ExerciseStage!=205)return;
+    if(ViewedSeat!=0&&SoloMatch->Seats()[0].health>0)ScoutSolo(0);
+    if(SoloMatch->CurrentPhase()==wc::Phase::Finished){
+        Check(TEXT("actual_tournament_finished"),SoloMatch->InvariantError().empty()&&SoloMatch->Seats()[0].placement>0);
+        ExerciseChecks->SetNumberField(TEXT("completed_rounds"),SoloMatch->Round());
+        QueueCapture(TEXT("solo-results.png"),208);return;
+    }
+    if(SoloMatch->CurrentPhase()==wc::Phase::Preparation&&SoloMatch->Seats()[0].health>0){
+        if(!SoloMatch->Seats()[0].relicOffers.empty()){
+            if(!ExerciseChecks->HasField(TEXT("real_relic_draft_captured"))){
+                Check(TEXT("real_relic_draft_captured"),true);QueueCapture(TEXT("solo-relic-draft.png"),206);return;
+            }
+            wc::Command Draft;Draft.type=wc::CommandType::ChooseRelic;Draft.slot=0;SoloCommand(Draft);
+        }
+        if(!ExerciseChecks->HasField(TEXT("actual_merge_captured"))&&BuyOne()){
+            Deploy();if(CaptureUpgrade(205))return;
+        }
+        if(!SoloMatch->Seats()[0].ready){wc::Command Ready;Ready.type=wc::CommandType::Ready;SoloCommand(Ready);}
+    }
+    const auto Phase=SoloMatch->CurrentPhase();const int Round=SoloMatch->Round();
+    for(int I=0;I<200&&SoloMatch->CurrentPhase()==Phase&&SoloMatch->Round()==Round;++I)SoloMatch->Tick(50);
+    // Refresh the public presentation state before requesting any next-frame capture.
+    SoloPaused=true;TickSolo(0);
+}
+
 void AWCVNextLab::TickExercise()
 {
     if(CombatInvariantFailed)return;
     if(Elapsed>90){ExerciseChecks->SetBoolField(TEXT("completed_within_exercise_limit"),false);WriteEvidence(false);ExerciseDone=true;Paused=true;return;}
-    if(ExerciseStage==0){
+    if(ExerciseStage==100){
+        StartStatusTest();ExerciseStage=101;
+    }else if(ExerciseStage==101){
+        if(Fight&&Fight->CurrentTick()<27)Advance();
+        else {Paused=true;QueueCapture(TEXT("status-effects-active.png"),102);}
+    }else if(ExerciseStage==102){
+        ExerciseChecks->SetBoolField(TEXT("actual_stun_swirl_drawn"),CueKindsSeen.Contains(TEXT("stun_swirl")));
+        ExerciseChecks->SetBoolField(TEXT("actual_shield_drawn"),CueKindsSeen.Contains(TEXT("active_shield")));
+        ExerciseChecks->SetBoolField(TEXT("effective_healing_plus_drawn"),CueKindsSeen.Contains(TEXT("healing_plus")));
+        ExerciseChecks->SetBoolField(TEXT("actual_modifier_drawn"),CueKindsSeen.Contains(TEXT("stat_modifier")));
+        if(ArtSlice)ExerciseChecks->SetBoolField(TEXT("art_slice_five_point_stun_stars_drawn"),CueKindsSeen.Contains(TEXT("art_slice_stun_stars")));
+        for(int I=0;I<8&&Fight->CurrentTick()<150;++I)Advance();
+        if(Fight->CurrentTick()>=150){Paused=true;QueueCapture(TEXT("status-effects-expired.png"),103);}
+    }else if(ExerciseStage==103){
+        bool Expired=true;for(const auto& U:Fight->Units())Expired&=U.state!=wc::ActionState::Stunned&&U.shield==0&&U.modifiers.empty();
+        ExerciseChecks->SetBoolField(TEXT("actual_statuses_expired"),Expired);
+        ExerciseChecks->SetBoolField(TEXT("expired_status_geometry_hidden"),!CurrentCueKinds.Contains(TEXT("stun_swirl"))&&!CurrentCueKinds.Contains(TEXT("active_shield"))&&!CurrentCueKinds.Contains(TEXT("stat_modifier")));
+        ExerciseChecks->SetBoolField(TEXT("cue_pool_bounded"),!CueOverflow);
+        bool Passed=true;for(const auto& E:ExerciseChecks->Values)if(E.Value->Type==EJson::Boolean)Passed&=E.Value->AsBool();
+        WriteEvidence(Passed);ExerciseDone=true;Paused=true;
+    }else if(ExerciseStage==0){
         IFileManager::Get().MakeDirectory(*EvidenceDirectory,true);
         QueueCapture(TEXT("lab-preparation.png"),1);
     }else if(ExerciseStage==1){
+        if(ArtSlice){
+            // The first capture has now settled; stage zero precedes the first presentation tick.
+            bool Hud=!Pieces.IsEmpty();
+            for(const auto& Pair:Pieces){
+                const auto& View=Pair.Value;const int Maximum=Catalog.units[View.Definition].ability.mana.maximum;
+                Hud&=View.HealthTrack&&View.ManaTrack&&View.HealthTrack->IsVisible()&&View.ManaTrack->IsVisible()==(Maximum>0)&&View.TierPips.Num()==3;
+                if(Maximum==0)Hud&=!View.Mana->IsVisible();
+            }
+            ExerciseChecks->SetBoolField(TEXT("art_slice_hud_tracks_and_passive_mana_visibility"),Hud);
+        }
         ClearFormation();
         ExerciseChecks->SetBoolField(TEXT("empty_start_rejected"),!Start());
         ChooseHero(0);EditCell({0,0},false);
+        if(ArtSlice){
+            ExerciseChecks->SetBoolField(TEXT("placement_preview_inspects_occupied_cell"),PlacementState({0,0})==1);
+            ExerciseChecks->SetBoolField(TEXT("placement_preview_accepts_same_team_empty_cell"),PlacementState({1,0})==2);
+            ExerciseChecks->SetBoolField(TEXT("placement_preview_rejects_cross_team_move"),PlacementState({0,7})==3);
+            ExerciseChecks->SetBoolField(TEXT("placement_preview_ignores_off_board"),PlacementState({-1,0})==0);
+        }
         const uint64 TestPiece=Selected;
         ChangeStars();ChangeFacing();
         ExerciseChecks->SetBoolField(TEXT("stars_and_facing_edit_selected_piece"),SelectedPiece()&&SelectedPiece()->star==2&&SelectedPiece()->facing==wc::Facing::Right);
@@ -865,6 +1501,7 @@ void AWCVNextLab::TickExercise()
         BrushStar=1;BrushFacing=wc::Facing::Forward;
         for(int Index=0;Index<10;++Index){ChooseHero(0);EditCell({Index%8,Index/8},false);}
         ChooseHero(0);
+        if(ArtSlice)ExerciseChecks->SetBoolField(TEXT("placement_preview_rejects_full_team"),PlacementState({2,1})==3);
         ExerciseChecks->SetBoolField(TEXT("ten_per_side_limit"),Formation[0].size()==10&&!EditCell({2,1},false));
         Preset();
         ExerciseChecks->SetBoolField(TEXT("six_hero_palette_and_both_formations"),Formation[0].size()==6&&Formation[1].size()==6);
@@ -927,9 +1564,32 @@ void AWCVNextLab::TickExercise()
         for(int I=0;I<8&&Fight&&!Fight->Result().complete&&!CombatInvariantFailed;++I)Advance();
         if(ExerciseDone)return;
         if(Fight&&Fight->CurrentTick()>=60&&ExerciseChecks&&!ExerciseChecks->HasField(TEXT("combat_capture_requested"))){
+            if(Catalog.units[4].ability.mana.maximum>0){
+                const wc::CombatUnit* Inspected=nullptr;
+                for(const auto& U:Fight->Units())if(U.side==0&&OwnedId(U.id)==Formation[0][4].id){Inspected=&U;Selected=U.id;break;}
+                const FString Inspection=InspectorText();
+                ExerciseChecks->SetBoolField(TEXT("mana_inspector_uses_resource_not_cooldown"),Inspected&&
+                    Inspection.StartsWith(Str(Catalog.units[4].name))&&Inspection.Contains(TEXT("Current battle stats"))&&
+                    Inspection.Contains(FString::Printf(TEXT("Mana %.1f / 100"),Inspected->mana/100.))&&!Inspection.Contains(TEXT("Cooldown")));
+                bool ManaBars=true;for(const auto& U:Fight->Units()){
+                    const auto* View=Pieces.Find(U.id);
+                    ManaBars&=View&&View->Mana&&View->Mana->IsVisible()==(U.health>0&&U.ability.mana.maximum>0&&(!ArtSlice||U.mana>0));
+                    if(ArtSlice)ManaBars&=View&&View->ManaTrack&&View->ManaTrack->IsVisible()==(U.health>0&&U.ability.mana.maximum>0);
+                }
+                ExerciseChecks->SetBoolField(TEXT("mana_bars_match_live_resource_users"),ManaBars);
+            }
             QueueCapture(TEXT("lab-combat.png"),2);
             ExerciseChecks->SetBoolField(TEXT("combat_capture_requested"),true);
             return;
+        }
+        if(Storybook&&Fight&&!ExerciseChecks->HasField(TEXT("storybook_defeat_capture_requested"))){
+            const auto Defeated=std::find_if(Fight->Units().begin(),Fight->Units().end(),[](const auto& Unit){return Unit.health<=0;});
+            if(Defeated!=Fight->Units().end()){
+                Selected=Defeated->id;
+                ExerciseChecks->SetBoolField(TEXT("storybook_defeat_capture_requested"),true);
+                QueueCapture(TEXT("lab-defeat.png"),2);
+                return;
+            }
         }
         if(Fight&&Fight->Result().complete){
             FirstSignature=Signature();FirstEventCount=int(Fight->Events().size());
@@ -961,7 +1621,23 @@ void AWCVNextLab::TickExercise()
             QueueCapture(TEXT("lab-replay-result.png"),4);
         }
     }else if(ExerciseStage==4){
-        bool CapturesComplete=CaptureRecords.Num()==5,CapturesSaved=CapturesComplete,CapturesStable=CapturesComplete,CapturesSettled=CapturesComplete,CaptureTextExact=CapturesComplete;
+        if(Storybook){
+            bool DefeatedHidden=true;
+            int ExpiredDefeats=0;
+            if(Fight)for(const auto& Unit:Fight->Units())if(Unit.health<=0&&DefeatAge(Unit)>=.72f){
+                ++ExpiredDefeats;
+                const auto* View=Pieces.Find(Unit.id);
+                DefeatedHidden&=View&&View->Actor.IsValid()&&View->Actor->IsHidden();
+            }
+            ExerciseChecks->SetBoolField(TEXT("storybook_actual_defeat_leaves_drawn"),CueKindsSeen.Contains(TEXT("storybook_defeat_leaves")));
+            ExerciseChecks->SetBoolField(TEXT("storybook_expired_defeated_proxies_hidden"),ExpiredDefeats>0&&DefeatedHidden);
+            ExerciseChecks->SetNumberField(TEXT("storybook_expired_defeat_count"),ExpiredDefeats);
+            ExerciseChecks->SetBoolField(TEXT("storybook_cues_pool_bounded"),!CueOverflow);
+            ExerciseChecks->SetBoolField(TEXT("storybook_four_ranged_identities_drawn"),
+                CueKindsSeen.Contains(TEXT("root_seed_projectile"))&&CueKindsSeen.Contains(TEXT("snapvine_barbed_projectile"))&&
+                CueKindsSeen.Contains(TEXT("prism_glass_projectile"))&&CueKindsSeen.Contains(TEXT("reefglass_crescent_projectile")));
+        }
+        bool CapturesComplete=CaptureRecords.Num()==(Storybook?6:5),CapturesSaved=CapturesComplete,CapturesStable=CapturesComplete,CapturesSettled=CapturesComplete,CaptureTextExact=CapturesComplete;
         bool BellbackText=false,ReefglassText=false;
         for(const auto& Value:CaptureRecords){
             const auto Record=Value->AsObject();
@@ -994,6 +1670,23 @@ bool AWCVNextLab::WriteEvidence(bool Passed)
     Root->SetBoolField(TEXT("passed"),Passed);
     Root->SetStringField(TEXT("input_boundary"),TEXT("Native Unreal Slate constructed; scripted calls exercise the same handlers as its buttons. Physical pointer hit testing and human usability are not certified."));
     Root->SetStringField(TEXT("art_status"),TEXT("UNAPPROVED_GAMEPLAY_PROXIES"));
+    Root->SetBoolField(TEXT("art_slice_enabled"),ArtSlice);
+    Root->SetBoolField(TEXT("storybook_enabled"),Storybook);
+    if(Storybook){
+        Root->SetBoolField(TEXT("sanctuary_world_material_loaded"),SanctuaryMaterial!=nullptr);
+        Root->SetBoolField(TEXT("sanctuary_world_backdrop_loaded"),SanctuaryBackdrop!=nullptr);
+        Root->SetStringField(TEXT("storybook_art_status"),TEXT("EXPANDED_ASSET_CANDIDATE_PENDING_OWNER_REVIEW"));
+    }
+    if(ArtSlice){
+        Root->SetBoolField(TEXT("art_slice_ui_resources_ready"),FWCArtSlice::ResourcesReady());
+        Root->SetBoolField(TEXT("quiet_stone_material_loaded"),QuietStoneMaterial!=nullptr);
+        Root->SetNumberField(TEXT("placement_preview_state"),PlacementPreviewState);
+        Root->SetStringField(TEXT("art_slice_status"),TEXT("IN_GAME_STUDY_CANDIDATE_PENDING_OWNER_REVIEW"));
+    }
+    TArray<TSharedPtr<FJsonValue>> CueKinds;for(const auto& Kind:CueKindsSeen)CueKinds.Add(MakeShared<FJsonValueString>(Kind));
+    Root->SetArrayField(TEXT("rendered_cue_kinds"),CueKinds);
+    Root->SetNumberField(TEXT("peak_cue_meshes"),PeakCueMeshes);Root->SetNumberField(TEXT("peak_cue_texts"),PeakCueTexts);
+    Root->SetBoolField(TEXT("cue_pool_overflow"),CueOverflow);
     Root->SetStringField(TEXT("profile"),TEXT("wonder_vnext"));
     Root->SetStringField(TEXT("catalog_digest"),Str(Catalog.contentDigest));
     Root->SetArrayField(TEXT("captures"),CaptureRecords);
@@ -1071,6 +1764,7 @@ bool AWCVNextLab::WriteEvidence(bool Passed)
             auto Row=MakeShared<FJsonObject>();
             Row->SetNumberField(TEXT("tick"),E.tick);Row->SetNumberField(TEXT("source"),E.source);Row->SetNumberField(TEXT("target"),E.target);Row->SetNumberField(TEXT("action"),E.action);
             Row->SetStringField(TEXT("effect"),EffectName(E.effect));Row->SetNumberField(TEXT("mechanic"),int(E.mechanic));
+            Row->SetBoolField(TEXT("basic_attack"),E.basicAttack);
             Row->SetNumberField(TEXT("resolved_cp"),E.resolved);Row->SetNumberField(TEXT("health_loss_cp"),E.healthLoss);Row->SetNumberField(TEXT("absorbed_cp"),E.absorbed);Row->SetNumberField(TEXT("prevented_cp"),E.prevented);
             Row->SetNumberField(TEXT("column"),E.cell.column);Row->SetNumberField(TEXT("row"),E.cell.row);
             Events.Add(MakeShared<FJsonValueObject>(Row));
@@ -1084,4 +1778,15 @@ bool AWCVNextLab::WriteEvidence(bool Passed)
     const bool Saved=FFileHelper::SaveStringToFile(Json,*(EvidenceDirectory/TEXT("lab-exercise.json")));
     UE_LOG(LogTemp,Display,TEXT("WC_VNEXT_LAB_EXERCISE passed=%d saved=%d path=%s"),Passed,Saved,*(EvidenceDirectory/TEXT("lab-exercise.json")));
     return Passed&&Saved;
+}
+
+void AWCVNextLab::StartStatusTest()
+{
+    if(SoloMode||!LoadError.IsEmpty())return;
+    Fight.reset();StatusTestCatalog=std::make_unique<wc::Catalog>(wctest::StatusCueCatalog(Catalog));
+    wc::OwnedUnit A;A.id=900;A.definition=0;A.onBoard=true;A.cell={3,3};
+    wc::OwnedUnit B=A;B.id=901;B.definition=1;B.cell={4,3};
+    Fight=std::make_unique<wc::Combat>(*StatusTestCatalog,std::vector<wc::OwnedUnit>{A},std::vector<wc::OwnedUnit>{B},Seed);
+    StatusTest=true;Paused=false;Accumulator=0;Selected=Fight->Units().back().id;
+    Message=TEXT("Synthetic status test: damage, effective heal, shield, stun and slow. These are test effects, not Bellback or Cragstoat abilities. Reset restores your real formation.");
 }

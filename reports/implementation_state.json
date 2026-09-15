@@ -1,7 +1,28 @@
 {
+  "workspace_consolidation_20260915": {
+    "date": "2026-09-15",
+    "status": "CONSOLIDATED_VERIFIED",
+    "canonical_checkout": ".",
+    "branch": "codex/milestones-b0-m7-20260912",
+    "base_commit": "d80635f615810a93c3161c6bfd6c34c758b08260",
+    "report": "reports/REORGANIZATION_2026_09_15.md",
+    "migration_evidence": "support/operations/migration-20260915",
+    "preserved_working_changes": true,
+    "git_refs_unchanged": true,
+    "product_acceptance_changed": false,
+    "new_pc_build": "NOT_RUN",
+    "moved_files": 63720,
+    "moved_bytes": 71448788030,
+    "python_tests": 230,
+    "authoring_checks": 400,
+    "relative_launchers_verified": 11,
+    "git_fsck": "PASS",
+    "package_identity": "PASS_122_SOURCE_49_PACKAGE_FILES",
+    "transfer_manifest": "TRANSFER_MANIFEST.jsonl"
+  },
   "kit_version": "3.0",
   "scope": "wonder_vnext_successor_programme_with_preserved_alpha_24_baseline",
-  "actual_game_status": "PACKAGED_SIX_CREATURE_LAB_VERIFIED_PROGRAMME_IN_PROGRESS",
+  "actual_game_status": "PACKAGED_VNEXT_SOLO_ENGINEERING_CANDIDATE_B0_M7_ACCEPTANCE_OPEN",
   "reference_playthrough_preparation": {
     "status": "COMPLETED_REFERENCE_MATCH",
     "prepared_utc": "2026-09-06T11:03:20.414Z",
@@ -226,30 +247,29 @@
     "runtime_status": "PROTOCOL5_NATIVE100_AND_REAL_SELECTION_UI_PASS;PROTOCOL4_PACKAGE100_AND_TWO_RESTARTS_PASS;PROTOCOL5_RECOVERY_AND_CORRECTED_PACKAGE_PENDING"
   },
   "warnings": [
-    "Six-creature laboratory only; the full adopted M0-M7 programme remains in progress.",
-    "The successor tournament recruitment/scouting/relic-draft frontend and packaged autosave/resume lifecycle are unfinished.",
-    "Current native sample has 14.125 percent combat timeouts and 199 round-capped tournaments; balance gate fails.",
-    "31.332-minute median is accelerated bot simulated time, not a measured human tournament.",
-    "All eighteen successor traits are inactive; eight additional hero dossiers are authored only.",
-    "Shared art direction approved; Bellback formal references pending human decision; Prism Organ reference ART_REVISE.",
-    "Finished art, animation, audio, external-player studies, full performance, clean-machine and remote online acceptance remain open.",
-    "Historical alpha_24 records and their original acceptance boundaries are preserved in this ledger."
+    "Six-creature solo/laboratory engineering candidate only; B0-M7 acceptance remains open.",
+    "Recruitment/scouting/relic-draft frontend, atomic preparation saves, same-handler full tournament smoke and scoped real-input cold resume are implemented and verified; full normal-speed human journeys remain untested.",
+    "Control Root75 experiment rejected: overall timeouts14.125 to9.003 percent; capped tournaments199 to414 of1000. These are identified experimental arms, not the new solo catalogue regression.",
+    "Final solo0.1.0 native sample:26,219timeouts/186,984encounters(14.022percent),187roundcaps/1000; timeout screen fails despite exact engine reconciliation.",
+    "All simulated tournament durations are accelerated bot evidence, not measured human duration or enjoyment.",
+    "All eighteen successor traits are inactive; eight additional successor hero dossiers are authored only.",
+    "Bellback exactr004references accepted_current by the owner; three Blender forms candidates ART_REVISE; downstream gates notrun. Prism Organ reference remains ART_REVISE.",
+    "Finished art/animation/audio, external-player studies, full-content performance, clean-checkout Unreal build, independent clean-machine and remote acceptance remain open.",
+    "Historical alpha_24 and lab records remain in this ledger with their original boundaries; current aliases below refer to r4."
   ],
-  "updated_utc": "2026-09-10T16:38:58.302097+00:00",
+  "updated_utc": "2026-09-13T07:29:41.905958+00:00",
   "task_numbering_authority": "docs/MASTER_IMPLEMENTATION_v3.md; legacy task-card numbering is retained in source kit and differs from master sequence",
   "delivery": {
-    "package_launcher": "builds/WonderChess-Alpha-Candidate/Windows/WonderChess.exe",
-    "inner_executable_sha256": "b3114876d3d75e6d89677f42b2a6117b5989ba8dfe91d4f50ef50e965a2103ac",
-    "tested_provenance": "reports/WC-360/alpha-candidate-provenance.json",
-    "acceptance": "CANDIDATE_NOT_FINAL_PLAYABLE_OR_PRESENTABLE_ACCEPTANCE",
-    "source_checkpoint": "67c165b66af5b1c0132c275b1613b7482b2acf8b",
-    "tested_provenance_sha256": "89d6e2129cf28e491fb69d9d2fb2c68f2f50e0562dcdbc792322c2fe04786415",
-    "packaged_payload_bytes": 592741060,
-    "packaged_payload_files": 31,
-    "final_byte_audit": "reports/WC-360/alpha-candidate-final-byte-audit.json",
-    "remaining_task_game_processes": 2,
-    "manual_resume": "reports/WC-360/alpha-candidate-manual-resume/attempt.json",
-    "historical_build_scope": "Retained 12-hero candidate only. The 24-hero update has not inherited these match, manual or performance results."
+    "candidate": "WonderChess-Milestones-r4",
+    "package_launcher": "builds/WonderChess-Milestones-r4/Windows/WonderChess.exe",
+    "launch_wrapper": "tools/unreal/launch_milestones.ps1",
+    "inner_executable_sha256": "a17818ab35991d069027a6c8f6a6725fb2ca64095942ce0e5f78331d9cad3139",
+    "tested_provenance": "reports/vnext/milestones/package-identity-r4/package-manifest.json",
+    "packaged_payload_files": 49,
+    "acceptance": "ENGINEERING_CANDIDATE_NOT_RELEASE_ACCEPTED",
+    "source_base_commit": "d80635f615810a93c3161c6bfd6c34c758b08260",
+    "boundary": "Uncommitted working-tree candidate; exactsource/package manifest, not clean-checkout or clean-machine proof.",
+    "remaining_task_game_processes": 0
   },
   "performance": {
     "status": "PASS_MEASURED_WITH_RETAINED_HITCHES",
@@ -438,20 +458,26 @@
     "movies": "reports/WC-U440/20260907T165200Z-closeout/engine-movies168/encoding-report.json"
   },
   "current_data": {
-    "schema": "3.1.0",
-    "profile": "alpha_24",
-    "balance": "alpha_24_v0.4.1",
-    "digest": "95509d001ca0e6c55fa64a616df6e2e9a01a3809a9b9c82d9bd0a725dad3a1ec",
+    "profile": "wonder_vnext",
+    "balance": "wonder_vnext_solo_0.1.0",
+    "catalog_sha256": "6e80932173071ef05e58d90a44db3490cfcfde86d48edf33f4a940ff1748efa0",
+    "runtime_sha256": "6988edee019a8eec6be64e0611dd3b9ec2da2942786374e0a6e3f5efa123e46b",
     "protocol": 6,
-    "integration_status": "PROTOCOL6_SHARED_CONSTANT_EDITOR_SHIPPING_BUILT_CURRENT_PACKAGE_AUDITS_PASS"
+    "runtime_heroes": 6,
+    "runtime_relics": 12,
+    "active_traits": 0,
+    "neutral_definitions": 7,
+    "authored_waves": 12,
+    "integration_status": "PACKAGED_R4_ENGINEERING_VERIFIED_ACCEPTANCE_OPEN"
   },
   "current_access_constraints": {
-    "checked_utc": "2026-09-08T05:43:52.547360+00:00",
-    "native_computer_use": "Windows @oai/sky Computer Use available and executed for visible Blender. No new manual gameplay or audiovisual acceptance claimed.",
-    "physical_lan": "No second physical LAN machine/address/access supplied. Actual same-PC two-process loopback is separately labeled.",
-    "boundary": "No security setting broadened. Scripted Unreal commands and captured frame sequences remain distinct from manual play and continuous audiovisual acceptance.",
-    "check_time_boundary": "Blender MCP five-tool verification passed against actual current live candidate after visible launcher restart. CUA_REPL native APIs are a different surface and remain disabled.",
-    "misplaced_review_files": "Automatic approval review rejected moving/cleaning70PNG files under C:/reports/WC-U440/20260906T162705Z-elf-shoulders, reason blocked by policy. Files left untouched; exact handoff reports/WC-U440/20260906T162705Z-elf-shoulders/elf-source8-handoff.md."
+    "checked_utc": "2026-09-12T16:33:01.972326+00:00",
+    "native_computer_use": "Windows @oai/sky executed actual scoped r4 pointer/keyboard and cold-resume journeys on the development PC. External human acceptance not established.",
+    "blender": "Installed Blender5.1.1 executed save/reopen/render using headless scripts; missing MCP connection did not block construction. Forms failed art quality review.",
+    "physical_remote": "Independent remote devices, authenticated service setup and human seat operators not supplied. Native multi-seat probes are not remote sessions.",
+    "security_prompt": "Earlier r2dialog no longer present after task-launched process closed. No security UI action or firewall setting changed.",
+    "external_participants": 0,
+    "boundary": "Current technical access and observed actions only; prior access records archived."
   },
   "historical_update_deliveries": [
     {
@@ -488,7 +514,7 @@
       "network_result": "PASS56_CHECKS_ROUND33_BOTH_INNER_EXITS0_LOOPBACK_ONLY"
     }
   ],
-  "last_updated_utc": "2026-09-10T16:38:58.302097+00:00",
+  "last_updated_utc": "2026-09-13T12:44:29.005229+00:00",
   "closeout_steering": {
     "utc": "2026-09-07T17:20:11.259869+00:00",
     "request": "Finish current run quickly; defer real-time MCP bridge discussion",
@@ -500,7 +526,7 @@
     "eight_neutral_encounters": "OBSERVED",
     "required_busy_load": "NOT_RUN"
   },
-  "final_validation": "reports/WC-U460/20260907T173100Z-final-checks",
+  "final_validation": "reports/vnext/milestones/verification.json",
   "blender_mcp_connection": {
     "status": "VISIBLE_GUI_EDIT_SAVE_AND_POST_RESTART_MCP_VERIFIED",
     "verified_utc": "2026-09-08T05:41:09.998826+00:00",
@@ -967,7 +993,7 @@
       "checkpoint": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW4/r001/verification.json",
       "next_required_action": "Bounded method stopped: replace local thumb/web and middle palm-base surface against actual selected hilt; independently refit upper back/cap/lower lame. No further equivalent correction pass.",
       "user_feedback": "User authorized independent BW1 full-body/costume study from retained MP1 source; preserve head ART_REVISE, no hair/game changes.",
-      "separate_art_review": "Final glove clears sampled self/handle checks, but body web crosses, glove/body fit fails, thumb pads remain27.591â€“31.635mm away and face away. ART_REVISE; no full grip, sword fit, human approval or reusable recipe."
+      "separate_art_review": "Final glove clears sampled self/handle checks, but body web crosses, glove/body fit fails, thumb pads remain27.591Ã¢â‚¬â€œ31.635mm away and face away. ART_REVISE; no full grip, sword fit, human approval or reusable recipe."
     },
     "ada_proportion_fit_bw5": {
       "status": "EXECUTED_ART_REVISE",
@@ -1024,162 +1050,2037 @@
     "boundary": "Existing task, roster, delivery, performance, AQ1, ACB1 and AS1 records below remain historical alpha_24 evidence unless explicitly tagged wonder_vnext. They are retained, not promoted to successor acceptance."
   },
   "vnext_programme": {
-    "schema": "wonder_vnext.implementation_checkpoint.1",
-    "recorded_utc": "2026-09-10T16:38:58.302097+00:00",
-    "status": "PACKAGED_SIX_CREATURE_LAB_VERIFIED_PROGRAMME_IN_PROGRESS",
+    "schema": "wonder_vnext.implementation_checkpoint.2",
+    "recorded_utc": "2026-09-13T05:03:42.545060+00:00",
+    "status": "B1_B2_R6_ENGINEERING_CONTINUATION",
     "profile": "wonder_vnext",
-    "balance_version": "wonder_vnext_lab_0.1.0",
-    "candidate": "WonderChess-VNext-Lab-r3",
-    "launcher": "Launch Wonder vNext.cmd",
-    "playguide": "docs/vnext/LAB_PLAYGUIDE.md",
-    "handoff": "reports/vnext/IMPLEMENTATION_HANDOFF.md",
-    "implementation_matrix": "docs/vnext/IMPLEMENTATION_MATRIX.md",
+    "balance_version": "wonder_vnext_solo_0.1.0",
+    "candidate": "WonderChess-Milestones-r6",
+    "launcher": "tools/unreal/launch_milestones.ps1",
+    "handoff": "docs/vnext/milestones/IMPLEMENTATION_READOUT.md",
+    "milestone_plan": "docs/vnext/milestones/DEVELOPMENT_MILESTONES.md",
+    "execution_contract": "docs/vnext/milestones/B0_EXECUTION_CONTRACT.md",
     "git": {
-      "branch": "codex/wonder-vnext",
-      "head": "9623fd82f98ff80a90985b9f552d8851ccece30f",
+      "branch": "codex/milestones-b0-m7-20260912",
+      "base_commit": "d80635f615810a93c3161c6bfd6c34c758b08260",
       "committed": false,
-      "boundary": "Preexisting dirty and untracked work preserved; this is a source-hashed working-tree checkpoint."
+      "published": false,
+      "worktree": "C:\\Users\\iputu\\AppData\\Local\\CodexWorktrees\\wc\\m7",
+      "historical_checkout_preserved": true,
+      "build_snapshots": [
+        {
+          "branch": "codex/milestones-r5-study-build-20260913",
+          "commit": "5df9876255c5d68c2105a9f01d01a14fe5dd50b9",
+          "published": false
+        },
+        {
+          "branch": "codex/milestones-r6-study-build-20260913",
+          "commit": "b0cc92571735f74a01592f01e018f2d9bbd13b68",
+          "published": false
+        }
+      ]
     },
     "identity": {
-      "catalog_sha256": "6f9a4178ec78d48c8f6fb8d487d88069327a5ca526652724dc12a8654f574ebb",
-      "runtime_json_sha256": "2264f260087e5f40f08512f6066245b9058add7290f2f67d0e5c47a109aa797d",
-      "inner_executable_sha256": "55ff18047e8a21216ddcd8121f883da9b1d5f0a2bd2bd5081e8c7247170c6333",
-      "provenance_sha256": "673138d984989a27971983d072aa67ff43bb0315176ffd6f60637bc89c3ee583"
+      "source_sha256": "6e80932173071ef05e58d90a44db3490cfcfde86d48edf33f4a940ff1748efa0",
+      "runtime_sha256": "6988edee019a8eec6be64e0611dd3b9ec2da2942786374e0a6e3f5efa123e46b",
+      "inner_executable_sha256": "f2ac31a8e00e77c7e5b2013525ab3474a94b17195ef454eb47aadf449c202d76",
+      "manifest": "reports/vnext/milestones/resume-20260913/package-identity-r6/package-manifest.json"
     },
     "verification": {
-      "python_tests_passed": 194,
-      "native_combat_assertions_passed": 21597,
-      "native_tournaments": 1000,
-      "native_seed_range": [
-        1,
-        1000
-      ],
-      "engine_comparison": {
+      "schema": "wonder-vnext-resumed-engineering-1",
+      "recorded_utc": "2026-09-13T05:03:42.545060+00:00",
+      "status": "R6_ENGINEERING_AND_CLEAN_CHECKOUT_VERIFIED_ACTUAL_INPUT_BLOCKED_ACCEPTANCE_OPEN",
+      "candidate": "WonderChess-Milestones-r6",
+      "profile": "wonder_vnext",
+      "balance_version": "wonder_vnext_solo_0.1.0",
+      "identity": {
+        "source_sha256": "6e80932173071ef05e58d90a44db3490cfcfde86d48edf33f4a940ff1748efa0",
+        "runtime_sha256": "6988edee019a8eec6be64e0611dd3b9ec2da2942786374e0a6e3f5efa123e46b",
+        "inner_executable_sha256": "f2ac31a8e00e77c7e5b2013525ab3474a94b17195ef454eb47aadf449c202d76",
+        "manifest": "reports/vnext/milestones/resume-20260913/package-identity-r6/package-manifest.json"
+      },
+      "python": {
+        "status": "PASS",
+        "tests": 228,
+        "seconds": 22.893,
+        "record": "authoring-r6/process.json"
+      },
+      "native_combat": {
+        "status": "PASS",
+        "assertions": 21875,
+        "record": "combat-diagnostics-02/process.json"
+      },
+      "native_lifecycle": {
+        "status": "PASS",
+        "assertions": 240572,
+        "tournaments": 1,
+        "record": "native-lifecycle/process.json"
+      },
+      "native_scenarios_and_acquisition": {
+        "status": "PASS",
+        "assertions": 7390,
+        "scenario_records": 29,
+        "unique_initial_scenario_combats": 28,
+        "acquisition_trials": 400,
+        "unique_shop_seeds": 100,
+        "width_sensitivity_encounters": 384,
+        "unique_width_combat_seeds": 32,
+        "record": "width-sensitivity/process.json"
+      },
+      "legacy_native": {
+        "status": "PASS",
         "tournaments": 100,
-        "rounds": 4317,
-        "encounters": 18777,
-        "executable": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-VNext-Lab-r3\\Windows\\WonderChess\\Binaries\\Win64\\WonderChess.exe"
+        "assertions": 3379152,
+        "record": "legacy-native-100"
       },
-      "technical_reconciliation_passed": true,
-      "lab_boolean_checks_per_resolution": 39,
-      "lab_resolutions": [
-        [
-          1280,
-          720
-        ],
-        [
-          1600,
-          1000
-        ],
-        [
-          1920,
-          1080
-        ]
+      "diagnostic_tournaments": {
+        "status": "RECONCILED",
+        "control_tournaments": 100,
+        "root75_tournaments": 100,
+        "control_encounters": 18685,
+        "root75_encounters": 19221,
+        "source_stable": true,
+        "record": "mechanic-comparison-v2.json",
+        "balance_promotion": "NONE"
+      },
+      "packaged_engine": {
+        "status": "PASS",
+        "tournaments": 10,
+        "rounds": 427,
+        "encounters": 1852,
+        "reconciliation": "engine-10-r6/reconciliation.json",
+        "boundary": "Targeted regression for inspector-only r6 delta; shared simulation and catalogue are unchanged from r5."
+      },
+      "solo_handlers": {
+        "status": "PASS",
+        "checks": 20,
+        "rounds": 43,
+        "captain_placement": 8,
+        "record": "solo-smoke-r6/solo-exercise.json",
+        "boundary": "Accelerated same-handler exercise; not real input or human acceptance"
+      },
+      "package": {
+        "status": "PASS",
+        "source_files": 81,
+        "payload_files": 49,
+        "configuration": "Development",
+        "engine": "5.7.4",
+        "build_cook_run_seconds": 146.32
+      },
+      "clean_checkout": {
+        "status": "PASS_PROJECT_CHECKOUT_BUILD_IDENTITY_AND_ENGINE",
+        "source_inputs_identical": 80,
+        "initial_project_intermediate_binaries_saved": false,
+        "snapshot_commit": "b0cc92571735f74a01592f01e018f2d9bbd13b68",
+        "record": "C:/Users/iputu/Documents/Project Support/Wonder Chess/study-builds/r6-clean-20260913/snapshot.json",
+        "clean_machine_install": "NOT_RUN",
+        "engine_tournaments": 10,
+        "engine_rounds": 427,
+        "engine_encounters": 1852,
+        "temporary_checkout": "REMOVED_AFTER_CLEANLINESS_CHECK",
+        "build_cook_run_seconds": 426.1,
+        "executable_sha256": "7e612c6398fb9873ede85a4a307ce047a3ff37156a036d956b537a90008e128f",
+        "identity_record": "C:\\Users\\iputu\\Documents\\Project Support\\Wonder Chess\\study-builds\\r6-clean-20260913\\package-manifest.json",
+        "engine_record": "C:\\Users\\iputu\\Documents\\Project Support\\Wonder Chess\\study-builds\\r6-clean-20260913\\engine-10\\reconciliation.json",
+        "cleanup_record": "C:/Users/iputu/Documents/Project Support/Wonder Chess/study-builds/r6-clean-20260913/cleanup.json"
+      },
+      "actual_r5_input": {
+        "status": "SCOPED_PASS_WITH_INSPECTOR_CLARITY_DEFECT",
+        "cases": 9,
+        "screenshots": 23,
+        "external_participants": 0,
+        "record": "actual-input-r5/review.json",
+        "correction": "Unselected palette fallback corrected and covered in r6; actual r6 input review separate."
+      },
+      "failed_attempts": [
+        {
+          "stage": "native diagnostic fixture 01",
+          "reason": "Establishment test was already past its configured wait at tick 1; corrected isolated fixture passed."
+        },
+        {
+          "stage": "r5 build 01",
+          "reason": "New test called private StateHash; switched to public save/seat evidence and rebuild passed."
+        },
+        {
+          "stage": "isolated checkout 01",
+          "reason": "Long archived paths exceeded default Git Windows support; retry with command-scoped core.longpaths=true succeeded."
+        },
+        {
+          "stage": "r6 identity capture 01",
+          "reason": "Required UnrealPak argument omitted; immediate capture retry with installed UnrealPak succeeded; first failure log preserved."
+        },
+        {
+          "stage": "r5 actual inspector review",
+          "reason": "Unselected solo view inherited a laboratory palette preview and displayed base stats/no relic; selecting real unit was correct. r6 fixes the unselected state and all three new smoke checks pass."
+        }
       ],
-      "legacy_tournaments_passed": 100,
-      "source_inputs_stable": 47,
-      "physical_pointer_and_keyboard_usability": "NOT_RUN",
-      "human_playtests": "NOT_RUN",
-      "continuous_animation_audio_review": "NOT_RUN",
-      "performance_acceptance": "NOT_RUN",
-      "remote_multiplayer": "NOT_RUN",
-      "clean_machine_acceptance": "NOT_RUN"
-    },
-    "balance": {
-      "native_encounters": 187141,
-      "native_timeouts": 26434,
-      "timeout_rate": 0.14125178341464456,
-      "capped_tournaments": 199,
-      "median_simulated_minutes": 31.331666666666667,
-      "median_phase_minutes": {
-        "preparation": 2.91125,
-        "combat": 24.945833333333333,
-        "settlement": 3.5
+      "external_participants": 0,
+      "human_pacing": "NOT_RUN",
+      "art": "Bellback reference accepted; forms ART_REVISE; no stage advancement",
+      "remote_real_devices": "NOT_RUN",
+      "release_acceptance": "NOT_RUN",
+      "boundaries": [
+        "Active canonical balance unchanged; held-out confirmation seeds remain unused.",
+        "r4 and earlier source/package evidence remains historical and preserved.",
+        "B0-M7 programme is not complete; six-creature engineering proof does not certify later roster, art, network, enjoyment or release acceptance."
+      ],
+      "packaged_engine_r5": {
+        "status": "PASS",
+        "tournaments": 100,
+        "rounds": 4288,
+        "encounters": 18685,
+        "reconciliation": "engine-100-r5/reconciliation.json"
       },
-      "native_relic_choices": 23716,
-      "native_relic_equips": 25192
-    },
-    "balance_acceptance": {
-      "timeout_below_two_percent": "FAIL",
-      "human_duration_35_to_45_minutes": "NOT_RUN",
-      "bot_simulated_duration_target_met": false,
-      "fun_or_superiority_claim": "NOT_ESTABLISHED"
+      "clean_checkout_r5": {
+        "status": "PASS_PROJECT_CHECKOUT_BUILD_IDENTITY_AND_ENGINE",
+        "source_inputs_identical": 80,
+        "initial_project_intermediate_binaries_saved": false,
+        "snapshot_commit": "5df9876255c5d68c2105a9f01d01a14fe5dd50b9",
+        "record": "C:/Users/iputu/Documents/Project Support/Wonder Chess/study-builds/r5-clean-20260913/snapshot.json",
+        "first_checkout": "FAILED_WINDOWS_GIT_LONG_PATH_LIMIT",
+        "retry": "PASS_COMMAND_SCOPED_LONG_PATH_SUPPORT",
+        "clean_machine_install": "NOT_RUN",
+        "engine_tournaments": 10,
+        "engine_rounds": 427,
+        "engine_encounters": 1852,
+        "temporary_checkout": "REMOVED_AFTER_CLEANLINESS_CHECK",
+        "cleanup_record": "C:/Users/iputu/Documents/Project Support/Wonder Chess/study-builds/r5-clean-20260913/cleanup.json"
+      },
+      "actual_r6_input": {
+        "status": "BLOCKED_OPERATOR_DIALOG",
+        "actions_executed": 0,
+        "reason": "r6 Windows firewall permission prompt requires manual operator dismissal. No security UI action or setting change performed. Scripted exercise has completed independently."
+      },
+      "source_delta_from_r5": {
+        "changed_build_inputs": [
+          "game/Source/WonderChessRuntime/Private/WCVNextLab.cpp",
+          "game/Source/WonderChessRuntime/Private/WCVNextSolo.cpp"
+        ],
+        "compiled_executable_changed": true,
+        "shared_simulation_catalogue_save_transport_unchanged": true
+      },
+      "not_rerun_after_r6_inspector_change": {
+        "native_and_balance": "Existing passing evidence applies to identical shared simulation/header/catalogue inputs. The only changed build sources are inspector and solo smoke code. No repeated 1,000-seed experiment was needed for this presentation correction.",
+        "r5_actual_input": "Preserved as executed on r5. r6 pointer verification remains a separate gate."
+      }
     },
     "art": {
       "shared_direction": "OWNER_APPROVED_DIRECTION_ONLY",
-      "owner_reply": "Use this direction",
-      "bellback_references": "SEALED_PENDING_HUMAN_APPROVAL",
-      "bellback_snapshot_sha256": "83de2292eeb1195963b1d479e194be171a87dd3c5eb960d47de870250fb2f842",
-      "bellback_reference_packet": "art-source/asset-studio/wc_vn_bellback/inputs/references/r004_construction/README.md",
-      "prism_organ_reference": "ART_REVISE",
-      "successor_blender_modeling": "NOT_STARTED",
-      "known_contract_mismatch": "Bellback dorsal-bell art direction versus chest-bell prose in frozen catalogue; reconcile next version."
+      "bellback_references": "ACCEPTED_CURRENT",
+      "owner_reply": "Accept this reference packet",
+      "reference_acceptance": "art-source/asset-studio/wc_vn_bellback/reviews/references/accepted_398e068188b44b939e9059e5c3e1742a.json",
+      "bellback_forms": "ART_REVISE",
+      "actual_blender_candidates": 3,
+      "latest_blend_sha256": "5a2931e42bbb8523f3e84ba39f02a5ceab0b1fa31abc3e8319fcf6a1c0d6066b",
+      "known_contract_mismatch": "Dorsal-bell prose reconciled in the deliberate solo0.1.0 catalogue revision",
+      "downstream_asset_gates": "NOT_RUN",
+      "method_review": "art-source/asset-studio/wc_vn_bellback/reports/FORMS_METHOD_REVIEW.md"
+    },
+    "balance_experiment": {
+      "status": "ROOT75_REJECTED",
+      "control_timeouts": 26434,
+      "control_encounters": 187141,
+      "root75_timeouts": 17249,
+      "root75_encounters": 191582,
+      "control_caps": 199,
+      "root75_caps": 414,
+      "seed_pairs": 1000,
+      "holdout_reserved_unexecuted": [
+        900001,
+        900250
+      ],
+      "record": "reports/vnext/milestones/b1-balance/regression-comparison.json"
     },
     "milestones": {
-      "M0": "CONTRACT_AND_CATALOGUE_DELIVERED_RECONCILIATION_OPEN",
-      "M1": "PACKAGED_COMBAT_LAB_DELIVERED_PREPARATION_FRONTEND_AND_HUMAN_ACCEPTANCE_OPEN",
-      "M2": "DIRECTION_APPROVED_REFERENCES_IN_PROGRESS_FINISHED_SLICE_OPEN",
-      "M3": "NATIVE_FOUNDATIONS_TESTED_FRONTEND_SAVE_UI_AND_PACING_OPEN",
-      "M4": "FULL_ROSTER_PRODUCTION_OPEN",
-      "M5": "SOLO_BETA_OPEN",
-      "M6": "ONLINE_BETA_OPEN",
-      "M7": "RELEASE_ACCEPTANCE_OPEN"
+      "B0": "EXECUTION_CONTRACT_AND_PROTOCOL_DELIVERED_STUDY_LOGISTICS_OPEN",
+      "B1": "DIAGNOSTICS_AND_MANA20_VS10_EXECUTED_PACING_FAILED_FORMATION_TRADEOFF_WEAKENED_HUMAN_OPEN",
+      "B2": "R6_FEEDBACK_INSPECTOR_ENGINEERING_PASS_R5_SCOPED_INPUT_PASS_FULL_JOURNEYS_HUMAN_OPEN",
+      "B3": "REFERENCE_ACCEPTED_FORMS_ART_REVISE_TRAIT_DEPENDENCIES_OPEN",
+      "M0": "HISTORICAL_CONTRACT_CATALOGUE_RETAINED",
+      "M1": "SOLO_AND_LAB_ENGINEERING_DELIVERED_EXTERNAL_ACCEPTANCE_OPEN",
+      "M2": "THREE_PILOT_ART_VISUAL_ACCESSIBILITY_ACCEPTANCE_OPEN",
+      "M3": "DURABLE_SAVES_LIFECYCLE_TESTED_PACING_HUMAN_OPEN",
+      "M4": "EVIDENCE_EARNED_ROSTER_ECOSYSTEM_PRODUCTION_OPEN",
+      "M5": "STUDY_KIT_DELIVERED_SOLO_BETA_CONTENT_REPEAT_USE_OPEN",
+      "M6": "NATIVE_AUTHORITY_TRANSPORT_PREREQUISITES_TESTED_REMOTE_RELEASE_PATH_OPEN",
+      "M7": "R6_PACKAGE_IDENTITY_CLEAN_CHECKOUT_ENGINE_PASS_RELEASE_ACCEPTANCE_OPEN"
     },
     "next_tasks": [
-      "Controlled 75 percent Grove pulse candidate versus preserved current tuning; separately test Cragstoat approach-lane incentives.",
-      "Implement successor recruitment, relic draft/inventory and scouting frontend for complete M1 tasks.",
-      "Reconcile Bellback prose at deliberate content revision; await formal reference decision before complex modeling.",
-      "Reconcile Prism Organ reference geometry and complete serial art pilots/Wondergrove before scaling production."
+      "Complete current-candidate physical input after the operator handles the Windows security dialog; finish full-bench and all-resolution lifecycle journeys.",
+      "Prefer20 for the next normal-speed mana study with matched10/20 formations; measure first-cast understanding, independent adaptation, exposure cost and voluntary replay. No third tuning or ability swap yet.",
+      "Conduct remaining external B1/B2 acquisition/adaptation and full normal-speed tournament studies; pacing screen still fails.",
+      "Continue Bellback with a changed modeling method and exact stage review; later content/remote/release gates remain open."
     ],
-    "evidence": [
-      {
-        "path": "reports/vnext/package/r3/provenance.json",
-        "sha256": "673138d984989a27971983d072aa67ff43bb0315176ffd6f60637bc89c3ee583"
+    "balance": {
+      "catalogue": "wonder_vnext_solo_0.1.0",
+      "native_encounters": 186984,
+      "native_timeouts": 26219,
+      "timeout_rate": 0.14022055363025712,
+      "capped_tournaments": 187,
+      "median_accelerated_simulated_minutes": 31.360833333333332,
+      "timeout_screen": "FAIL",
+      "human_duration": "NOT_RUN",
+      "enjoyment_or_superiority": "NOT_ESTABLISHED"
+    },
+    "development_status": "RESUMED_BY_OWNER",
+    "pause_record": "PAUSED.md",
+    "milestone_tracker": "docs/vnext/milestones/MILESTONE_STATUS.md",
+    "previous_verification_record": "reports/vnext/milestones/verification.json",
+    "continuation_readout": "docs/vnext/milestones/CONTINUATION_2026_09_13.md",
+    "current_verification_record": "reports/vnext/milestones/resume-20260913/verification.json",
+    "latest_experiment_record": "reports/vnext/milestones/mana20-20260913/verification.json",
+    "latest_experiment_readout": "docs/vnext/milestones/MANA20_COMPARISON_2026_09_13.md"
+  },
+  "vnext_programme_history": [
+    {
+      "schema": "wonder_vnext.implementation_checkpoint.1",
+      "recorded_utc": "2026-09-10T16:38:58.302097+00:00",
+      "status": "PACKAGED_SIX_CREATURE_LAB_VERIFIED_PROGRAMME_IN_PROGRESS",
+      "profile": "wonder_vnext",
+      "balance_version": "wonder_vnext_lab_0.1.0",
+      "candidate": "WonderChess-VNext-Lab-r3",
+      "launcher": "Launch Wonder vNext.cmd",
+      "playguide": "docs/vnext/LAB_PLAYGUIDE.md",
+      "handoff": "reports/vnext/IMPLEMENTATION_HANDOFF.md",
+      "implementation_matrix": "docs/vnext/IMPLEMENTATION_MATRIX.md",
+      "git": {
+        "branch": "codex/wonder-vnext",
+        "head": "9623fd82f98ff80a90985b9f552d8851ccece30f",
+        "committed": false,
+        "boundary": "Preexisting dirty and untracked work preserved; this is a source-hashed working-tree checkpoint."
       },
-      {
-        "path": "reports/vnext/package/r3/source-verification.json",
-        "sha256": "4027c5ffb5e6ec9caf3198c643df9d22e2b0e1c0a489c8c05df80c6ae9ca6c9a"
+      "identity": {
+        "catalog_sha256": "6f9a4178ec78d48c8f6fb8d487d88069327a5ca526652724dc12a8654f574ebb",
+        "runtime_json_sha256": "2264f260087e5f40f08512f6066245b9058add7290f2f67d0e5c47a109aa797d",
+        "inner_executable_sha256": "55ff18047e8a21216ddcd8121f883da9b1d5f0a2bd2bd5081e8c7247170c6333",
+        "provenance_sha256": "673138d984989a27971983d072aa67ff43bb0315176ffd6f60637bc89c3ee583"
       },
-      {
-        "path": "reports/vnext/native/final-analysis.json",
-        "sha256": "4f1cfd9242d51fa8d003e7b12b614d5ca4a0b4591dbdeb2343b2d5b24a96da9a"
+      "verification": {
+        "python_tests_passed": 194,
+        "native_combat_assertions_passed": 21597,
+        "native_tournaments": 1000,
+        "native_seed_range": [
+          1,
+          1000
+        ],
+        "engine_comparison": {
+          "tournaments": 100,
+          "rounds": 4317,
+          "encounters": 18777,
+          "executable": "C:\\Users\\iputu\\Documents\\Wonder Chess\\builds\\WonderChess-VNext-Lab-r3\\Windows\\WonderChess\\Binaries\\Win64\\WonderChess.exe"
+        },
+        "technical_reconciliation_passed": true,
+        "lab_boolean_checks_per_resolution": 39,
+        "lab_resolutions": [
+          [
+            1280,
+            720
+          ],
+          [
+            1600,
+            1000
+          ],
+          [
+            1920,
+            1080
+          ]
+        ],
+        "legacy_tournaments_passed": 100,
+        "source_inputs_stable": 47,
+        "physical_pointer_and_keyboard_usability": "NOT_RUN",
+        "human_playtests": "NOT_RUN",
+        "continuous_animation_audio_review": "NOT_RUN",
+        "performance_acceptance": "NOT_RUN",
+        "remote_multiplayer": "NOT_RUN",
+        "clean_machine_acceptance": "NOT_RUN"
       },
-      {
-        "path": "reports/vnext/engine-tournaments/r3/reconciliation.json",
-        "sha256": "7595364c7652f46699629a4190b7600353ddd2698ad950dbccbf9a84c50ab98d"
+      "balance": {
+        "native_encounters": 187141,
+        "native_timeouts": 26434,
+        "timeout_rate": 0.14125178341464456,
+        "capped_tournaments": 199,
+        "median_simulated_minutes": 31.331666666666667,
+        "median_phase_minutes": {
+          "preparation": 2.91125,
+          "combat": 24.945833333333333,
+          "settlement": 3.5
+        },
+        "native_relic_choices": 23716,
+        "native_relic_equips": 25192
       },
-      {
-        "path": "reports/vnext/engine-tournaments/r3/process-exit.json",
-        "sha256": "6728548b254cffb5ad70bef72c439c5c445353f3b9d4906702722560e61d5f7e"
+      "balance_acceptance": {
+        "timeout_below_two_percent": "FAIL",
+        "human_duration_35_to_45_minutes": "NOT_RUN",
+        "bot_simulated_duration_target_met": false,
+        "fun_or_superiority_claim": "NOT_ESTABLISHED"
       },
-      {
-        "path": "reports/vnext/engine-lab/r3-visual-review.json",
-        "sha256": "d13a04f9ee4975f23dc6eb69e79014e66d928ac6493e213af695ed0a0cca5b8f"
+      "art": {
+        "shared_direction": "OWNER_APPROVED_DIRECTION_ONLY",
+        "owner_reply": "Use this direction",
+        "bellback_references": "SEALED_PENDING_HUMAN_APPROVAL",
+        "bellback_snapshot_sha256": "83de2292eeb1195963b1d479e194be171a87dd3c5eb960d47de870250fb2f842",
+        "bellback_reference_packet": "art-source/asset-studio/wc_vn_bellback/inputs/references/r004_construction/README.md",
+        "prism_organ_reference": "ART_REVISE",
+        "successor_blender_modeling": "NOT_STARTED",
+        "known_contract_mismatch": "Bellback dorsal-bell art direction versus chest-bell prose in frozen catalogue; reconcile next version."
       },
-      {
-        "path": "reports/vnext/python-tests-final-194.log",
-        "sha256": "60abf69eb62795a9e95899c7bb2e125eda797e2f152b3e66b1bc76de2b38cf23"
+      "milestones": {
+        "M0": "CONTRACT_AND_CATALOGUE_DELIVERED_RECONCILIATION_OPEN",
+        "M1": "PACKAGED_COMBAT_LAB_DELIVERED_PREPARATION_FRONTEND_AND_HUMAN_ACCEPTANCE_OPEN",
+        "M2": "DIRECTION_APPROVED_REFERENCES_IN_PROGRESS_FINISHED_SLICE_OPEN",
+        "M3": "NATIVE_FOUNDATIONS_TESTED_FRONTEND_SAVE_UI_AND_PACING_OPEN",
+        "M4": "FULL_ROSTER_PRODUCTION_OPEN",
+        "M5": "SOLO_BETA_OPEN",
+        "M6": "ONLINE_BETA_OPEN",
+        "M7": "RELEASE_ACCEPTANCE_OPEN"
       },
-      {
-        "path": "reports/vnext/authoring-validation-final.json",
-        "sha256": "c2c3afe6c152a647b042b2e86bf9356c910e7b24a8805d97c6db4fb1d1053b85"
+      "next_tasks": [
+        "Controlled 75 percent Grove pulse candidate versus preserved current tuning; separately test Cragstoat approach-lane incentives.",
+        "Implement successor recruitment, relic draft/inventory and scouting frontend for complete M1 tasks.",
+        "Reconcile Bellback prose at deliberate content revision; await formal reference decision before complex modeling.",
+        "Reconcile Prism Organ reference geometry and complete serial art pilots/Wondergrove before scaling production."
+      ],
+      "evidence": [
+        {
+          "path": "reports/vnext/package/r3/provenance.json",
+          "sha256": "673138d984989a27971983d072aa67ff43bb0315176ffd6f60637bc89c3ee583"
+        },
+        {
+          "path": "reports/vnext/package/r3/source-verification.json",
+          "sha256": "4027c5ffb5e6ec9caf3198c643df9d22e2b0e1c0a489c8c05df80c6ae9ca6c9a"
+        },
+        {
+          "path": "reports/vnext/native/final-analysis.json",
+          "sha256": "4f1cfd9242d51fa8d003e7b12b614d5ca4a0b4591dbdeb2343b2d5b24a96da9a"
+        },
+        {
+          "path": "reports/vnext/engine-tournaments/r3/reconciliation.json",
+          "sha256": "7595364c7652f46699629a4190b7600353ddd2698ad950dbccbf9a84c50ab98d"
+        },
+        {
+          "path": "reports/vnext/engine-tournaments/r3/process-exit.json",
+          "sha256": "6728548b254cffb5ad70bef72c439c5c445353f3b9d4906702722560e61d5f7e"
+        },
+        {
+          "path": "reports/vnext/engine-lab/r3-visual-review.json",
+          "sha256": "d13a04f9ee4975f23dc6eb69e79014e66d928ac6493e213af695ed0a0cca5b8f"
+        },
+        {
+          "path": "reports/vnext/python-tests-final-194.log",
+          "sha256": "60abf69eb62795a9e95899c7bb2e125eda797e2f152b3e66b1bc76de2b38cf23"
+        },
+        {
+          "path": "reports/vnext/authoring-validation-final.json",
+          "sha256": "c2c3afe6c152a647b042b2e86bf9356c910e7b24a8805d97c6db4fb1d1053b85"
+        },
+        {
+          "path": "reports/vnext/native-combat-final/tests.log",
+          "sha256": "fc5d17f3446be71f728dd52d951efc59c43f36247562a2e7db8095c93a87899b"
+        },
+        {
+          "path": "reports/vnext/native/legacy-final/runtime-tests.log",
+          "sha256": "9053a230104430b1b870a49743291e0857b6eab2aaeabab551da7a988f97fbdb"
+        },
+        {
+          "path": "reports/vnext/TIMEOUT_FINDINGS.md",
+          "sha256": "c80471b3a731bf311bd83d933f731f650c1c268b43072e45af8a6dcb3ee979de"
+        },
+        {
+          "path": "reports/vnext/IMPLEMENTATION_HANDOFF.md",
+          "sha256": "96380b02c8fabdc26437cdcea4e44612b8bde9fb139f7b5c47025f0b48b73027"
+        }
+      ]
+    }
+  ],
+  "historical_top_level_checkpoints": [
+    {
+      "archived_utc": "2026-09-12T16:33:01.972326+00:00",
+      "boundary": "Preserved prior aliases; alpha_24/historical lab evidence, not current r4 execution.",
+      "warnings": [
+        "Six-creature laboratory only; the full adopted M0-M7 programme remains in progress.",
+        "The successor tournament recruitment/scouting/relic-draft frontend and packaged autosave/resume lifecycle are unfinished.",
+        "Current native sample has 14.125 percent combat timeouts and 199 round-capped tournaments; balance gate fails.",
+        "31.332-minute median is accelerated bot simulated time, not a measured human tournament.",
+        "All eighteen successor traits are inactive; eight additional hero dossiers are authored only.",
+        "Shared art direction approved; Bellback formal references pending human decision; Prism Organ reference ART_REVISE.",
+        "Finished art, animation, audio, external-player studies, full performance, clean-machine and remote online acceptance remain open.",
+        "Historical alpha_24 records and their original acceptance boundaries are preserved in this ledger."
+      ],
+      "current_data": {
+        "schema": "3.1.0",
+        "profile": "alpha_24",
+        "balance": "alpha_24_v0.4.1",
+        "digest": "95509d001ca0e6c55fa64a616df6e2e9a01a3809a9b9c82d9bd0a725dad3a1ec",
+        "protocol": 6,
+        "integration_status": "PROTOCOL6_SHARED_CONSTANT_EDITOR_SHIPPING_BUILT_CURRENT_PACKAGE_AUDITS_PASS"
       },
-      {
-        "path": "reports/vnext/native-combat-final/tests.log",
-        "sha256": "fc5d17f3446be71f728dd52d951efc59c43f36247562a2e7db8095c93a87899b"
+      "current_access_constraints": {
+        "checked_utc": "2026-09-08T05:43:52.547360+00:00",
+        "native_computer_use": "Windows @oai/sky Computer Use available and executed for visible Blender. No new manual gameplay or audiovisual acceptance claimed.",
+        "physical_lan": "No second physical LAN machine/address/access supplied. Actual same-PC two-process loopback is separately labeled.",
+        "boundary": "No security setting broadened. Scripted Unreal commands and captured frame sequences remain distinct from manual play and continuous audiovisual acceptance.",
+        "check_time_boundary": "Blender MCP five-tool verification passed against actual current live candidate after visible launcher restart. CUA_REPL native APIs are a different surface and remain disabled.",
+        "misplaced_review_files": "Automatic approval review rejected moving/cleaning70PNG files under C:/reports/WC-U440/20260906T162705Z-elf-shoulders, reason blocked by policy. Files left untouched; exact handoff reports/WC-U440/20260906T162705Z-elf-shoulders/elf-source8-handoff.md."
       },
-      {
-        "path": "reports/vnext/native/legacy-final/runtime-tests.log",
-        "sha256": "9053a230104430b1b870a49743291e0857b6eab2aaeabab551da7a988f97fbdb"
-      },
-      {
-        "path": "reports/vnext/TIMEOUT_FINDINGS.md",
-        "sha256": "c80471b3a731bf311bd83d933f731f650c1c268b43072e45af8a6dcb3ee979de"
-      },
-      {
-        "path": "reports/vnext/IMPLEMENTATION_HANDOFF.md",
-        "sha256": "96380b02c8fabdc26437cdcea4e44612b8bde9fb139f7b5c47025f0b48b73027"
+      "final_validation": "reports/WC-U460/20260907T173100Z-final-checks",
+      "delivery": {
+        "package_launcher": "builds/WonderChess-Alpha-Candidate/Windows/WonderChess.exe",
+        "inner_executable_sha256": "b3114876d3d75e6d89677f42b2a6117b5989ba8dfe91d4f50ef50e965a2103ac",
+        "tested_provenance": "reports/WC-360/alpha-candidate-provenance.json",
+        "acceptance": "CANDIDATE_NOT_FINAL_PLAYABLE_OR_PRESENTABLE_ACCEPTANCE",
+        "source_checkpoint": "67c165b66af5b1c0132c275b1613b7482b2acf8b",
+        "tested_provenance_sha256": "89d6e2129cf28e491fb69d9d2fb2c68f2f50e0562dcdbc792322c2fe04786415",
+        "packaged_payload_bytes": 592741060,
+        "packaged_payload_files": 31,
+        "final_byte_audit": "reports/WC-360/alpha-candidate-final-byte-audit.json",
+        "remaining_task_game_processes": 2,
+        "manual_resume": "reports/WC-360/alpha-candidate-manual-resume/attempt.json",
+        "historical_build_scope": "Retained 12-hero candidate only. The 24-hero update has not inherited these match, manual or performance results."
       }
-    ]
+    }
+  ],
+  "top_level_evidence_boundary": {
+    "current_aliases": [
+      "actual_game_status",
+      "scope",
+      "warnings",
+      "current_data",
+      "current_access_constraints",
+      "delivery",
+      "final_validation",
+      "vnext_programme"
+    ],
+    "history": "Remaining original task/update/performance/art fields retain historical alpha_24/Ada evidence unless explicitly dated otherwise. They do not certify current r4."
+  },
+  "development_status": "RESUMED_BY_OWNER",
+  "development_control": {
+    "status": "RESUMED_BY_OWNER",
+    "resumed_utc": "2026-09-13T03:31:13.245609+00:00",
+    "owner_instruction": "Continue the work",
+    "worktree": "C:\\Users\\iputu\\AppData\\Local\\CodexWorktrees\\wc\\m7",
+    "active_scope": "Combat clarity r13 packaged and verified. Optional nearest-target/mobile-recovery rules remain unaccepted; pacing fails. Final physical input stopped by owner Escape; record preserves open visual/input gates.",
+    "preserved_candidate": "WonderChess-Milestones-r4",
+    "r4_prechange_identity_check": "PASS:81source/49payload;canonical/generated/staged/packed identity unchanged",
+    "external_acceptance": "Still not performed; no approval inferred.",
+    "current_candidate": "WonderChess-Milestones-r6",
+    "current_verification": "reports/vnext/milestones/resume-20260913/verification.json",
+    "current_experiment": "WonderChess-CombatClarity-r13",
+    "current_experiment_verification": "reports\\vnext\\milestones\\combat-clarity-20260913\\verification.json"
+  },
+  "development_control_history": [
+    {
+      "status": "PAUSED_BY_OWNER",
+      "paused_utc": "2026-09-12T16:40:47.723494+00:00",
+      "paused_local_date": "2026-09-13",
+      "timezone": "Asia/Singapore",
+      "owner_instruction": "pause the development, record what we have done, where on milestone we are, what to do next and the list of milestones; update the files accordingly",
+      "resume_requires": "New explicit owner instruction before implementation, modeling, builds, experiments or test campaigns.",
+      "pause_record": "PAUSED.md",
+      "milestone_tracker": "docs/vnext/milestones/MILESTONE_STATUS.md",
+      "historical_checkout_pointer": "C:/Users/iputu/Documents/Wonder Chess/PAUSED.md",
+      "current_position": "B1/B2 engineering checkpoint; M1/M3 components delivered; B3 forms ART_REVISE; M2-M7 product acceptance open.",
+      "active_task_processes_at_pause": 0,
+      "delegated_development": "STOPPED",
+      "scheduled_continuation": false,
+      "preserve": "Uncommitted registered worktree, raw evidence, accepted seals, failed art/balance candidates and package archives."
+    }
+  ],
+  "vnext_mana_experiment": {
+    "schema": "wonder_vnext.mana_experiment_verification.1",
+    "recorded_utc": "2026-09-13T06:52:09.523804+00:00",
+    "status": "TECHNICAL_CHECKS_PASS_TUNING_REVISE_HUMAN_INPUT_OPEN",
+    "candidate": "WonderChess-Mana-r9",
+    "profile": "wonder_vnext",
+    "balance_version": "wonder_vnext_solo_0.1.0+mana100_v1",
+    "default_promoted": false,
+    "experiment": {
+      "status": "opt_in_unaccepted_experiment",
+      "heroes": [
+        "wc_vn_snapvine",
+        "wc_vn_prism_organ",
+        "wc_vn_reefglass"
+      ],
+      "maximum": 10000,
+      "starting": 0,
+      "basicAttackGain": 1000,
+      "damageGainAtFullHealth": 10000,
+      "damageEventCap": 2000,
+      "damageWindowCap": 4000,
+      "damageWindowMs": 1000,
+      "relicTiming": "inverse_gain"
+    },
+    "protected_original_catalogue_values": {
+      "unchanged_original_catalogue_fields": true,
+      "only_added_field": "experiments",
+      "experiment": {
+        "mana100_v1": {
+          "status": "opt_in_unaccepted_experiment",
+          "heroes": [
+            "wc_vn_snapvine",
+            "wc_vn_prism_organ",
+            "wc_vn_reefglass"
+          ],
+          "maximum": 10000,
+          "starting": 0,
+          "basicAttackGain": 1000,
+          "damageGainAtFullHealth": 10000,
+          "damageEventCap": 2000,
+          "damageWindowCap": 4000,
+          "damageWindowMs": 1000,
+          "relicTiming": "inverse_gain"
+        }
+      },
+      "boundary": "Existing hero stats, ability effects/timing/targeting, costs, relic modifiers, economy and bot rules are byte-value equivalent after JSON parsing."
+    },
+    "identity": {
+      "profile_id": "wonder_vnext",
+      "balance_version": "wonder_vnext_solo_0.1.0",
+      "source_sha256": "7019a75f985c6f3ab613fb402beda986d2a715db2aeea1c9b055fd56b6a60a67",
+      "runtime_sha1": "eaa122b1ecfab2846480791e6db7c49a9d9e6b5c",
+      "runtime_sha256": "b5e0f0c5309c3e61c0d186bedc79413b34c4ef0e64cb05b817678a3986eda8fe",
+      "experiment_digest": "1446245d77df94c98eff3fe6b5d53d83629aa12b248dd1bbade05971c6099a1a",
+      "inner_executable_sha256": "5052d358b812528e21e6812e56064ba08521f433f458a94092a0c3228a7a8d70",
+      "manifest": "reports/vnext/milestones/mana-20260913/package-identity-r9/package-manifest.json",
+      "source_files": 82,
+      "payload_files": 49
+    },
+    "python": {
+      "status": "PASS",
+      "tests": 229,
+      "all_required_authoring_generation_staging_checks": "PASS",
+      "record": "authoring-final/process.json"
+    },
+    "native_contracts": {
+      "status": "PASS",
+      "assertions": 22320,
+      "record": "native-contract-final/process.json"
+    },
+    "legacy_regression": {
+      "status": "PASS",
+      "tournaments": 10,
+      "assertions": 446047,
+      "record": "legacy-regression"
+    },
+    "native_experiment": {
+      "status": "PASS_EXECUTION",
+      "arms": 2,
+      "tournaments_per_arm": 100,
+      "fixed_mana_encounters_per_arm": 576,
+      "other_formation_fixtures_per_arm": 192,
+      "activity_records_conservation_audited": 387803,
+      "record": "comparison.json",
+      "held_out_seeds_used": false
+    },
+    "engine_mana_contracts": {
+      "status": "PASS",
+      "assertions": 445,
+      "record": "engine-r9-contracts/automation/index.json",
+      "html_report": "Optional Unreal HTML template unavailable; JSON and log preserved"
+    },
+    "engine_native_reconciliation": {
+      "control": {
+        "status": "PASS",
+        "tournaments": 10,
+        "rounds": 427,
+        "encounters": 1852,
+        "digest": "7019a75f985c6f3ab613fb402beda986d2a715db2aeea1c9b055fd56b6a60a67",
+        "comparison": "Every encounter kind, winner, timeout, ticks and survivors; tournament duration, cap and counts; no rejected commands. Does not compare full combat event streams or round state hashes."
+      },
+      "mana100": {
+        "status": "PASS",
+        "tournaments": 10,
+        "rounds": 429,
+        "encounters": 1893,
+        "digest": "1446245d77df94c98eff3fe6b5d53d83629aa12b248dd1bbade05971c6099a1a",
+        "comparison": "Every encounter kind, winner, timeout, ticks and survivors; tournament duration, cap and counts; no rejected commands. Does not compare full combat event streams or round state hashes."
+      },
+      "build_sources_unchanged": 56
+    },
+    "laboratory": {
+      "720": {
+        "status": "PASS",
+        "checks": 41,
+        "captures": 5,
+        "record": "lab-r9-720/lab-exercise.json",
+        "rendered_combat_capture_visually_inspected": true,
+        "physical_input": false
+      },
+      "1080": {
+        "status": "PASS",
+        "checks": 41,
+        "captures": 5,
+        "record": "lab-r9-1080/lab-exercise.json",
+        "rendered_combat_capture_visually_inspected": true,
+        "physical_input": false
+      }
+    },
+    "solo": {
+      "status": "PASS",
+      "checks": 20,
+      "rounds": 45,
+      "captain_placement": 8,
+      "record": "solo-r9-1600/solo-exercise.json",
+      "save_slot": "solo-r9-slot/preparation.wcsave",
+      "boundary": "Accelerated same-handler package smoke; not human or real input evidence."
+    },
+    "balance": {
+      "decision": "REVISE",
+      "control_caps": 14,
+      "mana_caps": 25,
+      "tournaments_per_arm": 100,
+      "control_timeouts": 2552,
+      "control_encounters": 18685,
+      "mana_timeouts": 2653,
+      "mana_encounters": 18955,
+      "fixed_control_timeouts": 24,
+      "fixed_mana_timeouts": 39,
+      "fixed_pairs": 576,
+      "mana_longer_pairs": 406,
+      "timeout_screen": "FAIL_BOTH_ARMS"
+    },
+    "physical_input": {
+      "status": "BLOCKED_WINDOWS_SECURITY_DIALOG",
+      "attempted_package": "r7",
+      "actions_performed": 0,
+      "security_settings_changed": false,
+      "later_packages": "Same-handler and rendered capture verification only"
+    },
+    "acceptance": {
+      "human_participants": 0,
+      "human_enjoyment": "NOT_TESTED",
+      "r9_clean_checkout": "NOT_RUN",
+      "independent_clean_machine": "NOT_RUN",
+      "final_content_performance": "NOT_RUN",
+      "release_accepted": false
+    },
+    "preserved_intermediates": {
+      "r7": "445 package contracts and20 engine tournaments pass; inspector check used preparation ID during combat and is not live-selection evidence.",
+      "r8": "Correct live Prism20/100 and20 reconciled tournaments; rendered review found mana bar obscured by nameplate.",
+      "r9": "Display corrected and scoped package checks passed."
+    },
+    "next_recommendation": {
+      "basic_attack_mana": 20,
+      "other_parameters": "unchanged",
+      "implemented": false
+    },
+    "git": {
+      "branch": "codex/milestones-b0-m7-20260912",
+      "base_commit": "d80635f615810a93c3161c6bfd6c34c758b08260",
+      "committed": false,
+      "published": false
+    },
+    "boundary": "Deterministic engineering and same-machine package evidence. Human input, enjoyment, balance, clean-machine, art, remote and release acceptance remain separate."
+  },
+  "vnext_mana20_comparison": {
+    "schema": "wonder_vnext.mana20_comparison_verification.1",
+    "recorded_utc": "2026-09-13T07:29:41.905958+00:00",
+    "status": "TECHNICAL_PASS_IMPROVED_VS10_PACING_FAIL_HUMAN_OPEN",
+    "candidate": "WonderChess-Mana20-r10",
+    "profile": "wonder_vnext",
+    "balance_version": "wonder_vnext_solo_0.1.0+mana100_hit20_v1",
+    "default_promoted": false,
+    "experiment": {
+      "status": "opt_in_unaccepted_experiment",
+      "heroes": [
+        "wc_vn_snapvine",
+        "wc_vn_prism_organ",
+        "wc_vn_reefglass"
+      ],
+      "maximum": 10000,
+      "starting": 0,
+      "basicAttackGain": 2000,
+      "damageGainAtFullHealth": 10000,
+      "damageEventCap": 2000,
+      "damageWindowCap": 4000,
+      "damageWindowMs": 1000,
+      "relicTiming": "inverse_gain"
+    },
+    "protected_catalogue": {
+      "existing_catalogue_values_unchanged": true,
+      "only_addition": "experiments.mana100_hit20_v1",
+      "only_recipe_difference": {
+        "basicAttackGain": {
+          "baseline": 1000,
+          "candidate": 2000
+        }
+      },
+      "boundary": "Integer centimana. Existing hero stats, effects, prices, targeting, incoming mana, control heroes, relic transforms, economy and bots are preserved."
+    },
+    "mana10_reproduction": {
+      "status": "PASS",
+      "csv_rows_exactly_equal": {
+        "tournaments.csv": 100,
+        "encounters.csv": 18955,
+        "mana_formations.csv": 576,
+        "mana_formation_activity.csv": 3456,
+        "ability_activity.csv": 192075
+      },
+      "boundary": "Comparison reproduces all recorded10-mana outcomes, fixed fixtures and activity rows; does not compare raw replay streams across binaries."
+    },
+    "identity": {
+      "profile_id": "wonder_vnext",
+      "balance_version": "wonder_vnext_solo_0.1.0",
+      "source_sha256": "ef6743dd2f52d4d986aac292be333847d0db262468d626564a42a9827158058d",
+      "runtime_sha1": "9bc707728e5c51e2d3c0f81ff26b53b5cef639e6",
+      "runtime_sha256": "31ee2984105e2db78bd30918af351819a8e6addd08bbdd6195183205216bd944",
+      "experiment_digest": "da01ba8705ed8c7ec4507584f5240e5e4debb17bd123f3741ea534a96a17f5c5",
+      "mana10_digest": "2db01e6f1acd6fb132c624e1a7b3a41d389c948dee200dd0f92d28cf858a6df1",
+      "inner_executable_sha256": "1538f04fda10eb084a02614597325f7173ce6b55f38f0058109d2eb25bdfca80",
+      "manifest": "reports/vnext/milestones/mana20-20260913/package-identity/package-manifest.json",
+      "source_files": 82,
+      "payload_files": 49
+    },
+    "python": {
+      "status": "PASS",
+      "tests": 230,
+      "required_authoring_generation_staging_checks": "PASS",
+      "record": "authoring/process.json"
+    },
+    "native_contracts": {
+      "status": "PASS",
+      "assertions": 22456,
+      "record": "native-contract/process.json"
+    },
+    "native_comparison": {
+      "status": "PASS_EXECUTION",
+      "arms": 2,
+      "tournaments_per_arm": 100,
+      "fixed_mana_encounters_per_arm": 576,
+      "other_formation_fixtures_per_arm": 192,
+      "activity_records_conservation_audited": 390330,
+      "record": "comparison.json",
+      "holdout_seeds_used": false
+    },
+    "engine_mana_contracts": {
+      "status": "PASS",
+      "assertions": 581,
+      "record": "engine-contracts/automation/index.json",
+      "html_report": "Optional Unreal template unavailable; JSON and log preserved"
+    },
+    "engine_native_reconciliation": {
+      "mana10": {
+        "status": "PASS",
+        "tournaments": 10,
+        "rounds": 429,
+        "encounters": 1893,
+        "digest": "2db01e6f1acd6fb132c624e1a7b3a41d389c948dee200dd0f92d28cf858a6df1"
+      },
+      "mana20": {
+        "status": "PASS",
+        "tournaments": 10,
+        "rounds": 433,
+        "encounters": 1897,
+        "digest": "da01ba8705ed8c7ec4507584f5240e5e4debb17bd123f3741ea534a96a17f5c5"
+      },
+      "build_sources_unchanged": 56,
+      "boundary": "Exact encounter kind, winner, timeout, ticks, survivors; tournament caps, counts and simulated time. No rejected commands. Full engine event streams and round hashes are outside this comparison."
+    },
+    "laboratory": {
+      "720": {
+        "status": "PASS",
+        "checks": 41,
+        "captures": 5,
+        "record": "lab-720/lab-exercise.json",
+        "combat_capture_visually_inspected": true,
+        "live_prism_at_tick65_mana": 40,
+        "physical_input": false
+      },
+      "1080": {
+        "status": "PASS",
+        "checks": 41,
+        "captures": 5,
+        "record": "lab-1080/lab-exercise.json",
+        "combat_capture_visually_inspected": true,
+        "live_prism_at_tick65_mana": 40,
+        "physical_input": false
+      }
+    },
+    "launcher_ambiguous_flags": {
+      "status": "PASS",
+      "case": "Both mana switches reject before any launch or evidence directory creation",
+      "utc": "2026-09-13T07:24:45.6271350Z"
+    },
+    "solo": {
+      "status": "PASS",
+      "checks": 20,
+      "rounds": 45,
+      "captain_placement": 8,
+      "record": "solo-1600/solo-exercise.json",
+      "save_slot": "solo-slot/preparation.wcsave",
+      "boundary": "Accelerated same-handler package smoke; not human or real input evidence."
+    },
+    "comparison_summary": {
+      "mana10": {
+        "tournaments": 100,
+        "capped_tournaments": 25,
+        "encounters": 18955,
+        "timeouts": 2653,
+        "fixed_timeouts": 39,
+        "median_simulated_minutes": 31.743333333333332
+      },
+      "mana20": {
+        "tournaments": 100,
+        "capped_tournaments": 14,
+        "encounters": 18888,
+        "timeouts": 2625,
+        "fixed_timeouts": 24,
+        "median_simulated_minutes": 31.71875
+      }
+    },
+    "fixed_pairs": {
+      "winner_changed": 89,
+      "mana_shorter": 407,
+      "mana_longer": 118,
+      "same_duration": 51
+    },
+    "decision": {
+      "recommended_next_human_candidate": "mana20",
+      "reason": "Earlier and more frequent casts; fewer capped tournaments and fixed timeouts versus10. Both variants still fail pacing.",
+      "formation_limit": "The protected/exposed first-cast median becomes equal for Prism and Reefglass in one-star fixtures; Snapvine exposure advantage shrinks.",
+      "pacing_gate": "FAIL",
+      "new_tuning_or_ability_swap": "NONE"
+    },
+    "physical_input": {
+      "status": "BLOCKED_WINDOWS_SECURITY_DIALOG",
+      "attempted_package": "r10",
+      "observed_window_id": 6685534,
+      "actions_performed": 0,
+      "security_settings_changed": false,
+      "evidence": "Actual game window inspected with Computer Use; Windows firewall permission dialog blocks input."
+    },
+    "acceptance": {
+      "human_participants": 0,
+      "human_enjoyment": "NOT_TESTED",
+      "r10_clean_checkout": "NOT_RUN",
+      "independent_clean_machine": "NOT_RUN",
+      "final_content_performance": "NOT_RUN",
+      "art": "NOT_REVIEWED_IN_THIS_BATCH",
+      "remote": "NOT_TESTED_IN_THIS_BATCH",
+      "release_accepted": false
+    },
+    "git": {
+      "branch": "codex/milestones-b0-m7-20260912",
+      "base_commit": "d80635f615810a93c3161c6bfd6c34c758b08260",
+      "committed": false,
+      "published": false
+    },
+    "boundary": "Deterministic engineering and same-machine package evidence. Historical cooldown figures are contextual, not a third newly executed arm. Human, balance, clean-machine, art, remote and release acceptance remain separate."
+  },
+  "vnext_combat_clarity": {
+    "schema": "wonder_vnext.combat_clarity_verification.1",
+    "recorded_utc": "2026-09-13T11:46:37.904500+00:00",
+    "status": "TECHNICAL_CHECKS_PASS_OPT_IN_PACING_FAIL_MANUAL_REVIEW_OPEN",
+    "candidate": "WonderChess-CombatClarity-r13",
+    "profile": "wonder_vnext",
+    "balance_version": "wonder_vnext_solo_0.1.0+mana100_hit20_v1+combat_clarity_v1",
+    "default_promoted": false,
+    "launch": "Launch Combat Clarity.cmd",
+    "readout": "docs/vnext/milestones/COMBAT_CLARITY_2026_09_13.md",
+    "scope": "Six implemented successor heroes; generic attack/status feedback; optional nearest reachable targeting and mobile basic recovery. Preserves effects, stats, prices and20-mana values.",
+    "python": {
+      "status": "PASS",
+      "tests": 230,
+      "evidence": "reports\\vnext\\milestones\\combat-clarity-20260913\\authoring-r2",
+      "later_package_manifest_targeted_tests": 10
+    },
+    "native_combat": {
+      "status": "PASS",
+      "assertions": 25385,
+      "record": "reports\\vnext\\milestones\\combat-clarity-20260913\\native-contract\\process.json"
+    },
+    "packaged_contracts": {
+      "status": "PASS",
+      "tests": 2,
+      "failed": 0,
+      "clarity_assertions": 2929,
+      "mana_assertions": 581,
+      "record": "reports\\vnext\\milestones\\combat-clarity-20260913\\r13-engine-contracts\\automation\\index.json"
+    },
+    "native_engine": {
+      "status": "PASS",
+      "tournaments": 5,
+      "rounds": 222,
+      "encounters": 981,
+      "field_comparisons": 4905,
+      "mismatches": [],
+      "boundary": "Encounter result fields, not full event-stream equality or enjoyment evidence."
+    },
+    "package_identity": {
+      "status": "PASS",
+      "verified_utc": "2026-09-13T11:44:11.387366+00:00",
+      "source_files": 86,
+      "package_files": 49,
+      "catalogue": {
+        "profile_id": "wonder_vnext",
+        "balance_version": "wonder_vnext_solo_0.1.0",
+        "source_sha256": "ec031fb21f7ddcce1bd37cc38e3277788208767e78e05f51eead8e71f106d350",
+        "runtime_sha1": "cc3f5bbe911130a6ec0eb035f46c29db7580b5be",
+        "runtime_sha256": "189d20ebbf0ff26c03d4c50006dbecd417989079aeee43e4236199a2ade0ddb1"
+      },
+      "boundary": "Exact file identity and membership, source/generated/staged runtime consistency, and embedded binary identity markers. Not bit-reproducible build proof, art/human acceptance, network acceptance, or clean-machine testing. A cold launch on the development computer is same-machine evidence only."
+    },
+    "package_manifest": "reports\\vnext\\milestones\\combat-clarity-20260913\\package-r13-manifest.json",
+    "build_inputs": {
+      "status": "PASS",
+      "source_files": 61,
+      "changed": []
+    },
+    "graphics": [
+      {
+        "case": "r13-lab-720",
+        "result_exists": true,
+        "passed": true,
+        "checks": {
+          "native_slate_created": true,
+          "vnext_profile_loaded": true,
+          "empty_start_rejected": true,
+          "stars_and_facing_edit_selected_piece": true,
+          "move_preserves_piece_and_star": true,
+          "remove_selected": true,
+          "ten_per_side_limit": true,
+          "six_hero_palette_and_both_formations": true,
+          "guard_preparation_recipient_visible": true,
+          "passive_guard_hides_unused_cast_timers": true,
+          "compatible_relic_changes_actual_guard_geometry": true,
+          "unequip_restores_base_ability": true,
+          "duplicate_team_relic_rejected": true,
+          "maximum_three_relics_per_team": true,
+          "one_relic_per_hero_replacement": true,
+          "same_relic_allowed_on_opposing_team": true,
+          "guard_preview_cells_with_relic": 7,
+          "tidal_preparation_lane_rotates_with_facing": true,
+          "tidal_forward_preview_cells": 4,
+          "opponent_local_facing_rotates_into_world": true,
+          "pause_and_single_tick_step": true,
+          "combat_rejects_formation_edits": true,
+          "combat_rejects_relic_edits": true,
+          "mana_inspector_uses_resource_not_cooldown": true,
+          "mana_bars_match_live_resource_users": true,
+          "combat_capture_requested": true,
+          "actual_combat_completed": true,
+          "first_combat_invariants": true,
+          "replay_restores_original_seed": true,
+          "replay_restores_equipped_relics": true,
+          "replay_exact_event_and_final_state_signature": true,
+          "replay_combat_invariants": true,
+          "every_observed_tick_invariants": true,
+          "completed_within_exercise_limit": true,
+          "all_captures_completed": true,
+          "all_captures_saved_new_files": true,
+          "capture_selection_and_combat_ticks_held": true,
+          "captured_text_widgets_match_exact_current_sources": true,
+          "inspector_updates_from_bellback_to_full_reefglass_text": true,
+          "captures_settled_before_request_and_after_processing": true,
+          "all_64_cell_centers_visible": true,
+          "all_64_click_projection_roundtrips": true,
+          "board_fills_available_pane_without_clipping": true
+        }
+      },
+      {
+        "case": "r13-lab-1080",
+        "result_exists": true,
+        "passed": true,
+        "checks": {
+          "native_slate_created": true,
+          "vnext_profile_loaded": true,
+          "empty_start_rejected": true,
+          "stars_and_facing_edit_selected_piece": true,
+          "move_preserves_piece_and_star": true,
+          "remove_selected": true,
+          "ten_per_side_limit": true,
+          "six_hero_palette_and_both_formations": true,
+          "guard_preparation_recipient_visible": true,
+          "passive_guard_hides_unused_cast_timers": true,
+          "compatible_relic_changes_actual_guard_geometry": true,
+          "unequip_restores_base_ability": true,
+          "duplicate_team_relic_rejected": true,
+          "maximum_three_relics_per_team": true,
+          "one_relic_per_hero_replacement": true,
+          "same_relic_allowed_on_opposing_team": true,
+          "guard_preview_cells_with_relic": 7,
+          "tidal_preparation_lane_rotates_with_facing": true,
+          "tidal_forward_preview_cells": 4,
+          "opponent_local_facing_rotates_into_world": true,
+          "pause_and_single_tick_step": true,
+          "combat_rejects_formation_edits": true,
+          "combat_rejects_relic_edits": true,
+          "mana_inspector_uses_resource_not_cooldown": true,
+          "mana_bars_match_live_resource_users": true,
+          "combat_capture_requested": true,
+          "actual_combat_completed": true,
+          "first_combat_invariants": true,
+          "replay_restores_original_seed": true,
+          "replay_restores_equipped_relics": true,
+          "replay_exact_event_and_final_state_signature": true,
+          "replay_combat_invariants": true,
+          "every_observed_tick_invariants": true,
+          "completed_within_exercise_limit": true,
+          "all_captures_completed": true,
+          "all_captures_saved_new_files": true,
+          "capture_selection_and_combat_ticks_held": true,
+          "captured_text_widgets_match_exact_current_sources": true,
+          "inspector_updates_from_bellback_to_full_reefglass_text": true,
+          "captures_settled_before_request_and_after_processing": true,
+          "all_64_cell_centers_visible": true,
+          "all_64_click_projection_roundtrips": true,
+          "board_fills_available_pane_without_clipping": true
+        }
+      },
+      {
+        "case": "r13-status-1080",
+        "result_exists": true,
+        "passed": true,
+        "checks": {
+          "native_slate_created": true,
+          "vnext_profile_loaded": true,
+          "actual_stun_swirl_drawn": true,
+          "actual_shield_drawn": true,
+          "effective_healing_plus_drawn": true,
+          "actual_modifier_drawn": true,
+          "actual_statuses_expired": true,
+          "expired_status_geometry_hidden": true,
+          "cue_pool_bounded": true,
+          "all_64_cell_centers_visible": true,
+          "all_64_click_projection_roundtrips": true,
+          "board_fills_available_pane_without_clipping": true
+        }
+      },
+      {
+        "case": "r13-solo-1600",
+        "result_exists": true,
+        "passed": true,
+        "checks": {
+          "existing_save_blocks_orders": true,
+          "existing_save_choice_preserves_checkpoint": true,
+          "unselected_inspector_requests_selection": true,
+          "buy": true,
+          "purchase_feedback": true,
+          "deploy": true,
+          "disk_resume_exact": true,
+          "scout_rejects_commands": true,
+          "insufficient_gold_rejection": true,
+          "combat_unselected_inspector_hides_palette": true,
+          "combat_cutoff_rejects_order": true,
+          "relic_draft": true,
+          "relic_equip": true,
+          "selected_inspector_includes_equipped_relic": true,
+          "equipped_relic_disk_resume": true,
+          "relic_unequip": true,
+          "eliminated_spectating": true,
+          "finished": true,
+          "invariants": true,
+          "rounds": 45,
+          "captain_placement": 8,
+          "restart_fresh": true,
+          "boundary": "Accelerated same-handler package smoke; not human or real input evidence."
+        },
+        "parser_correction": "Solo report contains flat boolean checks, not a nested passed/checks structure. Reconciled against raw report; no game rerun."
+      }
+    ],
+    "behavior_comparison": {
+      "mana20": {
+        "tournaments": 20,
+        "caps": 4,
+        "encounters": 3776,
+        "timeouts": 562,
+        "timeout_percent": 14.883474576271185,
+        "fixed_timeouts": 24
+      },
+      "targeting": {
+        "tournaments": 20,
+        "caps": 8,
+        "encounters": 3902,
+        "timeouts": 474,
+        "timeout_percent": 12.147616606868272,
+        "fixed_timeouts": 25,
+        "fixed_shorter": 194,
+        "fixed_longer": 114,
+        "changed_winner": 68
+      },
+      "clarity": {
+        "tournaments": 20,
+        "caps": 10,
+        "encounters": 3898,
+        "timeouts": 422,
+        "timeout_percent": 10.826064648537711,
+        "fixed_timeouts": 21,
+        "fixed_shorter": 381,
+        "fixed_longer": 150,
+        "changed_winner": 73
+      }
+    },
+    "control_reproduction": {
+      "tournaments.csv": {
+        "rows": 20,
+        "exact_prior_rows": true
+      },
+      "encounters.csv": {
+        "rows": 3776,
+        "exact_prior_rows": true
+      },
+      "mana_formations.csv": {
+        "rows": 576,
+        "exact_prior_rows": true
+      },
+      "mana_formation_activity.csv": {
+        "rows": 3456,
+        "exact_prior_rows": true
+      },
+      "fixtures.csv": {
+        "rows": 192,
+        "exact_prior_rows": true
+      }
+    },
+    "actual_input": {
+      "status": "NOT_COMPLETED_USER_STOPPED_COMPUTER_USE",
+      "launcher_executed": true,
+      "launch_record": "reports\\vnext\\milestones\\combat-clarity-20260913\\r13-owner-review\\launch.json",
+      "reason": "Computer Use reported the user stopped it with physical Escape before target selection or any r13 physical input. No further Computer Use actions."
+    },
+    "visual_review": {
+      "status": "SCOPED_RENDERED_INSPECTION",
+      "images_viewed": [
+        "r13-lab-1080/lab-combat.png",
+        "r13-lab-720/lab-combat.png",
+        "r13-status-1080/status-effects-active.png",
+        "r13-status-1080/status-effects-expired.png"
+      ],
+      "charge_aim_and_tidal_wave_rendered": true,
+      "charge_displacement_trail_rendered_tested": false,
+      "push_displacement_trail_rendered_tested": false,
+      "human_approval": false
+    },
+    "acceptance": {
+      "pacing": "FAIL; fewer encounter timeouts but more capped tournaments in20-seed development sample",
+      "art": "PROXY_NOT_APPROVED",
+      "human_study": "NOT_RUN",
+      "clean_checkout_r13": "NOT_RUN",
+      "clean_machine_r13": "NOT_RUN",
+      "final_content_performance": "NOT_RUN",
+      "milestones": "B1/B2 engineering component only; full B0-M7 remains open"
+    },
+    "git_diff_check": "PASS",
+    "boundary": "Executed deterministic/synthetic/packaged/rendered checks do not establish enjoyment, accepted balance, final art, external comprehension, remote readiness or release acceptance.",
+    "launcher_followup": {
+      "recorded_utc": "2026-09-13T12:01:22.377372+00:00",
+      "status": "PASS_LAB_LAUNCH",
+      "physical_worktree": "C:\\Users\\iputu\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\CodexWorktrees\\wc\\m7",
+      "launchers": {
+        "lab": "C:\\Users\\iputu\\Documents\\Project Support\\Wonder Chess\\Play Combat Clarity - Lab.cmd",
+        "solo": "C:\\Users\\iputu\\Documents\\Project Support\\Wonder Chess\\Play Combat Clarity - Solo.cmd"
+      },
+      "lab_launch_evidence": "C:\\Users\\iputu\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\CodexWorktrees\\wc\\m7\\reports\\vnext\\milestones\\launch-20260913T120044389Z",
+      "lab_ready_log": [
+        "[2026.09.13-12.00.48:649][  0]LogTemp: Display: WC_VNEXT_LAB_READY profile=wonder_vnext units=6 digest=490a24c9e0b4b5341c5b4ef8695b29b6932ac746ccc576dc7c8ff665c10cb77b proxy_art=UNAPPROVED"
+      ],
+      "sha256_verified": true,
+      "solo_launcher_status": "CREATED_TARGET_VERIFIED_NOT_EXECUTED_THIS_FOLLOWUP",
+      "package_identity": {
+        "status": "PASS",
+        "verified_utc": "2026-09-13T12:01:22.377372+00:00",
+        "source_files": 86,
+        "package_files": 49,
+        "catalogue": {
+          "profile_id": "wonder_vnext",
+          "balance_version": "wonder_vnext_solo_0.1.0",
+          "source_sha256": "ec031fb21f7ddcce1bd37cc38e3277788208767e78e05f51eead8e71f106d350",
+          "runtime_sha1": "cc3f5bbe911130a6ec0eb035f46c29db7580b5be",
+          "runtime_sha256": "189d20ebbf0ff26c03d4c50006dbecd417989079aeee43e4236199a2ade0ddb1"
+        },
+        "boundary": "Exact file identity and membership, source/generated/staged runtime consistency, and embedded binary identity markers. Not bit-reproducible build proof, art/human acceptance, network acceptance, or clean-machine testing. A cold launch on the development computer is same-machine evidence only."
+      },
+      "failed_attempt": "launch-20260913T115945338Z started game then failed on Get-FileHash. Only those test-owned processes were stopped before retry.",
+      "fix": "Use actual MSIX storage path in user launchers; compute SHA256 via .NET before process start instead of Get-FileHash after start.",
+      "boundary": "Launch and identity evidence; no physical UI input or new gameplay/art acceptance."
+    },
+    "owner_feedback": {
+      "recorded_utc": "2026-09-13T12:13:14.879981+00:00",
+      "owner_quote": "It looks good to me, what should we do next?",
+      "candidate_context": "WonderChess-CombatClarity-r13 after corrected local launcher",
+      "status": "OWNER_POSITIVE_REVIEW_PROTOTYPE_COMBAT_PRESENTATION",
+      "scope": "Owner accepts the current prototype combat presentation direction as looking good. Exact scenarios, effects, resolution and session duration were not specified.",
+      "boundary": "Does not close specific charge/push inspection, full manual input journeys, external comprehension studies, balance/pacing, modeled-form or final-release art gates."
+    }
+  },
+  "vnext_2d_asset_planning": {
+    "recorded_utc": "2026-09-13T12:44:29.005229+00:00",
+    "status": "SPEC_AND_REFERENCE_PACKET_COMPLETE_PRODUCTION_NOT_STARTED",
+    "owner_scope": "Full detailed2Dassetlist/specification and severalstyle references before production",
+    "representation_assumption": "Existing3Dheroes and modular3Dplatform with2Dsupportingart;fullspriteconversionnotadopted",
+    "master_spec": "docs/vnext/art/2D_ASSET_MASTER_SPEC.md",
+    "content_spec": "docs/vnext/art/2D_CONTENT_SPEC.md",
+    "ui_environment_vfx_spec": "docs/vnext/art/2D_UI_ENV_VFX_SPEC.md",
+    "generator_brief": "docs/vnext/art/2D_GENERATOR_BRIEF.md",
+    "reference_packet": "art-source/2d-style/r001/README.md",
+    "verification": {
+      "utc": "2026-09-13T12:43:19.209262+00:00",
+      "status": "PASS_SPEC_INTEGRITY_REFERENCES_REVIEW_PENDING",
+      "canonical_catalogue_unchanged": true,
+      "source_catalogue_sha256": "ec031fb21f7ddcce1bd37cc38e3277788208767e78e05f51eead8e71f106d350",
+      "unique_inventory_ids": 363,
+      "all_inventory_rows_spec_only": true,
+      "counts": {
+        "records": 363,
+        "logical_masters": 344,
+        "screen_compositions": 19,
+        "by_method": {
+          "generator_illustration": 83,
+          "vector_authored": 184,
+          "shader_or_runtime": 73,
+          "derived_texture": 4,
+          "composed_screen": 19
+        },
+        "by_priority": {
+          "P1current": 44,
+          "P2pilot": 3,
+          "P3future": 53,
+          "P1": 38,
+          "P2": 199,
+          "P3": 26
+        }
+      },
+      "reference_pngs": 5,
+      "png_hashes_verified": true,
+      "reference_dimensions": "all1536x1024",
+      "as1_intake_manifest_schema": "PASS",
+      "local_markdown_links": "PASS",
+      "export_root": "C:\\Users\\iputu\\Documents\\Project Support\\Wonder Chess\\2D Asset Plan - r001",
+      "human_reference_approval": false,
+      "production_assets_generated": 0,
+      "game_or_unreal_tests": "NOT_RUN_NOT_NEEDED_NO_GAME_CHANGE",
+      "html_review": "staticgenerateddocument;localimageanddownloadlinkschecked;nointeractivegame/UIclaim"
+    },
+    "human_reference_approval": false,
+    "production_assets_generated": 0,
+    "milestone_boundary": "M2planning/referencecomponentonly;noAS1productiongateorM2completion"
+  },
+  "vnext_2d_asset_slice": {
+    "schema": "wonder_vnext.2d_slice_verification.1",
+    "utc": "2026-09-13T13:28:23.306563+00:00",
+    "status": "PASS_SCOPED_PACKAGE_OWNER_ART_REVIEW_OPEN",
+    "candidate": "WonderChess-2DSlice-r15",
+    "package": "C:\\Users\\iputu\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\CodexWorktrees\\wc\\m7\\builds\\WonderChess-2DSlice-r15\\Windows\\WonderChess\\Binaries\\Win64\\WonderChess.exe",
+    "game_binary_sha256": "3c20c2b70cdc9eb6e0edb9d6614663ff69e624b0486d97387dd7374244fb9b7f",
+    "baseline": "Preserved WonderChess-CombatClarity-r13",
+    "artwork": [
+      {
+        "path": "art-source/2d-slice/r001/sources/bellback_portrait.png",
+        "sha256": "8e9e340d541d5a25a1586e0fe7f44aa3484c1c6bfdba47aa14be1d53ca3961ea",
+        "bytes": 2389568,
+        "source_size": [
+          1254,
+          1254
+        ],
+        "source_mode": "RGB",
+        "cooked_size": [
+          1024,
+          1024
+        ],
+        "opaque": true
+      },
+      {
+        "path": "art-source/2d-slice/r001/sources/heavy_bloom.png",
+        "sha256": "4b0e5d8dae08327ef290b436b1b4d4ca3c4a73e2760b930e2d70577173ec716b",
+        "bytes": 1818722,
+        "source_size": [
+          1254,
+          1254
+        ],
+        "source_mode": "RGB",
+        "cooked_size": [
+          512,
+          512
+        ],
+        "opaque": true
+      },
+      {
+        "path": "art-source/2d-slice/r001/sources/quiet_stone.png",
+        "sha256": "f9600bc8aea263eebb5f002ac90a8fcce6694cb8d4d5dc00fd249ffef6436244",
+        "bytes": 3093559,
+        "source_size": [
+          1254,
+          1254
+        ],
+        "source_mode": "RGB",
+        "cooked_size": [
+          1024,
+          1024
+        ],
+        "opaque": true
+      }
+    ],
+    "graphics": [
+      {
+        "case": "lab-720",
+        "passed": true,
+        "boolean_checks": 49
+      },
+      {
+        "case": "lab-1080",
+        "passed": true,
+        "boolean_checks": 49
+      },
+      {
+        "case": "status-1080",
+        "passed": true,
+        "boolean_checks": 15
+      },
+      {
+        "case": "solo-720",
+        "passed": true,
+        "boolean_checks": 24
+      },
+      {
+        "case": "solo-1080",
+        "passed": true,
+        "boolean_checks": 24
+      },
+      {
+        "case": "comparison-lab-720",
+        "passed": true,
+        "boolean_checks": 41
+      }
+    ],
+    "python_tests": 230,
+    "authoring_checks": 400,
+    "required_generation_checks": "PASS",
+    "package_identity": {
+      "status": "PASS",
+      "verified_utc": "2026-09-13T13:24:11.450546+00:00",
+      "source_files": 93,
+      "package_files": 49,
+      "catalogue": {
+        "profile_id": "wonder_vnext",
+        "balance_version": "wonder_vnext_solo_0.1.0",
+        "source_sha256": "ec031fb21f7ddcce1bd37cc38e3277788208767e78e05f51eead8e71f106d350",
+        "runtime_sha1": "cc3f5bbe911130a6ec0eb035f46c29db7580b5be",
+        "runtime_sha256": "189d20ebbf0ff26c03d4c50006dbecd417989079aeee43e4236199a2ade0ddb1"
+      },
+      "boundary": "Exact file identity and membership, source/generated/staged runtime consistency, and embedded binary identity markers. Not bit-reproducible build proof, art/human acceptance, network acceptance, or clean-machine testing. A cold launch on the development computer is same-machine evidence only."
+    },
+    "engine_contracts": {
+      "succeeded": 2,
+      "failed": 0,
+      "combat_clarity_assertions": 2929,
+      "mana_assertions": 581
+    },
+    "gameplay_code_and_data_preserved": {
+      "files": [
+        {
+          "path": "game/Source/WonderChessRuntime/Private/WCDefinitionRegistry.cpp",
+          "unchanged": true
+        },
+        {
+          "path": "game/Source/WonderChessRuntime/Private/Simulation/WonderCombatClarityTests.h",
+          "unchanged": true
+        },
+        {
+          "path": "game/Source/WonderChessRuntime/Private/Simulation/WonderManaTests.h",
+          "unchanged": true
+        },
+        {
+          "path": "game/Source/WonderChessRuntime/Private/Simulation/WonderSave.cpp",
+          "unchanged": true
+        },
+        {
+          "path": "game/Source/WonderChessRuntime/Private/Simulation/WonderSaveFile.cpp",
+          "unchanged": true
+        },
+        {
+          "path": "game/Source/WonderChessRuntime/Private/Simulation/WonderScenario.cpp",
+          "unchanged": true
+        },
+        {
+          "path": "game/Source/WonderChessRuntime/Private/Simulation/WonderScenarioFile.cpp",
+          "unchanged": true
+        },
+        {
+          "path": "game/Source/WonderChessRuntime/Private/Simulation/WonderSimulation.cpp",
+          "unchanged": true
+        },
+        {
+          "path": "game/Source/WonderChessRuntime/Private/Simulation/WonderSimulationTests.cpp",
+          "unchanged": true
+        },
+        {
+          "path": "game/Source/WonderChessRuntime/Private/Simulation/WonderTournament.cpp",
+          "unchanged": true
+        },
+        {
+          "path": "game/Source/WonderChessRuntime/Public/Simulation/WonderSaveFile.h",
+          "unchanged": true
+        },
+        {
+          "path": "game/Source/WonderChessRuntime/Public/Simulation/WonderScenario.h",
+          "unchanged": true
+        },
+        {
+          "path": "game/Source/WonderChessRuntime/Public/Simulation/WonderScenarioFile.h",
+          "unchanged": true
+        },
+        {
+          "path": "game/Source/WonderChessRuntime/Public/Simulation/WonderSimulation.h",
+          "unchanged": true
+        },
+        {
+          "path": "game/Source/WonderChessRuntime/Public/VNext/WonderVNextCatalog.generated.h",
+          "unchanged": true
+        },
+        {
+          "path": "data/vnext/catalog.json",
+          "unchanged": true
+        },
+        {
+          "path": "data/vnext/generated/runtime_catalog.json",
+          "unchanged": true
+        },
+        {
+          "path": "game/Content/WonderChess/VNext/M_CombatCue.uasset",
+          "unchanged": true
+        }
+      ],
+      "all_unchanged": true,
+      "canonical_sha256": "ec031fb21f7ddcce1bd37cc38e3277788208767e78e05f51eead8e71f106d350"
+    },
+    "manual_input": {
+      "r14": "Actual pointer pause, three Bellback purchases, live owned/merge feedback, gold 10 to 7 and automatic 2-star bench merge observed. Found and preserved focus overlay defect.",
+      "r15": "Source fix compiled and packaged; final actual pointer/keyboard focus recheck NOT_RUN after user stopped Computer Use with Escape.",
+      "r15_launch": "Launcher invoked; engine log confirms READY, all artwork loaded, and correct combat-clarity digest. Screen control stopped before capture."
+    },
+    "visual_review": {
+      "r15": "Root and separate reviewer inspected packaged Lab720 and status1080 captures. Contrast revision resolves pale semantic cues; no further new screenshot defect found requiring another revision before owner review.",
+      "limit": "Screenshot review does not certify continuous animation, human enjoyment or final modeled identity."
+    },
+    "remaining": [
+      "Owner review of integrated style at actual play size.",
+      "Final r15 physical keyboard-focus/purchase visual recheck interrupted.",
+      "Existing thin grid-line speckling in combat predates slice.",
+      "Final character forms, full artwork production, pacing acceptance and release gates remain open."
+    ],
+    "failed_attempts": [
+      "Heavy Bloom first output painted checkerboard; rejected and revised to opaque ink.",
+      "Initial compile name-shadowing and narrowing errors fixed.",
+      "Initial Python child invocation selected Unreal Python without Pillow; rerun with exact authoring interpreter passed.",
+      "r14 Lab HUD check ran before first presentation update; moved identical check after settled capture.",
+      "r14 manual focus overlay white fill fixed with explicit transparent tint in r15; physical r15 recheck interrupted."
+    ],
+    "launchers": [
+      {
+        "path": "C:\\Users\\iputu\\Documents\\Project Support\\Wonder Chess\\Play Combat Clarity - Lab.cmd",
+        "sha256": "71a9eb1c692297fb0f1bebaca00a6271a01e800cbec5bbd98080bf47197eb9a1"
+      },
+      {
+        "path": "C:\\Users\\iputu\\Documents\\Project Support\\Wonder Chess\\Play Combat Clarity - Solo.cmd",
+        "sha256": "cf30a5b24f5adef4caa858b2547d78118f56bdf88370077015579f30845243c7"
+      }
+    ],
+    "owner_review": {
+      "status": "OWNER_APPROVED_SCOPED_SLICE",
+      "date": "2026-09-13",
+      "quote": "I approve the slice",
+      "boundary": "Approval of the preceding r15 slice, not final 3D forms or the new r20 expansion."
+    }
+  },
+  "vnext_storybook_expansion": {
+    "schema": "wonder_vnext.storybook_verification.1",
+    "recorded_utc": "2026-09-13T15:33:38.954159+00:00",
+    "status": "PACKAGED_COMPONENT_VERIFIED_OWNER_REVIEW_OPEN",
+    "candidate": "WonderChess-Storybook-r20",
+    "source_paintings": 23,
+    "reused_paintings": 3,
+    "current_portraits": 6,
+    "ability_icons": 6,
+    "relic_icons": 12,
+    "package": {
+      "status": "PASS",
+      "verified_utc": "2026-09-13T15:21:25.418370+00:00",
+      "source_files": 122,
+      "package_files": 49,
+      "catalogue": {
+        "profile_id": "wonder_vnext",
+        "balance_version": "wonder_vnext_solo_0.1.0",
+        "source_sha256": "ec031fb21f7ddcce1bd37cc38e3277788208767e78e05f51eead8e71f106d350",
+        "runtime_sha1": "cc3f5bbe911130a6ec0eb035f46c29db7580b5be",
+        "runtime_sha256": "189d20ebbf0ff26c03d4c50006dbecd417989079aeee43e4236199a2ade0ddb1"
+      },
+      "boundary": "Exact file identity and membership, source/generated/staged runtime consistency, and embedded binary identity markers. Not bit-reproducible build proof, art/human acceptance, network acceptance, or clean-machine testing. A cold launch on the development computer is same-machine evidence only."
+    },
+    "game_binary": {
+      "path": "WonderChess/Binaries/Win64/WonderChess.exe",
+      "bytes": 293702144,
+      "sha256": "14eb8216a977af78d692cb4416feb457a37c7b1c309cef5cbdc2cc3db45857a7"
+    },
+    "graphics": [
+      {
+        "case": "lab-720",
+        "result_exists": true,
+        "passed": true,
+        "checks": {
+          "native_slate_created": true,
+          "vnext_profile_loaded": true,
+          "art_slice_resources_loaded": true,
+          "quiet_stone_applied_to_64_cells": true,
+          "storybook_sanctuary_backdrop_loaded": true,
+          "storybook_expanded_illustrations_loaded": true,
+          "art_slice_hud_tracks_and_passive_mana_visibility": true,
+          "empty_start_rejected": true,
+          "placement_preview_inspects_occupied_cell": true,
+          "placement_preview_accepts_same_team_empty_cell": true,
+          "placement_preview_rejects_cross_team_move": true,
+          "placement_preview_ignores_off_board": true,
+          "stars_and_facing_edit_selected_piece": true,
+          "move_preserves_piece_and_star": true,
+          "remove_selected": true,
+          "placement_preview_rejects_full_team": true,
+          "ten_per_side_limit": true,
+          "six_hero_palette_and_both_formations": true,
+          "guard_preparation_recipient_visible": true,
+          "passive_guard_hides_unused_cast_timers": true,
+          "compatible_relic_changes_actual_guard_geometry": true,
+          "unequip_restores_base_ability": true,
+          "duplicate_team_relic_rejected": true,
+          "maximum_three_relics_per_team": true,
+          "one_relic_per_hero_replacement": true,
+          "same_relic_allowed_on_opposing_team": true,
+          "tidal_preparation_lane_rotates_with_facing": true,
+          "opponent_local_facing_rotates_into_world": true,
+          "pause_and_single_tick_step": true,
+          "combat_rejects_formation_edits": true,
+          "combat_rejects_relic_edits": true,
+          "mana_inspector_uses_resource_not_cooldown": true,
+          "mana_bars_match_live_resource_users": true,
+          "combat_capture_requested": true,
+          "storybook_defeat_capture_requested": true,
+          "actual_combat_completed": true,
+          "first_combat_invariants": true,
+          "replay_restores_original_seed": true,
+          "replay_restores_equipped_relics": true,
+          "replay_exact_event_and_final_state_signature": true,
+          "replay_combat_invariants": true,
+          "every_observed_tick_invariants": true,
+          "completed_within_exercise_limit": true,
+          "storybook_actual_defeat_leaves_drawn": true,
+          "storybook_expired_defeated_proxies_hidden": true,
+          "storybook_cues_pool_bounded": true,
+          "storybook_four_ranged_identities_drawn": true,
+          "all_captures_completed": true,
+          "all_captures_saved_new_files": true,
+          "capture_selection_and_combat_ticks_held": true,
+          "captured_text_widgets_match_exact_current_sources": true,
+          "inspector_updates_from_bellback_to_full_reefglass_text": true,
+          "captures_settled_before_request_and_after_processing": true,
+          "all_64_cell_centers_visible": true,
+          "all_64_click_projection_roundtrips": true,
+          "board_fills_available_pane_without_clipping": true,
+          "no_modal_exclusivity_errors": true
+        }
+      },
+      {
+        "case": "lab-1080",
+        "result_exists": true,
+        "passed": true,
+        "checks": {
+          "native_slate_created": true,
+          "vnext_profile_loaded": true,
+          "art_slice_resources_loaded": true,
+          "quiet_stone_applied_to_64_cells": true,
+          "storybook_sanctuary_backdrop_loaded": true,
+          "storybook_expanded_illustrations_loaded": true,
+          "art_slice_hud_tracks_and_passive_mana_visibility": true,
+          "empty_start_rejected": true,
+          "placement_preview_inspects_occupied_cell": true,
+          "placement_preview_accepts_same_team_empty_cell": true,
+          "placement_preview_rejects_cross_team_move": true,
+          "placement_preview_ignores_off_board": true,
+          "stars_and_facing_edit_selected_piece": true,
+          "move_preserves_piece_and_star": true,
+          "remove_selected": true,
+          "placement_preview_rejects_full_team": true,
+          "ten_per_side_limit": true,
+          "six_hero_palette_and_both_formations": true,
+          "guard_preparation_recipient_visible": true,
+          "passive_guard_hides_unused_cast_timers": true,
+          "compatible_relic_changes_actual_guard_geometry": true,
+          "unequip_restores_base_ability": true,
+          "duplicate_team_relic_rejected": true,
+          "maximum_three_relics_per_team": true,
+          "one_relic_per_hero_replacement": true,
+          "same_relic_allowed_on_opposing_team": true,
+          "tidal_preparation_lane_rotates_with_facing": true,
+          "opponent_local_facing_rotates_into_world": true,
+          "pause_and_single_tick_step": true,
+          "combat_rejects_formation_edits": true,
+          "combat_rejects_relic_edits": true,
+          "mana_inspector_uses_resource_not_cooldown": true,
+          "mana_bars_match_live_resource_users": true,
+          "combat_capture_requested": true,
+          "storybook_defeat_capture_requested": true,
+          "actual_combat_completed": true,
+          "first_combat_invariants": true,
+          "replay_restores_original_seed": true,
+          "replay_restores_equipped_relics": true,
+          "replay_exact_event_and_final_state_signature": true,
+          "replay_combat_invariants": true,
+          "every_observed_tick_invariants": true,
+          "completed_within_exercise_limit": true,
+          "storybook_actual_defeat_leaves_drawn": true,
+          "storybook_expired_defeated_proxies_hidden": true,
+          "storybook_cues_pool_bounded": true,
+          "storybook_four_ranged_identities_drawn": true,
+          "all_captures_completed": true,
+          "all_captures_saved_new_files": true,
+          "capture_selection_and_combat_ticks_held": true,
+          "captured_text_widgets_match_exact_current_sources": true,
+          "inspector_updates_from_bellback_to_full_reefglass_text": true,
+          "captures_settled_before_request_and_after_processing": true,
+          "all_64_cell_centers_visible": true,
+          "all_64_click_projection_roundtrips": true,
+          "board_fills_available_pane_without_clipping": true,
+          "no_modal_exclusivity_errors": true
+        }
+      },
+      {
+        "case": "status-1080",
+        "result_exists": true,
+        "passed": true,
+        "checks": {
+          "native_slate_created": true,
+          "vnext_profile_loaded": true,
+          "art_slice_resources_loaded": true,
+          "quiet_stone_applied_to_64_cells": true,
+          "storybook_sanctuary_backdrop_loaded": true,
+          "storybook_expanded_illustrations_loaded": true,
+          "actual_stun_swirl_drawn": true,
+          "actual_shield_drawn": true,
+          "effective_healing_plus_drawn": true,
+          "actual_modifier_drawn": true,
+          "art_slice_five_point_stun_stars_drawn": true,
+          "actual_statuses_expired": true,
+          "expired_status_geometry_hidden": true,
+          "cue_pool_bounded": true,
+          "all_64_cell_centers_visible": true,
+          "all_64_click_projection_roundtrips": true,
+          "board_fills_available_pane_without_clipping": true,
+          "no_modal_exclusivity_errors": true
+        }
+      },
+      {
+        "case": "solo-720",
+        "result_exists": true,
+        "passed": true,
+        "checks": {
+          "art_slice_portrait_and_relic_loaded": true,
+          "storybook_all_hero_portraits_and_abilities_mapped": true,
+          "storybook_all_relics_mapped_to_distinct_art": true,
+          "existing_save_blocks_orders": true,
+          "existing_save_choice_preserves_checkpoint": true,
+          "unselected_inspector_requests_selection": true,
+          "buy": true,
+          "purchase_feedback": true,
+          "placement_preview_accepts_legal_solo_deployment": true,
+          "placement_preview_rejects_opponent_half": true,
+          "deploy": true,
+          "disk_resume_exact": true,
+          "scout_rejects_commands": true,
+          "placement_preview_scouts_without_edit_permission": true,
+          "insufficient_gold_rejection": true,
+          "combat_unselected_inspector_hides_palette": true,
+          "combat_cutoff_rejects_order": true,
+          "relic_draft": true,
+          "relic_equip": true,
+          "selected_inspector_includes_equipped_relic": true,
+          "equipped_relic_disk_resume": true,
+          "relic_unequip": true,
+          "eliminated_spectating": true,
+          "finished": true,
+          "invariants": true,
+          "restart_fresh": true,
+          "no_modal_exclusivity_errors": true
+        }
+      },
+      {
+        "case": "solo-1080",
+        "result_exists": true,
+        "passed": true,
+        "checks": {
+          "art_slice_portrait_and_relic_loaded": true,
+          "storybook_all_hero_portraits_and_abilities_mapped": true,
+          "storybook_all_relics_mapped_to_distinct_art": true,
+          "existing_save_blocks_orders": true,
+          "existing_save_choice_preserves_checkpoint": true,
+          "unselected_inspector_requests_selection": true,
+          "buy": true,
+          "purchase_feedback": true,
+          "placement_preview_accepts_legal_solo_deployment": true,
+          "placement_preview_rejects_opponent_half": true,
+          "deploy": true,
+          "disk_resume_exact": true,
+          "scout_rejects_commands": true,
+          "placement_preview_scouts_without_edit_permission": true,
+          "insufficient_gold_rejection": true,
+          "combat_unselected_inspector_hides_palette": true,
+          "combat_cutoff_rejects_order": true,
+          "relic_draft": true,
+          "relic_equip": true,
+          "selected_inspector_includes_equipped_relic": true,
+          "equipped_relic_disk_resume": true,
+          "relic_unequip": true,
+          "eliminated_spectating": true,
+          "finished": true,
+          "invariants": true,
+          "restart_fresh": true,
+          "no_modal_exclusivity_errors": true
+        }
+      },
+      {
+        "case": "visual-720",
+        "result_exists": true,
+        "passed": true,
+        "checks": {
+          "native_slate_created": true,
+          "vnext_profile_loaded": true,
+          "art_slice_resources_loaded": true,
+          "quiet_stone_applied_to_64_cells": true,
+          "storybook_sanctuary_backdrop_loaded": true,
+          "storybook_expanded_illustrations_loaded": true,
+          "storybook_resources_ready": true,
+          "saved_preparation_opens_choice": true,
+          "resume_restores_exact_preparation": true,
+          "resume_does_not_trigger_upgrade": true,
+          "actual_merge_captured": true,
+          "preparation_has_real_deployed_and_bench_units": true,
+          "scouting_clears_upgrade": true,
+          "scouting_rejects_orders_without_mutation": true,
+          "real_relic_draft_captured": true,
+          "real_draft_and_equipment_accepted": true,
+          "equipped_relic_in_live_inspector": true,
+          "actual_tournament_finished": true,
+          "restart_clears_results_and_upgrade": true,
+          "nine_stable_native_ui_captures_written": true,
+          "no_modal_exclusivity_errors": true,
+          "native_modal_focus_and_exclusivity": true
+        }
+      },
+      {
+        "case": "visual-1080",
+        "result_exists": true,
+        "passed": true,
+        "checks": {
+          "native_slate_created": true,
+          "vnext_profile_loaded": true,
+          "art_slice_resources_loaded": true,
+          "quiet_stone_applied_to_64_cells": true,
+          "storybook_sanctuary_backdrop_loaded": true,
+          "storybook_expanded_illustrations_loaded": true,
+          "storybook_resources_ready": true,
+          "saved_preparation_opens_choice": true,
+          "resume_restores_exact_preparation": true,
+          "resume_does_not_trigger_upgrade": true,
+          "actual_merge_captured": true,
+          "preparation_has_real_deployed_and_bench_units": true,
+          "scouting_clears_upgrade": true,
+          "scouting_rejects_orders_without_mutation": true,
+          "real_relic_draft_captured": true,
+          "real_draft_and_equipment_accepted": true,
+          "equipped_relic_in_live_inspector": true,
+          "actual_tournament_finished": true,
+          "restart_clears_results_and_upgrade": true,
+          "nine_stable_native_ui_captures_written": true,
+          "no_modal_exclusivity_errors": true,
+          "native_modal_focus_and_exclusivity": true
+        }
+      },
+      {
+        "case": "comparison-lab-720",
+        "result_exists": true,
+        "passed": true,
+        "checks": {
+          "native_slate_created": true,
+          "vnext_profile_loaded": true,
+          "empty_start_rejected": true,
+          "stars_and_facing_edit_selected_piece": true,
+          "move_preserves_piece_and_star": true,
+          "remove_selected": true,
+          "ten_per_side_limit": true,
+          "six_hero_palette_and_both_formations": true,
+          "guard_preparation_recipient_visible": true,
+          "passive_guard_hides_unused_cast_timers": true,
+          "compatible_relic_changes_actual_guard_geometry": true,
+          "unequip_restores_base_ability": true,
+          "duplicate_team_relic_rejected": true,
+          "maximum_three_relics_per_team": true,
+          "one_relic_per_hero_replacement": true,
+          "same_relic_allowed_on_opposing_team": true,
+          "tidal_preparation_lane_rotates_with_facing": true,
+          "opponent_local_facing_rotates_into_world": true,
+          "pause_and_single_tick_step": true,
+          "combat_rejects_formation_edits": true,
+          "combat_rejects_relic_edits": true,
+          "mana_inspector_uses_resource_not_cooldown": true,
+          "mana_bars_match_live_resource_users": true,
+          "combat_capture_requested": true,
+          "actual_combat_completed": true,
+          "first_combat_invariants": true,
+          "replay_restores_original_seed": true,
+          "replay_restores_equipped_relics": true,
+          "replay_exact_event_and_final_state_signature": true,
+          "replay_combat_invariants": true,
+          "every_observed_tick_invariants": true,
+          "completed_within_exercise_limit": true,
+          "all_captures_completed": true,
+          "all_captures_saved_new_files": true,
+          "capture_selection_and_combat_ticks_held": true,
+          "captured_text_widgets_match_exact_current_sources": true,
+          "inspector_updates_from_bellback_to_full_reefglass_text": true,
+          "captures_settled_before_request_and_after_processing": true,
+          "all_64_cell_centers_visible": true,
+          "all_64_click_projection_roundtrips": true,
+          "board_fills_available_pane_without_clipping": true
+        }
+      }
+    ],
+    "engine_contracts": {
+      "exit_code": 0,
+      "succeeded": 2,
+      "failed": 0,
+      "tests": [
+        {
+          "name": "WonderChess.VNext.CombatClarityContracts",
+          "state": "Success"
+        },
+        {
+          "name": "WonderChess.VNext.ManaContracts",
+          "state": "Success"
+        }
+      ],
+      "passed": true
+    },
+    "authoring": [
+      {
+        "command": [
+          "C:\\Users\\iputu\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+          "tools/validate_kit.py"
+        ],
+        "exit_code": 0,
+        "seconds": 2.39000000001397,
+        "log": "authoring-0.log"
+      },
+      {
+        "command": [
+          "C:\\Users\\iputu\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "exit_code": 0,
+        "seconds": 32.46899999998277,
+        "log": "authoring-1.log"
+      },
+      {
+        "command": [
+          "C:\\Users\\iputu\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+          "tools/build_documents.py",
+          "--check"
+        ],
+        "exit_code": 0,
+        "seconds": 2.3589999999967404,
+        "log": "authoring-2.log"
+      },
+      {
+        "command": [
+          "C:\\Users\\iputu\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+          "tools/compile_catalog.py",
+          "--check"
+        ],
+        "exit_code": 0,
+        "seconds": 2.0160000000032596,
+        "log": "authoring-3.log"
+      },
+      {
+        "command": [
+          "C:\\Users\\iputu\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+          "tools/vnext/catalog.py",
+          "--check"
+        ],
+        "exit_code": 0,
+        "seconds": 2.5160000000032596,
+        "log": "authoring-4.log"
+      }
+    ],
+    "python_tests": 230,
+    "rules_files_unchanged": 18,
+    "actual_input": {
+      "candidate": "WonderChess-Storybook-r20",
+      "status": "PASS_SCOPED_INPUT",
+      "resolution": [
+        1600,
+        1000
+      ],
+      "method": "Native Windows Computer Use with one pointer/keyboard action and a fresh returned screenshot after each action. Fresh isolated save path; no user checkpoint edited.",
+      "checks": {
+        "normal_storybook_launcher_opens_native_solo": true,
+        "pause_clock": true,
+        "bellback_card_purchase_gold_10_to_9_and_bench_update": true,
+        "two_xp_purchases_gold_9_to_5_to_1_and_level_progress": true,
+        "unaffordable_root_card_remains_readable": true,
+        "unaffordable_root_click_keeps_gold_1_and_roster_unchanged": true,
+        "bench_selection_updates_portrait_inspector": true,
+        "pointer_deploys_to_c3_under_perspective_camera": true,
+        "right_enter_moves_c3_to_d3": true,
+        "standings_click_scouts_public_formation": true,
+        "scouting_hides_private_shop_bench_and_relic_choices": true,
+        "you_button_restores_own_board_and_shop": true,
+        "menu_collection_and_scroll_work": true,
+        "six_portraits_and_six_abilities_viewed_at_native_sizes": true,
+        "all_twelve_relics_viewed_at_64_and_32_slate_units": true,
+        "collection_return_restores_live_controls": true,
+        "post_collection_bellback_purchase_gold_1_to_0": true
+      },
+      "captures": [
+        "disabled-purchase.png",
+        "perspective-keyboard-placement.png",
+        "collection-heroes-a.png",
+        "collection-heroes-b.png",
+        "collection-relics-a.png",
+        "collection-relics-b.png",
+        "collection-relics-c.png",
+        "collection-relics-d.png",
+        "collection-closed-purchase.png"
+      ],
+      "visual_findings": "All paintings mapped and visible, square icons retain aspect, distinct lens/hourglass/lantern silhouettes. Far Hourglass is deliberately very thin at the smallest size; fine filigree and silk frays are decorative and not reliably resolved. Names and descriptions remain visible. Owner recognition and preference review remains open.",
+      "boundary": "Scoped real input and agent visual inspection, not a complete normal-speed human tournament, independent player study, final creature-form approval or public release acceptance. Prior r16 physical three-copy merge evidence remains separately scoped."
+    },
+    "previous_input": "r16-manual/input-evidence.json",
+    "failed_candidates_preserved": [
+      "package-first-console.log",
+      "r16 graphical and input evidence",
+      "r17 graphical evidence and review corrections",
+      "r18-review-rejection.json",
+      "r19-review-rejection.json"
+    ],
+    "boundaries": [
+      "Expanded owner visual acceptance open",
+      "Current three-dimensional creatures remain gameplay proxies",
+      "No clean-machine installation or final-content performance acceptance",
+      "No new normal-speed human study or balance acceptance",
+      "B0-M7 milestone acceptance remains open; this advances M2/B3 presentation"
+    ],
+    "readout": "docs/vnext/art/STORYBOOK_READOUT.md",
+    "verification_record": "reports/vnext/milestones/storybook-20260913/verification.json",
+    "desktop_launcher": {
+      "status": "PASS",
+      "wrapper": "C:\\Users\\iputu\\Documents\\Project Support\\Wonder Chess\\Play Wonder Chess.cmd",
+      "wrapper_sha256": "383bb42b78dcb62cd767b36b77bb8d78f8887b4e10cc50e20e6979c056a6ab10",
+      "launch_record": "reports\\vnext\\milestones\\launch-20260913T153437052Z\\launch.json",
+      "native_window_observed": true,
+      "screenshot": "C:\\Users\\iputu\\Documents\\Project Support\\Wonder Chess\\Storybook Demo - r20\\in-game\\desktop-launcher.png",
+      "normal_exit": true,
+      "boundary": "Exact friendly Solo cmd was executed and its native window inspected, then closed. Same-machine evidence."
+    },
+    "git_diff_check": "PASS; tracked whitespace check; existing line-ending warnings only",
+    "final_candidate_game_processes_running": 0
   }
 }

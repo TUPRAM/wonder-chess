@@ -233,6 +233,7 @@ AbilityDef EffectiveAbility(const Catalog &catalog, const UnitDef &unit, int rel
     ability.durationMs = duration(ability.durationMs, item.durationBp, false);
     ability.castMs = duration(ability.castMs, item.castBp, true);
     ability.cooldownMs = duration(ability.cooldownMs, item.cooldownBp, true);
+    if (ability.mana.maximum > 0) ability.mana.gainDivisorBp = item.cooldownBp;
     return ability;
 }
 std::string Catalog::Validate() const
@@ -267,6 +268,15 @@ std::string Catalog::Validate() const
             u.resistance > r.maxArmor || u.attackRate <= 0 || u.movementRate <= 0 || u.range < 1)
             return "Invalid unit numeric field: " + u.id;
         const auto &a = u.ability;
+        const auto &m = a.mana;
+        if (m.maximum < 0 || m.maximum > 10000 || m.starting < 0 || m.starting > m.maximum ||
+            (m.maximum > 0 && (!vnext || !a.enabled ||
+             (a.mechanic != AbilityMechanic::ScreenedStrike && a.mechanic != AbilityMechanic::CrossingBeams &&
+              a.mechanic != AbilityMechanic::TidalPush) || m.basicAttackGain <= 0 || m.basicAttackGain > 10000 ||
+             m.damageGainAtFullHealth < 0 || m.damageGainAtFullHealth > 100000 || m.damageEventCap <= 0 ||
+             m.damageEventCap > m.maximum || m.damageWindowCap < m.damageEventCap || m.damageWindowCap > m.maximum ||
+             m.damageWindowMs < r.tickMs || m.damageWindowMs > 10000 || m.damageWindowMs % r.tickMs != 0 ||
+             m.gainDivisorBp < 5000 || m.gainDivisorBp > 20000))) return "Invalid mana contract: " + u.id;
         if ((a.enabled && (a.castMs <= 0 || a.cooldownMs <= 0 || a.maxTargets <= 0 || a.maxTargets > (vnext ? 24 : 12) ||
             a.firstCastMs < 0 || a.recoveryMs < 0 || a.travelMs < 0 || a.durationMs < 0)) ||
             u.attackWindupMs <= 0)
@@ -475,6 +485,7 @@ Combat::Combat(const Catalog &c, const std::vector<OwnedUnit> &a, const std::vec
                 u.health = u.maxHealth = StarValue(HalfUp(d.health * o.hpScaleBp, 10000), o.star, healthBonus, c.rules);
                 u.basicDamage = StarValue(HalfUp(d.attackDamage * o.damageScaleBp, 10000), o.star, 0, c.rules);
                 u.cooldownTick = Ticks(u.ability.firstCastMs, c.rules);
+                u.mana = u.ability.mana.starting;
                 units_.push_back(u);
             }
     }
@@ -561,10 +572,12 @@ int Combat::ChooseEnemy(int source, Cell &next, int &length) const
 {
     const auto &u = units_[source];
     if (u.target >= 0 && Alive(units_[u.target]) && units_[u.target].side != u.side &&
+        (!catalog_->rules.nearestReachableTarget ||
+         Distance(u.cell, units_[u.target].cell) <= catalog_->Definition(u.definition, u.neutral).range) &&
         FindPath(source, u.target, next, length))
         return u.target;
     int best = -1;
-    std::tuple<int, int, Id> bestKey{999, 999, 0};
+    std::tuple<int, int, int, Id> bestKey{999, 999, 999, 0};
     for (int i = 0; i < int(units_.size()); ++i)
         if (Alive(units_[i]) && units_[i].side != u.side)
         {
@@ -572,7 +585,8 @@ int Combat::ChooseEnemy(int source, Cell &next, int &length) const
             int distance = 0;
             if (!FindPath(source, i, candidate, distance))
                 continue;
-            auto key = std::make_tuple(distance, units_[i].initiative, units_[i].id);
+            const int proximity = catalog_->rules.nearestReachableTarget ? Distance(u.cell, units_[i].cell) : distance;
+            auto key = std::make_tuple(proximity, distance, units_[i].initiative, units_[i].id);
             if (key < bestKey)
             {
                 bestKey = key;
@@ -706,13 +720,81 @@ bool Combat::DashLanding(int source, const AbilityDef &a, int &target, Cell &cel
         }
     return found;
 }
+const char *MechanicPhaseName(MechanicPhase phase)
+{
+    const char *names[] = {"attempt", "committed", "released", "cancelled", "impact"};
+    const int index = int(phase);
+    return index >= 0 && index < 5 ? names[index] : "unknown";
+}
+const char *MechanicReasonName(MechanicReason reason)
+{
+    const char *names[] = {"ready", "no_living_target", "target_out_of_range", "dash_too_long",
+        "no_momentum", "path_occupied", "corner_occupied", "not_established", "no_injured_ally",
+        "target_moved", "source_moved", "source_stunned", "source_defeated", "tether_invalidated",
+        "combat_ended", "target_defeated", "resolved"};
+    const int index = int(reason);
+    return index >= 0 && index < 17 ? names[index] : "unknown";
+}
+bool Combat::EnableDiagnostics()
+{
+    if (tick_ != 0) return false;
+    diagnosticsEnabled_ = true;
+    return true;
+}
+void Combat::TraceMechanic(int source, MechanicPhase phase, MechanicReason reason,
+                          const Packet *packet, int recipients, int fullHealth, Int requested, Int resolved)
+{
+    if (!diagnosticsEnabled_) return;
+    const auto &u = units_[source];
+    const auto mechanic = packet ? packet->mechanic : u.ability.mechanic;
+    if (mechanic != AbilityMechanic::MomentumCharge && mechanic != AbilityMechanic::StationaryGrove) return;
+    MechanicTrace trace;
+    trace.tick = tick_; trace.source = u.id; trace.action = packet ? packet->action :
+        phase == MechanicPhase::Attempt ? 0 : u.actionId;
+    const int target = packet ? packet->target : u.target;
+    trace.target = target >= 0 ? units_[target].id : 0;
+    trace.mechanic = mechanic; trace.phase = phase; trace.reason = reason;
+    trace.origin = packet ? packet->origin : u.cell;
+    trace.aim = packet ? packet->center : phase == MechanicPhase::Attempt ?
+        (mechanic == AbilityMechanic::MomentumCharge && target >= 0 ? units_[target].cell : u.cell) : u.abilityAim;
+    trace.landing = u.destination.column >= 0 ? u.destination : u.cell;
+    trace.momentumSteps = u.momentumSteps;
+    trace.recipients = recipients; trace.fullHealthAllies = fullHealth;
+    trace.requested = requested; trace.resolved = resolved;
+    diagnostics_.push_back(trace);
+}
+MechanicReason Combat::TetherReason(const Packet &packet) const
+{
+    if (!packet.tethered) return MechanicReason::Ready;
+    const auto &source = units_[packet.source];
+    if (!Alive(source)) return MechanicReason::SourceDefeated;
+    if (source.state == ActionState::Stunned) return MechanicReason::SourceStunned;
+    if (!(source.cell == packet.origin)) return MechanicReason::SourceMoved;
+    if (source.positionEpoch != packet.positionEpoch) return MechanicReason::TetherInvalidated;
+    return MechanicReason::Ready;
+}
+void Combat::TraceCompletion()
+{
+    if (!diagnosticsEnabled_) return;
+    for (int i = 0; i < int(units_.size()); ++i)
+        if (Alive(units_[i]) && units_[i].state == ActionState::CastWindup)
+            TraceMechanic(i, MechanicPhase::Cancelled, MechanicReason::CombatEnded);
+    for (const auto &packet : packets_)
+        TraceMechanic(packet.source, MechanicPhase::Impact, MechanicReason::CombatEnded, &packet);
+}
 bool Combat::CommitAbility(int source)
 {
     auto &s = units_[source];
     const auto &a = s.ability;
-    if (!a.enabled || tick_ < s.cooldownTick)
+    if (!a.enabled || (a.mana.maximum > 0 ? s.mana < a.mana.maximum : tick_ < s.cooldownTick))
         return false;
-    if (a.mechanic != AbilityMechanic::Standard) return CommitMechanic(source, a);
+    if (a.mechanic != AbilityMechanic::Standard)
+    {
+        const bool committed = CommitMechanic(source, a);
+        if (committed) RecordCommit(source);
+        else if (a.mana.maximum > 0) ++s.manaBlockedAttempts;
+        return committed;
+    }
     if ((a.effects.empty() ? a.effect : a.effects.front().effect) == Effect::Dash)
     {
         int target;
@@ -729,28 +811,66 @@ bool Combat::CommitAbility(int source)
     s.releaseTick = tick_ + Ticks(a.castMs, catalog_->rules);
     s.recoveryTick = s.releaseTick + Ticks(a.recoveryMs, catalog_->rules);
     s.cooldownTick = tick_ + Ticks(a.cooldownMs, catalog_->rules);
+    RecordCommit(source);
     return true;
 }
-bool Combat::ChargeLanding(int source, const AbilityDef &a, int target, Cell &landing) const
+void Combat::RecordCommit(int source)
+{
+    auto &u = units_[source];
+    ++u.castsCommitted;
+    if (u.firstCastTick < 0) u.firstCastTick = tick_;
+    if (u.ability.mana.maximum == 0) return;
+    u.manaSpent += u.mana;
+    u.mana = 0;
+    u.manaResumeTick = u.recoveryTick;
+}
+void Combat::GainMana(int unit, Int amount, bool incoming, Id action)
+{
+    auto &u = units_[unit];
+    const auto &m = u.ability.mana;
+    if (m.maximum == 0 || !Alive(u) || tick_ < u.manaResumeTick || amount <= 0) return;
+    if (!incoming)
+    {
+        if (u.lastManaAttackAction == action) return;
+        u.lastManaAttackAction = action;
+    }
+    amount = HalfUp(amount * 10000, m.gainDivisorBp);
+    if (incoming)
+    {
+        if (tick_ - u.manaWindowStart >= Ticks(m.damageWindowMs, catalog_->rules))
+        { u.manaWindowStart = tick_; u.manaWindowGained = 0; }
+        amount = std::min<Int>(amount, std::min(m.damageEventCap, m.damageWindowCap - u.manaWindowGained));
+    }
+    const int gained = int(std::min<Int>(amount, m.maximum - u.mana));
+    u.mana += gained;
+    if (incoming) { u.manaWindowGained += gained; u.manaFromDamage += gained; }
+    else u.manaFromAttacks += gained;
+}
+bool Combat::ChargeLanding(int source, const AbilityDef &a, int target, Cell &landing,
+                           MechanicReason *reason) const
 {
     const auto &s = units_[source];
-    if (target < 0 || !Alive(units_[target]) || Distance(s.cell, units_[target].cell) > a.range)
-        return false;
+    const auto reject = [&](MechanicReason why) { if (reason) *reason = why; return false; };
+    if (reason) *reason = MechanicReason::Ready;
+    if (target < 0 || target >= int(units_.size()) || !Alive(units_[target]))
+        return reject(MechanicReason::NoLivingTarget);
+    if (Distance(s.cell, units_[target].cell) > a.range)
+        return reject(MechanicReason::TargetOutOfRange);
     const auto path = LineCells(s.cell, units_[target].cell);
-    if (path.empty() || int(path.size()) - 1 > a.maxDash) return false;
+    if (path.empty() || int(path.size()) - 1 > a.maxDash) return reject(MechanicReason::DashTooLong);
     if (path.size() == 1)
     {
         landing = s.cell;
-        return s.momentumSteps > 0;
+        return s.momentumSteps > 0 || reject(MechanicReason::NoMomentum);
     }
     Cell previous = s.cell;
     for (std::size_t i = 0; i + 1 < path.size(); ++i)
     {
         const auto cell = path[i];
-        if (!Free(cell, source)) return false;
+        if (!Free(cell, source)) return reject(MechanicReason::PathOccupied);
         if (cell.column != previous.column && cell.row != previous.row &&
             (!Free({cell.column, previous.row}, source) || !Free({previous.column, cell.row}, source)))
-            return false;
+            return reject(MechanicReason::CornerOccupied);
         previous = cell;
     }
     landing = previous;
@@ -763,17 +883,22 @@ bool Combat::CommitMechanic(int source, const AbilityDef &a)
     if (a.mechanic == AbilityMechanic::MomentumCharge)
     {
         Cell landing;
-        if (!ChargeLanding(source, a, s.target, landing)) return false;
+        MechanicReason reason;
+        const bool ready = ChargeLanding(source, a, s.target, landing, &reason);
+        TraceMechanic(source, MechanicPhase::Attempt, reason);
+        if (!ready) return false;
         if (!(landing == s.cell)) s.destination = landing;
         s.abilityAim = units_[s.target].cell;
     }
     else if (a.mechanic == AbilityMechanic::StationaryGrove)
     {
-        if (tick_ - s.lastMovementTick < Ticks(a.stationaryMs, catalog_->rules)) return false;
+        if (tick_ - s.lastMovementTick < Ticks(a.stationaryMs, catalog_->rules))
+        { TraceMechanic(source, MechanicPhase::Attempt, MechanicReason::NotEstablished); return false; }
         bool injured = false;
         for (const auto &u : units_)
             if (Alive(u) && u.side == s.side && (u.id != s.id || a.allowSelf) &&
                 u.health < u.maxHealth && Distance(u.cell, s.cell) <= a.radius) injured = true;
+        TraceMechanic(source, MechanicPhase::Attempt, injured ? MechanicReason::Ready : MechanicReason::NoInjuredAlly);
         if (!injured) return false;
         s.abilityAim = s.cell;
     }
@@ -814,6 +939,7 @@ bool Combat::CommitMechanic(int source, const AbilityDef &a)
     s.releaseTick = tick_ + Ticks(a.castMs, catalog_->rules);
     s.recoveryTick = s.releaseTick + Ticks(a.recoveryMs, catalog_->rules);
     s.cooldownTick = tick_ + Ticks(a.cooldownMs, catalog_->rules);
+    TraceMechanic(source, MechanicPhase::Committed, MechanicReason::Ready);
     return true;
 }
 void Combat::MoveUnit(int unit, Cell cell, AbilityMechanic mechanic, Id action, int source)
@@ -835,8 +961,7 @@ std::vector<int> Combat::PacketTargets(const Packet &packet) const
 {
     std::vector<int> targets;
     const auto &source = units_[packet.source];
-    if (packet.tethered && (!Alive(source) || source.state == ActionState::Stunned ||
-        source.positionEpoch != packet.positionEpoch || !(source.cell == packet.origin))) return targets;
+    if (TetherReason(packet) != MechanicReason::Ready) return targets;
     for (int i = 0; i < int(units_.size()); ++i)
     {
         const auto &u = units_[i];
@@ -871,10 +996,16 @@ void Combat::ReleaseMechanic(int source, const AbilityDef &a)
     if (a.mechanic == AbilityMechanic::MomentumCharge)
     {
         Cell landing;
-        if (!ChargeLanding(source, a, s.target, landing) || !(units_[s.target].cell == s.abilityAim))
-        { CancelReservation(source); return; }
+        MechanicReason reason;
+        const bool legal = ChargeLanding(source, a, s.target, landing, &reason);
+        if (!legal || !(units_[s.target].cell == s.abilityAim))
+        {
+            TraceMechanic(source, MechanicPhase::Cancelled, legal ? MechanicReason::TargetMoved : reason);
+            CancelReservation(source); return;
+        }
         const int steps = std::min(a.maxMomentumSteps, s.momentumSteps + Distance(s.cell, landing));
         packet.bonus += steps * a.momentumPerStepBp;
+        TraceMechanic(source, MechanicPhase::Released, MechanicReason::Ready);
         MoveUnit(source, landing, a.mechanic, s.actionId, source);
         CancelReservation(source);
         s.momentumSteps = 0;
@@ -883,7 +1014,9 @@ void Combat::ReleaseMechanic(int source, const AbilityDef &a)
     }
     else if (a.mechanic == AbilityMechanic::StationaryGrove)
     {
-        if (!(s.cell == s.abilityAim)) return;
+        if (!(s.cell == s.abilityAim))
+        { TraceMechanic(source, MechanicPhase::Cancelled, MechanicReason::SourceMoved); return; }
+        TraceMechanic(source, MechanicPhase::Released, MechanicReason::Ready);
         packet.area = packet.allied = packet.tethered = true;
         packet.allowSelf = a.allowSelf; packet.positionEpoch = s.positionEpoch;
         packet.magnitude = HalfUp(packet.magnitude * (10000 + s.supportBonus), 10000);
@@ -1137,6 +1270,7 @@ void Combat::Apply(const Packet &p, int target)
     e.requested = p.magnitude;
     e.cell = p.radius > 0 ? p.center : t.cell;
     e.origin = p.origin;
+    e.visualCells = p.cells;
     e.mechanic = p.mechanic;
     switch (p.effect)
     {
@@ -1183,8 +1317,18 @@ void Combat::Apply(const Packet &p, int target)
         e.healthLoss = std::min(t.health, remaining);
         e.overkill = remaining - e.healthLoss;
         t.health -= e.healthLoss;
+        if (units_[p.source].side != t.side)
+        {
+            if (p.basicAttack && e.resolved > 0)
+                GainMana(p.source, units_[p.source].ability.mana.basicAttackGain, false, p.action);
+            GainMana(target, HalfUp(e.healthLoss * t.ability.mana.damageGainAtFullHealth, t.maxHealth), true, p.action);
+        }
         if (!Alive(t))
         {
+            if (t.state == ActionState::CastWindup)
+                TraceMechanic(target, MechanicPhase::Cancelled, MechanicReason::SourceDefeated);
+            t.manaOnDeath = t.mana;
+            t.mana = 0;
             t.state = ActionState::Defeated;
             CancelReservation(target);
         }
@@ -1208,6 +1352,8 @@ void Combat::Apply(const Packet &p, int target)
     case Effect::Stun:
         if (p.duration > 0)
         {
+            if (t.state == ActionState::CastWindup)
+                TraceMechanic(target, MechanicPhase::Cancelled, MechanicReason::SourceStunned);
             t.stunExpiry = std::max(t.stunExpiry, tick_ + p.duration);
             t.state = ActionState::Stunned;
             CancelReservation(target);
@@ -1257,6 +1403,8 @@ void Combat::Apply(const Packet &p, int target)
         }
         if (!(destination == t.cell))
         {
+            if (t.state == ActionState::CastWindup)
+                TraceMechanic(target, MechanicPhase::Cancelled, MechanicReason::SourceMoved);
             CancelReservation(target);
             MoveUnit(target, destination, p.mechanic, p.action, p.source);
             if (t.state == ActionState::Moving) t.state = ActionState::Idle;
@@ -1289,6 +1437,7 @@ void Combat::Assess(bool timeout)
         result_.winner = comparison > 0 ? 0 : comparison < 0 ? 1 : -1;
         result_.timeout = true;
         result_.complete = true;
+        TraceCompletion();
         packets_.clear();
         return;
     }
@@ -1313,6 +1462,7 @@ void Combat::Assess(bool timeout)
     }
     result_.winner = result_.survivors[0] ? 0 : result_.survivors[1] ? 1 : -1;
     result_.complete = true;
+    TraceCompletion();
 }
 void Combat::Tick()
 {
@@ -1373,15 +1523,37 @@ void Combat::Tick()
         if (p.area)
         {
             const auto targets = PacketTargets(p);
+            Int requested = 0, resolved = 0;
+            int fullHealth = 0;
+            if (diagnosticsEnabled_ && p.mechanic == AbilityMechanic::StationaryGrove &&
+                TetherReason(p) == MechanicReason::Ready)
+                for (int i = 0; i < int(units_.size()); ++i)
+                {
+                    const auto &u = units_[i];
+                    if (Alive(u) && u.side == units_[p.source].side && (i != p.source || p.allowSelf) &&
+                        Distance(u.cell, p.center) <= p.radius && u.health == u.maxHealth) ++fullHealth;
+                }
             for (std::size_t index = 0; index < targets.size(); ++index)
             {
                 Packet impact = p;
                 if (index > 0) impact.displacementCells = 0;
                 Apply(impact, targets[index]);
+                if (diagnosticsEnabled_ && p.mechanic == AbilityMechanic::StationaryGrove)
+                { requested += events_.back().requested; resolved += events_.back().resolved; }
             }
+            const auto reason = TetherReason(p);
+            TraceMechanic(p.source, MechanicPhase::Impact, reason != MechanicReason::Ready ? reason :
+                targets.empty() ? MechanicReason::NoInjuredAlly : MechanicReason::Resolved,
+                &p, int(targets.size()), fullHealth, requested, resolved);
         }
         else if (p.target >= 0)
+        {
+            const bool alive = Alive(units_[p.target]);
             Apply(p, p.target);
+            if (p.mechanic == AbilityMechanic::MomentumCharge)
+                TraceMechanic(p.source, MechanicPhase::Impact, alive ? MechanicReason::Resolved : MechanicReason::TargetDefeated,
+                    &p, alive ? 1 : 0, 0, alive ? events_.back().requested : 0, alive ? events_.back().healthLoss : 0);
+        }
     }
     packets_ = std::move(future);
     const bool timeout = tick_ >= Ticks(catalog_->rules.combatTimeoutMs, catalog_->rules);
@@ -1394,17 +1566,20 @@ void Combat::Tick()
         if (!Alive(u) || u.state == ActionState::Stunned || u.state == ActionState::Moving ||
             u.state == ActionState::AttackWindup || u.state == ActionState::CastWindup)
             continue;
-        if ((u.state == ActionState::AttackRecovery || u.state == ActionState::CastRecovery) &&
+        if ((u.state == ActionState::CastRecovery ||
+             (u.state == ActionState::AttackRecovery && !catalog_->rules.mobileAttackRecovery)) &&
             u.recoveryTick > tick_)
             continue;
+        const bool basicRecovering = catalog_->rules.mobileAttackRecovery && u.basicReadyTick > tick_;
         Cell next;
         int length = 0;
         u.target = ChooseEnemy(i, next, length);
-        if (CommitAbility(i))
+        if (!basicRecovering && CommitAbility(i))
             continue;
         const auto &d = catalog_->Definition(u.definition, u.neutral);
         if (u.target >= 0 && length == 0)
         {
+            if (basicRecovering) { u.state = ActionState::AttackRecovery; continue; }
             int rateBonus = u.rateBonus;
             for (const auto &m : u.modifiers)
                 rateBonus += int(m.magnitude);
@@ -1413,6 +1588,7 @@ void Combat::Tick()
             ++u.basicAttackOrdinal;
             u.releaseTick = tick_ + Ticks(d.attackWindupMs, catalog_->rules);
             u.recoveryTick = tick_ + AttackInterval(d.attackRate, rateBonus, catalog_->rules);
+            u.basicReadyTick = u.recoveryTick;
         }
         else if (u.target >= 0)
         {
@@ -1435,6 +1611,9 @@ std::string Combat::InvariantError() const
     {
         if (!ids.insert(u.id).second)
             return "Duplicate combat identity";
+        if (u.mana < 0 || u.mana > u.ability.mana.maximum ||
+            u.manaFromAttacks + u.manaFromDamage + u.ability.mana.starting != u.mana + u.manaSpent + u.manaOnDeath)
+            return "Invalid mana accounting";
         if (u.health < 0 || u.health > u.maxHealth || u.shield < 0)
             return "Invalid health/shield";
         if (!Alive(u))

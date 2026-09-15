@@ -1,0 +1,578 @@
+{
+  "stage": "forms_candidate_not_approved",
+  "blender_version": "5.1.1",
+  "initial_isolated_scene": {
+    "filepath": "",
+    "objects": [
+      "Cube",
+      "Light",
+      "Camera"
+    ],
+    "version": "5.1.1"
+  },
+  "source": "Bellback_forms_r003.blend",
+  "source_sha256": "5a2931e42bbb8523f3e84ba39f02a5ceab0b1fa31abc3e8319fcf6a1c0d6066b",
+  "construction_source_sha256": "fe748c1a1229f9b6c85a8296137753d21d354ca6791f62dd7bab474d57eb4a13",
+  "source_geometry_sha256": "f75caa3650f0360e210ee659b341e053e53a71fefcd0f69d68326b7328cdb9a8",
+  "method": "Changed r003 method: continuous cross-section head and nose keel, subtractive mouth/nostril recesses, anatomically projected bark cuts and broad root planes in the organic sculpt. Removed all bark/cheek/moss overlays and applied eyebrow strips. Preserved exact hollow bell height and conformed saddles to measured sculpt contacts. No topology or rig acceptance.",
+  "bounds_m": {
+    "min": [
+      -0.7901740670204163,
+      -1.0615198612213135,
+      0.0
+    ],
+    "max": [
+      0.8029912114143372,
+      1.1499966382980347,
+      2.200000047683716
+    ]
+  },
+  "joint_points_m": [
+    {
+      "leg": "FL",
+      "root": [
+        -0.550000011920929,
+        0.5800000429153442,
+        0.9000000357627869
+      ],
+      "knee": [
+        -0.550000011920929,
+        0.6636760234832764,
+        0.653832733631134
+      ],
+      "ankle": [
+        -0.550000011920929,
+        0.550000011920929,
+        0.41999998688697815
+      ],
+      "paw_scale": 1.0
+    },
+    {
+      "leg": "HR",
+      "root": [
+        0.49000000953674316,
+        -0.5600000023841858,
+        0.8300000429153442
+      ],
+      "knee": [
+        0.49000000953674316,
+        -0.6493008136749268,
+        0.5964933633804321
+      ],
+      "ankle": [
+        0.49000000953674316,
+        -0.550000011920929,
+        0.3779999911785126
+      ],
+      "paw_scale": 0.9
+    },
+    {
+      "leg": "FR",
+      "root": [
+        0.550000011920929,
+        0.5800000429153442,
+        0.9000000357627869
+      ],
+      "knee": [
+        0.550000011920929,
+        0.6636760234832764,
+        0.653832733631134
+      ],
+      "ankle": [
+        0.550000011920929,
+        0.550000011920929,
+        0.41999998688697815
+      ],
+      "paw_scale": 1.0
+    },
+    {
+      "leg": "HL",
+      "root": [
+        -0.49000000953674316,
+        -0.5600000023841858,
+        0.8300000429153442
+      ],
+      "knee": [
+        -0.49000000953674316,
+        -0.6493008136749268,
+        0.5964933633804321
+      ],
+      "ankle": [
+        -0.49000000953674316,
+        -0.550000011920929,
+        0.3779999911785126
+      ],
+      "paw_scale": 0.9
+    }
+  ],
+  "parts": [
+    {
+      "name": "Bellback_organic_continuous_forms",
+      "wc_part_id": "body_head_legs_paws_continuous",
+      "vertices": 235328,
+      "triangles": 470644,
+      "bounds_m": {
+        "min": [
+          -0.7901740670204163,
+          -1.0615198612213135,
+          0.0
+        ],
+        "max": [
+          0.8029912114143372,
+          1.1499966382980347,
+          1.371579885482788
+        ]
+      }
+    },
+    {
+      "name": "Eye_-1",
+      "wc_part_id": "eye_pair",
+      "vertices": 920,
+      "triangles": 1760,
+      "bounds_m": {
+        "min": [
+          -0.2619999945163727,
+          1.0369999408721924,
+          0.9929999709129333
+        ],
+        "max": [
+          -0.1979999989271164,
+          1.1009999513626099,
+          1.0570000410079956
+        ]
+      }
+    },
+    {
+      "name": "Pupil_-1",
+      "wc_part_id": "eye_pair",
+      "vertices": 920,
+      "triangles": 1760,
+      "bounds_m": {
+        "min": [
+          -0.24500000476837158,
+          1.093000054359436,
+          1.003999948501587
+        ],
+        "max": [
+          -0.2150000035762787,
+          1.1050000190734863,
+          1.0479999780654907
+        ]
+      }
+    },
+    {
+      "name": "Eye_1",
+      "wc_part_id": "eye_pair",
+      "vertices": 920,
+      "triangles": 1760,
+      "bounds_m": {
+        "min": [
+          0.1979999989271164,
+          1.0369999408721924,
+          0.9929999709129333
+        ],
+        "max": [
+          0.2619999945163727,
+          1.1009999513626099,
+          1.0570000410079956
+        ]
+      }
+    },
+    {
+      "name": "Pupil_1",
+      "wc_part_id": "eye_pair",
+      "vertices": 920,
+      "triangles": 1760,
+      "bounds_m": {
+        "min": [
+          0.2150000035762787,
+          1.093000054359436,
+          1.003999948501587
+        ],
+        "max": [
+          0.24500000476837158,
+          1.1050000190734863,
+          1.0479999780654907
+        ]
+      }
+    },
+    {
+      "name": "Dorsal_bell_hollow_shell",
+      "wc_part_id": "dorsal_bell_shell",
+      "vertices": 1922,
+      "triangles": 3840,
+      "bounds_m": {
+        "min": [
+          -0.6591799259185791,
+          -0.7166244387626648,
+          1.3200000524520874
+        ],
+        "max": [
+          0.6591799259185791,
+          0.7166244387626648,
+          2.200000047683716
+        ]
+      }
+    },
+    {
+      "name": "Bell_mouth_rim",
+      "wc_part_id": "bell_trim",
+      "vertices": 480,
+      "triangles": 960,
+      "bounds_m": {
+        "min": [
+          -0.6679199934005737,
+          -0.7260000109672546,
+          1.3200000524520874
+        ],
+        "max": [
+          0.6679199934005737,
+          0.7260000109672546,
+          1.3550000190734863
+        ]
+      }
+    },
+    {
+      "name": "Bell_crown_collar",
+      "wc_part_id": "bell_trim",
+      "vertices": 384,
+      "triangles": 768,
+      "bounds_m": {
+        "min": [
+          -0.15087999403476715,
+          -0.164000004529953,
+          2.1419999599456787
+        ],
+        "max": [
+          0.15087999403476715,
+          0.164000004529953,
+          2.1640000343322754
+        ]
+      }
+    },
+    {
+      "name": "Open_carrier_ring",
+      "wc_part_id": "bell_carrier_frame",
+      "vertices": 384,
+      "triangles": 768,
+      "bounds_m": {
+        "min": [
+          -0.6624000072479248,
+          -0.7200000286102295,
+          1.2699999809265137
+        ],
+        "max": [
+          0.6624000072479248,
+          0.7200000286102295,
+          1.3200000524520874
+        ]
+      }
+    },
+    {
+      "name": "Carrier_spine",
+      "wc_part_id": "bell_carrier_frame",
+      "vertices": 96,
+      "triangles": 188,
+      "bounds_m": {
+        "min": [
+          -0.04500000178813934,
+          -0.7200000286102295,
+          1.2699999809265137
+        ],
+        "max": [
+          0.04500000178813934,
+          0.7200000286102295,
+          1.3200000524520874
+        ]
+      }
+    },
+    {
+      "name": "Carrier_crossbeam_-0.45",
+      "wc_part_id": "bell_carrier_frame",
+      "vertices": 96,
+      "triangles": 188,
+      "bounds_m": {
+        "min": [
+          -0.5,
+          -0.4950000047683716,
+          1.2699999809265137
+        ],
+        "max": [
+          0.5,
+          -0.4050000011920929,
+          1.3200000524520874
+        ]
+      }
+    },
+    {
+      "name": "Conforming_saddle_-0.45",
+      "wc_part_id": "saddle_pad_pair",
+      "vertices": 294,
+      "triangles": 584,
+      "bounds_m": {
+        "min": [
+          -0.3499999940395355,
+          -0.5400000214576721,
+          1.077683448791504
+        ],
+        "max": [
+          0.3499999940395355,
+          -0.36000001430511475,
+          1.2699999809265137
+        ]
+      }
+    },
+    {
+      "name": "Carrier_crossbeam_0.45",
+      "wc_part_id": "bell_carrier_frame",
+      "vertices": 96,
+      "triangles": 188,
+      "bounds_m": {
+        "min": [
+          -0.5,
+          0.4050000011920929,
+          1.2699999809265137
+        ],
+        "max": [
+          0.5,
+          0.4950000047683716,
+          1.3200000524520874
+        ]
+      }
+    },
+    {
+      "name": "Conforming_saddle_0.45",
+      "wc_part_id": "saddle_pad_pair",
+      "vertices": 294,
+      "triangles": 584,
+      "bounds_m": {
+        "min": [
+          -0.3499999940395355,
+          0.36000001430511475,
+          1.0427062511444092
+        ],
+        "max": [
+          0.3499999940395355,
+          0.5400000214576721,
+          1.2699999809265137
+        ]
+      }
+    },
+    {
+      "name": "Crown_fixed_hanger",
+      "wc_part_id": "clapper_crown_hanger",
+      "vertices": 32,
+      "triangles": 60,
+      "bounds_m": {
+        "min": [
+          -0.017999999225139618,
+          -0.017999999225139618,
+          2.0199999809265137
+        ],
+        "max": [
+          0.017999999225139618,
+          0.017999999225139618,
+          2.1600000858306885
+        ]
+      }
+    },
+    {
+      "name": "Clapper_rod",
+      "wc_part_id": "bell_clapper",
+      "vertices": 32,
+      "triangles": 60,
+      "bounds_m": {
+        "min": [
+          -0.00800000037997961,
+          -0.00800000037997961,
+          1.659999966621399
+        ],
+        "max": [
+          0.00800000037997961,
+          0.00800000037997961,
+          2.0199999809265137
+        ]
+      }
+    },
+    {
+      "name": "Clapper_striker",
+      "wc_part_id": "bell_clapper",
+      "vertices": 920,
+      "triangles": 1760,
+      "bounds_m": {
+        "min": [
+          -0.054999999701976776,
+          -0.054999999701976776,
+          1.6050000190734863
+        ],
+        "max": [
+          0.054999999701976776,
+          0.054999999701976776,
+          1.715000033378601
+        ]
+      }
+    },
+    {
+      "name": "Bell_cast_seam_1.413716694115407",
+      "wc_part_id": "bell_trim",
+      "vertices": 72,
+      "triangles": 140,
+      "bounds_m": {
+        "min": [
+          -0.004052869975566864,
+          0.07496099174022675,
+          1.31763756275177
+        ],
+        "max": [
+          0.12022829055786133,
+          0.7230580449104309,
+          2.200000047683716
+        ]
+      }
+    },
+    {
+      "name": "Bell_cast_seam_3.2986722862692828",
+      "wc_part_id": "bell_trim",
+      "vertices": 72,
+      "triangles": 140,
+      "bounds_m": {
+        "min": [
+          -0.6735804080963135,
+          -0.12130004167556763,
+          1.3156957626342773
+        ],
+        "max": [
+          -0.06370218098163605,
+          -0.004666130989789963,
+          2.200000047683716
+        ]
+      }
+    },
+    {
+      "name": "Bell_cast_seam_4.869468613064179",
+      "wc_part_id": "bell_trim",
+      "vertices": 72,
+      "triangles": 140,
+      "bounds_m": {
+        "min": [
+          -0.004052869975566864,
+          -0.7230580449104309,
+          1.31763756275177
+        ],
+        "max": [
+          0.12022829055786133,
+          -0.07496099174022675,
+          2.200000047683716
+        ]
+      }
+    }
+  ],
+  "render_settings": {
+    "engine": "CYCLES",
+    "samples": 24,
+    "resolution": [
+      960,
+      960
+    ],
+    "view_transform": "AgX",
+    "look": "AgX - Medium High Contrast"
+  },
+  "views": [
+    {
+      "view": "front_clay",
+      "location": [
+        0,
+        6,
+        1.1
+      ],
+      "target": [
+        0,
+        0,
+        1.1
+      ],
+      "orthographic_scale": 2.75,
+      "image": "front_clay.png"
+    },
+    {
+      "view": "right_clay",
+      "location": [
+        6,
+        0,
+        1.1
+      ],
+      "target": [
+        0,
+        0,
+        1.1
+      ],
+      "orthographic_scale": 2.75,
+      "image": "right_clay.png"
+    },
+    {
+      "view": "back_clay",
+      "location": [
+        0,
+        -6,
+        1.1
+      ],
+      "target": [
+        0,
+        0,
+        1.1
+      ],
+      "orthographic_scale": 2.75,
+      "image": "back_clay.png"
+    },
+    {
+      "view": "left_clay",
+      "location": [
+        -6,
+        0,
+        1.1
+      ],
+      "target": [
+        0,
+        0,
+        1.1
+      ],
+      "orthographic_scale": 2.75,
+      "image": "left_clay.png"
+    },
+    {
+      "view": "threequarter_clay",
+      "location": [
+        4,
+        6,
+        3.2
+      ],
+      "target": [
+        0,
+        0,
+        1.05
+      ],
+      "orthographic_scale": 2.75,
+      "image": "threequarter_clay.png"
+    },
+    {
+      "view": "threequarter_ids",
+      "location": [
+        4,
+        6,
+        3.2
+      ],
+      "target": [
+        0,
+        0,
+        1.05
+      ],
+      "orthographic_scale": 2.75,
+      "image": "threequarter_ids.png"
+    }
+  ],
+  "limitations": [
+    "No human modeled-forms acceptance",
+    "Not production topology/UV/material/rig/animation/export",
+    "No Unreal import or performance acceptance",
+    "Raster aesthetic artwork is not registered to these orthographic cameras"
+  ]
+}

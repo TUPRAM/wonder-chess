@@ -1,0 +1,439 @@
+{
+  "recorded_utc": "2026-09-12T16:17:29.002842+00:00",
+  "verdict": "ART_REVISE",
+  "operations": [
+    {
+      "id": "bellback-r001-build_bellback",
+      "owner": "Codex /root/balance_experiment",
+      "asset_id": "wc_vn_bellback",
+      "script": "stages/blockout/r001/operations/build_bellback.py",
+      "script_sha256": "f08458fbcdb4d42e62b8197753f7a391d4f1e48f695187415afa3487aefdcf00",
+      "permitted_output_root": "stages/blockout/r001",
+      "intended_change": "Construct isolated candidate from accepted reference dimensions",
+      "expected_source_sha256": null,
+      "result_source_sha256": "c20f0566dc2065e12e67cecdc28a7cbd088dc66bd8dd7a59a4392632182729f7",
+      "source_size_bytes": 8811247,
+      "allowed_part_ids": [
+        "bell_carrier_frame",
+        "bell_clapper",
+        "bell_trim",
+        "body_head_legs_paws_continuous",
+        "clapper_crown_hanger",
+        "dorsal_bell_shell",
+        "eye_pair",
+        "head_shell",
+        "lower_jaw",
+        "moss_clumps",
+        "root_armature_surface",
+        "saddle_pad_pair"
+      ],
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "id": "bellback-r002-build_bellback",
+      "owner": "Codex /root/balance_experiment",
+      "asset_id": "wc_vn_bellback",
+      "script": "stages/blockout/r002/operations/build_bellback.py",
+      "script_sha256": "e32f4adb80c63f0f9e0dea717b8a9e228638bd635293a66af55a649ad383f6cd",
+      "permitted_output_root": "stages/blockout/r002",
+      "intended_change": "Construct isolated candidate from accepted reference dimensions",
+      "expected_source_sha256": null,
+      "result_source_sha256": "7dca34dcb88513be63894fbd5853f39c80f2155baf7b43ec2c54823b017c3496",
+      "source_size_bytes": 8977682,
+      "allowed_part_ids": [
+        "bell_carrier_frame",
+        "bell_clapper",
+        "bell_trim",
+        "body_head_legs_paws_continuous",
+        "clapper_crown_hanger",
+        "dorsal_bell_shell",
+        "eye_pair",
+        "head_shell",
+        "lower_jaw",
+        "moss_clumps",
+        "root_armature_surface",
+        "saddle_pad_pair"
+      ],
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "id": "bellback-r002-review_construction",
+      "owner": "Codex /root/balance_experiment",
+      "asset_id": "wc_vn_bellback",
+      "script": "stages/blockout/r002/operations/review_construction.py",
+      "script_sha256": "f13def416d9fa370962b6857e333bffb7f02ede9b117fbbaf38fe8b7d92e9968",
+      "permitted_output_root": "stages/blockout/r002",
+      "intended_change": "Read-only review captures; source must remain unchanged",
+      "expected_source_sha256": "7dca34dcb88513be63894fbd5853f39c80f2155baf7b43ec2c54823b017c3496",
+      "result_source_sha256": "7dca34dcb88513be63894fbd5853f39c80f2155baf7b43ec2c54823b017c3496",
+      "source_size_bytes": 8977682,
+      "allowed_part_ids": [
+        "bell_carrier_frame",
+        "bell_clapper",
+        "bell_trim",
+        "body_head_legs_paws_continuous",
+        "clapper_crown_hanger",
+        "dorsal_bell_shell",
+        "eye_pair",
+        "head_shell",
+        "lower_jaw",
+        "moss_clumps",
+        "root_armature_surface",
+        "saddle_pad_pair"
+      ],
+      "status": "failed: unused clay material absent after reopening; source unchanged",
+      "exit_code": 1
+    },
+    {
+      "id": "bellback-r003-build_bellback",
+      "owner": "Codex /root/balance_experiment",
+      "asset_id": "wc_vn_bellback",
+      "script": "stages/blockout/r003/operations/build_bellback.py",
+      "script_sha256": "41d616f28114d54f117ce459e462928dc4d3511d1999bc8403d4226b5375717a",
+      "permitted_output_root": "stages/blockout/r003",
+      "intended_change": "Construct isolated candidate from accepted reference dimensions",
+      "expected_source_sha256": null,
+      "result_source_sha256": "5a2931e42bbb8523f3e84ba39f02a5ceab0b1fa31abc3e8319fcf6a1c0d6066b",
+      "source_size_bytes": 8851679,
+      "allowed_part_ids": [
+        "bell_carrier_frame",
+        "bell_clapper",
+        "bell_trim",
+        "body_head_legs_paws_continuous",
+        "clapper_crown_hanger",
+        "dorsal_bell_shell",
+        "eye_pair",
+        "saddle_pad_pair"
+      ],
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "id": "bellback-r003-review_construction",
+      "owner": "Codex /root/balance_experiment",
+      "asset_id": "wc_vn_bellback",
+      "script": "stages/blockout/r003/operations/review_construction.py",
+      "script_sha256": "9f5f38ae3eef5b105beb91559b4f56fd928a3bf83182a043a27f2e887d453635",
+      "permitted_output_root": "stages/blockout/r003",
+      "intended_change": "Read-only review captures; source must remain unchanged",
+      "expected_source_sha256": "5a2931e42bbb8523f3e84ba39f02a5ceab0b1fa31abc3e8319fcf6a1c0d6066b",
+      "result_source_sha256": "5a2931e42bbb8523f3e84ba39f02a5ceab0b1fa31abc3e8319fcf6a1c0d6066b",
+      "source_size_bytes": 8851679,
+      "allowed_part_ids": [
+        "bell_carrier_frame",
+        "bell_clapper",
+        "bell_trim",
+        "body_head_legs_paws_continuous",
+        "clapper_crown_hanger",
+        "dorsal_bell_shell",
+        "eye_pair",
+        "saddle_pad_pair"
+      ],
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "id": "bellback-r003-review_crowded_aligned",
+      "owner": "Codex /root/balance_experiment",
+      "asset_id": "wc_vn_bellback",
+      "script": "stages/blockout/r003/operations/review_crowded_aligned.py",
+      "script_sha256": "c189d1fb160df8670698fc8c37a60ea5ab4ba0f4a23671b67e20bb23bb7bfdb3",
+      "permitted_output_root": "stages/blockout/r003",
+      "intended_change": "Read-only review captures; source must remain unchanged",
+      "expected_source_sha256": "5a2931e42bbb8523f3e84ba39f02a5ceab0b1fa31abc3e8319fcf6a1c0d6066b",
+      "result_source_sha256": "5a2931e42bbb8523f3e84ba39f02a5ceab0b1fa31abc3e8319fcf6a1c0d6066b",
+      "source_size_bytes": 8851679,
+      "allowed_part_ids": [
+        "bell_carrier_frame",
+        "bell_clapper",
+        "bell_trim",
+        "body_head_legs_paws_continuous",
+        "clapper_crown_hanger",
+        "dorsal_bell_shell",
+        "eye_pair",
+        "saddle_pad_pair"
+      ],
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "id": "bellback-r003-review_supplement",
+      "owner": "Codex /root/balance_experiment",
+      "asset_id": "wc_vn_bellback",
+      "script": "stages/blockout/r003/operations/review_supplement.py",
+      "script_sha256": "bb6396ec651674ef8a09c21f7ebbb730fdaf6e5ca21a614474a2cf37a88f32ac",
+      "permitted_output_root": "stages/blockout/r003",
+      "intended_change": "Read-only review captures; source must remain unchanged",
+      "expected_source_sha256": "5a2931e42bbb8523f3e84ba39f02a5ceab0b1fa31abc3e8319fcf6a1c0d6066b",
+      "result_source_sha256": "5a2931e42bbb8523f3e84ba39f02a5ceab0b1fa31abc3e8319fcf6a1c0d6066b",
+      "source_size_bytes": 8851679,
+      "allowed_part_ids": [
+        "bell_carrier_frame",
+        "bell_clapper",
+        "bell_trim",
+        "body_head_legs_paws_continuous",
+        "clapper_crown_hanger",
+        "dorsal_bell_shell",
+        "eye_pair",
+        "saddle_pad_pair"
+      ],
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "artifact_hashes": [
+    {
+      "path": "stages/blockout/r001/Bellback_forms_r001.blend",
+      "sha256": "c20f0566dc2065e12e67cecdc28a7cbd088dc66bd8dd7a59a4392632182729f7",
+      "bytes": 8811247
+    },
+    {
+      "path": "stages/blockout/r001/operations/blender-build-attempt1.log",
+      "sha256": "c74c9b8b2d1f0d2517eeb0cee2fe6935742669ab10c2dd869234d7682597dfbf",
+      "bytes": 1536
+    },
+    {
+      "path": "stages/blockout/r001/operations/blender-build.log",
+      "sha256": "0137125624e119b5065c3483440e454ce8f7c2fbdc95b1fa4fbb97f633bb50ab",
+      "bytes": 2328
+    },
+    {
+      "path": "stages/blockout/r001/operations/build_bellback.py",
+      "sha256": "f08458fbcdb4d42e62b8197753f7a391d4f1e48f695187415afa3487aefdcf00",
+      "bytes": 20915
+    },
+    {
+      "path": "stages/blockout/r001/renders/back_clay.png",
+      "sha256": "ac6e2755e36b0b3a59197e717308fbc40ff60cbd4350488c50dc2de091de546c",
+      "bytes": 951604
+    },
+    {
+      "path": "stages/blockout/r001/renders/front_clay.png",
+      "sha256": "9f8634644db1beadda94037564faf71456526c419a85b42781e03f5dc417a3d4",
+      "bytes": 957991
+    },
+    {
+      "path": "stages/blockout/r001/renders/left_clay.png",
+      "sha256": "460f352bd76ca980ffbb0e92c37e1b5c336a5eec7c96b5dd58d84cb00efe7969",
+      "bytes": 956600
+    },
+    {
+      "path": "stages/blockout/r001/renders/right_clay.png",
+      "sha256": "6a359eefc7a4adde4d7a0b2503d2861035f883160094126bc0dd1620776fc9e7",
+      "bytes": 978305
+    },
+    {
+      "path": "stages/blockout/r001/renders/threequarter_clay.png",
+      "sha256": "3f52c20b4e627f89d3c7536eca9f093b59828c06a9d9aa704ce016e1d7ff8d10",
+      "bytes": 1012440
+    },
+    {
+      "path": "stages/blockout/r001/renders/threequarter_ids.png",
+      "sha256": "0e8cc2e0cc142db4e3d882ba1939db1509a97d9e09c1c5c211ab82ae2601213f",
+      "bytes": 1062501
+    },
+    {
+      "path": "stages/blockout/r002/Bellback_forms_r002.blend",
+      "sha256": "7dca34dcb88513be63894fbd5853f39c80f2155baf7b43ec2c54823b017c3496",
+      "bytes": 8977682
+    },
+    {
+      "path": "stages/blockout/r002/operations/blender-build.log",
+      "sha256": "e11780526be12e9a02638125949699782d8421887e708db937ab22d4f9557f05",
+      "bytes": 2328
+    },
+    {
+      "path": "stages/blockout/r002/operations/blender-review.log",
+      "sha256": "10574dc85a6357bc69ae4ee9b0116ebd5608e0f3e09e12dcc360622ff264370b",
+      "bytes": 1099
+    },
+    {
+      "path": "stages/blockout/r002/operations/build_bellback.py",
+      "sha256": "e32f4adb80c63f0f9e0dea717b8a9e228638bd635293a66af55a649ad383f6cd",
+      "bytes": 25876
+    },
+    {
+      "path": "stages/blockout/r002/operations/review_construction.py",
+      "sha256": "f13def416d9fa370962b6857e333bffb7f02ede9b117fbbaf38fe8b7d92e9968",
+      "bytes": 5624
+    },
+    {
+      "path": "stages/blockout/r002/renders/back_clay.png",
+      "sha256": "1684a0948ac2781cb007f1cfec606c1670ceb36c2c1c763b960ca430074a332d",
+      "bytes": 966867
+    },
+    {
+      "path": "stages/blockout/r002/renders/front_clay.png",
+      "sha256": "584ba7ea8638ecd0a3f69e7b7a1741924368e9685f77efa9718e80a57a00a00c",
+      "bytes": 974435
+    },
+    {
+      "path": "stages/blockout/r002/renders/left_clay.png",
+      "sha256": "e7535709a7c5b5e0b45883871aed8f2dfd812cfdd07424d0c03f5d4dfbf21170",
+      "bytes": 976555
+    },
+    {
+      "path": "stages/blockout/r002/renders/right_clay.png",
+      "sha256": "23a0c8051e94ba2e600c272243971b8488aea997635626405d2ef18317a00027",
+      "bytes": 1004998
+    },
+    {
+      "path": "stages/blockout/r002/renders/threequarter_clay.png",
+      "sha256": "4794949496639046b6beeef62f26387a8097b2ce155c4968e34fb858d6292bbe",
+      "bytes": 1032730
+    },
+    {
+      "path": "stages/blockout/r002/renders/threequarter_ids.png",
+      "sha256": "c8245978b88af81dde75ad8e751793aaa1943e5d5f66c68feff46d075c06c22a",
+      "bytes": 1095291
+    },
+    {
+      "path": "stages/blockout/r003/Bellback_forms_r003.blend",
+      "sha256": "5a2931e42bbb8523f3e84ba39f02a5ceab0b1fa31abc3e8319fcf6a1c0d6066b",
+      "bytes": 8851679
+    },
+    {
+      "path": "stages/blockout/r003/operations/blender-build.log",
+      "sha256": "2af2b127590df4570379f4a22aed46681e68777317219d3e6afb2ace4a288ad4",
+      "bytes": 2328
+    },
+    {
+      "path": "stages/blockout/r003/operations/blender-review-crowded-aligned.log",
+      "sha256": "2003c79e9330372914781ba3c00a27e637695ff3340dc842d93ad6677957c30b",
+      "bytes": 1181
+    },
+    {
+      "path": "stages/blockout/r003/operations/blender-review-supplement.log",
+      "sha256": "efb4c45dc39cdeca1ec51d8ca58fb570e4e16fef44a519517a295a5bdea78f0a",
+      "bytes": 1678
+    },
+    {
+      "path": "stages/blockout/r003/operations/blender-review.log",
+      "sha256": "502c3fa6013ae3fd92bbccb0fd9c236e675521944337bb40e6a95c5e70ce7e07",
+      "bytes": 2179
+    },
+    {
+      "path": "stages/blockout/r003/operations/build_bellback.py",
+      "sha256": "41d616f28114d54f117ce459e462928dc4d3511d1999bc8403d4226b5375717a",
+      "bytes": 26776
+    },
+    {
+      "path": "stages/blockout/r003/operations/review_construction.py",
+      "sha256": "9f5f38ae3eef5b105beb91559b4f56fd928a3bf83182a043a27f2e887d453635",
+      "bytes": 5624
+    },
+    {
+      "path": "stages/blockout/r003/operations/review_crowded_aligned.py",
+      "sha256": "c189d1fb160df8670698fc8c37a60ea5ab4ba0f4a23671b67e20bb23bb7bfdb3",
+      "bytes": 4329
+    },
+    {
+      "path": "stages/blockout/r003/operations/review_supplement.py",
+      "sha256": "bb6396ec651674ef8a09c21f7ebbb730fdaf6e5ca21a614474a2cf37a88f32ac",
+      "bytes": 4332
+    },
+    {
+      "path": "stages/blockout/r003/renders/back_clay.png",
+      "sha256": "b4f0310538ca4fec943d0448ba35ba79ee3e9185c913f99ed4c8c337c3bd4ff5",
+      "bytes": 982976
+    },
+    {
+      "path": "stages/blockout/r003/renders/front_clay.png",
+      "sha256": "325e3ca73a8c71e350b0fc6b0179a0f22301baf5ada95bf14a70e0022cb9e732",
+      "bytes": 995472
+    },
+    {
+      "path": "stages/blockout/r003/renders/left_clay.png",
+      "sha256": "f4ba2f965b3de36ec9d6109e6e93dd1bdda06290692ab2b23fb1ea02c48c6ad3",
+      "bytes": 993121
+    },
+    {
+      "path": "stages/blockout/r003/renders/right_clay.png",
+      "sha256": "a838a5e193db51c29bec7e659bc6a5f69de92491fe0bdaa35d0c21a2d166531b",
+      "bytes": 1016578
+    },
+    {
+      "path": "stages/blockout/r003/renders/threequarter_clay.png",
+      "sha256": "aad3b3b7f15405cc82a6868cfb6502b491bc7b013a433677fee2636c6fc8dc3d",
+      "bytes": 1044293
+    },
+    {
+      "path": "stages/blockout/r003/renders/threequarter_ids.png",
+      "sha256": "cf62b03b86907b7968eff2d2e03abcd003c49c16e84dfae0b05cecdf2348af2a",
+      "bytes": 1109698
+    },
+    {
+      "path": "stages/blockout/r003/review/bell_cavity_and_carrier.png",
+      "sha256": "1f02d11491f33c749f152ef1795df3f028bf884dc1ed0b9f2ccfbcc060a3c922",
+      "bytes": 952682
+    },
+    {
+      "path": "stages/blockout/r003/review/crowded12_lab_elevation_detail.png",
+      "sha256": "c0fb1998c3dee879d07e3c2bd01525d9085939d94c4f5137afb7f56648d079ac",
+      "bytes": 1523470
+    },
+    {
+      "path": "stages/blockout/r003/review/crowded12_lab_projection_1920x1080.png",
+      "sha256": "2d8e08dba70c26f69a7dd9dafc2669a90769c66ea702eb609f5acb2fa969ee6c",
+      "bytes": 2060697
+    },
+    {
+      "path": "stages/blockout/r003/review/face_closeup_clay.png",
+      "sha256": "41ef225fb085eee7d54801211ff136a226c0811d1bb52ee971961b5f044c86f9",
+      "bytes": 991360
+    },
+    {
+      "path": "stages/blockout/r003/review/native96_preview.png",
+      "sha256": "54291bd11720718911c4a7ac312ea7f7965a98ea9668d02d5bf43bce355c0036",
+      "bytes": 17635
+    },
+    {
+      "path": "stages/blockout/r003/review/paw_contact_clay.png",
+      "sha256": "96bb51a2497b8a350aa12f95baac196ace761567ebe0aa3c3332cfb202bc39a4",
+      "bytes": 1052681
+    },
+    {
+      "path": "stages/blockout/r003/review_crowded_aligned/crowded12_board_lab_elevation_detail.png",
+      "sha256": "dd6237557aa85e861abb644ce418264306bac2ce0bddfe7f4d6cc9d71ea13dc3",
+      "bytes": 1590192
+    },
+    {
+      "path": "stages/blockout/r003/review_crowded_aligned/crowded12_board_lab_projection_1920x1080.png",
+      "sha256": "75d482c4ca78c32331ee2a1e7bf3469b6a64a2dd925393d57b66d8965e9453d7",
+      "bytes": 2192791
+    },
+    {
+      "path": "stages/blockout/r003/review_supplement/clapper_and_open_carrier_saddles_hidden.png",
+      "sha256": "bb43cfcad739e1d3b91ae60ca9f54b142fc6270945b4a1fb7e83519bac25a55e",
+      "bytes": 987025
+    },
+    {
+      "path": "stages/blockout/r003/review_supplement/crowded12_board_lab_elevation_detail.png",
+      "sha256": "28c12800b696f19764abc2bc5a873f51a0a28e143bfa7840011e87350ec314e8",
+      "bytes": 1585484
+    },
+    {
+      "path": "stages/blockout/r003/review_supplement/crowded12_board_lab_projection_1920x1080.png",
+      "sha256": "6ff7497725c5bcc185807b6b5347c9451bb54e55326d330f6bf2eb49b8d343fc",
+      "bytes": 2190601
+    },
+    {
+      "path": "stages/blockout/r003/review_supplement/open_cavity_underside.png",
+      "sha256": "b88c65e763271382f20b9c3e0c41a14d78a72f7da0d92419949ba718952acf88",
+      "bytes": 951647
+    },
+    {
+      "path": "stages/blockout/write_method_reports.py",
+      "sha256": "214de2bd4755e306f1a6fdf430b86f4413bdf636e145676fa7bbced672b5e3f0",
+      "bytes": 10094
+    }
+  ],
+  "notes": [
+    "Hash inventory records actual saved files. Successful build/render is not a form-quality pass.",
+    "R001 floor-bevel setup failure preserved separately before successful source build.",
+    "Initial r003 board captures had hidden floor tiles; supplementary placement was half a cell off X; final aligned captures supersede only those crowded views.",
+    "No gate prepare or approval mutation is performed by this script."
+  ]
+}

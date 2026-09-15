@@ -1,0 +1,112 @@
+Using bundled DotNet SDK version: 8.0.412 win-x64
+Running UnrealBuildTool: dotnet "..\..\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" WonderChess Win64 Development -Project=C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\WonderChess.uproject -WaitMutex -NoHotReloadFromIDE
+Log file: C:\Users\iputu\AppData\Local\UnrealBuildTool\Log.txt
+Using 'git status' to determine working set for adaptive non-unity build (C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7).
+Creating makefile for WonderChess (no existing makefile)
+UHT compiled-in object format Default
+Parsing headers for WonderChess
+  Running Internal UnrealHeaderTool C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\WonderChess.uproject C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Intermediate\Build\Win64\WonderChess\Development\WonderChess.uhtmanifest -WarningsAsErrors -installed
+UHT processed WonderChess in 1.7725151 seconds (16 files written)
+Building WonderChess...
+Using Visual Studio 2022 14.44.35226 toolchain (C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[Adaptive Build] Excluded from WonderChessRuntime unity file: WCVNextLab.cpp, WCVNextSolo.cpp, WonderChessRuntime.cpp, WonderSaveFile.cpp, WonderScenario.cpp
+Determining max actions to execute in parallel (8 physical cores, 16 logical cores)
+  Executing up to 8 processes, one per physical core
+  Requested 1.5 GB memory per action, 2.58 GB available: limiting max parallel actions to 1
+Using Unreal Build Accelerator local executor to run 36 action(s)
+  Storage capacity 40Gb
+---- Starting trace: 260912_232859 ----
+UbaServer - Listening on 0.0.0.0:1345
+[1/36] Compile [x64] SharedPCH.Engine.Project.Exceptions.ValApi.ValExpApi.Cpp20.cpp
+[2/36] Compile [x64] Module.WonderChessRuntime.gen.cpp
+[3/36] Compile [x64] WCAnimationReview.cpp
+[4/36] Compile [x64] WCAttackPresentation.cpp
+[5/36] Compile [x64] WCAttackWindowTests.cpp
+[6/36] Compile [x64] WCBoardPresenter.cpp
+[7/36] Compile [x64] WCDefinitionRegistry.cpp
+[8/36] Compile [x64] WCFrontEnd.cpp
+[9/36] Compile [x64] WCFrontEndAudit.cpp
+[10/36] Compile [x64] WCFrontEndProfile.cpp
+[11/36] Compile [x64] WCFrontEndScene.cpp
+[12/36] Compile [x64] WCGameMode.cpp
+[13/36] Compile [x64] WCImportedAssetTests.cpp
+[14/36] Compile [x64] WCMatchHUD.cpp
+[15/36] Compile [x64] WCMatchRuntime.cpp
+[16/36] Compile [x64] WCNetworkSession.cpp
+[17/36] Compile [x64] WCNetworkStartupTests.cpp
+[18/36] Compile [x64] WCNeutralAssetTests.cpp
+[19/36] Compile [x64] WCVNextLab.cpp
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\WCVNextLab.cpp(617,17): error C4458: declaration of 'Fight' hides class member
+    const auto* Fight = CurrentCombat();
+                ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Public\WCVNextLab.h(62,33): note: see declaration of 'AWCVNextLab::Fight'
+    std::unique_ptr<wc::Combat> Fight, PreparationState;
+                                ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\WCVNextLab.cpp(701,17): error C4458: declaration of 'Fight' hides class member
+    const auto* Fight = CurrentCombat();
+                ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Public\WCVNextLab.h(62,33): note: see declaration of 'AWCVNextLab::Fight'
+    std::unique_ptr<wc::Combat> Fight, PreparationState;
+                                ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\WCVNextLab.cpp(737,17): error C4458: declaration of 'Fight' hides class member
+    const auto* Fight = CurrentCombat();
+                ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Public\WCVNextLab.h(62,33): note: see declaration of 'AWCVNextLab::Fight'
+    std::unique_ptr<wc::Combat> Fight, PreparationState;
+                                ^
+[20/36] Compile [x64] WCVNextSolo.cpp
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\WCVNextSolo.cpp(99,17): error C4458: declaration of 'Owner' hides class member
+    const auto& Owner=SoloMatch->Seats()[0];
+                ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h(802,21): note: see declaration of 'AActor::Owner'
+	TObjectPtr<AActor> Owner;
+	                   ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\WCVNextSolo.cpp(184,17): error C4458: declaration of 'Owner' hides class member
+    const auto& Owner=SoloMatch->Seats()[0];
+                ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h(802,21): note: see declaration of 'AActor::Owner'
+	TObjectPtr<AActor> Owner;
+	                   ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\WCVNextSolo.cpp(200,17): error C4458: declaration of 'Owner' hides class member
+    const auto& Owner=SoloMatch->Seats()[0];const auto& Items=Offer?Owner.relicOffers:Owner.ownedRelics;
+                ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h(802,21): note: see declaration of 'AActor::Owner'
+	TObjectPtr<AActor> Owner;
+	                   ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\WCVNextSolo.cpp(210,17): error C4458: declaration of 'Owner' hides class member
+    const auto& Owner=SoloMatch->Seats()[0];
+                ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h(802,21): note: see declaration of 'AActor::Owner'
+	TObjectPtr<AActor> Owner;
+	                   ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\WCVNextSolo.cpp(270,59): error C2664: 'SButton::FArguments &TSlateBaseNamedArgs<SButton>::IsEnabled_Lambda(TFunction<bool (void)> &&)': cannot convert argument 1 from 'TFunction<bool (void)>' to 'TFunction<bool (void)> &&'
+        return SNew(SButton).ContentPadding(FMargin(7,5)).IsEnabled_Lambda(Enabled)
+                                                          ^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\WCVNextSolo.cpp(270,76): note: You cannot bind an lvalue to an rvalue reference
+        return SNew(SButton).ContentPadding(FMargin(7,5)).IsEnabled_Lambda(Enabled)
+                                                                           ^
+C:\Program Files\Epic Games\UE_5.7\Engine\Source\Runtime\SlateCore\Public\Widgets\DeclarativeSyntaxSupport.h(691,2): note: see declaration of 'TSlateBaseNamedArgs<SButton>::IsEnabled_Lambda'
+	SLATE_PRIVATE_ATTRIBUTE_FUNCTION(bool, IsEnabled)
+	^
+C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\WCVNextSolo.cpp(270,59): note: while trying to match the argument list '(TFunction<bool (void)>)'
+        return SNew(SButton).ContentPadding(FMargin(7,5)).IsEnabled_Lambda(Enabled)
+                                                          ^
+[21/36] Compile [x64] WCVerification.cpp
+[22/36] Compile [x64] WonderChessRuntime.cpp
+[23/36] Compile [x64] WonderSave.cpp
+[24/36] Compile [x64] WonderSaveFile.cpp
+[25/36] Compile [x64] WonderScenario.cpp
+[26/36] Compile [x64] WonderSimulation.cpp
+[27/36] Compile [x64] WonderSimulationTests.cpp
+[28/36] Compile [x64] WonderTournament.cpp
+[29/36] Resource Default.rc2
+[30/36] Copy D3D12Core.dll
+[31/36] Copy d3d12SDKLayers.dll
+[32/36] Copy DirectML.dll
+[33/36] Copy tbb12.dll
+[34/36] Copy tbbmalloc.dll
+Trace written to file C:/Users/iputu/AppData/Local/UnrealBuildTool/Log.uba with size 27.5kb
+Total time in Unreal Build Accelerator local executor: 151.89 seconds
+
+Result: Failed (OtherCompilationError)
+Total execution time: 184.91 seconds

@@ -1,0 +1,178 @@
+{
+  "schema": "wonder-vnext-resumed-engineering-1",
+  "recorded_utc": "2026-09-13T05:03:42.545060+00:00",
+  "status": "R6_ENGINEERING_AND_CLEAN_CHECKOUT_VERIFIED_ACTUAL_INPUT_BLOCKED_ACCEPTANCE_OPEN",
+  "candidate": "WonderChess-Milestones-r6",
+  "profile": "wonder_vnext",
+  "balance_version": "wonder_vnext_solo_0.1.0",
+  "identity": {
+    "source_sha256": "6e80932173071ef05e58d90a44db3490cfcfde86d48edf33f4a940ff1748efa0",
+    "runtime_sha256": "6988edee019a8eec6be64e0611dd3b9ec2da2942786374e0a6e3f5efa123e46b",
+    "inner_executable_sha256": "f2ac31a8e00e77c7e5b2013525ab3474a94b17195ef454eb47aadf449c202d76",
+    "manifest": "reports/vnext/milestones/resume-20260913/package-identity-r6/package-manifest.json"
+  },
+  "python": {
+    "status": "PASS",
+    "tests": 228,
+    "seconds": 22.893,
+    "record": "authoring-r6/process.json"
+  },
+  "native_combat": {
+    "status": "PASS",
+    "assertions": 21875,
+    "record": "combat-diagnostics-02/process.json"
+  },
+  "native_lifecycle": {
+    "status": "PASS",
+    "assertions": 240572,
+    "tournaments": 1,
+    "record": "native-lifecycle/process.json"
+  },
+  "native_scenarios_and_acquisition": {
+    "status": "PASS",
+    "assertions": 7390,
+    "scenario_records": 29,
+    "unique_initial_scenario_combats": 28,
+    "acquisition_trials": 400,
+    "unique_shop_seeds": 100,
+    "width_sensitivity_encounters": 384,
+    "unique_width_combat_seeds": 32,
+    "record": "width-sensitivity/process.json"
+  },
+  "legacy_native": {
+    "status": "PASS",
+    "tournaments": 100,
+    "assertions": 3379152,
+    "record": "legacy-native-100"
+  },
+  "diagnostic_tournaments": {
+    "status": "RECONCILED",
+    "control_tournaments": 100,
+    "root75_tournaments": 100,
+    "control_encounters": 18685,
+    "root75_encounters": 19221,
+    "source_stable": true,
+    "record": "mechanic-comparison-v2.json",
+    "balance_promotion": "NONE"
+  },
+  "packaged_engine": {
+    "status": "PASS",
+    "tournaments": 10,
+    "rounds": 427,
+    "encounters": 1852,
+    "reconciliation": "engine-10-r6/reconciliation.json",
+    "boundary": "Targeted regression for inspector-only r6 delta; shared simulation and catalogue are unchanged from r5."
+  },
+  "solo_handlers": {
+    "status": "PASS",
+    "checks": 20,
+    "rounds": 43,
+    "captain_placement": 8,
+    "record": "solo-smoke-r6/solo-exercise.json",
+    "boundary": "Accelerated same-handler exercise; not real input or human acceptance"
+  },
+  "package": {
+    "status": "PASS",
+    "source_files": 81,
+    "payload_files": 49,
+    "configuration": "Development",
+    "engine": "5.7.4",
+    "build_cook_run_seconds": 146.32
+  },
+  "clean_checkout": {
+    "status": "PASS_PROJECT_CHECKOUT_BUILD_IDENTITY_AND_ENGINE",
+    "source_inputs_identical": 80,
+    "initial_project_intermediate_binaries_saved": false,
+    "snapshot_commit": "b0cc92571735f74a01592f01e018f2d9bbd13b68",
+    "record": "C:/Users/iputu/Documents/Project Support/Wonder Chess/study-builds/r6-clean-20260913/snapshot.json",
+    "clean_machine_install": "NOT_RUN",
+    "engine_tournaments": 10,
+    "engine_rounds": 427,
+    "engine_encounters": 1852,
+    "temporary_checkout": "REMOVED_AFTER_CLEANLINESS_CHECK",
+    "build_cook_run_seconds": 426.1,
+    "executable_sha256": "7e612c6398fb9873ede85a4a307ce047a3ff37156a036d956b537a90008e128f",
+    "identity_record": "C:\\Users\\iputu\\Documents\\Project Support\\Wonder Chess\\study-builds\\r6-clean-20260913\\package-manifest.json",
+    "engine_record": "C:\\Users\\iputu\\Documents\\Project Support\\Wonder Chess\\study-builds\\r6-clean-20260913\\engine-10\\reconciliation.json",
+    "cleanup_record": "C:/Users/iputu/Documents/Project Support/Wonder Chess/study-builds/r6-clean-20260913/cleanup.json"
+  },
+  "actual_r5_input": {
+    "status": "SCOPED_PASS_WITH_INSPECTOR_CLARITY_DEFECT",
+    "cases": 9,
+    "screenshots": 23,
+    "external_participants": 0,
+    "record": "actual-input-r5/review.json",
+    "correction": "Unselected palette fallback corrected and covered in r6; actual r6 input review separate."
+  },
+  "failed_attempts": [
+    {
+      "stage": "native diagnostic fixture 01",
+      "reason": "Establishment test was already past its configured wait at tick 1; corrected isolated fixture passed."
+    },
+    {
+      "stage": "r5 build 01",
+      "reason": "New test called private StateHash; switched to public save/seat evidence and rebuild passed."
+    },
+    {
+      "stage": "isolated checkout 01",
+      "reason": "Long archived paths exceeded default Git Windows support; retry with command-scoped core.longpaths=true succeeded."
+    },
+    {
+      "stage": "r6 identity capture 01",
+      "reason": "Required UnrealPak argument omitted; immediate capture retry with installed UnrealPak succeeded; first failure log preserved."
+    },
+    {
+      "stage": "r5 actual inspector review",
+      "reason": "Unselected solo view inherited a laboratory palette preview and displayed base stats/no relic; selecting real unit was correct. r6 fixes the unselected state and all three new smoke checks pass."
+    }
+  ],
+  "external_participants": 0,
+  "human_pacing": "NOT_RUN",
+  "art": "Bellback reference accepted; forms ART_REVISE; no stage advancement",
+  "remote_real_devices": "NOT_RUN",
+  "release_acceptance": "NOT_RUN",
+  "boundaries": [
+    "Active canonical balance unchanged; held-out confirmation seeds remain unused.",
+    "r4 and earlier source/package evidence remains historical and preserved.",
+    "B0-M7 programme is not complete; six-creature engineering proof does not certify later roster, art, network, enjoyment or release acceptance."
+  ],
+  "packaged_engine_r5": {
+    "status": "PASS",
+    "tournaments": 100,
+    "rounds": 4288,
+    "encounters": 18685,
+    "reconciliation": "engine-100-r5/reconciliation.json"
+  },
+  "clean_checkout_r5": {
+    "status": "PASS_PROJECT_CHECKOUT_BUILD_IDENTITY_AND_ENGINE",
+    "source_inputs_identical": 80,
+    "initial_project_intermediate_binaries_saved": false,
+    "snapshot_commit": "5df9876255c5d68c2105a9f01d01a14fe5dd50b9",
+    "record": "C:/Users/iputu/Documents/Project Support/Wonder Chess/study-builds/r5-clean-20260913/snapshot.json",
+    "first_checkout": "FAILED_WINDOWS_GIT_LONG_PATH_LIMIT",
+    "retry": "PASS_COMMAND_SCOPED_LONG_PATH_SUPPORT",
+    "clean_machine_install": "NOT_RUN",
+    "engine_tournaments": 10,
+    "engine_rounds": 427,
+    "engine_encounters": 1852,
+    "temporary_checkout": "REMOVED_AFTER_CLEANLINESS_CHECK",
+    "cleanup_record": "C:/Users/iputu/Documents/Project Support/Wonder Chess/study-builds/r5-clean-20260913/cleanup.json"
+  },
+  "actual_r6_input": {
+    "status": "BLOCKED_OPERATOR_DIALOG",
+    "actions_executed": 0,
+    "reason": "r6 Windows firewall permission prompt requires manual operator dismissal. No security UI action or setting change performed. Scripted exercise has completed independently."
+  },
+  "source_delta_from_r5": {
+    "changed_build_inputs": [
+      "game/Source/WonderChessRuntime/Private/WCVNextLab.cpp",
+      "game/Source/WonderChessRuntime/Private/WCVNextSolo.cpp"
+    ],
+    "compiled_executable_changed": true,
+    "shared_simulation_catalogue_save_transport_unchanged": true
+  },
+  "not_rerun_after_r6_inspector_change": {
+    "native_and_balance": "Existing passing evidence applies to identical shared simulation/header/catalogue inputs. The only changed build sources are inspector and solo smoke code. No repeated 1,000-seed experiment was needed for this presentation correction.",
+    "r5_actual_input": "Preserved as executed on r5. r6 pointer verification remains a separate gate."
+  }
+}

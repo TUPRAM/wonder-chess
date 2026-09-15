@@ -101,6 +101,12 @@ struct AbilityEffect
     int durationMs = 0;
     std::array<Int, 3> magnitude{};
 };
+struct ManaDef
+{
+    // Centimana: 10000 is 100 displayed mana; zero maximum keeps existing activation.
+    int maximum = 0, starting = 0, basicAttackGain = 0, damageGainAtFullHealth = 0,
+        damageEventCap = 0, damageWindowCap = 0, damageWindowMs = 1000, gainDivisorBp = 10000;
+};
 struct AbilityDef
 {
     std::string id, name;
@@ -114,6 +120,7 @@ struct AbilityDef
     bool enabled = true;
     std::vector<AbilityEffect> effects;
     AbilityMechanic mechanic = AbilityMechanic::Standard;
+    ManaDef mana;
     int guardReductionBp = 0, momentumPerStepBp = 0, maxMomentumSteps = 0,
         stationaryMs = 0, pulseMs = 0, displacementCells = 0, secondaryDelayMs = 0;
 };
@@ -174,6 +181,7 @@ struct Rules
         neutralLossDamage = 2, neutralOpeningDamage = 0;
     std::vector<int> relicRounds;
     int maximumRelics = 3;
+    bool nearestReachableTarget = false, mobileAttackRecovery = false;
 };
 struct NeutralSlot
 {
@@ -197,6 +205,7 @@ struct Catalog
     std::vector<NeutralWave> waves;
     std::string profileId = "alpha_24";
     std::vector<RelicDef> relics;
+    bool ownedTeamRelicOffers = false;
     const UnitDef &Definition(int index, bool neutral = false) const;
     const NeutralWave *Wave(int round) const;
     std::string Validate() const;
@@ -312,7 +321,7 @@ struct CombatUnit
     int armor = 0, resistance = 0, basicBonus = 0, abilityBonus = 0, allBonus = 0, rateBonus = 0,
         supportBonus = 0;
     int shieldExpiry = 0, stunExpiry = 0, cooldownTick = 0, releaseTick = 0, recoveryTick = 0,
-        movementTick = 0;
+        movementTick = 0, basicReadyTick = 0;
     Id shieldSource = 0;
     std::string shieldKey;
     ActionState state = ActionState::Idle;
@@ -321,6 +330,10 @@ struct CombatUnit
     int movementBonus = 0, hpScaleBp = 10000, damageScaleBp = 10000;
     Facing facing = Facing::Forward;
     int momentumSteps = 0, lastMovementTick = 0, positionEpoch = 0;
+    int mana = 0, manaResumeTick = 0, manaWindowStart = 0, manaWindowGained = 0;
+    Id lastManaAttackAction = 0;
+    int castsCommitted = 0, firstCastTick = -1, manaBlockedAttempts = 0, manaOnDeath = 0;
+    Int manaFromAttacks = 0, manaFromDamage = 0, manaSpent = 0;
     Cell abilityAim;
     int relic = -1;
     AbilityDef ability;
@@ -340,12 +353,34 @@ struct CombatEvent
     Cell origin;
     Id guardedBy = 0;
     Int prevented = 0;
+    std::vector<Cell> visualCells;
 };
 struct CombatResult
 {
     bool complete = false, timeout = false;
     int winner = -1, ticks = 0;
     std::array<int, 2> survivors{};
+};
+enum class MechanicPhase { Attempt, Committed, Released, Cancelled, Impact };
+enum class MechanicReason
+{
+    Ready, NoLivingTarget, TargetOutOfRange, DashTooLong, NoMomentum,
+    PathOccupied, CornerOccupied, NotEstablished, NoInjuredAlly,
+    TargetMoved, SourceMoved, SourceStunned, SourceDefeated,
+    TetherInvalidated, CombatEnded, TargetDefeated, Resolved
+};
+const char *MechanicPhaseName(MechanicPhase phase);
+const char *MechanicReasonName(MechanicReason reason);
+struct MechanicTrace
+{
+    int tick = 0;
+    Id source = 0, target = 0, action = 0;
+    AbilityMechanic mechanic = AbilityMechanic::Standard;
+    MechanicPhase phase = MechanicPhase::Attempt;
+    MechanicReason reason = MechanicReason::Ready;
+    Cell origin, aim, landing;
+    int momentumSteps = 0, recipients = 0, fullHealthAllies = 0;
+    Int requested = 0, resolved = 0;
 };
 struct VisualAction
 {
@@ -384,6 +419,9 @@ class Combat
     }
     std::string InvariantError() const;
     std::vector<VisualAction> VisualActions() const;
+    // Optional observer, enabled only before the first tick. Not gameplay events or saved state.
+    bool EnableDiagnostics();
+    const std::vector<MechanicTrace> &Diagnostics() const { return diagnostics_; }
 
   private:
     struct Packet
@@ -407,6 +445,8 @@ class Combat
     std::vector<CombatUnit> units_;
     std::vector<Packet> packets_;
     std::vector<CombatEvent> events_;
+    bool diagnosticsEnabled_ = false;
+    std::vector<MechanicTrace> diagnostics_;
     CombatResult result_;
     int tick_ = 0;
     Id nextAction_ = 1;
@@ -418,10 +458,18 @@ class Combat
     bool FindPath(int source, int target, Cell &next, int &length) const;
     int ChooseEnemy(int source, Cell &next, int &pathLength) const;
     bool CommitAbility(int source);
+    void RecordCommit(int source);
+    void GainMana(int unit, Int amount, bool incoming, Id action);
     bool CommitMechanic(int source, const AbilityDef &ability);
     void ReleaseMechanic(int source, const AbilityDef &ability);
     void MoveUnit(int unit, Cell cell, AbilityMechanic mechanic, Id action, int source);
-    bool ChargeLanding(int source, const AbilityDef &ability, int target, Cell &landing) const;
+    bool ChargeLanding(int source, const AbilityDef &ability, int target, Cell &landing,
+                       MechanicReason *reason = nullptr) const;
+    void TraceMechanic(int source, MechanicPhase phase, MechanicReason reason,
+                       const Packet *packet = nullptr, int recipients = 0, int fullHealth = 0,
+                       Int requested = 0, Int resolved = 0);
+    MechanicReason TetherReason(const Packet &packet) const;
+    void TraceCompletion();
     std::vector<int> PacketTargets(const Packet &packet) const;
     void Release(int source);
     void Apply(const Packet &packet, int target);

@@ -1,0 +1,4 @@
+@call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
+@if errorlevel 1 exit /b 1
+cl /nologo /std:c++20 /EHsc /O2 /fp:fast /W4 /I"C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Public" /I"C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\reports\vnext\milestones\resume-20260913\legacy-native-100" "C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderSimulation.cpp" "C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\game\Source\WonderChessRuntime\Private\Simulation\WonderTournament.cpp" "C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\tests\runtime\runtime_tests.cpp" /Fe:"C:\Users\iputu\AppData\Local\CodexWorktrees\wc\m7\reports\vnext\milestones\resume-20260913\legacy-native-100\wonder_runtime_tests.exe"
+@exit /b %errorlevel%

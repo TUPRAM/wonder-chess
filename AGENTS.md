@@ -1,5 +1,17 @@
 # Wonder Chess project instructions
 
+## Canonical folder after consolidation — 2026-09-15
+
+- Develop in this repository root. The former `CodexWorktrees/wc/m7` checkout was consolidated here with all uncommitted work and Git refs preserved; that external checkout is retired.
+- Read `README.md`, `TRANSFER_TO_NEW_PC.md`, and `docs/vnext/milestones/MILESTONE_STATUS.md` for navigation. `PAUSED.md` retains historical context; its former absolute worktree paths are superseded by this root.
+- For this owner-requested portable layout, keep durable project support, archives, tools and recovery material under `support/` inside this folder. Do not recreate the former external Project Support folder. Archives are preserved inputs, not another active checkout.
+- Preserve local-only builds and support files during transfer. `.gitignore` exclusions do not mean disposable files. Reorganization does not accept art, pacing, human studies or release gates.
+
+## Current execution state — RESUMED on 2026-09-13
+
+- The owner explicitly resumed development with "Continue the work". Read the retained pause history and `docs/vnext/milestones/MILESTONE_STATUS.md`, then continue B1/B2 in this worktree.
+- Preserve this uncommitted worktree and its evidence. Keep the frozen r4 package and historical results separate from the next candidate; stage approvals remain independent.
+
 ## Adopted successor programme — 2026-09-10
 
 - The user adopted the full **Wonder Chess — A New Gameplay, Roster, and Production Blueprint** for implementation. `docs/vnext/README.md` is the successor contract; the v3/24-hero documents below remain authority for the preserved `alpha_24` baseline only.

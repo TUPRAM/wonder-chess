@@ -297,10 +297,17 @@
         "per_hero_limit",
         "awarded_to",
         "merge_policy",
+        "offer_policy",
         "runtime_status"
       ],
       "additionalProperties": false,
       "properties": {
+        "offer_policy": {
+          "enum": [
+            "one_owned_compatible_if_available",
+            "catalog_compatible"
+          ]
+        },
         "draft_rounds": {
           "type": "array",
           "items": {
@@ -1249,6 +1256,109 @@
             "type": "string",
             "minLength": 1
           }
+        }
+      }
+    },
+    "experiments": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mana100_v1"
+      ],
+      "properties": {
+        "mana100_v1": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "heroes",
+            "maximum",
+            "starting",
+            "basicAttackGain",
+            "damageGainAtFullHealth",
+            "damageEventCap",
+            "damageWindowCap",
+            "damageWindowMs",
+            "relicTiming"
+          ],
+          "properties": {
+            "maximum": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100000
+            },
+            "starting": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100000
+            },
+            "basicAttackGain": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100000
+            },
+            "damageGainAtFullHealth": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100000
+            },
+            "damageEventCap": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100000
+            },
+            "damageWindowCap": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100000
+            },
+            "damageWindowMs": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100000
+            },
+            "status": {
+              "const": "opt_in_unaccepted_experiment"
+            },
+            "heroes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true,
+              "minItems": 1
+            },
+            "relicTiming": {
+              "const": "inverse_gain"
+            }
+          }
+        },
+        "mana100_hit20_v1": {
+          "$ref": "#/properties/experiments/properties/mana100_v1"
+        }
+      }
+    },
+    "combat_clarity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "base",
+        "nearestReachableTarget",
+        "mobileAttackRecovery"
+      ],
+      "properties": {
+        "status": {
+          "const": "opt_in_unaccepted_experiment"
+        },
+        "base": {
+          "const": "mana100_hit20_v1"
+        },
+        "nearestReachableTarget": {
+          "const": true
+        },
+        "mobileAttackRecovery": {
+          "const": true
         }
       }
     }

@@ -47,6 +47,22 @@ def validate(source):
         raise ValueError("Unsupported successor schema/profile")
     if source["roster_cap"] is not None:
         raise ValueError("The successor roster has no predetermined cap")
+    for experiment in source.get("experiments", {}).values():
+        if experiment["heroes"] != ["wc_vn_snapvine", "wc_vn_prism_organ", "wc_vn_reefglass"]:
+            raise ValueError("Mana experiment must preserve the three control heroes")
+        if not all(any(h["id"] == identity and h["enabled"] for h in source["heroes"]) for identity in experiment["heroes"]):
+            raise ValueError("Mana experiment requires executable heroes")
+        if not (experiment["maximum"] == 10000 and 0 <= experiment["starting"] <= 10000 and
+                0 < experiment["basicAttackGain"] <= 10000 and
+                0 < experiment["damageEventCap"] <= experiment["damageWindowCap"] <= 10000 and
+                50 <= experiment["damageWindowMs"] <= 10000 and experiment["damageWindowMs"] % 50 == 0):
+            raise ValueError("Invalid mana experiment bounds")
+    experiments = source.get("experiments", {})
+    if "mana100_hit20_v1" in experiments:
+        baseline = experiments["mana100_v1"]
+        expected = dict(baseline, basicAttackGain=2000)
+        if baseline["basicAttackGain"] != 1000 or baseline["starting"] != 0 or experiments["mana100_hit20_v1"] != expected:
+            raise ValueError("The mana20 comparison may change only basicAttackGain from 1000 to 2000")
     rules = source["rules"]
     for key, expected in {"columns": 8, "rows": 8, "deploymentRows": 4, "benchCapacity": 10,
                           "startingLevel": 3, "maximumLevel": 10, "shopSlots": 5, "tickMs": 50,
@@ -186,7 +202,8 @@ def native_header(runtime, runtime_sha1):
              f'inline constexpr const char* SourceSha256 = "{runtime["source_sha256"]}";',
              "inline wc::Catalog WonderVNextCatalog() { wc::Catalog c;",
              'c.profileId = "wonder_vnext";', 'c.schemaVersion = "wonder_vnext.catalog.1";',
-             f'c.balanceVersion = {literal(runtime["balance_version"])};', "c.contentDigest = SourceSha256;"]
+             f'c.balanceVersion = {literal(runtime["balance_version"])};', "c.contentDigest = SourceSha256;",
+             f'c.ownedTeamRelicOffers = {literal(runtime["relic_policy"]["offer_policy"] == "one_owned_compatible_if_available")};']
 
     def assign(prefix, values, excluded=()):
         for key, value in values.items():
@@ -239,7 +256,31 @@ def native_header(runtime, runtime_sha1):
         for mechanic in relic["compatible_mechanics"]:
             lines.append(f"r.compatibleMechanics.push_back(wc::AbilityMechanic::{MECHANICS[mechanic]});")
         lines.append("c.relics.push_back(r); }")
-    lines.extend(["return c; }", "} // namespace wcvnext", ""])
+    lines.append("return c; }")
+    for key, function in (("mana100_v1", "WonderVNextManaCatalog"), ("mana100_hit20_v1", "WonderVNextMana20Catalog")):
+        experiment = runtime.get("experiments", {}).get(key)
+        if not experiment:
+            continue
+        experiment_digest = hashlib.sha256((runtime["source_sha256"] + ":" + key).encode()).hexdigest()
+        lines.extend([f"inline wc::Catalog {function}() {{ auto c = WonderVNextCatalog();",
+                      f'c.contentDigest = "{experiment_digest}";',
+                      f'c.balanceVersion += "+{key}";'])
+        for identity in experiment["heroes"]:
+            lines.append(f'for (auto &u : c.units) if (u.id == {literal(identity)}) {{')
+            assign("u.ability.mana", experiment, ("status", "heroes", "relicTiming"))
+            lines.append("}")
+        lines.extend(["return c; }"])
+    if runtime.get("combat_clarity"):
+        recipe = runtime["combat_clarity"]
+        lines.append("inline wc::Catalog WonderVNextCombatClarityCatalog(bool mobileRecovery = true) { auto c = WonderVNextMana20Catalog();")
+        for mobile, suffix in ((True, "combat_clarity_v1"), (False, "nearest_target_v1")):
+            digest = hashlib.sha256((runtime["source_sha256"] + ":" + suffix).encode()).hexdigest()
+            lines.extend([("if (mobileRecovery) {" if mobile else "else {"),
+                          f'c.contentDigest = "{digest}"; c.balanceVersion += "+{suffix}"; }}'])
+        lines.append(f'c.rules.nearestReachableTarget = {literal(recipe["nearestReachableTarget"])};')
+        lines.append(f'c.rules.mobileAttackRecovery = mobileRecovery && {literal(recipe["mobileAttackRecovery"])};')
+        lines.append("return c; }")
+    lines.extend(["} // namespace wcvnext", ""])
     return "\n".join(lines)
 
 
@@ -247,7 +288,9 @@ def artifacts(source_bytes):
     source = json.loads(source_bytes)
     validate(source)
     digest = hashlib.sha256(source_bytes).hexdigest()
-    runtime = {key: source[key] for key in ("schema_version", "profile_id", "balance_version", "rules", "bots", "neutrals", "waves", "world", "locales")}
+    runtime = {key: source[key] for key in ("schema_version", "profile_id", "balance_version", "rules", "relic_policy", "bots", "neutrals", "waves", "world", "locales")}
+    runtime["experiments"] = source.get("experiments", {})
+    runtime["combat_clarity"] = source.get("combat_clarity", {})
     runtime.update(source_sha256=digest, heroes=[hero for hero in source["heroes"] if hero["enabled"]],
                    relics=[relic for relic in source["relics"] if relic["runtime_enabled"]], traits=[],
                    status="gameplay_laboratory_not_release")

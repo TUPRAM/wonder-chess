@@ -92,6 +92,7 @@ void Relics(const wc::Catalog &canonical)
           "opening neutral loss still awards three relic choices");
     Check(match.Seats()[0].pendingRelicDrafts == 1, "one draft per milestone");
     const auto before = match.SavePreparation();
+    std::ofstream("relic-study-preparation.wcsave", std::ios::binary).write(before.data(), std::streamsize(before.size()));
     Check(!Send(match, 0, wc::CommandType::ChooseRelic, 3).accepted && match.SavePreparation() == before,
           "out-of-range draft choice is atomic");
     int choice = -1;
@@ -119,6 +120,55 @@ void Relics(const wc::Catalog &canonical)
     const auto relicRng = match.Seats()[0].relicRng.state;
     Check(Send(match, 0, wc::CommandType::Reroll).accepted && match.Seats()[0].relicRng.state == relicRng &&
           match.Seats()[0].ownedRelics == relicsBefore, "shop reroll does not reroll relics");
+}
+void OwnedTeamRelicPolicy(const wc::Catalog &catalog)
+{
+    Check(catalog.ownedTeamRelicOffers, "solo candidate declares owned-team relic policy");
+    for (wc::Id seed = 20; seed < 32; ++seed)
+    {
+        wc::Match original(catalog, seed, 1);
+        Check(Send(original, 0, wc::CommandType::Buy, 0).accepted, "policy fixture buys from real opening shop");
+        const auto holder = original.Seats()[0].roster.front();
+        Check(!holder.onBoard, "benched ownership qualifies without deployment");
+        const auto initial = original.SavePreparation();
+        wc::Match restored(catalog, 99, 1); std::string error;
+        Check(restored.RestorePreparation(initial, error), "pre-draft state restores");
+        AdvanceTo(original, 4); AdvanceTo(restored, 4);
+        const auto offers = original.Seats()[0].relicOffers;
+        Check(offers.size() == 3 && std::set<int>(offers.begin(), offers.end()).size() == 3,
+              "draft contains three unique options");
+        Check(std::any_of(offers.begin(), offers.end(), [&](int relic) {
+            return wc::RelicCompatible(catalog.relics[relic], catalog.units[holder.definition].ability.mechanic);
+        }), "at least one draft offer fits the actually owned bench creature");
+        Check(offers == restored.Seats()[0].relicOffers &&
+              original.Seats()[0].relicRng.state == restored.Seats()[0].relicRng.state,
+              "cold logical resume preserves constrained draft and RNG");
+        Check(Send(original, 0, wc::CommandType::Sell, -1, holder.id).accepted,
+              "roster can change after draft generation");
+        Check(original.Seats()[0].relicOffers == offers, "selling holder does not reroll existing offers");
+        Check(Send(original, 0, wc::CommandType::ChooseRelic, 0).accepted,
+              "now-speculative offer remains a valid choice");
+    }
+    wc::Match empty(catalog, 50, 1);
+    AdvanceTo(empty, 4);
+    Check(empty.Seats()[0].roster.empty() && empty.Seats()[0].relicOffers.size() == 3,
+          "empty team falls back to catalog-compatible offers");
+
+    auto noCompatible = catalog;
+    wc::Match preview(catalog, 51, 1);
+    const auto openingMechanic = catalog.units[preview.Seats()[0].shop[0]].ability.mechanic;
+    // Restricted catalogue makes a real owned-team compatibility gap without editing a seat.
+    noCompatible.relics.erase(std::remove_if(noCompatible.relics.begin(), noCompatible.relics.end(),
+        [openingMechanic](const wc::RelicDef &r) { return wc::RelicCompatible(r, openingMechanic); }), noCompatible.relics.end());
+    Check(!noCompatible.relics.empty(), "fallback fixture retains other-mechanic relics");
+    Check(noCompatible.Validate().empty(), "restricted relic fixture is a valid catalog");
+    wc::Match gap(noCompatible, 51, 1);
+    Check(Send(gap, 0, wc::CommandType::Buy, 0).accepted, "gap fixture acquires opening recruit");
+    AdvanceTo(gap, 4);
+    Check(!gap.Seats()[0].relicOffers.empty(), "no owned-compatible option still produces an eligible draft");
+    Check(std::none_of(gap.Seats()[0].relicOffers.begin(), gap.Seats()[0].relicOffers.end(), [&](int r) {
+        return wc::RelicCompatible(noCompatible.relics[r], noCompatible.units[gap.Seats()[0].roster.front().definition].ability.mechanic);
+    }), "fallback fixture actually has no compatible owned option");
 }
 void Saves(const wc::Catalog &catalog)
 {
@@ -316,7 +366,7 @@ int main(int argc, char **argv)
         const auto catalog = wcvnext::WonderVNextCatalog();
         Check(catalog.Validate().empty(), "canonical successor validates: " + catalog.Validate());
         VNextBotTests(catalog, Check);
-        Commands(catalog); Relics(catalog); Saves(catalog); Tournaments(catalog, count, firstSeed);
+        Commands(catalog); Relics(catalog); OwnedTeamRelicPolicy(catalog); Saves(catalog); Tournaments(catalog, count, firstSeed);
         std::cout << "PASS " << checks << " checks; " << count << " actual six-hero vNext tournaments\n";
         return 0;
     }

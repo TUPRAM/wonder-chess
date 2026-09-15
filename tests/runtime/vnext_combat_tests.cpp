@@ -1,4 +1,6 @@
-#include "WonderVNextCatalog.h"
+#include "VNext/WonderVNextCatalog.generated.h"
+#include "../../game/Source/WonderChessRuntime/Private/Simulation/WonderManaTests.h"
+#include "../../game/Source/WonderChessRuntime/Private/Simulation/WonderCombatClarityTests.h"
 #include <algorithm>
 #include <iostream>
 #include <stdexcept>
@@ -225,6 +227,7 @@ void RelicsAndReplay()
     wc::Combat evaluated(catalog, relicHolder, b, 19);
     Check(evaluated.Units()[1].ability.radius == effective.radius, "Combat consumes evaluated relic ability");
     wc::Combat observed(catalog, a, b, 19), unseen(catalog, a, b, 19);
+    Check(observed.EnableDiagnostics(), "Diagnostics can be enabled before the first tick");
     while (!observed.Result().complete)
     {
         observed.VisualActions(); observed.Tick(); unseen.Tick();
@@ -235,10 +238,88 @@ void RelicsAndReplay()
     for (std::size_t i = 0; i < observed.Events().size(); ++i)
     {
         const auto &x = observed.Events()[i], &y = unseen.Events()[i];
-        Check(std::tie(x.tick,x.source,x.target,x.action,x.effect,x.resolved,x.cell.column,x.cell.row,x.prevented) ==
-              std::tie(y.tick,y.source,y.target,y.action,y.effect,y.resolved,y.cell.column,y.cell.row,y.prevented),
-              "Replay preserves every timed damage and spatial event");
+        Check(std::tie(x.tick,x.source,x.target,x.action,x.effect,x.requested,x.resolved,x.absorbed,x.healthLoss,
+                  x.overkill,x.cell.column,x.cell.row,x.absorbedFrom,x.damageType,x.basicAttack,x.radius,
+                  x.mechanic,x.origin.column,x.origin.row,x.guardedBy,x.prevented) ==
+              std::tie(y.tick,y.source,y.target,y.action,y.effect,y.requested,y.resolved,y.absorbed,y.healthLoss,
+                  y.overkill,y.cell.column,y.cell.row,y.absorbedFrom,y.damageType,y.basicAttack,y.radius,
+                  y.mechanic,y.origin.column,y.origin.row,y.guardedBy,y.prevented),
+              "Diagnostics preserve every combat event field against the disabled replay");
     }
+    Check(!observed.Diagnostics().empty() && unseen.Diagnostics().empty(), "Diagnostics are opt-in and separate from events");
+    Check(!unseen.EnableDiagnostics(), "Late diagnostics cannot present an incomplete encounter as complete evidence");
+    Check(observed.Result().ticks == unseen.Result().ticks && observed.Result().timeout == unseen.Result().timeout &&
+        observed.Result().survivors == unseen.Result().survivors, "Diagnostics preserve timing and survivors");
+    for (std::size_t i = 0; i < observed.Units().size(); ++i)
+    {
+        const auto &x = observed.Units()[i], &y = unseen.Units()[i];
+        Check(std::tie(x.health,x.shield,x.cell.column,x.cell.row,x.state,x.actionId,x.positionEpoch,x.momentumSteps) ==
+              std::tie(y.health,y.shield,y.cell.column,y.cell.row,y.state,y.actionId,y.positionEpoch,y.momentumSteps),
+              "Diagnostics preserve final health, position and action state");
+    }
+}
+bool HasTrace(const wc::Combat &combat, wc::MechanicPhase phase, wc::MechanicReason reason)
+{
+    return std::any_of(combat.Diagnostics().begin(), combat.Diagnostics().end(), [&](const auto &trace) {
+        return trace.phase == phase && trace.reason == reason;
+    });
+}
+void Diagnostics()
+{
+    using P = wc::MechanicPhase; using R = wc::MechanicReason;
+    auto catalog = Quiet(); Enable(catalog, 1); catalog.units[1].ability.range = 4;
+    wc::Combat open(catalog, {Unit(1, 1, 3, 3)}, {Unit(2, 0, 4, 1)}, 5);
+    open.EnableDiagnostics(); Ticks(open, 2);
+    Check(HasTrace(open, P::Committed, R::Ready) && HasTrace(open, P::Released, R::Ready) &&
+        HasTrace(open, P::Impact, R::Resolved), "A successful charge has commitment, release and actual impact evidence");
+    auto released = std::find_if(open.Diagnostics().begin(), open.Diagnostics().end(), [](const auto &t) { return t.phase == P::Released; });
+    Check(released->origin == wc::Cell{3, 3} && released->landing == wc::Cell{3, 5}, "Charge trace retains reserved landing before movement");
+    wc::Combat blocked(catalog, {Unit(1, 1, 3, 2), Unit(3, 0, 3, 3)}, {Unit(2, 0, 4, 1)}, 5);
+    blocked.EnableDiagnostics(); Ticks(blocked, 2);
+    Check(HasTrace(blocked, P::Attempt, R::PathOccupied) && !HasTrace(blocked, P::Committed, R::Ready),
+        "Own-screen obstruction is a failed attempt, not a cancelled commitment");
+    wc::Combat adjacent(catalog, {Unit(1, 1, 3, 3)}, {Unit(2, 0, 4, 3)}, 5);
+    adjacent.EnableDiagnostics(); Ticks(adjacent, 2);
+    Check(HasTrace(adjacent, P::Attempt, R::NoMomentum), "An adjacent unmoved charger reports missing momentum");
+    catalog.units[0].range = 1; catalog.units[0].movementRate = 10000;
+    catalog.units[1].ability.castMs = 500;
+    wc::Combat moving(catalog, {Unit(1, 1, 3, 3)}, {Unit(2, 0, 4, 1)}, 5);
+    moving.EnableDiagnostics(); Ticks(moving, 12);
+    Check(HasTrace(moving, P::Cancelled, R::TargetMoved) || HasTrace(moving, P::Cancelled, R::NoMomentum),
+        "A target approaching during windup produces an explicit cancelled charge");
+    catalog = Quiet(); Enable(catalog, 1); catalog.units[1].ability.castMs = 1000;
+    catalog.rules.combatTimeoutMs = 100;
+    wc::Combat timeout(catalog, {Unit(1, 1, 3, 3)}, {Unit(2, 0, 4, 1)}, 5);
+    timeout.EnableDiagnostics(); Ticks(timeout, 3);
+    Check(timeout.Result().timeout && HasTrace(timeout, P::Cancelled, R::CombatEnded), "Timeout closes outstanding windup evidence");
+    catalog = Quiet(); Enable(catalog, 1); catalog.units[1].ability.castMs = 1000;
+    catalog.units[1].health = 1000; catalog.units[0].attackDamage = 100000;
+    wc::Combat defeated(catalog, {Unit(1, 1, 3, 3)}, {Unit(2, 0, 4, 1)}, 5);
+    defeated.EnableDiagnostics(); Ticks(defeated, 3);
+    Check(HasTrace(defeated, P::Cancelled, R::SourceDefeated), "Defeat closes a committed windup without fabricating a release");
+
+    catalog = Quiet(); Enable(catalog, 2);
+    catalog.units[2].ability.stationaryMs = 200;
+    wc::Combat waiting(catalog, {Unit(1, 2, 3, 3)}, {Unit(2, 0, 4, 1)}, 21);
+    waiting.EnableDiagnostics(); Ticks(waiting, 90);
+    Check(HasTrace(waiting, P::Attempt, R::NotEstablished) && HasTrace(waiting, P::Attempt, R::NoInjuredAlly),
+        "Grove attempts distinguish establishing from waiting for injury");
+    catalog = Quiet(); Enable(catalog, 2); Enable(catalog, 5);
+    catalog.units[2].ability.stationaryMs = 50; catalog.units[2].ability.durationMs = 4000;
+    catalog.units[2].ability.pulseMs = 500; catalog.units[2].ability.radius = 1;
+    catalog.units[5].ability.firstCastMs = 4100;
+    catalog.units[5].attackRate = 1000; catalog.units[5].attackDamage = 1000;
+    wc::Combat grove(catalog, {Unit(1, 2, 3, 3), Unit(2, 0, 2, 3)}, {Unit(3, 5, 4, 1)}, 21);
+    grove.EnableDiagnostics(); Ticks(grove, 145);
+    Check(HasTrace(grove, P::Impact, R::SourceMoved), "Displaced-source pulses have explicit tether cancellation evidence");
+    Check(HasTrace(grove, P::Impact, R::NoInjuredAlly), "A pulse with no injured recipients remains observable");
+    wc::Int requested = 0, resolved = 0, eventRequested = 0, eventResolved = 0; int fullHealth = 0;
+    for (const auto &t : grove.Diagnostics()) if (t.phase == P::Impact)
+    { requested += t.requested; resolved += t.resolved; fullHealth += t.fullHealthAllies; }
+    for (const auto &e : Events(grove, wc::AbilityMechanic::StationaryGrove, wc::Effect::Heal))
+    { eventRequested += e.requested; eventResolved += e.resolved; }
+    Check(requested == eventRequested && resolved == eventResolved && fullHealth > 0,
+        "Pulse totals reconcile with real healing and count skipped full-health allies separately");
 }
 void CrowdedEncounters()
 {
@@ -275,7 +356,9 @@ int main()
 {
     try
     {
-        Contract(); Guard(); Screening(); Charge(); Beams(); TideAndGrove(); RelicsAndReplay(); CrowdedEncounters();
+        assertions += wctest::RunManaContractChecks();
+        assertions += wctest::RunCombatClarityChecks();
+        Contract(); Guard(); Screening(); Charge(); Beams(); TideAndGrove(); RelicsAndReplay(); Diagnostics(); CrowdedEncounters();
         std::cout << "PASS vNext native combat: " << assertions << " assertions. Technical synthetic fixtures only; no human art/balance acceptance.\n";
         return 0;
     }

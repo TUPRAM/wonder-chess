@@ -1,0 +1,195 @@
+{
+  "schema": "wonder_vnext.mana20_comparison_verification.1",
+  "recorded_utc": "2026-09-13T07:29:41.905958+00:00",
+  "status": "TECHNICAL_PASS_IMPROVED_VS10_PACING_FAIL_HUMAN_OPEN",
+  "candidate": "WonderChess-Mana20-r10",
+  "profile": "wonder_vnext",
+  "balance_version": "wonder_vnext_solo_0.1.0+mana100_hit20_v1",
+  "default_promoted": false,
+  "experiment": {
+    "status": "opt_in_unaccepted_experiment",
+    "heroes": [
+      "wc_vn_snapvine",
+      "wc_vn_prism_organ",
+      "wc_vn_reefglass"
+    ],
+    "maximum": 10000,
+    "starting": 0,
+    "basicAttackGain": 2000,
+    "damageGainAtFullHealth": 10000,
+    "damageEventCap": 2000,
+    "damageWindowCap": 4000,
+    "damageWindowMs": 1000,
+    "relicTiming": "inverse_gain"
+  },
+  "protected_catalogue": {
+    "existing_catalogue_values_unchanged": true,
+    "only_addition": "experiments.mana100_hit20_v1",
+    "only_recipe_difference": {
+      "basicAttackGain": {
+        "baseline": 1000,
+        "candidate": 2000
+      }
+    },
+    "boundary": "Integer centimana. Existing hero stats, effects, prices, targeting, incoming mana, control heroes, relic transforms, economy and bots are preserved."
+  },
+  "mana10_reproduction": {
+    "status": "PASS",
+    "csv_rows_exactly_equal": {
+      "tournaments.csv": 100,
+      "encounters.csv": 18955,
+      "mana_formations.csv": 576,
+      "mana_formation_activity.csv": 3456,
+      "ability_activity.csv": 192075
+    },
+    "boundary": "Comparison reproduces all recorded10-mana outcomes, fixed fixtures and activity rows; does not compare raw replay streams across binaries."
+  },
+  "identity": {
+    "profile_id": "wonder_vnext",
+    "balance_version": "wonder_vnext_solo_0.1.0",
+    "source_sha256": "ef6743dd2f52d4d986aac292be333847d0db262468d626564a42a9827158058d",
+    "runtime_sha1": "9bc707728e5c51e2d3c0f81ff26b53b5cef639e6",
+    "runtime_sha256": "31ee2984105e2db78bd30918af351819a8e6addd08bbdd6195183205216bd944",
+    "experiment_digest": "da01ba8705ed8c7ec4507584f5240e5e4debb17bd123f3741ea534a96a17f5c5",
+    "mana10_digest": "2db01e6f1acd6fb132c624e1a7b3a41d389c948dee200dd0f92d28cf858a6df1",
+    "inner_executable_sha256": "1538f04fda10eb084a02614597325f7173ce6b55f38f0058109d2eb25bdfca80",
+    "manifest": "reports/vnext/milestones/mana20-20260913/package-identity/package-manifest.json",
+    "source_files": 82,
+    "payload_files": 49
+  },
+  "python": {
+    "status": "PASS",
+    "tests": 230,
+    "required_authoring_generation_staging_checks": "PASS",
+    "record": "authoring/process.json"
+  },
+  "native_contracts": {
+    "status": "PASS",
+    "assertions": 22456,
+    "record": "native-contract/process.json"
+  },
+  "native_comparison": {
+    "status": "PASS_EXECUTION",
+    "arms": 2,
+    "tournaments_per_arm": 100,
+    "fixed_mana_encounters_per_arm": 576,
+    "other_formation_fixtures_per_arm": 192,
+    "activity_records_conservation_audited": 390330,
+    "record": "comparison.json",
+    "holdout_seeds_used": false
+  },
+  "engine_mana_contracts": {
+    "status": "PASS",
+    "assertions": 581,
+    "record": "engine-contracts/automation/index.json",
+    "html_report": "Optional Unreal template unavailable; JSON and log preserved"
+  },
+  "engine_native_reconciliation": {
+    "mana10": {
+      "status": "PASS",
+      "tournaments": 10,
+      "rounds": 429,
+      "encounters": 1893,
+      "digest": "2db01e6f1acd6fb132c624e1a7b3a41d389c948dee200dd0f92d28cf858a6df1"
+    },
+    "mana20": {
+      "status": "PASS",
+      "tournaments": 10,
+      "rounds": 433,
+      "encounters": 1897,
+      "digest": "da01ba8705ed8c7ec4507584f5240e5e4debb17bd123f3741ea534a96a17f5c5"
+    },
+    "build_sources_unchanged": 56,
+    "boundary": "Exact encounter kind, winner, timeout, ticks, survivors; tournament caps, counts and simulated time. No rejected commands. Full engine event streams and round hashes are outside this comparison."
+  },
+  "laboratory": {
+    "720": {
+      "status": "PASS",
+      "checks": 41,
+      "captures": 5,
+      "record": "lab-720/lab-exercise.json",
+      "combat_capture_visually_inspected": true,
+      "live_prism_at_tick65_mana": 40,
+      "physical_input": false
+    },
+    "1080": {
+      "status": "PASS",
+      "checks": 41,
+      "captures": 5,
+      "record": "lab-1080/lab-exercise.json",
+      "combat_capture_visually_inspected": true,
+      "live_prism_at_tick65_mana": 40,
+      "physical_input": false
+    }
+  },
+  "launcher_ambiguous_flags": {
+    "status": "PASS",
+    "case": "Both mana switches reject before any launch or evidence directory creation",
+    "utc": "2026-09-13T07:24:45.6271350Z"
+  },
+  "solo": {
+    "status": "PASS",
+    "checks": 20,
+    "rounds": 45,
+    "captain_placement": 8,
+    "record": "solo-1600/solo-exercise.json",
+    "save_slot": "solo-slot/preparation.wcsave",
+    "boundary": "Accelerated same-handler package smoke; not human or real input evidence."
+  },
+  "comparison_summary": {
+    "mana10": {
+      "tournaments": 100,
+      "capped_tournaments": 25,
+      "encounters": 18955,
+      "timeouts": 2653,
+      "fixed_timeouts": 39,
+      "median_simulated_minutes": 31.743333333333332
+    },
+    "mana20": {
+      "tournaments": 100,
+      "capped_tournaments": 14,
+      "encounters": 18888,
+      "timeouts": 2625,
+      "fixed_timeouts": 24,
+      "median_simulated_minutes": 31.71875
+    }
+  },
+  "fixed_pairs": {
+    "winner_changed": 89,
+    "mana_shorter": 407,
+    "mana_longer": 118,
+    "same_duration": 51
+  },
+  "decision": {
+    "recommended_next_human_candidate": "mana20",
+    "reason": "Earlier and more frequent casts; fewer capped tournaments and fixed timeouts versus10. Both variants still fail pacing.",
+    "formation_limit": "The protected/exposed first-cast median becomes equal for Prism and Reefglass in one-star fixtures; Snapvine exposure advantage shrinks.",
+    "pacing_gate": "FAIL",
+    "new_tuning_or_ability_swap": "NONE"
+  },
+  "physical_input": {
+    "status": "BLOCKED_WINDOWS_SECURITY_DIALOG",
+    "attempted_package": "r10",
+    "observed_window_id": 6685534,
+    "actions_performed": 0,
+    "security_settings_changed": false,
+    "evidence": "Actual game window inspected with Computer Use; Windows firewall permission dialog blocks input."
+  },
+  "acceptance": {
+    "human_participants": 0,
+    "human_enjoyment": "NOT_TESTED",
+    "r10_clean_checkout": "NOT_RUN",
+    "independent_clean_machine": "NOT_RUN",
+    "final_content_performance": "NOT_RUN",
+    "art": "NOT_REVIEWED_IN_THIS_BATCH",
+    "remote": "NOT_TESTED_IN_THIS_BATCH",
+    "release_accepted": false
+  },
+  "git": {
+    "branch": "codex/milestones-b0-m7-20260912",
+    "base_commit": "d80635f615810a93c3161c6bfd6c34c758b08260",
+    "committed": false,
+    "published": false
+  },
+  "boundary": "Deterministic engineering and same-machine package evidence. Historical cooldown figures are contextual, not a third newly executed arm. Human, balance, clean-machine, art, remote and release acceptance remain separate."
+}

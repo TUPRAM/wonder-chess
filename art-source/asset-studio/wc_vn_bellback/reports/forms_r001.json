@@ -1,0 +1,67 @@
+{
+  "artifacts": [
+    {
+      "path": "stages/blockout/r003/visual_review.json",
+      "category": "report"
+    },
+    {
+      "path": "stages/blockout/r003/Bellback_forms_r003.blend",
+      "category": "source"
+    },
+    {
+      "path": "stages/blockout/r003/renders/threequarter_clay.png",
+      "category": "image"
+    }
+  ],
+  "asset_id": "wc_vn_bellback",
+  "author": "Codex /root/balance_experiment",
+  "checks": [
+    {
+      "evidence": [
+        "stages/blockout/r003/visual_review.json"
+      ],
+      "id": "likeness_in_clay",
+      "notes": "Blocked by unresolved major upstream form defects; no human forms gate review occurred.",
+      "status": "not_run"
+    },
+    {
+      "evidence": [
+        "stages/blockout/r003/visual_review.json"
+      ],
+      "id": "primary_and_secondary_forms",
+      "notes": "Blocked by unresolved major upstream form defects; no human forms gate review occurred.",
+      "status": "not_run"
+    },
+    {
+      "evidence": [
+        "stages/blockout/r003/visual_review.json"
+      ],
+      "id": "part_construction",
+      "notes": "Blocked by unresolved major upstream form defects; no human forms gate review occurred.",
+      "status": "not_run"
+    },
+    {
+      "evidence": [
+        "stages/blockout/r003/visual_review.json"
+      ],
+      "id": "no_critical_form_defects",
+      "notes": "Blocked by unresolved major upstream form defects; no human forms gate review occurred.",
+      "status": "not_run"
+    }
+  ],
+  "defects": [
+    {
+      "severity": "major",
+      "status": "open",
+      "observation": "Upstream modeled primary forms and likeness require revision."
+    }
+  ],
+  "executed_commands": [],
+  "method": "Formal forms stage did not start because blockout candidates r001-r003 fail the art review.",
+  "notes": [
+    "Not a human forms submission. No preparation or approval requested for the failed sources.",
+    "All checks remain not_run for the formal forms gate. Actual preliminary visual failures are recorded in blockout_r003.json."
+  ],
+  "schema_version": "1.0.0",
+  "stage": "forms"
+}

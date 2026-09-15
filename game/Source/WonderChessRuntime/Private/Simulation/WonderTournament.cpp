@@ -45,6 +45,21 @@ void OfferRelics(const Catalog &catalog, SeatState &seat)
                 return RelicCompatible(catalog.relics[i], unit.ability.mechanic);
             }))
             available.push_back(i);
+    if (catalog.ownedTeamRelicOffers)
+    {
+        std::vector<int> compatible;
+        for (int relic : available)
+            if (std::any_of(seat.roster.begin(), seat.roster.end(), [&](const OwnedUnit &unit) {
+                return RelicCompatible(catalog.relics[relic], catalog.units[unit.definition].ability.mechanic);
+            }))
+                compatible.push_back(relic);
+        if (!compatible.empty())
+        {
+            const int selected = compatible[seat.relicRng.Below(int(compatible.size()))];
+            seat.relicOffers.push_back(selected);
+            available.erase(std::find(available.begin(), available.end(), selected));
+        }
+    }
     while (!available.empty() && seat.relicOffers.size() < 3)
     {
         const int choice = seat.relicRng.Below(int(available.size()));

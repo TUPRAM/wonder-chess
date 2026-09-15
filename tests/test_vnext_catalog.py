@@ -18,6 +18,34 @@ class VNextCatalogTests(unittest.TestCase):
         cls.raw = CATALOG.SOURCE.read_bytes()
         cls.source = json.loads(cls.raw)
 
+    def test_mana_experiment_is_opt_in_and_bound_to_runtime(self):
+        outputs = CATALOG.artifacts(self.raw)
+        runtime = json.loads(outputs["data/vnext/generated/runtime_catalog.json"])
+        self.assertEqual(runtime["experiments"], self.source["experiments"])
+        self.assertTrue(all("mana" not in hero["ability"] for hero in runtime["heroes"]))
+        self.assertIn("WonderVNextManaCatalog()", outputs["data/vnext/generated/WonderVNextCatalog.h"])
+        for field, value in (("maximum", 0), ("starting", 10001), ("damageWindowMs", 1), ("damageWindowCap", 1)):
+            source = copy.deepcopy(self.source)
+            source["experiments"]["mana100_v1"][field] = value
+            with self.assertRaises(ValueError):
+                CATALOG.validate(source)
+        source = copy.deepcopy(self.source)
+        source["experiments"]["mana100_v1"]["heroes"][0] = "wc_vn_grandmother_root"
+        with self.assertRaisesRegex(ValueError, "control heroes"):
+            CATALOG.validate(source)
+
+    def test_mana20_changes_only_basic_hit_gain(self):
+        first = self.source["experiments"]["mana100_v1"]
+        second = self.source["experiments"]["mana100_hit20_v1"]
+        self.assertEqual(second, dict(first, basicAttackGain=2000))
+        outputs = CATALOG.artifacts(self.raw)
+        self.assertIn("WonderVNextMana20Catalog()", outputs["data/vnext/generated/WonderVNextCatalog.h"])
+        for key, value in (("starting", 1000), ("damageEventCap", 1000), ("damageGainAtFullHealth", 9000), ("basicAttackGain", 1500)):
+            source = copy.deepcopy(self.source)
+            source["experiments"]["mana100_hit20_v1"][key] = value
+            with self.assertRaisesRegex(ValueError, "only basicAttackGain"):
+                CATALOG.validate(source)
+
     def test_canonical_catalog_validates(self):
         CATALOG.validate(self.source)
 

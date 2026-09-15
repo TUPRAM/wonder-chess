@@ -1,0 +1,147 @@
+{
+  "schema": "wonder_vnext.2d_slice_candidate.1",
+  "asset_id": "wc_vn_2d_slice_r001",
+  "status": "OWNER_APPROVED_SCOPED_SLICE",
+  "owner_authorization": "Execute the bounded first integrated slice; larger set remains conditional on its review.",
+  "formal_gate_acceptance": "NONE_SELF_ISSUED",
+  "kind": "ui_environment_vfx_study",
+  "generated_with": "built_in_image_gen",
+  "external_paid_service": false,
+  "third_party_assets_downloaded": false,
+  "sources": [
+    {
+      "path": "art-source/2d-slice/r001/sources/bellback_portrait.png",
+      "sha256": "8e9e340d541d5a25a1586e0fe7f44aa3484c1c6bfdba47aa14be1d53ca3961ea",
+      "bytes": 2389568,
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_mode": "RGB",
+      "cooked_size": [
+        1024,
+        1024
+      ],
+      "opaque": true
+    },
+    {
+      "path": "art-source/2d-slice/r001/sources/heavy_bloom.png",
+      "sha256": "4b0e5d8dae08327ef290b436b1b4d4ca3c4a73e2760b930e2d70577173ec716b",
+      "bytes": 1818722,
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_mode": "RGB",
+      "cooked_size": [
+        512,
+        512
+      ],
+      "opaque": true
+    },
+    {
+      "path": "art-source/2d-slice/r001/sources/quiet_stone.png",
+      "sha256": "f9600bc8aea263eebb5f002ac90a8fcce6694cb8d4d5dc00fd249ffef6436244",
+      "bytes": 3093559,
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_mode": "RGB",
+      "cooked_size": [
+        1024,
+        1024
+      ],
+      "opaque": true
+    }
+  ],
+  "references": [
+    {
+      "path": "art-source/2d-style/r001/ref01_materials_and_shape_language.png",
+      "sha256": "f2c646a9def53e556d113c242788a1cd1708bddc43bb2686b1ab2b48c0f2b363"
+    },
+    {
+      "path": "art-source/2d-style/r001/ref03_icons_portraits_and_relic_language.png",
+      "sha256": "f981ec22a08747c3bc5e7cf29f0ab3ac9afcca9e64ed0727978521ed0c4190ce"
+    },
+    {
+      "path": "art-source/asset-studio/wc_vn_bellback/inputs/references/r001/bellback_reference_candidate.png",
+      "sha256": "88d536f58cd0196a9d5a24e1713fd570e68a27b73db420e40e4de32422720912"
+    },
+    {
+      "path": "art-source/asset-studio/wc_vn_bellback/inputs/references/r004_construction/construction_spec.json",
+      "sha256": "fe748c1a1229f9b6c85a8296137753d21d354ca6791f62dd7bab474d57eb4a13"
+    }
+  ],
+  "prompts": [
+    {
+      "path": "art-source/2d-slice/r001/inputs/bellback_prompt.txt",
+      "sha256": "d85f75d9e671c390ed6ef9be04740114411ed60bfa23caf0e7683e0e2098eccc"
+    },
+    {
+      "path": "art-source/2d-slice/r001/inputs/heavy_bloom_prompt.txt",
+      "sha256": "db927402a06800125112bf345043c15aa228be8b7a8f0c7f38230c5652fcec6f"
+    },
+    {
+      "path": "art-source/2d-slice/r001/inputs/heavy_bloom_revision_prompt.txt",
+      "sha256": "24af810d0caf78d41e7ee851e388f0afd72c6596da2fb4faaab9f7cea5c21ff9"
+    },
+    {
+      "path": "art-source/2d-slice/r001/inputs/quiet_stone_prompt.txt",
+      "sha256": "ba8997edae83f1a76ef72cc1f50e885599ab8e3ca4d421a033afb68fe8f7cfa6"
+    }
+  ],
+  "native_authored_sources": [
+    {
+      "path": "game/Source/WonderChessRuntime/Public/WCVNextArtStyle.h",
+      "sha256": "5bb2c033523bc873aac698e79fa763a23a1eb06836d3588a4f50a176145b2325"
+    },
+    {
+      "path": "game/Source/WonderChessRuntime/Private/WCVNextArtStyle.cpp",
+      "sha256": "3c7a69162d20a2fc112eec92101939f17837dc4d65daacac5050903558d10a62"
+    },
+    {
+      "path": "game/Source/WonderChessRuntime/Public/WCVNextLab.h",
+      "sha256": "250ec806353c601a1a64f62606cc5f91d78722900f1af885d9e0c4a21efcb1ba"
+    },
+    {
+      "path": "game/Source/WonderChessRuntime/Private/WCVNextLab.cpp",
+      "sha256": "f5ece8f66eea0cb86c7dbcba094278448a2f67ed220d5671ae4f1b40613dbe76"
+    },
+    {
+      "path": "game/Source/WonderChessRuntime/Private/WCVNextSolo.cpp",
+      "sha256": "f131b454b06da76ffc2d9b7af757429ba2dafa4701af80d5b44ad8bc256b0365"
+    },
+    {
+      "path": "game/Source/WonderChessRuntime/Private/WCVNextCombatPresentation.cpp",
+      "sha256": "019f0b42515787e6db42e6f67248ca9cbd02821c946470c84cee90475b92ef04"
+    },
+    {
+      "path": "tools/unreal/import_art_slice.py",
+      "sha256": "5c19d74a04f742fbcbac349c1e866b0893fbb5ea0c5ca0e7953f6e4df4b31b2e"
+    },
+    {
+      "path": "tools/unreal/launch_milestones.ps1",
+      "sha256": "68b956ce176f033ee7a4f46df3869a1e14263a07b6eb4164d817c03b49bbab70"
+    }
+  ],
+  "rejected": [
+    {
+      "path": "sources/heavy_bloom_rejected_checkerboard.png",
+      "reason": "RGB painted checkerboard; no transparency. Never imported.",
+      "sha256": "b69a398d14db9c05beab28ca9696d8c24a5a0d8b0ef1130f9109d539d777e5d2"
+    }
+  ],
+  "limitations": [
+    "Bellback portrait is a cropped identity study; modeled forms remain ART_REVISE.",
+    "Sources are opaque RGB; no transparent or layered export is claimed.",
+    "Exact seamless texture production and final-content performance are not certified.",
+    "World effect components are native geometry, not authored sprite animation frames."
+  ],
+  "owner_slice_review": {
+    "date": "2026-09-13",
+    "quote": "I approve the slice",
+    "scope": "Integrated r15 2D study; expansion authorized",
+    "excludes": "Final 3D modeled forms and public release acceptance"
+  }
+}

@@ -1,0 +1,336 @@
+{
+  "schema": "wonder_vnext.combat_clarity_verification.1",
+  "recorded_utc": "2026-09-13T11:46:37.904500+00:00",
+  "status": "TECHNICAL_CHECKS_PASS_OPT_IN_PACING_FAIL_MANUAL_REVIEW_OPEN",
+  "candidate": "WonderChess-CombatClarity-r13",
+  "profile": "wonder_vnext",
+  "balance_version": "wonder_vnext_solo_0.1.0+mana100_hit20_v1+combat_clarity_v1",
+  "default_promoted": false,
+  "launch": "Launch Combat Clarity.cmd",
+  "readout": "docs/vnext/milestones/COMBAT_CLARITY_2026_09_13.md",
+  "scope": "Six implemented successor heroes; generic attack/status feedback; optional nearest reachable targeting and mobile basic recovery. Preserves effects, stats, prices and20-mana values.",
+  "python": {
+    "status": "PASS",
+    "tests": 230,
+    "evidence": "reports\\vnext\\milestones\\combat-clarity-20260913\\authoring-r2",
+    "later_package_manifest_targeted_tests": 10
+  },
+  "native_combat": {
+    "status": "PASS",
+    "assertions": 25385,
+    "record": "reports\\vnext\\milestones\\combat-clarity-20260913\\native-contract\\process.json"
+  },
+  "packaged_contracts": {
+    "status": "PASS",
+    "tests": 2,
+    "failed": 0,
+    "clarity_assertions": 2929,
+    "mana_assertions": 581,
+    "record": "reports\\vnext\\milestones\\combat-clarity-20260913\\r13-engine-contracts\\automation\\index.json"
+  },
+  "native_engine": {
+    "status": "PASS",
+    "tournaments": 5,
+    "rounds": 222,
+    "encounters": 981,
+    "field_comparisons": 4905,
+    "mismatches": [],
+    "boundary": "Encounter result fields, not full event-stream equality or enjoyment evidence."
+  },
+  "package_identity": {
+    "status": "PASS",
+    "verified_utc": "2026-09-13T11:44:11.387366+00:00",
+    "source_files": 86,
+    "package_files": 49,
+    "catalogue": {
+      "profile_id": "wonder_vnext",
+      "balance_version": "wonder_vnext_solo_0.1.0",
+      "source_sha256": "ec031fb21f7ddcce1bd37cc38e3277788208767e78e05f51eead8e71f106d350",
+      "runtime_sha1": "cc3f5bbe911130a6ec0eb035f46c29db7580b5be",
+      "runtime_sha256": "189d20ebbf0ff26c03d4c50006dbecd417989079aeee43e4236199a2ade0ddb1"
+    },
+    "boundary": "Exact file identity and membership, source/generated/staged runtime consistency, and embedded binary identity markers. Not bit-reproducible build proof, art/human acceptance, network acceptance, or clean-machine testing. A cold launch on the development computer is same-machine evidence only."
+  },
+  "package_manifest": "reports\\vnext\\milestones\\combat-clarity-20260913\\package-r13-manifest.json",
+  "build_inputs": {
+    "status": "PASS",
+    "source_files": 61,
+    "changed": []
+  },
+  "graphics": [
+    {
+      "case": "r13-lab-720",
+      "result_exists": true,
+      "passed": true,
+      "checks": {
+        "native_slate_created": true,
+        "vnext_profile_loaded": true,
+        "empty_start_rejected": true,
+        "stars_and_facing_edit_selected_piece": true,
+        "move_preserves_piece_and_star": true,
+        "remove_selected": true,
+        "ten_per_side_limit": true,
+        "six_hero_palette_and_both_formations": true,
+        "guard_preparation_recipient_visible": true,
+        "passive_guard_hides_unused_cast_timers": true,
+        "compatible_relic_changes_actual_guard_geometry": true,
+        "unequip_restores_base_ability": true,
+        "duplicate_team_relic_rejected": true,
+        "maximum_three_relics_per_team": true,
+        "one_relic_per_hero_replacement": true,
+        "same_relic_allowed_on_opposing_team": true,
+        "guard_preview_cells_with_relic": 7,
+        "tidal_preparation_lane_rotates_with_facing": true,
+        "tidal_forward_preview_cells": 4,
+        "opponent_local_facing_rotates_into_world": true,
+        "pause_and_single_tick_step": true,
+        "combat_rejects_formation_edits": true,
+        "combat_rejects_relic_edits": true,
+        "mana_inspector_uses_resource_not_cooldown": true,
+        "mana_bars_match_live_resource_users": true,
+        "combat_capture_requested": true,
+        "actual_combat_completed": true,
+        "first_combat_invariants": true,
+        "replay_restores_original_seed": true,
+        "replay_restores_equipped_relics": true,
+        "replay_exact_event_and_final_state_signature": true,
+        "replay_combat_invariants": true,
+        "every_observed_tick_invariants": true,
+        "completed_within_exercise_limit": true,
+        "all_captures_completed": true,
+        "all_captures_saved_new_files": true,
+        "capture_selection_and_combat_ticks_held": true,
+        "captured_text_widgets_match_exact_current_sources": true,
+        "inspector_updates_from_bellback_to_full_reefglass_text": true,
+        "captures_settled_before_request_and_after_processing": true,
+        "all_64_cell_centers_visible": true,
+        "all_64_click_projection_roundtrips": true,
+        "board_fills_available_pane_without_clipping": true
+      }
+    },
+    {
+      "case": "r13-lab-1080",
+      "result_exists": true,
+      "passed": true,
+      "checks": {
+        "native_slate_created": true,
+        "vnext_profile_loaded": true,
+        "empty_start_rejected": true,
+        "stars_and_facing_edit_selected_piece": true,
+        "move_preserves_piece_and_star": true,
+        "remove_selected": true,
+        "ten_per_side_limit": true,
+        "six_hero_palette_and_both_formations": true,
+        "guard_preparation_recipient_visible": true,
+        "passive_guard_hides_unused_cast_timers": true,
+        "compatible_relic_changes_actual_guard_geometry": true,
+        "unequip_restores_base_ability": true,
+        "duplicate_team_relic_rejected": true,
+        "maximum_three_relics_per_team": true,
+        "one_relic_per_hero_replacement": true,
+        "same_relic_allowed_on_opposing_team": true,
+        "guard_preview_cells_with_relic": 7,
+        "tidal_preparation_lane_rotates_with_facing": true,
+        "tidal_forward_preview_cells": 4,
+        "opponent_local_facing_rotates_into_world": true,
+        "pause_and_single_tick_step": true,
+        "combat_rejects_formation_edits": true,
+        "combat_rejects_relic_edits": true,
+        "mana_inspector_uses_resource_not_cooldown": true,
+        "mana_bars_match_live_resource_users": true,
+        "combat_capture_requested": true,
+        "actual_combat_completed": true,
+        "first_combat_invariants": true,
+        "replay_restores_original_seed": true,
+        "replay_restores_equipped_relics": true,
+        "replay_exact_event_and_final_state_signature": true,
+        "replay_combat_invariants": true,
+        "every_observed_tick_invariants": true,
+        "completed_within_exercise_limit": true,
+        "all_captures_completed": true,
+        "all_captures_saved_new_files": true,
+        "capture_selection_and_combat_ticks_held": true,
+        "captured_text_widgets_match_exact_current_sources": true,
+        "inspector_updates_from_bellback_to_full_reefglass_text": true,
+        "captures_settled_before_request_and_after_processing": true,
+        "all_64_cell_centers_visible": true,
+        "all_64_click_projection_roundtrips": true,
+        "board_fills_available_pane_without_clipping": true
+      }
+    },
+    {
+      "case": "r13-status-1080",
+      "result_exists": true,
+      "passed": true,
+      "checks": {
+        "native_slate_created": true,
+        "vnext_profile_loaded": true,
+        "actual_stun_swirl_drawn": true,
+        "actual_shield_drawn": true,
+        "effective_healing_plus_drawn": true,
+        "actual_modifier_drawn": true,
+        "actual_statuses_expired": true,
+        "expired_status_geometry_hidden": true,
+        "cue_pool_bounded": true,
+        "all_64_cell_centers_visible": true,
+        "all_64_click_projection_roundtrips": true,
+        "board_fills_available_pane_without_clipping": true
+      }
+    },
+    {
+      "case": "r13-solo-1600",
+      "result_exists": true,
+      "passed": true,
+      "checks": {
+        "existing_save_blocks_orders": true,
+        "existing_save_choice_preserves_checkpoint": true,
+        "unselected_inspector_requests_selection": true,
+        "buy": true,
+        "purchase_feedback": true,
+        "deploy": true,
+        "disk_resume_exact": true,
+        "scout_rejects_commands": true,
+        "insufficient_gold_rejection": true,
+        "combat_unselected_inspector_hides_palette": true,
+        "combat_cutoff_rejects_order": true,
+        "relic_draft": true,
+        "relic_equip": true,
+        "selected_inspector_includes_equipped_relic": true,
+        "equipped_relic_disk_resume": true,
+        "relic_unequip": true,
+        "eliminated_spectating": true,
+        "finished": true,
+        "invariants": true,
+        "rounds": 45,
+        "captain_placement": 8,
+        "restart_fresh": true,
+        "boundary": "Accelerated same-handler package smoke; not human or real input evidence."
+      },
+      "parser_correction": "Solo report contains flat boolean checks, not a nested passed/checks structure. Reconciled against raw report; no game rerun."
+    }
+  ],
+  "behavior_comparison": {
+    "mana20": {
+      "tournaments": 20,
+      "caps": 4,
+      "encounters": 3776,
+      "timeouts": 562,
+      "timeout_percent": 14.883474576271185,
+      "fixed_timeouts": 24
+    },
+    "targeting": {
+      "tournaments": 20,
+      "caps": 8,
+      "encounters": 3902,
+      "timeouts": 474,
+      "timeout_percent": 12.147616606868272,
+      "fixed_timeouts": 25,
+      "fixed_shorter": 194,
+      "fixed_longer": 114,
+      "changed_winner": 68
+    },
+    "clarity": {
+      "tournaments": 20,
+      "caps": 10,
+      "encounters": 3898,
+      "timeouts": 422,
+      "timeout_percent": 10.826064648537711,
+      "fixed_timeouts": 21,
+      "fixed_shorter": 381,
+      "fixed_longer": 150,
+      "changed_winner": 73
+    }
+  },
+  "control_reproduction": {
+    "tournaments.csv": {
+      "rows": 20,
+      "exact_prior_rows": true
+    },
+    "encounters.csv": {
+      "rows": 3776,
+      "exact_prior_rows": true
+    },
+    "mana_formations.csv": {
+      "rows": 576,
+      "exact_prior_rows": true
+    },
+    "mana_formation_activity.csv": {
+      "rows": 3456,
+      "exact_prior_rows": true
+    },
+    "fixtures.csv": {
+      "rows": 192,
+      "exact_prior_rows": true
+    }
+  },
+  "actual_input": {
+    "status": "NOT_COMPLETED_USER_STOPPED_COMPUTER_USE",
+    "launcher_executed": true,
+    "launch_record": "reports\\vnext\\milestones\\combat-clarity-20260913\\r13-owner-review\\launch.json",
+    "reason": "Computer Use reported the user stopped it with physical Escape before target selection or any r13 physical input. No further Computer Use actions."
+  },
+  "visual_review": {
+    "status": "SCOPED_RENDERED_INSPECTION",
+    "images_viewed": [
+      "r13-lab-1080/lab-combat.png",
+      "r13-lab-720/lab-combat.png",
+      "r13-status-1080/status-effects-active.png",
+      "r13-status-1080/status-effects-expired.png"
+    ],
+    "charge_aim_and_tidal_wave_rendered": true,
+    "charge_displacement_trail_rendered_tested": false,
+    "push_displacement_trail_rendered_tested": false,
+    "human_approval": false
+  },
+  "acceptance": {
+    "pacing": "FAIL; fewer encounter timeouts but more capped tournaments in20-seed development sample",
+    "art": "PROXY_NOT_APPROVED",
+    "human_study": "NOT_RUN",
+    "clean_checkout_r13": "NOT_RUN",
+    "clean_machine_r13": "NOT_RUN",
+    "final_content_performance": "NOT_RUN",
+    "milestones": "B1/B2 engineering component only; full B0-M7 remains open"
+  },
+  "git_diff_check": "PASS",
+  "boundary": "Executed deterministic/synthetic/packaged/rendered checks do not establish enjoyment, accepted balance, final art, external comprehension, remote readiness or release acceptance.",
+  "launcher_followup": {
+    "recorded_utc": "2026-09-13T12:01:22.377372+00:00",
+    "status": "PASS_LAB_LAUNCH",
+    "physical_worktree": "C:\\Users\\iputu\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\CodexWorktrees\\wc\\m7",
+    "launchers": {
+      "lab": "C:\\Users\\iputu\\Documents\\Project Support\\Wonder Chess\\Play Combat Clarity - Lab.cmd",
+      "solo": "C:\\Users\\iputu\\Documents\\Project Support\\Wonder Chess\\Play Combat Clarity - Solo.cmd"
+    },
+    "lab_launch_evidence": "C:\\Users\\iputu\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\CodexWorktrees\\wc\\m7\\reports\\vnext\\milestones\\launch-20260913T120044389Z",
+    "lab_ready_log": [
+      "[2026.09.13-12.00.48:649][  0]LogTemp: Display: WC_VNEXT_LAB_READY profile=wonder_vnext units=6 digest=490a24c9e0b4b5341c5b4ef8695b29b6932ac746ccc576dc7c8ff665c10cb77b proxy_art=UNAPPROVED"
+    ],
+    "sha256_verified": true,
+    "solo_launcher_status": "CREATED_TARGET_VERIFIED_NOT_EXECUTED_THIS_FOLLOWUP",
+    "package_identity": {
+      "status": "PASS",
+      "verified_utc": "2026-09-13T12:01:22.377372+00:00",
+      "source_files": 86,
+      "package_files": 49,
+      "catalogue": {
+        "profile_id": "wonder_vnext",
+        "balance_version": "wonder_vnext_solo_0.1.0",
+        "source_sha256": "ec031fb21f7ddcce1bd37cc38e3277788208767e78e05f51eead8e71f106d350",
+        "runtime_sha1": "cc3f5bbe911130a6ec0eb035f46c29db7580b5be",
+        "runtime_sha256": "189d20ebbf0ff26c03d4c50006dbecd417989079aeee43e4236199a2ade0ddb1"
+      },
+      "boundary": "Exact file identity and membership, source/generated/staged runtime consistency, and embedded binary identity markers. Not bit-reproducible build proof, art/human acceptance, network acceptance, or clean-machine testing. A cold launch on the development computer is same-machine evidence only."
+    },
+    "failed_attempt": "launch-20260913T115945338Z started game then failed on Get-FileHash. Only those test-owned processes were stopped before retry.",
+    "fix": "Use actual MSIX storage path in user launchers; compute SHA256 via .NET before process start instead of Get-FileHash after start.",
+    "boundary": "Launch and identity evidence; no physical UI input or new gameplay/art acceptance."
+  },
+  "owner_feedback": {
+    "recorded_utc": "2026-09-13T12:13:14.879981+00:00",
+    "owner_quote": "It looks good to me, what should we do next?",
+    "candidate_context": "WonderChess-CombatClarity-r13 after corrected local launcher",
+    "status": "OWNER_POSITIVE_REVIEW_PROTOTYPE_COMBAT_PRESENTATION",
+    "scope": "Owner accepts the current prototype combat presentation direction as looking good. Exact scenarios, effects, resolution and session duration were not specified.",
+    "boundary": "Does not close specific charge/push inspection, full manual input journeys, external comprehension studies, balance/pacing, modeled-form or final-release art gates."
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "schema_version": "1.0.0",
+  "asset_id": "wc_vn_bellback",
+  "stage": "blockout",
+  "author": "Codex /root/balance_experiment",
+  "method": "Changed r003 method: continuous cross-section head and nose keel, subtractive mouth/nostril recesses, anatomically projected bark cuts and broad root planes in the organic sculpt. Removed all bark/cheek/moss overlays and applied eyebrow strips. Preserved exact hollow bell height and conformed saddles to measured sculpt contacts. No topology or rig acceptance.",
+  "checks": [
+    {
+      "id": "silhouette_and_proportions",
+      "status": "fail",
+      "evidence": [
+        "stages/blockout/r003/renders/front_clay.png",
+        "stages/blockout/r003/renders/right_clay.png",
+        "stages/blockout/r003/renders/threequarter_clay.png"
+      ],
+      "notes": "Reference dimensions and planted stance exist, but face and integrated organic proportions do not meet the approved aesthetic target."
+    },
+    {
+      "id": "camera_alignment",
+      "status": "fail",
+      "evidence": [
+        "stages/blockout/r003/model_audit.json"
+      ],
+      "notes": "Four fixed orthographic directions and three-quarter captures executed. Raster aesthetic reference is not registered; no camera-alignment or likeness-overlay pass is claimed."
+    },
+    {
+      "id": "major_part_clearance",
+      "status": "not_run",
+      "evidence": [
+        "stages/blockout/r003/model_audit.json"
+      ],
+      "notes": "Static construction only. No animation or complete motion-clearance check. R003 supplementary views reveal existing carrier and clapper without certifying motion."
+    },
+    {
+      "id": "method_is_capable",
+      "status": "fail",
+      "evidence": [
+        "stages/blockout/r003/renders/front_clay.png",
+        "stages/blockout/r003/renders/right_clay.png",
+        "stages/blockout/r003/renders/threequarter_clay.png"
+      ],
+      "notes": "Actual required visual result is poor. Stop this construction method; no advancement based on successful script execution."
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "stages/blockout/r003/Bellback_forms_r003.blend",
+      "category": "source"
+    },
+    {
+      "path": "stages/blockout/r003/model_audit.json",
+      "category": "report"
+    },
+    {
+      "path": "stages/blockout/r003/visual_review.json",
+      "category": "report"
+    },
+    {
+      "path": "stages/blockout/r003/renders/front_clay.png",
+      "category": "image"
+    },
+    {
+      "path": "stages/blockout/r003/renders/right_clay.png",
+      "category": "image"
+    },
+    {
+      "path": "stages/blockout/r003/renders/threequarter_clay.png",
+      "category": "image"
+    },
+    {
+      "path": "stages/blockout/r003/renders/back_clay.png",
+      "category": "image"
+    },
+    {
+      "path": "stages/blockout/r003/renders/left_clay.png",
+      "category": "image"
+    },
+    {
+      "path": "stages/blockout/r003/renders/threequarter_ids.png",
+      "category": "image"
+    },
+    {
+      "path": "stages/blockout/r003/review/face_closeup_clay.png",
+      "category": "image"
+    },
+    {
+      "path": "stages/blockout/r003/review/paw_contact_clay.png",
+      "category": "image"
+    },
+    {
+      "path": "stages/blockout/r003/review/bell_cavity_and_carrier.png",
+      "category": "image"
+    },
+    {
+      "path": "stages/blockout/r003/review/native96_preview.png",
+      "category": "image"
+    },
+    {
+      "path": "stages/blockout/r003/review_supplement/open_cavity_underside.png",
+      "category": "image"
+    },
+    {
+      "path": "stages/blockout/r003/review_supplement/clapper_and_open_carrier_saddles_hidden.png",
+      "category": "image"
+    },
+    {
+      "path": "stages/blockout/r003/review_crowded_aligned/crowded12_board_lab_projection_1920x1080.png",
+      "category": "image"
+    },
+    {
+      "path": "stages/blockout/r003/review_crowded_aligned/crowded12_board_lab_elevation_detail.png",
+      "category": "image"
+    },
+    {
+      "path": "stages/blockout/r003/construction_review.json",
+      "category": "report"
+    },
+    {
+      "path": "stages/blockout/r003/review_crowded_aligned.json",
+      "category": "report"
+    }
+  ],
+  "defects": [
+    {
+      "id": "face_identity",
+      "severity": "major",
+      "status": "open",
+      "category": "shape",
+      "observation": "Flattened oval head, projecting button eyes and thin curved mouth remain toy-like rather than aged animal anatomy.",
+      "evidence": [
+        "renders/front_clay.png",
+        "review/face_closeup_clay.png"
+      ],
+      "next_operation": "Focused controlled sculpt of inset orbit/lids, muzzle projection, brow and jaw planes."
+    },
+    {
+      "id": "bark_root_anatomy",
+      "severity": "major",
+      "status": "open",
+      "category": "shape",
+      "observation": "Displaced grooves form serrated trenches; inflated shoulder masses and blocky limb transitions remain.",
+      "evidence": [
+        "renders/right_clay.png",
+        "renders/left_clay.png",
+        "review/paw_contact_clay.png"
+      ],
+      "next_operation": "Sculpt broad continuous root planes and load-bearing taper before any bark detail; abandon point-distance cuts."
+    },
+    {
+      "id": "bell_body_relationship",
+      "severity": "major",
+      "status": "open",
+      "category": "shape",
+      "observation": "Clean oversized-looking bell and boxy support dominate; dimensional compliance has not produced the integrated organic identity.",
+      "evidence": [
+        "renders/right_clay.png",
+        "review/bell_cavity_and_carrier.png"
+      ],
+      "next_operation": "Retain accepted bell dimensions and clearance; reshape support integration and adjacent body forms."
+    },
+    {
+      "id": "board_identity",
+      "severity": "major",
+      "status": "open",
+      "category": "readability",
+      "observation": "Bell is visible in static board proxy; organic identity, face and facing distinctions remain weak.",
+      "evidence": [
+        "review_crowded_aligned/crowded12_board_lab_projection_1920x1080.png"
+      ],
+      "next_operation": "After fixing primary forms, review native board scale and then actual gameplay; static Blender evidence is insufficient for acceptance."
+    }
+  ],
+  "executed_commands": [
+    {
+      "operation": "Blender factory-startup background build",
+      "script": "stages/blockout/r003/operations/build_bellback.py",
+      "log": "stages/blockout/r003/operations/blender-build.log",
+      "exit_code": 0
+    }
+  ],
+  "notes": [
+    "Diagnostic failed report only; not prepared or approved.",
+    "Human forms gate and downstream production stages were not run.",
+    "See reports/FORMS_METHOD_REVIEW.md for observed discrepancies and retry stop."
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "utc": "2026-09-12T15:47:17.882033+00:00",
+  "status": "PASS",
+  "checks": {
+    "handshake_and_advertisement_use_shared_protocol": true,
+    "rpc_accepts_entire_contiguous_command_enum": true,
+    "facing_preserved_in_native_queue_and_wire_call": true,
+    "facing_bounds_match_authoritative_enum": true,
+    "server_derives_seat_and_rejects_inactive_human": true,
+    "successor_online_guard_and_legacy_seat_limit_preserved": true
+  },
+  "boundary": "Static source contract inspection only; not an RPC invocation, packet audit, or authenticated reconnect test.",
+  "sha256": {
+    "game\\Source\\WonderChessRuntime\\Private\\WCMatchRuntime.cpp": "0002e14452d7aabeba93cd8f72af43b642139f54a827ef936f67d938d1b00b9e",
+    "game\\Source\\WonderChessRuntime\\Public\\WCMatchRuntime.h": "3017520acd7ee9bab3c71f8a5a525a6e481e89a2b4cf0b892eb1db2c3d6f7a9c",
+    "game\\Source\\WonderChessRuntime\\Public\\Simulation\\WonderSimulation.h": "121476952bb9bf3dda6eda68d3c17943a84bde9e20510104ddd97e22880ce750"
+  },
+  "previous_audit_correction": "Audit 01 searched RefreshView for the outgoing handshake; actual call is in Tick. Runtime source unchanged between audits."
+}

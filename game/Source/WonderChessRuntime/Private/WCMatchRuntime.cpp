@@ -1090,7 +1090,7 @@ void AWCMatchController::ServerStart_Implementation(int32 Humans, int32 Seed) {
 void AWCMatchController::ServerCatalogReady_Implementation(const FString& Schema, const FString& Digest, int32 Protocol) {
   auto* M = GetWorld()->GetAuthGameMode<AWCMatchMode>();
   if (!M || !M->Controllers.Contains(this)) return;
-  if (Protocol != 5 || Schema != Str(M->Catalog.schemaVersion) || Digest != Str(M->Catalog.contentDigest)) {
+  if (Protocol != wc::NetworkProtocolVersion || Schema != Str(M->Catalog.schemaVersion) || Digest != Str(M->Catalog.contentDigest)) {
     bCatalogReady = false;
     ClientRejectSession(TEXT("Game data or protocol differs from the host. Use the same Wonder Chess package."));
     return;
@@ -1143,7 +1143,8 @@ void AWCMatchController::ServerIntent_Implementation(int32 Type, int64 Request,
                                                      int64 Sequence,
                                                      int64 Revision, int64 Unit,
                                                      int32 Slot, bool ToBoard,
-                                                     int32 Column, int32 Row) {
+                                                     int32 Column, int32 Row,
+                                                     int32 Facing) {
   if (!bCatalogReady) {
     ClientRejectSession(TEXT("Game data has not passed the host compatibility check. Use the same Wonder Chess package."));
     return;
@@ -1158,8 +1159,9 @@ void AWCMatchController::ServerIntent_Implementation(int32 Type, int64 Request,
     ClientReply(false, TEXT("This controller has no active human seat."), Request);
     return;
   }
-  if (Type < 0 || Type > int(wc::CommandType::Ready) || Request <= 0 ||
-      Sequence < 0 || Revision < 0 || Unit < 0) {
+  if (Type < 0 || Type > int(wc::CommandType::SetFacing) || Request <= 0 ||
+      Sequence < 0 || Revision < 0 || Unit < 0 ||
+      Facing < int(wc::Facing::Forward) || Facing > int(wc::Facing::Left)) {
     ClientReply(false, TEXT("Invalid command payload."), Request);
     return;
   }
@@ -1173,12 +1175,14 @@ void AWCMatchController::ServerIntent_Implementation(int32 Type, int64 Request,
   C.slot = Slot;
   C.toBoard = ToBoard;
   C.cell = {Column, Row};
+  C.facing = wc::Facing(Facing);
   const auto Reply = M->Match->Submit(AssignedSeat, C);
   ClientReply(Reply.accepted, Str(Reply.reason), Request);
   M->Publish();
 }
 void AWCMatchController::Intent(wc::CommandType Type, int64 Unit, int32 Slot,
-                                bool ToBoard, int32 Column, int32 Row) {
+                                bool ToBoard, int32 Column, int32 Row,
+                                wc::Facing Facing) {
   if (!Private.IsValid() || !Private->HasField(TEXT("revision")))
     return;
   if (IntentQueue.Num() >= 8) {
@@ -1193,7 +1197,7 @@ void AWCMatchController::Intent(wc::CommandType Type, int64 Unit, int32 Slot,
       return;
     Expected = int(Shop[Slot]->AsNumber());
   }
-  IntentQueue.Add({Type, Unit, Slot, ToBoard, Column, Row, Expected});
+  IntentQueue.Add({Type, Unit, Slot, ToBoard, Column, Row, Expected, Facing});
   SendNextIntent();
 }
 void AWCMatchController::SendNextIntent() {
@@ -1219,7 +1223,7 @@ void AWCMatchController::SendNextIntent() {
   bPendingAccepted = false;
   bCommandPending = true;
   ServerIntent(int(C.Type), PendingRequest, PendingSequence, PendingRevision,
-               C.Unit, C.Slot, C.ToBoard, C.Column, C.Row);
+               C.Unit, C.Slot, C.ToBoard, C.Column, C.Row, int(C.Facing));
 }
 void AWCMatchController::RefreshView() {
   if (auto *S = GetWorld()->GetGameState<AWCMatchState>())
@@ -1280,7 +1284,7 @@ void AWCMatchController::Tick(float Delta) {
   RefreshView();
   if (!bSentCatalogReady && Presenter && !Presenter->Definitions.units.empty() && Public.IsValid() && Public->HasField(TEXT("contentDigest")) && !Public->GetStringField(TEXT("contentDigest")).IsEmpty()) {
     bSentCatalogReady = true;
-    ServerCatalogReady(Str(Presenter->Definitions.schemaVersion), Str(Presenter->Definitions.contentDigest), 5);
+    ServerCatalogReady(Str(Presenter->Definitions.schemaVersion), Str(Presenter->Definitions.contentDigest), wc::NetworkProtocolVersion);
   }
   SendNextIntent();
   WCTickSelectionAudit(this);

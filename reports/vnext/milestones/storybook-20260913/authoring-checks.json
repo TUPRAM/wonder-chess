@@ -1,0 +1,55 @@
+[
+  {
+    "command": [
+      "C:\\Users\\iputu\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+      "tools/validate_kit.py"
+    ],
+    "exit_code": 0,
+    "seconds": 2.39000000001397,
+    "log": "authoring-0.log"
+  },
+  {
+    "command": [
+      "C:\\Users\\iputu\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "exit_code": 0,
+    "seconds": 32.46899999998277,
+    "log": "authoring-1.log"
+  },
+  {
+    "command": [
+      "C:\\Users\\iputu\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+      "tools/build_documents.py",
+      "--check"
+    ],
+    "exit_code": 0,
+    "seconds": 2.3589999999967404,
+    "log": "authoring-2.log"
+  },
+  {
+    "command": [
+      "C:\\Users\\iputu\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+      "tools/compile_catalog.py",
+      "--check"
+    ],
+    "exit_code": 0,
+    "seconds": 2.0160000000032596,
+    "log": "authoring-3.log"
+  },
+  {
+    "command": [
+      "C:\\Users\\iputu\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+      "tools/vnext/catalog.py",
+      "--check"
+    ],
+    "exit_code": 0,
+    "seconds": 2.5160000000032596,
+    "log": "authoring-4.log"
+  }
+]
