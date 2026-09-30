@@ -1,0 +1,20 @@
+{
+  "date": "2026-09-30",
+  "timezone": "Asia/Shanghai",
+  "scope": "Production architecture report, machine catalogue and static preview only",
+  "artifact_status": "PROPOSED_PLANNING_ARTIFACTS_NOT_INSTALLED_OR_QUALIFIED_SKILLS",
+  "archive": {"definitions_read": 28, "agent_yamls_read": 24, "files": 52, "sha256": "1aaf1698a67279f50bc2de5d7ee3b850ca6c605871a9eaec75d68a6a4a56b7f5", "local_byte_differences": 0},
+  "report": {"sections": 11, "existing_skills": 28, "proposed_capabilities": 16, "priority_specifications": 8, "worked_pilot_plans": 3, "next_batches": 3},
+  "checks": {"catalogue_and_source_integrity": "PASS", "all_downloads_and_local_preview_links": "PASS", "javascript_syntax": "PASS", "browser_desktop_and_mobile": "PASS", "console_errors": 0, "failed_requests": 0},
+  "recovery_during_report_checks": [{"check": "source hash validation", "failure": "Python universal-newline read normalized CRLF while the generator hashed original text bytes", "resolution": "Decode original source bytes for hash validation; rerun passed"}],
+  "browser_tool": "Existing bundled Playwright with installed Edge; agent-browser CLI unavailable, no installation performed",
+  "visual_inspection": ["preview-desktop.png", "preview-mobile.png"],
+  "production_jobs_run": 0,
+  "provider_credits_spent": 0,
+  "private_art_uploaded": false,
+  "game_checks_rerun": false,
+  "game_release_acceptance": "NOT_ASSESSED",
+  "publication_allowlist": ["docs/studio-production-20260930", "tools/studio", "web/studio-production", "reports/studio-production-20260930"],
+  "existing_worktree_policy": "Separate temporary Git index and report branch; active development checkout/index preserved",
+  "limitations": "The audit snapshot is not an atomic game freeze; other development changed live inputs. Recorded game/creature results remain scoped to named candidates. Report/browser verification does not qualify proposed production skills."
+}

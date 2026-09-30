@@ -1,0 +1,595 @@
+{
+  "schema": "wonder_chess.studio_current_state_audit.1",
+  "audit_date": "2026-09-30",
+  "timezone": "Asia/Shanghai",
+  "observation_cutoff_utc": "2026-09-30T08:13:38Z",
+  "snapshot_written_utc": "2026-09-30T08:21:50.070157+00:00",
+  "mode": "research_audit_design_planning_only_report_artifacts",
+  "actions": {
+    "production_jobs": 0,
+    "provider_calls": 0,
+    "installs": 0,
+    "engine_runs": 0,
+    "game_tests_rerun": 0,
+    "account_entitlements_checked": false,
+    "read_only_probes": [
+      "CIM CPU/RAM/GPU/OS/disk",
+      "Get-Volume",
+      "nvidia-smi --query-gpu=name,driver_version,memory.total",
+      "version commands and executable metadata",
+      "repository source/report reads",
+      "file SHA256 comparisons"
+    ]
+  },
+  "workspace": {
+    "root": "C:\\Users\\USER\\Documents\\Wonder Chess",
+    "branch": "codex/milestones-b0-m7-20260912",
+    "canonical_root": true,
+    "former_external_worktree": "retired",
+    "preserve_ignored": [
+      "builds/",
+      "support/"
+    ]
+  },
+  "catalogue": {
+    "path": "data/vnext/catalog.json",
+    "sha256": "281a1323b6ea104fb4f9bd49f9a3e8468701c741f3544ecee05a81fb84c987ef",
+    "profile": "wonder_vnext",
+    "balance_version": "wonder_vnext_silkmother_0.2.0",
+    "roster_cap": null,
+    "authored_heroes": 14,
+    "enabled_heroes": [
+      {
+        "id": "wc_vn_bellback",
+        "mechanic": "directional_guard"
+      },
+      {
+        "id": "wc_vn_cragstoat",
+        "mechanic": "momentum_charge"
+      },
+      {
+        "id": "wc_vn_grandmother_root",
+        "mechanic": "stationary_grove"
+      },
+      {
+        "id": "wc_vn_snapvine",
+        "mechanic": "screened_strike"
+      },
+      {
+        "id": "wc_vn_prism_organ",
+        "mechanic": "crossing_beams"
+      },
+      {
+        "id": "wc_vn_reefglass",
+        "mechanic": "tidal_push"
+      },
+      {
+        "id": "wc_vn_silkmother",
+        "mechanic": "cocoon_projectile"
+      }
+    ],
+    "disabled_authored_heroes": [
+      "wc_vn_manyfoot",
+      "wc_vn_kilnback",
+      "wc_vn_coilwyrm",
+      "wc_vn_dawnkite",
+      "wc_vn_thimblewake",
+      "wc_vn_wren",
+      "wc_vn_hushlantern"
+    ],
+    "traits": 18,
+    "runtime_enabled_traits": 0,
+    "relics": 12,
+    "runtime_enabled_relics": 12,
+    "neutrals": 7,
+    "waves": 12,
+    "target_match_minutes": [
+      35,
+      45
+    ],
+    "human_duration": "NOT_RUN",
+    "legacy_evidence_transferred": false
+  },
+  "package": {
+    "id": "WonderChess-Development-20260930-r3",
+    "inner_executable": "builds/WonderChess-Development-20260930-r3/Windows/WonderChess/Binaries/Win64/WonderChess.exe",
+    "inner_executable_sha256": "64837d56863b640bb3f3744db3cdc4c6eab888d78871ae659b856bf96b89972e",
+    "identity_captured_utc": "2026-09-30T06:04:05.319012+00:00",
+    "recorded_source_files": 134,
+    "recorded_payload_files": 50,
+    "live_source_differences": [
+      {
+        "path": "game/Binaries/Win64/WonderChess.exe",
+        "expected_sha256": "64837d56863b640bb3f3744db3cdc4c6eab888d78871ae659b856bf96b89972e",
+        "actual_sha256": "19ccf07c55ad3dd830a421577500a0a738344def75ab3f4dc63369d25ee20f5f",
+        "state": "differs"
+      },
+      {
+        "path": "game/Config/DefaultGame.ini",
+        "expected_sha256": "7015b460fdc4e9883d2be1db557c065feef5caa9c5a6f99047bfd0658644253b",
+        "actual_sha256": "bcc8227dabf85b1ed7a262359fbeda6df9dddc7d64d3dfd54133fe6a58791de9",
+        "state": "differs"
+      },
+      {
+        "path": "game/Source/WonderChessArtTools/Private/WCAssetAuthoringLibrary.cpp",
+        "expected_sha256": "7306b14e6cce53f8d0f6bdebde791eb4a833e54892c10de3dc2f4dffcc1f7419",
+        "actual_sha256": "775c35d009f99c0724f6336bc8c41d1c481a929cc57e6a8fe5c246b5b52fc677",
+        "state": "differs"
+      },
+      {
+        "path": "game/Source/WonderChessArtTools/Public/WCAssetAuthoringLibrary.h",
+        "expected_sha256": "e33b87f2a6e3ccd29685e0ef527d11bbe226cf877c6129b5c361e430cb11dac4",
+        "actual_sha256": "cdef51534f2ff9ac8867d7654a38181c5fa0c587a373c4ec8850e72ba409a28c",
+        "state": "differs"
+      },
+      {
+        "path": "game/Source/WonderChessRuntime/Private/WCSilkmotherExercise.cpp",
+        "expected_sha256": "966713011a49ac212ed06a894f8ad3c494923aa2bc6969edc74a690e0281fedf",
+        "actual_sha256": "5a3e0b3884168edad8eb68a4207a7f0af6b675a3798878ef720a6d5bef6cdb00",
+        "state": "differs"
+      },
+      {
+        "path": "game/Source/WonderChessRuntime/Private/WCSilkmotherPresentation.cpp",
+        "expected_sha256": "392fdf3638f332cfc5df51eff8e6cd3bcb8bdba03921c5fc4fd7679b493e3b99",
+        "actual_sha256": "d60393ff907dd006b7efb836f28504fc280f20aa501c8524e2a6dd54ab284ddc",
+        "state": "differs"
+      },
+      {
+        "path": "game/Source/WonderChessRuntime/Public/WCSilkmotherPresentation.h",
+        "expected_sha256": "f547f2be0c3c861570a45f14c2367c837a19dbb4fc9a5a668d545914e651db81",
+        "actual_sha256": "eff7fd3275434e5c650abab301c51f1371ed104ccb74f937d82c03163673d8e0",
+        "state": "differs"
+      },
+      {
+        "path": "game/Source/WonderChessRuntime/Public/WCVNextLab.h",
+        "expected_sha256": "71b29b7f2badb7d9f18a03206e372e7dfa6bfff9e2101b1b5d8902aa3795f1ff",
+        "actual_sha256": "8b9f8e650f3ee563394a212fafe3e7ad0bfde8e801df8779fa034b59b6eee55d",
+        "state": "differs"
+      }
+    ],
+    "effective_storybook_recipe": "wonder_vnext_silkmother_0.2.0+mana100_hit20_v1+combat_clarity_v1",
+    "effective_storybook_digest": "e05b61d4c0da438aaffc4f308076930a60e96549de2e8c717100d6ff628d4525",
+    "pacing_recipe": "canonical_baseline_distinct_from_effective_storybook",
+    "whole_match_handler_checks": "35/35 recorded",
+    "r3_physical_input": "NOT_CLAIMED",
+    "r2_physical_input": "11/11 scoped 1280x720 recorded",
+    "clean_machine": "OPEN",
+    "release_acceptance": "OPEN"
+  },
+  "baseline_pacing": {
+    "source": "reports/development-20260930/gameplay/current-diagnostics-r001/readout.json",
+    "tournaments": 25,
+    "encounters": 4746,
+    "timeouts": 350,
+    "timeout_percent": 7.374631268436578,
+    "round_caps": 15,
+    "median_simulated_minutes": 30.9125,
+    "human_pacing": "NOT_RUN",
+    "below_2_percent_screen": "FAIL",
+    "holdouts_900001_900250": "reserved_unused_in_record"
+  },
+  "reservation_candidate": {
+    "source": "reports/development-20260930/gameplay/reservation-r002/comparison-r003.json",
+    "encounters": 4737,
+    "timeouts": 333,
+    "round_caps": 15,
+    "balance_promotion": "NONE",
+    "pacing": "FAIL",
+    "single_caster_fixture_rows_byte_identical": 96
+  },
+  "hardware": {
+    "cpu": "Intel Core Ultra 7 265K",
+    "physical_cores": 20,
+    "logical_processors": 20,
+    "physical_ram_gib": 32,
+    "windows_visible_ram_gib": 31.71,
+    "dimm_configuration": "2x16GiB DDR5-5600 configured5600",
+    "gpu": "NVIDIA GeForce RTX5060",
+    "gpu_driver": "616.92",
+    "nvidia_smi_vram_mib": 8151,
+    "vram_capacity_class_gb": 8,
+    "cim_adapter_ram_warning": "32bit truncated near4GiB; use nvidia-smi",
+    "os": "Windows11Pro",
+    "os_version": "10.0.26200",
+    "os_build": "26200",
+    "ssd": "Lexar SSD NM790 1TB",
+    "drive": "C:",
+    "filesystem": "NTFS",
+    "volume_gib": 952.79,
+    "free_gib_at_probe": 458.1,
+    "minimum_spec_claim": false,
+    "ram_upgrade_assumed": false
+  },
+  "installed_versions": {
+    "Unreal": "5.8.2 CL56702186",
+    "VisualStudioBuildTools": "17.14.37710.0",
+    "WindowsSDK": "10.0.22621.0",
+    "project_Python": "3.12.14",
+    "system_Python": "3.11.9",
+    "Git": "2.55.0.windows.5",
+    "GitLFS": "3.7.1",
+    "Node": "24.19.0",
+    "Blender": "5.2.1LTS",
+    "Krita": "5.3.4",
+    "Audacity": "4.0.0",
+    "OBS": "32.2.2",
+    "MeshLab_Store": "2025.7.0.0",
+    "AdobePhotoshop": "27.10",
+    "AdobeAudition": "26.5.0",
+    "AdobeLightroom": "9.6",
+    "CreativeCloudDesktop": "6.10.0.253"
+  },
+  "integrations": {
+    "Unreal": "installed_editor_plugins_C++_Python_versioned_recipes_existing_cold_evidence_not_live_connection_check",
+    "Meshy": "preserved_official_MCP_helpers_and_receipts_no_direct_Meshy_tool_loaded_or_account_probe",
+    "Krita": "native_Scripter_KRA_PNG_qualified_headless_unqualified",
+    "Audacity": "native_session_WAV_no_MCP_or_script_pipe_claim",
+    "OBS": "Lua_fixture_qualified_not_whole_game_mix_or_performance",
+    "MeshLab": "OBJ_fixture_only_no_rig_roundtrip",
+    "Insights": "CPU_timer_export_qualified_memory_errors_unresolved",
+    "LFS": "local_fixture_hydrated_restore_only_remote_storage_unverified",
+    "Adobe": "executables_present_entitlements_and_automation_unverified",
+    "Blender": "installed_available_legacy_non_creature_only_for_selected_route"
+  },
+  "Bellback_scoped_approval": {
+    "date": "2026-09-20",
+    "scope": "Bellback_r001 as shown in the final review: r005 rendered gameplay clips, r004 editable rig/r007 captures, r3 recorded audio, r4 packaged candidate. Completes owner review for the six-point Bellback task; not approval of the entire game release or every historical AS1 candidate.",
+    "owner_reply": "Accept this candidate’s appearance, motion and sound",
+    "files_in_record": 41,
+    "current_differences": [
+      {
+        "path": "game/Content/WonderChess/Diagnostics/BellbackProduction20260920/LS_Bellback_RigInspection_r004.uasset",
+        "expected_sha256": "cb72bbef0d4efeb0fa6ab13bf92239287bdcdcf41eec7ed882d34adda220aad3",
+        "actual_sha256": "7bfa164921fedd22c331782d71181a8df3e6c1b4a6440c27b150b64f3e6473eb",
+        "state": "differs"
+      },
+      {
+        "path": "game/Source/WonderChessRuntime/Private/WCVNextLab.cpp",
+        "expected_sha256": "dc4f220650a73be719a0261bb4ca8737a1464546c75b3b1922b948c5245bdea0",
+        "actual_sha256": "5b88fb5d6273d8e1dc1263d6e8bc08d0c380055f62a884005750440db284d125",
+        "state": "differs"
+      },
+      {
+        "path": "game/Source/WonderChessRuntime/Public/WCVNextLab.h",
+        "expected_sha256": "5869a7a2dd2557104fe68a425b2e59cc5aab96d63558ac26f12ce1c8ee1bbcf2",
+        "actual_sha256": "8b9f8e650f3ee563394a212fafe3e7ad0bfde8e801df8779fa034b59b6eee55d",
+        "state": "differs"
+      }
+    ],
+    "approval_transferred_to_current_shared_code": false
+  },
+  "creature_route": {
+    "route": "Meshy_to_Unreal",
+    "Blender_dependency": false,
+    "views": [
+      "Main/front",
+      "anatomicalLeft",
+      "Back",
+      "anatomicalRight"
+    ],
+    "reference_assembly_default": "Krita",
+    "maps_and_palette": "preserve_except_explicit_scoped_Cragstoat_pastel_revision",
+    "review": "combinedG3G4_separate_technical_checks",
+    "historical_successful_Root_Snapvine_credits": 60,
+    "live_balance_checked": false
+  },
+  "qualification_pilots": [
+    {
+      "id": "pilot_root_recovery",
+      "asset": "wc_vn_grandmother_root",
+      "current": "r009_numeric_mesh_pass_copied_rig_failure_r010_authored_NOT_RUN",
+      "output": "fresh_saved_executable_rig_rest_contact_volume_combined_review"
+    },
+    {
+      "id": "pilot_cragstoat_revision",
+      "asset": "wc_vn_cragstoat",
+      "current": "SageTail_r003_cold_validator_r004_scoped_pass",
+      "output": "full_motion_LOD_board_package_restore_owner_decision"
+    },
+    {
+      "id": "pilot_silkmother_runtime_motion",
+      "asset": "wc_vn_silkmother",
+      "current": "isolated_r003_all_LOD_contact_pass_visual_runtime_review_pending",
+      "output": "runtime_recoil_crossfade_event_package_busy_board_mix_owner_decision"
+    }
+  ],
+  "formal_M2_pilots": [
+    "Bellback",
+    "Prism Organ",
+    "Thimblewake"
+  ],
+  "qualification_pilots_replace_formal_M2": false,
+  "open_journeys": [
+    "current_candidate_full_physical_pointer_keyboard_720_1000_1080",
+    "full_bench_modal_cutoff_relic_scout_loss_spectate_results_restart_cold_resume",
+    "unfamiliar_player_B1_B2_comprehension_acquisition_adaptation",
+    "five_complete_normal_speed_tournament_to_winner_observations",
+    "full_HUD_localization_scaling_remapping_reduced_motion_persistent_settings",
+    "accepted_complete_creature_and_Wondergrove_slice",
+    "earned_traits_relic_compatibility_neutral_teaching_and_bosses",
+    "remote_transport_authentication_sessions_reclaim_independent_devices",
+    "final_content_hardware_performance_clean_machine_release_owner_gate"
+  ],
+  "limitations": [
+    "Existing_visual_listening_records_read_not_all_outputs_independently_re_viewed",
+    "No_live_provider_account_balance_entitlement_or_licensing_probe",
+    "Installation_or_API_documentation_does_not_establish_general_anatomy_support",
+    "Historical_legacy_alpha24_Ada_acceptance_not_transferred",
+    "Latest_same_day_reports_may_change_in_other_work_source_hashes_freeze_this_snapshot",
+    "No_new_production_or_release_acceptance"
+  ],
+  "source_records": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "e81cab94e280a24a30372454efbedcf9c3cbfcfa0285df6c685125c109c3ffc8",
+      "last_write_utc": "2026-09-21T03:52:56.624659+00:00"
+    },
+    {
+      "path": "README.md",
+      "sha256": "423bc7a411a4307f45c000badab33d0989026ed7ee09eac26938c72c394c3262",
+      "last_write_utc": "2026-09-30T04:47:25.531186+00:00"
+    },
+    {
+      "path": "TRANSFER_TO_NEW_PC.md",
+      "sha256": "ea911a55e5453cc07d0dc2427825f7bd2af59bdad7d189c4a849b6e9ade76f1b",
+      "last_write_utc": "2026-09-17T00:17:57.339818+00:00"
+    },
+    {
+      "path": "PAUSED.md",
+      "sha256": "2d71af194ec491ba2b17d58cbe7fb8b5dee6201f97655bf8ba7acb56fb088315",
+      "last_write_utc": "2026-09-15T02:47:34+00:00"
+    },
+    {
+      "path": "docs/LOCAL_TOOLCHAIN.md",
+      "sha256": "b610d02f2e187801b1ff755642a5f4ba1aa1fca975b557b999802a9775d6612a",
+      "last_write_utc": "2026-09-17T00:17:57.341321+00:00"
+    },
+    {
+      "path": "docs/vnext/GPT_PRO_REVIEW.md",
+      "sha256": "b159a74dcbd9520e203b98a993d664e8a720e928a03294d265bfb133287024b6",
+      "last_write_utc": "2026-09-12T15:16:08+00:00"
+    },
+    {
+      "path": "docs/vnext/README.md",
+      "sha256": "e00648d1fe8bd595f239eaf1773e44f7e3b6cb82c7386ad5dd62b8c79645a394",
+      "last_write_utc": "2026-09-30T04:47:25.532191+00:00"
+    },
+    {
+      "path": "docs/vnext/IMPLEMENTATION_MATRIX.md",
+      "sha256": "43bb7ce75e818d9db5e37e89b180cd1cc29045bfc67f67873fa1da307e0ba61c",
+      "last_write_utc": "2026-09-12T15:16:08+00:00"
+    },
+    {
+      "path": "docs/vnext/PRODUCT_AND_COMBAT.md",
+      "sha256": "4d62d41db526e7d220214472abb61663a63a29411ddcdc7c6eb32ae7e6ee3c01",
+      "last_write_utc": "2026-09-12T15:16:08+00:00"
+    },
+    {
+      "path": "docs/vnext/ART_UI_PRODUCTION.md",
+      "sha256": "a0dca2dfd1d8a0e665e6f85af0c025a7c7e9bf9f119fd1367f44059f86fd802a",
+      "last_write_utc": "2026-09-12T15:16:08+00:00"
+    },
+    {
+      "path": "docs/vnext/VALIDATION_AND_ROLLOUT.md",
+      "sha256": "71f4ab4da66c1f6ab406afc5b5b9b057ab75ee7db5d188d7e32cc6cb7a48a1e3",
+      "last_write_utc": "2026-09-12T15:16:08+00:00"
+    },
+    {
+      "path": "docs/vnext/milestones/MILESTONE_STATUS.md",
+      "sha256": "92a93fa66a939ffba5a6186705276da989455604cbccc248e3535672022376cf",
+      "last_write_utc": "2026-09-15T02:49:46+00:00"
+    },
+    {
+      "path": "docs/vnext/planning/DEVELOPMENT_PLAN_2026_09_30.md",
+      "sha256": "784f4fdbf7800c771e3f8ba61b69344708cd613225f88b11e95e0f08441b2cb0",
+      "last_write_utc": "2026-09-30T04:51:09.599658+00:00"
+    },
+    {
+      "path": "reports/vnext/IMPLEMENTATION_HANDOFF.md",
+      "sha256": "f7b7ebd154c8183e99148f1f82c1d7b0db9441189e0f199f99849d9d3ee770aa",
+      "last_write_utc": "2026-09-12T15:17:24+00:00"
+    },
+    {
+      "path": "reports/implementation_state.json",
+      "sha256": "11b1fe2ed8fba55b81bdfb02a7c2c8bb6d473cdccee8e0f158d6cdaeec0be95d",
+      "last_write_utc": "2026-09-30T04:52:34.119721+00:00"
+    },
+    {
+      "path": "data/vnext/catalog.json",
+      "sha256": "281a1323b6ea104fb4f9bd49f9a3e8468701c741f3544ecee05a81fb84c987ef",
+      "last_write_utc": "2026-09-21T14:59:56.938890+00:00"
+    },
+    {
+      "path": "production/creature-pipeline/README.md",
+      "sha256": "a42552df38083d890fe0cdb624a32d4149d032a424532f899133372a2cde17da",
+      "last_write_utc": "2026-09-21T13:32:32.704412+00:00"
+    },
+    {
+      "path": "production/creature-pipeline/ANIMATION_READY.md",
+      "sha256": "e2accf9e4ae8a71057f275f654e18224ad15ee09fdf3c3fd853fbe4293ab24f1",
+      "last_write_utc": "2026-09-21T13:04:36.238383+00:00"
+    },
+    {
+      "path": "production/creature-pipeline/ENGINEERING.md",
+      "sha256": "9230cc4b72f0bed0c4b88098eeb81ff7c5b00725e61da93be2dc10457717b32e",
+      "last_write_utc": "2026-09-21T12:28:49.278245+00:00"
+    },
+    {
+      "path": "production/creature-pipeline/TOOLCHAIN.md",
+      "sha256": "b61c1cdf1d87be0c76e2d467c76481488099c55f28b4b9005f91ed7efdb0e1c1",
+      "last_write_utc": "2026-09-21T10:47:29.211882+00:00"
+    },
+    {
+      "path": "production/asset-studio/docs/00_SYSTEM.md",
+      "sha256": "18fa7eed48832139f819444912ddf826f7f6e82bc348a7e12b1aef82ea81003f",
+      "last_write_utc": "2026-09-12T15:16:10+00:00"
+    },
+    {
+      "path": "reports/pipeline-tools-20260921/README.md",
+      "sha256": "4276696a97868cb8d379460375f4726ee17b543f47451cb1526b8de1e72832f5",
+      "last_write_utc": "2026-09-21T09:46:18.094324+00:00"
+    },
+    {
+      "path": "reports/development-20260930/README.md",
+      "sha256": "8e9a46224a821bcd1703ec3388d206f9e2a98e698579623fceb8141c057851d5",
+      "last_write_utc": "2026-09-30T08:19:44.140778+00:00"
+    },
+    {
+      "path": "reports/development-20260930/package-r003/identity.json",
+      "sha256": "a47c0e2a700df3570a748542f6905e771adca12babab2e7abc1846d6cf64bda9",
+      "last_write_utc": "2026-09-30T06:04:05.320018+00:00"
+    },
+    {
+      "path": "reports/development-20260930/ux/execution-verification.json",
+      "sha256": "67d673249999b0e40886c3beda728ae839309e11fdd6011d39859c426b452adf",
+      "last_write_utc": "2026-09-30T06:20:11.668436+00:00"
+    },
+    {
+      "path": "reports/development-20260930/gameplay/current-diagnostics-r001/readout.json",
+      "sha256": "226ae84528cc2c96362890482cae30457c812784a181e7ac564b00dbabd81293",
+      "last_write_utc": "2026-09-30T05:19:31.982774+00:00"
+    },
+    {
+      "path": "reports/development-20260930/gameplay/reservation-r002/comparison-r003.json",
+      "sha256": "adde72da242b996ef870cb3061de468a344edce8fbf11876ded5beca6e513208",
+      "last_write_utc": "2026-09-30T05:48:37.096157+00:00"
+    },
+    {
+      "path": "reports/development-20260930/meshy-preflight/owner-authorization.json",
+      "sha256": "adfbc446b9eeab70de6b4f8f77b9b37de223882b47251ff4cb70969f014f2fd4",
+      "last_write_utc": "2026-09-30T05:25:19.070950+00:00"
+    },
+    {
+      "path": "reports/development-20260930/meshy-preflight/credit-reconciliation.json",
+      "sha256": "a963903359d868d5ef43319641a1e6e463204c9cc1240ed8e7b22f0bdd9cb692",
+      "last_write_utc": "2026-09-30T05:34:21.672381+00:00"
+    },
+    {
+      "path": "reports/bellback-production-20260920/owner-acceptance.json",
+      "sha256": "4607058c94473f67bb8a2c50341e95f5a77abde20109b87c296dc1eff6ba2d5c",
+      "last_write_utc": "2026-09-20T16:26:43.289747+00:00"
+    },
+    {
+      "path": "art-source/asset-studio/production-batch-20260930/README.md",
+      "sha256": "b1f5d7aa272eedeb097a7558e184cc071e715055e3f5460c3fb3ff12cf60e367",
+      "last_write_utc": "2026-09-30T07:31:43.027532+00:00"
+    },
+    {
+      "path": "reports/development-20260930/root-recovery/r009-author-audit.json",
+      "sha256": "dbdefb021398835b2563e56dfe2c5ace52517bfc57ca7e60e17710ee486ef584",
+      "last_write_utc": "2026-09-30T08:09:34.014862+00:00"
+    },
+    {
+      "path": "reports/development-20260930/root-recovery/r010-ready.json",
+      "sha256": "ebee4c1c92cab857a786cdf4fb658d7b954ccd9dc6c09d741fd1020c0cedabf2",
+      "last_write_utc": "2026-09-30T08:09:34.052940+00:00"
+    },
+    {
+      "path": "reports/development-20260930/cragstoat-revision/sage-keymotion_r004/validation_r001/validation.json",
+      "sha256": "e5109f14cc370d1741e39466d8b399ffbee048af27b489310682074050a814b9",
+      "last_write_utc": "2026-09-30T08:06:16.256715+00:00"
+    },
+    {
+      "path": "reports/development-20260930/silkmother-revision/cold-validation-r003/validation.json",
+      "sha256": "8eaf3cf88c6947482d8b1e23e2fb08377dc6e5f50305d295cff2025ce2a4e095",
+      "last_write_utc": "2026-09-30T08:01:35.268743+00:00"
+    },
+    {
+      "path": "reports/development-20260930/assets/generated-inspection/wc_vn_snapvine/unreal-rig-r001/cold-validation-r001/validation.json",
+      "sha256": "dc3cb28043539f84b3aa5d0408dc84a217888a72b1e51daab2daffdcb24ae8a7",
+      "last_write_utc": "2026-09-30T06:44:26.697364+00:00"
+    },
+    {
+      "path": "art-source/asset-studio/wc_vn_reefglass/stages/production_r003/handoff.md",
+      "sha256": "e5c24ab58490c8c5c1e5d1a6d8cb1a309a4a9a98509bab855f78c8474301986b",
+      "last_write_utc": "2026-09-24T10:47:39.636519+00:00"
+    },
+    {
+      "path": "support/tools/meshy/call_meshy.py",
+      "sha256": "3e9c08372942ec9c336abe32e76da265a0b50ebc1871712c1d892066e791b6a7",
+      "last_write_utc": "2026-09-17T06:39:38.557425+00:00"
+    },
+    {
+      "path": "support/tools/meshy/check_retry_guard.mjs",
+      "sha256": "5aecfe360540cd2f0f7d2f8f6fcde27f724735bc800f8d3994ea7be18a57feab",
+      "last_write_utc": "2026-09-17T06:43:35.062967+00:00"
+    },
+    {
+      "path": "game/Source/WonderChessRuntime/Private/Simulation/WonderSimulation.cpp",
+      "sha256": "fba597e5a82863ec2c05796133b2272f13ecbd158798a11fbf4488c000317d2e",
+      "last_write_utc": "2026-09-21T14:55:57.233664+00:00"
+    },
+    {
+      "path": "game/Source/WonderChessRuntime/Private/WCVNextSolo.cpp",
+      "sha256": "d86cbcd2aa74302670184afb1578edb7f3b7d255a2298755a67437b993091577",
+      "last_write_utc": "2026-09-30T05:40:58.160307+00:00"
+    },
+    {
+      "path": "game/Source/WonderChessRuntime/Private/WCSilkmotherPresentation.cpp",
+      "sha256": "d60393ff907dd006b7efb836f28504fc280f20aa501c8524e2a6dd54ab284ddc",
+      "last_write_utc": "2026-09-30T07:44:01.747478+00:00"
+    },
+    {
+      "path": "game/Source/WonderChessArtTools/Private/WCAssetAuthoringLibrary.cpp",
+      "sha256": "775c35d009f99c0724f6336bc8c41d1c481a929cc57e6a8fe5c246b5b52fc677",
+      "last_write_utc": "2026-09-30T07:44:01.746477+00:00"
+    },
+    {
+      "path": "tests/runtime/vnext_combat_tests.cpp",
+      "sha256": "f60b6592759e5eafd06c4483b0d0c9b82441ffa97b4f7cdea7f2847031077770",
+      "last_write_utc": "2026-09-30T05:08:38.003420+00:00"
+    },
+    {
+      "path": "tests/runtime/vnext_online_contract_tests.cpp",
+      "sha256": "91d45757ed19d27f625fbb53765e77c01df774badbc17300e6f90ef291d6f7aa",
+      "last_write_utc": "2026-09-16T13:38:27.805673+00:00"
+    },
+    {
+      "path": "tools/vnext/catalog.py",
+      "sha256": "9e43640fc367a8b4ec88339529910aa010eb55fd1231172498bbae321e96529f",
+      "last_write_utc": "2026-09-21T14:51:42.767448+00:00"
+    }
+  ],
+  "creature_probe_evidence": [
+    {
+      "asset": "Cragstoat",
+      "source": "reports/development-20260930/cragstoat-revision/sage-keymotion_r004/validation_r001/validation.json",
+      "status": "PASS_COLD_SKIN_CONTACT_FULL_TAIL_STUDY",
+      "human_acceptance": null,
+      "sample_count": 601,
+      "capture_count": 157,
+      "failure_count": 0,
+      "limits": "Bounded10-second native LOD0 study. Per-vertex Chest-local tail motion and rigid-shoulder correspondence use fixed render topology; floor/foot checks remain native surface measurements. This does not prove collision or self-intersection. RMS/95-percent coverage are proposed local regression gates, not owner-adopted attractiveness criteria. Actual images/motion must be viewed. No owner art approval, locomotion/combat/LOD/package acceptance."
+    },
+    {
+      "asset": "Silkmother",
+      "source": "reports/development-20260930/silkmother-revision/cold-validation-r003/validation.json",
+      "status": "PASS_COLD_ALL_LOD_CONTACT_VISUAL_AND_RUNTIME_REVIEW_PENDING",
+      "human_acceptance": false,
+      "sample_count": 1803,
+      "capture_count": 164,
+      "failure_count": 0,
+      "limits": "Native full-skin minima and anatomy-specific sole patch centroids on 601 frames per LOD certify only measured floor/contact scope. Original broader paw centroids are also recorded; their flexion is not relabeled as rigid-sole drift. Whole-body volume, joint clipping, natural motion and board readability require viewed captures. Diagnostic additive matrix precedes the actual runtime crossfade/damage-event package. Cold native target60/1, all601 keys and source/compressed odd-key comparisons are recorded before skin sampling. No source acceptance, animation-ready or release approval claim."
+    },
+    {
+      "asset": "Snapvine",
+      "source": "reports/development-20260930/assets/generated-inspection/wc_vn_snapvine/unreal-rig-r001/cold-validation-r001/validation.json",
+      "status": "PASS_COLD_PARTIAL_SKIN_CONTACT_PROBE_VISUAL_REVIEW_PENDING",
+      "human_acceptance": false,
+      "sample_count": 601,
+      "capture_count": 160,
+      "failure_count": 0,
+      "limits": "Ten-second 60Hz LOD0 partial study. Native minima/centroids do not certify rigid-point distances or self-intersection. Continuous and extreme images must be viewed. No complete locomotion, garden opening, full strike, animation-ready, LOD, package or art approval claim."
+    },
+    {
+      "asset": "Root_r008",
+      "source": "reports/development-20260930/assets/generated-inspection/wc_vn_grandmother_root/unreal-rig-r002/cold-validation-r008/validation.json",
+      "status": "FAIL_SKIN_CONTACT_PROBE",
+      "human_acceptance": false,
+      "sample_count": 601,
+      "capture_count": 160,
+      "failure_count": 231,
+      "limits": "Ten-second 60Hz LOD0 partial study. Native minima/centroids do not certify rigid-point distances or self-intersection. Continuous and extreme images must be viewed. No complete locomotion, garden opening, full strike, animation-ready, LOD, package or art approval claim."
+    }
+  ]
+}

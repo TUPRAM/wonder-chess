@@ -1,0 +1,177 @@
+{
+  "schema_version": "1.0.0",
+  "report_date": "2026-09-30",
+  "status": "primary_source_research_for_proposed_planning_artifacts",
+  "scope": "Documented capabilities and applicable conditional guidance; no production execution, entitlement, anatomy quality, local bridge or release acceptance is established by these sources.",
+  "sources": [
+    {
+      "id": "SRC-EPIC-AUTOMATION",
+      "publisher": "Epic Games",
+      "title": "Automation Test Framework",
+      "url": "https://dev.epicgames.com/documentation/en-us/unreal-engine/automation-test-framework-in-unreal-engine",
+      "accessed": "2026-09-30",
+      "version_label_observed": "Unreal Engine 5.8 Documentation",
+      "kind": "official_tool_documentation",
+      "supported_claim": "Automation distinguishes API/unit, system/feature, stress and screenshot checks.",
+      "lesson": "Use separate evidence for rules, engine rendering and packaged behavior; retain results and test identities.",
+      "limits": "The document does not show Wonder Chess tests executed or a local automation/report-server adapter qualified.",
+      "used_in": ["03-practices-and-pipeline.md"]
+    },
+    {
+      "id": "SRC-EPIC-VALIDATION",
+      "publisher": "Epic Games",
+      "title": "Data Validation",
+      "url": "https://dev.epicgames.com/documentation/en-us/unreal-engine/data-validation-in-unreal-engine",
+      "accessed": "2026-09-30",
+      "version_label_observed": "Unreal Engine 5.8 Documentation",
+      "kind": "official_tool_documentation",
+      "supported_claim": "Command-line Data Validation defaults to C++ rules; Python validators require explicit registration with the validator subsystem.",
+      "lesson": "Require a callback witness, applicable nonempty contract, passing fixture and failing fixture.",
+      "limits": "Successful validator invocation cannot establish visual quality or every runtime dependency.",
+      "used_in": ["03-practices-and-pipeline.md"]
+    },
+    {
+      "id": "SRC-EPIC-FBX",
+      "publisher": "Epic Games",
+      "title": "FBX Skeletal Mesh Pipeline",
+      "url": "https://dev.epicgames.com/documentation/en-us/unreal-engine/fbx-skeletal-mesh-pipeline-in-unreal-engine",
+      "accessed": "2026-09-30",
+      "version_label_observed": "Unreal Engine 5.8 Documentation; importer FBX 2020.2",
+      "kind": "official_tool_documentation",
+      "supported_claim": "The skeletal pipeline supports mesh, animation and morph interchange; automatic texture/material handling is restricted and exporter compatibility matters.",
+      "lesson": "Inventory imported maps, UVs, hierarchy and behavior; deliver editable Unreal controls/material recipes separately.",
+      "limits": "FBX export passage does not establish preservation of Control Rig, full shader graphs, UV pixel correspondence or native motion.",
+      "used_in": ["03-practices-and-pipeline.md"]
+    },
+    {
+      "id": "SRC-EPIC-IK",
+      "publisher": "Epic Games",
+      "title": "IK Rig Editor",
+      "url": "https://dev.epicgames.com/documentation/en-us/unreal-engine/ik-rig-in-unreal-engine",
+      "accessed": "2026-09-30",
+      "version_label_observed": "Unreal Engine 5.8 Documentation",
+      "kind": "official_tool_documentation",
+      "supported_claim": "IK Rig requires an existing skeletal mesh and configures goals, solvers and chains; incompatible bone names or hierarchies can prevent reuse.",
+      "lesson": "Configure semantic anatomy-specific rigs and inspect contacts, not assumed universal skeletons.",
+      "limits": "The feature is not proof of generated anatomy, skin quality or a compatible automation bridge.",
+      "used_in": ["03-practices-and-pipeline.md"]
+    },
+    {
+      "id": "SRC-MESHY-MULTI",
+      "publisher": "Meshy",
+      "title": "Multi-Image to 3D API",
+      "url": "https://docs.meshy.ai/en/api/multi-image-to-3d",
+      "accessed": "2026-09-30",
+      "version_label_observed": "Published options include meshy-7.1; latest is documented as meshy-7.1 on retrieval",
+      "kind": "official_provider_api_documentation",
+      "supported_claim": "The endpoint accepts one to four images; its current first image is primary/front, with published PBR and multi-view texturing options.",
+      "lesson": "Keep Wonder Chess's stricter accepted four-slot contract and pin actual model/options in each candidate.",
+      "limits": "Provider input tolerance does not override owner four-view policy or prove geometrically consistent views, entitlement, job permission or output quality.",
+      "used_in": ["03-practices-and-pipeline.md"]
+    },
+    {
+      "id": "SRC-MESHY-RIG-API",
+      "publisher": "Meshy",
+      "title": "Rigging API",
+      "url": "https://docs.meshy.ai/en/api/rigging",
+      "accessed": "2026-09-30",
+      "version_label_observed": "Live API documentation on retrieval",
+      "kind": "official_provider_api_documentation",
+      "supported_claim": "Programmatic rigging is documented for clearly defined standard textured humanoid/bipedal assets, with non-humanoids listed as unsuitable.",
+      "lesson": "Do not submit quadrupeds or unusual Wonder Chess anatomy to a humanoid API because a website rig feature exists.",
+      "limits": "No API request, current credit charge, account allowance or actual rig was executed during research.",
+      "used_in": ["03-practices-and-pipeline.md"]
+    },
+    {
+      "id": "SRC-MESHY-RIG-WEB",
+      "publisher": "Meshy",
+      "title": "Rigging — Webapp Guide",
+      "url": "https://docs.meshy.ai/en/webapp/guides/3d-model/rigging",
+      "accessed": "2026-09-30",
+      "version_label_observed": "Live website documentation on retrieval",
+      "kind": "official_provider_web_documentation",
+      "supported_claim": "Website guide advertises humanoid and quadruped rigging, and identifies limits for complex custom skeletons.",
+      "lesson": "Web and API capabilities are separate; require actual pose/deformation evidence and qualified Unreal fallback.",
+      "limits": "General marketing/help capability does not prove a given creature fits supported anatomy or that its failed web rig succeeded. Provider DCC suggestions do not override the owner Meshy-to-Unreal route.",
+      "used_in": ["03-practices-and-pipeline.md"]
+    },
+    {
+      "id": "SRC-MESHY-RETENTION",
+      "publisher": "Meshy",
+      "title": "Asset Retention",
+      "url": "https://docs.meshy.ai/en/api/asset-retention",
+      "accessed": "2026-09-30",
+      "version_label_observed": "Live API documentation on retrieval",
+      "kind": "official_provider_policy_documentation",
+      "supported_claim": "Ordinary API-generated models are documented with a maximum three-day retention; Enterprise is separately described.",
+      "lesson": "Preserve original output bytes, sanitized receipts and hashes locally rather than depend on provider links.",
+      "limits": "This audit does not verify the owner's Enterprise entitlement or a specific task's current availability.",
+      "used_in": ["03-practices-and-pipeline.md"]
+    },
+    {
+      "id": "SRC-KRITA-SCRIPTING",
+      "publisher": "Krita Foundation / KDE",
+      "title": "Introduction to Python Scripting",
+      "url": "https://docs.krita.org/en/user_manual/python_scripting/introduction_to_python_scripting.html",
+      "accessed": "2026-09-30",
+      "version_label_observed": "Krita Manual 5.3.0 documentation",
+      "kind": "official_tool_documentation",
+      "supported_claim": "Krita exposes native application and document operations through Python APIs.",
+      "lesson": "Preserve editable source and explicit transform/export recipes in the owner-selected reference preparation route.",
+      "limits": "The page does not qualify headless export, the exact installed app version or current blocked UI prompts.",
+      "used_in": ["03-practices-and-pipeline.md"]
+    },
+    {
+      "id": "SRC-ADOBE-VARIANTS",
+      "publisher": "Adobe",
+      "title": "Creating data-driven graphics in Photoshop",
+      "url": "https://helpx.adobe.com/photoshop/using/creating-data-driven-graphics.html",
+      "accessed": "2026-09-30",
+      "version_label_observed": "Live Photoshop Help page; no installed version inferred",
+      "kind": "official_tool_documentation",
+      "supported_claim": "Photoshop documents text/pixel/visibility variables, dataset import, preview and derived export.",
+      "lesson": "Use reviewed template variants for repeated visual collateral when it is useful, while deriving gameplay facts from canonical data.",
+      "limits": "Creative Cloud access does not establish product entitlement or working automation; this is an optional proposal and does not replace Krita.",
+      "used_in": ["03-practices-and-pipeline.md"]
+    },
+    {
+      "id": "SRC-MICROSOFT-XAG",
+      "publisher": "Microsoft",
+      "title": "Xbox Accessibility Guidelines",
+      "url": "https://learn.microsoft.com/en-us/xbox/accessibility/guidelines",
+      "accessed": "2026-09-30",
+      "version_label_observed": "Page last-updated label 2026-08-14",
+      "kind": "official_accessibility_guidance",
+      "supported_claim": "The guidelines cover text, contrast, redundant visual/audio cues, input, navigation, focus, timing and motion among other player barriers.",
+      "lesson": "Integrate specific accessibility checks into real shop, deployment, combat interpretation and results journeys.",
+      "limits": "Guidance is not a Wonder Chess certification or evidence from disabled players; compliance is not claimed.",
+      "used_in": ["03-practices-and-pipeline.md"]
+    },
+    {
+      "id": "SRC-VALVE-REVIEW",
+      "publisher": "Valve",
+      "title": "Review Process — Steamworks",
+      "url": "https://partner.steamgames.com/doc/store/review_process",
+      "accessed": "2026-09-30",
+      "version_label_observed": "Live Steamworks documentation on retrieval",
+      "kind": "conditional_platform_requirement",
+      "supported_claim": "Steam requires store and build review; advertised features must exist in the submitted build and it must launch on advertised supported operating systems.",
+      "lesson": "Bind accurate claims/gameplay captures to a near-final exact build if Steam is selected.",
+      "limits": "Steam is not an adopted Wonder Chess distribution commitment; a report preview, store review or successful launch does not establish enjoyment or full M7 acceptance.",
+      "used_in": ["03-practices-and-pipeline.md"]
+    }
+  ],
+  "unused_or_limited_fetches": [
+    {
+      "url": "https://helpx.adobe.com/creative-cloud/help/firefly-faq.html",
+      "result": "Retrieval returned an internal error.",
+      "consequence": "No Firefly allowance, generation license or provider authorization claim derived from this fetch."
+    },
+    {
+      "url": "https://dev.epicgames.com/documentation/en-us/unreal-engine/gauntlet-automation-framework-in-unreal-engine",
+      "result": "Retrieved a short landing page only.",
+      "consequence": "No detailed Gauntlet implementation recommendation is relied upon."
+    }
+  ],
+  "interpretation": "The lean adaptations are recommendations, not official requirements. Local candidate results retain their independent repository evidence and exact scope. Pricing, rights, account allowances and platform obligations must be rechecked for an actual future operation."
+}
