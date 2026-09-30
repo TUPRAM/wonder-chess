@@ -1,0 +1,91 @@
+{
+  "observed_at_utc": "2026-09-30T09:09:26Z",
+  "scope": "Studio production report and catalogue preview; no game release or new production-skill execution",
+  "github": {
+    "repository": "https://github.com/TUPRAM/wonder-chess",
+    "report_branch": "codex/studio-production-20260930",
+    "report_content_commit": "9b1ed1f046ca501dc81841e5b8c4dc2137413a3e",
+    "preview_branch": "codex/studio-preview-20260930",
+    "preview_commit": "9828d7611727568b3f27ccc1d555929803895f0b",
+    "preview_commit_parents": 0,
+    "preview_paths": 24,
+    "report_web_subtree": "fb477aefc604a3af0f27fc17020b1d5c7b05a309",
+    "preview_web_subtree": "fb477aefc604a3af0f27fc17020b1d5c7b05a309",
+    "source_identity": "Exact same Git subtree; isolated preview history excludes game assets",
+    "active_checkout_branch": "codex/milestones-b0-m7-20260912",
+    "active_checkout_head": "d80635f615810a93c3161c6bfd6c34c758b08260",
+    "primary_index": "No paths staged; publications used separate temporary indexes"
+  },
+  "vercel": {
+    "project": "wonder-chess-studio",
+    "project_id": "prj_Lf188yoFGFG5Ex0jKXNOAeiUhif7",
+    "deployment_id": "dpl_i9wCx1dvYeXiquq1AxzALLjcAHjf",
+    "environment": "Preview",
+    "api_target": null,
+    "state": "READY",
+    "url": "https://wonder-chess-studio-prt5tt4o6-iputupramanaputra-1551s-projects.vercel.app",
+    "branch_alias": "https://wonder-chess-studio-git-dce331-iputupramanaputra-1551s-projects.vercel.app",
+    "root": "web/studio-production",
+    "framework": "Other/static",
+    "build_command": null,
+    "output_directory": ".",
+    "include_outside_root": false,
+    "machine": "Basic: 2 vCPU / 8 GB",
+    "protection": "Default Vercel Authentication retained; authenticated owner browser verified",
+    "production_branch": "main",
+    "production_deployment": "No completed Production deployment"
+  },
+  "deployed_browser": {
+    "tool": "cua_repl / existing Chrome",
+    "status": "PASS_REPORT_FUNCTIONS_SCOPED",
+    "checks": {
+      "nonblank_render": true,
+      "proposed_cards": 16,
+      "existing_cards": 28,
+      "P0_cards": 8,
+      "search_creature_P0_cards": 2,
+      "no_match_and_recovery": true,
+      "card_details_expand": true,
+      "section_navigation": true,
+      "expand_all_sections": 11,
+      "collapse_all": true,
+      "markdown_browser_download": "PASS_EXACT_BYTES"
+    },
+    "markdown_sha256": "70693dc21e3c258d5653b10f07497b1c3e68f249a60401563a48141f37adbdf7",
+    "catalogue_download": "Browser download endpoint blocked by client; no protection/permission change attempted. Catalogue app fetch/render passed; JSON is also on the report branch.",
+    "responsive": "Local 390px browser verification passed on the same site source; deployed screenshot reviewed at normal desktop viewport",
+    "screenshot": "vercel-preview-desktop.jpg"
+  },
+  "recovery": [
+    {
+      "attempt": "Connector deploy_to_vercel / build-log calls",
+      "result": "Advertised connector method unavailable",
+      "action": "Use normal Vercel Git project UI and available read-only deployment tools"
+    },
+    {
+      "attempt": "Initial full-repository deployment",
+      "deployment_id": "dpl_AsSwH4nhMirvB6CNXinMFcSGNRon",
+      "state": "CANCELED",
+      "api_target": "production",
+      "reason": "Dashboard Create Preview action yielded first Production target; clone of approximately 10 GB repository had not completed after five minutes",
+      "action": "Cancel unfinished build; create isolated preview-only Git history; new Git deployment READY in Preview"
+    },
+    {
+      "attempt": "Anonymous HTTP checks",
+      "result": "Redirect to Vercel login; final HTTP 200 was login HTML, not successful artifact verification",
+      "action": "Verify through authenticated browser; keep protection"
+    },
+    {
+      "attempt": "Browser helper download",
+      "result": "Download helper timeout; direct report-link click succeeded. JSON endpoint reported net::ERR_BLOCKED_BY_CLIENT",
+      "action": "Record scoped result; no security bypass"
+    }
+  ],
+  "game_release_acceptance": "NOT_ASSESSED",
+  "proposed_skill_execution": "NOT_RUN",
+  "private_art_new_uploads": 0,
+  "provider_production_jobs": 0,
+  "provider_credits_spent": 0,
+  "paid_addons_or_tool_installs": 0,
+  "audit_review": "Final independent read-only audit passed: proposals remain unexecuted, scoped owner/technical evidence remains separate, no credential patterns or signed art URLs in preview"
+}

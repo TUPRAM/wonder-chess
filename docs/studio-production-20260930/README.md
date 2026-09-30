@@ -21,3 +21,9 @@ Use Node with the qualified `marked` 17.0.5 renderer already supplied by the wor
 The generator assembles REPORT.md and skill-catalogue.json, copies the explicitly allowlisted downloads and generates the preview/build hash manifest. It reads no art or account files. Future maintainers can supply the same pinned renderer in another environment; rendering code is separate from the production-skill proposals.
 
 Vercel project root is `web/studio-production`, framework Other/static, output directory `.`, no build/install command. The user-requested target is preview. The deployment evidence is recorded under `reports/studio-production-20260930/`. Report browser checks do not establish game quality or M7 acceptance.
+
+## Published preview
+
+[Open the verified Vercel Preview](https://wonder-chess-studio-prt5tt4o6-iputupramanaputra-1551s-projects.vercel.app). Default Vercel sign-in protection remains enabled; use the owner's authorized Vercel account. [Publication evidence](../../reports/studio-production-20260930/publication.json) records the exact source, READY state and browser checks.
+
+The full report belongs to `codex/studio-production-20260930`. Deployment uses the separate `codex/studio-preview-20260930` branch, whose parentless commit contains only the 24 static-preview paths under `web/studio-production`. Its web Git subtree is byte-identical to the report branch's web subtree. This avoids cloning the approximately 10 GB game repository into the static report deployment. Do not merge the isolated preview branch into game development; future preview updates must copy only the approved static subtree while preserving the report and active development branches.
