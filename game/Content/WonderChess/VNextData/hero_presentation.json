@@ -1,0 +1,57 @@
+{
+  "wc_vn_shieldbearer": {
+    "mesh": "/Game/WonderChess/VNext/Heroes/Shieldbearer_r003/SK_Shieldbearer",
+    "scale": 1.0,
+    "yaw": 0,
+    "label_height": 243,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Heroes/Shieldbearer_r003/Animations/A_Shieldbearer_Library_Idle",
+      "Move": "/Game/WonderChess/VNext/Heroes/Shieldbearer_r003/Animations/A_Shieldbearer_Move",
+      "Attack": "/Game/WonderChess/VNext/Heroes/Shieldbearer_r003/Animations/A_Shieldbearer_Library_Attack",
+      "Cast": "/Game/WonderChess/VNext/Heroes/Shieldbearer_r003/Animations/A_Shieldbearer_Library_Block1",
+      "Hit": "/Game/WonderChess/VNext/Heroes/Shieldbearer_r003/Animations/A_Shieldbearer_Library_Hit_Reaction",
+      "Defeat": "/Game/WonderChess/VNext/Heroes/Shieldbearer_r003/Animations/A_Shieldbearer_Library_Dead"
+    },
+    "items": [
+      {
+        "mesh": "/Game/WonderChess/VNext/Heroes/Shieldbearer_r003/Items/TowerShield/model_urls_glb/StaticMeshes/model_urls_glb",
+        "bone": "LeftForeArm",
+        "held_pose": true,
+        "along_forearm": 13,
+        "location": [
+          12.0,
+          6.1,
+          -18.0
+        ],
+        "rotation": [
+          0,
+          -15,
+          0
+        ],
+        "scale": 0.62
+      }
+    ],
+    "rates": {
+      "Attack": 1.8
+    },
+    "held_arm": {
+      "chest": "Spine02",
+      "upper": "LeftArm",
+      "lower": "LeftForeArm",
+      "hand": "LeftHand",
+      "upper_direction": [
+        0.3,
+        0.25,
+        -1.0
+      ],
+      "lower_direction": [
+        -0.966,
+        0.259,
+        0.05
+      ],
+      "free_clips": [
+        "Defeat"
+      ]
+    }
+  }
+}

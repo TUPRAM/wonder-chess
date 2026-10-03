@@ -1,4 +1,113 @@
 {
+  "bench_drag_camera_briefs_20261003": {
+    "date": "2026-10-03",
+    "status": "BENCH_DRAG_LOWER_CAMERA_AND_COURTYARD_BRIEFS_AUTHORED",
+    "owner_feedback": "Tile highlight while dragging confirmed working by the owner. Owner chose the lower camera and asked for the courtyard asset briefs.",
+    "bench_drag": "SButton OnPressed -> AWCVNextLab::BenchPressed arms a drag from a bench slot; a temporary model (hero model if one exists, otherwise a proxy) follows the cursor; release over a board tile issues the normal move. Compiles; automated solo exercise completes; not exercised with a real mouse. Dragging from the board back to a bench slot is not implemented (click still works).",
+    "camera": "Storybook camera forward vector lowered from (0,-2400,-2200) to (0,-2400,-1650) when the courtyard is on. Evidence reports/environment/courtyard-20261003/solo-r003: the far wall base, plinth and far braziers now show at the top; the far wall reads dark.",
+    "briefs": [
+      "production/environment/courtyard/BRIEFS.md",
+      "production/environment/courtyard/CODEX_PROMPT.md"
+    ],
+    "meshy_plan": "Six static pieces at 30 credits each, 180 credits; not started and not authorized.",
+    "uncommitted": true
+  },
+  "courtyard_drag_shield_20261003": {
+    "date": "2026-10-03",
+    "status": "SHIELD_WORN_POSE_DRAG_AND_COURTYARD_BLOCKOUT_BUILT_INTERACTION_UNTESTED_BY_HAND",
+    "owner_request": "Delete the two broken import folders; make the shield look worn rather than attached; rework the environment into a stone castle courtyard; press-and-hold to pick a piece up, highlight the hovered tile and the tiles within its attack range.",
+    "removed": "game/Content/WonderChess/VNext/Heroes/Shieldbearer_r001 and Shieldbearer_r002 were sent to the Windows Recycle Bin (recoverable), not hard-deleted.",
+    "shield": {
+      "change": "UWCHeroAnimInstance holds the left arm in a fixed bent pose relative to the chest in every clip except Defeat; the shield is placed for that pose and follows the forearm. Attack clip plays at 1.8x.",
+      "evidence": "reports/creature-production/wc_vn_shieldbearer/hero_review_r005/review-sheet.png",
+      "open": "Owner review; no close-up of a live fight."
+    },
+    "drag": {
+      "change": "AWCVNextLab::TickDrag: a press that selects a piece arms a drag; holding or leaving the tile lifts the piece to the cursor; hovered tile gold, tiles within the unit attack range in team colour; release issues the existing move.",
+      "verified": "Compiles and the automated solo exercise still completes. NOT exercised with a real mouse; behaviour on screen is unverified."
+    },
+    "courtyard": {
+      "change": "AWCVNextLab::BuildCourtyard (default on; -WCLegacyBoard restores the earlier scene): flagstone yard, far and flank curtain walls with battlements, two round towers, gatehouse, blue-and-brass banners, four braziers with warm lights, warmer sun and stronger sky light; sanctuary backdrop hidden.",
+      "evidence": "reports/environment/courtyard-20261003/solo-r002 and review-r001",
+      "honest_state": "Blockout from engine primitives and flat stone tints, not finished art. At the game camera only the far wall base, a banner edge and two braziers are in frame; the sky is black."
+    },
+    "checks": "WonderChessEditor build exit 0; catalogue check PASS; 251 Python tests run with 1 failure (the Blender launcher test blocked by PowerShell script policy, as before)",
+    "uncommitted": true
+  },
+  "shieldbearer_on_board_20261003": {
+    "date": "2026-10-03",
+    "status": "SHIELDBEARER_MODEL_ON_BOARD_SIX_CLIPS_CAPTURED_OWNER_REVIEW_OPEN",
+    "owner_request": "Fix the import and put the Shieldbearer on the board, rigged and moving (idle, walking, attack, etc). Environment and board remake requested next, after this.",
+    "meshy": {
+      "job": "art-source/asset-studio/wc_vn_shieldbearer/inputs/meshy/body_animations_r001",
+      "actions": "Idle(0), Attack(4), Hit_Reaction(178), Dead(8), Block1(138) from the Meshy animation library, one merged FBX/GLB",
+      "credits_used": 15,
+      "balance_after": 2948,
+      "pilot_total_credits": 80
+    },
+    "unreal": {
+      "candidate": "/Game/WonderChess/VNext/Heroes/Shieldbearer_r003 (body from rigged FBX at 180 cm, 25 bones; seven clips on one skeleton; shield static mesh)",
+      "broken_earlier_candidates": [
+        "Shieldbearer_r001 (100x too small, duplicated meshes)",
+        "Shieldbearer_r002 (skeleton, material and four clips never saved)"
+      ],
+      "runtime": "UWCHeroPresentationComponent (WCHeroPresentation.h/.cpp) picks Idle/Move/Attack/Cast/Hit/Defeat from combat state; placement data in game/Content/WonderChess/VNextData/hero_presentation.json; hooked into AWCVNextLab::AddPieceView for lab and solo.",
+      "review": "reports/creature-production/wc_vn_shieldbearer/hero_review_r004/review-sheet.png: close-ups with a camera fill light show front, shield side, back, walk, attack, block, hit and defeat; shield rides the left forearm with the sun face forward.",
+      "solo": "reports/creature-production/wc_vn_shieldbearer/solo_board_r001: solo storybook exercise ran with the model on the board; it reads dark under the current board lighting.",
+      "launchers": [
+        "Watch Shieldbearer.cmd",
+        "Play Wonder Chess (Source Build).cmd"
+      ],
+      "not_verified": [
+        "Watch-mode loop after the final rebuild was not run",
+        "No close-up of a live fight; state-to-clip mapping in real combat is unreviewed",
+        "Body material is base colour only (FBX import); metallic/roughness/normal maps are not applied",
+        "Attack clip is 2.8 s, longer than his attack interval, so it restarts mid-swing",
+        "Shop portrait still shows the old creature picture",
+        "Not packaged"
+      ]
+    }
+  },
+  "shieldbearer_meshy_pilot_20261003": {
+    "date": "2026-10-03",
+    "status": "SHIELDBEARER_MESHY_PILOT_GENERATED_RIGGED_IMPORTED_UNREVIEWED_IN_ENGINE",
+    "owner_decisions": [
+      "Shieldbearer four_view_r004 is the preferred art direction (\"I like this direction more\")",
+      "Go ahead with the 65-credit Meshy pilot and with the art-standard rewrite around r004"
+    ],
+    "meshy": {
+      "tool": "tools/production/meshy_job.py (REST, key from the owner DPAPI store; one submission per job folder)",
+      "jobs": "art-source/asset-studio/wc_vn_shieldbearer/inputs/meshy/{body_r001,tower_shield_r001,body_rig_r001}",
+      "body": "meshy-7.1 multi-image from r004 without_shield views; 31,028 triangles; base colour/metallic/roughness/normal at 4K; 1.90 m; A-pose",
+      "shield": "meshy-7.1 multi-image from r004 shield_only views; 4,680 triangles; came back 1.90 m tall and must be scaled at attachment",
+      "rig": "Meshy auto-rig, 24 joints, walking and running clips",
+      "credits": {
+        "before": 3028,
+        "after": 2963,
+        "used": 65,
+        "authorized": 65
+      }
+    },
+    "unreal_import": {
+      "tool": "tools/unreal/import_meshy_hero.py",
+      "destination": "/Game/WonderChess/VNext/Heroes/Shieldbearer_r001",
+      "report": "reports/creature-production/wc_vn_shieldbearer/meshy_pilot_r001/unreal-import.json",
+      "result": "Imported with -NullRHI: skeletal body (24 bones), walk 1.067 s, run 0.667 s, static shield, PBR textures.",
+      "defects": [
+        "Skeletal body imported 100x too small (bounds half-extent 0.9 cm)",
+        "Walk and run each imported a duplicate mesh, skeleton and 4K texture set instead of animation only",
+        "Generic asset names",
+        "Editor process exit code 3 after quit; cause not investigated"
+      ],
+      "not_done": "Not viewed in engine, not attached, not wired to the Shieldbearer hero, no game-camera review, no owner acceptance."
+    },
+    "art_track": {
+      "standard": "production/hero-art/VISUAL_STANDARD.md version 3 anchored on r004",
+      "layout": "full / body / items/<name>, four views each",
+      "codex_prompt": "production/hero-art/CODEX_PROMPT.md first batch boar_rusher, grove_druid, hookjaw",
+      "site": "Shieldbearer r004 with_shield views published to https://wonder-chess.vercel.app via the site branch"
+    }
+  },
   "brand_logo_candidate_20261003": {
     "website_icon": {
       "path": "art-source/asset-studio/wc_brand_logo/inputs/references/icon_r001/wonder-chess-icon.png",

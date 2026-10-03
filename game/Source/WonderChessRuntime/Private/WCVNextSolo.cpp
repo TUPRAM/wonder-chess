@@ -846,6 +846,7 @@ void AWCVNextLab::BuildStorybookInterface()
             .WidthOverride_Lambda(SocketSize).HeightOverride_Lambda(SocketSize)
             [SNew(SButton).ButtonStyle(BenchSocketStyle()).ContentPadding(2)
                 .IsEnabled_Lambda(CanEdit).ToolTipText_Lambda([this,Slot,Piece]{return T(BenchText(Slot)+(Piece()?TEXT("\nClick to select this creature; then choose a legal board tile."):TEXT("\nClick with a selected creature to move it into this empty slot.")));})
+                .OnPressed_Lambda([this,Slot]{BenchPressed(Slot);})
                 .OnClicked_Lambda([this,Slot]{SelectBench(Slot);return FReply::Handled();})
                 [SNew(SBorder).BorderImage_Lambda([this,Piece]{const auto* Unit=Piece();
                         return BenchFace(Unit&&(Selected==Unit->id||UpgradePulse(Unit->id)>0));}).Padding(2)

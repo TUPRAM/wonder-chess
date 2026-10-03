@@ -1,0 +1,19 @@
+{
+  "job": "Shieldbearer body, pilot r001",
+  "authorized_by": "Owner, 2026-10-03: go ahead with both, start the Meshy pilot (65-credit pilot: body 30, rig 5, shield 30)",
+  "operation": "multi-image-to-3d",
+  "credit_ceiling": 30,
+  "images": ["art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r004/without_shield/main.png", "art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r004/without_shield/left.png", "art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r004/without_shield/back.png", "art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r004/without_shield/right.png"],
+  "parameters": {
+    "ai_model": "meshy-7.1",
+    "should_texture": true,
+    "enable_pbr": true,
+    "texture_resolution": "4k",
+    "should_remesh": true,
+    "topology": "triangle",
+    "target_polycount": 30000,
+    "save_pre_remeshed_model": true,
+    "pose_mode": "a-pose",
+    "target_formats": ["glb", "fbx"]
+  }
+}

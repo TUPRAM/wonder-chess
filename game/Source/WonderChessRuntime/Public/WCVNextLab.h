@@ -20,6 +20,7 @@ class USkeletalMeshComponent;
 class UInstancedStaticMeshComponent;
 class UTextRenderComponent;
 class UWCBellbackPresentationComponent;
+class UWCHeroPresentationComponent;
 class UWCSilkmotherPresentationComponent;
 class UWCCragstoatPresentationComponent;
 class SWidget;
@@ -71,6 +72,7 @@ private:
         UWCSilkmotherPresentationComponent* Silkmother = nullptr;
         UWCCragstoatPresentationComponent* Cragstoat = nullptr;
         USkeletalMeshComponent* CragstoatPreview = nullptr;
+        UWCHeroPresentationComponent* Hero = nullptr;
     };
     wc::Catalog Catalog;
     std::unique_ptr<wc::Catalog> StatusTestCatalog;
@@ -97,6 +99,28 @@ private:
     void UpdatePlacementCue();
     int PlacementState(wc::Cell Cell) const;
     bool BellbackCandidate=false, BellbackExercise=false, BellbackPerformance=false;
+    // -WCHeroReview: close-up screenshots of the first imported hero model playing each clip.
+    bool HeroReview=false;
+    // Stone castle courtyard around the board; -WCLegacyBoard keeps the earlier scene.
+    bool Courtyard=true;
+    void BuildCourtyard(AActor* Ground,class ADirectionalLight* Sun,class ASkyLight* Sky);
+    // Press-and-hold on a piece lifts it; the hovered tile and the tiles in its attack range light up.
+    bool Dragging=false,DragArmed=false;
+    uint64 DragId=0;
+    wc::Cell DragOrigin{-1,-1},DragHover{-1,-1};
+    FVector DragGround=FVector::ZeroVector;
+    double DragPressedAt=0;
+    TSet<int> DragCells;
+    void TickDrag();
+    // A bench piece has no model on the board, so a temporary one follows the cursor while it is dragged.
+    bool DragFromBench=false;
+    TWeakObjectPtr<AActor> DragGhost;
+    UWCHeroPresentationComponent* DragGhostHero=nullptr;
+    void BenchPressed(int Slot);
+    void EndDrag();
+    int HeroReviewStage=0;
+    double HeroReviewAt=0;
+    void TickHeroReview();
     bool SilkmotherCandidate=false;
     bool CragstoatCandidate=false,CragstoatExercise=false;
     int CragRouteStage=0,CragFloorSamples=0,CragPeakUnits=0,CragRealFightPeakUnits=0;
