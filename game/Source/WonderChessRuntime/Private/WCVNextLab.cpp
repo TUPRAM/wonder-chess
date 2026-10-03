@@ -12,6 +12,10 @@
 #include "Components/SkyAtmosphereComponent.h"
 #include "Components/DirectionalLightComponent.h"
 #include "Framework/Application/SlateApplication.h"
+#include "Engine/Engine.h"
+#include "Engine/GameViewportClient.h"
+#include "Kismet/GameplayStatics.h"
+#include "Widgets/SViewport.h"
 #include "Components/DirectionalLightComponent.h"
 #include "Components/InstancedStaticMeshComponent.h"
 #include "Components/SceneComponent.h"
@@ -499,7 +503,16 @@ void AWCVNextLab::TickDrag()
     const bool Down=FSlateApplication::Get().GetPressedMouseButtons().Contains(EKeys::LeftMouseButton);
     FVector Origin,Direction;
     bool OnBoard=false;wc::Cell Hover{-1,-1};
-    if(Controller&&Controller->DeprojectMousePositionToWorld(Origin,Direction)&&FMath::Abs(Direction.Z)>.0001f&&-Origin.Z/Direction.Z>0){
+    // The controller's own mouse position goes stale while a pressed bench button holds mouse capture,
+    // so the ray is built from the Slate cursor instead.
+    FVector2D Screen=FVector2D::ZeroVector;bool HasCursor=false;
+    if(Controller&&GEngine&&GEngine->GameViewport)if(const auto Widget=GEngine->GameViewport->GetGameViewportWidget()){
+        const FGeometry& Geometry=Widget->GetCachedGeometry();
+        const FVector2D Local=Geometry.AbsoluteToLocal(FSlateApplication::Get().GetCursorPos()),Size=Geometry.GetLocalSize();
+        int Width=0,Height=0;Controller->GetViewportSize(Width,Height);
+        if(Size.X>0&&Size.Y>0){Screen=FVector2D(Local.X/Size.X*Width,Local.Y/Size.Y*Height);HasCursor=true;}
+    }
+    if(HasCursor&&UGameplayStatics::DeprojectScreenToWorld(Controller,Screen,Origin,Direction)&&FMath::Abs(Direction.Z)>.0001f&&-Origin.Z/Direction.Z>0){
         DragGround=Origin+Direction*(-Origin.Z/Direction.Z);
         Hover={int(FMath::FloorToInt((DragGround.X+800)/200)),int(FMath::FloorToInt((800-DragGround.Y)/200))};
         OnBoard=Hover.column>=0&&Hover.column<8&&Hover.row>=0&&Hover.row<8;
