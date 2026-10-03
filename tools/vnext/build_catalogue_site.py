@@ -10,6 +10,10 @@ ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT / "data/vnext/catalog.json"
 SITE = ROOT / "web/catalogue"
 OUTPUT = SITE / "data/catalogue.json"
+# Plain-language wording for the site only. It never carries numbers; the game's own tooltips are unchanged.
+COPY = ROOT / "tools/vnext/catalogue_site_copy.json"
+RULE_KEYS = ("seatCount", "startingHealth", "columns", "rows", "deploymentRows", "benchCapacity", "shopSlots",
+             "rerollCost", "startingGold")
 VIEWS = ("main", "left", "right", "back")
 STAT_KEYS = ("health", "attackDamage", "attackRate", "range", "armor", "resistance", "movementRate")
 PASSIVE = {"directional_guard", "momentum_charge", "stationary_grove"}
@@ -26,34 +30,43 @@ def display(stats):
 def build():
     raw = SOURCE.read_bytes()
     source = json.loads(raw)
+    copy_raw = COPY.read_bytes()
+    copy = json.loads(copy_raw)
     heroes = []
     for hero in source["heroes"]:
         playable = hero["enabled"]
         ability = hero["ability"] if playable else hero["planned_ability"]
-        art = {view: f"art/{hero['id']}/{view}.png" for view in VIEWS
-               if (SITE / "art" / hero["id"] / f"{view}.png").exists()}
+        art = {view: f"art/{hero['id']}/{view}.webp" for view in VIEWS
+               if (SITE / "art" / hero["id"] / f"{view}.webp").exists()}
         heroes.append({
             "id": hero["id"], "name": hero["name"], "race": hero["race"], "class": hero["unit_class"],
             "cost": hero["cost"],
             "role": hero["role_tags"][0], "status": "playable" if playable else "planned",
             "description": hero["dossier"],
             "skill": {"name": ability["name"],
-                      "text": ability["tooltip_en"] if playable else ability["behavior"],
+                      "text": copy["skills"].get(hero["id"]) or (ability["tooltip_en"] if playable else ability["behavior"]),
                       "type": "passive" if playable and ability["mechanic"] in PASSIVE else
                               "mana" if playable else "planned"},
             "stats": display(hero["stats"] if playable else hero["planned_stats"]),
             "art": art,
         })
     traits = [{"id": trait["id"], "kind": trait["kind"], "name": trait["name"], "thresholds": trait["thresholds"],
-               "bonus": trait["behavior"], "members": trait["members"],
+               "bonus": copy["traits"].get(trait["id"]) or trait["behavior"], "members": trait["members"],
                "status": "in_engine" if trait["runtime_enabled"] else "planned"} for trait in source["traits"]]
+    relics = [{"id": relic["id"], "name": relic["name"], "text": relic["description"]} for relic in source["relics"]]
+    policy = source["relic_policy"]
+    rules = {key: source["rules"][key] for key in RULE_KEYS}
+    rules.update(relicRounds=policy["draft_rounds"], relicOffers=policy["offer_count"],
+                 relicsPerHero=policy["per_hero_limit"], relicsPerTeam=policy["team_equipped_limit"])
+
     def compact(value):
         return json.dumps(value, ensure_ascii=False, separators=(",", ":"))
 
     # One record per line keeps the published file small and its diffs readable.
     return ('{"title":"Wonder Chess","source_sha256":"' + hashlib.sha256(raw).hexdigest() + '",\n"views":' +
             compact(list(VIEWS)) + ',\n"heroes":[\n' + ",\n".join(map(compact, heroes)) +
-            '\n],\n"traits":[\n' + ",\n".join(map(compact, traits)) + "\n]}\n")
+            '\n],\n"traits":[\n' + ",\n".join(map(compact, traits)) +
+            '\n],\n"relics":[\n' + ",\n".join(map(compact, relics)) + '\n],\n"rules":' + compact(rules) + "}\n")
 
 
 def main():

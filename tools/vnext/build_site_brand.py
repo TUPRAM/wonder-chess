@@ -11,6 +11,25 @@ OUTPUTS = {"icon.png": ("wonder-chess-icon.png", 96), "favicon.png": ("wonder-ch
            "touch-icon.png": ("wonder-chess-icon.png", 180), "logo.png": ("source-logo.png", 720)}
 
 SQUARE = {"favicon.png", "touch-icon.png"}
+# Link preview card (Open Graph): the logo between four published heroes on the site's dark stage colour.
+CARD_SIZE, CARD_COLOUR = (1200, 630), (20, 22, 28)
+CARD_HEROES = ("wc_vn_shieldbearer", "wc_vn_grove_druid", "wc_vn_prism_scholar", "wc_vn_boar_rusher")
+
+
+def share_card():
+    card = Image.new("RGB", CARD_SIZE, CARD_COLOUR)
+    for hero, left in zip(CARD_HEROES, (-40, 170, 730, 940)):
+        path = TARGET.parent / "art" / hero / "main-thumb.webp"
+        if path.exists():
+            with Image.open(path) as figure:
+                figure = figure.convert("RGBA").resize((300, 300), Image.LANCZOS)
+                card.paste(figure, (left, 300), figure)
+    with Image.open(TARGET / "logo.png") as logo:
+        logo = logo.convert("RGBA")
+        logo.thumbnail((520, 360), Image.LANCZOS)
+        card.paste(logo, ((CARD_SIZE[0] - logo.width) // 2, 40), logo)
+    card.save(TARGET / "og.png", optimize=True)
+    print(f"og.png: {card.width}x{card.height}")
 
 
 def main():
@@ -31,6 +50,7 @@ def main():
                 # Served from the site root because browsers request /favicon.ico by default.
                 image.save(TARGET.parent / "favicon.ico", sizes=[(16, 16), (32, 32), (48, 48), (64, 64)])
             print(f"{name}: {image.width}x{image.height}")
+    share_card()
 
 
 if __name__ == "__main__":

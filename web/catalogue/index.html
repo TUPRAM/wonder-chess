@@ -4,7 +4,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Wonder Chess — Hero Catalogue</title>
-  <meta name="description" content="Every Wonder Chess hero: four-view art, description, skill, stats and synergies.">
+  <meta name="description" content="Every Wonder Chess hero: four-view art, description, skill, stats, synergies and relics.">
+  <meta name="theme-color" content="#15161a">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Wonder Chess">
+  <meta property="og:title" content="Wonder Chess — Hero Catalogue">
+  <meta property="og:description" content="Every Wonder Chess hero: four-view art, description, skill, stats, synergies and relics.">
+  <meta property="og:url" content="https://wonder-chess.vercel.app/">
+  <meta property="og:image" content="https://wonder-chess.vercel.app/brand/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The Wonder Chess logo with four heroes from the roster">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="brand/favicon.png">
   <link rel="apple-touch-icon" href="brand/touch-icon.png">
   <link rel="stylesheet" href="styles.css">
@@ -16,6 +27,8 @@
       <nav class="nav" aria-label="Sections">
         <a href="#heroes">Heroes</a>
         <a href="#synergies">Synergies</a>
+        <a href="#relics">Relics</a>
+        <a href="#how">How it works</a>
       </nav>
     </div>
   </header>
@@ -23,48 +36,87 @@
   <main class="wrap">
     <section class="intro" id="top">
       <img class="logo" src="brand/logo.png" alt="Wonder Chess" width="360" height="239">
-      <h1>Hero catalogue</h1>
-      <p id="summary" class="muted">Loading…</p>
+      <div>
+        <h1>Hero catalogue</h1>
+        <p id="summary" class="muted">Loading…</p>
+        <p class="muted small">An auto-battler: build a team between fights, then watch it fight on its own.
+          <a href="#how">How it works</a></p>
+      </div>
     </section>
 
     <section id="heroes" aria-label="Heroes">
-      <form class="filters" id="filters" autocomplete="off">
-        <label class="field grow">
-          <span>Search</span>
-          <input type="search" id="search" placeholder="Name or skill">
-        </label>
-        <label class="field">
-          <span>Race</span>
-          <select id="race"><option value="">All races</option></select>
-        </label>
-        <label class="field">
-          <span>Class</span>
-          <select id="class"><option value="">All classes</option></select>
-        </label>
-        <label class="field">
-          <span>Cost</span>
-          <select id="cost"><option value="">Any cost</option></select>
-        </label>
-        <label class="field">
-          <span>Status</span>
-          <select id="status">
-            <option value="">All</option>
-            <option value="playable">In the game</option>
-            <option value="planned">Planned</option>
-          </select>
-        </label>
-      </form>
-      <p id="count" class="muted small" aria-live="polite"></p>
+      <div class="filter-bar">
+        <form class="filters" id="filters" autocomplete="off">
+          <label class="field grow">
+            <span>Search</span>
+            <input type="search" id="search" placeholder="Name or skill">
+          </label>
+          <div class="selects">
+            <label class="field">
+              <span>Race</span>
+              <select id="race"><option value="">All races</option></select>
+            </label>
+            <label class="field">
+              <span>Class</span>
+              <select id="class"><option value="">All classes</option></select>
+            </label>
+            <label class="field">
+              <span>Cost</span>
+              <select id="cost"><option value="">Any cost</option></select>
+            </label>
+            <label class="field">
+              <span>Status</span>
+              <select id="status">
+                <option value="">Any status</option>
+                <option value="playable">In the game</option>
+                <option value="planned">Planned</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Sort</span>
+              <select id="sort">
+                <option value="">Catalogue order</option>
+                <option value="cost">Cost, low to high</option>
+                <option value="cost-desc">Cost, high to low</option>
+                <option value="name">Name</option>
+                <option value="race">Race</option>
+                <option value="class">Class</option>
+              </select>
+            </label>
+          </div>
+        </form>
+        <div class="count-row">
+          <p id="count" class="muted small" aria-live="polite"></p>
+          <button type="button" class="link" id="reset" hidden>Clear filters</button>
+        </div>
+      </div>
       <ul class="grid" id="grid"></ul>
+      <div class="empty" id="empty" hidden>
+        <p><strong>No heroes match these filters.</strong></p>
+        <p class="muted small">Try a different race, class or cost.</p>
+        <button type="button" class="button" id="empty-reset">Clear filters</button>
+      </div>
     </section>
 
     <section id="synergies">
       <h2>Synergies</h2>
-      <p class="muted">Deploy 2 or 4 different heroes of the same race or class to switch a bonus on.</p>
+      <p class="muted">Deploy 2 or 4 different heroes of the same race or class to switch a bonus on. The two numbers
+        in each bonus are the 2-hero and 4-hero values.</p>
       <h3>Races</h3>
       <ul class="traits" id="races"></ul>
       <h3>Classes</h3>
       <ul class="traits" id="classes"></ul>
+    </section>
+
+    <section id="relics">
+      <h2>Relics</h2>
+      <p class="muted" id="relic-intro"></p>
+      <ul class="relics" id="relic-list"></ul>
+    </section>
+
+    <section id="how">
+      <h2>How it works</h2>
+      <ol class="steps" id="steps"></ol>
     </section>
   </main>
 
@@ -73,7 +125,12 @@
   </footer>
 
   <dialog id="detail" aria-labelledby="detail-name">
-    <form method="dialog" class="close-row"><button class="close" aria-label="Close">Close</button></form>
+    <div class="d-bar">
+      <button type="button" class="close" id="prev" aria-label="Previous hero">‹ Prev</button>
+      <span class="muted small" id="position"></span>
+      <button type="button" class="close" id="next" aria-label="Next hero">Next ›</button>
+      <button type="button" class="close push" id="close">Close</button>
+    </div>
     <div id="detail-body"></div>
   </dialog>
 
