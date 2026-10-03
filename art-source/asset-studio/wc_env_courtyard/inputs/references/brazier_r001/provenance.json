@@ -1,0 +1,355 @@
+{
+  "schema": "wonder-chess.courtyard-reference-provenance.v1",
+  "date": "2026-10-03",
+  "timezone": "Asia/Shanghai",
+  "image_model": "GPT Image via built-in image_gen",
+  "exact_model_version": null,
+  "model_version_note": "The tool did not expose a precise model version, seed or API settings. None invented.",
+  "approval_status": "not_approved",
+  "status": "candidate_review_pending",
+  "brief": {
+    "path": "production/environment/courtyard/BRIEFS.md",
+    "sha256": "ff7b89df36fce912e11e7bc7eaeae70554001ed00b81ea31ae3450a7f6a91f0c"
+  },
+  "attempts_per_file": {
+    "main.png": 3,
+    "left.png": 1,
+    "back.png": 1,
+    "right.png": 2
+  },
+  "selected_files": {
+    "main.png": {
+      "path": "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\references\\brazier_r001\\main.png",
+      "selected_attempt": 3,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "format": "PNG",
+      "sha256": "c5f2719c863cf63308a0b2e8aa2df6d5feb21b5d4503642a4984b86ca24f63e9"
+    },
+    "left.png": {
+      "path": "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\references\\brazier_r001\\left.png",
+      "selected_attempt": 1,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "format": "PNG",
+      "sha256": "81101b9b7a1f03063e0633be83c74de878bbc4aa3512ccaae98680017cfa440b"
+    },
+    "back.png": {
+      "path": "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\references\\brazier_r001\\back.png",
+      "selected_attempt": 1,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "format": "PNG",
+      "sha256": "32e6aacc21154b6bfa75833da399340c041aa7fd4f53040b267af4c9a6d0eff9"
+    },
+    "right.png": {
+      "path": "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\references\\brazier_r001\\right.png",
+      "selected_attempt": 2,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "format": "PNG",
+      "sha256": "ec4d45ee6056b78f02732919e9bae7636956d91c749ee51e08de1c3d5a5030bf"
+    }
+  },
+  "not_generated": [],
+  "best_rejected": {},
+  "remaining_visible_defects": [],
+  "files": [
+    {
+      "piece": "brazier",
+      "file": "main.png",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. MAIN front image of ONE standing BRAZIER for Wonder Chess castle courtyard. Input hero image is STYLE ONLY: same painterly semi-realistic fantasy clean3D rendering, believable worn materials and even soft lighting. No character.\nSimple dark iron TRIPOD stand with exactly THREE splayed legs supports one wide round shallow iron bowl. Bowl contains dark coals with modest glowing orange-red embers and one SMALL calm flame just above them. Iron dark charcoal, forged broad shapes, restrained wear and rivets; no ornate animal heads, extra spikes, chains or decoration. Overall bowl width1.1metres, total height2metres INCLUDING flame. Flame low and small (under one-quarter bowl diameter tall); embers/fire are the ONLY bright element, do not blow out white. Tripod three legs arranged one toward FRONT center, two to rear-left/rear-right; all feet rest same level, no pedestal or ground slab. Three legs remain separately readable with simple crossbrace if needed. Bowl round and supported securely.\nExact FRONT straight-on horizontal orthographic-style elevation, no three-quarter yaw or elevated camera. Entire object centered with generous margins on square1254x1254PNG, top flame around8% and lowest foot92%, width55% of overallheight. Same quiet desaturated environment style as anchor. Plain #E6E6E6 background, no ground/contact/cast shadow or floor, no glow cast on background, no smoke, no scenery, no labels/text, no people.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r004/with_shield/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-b5dbbcf7-ec0d-4f34-9b6b-1c2d7456c163.png",
+      "disposition": "rejected",
+      "review": "Camera is elevated: rear feet project much higher than front foot and upper brace/bowl interior are overexposed. Fails straight-on horizontal camera.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/brazier_r001/rejected/main_attempt01.png",
+      "source_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "00bcb821d8f48ebf26c76b924f0c6b5da0ac83b5128fe9a4c7ab5ba35c90c312"
+      },
+      "tool": "image_gen.imagegen",
+      "transparent_background": false,
+      "prompt_note": "Exact submitted prompt; tool-internal rewritten prompt, if any, was not exposed.",
+      "hash_note": "File hashes computed during packaging on the recorded date.",
+      "reference_hashes": {
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r004/with_shield/main.png": "0d88b5f7af6d4cea6bdfda85b350372e0459822913c924aebbf5c463450f2823"
+      },
+      "saved_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "00bcb821d8f48ebf26c76b924f0c6b5da0ac83b5128fe9a4c7ab5ba35c90c312"
+      }
+    },
+    {
+      "piece": "brazier",
+      "file": "main.png",
+      "attempt": 2,
+      "prompt": "Use case: precise-object-edit. Correct the camera of the reference brazier to EXACT FRONT ORTHOGRAPHIC ELEVATION with ZERO downward pitch. Keep same dark iron bowl, coals, small flame and EXACT THREE legs, same simple forged/riveted design and painterly semi-realistic materials.\nCRITICAL: all THREE feet touch the SAME HORIZONTAL IMAGE BASELINE. Every foot bottom at y1148. NO foot may appear higher than another. NO visible top faces of feet or horizontal brace. This is a technical elevation, camera level/horizontal, not looking down. Bowl rim projects as an almost horizontal narrow ellipse; coals/flame protrude above rim so visible without elevated camera. Front center leg can overlap back brace naturally. Exactly three splayed legs (frontcenter,rearleft,rearright), broad simple feet. Bowl/leg width ~600px, overallheight~1050px, generous margins. Keep small flame and glowing coals the only bright elements. Top flame aroundy98, no smoke. Complete object on plain light-grey #E6E6E6, no ground/contact shadow, no floor, no scenery, no text or characters. Square PNG1254x1254.",
+      "reference_files": [
+        "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-b5dbbcf7-ec0d-4f34-9b6b-1c2d7456c163.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-14155e30-80b0-49ff-90ff-b7ffb10c249a.png",
+      "disposition": "rejected",
+      "review": "Camera/foot alignment improved, but overall silhouette is much too wide for1.1m wide by2m tall (about0.83 width/height versus0.55).",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/brazier_r001/rejected/main_attempt02.png",
+      "source_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "03fa6be04f041f3063e8c5b00a16be30b9e84413c7ad7c725fb45508d29fcdb0"
+      },
+      "tool": "image_gen.imagegen",
+      "transparent_background": false,
+      "prompt_note": "Exact submitted prompt; tool-internal rewritten prompt, if any, was not exposed.",
+      "hash_note": "File hashes computed during packaging on the recorded date.",
+      "reference_hashes": {
+        "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-b5dbbcf7-ec0d-4f34-9b6b-1c2d7456c163.png": "00bcb821d8f48ebf26c76b924f0c6b5da0ac83b5128fe9a4c7ab5ba35c90c312"
+      },
+      "saved_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "03fa6be04f041f3063e8c5b00a16be30b9e84413c7ad7c725fb45508d29fcdb0"
+      }
+    },
+    {
+      "piece": "brazier",
+      "file": "main.png",
+      "attempt": 3,
+      "prompt": "Use case: precise-object-edit. The input is a brazier front candidate. Correct only its proportions to a TALL SLENDER STANDING BRAZIER: overall width1.1m and overall height2m. The WHOLE silhouette including splayed feet is just55% as wide as it is tall. Tall narrow stand, not a broad barbecue. Bowl should not exceed widest feet.\nPreserve exact THREE iron legs (frontcenter, rearleft,rearright), same simple dark riveted iron bowl with coals and small flame, same forged worn painterly semi-realistic materials. Make the legs taller and less widely splayed; keep bowl shallow. Tiny calm fire, only glowing element. Exact FRONT ORTHOGRAPHIC elevation with camera horizontal: all3 feet on SAME baseline, no higher rear feet. Frame entire object centered on square1254PNG, generous lightgrey#E6E6E6 margin everywhere, flame topy90 and allfootbottomsy1150. Silhouettewidth approx580px. No ground/floor/cast/contact shadow, smoke, text, scenery or character.",
+      "reference_files": [
+        "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-14155e30-80b0-49ff-90ff-b7ffb10c249a.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-65eb3aec-df91-41c2-84f2-35b1c2852a96.png",
+      "disposition": "candidate",
+      "review": "Third main corrects wide proportions: tall iron tripod, aligned feet, shallow bowl, coals and small flame. Full object has margin.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/brazier_r001/main.png",
+      "source_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "c5f2719c863cf63308a0b2e8aa2df6d5feb21b5d4503642a4984b86ca24f63e9"
+      },
+      "tool": "image_gen.imagegen",
+      "transparent_background": false,
+      "prompt_note": "Exact submitted prompt; tool-internal rewritten prompt, if any, was not exposed.",
+      "hash_note": "File hashes computed during packaging on the recorded date.",
+      "reference_hashes": {
+        "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-14155e30-80b0-49ff-90ff-b7ffb10c249a.png": "03fa6be04f041f3063e8c5b00a16be30b9e84413c7ad7c725fb45508d29fcdb0"
+      },
+      "saved_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "c5f2719c863cf63308a0b2e8aa2df6d5feb21b5d4503642a4984b86ca24f63e9"
+      }
+    },
+    {
+      "piece": "brazier",
+      "file": "left.png",
+      "attempt": 1,
+      "prompt": "Use case: identity-preserve. Input is locked MAIN front of tall dark iron BRAZIER. Generate SAME physical brazier from LEFT. Independently rendered camera view, never mirror. Square1254x1254PNG.\nKeep all dimensions unchanged: round bowl diameterabout440px, bowl rimy146, bottomy280; footbaseliney1153, flame tipy45, object centerx627. Same iron shape, rivets, broad forged texture, exact three splayed legs and triangular crossbrace at y760. Same shallow coals mound and small flame centered above; no increase in fire or added smoke. ALL foot bottoms at same y1153: strict horizontal orthographic elevation, no downward pitch, no perspective zoom.\nTripod physical inventory: one leg at frontcenter, two at rearleft/rearright equally spaced. Camera rotated90degrees to object's LEFT. Original front direction points toward viewer's LEFT edge. Former frontcenter foot is toward that edge; two rearlegs are toward other edge, overlapping in exact side projection. Natural occlusion is correct: do NOT invent another leg to display three clearly. Rotate all existing legs and triangular brace together; do not leave original frontcenter leg in center.\nObject stays same tall slender proportions, never shorten legs or widen bowl/feet. Same quiet dark iron coloration; coals/flame only bright element. Painterly semi-realistic render identical to reference, soft even illumination, #E6E6E6 plain backdrop, no ground/floor/shadow/scenery/text/characters. Whole object visible with margin.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/brazier_r001/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-1ab51546-aebe-448f-90ad-fde82e036c23.png",
+      "disposition": "candidate",
+      "review": "Bowl/stand heights and palette retained; tripod legs and brace rotated, side rear legs partly overlap.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/brazier_r001/left.png",
+      "source_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "81101b9b7a1f03063e0633be83c74de878bbc4aa3512ccaae98680017cfa440b"
+      },
+      "tool": "image_gen.imagegen",
+      "transparent_background": false,
+      "prompt_note": "Exact submitted prompt; tool-internal rewritten prompt, if any, was not exposed.",
+      "hash_note": "File hashes computed during packaging on the recorded date.",
+      "reference_hashes": {
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/brazier_r001/main.png": "c5f2719c863cf63308a0b2e8aa2df6d5feb21b5d4503642a4984b86ca24f63e9"
+      },
+      "saved_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "81101b9b7a1f03063e0633be83c74de878bbc4aa3512ccaae98680017cfa440b"
+      }
+    },
+    {
+      "piece": "brazier",
+      "file": "back.png",
+      "attempt": 1,
+      "prompt": "Use case: identity-preserve. Input is locked MAIN front of tall dark iron BRAZIER. Generate SAME physical brazier from BACK. Independently rendered camera view, never mirror. Square1254x1254PNG.\nKeep all dimensions unchanged: round bowl diameterabout440px, bowl rimy146, bottomy280; footbaseliney1153, flame tipy45, object centerx627. Same iron shape, rivets, broad forged texture, exact three splayed legs and triangular crossbrace at y760. Same shallow coals mound and small flame centered above; no increase in fire or added smoke. ALL foot bottoms at same y1153: strict horizontal orthographic elevation, no downward pitch, no perspective zoom.\nTripod physical inventory: one leg at frontcenter, two at rearleft/rearright equally spaced. Camera rotated180degrees to rear. Rearleft/rearright legs now nearer camera and former frontcenter leg farther; show rear of brace/attachments, preserve all3 legs, no fourth leg.\nObject stays same tall slender proportions, never shorten legs or widen bowl/feet. Same quiet dark iron coloration; coals/flame only bright element. Painterly semi-realistic render identical to reference, soft even illumination, #E6E6E6 plain backdrop, no ground/floor/shadow/scenery/text/characters. Whole object visible with margin.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/brazier_r001/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-00600e76-2747-4769-9ce9-4cb7389724a7.png",
+      "disposition": "candidate",
+      "review": "Bowl/stand heights and palette retained; tripod legs and brace rotated, side rear legs partly overlap.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/brazier_r001/back.png",
+      "source_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "32e6aacc21154b6bfa75833da399340c041aa7fd4f53040b267af4c9a6d0eff9"
+      },
+      "tool": "image_gen.imagegen",
+      "transparent_background": false,
+      "prompt_note": "Exact submitted prompt; tool-internal rewritten prompt, if any, was not exposed.",
+      "hash_note": "File hashes computed during packaging on the recorded date.",
+      "reference_hashes": {
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/brazier_r001/main.png": "c5f2719c863cf63308a0b2e8aa2df6d5feb21b5d4503642a4984b86ca24f63e9"
+      },
+      "saved_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "32e6aacc21154b6bfa75833da399340c041aa7fd4f53040b267af4c9a6d0eff9"
+      }
+    },
+    {
+      "piece": "brazier",
+      "file": "right.png",
+      "attempt": 1,
+      "prompt": "Use case: identity-preserve. Input is locked MAIN front of tall dark iron BRAZIER. Generate SAME physical brazier from RIGHT. Independently rendered camera view, never mirror. Square1254x1254PNG.\nKeep all dimensions unchanged: round bowl diameterabout440px, bowl rimy146, bottomy280; footbaseliney1153, flame tipy45, object centerx627. Same iron shape, rivets, broad forged texture, exact three splayed legs and triangular crossbrace at y760. Same shallow coals mound and small flame centered above; no increase in fire or added smoke. ALL foot bottoms at same y1153: strict horizontal orthographic elevation, no downward pitch, no perspective zoom.\nTripod physical inventory: one leg at frontcenter, two at rearleft/rearright equally spaced. Camera rotated90degrees to object's RIGHT. Original front direction points toward viewer's RIGHT edge. Former frontcenter foot is toward that edge; two rearlegs are toward other edge, overlapping in exact side projection. Natural occlusion is correct: do NOT invent another leg to display three clearly. Rotate all existing legs and triangular brace together; do not leave original frontcenter leg in center.\nObject stays same tall slender proportions, never shorten legs or widen bowl/feet. Same quiet dark iron coloration; coals/flame only bright element. Painterly semi-realistic render identical to reference, soft even illumination, #E6E6E6 plain backdrop, no ground/floor/shadow/scenery/text/characters. Whole object visible with margin.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/brazier_r001/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-cfb61f69-3bc3-4605-808a-1eca4a9408f6.png",
+      "disposition": "rejected",
+      "review": "Right side leg spread and attachment placement are visibly narrower than left; same object geometry not preserved.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/brazier_r001/rejected/right_attempt01.png",
+      "source_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "600378328527f0b113f3593c3d2ffd7575a336c05c7f8717e90ac8d79dd5b221"
+      },
+      "tool": "image_gen.imagegen",
+      "transparent_background": false,
+      "prompt_note": "Exact submitted prompt; tool-internal rewritten prompt, if any, was not exposed.",
+      "hash_note": "File hashes computed during packaging on the recorded date.",
+      "reference_hashes": {
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/brazier_r001/main.png": "c5f2719c863cf63308a0b2e8aa2df6d5feb21b5d4503642a4984b86ca24f63e9"
+      },
+      "saved_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "600378328527f0b113f3593c3d2ffd7575a336c05c7f8717e90ac8d79dd5b221"
+      }
+    },
+    {
+      "piece": "brazier",
+      "file": "right.png",
+      "attempt": 2,
+      "prompt": "Use case: identity-preserve. Input1 is locked MAIN brazier; input2 is LEFT side. Generate RIGHT side of that EXACT SAME tall tripod brazier, using both references to preserve geometry. Independently render new camera angle; NEVER horizontally mirror a file.\nCorrect last failure: right side must have same fore/aft span as LEFT. Left has one original-front foot atx424 and two original-rear feet aroundx800. Therefore RIGHT view must place original-front single foot aroundx830 and original-rear pair aroundx450. Don't move single foot inward to center. Side legs overlap naturally. Camera exactly90degrees at object's right; original front points viewer RIGHT. All legs/rivets/triangularbrace rotate consistently. SAME bowl440px wide atcenterx627, rimy146, bottomy280; crossbraceheighty760. Flamey45, ALL footbottomsy1153. Keep main's tall slender2m high darkiron tripod, same bowl/coals/smallflame. No added/missing legs. No new design or shorter leg span.\nSame painterly semi-realistic worn iron, even softlight, plain#E6E6E6 backdrop, wholeobject withmargin. No floor, shadows, scenery, text or characters. PNG1254square.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/brazier_r001/main.png",
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/brazier_r001/left.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-ec41ac51-ba18-4e00-9e3c-b390abd8049e.png",
+      "disposition": "candidate",
+      "review": "Second right restores side leg span, attachment positions and same bowl/brace/foot heights as left; independently generated, not mirrored.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/brazier_r001/right.png",
+      "source_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "ec4d45ee6056b78f02732919e9bae7636956d91c749ee51e08de1c3d5a5030bf"
+      },
+      "tool": "image_gen.imagegen",
+      "transparent_background": false,
+      "prompt_note": "Exact submitted prompt; tool-internal rewritten prompt, if any, was not exposed.",
+      "hash_note": "File hashes computed during packaging on the recorded date.",
+      "reference_hashes": {
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/brazier_r001/main.png": "c5f2719c863cf63308a0b2e8aa2df6d5feb21b5d4503642a4984b86ca24f63e9",
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/brazier_r001/left.png": "81101b9b7a1f03063e0633be83c74de878bbc4aa3512ccaae98680017cfa440b"
+      },
+      "saved_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "ec4d45ee6056b78f02732919e9bae7636956d91c749ee51e08de1c3d5a5030bf"
+      }
+    }
+  ],
+  "review_derivatives": [
+    {
+      "path": "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\references\\brazier_r001\\review\\all_views.png",
+      "prompt": null,
+      "method": "Deterministic assembly of source images without blending or source alteration; labels outside images for four-view sheets",
+      "script": "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\support\\build_reviews.py",
+      "source_files": [
+        "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\references\\brazier_r001\\main.png",
+        "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\references\\brazier_r001\\left.png",
+        "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\references\\brazier_r001\\back.png",
+        "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\references\\brazier_r001\\right.png"
+      ],
+      "dimensions": [
+        5076,
+        1330
+      ],
+      "format": "PNG",
+      "sha256": "2b7f5a8f34055054610a4eff10957f9b8f71aa1fe7da2567ebac3796535f7325"
+    }
+  ]
+}

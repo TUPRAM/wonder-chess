@@ -280,6 +280,9 @@ private:
 
     UMaterialInstanceDynamic* Material(FLinearColor Color);
     UMaterialInstanceDynamic* StoneMaterial(FLinearColor Color);
+    // Courtyard candidate textures (Courtyard_r001); null when the assets are absent so the plain blockout remains.
+    UPROPERTY() TObjectPtr<UMaterialInterface> CourtyardStoneMaterial;
+    UMaterialInstanceDynamic* CourtyardMaterial(const TCHAR* Texture,float TilingU,float TilingV,FLinearColor Tint=FLinearColor::White);
     UStaticMeshComponent* Mesh(AActor* ParentActor, const TCHAR* Shape, FVector Position,
         FVector Scale, FLinearColor Color, FRotator Rotation = FRotator::ZeroRotator);
     AActor* SceneActor(FVector Position = FVector::ZeroVector);

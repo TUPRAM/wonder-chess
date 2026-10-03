@@ -1,0 +1,254 @@
+{
+  "schema": "wonder-chess.courtyard-reference-provenance.v1",
+  "date": "2026-10-03",
+  "timezone": "Asia/Shanghai",
+  "image_model": "GPT Image via built-in image_gen",
+  "exact_model_version": null,
+  "model_version_note": "The tool did not expose a precise model version, seed or API settings. None invented.",
+  "approval_status": "not_approved",
+  "status": "stopped_after_three_failed_left_attempts",
+  "brief": {
+    "path": "production/environment/courtyard/BRIEFS.md",
+    "sha256": "ff7b89df36fce912e11e7bc7eaeae70554001ed00b81ea31ae3450a7f6a91f0c"
+  },
+  "attempts_per_file": {
+    "main.png": 2,
+    "left.png": 3,
+    "back.png": 0,
+    "right.png": 0
+  },
+  "selected_files": {
+    "main.png": {
+      "path": "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\references\\wall_section_r001\\main.png",
+      "selected_attempt": 2,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "format": "PNG",
+      "sha256": "4e3a587f1540805398326dd3b6c504960ac6ff91e1b6651df77e2842783761d4"
+    }
+  },
+  "not_generated": [
+    "back.png",
+    "right.png"
+  ],
+  "best_rejected": {
+    "left.png": "rejected/left_attempt02.png"
+  },
+  "remaining_visible_defects": [
+    "Best left cut-end is about60% of front width rather than required50%; correct2.6m thickness not preserved. Back/right not generated after stop."
+  ],
+  "files": [
+    {
+      "piece": "wall_section",
+      "file": "main.png",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. Generate one single front orthographic reference image for Wonder Chess environment asset WALL SECTION. Output PNG exactly 1024x1024. The attached Shieldbearer is STYLE ONLY: copy its painterly semi-realistic clean 3D rendering, worn believable materials and soft even lighting; no character or character parts.\nOne straight stone curtain-wall module, 5.2m long across image, 9m tall, 2.6m deep. Tall narrow proportion: visible front width/height exactly 5.2/9. Warm grey limestone large clearly cut blocks, lightly worn edges, very few chips, darker mortar lines, sparse moss at bottom. Low contrast and quiet desaturated palette. Exactly FIVE rectangular stone merlons across top, four gaps; walkway behind the front battlement. Simple continuous stone plinth at base. Absolutely no door, windows, arrow slits, banners, stairs, buttresses or end pillars. The left and right ends must be flat vertical matching cut planes, constant module length all the way from base to battlement: no plinth overhang beyond either end. Design repeats end-to-end. No decorative end cap.\nCamera is exact front elevation, zero perspective, zero yaw or pitch. Center horizontally, base at y=944 and highest top at y=80, total height 864px; width of module 499px; whole piece with generous empty margins, no cropping. Plain solid light-grey #E6E6E6 background, absolutely no floor plane, no ground/contact/cast shadow, no gradient background, no scenery, no text, no labels, no people, no characters. One object only, no multi-view sheet.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r004/with_shield/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (built-in image_gen; exact model version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-71f6c36f-8a86-4e44-b569-8391d845045c.png",
+      "disposition": "rejected",
+      "defects": [
+        "Long thin cracks and excessive small surface noise; front too wide relative to target 5.2:9."
+      ],
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/wall_section_r001/rejected/main_attempt01.png",
+      "source_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "069267d961ca935e75969cd2968c12a7dc61f6c89d9a7eb1c5d81c34b50ebd38"
+      },
+      "tool": "image_gen.imagegen",
+      "transparent_background": false,
+      "prompt_note": "Exact submitted prompt; tool-internal rewritten prompt, if any, was not exposed.",
+      "hash_note": "File hashes computed during packaging on the recorded date.",
+      "reference_hashes": {
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r004/with_shield/main.png": "0d88b5f7af6d4cea6bdfda85b350372e0459822913c924aebbf5c463450f2823"
+      },
+      "saved_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "069267d961ca935e75969cd2968c12a7dc61f6c89d9a7eb1c5d81c34b50ebd38"
+      }
+    },
+    {
+      "piece": "wall_section",
+      "file": "main.png",
+      "attempt": 2,
+      "prompt": "Use case: stylized-concept. Generate one single front orthographic reference image for Wonder Chess environment asset WALL SECTION. Output PNG exactly 1024x1024. The attached Shieldbearer is STYLE ONLY: copy its painterly semi-realistic clean 3D rendering, worn believable materials and soft even lighting; no character or character parts.\nOne straight stone curtain-wall module, 5.2m long across image, 9m tall, 2.6m deep. Tall narrow proportion: visible front width/height exactly 5.2/9. Warm grey limestone large clearly cut blocks, lightly worn edges, very few chips, darker mortar lines, sparse moss at bottom. Low contrast and quiet desaturated palette. Exactly FIVE rectangular stone merlons across top, four gaps; walkway behind the front battlement. Simple continuous stone plinth at base. Absolutely no door, windows, arrow slits, banners, stairs, buttresses or end pillars. The left and right ends must be flat vertical matching cut planes, constant module length all the way from base to battlement: no plinth overhang beyond either end. Design repeats end-to-end. No decorative end cap.\nCamera is exact front elevation, zero perspective, zero yaw or pitch. Center horizontally, base at y=944 and highest top at y=80, total height 864px; width of module 499px; whole piece with generous empty margins, no cropping. Plain solid light-grey #E6E6E6 background, absolutely no floor plane, no ground/contact/cast shadow, no gradient background, no scenery, no text, no labels, no people, no characters. One object only, no multi-view sheet.\nCORRECTION: Reduce front width: a narrow upright module whose width is precisely 57.8% of total height. Use broad restrained painterly blocks like the style reference, not a photographic noisy stone texture. NO hairline cracks, NO diagonal cracks, NO pitting or gravel-like detail, just a few softened corners. Base plinth subtle but clearly a thicker course. EXACTLY five merlons. Flat uniform grey background throughout.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r004/with_shield/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (built-in image_gen; exact model version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-9df42f8d-04a2-4211-b0f0-f4d5a696b83e.png",
+      "disposition": "candidate",
+      "review": "Second front has five merlons, restrained blocks, base plinth, tall proportions and no opening. No ground shadow or character. Side connectors still to be verified.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/wall_section_r001/main.png",
+      "source_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "4e3a587f1540805398326dd3b6c504960ac6ff91e1b6651df77e2842783761d4"
+      },
+      "tool": "image_gen.imagegen",
+      "transparent_background": false,
+      "prompt_note": "Exact submitted prompt; tool-internal rewritten prompt, if any, was not exposed.",
+      "hash_note": "File hashes computed during packaging on the recorded date.",
+      "reference_hashes": {
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r004/with_shield/main.png": "0d88b5f7af6d4cea6bdfda85b350372e0459822913c924aebbf5c463450f2823"
+      },
+      "saved_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "4e3a587f1540805398326dd3b6c504960ac6ff91e1b6651df77e2842783761d4"
+      }
+    },
+    {
+      "piece": "wall_section",
+      "file": "left.png",
+      "attempt": 1,
+      "prompt": "Use case: identity-preserve. The reference image is the locked MAIN/front of one straight curtain wall. Produce exactly ONE new LEFT-side elevation of that SAME object, independently rendered, never a mirror. Square PNG 1254x1254. Rotate camera exactly 90 degrees around the wall to see its own left cut end; front of wall now points toward the viewer's LEFT. Do not redesign.\nThe source wall is 5.2m long, 9m high, 2.6m deep. Thus end width is exactly HALF the front width. Keep top y=92, bottom baseline y=1164, centered x=627, vertical height1072px identical to main. End width about310px. Exact orthographic elevation, horizontal sightline, no perspective, no visible opposite end. This is a flat planar CUT THROUGH a repeating stone wall, not a capped pillar. All horizontal stone courses must end flush on this single vertical plane. Its profile has the high front parapet/merlon at image LEFT and a lower horizontal walkway extending to image RIGHT. Front parapet about0.65m thick, walkway2.6m total depth, walkway top at the level of the bottom of the four front crenel gaps in main. Main's five merlons line up in depth and occlude each other in exact side view: only ONE merlon profile visible. Straight cut face, base plinth flush at module cut end. Preserve main's warm grey limestone block material, mortar, sparse low moss, block course heights and worn edge style. No door, window, stair, buttress, extra pillar, roof or decoration.\nPlain light grey #E6E6E6 background. Same scale, baseline, material colours and soft even lighting as main. Whole object with empty margins. No ground/floor/contact shadow, scenery, text, labels, characters. One side image only, not a sheet.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/wall_section_r001/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-abe52260-2ac8-4fd2-b039-95b471b50127.png",
+      "disposition": "rejected",
+      "review": "End silhouette is about400px wide instead of316px; too deep relative to front. Walkway top about30px too low.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/wall_section_r001/rejected/left_attempt01.png",
+      "source_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "245b62bfb97401d081fae8aae15e6b37b457bec354e0bb059582b50a75be7bdb"
+      },
+      "tool": "image_gen.imagegen",
+      "transparent_background": false,
+      "prompt_note": "Exact submitted prompt; tool-internal rewritten prompt, if any, was not exposed.",
+      "hash_note": "File hashes computed during packaging on the recorded date.",
+      "reference_hashes": {
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/wall_section_r001/main.png": "4e3a587f1540805398326dd3b6c504960ac6ff91e1b6651df77e2842783761d4"
+      },
+      "saved_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "245b62bfb97401d081fae8aae15e6b37b457bec354e0bb059582b50a75be7bdb"
+      }
+    },
+    {
+      "piece": "wall_section",
+      "file": "left.png",
+      "attempt": 2,
+      "prompt": "Use case: identity-preserve. The reference image is the locked MAIN/front of one straight curtain wall. Produce exactly ONE new LEFT-side elevation of that SAME object, independently rendered, never a mirror. Square PNG 1254x1254. Rotate camera exactly 90 degrees around the wall to see its own left cut end; front of wall now points toward the viewer's LEFT. Do not redesign.\nThe source wall is 5.2m long, 9m high, 2.6m deep. Thus end width is exactly HALF the front width. Keep top y=92, bottom baseline y=1164, centered x=627, vertical height1072px identical to main. End width about310px. Exact orthographic elevation, horizontal sightline, no perspective, no visible opposite end. This is a flat planar CUT THROUGH a repeating stone wall, not a capped pillar. All horizontal stone courses must end flush on this single vertical plane. Its profile has the high front parapet/merlon at image LEFT and a lower horizontal walkway extending to image RIGHT. Front parapet about0.65m thick, walkway2.6m total depth, walkway top at the level of the bottom of the four front crenel gaps in main. Main's five merlons line up in depth and occlude each other in exact side view: only ONE merlon profile visible. Straight cut face, base plinth flush at module cut end. Preserve main's warm grey limestone block material, mortar, sparse low moss, block course heights and worn edge style. No door, window, stair, buttress, extra pillar, roof or decoration.\nPlain light grey #E6E6E6 background. Same scale, baseline, material colours and soft even lighting as main. Whole object with empty margins. No ground/floor/contact shadow, scenery, text, labels, characters. One side image only, not a sheet.\nStrict correction: Do NOT widen end to fill canvas. Canvas stays1254 square. Side silhouette x469..785 (316px wide total), not400px. Keep y92..1164. The horizontal WALKWAY TOP must be y158 (level of rear lip visible in the gaps of main). Front merlon at x469..548, top y92. This makes merlon rise only66px above walkway. Copy main's exact existing course heights and sparse texture, no denser invented mottling.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/wall_section_r001/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-ae09c457-633a-46bb-8ca7-2378e0bd8639.png",
+      "disposition": "rejected",
+      "review": "End is still about380px wide; must be about316px at this scale. Walkway level closer, but thickness remains wrong.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/wall_section_r001/rejected/left_attempt02.png",
+      "source_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "75582b82c8c128b3525483ab2dcdab446bf8d704d16db9694a9b93bb7d327b30"
+      },
+      "tool": "image_gen.imagegen",
+      "transparent_background": false,
+      "prompt_note": "Exact submitted prompt; tool-internal rewritten prompt, if any, was not exposed.",
+      "hash_note": "File hashes computed during packaging on the recorded date.",
+      "reference_hashes": {
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/wall_section_r001/main.png": "4e3a587f1540805398326dd3b6c504960ac6ff91e1b6651df77e2842783761d4"
+      },
+      "saved_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "75582b82c8c128b3525483ab2dcdab446bf8d704d16db9694a9b93bb7d327b30"
+      }
+    },
+    {
+      "piece": "wall_section",
+      "file": "left.png",
+      "attempt": 3,
+      "prompt": "The supplied image is MAIN/front of a stone curtain wall. Generate the same object's exact LEFT side profile for a 3D turnaround, NOT another design. Pure orthographic elevation. Front faces left.\nThe front wall is 5.2 metres wide and9 metres high; its depth is2.6 metres. The side profile MUST be half as wide as the main front while exactly the SAME HEIGHT as the reference. This is a very SLENDER upright cross-section: side width-to-height 0.289, less than one-third. Do not make it wide. Keep the same empty margins above and below and same centred position.\nAt the top, the front merlon at the LEFT rises above a flat walkway extending toward the RIGHT, matching the reference's merlon and walkway levels. Only the end merlon is seen, the other4 hide behind it in exact side view. Warm grey limestone, same block-course heights, same plinth, few tiny low moss patches. Left end is a flat cut plane matching the right end; no cap/pillar/buttress/door/window. Soft evenly lit painterly semi-realistic rendering identical to reference. Plain #E6E6E6 background. No ground shadow or floor or character or text. Square PNG at least1254x1254. Single side view only.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/wall_section_r001/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-117f0d62-9982-4c93-afcc-0454781427fe.png",
+      "disposition": "rejected",
+      "review": "Third left attempt became much too thin (~124px instead of316px). Wall stopped under three-failed-attempt rule. Best rejected left is attempt02; back/right not generated.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/wall_section_r001/rejected/left_attempt03.png",
+      "source_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "6355a21f5373dd7fab66f1d3016a86c8d04c11b67a87ee29ddf51f2cd545068a"
+      },
+      "tool": "image_gen.imagegen",
+      "transparent_background": false,
+      "prompt_note": "Exact submitted prompt; tool-internal rewritten prompt, if any, was not exposed.",
+      "hash_note": "File hashes computed during packaging on the recorded date.",
+      "reference_hashes": {
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/wall_section_r001/main.png": "4e3a587f1540805398326dd3b6c504960ac6ff91e1b6651df77e2842783761d4"
+      },
+      "saved_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "6355a21f5373dd7fab66f1d3016a86c8d04c11b67a87ee29ddf51f2cd545068a"
+      }
+    }
+  ],
+  "review_derivatives": [
+    {
+      "path": "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\references\\wall_section_r001\\review\\all_views.png",
+      "prompt": null,
+      "method": "Deterministic assembly of source images without blending or source alteration; labels outside images for four-view sheets",
+      "script": "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\support\\build_reviews.py",
+      "source_files": [
+        "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\references\\wall_section_r001\\main.png",
+        "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\references\\wall_section_r001\\rejected\\left_attempt02.png"
+      ],
+      "dimensions": [
+        5076,
+        1330
+      ],
+      "format": "PNG",
+      "sha256": "3bfa98870bea772d3943e069ad61965da25197fdc38ed5fe6b7d86e86dbb2db1"
+    }
+  ]
+}

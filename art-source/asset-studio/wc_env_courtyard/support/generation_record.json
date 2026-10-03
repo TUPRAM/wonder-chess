@@ -1,0 +1,651 @@
+{
+  "root": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard",
+  "date": "2026-10-03",
+  "timezone": "Asia/Shanghai",
+  "records": [
+    {
+      "piece": "wall_section",
+      "file": "main.png",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. Generate one single front orthographic reference image for Wonder Chess environment asset WALL SECTION. Output PNG exactly 1024x1024. The attached Shieldbearer is STYLE ONLY: copy its painterly semi-realistic clean 3D rendering, worn believable materials and soft even lighting; no character or character parts.\nOne straight stone curtain-wall module, 5.2m long across image, 9m tall, 2.6m deep. Tall narrow proportion: visible front width/height exactly 5.2/9. Warm grey limestone large clearly cut blocks, lightly worn edges, very few chips, darker mortar lines, sparse moss at bottom. Low contrast and quiet desaturated palette. Exactly FIVE rectangular stone merlons across top, four gaps; walkway behind the front battlement. Simple continuous stone plinth at base. Absolutely no door, windows, arrow slits, banners, stairs, buttresses or end pillars. The left and right ends must be flat vertical matching cut planes, constant module length all the way from base to battlement: no plinth overhang beyond either end. Design repeats end-to-end. No decorative end cap.\nCamera is exact front elevation, zero perspective, zero yaw or pitch. Center horizontally, base at y=944 and highest top at y=80, total height 864px; width of module 499px; whole piece with generous empty margins, no cropping. Plain solid light-grey #E6E6E6 background, absolutely no floor plane, no ground/contact/cast shadow, no gradient background, no scenery, no text, no labels, no people, no characters. One object only, no multi-view sheet.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r004/with_shield/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (built-in image_gen; exact model version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-71f6c36f-8a86-4e44-b569-8391d845045c.png",
+      "disposition": "rejected",
+      "defects": [
+        "Long thin cracks and excessive small surface noise; front too wide relative to target 5.2:9."
+      ],
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/wall_section_r001/rejected/main_attempt01.png"
+    },
+    {
+      "piece": "wall_section",
+      "file": "main.png",
+      "attempt": 2,
+      "prompt": "Use case: stylized-concept. Generate one single front orthographic reference image for Wonder Chess environment asset WALL SECTION. Output PNG exactly 1024x1024. The attached Shieldbearer is STYLE ONLY: copy its painterly semi-realistic clean 3D rendering, worn believable materials and soft even lighting; no character or character parts.\nOne straight stone curtain-wall module, 5.2m long across image, 9m tall, 2.6m deep. Tall narrow proportion: visible front width/height exactly 5.2/9. Warm grey limestone large clearly cut blocks, lightly worn edges, very few chips, darker mortar lines, sparse moss at bottom. Low contrast and quiet desaturated palette. Exactly FIVE rectangular stone merlons across top, four gaps; walkway behind the front battlement. Simple continuous stone plinth at base. Absolutely no door, windows, arrow slits, banners, stairs, buttresses or end pillars. The left and right ends must be flat vertical matching cut planes, constant module length all the way from base to battlement: no plinth overhang beyond either end. Design repeats end-to-end. No decorative end cap.\nCamera is exact front elevation, zero perspective, zero yaw or pitch. Center horizontally, base at y=944 and highest top at y=80, total height 864px; width of module 499px; whole piece with generous empty margins, no cropping. Plain solid light-grey #E6E6E6 background, absolutely no floor plane, no ground/contact/cast shadow, no gradient background, no scenery, no text, no labels, no people, no characters. One object only, no multi-view sheet.\nCORRECTION: Reduce front width: a narrow upright module whose width is precisely 57.8% of total height. Use broad restrained painterly blocks like the style reference, not a photographic noisy stone texture. NO hairline cracks, NO diagonal cracks, NO pitting or gravel-like detail, just a few softened corners. Base plinth subtle but clearly a thicker course. EXACTLY five merlons. Flat uniform grey background throughout.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r004/with_shield/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (built-in image_gen; exact model version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-9df42f8d-04a2-4211-b0f0-f4d5a696b83e.png",
+      "disposition": "candidate",
+      "review": "Second front has five merlons, restrained blocks, base plinth, tall proportions and no opening. No ground shadow or character. Side connectors still to be verified.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/wall_section_r001/main.png"
+    },
+    {
+      "piece": "wall_section",
+      "file": "left.png",
+      "attempt": 1,
+      "prompt": "Use case: identity-preserve. The reference image is the locked MAIN/front of one straight curtain wall. Produce exactly ONE new LEFT-side elevation of that SAME object, independently rendered, never a mirror. Square PNG 1254x1254. Rotate camera exactly 90 degrees around the wall to see its own left cut end; front of wall now points toward the viewer's LEFT. Do not redesign.\nThe source wall is 5.2m long, 9m high, 2.6m deep. Thus end width is exactly HALF the front width. Keep top y=92, bottom baseline y=1164, centered x=627, vertical height1072px identical to main. End width about310px. Exact orthographic elevation, horizontal sightline, no perspective, no visible opposite end. This is a flat planar CUT THROUGH a repeating stone wall, not a capped pillar. All horizontal stone courses must end flush on this single vertical plane. Its profile has the high front parapet/merlon at image LEFT and a lower horizontal walkway extending to image RIGHT. Front parapet about0.65m thick, walkway2.6m total depth, walkway top at the level of the bottom of the four front crenel gaps in main. Main's five merlons line up in depth and occlude each other in exact side view: only ONE merlon profile visible. Straight cut face, base plinth flush at module cut end. Preserve main's warm grey limestone block material, mortar, sparse low moss, block course heights and worn edge style. No door, window, stair, buttress, extra pillar, roof or decoration.\nPlain light grey #E6E6E6 background. Same scale, baseline, material colours and soft even lighting as main. Whole object with empty margins. No ground/floor/contact shadow, scenery, text, labels, characters. One side image only, not a sheet.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/wall_section_r001/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-abe52260-2ac8-4fd2-b039-95b471b50127.png",
+      "disposition": "rejected",
+      "review": "End silhouette is about400px wide instead of316px; too deep relative to front. Walkway top about30px too low.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/wall_section_r001/rejected/left_attempt01.png"
+    },
+    {
+      "piece": "wall_section",
+      "file": "left.png",
+      "attempt": 2,
+      "prompt": "Use case: identity-preserve. The reference image is the locked MAIN/front of one straight curtain wall. Produce exactly ONE new LEFT-side elevation of that SAME object, independently rendered, never a mirror. Square PNG 1254x1254. Rotate camera exactly 90 degrees around the wall to see its own left cut end; front of wall now points toward the viewer's LEFT. Do not redesign.\nThe source wall is 5.2m long, 9m high, 2.6m deep. Thus end width is exactly HALF the front width. Keep top y=92, bottom baseline y=1164, centered x=627, vertical height1072px identical to main. End width about310px. Exact orthographic elevation, horizontal sightline, no perspective, no visible opposite end. This is a flat planar CUT THROUGH a repeating stone wall, not a capped pillar. All horizontal stone courses must end flush on this single vertical plane. Its profile has the high front parapet/merlon at image LEFT and a lower horizontal walkway extending to image RIGHT. Front parapet about0.65m thick, walkway2.6m total depth, walkway top at the level of the bottom of the four front crenel gaps in main. Main's five merlons line up in depth and occlude each other in exact side view: only ONE merlon profile visible. Straight cut face, base plinth flush at module cut end. Preserve main's warm grey limestone block material, mortar, sparse low moss, block course heights and worn edge style. No door, window, stair, buttress, extra pillar, roof or decoration.\nPlain light grey #E6E6E6 background. Same scale, baseline, material colours and soft even lighting as main. Whole object with empty margins. No ground/floor/contact shadow, scenery, text, labels, characters. One side image only, not a sheet.\nStrict correction: Do NOT widen end to fill canvas. Canvas stays1254 square. Side silhouette x469..785 (316px wide total), not400px. Keep y92..1164. The horizontal WALKWAY TOP must be y158 (level of rear lip visible in the gaps of main). Front merlon at x469..548, top y92. This makes merlon rise only66px above walkway. Copy main's exact existing course heights and sparse texture, no denser invented mottling.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/wall_section_r001/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-ae09c457-633a-46bb-8ca7-2378e0bd8639.png",
+      "disposition": "rejected",
+      "review": "End is still about380px wide; must be about316px at this scale. Walkway level closer, but thickness remains wrong.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/wall_section_r001/rejected/left_attempt02.png"
+    },
+    {
+      "piece": "wall_section",
+      "file": "left.png",
+      "attempt": 3,
+      "prompt": "The supplied image is MAIN/front of a stone curtain wall. Generate the same object's exact LEFT side profile for a 3D turnaround, NOT another design. Pure orthographic elevation. Front faces left.\nThe front wall is 5.2 metres wide and9 metres high; its depth is2.6 metres. The side profile MUST be half as wide as the main front while exactly the SAME HEIGHT as the reference. This is a very SLENDER upright cross-section: side width-to-height 0.289, less than one-third. Do not make it wide. Keep the same empty margins above and below and same centred position.\nAt the top, the front merlon at the LEFT rises above a flat walkway extending toward the RIGHT, matching the reference's merlon and walkway levels. Only the end merlon is seen, the other4 hide behind it in exact side view. Warm grey limestone, same block-course heights, same plinth, few tiny low moss patches. Left end is a flat cut plane matching the right end; no cap/pillar/buttress/door/window. Soft evenly lit painterly semi-realistic rendering identical to reference. Plain #E6E6E6 background. No ground shadow or floor or character or text. Square PNG at least1254x1254. Single side view only.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/wall_section_r001/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-117f0d62-9982-4c93-afcc-0454781427fe.png",
+      "disposition": "rejected",
+      "review": "Third left attempt became much too thin (~124px instead of316px). Wall stopped under three-failed-attempt rule. Best rejected left is attempt02; back/right not generated.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/wall_section_r001/rejected/left_attempt03.png"
+    },
+    {
+      "piece": "round_tower",
+      "file": "main.png",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. One isolated ROUND CASTLE TOWER, front MAIN orthographic reference. Attached hero is STYLE REFERENCE ONLY: copy painterly semi-realistic fantasy rendering, believable softly worn materials and even studio lighting; NO character.\nTower: round warm-grey limestone drum,6.4 metres in diameter,12 metres tall before roof, plus a simple conical dark slate-red (#6B2F28) tiled roof with a small aged-brass (#B8923A) finial. A continuous circular ring of simple large stone battlements surrounds the foot of the cone. Two narrow arrow slits TOTAL in the entire tower: both centered on this front face, one above the other at different heights. Remaining left/back/right faces unpierced, otherwise rotationally identical shape. No door, stairs, flags, towers attached, window glass, ornament, spikes or base terrain. Broad clean limestone blocks, restrained mortar, lightly worn edges, tiny amount moss low down, few chips, no tiny cracks or noisy textures. Dark oak only where structurally necessary. Quiet lower contrast than hero.\nCamera exact FRONT elevation, zero yaw, horizontal orthographic-style view, no dramatic top view. Whole tower centered on square canvas, top finial at8% height, baseline92%; generous margin on all sides. Body diameter roughly40% of canvas, roof slightly wider; realistic tall tower proportions. Square PNG1254x1254 or larger. Plain #E6E6E6 light grey background, even soft light, NO ground/contact/cast shadow, no floor, no scene, no text/labels, no people or characters. ONE view only.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r004/with_shield/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-85e1d383-78d9-4d58-a0f4-4ed8bd962d9d.png",
+      "disposition": "rejected",
+      "review": "Finial nearly touches top edge (about9px margin); insufficient framing margin.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/round_tower_r001/rejected/main_attempt01.png"
+    },
+    {
+      "piece": "round_tower",
+      "file": "main.png",
+      "attempt": 2,
+      "prompt": "Use case: precise-object-edit. Input1 is the tower candidate to correct, input2 is STYLE ONLY. Create front MAIN of same round castle tower. Fix FRAMING ONLY: shrink the WHOLE tower uniformly so its top finial is at8% of canvas height and bottom is at92%, leaving at least8% empty grey above and below. Do not crop finial.\nKeep identical tower structure:6.4m stone drum diameter,12m height plus slate-red conical tiled roof, small brass finial, ring of battlements. Two arrow slits vertically centered on front, one above other. Same warm grey limestone courses, restrained moss, quiet painterly semi-realistic style, dark slate-red #6B2F28 roof, aged brass #B8923A. Whole tower only. Exact FRONT orthographic-style elevation, horizontal straight-on camera. Even soft studio lighting, solid #E6E6E6 background, no ground/contact shadow, no floor, no text, no scenery, no characters. Square PNG1254x1254, whole object within margins.",
+      "reference_files": [
+        "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-85e1d383-78d9-4d58-a0f4-4ed8bd962d9d.png",
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r004/with_shield/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-af3d8391-ebde-4ac3-a678-6d69df4ee53a.png",
+      "disposition": "candidate",
+      "review": "Whole tower with margin, two front slits, ring battlements, conical slate-red roof and brass finial. Main usable for cross-view checks.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/round_tower_r001/main.png"
+    },
+    {
+      "piece": "round_tower",
+      "file": "left.png",
+      "attempt": 1,
+      "prompt": "Use case: identity-preserve. Reference is locked MAIN of one round stone castle tower. Render exactly the SAME tower from LEFT, camera rotated90 degrees to object's LEFT, original front points toward viewer's LEFT edge. Output one square1254x1254PNG, no multi-view layout. Independent new camera rendering; never mirror any image.\nPreserve EXACT outer silhouette, overall height and diameter, circular drum, all stone-course heights, number/shape of crenellations in complete ring, cone roof slope and slate-red tile rows, brass finial size, colors and weathering. Keep identical pixel scale and baseline: finial top at abouty70, base at abouty1118 on1254canvas, horizontal centerx627. Ring widthabout474px, stone drum widthabout418px. Do not zoom, raise or lower.\nTwo arrow slits exist TOTAL, both centered on the FRONT wall one above the other, as in main. In this left view they are at the extreme front tangent and hidden by the round drum curvature; show unpierced broad side stonework. DO NOT relocate or add slits or doors. Stone courses naturally wrap around the cylinder. Same slightly worn large limestone blocks, sparse moss low down, dark slate-red #6B2F28 tiled cone, aged brass finial. Painterly semi-realistic clean3D rendering matching main. Exact orthographic-style horizontal straight-on camera, no pitch. Plain light-grey #E6E6E6 background and soft even light. Whole piece in frame, no ground/contact shadow, no floor, scenery, text, labels, people or characters.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/round_tower_r001/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-839d8185-5195-4424-9f0b-39097d6429e6.png",
+      "disposition": "candidate",
+      "review": "Single independently generated view; same tower outline, roof, ring, scale and baseline. Front slits absent as expected.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/round_tower_r001/left.png"
+    },
+    {
+      "piece": "round_tower",
+      "file": "back.png",
+      "attempt": 1,
+      "prompt": "Use case: identity-preserve. Reference is locked MAIN of one round stone castle tower. Render exactly the SAME tower from BACK, camera rotated180 degrees, exact REAR. Output one square1254x1254PNG, no multi-view layout. Independent new camera rendering; never mirror any image.\nPreserve EXACT outer silhouette, overall height and diameter, circular drum, all stone-course heights, number/shape of crenellations in complete ring, cone roof slope and slate-red tile rows, brass finial size, colors and weathering. Keep identical pixel scale and baseline: finial top at abouty70, base at abouty1118 on1254canvas, horizontal centerx627. Ring widthabout474px, stone drum widthabout418px. Do not zoom, raise or lower.\nTwo arrow slits exist TOTAL, both centered on the FRONT wall one above the other, as in main. In this back view they are hidden on the far side; show plain rear stonework. DO NOT relocate or add slits or doors. Stone courses naturally wrap around the cylinder. Same slightly worn large limestone blocks, sparse moss low down, dark slate-red #6B2F28 tiled cone, aged brass finial. Painterly semi-realistic clean3D rendering matching main. Exact orthographic-style horizontal straight-on camera, no pitch. Plain light-grey #E6E6E6 background and soft even light. Whole piece in frame, no ground/contact shadow, no floor, scenery, text, labels, people or characters.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/round_tower_r001/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-34cb0163-ee2b-4f3e-9dd5-01b896361d4d.png",
+      "disposition": "candidate",
+      "review": "Single independently generated view; same tower outline, roof, ring, scale and baseline. Front slits absent as expected.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/round_tower_r001/back.png"
+    },
+    {
+      "piece": "round_tower",
+      "file": "right.png",
+      "attempt": 1,
+      "prompt": "Use case: identity-preserve. Reference is locked MAIN of one round stone castle tower. Render exactly the SAME tower from RIGHT, camera rotated90 degrees to object's RIGHT, original front points toward viewer's RIGHT edge. Output one square1254x1254PNG, no multi-view layout. Independent new camera rendering; never mirror any image.\nPreserve EXACT outer silhouette, overall height and diameter, circular drum, all stone-course heights, number/shape of crenellations in complete ring, cone roof slope and slate-red tile rows, brass finial size, colors and weathering. Keep identical pixel scale and baseline: finial top at abouty70, base at abouty1118 on1254canvas, horizontal centerx627. Ring widthabout474px, stone drum widthabout418px. Do not zoom, raise or lower.\nTwo arrow slits exist TOTAL, both centered on the FRONT wall one above the other, as in main. In this right view they are at the extreme front tangent and hidden by the round drum curvature; show unpierced broad side stonework. DO NOT relocate or add slits or doors. Stone courses naturally wrap around the cylinder. Same slightly worn large limestone blocks, sparse moss low down, dark slate-red #6B2F28 tiled cone, aged brass finial. Painterly semi-realistic clean3D rendering matching main. Exact orthographic-style horizontal straight-on camera, no pitch. Plain light-grey #E6E6E6 background and soft even light. Whole piece in frame, no ground/contact shadow, no floor, scenery, text, labels, people or characters.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/round_tower_r001/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-3690c078-5b26-4a34-9558-f80044ef58b5.png",
+      "disposition": "candidate",
+      "review": "Single independently generated view; same tower outline, roof, ring, scale and baseline. Front slits absent as expected.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/round_tower_r001/right.png"
+    },
+    {
+      "piece": "gatehouse",
+      "file": "main.png",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. Create MAIN front reference of one stone castle GATEHOUSE for Wonder Chess. Attached hero image is STYLE ONLY: painterly semi-realistic fantasy clean3D render, soft even studio light, believable worn materials. Never include any character.\nA single rectangular gatehouse block,8.4 metres wide,10 metres tall. Depth3.6 metres so it stands proud of the2.6m wall. NOT two towers. Warm-grey large limestone blocks, softly worn edges, restrained mortar, sparse moss low down, no tiny cracks/noisy detailing. At center a tall ROUND semicircular arch opening with a completely CLOSED dark iron portcullis: heavy vertical bars crossed by horizontal bars, all reaching down to baseline. The opening is a passage through the block. Above the arch centered a short deep royal-blue #24468F cloth banner bearing one aged-brass #B8923A sun. Five simple broad stone merlons along front top, matching rear parapet. No roof or windows, no side towers or wings or torches or doors.\nCrucial modular geometry: left and right outer ends are identical FLAT vertical CUT PLANES, from the bottom to the top; no corner pilasters, projecting end caps, buttresses, side eaves or plinth extending beyond either cut plane. Adjacent straight wall modules must butt against them. Both end faces same height and thickness. A subtle stone base plinth flush at these ends. Keep broad simple clean geometry.\nExact FRONT straight-on orthographic elevation, no yaw, no pitch; no side faces seen. Whole object centered on square1254x1254PNG, top at8% and baseline92%, width84% of object height (8.4:10). Generous empty margin. Plain light grey #E6E6E6 background, no floor, no ground/contact/cast shadow, no landscape, no text, no labels, no people. Lower contrast/desaturation than hero. One view only.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r004/with_shield/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-6383e50e-9d24-493b-b61c-d6328eec4ce8.png",
+      "disposition": "candidate",
+      "review": "Front has five merlons, single tall round arch with fully lowered portcullis and blue/brass sun banner. Flat broad sides; side-face agreement remains to be checked.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/gatehouse_r001/main.png"
+    },
+    {
+      "piece": "gatehouse",
+      "file": "left.png",
+      "attempt": 1,
+      "prompt": "Use case: identity-preserve. Reference is the MAIN front of a single rectangular gatehouse. Render its LEFT cut-end elevation as the SAME object rotated90 degrees, front/banner side faces toward viewer's LEFT. Never mirror a prior image. One square1254x1254PNG.\nKeep exact object height, top y76, baseline y1150, centered x627. It is8.4m across front,10m high and3.6m deep. In this end elevation the visible rectangle should be approximately400px WIDE and1074px TALL. Only the flat left joining cut face is visible. No front facade or arch seen around the edge: truly perpendicular horizontal orthographic camera. Two end merlon profiles, one at image LEFT/front and one at image RIGHT/back, same top height; low walkway between, with top at main's crenel-bottom y182. Their thickness about130px, corresponding to the five front/rear merlons of main seen edge-on. Keep stone course heights aligned with main.\nBoth left and right cut ends must be FLAT and identical cross-section, suitable to butt against straight curtain wall sections. Same thickness all the way down. No projecting end cap, pillar, pilaster, buttress, stair or wing. Keep stone plinth subtle and flush at cut ends. Broad warm-grey limestone blocks matching main, worn edges, few low moss patches, same stone coloration and no extra cracks. The central gate passage and portcullis remain inside the block and are hidden behind this solid side end, as is the front cloth banner. Do not create side openings.\nWhole piece in frame, identical scale and baseline to main. Lightgrey #E6E6E6 backdrop, soft even light, no ground/cast/contact shadow, floor, text, labels, characters or scenery.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/gatehouse_r001/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-16a025cf-5e1d-43e4-abde-7d30ed67dcd0.png",
+      "disposition": "candidate",
+      "review": "Flat left cut-end elevation, two parapet profiles, same top/base as main. Depth is visibly greater than prompt suggestion; brief leaves gatehouse depth unspecified, retained for right to match.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/gatehouse_r001/left.png"
+    },
+    {
+      "piece": "gatehouse",
+      "file": "back.png",
+      "attempt": 1,
+      "prompt": "Use case: identity-preserve. Input1 is locked gatehouse MAIN, input2 is its LEFT cut end. Generate one BACK/rear elevation of this exact same rectangular stone gatehouse, camera rotated180 degrees. PNG1254square. Same top y76, baseliney1150, outer front/rear widthabout978px, height1074px. Exact same five merlons, courses, warm grey stone and base plinth. Tall round arch is a THROUGH PASSAGE, same opening height/width and arch shape as main; show dark iron CLOSED portcullis seen from behind within passage, with same bar inventory. The blue sun banner is on FRONT exterior only and must NOT appear on back. Rear wall above arch is plain limestone. No added window, door, banner, buttress, side tower or mechanism. Left/right edges remain identical flat cut joining faces. Exact perpendicular orthographic elevation, no side face, no top view. Soft even light, same quiet painterly semi-realistic materials. Plain #E6E6E6 background, whole object margin, no ground/contact shadow, scenery, text, character.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/gatehouse_r001/main.png",
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/gatehouse_r001/left.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-412060b3-f5db-4cf6-8d97-18be9d9759fa.png",
+      "disposition": "candidate",
+      "review": "Same height, baseline and required structural parts. Right cut-end matches left silhouette; rear omits front banner and retains closed portcullis.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/gatehouse_r001/back.png"
+    },
+    {
+      "piece": "gatehouse",
+      "file": "right.png",
+      "attempt": 1,
+      "prompt": "Use case: identity-preserve. Input1 is locked MAIN gatehouse; input2 is locked LEFT side. Render the same object's RIGHT side cut-end, camera90degrees to object's right; original front/banner side points toward viewer's RIGHT. A separately generated viewpoint, do NOT mirror input2. PNG1254square. Preserve exact height/width/cross-section of input2: topy76, baseliney1150, end widthabout480px, centeredx627. Exact same two merlon profiles with identical top heights and widths and flat walkway between. Identical baseplinth height, body thickness, same block-course elevations and warmgrey limestone/moss. Flat continuous planar cut face matching opposite left end, with no end cap/pillar, buttress, wing or opening. Arch and blue front banner are hidden by sidewall, never paint them on side. Same front overall structure as input1. Straight-on perpendicular orthographic elevation, no other face visible, no pitch or perspective. Identical scale/baseline, soft even light, painterly semi-realistic material. Plain #E6E6E6 background, no ground/contact shadow, no floor/scenery/text/characters. Whole object within frame.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/gatehouse_r001/main.png",
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/gatehouse_r001/left.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-0ca0cf58-e5f7-417f-a752-d56da4aca8f9.png",
+      "disposition": "candidate",
+      "review": "Same height, baseline and required structural parts. Right cut-end matches left silhouette; rear omits front banner and retains closed portcullis.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/gatehouse_r001/right.png"
+    },
+    {
+      "piece": "wall_banner",
+      "file": "main.png",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. Single WALL BANNER, front MAIN view for Wonder Chess. Attached hero is STYLE ONLY, copy painterly semi-realistic3D material rendering and soft even light. No character.\nA long deep royal blue #24468F cloth banner,1.9 metres wide and4.6 metres tall. ONE simple aged brass #B8923A SUN emblem centered on front upper-middle, matching the simple sun language on hero. Cloth hangs FLAT, straight and still, with only subtle vertical cloth folds. Lower edge has a deep symmetric fork/V notch making TWO downward points. A narrow aged-brass trim runs ONLY along the forked bottom edge. A plain straight brass rod at the top, minimal blunt capped ends, no ornate finials, no wall bracket, rope, mount, tassels, jewels, extra rod or backing. Back is entirely plain blue with no sun. Worn believable cloth with broad subtle wear, quiet limited palette, no tiny noisy detail or dramatic contrast.\nExact front perpendicular orthographic view. One isolated complete object centered in square1254x1254PNG; top rod at8% canvas height, fork tips bottom92%, clothwidth41.3% of overallheight, rod slightly wider than cloth. Generous margins. Solid plain #E6E6E6 light-grey background, soft even studio light, no wall/ground/floor, no cast/contact shadow, no scenery, no text/labels/logo, no people or character.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r004/with_shield/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-4877eed7-3b3a-4c96-abfb-956e938ffae4.png",
+      "disposition": "candidate",
+      "review": "Main has plain rod, deep blue cloth, single brass sun and forked brass-trimmed bottom. Hangs flat, complete with margin.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/wall_banner_r001/main.png"
+    },
+    {
+      "piece": "wall_banner",
+      "file": "left.png",
+      "attempt": 1,
+      "prompt": "Use case: identity-preserve. Reference is MAIN/front of ONE long cloth wall banner. Generate an independently rendered LEFT view of EXACT SAME object, no mirroring. One PNG1254x1254.\nCamera90degrees to object's LEFT side. Front emblem face points toward viewer's LEFT edge. EXACT EDGE-ON view, not three-quarter: the cloth must look like a VERY NARROW vertical strip because it hangs flat, not a wide face. The sun is hidden edge-on. Brass horizontal rod is viewed directly end-on as one small circular cap near top; do not show rod length. Cloth has only minute existing folds, no billowing. The fork tips overlap in projection at bottom, not spread into a V in this edge view.\nPreserve original material colours #24468F blue/#B8923A brass, surface wear and quiet painterly semi-realistic rendering. Keep identical total height and baseline: topy85, lower tipsy1150, centerx627. Do not zoom the side strip to fill canvas. Same plain capped brass rod, no hardware added or removed. Complete object within empty margins. Same straight-on orthographic-style camera and even soft light on plain #E6E6E6 background, no wall/floor/ground/contact shadow, scenery, text, labels or characters.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/wall_banner_r001/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-08c9be0a-13fc-4327-96cf-79d4e4513c48.png",
+      "disposition": "candidate",
+      "review": "Edge-on sides retain full height and rod end cap; rear is blue without sun. Same forked lower edge and palette.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/wall_banner_r001/left.png"
+    },
+    {
+      "piece": "wall_banner",
+      "file": "back.png",
+      "attempt": 1,
+      "prompt": "Use case: identity-preserve. Reference is MAIN/front of ONE long cloth wall banner. Generate an independently rendered BACK view of EXACT SAME object, no mirroring. One PNG1254x1254.\nCamera180degrees, looking straight at BACK. Same full cloth/rod width and forked two-point outline. BACK IS PLAIN ROYAL BLUE: completely remove front sun from view, no embroidery or emblem ghosting. Keep same brass trim along forked bottom and same plain brass rod. Reverse-side fabric only.\nPreserve original material colours #24468F blue/#B8923A brass, surface wear and quiet painterly semi-realistic rendering. Keep identical total height and baseline: topy85, lower tipsy1150, centerx627. Do not zoom the side strip to fill canvas. Same plain capped brass rod, no hardware added or removed. Complete object within empty margins. Same straight-on orthographic-style camera and even soft light on plain #E6E6E6 background, no wall/floor/ground/contact shadow, scenery, text, labels or characters.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/wall_banner_r001/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-a71fabb8-dc83-4a06-b2a8-ee8c18a09475.png",
+      "disposition": "candidate",
+      "review": "Edge-on sides retain full height and rod end cap; rear is blue without sun. Same forked lower edge and palette.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/wall_banner_r001/back.png"
+    },
+    {
+      "piece": "wall_banner",
+      "file": "right.png",
+      "attempt": 1,
+      "prompt": "Use case: identity-preserve. Reference is MAIN/front of ONE long cloth wall banner. Generate an independently rendered RIGHT view of EXACT SAME object, no mirroring. One PNG1254x1254.\nCamera90degrees to object's RIGHT side. Front emblem face points toward viewer's RIGHT edge. EXACT EDGE-ON view, not three-quarter: the cloth must look like a VERY NARROW vertical strip because it hangs flat, not a wide face. The sun is hidden edge-on. Brass horizontal rod is viewed directly end-on as one small circular cap near top; do not show rod length. Cloth has only minute existing folds, no billowing. The fork tips overlap in projection at bottom, not spread into a V in this edge view.\nPreserve original material colours #24468F blue/#B8923A brass, surface wear and quiet painterly semi-realistic rendering. Keep identical total height and baseline: topy85, lower tipsy1150, centerx627. Do not zoom the side strip to fill canvas. Same plain capped brass rod, no hardware added or removed. Complete object within empty margins. Same straight-on orthographic-style camera and even soft light on plain #E6E6E6 background, no wall/floor/ground/contact shadow, scenery, text, labels or characters.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/wall_banner_r001/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-207e284b-e765-4e5e-a98d-3ce7542e603c.png",
+      "disposition": "candidate",
+      "review": "Edge-on sides retain full height and rod end cap; rear is blue without sun. Same forked lower edge and palette.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/wall_banner_r001/right.png"
+    },
+    {
+      "piece": "brazier",
+      "file": "main.png",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. MAIN front image of ONE standing BRAZIER for Wonder Chess castle courtyard. Input hero image is STYLE ONLY: same painterly semi-realistic fantasy clean3D rendering, believable worn materials and even soft lighting. No character.\nSimple dark iron TRIPOD stand with exactly THREE splayed legs supports one wide round shallow iron bowl. Bowl contains dark coals with modest glowing orange-red embers and one SMALL calm flame just above them. Iron dark charcoal, forged broad shapes, restrained wear and rivets; no ornate animal heads, extra spikes, chains or decoration. Overall bowl width1.1metres, total height2metres INCLUDING flame. Flame low and small (under one-quarter bowl diameter tall); embers/fire are the ONLY bright element, do not blow out white. Tripod three legs arranged one toward FRONT center, two to rear-left/rear-right; all feet rest same level, no pedestal or ground slab. Three legs remain separately readable with simple crossbrace if needed. Bowl round and supported securely.\nExact FRONT straight-on horizontal orthographic-style elevation, no three-quarter yaw or elevated camera. Entire object centered with generous margins on square1254x1254PNG, top flame around8% and lowest foot92%, width55% of overallheight. Same quiet desaturated environment style as anchor. Plain #E6E6E6 background, no ground/contact/cast shadow or floor, no glow cast on background, no smoke, no scenery, no labels/text, no people.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r004/with_shield/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-b5dbbcf7-ec0d-4f34-9b6b-1c2d7456c163.png",
+      "disposition": "rejected",
+      "review": "Camera is elevated: rear feet project much higher than front foot and upper brace/bowl interior are overexposed. Fails straight-on horizontal camera.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/brazier_r001/rejected/main_attempt01.png"
+    },
+    {
+      "piece": "brazier",
+      "file": "main.png",
+      "attempt": 2,
+      "prompt": "Use case: precise-object-edit. Correct the camera of the reference brazier to EXACT FRONT ORTHOGRAPHIC ELEVATION with ZERO downward pitch. Keep same dark iron bowl, coals, small flame and EXACT THREE legs, same simple forged/riveted design and painterly semi-realistic materials.\nCRITICAL: all THREE feet touch the SAME HORIZONTAL IMAGE BASELINE. Every foot bottom at y1148. NO foot may appear higher than another. NO visible top faces of feet or horizontal brace. This is a technical elevation, camera level/horizontal, not looking down. Bowl rim projects as an almost horizontal narrow ellipse; coals/flame protrude above rim so visible without elevated camera. Front center leg can overlap back brace naturally. Exactly three splayed legs (frontcenter,rearleft,rearright), broad simple feet. Bowl/leg width ~600px, overallheight~1050px, generous margins. Keep small flame and glowing coals the only bright elements. Top flame aroundy98, no smoke. Complete object on plain light-grey #E6E6E6, no ground/contact shadow, no floor, no scenery, no text or characters. Square PNG1254x1254.",
+      "reference_files": [
+        "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-b5dbbcf7-ec0d-4f34-9b6b-1c2d7456c163.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-14155e30-80b0-49ff-90ff-b7ffb10c249a.png",
+      "disposition": "rejected",
+      "review": "Camera/foot alignment improved, but overall silhouette is much too wide for1.1m wide by2m tall (about0.83 width/height versus0.55).",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/brazier_r001/rejected/main_attempt02.png"
+    },
+    {
+      "piece": "brazier",
+      "file": "main.png",
+      "attempt": 3,
+      "prompt": "Use case: precise-object-edit. The input is a brazier front candidate. Correct only its proportions to a TALL SLENDER STANDING BRAZIER: overall width1.1m and overall height2m. The WHOLE silhouette including splayed feet is just55% as wide as it is tall. Tall narrow stand, not a broad barbecue. Bowl should not exceed widest feet.\nPreserve exact THREE iron legs (frontcenter, rearleft,rearright), same simple dark riveted iron bowl with coals and small flame, same forged worn painterly semi-realistic materials. Make the legs taller and less widely splayed; keep bowl shallow. Tiny calm fire, only glowing element. Exact FRONT ORTHOGRAPHIC elevation with camera horizontal: all3 feet on SAME baseline, no higher rear feet. Frame entire object centered on square1254PNG, generous lightgrey#E6E6E6 margin everywhere, flame topy90 and allfootbottomsy1150. Silhouettewidth approx580px. No ground/floor/cast/contact shadow, smoke, text, scenery or character.",
+      "reference_files": [
+        "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-14155e30-80b0-49ff-90ff-b7ffb10c249a.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-65eb3aec-df91-41c2-84f2-35b1c2852a96.png",
+      "disposition": "candidate",
+      "review": "Third main corrects wide proportions: tall iron tripod, aligned feet, shallow bowl, coals and small flame. Full object has margin.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/brazier_r001/main.png"
+    },
+    {
+      "piece": "brazier",
+      "file": "left.png",
+      "attempt": 1,
+      "prompt": "Use case: identity-preserve. Input is locked MAIN front of tall dark iron BRAZIER. Generate SAME physical brazier from LEFT. Independently rendered camera view, never mirror. Square1254x1254PNG.\nKeep all dimensions unchanged: round bowl diameterabout440px, bowl rimy146, bottomy280; footbaseliney1153, flame tipy45, object centerx627. Same iron shape, rivets, broad forged texture, exact three splayed legs and triangular crossbrace at y760. Same shallow coals mound and small flame centered above; no increase in fire or added smoke. ALL foot bottoms at same y1153: strict horizontal orthographic elevation, no downward pitch, no perspective zoom.\nTripod physical inventory: one leg at frontcenter, two at rearleft/rearright equally spaced. Camera rotated90degrees to object's LEFT. Original front direction points toward viewer's LEFT edge. Former frontcenter foot is toward that edge; two rearlegs are toward other edge, overlapping in exact side projection. Natural occlusion is correct: do NOT invent another leg to display three clearly. Rotate all existing legs and triangular brace together; do not leave original frontcenter leg in center.\nObject stays same tall slender proportions, never shorten legs or widen bowl/feet. Same quiet dark iron coloration; coals/flame only bright element. Painterly semi-realistic render identical to reference, soft even illumination, #E6E6E6 plain backdrop, no ground/floor/shadow/scenery/text/characters. Whole object visible with margin.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/brazier_r001/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-1ab51546-aebe-448f-90ad-fde82e036c23.png",
+      "disposition": "candidate",
+      "review": "Bowl/stand heights and palette retained; tripod legs and brace rotated, side rear legs partly overlap.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/brazier_r001/left.png"
+    },
+    {
+      "piece": "brazier",
+      "file": "back.png",
+      "attempt": 1,
+      "prompt": "Use case: identity-preserve. Input is locked MAIN front of tall dark iron BRAZIER. Generate SAME physical brazier from BACK. Independently rendered camera view, never mirror. Square1254x1254PNG.\nKeep all dimensions unchanged: round bowl diameterabout440px, bowl rimy146, bottomy280; footbaseliney1153, flame tipy45, object centerx627. Same iron shape, rivets, broad forged texture, exact three splayed legs and triangular crossbrace at y760. Same shallow coals mound and small flame centered above; no increase in fire or added smoke. ALL foot bottoms at same y1153: strict horizontal orthographic elevation, no downward pitch, no perspective zoom.\nTripod physical inventory: one leg at frontcenter, two at rearleft/rearright equally spaced. Camera rotated180degrees to rear. Rearleft/rearright legs now nearer camera and former frontcenter leg farther; show rear of brace/attachments, preserve all3 legs, no fourth leg.\nObject stays same tall slender proportions, never shorten legs or widen bowl/feet. Same quiet dark iron coloration; coals/flame only bright element. Painterly semi-realistic render identical to reference, soft even illumination, #E6E6E6 plain backdrop, no ground/floor/shadow/scenery/text/characters. Whole object visible with margin.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/brazier_r001/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-00600e76-2747-4769-9ce9-4cb7389724a7.png",
+      "disposition": "candidate",
+      "review": "Bowl/stand heights and palette retained; tripod legs and brace rotated, side rear legs partly overlap.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/brazier_r001/back.png"
+    },
+    {
+      "piece": "brazier",
+      "file": "right.png",
+      "attempt": 1,
+      "prompt": "Use case: identity-preserve. Input is locked MAIN front of tall dark iron BRAZIER. Generate SAME physical brazier from RIGHT. Independently rendered camera view, never mirror. Square1254x1254PNG.\nKeep all dimensions unchanged: round bowl diameterabout440px, bowl rimy146, bottomy280; footbaseliney1153, flame tipy45, object centerx627. Same iron shape, rivets, broad forged texture, exact three splayed legs and triangular crossbrace at y760. Same shallow coals mound and small flame centered above; no increase in fire or added smoke. ALL foot bottoms at same y1153: strict horizontal orthographic elevation, no downward pitch, no perspective zoom.\nTripod physical inventory: one leg at frontcenter, two at rearleft/rearright equally spaced. Camera rotated90degrees to object's RIGHT. Original front direction points toward viewer's RIGHT edge. Former frontcenter foot is toward that edge; two rearlegs are toward other edge, overlapping in exact side projection. Natural occlusion is correct: do NOT invent another leg to display three clearly. Rotate all existing legs and triangular brace together; do not leave original frontcenter leg in center.\nObject stays same tall slender proportions, never shorten legs or widen bowl/feet. Same quiet dark iron coloration; coals/flame only bright element. Painterly semi-realistic render identical to reference, soft even illumination, #E6E6E6 plain backdrop, no ground/floor/shadow/scenery/text/characters. Whole object visible with margin.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/brazier_r001/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-cfb61f69-3bc3-4605-808a-1eca4a9408f6.png",
+      "disposition": "rejected",
+      "review": "Right side leg spread and attachment placement are visibly narrower than left; same object geometry not preserved.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/brazier_r001/rejected/right_attempt01.png"
+    },
+    {
+      "piece": "brazier",
+      "file": "right.png",
+      "attempt": 2,
+      "prompt": "Use case: identity-preserve. Input1 is locked MAIN brazier; input2 is LEFT side. Generate RIGHT side of that EXACT SAME tall tripod brazier, using both references to preserve geometry. Independently render new camera angle; NEVER horizontally mirror a file.\nCorrect last failure: right side must have same fore/aft span as LEFT. Left has one original-front foot atx424 and two original-rear feet aroundx800. Therefore RIGHT view must place original-front single foot aroundx830 and original-rear pair aroundx450. Don't move single foot inward to center. Side legs overlap naturally. Camera exactly90degrees at object's right; original front points viewer RIGHT. All legs/rivets/triangularbrace rotate consistently. SAME bowl440px wide atcenterx627, rimy146, bottomy280; crossbraceheighty760. Flamey45, ALL footbottomsy1153. Keep main's tall slender2m high darkiron tripod, same bowl/coals/smallflame. No added/missing legs. No new design or shorter leg span.\nSame painterly semi-realistic worn iron, even softlight, plain#E6E6E6 backdrop, wholeobject withmargin. No floor, shadows, scenery, text or characters. PNG1254square.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/brazier_r001/main.png",
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/brazier_r001/left.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-ec41ac51-ba18-4e00-9e3c-b390abd8049e.png",
+      "disposition": "candidate",
+      "review": "Second right restores side leg span, attachment positions and same bowl/brace/foot heights as left; independently generated, not mirrored.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/brazier_r001/right.png"
+    },
+    {
+      "piece": "yard_props",
+      "file": "main.png",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. One MAIN/front reference of a compact YARD PROPS group for Wonder Chess courtyard. Attached hero is STYLE ONLY: copy its painterly semi-realistic clean3D rendering, believable worn materials, soft even light. Never include a person or character.\nEXACT inventory: TWO upright oak barrels with dark iron hoops, ONE closed square oak crate, ONE simple wooden weapon rack holding exactly TWO long spears and ONE round wooden shield with dark iron rim/boss. A little deep royal-blue #24468F cloth draped over rack crossbar. Oak and dark iron, quiet low saturation lowercontrast thanhero. No other props, weapons, shields, ground slab, floor, pallet or terrain.\nFixed arrangement fits a3m square: large barrel at FRONT LEFT of image; second slightly smaller barrel BEHIND it and closer to CENTER. Closed crate at FRONT CENTER beside large barrel. Rack at BACK RIGHT, two upright spears spaced in its slots and round shield supported against rack FRONT. Small blue cloth over rack's upper crossbar at right. Every object touches same imaginary level ground. Arrange enough spacing that inventory reads in front view. Do not pile barrels on crate. Simple broad plank forms, big readable joints, few worn corners, subdued grain, no noisy scratches. Rack supported on its own two simple feet, no shared base.\nEXACT front orthographic-style camera, horizontal, no downward pitch: all object bases at SAME baseline in image, no depth-based height offset. Objects face front; crate frontal square face, barrel lids not broadly exposed, no perspective three-quarter group. Entire group with generous margins, highest speartips around8%imageheight and baseline92%, centered square1254x1254PNG. Plain #E6E6E6 light-grey background, no ground/contact/cast shadow, scenery, labels, text or characters. Single view only.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r004/with_shield/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-96b02c87-32ad-4e4d-9ba4-285975625763.png",
+      "disposition": "candidate",
+      "review": "Exact inventory readable: two barrels, one crate, rack with two spears and one round shield, small blue cloth; no ground slab. Fixed front arrangement retained.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/main.png"
+    },
+    {
+      "piece": "yard_props",
+      "file": "left.png",
+      "attempt": 1,
+      "prompt": "Use case: identity-preserve. Input is locked MAIN of yardprop group. Generate LEFT camera view of the EXACT SAME FIXED ASSEMBLY, rotate wholegroup rigidly with nothing moved. Camera90degrees to group's own LEFT; original FRONT points viewer LEFT. The front crate/largebarrel project toward IMAGE LEFT and rear rack/smallerbarrel toward IMAGE RIGHT. Rack which was right in main is nearest camera and can occlude distant items. Show SIDE profile of rack/shield and spear blades, not their broad front. Two spears may overlap naturally in exact side projection.\nPhysical inventory unchanged: large frontleft barrel, slightly smaller barrel rearcenter, crate frontcenter, rack rearright holding two spears and roundshield on its front and bluecloth on its right crossbar. All remain at original3D positions; do NOT spread, shuffle, restack or resize props to show hidden items. Natural occlusion allowed. No missing/replacement/new objects. Keep same barrelhoop count, crateplanks/brace, rackfootstructure, spearheads, shieldrim/boss/wood, exact materials/colors, quiet painterly semi-realistic wear.\nSame ortho pixel scale as main: highest speartipsy78, barrel tops near560, racktop490, crate top765, all basesy1085. Every item touches same imaginary groundlevel. Never enlarge the side group's width to fillcanvas. Straight-on horizontal orthographic-style camera, not topdown, no perspective slant. Complete assembly centered with margins on PNG1254square. Same even soft light, plain#E6E6E6 background, no ground/floor/platform/contactshadow, text, scenery or character. One view only, NEVER mirror.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-ac880175-1db2-431a-b073-0be4e8e64b98.png",
+      "disposition": "rejected",
+      "review": "Side changes scale/baseline, gives different spear-tip heights and presents elevated rather than horizontal view.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/rejected/left_attempt01.png"
+    },
+    {
+      "piece": "yard_props",
+      "file": "back.png",
+      "attempt": 1,
+      "prompt": "Use case: identity-preserve. Input is locked MAIN of yardprop group. Generate BACK camera view of the EXACT SAME FIXED ASSEMBLY, rotate wholegroup rigidly with nothing moved. Camera180degrees. Original rack now IMAGE LEFT, large barrel IMAGE RIGHT. Smaller rear barrel nearer camera at center-right, crate originally in front now partly hidden farther behind small barrel. Show REAR of wooden rack, rear of round shield with its wooden planks/handgrip (NO front metal boss on its back), blue cloth at left end of rack crossbar. Exact same spear locations and height.\nPhysical inventory unchanged: large frontleft barrel, slightly smaller barrel rearcenter, crate frontcenter, rack rearright holding two spears and roundshield on its front and bluecloth on its right crossbar. All remain at original3D positions; do NOT spread, shuffle, restack or resize props to show hidden items. Natural occlusion allowed. No missing/replacement/new objects. Keep same barrelhoop count, crateplanks/brace, rackfootstructure, spearheads, shieldrim/boss/wood, exact materials/colors, quiet painterly semi-realistic wear.\nSame ortho pixel scale as main: highest speartipsy78, barrel tops near560, racktop490, crate top765, all basesy1085. Every item touches same imaginary groundlevel. Never enlarge the side group's width to fillcanvas. Straight-on horizontal orthographic-style camera, not topdown, no perspective slant. Complete assembly centered with margins on PNG1254square. Same even soft light, plain#E6E6E6 background, no ground/floor/platform/contactshadow, text, scenery or character. One view only, NEVER mirror.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-786de62b-c9aa-4327-b864-2bba0731eeb9.png",
+      "disposition": "candidate",
+      "review": "Rear preserves inventory and arrangement, rack/shield reverse visible, crate partially occluded, height/baseline align.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/back.png"
+    },
+    {
+      "piece": "yard_props",
+      "file": "right.png",
+      "attempt": 1,
+      "prompt": "Use case: identity-preserve. Input is locked MAIN of yardprop group. Generate RIGHT camera view of the EXACT SAME FIXED ASSEMBLY, rotate wholegroup rigidly with nothing moved. Camera90degrees to group's own RIGHT; original FRONT points viewer RIGHT. Front largebarrel projects toward IMAGE RIGHT, rear rack/smallerbarrel toward IMAGE LEFT. Large barrel which was left in main is now nearest camera; crate behind it can be partly occluded. Show SIDE profile of rack/shield and spear blades; two spears may overlap naturally.\nPhysical inventory unchanged: large frontleft barrel, slightly smaller barrel rearcenter, crate frontcenter, rack rearright holding two spears and roundshield on its front and bluecloth on its right crossbar. All remain at original3D positions; do NOT spread, shuffle, restack or resize props to show hidden items. Natural occlusion allowed. No missing/replacement/new objects. Keep same barrelhoop count, crateplanks/brace, rackfootstructure, spearheads, shieldrim/boss/wood, exact materials/colors, quiet painterly semi-realistic wear.\nSame ortho pixel scale as main: highest speartipsy78, barrel tops near560, racktop490, crate top765, all basesy1085. Every item touches same imaginary groundlevel. Never enlarge the side group's width to fillcanvas. Straight-on horizontal orthographic-style camera, not topdown, no perspective slant. Complete assembly centered with margins on PNG1254square. Same even soft light, plain#E6E6E6 background, no ground/floor/platform/contactshadow, text, scenery or character. One view only, NEVER mirror.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-05925684-9878-4573-9e65-df14ef0b6991.png",
+      "disposition": "rejected",
+      "review": "Side changes scale/baseline, gives different spear-tip heights and presents elevated rather than horizontal view.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/rejected/right_attempt01.png"
+    },
+    {
+      "piece": "yard_props",
+      "file": "left.png",
+      "attempt": 2,
+      "prompt": "Use case: identity-preserve. Render locked MAIN yardprops from exact LEFT orthographic side. Correct scale/camera failures: do not zoom or angle camera downward; all bases at SAME y1085, both spear tips at SAME y78 (they are identical height). Only the camera rotates90degrees; no prop moves. Original front points viewer LEFT.\nMatch main's pixel sizes: largebarrel about380px diameter and520px tall (topy565,bottomy1085); smallerbarrel diameter300px and525px tall; crate square320px, topy765/bottomy1085; rack topy490/bottomy1085; roundshield diameter350px withcenteraroundy890. The SIDE barrel sizes must equal main's, no scaling based on depth. Spearheads edge-on, never stagger their heights. Natural overlap allowed.\nPhysical positions: largebarrel frontleft, smallerbarrel rearcenter, crate frontcenter, rack rearright with shieldonfront and blueclothonright crossbar. Side projection: large frontbarrel centerx450, cratefrontcenter also nearx450 but nearer camera, rearrack nearx805, rearbarrelnearx805 behindrack. Keep side footprint compact, overallwidthabout730px. Side rack seen edge-on with its existing braced foot, no new platform; shield thin profile, frontboss points LEFT.\nKeep EXACT two barrels/onecrate/onerack/twospears/oneshield/smallbluecloth. Same hoopcounts, materialcolors and painterly semi-realistic wear. Horizontal straight-on orthographic elevation; crate side rectangular, no exposed top from above. Wholeassembly centered on1254squarePNG withlightgrey#E6E6E6background and soft evenlight, no groundshadow/floor/scenery/text/characters. No mirroring.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-d799c7e8-9f86-4bb8-a05d-c5f3d3ea0f7f.png",
+      "disposition": "rejected",
+      "review": "Shield boss faces the wrong direction for this side; side assembly also shifted versus main. Framing improved but object consistency fails.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/rejected/left_attempt02.png"
+    },
+    {
+      "piece": "yard_props",
+      "file": "right.png",
+      "attempt": 2,
+      "prompt": "Use case: identity-preserve. Render locked MAIN yardprops from exact RIGHT orthographic side. Correct scale/camera failures: do not zoom or angle camera downward; all bases at SAME y1085, both spear tips at SAME y78 (they are identical height). Only the camera rotates90degrees; no prop moves. Original front points viewer RIGHT.\nMatch main's pixel sizes: largebarrel about380px diameter and520px tall (topy565,bottomy1085); smallerbarrel diameter300px and525px tall; crate square320px, topy765/bottomy1085; rack topy490/bottomy1085; roundshield diameter350px withcenteraroundy890. The SIDE barrel sizes must equal main's, no scaling based on depth. Spearheads edge-on, never stagger their heights. Natural overlap allowed.\nPhysical positions: largebarrel frontleft, smallerbarrel rearcenter, crate frontcenter, rack rearright with shieldonfront and blueclothonright crossbar. Side projection: large frontbarrel centerx804 nearestcamera, frontcrate nearx804 partlyhidden behindit, rearrack nearx449 farthercamera, rearbarrelnearx449 nearer thanrack. Keep side footprint compact, overallwidthabout730px. Side rack seen edge-on with its existing braced foot, no new platform; shield thin profile, frontboss points RIGHT.\nKeep EXACT two barrels/onecrate/onerack/twospears/oneshield/smallbluecloth. Same hoopcounts, materialcolors and painterly semi-realistic wear. Horizontal straight-on orthographic elevation; crate side rectangular, no exposed top from above. Wholeassembly centered on1254squarePNG withlightgrey#E6E6E6background and soft evenlight, no groundshadow/floor/scenery/text/characters. No mirroring.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-5df4bcd6-94b5-4d54-862b-561cd52ebde6.png",
+      "disposition": "rejected",
+      "review": "Shield boss faces the wrong direction for this side; side assembly also shifted versus main. Framing improved but object consistency fails.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/rejected/right_attempt02.png"
+    },
+    {
+      "piece": "yard_props",
+      "file": "left.png",
+      "attempt": 3,
+      "prompt": "Use case: precise-object-edit. Input1 is locked MAIN/front yardprop group. Input2 is the LEFT side candidate closest to correct layout. Produce corrected LEFT side, preserving input2's arrangement and each object's identity from main.\nChange CAMERA/FRAMING ONLY to level straight-on orthographic elevation and main's exact scale/baseline. All contact points (bothbarrels,crate,rackfeet) align on the same horizontal baseline as main. Both spears have IDENTICAL height, so spear tips align at same height as main (near78pixels on1254canvas). Racktop matches main near490px, barrel tops near560px, crate topnear765px, base near1085px. Do NOT enlarge or shrink any individual prop; use same widths/heights as main.\nThe group is one rigid assembly. Originalfront points viewer LEFT; shield's metal boss projects toward viewer LEFT exactly as in input2. Shield attaches to ORIGINAL FRONT of rack, never flip to rear. Keep originalside candidate's near/far overlap: rack nearest at image right, crate visible nearfrontleft with largebarrel behind, smallerbarrel behindrack at rear.\nExactly2barrels,1crate,1rack,2spears,1roundshield,smallbluecloth. Natural overlap including spear overlap is correct. Keep same oak/iron/colors/hoops/brace/cloth and style. No new platform, no extra objects. Single square1254PNG, complete group with margins, soft even lighting, plainlightgrey#E6E6E6, NO groundshadow/floor/text/scenery/character. Do NOT mirror the other side.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/main.png",
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/rejected/left_attempt01.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-c47d3b9c-3016-4562-9858-5c58d888ba13.png",
+      "disposition": "rejected",
+      "review": "Third side attempt still changes scale/baseline and frame alignment from main. Piece stopped after three failed side attempts; best left attempt01, best right attempt03.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/rejected/left_attempt03.png"
+    },
+    {
+      "piece": "yard_props",
+      "file": "right.png",
+      "attempt": 3,
+      "prompt": "Use case: precise-object-edit. Input1 is locked MAIN/front yardprop group. Input2 is the RIGHT side candidate closest to correct layout. Produce corrected RIGHT side, preserving input2's arrangement and each object's identity from main.\nChange CAMERA/FRAMING ONLY to level straight-on orthographic elevation and main's exact scale/baseline. All contact points (bothbarrels,crate,rackfeet) align on the same horizontal baseline as main. Both spears have IDENTICAL height, so spear tips align at same height as main (near78pixels on1254canvas). Racktop matches main near490px, barrel tops near560px, crate topnear765px, base near1085px. Do NOT enlarge or shrink any individual prop; use same widths/heights as main.\nThe group is one rigid assembly. Originalfront points viewer RIGHT; shield's metal boss projects toward viewer RIGHT exactly as in input2. Shield attaches to ORIGINAL FRONT of rack, never flip to rear. Keep originalside candidate's near/far overlap: largebarrel nearest at image right partly occluding crate, rack at imageleft fartheraway, smallerbarrel behindlargebarrel.\nExactly2barrels,1crate,1rack,2spears,1roundshield,smallbluecloth. Natural overlap including spear overlap is correct. Keep same oak/iron/colors/hoops/brace/cloth and style. No new platform, no extra objects. Single square1254PNG, complete group with margins, soft even lighting, plainlightgrey#E6E6E6, NO groundshadow/floor/text/scenery/character. Do NOT mirror the other side.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/main.png",
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/rejected/right_attempt01.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-e685ee86-f741-4ff9-b53a-d8f995a8ac35.png",
+      "disposition": "rejected",
+      "review": "Third side attempt still changes scale/baseline and frame alignment from main. Piece stopped after three failed side attempts; best left attempt01, best right attempt03.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/rejected/right_attempt03.png"
+    },
+    {
+      "piece": "textures",
+      "file": "flagstone_tile.png",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. Generate a FLAT SEAMLESS REPEATING MATERIAL TEXTURE of castle courtyard FLAGSTONES. Exactly2048x2048PNG, square edge-to-edge image; not an object on background. The attached hero is STYLE ONLY: copy painterly semi-realistic believable materials with broad restrained wear. NO character or hero items.\nCamera straight DOWN, true orthographic, NO perspective. Large irregular RECTANGULAR warmgrey limestone flagstones arranged in an irregular staggered layout, big readable stones, soft worn edges, darker narrow mortar joints. A little desaturated moss in only a FEW joints. Broad quiet warmgrey palette, lowcontrast so hero units stand out, no tiny cracks or noisy mottling. Completely even diffuse lighting: NO directional shadows, highlights, AO darkening at image boundary or vignetting.\nCRITICAL: seamless periodic tile on ALL FOUR EDGES. Anything exiting left must continue at identical height/color/shape on right; anything exiting top must continue at identical x on bottom. Stone patterns AND mortar lines wrap continuously. Use a toroidal repeating layout. No outside border/frame or margin; stone pattern fills image. This is one tile, not a2x2 demonstration. No text, gridlines, numbers, icon, characters, scenery or objects. Native requested output2048by2048.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r004/with_shield/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-b689a88f-94bc-4669-bd1d-ce21fee57816.png",
+      "disposition": "candidate",
+      "review": "Flagstone candidate generated; seamless2x2visual check pending. Tool returned1254square despite requested2048.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/textures_r001/flagstone_tile.png"
+    },
+    {
+      "piece": "textures",
+      "file": "board_tile_light.png",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. FLAT gameboard LIGHT stone tile texture, exactly1024x1024PNG. Reference hero is STYLE ONLY: painterly semi-realistic fantasy, believable gently worn material. No character.\nStraight-down orthographic view of a SINGLE SQUARE stone slab filling the ENTIRE image edge to edge. PALE WARM LIMESTONE, smooth-worn surface, a few faint broad chisel marks, low contrast, neutral pale cream/warmgrey. Calm understated surface, no tiny noisy texture. No motif, sun, ornament, outline, grout, border, bevel, cut edge, cracks, tiles-within-tile, mosaic or shadow. The actual square stone face fills allpixels; no background or margin. Completely even diffuse lighting, constant overall tone across whole image with no vignette/directional highlight. No perspective, no 3D slab thickness. No text, scenery or characters. This will be one light chessboard square.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r004/with_shield/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-34c01e5a-d225-4f9b-8bea-edb3f6bca87b.png",
+      "disposition": "candidate",
+      "review": "One pale limestone surface edge-to-edge, smooth-worn with subtle chisel sweeps, evenlight/no grout or border.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/textures_r001/board_tile_light.png"
+    },
+    {
+      "piece": "textures",
+      "file": "sky_backdrop.png",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. WIDE LANDSCAPE SKY BACKDROP for Wonder Chess castle courtyard, aspectratio EXACTLY2:1, requested PNG2048x1024. NOT a square image. Attached hero is STYLE ONLY: match its painterly semi-realistic fantasy rendering/realism, restrained natural materials and calm light, never include a character or hero equipment.\nFull-bleed late-afternoon SKY panorama: soft muted blue high above fading to warm pale peach/cream near the distant horizon. Just a FEW soft calm clouds, no dramatic storm. Low distant hazy hills and exactly ONE very small faraway stone tower on the horizon line. Place horizon at about58% of imageheight, hills/tower entirely ABOVE the lower third. LOWER THIRD (bottom34%) contains NOTHING but smooth softly graded atmospheric haze, no land silhouette, trees, towers, buildings, water, foreground or clouds. No sun disc anywhere, no bright rays or lens flare. Quiet lowercontrast and less saturated than heroes. No courtyard foreground, no wall, no board, no people or characters, no text/labels/border. Entire wideimage is painted scenery, no plain studio background. Output2048wide by1024high.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r004/with_shield/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-2217bbe3-91ce-4c8b-8015-7a6e6c562b43.png",
+      "disposition": "rejected",
+      "review": "Sky has too many cloud bands and stronger sunset contrast than requested few calm clouds; lowerthird haze and single tower correct.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/textures_r001/rejected/sky_backdrop_attempt01.png"
+    },
+    {
+      "piece": "textures",
+      "file": "board_tile_dark.png",
+      "attempt": 1,
+      "prompt": "Use case: precise-object-edit. Input is LIGHT boardtile. Create corresponding DARK boardtile as exactly the SAME single square stone slab and surface pattern in DARK SLATE GREY. Change materialcolor only, preserve main chisel sweeps and smoothworn understated stone surface. Must read CLEARLY DARKER than light tile: neutral charcoal/slategrey average value around#50545B, never blue/saturated or nearly white. Even diffuse lighting, no vignette or shadows. Straightdown orthographic, fill imageedge-to-edge with ONE stoneface, no border/grout/bevel/cutedge/perspective/tiles-within-tile. Same painterlysemi-realistic game style, broadquiet lowcontrastwear, no noisy smallcracks. No text/scenery/characters. Requested exact PNG1024x1024.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/textures_r001/board_tile_light.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-3b46b607-d2e2-40f4-a736-10f748c9bac5.png",
+      "disposition": "candidate",
+      "review": "Same slab pattern in clearly darker slate-grey; edge-to-edge evenlight, no grout/border/perspective.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/textures_r001/board_tile_dark.png"
+    },
+    {
+      "piece": "textures",
+      "file": "sky_backdrop.png",
+      "attempt": 2,
+      "prompt": "Use case: stylized-concept. One wide2:1 fantasy skybackdrop, requested2048x1024PNG. Inputhero is STYLE ONLY for painterlysemi-realistic rendering; absolutelyno character.\nCalm lateafternoon sky with large areas of clean SOFT PALE BLUE, gently fading warmcream/peach nearhorizon. Just TWO OR THREE small soft calm cloudgroups HIGH in upperhalf, occupying less15% of sky. Avoid many wispy cloudstreaks, densecloudbands, dramaticcumuli or vivid sunsets. Restrained desaturated colors, lowcontrastquiet background soheroesstandout.\nDistant low softly rounded hills along horizonaround56%imageheight, exactly ONE tinyfar stone tower on thathorizon. Everything distant and hazy. BottomTHIRD contains only smooth pale atmospheric HAZE, absolutelyno hillside/tower/ground/tree/object/cloud inbottomthird. No sundisc, sunbeams, lensflare, foreground, courtyardwalls, people,characters,text,border. Fullbleed widescenery, notstudioimage. Exact2:1 aspectratio.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r004/with_shield/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-e3d8f695-98ae-4aaf-a5c7-c323b7ed0509.png",
+      "disposition": "candidate",
+      "review": "Second sky has sparse calm clouds, softblue-to-warm gradient, distant hills/one tower and haze-only lowerthird.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/textures_r001/sky_backdrop.png"
+    }
+  ],
+  "texture_export_sizes": {
+    "flagstone_tile.png": [
+      2048,
+      2048
+    ],
+    "board_tile_light.png": [
+      1024,
+      1024
+    ],
+    "board_tile_dark.png": [
+      1024,
+      1024
+    ],
+    "sky_backdrop.png": [
+      2048,
+      1024
+    ]
+  },
+  "results": {
+    "wall_section": {
+      "status": "stopped_after_three_failed_left_attempts",
+      "best_rejected": {
+        "left.png": "rejected/left_attempt02.png"
+      },
+      "remaining_visible_defects": [
+        "Best left cut-end is about60% of front width rather than required50%; correct2.6m thickness not preserved. Back/right not generated after stop."
+      ]
+    },
+    "round_tower": {
+      "status": "candidate_review_pending",
+      "remaining_visible_defects": [
+        "No structural mismatch identified; stone remains moderately mottled and background has slight soft shading."
+      ]
+    },
+    "gatehouse": {
+      "status": "candidate_review_pending",
+      "remaining_visible_defects": [
+        "No cut-end mismatch identified; stone texture is busy at full resolution and background has slight soft shading."
+      ]
+    },
+    "wall_banner": {
+      "status": "candidate_review_pending",
+      "remaining_visible_defects": [
+        "No structural mismatch identified; gold-colored distressing around cloth edges is pronounced."
+      ]
+    },
+    "brazier": {
+      "status": "candidate_review_pending",
+      "remaining_visible_defects": []
+    },
+    "yard_props": {
+      "status": "stopped_after_three_failed_side_attempts",
+      "best_rejected": {
+        "left.png": "rejected/left_attempt01.png",
+        "right.png": "rejected/right_attempt03.png"
+      },
+      "remaining_visible_defects": [
+        "Left/righthand sides change scale and baseline relative to main/back; left spear heights/camera and right barrel scale remain inconsistent."
+      ]
+    },
+    "textures": {
+      "status": "candidate_review_pending",
+      "remaining_visible_defects": [],
+      "flagstone_review": "No conspicuous seam in native2x2check; recheck final-sized output."
+    }
+  }
+}

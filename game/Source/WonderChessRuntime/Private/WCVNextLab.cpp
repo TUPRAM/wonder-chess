@@ -220,7 +220,8 @@ void AWCVNextLab::Initialize()
         if(ArtSlice){
             ExerciseChecks->SetBoolField(TEXT("art_slice_resources_loaded"),QuietStoneMaterial&&FWCArtSlice::ResourcesReady());
             bool StoneApplied=Cells.Num()==64;
-            for(const auto* Cell:Cells)StoneApplied&=Cell&&Cell->GetMaterial(0)&&Cell->GetMaterial(0)->GetMaterial()==QuietStoneMaterial->GetMaterial();
+            for(const auto* Cell:Cells)StoneApplied&=Cell&&Cell->GetMaterial(0)&&(Cell->GetMaterial(0)->GetMaterial()==QuietStoneMaterial->GetMaterial()||
+                (CourtyardStoneMaterial&&Cell->GetMaterial(0)->GetMaterial()==CourtyardStoneMaterial->GetMaterial()));
             ExerciseChecks->SetBoolField(TEXT("quiet_stone_applied_to_64_cells"),StoneApplied);
         }
         if(Storybook){
@@ -261,6 +262,17 @@ UMaterialInstanceDynamic* AWCVNextLab::StoneMaterial(FLinearColor Color)
     auto* Result=UMaterialInstanceDynamic::Create(QuietStoneMaterial,this);
     Result->SetVectorParameterValue(TEXT("Color"),Color);
     StoneMaterials.Add(Key,Result);
+    return Result;
+}
+UMaterialInstanceDynamic* AWCVNextLab::CourtyardMaterial(const TCHAR* Texture,float TilingU,float TilingV,FLinearColor Tint)
+{
+    const TCHAR* Folder=TEXT("/Game/WonderChess/VNext/Environment/Courtyard_r001");
+    if(!CourtyardStoneMaterial)CourtyardStoneMaterial=LoadObject<UMaterialInterface>(nullptr,*FString::Printf(TEXT("%s/M_CourtyardStone.M_CourtyardStone"),Folder));
+    auto* Image=CourtyardStoneMaterial?LoadObject<UTexture2D>(nullptr,*FString::Printf(TEXT("%s/%s.%s"),Folder,Texture,Texture)):nullptr;
+    if(!Image)return nullptr;
+    auto* Result=UMaterialInstanceDynamic::Create(CourtyardStoneMaterial,this);
+    Result->SetTextureParameterValue(TEXT("Texture"),Image);Result->SetVectorParameterValue(TEXT("Color"),Tint);
+    Result->SetScalarParameterValue(TEXT("TilingU"),TilingU);Result->SetScalarParameterValue(TEXT("TilingV"),TilingV);
     return Result;
 }
 UStaticMeshComponent* AWCVNextLab::Mesh(AActor* ParentActor, const TCHAR* Shape, FVector Location, FVector Scale, FLinearColor Color, FRotator Rotation)
@@ -338,6 +350,11 @@ void AWCVNextLab::BuildScene()
         if(ArtSlice)Tile->SetMaterial(0,StoneMaterial(Courtyard?Color:Storybook?
             ((Row+Column)%2?FLinearColor(.61f,.65f,.60f):FLinearColor(.82f,.83f,.77f)):
             ((Row+Column)%2?FLinearColor(.69f,.74f,.67f):FLinearColor(.87f,.89f,.80f))));
+        if(Courtyard)if(auto* Slab=CourtyardMaterial((Row+Column)%2?TEXT("T_BoardDark"):TEXT("T_BoardLight"),1,1,
+            (Row+Column)%2?FLinearColor(.85f,.85f,.85f):FLinearColor(.62f,.60f,.56f))){
+            // Quarter turns keep sixty-four copies of one slab from reading as a stamp.
+            Tile->SetMaterial(0,Slab);Tile->SetRelativeRotation(FRotator(0,((Row*3+Column*5)%4)*90,0));
+        }
         Cells.Add(Tile);
         for (int Edge = 0; Edge < 4; ++Edge) {
             const bool Vertical = Edge > 1;
@@ -409,13 +426,25 @@ void AWCVNextLab::BuildCourtyard(AActor* Ground,ADirectionalLight* Sun,ASkyLight
         Cloth(.09f,.19f,.46f),Brass(.60f,.45f,.16f),Soot(.05f,.045f,.04f);
     const auto Block=[&](FVector P,FVector Scale,FLinearColor Color,FRotator R=FRotator::ZeroRotator,const TCHAR* Shape=TEXT("Cube")){
         auto* Part=Mesh(Ground,Shape,P,Scale,Color,R);
-        if(QuietStoneMaterial&&(Color==Wall||Color==WallShade))Part->SetMaterial(0,StoneMaterial(Color));
+        if(Color==Wall||Color==WallShade){
+            // One repeat of the wall texture covers about 10 m by 6.1 m; a round tower wraps it around its drum.
+            const float Along=float(FMath::Max(Scale.X,Scale.Y))*(FCString::Strcmp(Shape,TEXT("Cylinder"))?1.f:3.14f);
+            if(auto* Stone=CourtyardMaterial(TEXT("T_WallStone"),FMath::Max(.2f,Along/10),FMath::Max(.2f,float(Scale.Z)/6.1f),
+                Color==Wall?FLinearColor(.92f,.92f,.92f):FLinearColor(.66f,.66f,.66f)))Part->SetMaterial(0,Stone);
+            else if(QuietStoneMaterial)Part->SetMaterial(0,StoneMaterial(Color));
+        }
         return Part;
     };
     // Paving: large flagstones in three close greys so the yard does not read as one flat plane.
-    Block(FVector(0,0,-36),FVector(70,70,.5),Soot)->SetCastShadow(false);
+    // With the flagstone texture one slab carries the whole yard; one repeat covers about 6 m.
+    auto* Paving=CourtyardMaterial(TEXT("T_Flagstone"),12.5f,12.5f,FLinearColor(.80f,.80f,.80f));
+    if(Paving){
+        auto* Yard=Block(FVector(0,0,-12),FVector(75,75,.2),Soot);
+        Yard->SetMaterial(0,Paving);Yard->SetCastShadow(false);
+    }
+    else Block(FVector(0,0,-36),FVector(70,70,.5),Soot)->SetCastShadow(false);
     const FLinearColor Flags[]={FLinearColor(.30f,.29f,.27f),FLinearColor(.34f,.33f,.30f),FLinearColor(.26f,.25f,.24f)};
-    for(int Tint=0;Tint<3;++Tint){
+    for(int Tint=0;Tint<3&&!Paving;++Tint){
         auto* Slabs=NewObject<UInstancedStaticMeshComponent>(Ground);
         Ground->AddInstanceComponent(Slabs);Slabs->SetupAttachment(Ground->GetRootComponent());
         Slabs->SetStaticMesh(ProxyMeshes.FindChecked(TEXT("Cube")));Slabs->SetMobility(EComponentMobility::Movable);
@@ -476,7 +505,9 @@ void AWCVNextLab::BuildCourtyard(AActor* Ground,ADirectionalLight* Sun,ASkyLight
         Fire->SetCastShadows(false);Fire->RegisterComponent();
     }
     // Late-afternoon sun with a soft opposite fill so armour and faces do not fall into black.
-    Sun->SetActorRotation(FRotator(-46,-128,0));
+    // A spawned directional light is stationary, and a stationary light ignores a new rotation at run time.
+    Sun->GetLightComponent()->SetMobility(EComponentMobility::Movable);
+    Sun->SetActorRotation(FRotator(-52,-105,0));
     Sun->GetLightComponent()->SetIntensity(4.4f);Sun->GetLightComponent()->SetLightColor(FLinearColor(1.f,.93f,.82f));
     Sky->GetLightComponent()->SetIntensity(1.9f);
     // One directional light only: a second one competes with it for forward shading.

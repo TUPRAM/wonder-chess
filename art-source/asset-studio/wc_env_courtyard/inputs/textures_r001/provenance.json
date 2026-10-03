@@ -1,0 +1,347 @@
+{
+  "schema": "wonder-chess.courtyard-reference-provenance.v1",
+  "date": "2026-10-03",
+  "timezone": "Asia/Shanghai",
+  "image_model": "GPT Image via built-in image_gen",
+  "exact_model_version": null,
+  "model_version_note": "The tool did not expose a precise model version, seed or API settings. None invented.",
+  "approval_status": "not_approved",
+  "status": "candidate_review_pending",
+  "brief": {
+    "path": "production/environment/courtyard/BRIEFS.md",
+    "sha256": "ff7b89df36fce912e11e7bc7eaeae70554001ed00b81ea31ae3450a7f6a91f0c"
+  },
+  "attempts_per_file": {
+    "flagstone_tile.png": 1,
+    "board_tile_light.png": 1,
+    "board_tile_dark.png": 1,
+    "sky_backdrop.png": 2
+  },
+  "selected_files": {
+    "flagstone_tile.png": {
+      "path": "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\textures_r001\\flagstone_tile.png",
+      "selected_attempt": 1,
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "format": "PNG",
+      "sha256": "7bf90d8bba5b71b7bc25c478a99c686f81e932c9c46c96335c093027c2179eda"
+    },
+    "board_tile_light.png": {
+      "path": "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\textures_r001\\board_tile_light.png",
+      "selected_attempt": 1,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "format": "PNG",
+      "sha256": "4d6eecdd0d55db15e90d922a679fcecf1b03c26b7c86922155f4136640154c56"
+    },
+    "board_tile_dark.png": {
+      "path": "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\textures_r001\\board_tile_dark.png",
+      "selected_attempt": 1,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "format": "PNG",
+      "sha256": "dbe3e3e0e00e9cb91acbc4cf5d84ed9d984f84e7723c7f4a994fa6706e34cf88"
+    },
+    "sky_backdrop.png": {
+      "path": "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\textures_r001\\sky_backdrop.png",
+      "selected_attempt": 2,
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "format": "PNG",
+      "sha256": "28395bba363e7891bdf61535359c3760fb997b0221233679ceea3b0443f29b74"
+    }
+  },
+  "not_generated": [],
+  "best_rejected": {},
+  "remaining_visible_defects": [],
+  "files": [
+    {
+      "piece": "textures",
+      "file": "flagstone_tile.png",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. Generate a FLAT SEAMLESS REPEATING MATERIAL TEXTURE of castle courtyard FLAGSTONES. Exactly2048x2048PNG, square edge-to-edge image; not an object on background. The attached hero is STYLE ONLY: copy painterly semi-realistic believable materials with broad restrained wear. NO character or hero items.\nCamera straight DOWN, true orthographic, NO perspective. Large irregular RECTANGULAR warmgrey limestone flagstones arranged in an irregular staggered layout, big readable stones, soft worn edges, darker narrow mortar joints. A little desaturated moss in only a FEW joints. Broad quiet warmgrey palette, lowcontrast so hero units stand out, no tiny cracks or noisy mottling. Completely even diffuse lighting: NO directional shadows, highlights, AO darkening at image boundary or vignetting.\nCRITICAL: seamless periodic tile on ALL FOUR EDGES. Anything exiting left must continue at identical height/color/shape on right; anything exiting top must continue at identical x on bottom. Stone patterns AND mortar lines wrap continuously. Use a toroidal repeating layout. No outside border/frame or margin; stone pattern fills image. This is one tile, not a2x2 demonstration. No text, gridlines, numbers, icon, characters, scenery or objects. Native requested output2048by2048.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r004/with_shield/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-b689a88f-94bc-4669-bd1d-ce21fee57816.png",
+      "disposition": "candidate",
+      "review": "Flagstone candidate generated; seamless2x2visual check pending. Tool returned1254square despite requested2048.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/textures_r001/flagstone_tile.png",
+      "source_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "20aa17b831d7e14f057a69033d8f825c89843a62cce65462af931d260ef62dbf"
+      },
+      "tool": "image_gen.imagegen",
+      "transparent_background": false,
+      "prompt_note": "Exact submitted prompt; tool-internal rewritten prompt, if any, was not exposed.",
+      "hash_note": "File hashes computed during packaging on the recorded date.",
+      "reference_hashes": {
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r004/with_shield/main.png": "0d88b5f7af6d4cea6bdfda85b350372e0459822913c924aebbf5c463450f2823"
+      },
+      "export": {
+        "operation": "Uniform LANCZOS resize to explicitly requested delivery dimensions; no crop, repaint, mirror, content or color edit",
+        "native_source_preserved": "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\textures_r001\\native_sources\\flagstone_tile_attempt01.png",
+        "native_dimensions": [
+          1254,
+          1254
+        ],
+        "delivered_dimensions": [
+          2048,
+          2048
+        ],
+        "native_generation_at_delivered_resolution": false
+      },
+      "saved_image": {
+        "dimensions": [
+          2048,
+          2048
+        ],
+        "format": "PNG",
+        "sha256": "7bf90d8bba5b71b7bc25c478a99c686f81e932c9c46c96335c093027c2179eda"
+      }
+    },
+    {
+      "piece": "textures",
+      "file": "board_tile_light.png",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. FLAT gameboard LIGHT stone tile texture, exactly1024x1024PNG. Reference hero is STYLE ONLY: painterly semi-realistic fantasy, believable gently worn material. No character.\nStraight-down orthographic view of a SINGLE SQUARE stone slab filling the ENTIRE image edge to edge. PALE WARM LIMESTONE, smooth-worn surface, a few faint broad chisel marks, low contrast, neutral pale cream/warmgrey. Calm understated surface, no tiny noisy texture. No motif, sun, ornament, outline, grout, border, bevel, cut edge, cracks, tiles-within-tile, mosaic or shadow. The actual square stone face fills allpixels; no background or margin. Completely even diffuse lighting, constant overall tone across whole image with no vignette/directional highlight. No perspective, no 3D slab thickness. No text, scenery or characters. This will be one light chessboard square.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r004/with_shield/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-34c01e5a-d225-4f9b-8bea-edb3f6bca87b.png",
+      "disposition": "candidate",
+      "review": "One pale limestone surface edge-to-edge, smooth-worn with subtle chisel sweeps, evenlight/no grout or border.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/textures_r001/board_tile_light.png",
+      "source_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "d64cb20f643d789c581c06201713d77005927e46ad452e8a31aaa5e8027fe241"
+      },
+      "tool": "image_gen.imagegen",
+      "transparent_background": false,
+      "prompt_note": "Exact submitted prompt; tool-internal rewritten prompt, if any, was not exposed.",
+      "hash_note": "File hashes computed during packaging on the recorded date.",
+      "reference_hashes": {
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r004/with_shield/main.png": "0d88b5f7af6d4cea6bdfda85b350372e0459822913c924aebbf5c463450f2823"
+      },
+      "export": {
+        "operation": "Uniform LANCZOS resize to explicitly requested delivery dimensions; no crop, repaint, mirror, content or color edit",
+        "native_source_preserved": "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\textures_r001\\native_sources\\board_tile_light_attempt01.png",
+        "native_dimensions": [
+          1254,
+          1254
+        ],
+        "delivered_dimensions": [
+          1024,
+          1024
+        ],
+        "native_generation_at_delivered_resolution": false
+      },
+      "saved_image": {
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "format": "PNG",
+        "sha256": "4d6eecdd0d55db15e90d922a679fcecf1b03c26b7c86922155f4136640154c56"
+      }
+    },
+    {
+      "piece": "textures",
+      "file": "sky_backdrop.png",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. WIDE LANDSCAPE SKY BACKDROP for Wonder Chess castle courtyard, aspectratio EXACTLY2:1, requested PNG2048x1024. NOT a square image. Attached hero is STYLE ONLY: match its painterly semi-realistic fantasy rendering/realism, restrained natural materials and calm light, never include a character or hero equipment.\nFull-bleed late-afternoon SKY panorama: soft muted blue high above fading to warm pale peach/cream near the distant horizon. Just a FEW soft calm clouds, no dramatic storm. Low distant hazy hills and exactly ONE very small faraway stone tower on the horizon line. Place horizon at about58% of imageheight, hills/tower entirely ABOVE the lower third. LOWER THIRD (bottom34%) contains NOTHING but smooth softly graded atmospheric haze, no land silhouette, trees, towers, buildings, water, foreground or clouds. No sun disc anywhere, no bright rays or lens flare. Quiet lowercontrast and less saturated than heroes. No courtyard foreground, no wall, no board, no people or characters, no text/labels/border. Entire wideimage is painted scenery, no plain studio background. Output2048wide by1024high.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r004/with_shield/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-2217bbe3-91ce-4c8b-8015-7a6e6c562b43.png",
+      "disposition": "rejected",
+      "review": "Sky has too many cloud bands and stronger sunset contrast than requested few calm clouds; lowerthird haze and single tower correct.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/textures_r001/rejected/sky_backdrop_attempt01.png",
+      "source_image": {
+        "dimensions": [
+          1774,
+          887
+        ],
+        "format": "PNG",
+        "sha256": "1a0d2fc614e970f6b20430db00fcc9db352e2b2705f74e7de3f1969bf9103728"
+      },
+      "tool": "image_gen.imagegen",
+      "transparent_background": false,
+      "prompt_note": "Exact submitted prompt; tool-internal rewritten prompt, if any, was not exposed.",
+      "hash_note": "File hashes computed during packaging on the recorded date.",
+      "reference_hashes": {
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r004/with_shield/main.png": "0d88b5f7af6d4cea6bdfda85b350372e0459822913c924aebbf5c463450f2823"
+      },
+      "saved_image": {
+        "dimensions": [
+          1774,
+          887
+        ],
+        "format": "PNG",
+        "sha256": "1a0d2fc614e970f6b20430db00fcc9db352e2b2705f74e7de3f1969bf9103728"
+      }
+    },
+    {
+      "piece": "textures",
+      "file": "board_tile_dark.png",
+      "attempt": 1,
+      "prompt": "Use case: precise-object-edit. Input is LIGHT boardtile. Create corresponding DARK boardtile as exactly the SAME single square stone slab and surface pattern in DARK SLATE GREY. Change materialcolor only, preserve main chisel sweeps and smoothworn understated stone surface. Must read CLEARLY DARKER than light tile: neutral charcoal/slategrey average value around#50545B, never blue/saturated or nearly white. Even diffuse lighting, no vignette or shadows. Straightdown orthographic, fill imageedge-to-edge with ONE stoneface, no border/grout/bevel/cutedge/perspective/tiles-within-tile. Same painterlysemi-realistic game style, broadquiet lowcontrastwear, no noisy smallcracks. No text/scenery/characters. Requested exact PNG1024x1024.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/textures_r001/board_tile_light.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-3b46b607-d2e2-40f4-a736-10f748c9bac5.png",
+      "disposition": "candidate",
+      "review": "Same slab pattern in clearly darker slate-grey; edge-to-edge evenlight, no grout/border/perspective.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/textures_r001/board_tile_dark.png",
+      "source_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "dcf2a8ef57192f7f9a34384e72ea0ca8bf4987f9086c56a418825d206f2b93ce"
+      },
+      "tool": "image_gen.imagegen",
+      "transparent_background": false,
+      "prompt_note": "Exact submitted prompt; tool-internal rewritten prompt, if any, was not exposed.",
+      "hash_note": "File hashes computed during packaging on the recorded date.",
+      "reference_hashes": {
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/textures_r001/board_tile_light.png": "4d6eecdd0d55db15e90d922a679fcecf1b03c26b7c86922155f4136640154c56"
+      },
+      "export": {
+        "operation": "Uniform LANCZOS resize to explicitly requested delivery dimensions; no crop, repaint, mirror, content or color edit",
+        "native_source_preserved": "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\textures_r001\\native_sources\\board_tile_dark_attempt01.png",
+        "native_dimensions": [
+          1254,
+          1254
+        ],
+        "delivered_dimensions": [
+          1024,
+          1024
+        ],
+        "native_generation_at_delivered_resolution": false
+      },
+      "saved_image": {
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "format": "PNG",
+        "sha256": "dbe3e3e0e00e9cb91acbc4cf5d84ed9d984f84e7723c7f4a994fa6706e34cf88"
+      }
+    },
+    {
+      "piece": "textures",
+      "file": "sky_backdrop.png",
+      "attempt": 2,
+      "prompt": "Use case: stylized-concept. One wide2:1 fantasy skybackdrop, requested2048x1024PNG. Inputhero is STYLE ONLY for painterlysemi-realistic rendering; absolutelyno character.\nCalm lateafternoon sky with large areas of clean SOFT PALE BLUE, gently fading warmcream/peach nearhorizon. Just TWO OR THREE small soft calm cloudgroups HIGH in upperhalf, occupying less15% of sky. Avoid many wispy cloudstreaks, densecloudbands, dramaticcumuli or vivid sunsets. Restrained desaturated colors, lowcontrastquiet background soheroesstandout.\nDistant low softly rounded hills along horizonaround56%imageheight, exactly ONE tinyfar stone tower on thathorizon. Everything distant and hazy. BottomTHIRD contains only smooth pale atmospheric HAZE, absolutelyno hillside/tower/ground/tree/object/cloud inbottomthird. No sundisc, sunbeams, lensflare, foreground, courtyardwalls, people,characters,text,border. Fullbleed widescenery, notstudioimage. Exact2:1 aspectratio.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r004/with_shield/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-e3d8f695-98ae-4aaf-a5c7-c323b7ed0509.png",
+      "disposition": "candidate",
+      "review": "Second sky has sparse calm clouds, softblue-to-warm gradient, distant hills/one tower and haze-only lowerthird.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/textures_r001/sky_backdrop.png",
+      "source_image": {
+        "dimensions": [
+          1774,
+          887
+        ],
+        "format": "PNG",
+        "sha256": "d86adc687f9d7b87c6ab6d3f01e5ded048c349a0fbcd1ada13f9399de403506a"
+      },
+      "tool": "image_gen.imagegen",
+      "transparent_background": false,
+      "prompt_note": "Exact submitted prompt; tool-internal rewritten prompt, if any, was not exposed.",
+      "hash_note": "File hashes computed during packaging on the recorded date.",
+      "reference_hashes": {
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r004/with_shield/main.png": "0d88b5f7af6d4cea6bdfda85b350372e0459822913c924aebbf5c463450f2823"
+      },
+      "export": {
+        "operation": "Uniform LANCZOS resize to explicitly requested delivery dimensions; no crop, repaint, mirror, content or color edit",
+        "native_source_preserved": "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\textures_r001\\native_sources\\sky_backdrop_attempt02.png",
+        "native_dimensions": [
+          1774,
+          887
+        ],
+        "delivered_dimensions": [
+          2048,
+          1024
+        ],
+        "native_generation_at_delivered_resolution": false
+      },
+      "saved_image": {
+        "dimensions": [
+          2048,
+          1024
+        ],
+        "format": "PNG",
+        "sha256": "28395bba363e7891bdf61535359c3760fb997b0221233679ceea3b0443f29b74"
+      }
+    }
+  ],
+  "review_derivatives": [
+    {
+      "path": "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\textures_r001\\review\\all_textures.png",
+      "prompt": null,
+      "method": "Deterministic assembly of source images without blending or source alteration; labels outside images for four-view sheets",
+      "script": "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\support\\build_reviews.py",
+      "source_files": [
+        "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\textures_r001\\flagstone_tile.png",
+        "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\textures_r001\\board_tile_light.png",
+        "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\textures_r001\\board_tile_dark.png",
+        "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\textures_r001\\sky_backdrop.png"
+      ],
+      "dimensions": [
+        1960,
+        1792
+      ],
+      "format": "PNG",
+      "sha256": "eb79883887d2b506f1038fc953f30cc109c54df948af4854210cd36314aa8b9a"
+    },
+    {
+      "path": "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\textures_r001\\review\\flagstone_tiling_check.png",
+      "prompt": null,
+      "method": "Deterministic assembly of source images without blending or source alteration; labels outside images for four-view sheets",
+      "script": "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\support\\build_reviews.py",
+      "source_files": [
+        "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\textures_r001\\flagstone_tile.png",
+        "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\textures_r001\\flagstone_tile.png",
+        "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\textures_r001\\flagstone_tile.png",
+        "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\textures_r001\\flagstone_tile.png"
+      ],
+      "dimensions": [
+        4096,
+        4096
+      ],
+      "format": "PNG",
+      "sha256": "3ea12dc50a3f6be9edb09aa57805b9c7e06fdd84aafab78c25c488cfe7a0d84d"
+    }
+  ]
+}

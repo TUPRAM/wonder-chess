@@ -1,0 +1,380 @@
+{
+  "schema": "wonder-chess.courtyard-reference-provenance.v1",
+  "date": "2026-10-03",
+  "timezone": "Asia/Shanghai",
+  "image_model": "GPT Image via built-in image_gen",
+  "exact_model_version": null,
+  "model_version_note": "The tool did not expose a precise model version, seed or API settings. None invented.",
+  "approval_status": "not_approved",
+  "status": "stopped_after_three_failed_side_attempts",
+  "brief": {
+    "path": "production/environment/courtyard/BRIEFS.md",
+    "sha256": "ff7b89df36fce912e11e7bc7eaeae70554001ed00b81ea31ae3450a7f6a91f0c"
+  },
+  "attempts_per_file": {
+    "main.png": 1,
+    "left.png": 3,
+    "back.png": 1,
+    "right.png": 3
+  },
+  "selected_files": {
+    "main.png": {
+      "path": "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\references\\yard_props_r001\\main.png",
+      "selected_attempt": 1,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "format": "PNG",
+      "sha256": "9374f8099d689c62cb06594e78483d07303b334fca8b24707c5187e74fc4ec4c"
+    },
+    "back.png": {
+      "path": "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\references\\yard_props_r001\\back.png",
+      "selected_attempt": 1,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "format": "PNG",
+      "sha256": "8c6c4fdfef3831285a6181c2bf7e2f04e4171e4608212bd13c6605e31cd5eda4"
+    }
+  },
+  "not_generated": [],
+  "best_rejected": {
+    "left.png": "rejected/left_attempt01.png",
+    "right.png": "rejected/right_attempt03.png"
+  },
+  "remaining_visible_defects": [
+    "Left/righthand sides change scale and baseline relative to main/back; left spear heights/camera and right barrel scale remain inconsistent."
+  ],
+  "files": [
+    {
+      "piece": "yard_props",
+      "file": "main.png",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. One MAIN/front reference of a compact YARD PROPS group for Wonder Chess courtyard. Attached hero is STYLE ONLY: copy its painterly semi-realistic clean3D rendering, believable worn materials, soft even light. Never include a person or character.\nEXACT inventory: TWO upright oak barrels with dark iron hoops, ONE closed square oak crate, ONE simple wooden weapon rack holding exactly TWO long spears and ONE round wooden shield with dark iron rim/boss. A little deep royal-blue #24468F cloth draped over rack crossbar. Oak and dark iron, quiet low saturation lowercontrast thanhero. No other props, weapons, shields, ground slab, floor, pallet or terrain.\nFixed arrangement fits a3m square: large barrel at FRONT LEFT of image; second slightly smaller barrel BEHIND it and closer to CENTER. Closed crate at FRONT CENTER beside large barrel. Rack at BACK RIGHT, two upright spears spaced in its slots and round shield supported against rack FRONT. Small blue cloth over rack's upper crossbar at right. Every object touches same imaginary level ground. Arrange enough spacing that inventory reads in front view. Do not pile barrels on crate. Simple broad plank forms, big readable joints, few worn corners, subdued grain, no noisy scratches. Rack supported on its own two simple feet, no shared base.\nEXACT front orthographic-style camera, horizontal, no downward pitch: all object bases at SAME baseline in image, no depth-based height offset. Objects face front; crate frontal square face, barrel lids not broadly exposed, no perspective three-quarter group. Entire group with generous margins, highest speartips around8%imageheight and baseline92%, centered square1254x1254PNG. Plain #E6E6E6 light-grey background, no ground/contact/cast shadow, scenery, labels, text or characters. Single view only.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r004/with_shield/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-96b02c87-32ad-4e4d-9ba4-285975625763.png",
+      "disposition": "candidate",
+      "review": "Exact inventory readable: two barrels, one crate, rack with two spears and one round shield, small blue cloth; no ground slab. Fixed front arrangement retained.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/main.png",
+      "source_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "9374f8099d689c62cb06594e78483d07303b334fca8b24707c5187e74fc4ec4c"
+      },
+      "tool": "image_gen.imagegen",
+      "transparent_background": false,
+      "prompt_note": "Exact submitted prompt; tool-internal rewritten prompt, if any, was not exposed.",
+      "hash_note": "File hashes computed during packaging on the recorded date.",
+      "reference_hashes": {
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r004/with_shield/main.png": "0d88b5f7af6d4cea6bdfda85b350372e0459822913c924aebbf5c463450f2823"
+      },
+      "saved_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "9374f8099d689c62cb06594e78483d07303b334fca8b24707c5187e74fc4ec4c"
+      }
+    },
+    {
+      "piece": "yard_props",
+      "file": "left.png",
+      "attempt": 1,
+      "prompt": "Use case: identity-preserve. Input is locked MAIN of yardprop group. Generate LEFT camera view of the EXACT SAME FIXED ASSEMBLY, rotate wholegroup rigidly with nothing moved. Camera90degrees to group's own LEFT; original FRONT points viewer LEFT. The front crate/largebarrel project toward IMAGE LEFT and rear rack/smallerbarrel toward IMAGE RIGHT. Rack which was right in main is nearest camera and can occlude distant items. Show SIDE profile of rack/shield and spear blades, not their broad front. Two spears may overlap naturally in exact side projection.\nPhysical inventory unchanged: large frontleft barrel, slightly smaller barrel rearcenter, crate frontcenter, rack rearright holding two spears and roundshield on its front and bluecloth on its right crossbar. All remain at original3D positions; do NOT spread, shuffle, restack or resize props to show hidden items. Natural occlusion allowed. No missing/replacement/new objects. Keep same barrelhoop count, crateplanks/brace, rackfootstructure, spearheads, shieldrim/boss/wood, exact materials/colors, quiet painterly semi-realistic wear.\nSame ortho pixel scale as main: highest speartipsy78, barrel tops near560, racktop490, crate top765, all basesy1085. Every item touches same imaginary groundlevel. Never enlarge the side group's width to fillcanvas. Straight-on horizontal orthographic-style camera, not topdown, no perspective slant. Complete assembly centered with margins on PNG1254square. Same even soft light, plain#E6E6E6 background, no ground/floor/platform/contactshadow, text, scenery or character. One view only, NEVER mirror.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-ac880175-1db2-431a-b073-0be4e8e64b98.png",
+      "disposition": "rejected",
+      "review": "Side changes scale/baseline, gives different spear-tip heights and presents elevated rather than horizontal view.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/rejected/left_attempt01.png",
+      "source_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "4bec4600792fee2f91bc8409d986b686023b1c89da04e5efea1921b25347d485"
+      },
+      "tool": "image_gen.imagegen",
+      "transparent_background": false,
+      "prompt_note": "Exact submitted prompt; tool-internal rewritten prompt, if any, was not exposed.",
+      "hash_note": "File hashes computed during packaging on the recorded date.",
+      "reference_hashes": {
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/main.png": "9374f8099d689c62cb06594e78483d07303b334fca8b24707c5187e74fc4ec4c"
+      },
+      "saved_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "4bec4600792fee2f91bc8409d986b686023b1c89da04e5efea1921b25347d485"
+      }
+    },
+    {
+      "piece": "yard_props",
+      "file": "back.png",
+      "attempt": 1,
+      "prompt": "Use case: identity-preserve. Input is locked MAIN of yardprop group. Generate BACK camera view of the EXACT SAME FIXED ASSEMBLY, rotate wholegroup rigidly with nothing moved. Camera180degrees. Original rack now IMAGE LEFT, large barrel IMAGE RIGHT. Smaller rear barrel nearer camera at center-right, crate originally in front now partly hidden farther behind small barrel. Show REAR of wooden rack, rear of round shield with its wooden planks/handgrip (NO front metal boss on its back), blue cloth at left end of rack crossbar. Exact same spear locations and height.\nPhysical inventory unchanged: large frontleft barrel, slightly smaller barrel rearcenter, crate frontcenter, rack rearright holding two spears and roundshield on its front and bluecloth on its right crossbar. All remain at original3D positions; do NOT spread, shuffle, restack or resize props to show hidden items. Natural occlusion allowed. No missing/replacement/new objects. Keep same barrelhoop count, crateplanks/brace, rackfootstructure, spearheads, shieldrim/boss/wood, exact materials/colors, quiet painterly semi-realistic wear.\nSame ortho pixel scale as main: highest speartipsy78, barrel tops near560, racktop490, crate top765, all basesy1085. Every item touches same imaginary groundlevel. Never enlarge the side group's width to fillcanvas. Straight-on horizontal orthographic-style camera, not topdown, no perspective slant. Complete assembly centered with margins on PNG1254square. Same even soft light, plain#E6E6E6 background, no ground/floor/platform/contactshadow, text, scenery or character. One view only, NEVER mirror.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-786de62b-c9aa-4327-b864-2bba0731eeb9.png",
+      "disposition": "candidate",
+      "review": "Rear preserves inventory and arrangement, rack/shield reverse visible, crate partially occluded, height/baseline align.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/back.png",
+      "source_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "8c6c4fdfef3831285a6181c2bf7e2f04e4171e4608212bd13c6605e31cd5eda4"
+      },
+      "tool": "image_gen.imagegen",
+      "transparent_background": false,
+      "prompt_note": "Exact submitted prompt; tool-internal rewritten prompt, if any, was not exposed.",
+      "hash_note": "File hashes computed during packaging on the recorded date.",
+      "reference_hashes": {
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/main.png": "9374f8099d689c62cb06594e78483d07303b334fca8b24707c5187e74fc4ec4c"
+      },
+      "saved_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "8c6c4fdfef3831285a6181c2bf7e2f04e4171e4608212bd13c6605e31cd5eda4"
+      }
+    },
+    {
+      "piece": "yard_props",
+      "file": "right.png",
+      "attempt": 1,
+      "prompt": "Use case: identity-preserve. Input is locked MAIN of yardprop group. Generate RIGHT camera view of the EXACT SAME FIXED ASSEMBLY, rotate wholegroup rigidly with nothing moved. Camera90degrees to group's own RIGHT; original FRONT points viewer RIGHT. Front largebarrel projects toward IMAGE RIGHT, rear rack/smallerbarrel toward IMAGE LEFT. Large barrel which was left in main is now nearest camera; crate behind it can be partly occluded. Show SIDE profile of rack/shield and spear blades; two spears may overlap naturally.\nPhysical inventory unchanged: large frontleft barrel, slightly smaller barrel rearcenter, crate frontcenter, rack rearright holding two spears and roundshield on its front and bluecloth on its right crossbar. All remain at original3D positions; do NOT spread, shuffle, restack or resize props to show hidden items. Natural occlusion allowed. No missing/replacement/new objects. Keep same barrelhoop count, crateplanks/brace, rackfootstructure, spearheads, shieldrim/boss/wood, exact materials/colors, quiet painterly semi-realistic wear.\nSame ortho pixel scale as main: highest speartipsy78, barrel tops near560, racktop490, crate top765, all basesy1085. Every item touches same imaginary groundlevel. Never enlarge the side group's width to fillcanvas. Straight-on horizontal orthographic-style camera, not topdown, no perspective slant. Complete assembly centered with margins on PNG1254square. Same even soft light, plain#E6E6E6 background, no ground/floor/platform/contactshadow, text, scenery or character. One view only, NEVER mirror.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-05925684-9878-4573-9e65-df14ef0b6991.png",
+      "disposition": "rejected",
+      "review": "Side changes scale/baseline, gives different spear-tip heights and presents elevated rather than horizontal view.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/rejected/right_attempt01.png",
+      "source_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "e6c52e9fec575753d923f1d69d820481f7ac85b256913939bb984ba15e163e33"
+      },
+      "tool": "image_gen.imagegen",
+      "transparent_background": false,
+      "prompt_note": "Exact submitted prompt; tool-internal rewritten prompt, if any, was not exposed.",
+      "hash_note": "File hashes computed during packaging on the recorded date.",
+      "reference_hashes": {
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/main.png": "9374f8099d689c62cb06594e78483d07303b334fca8b24707c5187e74fc4ec4c"
+      },
+      "saved_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "e6c52e9fec575753d923f1d69d820481f7ac85b256913939bb984ba15e163e33"
+      }
+    },
+    {
+      "piece": "yard_props",
+      "file": "left.png",
+      "attempt": 2,
+      "prompt": "Use case: identity-preserve. Render locked MAIN yardprops from exact LEFT orthographic side. Correct scale/camera failures: do not zoom or angle camera downward; all bases at SAME y1085, both spear tips at SAME y78 (they are identical height). Only the camera rotates90degrees; no prop moves. Original front points viewer LEFT.\nMatch main's pixel sizes: largebarrel about380px diameter and520px tall (topy565,bottomy1085); smallerbarrel diameter300px and525px tall; crate square320px, topy765/bottomy1085; rack topy490/bottomy1085; roundshield diameter350px withcenteraroundy890. The SIDE barrel sizes must equal main's, no scaling based on depth. Spearheads edge-on, never stagger their heights. Natural overlap allowed.\nPhysical positions: largebarrel frontleft, smallerbarrel rearcenter, crate frontcenter, rack rearright with shieldonfront and blueclothonright crossbar. Side projection: large frontbarrel centerx450, cratefrontcenter also nearx450 but nearer camera, rearrack nearx805, rearbarrelnearx805 behindrack. Keep side footprint compact, overallwidthabout730px. Side rack seen edge-on with its existing braced foot, no new platform; shield thin profile, frontboss points LEFT.\nKeep EXACT two barrels/onecrate/onerack/twospears/oneshield/smallbluecloth. Same hoopcounts, materialcolors and painterly semi-realistic wear. Horizontal straight-on orthographic elevation; crate side rectangular, no exposed top from above. Wholeassembly centered on1254squarePNG withlightgrey#E6E6E6background and soft evenlight, no groundshadow/floor/scenery/text/characters. No mirroring.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-d799c7e8-9f86-4bb8-a05d-c5f3d3ea0f7f.png",
+      "disposition": "rejected",
+      "review": "Shield boss faces the wrong direction for this side; side assembly also shifted versus main. Framing improved but object consistency fails.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/rejected/left_attempt02.png",
+      "source_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "29a8edf94208718f13fcc41a348a47fabc7ecdf77422a17221fe1b657e54bd3c"
+      },
+      "tool": "image_gen.imagegen",
+      "transparent_background": false,
+      "prompt_note": "Exact submitted prompt; tool-internal rewritten prompt, if any, was not exposed.",
+      "hash_note": "File hashes computed during packaging on the recorded date.",
+      "reference_hashes": {
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/main.png": "9374f8099d689c62cb06594e78483d07303b334fca8b24707c5187e74fc4ec4c"
+      },
+      "saved_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "29a8edf94208718f13fcc41a348a47fabc7ecdf77422a17221fe1b657e54bd3c"
+      }
+    },
+    {
+      "piece": "yard_props",
+      "file": "right.png",
+      "attempt": 2,
+      "prompt": "Use case: identity-preserve. Render locked MAIN yardprops from exact RIGHT orthographic side. Correct scale/camera failures: do not zoom or angle camera downward; all bases at SAME y1085, both spear tips at SAME y78 (they are identical height). Only the camera rotates90degrees; no prop moves. Original front points viewer RIGHT.\nMatch main's pixel sizes: largebarrel about380px diameter and520px tall (topy565,bottomy1085); smallerbarrel diameter300px and525px tall; crate square320px, topy765/bottomy1085; rack topy490/bottomy1085; roundshield diameter350px withcenteraroundy890. The SIDE barrel sizes must equal main's, no scaling based on depth. Spearheads edge-on, never stagger their heights. Natural overlap allowed.\nPhysical positions: largebarrel frontleft, smallerbarrel rearcenter, crate frontcenter, rack rearright with shieldonfront and blueclothonright crossbar. Side projection: large frontbarrel centerx804 nearestcamera, frontcrate nearx804 partlyhidden behindit, rearrack nearx449 farthercamera, rearbarrelnearx449 nearer thanrack. Keep side footprint compact, overallwidthabout730px. Side rack seen edge-on with its existing braced foot, no new platform; shield thin profile, frontboss points RIGHT.\nKeep EXACT two barrels/onecrate/onerack/twospears/oneshield/smallbluecloth. Same hoopcounts, materialcolors and painterly semi-realistic wear. Horizontal straight-on orthographic elevation; crate side rectangular, no exposed top from above. Wholeassembly centered on1254squarePNG withlightgrey#E6E6E6background and soft evenlight, no groundshadow/floor/scenery/text/characters. No mirroring.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/main.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-5df4bcd6-94b5-4d54-862b-561cd52ebde6.png",
+      "disposition": "rejected",
+      "review": "Shield boss faces the wrong direction for this side; side assembly also shifted versus main. Framing improved but object consistency fails.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/rejected/right_attempt02.png",
+      "source_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "ff95c49146883798a0d7de69824845527fa7bb12d4eaa2683159d52194aee439"
+      },
+      "tool": "image_gen.imagegen",
+      "transparent_background": false,
+      "prompt_note": "Exact submitted prompt; tool-internal rewritten prompt, if any, was not exposed.",
+      "hash_note": "File hashes computed during packaging on the recorded date.",
+      "reference_hashes": {
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/main.png": "9374f8099d689c62cb06594e78483d07303b334fca8b24707c5187e74fc4ec4c"
+      },
+      "saved_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "ff95c49146883798a0d7de69824845527fa7bb12d4eaa2683159d52194aee439"
+      }
+    },
+    {
+      "piece": "yard_props",
+      "file": "left.png",
+      "attempt": 3,
+      "prompt": "Use case: precise-object-edit. Input1 is locked MAIN/front yardprop group. Input2 is the LEFT side candidate closest to correct layout. Produce corrected LEFT side, preserving input2's arrangement and each object's identity from main.\nChange CAMERA/FRAMING ONLY to level straight-on orthographic elevation and main's exact scale/baseline. All contact points (bothbarrels,crate,rackfeet) align on the same horizontal baseline as main. Both spears have IDENTICAL height, so spear tips align at same height as main (near78pixels on1254canvas). Racktop matches main near490px, barrel tops near560px, crate topnear765px, base near1085px. Do NOT enlarge or shrink any individual prop; use same widths/heights as main.\nThe group is one rigid assembly. Originalfront points viewer LEFT; shield's metal boss projects toward viewer LEFT exactly as in input2. Shield attaches to ORIGINAL FRONT of rack, never flip to rear. Keep originalside candidate's near/far overlap: rack nearest at image right, crate visible nearfrontleft with largebarrel behind, smallerbarrel behindrack at rear.\nExactly2barrels,1crate,1rack,2spears,1roundshield,smallbluecloth. Natural overlap including spear overlap is correct. Keep same oak/iron/colors/hoops/brace/cloth and style. No new platform, no extra objects. Single square1254PNG, complete group with margins, soft even lighting, plainlightgrey#E6E6E6, NO groundshadow/floor/text/scenery/character. Do NOT mirror the other side.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/main.png",
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/rejected/left_attempt01.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-c47d3b9c-3016-4562-9858-5c58d888ba13.png",
+      "disposition": "rejected",
+      "review": "Third side attempt still changes scale/baseline and frame alignment from main. Piece stopped after three failed side attempts; best left attempt01, best right attempt03.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/rejected/left_attempt03.png",
+      "source_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "fb8d42ae199d67d533abbca79d6e70cc13e606288e7ad02ee40028f82ecd3557"
+      },
+      "tool": "image_gen.imagegen",
+      "transparent_background": false,
+      "prompt_note": "Exact submitted prompt; tool-internal rewritten prompt, if any, was not exposed.",
+      "hash_note": "File hashes computed during packaging on the recorded date.",
+      "reference_hashes": {
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/main.png": "9374f8099d689c62cb06594e78483d07303b334fca8b24707c5187e74fc4ec4c",
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/rejected/left_attempt01.png": "4bec4600792fee2f91bc8409d986b686023b1c89da04e5efea1921b25347d485"
+      },
+      "saved_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "fb8d42ae199d67d533abbca79d6e70cc13e606288e7ad02ee40028f82ecd3557"
+      }
+    },
+    {
+      "piece": "yard_props",
+      "file": "right.png",
+      "attempt": 3,
+      "prompt": "Use case: precise-object-edit. Input1 is locked MAIN/front yardprop group. Input2 is the RIGHT side candidate closest to correct layout. Produce corrected RIGHT side, preserving input2's arrangement and each object's identity from main.\nChange CAMERA/FRAMING ONLY to level straight-on orthographic elevation and main's exact scale/baseline. All contact points (bothbarrels,crate,rackfeet) align on the same horizontal baseline as main. Both spears have IDENTICAL height, so spear tips align at same height as main (near78pixels on1254canvas). Racktop matches main near490px, barrel tops near560px, crate topnear765px, base near1085px. Do NOT enlarge or shrink any individual prop; use same widths/heights as main.\nThe group is one rigid assembly. Originalfront points viewer RIGHT; shield's metal boss projects toward viewer RIGHT exactly as in input2. Shield attaches to ORIGINAL FRONT of rack, never flip to rear. Keep originalside candidate's near/far overlap: largebarrel nearest at image right partly occluding crate, rack at imageleft fartheraway, smallerbarrel behindlargebarrel.\nExactly2barrels,1crate,1rack,2spears,1roundshield,smallbluecloth. Natural overlap including spear overlap is correct. Keep same oak/iron/colors/hoops/brace/cloth and style. No new platform, no extra objects. Single square1254PNG, complete group with margins, soft even lighting, plainlightgrey#E6E6E6, NO groundshadow/floor/text/scenery/character. Do NOT mirror the other side.",
+      "reference_files": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/main.png",
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/rejected/right_attempt01.png"
+      ],
+      "date": "2026-10-03",
+      "model": "GPT Image (exact version not exposed)",
+      "source_file": "C:/Users/USER/.codex/generated_images/01a100d3-2ff3-7ef2-9f19-f606645a24fc/exec-e685ee86-f741-4ff9-b53a-d8f995a8ac35.png",
+      "disposition": "rejected",
+      "review": "Third side attempt still changes scale/baseline and frame alignment from main. Piece stopped after three failed side attempts; best left attempt01, best right attempt03.",
+      "saved_file": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/rejected/right_attempt03.png",
+      "source_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "e9e638ee4a51d8c93a001fc4c18e7799d10f85d1135bfe431ea9d8bf1a9e63ee"
+      },
+      "tool": "image_gen.imagegen",
+      "transparent_background": false,
+      "prompt_note": "Exact submitted prompt; tool-internal rewritten prompt, if any, was not exposed.",
+      "hash_note": "File hashes computed during packaging on the recorded date.",
+      "reference_hashes": {
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/main.png": "9374f8099d689c62cb06594e78483d07303b334fca8b24707c5187e74fc4ec4c",
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_env_courtyard/inputs/references/yard_props_r001/rejected/right_attempt01.png": "e6c52e9fec575753d923f1d69d820481f7ac85b256913939bb984ba15e163e33"
+      },
+      "saved_image": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "format": "PNG",
+        "sha256": "e9e638ee4a51d8c93a001fc4c18e7799d10f85d1135bfe431ea9d8bf1a9e63ee"
+      }
+    }
+  ],
+  "review_derivatives": [
+    {
+      "path": "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\references\\yard_props_r001\\review\\all_views.png",
+      "prompt": null,
+      "method": "Deterministic assembly of source images without blending or source alteration; labels outside images for four-view sheets",
+      "script": "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\support\\build_reviews.py",
+      "source_files": [
+        "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\references\\yard_props_r001\\main.png",
+        "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\references\\yard_props_r001\\back.png",
+        "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\references\\yard_props_r001\\rejected\\left_attempt01.png",
+        "C:\\Users\\USER\\Documents\\Wonder Chess\\art-source\\asset-studio\\wc_env_courtyard\\inputs\\references\\yard_props_r001\\rejected\\right_attempt03.png"
+      ],
+      "dimensions": [
+        5076,
+        1330
+      ],
+      "format": "PNG",
+      "sha256": "24097029cb6415a3aa20a318cf1cc95d747aaa527c10025c51c6ab1e9a8d0d41"
+    }
+  ]
+}
