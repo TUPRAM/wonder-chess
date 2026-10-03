@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wonder Chess — Hero Catalogue</title>
+  <meta name="description" content="Every Wonder Chess hero: four-view art, description, skill, stats and synergies.">
+  <link rel="icon" type="image/png" href="brand/favicon.png">
+  <link rel="apple-touch-icon" href="brand/touch-icon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap top-row">
+      <a class="brand" href="#top"><img src="brand/icon.png" alt="" width="28" height="32">Wonder Chess</a>
+      <nav class="nav" aria-label="Sections">
+        <a href="#heroes">Heroes</a>
+        <a href="#synergies">Synergies</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="intro" id="top">
+      <img class="logo" src="brand/logo.png" alt="Wonder Chess" width="360" height="239">
+      <h1>Hero catalogue</h1>
+      <p id="summary" class="muted">Loading…</p>
+    </section>
+
+    <section id="heroes" aria-label="Heroes">
+      <form class="filters" id="filters" autocomplete="off">
+        <label class="field grow">
+          <span>Search</span>
+          <input type="search" id="search" placeholder="Name or skill">
+        </label>
+        <label class="field">
+          <span>Race</span>
+          <select id="race"><option value="">All races</option></select>
+        </label>
+        <label class="field">
+          <span>Class</span>
+          <select id="class"><option value="">All classes</option></select>
+        </label>
+        <label class="field">
+          <span>Cost</span>
+          <select id="cost"><option value="">Any cost</option></select>
+        </label>
+        <label class="field">
+          <span>Status</span>
+          <select id="status">
+            <option value="">All</option>
+            <option value="playable">In the game</option>
+            <option value="planned">Planned</option>
+          </select>
+        </label>
+      </form>
+      <p id="count" class="muted small" aria-live="polite"></p>
+      <ul class="grid" id="grid"></ul>
+    </section>
+
+    <section id="synergies">
+      <h2>Synergies</h2>
+      <p class="muted">Deploy 2 or 4 different heroes of the same race or class to switch a bonus on.</p>
+      <h3>Races</h3>
+      <ul class="traits" id="races"></ul>
+      <h3>Classes</h3>
+      <ul class="traits" id="classes"></ul>
+    </section>
+  </main>
+
+  <footer class="wrap foot muted small">
+    <p>Development catalogue. Numbers are untuned and will change. Art appears here as each hero's four views are produced.</p>
+  </footer>
+
+  <dialog id="detail" aria-labelledby="detail-name">
+    <form method="dialog" class="close-row"><button class="close" aria-label="Close">Close</button></form>
+    <div id="detail-body"></div>
+  </dialog>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
