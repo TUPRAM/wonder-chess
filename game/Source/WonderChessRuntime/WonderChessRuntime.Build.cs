@@ -8,5 +8,6 @@ public class WonderChessRuntime : ModuleRules
         bEnableExceptions = true;
         bUseUnity = false;
         PublicDependencyModuleNames.AddRange(new [] {"Core", "CoreUObject", "Engine", "EngineSettings", "InputCore", "Json", "JsonUtilities", "UMG", "Slate", "SlateCore", "NetCore", "RenderCore", "RHI"});
+        PrivateDependencyModuleNames.Add("AudioMixer");
     }
 }

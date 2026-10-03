@@ -1,0 +1,57 @@
+{
+  "hero_id": "wc_vn_shieldbearer",
+  "date": "2026-10-03",
+  "review_type": "assistant_visual_consistency_review_not_owner_approval",
+  "owner_review": "open",
+  "result": "rejected_set_generation_stopped",
+  "side_by_side_images_viewed": [
+    "contact_sheet_attempt_001.png",
+    "contact_sheet_final_rejected.png"
+  ],
+  "five_checks": [
+    {
+      "check": "Same part inventory in all four views; nothing appears, disappears or changes hand",
+      "result": "fail",
+      "observation": "Shield handedness preserved, but rear view repeats front kneecaps and toe-like boot forms."
+    },
+    {
+      "check": "Same three colours and same proportions",
+      "result": "fail",
+      "observation": "Palette retained. Left attempt 2 shortens shield by approximately ten percent; right plume curl differs from main."
+    },
+    {
+      "check": "Same pose, scale and baseline",
+      "result": "fail",
+      "observation": "Left attempt 2 changes forearm pose and shield grip. Side baselines are slightly higher. Left attempt 1 also has a raised far boot."
+    },
+    {
+      "check": "Side views face the correct edge",
+      "result": "pass",
+      "observation": "Left faces left, right faces right. Both generated independently using main reference."
+    },
+    {
+      "check": "Plain background, no text, nothing cropped",
+      "result": "pass",
+      "observation": "All four selected candidate sources were viewed and have a light-grey background, full framing and no text. Contact-sheet labels are inspection-only."
+    }
+  ],
+  "main_individual_review": "Main attempt 2 fits the visual brief, but it is withheld with the incomplete/rejected set.",
+  "best_rejected_left_attempt": 2,
+  "accessory_observation": "Front and inner sides with one arm strap are shown; shield aspect ratio appears wider than main. Preserved unapproved after generation stop.",
+  "stop_rule": "User requested stop after two failed attempts at the same view; no additional back/right/accessory correction attempts were made.",
+  "sync": {
+    "check_exit_code": 0,
+    "sync_exit_code": 0,
+    "complete_sets": 0,
+    "failed_set_published": false
+  },
+  "tests": {
+    "status": "passed",
+    "command": ".venv/Scripts/python.exe -m unittest discover -s tests",
+    "exit_code": 0,
+    "tests_run": 251,
+    "elapsed_seconds": 5.67,
+    "log": "unittest.log"
+  },
+  "protected_source_files_unchanged": true
+}

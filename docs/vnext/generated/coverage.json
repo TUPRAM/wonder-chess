@@ -1,25 +1,19 @@
 {
-  "source_sha256": "ec031fb21f7ddcce1bd37cc38e3277788208767e78e05f51eead8e71f106d350",
-  "authored_heroes": 14,
-  "enabled_lab_heroes": 6,
-  "authored_traits": 18,
+  "source_sha256": "e776c2cd820726364c66003cb00fba1f372375574e20c7cb32986d6370fd59f2",
+  "authored_heroes": 40,
+  "enabled_lab_heroes": 14,
+  "authored_traits": 20,
   "runtime_traits": 0,
+  "roster_recipe_traits": 7,
   "runtime_relics": 12,
   "body_families": [
-    "arachnid",
-    "colony",
-    "creeping_vine",
-    "cuttlefish",
-    "elongated_quadruped",
-    "empty_cloak",
-    "floating_assembly",
-    "flower_mantis",
-    "grounded_quadruped",
-    "human_cart",
-    "root_walker",
-    "serpent",
-    "tortoise",
-    "winged_dragon"
+    "elemental_floating",
+    "elemental_humanoid",
+    "humanoid_horned",
+    "humanoid_large",
+    "humanoid_medium",
+    "humanoid_small",
+    "humanoid_tailed"
   ],
   "archetypes": [
     "artillery",
@@ -29,136 +23,125 @@
     "isolated duels",
     "momentum rush",
     "positional sustain",
-    "protected carries"
+    "protected carries",
+    "single_target_control"
   ],
   "trait_gaps": [
     {
-      "id": "beast",
-      "authored_members": 2,
-      "thresholds": [
-        2,
-        4,
-        6
-      ]
-    },
-    {
-      "id": "plant",
-      "authored_members": 2,
-      "thresholds": [
-        2,
-        3,
-        5
-      ]
-    },
-    {
-      "id": "insect",
-      "authored_members": 2,
-      "thresholds": [
-        2,
-        4
-      ]
-    },
-    {
-      "id": "construct",
-      "authored_members": 2,
-      "thresholds": [
-        2,
-        3,
-        5
-      ]
-    },
-    {
       "id": "human",
-      "authored_members": 1,
-      "thresholds": [
-        2,
-        3
-      ]
-    },
-    {
-      "id": "tidekin",
-      "authored_members": 1,
+      "authored_members": 4,
       "thresholds": [
         2,
         4
       ]
     },
     {
-      "id": "fae",
-      "authored_members": 1,
-      "thresholds": [
-        2,
-        3
-      ]
-    },
-    {
-      "id": "spirit",
-      "authored_members": 1,
+      "id": "elf",
+      "authored_members": 4,
       "thresholds": [
         2,
         4
       ]
     },
     {
-      "id": "dragon",
-      "authored_members": 2,
-      "thresholds": [
-        2,
-        3
-      ]
-    },
-    {
-      "id": "guardian",
-      "authored_members": 2,
+      "id": "dwarf",
+      "authored_members": 4,
       "thresholds": [
         2,
         4
       ]
     },
     {
-      "id": "warrior",
-      "authored_members": 2,
-      "thresholds": [
-        3,
-        6
-      ]
-    },
-    {
-      "id": "duelist",
-      "authored_members": 1,
+      "id": "goblin",
+      "authored_members": 4,
       "thresholds": [
         2,
         4
       ]
     },
     {
-      "id": "ranger",
-      "authored_members": 1,
+      "id": "orc",
+      "authored_members": 4,
       "thresholds": [
         2,
-        4,
-        6
+        4
+      ]
+    },
+    {
+      "id": "beastkin",
+      "authored_members": 4,
+      "thresholds": [
+        2,
+        4
+      ]
+    },
+    {
+      "id": "demon",
+      "authored_members": 4,
+      "thresholds": [
+        2,
+        4
+      ]
+    },
+    {
+      "id": "undead",
+      "authored_members": 4,
+      "thresholds": [
+        2,
+        4
+      ]
+    },
+    {
+      "id": "elemental",
+      "authored_members": 4,
+      "thresholds": [
+        2,
+        4
+      ]
+    },
+    {
+      "id": "dragonkin",
+      "authored_members": 4,
+      "thresholds": [
+        2,
+        4
+      ]
+    },
+    {
+      "id": "tank",
+      "authored_members": 4,
+      "thresholds": [
+        2,
+        4
+      ]
+    },
+    {
+      "id": "fighter",
+      "authored_members": 4,
+      "thresholds": [
+        2,
+        4
+      ]
+    },
+    {
+      "id": "assassin",
+      "authored_members": 4,
+      "thresholds": [
+        2,
+        4
       ]
     },
     {
       "id": "mage",
-      "authored_members": 1,
-      "thresholds": [
-        3,
-        5
-      ]
-    },
-    {
-      "id": "healer",
-      "authored_members": 2,
+      "authored_members": 4,
       "thresholds": [
         2,
-        3
+        4
       ]
     },
     {
-      "id": "controller",
-      "authored_members": 2,
+      "id": "sniper",
+      "authored_members": 4,
       "thresholds": [
         2,
         4
@@ -166,15 +149,39 @@
     },
     {
       "id": "engineer",
-      "authored_members": 2,
+      "authored_members": 4,
       "thresholds": [
         2,
-        3
+        4
       ]
     },
     {
-      "id": "assassin",
-      "authored_members": 1,
+      "id": "warlock",
+      "authored_members": 4,
+      "thresholds": [
+        2,
+        4
+      ]
+    },
+    {
+      "id": "priest",
+      "authored_members": 4,
+      "thresholds": [
+        2,
+        4
+      ]
+    },
+    {
+      "id": "shaman",
+      "authored_members": 4,
+      "thresholds": [
+        2,
+        4
+      ]
+    },
+    {
+      "id": "summoner",
+      "authored_members": 4,
       "thresholds": [
         2,
         4

@@ -43,7 +43,8 @@ enum class AbilityMechanic
     StationaryGrove,
     ScreenedStrike,
     CrossingBeams,
-    TidalPush
+    TidalPush,
+    CocoonProjectile
 };
 // Preparation orientation is local; the opposing formation is rotated by 180 degrees.
 enum class Facing { Forward, Right, Backward, Left };
@@ -139,9 +140,13 @@ struct UnitDef
 struct RelicDef
 {
     std::string id, name, description;
+    // An empty list fits every hero; a listed relic fits only those mechanics.
     std::vector<AbilityMechanic> compatibleMechanics;
     int magnitudeBp = 10000, rangeDelta = 0, radiusDelta = 0, durationBp = 10000,
         castBp = 10000, cooldownBp = 10000;
+    // Holder stat benefits, applied once when combat starts.
+    int healthBp = 0, attackDamageBp = 0, attackRateBp = 0, skillPowerBp = 0, allDamageBp = 0,
+        armorFlat = 0, resistanceFlat = 0;
 };
 bool RelicCompatible(const RelicDef &relic, AbilityMechanic mechanic);
 struct TraitDef
@@ -150,6 +155,8 @@ struct TraitDef
     int threshold = 0, value = 0;
     int threshold4 = 4, value4 = 0;
     std::vector<std::pair<int, int>> tiers;
+    // Team traits reach every recruited ally once the members meet a tier.
+    bool team = false;
 };
 int TraitValue(const TraitDef &trait, int distinctCount);
 struct BotDef
@@ -323,6 +330,9 @@ struct CombatUnit
     int shieldExpiry = 0, stunExpiry = 0, cooldownTick = 0, releaseTick = 0, recoveryTick = 0,
         movementTick = 0, basicReadyTick = 0;
     Id shieldSource = 0;
+    // Separate from generic stun so targeting can skip only existing cocoons.
+    int cocoonExpiry = 0;
+    Id cocoonSource = 0;
     std::string shieldKey;
     ActionState state = ActionState::Idle;
     std::vector<Modifier> modifiers;
@@ -367,7 +377,7 @@ enum class MechanicReason
     Ready, NoLivingTarget, TargetOutOfRange, DashTooLong, NoMomentum,
     PathOccupied, CornerOccupied, NotEstablished, NoInjuredAlly,
     TargetMoved, SourceMoved, SourceStunned, SourceDefeated,
-    TetherInvalidated, CombatEnded, TargetDefeated, Resolved
+    TetherInvalidated, CombatEnded, TargetDefeated, Resolved, TargetAlreadyCocooned
 };
 const char *MechanicPhaseName(MechanicPhase phase);
 const char *MechanicReasonName(MechanicReason reason);

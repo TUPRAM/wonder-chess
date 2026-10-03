@@ -1,0 +1,227 @@
+{
+  "hero_id": "wc_vn_shieldbearer",
+  "date": "2026-10-03",
+  "revision": "four_view_r003",
+  "authority": "User-selected attachment overrides the earlier brief's proportions/detail/shield silhouette for this request.",
+  "owner_review": "open",
+  "image_model": "GPT Image",
+  "exact_model_version": null,
+  "exact_model_version_note": "Built-in image_gen did not expose version.",
+  "status": "character_reference_candidates_carried_into_r004",
+  "attempts": [
+    {
+      "file": "with_shield/main.png",
+      "attempt": 0,
+      "operation": "unchanged copy of user-selected attachment",
+      "prompt": null,
+      "reference_images": [
+        "reference.png"
+      ],
+      "original_prompt": null,
+      "original_prompt_note": "No generation call was made for this view in this revision; the user supplied the image."
+    },
+    {
+      "file": "without_shield/main.png",
+      "attempt": 1,
+      "operation": "shield removal edit",
+      "prompt": "Edit the supplied image to create the SAME Shieldbearer character in the SAME FRONT view, WITHOUT the shield. The user chose this exact design. Preserve the existing proportions, height, pose, helmet, narrow eye slit, visor vents, short blue horsehair crest, layered worn steel armour with brass trim and rivets, chainmail, blue sun-emblem surcoat, leather belt and long belt tail, leg armour and sabatons. Preserve the existing right arm and every already visible part. Remove only the tall blue shield on the viewer's RIGHT (the character's anatomical LEFT), including its shield-specific grip/strap; reveal the naturally continuous matching left arm, gauntlet, hip and leg that were hidden. Leave the left arm in its existing relaxed slightly spread position, empty left gauntlet, same hand height as the other gauntlet; do not pose, shrink or redesign the knight. Do not add a sword, scabbard, cloak, pouch or new ornament. Use the same painterly worn metal/cloth style, exact blue/brass/steel palette, existing neutral light-grey background and soft lighting. Keep the camera and framing unchanged: square PNG 1254x1254, crest top about y=14, both soles about y=1210, head and torso at the same coordinates as the source. Full body, no text or extra objects. One front view only.",
+      "reference_images": [
+        "with_shield/main.png"
+      ],
+      "source_path": "C:/Users/USER/.codex/generated_images/01a1003d-0611-7553-a0c5-92ba9a85da39/exec-7a409c7b-59ba-44d0-ba63-4e43f992253a.png",
+      "saved_as": "without_shield/main.png"
+    },
+    {
+      "file": "without_shield/left.png",
+      "attempt": 1,
+      "operation": "camera rotation",
+      "prompt": "Create the anatomical LEFT PROFILE view of the exact unshielded knight in input image 1. The character faces the LEFT EDGE of the image in a true side elevation, camera looking at his OWN LEFT side at chest height. WITHOUT any shield; both gauntlets empty. The user-selected main image is the exact identity, proportions, outfit, material and painterly style authority. Keep the tall broad adult proportions unchanged; do not make a toy or shrink the body. Preserve the great helm with thin black eye slit, brass riveted brow band, steel central face ridge and vertical ventilation slots only on the front, short cobalt horsehair crest, huge layered brass-edged steel pauldrons, chainmail at joints, weathered deep blue surcoat with gold sun ONLY on the chest, brass-edged long central cloth skirt, brown belt with rectangular brass buckle and long hanging belt tail ONLY at the front on the knight's own left, layered steel thigh and knee armour, greaves, articulated gauntlets and sabatons. Maintain same steel/brass/blue/leather palette and degree of painterly wear. No sword, scabbard, cape, backpack, pouch, new emblem or extra anatomy. Preserve existing relaxed standing pose: arms slightly spread sideways, hands down, legs slightly apart, feet firmly planted. Generate the named camera view by rotating around the unchanged character, not by mirroring or inventing a new pose. Square PNG 1254x1254, full body at same vertical scale as main: crest top about y=14, helmet crown around y=65, boot sole baseline about y=1210, waist about y=510, knees about y=865. Same neutral light-grey backdrop and even lighting. No scene, ground shadow or text. The near LEFT arm remains relaxed downward, not thrust forward. Both feet occupy the same floor level; exact side view naturally overlaps far foot behind near foot. Profile helmet points LEFT and rear of helmet to RIGHT; avoid visible frontal chest plane or a three-quarter pose. The sun on the front surcoat is only seen foreshortened, never copied to shoulder or side. The hanging belt tail remains toward the front and on anatomical left, not the rear. Preserve short blue crest as the same stiff horsehair tuft seen from the side. One single left view.",
+      "reference_images": [
+        "without_shield/main.png"
+      ],
+      "source_path": "C:/Users/USER/.codex/generated_images/01a1003d-0611-7553-a0c5-92ba9a85da39/exec-b754377c-2c25-4cbd-b0ea-a0dbf7cf853b.png",
+      "saved_as": "rejected/without_shield_left_attempt_001.png"
+    },
+    {
+      "file": "without_shield/back.png",
+      "attempt": 1,
+      "operation": "camera rotation; unseen rear construction",
+      "prompt": "Generate the EXACT BACK view of the unshielded knight in input image 1, seen directly from behind. The head, torso, pelvis and both feet all face directly away from the viewer; no head turned back, no front chest or face visible. WITHOUT SHIELD, both hands empty. The user-selected main image is the exact identity, proportions, outfit, material and painterly style authority. Keep the tall broad adult proportions unchanged; do not make a toy or shrink the body. Preserve the great helm with thin black eye slit, brass riveted brow band, steel central face ridge and vertical ventilation slots only on the front, short cobalt horsehair crest, huge layered brass-edged steel pauldrons, chainmail at joints, weathered deep blue surcoat with gold sun ONLY on the chest, brass-edged long central cloth skirt, brown belt with rectangular brass buckle and long hanging belt tail ONLY at the front on the knight's own left, layered steel thigh and knee armour, greaves, articulated gauntlets and sabatons. Maintain same steel/brass/blue/leather palette and degree of painterly wear. No sword, scabbard, cape, backpack, pouch, new emblem or extra anatomy. Preserve existing relaxed standing pose: arms slightly spread sideways, hands down, legs slightly apart, feet firmly planted. Generate the named camera view by rotating around the unchanged character, not by mirroring or inventing a new pose. Square PNG 1254x1254, full body at same vertical scale as main: crest top about y=14, helmet crown around y=65, boot sole baseline about y=1210, waist about y=510, knees about y=865. Same neutral light-grey backdrop and even lighting. No scene, ground shadow or text. Reconstruct coherent previously unseen rear surfaces: plain blue back panel of the surcoat with its gold lower border and no sun emblem, visible rear of brown waist belt but NO frontal buckle and NO dangling front belt tail on the back; steel backplate/shoulder backs and chainmail at joints. Back of great helm has NO eye slit or visor ventilation slots. Rear of knees uses chainmail/strap joints, NOT a second set of front kneecap cups. Boots show HEELS and rear ankle armour, NOT front toes or front sabaton domes on the rear. Keep same width between legs, same hands at sides, same scale/baseline. Crisp rear orthographic elevation with negligible perspective. One single full-body BACK view.",
+      "reference_images": [
+        "without_shield/main.png"
+      ],
+      "source_path": "C:/Users/USER/.codex/generated_images/01a1003d-0611-7553-a0c5-92ba9a85da39/exec-0a1cd23b-c36a-4c02-8293-effbf7a402df.png",
+      "saved_as": "rejected/without_shield_back_attempt_001.png"
+    },
+    {
+      "file": "without_shield/right.png",
+      "attempt": 1,
+      "operation": "camera rotation",
+      "prompt": "Create the anatomical RIGHT PROFILE view of the exact unshielded knight in input image 1. The character faces the RIGHT EDGE of the image in a TRUE 90-degree side elevation. Camera looks at the knight's OWN RIGHT side, orthographic horizontal camera at chest height, not a three-quarter view. WITHOUT any shield; both gauntlets empty. The user-selected main image is the exact identity, proportions, outfit, material and painterly style authority. Keep the tall broad adult proportions unchanged; do not make a toy or shrink the body. Preserve the great helm with thin black eye slit, brass riveted brow band, steel central face ridge and vertical ventilation slots only on the front, short cobalt horsehair crest, huge layered brass-edged steel pauldrons, chainmail at joints, weathered deep blue surcoat with gold sun ONLY on the chest, brass-edged long central cloth skirt, brown belt with rectangular brass buckle and long hanging belt tail ONLY at the front on the knight's own left, layered steel thigh and knee armour, greaves, articulated gauntlets and sabatons. Maintain same steel/brass/blue/leather palette and degree of painterly wear. No sword, scabbard, cape, backpack, pouch, new emblem or extra anatomy. Preserve existing relaxed standing pose: arms slightly spread sideways, hands down, legs slightly apart, feet firmly planted. Generate the named camera view by rotating around the unchanged character, not by mirroring or inventing a new pose. Square PNG 1254x1254, full body at same vertical scale as main: crest top about y=14, helmet crown around y=65, boot sole baseline about y=1210, waist about y=510, knees about y=865. Same neutral light-grey backdrop and even lighting. No scene, ground shadow or text. The RIGHT arm is nearest camera, relaxed downward; do not reach forward. The left arm is hidden behind the body. This is a fresh right-camera view, NOT a horizontal flip of a left view. The hanging belt tail is on the far anatomical LEFT front and mostly occluded; do not relocate it onto the near right hip. Front chest emblem is on the forward-facing chest only and should be strongly foreshortened in exact side view. The back has a long plain blue tabard panel matching the front panel's length and gold border but no sun. Front toes point RIGHT, heels LEFT. Both feet are directly side-by-side at the same front/back depth, so far and near foot silhouettes overlap exactly in parallel projection: do NOT show a raised/smaller/staggered far foot. Match the same crest top and sole baseline as main. One single full-body RIGHT view.",
+      "reference_images": [
+        "without_shield/main.png"
+      ],
+      "source_path": "C:/Users/USER/.codex/generated_images/01a1003d-0611-7553-a0c5-92ba9a85da39/exec-a8436791-30ca-4ba5-90fe-15d70a7db87a.png",
+      "saved_as": "rejected/without_shield_right_attempt_001.png"
+    },
+    {
+      "file": "without_shield/left.png",
+      "attempt": 2,
+      "operation": "profile/foot and rear-cloth correction",
+      "prompt": "Correct input image 1, the LEFT view of this knight WITHOUT shield. Input 2 is its front design authority; input 3 supplies the rear tabard construction. Preserve the knight design, body height, metal/cloth/leather painting, pose and all armour exactly. Make these precise corrections only: (1) CAMERA is exact 90-degree LEFT profile, faces LEFT, no front three-quarter angle. Both feet stand at identical depth and height: far boot is directly occluded by near boot in this side camera, so show a single overlapping boot silhouette with sole on y=1210; do not show a smaller or raised boot behind. (2) Rear blue tabard panel must hang behind the legs to the SAME hem height as the front blue tabard panel, matching the long plain rear panel shown in input 3; retain gold border, no extra side apron, cape or emblem. (3) Keep short compact swept-back blue horsehair crest, the same tuft volume as the frontal authority, not a long ponytail. Do not change relaxed downward arm pose or introduce new gear. Front sun and belt buckle remain forward-facing and largely edge-on in true profile; long belt tail remains at the front on anatomical left. Keep same 1254x1254 canvas, crest top about y=14 and sole baseline y=1210, same neutral grey background. One complete LEFT profile, no text.",
+      "reference_images": [
+        "generated left attempt 1",
+        "without_shield/main.png",
+        "generated back attempt 1"
+      ],
+      "reference_paths": [
+        "C:/Users/USER/.codex/generated_images/01a1003d-0611-7553-a0c5-92ba9a85da39/exec-b754377c-2c25-4cbd-b0ea-a0dbf7cf853b.png",
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r003/without_shield/main.png",
+        "C:/Users/USER/.codex/generated_images/01a1003d-0611-7553-a0c5-92ba9a85da39/exec-0a1cd23b-c36a-4c02-8293-effbf7a402df.png"
+      ],
+      "source_path": "C:/Users/USER/.codex/generated_images/01a1003d-0611-7553-a0c5-92ba9a85da39/exec-1631e95a-6e07-4cdb-ab0e-18c92ee1e28e.png",
+      "saved_as": "without_shield/left.png"
+    },
+    {
+      "file": "without_shield/right.png",
+      "attempt": 2,
+      "operation": "rear-cloth/plume/profile correction",
+      "prompt": "Edit input image 1, the RIGHT view of the knight WITHOUT shield. Keep its exact character, painterly materials, tall adult proportions, pose, armour and correct anatomical-right side identity. Input 2 is the corrected LEFT profile ONLY to reconcile geometry, NOT to mirror. Input 3 is the master front. Input 4 fixes the long rear cloth design. Make the following targeted corrections: use a true RIGHT profile camera facing image RIGHT, no extra rotation of the body; preserve the single overlapped foot silhouette and sole baseline. Extend the plain rear blue tabard with gold border to the same hem height as the front hanging blue panel, consistent with input 4 and input 2, rather than the shortened rear panel currently in input 1. Reduce the sweeping blue horsehair crest to the exact compact swept-back side silhouette in input 2, seen from its opposite side; avoid long ponytail points hanging down the back of the helmet. Preserve every existing right-side detail and near right gauntlet; the belt tail belongs on anatomical LEFT and stays on far side, not mirrored onto this right hip. Front chest emblem stays foreshortened at forward/right edge, never on shoulder. Square PNG 1254x1254, same top/sole baseline as input1, full frame, same light-grey backdrop, no extra objects or text. One single RIGHT profile.",
+      "reference_images": [
+        "generated right attempt 1",
+        "generated left attempt 2",
+        "without_shield/main.png",
+        "generated back attempt 1"
+      ],
+      "reference_paths": [
+        "C:/Users/USER/.codex/generated_images/01a1003d-0611-7553-a0c5-92ba9a85da39/exec-a8436791-30ca-4ba5-90fe-15d70a7db87a.png",
+        "C:/Users/USER/.codex/generated_images/01a1003d-0611-7553-a0c5-92ba9a85da39/exec-1631e95a-6e07-4cdb-ab0e-18c92ee1e28e.png",
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r003/without_shield/main.png",
+        "C:/Users/USER/.codex/generated_images/01a1003d-0611-7553-a0c5-92ba9a85da39/exec-0a1cd23b-c36a-4c02-8293-effbf7a402df.png"
+      ],
+      "source_path": "C:/Users/USER/.codex/generated_images/01a1003d-0611-7553-a0c5-92ba9a85da39/exec-6fa56fee-3af2-4262-a3c2-296848eb477b.png",
+      "saved_as": "without_shield/right.png"
+    },
+    {
+      "file": "without_shield/back.png",
+      "attempt": 2,
+      "operation": "rear palm-surface correction",
+      "prompt": "Correct ONLY the two hands in input image 1, the BACK view of the unshielded knight. Keep the rest of this rear view precisely unchanged: same rear helmet, compact blue crest, shoulder armour, blue rear tabard with gold border, belt, rear knee straps, heels, all body proportions, pose, scale and every other detail. Input image 2 is the front-view identity/pose reference. The rear view currently duplicates the dorsal knuckle plates shown in the front view. From behind the unchanged knight, show the opposite inner hand surfaces instead: dark brown leather palms inside the same steel gauntlets, inner articulated finger pads, and cuff openings. Hands remain empty and relaxed downward at the same positions and angles as input1. The thumbs are on the anatomically correct opposite edges after rotation; do not paste front dorsal hands onto the back. Do not turn the shoulders, forearms or body, change tabard/armour, move hands or add objects. Same 1254x1254 square PNG, same light-grey background, crest and foot baseline exactly unchanged. Single full-body BACK view WITHOUT shield.",
+      "reference_images": [
+        "generated back attempt 1",
+        "without_shield/main.png"
+      ],
+      "reference_paths": [
+        "C:/Users/USER/.codex/generated_images/01a1003d-0611-7553-a0c5-92ba9a85da39/exec-0a1cd23b-c36a-4c02-8293-effbf7a402df.png",
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r003/without_shield/main.png"
+      ],
+      "source_path": "C:/Users/USER/.codex/generated_images/01a1003d-0611-7553-a0c5-92ba9a85da39/exec-84384a7f-ce24-44b4-84a5-1902cb721d0a.png",
+      "saved_as": "without_shield/back.png"
+    },
+    {
+      "file": "with_shield/back.png",
+      "attempt": 1,
+      "operation": "add selected shield to rear body view",
+      "prompt": "Create the WITH-SHIELD BACK view by editing input image 1 (the knight's exact unshielded BACK view). Input image 2 is the chosen FRONT view WITH SHIELD and is the authority for shield size, shape and handedness. Preserve every unshielded body pixel/shape/pose possible from image1 and add ONLY this same shield on the knight's anatomical LEFT forearm, which is on the viewer's LEFT in this BACK view. Keep right hand empty. Match shield dimensions from image2: tall narrow blue-painted tower shield, riveted aged-brass perimeter, slightly curved rectangular top, straight tall sides, shallow central pointed lower end; on this 1254 square frame top around y=260, lower point around y=993, width about 250 pixels. It sits alongside the left arm, not on the back or opposite arm, and its exterior face still points FORWARD with the knight. Therefore from the rear show the shield's INNER side, plain dark wooden backing framed by the same brass rim, one broad brown leather forearm retention strap and a simple grip at the existing left hand. NO gold sun or blue outward-face emblem on its INNER side. No extra sword/cape/pouch/backpack. Keep original rear armour, blue long rear tabard, compact crest, empty right palm, stance, lighting and background unchanged. Do not move, rescale, mirror or repose the knight. Same square PNG 1254x1254 and baseline. One complete BACK view with shield only.",
+      "reference_images": [
+        "without_shield/back.png",
+        "with_shield/main.png"
+      ],
+      "source_path": "C:/Users/USER/.codex/generated_images/01a1003d-0611-7553-a0c5-92ba9a85da39/exec-6763bfe5-1262-4922-86f6-462a511a505b.png",
+      "saved_as": "rejected/with_shield_back_attempt_001.png"
+    },
+    {
+      "file": "with_shield/left.png",
+      "attempt": 1,
+      "operation": "add selected shield to left body view",
+      "prompt": "Edit input image 1 (the exact WITHOUT-SHIELD LEFT view) to add the SAME blue-and-brass tower shield shown in input image 2, producing the WITH-SHIELD LEFT view. Preserve the knight's body, armour, pose, scale, compact crest, cloth and foot baseline from input1 exactly. Character still faces LEFT. The camera sees the knight's anatomical LEFT side, so the shield attaches to the NEAR LEFT forearm. Shield face stays directed FORWARD (toward image LEFT), parallel to the chest, as in input2; do not swivel it sideways toward the side camera. Therefore the shield is seen mostly EDGE-ON: a narrow thick brass rim and only a sliver of blue outer face, NOT a broad gold-sun panel covering the body. Preserve its tall slab shape with shallow pointed lower tip, rivets and weathered blue paint. Shield top should be y=260 and lowest tip y=993 on the 1254x1254 canvas, matching input2; it must not shrink or touch the ground. Its narrow vertical edge sits alongside and just in front of the existing near forearm, with a brown leather forearm strap and grip behind the shield; do not bend the arm forward 90 degrees or move the entire shield ahead of the torso. Right arm stays on far side, empty. Keep background and all non-shield areas unchanged. Single full-body LEFT view with shield, no words or extra objects.",
+      "reference_images": [
+        "without_shield/left.png",
+        "with_shield/main.png"
+      ],
+      "source_path": "C:/Users/USER/.codex/generated_images/01a1003d-0611-7553-a0c5-92ba9a85da39/exec-daa90dc6-c764-4aba-b564-c7169228bc6a.png",
+      "saved_as": "rejected/with_shield_left_attempt_001.png"
+    },
+    {
+      "file": "with_shield/right.png",
+      "attempt": 1,
+      "operation": "add far-side selected shield to right body view",
+      "prompt": "Edit input image 1 (the exact WITHOUT-SHIELD RIGHT view) to create a matching WITH-SHIELD RIGHT view. Input image 2 is the selected FRONT WITH SHIELD design reference. Preserve input1 knight/body/pose/clothing/armour/near hand/scale/background unchanged. Character still faces RIGHT, camera looks at anatomical RIGHT side. The shield belongs to the anatomical LEFT arm, on the FAR SIDE, never the near right arm. The near RIGHT hand must remain empty and fully visible exactly as input1. Place the same tall narrow blue tower shield with riveted brass rim and shallow pointed bottom on the far LEFT forearm. The shield's face still points FORWARD with the knight (image RIGHT), so it is seen edge-on and mostly occluded behind the torso/near arm and leg. Only a narrow gold rim/sliver may emerge along the forward edge, with any exposed areas in correct depth order BEHIND the body; never show a full frontal shield surface or put it in the right hand. Match shield top about y=260, pointed bottom about y=993, actual vertical height about 730 pixels, same off-ground position as input2. Do not move the shield all the way ahead of the character or change body pose to expose it. Same 1254x1254 square PNG, same crest top and boot baseline. One RIGHT side view with shield; no other object, text or redesign.",
+      "reference_images": [
+        "without_shield/right.png",
+        "with_shield/main.png"
+      ],
+      "source_path": "C:/Users/USER/.codex/generated_images/01a1003d-0611-7553-a0c5-92ba9a85da39/exec-8e2c4327-32e4-457c-9f20-bbf628ae091a.png",
+      "saved_as": "rejected/with_shield_right_attempt_001.png"
+    },
+    {
+      "file": "with_shield/back.png",
+      "attempt": 2,
+      "operation": "shield-size correction",
+      "prompt": "Make a targeted SHIELD SIZE correction to input image 1 (the rear view with shield). Input 2 is the frontal shield-size authority; input 3 is the rear body authority. Keep the knight's body and pose unchanged. The shield in input1 is too small. Enlarge ONLY the shield by approximately 25 percent in width and 11 percent in height, keeping its forearm attachment aligned, and lower its bottom. On the unchanged 1254x1254 canvas the corrected shield must span about x=210 to x=460, with top y=260 and lowest pointed tip y=993. Its height is about 730 pixels, ending BELOW the bottom of the hanging blue tabard and at upper-shin level, exactly like input2; the current short shield stops above the tabard hem, which must be fixed. Retain the same tall shape, shallow pointed bottom, riveted brass rim, dark wooden inner face, one brown leather forearm strap and simple grip. Do not put a sun emblem on the inner face. It remains at the anatomical LEFT side (viewer's LEFT from behind), exterior facing away from camera. Preserve empty right hand, rear blue cloth, knees, heels, armour, lighting, grey background, crest and foot baseline. No new objects, no changes to the knight's proportions. One complete BACK view with corrected full-sized shield.",
+      "reference_images": [
+        "generated shield back attempt 1",
+        "with_shield/main.png",
+        "without_shield/back.png"
+      ],
+      "reference_paths": [
+        "C:/Users/USER/.codex/generated_images/01a1003d-0611-7553-a0c5-92ba9a85da39/exec-6763bfe5-1262-4922-86f6-462a511a505b.png",
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r003/with_shield/main.png",
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r003/without_shield/back.png"
+      ],
+      "source_path": "C:/Users/USER/.codex/generated_images/01a1003d-0611-7553-a0c5-92ba9a85da39/exec-3ce52414-09c3-435b-a7b2-b9ca4ab408a8.png",
+      "saved_as": "with_shield/back.png"
+    },
+    {
+      "file": "with_shield/right.png",
+      "attempt": 2,
+      "operation": "far-side shield-height correction",
+      "prompt": "Make ONLY a shield-height correction to input image 1, this knight's RIGHT view with far-side shield. Input2 is the exact FRONT shield-size authority. Preserve the body, near empty RIGHT hand, pose, armour, crest, tabard, background and camera completely. Keep the shield on the anatomical LEFT arm on the far side, seen edge-on and behind the body. The current far-side shield is too short and vanishes at the knee/tabard edge. Keep its top at y=260 but extend the narrow gold rim downward to y=993, about 110 pixels farther than now, so a small lower portion of the brass-edged shield remains visible BELOW the blue tabard hem. Maintain a total physical shield height of about 730 pixels as input2. The lower end stays shallow-pointed; do not cut it square or expand a broad face toward camera. On the 1254x1254 image the exposed rim follows the existing far-side line near x=735–755 and must remain correctly occluded wherever torso, right arm or leg is in front. No added sword, no near-hand shield, no moving the whole shield forward. Same single full-body RIGHT profile, same frame and sole baseline.",
+      "reference_images": [
+        "generated shield right attempt 1",
+        "with_shield/main.png"
+      ],
+      "reference_paths": [
+        "C:/Users/USER/.codex/generated_images/01a1003d-0611-7553-a0c5-92ba9a85da39/exec-8e2c4327-32e4-457c-9f20-bbf628ae091a.png",
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r003/with_shield/main.png"
+      ],
+      "source_path": "C:/Users/USER/.codex/generated_images/01a1003d-0611-7553-a0c5-92ba9a85da39/exec-8db31c1c-acde-4ea0-bc9e-86e968f7d513.png",
+      "saved_as": "with_shield/right.png"
+    },
+    {
+      "file": "with_shield/left.png",
+      "attempt": 2,
+      "operation": "align shield grip and lower tip",
+      "prompt": "Targeted correction of input image1, LEFT view WITH SHIELD. Preserve the entire knight and shield design, camera, materials, pose, profile orientation and framing. Input2 is the BACK view of the same shield grip, and input3 is the FRONT shield size authority. Correct only (1) the near LEFT hand's finger pose: it is currently open and hanging straight, but it must be curled around the INNER shield grip exactly as shown in input2. Keep wrist and forearm at their existing positions; bend the fingers into a natural closed holding grip behind the shield without grasping its brass rim, and retain the brown forearm strap. Do not bend or raise the whole arm. (2) Extend the shield's lower tip slightly, about 25 pixels downward, to match the FRONT reference height; keep shield top fixed, ending just below the hanging blue cloth hem at upper shin, around y=993. It is still the same edge-on tall blue-and-brass pointed tower shield, not a wider frontal shield. Keep all other pixels/parts as unchanged as possible. Same 1254x1254 square image, left-facing complete body, same grey background, no text/new objects.",
+      "reference_images": [
+        "with_shield left attempt 1",
+        "with_shield/back.png",
+        "with_shield/main.png"
+      ],
+      "reference_paths": [
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r003/with_shield/left.png",
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r003/with_shield/back.png",
+        "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r003/with_shield/main.png"
+      ],
+      "saved_as": "with_shield/left.png",
+      "source_path": "C:/Users/USER/.codex/generated_images/01a1003d-0611-7553-a0c5-92ba9a85da39/exec-37099cc9-b22e-4758-bf20-b69fed5168ee.png"
+    }
+  ],
+  "superseded_by": "four_view_r004",
+  "supersession_reason": "User reaffirmed forearm-mounted shield and asked to finish. r004 retains these character images and adds shield-only views.",
+  "total_generation_calls": 13,
+  "attempts_per_file": {
+    "with_shield/main.png": 0,
+    "with_shield/left.png": 2,
+    "with_shield/right.png": 2,
+    "with_shield/back.png": 2,
+    "without_shield/main.png": 1,
+    "without_shield/left.png": 2,
+    "without_shield/right.png": 2,
+    "without_shield/back.png": 2
+  },
+  "known_limitations": [
+    "Side cameras slightly front-biased",
+    "Residual variation in shield dimensions and fine textures"
+  ]
+}

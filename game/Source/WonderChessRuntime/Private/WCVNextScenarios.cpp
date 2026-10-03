@@ -112,6 +112,8 @@ void AWCVNextLab::CompareScenario()
             Detail=FString::Printf(TEXT("Beam-recipient hits: %d / %d"),Sum(A,[](const auto& M){return M.beamHits;}),Sum(B,[](const auto& M){return M.beamHits;}));break;
         case wc::AbilityMechanic::TidalPush:
             Detail=FString::Printf(TEXT("Tide hits: %d / %d; pushes: %d / %d"),Sum(A,[](const auto& M){return M.tideHits;}),Sum(B,[](const auto& M){return M.tideHits;}),Sum(A,[](const auto& M){return M.tidePushes;}),Sum(B,[](const auto& M){return M.tidePushes;}));break;
+        case wc::AbilityMechanic::CocoonProjectile:
+            Detail=FString::Printf(TEXT("Successful cocoons: %d / %d"),Sum(A,[](const auto& M){return M.cocoons;}),Sum(B,[](const auto& M){return M.cocoons;}));break;
         default:break;
         }
         ScenarioReport+=Detail+TEXT("\nBoth original fixtures were replayed. Board edits are not included in this comparison.");

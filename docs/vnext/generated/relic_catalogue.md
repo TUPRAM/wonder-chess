@@ -1,101 +1,101 @@
 # Generated relic catalogue
 
-Source: `data/vnext/catalog.json`. Laboratory tuning; balance and human acceptance are not established.
+Source: `data/vnext/catalog.json`. Untuned; balance and human acceptance are not established.
 
 Draft after rounds 3, 15 and 25; three offers; three equipped per team; one per hero. Surviving players receive the choice regardless of neutral victory.
 
 ## Heavy Bloom
 
-Greater ability impact after a longer visible commitment.
++30% skill power (skill damage, healing and shields).
 
-Compatible: momentum_charge, screened_strike, crossing_beams, tidal_push.
+Fits: every hero.
 
-Canonical transforms: `{"castBp": 15000, "cooldownBp": 10000, "durationBp": 10000, "magnitudeBp": 12000, "radiusDelta": 0, "rangeDelta": 0}`.
+Canonical transforms: `{"allDamageBp": 0, "armorFlat": 0, "attackDamageBp": 0, "attackRateBp": 0, "castBp": 10000, "cooldownBp": 10000, "durationBp": 10000, "healthBp": 0, "magnitudeBp": 10000, "radiusDelta": 0, "rangeDelta": 0, "resistanceFlat": 0, "skillPowerBp": 3000}`.
 
 ## Quick Wick
 
-More frequent abilities with weaker individual effects.
+Skills come 20% sooner and +10% attack speed.
 
-Compatible: momentum_charge, screened_strike, crossing_beams, tidal_push, stationary_grove.
+Fits: every hero.
 
-Canonical transforms: `{"castBp": 10000, "cooldownBp": 8000, "durationBp": 10000, "magnitudeBp": 8500, "radiusDelta": 0, "rangeDelta": 0}`.
+Canonical transforms: `{"allDamageBp": 0, "armorFlat": 0, "attackDamageBp": 0, "attackRateBp": 1000, "castBp": 10000, "cooldownBp": 8000, "durationBp": 10000, "healthBp": 0, "magnitudeBp": 10000, "radiusDelta": 0, "rangeDelta": 0, "resistanceFlat": 0, "skillPowerBp": 0}`.
 
 ## Long Lens
 
-One extra cell of reach, with lower impact.
++25% attack damage.
 
-Compatible: screened_strike, crossing_beams, tidal_push.
+Fits: every hero.
 
-Canonical transforms: `{"castBp": 10000, "cooldownBp": 10000, "durationBp": 10000, "magnitudeBp": 8500, "radiusDelta": 0, "rangeDelta": 1}`.
+Canonical transforms: `{"allDamageBp": 0, "armorFlat": 0, "attackDamageBp": 2500, "attackRateBp": 0, "castBp": 10000, "cooldownBp": 10000, "durationBp": 10000, "healthBp": 0, "magnitudeBp": 10000, "radiusDelta": 0, "rangeDelta": 0, "resistanceFlat": 0, "skillPowerBp": 0}`.
 
 ## Broad Canopy
 
-A wider supported area with less concentrated potency.
++25% maximum health.
 
-Compatible: stationary_grove, crossing_beams, directional_guard.
+Fits: every hero.
 
-Canonical transforms: `{"castBp": 10000, "cooldownBp": 10000, "durationBp": 10000, "magnitudeBp": 7500, "radiusDelta": 1, "rangeDelta": 0}`.
+Canonical transforms: `{"allDamageBp": 0, "armorFlat": 0, "attackDamageBp": 0, "attackRateBp": 0, "castBp": 10000, "cooldownBp": 10000, "durationBp": 10000, "healthBp": 2500, "magnitudeBp": 10000, "radiusDelta": 0, "rangeDelta": 0, "resistanceFlat": 0, "skillPowerBp": 0}`.
 
 ## Close Focus
 
-A stronger commitment restricted to a shorter lane.
++25% attack speed.
 
-Compatible: screened_strike, crossing_beams, tidal_push.
+Fits: every hero.
 
-Canonical transforms: `{"castBp": 10000, "cooldownBp": 10000, "durationBp": 10000, "magnitudeBp": 12000, "radiusDelta": 0, "rangeDelta": -1}`.
+Canonical transforms: `{"allDamageBp": 0, "armorFlat": 0, "attackDamageBp": 0, "attackRateBp": 2500, "castBp": 10000, "cooldownBp": 10000, "durationBp": 10000, "healthBp": 0, "magnitudeBp": 10000, "radiusDelta": 0, "rangeDelta": 0, "resistanceFlat": 0, "skillPowerBp": 0}`.
 
 ## Tight Choir
 
-Concentrate power into a smaller area.
++25 armour.
 
-Compatible: stationary_grove, crossing_beams.
+Fits: every hero.
 
-Canonical transforms: `{"castBp": 10000, "cooldownBp": 10000, "durationBp": 10000, "magnitudeBp": 12500, "radiusDelta": -1, "rangeDelta": 0}`.
+Canonical transforms: `{"allDamageBp": 0, "armorFlat": 25, "attackDamageBp": 0, "attackRateBp": 0, "castBp": 10000, "cooldownBp": 10000, "durationBp": 10000, "healthBp": 0, "magnitudeBp": 10000, "radiusDelta": 0, "rangeDelta": 0, "resistanceFlat": 0, "skillPowerBp": 0}`.
 
 ## Silk Trigger
 
-Release much sooner with reduced damage.
++12% attack speed and +12% attack damage.
 
-Compatible: momentum_charge, screened_strike, crossing_beams, tidal_push.
+Fits: every hero.
 
-Canonical transforms: `{"castBp": 5000, "cooldownBp": 10000, "durationBp": 10000, "magnitudeBp": 8000, "radiusDelta": 0, "rangeDelta": 0}`.
+Canonical transforms: `{"allDamageBp": 0, "armorFlat": 0, "attackDamageBp": 1200, "attackRateBp": 1200, "castBp": 10000, "cooldownBp": 10000, "durationBp": 10000, "healthBp": 0, "magnitudeBp": 10000, "radiusDelta": 0, "rangeDelta": 0, "resistanceFlat": 0, "skillPowerBp": 0}`.
 
 ## Patient Lantern
 
-Stronger effects separated by longer gaps.
++25 magic resistance.
 
-Compatible: momentum_charge, screened_strike, crossing_beams, tidal_push, stationary_grove.
+Fits: every hero.
 
-Canonical transforms: `{"castBp": 10000, "cooldownBp": 13000, "durationBp": 10000, "magnitudeBp": 12500, "radiusDelta": 0, "rangeDelta": 0}`.
+Canonical transforms: `{"allDamageBp": 0, "armorFlat": 0, "attackDamageBp": 0, "attackRateBp": 0, "castBp": 10000, "cooldownBp": 10000, "durationBp": 10000, "healthBp": 0, "magnitudeBp": 10000, "radiusDelta": 0, "rangeDelta": 0, "resistanceFlat": 25, "skillPowerBp": 0}`.
 
 ## Far Hourglass
 
-Reach farther but wait longer between casts.
++15% to all damage dealt.
 
-Compatible: screened_strike, crossing_beams, tidal_push.
+Fits: every hero.
 
-Canonical transforms: `{"castBp": 10000, "cooldownBp": 13000, "durationBp": 10000, "magnitudeBp": 10000, "radiusDelta": 0, "rangeDelta": 1}`.
+Canonical transforms: `{"allDamageBp": 1500, "armorFlat": 0, "attackDamageBp": 0, "attackRateBp": 0, "castBp": 10000, "cooldownBp": 10000, "durationBp": 10000, "healthBp": 0, "magnitudeBp": 10000, "radiusDelta": 0, "rangeDelta": 0, "resistanceFlat": 0, "skillPowerBp": 0}`.
 
 ## Wide Hourglass
 
-Cover a wider area with less frequent activations.
++12% maximum health and +12 armour.
 
-Compatible: stationary_grove, crossing_beams.
+Fits: every hero.
 
-Canonical transforms: `{"castBp": 10000, "cooldownBp": 14000, "durationBp": 10000, "magnitudeBp": 10000, "radiusDelta": 1, "rangeDelta": 0}`.
+Canonical transforms: `{"allDamageBp": 0, "armorFlat": 12, "attackDamageBp": 0, "attackRateBp": 0, "castBp": 10000, "cooldownBp": 10000, "durationBp": 10000, "healthBp": 1200, "magnitudeBp": 10000, "radiusDelta": 0, "rangeDelta": 0, "resistanceFlat": 0, "skillPowerBp": 0}`.
 
 ## Narrow Metronome
 
-Repeat a smaller area effect more frequently.
++15% attack speed and +15% skill power.
 
-Compatible: stationary_grove, crossing_beams.
+Fits: every hero.
 
-Canonical transforms: `{"castBp": 10000, "cooldownBp": 7500, "durationBp": 10000, "magnitudeBp": 10000, "radiusDelta": -1, "rangeDelta": 0}`.
+Canonical transforms: `{"allDamageBp": 0, "armorFlat": 0, "attackDamageBp": 0, "attackRateBp": 1500, "castBp": 10000, "cooldownBp": 10000, "durationBp": 10000, "healthBp": 0, "magnitudeBp": 10000, "radiusDelta": 0, "rangeDelta": 0, "resistanceFlat": 0, "skillPowerBp": 1500}`.
 
 ## Urgent Shard
 
-Commit faster now at the cost of a longer following cooldown.
++15% attack damage and +15% skill power.
 
-Compatible: momentum_charge, screened_strike, crossing_beams, tidal_push.
+Fits: every hero.
 
-Canonical transforms: `{"castBp": 7000, "cooldownBp": 12500, "durationBp": 10000, "magnitudeBp": 10000, "radiusDelta": 0, "rangeDelta": 0}`.
+Canonical transforms: `{"allDamageBp": 0, "armorFlat": 0, "attackDamageBp": 1500, "attackRateBp": 0, "castBp": 10000, "cooldownBp": 10000, "durationBp": 10000, "healthBp": 0, "magnitudeBp": 10000, "radiusDelta": 0, "rangeDelta": 0, "resistanceFlat": 0, "skillPowerBp": 1500}`.

@@ -1,12 +1,16 @@
-param([string]$OutputDirectory = '')
+param([string]$OutputDirectory = '', [string]$PythonExecutable = '')
 $ErrorActionPreference = 'Stop'
 $projectRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../..'))
+if (-not $PythonExecutable) {
+    $projectPython = Join-Path $projectRoot '.venv/Scripts/python.exe'
+    $PythonExecutable = if (Test-Path -LiteralPath $projectPython -PathType Leaf) { $projectPython } else { 'python' }
+}
 $runRoot = if ($OutputDirectory) { [IO.Path]::GetFullPath($OutputDirectory) } else {
     Join-Path $projectRoot ('reports/vnext/online-contract/' + [DateTime]::UtcNow.ToString('yyyyMMddTHHmmssfffZ'))
 }
 if (Test-Path -LiteralPath $runRoot) { throw 'Use a fresh output directory to preserve previous evidence.' }
 New-Item -ItemType Directory -Path $runRoot -Force | Out-Null
-& python (Join-Path $projectRoot 'tools/vnext/catalog.py') --check --stage
+& $PythonExecutable (Join-Path $projectRoot 'tools/vnext/catalog.py') --check --stage
 if ($LASTEXITCODE -ne 0) { throw 'Successor generated/staged parity failed.' }
 $vswhere = 'C:/Program Files (x86)/Microsoft Visual Studio/Installer/vswhere.exe'
 $compilerRoot = & $vswhere -latest -products '*' -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath

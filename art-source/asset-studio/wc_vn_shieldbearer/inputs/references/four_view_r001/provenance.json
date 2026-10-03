@@ -1,0 +1,130 @@
+{
+  "hero_id": "wc_vn_shieldbearer",
+  "date": "2026-10-03",
+  "image_model": "GPT Image",
+  "model_version": null,
+  "model_version_note": "The built-in tool did not expose the exact underlying model version.",
+  "generation_tool": "image_gen.imagegen",
+  "owner_review": "open",
+  "status": "stopped_consistency_failure",
+  "stop_reason": "Left view failed required consistency after two total generation attempts; generation stopped per owner instruction.",
+  "total_generation_calls": 7,
+  "attempts_per_file": {
+    "main.png": 2,
+    "left.png": 2,
+    "back.png": 1,
+    "right.png": 1,
+    "accessories/tower_shield.png": 1
+  },
+  "best_candidates": {
+    "main.png": "rejected/main_attempt_002.png",
+    "left.png": "rejected/left_attempt_002.png",
+    "back.png": "rejected/back_attempt_001.png",
+    "right.png": "rejected/right_attempt_001.png",
+    "accessories/tower_shield.png": "rejected/accessories/tower_shield_attempt_001.png"
+  },
+  "canonical_view_files_saved": [],
+  "source_images_modified": false,
+  "inspection_contact_sheets": "review/ contact sheets resize copies only; retained originals are unchanged.",
+  "attempts": [
+    {
+      "file": "main.png",
+      "attempt": 1,
+      "prompt": "Stylized chunky toy-like game character for an auto-battler, simple readable shapes, oversized head, hands and feet, thick limbs, flat soft hand-painted colours with gentle shading, matte, no fine texture, no noise, no patterns, no small ornaments, no text. Full body, neutral A-pose with arms about 35 degrees from the body and legs slightly apart, calm face looking straight ahead. Straight-on camera at chest height with minimal perspective, even soft light, plain flat light-grey background #E6E6E6, no ground shadow, no scenery, no effects. The whole character is inside the frame with margin on every side. Design: Shieldbearer, a human tank. Stocky knight in plain plate with one oversized tower shield. About 3.0 heads tall; stocky, wide shoulders, short legs. Only three colours plus skin: steel grey #8E99A6, royal blue #2F5FB3, warm gold #E0B040. Features: rounded bucket helmet with a single horizontal eye slit and a short blue plume; plain smooth plate armour with a blue tabard showing one gold sun circle on the chest; big rounded gauntlets and boots. Right hand: empty, open gauntlet. Left hand: oversized rectangular tower shield, almost as tall as he is, blue face with a gold sun circle, gold rim, held upright at his left side with its bottom edge on the ground. FRONT VIEW. The character faces the viewer directly.\nOutput one square 1024x1024 PNG image. Treat each gold sun circle as one plain filled circle, with no rays, engraving or pattern. The shield is on the viewer's right, clear of the torso. Preserve only the specified large simple parts. No extra belts, buckles, pouches, rivets, ornaments, edge outlines or floor shadow.",
+      "reference_image": null,
+      "saved_as": "rejected/main_attempt_001.png",
+      "defects": [
+        "Approximately four helmet-heads tall rather than three",
+        "Oversized plume",
+        "Mottled surfaces and localized glossy highlights"
+      ],
+      "source_path": "C:/Users/USER/.codex/generated_images/01a1003d-0611-7553-a0c5-92ba9a85da39/exec-50750fa2-abd7-4e8b-9a7d-c92e2e0b6ee1.png",
+      "visual_result": "rejected_or_withheld"
+    },
+    {
+      "file": "main.png",
+      "attempt": 2,
+      "prompt": "Stylized chunky toy-like game character for an auto-battler, simple readable shapes, oversized head, hands and feet, thick limbs, flat soft hand-painted colours with gentle shading, matte, no fine texture, no noise, no patterns, no small ornaments, no text. Full body, neutral A-pose with arms about 35 degrees from the body and legs slightly apart, calm face looking straight ahead. Straight-on camera at chest height with minimal perspective, even soft light, plain flat light-grey background #E6E6E6, no ground shadow, no scenery, no effects. The whole character is inside the frame with margin on every side. Design: Shieldbearer, a human tank. Stocky knight in plain plate with one oversized tower shield. About 3.0 heads tall; stocky, wide shoulders, short legs. Only three colours plus skin: steel grey #8E99A6, royal blue #2F5FB3, warm gold #E0B040. Features: rounded bucket helmet with a single horizontal eye slit and a short blue plume; plain smooth plate armour with a blue tabard showing one gold sun circle on the chest; big rounded gauntlets and boots. Right hand: empty, open gauntlet. Left hand: oversized rectangular tower shield, almost as tall as he is, blue face with a gold sun circle, gold rim, held upright at his left side with its bottom edge on the ground. FRONT VIEW. The character faces the viewer directly.\nRequired corrections for this generation: use extremely simple flat colour illustration with only gentle broad gradients. Perfectly smooth uniform matte colour fields: absolutely no mottling, brushed metal, specular streaks, grain, noise, fabric texture or sculpted fine detail. Make the helmet/head huge and body squat: total figure height excluding the short plume is exactly about THREE helmet heights; the rounded helmet occupies the top third, the broad torso and short thick arms the middle third, and very short legs plus large boots the bottom third. The blue plume is one small thick curved shape, at most one quarter of helmet height. The tower shield on the viewer's right reaches from ground to roughly eye-slit height, almost the figure's full height, entirely beside and clear of the torso. The two gold sun symbols are simple filled circular disks with no rays or extra decorations. Empty right gauntlet open and angled away about 35 degrees. No belts, buckles, rivets, pouches, tiny edging, extra ornaments, ground shadow or dark outlines. Single centered FRONT view, square PNG 1024x1024 or larger, ample margin at every edge, uniform background #E6E6E6.",
+      "reference_image": null,
+      "saved_as": "rejected/main_attempt_002.png",
+      "defects": [],
+      "source_path": "C:/Users/USER/.codex/generated_images/01a1003d-0611-7553-a0c5-92ba9a85da39/exec-3f9235b2-de6d-47f1-81dc-780b62eb441a.png",
+      "visual_result": "individual_main_meets_brief_but_set_rejected"
+    },
+    {
+      "file": "left.png",
+      "attempt": 1,
+      "prompt": "Stylized chunky toy-like game character for an auto-battler, simple readable shapes, oversized head, hands and feet, thick limbs, flat soft hand-painted colours with gentle shading, matte, no fine texture, no noise, no patterns, no small ornaments, no text. Full body, neutral A-pose with arms about 35 degrees from the body and legs slightly apart, calm face looking straight ahead. Straight-on camera at chest height with minimal perspective, even soft light, plain flat light-grey background #E6E6E6, no ground shadow, no scenery, no effects. The whole character is inside the frame with margin on every side. Design: Shieldbearer, a human tank. Stocky knight in plain plate with one oversized tower shield. About 3.0 heads tall; stocky, wide shoulders, short legs. Only three colours plus skin: steel grey #8E99A6, royal blue #2F5FB3, warm gold #E0B040. Features: rounded bucket helmet with a single horizontal eye slit and a short blue plume; plain smooth plate armour with a blue tabard showing one gold sun circle on the chest; big rounded gauntlets and boots. Right hand: empty, open gauntlet. Left hand: oversized rectangular tower shield, almost as tall as he is, blue face with a gold sun circle, gold rim, held upright at his left side with its bottom edge on the ground. LEFT SIDE VIEW. The camera looks at the character's own left side; the character faces the left edge of the image, in exact profile.\nInput image 1 is main.png, the exact design/pose/scale authority. Generate a true camera rotation of that SAME figure to the anatomical LEFT profile, facing the LEFT image edge. Do not redesign, mirror, change pose or rotate the shield independently. Preserve the helmet size (about one third of helmet-to-sole height), short curved blue plume, single slit, smooth plate shapes, plain grey armour waist edge, blue pointed tabard hem, empty open right gauntlet, and left-hand tower shield. The shield remains upright with its blue front pointing in the same forward direction as the knight: in true side profile its narrow thick GOLD EDGE is visible, not a full broad front face. Near-camera LEFT hand still holds it; empty right hand is on far side. Preserve the same 35-degree A-pose in 3D even though arm spread is foreshortened in profile. Match the reference canvas dimensions 1254x1254, top of plume approximately y=48, helmet top y=150, sole and shield bottom y=1177. Full figure with margin, same scale/baseline, even soft matte broad-gradient shading, no fine texture, uniform #E6E6E6 background, no floor shadow, no text or additional parts. One single profile only.",
+      "reference_image": "main.png",
+      "source_path": "C:/Users/USER/.codex/generated_images/01a1003d-0611-7553-a0c5-92ba9a85da39/exec-f9057ae6-e13d-4d6c-a481-81d07bd15328.png",
+      "saved_as": "rejected/left_attempt_001.png",
+      "defects": [
+        "Shield arm bends forward and shield moves forward relative to main A-pose",
+        "Far boot is raised instead of overlapping at same baseline",
+        "Plume lateral curl becomes a backward curl"
+      ],
+      "visual_result": "rejected_or_withheld",
+      "reference_path_supplied": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r001/main.png",
+      "reference_preserved_as": "rejected/main_attempt_002.png"
+    },
+    {
+      "file": "back.png",
+      "attempt": 1,
+      "prompt": "Stylized chunky toy-like game character for an auto-battler, simple readable shapes, oversized head, hands and feet, thick limbs, flat soft hand-painted colours with gentle shading, matte, no fine texture, no noise, no patterns, no small ornaments, no text. Full body, neutral A-pose with arms about 35 degrees from the body and legs slightly apart, calm face looking straight ahead. Straight-on camera at chest height with minimal perspective, even soft light, plain flat light-grey background #E6E6E6, no ground shadow, no scenery, no effects. The whole character is inside the frame with margin on every side. Design: Shieldbearer, a human tank. Stocky knight in plain plate with one oversized tower shield. About 3.0 heads tall; stocky, wide shoulders, short legs. Only three colours plus skin: steel grey #8E99A6, royal blue #2F5FB3, warm gold #E0B040. Features: rounded bucket helmet with a single horizontal eye slit and a short blue plume; plain smooth plate armour with a blue tabard showing one gold sun circle on the chest; big rounded gauntlets and boots. Right hand: empty, open gauntlet. Left hand: oversized rectangular tower shield, almost as tall as he is, blue face with a gold sun circle, gold rim, held upright at his left side with its bottom edge on the ground. BACK VIEW. The camera is directly behind; the character faces away from the viewer.\nInput image 1 is main.png, the exact design/pose/scale authority. Rotate camera exactly 180 degrees around the SAME posed figure; no redesign. Shield is still in anatomical LEFT hand, now on viewer's LEFT; show the plain steel-grey inner shield side with gold rim and one simple blue arm strap, same shield size and location, not a sun on the inside. Empty open RIGHT gauntlet is on viewer's RIGHT in the unchanged 35-degree A-pose. Back of rounded bucket helmet has no eye slit. Keep the short blue plume curving toward anatomical left (viewer LEFT in this rear view). Blue tabard covers back with the same pointed lower hem; no gold sun on back, chest emblem remains only on front. Preserve all large smooth steel-grey plates, shoulders, waist armour edge, hips, rounded knees and boots, same three colours and matte soft broad shading. Exact rear orthographic chest-height camera, no view of front or sides, no floor perspective, both soles and shield bottom at the same y=1177 baseline; plume top about y=48 and helmet top about y=150 on a 1254x1254 square PNG canvas. Uniform background #E6E6E6, no shadows/text/texture/extra parts. One full-body rear view only.",
+      "reference_image": "main.png",
+      "source_path": "C:/Users/USER/.codex/generated_images/01a1003d-0611-7553-a0c5-92ba9a85da39/exec-bdbcf582-b2ff-4376-b3bf-8994d5ff4ccf.png",
+      "saved_as": "rejected/back_attempt_001.png",
+      "defects": [
+        "Front kneecap forms and toe domes are repeated on the rear of the legs"
+      ],
+      "visual_result": "rejected_or_withheld",
+      "reference_path_supplied": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r001/main.png",
+      "reference_preserved_as": "rejected/main_attempt_002.png"
+    },
+    {
+      "file": "right.png",
+      "attempt": 1,
+      "prompt": "Stylized chunky toy-like game character for an auto-battler, simple readable shapes, oversized head, hands and feet, thick limbs, flat soft hand-painted colours with gentle shading, matte, no fine texture, no noise, no patterns, no small ornaments, no text. Full body, neutral A-pose with arms about 35 degrees from the body and legs slightly apart, calm face looking straight ahead. Straight-on camera at chest height with minimal perspective, even soft light, plain flat light-grey background #E6E6E6, no ground shadow, no scenery, no effects. The whole character is inside the frame with margin on every side. Design: Shieldbearer, a human tank. Stocky knight in plain plate with one oversized tower shield. About 3.0 heads tall; stocky, wide shoulders, short legs. Only three colours plus skin: steel grey #8E99A6, royal blue #2F5FB3, warm gold #E0B040. Features: rounded bucket helmet with a single horizontal eye slit and a short blue plume; plain smooth plate armour with a blue tabard showing one gold sun circle on the chest; big rounded gauntlets and boots. Right hand: empty, open gauntlet. Left hand: oversized rectangular tower shield, almost as tall as he is, blue face with a gold sun circle, gold rim, held upright at his left side with its bottom edge on the ground. RIGHT SIDE VIEW. The camera looks at the character's own right side; the character faces the right edge of the image, in exact profile.\nInput image 1 is main.png, exact design, pose, shape, colour and scale authority. Generate the anatomical RIGHT side of this same knight, facing RIGHT, through a real camera rotation, never by mirroring another view. The near-camera RIGHT hand remains empty, fingers open, and the near right arm remains straight in the unchanged A-pose, spread laterally 35 degrees from torso (spread is foreshortened when viewed from the side); do not swing or bend arm forward. The shield remains far away in anatomical LEFT hand on the far side of torso and is mostly occluded, only a gold vertical edge may show; never put shield in near right hand. Keep same helmet/head scale, short lateral blue plume, shoulder, gauntlet, waist armour edge, hips, front-only rounded kneecaps, pointed FRONT tabard, thick boots. Preserve pose in 3D: both heels level and feet neither staggered forward/back nor raised. Exact orthographic profile camera at chest height with no perspective or three-quarter rotation. Match source 1254x1254 square canvas, top plume y=48, helmet top y=150, both soles and shield bottom y=1177. Same broad matte shading and uniform #E6E6E6 background. No extra ornaments, straps on body, text, noise, shadows or texture. One full-body right profile only, with ample margin.",
+      "reference_image": "main.png",
+      "source_path": "C:/Users/USER/.codex/generated_images/01a1003d-0611-7553-a0c5-92ba9a85da39/exec-7e2c5bde-82ae-40f1-beb0-7227a9786b4c.png",
+      "saved_as": "rejected/right_attempt_001.png",
+      "defects": [
+        "Lateral plume curl becomes backward curl",
+        "Figure and baseline slightly smaller/higher than main"
+      ],
+      "visual_result": "rejected_or_withheld",
+      "reference_path_supplied": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r001/main.png",
+      "reference_preserved_as": "rejected/main_attempt_002.png"
+    },
+    {
+      "file": "accessories/tower_shield.png",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. Asset: Wonder Chess Shieldbearer accessories/tower_shield.png. Input image 1 is main.png, exact shield design and style reference. The tower shield alone: front face and inner side with one arm strap, in Shieldbearer's three colours. Show this ONE accessory design in a simple front-and-back product reference arrangement within one square 1254x1254 PNG: left presentation is the blue outward front with one plain circular gold sun disk and thick smooth warm gold rim; right presentation is the matching inner side, plain steel grey with the same gold rim and exactly one simple royal-blue arm strap. These are two views of the SAME item, identical height/width/shape/thickness, no redesign. Match the reference shield's tall rectangular silhouette, gently rounded corners, royal blue #2F5FB3, warm gold #E0B040, steel grey #8E99A6, simple big forms and broad gentle matte shading. No knight, no hands, no other accessory or object, no decorative rivets, handles in addition to the one strap, symbols on the inner side, patterns, texture, noise, strong reflections, outlines, ground shadows, scenery, text or labels. Same plain flat #E6E6E6 background and soft even lighting. Center the paired views with ample outer margin and a clean gap, same baseline.",
+      "reference_image": "main.png",
+      "source_path": "C:/Users/USER/.codex/generated_images/01a1003d-0611-7553-a0c5-92ba9a85da39/exec-cfea379a-9829-4cc2-813e-b7583cd53243.png",
+      "saved_as": "rejected/accessories/tower_shield_attempt_001.png",
+      "defects": [
+        "Accessory appears wider relative to its height than the shield in main; no correction attempted after hero stop"
+      ],
+      "visual_result": "rejected_or_withheld",
+      "reference_path_supplied": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r001/main.png",
+      "reference_preserved_as": "rejected/main_attempt_002.png"
+    },
+    {
+      "file": "left.png",
+      "attempt": 2,
+      "prompt": "Stylized chunky toy-like game character for an auto-battler, simple readable shapes, oversized head, hands and feet, thick limbs, flat soft hand-painted colours with gentle shading, matte, no fine texture, no noise, no patterns, no small ornaments, no text. Full body, neutral A-pose with arms about 35 degrees from the body and legs slightly apart, calm face looking straight ahead. Straight-on camera at chest height with minimal perspective, even soft light, plain flat light-grey background #E6E6E6, no ground shadow, no scenery, no effects. The whole character is inside the frame with margin on every side. Design: Shieldbearer, a human tank. Stocky knight in plain plate with one oversized tower shield. About 3.0 heads tall; stocky, wide shoulders, short legs. Only three colours plus skin: steel grey #8E99A6, royal blue #2F5FB3, warm gold #E0B040. Features: rounded bucket helmet with a single horizontal eye slit and a short blue plume; plain smooth plate armour with a blue tabard showing one gold sun circle on the chest; big rounded gauntlets and boots. Right hand: empty, open gauntlet. Left hand: oversized rectangular tower shield, almost as tall as he is, blue face with a gold sun circle, gold rim, held upright at his left side with its bottom edge on the ground. LEFT SIDE VIEW. The camera looks at the character's own left side; the character faces the left edge of the image, in exact profile.\nInput image 1 is the immutable main.png reference. This is the second LEFT-view attempt: match that exact character by rotating ONLY the camera 90 degrees to its anatomical left. Exact parallel-projection profile, facing LEFT, no three-quarter perspective. Preserve design and the same 3D neutral pose. The left arm is spread outward laterally at 35 degrees, not reaching forward; in side projection the arm is foreshortened close to the torso, and the left gauntlet supports the upright shield alongside the body's side. Keep shield aligned with the same front/back plane as in main, not pushed in front of the face. The right arm/empty hand is on the far side. Both feet occupy the same depth and their heels and soles are perfectly level: in an exact side camera far and near boot silhouettes overlap, never show a second foot higher up, smaller or staggered. Use no camera pitch: soles exactly at y=1177 on a 1254x1254 square image, matching main. Helmet top y=150, plume top y=48. Helmet bottom y=485, waist y=770, same big head and short legs as main. The short plume curls toward the knight's anatomical left in main (across the shoulders, NOT backwards); from this left-side camera the curl is foreshortened into a compact rounded end-on shape, NOT the same broad sideways hook seen in front. Shield has the same height and width, thick gold edge seen edge-on in profile, blue/gold front points LEFT; do not show a broad sun face. Keep the simple plate inventory, pointed blue tabard front hem, plain grey waist armour edge, no added pieces. Three colours, broad soft matte gradients only, perfectly plain #E6E6E6 background, no ground shadow/texture/noise/text/outline. Nothing cropped.",
+      "reference_image": "main.png",
+      "source_path": "C:/Users/USER/.codex/generated_images/01a1003d-0611-7553-a0c5-92ba9a85da39/exec-7e626097-7514-468a-9695-20461cbd1314.png",
+      "saved_as": "rejected/left_attempt_002.png",
+      "defects": [
+        "Shield approximately 10 percent shorter than main",
+        "Bent forearm and rim grip change the pose/attachment",
+        "Baseline slightly higher than main"
+      ],
+      "visual_result": "rejected_or_withheld",
+      "reference_path_supplied": "C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r001/main.png",
+      "reference_preserved_as": "rejected/main_attempt_002.png"
+    }
+  ]
+}

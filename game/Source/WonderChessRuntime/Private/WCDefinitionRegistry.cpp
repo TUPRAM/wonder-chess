@@ -32,9 +32,9 @@ struct FObject
     }
     TSharedPtr<FJsonValue> Field(const FString& Key) const
     {
-        const auto* Found = Value->Values.Find(Key);
-        Require(Found && Found->IsValid(), Path + TEXT(".") + Key + TEXT(": missing field"));
-        return *Found;
+        const auto Found = Value->TryGetField(FStringView(Key));
+        Require(Found.IsValid(), Path + TEXT(".") + Key + TEXT(": missing field"));
+        return Found;
     }
     FString String(const FString& Key, bool Nullable = false) const
     {
@@ -134,22 +134,24 @@ void VerifyStage(const FString& Directory, const FObject& Manifest, const FObjec
     ExactKeys(Files, {TEXT("asset_manifest.json"),TEXT("neutrals.json"),TEXT("bots.json"),TEXT("rules.alpha.json"),TEXT("traits.json"),TEXT("units.json"),TEXT("world.json"),TEXT("locales/en.json"),TEXT("locales/id.json"),TEXT("generated/catalog_digest.json"),TEXT("generated/unreal/DT_Units_Alpha.json"),TEXT("generated/unreal/DT_Abilities_Alpha.json")});
     for (const auto& Entry : Files.Value->Values)
     {
-        const FObject Metadata = Files.Object(Entry.Key);
+        const FString Key(*Entry.Key);
+        const FObject Metadata = Files.Object(Key);
         ExactKeys(Metadata, {TEXT("source"), TEXT("bytes"), TEXT("sha256"), TEXT("sha1")});
         TArray<uint8> Bytes;
-        Require(FFileHelper::LoadFileToArray(Bytes, *(Directory / Entry.Key)), TEXT("Missing staged file: ") + Entry.Key);
-        Require(Bytes.Num() == Metadata.Integer(TEXT("bytes"), 1), TEXT("Staged size mismatch: ") + Entry.Key);
+        Require(FFileHelper::LoadFileToArray(Bytes, *(Directory / Key)), TEXT("Missing staged file: ") + Key);
+        Require(Bytes.Num() == Metadata.Integer(TEXT("bytes"), 1), TEXT("Staged size mismatch: ") + Key);
         const FString Sha1 = FSHA1::HashBuffer(Bytes.GetData(), Bytes.Num()).ToString().ToLower();
-        Require(Sha1 == Metadata.String(TEXT("sha1")), TEXT("Staged content hash mismatch: ") + Entry.Key);
-        Require(Metadata.String(TEXT("sha256")).Len() == 64, TEXT("Invalid provenance SHA-256: ") + Entry.Key);
+        Require(Sha1 == Metadata.String(TEXT("sha1")), TEXT("Staged content hash mismatch: ") + Key);
+        Require(Metadata.String(TEXT("sha256")).Len() == 64, TEXT("Invalid provenance SHA-256: ") + Key);
     }
     const FObject SourceHashes = Digest.Object(TEXT("source_sha256"));
     Require(SourceHashes.Value->Values.Num() == 7, TEXT("Catalog must cover seven canonical source files"));
     for (const auto& Entry : SourceHashes.Value->Values)
     {
-        Require(Entry.Key.StartsWith(TEXT("data/")), TEXT("Unexpected canonical digest source"));
-        const FObject Metadata = Files.Object(Entry.Key.Mid(5));
-        Require(Metadata.String(TEXT("source")) == Entry.Key && Metadata.String(TEXT("sha256")) == SourceHashes.String(Entry.Key), TEXT("Catalog/source provenance mismatch: ") + Entry.Key);
+        const FString Key(*Entry.Key);
+        Require(Key.StartsWith(TEXT("data/")), TEXT("Unexpected canonical digest source"));
+        const FObject Metadata = Files.Object(Key.Mid(5));
+        Require(Metadata.String(TEXT("source")) == Key && Metadata.String(TEXT("sha256")) == SourceHashes.String(Key), TEXT("Catalog/source provenance mismatch: ") + Key);
     }
 }
 
@@ -446,7 +448,13 @@ bool LoadSuccessorCatalog(wc::Catalog& OutCatalog, FWCDefinitionText* Text)
     Require(!(Mana10&&Mana20), TEXT("Choose one mana experiment, 10 or 20 per basic hit."));
     const bool Clarity=FParse::Param(FCommandLine::Get(), TEXT("WCCombatClarityExperiment"));
     Require(!(Clarity&&(Mana10||Mana20)), TEXT("Combat clarity includes 20 mana; choose one experiment."));
-    if (Clarity)
+    // Owner-directed default: race/class stat traits plus mana for cast abilities.
+    // -WCControlCatalog keeps the timer-driven, trait-free control for comparisons.
+    const bool Control=FParse::Param(FCommandLine::Get(), TEXT("WCControlCatalog"));
+    Require(!(Control&&(Clarity||Mana10||Mana20)), TEXT("Choose the control catalogue or one experiment."));
+    if (!Control&&!Clarity&&!Mana10&&!Mana20)
+        Next = wcvnext::WonderVNextRosterCatalog();
+    else if (Clarity)
         Next = wcvnext::WonderVNextCombatClarityCatalog();
     else if (Mana20)
         Next = wcvnext::WonderVNextMana20Catalog();
@@ -479,7 +487,11 @@ bool LoadSuccessorCatalog(wc::Catalog& OutCatalog, FWCDefinitionText* Text)
     {
         const FObject Locale = Locales.Object(Language);
         auto& Strings = NextText.Locales.Add(Language);
-        for (const auto& Entry : Locale.Value->Values) Strings.Add(Entry.Key, Locale.String(Entry.Key));
+        for (const auto& Entry : Locale.Value->Values)
+        {
+            const FString Key(*Entry.Key);
+            Strings.Add(Key, Locale.String(Key));
+        }
     }
     OutCatalog = std::move(Next);
     if (Text) *Text = MoveTemp(NextText);
@@ -692,7 +704,11 @@ bool wc::LoadCatalog(Catalog& OutCatalog, FString& Error, FWCDefinitionText* Tex
         {
             const FObject Locale = ReadObject(Directory / TEXT("locales") / (Language + TEXT(".json")));
             TMap<FString,FString>& Strings = NextText.Locales.Add(Language);
-            for (const auto& Entry : Locale.Value->Values) Strings.Add(Entry.Key, Locale.String(Entry.Key));
+            for (const auto& Entry : Locale.Value->Values)
+            {
+                const FString Key(*Entry.Key);
+                Strings.Add(Key, Locale.String(Key));
+            }
         }
         const auto& English = NextText.Locales.FindChecked(TEXT("en"));
         const auto& Indonesian = NextText.Locales.FindChecked(TEXT("id"));
@@ -739,7 +755,13 @@ bool FWCVNextCatalogLoadTest::RunTest(const FString& Parameters)
         return false;
     }
     TestTrue(TEXT("Explicit successor identity"), Catalog.profileId == "wonder_vnext");
-    TestEqual(TEXT("Executable laboratory definitions"), static_cast<int32>(Catalog.units.size()), 6);
+    const wc::Catalog GeneratedCatalog = wcvnext::WonderVNextCatalog();
+    TestEqual(TEXT("Executable definitions match the generated enabled roster"),
+        static_cast<int32>(Catalog.units.size()), static_cast<int32>(GeneratedCatalog.units.size()));
+    std::set<std::string> LoadedUnitIds, GeneratedUnitIds;
+    for (const auto& Unit : Catalog.units) LoadedUnitIds.insert(Unit.id);
+    for (const auto& Unit : GeneratedCatalog.units) GeneratedUnitIds.insert(Unit.id);
+    TestTrue(TEXT("Loaded enabled hero identities exactly match canonical generated identities"), LoadedUnitIds == GeneratedUnitIds);
     TestEqual(TEXT("Behavioral traits remain inactive until implemented"), static_cast<int32>(Catalog.traits.size()), 0);
     TestEqual(TEXT("Executable relic definitions"), static_cast<int32>(Catalog.relics.size()), 12);
     TestEqual(TEXT("Successor bench capacity"), Catalog.rules.benchCapacity, 10);

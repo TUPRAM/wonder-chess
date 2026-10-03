@@ -41,7 +41,8 @@ struct ScenarioSideMetrics
     Int investment = 0, survivorInvestment = 0, healthLoss = 0, healing = 0,
         deliveredOverheal = 0, guardPrevented = 0;
     int damageEvents = 0, healingEvents = 0, guardedHits = 0, chargeLandings = 0,
-        chargeHits = 0, grovePulses = 0, strikeHits = 0, beamHits = 0, tideHits = 0, tidePushes = 0;
+        chargeHits = 0, grovePulses = 0, strikeHits = 0, beamHits = 0, tideHits = 0, tidePushes = 0,
+        cocoons = 0;
 };
 struct ScenarioRun
 {

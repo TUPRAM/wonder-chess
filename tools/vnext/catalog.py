@@ -13,11 +13,21 @@ MECHANICS = {
     "directional_guard": "DirectionalGuard", "momentum_charge": "MomentumCharge",
     "stationary_grove": "StationaryGrove", "screened_strike": "ScreenedStrike",
     "crossing_beams": "CrossingBeams", "tidal_push": "TidalPush",
+    "cocoon_projectile": "CocoonProjectile", "standard": "Standard",
 }
-EFFECTS = {"damage": "Damage", "heal": "Heal", "shield": "Shield"}
+EFFECTS = {"damage": "Damage", "heal": "Heal", "shield": "Shield", "stun": "Stun", "stat_modifier": "StatModifier"}
 SELECTORS = {"self": "Self", "current_enemy": "CurrentEnemy", "adjacent_allies": "AdjacentAllies",
-             "farthest_enemy_adjacent": "FarthestEnemyAdjacent"}
+             "farthest_enemy_adjacent": "FarthestEnemyAdjacent", "adjacent_enemies": "AdjacentEnemies",
+             "lowest_health_ally": "LowestHealthAlly", "current_enemy_area": "CurrentEnemyArea"}
 DAMAGE_TYPES = {"physical": "Physical", "magic": "Magic", "true": "True"}
+TRAIT_STATS = {"max_health_bonus_bp", "attack_rate_bonus_bp", "physical_armor_flat", "magic_resistance_flat",
+               "all_damage_bonus_bp", "basic_damage_bonus_bp", "ability_damage_bonus_bp", "support_power_bonus_bp",
+               "movement_bonus_bp", "starting_mana_flat"}
+RELIC_STATS = ("healthBp", "attackDamageBp", "attackRateBp", "skillPowerBp", "allDamageBp", "armorFlat",
+               "resistanceFlat")
+MANA_HEROES = ["wc_vn_hookjaw", "wc_vn_prism_scholar", "wc_vn_tide_caller"]
+# Cast abilities spend mana; guard, charge and grove stay passive triggers.
+MANA_MECHANICS = {"screened_strike", "crossing_beams", "tidal_push", "cocoon_projectile", "standard"}
 DOSSIER_KEYS = {"form", "decision", "positioning", "allies", "counterplay", "recognition"}
 
 
@@ -48,7 +58,7 @@ def validate(source):
     if source["roster_cap"] is not None:
         raise ValueError("The successor roster has no predetermined cap")
     for experiment in source.get("experiments", {}).values():
-        if experiment["heroes"] != ["wc_vn_snapvine", "wc_vn_prism_organ", "wc_vn_reefglass"]:
+        if experiment["heroes"] != MANA_HEROES:
             raise ValueError("Mana experiment must preserve the three control heroes")
         if not all(any(h["id"] == identity and h["enabled"] for h in source["heroes"]) for identity in experiment["heroes"]):
             raise ValueError("Mana experiment requires executable heroes")
@@ -116,6 +126,14 @@ def validate(source):
                 raise ValueError("Three authored star magnitudes required")
             for magnitude in ability["magnitude"]:
                 integer(magnitude, "ability magnitude", 0, rules["maxRawDamage"])
+            if "effects" in ability and (ability["mechanic"] != "standard" or
+                                         [e["effect"] for e in ability["effects"]] != ["damage", "stun"] or
+                                         ability["effects"][1]["magnitude"] != [0, 0, 0] or
+                                         ability["effects"][1]["durationMs"] % rules["tickMs"]):
+                raise ValueError("Only a standard damage-then-stun pair may list two effects")
+            if ability["mechanic"] != "standard" and (ability["effect"] == "stat_modifier" or ability["selector"] in
+                                                      ("adjacent_enemies", "lowest_health_ally", "current_enemy_area")):
+                raise ValueError("Standard selectors and effects need the standard mechanic")
             for key, value in ability.items():
                 if isinstance(value, int) and not isinstance(value, bool):
                     integer(value, "ability." + key)
@@ -130,6 +148,13 @@ def validate(source):
             if ability["mechanic"] == "stationary_grove":
                 integer(ability["pulseMs"], "grove pulse", 50)
                 integer(ability["durationMs"], "grove duration", ability["pulseMs"], ability["pulseMs"] * 32)
+            if ability["mechanic"] == "cocoon_projectile":
+                if (ability["effect"] != "stun" or ability["magnitude"] != [0, 0, 0] or
+                        ability["maxTargets"] != 1 or ability["radius"] != 0 or
+                        ability["selector"] != "current_enemy"):
+                    raise ValueError("Cocoon must be one damage-free enemy trap")
+                integer(ability["durationMs"], "cocoon duration", 50, 10000)
+                integer(ability["travelMs"], "cocoon projectile travel", 50, 10000)
             for key, value in hero["stats"].items():
                 if key != "damageType":
                     integer(value, "stats." + key)
@@ -152,23 +177,46 @@ def validate(source):
                 raise ValueError("Trait membership drift")
             if trait["thresholds"] != sorted(set(trait["thresholds"])):
                 raise ValueError("Trait thresholds must be distinct and ascending")
-            if trait["runtime_enabled"]:
-                raise ValueError("Behavioral traits require an implementation before activation")
+            runtime = trait.get("runtime")
+            if trait["runtime_enabled"] != (runtime is not None):
+                raise ValueError("Traits require an implemented stat bonus before activation")
+            if runtime and (runtime["stat"] not in TRAIT_STATS or len(runtime["values"]) != len(trait["thresholds"]) or
+                            runtime["values"] != sorted(set(runtime["values"]))):
+                raise ValueError("Unsupported trait stat bonus")
+    recipe = source.get("roster_recipe")
+    if recipe:
+        enabled = {hero["id"]: hero["ability"]["mechanic"] for hero in active}
+        if recipe["mana"] not in source.get("experiments", {}):
+            raise ValueError("Roster recipe needs its mana rules")
+        if (set(recipe["mana_heroes"]) | set(recipe["passive_heroes"]) != set(enabled) or
+                set(recipe["mana_heroes"]) & set(recipe["passive_heroes"])):
+            raise ValueError("Roster recipe must classify every executable hero once")
+        for identity, mechanic in enabled.items():
+            if (identity in recipe["mana_heroes"]) != (mechanic in MANA_MECHANICS):
+                raise ValueError("Cast abilities use mana; passive triggers do not")
     unique(source["relics"], "relics")
     for relic in source["relics"]:
         mechanics = relic["compatible_mechanics"]
-        if len(set(mechanics)) < 2 or any(mechanic not in MECHANICS for mechanic in mechanics):
+        # An empty list fits every hero; a mechanic-bound relic still needs two real mechanics.
+        if mechanics and (len(set(mechanics)) < 2 or
+                          any(mechanic not in MECHANICS or mechanic == "standard" for mechanic in mechanics)):
             raise ValueError("Relic requires at least two implemented compatible mechanics")
         params = relic["modifiers"]
-        if set(params) != {"magnitudeBp", "rangeDelta", "radiusDelta", "durationBp", "castBp", "cooldownBp"}:
+        transforms = {"magnitudeBp", "rangeDelta", "radiusDelta", "durationBp", "castBp", "cooldownBp"}
+        if set(params) != transforms | set(RELIC_STATS):
             raise ValueError("Unknown or missing relic transform")
-        for key, value in params.items():
-            integer(value, "relic." + key, -2 if key.endswith("Delta") else 5000,
+        for key in transforms:
+            integer(params[key], "relic." + key, -2 if key.endswith("Delta") else 5000,
                     2 if key.endswith("Delta") else 15000 if key == "magnitudeBp" else 20000)
-        benefit = params["magnitudeBp"] > 10000 or params["rangeDelta"] > 0 or params["radiusDelta"] > 0 or params["castBp"] < 10000 or params["cooldownBp"] < 10000
-        drawback = params["magnitudeBp"] < 10000 or params["rangeDelta"] < 0 or params["radiusDelta"] < 0 or params["castBp"] > 10000 or params["cooldownBp"] > 10000
-        if not benefit or not drawback:
-            raise ValueError("Every relic requires a benefit and a tradeoff")
+        for key in RELIC_STATS:
+            integer(params[key], "relic." + key, 0, 100 if key.endswith("Flat") else 5000)
+        benefit = (params["magnitudeBp"] > 10000 or params["rangeDelta"] > 0 or params["radiusDelta"] > 0 or
+                   params["castBp"] < 10000 or params["cooldownBp"] < 10000 or any(params[key] for key in RELIC_STATS))
+        if not benefit:
+            raise ValueError("Every relic requires a benefit")
+        if not mechanics and (params["rangeDelta"] or params["radiusDelta"] or params["magnitudeBp"] != 10000 or
+                              params["durationBp"] != 10000):
+            raise ValueError("A relic that fits every hero may not reshape abilities")
     unique(source["neutrals"], "neutrals")
     unique(source["waves"], "waves")
     expected_rounds = set(range(1, rules["neutralOpeningRounds"] + 1)) | set(range(5, rules["maxRounds"] + 1, 5))
@@ -234,7 +282,13 @@ def native_header(runtime, runtime_sha1):
             if ability is None:
                 lines.append("u.ability.enabled = false;")
             else:
-                assign("u.ability", ability, ("effect", "selector", "damageType", "mechanic", "tooltip_en", "tooltip_id"))
+                assign("u.ability", ability, ("effect", "selector", "damageType", "mechanic", "tooltip_en", "tooltip_id", "effects"))
+                # The shared evaluator and combat read standard abilities through their effect list.
+                single = [{key: ability[key] for key in ("effect", "damageType", "durationMs", "magnitude")}]
+                for part in ability.get("effects", single if ability["mechanic"] == "standard" else ()):
+                    lines.append(f'u.ability.effects.push_back({{wc::Effect::{EFFECTS[part["effect"]]},'
+                                 f'wc::DamageType::{DAMAGE_TYPES[part["damageType"]]},{part["durationMs"]},'
+                                 f'{{{",".join(map(str, part["magnitude"]))}}}}});')
                 for key, enum, values in (("effect", "Effect", EFFECTS), ("selector", "Selector", SELECTORS),
                                            ("damageType", "DamageType", DAMAGE_TYPES), ("mechanic", "AbilityMechanic", MECHANICS)):
                     lines.append(f"u.ability.{key} = wc::{enum}::{values[ability[key]]};")
@@ -280,6 +334,20 @@ def native_header(runtime, runtime_sha1):
         lines.append(f'c.rules.nearestReachableTarget = {literal(recipe["nearestReachableTarget"])};')
         lines.append(f'c.rules.mobileAttackRecovery = mobileRecovery && {literal(recipe["mobileAttackRecovery"])};')
         lines.append("return c; }")
+    recipe = runtime.get("roster_recipe")
+    if recipe:
+        digest = hashlib.sha256((runtime["source_sha256"] + ":" + recipe["id"]).encode()).hexdigest()
+        lines.extend(["inline wc::Catalog WonderVNextRosterCatalog() { auto c = WonderVNextCatalog();",
+                      f'c.contentDigest = "{digest}";', f'c.balanceVersion += "+{recipe["id"]}";'])
+        for identity in recipe["mana_heroes"]:
+            lines.append(f'for (auto &u : c.units) if (u.id == {literal(identity)}) {{')
+            assign("u.ability.mana", runtime["experiments"][recipe["mana"]], ("status", "heroes", "relicTiming"))
+            lines.append("}")
+        for trait in recipe["traits"]:
+            tiers = ",".join(f"{{{count},{value}}}" for count, value in zip(trait["thresholds"], trait["values"]))
+            lines.append(f'{{ wc::TraitDef t; t.id = {literal(trait["id"])}; t.stat = {literal(trait["stat"])}; '
+                         f't.team = {literal(trait["scope"] == "team")}; t.tiers = {{{tiers}}}; c.traits.push_back(t); }}')
+        lines.append("return c; }")
     lines.extend(["} // namespace wcvnext", ""])
     return "\n".join(lines)
 
@@ -294,6 +362,11 @@ def artifacts(source_bytes):
     runtime.update(source_sha256=digest, heroes=[hero for hero in source["heroes"] if hero["enabled"]],
                    relics=[relic for relic in source["relics"] if relic["runtime_enabled"]], traits=[],
                    status="gameplay_laboratory_not_release")
+    if source.get("roster_recipe"):
+        runtime["roster_recipe"] = dict(source["roster_recipe"], traits=[
+            dict(trait["runtime"], id=trait["id"], kind=trait["kind"], name=trait["name"],
+                 thresholds=trait["thresholds"], behavior=trait["behavior"])
+            for trait in source["traits"] if trait["runtime_enabled"]])
     runtime_text = encoded(runtime)
     header = native_header(runtime, hashlib.sha1(runtime_text.encode("utf-8")).hexdigest())
     dossiers = ["# Generated successor hero dossiers", "", "Source: `data/vnext/catalog.json`. Numeric data below is provisional and unbalanced.", ""]
@@ -304,18 +377,20 @@ def artifacts(source_bytes):
         if hero["enabled"]:
             dossiers.extend([f'Ability: **{hero["ability"]["name"]}** (`{hero["ability"]["mechanic"]}`); art: `{hero["art_status"]}`.', ""])
         else:
-            dossiers.extend(["Authored future design. No executable ability, stats, model, or runtime acceptance.", ""])
+            dossiers.extend([f'Planned ability: **{hero["planned_ability"]["name"]}** — {hero["planned_ability"]["behavior"]}', "",
+                             "Authored future design. No executable ability, stats, model, or runtime acceptance.", ""])
     coverage = {"source_sha256": digest, "authored_heroes": len(source["heroes"]), "enabled_lab_heroes": len(runtime["heroes"]),
-                "authored_traits": len(source["traits"]), "runtime_traits": 0, "runtime_relics": len(runtime["relics"]),
+                "authored_traits": len(source["traits"]), "runtime_traits": 0,
+                "roster_recipe_traits": sum(trait["runtime_enabled"] for trait in source["traits"]), "runtime_relics": len(runtime["relics"]),
                 "body_families": sorted({hero["body_family"] for hero in source["heroes"]}),
                 "archetypes": sorted({hero["archetype"] for hero in source["heroes"]}),
                 "trait_gaps": [{"id": t["id"], "authored_members": len(t["members"]), "thresholds": t["thresholds"]} for t in source["traits"]],
                 "balance_status": "not_verified", "human_acceptance": "not_run"}
-    relic_lines = ["# Generated relic catalogue", "", "Source: `data/vnext/catalog.json`. Laboratory tuning; balance and human acceptance are not established.", "",
+    relic_lines = ["# Generated relic catalogue", "", "Source: `data/vnext/catalog.json`. Untuned; balance and human acceptance are not established.", "",
                    "Draft after rounds 3, 15 and 25; three offers; three equipped per team; one per hero. Surviving players receive the choice regardless of neutral victory.", ""]
     for relic in source["relics"]:
         relic_lines.extend([f'## {relic["name"]}', "", relic["description"], "",
-                            "Compatible: " + ", ".join(relic["compatible_mechanics"]) + ".", "",
+                            "Fits: " + (", ".join(relic["compatible_mechanics"]) or "every hero") + ".", "",
                             "Canonical transforms: `" + json.dumps(relic["modifiers"], sort_keys=True) + "`.", ""])
     return {"data/vnext/generated/runtime_catalog.json": runtime_text,
             "data/vnext/generated/WonderVNextCatalog.h": header,

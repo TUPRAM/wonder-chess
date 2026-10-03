@@ -550,14 +550,18 @@
                       "stationary_grove",
                       "screened_strike",
                       "crossing_beams",
-                      "tidal_push"
+                      "tidal_push",
+                      "cocoon_projectile",
+                      "standard"
                     ]
                   },
                   "effect": {
                     "enum": [
                       "damage",
                       "heal",
-                      "shield"
+                      "shield",
+                      "stun",
+                      "stat_modifier"
                     ]
                   },
                   "selector": {
@@ -565,7 +569,10 @@
                       "self",
                       "current_enemy",
                       "adjacent_allies",
-                      "farthest_enemy_adjacent"
+                      "farthest_enemy_adjacent",
+                      "adjacent_enemies",
+                      "lowest_health_ally",
+                      "current_enemy_area"
                     ]
                   },
                   "damageType": {
@@ -644,6 +651,48 @@
                   "tooltip_id": {
                     "type": "string",
                     "minLength": 1
+                  },
+                  "effects": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "effect",
+                        "damageType",
+                        "durationMs",
+                        "magnitude"
+                      ],
+                      "properties": {
+                        "effect": {
+                          "enum": [
+                            "damage",
+                            "stun"
+                          ]
+                        },
+                        "damageType": {
+                          "enum": [
+                            "physical",
+                            "magic",
+                            "true"
+                          ]
+                        },
+                        "durationMs": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "magnitude": {
+                          "type": "array",
+                          "items": {
+                            "type": "integer"
+                          },
+                          "minItems": 3,
+                          "maxItems": 3
+                        }
+                      }
+                    }
                   }
                 }
               }
@@ -782,6 +831,53 @@
                     "minLength": 1
                   }
                 }
+              },
+              "planned_stats": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "health",
+                  "attackDamage",
+                  "attackRate",
+                  "range",
+                  "armor",
+                  "resistance",
+                  "movementRate",
+                  "status"
+                ],
+                "properties": {
+                  "health": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "attackDamage": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "attackRate": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "range": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "armor": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "resistance": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "movementRate": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "status": {
+                    "const": "design_target_not_executable"
+                  }
+                }
               }
             }
           }
@@ -863,6 +959,36 @@
           "activation": {
             "type": "string",
             "minLength": 1
+          },
+          "runtime": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "stat",
+              "scope",
+              "values"
+            ],
+            "properties": {
+              "stat": {
+                "type": "string",
+                "minLength": 1
+              },
+              "scope": {
+                "enum": [
+                  "members",
+                  "team"
+                ]
+              },
+              "values": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 10000
+                },
+                "minItems": 1
+              }
+            }
           }
         }
       }
@@ -901,7 +1027,6 @@
               "type": "string",
               "minLength": 1
             },
-            "minItems": 2,
             "uniqueItems": true
           },
           "modifiers": {
@@ -912,7 +1037,14 @@
               "radiusDelta",
               "durationBp",
               "castBp",
-              "cooldownBp"
+              "cooldownBp",
+              "healthBp",
+              "attackDamageBp",
+              "attackRateBp",
+              "skillPowerBp",
+              "allDamageBp",
+              "armorFlat",
+              "resistanceFlat"
             ],
             "additionalProperties": false,
             "properties": {
@@ -933,6 +1065,34 @@
               },
               "cooldownBp": {
                 "type": "integer"
+              },
+              "healthBp": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "attackDamageBp": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "attackRateBp": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "skillPowerBp": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "allDamageBp": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "armorFlat": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "resistanceFlat": {
+                "type": "integer",
+                "minimum": 0
               }
             }
           },
@@ -1359,6 +1519,45 @@
         },
         "mobileAttackRecovery": {
           "const": true
+        }
+      }
+    },
+    "roster_recipe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "status",
+        "mana",
+        "mana_heroes",
+        "passive_heroes"
+      ],
+      "properties": {
+        "id": {
+          "const": "roster_v1"
+        },
+        "status": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mana": {
+          "const": "mana100_hit20_v1"
+        },
+        "mana_heroes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "passive_heroes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
         }
       }
     }

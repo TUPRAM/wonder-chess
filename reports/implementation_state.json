@@ -1,21 +1,2784 @@
 {
-  "github_publication_20260915": {
-    "date": "2026-09-15",
-    "status": "PAYLOAD_PUBLISHED_AND_REMOTE_VERIFIED",
-    "repository": "https://github.com/TUPRAM/wonder-chess",
-    "branches": [
-      "main",
-      "codex/milestones-b0-m7-20260912"
+  "brand_logo_candidate_20261003": {
+    "website_icon": {
+      "path": "art-source/asset-studio/wc_brand_logo/inputs/references/icon_r001/wonder-chess-icon.png",
+      "status": "generated_transparent_square_icon_owner_review_open",
+      "source_pixel_identity": "not_claimed_imagegen_edit",
+      "website_deployment": "not_run"
+    },
+    "status": "generated_reference_candidate_owner_review_open",
+    "asset_id": "wc_brand_logo",
+    "selected_image": "art-source/asset-studio/wc_brand_logo/inputs/references/r002/wonder-chess-logo.png",
+    "evidence": "art-source/asset-studio/wc_brand_logo/reports/provenance.json",
+    "scope": "Two built-in imagegen calls; visually inspected title logo with verified PNG RGBA alpha; no gameplay changes",
+    "owner_approval": "open",
+    "engine_integration": "not_run",
+    "public_deployment": "not_run"
+  },
+  "universal_relics_20261003": {
+    "date": "2026-10-03",
+    "status": "UNIVERSAL_STAT_RELICS_NATIVE_VERIFIED_AND_RUN_IN_EDITOR_GAME",
+    "owner_request": "Make relics usable by every hero: plain benefits such as physical attack, magic attack, cooldown.",
+    "catalog_sha256": "e776c2cd820726364c66003cb00fba1f372375574e20c7cb32986d6370fd59f2",
+    "change": "The 12 relics keep their IDs, names and icons but now fit every hero (empty compatibility list) and give stat benefits: skill power, attack damage, attack speed, health, armour, magic resistance, all damage, shorter skill cooldown. No drawbacks. The engine still supports mechanic-bound relics. Numbers are untuned first values.",
+    "native": {
+      "combat": "PASS 29511 assertions incl. every relic on every hero",
+      "scenarios": "PASS 6380",
+      "save_files": "PASS 51",
+      "online_contract": "PASS 248",
+      "tournaments": "PASS 539711 checks, 10 tournaments; draft coverage 12 guarantees, 0 gaps"
+    },
+    "comparison_30_tournaments_seed_1": {
+      "evidence": "reports/vnext/roster-20261003/balance-30-relics-control and -roster",
+      "control": {
+        "pvp_timeout": "2.6% (82/3128)",
+        "ghost_timeout": "1.9% (4/212)",
+        "neutral_timeout": "1.7% (42/2403)",
+        "caps": 21
+      },
+      "roster": {
+        "pvp_timeout": "2.2% (69/3124)",
+        "ghost_timeout": "4.3% (9/211)",
+        "neutral_timeout": "0.8% (18/2391)",
+        "caps": 21
+      },
+      "verdict": "Under-2% screen still FAILS for PvP and ghost in the default rules."
+    },
+    "in_engine": {
+      "evidence": "reports/vnext/roster-20261003/solo-universal-relics",
+      "result": "Automated solo exercise: all 25 recorded checks true including relic_equip and inspector; 43 rounds; invariants true; digest d64b3ebe... Hidden window, no human or visual review, not packaged."
+    },
+    "unreal_build": "WonderChessEditor Win64 Development exit 0",
+    "not_done": [
+      "Relic descriptions in the old packaged builds differ",
+      "Live Vercel site not redeployed; nothing committed or pushed",
+      "No hero art generated"
+    ]
+  },
+  "roster_batch2_and_art_handoff_20261003": {
+    "date": "2026-10-03",
+    "status": "FOURTEEN_HEROES_NATIVE_VERIFIED_DEFAULT_RULES_RUN_IN_EDITOR_GAME_ART_HANDOFF_AUTHORED",
+    "owner_request": "Hand the art step to Codex with GPT Image: detailed descriptions, file names and locations, and a Codex prompt for four views plus accessories. Engine: add the next batch of heroes using the existing ability system, then make the new rules the default and check them in the running game.",
+    "catalog_sha256": "739a5a758c059129706a2066a1e76c1e3131d64eaa0bd505bf162c40220bb746",
+    "engine": {
+      "executable_heroes": 14,
+      "added": [
+        "wc_vn_chapel_healer",
+        "wc_vn_hammerer",
+        "wc_vn_earthbreaker",
+        "wc_vn_bearguard",
+        "wc_vn_bomber",
+        "wc_vn_ember_wisp",
+        "wc_vn_blood_drummer"
+      ],
+      "method": "Existing standard ability system (heal, damage+stun, area stun, adjacent damage, area damage, shield, attack-speed buff). Stats are the design-target values, untuned.",
+      "default_rules": "WCDefinitionRegistry now loads WonderVNextRosterCatalog (mana for cast abilities, seven stat traits) by default; -WCControlCatalog selects the timer control.",
+      "native": {
+        "combat": "PASS 29271 assertions",
+        "scenarios": "PASS 6376",
+        "save_files": "PASS 51",
+        "online_contract": "PASS 248",
+        "tournaments": "PASS 547359 checks, 10 14-hero tournaments"
+      },
+      "comparison_30_tournaments_seed_1": {
+        "evidence": "reports/vnext/roster-20261003/balance-30-control and balance-30-roster",
+        "control": {
+          "pvp_timeout": "3.0% (95/3161)",
+          "ghost_timeout": "2.7% (5/185)",
+          "neutral_timeout": "2.6% (63/2398)",
+          "caps": 18
+        },
+        "roster": {
+          "pvp_timeout": "2.5% (78/3149)",
+          "ghost_timeout": "5.6% (12/215)",
+          "neutral_timeout": "1.3% (32/2407)",
+          "caps": 20
+        },
+        "verdict": "Large improvement over the seven-hero runs (about 10% PvP) but the under-2% screen still FAILS; neutral rounds now time out, which they did not before."
+      },
+      "in_engine": {
+        "evidence": "reports/vnext/roster-20261003/solo-default-rules (solo-exercise.json, engine.log)",
+        "run": "UnrealEditor -game -WCSolo -WCSoloExercise, seed 417031, 1280x720, hidden window",
+        "result": "Loaded 14 units with the roster recipe digest 5e3f36a3...; accelerated 45-round tournament finished; invariants true; restart fresh true.",
+        "failed_checks": [
+          "relic_equip",
+          "selected_inspector_includes_equipped_relic"
+        ],
+        "failure_cause_unconfirmed": "Most likely the exercise equips the drafted relic on the first roster unit, which can now be a standard-ability hero; standard abilities are compatible with no relic. Not investigated further.",
+        "boundary": "Automated same-handler exercise; no human input, no visual review, not packaged."
+      },
+      "known_gaps": [
+        "Seven standard-ability heroes cannot equip any of the 12 relics",
+        "Thirteen traits still unimplemented",
+        "New heroes have no portraits, icons, models or combat cues beyond generic ones",
+        "Workbench labels still use creature names"
+      ]
+    },
+    "art_handoff": {
+      "folder": "production/hero-art",
+      "files": [
+        "VISUAL_STANDARD.md",
+        "hero_art.json",
+        "BRIEFS.md (generated)",
+        "CODEX_PROMPT.md",
+        "README.md"
+      ],
+      "tools": [
+        "tools/vnext/build_hero_art_briefs.py",
+        "tools/vnext/sync_hero_art.py"
+      ],
+      "image_location": "art-source/asset-studio/<hero_id>/inputs/references/four_view_r001/{main,left,back,right}.png and accessories/<name>.png",
+      "status": "Authored. No image generated; no owner acceptance; sync tool file checks self-tested with synthetic images only."
+    },
+    "website": "Local web/catalogue data regenerated for 14 playable heroes; the live Vercel site was NOT redeployed in this step and still shows 7."
+  },
+  "roster_engine_and_catalogue_20261003": {
+    "date": "2026-10-03",
+    "status": "ROSTER_PORT_NATIVE_VERIFIED_EDITOR_COMPILED_NOT_RUN_IN_ENGINE_SITE_DEPLOYED",
+    "owner_request": "Do both engine and art; start with the engine; make a tidy Vercel catalogue website called Wonder Chess showing every character from main, left, right and back with description and stats.",
+    "catalog_sha256": "93df4ff9d55a804890fab464ad1688a632e381a73caa073656c79345fd027d67",
+    "engine": {
+      "heroes": "40 authored; the seven executed mechanics now belong to Shieldbearer, Boar Rusher, Grove Druid, Hookjaw, Prism Scholar, Tide Caller and Soul Jailer with unchanged stats, prices and ability numbers; creature IDs are gone from the catalogue and live source. 33 heroes remain planned with design-target stats only.",
+      "cost_note": "Ported heroes keep the executed costs 1/1/2/3/4/5/2; four differ from the approved draft table (Grove Druid 2, Prism Scholar 4, Tide Caller 5, Soul Jailer 2).",
+      "roster_recipe": "WonderVNextRosterCatalog / -WCRosterRecipe: 20-per-hit mana for the four cast abilities (hook, beams, wave, cage); guard, charge and grove stay passive. Seven stat traits executed: Human, Orc, Beastkin, Dragonkin, Tank, Fighter, Mage. Thirteen traits still need new mechanics. Opt-in; the default control catalogue is unchanged in behaviour.",
+      "reachable_now": "With seven executable heroes only Human (2) and Mage (2) can reach a tier in play.",
+      "native": {
+        "combat": "PASS 28009 assertions incl. new roster recipe checks",
+        "scenarios": "PASS 7279",
+        "save_files": "PASS 51",
+        "online_contract": "PASS 247",
+        "tournaments": "PASS 555138 checks, 10 tournaments"
+      },
+      "comparison_30_tournaments_seed_1": {
+        "control": {
+          "pvp_timeout": "9.8% (314/3210)",
+          "ghost_timeout": "16.3% (31/190)",
+          "caps": 12
+        },
+        "mana20": {
+          "pvp_timeout": "10.3%",
+          "ghost_timeout": "19.0%",
+          "caps": 18
+        },
+        "roster": {
+          "pvp_timeout": "10.0% (324/3247)",
+          "ghost_timeout": "16.0% (31/194)",
+          "caps": 20
+        },
+        "verdict": "Pacing screen (<2%) still FAIL for every arm; outputs were written to a session scratch folder and are not preserved evidence."
+      },
+      "unreal": "WonderChessEditor Win64 Development compiled (exit 0) against the final generated header. Not launched; no in-engine, packaged, input or visual verification. Ported heroes borrow the retired creature portraits/ability icons as placeholders; creature 3D preview flags now attach to the ported heroes.",
+      "python": "catalog --check --stage PASS; 251 unittest PASS; validate_kit 400 PASS; build_documents and compile_catalog checks PASS"
+    },
+    "website": {
+      "source": "web/catalogue",
+      "generator": "tools/vnext/build_catalogue_site.py (--check)",
+      "url": "https://wonder-chess.vercel.app",
+      "vercel_project": "wonder-chess (prj_3X9qyxTMJekANTZb85VTDvlwCnnI)",
+      "deployment": "dpl_FBPjm1c6iutLUgSGUNoKq8kZG5VH",
+      "verified": "Live page renders 40 heroes and 20 synergies with no console errors; deployed data/catalogue.json SHA-1 2df0dc0ac12cabc5bb2af8be4841e5f6ccba45d4 equals the local file.",
+      "art": "No hero art exists; all four view slots show placeholders. Drop PNGs at web/catalogue/art/<hero_id>/{main,left,right,back}.png and regenerate."
+    },
+    "not_done": [
+      "Default game still launches the control catalogue; roster recipe not reviewed in engine",
+      "Workbench scenario labels and some UI strings still say Bellback/Cragstoat/Silkmother etc.",
+      "Earlier saves and packaged builds do not match this source digest",
+      "New visual standard, four-view art and Meshy generation not started; no spend",
+      "docs/vnext contracts still describe the creature programme"
+    ]
+  },
+  "roster_rework_20261003": {
+    "date": "2026-10-03",
+    "status": "SUPERSEDED_SAME_DAY_BY_roster_engine_and_catalogue_20261003_FIXTURES_SINCE_CONVERTED",
+    "owner_decision": "Drop the creature roster; heroes organised by fantasy race and class with simple Auto Chess-style stat synergies; race/class lists uncapped; simpler readable character art. Owner approved the 10-race/10-class/40-hero draft and instructed: write it into the catalog.",
+    "authored": {
+      "heroes": 40,
+      "races": 10,
+      "classes": 10,
+      "trait_thresholds": [
+        2,
+        4
+      ],
+      "members_per_trait": 4,
+      "status": "authored_not_implemented; no stats, executable abilities, trait runtime, models or balance"
+    },
+    "retired_engine_fixtures": [
+      "wc_vn_bellback",
+      "wc_vn_cragstoat",
+      "wc_vn_grandmother_root",
+      "wc_vn_snapvine",
+      "wc_vn_prism_organ",
+      "wc_vn_reefglass",
+      "wc_vn_silkmother"
     ],
-    "payload_commit": "6f73ad6b27b6c8180d4bfaac20fa85bd36152964",
-    "payload_changed_files": 2217,
-    "preflight_working_bytes": 1095883867,
-    "python_tests": 230,
-    "authoring_checks": 400,
-    "publication_report": "reports/repository-sync/20260915/PUBLISHING_REPORT.md",
-    "remote_receipt": "reports/repository-sync/20260915/remote-payload-verification.json",
-    "ignored_transfer_payloads_retained": true,
-    "release_acceptance_changed": false
+    "fixture_note": "The seven creatures remain the only executable heroes, unchanged in stats/abilities/IDs, until successors are ported. Seven unenabled creature dossiers were removed from the catalogue; the prior catalogue is preserved in the archive.",
+    "archive": "support/archives/catalog-pre-roster-rework-20261003/catalog.json",
+    "archive_sha256": "281a1323b6ea104fb4f9bd49f9a3e8468701c741f3544ecee05a81fb84c987ef",
+    "catalog_sha256": "1f6357d69dfbb7537e234f3ea9fb7a5e62121d243401bb36c91fee3667af88de",
+    "checks": {
+      "catalog_check_stage": "PASS 7 artifacts",
+      "unittest": "250 run, 1 failure (pre-existing test_blender_mcp_workflow PowerShell execution-policy failure, unrelated; same before the change)",
+      "validate_kit": "PASS 400",
+      "build_documents_check": "PASS 28",
+      "compile_catalog_check": "PASS 6"
+    },
+    "not_done": [
+      "Unreal editor/package not rebuilt against the regenerated header; source digest changed so earlier saves and binaries do not match this source",
+      "No new hero is executable",
+      "Universal mana, summons, trait bonus runtime, hex/silence/taunt statuses and Goblin gold bonus are not implemented",
+      "New visual standard and art not started; no Meshy spend",
+      "docs/vnext contracts and planning documents still describe the creature programme"
+    ]
+  },
+  "parallel_solo_slice_20261001_r001": {
+    "date": "2026-10-01",
+    "utc": "2026-10-01T09:10:23.340014+00:00",
+    "status": "SCOPED_PARALLEL_SOLO_SLICE_PACKAGED_UI_FIX_ART_CANDIDATES_HELD",
+    "owner_request": "Work some stuff in parallel, then combine everything at the end; first batch input/recovery, Cragstoat remaining deformation, Prism/Reefglass references.",
+    "ownership": {
+      "root": "Unreal execution/build/package queue, native helpers, binaries, ledger and combined report",
+      "asset_plan": "New isolated Cragstoat deformation recipes and diagnostics",
+      "gameplay_plan": "Input/recovery lane; WCVNextSolo.cpp only after concrete diagnosis",
+      "remaining_asset_gates": "New Prism/Reefglass reference and construction candidates"
+    },
+    "input_recovery": {
+      "product_change": "Restore legal board keyboard focus when Shop/Menu/Recap/Collection/restart modal state returns to None. Save fixture correction is opt-in diagnostics only; save format unchanged.",
+      "source": {
+        "path": "game/Source/WonderChessRuntime/Private/WCVNextSolo.cpp",
+        "bytes": 128159,
+        "sha256": "04d28d31a228fd080d51c6402e4f2181223ce09d153f7d076046f33287d621aa"
+      },
+      "legacy_reproduced_false_criteria": 8,
+      "corrected_editor_runs": 9,
+      "corrected_editor_true_criteria": 228,
+      "standalone_packaged_runs": 9,
+      "standalone_true_criteria": 237,
+      "viewport_pairs": [
+        [
+          1280,
+          720
+        ],
+        [
+          1600,
+          1000
+        ],
+        [
+          1920,
+          1080
+        ]
+      ],
+      "backup_invalid_scope": "720p",
+      "physical_input_completed": 0,
+      "physical_input_matrix_cells": 42,
+      "physical_input_reason": "Native app control unavailable in active CUA surface. Browser report rendering works and is a separate scope.",
+      "first_loss_scope": "Neutral empty-team loss recap, zero HP damage; no positive-damage PvP loss learning evidence.",
+      "full_journeys": "Three current packaged accelerated45-round journeys end placement8 and restart. Not35–45-minute normal-speed measurements."
+    },
+    "package": {
+      "root": "C:\\Users\\USER\\Documents\\Wonder Chess\\builds\\WonderChess-SoloSlice-20261001-r1\\Windows",
+      "configuration": "Development",
+      "actual_game_binary_sha256": "78c014b2472a29729550ff8d02bc559c82ca6f3eb8fdb64f3a7bd9241b60beab",
+      "source_files": 141,
+      "payload_files": 50,
+      "build_cook_archive_exit": 0,
+      "identity_verified_after_execution": true,
+      "new_scope": "UI recovery fix in separate SoloSlice20261001r1; no new art candidate adopted.",
+      "launcher": "Play Solo Slice 20261001.cmd",
+      "separate_save": "support/runtime/solo-slice-20261001-r1/preparation.wcsave"
+    },
+    "cragstoat": {
+      "candidate": "/Game/WonderChess/VNext/Characters/CragstoatProduction20261001_r001/Mesh/SK_Cragstoat_BodySkin_r001",
+      "candidate_file_sha256": "e0c6984f123661cc5254a7d062eaf243a4108359698df8636e3d0533eadd7a5c",
+      "saved_and_cold_process_exit": 0,
+      "native_render_points": 79806,
+      "matched_pose_captures": 12,
+      "palette_geometry_uv_binds_material_tail_bytes_preserved": true,
+      "scope": "Broad ParentTransition field changes non-tail skin influences. Matched rear fan/major shoulder strip improvement; residual underarm/folds hold quality.",
+      "tail_influenced_points_with_changed_other_weights": 9673,
+      "fully_protected_skin_points": 18460,
+      "raw_reference_probe": "FAILED before actual bone/skin qualification and captures: installed AnimSingleNodeInstance Python property current_asset unavailable.",
+      "raw_reference_captures": 0,
+      "raw_reference_process_exit": -1073741819,
+      "reference_geometry_hollow_proven": false,
+      "continuous_new_combat_qualified": false,
+      "runtime_loader_promoted": false
+    },
+    "prism": {
+      "scope": "Original-A-derived same coherent shell with thin top/vertical trim, softer constant material, eight native views and captured compiler/readback receipts.",
+      "process_exit": 0,
+      "actual_refraction_method": "RM_NONE",
+      "actual_empty_volume_readability": "clearer; glass nearly invisible and ornament/likeness held",
+      "four_view_g2_accepted": false,
+      "ready_for_meshy_submission": false
+    },
+    "reefglass": {
+      "scope": "Six root attachment, finite fins and shell/underside construction views. Fresh continuous frames preserve all centerlines, root stations/radii, head/shell/fins/materials and camera setups.",
+      "current_captures": 8,
+      "curl_starburst_defect": "visibly improved/removed",
+      "remaining": "Hard tangent bends/capped junctions, opaque shell and likeness/material polish.",
+      "capture_report_completed": true,
+      "editor_process_exit": -1073741819,
+      "clean_native_process_pass": false,
+      "four_view_g2_accepted": false,
+      "ready_for_meshy_submission": false
+    },
+    "wondergrove": {
+      "scope": "Bonus bounded original parametric interface pilot, not a Meshy final board.",
+      "saved_native_files": 7,
+      "decorative_masters": 3,
+      "native_bounds_qualified": true,
+      "joins_qualified": 2,
+      "join_error_cm": 0,
+      "actual_r006_pie_fill_actors": 2,
+      "actual_r006_capture_count": 5,
+      "unlit_probe": "Unsaved transient emissive diagnosis only.",
+      "remaining": "Dark lit props, unsupported peripheral pads, surface integration; mixed-creature shared lighting/occlusion/contact/busy combat/performance remain unqualified.",
+      "runtime_loader_promoted": false,
+      "art_accepted": false
+    },
+    "checks": {
+      "project_python_environment": ".venv/Scripts/python.exe",
+      "kit": true,
+      "legacy_catalogue": true,
+      "vnext_catalogue": true,
+      "generated_documents": true,
+      "unittest_passed": 250,
+      "editor_build": true,
+      "package": true,
+      "packaged_synthetic_recovery": true,
+      "global_python_missing_jsonschema_attempts_retained": true
+    },
+    "preservation": {
+      "accepted_crag_palette_tail_files": 31,
+      "accepted_silk_attack_hit_files": 98,
+      "frozen_r4_payload_files": 50,
+      "old_default_launcher_preserved": true,
+      "old_ledger_entries": 66,
+      "catalogue_and_crag_loader_unchanged": true,
+      "bellback": "Existing accepted candidate and historical integrity gate preserved; no new shared-look acceptance inferred."
+    },
+    "failures_retained": [
+      "Legacy native-control eight focus failures.",
+      "First cold diagnostic wrote one byte instead of full binary; corrected fixture preserves embedded NULs.",
+      "Global Python lacked jsonschema; existing venv required checks passed.",
+      "RAW-reference missing Python current_asset accessor; zero raw captures and shutdown crash.",
+      "Reef captures complete but shutdown access-violation exit retained.",
+      "Board r001 missing profile, r002 unsupported spawn API, r004 declared fills actually absent, r005 missing probe, r006 corrected actual two-fill/unlit diagnosis.",
+      "First report-assembly filename mismatch and first independent audit expectation/order mismatches retained."
+    ],
+    "preserved_boundaries": {
+      "all_assets_complete": false,
+      "solo_beta_complete": false,
+      "new_art_candidates_promoted": false,
+      "new_human_reference_forms_motion_release_acceptance": false,
+      "physical_input_acceptance": false,
+      "normal_speed_pacing_accepted": false,
+      "clean_machine_hardware_accepted": false,
+      "remote_multiplayer_accepted": false,
+      "release_approved": false,
+      "standing_meshy_credit_authorization": true,
+      "paid_meshy_jobs_this_batch": 0,
+      "mesh_credit_consumption_this_batch": 0
+    },
+    "review_url": "http://127.0.0.1:8746/reports/parallel-slice-20261001/index.html",
+    "evidence": [
+      {
+        "path": "game/Source/WonderChessArtTools/Private/WCAssetAuthoringLibrary.cpp",
+        "bytes": 16283,
+        "sha256": "7f178a62b6700b500f25288fab3bbee4f8d936b0fb029e4a9f1aa4923a2bd36e"
+      },
+      {
+        "path": "game/Source/WonderChessArtTools/Private/WCCragstoatMeshAuditLibrary.cpp",
+        "bytes": 28153,
+        "sha256": "dfd0b175ba8e4accfcfc6669806884ea3249c03026198cfc30e9ed23a14eb7ae"
+      },
+      {
+        "path": "game/Source/WonderChessRuntime/Private/WCVNextSolo.cpp",
+        "bytes": 128159,
+        "sha256": "04d28d31a228fd080d51c6402e4f2181223ce09d153f7d076046f33287d621aa"
+      },
+      {
+        "path": "Play Solo Slice 20261001.cmd",
+        "bytes": 129,
+        "sha256": "aca1d26e762712ceffc777cfe1eebc68817a6bcc8aa983a331367194475a5a1c"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/baseline.json",
+        "bytes": 46981,
+        "sha256": "300db532dba981407b19112dc161546188ff395589410baf82eef1e3f9bcfb05"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/board-pilot/independent-audit-r001.json",
+        "bytes": 18310,
+        "sha256": "a05ed291ed46634f2459f26deeb9b88db69a36e879e1cb462378823540c0d4b9"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/board-pilot/index.html",
+        "bytes": 2971,
+        "sha256": "2a6702e92bbdb70c1319fe0e33c5726bd5ea4b4271140027bc12061fbdcb7bdd"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/board-pilot/native-r001/capture.json",
+        "bytes": 8159,
+        "sha256": "80b0be63cd2d2eb835c350aae540a479d86eb9062e9cbbb5616f43941e8524e2"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/board-pilot/native-r002/capture.json",
+        "bytes": 10505,
+        "sha256": "0cd115ce8cbcfdbe367c91c452f5414f0a0fc9217feea5a037a7a698fecfd78c"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/board-pilot/native-r003/capture.json",
+        "bytes": 13127,
+        "sha256": "f9650ae7cd3623009ca0b5b3db2e2cc32b64f9374f1f5f8780486a4e887f461d"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/board-pilot/native-r004/capture.json",
+        "bytes": 13830,
+        "sha256": "baed0a1b64076440951c892b63beece4465b3f9e50c033d774af117d953293ef"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/board-pilot/native-r005/capture.json",
+        "bytes": 15532,
+        "sha256": "e0c714d3697d65bd39f46fff4ace3a34b98b9eb1af9c2a94c9a370a7ac439f54"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/board-pilot/native-r006/capture.json",
+        "bytes": 17228,
+        "sha256": "adfed4a46050e2afa72c53233941b541e38d959a057364ea55ef4a411d4da33e"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/combine-failure-r001.json",
+        "bytes": 487,
+        "sha256": "687de30ad652fed23ca789609d77d7a5f34abb6674d1c8d1bccea31b47113eb6"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/combined-link-verification-r001.json",
+        "bytes": 5785,
+        "sha256": "91b1d5ec21c5e80115052e7c208af8ac57466715f25517f805bcfa7526e103ff"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/cragstoat/final-lane-handoff-r001/handoff.json",
+        "bytes": 26727,
+        "sha256": "860ce67f1abc501e9ed3b089f77e02c65d07a5cd89518409eb3b6b682d8a1b1e"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/cragstoat/native-author-r001/skin.json",
+        "bytes": 102248,
+        "sha256": "9986e442ef38bfa5a051d127b87ef7aad4b7cdf93721c6d2d65655733261c36e"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/cragstoat/native-cold-four-pose-r001/diagnostic.json",
+        "bytes": 3628055,
+        "sha256": "e8a3050136cf4b889247784ff2d57fd4f1f639a6c9f2899b4f56c05023bcfb6e"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/cragstoat/native-raw-reference-r001/capture.json",
+        "bytes": 23223,
+        "sha256": "3badc629206e6667197dc62121fae5fdaa9df8db6609e64a035843235038eb8b"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/documents-check-r001.log",
+        "bytes": 45,
+        "sha256": "933c458bf7acb74c8087ec95fece61b75e63f0896376ff5b930d13325b03ff6d"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/editor-build-r001.log",
+        "bytes": 2832,
+        "sha256": "ba45926620269b8ddda1839da74ff14d08c52a7b84ee2c92d62f8b9ce3fcacbb"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/editor-build-r002.log",
+        "bytes": 2588,
+        "sha256": "60f5a4895a591598ee1e8e20bff99fcb165082446d28fe86553d1b8af38f246d"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/editor-execution/board-three-master-cold-r002.log.execution.json",
+        "bytes": 1917,
+        "sha256": "4cf715d8ed821b4e2830a7d529ecee281c577406671a17eae253b32ed7af8427"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/editor-execution/board-three-master-cold-r003.log.execution.json",
+        "bytes": 1917,
+        "sha256": "9b27f2141ef86ff674783bff5785894a94e9d743763df8bc57183c3c087f5ed3"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/editor-execution/board-three-master-material-probe-r005.log.execution.json",
+        "bytes": 1986,
+        "sha256": "f54e8993f00380fa8f690a66930c63485f2acad7329d87805feca26faf209dca"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/editor-execution/board-three-master-material-probe-r006.log.execution.json",
+        "bytes": 1986,
+        "sha256": "f273ad1bf5bca1f93ae83f157d81683eb0e285f9e6884b7b16f31c5122c70a96"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/editor-execution/board-three-master-r001.log.execution.json",
+        "bytes": 1903,
+        "sha256": "563bbb27708586235968cb2a577d60d4d75e04d2e447c13fe676b2b53ef32450"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/editor-execution/board-three-master-soft-light-r004.log.execution.json",
+        "bytes": 1974,
+        "sha256": "7bc7618f93a67c53775e95f76ad70883f9b2e08dd1cf94349fbb9a0803e7c2e0"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/editor-execution/crag-parent-transition-author-r001.log.execution.json",
+        "bytes": 1869,
+        "sha256": "78b9ced6290cf3aaede183444b8f244e6450b91ef6cc3043a0b2756f9b37646b"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/editor-execution/crag-parent-transition-cold-r001.log.execution.json",
+        "bytes": 1867,
+        "sha256": "fd71725c3f45e928f32ca3e5fbe757a5601d945da877279aa42384db9677d65b"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/editor-execution/crag-raw-reference-native-r001.log.execution.json",
+        "bytes": 1861,
+        "sha256": "4afa880cc915ec0f2c8af49f0b0088b80e67002841f00f81dcb85f8ecbf4c835"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/editor-execution/prism-chamber-trim-native-r001.log.execution.json",
+        "bytes": 1869,
+        "sha256": "3badd4cfba6e6eedae6ce994e114ea04d0de86e23b94d22afdc92760eb6c19c4"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/editor-execution/reefglass-native-r001.log.execution.json",
+        "bytes": 1846,
+        "sha256": "c72b9a9017c4d65476f546b7776eb8985a431c94ae38cd268fd45efa43b3abdd"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/editor-execution/reefglass-sweep-frame-native-r002.log.execution.json",
+        "bytes": 1888,
+        "sha256": "2ee540e53220abd93abfcef1974bbce2ab4482280cb3c9fcf18132dac9109a56"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/index.html",
+        "bytes": 5638,
+        "sha256": "6984961b5aa168a37c4ebc9d60bc7cd7f39b06c77bf9362b0f8a3b229d3dfe50"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/engine/backup-720-r002/execution.json",
+        "bytes": 2538,
+        "sha256": "5e50a5a5a2238674e416637c0bd3a623f37d1b7986e261f3cbe6c28c0c624f32"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/engine/backup-720-r002/solo-recovery-exercise.json",
+        "bytes": 10807,
+        "sha256": "3cef7538d6e619509ffc4f255918171a7bfd563f44bf5660686e4c649cbe0efe"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/engine/checkpoint-720-r002/execution.json",
+        "bytes": 2103,
+        "sha256": "316a062ebb39537aedfd293a2b17da2ad4c07d597d0ff9daf360ee361fc4ef12"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/engine/checkpoint-720-r002/solo-recovery-exercise.json",
+        "bytes": 4467,
+        "sha256": "62998fe7059670df80f0749a2721667451236b29aefbb3b04816baa228169426"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/engine/cold-1000-r002/execution.json",
+        "bytes": 2506,
+        "sha256": "b0776310a25267b6546a0aa6f61b41421cb3ee2144f3a7c7b8e48633d14096db"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/engine/cold-1000-r002/solo-recovery-exercise.json",
+        "bytes": 10540,
+        "sha256": "06a05b0f0948c5e815c58e0f22ee6984845a0544415197363f33094396a74489"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/engine/cold-1080-r002/execution.json",
+        "bytes": 2505,
+        "sha256": "dd41909bef02e5f58160d47655dd65975d0a821981280c4a59d2a2ad4172505b"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/engine/cold-1080-r002/solo-recovery-exercise.json",
+        "bytes": 10541,
+        "sha256": "65cab425d0334ddcf86cab0787d685d76d9d1edc1a5c090d2e6ff4d69e1ff254"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/engine/cold-720-r001/execution.json",
+        "bytes": 2494,
+        "sha256": "74f17f5521e1dc46b41f9a6f444bfc072490585bb6143fbdf1d01e3ff2bba180"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/engine/cold-720-r001/solo-recovery-exercise.json",
+        "bytes": 2629,
+        "sha256": "1a573fa723decb45048427289024663f10bc34e1fb471dfbdfa9e0c36daae981"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/engine/cold-720-r002/execution.json",
+        "bytes": 2501,
+        "sha256": "bb7c5ac5871f92a5f69d097eed11eeda64b6390dc25db527a308c40f3362c7be"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/engine/cold-720-r002/solo-recovery-exercise.json",
+        "bytes": 10537,
+        "sha256": "d519d6b8208d7be5efb84b058ba601bd4342663289adb3814378dea39c4af94c"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/engine/invalid-720-r002/execution.json",
+        "bytes": 2553,
+        "sha256": "a2b5e598d603fe3243970186db2a56422f30031748b9ac9342b6410b189ffa96"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/engine/invalid-720-r002/solo-recovery-exercise.json",
+        "bytes": 2786,
+        "sha256": "ff3d0c0e94ffab7e0e7e871012d24fc2b700112819a3f011bee7e425ef19429d"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/engine/journey-1000-r001/execution.json",
+        "bytes": 2090,
+        "sha256": "ea804aab3e509b132eef555abd8a1d40eee359a3381c8d227430a5cb25cb6c16"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/engine/journey-1000-r001/solo-recovery-exercise.json",
+        "bytes": 5653,
+        "sha256": "354bf37d0a25234ceab69417b352e2f118a9cf1a72f0e76bada5700fd9301891"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/engine/journey-1080-r001/execution.json",
+        "bytes": 2091,
+        "sha256": "b4c7a9f38224df40f446169c05e7b228f8346ed7f75fdb19b36fd13e533c3a13"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/engine/journey-1080-r001/solo-recovery-exercise.json",
+        "bytes": 5653,
+        "sha256": "90436260f401bbe278d21f6939e1a1dcdc4e5808a4e8ede14d799d7aef0e4dfc"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/engine/journey-720-r001/execution.json",
+        "bytes": 2086,
+        "sha256": "8ef00ae3cdc099bc31256b0ef90687a2fe0d82779b2a4059a46bbf3ae5846b1f"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/engine/journey-720-r001/solo-recovery-exercise.json",
+        "bytes": 5651,
+        "sha256": "fcceef35cda3e4548d66d8dd20fd2bd38070b799a3d26ba8b3d8f16d2a410bcd"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/engine/legacy-720-r001/execution.json",
+        "bytes": 2117,
+        "sha256": "52c285efcac5a602d4873b0033af5a4dd8472be5244c717360e0758eeff52834"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/engine/legacy-720-r001/solo-recovery-exercise.json",
+        "bytes": 5667,
+        "sha256": "58582841a859ae66f932d79b761cc242b98b67cea671e9526967a342e01dded1"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/independent-native-audit-r003.json",
+        "bytes": 14802,
+        "sha256": "d6c0889ee560282f7d69d037861386bcddb9b8cda05e404198354529e8c8346c"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/native-readout-r002.json",
+        "bytes": 8278,
+        "sha256": "331650eb57cdae071205a5d27bf9fb5b97b56b3a4bcde18fba6ef15008034c6f"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/packaged/independent-audit-r002.json",
+        "bytes": 18047,
+        "sha256": "9b44283eda6f59ed29dd6047406af3733f0eb82b52e8c183384369c095213c93"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/packaged/readiness-r001.json",
+        "bytes": 4536,
+        "sha256": "83ffac80f39c96185f9d83e0a3c636a25e489764eff01d7a35723970ef8ea5a0"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/packaged/README.md",
+        "bytes": 5088,
+        "sha256": "fbefa88a5ee90fe2e70a387d27a424cc0598f3c4dff9ebcf36fd8d2ed4767a80"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/packaged/readout-r001.json",
+        "bytes": 12488,
+        "sha256": "803fea845b0f60e865937d63be256f679a6cd96a86377af40df6f26f8c1d3f03"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/packaged/runs/backup-720-r001/execution.json",
+        "bytes": 4581,
+        "sha256": "b4258bd470f2b346fd98001b5f689994c58546b17989bacc54b4d0194f7e867d"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/packaged/runs/backup-720-r001/solo-recovery-exercise.json",
+        "bytes": 10815,
+        "sha256": "8fbe3bdb9973eafc3d7fb05688863115861fd47a37f3c700648e163e8b861039"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/packaged/runs/checkpoint-720-r001/execution.json",
+        "bytes": 4118,
+        "sha256": "8b67e8e200f6ea55ba0f2b5c1565446f878d7d9469d26072080c28f433d28712"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/packaged/runs/checkpoint-720-r001/solo-recovery-exercise.json",
+        "bytes": 4475,
+        "sha256": "2609eebf9f7e2b4f0709da49985855dff5fc30d6b6f8480ff77c8d84b5fed14a"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/packaged/runs/cold-1000-r001/execution.json",
+        "bytes": 4549,
+        "sha256": "25b96e8567a0a43957c8b8f5530015373df2b43e4bd604439bd3ef589dda4ca7"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/packaged/runs/cold-1000-r001/solo-recovery-exercise.json",
+        "bytes": 10549,
+        "sha256": "38799155c6b9d1854b136ee0cdcf5b5acc9004a522f9773dd3003a0ffa040a4c"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/packaged/runs/cold-1080-r001/execution.json",
+        "bytes": 4549,
+        "sha256": "585b04fb45e51e74150db31a491c1912cb8ccb5a5d2cdfd7259ea992befbc86f"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/packaged/runs/cold-1080-r001/solo-recovery-exercise.json",
+        "bytes": 10547,
+        "sha256": "dc5ffb03d9ac0a76f3c414082da38016e6350fb7e8602d315806aab3fc120cf6"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/packaged/runs/cold-720-r001/execution.json",
+        "bytes": 4544,
+        "sha256": "31eb294581d3636d7adae37ec436425e7ab634414c8b3188638c37cdfab73900"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/packaged/runs/cold-720-r001/solo-recovery-exercise.json",
+        "bytes": 10547,
+        "sha256": "fc5747b4af57a7216162d7293f864715ffe54439a1a286ee7858bff0b78dac38"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/packaged/runs/invalid-720-r001/execution.json",
+        "bytes": 4583,
+        "sha256": "f78465e349e2b47ae36fa0cc29c41c6c14e0cc19cbd90237980aafef199ca98f"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/packaged/runs/invalid-720-r001/solo-recovery-exercise.json",
+        "bytes": 2794,
+        "sha256": "43b6e121bb09204acd8a993c0baf0b68ff1e6b18751395663f4b9bd2d550e00e"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/packaged/runs/journey-1000-r001/execution.json",
+        "bytes": 4105,
+        "sha256": "cbf074493298891bf022ba2eaf79fc79166f3390596b4536c6316fce35ebd0e9"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/packaged/runs/journey-1000-r001/solo-recovery-exercise.json",
+        "bytes": 6057,
+        "sha256": "575724b10d98c521dfa4671b88eae21fb40fd6c3a8ee4cd0b484e0f7fe86d332"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/packaged/runs/journey-1080-r001/execution.json",
+        "bytes": 4105,
+        "sha256": "497d9b0b78a285583444256efd4d2c385541460aeb8f6d12348e4c38098a5bb5"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/packaged/runs/journey-1080-r001/solo-recovery-exercise.json",
+        "bytes": 6057,
+        "sha256": "2127c768cedb0dd476acaeb02594ea1d6f40bf6e1eb74fd5a5e3642d83a20057"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/packaged/runs/journey-720-r001/execution.json",
+        "bytes": 4100,
+        "sha256": "9cf9b1896b5866369c19bb89152ed8f1e8cfae7b713bd142572f098ca74a29c8"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/packaged/runs/journey-720-r001/solo-recovery-exercise.json",
+        "bytes": 6055,
+        "sha256": "c306d709d39d5eabcbb875be5b7478e145a8a5ace98d38d20569cd534304a1cf"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/physical-coverage-r002.json",
+        "bytes": 1476,
+        "sha256": "2cf47a73bab1b0d332c755cb937abc3cb2fe6a5201ddda10ad7f298d98a33154"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/input-recovery/README.md",
+        "bytes": 10547,
+        "sha256": "914c0526a10800b78fd46734c378ca5d7afb8e60ffc9e08d281525aa8163cd4f"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/legacy-catalog-check-r001.log",
+        "bytes": 42,
+        "sha256": "5829a87dba4c6928fea135d328bce026d66fab616676a42b011c3a84556b773a"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/package-r001/identity.json",
+        "bytes": 39572,
+        "sha256": "6156991f10217f612ee3ea20f3e3197e63de62cb7cc661ebeae7da558292b30c"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/package-r001/package-Development-20261001T084858Z.json",
+        "bytes": 283,
+        "sha256": "e8ac7b0c000da4d0ce092aead50abff097516caa94c27b81d6d30bd852122880"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/package-r001/package-Development-20261001T084858Z.log",
+        "bytes": 73774,
+        "sha256": "27305fc3e27d9eef64d31197c58aeb19e3f7d2422ff1341478f634f1b0dad00e"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/package-r001/verify-after-execution-r001.json",
+        "bytes": 802,
+        "sha256": "1ad33c6e51e3ad69f3074a947bce1567dcfa041a09a505d4bfe51a5a9c221f81"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/preservation-r001.json",
+        "bytes": 35106,
+        "sha256": "45c80e23e67f40bc29b15f68c4350096c529d223e69d96ef4ecbbd826eb57675"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/progress-snapshot.csv",
+        "bytes": 36620,
+        "sha256": "39bf3bebae7360e34ae5291df825a45ed6115a0761469797fa2bc849fed46311"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/python-tests-r001.log",
+        "bytes": 34159,
+        "sha256": "1b362ec6a387837d2bebcee6131676fee882537102eb1cbe425521325e103bda"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/README.md",
+        "bytes": 5056,
+        "sha256": "b4e20346c7d70c9f851eabd77608e2b3f7d166e415e4b0b5d80d6c92ab1c92ae"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/references/final-reference-handoff-r001/handoff.json",
+        "bytes": 5677,
+        "sha256": "a1d60af43e19f7f4b74a2c51675fa0af68f0fe0e1def525a2a102cf65297493f"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/references/prism-chamber-trim-native-r001/capture.json",
+        "bytes": 85527,
+        "sha256": "181b9a2cd1a383f6db8869b6d9d56033afa753d5e90df54aae702fb13c3c5c9c"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/references/prism-chamber-trim-review-r001/index.html",
+        "bytes": 9616,
+        "sha256": "21dd94ab569c916d88bb51ccdc7da4a42f9b54324027adf663b4b8074503ebe8"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/references/reefglass-native-r001/capture.json",
+        "bytes": 97481,
+        "sha256": "8857662d44882735d233c598855c779b0d1b82ef8a45b95f284c57e8adbc655a"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/references/reefglass-sweep-frame-native-r002/capture.json",
+        "bytes": 107261,
+        "sha256": "2fef764951a7488db2d60252815c009a16b1f50a42491ccbcc5e553cc70fc4d3"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/references/reefglass-sweep-frame-review-r002/index.html",
+        "bytes": 12385,
+        "sha256": "179f2eecea90cf0d2ca5963583a8fab3dc9739f254821dae92c8e03fd21bd34a"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/root-visual-witness-r001.json",
+        "bytes": 13220,
+        "sha256": "24ed6348415f4e64ff739a9d55ef84e0d213a00d4aff41df2fe3c78cafb6c21b"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/validate-kit-r001.log",
+        "bytes": 115,
+        "sha256": "996f2a291c2988c682cabecea687e8a25196ad0a92a342677a371d6d58f05af1"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/validate-kit-r002.log",
+        "bytes": 79,
+        "sha256": "60bd9ba5cb6bfee31454a92b2052f8460391b3e7212009608c7dd738b506a6b5"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/vnext-catalog-check-r001.log",
+        "bytes": 227,
+        "sha256": "f6f3f709d80a425e9a4af3cfa1ef5ffa61b3f726463b988d3207a31a4b802094"
+      },
+      {
+        "path": "reports/parallel-slice-20261001/vnext-catalog-check-r002.log",
+        "bytes": 99,
+        "sha256": "9141406704a38a16e20663b93edb0c73d608860e9816508c934fca1040d9d0b2"
+      },
+      {
+        "path": "support/recovery/parallel-slice-20261001/editor-build-r002/identity.json",
+        "bytes": 2031,
+        "sha256": "d91ec5f8cbb950e8b2c8c3ffefebf563667ecff353a89b6d745ff49ab066c8ae"
+      },
+      {
+        "path": "support/recovery/parallel-slice-20261001/game-binary-before-solo-package-r001/identity.json",
+        "bytes": 245,
+        "sha256": "cdd5db8db10c6a065c4faabbe27c70bca9b17b75e3ec6b5e023ede0d2274c4e0"
+      },
+      {
+        "path": "support/tools/parallel_slice_20261001/combine_results_r001.py",
+        "bytes": 22008,
+        "sha256": "e3c545322b5b39790ee4d115046d6aacc3fa5b3adbe2f5fc4aa9cd6881fdca6b"
+      },
+      {
+        "path": "support/tools/parallel_slice_20261001/packaged_input_recovery_readout_r001.py",
+        "bytes": 10905,
+        "sha256": "92404329545b940b5b5a75963eded53b09768c4982bfcaeb02b8557f9e5d25f5"
+      },
+      {
+        "path": "support/tools/parallel_slice_20261001/play_solo_slice.ps1",
+        "bytes": 1310,
+        "sha256": "67ffb971274bb40bff6ae103805e67ed5074e8bf991c9ebf9717044001aba9b6"
+      },
+      {
+        "path": "support/tools/parallel_slice_20261001/run_editor_recipe.ps1",
+        "bytes": 3187,
+        "sha256": "d16a9f4a71f79d51a87244a8c4eb33a66620915c8afc16eeba1a5eacae5869a4"
+      },
+      {
+        "path": "support/tools/parallel_slice_20261001/run_packaged_input_recovery_r001.ps1",
+        "bytes": 10343,
+        "sha256": "91b3ea80ecd4383dd69675ccdce5087e6871c82dc18e484b764d013591631f2d"
+      },
+      {
+        "path": "support/tools/parallel_slice_20261001/verify_combined_links_r001.py",
+        "bytes": 2830,
+        "sha256": "e3ac8f4af4b051373d3c2723a73f917f49f86720aa21fbc498025795a439182e"
+      }
+    ]
+  },
+  "creature_construction_diagnostics_20260930": {
+    "date": "2026-09-30",
+    "recorded_utc": "2026-09-30T14:23:34.291916+00:00",
+    "status": "SCOPED_SAVED_SKIN_CONSTRUCTION_AND_AUDIO_DIAGNOSTICS_NO_RUNTIME_OR_ART_PROMOTION",
+    "report": "reports/development-20260930/construction-checkpoint-r007/README.md",
+    "evidence": [
+      {
+        "path": "reports/development-20260930/cragstoat-combat/body-skin-r003-r002/skin.json",
+        "sha256": "8a02a63ed6adbebbad4383ab87280eee1629d68b8fc3b56376e574699025b8bf",
+        "bytes": 32839
+      },
+      {
+        "path": "reports/development-20260930/cragstoat-combat/cold-body-skin-r003-four-pose-r002/diagnostic.json",
+        "sha256": "3193b451a79568a7a1ad80b5245bcfa12271a283bb17612c6eb99767b5a33b93",
+        "bytes": 3362236
+      },
+      {
+        "path": "reports/development-20260930/cragstoat-combat/cold-running-r005-body3-field-r001/validation.json",
+        "sha256": "17916944b5663521ee3dfa2ecc42da11bcd274da2c531e2c79a78ea59e79c212",
+        "bytes": 12725313
+      },
+      {
+        "path": "reports/development-20260930/cragstoat-combat/body-skin-r003-shape-handoff-r001/shape-handoff.json",
+        "sha256": "55caea8a1b053eababefb05a9f78bdaf1fca75d387257d4c1cc7dc3ead3b0291",
+        "bytes": 17202
+      },
+      {
+        "path": "reports/development-20260930/assets/editor-execution/crag-body3-connected-writer-r001.log.execution.json",
+        "sha256": "d7d0c7bc23d83c318060995fa5438c0050a2edae6c9ef9a7db43f3ec5b3168de",
+        "bytes": 1892
+      },
+      {
+        "path": "reports/development-20260930/assets/editor-execution/crag-body3-connected-writer-r002.log.execution.json",
+        "sha256": "94b87b5bf9c944292e642d5d40a31356de7eb0b4ec2a224a832f45ab9ab6fe83",
+        "bytes": 1882
+      },
+      {
+        "path": "reports/development-20260930/assets/editor-execution/crag-body3-four-pose-cold-r002.log.execution.json",
+        "sha256": "0fe8ab5846d8a7bb5495b0539b6d5e14ad697893418799ab4c055ff37448c164",
+        "bytes": 1882
+      },
+      {
+        "path": "reports/development-20260930/assets/editor-execution/crag-running5-body3-field-cold-r001.log.execution.json",
+        "sha256": "d3ae125f27dd964010e6b1729cf3cc10401d3d02fd90b95a69dd79808ee2ceea",
+        "bytes": 1897
+      },
+      {
+        "path": "reports/development-20260930/editor-build-r019.log",
+        "sha256": "09b70d06f8ab468557e4247e9db7d03c68430686ccd04b982fef768907313022",
+        "bytes": 2570
+      },
+      {
+        "path": "reports/development-20260930/assets/prism-construction-A-capture-r001/capture.json",
+        "sha256": "0046d9ffe4ea2b0e173163d4ae145b5c96d7863152306e2158a35774eecac55c",
+        "bytes": 64690
+      },
+      {
+        "path": "reports/development-20260930/assets/prism-construction-A-core-supplement-r001/capture.json",
+        "sha256": "41817d9d4a4cc6f66c1e440c5b23db1afec32bca0daaf02cb659cddac9059443",
+        "bytes": 14345
+      },
+      {
+        "path": "reports/development-20260930/assets/prism-construction-A-material-qualification-r001/qualification.json",
+        "sha256": "3daf72d19e51f8c7db231dfab6bcfa7675d0ee2e279d34e9333a21772f93c322",
+        "bytes": 29544
+      },
+      {
+        "path": "reports/development-20260930/assets/prism-construction-A-opacity-pair-r002/diagnostic.json",
+        "sha256": "fb52f4754847163be6ccad23d803bbe0a19233e565aebee74affda218cac1b24",
+        "bytes": 24476
+      },
+      {
+        "path": "reports/development-20260930/assets/editor-execution/prism-construction-A-opacity-pair-r002.log.execution.json",
+        "sha256": "3f4a26f1fa61c85e5062878f6a7ddbca9fb76ef231885033b7a0264a955546df",
+        "bytes": 1878
+      },
+      {
+        "path": "reports/development-20260930/cragstoat-combat/runtime-audio20-source-running4-r001/scope-reconciliation-r001.json",
+        "sha256": "be34f255f1224d8e00ce09a511d1a0ab0ae60c2122c6d8300110cb99a8134757",
+        "bytes": 4772
+      },
+      {
+        "path": "reports/development-20260930/cragstoat-combat/runtime-audio20-source-running4-r001/numerical-master-r001.json",
+        "sha256": "01b77f716f4211620ab0e0bb1847cf3e584addbd653cb38ac2f1c6a74c208dc6",
+        "bytes": 181844
+      },
+      {
+        "path": "art-source/asset-studio/production-batch-20260930/interfaces-r001/verification.json",
+        "sha256": "34f0290a5e8b6d908690ba06c2a8c5f0bce4e85d74bfb6e0f918dda1dd261ad8",
+        "bytes": 17213
+      },
+      {
+        "path": "art-source/asset-studio/production-batch-20260930/interfaces-r001/browser-observation-r001.json",
+        "sha256": "1116fc302370e72198f93ad7c7087001e5e4033625069fd8c93dc0b83ac00d79",
+        "bytes": 1769
+      }
+    ],
+    "accepted_scope_integrity": [
+      {
+        "manifest": {
+          "path": "reports/development-20260930/cragstoat-revision/sage-keymotion_r004/owner-acceptance-r002/owner-approved-file-hashes.json",
+          "sha256": "83176cfaeeb3cf6dc33aea047a98aad10cee664eafc25b656bea0e2c54a1029c",
+          "bytes": 8119
+        },
+        "exact_files": 31,
+        "human_scope_unchanged": true
+      },
+      {
+        "manifest": {
+          "path": "reports/development-20260930/silkmother-revision/owner-acceptance-r001/owner-approved-file-hashes.json",
+          "sha256": "1921fe241bb1b1c861cc1a77efb6622ef94c693ac4522503512ebc5be7c703f8",
+          "bytes": 23896
+        },
+        "exact_files": 98,
+        "human_scope_unchanged": true
+      }
+    ],
+    "preserved_r4_package_files": 50,
+    "cragstoat": {
+      "mesh": "/Game/WonderChess/VNext/Characters/CragstoatProduction20260930_r001/Mesh/SK_Cragstoat_BodySkin_r003",
+      "mesh_file_sha256": "f56fa703d23797e16466e713b4883043394457ac94efe723cf92079c79666510",
+      "actual_saved_renderer_vertices": 79806,
+      "changed_actual_render_weight_vertices": 5099,
+      "all_tail_render_bytes_exact": true,
+      "four_actual_matched_poses": 4,
+      "actual_full_native_attempts": {
+        "native_proxy": 37,
+        "combined": 925,
+        "other_clips": 883,
+        "transitions": 66
+      },
+      "native_status": "PASS_COLD_RUNNING5_BODY3_FIELD_SAVED_LOD_CONTACT_AND_PROTECTED_TAIL_SCOPE_VISUAL_AND_LIVE_REVIEW_PENDING",
+      "native_failures": 0,
+      "source_key_failures": 0,
+      "actual_skin_measurements": 2072,
+      "protected_and_affected_tail": {
+        "0": {
+          "all_positive_Tail01_to08_render_vertices": 28133,
+          "protected_entire_actual_influence_vector_unchanged": 26218,
+          "field_changed_other_influences_with_identical_Tail_bytes": 1915,
+          "pure_tail_weighted_vertices": 17110,
+          "actual_field_changed_render_vertices": 5099,
+          "method": "Actual SOURCE and CANDIDATE RenderData bytes individually compared over all rendererpoints. ProtectedTail requires ENTIRE actual influencevector identical. EveryTailbyte staysfixed, but1915Tail-weighted points changeotherinfluences and their skinshape is separatelydescriptive, never called preserved."
+        }
+      },
+      "shape": "Viewed improvement to lower-rear fan; upper join fan and narrow central connections remain held. Contact scope cannot accept whole-motion shape.",
+      "saved_lods": 1,
+      "runtime_loader": "Accepted source mesh + historical Running4; Body3/Running5 unpromoted.",
+      "writer_r001_failure": "Python local digest shadow before creation, then shutdown access violation. Preserved; fresh corrected writer/cold processes recorded separately."
+    },
+    "prism": {
+      "source": "Original finite parametric construction A, twenty semantic parts and eighteen proposed sockets.",
+      "cardinal_top_section_and_close_core_images": 8,
+      "paired_opacity_images": 4,
+      "new_private_probe_materials": 2,
+      "original_native_files_preserved": 27,
+      "pair_status": "CAPTURED_FOUR_SAME_GEOMETRY_OPAQUE_TRANSLUCENCY_PAIRS_ORIGINALS_PROTECTED_VISUAL_REVIEW_PENDING",
+      "material_compile_errors": 0,
+      "limits": "Opaque and alpha0.45 surface-lighting visibility diagnostics on identical geometry. No final likeness, transparent PBR, G2, Meshy or production rig acceptance. Close-core process shutdown AV and qualifier exit3 remain preserved."
+    },
+    "audio20": {
+      "real_same_species_combat_peak": 20,
+      "status": "PASS_AUDIO20_ACTOR_AND_FILE_SIGNAL_SCOPE_NATIVE_CONTACT_FAIL_RETAINED",
+      "native_contact_status": "FAIL retained on source/Running4 diagnostic",
+      "file_signal": {
+        "duration_seconds": 76.24533333333333,
+        "recording_api_wall_seconds": 76.26081069931388,
+        "nonzero_encoded_samples": 2697976,
+        "sample_peak_dbfs": -16.653200696545298,
+        "export_ceiling_samples": 0,
+        "successful_component_spawn_requests": 836
+      },
+      "limits": "No mixed-roster, active-voice, per-event listening, synchronization, LUFS/true peak, performance or human approval."
+    },
+    "wondergrove": {
+      "decorative_masters": 10,
+      "proposed_instances": 20,
+      "proposed_joins": 18,
+      "browser_presentation": "Viewed root IAB diagram/bounds table; no horizontal overflow.",
+      "limits": "Proposed dimensions and geometric joins; no produced modular arena or engine context acceptance."
+    },
+    "preserved_boundaries": {
+      "human_new_art_or_motion_acceptance": false,
+      "runtime_loader_promoted": false,
+      "new_lods_created": false,
+      "new_package_created": false,
+      "standing_meshy_credit_authorization": true,
+      "meshy_successful_source_jobs_this_run": 2,
+      "actual_meshy_credits_this_run": 60,
+      "all_assets_complete": false,
+      "solo_beta_complete": false,
+      "remote_or_release_acceptance": false
+    }
+  },
+  "cragstoat_endpoint_correction_20260930": {
+    "date": "2026-09-30",
+    "recorded_utc": "2026-09-30T13:08:32.099751+00:00",
+    "status": "ENDPOINT_CONTACT_CORRECTION_PASS_BODY_SKIN_SHAPE_HELD_NO_RUNTIME_PROMOTION",
+    "report": "reports/development-20260930/cragstoat-combat/readiness-handoff-r006.md",
+    "scope": "Same BodySkin2 and Running5 source assets; native transition ankle/paw endpoint preservation changed. Strict tolerances retained. Numerical contact/source-key and protected-tail scope only; no new human art/motion/audio acceptance.",
+    "actual_cold_execution": {
+      "path": "reports/development-20260930/assets/editor-execution/crag-running5-body2-endpoints-cold-r002.log.execution.json",
+      "sha256": "36d4246aed3a4430a7718305eba95ad3556ea13aafbb777f64d3b9fd15783d2f"
+    },
+    "actual_cold_report": {
+      "path": "reports/development-20260930/cragstoat-combat/cold-running-r005-body2-endpoints-r002/validation.json",
+      "sha256": "090e1a8e0c29ae3654aa3a15d6ab4a2a5b15965c229114cf5f991a9882c96a7a"
+    },
+    "editor_build_log": {
+      "path": "reports/development-20260930/editor-build-r018.log",
+      "sha256": "7e59e643acdcd270d13b0ca0f994f387f6239c50ddd4e95bf9b92590594126a3"
+    },
+    "native_presentation_sources": {
+      "game/Source/WonderChessRuntime/Private/WCCragstoatPresentation.cpp": "0c3cbe2a6b88c7e2a839571e3a307b8ac7fd0b6368b91f6439b74987da797cf0",
+      "game/Source/WonderChessRuntime/Public/WCCragstoatPresentation.h": "8565dfe06519ff274b781574fc7574eaeb2c75ed522ed1962af8e4e213afa95e"
+    },
+    "execution_editor_modules": [
+      {
+        "sha256": "c602a51d42bd1b8b5da4e247b3f83b9e3c0dad06d2640824a5dad747c0e5f633",
+        "path": "C:/Users/USER/Documents/Wonder Chess/game/Binaries/Win64/UnrealEditor-WonderChessRuntime.dll"
+      },
+      {
+        "sha256": "a05e68e646c04f62e32fb44f33ca97dbd863bf975f0bf0aa2f1d3e55be0476ed",
+        "path": "C:/Users/USER/Documents/Wonder Chess/game/Binaries/Win64/UnrealEditor-WonderChessArtTools.dll"
+      }
+    ],
+    "results": {
+      "process_exit": 0,
+      "single_node_move_samples": 37,
+      "native_presentation_attempts": 1911,
+      "running_hit_combinations": 925,
+      "other_clips": 8,
+      "transition_base_records": 36,
+      "transition_hit_records": 30,
+      "source_key_comparisons": 20196,
+      "source_key_failures": 0,
+      "loaded_compressed_flags_true": 9,
+      "contact_or_solver_failures": 0,
+      "stored_full_surface_records": 1948,
+      "minimum_full_surface_z_cm": 0.2933837726712227,
+      "floor_tolerance_cm": 0.05,
+      "paired_reference_tail_comparisons": 123,
+      "maximum_protected_tail_shape_error_cm": 0.0,
+      "actual_captures": 39,
+      "saved_lods_tested": 1
+    },
+    "independent_shape_finding": {
+      "status": "HELD_ACTUAL_MATCHED_POSE_TRIANGLE_AND_VISUAL_DIAGNOSIS",
+      "diagnostic": {
+        "path": "reports/development-20260930/cragstoat-combat/running5-triangle-stretch-r002/diagnostic.json",
+        "sha256": "1fce199bd6d4c9f9ad7d3cccf53c9b66a02d84dc15375c330a8977701f880c4a"
+      },
+      "exact_reference_topology": {
+        "path": "reports/development-20260930/cragstoat-combat/running5-triangle-stretch-r002/reference-topology-and-weights.json",
+        "sha256": "ac5a17f2119b26ae685e8f0b2b0100a10f4101b710f978fede95577168dd14d2"
+      },
+      "review_page": "reports/development-20260930/cragstoat-combat/running5-triangle-stretch-r002/index.html",
+      "source_move_edge_28230_28231_before_after_cm": [
+        0.8266520463016479,
+        18.49804907703279
+      ],
+      "source_motion_edge_ratio": 22.377068029760604,
+      "body2_same_pose_maximum_vertex_change_cm": 16.806927,
+      "root_viewed": [
+        "Sage_Idle0-side.png",
+        "Sage_Move12-side.png",
+        "Body2_Move12-side.png"
+      ],
+      "interpretation": "Running motion elongates existing connected rear body/leg skin. Body2 introduces additional sharp boundary deformation. This is not a new static geometry defect or a reason to reopen the accepted palette/tail source. A connected anatomy-aware weight field must be predicted and inspected before creating another private skin. Box-only extension is not qualified."
+    },
+    "preserved_scope": {
+      "accepted_crag_palette_editable_tail_receipt": {
+        "path": "reports/development-20260930/cragstoat-revision/sage-keymotion_r004/owner-acceptance-r002/owner-acceptance.json",
+        "sha256": "be26b43c067c51b7d977c5753f672bbe9f090075e36826ab0ede51a944540163"
+      },
+      "accepted_silkmother_attack_hit_receipt": {
+        "path": "reports/development-20260930/silkmother-revision/owner-acceptance-r001/owner-acceptance.json",
+        "sha256": "f097c7f30f9ca7082f59ed520117259110a8d1f3d1ed3b59f1060e31a2a4c3d3"
+      },
+      "existing_r4_package": "builds/WonderChess-Development-20260930-r4",
+      "runtime_loader_promoted": false,
+      "new_lods_generated": false,
+      "audio20_executed": false,
+      "new_package_created": false
+    },
+    "remaining": "Connected body skin qualification, complete LOD review, actual native event/audio20 route, synchronized effects/listening, current shared-look review, performance and a new isolated package. Exact final human acceptance remains separate; unchanged approvals and standing credit authorization remain valid."
+  },
+  "cragstoat_combat_audio_candidate_20260930": {
+    "date": "2026-09-30",
+    "recorded_utc": "2026-09-30T12:41:14.922480+00:00",
+    "status": "LOCAL_G5_HELD_RUNNING5_BODY2_STRICT_KEYS_AND_NONTRANSITION_SKIN_PASS_22_CROSSFADE_FLOOR_FAILURES_RUNTIME_AUDIO_OPEN",
+    "report": "reports/development-20260930/cragstoat-combat/readiness-handoff-r005.md",
+    "scope": "New isolated Cragstoat combat/audio candidate after accepted SageTail_r003 palette/editable-tail scope; no acceptance inherited for changed skin, nine new combat clips, audio, LODs, shared look, game integration, performance or release.",
+    "accepted_scopes_preserved": {
+      "crag_palette_editable_tail": {
+        "path": "reports/development-20260930/cragstoat-revision/sage-keymotion_r004/owner-acceptance-r002/owner-acceptance.json",
+        "sha256": "be26b43c067c51b7d977c5753f672bbe9f090075e36826ab0ede51a944540163"
+      },
+      "silkmother_two_motions": {
+        "path": "reports/development-20260930/silkmother-revision/owner-acceptance-r001/owner-acceptance.json",
+        "sha256": "f097c7f30f9ca7082f59ed520117259110a8d1f3d1ed3b59f1060e31a2a4c3d3"
+      },
+      "require_no_reapproval_of_unchanged_scopes": true
+    },
+    "animation_authoring": {
+      "status": "NINE_CLIPS_SAVED_REQUIRES_COLD_SKIN_VOLUME_AND_RUNTIME_REVIEW",
+      "saved_clips": 9,
+      "native_rate": "60/1",
+      "process_exit": 0,
+      "evidence": {
+        "path": "reports/development-20260930/cragstoat-combat/author-r003/clips.json",
+        "sha256": "7289910fc7b2f0defd15aaf5666583e7b4887bc3c90ccdd2922bf5e2a94dde92"
+      },
+      "modern_native_source_keys": {
+        "status": "EIGHT_NON_MOVE_CLIPS_STRICT_STORED_KEY_GATE_PASS_OLD_MOVE_TWO_MISMATCHES",
+        "checked_clips": 9,
+        "non_move_passed_clips": 8,
+        "old_move_failures": [
+          {
+            "clip": "Move",
+            "bone": "Rear_Left_00",
+            "frame": 37,
+            "kind": "strict_modern_model_vs_source_json",
+            "modern_model": {
+              "translation": [
+                -0.029399052262306213,
+                -17,
+                -0.9995677471160889
+              ],
+              "rotation": [
+                -0.7071067811865475,
+                4.329780281177467e-17,
+                0.7071067811865476,
+                4.3297802811774677e-17
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            "expected_json": {
+              "translation": [
+                -0.029399052262305006,
+                -17.0,
+                -0.9995677471160906
+              ],
+              "rotation": [
+                -0.7075008153915405,
+                -7.691405734533419e-09,
+                0.706712543964386,
+                -7.699984649889302e-09
+              ],
+              "scale": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "translation_cm": 2.1478314635442757e-15,
+            "angle_degrees": 0.06387242903000087,
+            "scale_error": 0.0
+          },
+          {
+            "clip": "Move",
+            "bone": "Rear_Right_00",
+            "frame": 1,
+            "kind": "strict_modern_model_vs_source_json",
+            "modern_model": {
+              "translation": [
+                -0.029399052262306213,
+                17,
+                -0.9995677471160889
+              ],
+              "rotation": [
+                -0.7071067811865475,
+                4.329780281177467e-17,
+                0.7071067811865476,
+                4.3297802811774677e-17
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            "expected_json": {
+              "translation": [
+                -0.029399052262305006,
+                17.0,
+                -0.9995677471160906
+              ],
+              "rotation": [
+                -0.7075499892234802,
+                -7.69087016294634e-09,
+                0.7066633105278015,
+                -7.700520221476381e-09
+              ],
+              "scale": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "translation_cm": 2.1478314635442757e-15,
+            "angle_degrees": 0.07184622065816766,
+            "scale_error": 0.0
+          }
+        ],
+        "gate": {
+          "translation_cm": 0.0001,
+          "angle_degrees": 0.001
+        },
+        "evidence": {
+          "path": "reports/development-20260930/cragstoat-combat/native-source-diagnostic-r008/diagnostic.json",
+          "sha256": "f037c6dcb9b1cc02ad9428d266bb13bed5be03bd7b723c8dc07bf5f8f5b3163f"
+        },
+        "process_exit": 0,
+        "limit": "Exact stored model keys only; not full skin/transition/render/compressed route or human quality acceptance."
+      },
+      "historical_running_r004_move": {
+        "status": "RUNNING_MOVE_SAVED_REQUIRES_COLD_SKIN_CONTACT_VOLUME_AND_RUNTIME_REVIEW",
+        "seconds": 0.6,
+        "keys": 37,
+        "offline_reach_status": "OFFLINE_HIP_TARGET_REACH_SCREEN_COMPLETE_NATIVE_GATES_PENDING",
+        "minimum_reach_margin_cm": 0.7909159672338113,
+        "gate_scope": "Authored/offline ankle target reach only, independently failed native full skin and source fidelity.",
+        "evidence": {
+          "path": "reports/development-20260930/cragstoat-combat/author-running-r004/clips.json",
+          "sha256": "fb6b8b829977d423ab4894fafd638888fc3f3f1a895f67e032ba5c552296f38f"
+        }
+      },
+      "current_running_r005_body2_move": {
+        "evidence": {
+          "path": "reports/development-20260930/cragstoat-combat/author-running-r005-body2/clips.json",
+          "sha256": "3dd005bdfa340ef52adc9504f9403aeb08f2b94d5ce2367f34936473d03ec992"
+        },
+        "asset": "/Game/WonderChess/VNext/Characters/CragstoatProduction20260930_r001/Animations/Running_r005/AS_Cragstoat_Move.AS_Cragstoat_Move",
+        "seconds": 0.6,
+        "keys": 37,
+        "process_exit": 0,
+        "strict_native_model_key_fidelity": "PASS_1221_COMPARISONS",
+        "native_cold_motion": "EXECUTED_BOUNDED_NONTRANSITION_CHECKS_PASS_CROSSFADE_FLOOR_FAIL"
+      }
+    },
+    "running_cold": {
+      "status": "FAIL_NATIVE_RUNNING_CONTACT_SCOPE",
+      "samples": 1023,
+      "floor_failures": 834,
+      "minimum_failure_z_cm": -11.753777694702148,
+      "existing_lods": 1,
+      "distinct_captures": 13,
+      "source_fidelity_failures": 1,
+      "source_fidelity_failure": {
+        "bone": "Front_Left_01",
+        "frame": 2,
+        "translation_cm": 3.2023728339893768e-15,
+        "rotation_degrees": 0.05928424026214974,
+        "model_key": {
+          "translation": [
+            16.155494689941406,
+            2.220446049250313e-15,
+            -5.329070518200751e-15
+          ],
+          "rotation": [
+            0,
+            -0.7071067811865475,
+            0,
+            0.7071067811865476
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        "expected_json": {
+          "translation": [
+            16.155494689941406,
+            -4.440892098500626e-16,
+            -3.552713678800501e-15
+          ],
+          "rotation": [
+            -1.3877787807814457e-17,
+            -0.7074725031852722,
+            -5.551115123125783e-17,
+            0.7067408561706543
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "source_fidelity_gate_degrees": 0.001,
+      "evidence": {
+        "path": "reports/development-20260930/cragstoat-combat/cold-running-r004/validation.json",
+        "sha256": "80dad91efba3f0d5aa81009edfb5f6ec7df15a294e52999a9857c118a6f21d0b"
+      },
+      "precision_wording": "Precision1 means the one actual Running4 key mismatch. It is not a separate precise-writer execution failure.",
+      "candidate_scope": "HISTORICAL_RUNNING4_LOD0_FAILURE_NOT_NEW_RUNNING5_VERDICT"
+    },
+    "precise_writer": {
+      "status": "EXECUTED_RUNNING5_BODY2_ALL33_PRECISE_TRACKS_AND1221_MODEL_KEYS_PASS",
+      "readiness": {
+        "path": "reports/development-20260930/cragstoat-combat/precision-method-r001/readiness.json",
+        "sha256": "35005fca8f15d91f8576d32c930a8e514002a2c2d20ed72d7dd8fdca5cd3b26f"
+      },
+      "build": {
+        "path": "reports/development-20260930/editor-build-r013.log",
+        "sha256": "28479f392ad83ab3946ad908120906f3e126ff0d731aa556809c6edd2c3abfce"
+      },
+      "limit": "New all33native writer/model-key result establishes strict source fidelity before save only. Cold loaded compression/proxy/skin/contact/runtime and owner motion acceptance remain separate.",
+      "current_running5_body2_execution": {
+        "evidence": {
+          "path": "reports/development-20260930/cragstoat-combat/author-running-r005-body2/clips.json",
+          "sha256": "3dd005bdfa340ef52adc9504f9403aeb08f2b94d5ce2367f34936473d03ec992"
+        },
+        "process_exit": 0,
+        "all33_precise_tracks_pass": true,
+        "source_key_comparisons": 1221,
+        "strict_fidelity_pass": true,
+        "qualification": "Earlier exactly1Running4source-fidelity failure remains historical; it was not a separate writer attempt. New Running5 full model-key proof is independent of pending native cold skin/compression."
+      },
+      "historical_before_execution_status": "COMPILED_EDITOR_r013_RECIPE_NOT_RUN"
+    },
+    "audio": {
+      "original_procedural_waves": 75,
+      "original_rights": {
+        "path": "art-source/asset-studio/wc_vn_cragstoat/inputs/audio/procedural/production_20260930_combat_r001/generation-receipt.json",
+        "sha256": "fc7ab9601d76d3b5510fc3d9a19c107c944971ae9bf72a0a3c13ed61997bd0eb"
+      },
+      "cues": 15,
+      "rate": 48000,
+      "channels": 1,
+      "import_status": "PASS15_IMPORTED_PCM_SOUNDWAVES_REQUIRES_COLD_PLAYBACK_DISPATCH_AND_LISTENING",
+      "import_exit": 0,
+      "import_evidence": {
+        "path": "reports/development-20260930/cragstoat-combat/audio-import-r001/import.json",
+        "sha256": "7bcfd3854797e512e28af34179a2de7c7e930a5d2097368fe706479eaf60d5b6"
+      },
+      "master_r001": {
+        "status": "FAIL_NUMERICAL_MASTER_CAPTURE",
+        "samples_nonzero": 0,
+        "duration_seconds": 76.096,
+        "evidence": {
+          "path": "reports/development-20260930/cragstoat-combat/audio-verification/editor-master-r001.json",
+          "sha256": "84ea6099e33365acbd4054558eca553ed35fc2576ec17e78b7b22f39d4b2c3a4"
+        }
+      },
+      "master_r002": {
+        "status": "PASS_FILE_SIGNAL_HEADROOM_ONLY_CAPTURE_WALL_TIMING_PENDING",
+        "duration_seconds": 77.184,
+        "samples_nonzero": 3630608,
+        "sample_peak_dbfs": -15.599949557804354,
+        "export_ceiling_samples": 0,
+        "timing": "NOT_MEASURED",
+        "evidence": {
+          "path": "reports/development-20260930/cragstoat-combat/audio-verification/editor-master-r002.json",
+          "sha256": "a9daab520f17d5b8870d823a50af0a3a54bf128d8a9d39331bd7a84ed9427163"
+        }
+      },
+      "mixed_audio_scope": "Two actual editor fights, maximum eight mixed units/four Crags, then muted twenty-Crag cosmetic tour; no actual twenty-unit audio stress.",
+      "boundary": "Successful cue-spawn requests do not certify audible identities, packet dedup, cancellation, concurrency, listening, hardware or release.",
+      "listening": "NOT_RUN",
+      "owner_audio_accepted": false
+    },
+    "editor_routes": {
+      "r001": {
+        "status": "FAIL",
+        "failure": "Charge cue coverage incomplete",
+        "evidence": {
+          "path": "reports/development-20260930/cragstoat-combat/editor-route-r001/cragstoat-route.json",
+          "sha256": "3f553e7e335f2fb57c2e82088f3d5e9222ec22da910625bb94fc63ef97d65bde"
+        }
+      },
+      "r002": {
+        "status": "FAIL",
+        "failure": "Requested board contact missing or penetrating",
+        "minimum_skin_z_cm": 5.558702278137207,
+        "board_top_z_cm": 6,
+        "surface_samples": 2173,
+        "control_combat_matches": true,
+        "evidence": {
+          "path": "reports/development-20260930/cragstoat-combat/editor-route-r002/cragstoat-route.json",
+          "sha256": "4b26717666cc444cba2ab47ee2aad452cbcda1e71aa85afbc26781f9bb308d6c"
+        }
+      },
+      "package": "NOT_RUN_FOR_THIS_COMBAT_CANDIDATE_NO_r5",
+      "default_promoted": false,
+      "new_audio20_diagnostic": {
+        "status": "COMPILED_EDITOR_r015_NOT_RUN",
+        "flag": "WCCragstoatAudio20",
+        "native_source": "game/Source/WonderChessRuntime/Private/WCCragstoatExercise.cpp",
+        "authored_real_fight_target": 20,
+        "scope": "Separate opt-in stage2 ten canonical Crags per side, baseline Catalog/control combat; stage3 remains muted cosmetic tour.",
+        "required_actual_receipt": "peak_real_fight_cragstoats plus actual loaded mesh/animation paths, DLL/build identity, capture API-wall fields and actual master.",
+        "limit": "Compiled editor route/asset-path instrumentation only. No actual Audio20 launch, master, whole native route, package, listening or performance result.",
+        "build": {
+          "path": "reports/development-20260930/editor-build-r015.log",
+          "sha256": "8f2036533d7879c32ef03915fdfefac449fbf4ac635fdcf56cd066963012be11"
+        },
+        "build_seconds": 49.24
+      }
+    },
+    "sampling_method": {
+      "status": "INSTALLED_SOURCE_CAVEAT_RECORDED_OLD_COMPRESSED_FALSE_REQUESTS_FORCE_RAW",
+      "text": {
+        "path": "reports/development-20260930/animation-sampling-method-caveat-r001.md",
+        "sha256": "71668b562b938327725d377c457ef5e5b8e74f55e5315a730d5bca11b645fa49"
+      },
+      "receipt": {
+        "path": "reports/development-20260930/animation-sampling-method-caveat-r001.json",
+        "sha256": "3d94e5fbaac576b7bc135d0af9f97b5f5207f328ac321313413d319e986a5a6d"
+      },
+      "limit": "Historical native skin/render/package/owner decisions retain their actual scopes. Old pose-library labels alone do not establish independent compressed-data comparison."
+    },
+    "held_gates": [
+      "Correct actual22Move↔Idle/Attack crossfade floor failures, then a fresh exact native fullskin/contact/transition checkpoint with unchanged tolerances",
+      "Complete matched-triangle diagnosis and normal-speed viewed skin/running/combat/transitions; protected-tail0cm does not accept altered841mask overlap",
+      "New component target blend correction is authorized but not compiled/executed at this checkpoint",
+      "NewBody2/Running5 native runtime path integration, fresh actual Audio20 mix/API-wall capture and listening acceptance",
+      "New required LODs, packaged board/cue/audio route, independent hardware/performance and scoped owner new skin/combat motion review",
+      "Complete production/game/beta/release acceptance remains independent and open"
+    ],
+    "source_package_boundary": "Existing r4 package and approved unchanged scopes remain preserved. No new default, r5 package, solo-beta, all-assets or release completion is claimed.",
+    "new_body_skin_r002_method": {
+      "status": "EXECUTED_NEW_BODY2_SAVED_COLD_RENDER_PRESERVATION_PASS_MOTION_PENDING",
+      "source_export": {
+        "evidence": {
+          "path": "reports/development-20260930/cragstoat-combat/native-source-render-weights-r001/source.json",
+          "sha256": "3ff2a2452504ccd92926c63756f8a9df8eed799fee36ffad20638253a8bbdd07"
+        },
+        "process": {
+          "path": "reports/development-20260930/assets/editor-execution/crag-source-render-weights-r001.log.execution.json",
+          "sha256": "4474f0bc7ae17728a21eef55ddf20a326f01943bc78f7ef60c15d516bfbc7b4d"
+        },
+        "process_exit": 0,
+        "outer_status": "FAILED_EXPORT_OR_CORRESPONDENCE",
+        "native_valid": true,
+        "native_unique_import_rows": 18735,
+        "native_render_entries": 79806,
+        "limit": "Actual native export completed, but outer initial18942bijective map preflight failed before the correspondence loop. Direct mappings and welded aliases need the separate measured proof below."
+      },
+      "initial_correspondence_failure": {
+        "path": "reports/development-20260930/cragstoat-combat/body-skin-render-rebase-preflight-r001/preflight.json",
+        "sha256": "37e3d2c57faf465e80532c5260d7f0889b0b4d688aec4a6facaac4681b4621ec"
+      },
+      "measured_correspondence": {
+        "evidence": {
+          "path": "reports/development-20260930/cragstoat-combat/body-skin-render-rebase-preflight-r002/preflight.json",
+          "sha256": "21321922cb5656da3d848a314e1e418cf1bed56ac143531c2d952197584adf33"
+        },
+        "process": {
+          "path": "reports/development-20260930/assets/editor-execution/crag-render-rebase-alias-preflight-r002.log.execution.json",
+          "sha256": "27a5e6da5273b87312731e0f0a01f0240be732ac50785e26efc4de0754c4eff4"
+        },
+        "process_exit": 3,
+        "actual_dynamic_rows": 18942,
+        "direct_import_rows": 18735,
+        "exact_welded_aliases": 207,
+        "direct_maximum_position_error_cm": 0.0,
+        "maximum_alias_position_error_cm": 0,
+        "limit": "Successful complete numerical preflight persisted before Python shutdown process3. Narrow output proof and process failure are both retained."
+      },
+      "imported_source_weight_identity": "Body2 intentionally changes16535source-model uint16 rows to qualified render-byte values, rather than claiming original imported-weight identity. Accepted source31 and prior Body1 remain unchanged."
+    },
+    "running_r005_preparation": {
+      "status": "SAVED_AND_COLD_VALIDATED_STRICT_KEYS_PASS_CONTACT_SCOPE_FAIL",
+      "evidence": {
+        "path": "reports/development-20260930/cragstoat-combat/author-running-r005-body2/clips.json",
+        "sha256": "3dd005bdfa340ef52adc9504f9403aeb08f2b94d5ce2367f34936473d03ec992"
+      },
+      "process": {
+        "path": "reports/development-20260930/assets/editor-execution/crag-running-r005-body2-author-r001.log.execution.json",
+        "sha256": "4e68a532a9769bacfe3475542bc4e4932d55c0d76e9feb1446ea71584b777e52"
+      },
+      "process_exit": 0,
+      "actual_mesh": "/Game/WonderChess/VNext/Characters/CragstoatProduction20260930_r001/Mesh/SK_Cragstoat_BodySkin_r002",
+      "actual_clip": {
+        "asset": "/Game/WonderChess/VNext/Characters/CragstoatProduction20260930_r001/Animations/Running_r005/AS_Cragstoat_Move.AS_Cragstoat_Move",
+        "seconds": 0.6,
+        "frames": 37,
+        "release_frame": null,
+        "local_pose": "reports/development-20260930/cragstoat-combat/author-running-r005-body2/local_pose_Move.json",
+        "exact_source_pose_sha256": "f4a1392f9d7451b684e038f0bc080f437f5c10b5c9f3584e8b2bbbec3ed1f698",
+        "control_keys": "reports/development-20260930/cragstoat-combat/author-running-r005-body2/controls_Move.json",
+        "exact_source_controls_sha256": "b3e7d9afd691a652b02d2878fd60d9db2cfa300dc6943859e54aff0551bcb468",
+        "native_target_rate_numerator": 60,
+        "native_target_rate_denominator": 1,
+        "maximum_ankle_goal_error_raw_cm": 0.0,
+        "loop_endpoints_match": true
+      },
+      "movement": {
+        "period_seconds": 0.6,
+        "stance_fraction": 0.2,
+        "stance_paw_span_raw_cm": 22.0,
+        "ground_travel_raw_cm_per_cycle": 110.0,
+        "leg_phase_offsets": {
+          "Foot_Front_Left": 0.0,
+          "Foot_Rear_Right": 0.0,
+          "Foot_Front_Right": 0.5,
+          "Foot_Rear_Left": 0.5
+        },
+        "neutral_paw_shift_x_raw_cm": {
+          "Foot_Front_Left": -17.0,
+          "Foot_Rear_Right": 22.0,
+          "Foot_Front_Right": -17.0,
+          "Foot_Rear_Left": 22.0
+        },
+        "neutral_paw_shift_y_raw_cm": {
+          "Foot_Front_Left": -4.0,
+          "Foot_Rear_Right": 4.0,
+          "Foot_Front_Right": 4.0,
+          "Foot_Rear_Left": -4.0
+        },
+        "maximum_extra_body_crouch_raw_cm": 2,
+        "flight_body_arc_raw_cm": 2,
+        "swing_lift_raw_cm": 8.0,
+        "coast_fraction": 0.04,
+        "stance_support": "Alternating diagonal pair",
+        "explicit_flight_phase_intervals": [
+          [
+            0.2,
+            0.5
+          ],
+          [
+            0.7,
+            1
+          ]
+        ],
+        "straight_250cm_s_playback_rate": 1.3636363636363635,
+        "diagonal_353_553cm_s_playback_rate": 1.9284730395996752
+      },
+      "all33_precise_rotation_track_results": true,
+      "native_model_key_fidelity": {
+        "semantic_bones": 33,
+        "keys_per_bone": 37,
+        "comparisons": 1221,
+        "maximum_translation_error_cm": 1.3503239367357187e-06,
+        "maximum_rotation_error_degrees": 1.4886052178675776e-05,
+        "compressed_data_valid_before_save": false
+      },
+      "source_key_failures": 0,
+      "translation_gate_cm": 0.0001,
+      "rotation_gate_degrees": 0.001,
+      "native_cold_compression_proxy_skin_contact": "EXECUTED_COLD_LOADED_COMPRESSION_VALID_NATIVE_SKIN_CROSSFADE_FLOOR_FAIL",
+      "limit": "Before-save compressed validity=false is historical; fresh cold validity=true for all9clips. Strict model keys and actual skin are separate; the complete bounded native contact scope failed22crossfade floor cases. No owner motion/contact/runtime approval follows."
+    },
+    "historical_body_skin_r001": {
+      "status": "NEW_BODY_SKIN_SAVED_EXACT_SCOPED_IDENTITY_REQUIRES_COLD_SKIN_AND_NEW_RIG_REVIEW",
+      "mesh": "/Game/WonderChess/VNext/Characters/CragstoatProduction20260930_r001/Mesh/SK_Cragstoat_BodySkin_r001",
+      "changed_mask_vertices": 173,
+      "unchanged_nonmask_vertices": 18769,
+      "evidence": {
+        "path": "reports/development-20260930/cragstoat-combat/body-skin-r001/skin.json",
+        "sha256": "237ef03a2da94da99ccf49dae9299343a894fe9d02aaca53adf0d15e504aa412"
+      },
+      "process": {
+        "path": "reports/development-20260930/assets/editor-execution/crag-body-skin-r001.log.execution.json",
+        "sha256": "362e1dce2bd127beb848fdaff637a8e60ddc9263d4527642d5fa7df6cc752a31"
+      },
+      "process_exit": 3,
+      "private_binding_and_cold": "HISTORICAL_BINDS_EXACT_RENDER_WEIGHTS_DIFFER_NEW_BODY2_RECEIPTS_SEPARATE",
+      "limit": "New saved one-LOD source identity only. Exit3 after output remains a process failure. Private skeleton/binding, precise keys, full skin/contact/volume/rig review and gameplay are independent gates.",
+      "cold_attempt_r001": {
+        "status": "FAILED",
+        "failure": "Traceback (most recent call last):\n  File \"C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_cragstoat/stages/production_20260930_combat_r001/recipes/unreal_validate_body_skin_r001.py\", line 185, in tick\n    try:state['wait']=next(state['iterator'])\n                      ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_cragstoat/stages/production_20260930_combat_r001/recipes/unreal_validate_body_skin_r001.py\", line 117, in steps\n    assert len(nonmask)>18000 and tail\n           ^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+        "completed_native_skin_samples": 0,
+        "stage": "PRE_SAMPLING_ARBITRARY_SEMANTIC_REST_GROUP_COUNT_ASSERTION",
+        "evidence": {
+          "path": "reports/development-20260930/cragstoat-combat/cold-body-skin-r001/validation.json",
+          "sha256": "29848df8573e2bd102554e093d78e2d5b2524404028b33454b8a9cd4c28e3157"
+        },
+        "process_exit": 0,
+        "process": {
+          "path": "reports/development-20260930/assets/editor-execution/crag-body-skin-cold-r001.log.execution.json",
+          "sha256": "838ab30513cbf0402f251fdc9a2997085acdfce49b1cbfa460960574f294d20b"
+        },
+        "cold_reference_identity": {
+          "vertices": 18942,
+          "triangles": 35867,
+          "uv_channels": 1,
+          "positions_equal": true,
+          "triangle_uv_equal": true,
+          "binds_equal": true,
+          "source_normal_valid_triangles": 35867,
+          "clone_normal_valid_triangles": 35867,
+          "source_tangent_valid_triangles": 35867,
+          "clone_tangent_valid_triangles": 35867,
+          "normal_tangent_vectors_exact": true,
+          "maximum_normal_tangent_vector_difference": 0.0,
+          "source_attribute_sha256": "ac54d42eb058a7156019c3d21e33a9e3a976f49a71762c5dad923037759e61d4",
+          "clone_attribute_sha256": "ac54d42eb058a7156019c3d21e33a9e3a976f49a71762c5dad923037759e61d4",
+          "materials": [
+            [
+              "/Game/WonderChess/Diagnostics/CragstoatRevision20260930/SageTail_r003/M_CragstoatSage.M_CragstoatSage"
+            ],
+            [
+              "/Game/WonderChess/Diagnostics/CragstoatRevision20260930/SageTail_r003/M_CragstoatSage.M_CragstoatSage"
+            ]
+          ]
+        },
+        "cold_packed_source_weight_identity": {
+          "changed173_match": true,
+          "unchanged18769_match": true,
+          "all_tail_uint16_weights_match": true,
+          "render_packed_weights_directly_measured": false
+        },
+        "source_weight_failure": false,
+        "limit": "Exact packed173/nonmask18769/allTail weights and reference geometry/UV/binds/normals/tangents passed before an arbitrary semantic rest-group-count assertion. Coincident positions can reduce unique groups. Native shape/deformed poses were not sampled; no deformation pass follows."
+      },
+      "localization": {
+        "status": "READONLY_NATIVE_RUNNING_SKIN_LOCALIZATION_COMPLETE_REQUIRES_INTERPRETATION",
+        "evidence": {
+          "path": "reports/development-20260930/cragstoat-combat/running-skin-localization-r002/localization.json",
+          "sha256": "dd2cf1ba8a57606ec4374fd8562652e3c6d76986bf1539f6610578fdb7318d3e"
+        },
+        "scope": "Actual accepted source nearest-rest weights and reference transforms; native minimum rendered vertex at selected Running4 poses, exact semantic bone transforms and per-influence LBS contribution. The full prior contact failure stays immutable. This audit diagnoses, not repairs or accepts.",
+        "limit": "Read-only diagnosis, not repair or acceptance."
+      },
+      "current_gate": "HISTORICAL_BODY1_ONE_PAIRED_POSE_AND_NATIVE_RENDER_WEIGHT_SCOPE_FAILED_PRESERVED",
+      "cold_attempt_r002": {
+        "status": "FAILED",
+        "evidence": {
+          "path": "reports/development-20260930/cragstoat-combat/cold-body-skin-r002/validation.json",
+          "sha256": "b4c8ed4516b493e73c619c64b946ee71b51a485947a31e32a97251e06ce3b113"
+        },
+        "process": {
+          "path": "reports/development-20260930/assets/editor-execution/crag-body-skin-cold-r002.log.execution.json",
+          "sha256": "52c5cd5780a8224fc61fdf81d03063c355471650f6327a276a9cd50a17752de3"
+        },
+        "process_exit": 0,
+        "completed_paired_native_poses": 1,
+        "inventory": {
+          "source_triangle_referenced_vertices": 18942,
+          "expected_unique_comparable_groups": 17532,
+          "actual_source_groups": 17532,
+          "actual_clone_groups": 17532,
+          "actual_nonmask_groups": 17361,
+          "actual_pure_tail_groups": 3854,
+          "coincident_weight_ambiguities": [
+            [],
+            []
+          ],
+          "expected_reference_ambiguities": []
+        },
+        "route": "SingleNodeRunning",
+        "frame": 0,
+        "source_minimum_z_cm": -1.1169614315032845,
+        "candidate_minimum_z_cm": -0.1928994178771859,
+        "pure_tail_maximum_group_shape_error_cm": 0.0,
+        "nonmask_maximum_group_shape_error_cm": 0.15761840948768124,
+        "unchanged_shape_gate_cm": 0.01,
+        "actual_native_failures": [
+          {
+            "kind": "same_pose_unchanged_or_tail_native_shape",
+            "route": "SingleNodeRunning",
+            "frame": 0,
+            "unchanged_cm": 0.15761840948768124,
+            "pure_tail_cm": 0.0
+          },
+          {
+            "kind": "new_skin_full_surface_below_floor",
+            "route": "SingleNodeRunning",
+            "frame": 0,
+            "hit_seconds": null,
+            "z": -0.1928994178771859,
+            "lowest_vertex_rest_cm": [
+              -28.135454177856445,
+              -13.701980590820312,
+              17.987674713134766
+            ]
+          }
+        ],
+        "capture_checker_error": "Traceback (most recent call last):\n  File \"C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_cragstoat/stages/production_20260930_combat_r001/recipes/unreal_validate_body_skin_r002.py\", line 190, in tick\n    try:state['wait']=next(state['iterator'])\n                      ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_cragstoat/stages/production_20260930_combat_r001/recipes/unreal_validate_body_skin_r002.py\", line 160, in steps\n    native_vertices(comp);capture.capture_scene();yield 3;name='%s_%03d_%s.png'%(route,frame,'source' if index==0 else 'BodySkin');u.RenderingLibrary.export_render_target(world,target,str(OUT),name);assert (OUT/name).is_file()\n    ^^^^^^^^^^^^^^^^^^^^^\n  File \"C:/Users/USER/Documents/Wonder Chess/art-source/asset-studio/wc_vn_cragstoat/stages/production_20260930_combat_r001/recipes/unreal_validate_body_skin_r002.py\", line 65, in native_vertices\n    _,transform,ok=copy_component(comp,dm,options,False);assert ok==u.GeometryScriptOutcomePins.SUCCESS\n                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+        "limit": "One actual paired SingleNode pose, not NOT_RUN. Native floor and unchanged-shape failures preceded a separate CopyMeshFromComponent assertion immediately after a visibility change. Remaining poses/full native matrix are not completed; process0 is not an acceptance pass."
+      },
+      "native_render_audit": {
+        "status": "READONLY_NATIVE_RENDER_AUDIT_COMPLETE_REQUIRES_INTERPRETATION",
+        "evidence": {
+          "path": "reports/development-20260930/cragstoat-combat/native-body-render-audit-r001/audit.json",
+          "sha256": "18ca20cc400d9de15c4aef5988d338b4c1d4e3a8ef3ff28bd38ce8d84643fccb"
+        },
+        "process": {
+          "path": "reports/development-20260930/assets/editor-execution/crag-body-native-render-audit-r001.log.execution.json",
+          "sha256": "400002d8dc03812aa586de93b2e941ee236f722be12e3cce998b12f52f866586"
+        },
+        "process_exit": 0,
+        "comparable_order": true,
+        "direct_geometry": {
+          "vertex_count_equal": true,
+          "index_direct_equal": true,
+          "rest_positions_direct_equal": true,
+          "normal_tangent_direct_equal": true,
+          "uv_direct_equal": true,
+          "color_direct_equal": true,
+          "position_rows_different": 0,
+          "normal_tangent_rows_different": 0,
+          "uv_values_different": 0,
+          "color_rows_different": 0,
+          "index_values_different": 0
+        },
+        "direct_reference_basis": {
+          "same_skeleton_object": true,
+          "bone_name_order_differences": 0,
+          "parent_index_differences": 0,
+          "local_pose_matrix_rows_different": 0,
+          "inverse_reference_matrix_rows_different": 0,
+          "maximum_local_matrix_element_difference": 0,
+          "maximum_inverse_matrix_element_difference": 0,
+          "actual_reference_basis_direct_equal": true
+        },
+        "source_weight_bits": 8,
+        "candidate_weight_bits": 8,
+        "expanded_uint16_sum": 65535,
+        "normalization_exact": true,
+        "semantic_weight_render_vertices_different": 1982,
+        "inside_coordinate_filter": 858,
+        "outside_coordinate_filter": 1124,
+        "coordinate_filter": "Source rest x[-66,-35], abs(y)<=8, z[12,24] cm; inclusive; render vertices, not DynamicMesh source ids.",
+        "tail_render_weight_differences": {
+          "Tail01": 49,
+          "Tail02": 0,
+          "Tail03": 0,
+          "Tail04": 0,
+          "Tail05": 0,
+          "Tail06": 0,
+          "Tail07": 0,
+          "Tail08": 0
+        },
+        "limit": "Direct native LOD0 render-data evidence separates actual render weights from exact DynamicMesh/imported packed16 identity. Diagnosis is not repaired skin, full deformation, motion or owner acceptance."
+      },
+      "dynamic_mesh_imported_tail_uint16_weights_preserved": true,
+      "preservation_scope_qualification": "Original DynamicMesh/imported uint16 tail identity is narrower than native renderer identity. Body1 actual Tail01 render weights differed at49 vertices; retain the measured diagnosis and failed one-pose result."
+    },
+    "body_skin": {
+      "status": "PASS_COLD_BODY2_ALL_RENDER_BYTES_GEOMETRY_BIND_TAIL_PRESERVATION_MOTION_PENDING",
+      "mesh": "/Game/WonderChess/VNext/Characters/CragstoatProduction20260930_r001/Mesh/SK_Cragstoat_BodySkin_r002",
+      "source": "/Game/WonderChess/Diagnostics/CragstoatRevision20260930/SageTail_r003/SK_Cragstoat",
+      "candidate_file_sha256": "432109b33ed2c0db5b906de09034e3a168cd51e828a72a03468e858895606390",
+      "evidence": {
+        "path": "reports/development-20260930/cragstoat-combat/body-skin-r002/skin.json",
+        "sha256": "fff84b8ddc368f3b455b10bce30e8b5b59d4f3cc1ee87e0d000b851250ba37c7"
+      },
+      "process": {
+        "path": "reports/development-20260930/assets/editor-execution/crag-body-skin-render-rebase-r002.log.execution.json",
+        "sha256": "a4448048f292e8759bc2c48d5287f9a2148b18a0b0c3c512e10ed0245db6211e"
+      },
+      "process_exit": 3,
+      "source_model_uint16_weights_preserved": false,
+      "actual_changed_source_model_uint16_rows": 16535,
+      "deliberate_desired_dynamic_mesh_mask_vertices": 173,
+      "method": "Fresh Body2 source-model weights rebase to actual source8-bit renderer bytes times257. Zero residual and byteSum255/expandedSum65535 precede the deliberate rear-leg-to-Pelvis repair. Original accepted source model remains untouched.",
+      "cold_render": {
+        "evidence": {
+          "path": "reports/development-20260930/cragstoat-combat/cold-body-skin-r002-render-r002/validation.json",
+          "sha256": "f6a2162d3cd65622cd7d3a9353dda12ec2eaf309156b4629fe24d94812287e2c"
+        },
+        "process": {
+          "path": "reports/development-20260930/assets/editor-execution/crag-body2-cold-render-r002.log.execution.json",
+          "sha256": "6cd46da60320a348f708e1cce1b965381f5e0fe3f7707c8e103f708150960ab3"
+        },
+        "process_exit": 0,
+        "actual_render_vertices": 79806,
+        "actual_complete_dynamic_row_coverage": 18942,
+        "direct_import_rows": 18735,
+        "exact_unambiguous_welded_alias_rows": 207,
+        "actual_render_byte_and_import_position_mismatches": 0,
+        "render_weight_rows_different_from_source": 841,
+        "changed_render_rows_inside_deliberate_mask": 841,
+        "changed_render_rows_outside_mask": 0,
+        "all_tail01_to_08_render_weight_differences": {
+          "Tail01": 0,
+          "Tail02": 0,
+          "Tail03": 0,
+          "Tail04": 0,
+          "Tail05": 0,
+          "Tail06": 0,
+          "Tail07": 0,
+          "Tail08": 0
+        },
+        "direct_geometry": {
+          "vertex_count_equal": true,
+          "index_direct_equal": true,
+          "rest_positions_direct_equal": true,
+          "normal_tangent_direct_equal": true,
+          "uv_direct_equal": true,
+          "color_direct_equal": true,
+          "position_rows_different": 0,
+          "normal_tangent_rows_different": 0,
+          "uv_values_different": 0,
+          "color_rows_different": 0,
+          "index_values_different": 0
+        },
+        "direct_reference_basis": {
+          "same_skeleton_object": true,
+          "bone_name_order_differences": 0,
+          "parent_index_differences": 0,
+          "local_pose_matrix_rows_different": 0,
+          "inverse_reference_matrix_rows_different": 0,
+          "maximum_local_matrix_element_difference": 0,
+          "maximum_inverse_matrix_element_difference": 0,
+          "actual_reference_basis_direct_equal": true
+        },
+        "limit": "Cold existingLOD0 actual render-data geometry/bind/byte-weight preservation only; no motion, contact, volume, appearance, owner new-rig approval or runtime/package acceptance."
+      },
+      "cold_render_r001_failure": {
+        "evidence": {
+          "path": "reports/development-20260930/cragstoat-combat/cold-body-skin-r002-render/validation.json",
+          "sha256": "d825b12e59c2e73925972fb1fdb29a23739f682d90604aeee0be1d17086162bb"
+        },
+        "process": {
+          "path": "reports/development-20260930/assets/editor-execution/crag-body2-cold-render-r001.log.execution.json",
+          "sha256": "1988b41a8d6350e6513d0ebbab7a31eb0f89434512d41d6ec69d9132fbcb111a"
+        },
+        "process_exit": -1073741819,
+        "stage": "FAILED_BEFORE_RENDER_COMPARE_DURING_ASSET_COMPILATION",
+        "weight_verdict": null,
+        "limit": "Invalid comparison during active asset compilation; it establishes no failed or passed weight equivalence. Process failure retained."
+      },
+      "native_deformed_skin_contact_volume": "EXECUTED_BOUNDED_COLD_SCOPE_FAILED_22_CROSSFADE_FLOOR_CASES",
+      "human_new_skin_or_motion_acceptance": false,
+      "limit": "Writer exit3 after persisted successful output is not a clean process pass. Fresh cold render r002 independently completed process0. Source-model imported uint16 invariance is deliberately not claimed; new skin approval is independent of accepted palette/tail."
+    },
+    "running_r005_body2_cold": {
+      "status": "FAIL_COLD_RUNNING5_BODY2_NATIVE_CONTACT_OR_PRESERVATION_SCOPE",
+      "evidence": {
+        "path": "reports/development-20260930/cragstoat-combat/cold-running-r005-body2/validation.json",
+        "sha256": "db331db40258db650e8b19a38f53fafa70368bfe7461e08081578877ea4fbe4e"
+      },
+      "process": {
+        "path": "reports/development-20260930/assets/editor-execution/crag-running-r005-body2-cold-r001.log.execution.json",
+        "sha256": "664a1e4ca80d2fa376ff533b61bb2afee8a2eb99b051a636a1b35fde998afccd"
+      },
+      "process_exit": 0,
+      "actual_native_skin_measurements": 2072,
+      "standalone_single_node_samples": 37,
+      "actual_native_attempts": 1911,
+      "attempted_native_poses": {
+        "native_proxy": 37,
+        "combined": 925,
+        "other_clips": 883,
+        "transitions": 66
+      },
+      "actual_paired_sage_skin_measurements": 123,
+      "idle_baseline_samples": 1,
+      "saved_lods": 1,
+      "strict_native_model_key_comparisons": 20196,
+      "source_key_failures": 0,
+      "cold_key_fidelity_pass": true,
+      "all_nine_loaded_compressed_data_valid": true,
+      "cold_source_key_checks": {
+        "Idle": {
+          "keys": 145,
+          "comparisons": 4785,
+          "maximum_translation_cm": 1.8604928455407645e-06,
+          "maximum_rotation_degrees": 5.9642062862419e-05,
+          "maximum_scale_error": 0.0,
+          "loaded_compressed_data_valid": true
+        },
+        "Attack": {
+          "keys": 49,
+          "comparisons": 1617,
+          "maximum_translation_cm": 2.286272729133938e-06,
+          "maximum_rotation_degrees": 9.134979046532463e-05,
+          "maximum_scale_error": 0.0,
+          "loaded_compressed_data_valid": true
+        },
+        "Active": {
+          "keys": 40,
+          "comparisons": 1320,
+          "maximum_translation_cm": 2.3514270080934207e-06,
+          "maximum_rotation_degrees": 0.0002441852332000906,
+          "maximum_scale_error": 0.0,
+          "loaded_compressed_data_valid": true
+        },
+        "Hit": {
+          "keys": 25,
+          "comparisons": 825,
+          "maximum_translation_cm": 1.9286166896670375e-06,
+          "maximum_rotation_degrees": 0.0002796626773286045,
+          "maximum_scale_error": 0.0,
+          "loaded_compressed_data_valid": true
+        },
+        "Defeat": {
+          "keys": 97,
+          "comparisons": 3201,
+          "maximum_translation_cm": 1.9290903713512334e-06,
+          "maximum_rotation_degrees": 0.00017975534532662534,
+          "maximum_scale_error": 0.0,
+          "loaded_compressed_data_valid": true
+        },
+        "Victory": {
+          "keys": 145,
+          "comparisons": 4785,
+          "maximum_translation_cm": 1.890360119364811e-06,
+          "maximum_rotation_degrees": 2.847050291451707e-05,
+          "maximum_scale_error": 0.0,
+          "loaded_compressed_data_valid": true
+        },
+        "TurnLeft": {
+          "keys": 37,
+          "comparisons": 1221,
+          "maximum_translation_cm": 1.7574315651168623e-06,
+          "maximum_rotation_degrees": 2.628735643239902e-05,
+          "maximum_scale_error": 0.0,
+          "loaded_compressed_data_valid": true
+        },
+        "TurnRight": {
+          "keys": 37,
+          "comparisons": 1221,
+          "maximum_translation_cm": 1.7574315651168623e-06,
+          "maximum_rotation_degrees": 2.628735643239902e-05,
+          "maximum_scale_error": 0.0,
+          "loaded_compressed_data_valid": true
+        },
+        "Move": {
+          "keys": 37,
+          "comparisons": 1221,
+          "maximum_translation_cm": 1.3503239367357187e-06,
+          "maximum_rotation_degrees": 1.4886052178675776e-05,
+          "maximum_scale_error": 0.0,
+          "loaded_compressed_data_valid": true
+        }
+      },
+      "source_key_gates": {
+        "translation_cm": 0.0001,
+        "rotation_degrees": 0.001,
+        "scale": 1e-05
+      },
+      "move_hit_samples": 925,
+      "minimum_move_hit_skin_z_cm": 0.2961148507427424,
+      "other_eight_clip_technical_checks": "PASS_WITHIN_BOUNDED_SAVED_KEY_HIT_AND_NATIVE_SCOPE",
+      "full_skin_floor_failures": 22,
+      "base_crossfade_failures": 11,
+      "same_crossfade_hit_failures": 11,
+      "worst_skin_z_cm": -3.102130126953125,
+      "failures": [
+        {
+          "kind": "full_skin_below_floor",
+          "lod": 0,
+          "scenario": "CrossfadeBase",
+          "frame": {
+            "previous": "Idle",
+            "current": "Move",
+            "alpha": 0.25
+          },
+          "z": -0.8196352243423461
+        },
+        {
+          "kind": "full_skin_below_floor",
+          "lod": 0,
+          "scenario": "CrossfadeHit",
+          "frame": {
+            "previous": "Idle",
+            "current": "Move",
+            "alpha": 0.25
+          },
+          "z": -0.8196352243423461
+        },
+        {
+          "kind": "full_skin_below_floor",
+          "lod": 0,
+          "scenario": "CrossfadeBase",
+          "frame": {
+            "previous": "Idle",
+            "current": "Move",
+            "alpha": 0.5
+          },
+          "z": -1.2032445192337036
+        },
+        {
+          "kind": "full_skin_below_floor",
+          "lod": 0,
+          "scenario": "CrossfadeHit",
+          "frame": {
+            "previous": "Idle",
+            "current": "Move",
+            "alpha": 0.5
+          },
+          "z": -1.2032445192337036
+        },
+        {
+          "kind": "full_skin_below_floor",
+          "lod": 0,
+          "scenario": "CrossfadeBase",
+          "frame": {
+            "previous": "Idle",
+            "current": "Move",
+            "alpha": 0.75
+          },
+          "z": -0.6278582334518432
+        },
+        {
+          "kind": "full_skin_below_floor",
+          "lod": 0,
+          "scenario": "CrossfadeHit",
+          "frame": {
+            "previous": "Idle",
+            "current": "Move",
+            "alpha": 0.75
+          },
+          "z": -0.6278582334518432
+        },
+        {
+          "kind": "full_skin_below_floor",
+          "lod": 0,
+          "scenario": "CrossfadeBase",
+          "frame": {
+            "previous": "Move",
+            "current": "Idle",
+            "alpha": 0.25
+          },
+          "z": -0.7293000936508178
+        },
+        {
+          "kind": "full_skin_below_floor",
+          "lod": 0,
+          "scenario": "CrossfadeHit",
+          "frame": {
+            "previous": "Move",
+            "current": "Idle",
+            "alpha": 0.25
+          },
+          "z": -0.7293000936508178
+        },
+        {
+          "kind": "full_skin_below_floor",
+          "lod": 0,
+          "scenario": "CrossfadeBase",
+          "frame": {
+            "previous": "Move",
+            "current": "Idle",
+            "alpha": 0.5
+          },
+          "z": -1.3004509925842285
+        },
+        {
+          "kind": "full_skin_below_floor",
+          "lod": 0,
+          "scenario": "CrossfadeHit",
+          "frame": {
+            "previous": "Move",
+            "current": "Idle",
+            "alpha": 0.5
+          },
+          "z": -1.3004509925842285
+        },
+        {
+          "kind": "full_skin_below_floor",
+          "lod": 0,
+          "scenario": "CrossfadeBase",
+          "frame": {
+            "previous": "Move",
+            "current": "Idle",
+            "alpha": 0.75
+          },
+          "z": -0.9146188020706176
+        },
+        {
+          "kind": "full_skin_below_floor",
+          "lod": 0,
+          "scenario": "CrossfadeHit",
+          "frame": {
+            "previous": "Move",
+            "current": "Idle",
+            "alpha": 0.75
+          },
+          "z": -0.9146188020706176
+        },
+        {
+          "kind": "full_skin_below_floor",
+          "lod": 0,
+          "scenario": "CrossfadeBase",
+          "frame": {
+            "previous": "Move",
+            "current": "Attack",
+            "alpha": 0.5
+          },
+          "z": -1.3298004388809204
+        },
+        {
+          "kind": "full_skin_below_floor",
+          "lod": 0,
+          "scenario": "CrossfadeHit",
+          "frame": {
+            "previous": "Move",
+            "current": "Attack",
+            "alpha": 0.5
+          },
+          "z": -1.3298004388809204
+        },
+        {
+          "kind": "full_skin_below_floor",
+          "lod": 0,
+          "scenario": "CrossfadeBase",
+          "frame": {
+            "previous": "Move",
+            "current": "Attack",
+            "alpha": 0.75
+          },
+          "z": -0.9924942970275878
+        },
+        {
+          "kind": "full_skin_below_floor",
+          "lod": 0,
+          "scenario": "CrossfadeHit",
+          "frame": {
+            "previous": "Move",
+            "current": "Attack",
+            "alpha": 0.75
+          },
+          "z": -0.9924942970275878
+        },
+        {
+          "kind": "full_skin_below_floor",
+          "lod": 0,
+          "scenario": "CrossfadeBase",
+          "frame": {
+            "previous": "Attack",
+            "current": "Move",
+            "alpha": 0.25
+          },
+          "z": -2.2386195182800295
+        },
+        {
+          "kind": "full_skin_below_floor",
+          "lod": 0,
+          "scenario": "CrossfadeHit",
+          "frame": {
+            "previous": "Attack",
+            "current": "Move",
+            "alpha": 0.25
+          },
+          "z": -2.2386195182800295
+        },
+        {
+          "kind": "full_skin_below_floor",
+          "lod": 0,
+          "scenario": "CrossfadeBase",
+          "frame": {
+            "previous": "Attack",
+            "current": "Move",
+            "alpha": 0.5
+          },
+          "z": -3.102130126953125
+        },
+        {
+          "kind": "full_skin_below_floor",
+          "lod": 0,
+          "scenario": "CrossfadeHit",
+          "frame": {
+            "previous": "Attack",
+            "current": "Move",
+            "alpha": 0.5
+          },
+          "z": -3.102130126953125
+        },
+        {
+          "kind": "full_skin_below_floor",
+          "lod": 0,
+          "scenario": "CrossfadeBase",
+          "frame": {
+            "previous": "Attack",
+            "current": "Move",
+            "alpha": 0.75
+          },
+          "z": -2.044244956970215
+        },
+        {
+          "kind": "full_skin_below_floor",
+          "lod": 0,
+          "scenario": "CrossfadeHit",
+          "frame": {
+            "previous": "Attack",
+            "current": "Move",
+            "alpha": 0.75
+          },
+          "z": -2.044244956970215
+        }
+      ],
+      "solver_reject_plate_sole_drift_or_protected_tail_failures": 0,
+      "protected_tail_render_vertices": 27292,
+      "protected_tail_maximum_shape_error_cm": 0,
+      "repaired_mask_tail_overlap_render_vertices": 841,
+      "repaired_mask_tail_overlap_scope": "Tail-weighted overlap is measured separately; it is intentionally affected by other redistributed influences. Protected0cm is not whole-Tail unchanged-deformation proof.",
+      "native_contact_scope_pass": false,
+      "new_skin_or_motion_owner_acceptance": false,
+      "boundary": "Existing saved LODs and bounded authored-key/Hit/crossfade times only. Strict modern source-key fidelity, loaded compressed validity, actual native skin floor/sole/plate/reach and protected full-Tail paired shape are separate measured checks. Repaired-mask tail overlap stays descriptive. Explicit flights are not stance. Anatomy AABB products are not body-volume or naturalness acceptance. Fractional live movement/turn/start-stop contacts, event dispatch, audio listening/mix, new LODs, package, hardware performance and owner new skin/combat-motion approval remain open."
+    },
+    "component_target_blend_correction": {
+      "status": "AUTHORIZED_NOT_COMPILED_OR_EXECUTED_AT_THIS_CHECKPOINT",
+      "owner": "Native gameplay lane; future receipts independent of this completed r001cold run.",
+      "proposed_scope": "Component target blend correction for the actual crossfade floor cases; no result inferred."
+    },
+    "matched_triangle_diagnosis": {
+      "status": "RUNNING_NO_COMPLETED_RESULT_USED_AT_THIS_CHECKPOINT",
+      "readiness": {
+        "path": "reports/development-20260930/cragstoat-combat/triangle-stretch-readiness-r001/readiness.json",
+        "sha256": "025c185400f7b0e2b53762c94c3f0bf069e043361c32eda57a07aa97d21b0fca"
+      },
+      "output_path": "reports/development-20260930/cragstoat-combat/running5-triangle-stretch-r001/diagnostic.json",
+      "output_is_live_and_not_frozen_evidence": true,
+      "attribution": "Source side already appears frayed in current captures. Matched source/candidate triangle analysis is needed before attributing new-motion elongation; current observations are not a causal proof or human new-rig acceptance."
+    },
+    "runtime_mapping_at_checkpoint": {
+      "mesh": "SOURCE_SageTail_r003_SK_Cragstoat",
+      "move": "Running_r004_AS_Cragstoat_Move",
+      "body2_running5_gameplay_route": "NOT_INTEGRATED_OR_EXECUTED_AT_THIS_CHECKPOINT",
+      "evidence_scope": "Parent execution checkpoint and read-only current native source constants. Working source is mutable; these are timestamped observations, not a new package identity."
+    }
+  },
+  "silkmother_attack_hit_owner_acceptance_20260930": {
+    "date": "2026-09-30",
+    "recorded_utc": "2026-09-30T09:07:27.956437+00:00",
+    "status": "OWNER_ATTACK_HIT_MOTIONS_ACCEPTED_OTHER_ART_AUDIO_RELEASE_GATES_SEPARATE",
+    "receipt": "reports/development-20260930/silkmother-revision/owner-acceptance-r001/owner-acceptance.json",
+    "receipt_sha256": "f097c7f30f9ca7082f59ed520117259110a8d1f3d1ed3b59f1060e31a2a4c3d3",
+    "candidate": "/Game/WonderChess/VNext/Characters/SilkmotherMotionRevision20260930_r003/Animations",
+    "exact_reply": "Accept these Attack/Hit motions",
+    "scope": "Accept the stronger whole-body Attack thrust and Hit recoil shown in motion-capture-r005 and used by opt-in Development r4. Original appearance/audio and seven other variant clips remain preserved; this decision does not newly accept their quality, every runtime transition, hardware performance or release.",
+    "full_appearance_audio_release_accepted": false
+  },
+  "cragstoat_palette_tail_owner_acceptance_20260930": {
+    "date": "2026-09-30",
+    "recorded_utc": "2026-09-30T09:00:10.505145+00:00",
+    "status": "OWNER_PALETTE_AND_EDITABLE_TAIL_CANDIDATE_ACCEPTED_COMBAT_AUDIO_PRODUCTION_NEXT",
+    "receipt": "reports/development-20260930/cragstoat-revision/sage-keymotion_r004/owner-acceptance-r002/owner-acceptance.json",
+    "receipt_sha256": "be26b43c067c51b7d977c5753f672bbe9f090075e36826ab0ede51a944540163",
+    "candidate": "/Game/WonderChess/Diagnostics/CragstoatRevision20260930/SageTail_r003",
+    "scope": "Owner accepts the softer sage/cream palette and editable full-tail rig candidate shown in sage-keymotion_r004. This authorizes dependent combat animation/audio production; it does not accept new combat clips, sound/VFX, LODs, shared collection lighting, game integration, performance or release.",
+    "exact_reply": "Accept this palette and tail candidate",
+    "full_combat_audio_release_accepted": false
+  },
+  "development_execution_20260930": {
+    "date": "2026-09-30",
+    "timezone": "Asia/Shanghai",
+    "status": "SCOPED_LOCAL_DEVELOPMENT_AND_ASSET_REVISIONS_EXECUTED_OWNER_EXTERNAL_GATES_OPEN",
+    "report": "reports/development-20260930/README.md",
+    "progress_snapshot": "reports/development-20260930/progress-snapshot.csv",
+    "scope_audit": "reports/development-20260930/release-scope-audit.md",
+    "plans": {
+      "deliveries": 3,
+      "goals": 10,
+      "backlog_rows": 48,
+      "original_planning_rows_preserved": true
+    },
+    "canonical": {
+      "profile": "wonder_vnext",
+      "version": "wonder_vnext_silkmother_0.2.0",
+      "sha256": "281a1323b6ea104fb4f9bd49f9a3e8468701c741f3544ecee05a81fb84c987ef",
+      "authored_heroes": 14,
+      "enabled_heroes": 7,
+      "enabled_traits": 0,
+      "relics": 12,
+      "effective_storybook_recipe": "wonder_vnext_silkmother_0.2.0+mana100_hit20_v1+combat_clarity_v1",
+      "effective_storybook_digest": "e05b61d4c0da438aaffc4f308076930a60e96549de2e8c717100d6ff628d4525"
+    },
+    "meshy": {
+      "new_successful_source_jobs": 2,
+      "credits_consumed_this_run": 60,
+      "balance_before": 3088,
+      "balance_after": 3028,
+      "sources": [
+        "wc_vn_grandmother_root",
+        "wc_vn_snapvine"
+      ],
+      "model": "latest 7.1",
+      "original_maps_preserved": true,
+      "standing_owner_spend_authorization": true,
+      "first_batch_cap": 70,
+      "reference_and_geometry_acceptance_distinct_from_cost": true,
+      "remaining_new_operations": 26,
+      "remaining_operations_status": "CONDITIONAL_UNREADY_REFERENCES_OR_CONSTRUCTION",
+      "receipt_root": "reports/development-20260930/meshy-preflight"
+    },
+    "current_package": {
+      "candidate": "WonderChess-Development-20260930-r4",
+      "game_binary": "builds/WonderChess-Development-20260930-r4/Windows/WonderChess/Binaries/Win64/WonderChess.exe",
+      "game_binary_sha256": "19ccf07c55ad3dd830a421577500a0a738344def75ab3f4dc63369d25ee20f5f",
+      "uat_exit": 0,
+      "identity_manifest": "reports/development-20260930/package-r004/identity.json",
+      "source_files": 134,
+      "package_files": 50,
+      "whole_match_expected_checks": 35,
+      "whole_match_true_checks": 35,
+      "rounds": 43,
+      "restart_fresh": true,
+      "human_or_normal_speed_match": false,
+      "launcher": "Play Wonder Chess Development 20260930.cmd",
+      "original_launcher_preserved": true
+    },
+    "input_and_learning": {
+      "implemented": "Five bilingual guide pages, session guide scaling/sound, help clock restoration and two observed focus repairs",
+      "physical_evidence": "reports/development-20260930/input-r002/verification.json",
+      "physical_scope": "r2 pointer/keyboard route at 1280x720, 11 scoped checks; not all current-package journeys",
+      "three_resolution_native_visual_scope": "r3 handler/projection/captures, separate from r2 physical evidence and r4 identity",
+      "prospective_study": "reports/development-20260930/study/README.md",
+      "new_external_participants": 0
+    },
+    "pacing": {
+      "status": "REVISE_UNPROMOTED",
+      "report": "reports/development-20260930/gameplay/README.md",
+      "recipe_measured": "canonical baseline; not effective Storybook recipe",
+      "human_35_45_minute_target_measured": false,
+      "reserved_acceptance_seeds_used": false
+    },
+    "asset_revisions": {
+      "cragstoat": {
+        "status": "SAGE_FULL_TAIL_LOCAL_COLD_AND_EXPORT_PASS_OWNER_REVIEW_OPEN",
+        "review": "reports/development-20260930/cragstoat-revision/sage-keymotion_r004/index.html",
+        "native_poses": 601,
+        "floor_or_contact_failures": 0,
+        "minimum_z_cm": 0.2999970174978898,
+        "original_geometry_and_maps_preserved": true,
+        "full_combat_animation_audio_lods_packaged": false
+      },
+      "silkmother": {
+        "status": "WHOLE_BODY_ATTACK_HIT_ALL_LOD_AND_PACKAGED_ROUTE_PASS_OWNER_REVIEW_OPEN",
+        "review": "reports/development-20260930/silkmother-revision/index.html",
+        "native_poses": 1803,
+        "native_floor_contact_failures": 0,
+        "target_sampling_hz": 60,
+        "runtime_route_exit": 0,
+        "runtime_surface_samples": 1334,
+        "runtime_minimum_z_cm": 6.228190125824574,
+        "board_z_cm": 6,
+        "peak_skeletons": 20,
+        "clips_seen": [
+          "Idle",
+          "Attack",
+          "Active",
+          "Defeat",
+          "Move",
+          "TurnLeft",
+          "TurnRight",
+          "Hit",
+          "Victory"
+        ],
+        "hit_overlay_bases": [
+          "Attack",
+          "Active",
+          "Idle"
+        ],
+        "combat_control_matches": true,
+        "original_mesh_colors_audio_and_nine_clips_preserved": true,
+        "capture_shutdown_failure_retained": true
+      },
+      "grandmother_root": {
+        "status": "CORRECTED_RESTRICTED_DEFORMATION_PILOT_PASS_FULL_G4_OPEN",
+        "native_poses": 601,
+        "minimum_z_cm": 0.3000005591075478,
+        "full_garden_opening_or_locomotion_certified": false
+      },
+      "snapvine": {
+        "status": "GROUNDED_RESTRICTED_FK_PILOT_PASS_FULL_G4_OPEN",
+        "native_poses": 601,
+        "minimum_z_cm": 0.30000031151188294,
+        "four_independent_walking_roots_supported": false
+      }
+    },
+    "bellback": {
+      "accepted_runtime_art_and_historical_package_preserved": true,
+      "approval_integrity_audit": "reports/development-20260930/bellback-approval-integrity.json",
+      "preexisting_editable_sequence_hash_discrepancy": "Documented 21 September; current sequence preserved, approval not transferred.",
+      "archive_search": "reports/development-20260930/bellback-archive-target-search.json"
+    },
+    "acceptance": {
+      "new_human_art_acceptance": false,
+      "all_assets_complete": false,
+      "complete_solo_beta": false,
+      "remote_multiplayer_verified": false,
+      "clean_machine_verified": false,
+      "release_accepted": false
+    },
+    "evidence_boundary": "Authored, source-generated, imported, cold-tested, viewed, packaged and owner/external acceptance remain separate; retained failures are not flattened into success."
+  },
+  "development_plan_20260930": {
+    "date": "2026-09-30",
+    "timezone": "Asia/Shanghai",
+    "status": "AUTHORED_PLANNING_AND_BACKLOG_DOCUMENTATION_CHECKED",
+    "plan": "docs/vnext/planning/DEVELOPMENT_PLAN_2026_09_30.md",
+    "backlog": "docs/vnext/planning/DEVELOPMENT_BACKLOG_2026_09_30.csv",
+    "verification": "reports/development-planning-20260930/verification.json",
+    "delivery_plans": 3,
+    "workstream_goals": 10,
+    "planned_tasks": 48,
+    "canonical_snapshot": {
+      "source": "data/vnext/catalog.json",
+      "sha256": "281a1323b6ea104fb4f9bd49f9a3e8468701c741f3544ecee05a81fb84c987ef",
+      "balance_version": "wonder_vnext_silkmother_0.2.0",
+      "authored_heroes": 14,
+      "enabled_heroes": 7,
+      "runtime_traits": 0,
+      "relics": 12
+    },
+    "runtime_tests_run": false,
+    "production_jobs_started": 0,
+    "credits_spent": 0,
+    "product_acceptance_changed": false,
+    "scope": "Owner-requested development plans and goals; existing gates distinguished from proposed task priorities. All execution backlog rows remain PLANNED."
+  },
+  "visual_experience_20260924": {
+    "date": "2026-09-24",
+    "status": "PACKAGED_VISUAL_AND_HANDLER_CANDIDATE_HUMAN_REVIEW_OPEN",
+    "candidate": "WonderChess-Visual-r29",
+    "game_binary_sha256": "d83dd742f76cf1e25caf895bb212aaed371fa6ea70c6bcded528b3d18933aac9",
+    "bootstrap_sha256": "5246b7e39002332a11b0edb672d0b9a6407c23bbb3caa5dfdb61589a181269e1",
+    "report": "reports/vnext/milestones/visual-20260924/README.md",
+    "reference_feature_audit": "docs/vnext/art/AUTO_CHESS_SCREENSHOT_FEATURE_AUDIT_2026_09_24.md",
+    "implemented": [
+      "Accepted Move clears Solo selection; occupied bench clicks select the bench occupant without a swap",
+      "8x8 board enlarged with readable alternating stone and compact Storybook HUD",
+      "Round-opening five-offer shop modal with close/reopen, reroll, lock and canonical cost-tier odds",
+      "Bottom strip contains ten circular bench sockets and actual circular portrait drawing; resource and contextual controls moved to rails/top",
+      "Contextual inspector collapses when nothing is selected; left rail lists only deployed traits and owned relics",
+      "Shop actions sit in its popup header, with larger cards and readable odds",
+      "Captain rows have compact initial badges for rapid seat identification"
+    ],
+    "verification": {
+      "unreal_editor_build": "PASS",
+      "uat_package": "PASS",
+      "r23_packaged_visual_720p": "PASS_9_CAPTURES_64_CELL_ROUNDTRIPS",
+      "r23_packaged_visual_1080p": "PASS_9_CAPTURES_64_CELL_ROUNDTRIPS",
+      "r25_packaged_visual_720p": "PASS_9_CAPTURES_64_CELL_ROUNDTRIPS",
+      "r25_packaged_visual_1080p": "PASS_9_CAPTURES_64_CELL_ROUNDTRIPS",
+      "r29_packaged_visual_720p": "PASS_9_CAPTURES_64_CELL_ROUNDTRIPS",
+      "r29_packaged_visual_1080p": "PASS_9_CAPTURES_64_CELL_ROUNDTRIPS",
+      "packaged_visual_720p": "PASS_9_CAPTURES_64_CELL_ROUNDTRIPS",
+      "packaged_visual_1080p": "PASS_9_CAPTURES_64_CELL_ROUNDTRIPS",
+      "packaged_occupied_bench_selection": "PASS_BOTH_RESOLUTIONS",
+      "packaged_solo_command_smoke": "PASS_AFTER_UNATTENDED_COMPLETION",
+      "authoring_specification_checks": 400,
+      "python_unit_tests": 250,
+      "generated_documents_match": 28,
+      "legacy_catalog_artifacts_match": 6,
+      "vnext_catalog_artifacts_match": 7
+    },
+    "human_pointer_journey": "NOT_RUN",
+    "human_visual_acceptance": "OPEN",
+    "full_playable_roster_3d": "NOT_COMPLETE",
+    "four_view_review_gallery": "reports/vnext/milestones/visual-20260924/character-g2-candidates.html",
+    "four_view_owner_direction": "APPROVED_2026_09_24_TWO_ROOT_SUPPORTS_ONE_SNAPVINE_HOOK_FOUR_ROOTS_FIVE_PIPES_FOUR_KEYS_TWO_EMITTERS_SIX_TENTACLES_TWO_FINS",
+    "four_view_owner_approval": "OPEN_ALL_FOUR_NEW_SETS",
+    "meshy_credits_spent_this_batch": 0
+  },
+  "creature_pipeline_four_view_20260921": {
+    "date": "2026-09-21",
+    "status": "DOCUMENTED_AND_VALIDATED_NO_PRODUCTION_TRIAL",
+    "handbook_version": "1.1",
+    "report": "reports/creature-pipeline-four-view-20260921/README.md",
+    "manual": "production/creature-pipeline/FOUR_VIEW.md",
+    "new_geometry_default": "Meshy Main/front, anatomical Left, Back, anatomical Right; one model job",
+    "preserve_existing_accepted_models": true,
+    "review_inferred_views_before_submission": true,
+    "four_view_template": "production/creature-pipeline/templates/view-set.json",
+    "validation": {
+      "local_links": 82,
+      "existing_faults_rejected": 11,
+      "four_view_faults_rejected": 8,
+      "specification_checks": 400,
+      "unit_tests": 230,
+      "generated_documents_match": 28,
+      "legacy_catalog_artifacts_match": 6,
+      "vnext_catalog_artifacts_match": 6
+    },
+    "production_jobs_started": 0,
+    "credits_spent": 0,
+    "actual_accuracy_improvement": "NOT_TESTED",
+    "remaining": "G1 shared look and G2 actual four-view set review before new G3 geometry; verify live account/interface and scoped cost"
+  },
+  "creature_pipeline_handbook_20260921": {
+    "date": "2026-09-21",
+    "status": "DOCUMENTED_AND_REVIEWED_FOR_REUSE",
+    "scope": "Durable production instructions, project skill, templates and documentation validation only",
+    "report": "reports/creature-pipeline-20260921/README.md",
+    "handbook": "production/creature-pipeline/README.md",
+    "skill": ".agents/skills/wc-creature-production/SKILL.md",
+    "manual_count": 7,
+    "record_template_count": 8,
+    "fixed_choices": {
+      "route": "Meshy to Unreal",
+      "blender_production": false,
+      "preserve_accepted_meshy_base_color": true,
+      "team_identity_uses_rings_and_ui": true,
+      "soft_readable_lighting": true
+    },
+    "validation": {
+      "documentation_links_and_templates": "PASS",
+      "in_memory_faults_rejected": 11,
+      "project_specification_checks": 400,
+      "python_unit_tests": 230,
+      "generated_documents_match": 28,
+      "legacy_catalog_artifacts_match": 6,
+      "vnext_catalog_artifacts_match": 6,
+      "independent_resume_dry_run": "REVIEWED_AND_AMBIGUITIES_CORRECTED",
+      "skill_creator_quick_validate": "BLOCKED_MISSING_PYYAML; frontmatter inspected directly",
+      "new_task_skill_discovery": "NOT_EXERCISED"
+    },
+    "new_generation_jobs": 0,
+    "new_paid_credits": 0,
+    "new_art_approval": false,
+    "lighting_implemented": false,
+    "next_production_stage": "G1: isolated Bellback color-preserving soft-lighting comparison and exact owner review",
+    "remaining_production_decisions": [
+      "Measured shared lighting profile and exact appearance acceptance",
+      "Per-creature construction/reference and forms decisions",
+      "Sound provider account allowance, applicable rights and local quality/speed if selected",
+      "Scoped generation inputs and budgets before provider submission"
+    ],
+    "preserved_acceptance": "reports/bellback-production-20260920/owner-acceptance.json"
+  },
+  "new_pc_integrity_20260916": {
+    "date": "2026-09-16",
+    "status": "TRANSFER_INCOMPLETE_DEVELOPMENT_SETUP_REQUIRED",
+    "report": "reports/new-pc-20260916/README.md",
+    "transfer": {
+      "counts": {
+        "manifest_files": 78738,
+        "matched": 78029,
+        "missing": 709
+      },
+      "groups": {
+        ".gitattributes": {
+          "matched": 1
+        },
+        ".gitignore": {
+          "matched": 1
+        },
+        "AGENTS.md": {
+          "matched": 1
+        },
+        "FILE_MANIFEST.json": {
+          "matched": 1
+        },
+        "FIRST_MESSAGE_TO_CODEX.md": {
+          "matched": 1
+        },
+        "Launch Combat Clarity.cmd": {
+          "matched": 1
+        },
+        "Launch Wonder vNext.cmd": {
+          "matched": 1
+        },
+        "PAUSED.md": {
+          "matched": 1
+        },
+        "Play Storybook Lab.cmd": {
+          "matched": 1
+        },
+        "Play Wonder Chess.cmd": {
+          "matched": 1
+        },
+        "README.md": {
+          "matched": 1
+        },
+        "requirements-tools.txt": {
+          "matched": 1
+        },
+        "START_HERE.md": {
+          "matched": 1
+        },
+        "TRANSFER_TO_NEW_PC.md": {
+          "matched": 1
+        },
+        ".agents": {
+          "matched": 48
+        },
+        ".codex": {
+          "matched": 2
+        },
+        ".git": {
+          "matched": 14954,
+          "missing": 1
+        },
+        "art-source": {
+          "matched": 6664
+        },
+        "builds": {
+          "matched": 1135
+        },
+        "data": {
+          "matched": 20
+        },
+        "docs": {
+          "matched": 112
+        },
+        "exports": {
+          "matched": 649
+        },
+        "game": {
+          "matched": 3652
+        },
+        "generated": {
+          "matched": 6
+        },
+        "production": {
+          "matched": 285
+        },
+        "reports": {
+          "matched": 22855
+        },
+        "research": {
+          "matched": 12
+        },
+        "support": {
+          "matched": 27621,
+          "missing": 405
+        },
+        "tests": {
+          "missing": 123
+        },
+        "tools": {
+          "missing": 180
+        }
+      },
+      "manifest_complete": true,
+      "elapsed_seconds": 559.5219027996063,
+      "root": "C:\\Users\\USER\\Documents\\Wonder Chess"
+    },
+    "git_fsck": "PASS_EXIT_0_DANGLING_OBJECTS_PRESERVED",
+    "registered_worktrees": 1,
+    "blender": {
+      "installed": "5.2.1 LTS",
+      "original": "5.1 series",
+      "background_python": "PASS",
+      "mcp": "BROKEN_OLD_USER_PATH_NO_LOOPBACK_LISTENER"
+    },
+    "unreal": {
+      "installed": "5.8.2",
+      "original": "5.7.4",
+      "project_association": "5.7",
+      "standalone_initialization": "PASS_23.34_SECONDS",
+      "project_build": "NOT_RUN"
+    },
+    "cpp_toolchain": "NOT_FOUND_IN_STANDARD_INSTALL_LOCATIONS_OR_REGISTRY",
+    "authoring_tests": "BLOCKED_MISSING_TOOLS_AND_TESTS",
+    "product_acceptance_changed": false
   },
   "workspace_consolidation_20260915": {
     "date": "2026-09-15",
@@ -1011,7 +3774,7 @@
       "checkpoint": "art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW4/r001/verification.json",
       "next_required_action": "Bounded method stopped: replace local thumb/web and middle palm-base surface against actual selected hilt; independently refit upper back/cap/lower lame. No further equivalent correction pass.",
       "user_feedback": "User authorized independent BW1 full-body/costume study from retained MP1 source; preserve head ART_REVISE, no hair/game changes.",
-      "separate_art_review": "Final glove clears sampled self/handle checks, but body web crosses, glove/body fit fails, thumb pads remain27.591Ã¢â‚¬â€œ31.635mm away and face away. ART_REVISE; no full grip, sword fit, human approval or reusable recipe."
+      "separate_art_review": "Final glove clears sampled self/handle checks, but body web crosses, glove/body fit fails, thumb pads remain27.591ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“31.635mm away and face away. ART_REVISE; no full grip, sword fit, human approval or reusable recipe."
     },
     "ada_proportion_fit_bw5": {
       "status": "EXECUTED_ART_REVISE",
@@ -3100,5 +5863,514 @@
     },
     "git_diff_check": "PASS; tracked whitespace check; existing line-ending warnings only",
     "final_candidate_game_processes_running": 0
+  },
+  "new_pc_repair_20260916": {
+    "date": "2026-09-16",
+    "status": "CONNECTIONS_VERIFIED_RECOVERY_AND_BUILD_SETUP_PARTIAL",
+    "report": "reports/new-pc-repair-20260916/README.md",
+    "recovery": {
+      "exact_originals_restored": 424,
+      "initial_missing": 709,
+      "unrecovered_original_payloads": 285,
+      "missing_source_files_remaining": 9,
+      "git_fsck": "PASS_EXIT_0",
+      "complete": false,
+      "evidence": "reports/new-pc-repair-20260916/recovery/README.md"
+    },
+    "python_environment": ".venv",
+    "authoring_checks": "PASS_ALL_FOUR_COMMANDS",
+    "python_tests": {
+      "attempted": 221,
+      "passed": 219,
+      "failures": 1,
+      "import_errors": 1,
+      "full_suite_pass": false,
+      "causes": [
+        "Windows PowerShell execution policy Restricted blocks launcher test",
+        "verify_milestone_package.py is still missing"
+      ]
+    },
+    "blender": {
+      "version": "5.2.1 LTS",
+      "configured_mcp_protocol": 5,
+      "all_five_configured_tools": "PASS",
+      "create_read_remove_marker": "PASS",
+      "viewport_captured_and_viewed": true,
+      "source_unchanged_in_read_only_verification": true,
+      "loopback": "127.0.0.1:9876",
+      "safe_mode": true,
+      "telemetry": false,
+      "evidence": "reports/new-pc-repair-20260916/blender/live-verification/verification.json"
+    },
+    "unreal": {
+      "version": "5.8.2",
+      "python_commandlet": "PASS",
+      "blender_fbx_import_save_reload": "PASS",
+      "dimensions_cm": [
+        100.000008,
+        100.000008,
+        100.0
+      ],
+      "isolated_diagnostic_project": true,
+      "actual_game_converted": false,
+      "actual_game_57_build": "BLOCKED_57_ENGINE_AND_CPP_TOOLS_ABSENT",
+      "evidence": "reports/new-pc-repair-20260916/unreal/README.md"
+    },
+    "build_tools": {
+      "status": "SIGNED_INSTALLER_PREPARED_USER_ADMIN_ACTION_REQUIRED",
+      "automatic_review_rejection": "blocked by policy",
+      "installed": false,
+      "engine_57_installed": false,
+      "evidence": "reports/new-pc-repair-20260916/build-tools/README.md"
+    },
+    "product_acceptance_changed": false
+  },
+  "backup_recovery_20260917": {
+    "date": "2026-09-17",
+    "status": "ALL_MISSING_SOURCE_RECOVERED_TEN_HISTORICAL_ARCHIVES_UNRESOLVED",
+    "report": "reports/backup-recovery-20260917/README.md",
+    "backup": "D:/Wonder Chess",
+    "backup_modified": false,
+    "this_recovery": {
+      "backup": "D:\\Wonder Chess",
+      "destination": "C:\\Users\\USER\\Documents\\Wonder Chess",
+      "target_count": 285,
+      "counts": {
+        "backup_mismatch": 1,
+        "backup_missing": 9,
+        "restored_exact": 275
+      },
+      "backup_modified": false,
+      "backup_manifest_matches_original": true
+    },
+    "original_missing_files": 709,
+    "cumulative_exact_recoveries": 699,
+    "remaining_original_archives": 10,
+    "missing_source_files_remaining": 0,
+    "authoring_checks": "PASS_ALL_FOUR_400_DATA_CHECKS",
+    "python_tests": {
+      "attempted": 230,
+      "passed": 229,
+      "failures": 1,
+      "errors": 0,
+      "remaining_failure": "Windows PowerShell Restricted execution policy blocks launcher fixture"
+    },
+    "storybook_launcher": "VALIDATE_ONLY_PASS_NOT_LAUNCHED",
+    "compiler_sdk_smoke": {
+      "checked_utc": "2026-09-16T23:39:42.4638494Z",
+      "vs_installation": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools",
+      "vs_version": "17.14.37710.0",
+      "msvc_directories": [
+        "14.44.35207"
+      ],
+      "windows_sdk": "10.0.22621.0",
+      "exit_code": 0,
+      "passed": true,
+      "scope": "Isolated C++20 compile, Windows SDK link, and executable run only; no Wonder Chess or Unreal build."
+    },
+    "unreal_57_installed": false,
+    "actual_game_build": "NOT_RUN_MATCHING_ENGINE_UNAVAILABLE",
+    "product_acceptance_changed": false
+  },
+  "github_recovery_20260917": {
+    "date": "2026-09-17",
+    "status": "ALL_709_ORIGINALLY_MISSING_PAYLOADS_RECOVERED",
+    "report": "reports/github-check-20260917/README.md",
+    "original_missing_count": 709,
+    "cumulative_exact_recoveries": 709,
+    "original_missing_payloads_unrecovered": 0,
+    "final_ten_archive_hashes": "ALL_MATCH_ORIGINAL_TRANSFER_MANIFEST",
+    "downloads_guide_matches_published_text": true,
+    "remote_revision": "123647ae220efc4b34e34baa13f8ac0dea87eb17",
+    "local_head": "d80635f615810a93c3161c6bfd6c34c758b08260",
+    "remote_ahead_by": 2,
+    "branch_reconciled": false,
+    "working_changes_preserved": true,
+    "full_original_manifest_equivalence_claimed": false,
+    "remaining_setup": [
+      "Matching Unreal 5.7.4 and actual project build unverified",
+      "One Windows PowerShell policy-dependent test failure"
+    ],
+    "product_acceptance_changed": false
+  },
+  "toolchain_upgrade_20260917": {
+    "status": "VERIFIED_AND_ADOPTED",
+    "owner_choice": "Use installed newer versions after verification",
+    "unreal": "5.8.2",
+    "blender": "5.2.1 LTS",
+    "active_project": "game/WonderChess.uproject",
+    "package": "builds/WonderChess-UE58-r1/Windows",
+    "launcher": "Play Wonder Chess UE58.cmd",
+    "powershell_policy_failure": "RESOLVED_CurrentUser_RemoteSigned",
+    "netfx_editor_build_dependency": "RESOLVED_4.8_SDK_and_targeting_pack",
+    "editor_tests": {
+      "passed": 13,
+      "failed": 0
+    },
+    "python_tests": {
+      "passed": 230,
+      "failed": 0
+    },
+    "native_combat_assertions": 25385,
+    "blender_sources_opened": 38,
+    "roundtrip_families": 6,
+    "roundtrip_clips": 42,
+    "unreal_pose_evaluations": 1260,
+    "package_identity": {
+      "source_files": 122,
+      "package_files": 50,
+      "status": "PASS"
+    },
+    "remaining_setup": [],
+    "supersedes_setup_remaining_in": "github_recovery_20260917",
+    "original_binary_assets_unchanged": true,
+    "rollback": "support/archives/pre-ue58-20260917",
+    "evidence": "reports/toolchain-upgrade-20260917/REPORT.md",
+    "product_acceptance_changed": false,
+    "scope_limits": [
+      "Representative-family export/import, not a full-roster new import",
+      "Same-PC execution; no new external-player, final-art or release acceptance"
+    ]
+  },
+  "meshy_workflow_20260917": {
+    "status": "CONNECTIONS_TESTED_FIRST_CANDIDATE_REQUIRES_FORMS_CORRECTION",
+    "report": "reports/meshy-setup-20260917/REPORT.md",
+    "mcp_version": "0.5.1",
+    "blender_extension_version": "0.6.1",
+    "authentication_verified": true,
+    "mcp_tools_discovered": 24,
+    "bridge_glb_transfer_verified": true,
+    "blender_save_reopen_verified": true,
+    "unreal_5_8_2_static_transport_verified": true,
+    "website_send_button_tested": false,
+    "codex_app_mcp_reload_pending": true,
+    "task_id": "01a0ae18-2c30-7635-9165-15db87ba0fbc",
+    "credits_spent": 20,
+    "balance_after": 3098,
+    "forms_accepted": false,
+    "game_asset_replaced": false,
+    "working_source": "art-source\\asset-studio\\wc_vn_bellback\\stages\\forms\\meshy_r001\\Bellback_forms_oriented.blend",
+    "remaining": [
+      "Restart Codex to load the configured Meshy tools in its native tool list.",
+      "Use a fresh Blender candidate session to load the patched bridge.",
+      "Correct bell rear silhouette, hollow cavity, separate support/clapper and body transitions before forms review.",
+      "Production topology, materials, rigging, animation and actual Bellback Unreal integration remain open."
+    ]
+  },
+  "bellback_meshy_unreal_pilot_20260917": {
+    "status": "PILOT_TEXTURED_AND_RIGGED_JOINT_TEST_VERIFIED_NOT_GAME_READY",
+    "report": "reports/bellback-meshy-unreal-20260917/REPORT.md",
+    "source_task": "01a0ae18-2c30-7635-9165-15db87ba0fbc",
+    "remesh_task": "01a0ae4f-b653-7036-b188-3dbbe62a7f00",
+    "retexture_task": "01a0ae5a-ff49-70c0-a568-9f5a1a3abc39",
+    "blender_used": false,
+    "triangles": 36461,
+    "texture_resolution": [
+      2048,
+      2048
+    ],
+    "credits_spent_this_pilot": 15,
+    "balance_observed": 3063,
+    "forms_accepted": false,
+    "rig_verified": false,
+    "game_asset_replaced": false,
+    "unreal_static_import": true,
+    "human_art_acceptance": false,
+    "quadruped_rig_status": "FAILED",
+    "smart_rig_status": "SUCCEEDED",
+    "smart_rig_task_id": "01a0ae6a-597d-7148-bb66-a461e5f122d0",
+    "smart_rig_credits": 0,
+    "smart_rig_bones": 27,
+    "animation_clips_from_meshy": 0,
+    "unreal_skeleton_reopen_verified": true,
+    "inspection_keyframes_authored": true,
+    "inspection_movement_verified": true,
+    "game_ready": false,
+    "inspection_animation_seconds": 6,
+    "inspection_animation_asset": "/Game/WonderChess/Diagnostics/BellbackMeshyPilot20260917/AS_Bellback_JointInspection_r1",
+    "remaining": [
+      "Human visual review of mesh, textures and walk",
+      "Independent head and rigid bell control design",
+      "Combat animation authoring and transitions",
+      "Further deformation polish, terrain adaptation",
+      "Actual board, LOD/performance and packaged-game checks"
+    ],
+    "unreal_walk_candidate_verified": true
+  },
+  "bellback_walk_20260917": {
+    "status": "WALK_AND_FLAT_GROUND_CLEARANCE_VERIFIED",
+    "minimum_actual_mesh_clearance_cm": 0.37222828233943267,
+    "sampled_frames": 145,
+    "sample_rate_fps": 30,
+    "maximum_stance_centroid_xy_drift_cm": 0.4394653710451784,
+    "stance_centroid_xy_drift_by_foot_cm": {
+      "front_positive_x": 0.328206847969826,
+      "front_negative_x": 0.4394653710451784,
+      "rear_positive_x": 0.2846993025897602,
+      "rear_negative_x": 0.31775078810854396
+    },
+    "forward_cm_per_cycle": 41.411764705882355,
+    "speed_cm_s": 17.254901960784316,
+    "source_glb_unchanged": true,
+    "mesh_weights_edited": false,
+    "blender_used": false,
+    "new_meshy_credits": 0,
+    "terrain_adaptive_ik": false,
+    "human_animation_acceptance": false,
+    "report": "reports/bellback-walk-20260917/REPORT.md",
+    "preview": "reports/bellback-walk-20260917/Bellback_Walk_Preview.gif",
+    "canonical_game_replaced": false
+  },
+  "bellback_production_20260920": {
+    "utc": "2026-09-20T16:27:50.064304+00:00",
+    "status": "SIX_POINT_CANDIDATE_COMPLETE_OWNER_ACCEPTED",
+    "candidate": "Bellback_r001 / packaged r4",
+    "human_art_approval": true,
+    "human_listening_approval": true,
+    "package": "builds/WonderChess-Bellback-r4/Windows/WonderChess.exe",
+    "flag": "-WCBellbackCandidate",
+    "points": {
+      "1_rig_walk": {
+        "status": "PASS_FOR_REVIEWED_CANDIDATE",
+        "controls": 12,
+        "gameplay_skinned_samples": 4767,
+        "minimum_ground_clearance_cm": 0.6468961449230419,
+        "editable_rig_samples": 241,
+        "editable_rig_minimum_z_cm": -9.559621503285598e-06
+      },
+      "2_board_movement": {
+        "status": "PASS_FOR_REVIEWED_CANDIDATE",
+        "selection_probe": {
+          "boundary": "Synthetic world rays through the same BoardRayClick dispatch as mouse deprojection. Loaded skeletal asset and live component transforms; not real mouse, Slate routing, pixel-accurate silhouette or human usability evidence.",
+          "mesh": "/Game/WonderChess/VNext/Characters/Bellback_r001/SK_Bellback.SK_Bellback",
+          "imported_bounds_min": "X=-71.345 Y=-95.811 Z=0.000",
+          "imported_bounds_max": "X=71.345 Y=95.811 Z=170.000",
+          "single_scene_unit_id": 1,
+          "upper_body_selects_creature_despite_ground_ray_hitting_different_cell": true,
+          "old_ground_column": 3,
+          "old_ground_row": 0,
+          "rotated_asset_cases": [
+            {
+              "actor_yaw": 0,
+              "entry_distance_cm": 129.41176470588235,
+              "component_transform": "Rotation: Pitch 0.000000 Yaw 0.000000 Roll -0.000000\r\nTranslation: -100.000000 300.000000 6.000000\r\nScale3D: 1.294118 1.294118 1.294118\r\n",
+              "entry_distance_matches_transformed_face": true,
+              "single_scene_hit_and_cell": true,
+              "dispatch_selected_exact_id": true,
+              "parallel_outside_box_misses": true,
+              "farther_transformed_box_orders_after_near_box": true
+            },
+            {
+              "actor_yaw": 45,
+              "entry_distance_cm": 129.41176470588232,
+              "component_transform": "Rotation: Pitch 0.000000 Yaw 45.000000 Roll -0.000000\r\nTranslation: -100.000000 300.000000 6.000000\r\nScale3D: 1.294118 1.294118 1.294118\r\n",
+              "entry_distance_matches_transformed_face": true,
+              "single_scene_hit_and_cell": true,
+              "dispatch_selected_exact_id": true,
+              "parallel_outside_box_misses": true,
+              "farther_transformed_box_orders_after_near_box": true
+            },
+            {
+              "actor_yaw": 90,
+              "entry_distance_cm": 129.4117647058824,
+              "component_transform": "Rotation: Pitch 0.000000 Yaw 90.000000 Roll -0.000000\r\nTranslation: -100.000000 300.000000 6.000000\r\nScale3D: 1.294118 1.294118 1.294118\r\n",
+              "entry_distance_matches_transformed_face": true,
+              "single_scene_hit_and_cell": true,
+              "dispatch_selected_exact_id": true,
+              "parallel_outside_box_misses": true,
+              "farther_transformed_box_orders_after_near_box": true
+            },
+            {
+              "actor_yaw": 135,
+              "entry_distance_cm": 129.41176470588218,
+              "component_transform": "Rotation: Pitch 0.000000 Yaw 135.000000 Roll -0.000000\r\nTranslation: -100.000000 300.000000 6.000000\r\nScale3D: 1.294118 1.294118 1.294118\r\n",
+              "entry_distance_matches_transformed_face": true,
+              "single_scene_hit_and_cell": true,
+              "dispatch_selected_exact_id": true,
+              "parallel_outside_box_misses": true,
+              "farther_transformed_box_orders_after_near_box": true
+            }
+          ],
+          "empty_cell_ground_fallback_uses_preparation_handler": true,
+          "two_live_components_choose_nearest_from_both_directions": true,
+          "passed": true,
+          "combat_remove_still_locked": true,
+          "combat_selected_id": 2097153,
+          "combat_exact_visible_id": true
+        },
+        "signature_matches": true
+      },
+      "3_appearance": {
+        "status": "PASS_FOR_REVIEWED_CANDIDATE",
+        "source": "original Meshy surface; Unreal material and skinning revisions"
+      },
+      "4_animation_set": {
+        "status": "PASS_FOR_REVIEWED_CANDIDATE",
+        "sampled_clips": [
+          "Idle",
+          "Attack",
+          "Active",
+          "Defeat",
+          "Move",
+          "Hit",
+          "TurnRight",
+          "TurnLeft",
+          "Victory"
+        ]
+      },
+      "5_audio_effects": {
+        "status": "PASS_FOR_REVIEWED_CANDIDATE",
+        "audio_audit": "audio-content-audit-r3.json",
+        "guard_events": 3,
+        "peak_dbfs": -3.5938248317864865
+      },
+      "6_optimization_package": {
+        "status": "PASS_FOR_REVIEWED_CANDIDATE",
+        "lod_triangles": [
+          36461,
+          14583,
+          5468
+        ],
+        "cpu": "Intel(R) Core(TM) Ultra 7 265K",
+        "gpu": "NVIDIA GeForce RTX 5060",
+        "resolution": [
+          1600,
+          1000
+        ],
+        "twenty_unit_frame_samples": 8529,
+        "p95_ms": 3.8687996566295624,
+        "solo_rounds": 45
+      }
+    },
+    "limits": [
+      "Owner accepted this exact candidate appearance, motion and sound. This is not a full project release.",
+      "Selection uses synthetic rays through the mouse dispatch; real mouse/Slate usability is not certified.",
+      "Ground verification covers sampled poses/blends on a flat board; arbitrary terrain and every live turning trajectory are not certified.",
+      "Performance is local Development-package evidence on the named PC; no remote hardware, network hosting or human balance claim.",
+      "LOD0 36,461 triangles exceeds the provisional 35,000 target; measured local performance is recorded, not automatic budget approval.",
+      "Audio master capture uses package r3 with the same mix gains as r4; final r4 runs measure unrecorded gameplay performance."
+    ],
+    "human_motion_approval": true,
+    "owner_acceptance": "reports/bellback-production-20260920/owner-acceptance.json"
+  },
+  "creature_pipeline_engineering_20260921": {
+    "date": "2026-09-21",
+    "status": "IMPLEMENTED_WITH_PROFILING_LIMIT",
+    "handbook_version": "1.2",
+    "report": "reports/pipeline-tools-20260921/README.md",
+    "tool_evidence": "reports/pipeline-tools-20260921/qualification-summary.json",
+    "accepted_bellback_integrity": "fail",
+    "production_jobs_started": 0,
+    "scope": "Engineering workflow, qualified local tools, reference studio and validation/recovery infrastructure",
+    "remaining": [
+      "actual-board G1 look approval",
+      "actual creature pilot including deformation, package and recovery",
+      "memory profiling requalification; current traces report memory-analysis errors",
+      "reconcile pre-existing Bellback rig-inspection sequence hash mismatch without overwriting current work"
+    ],
+    "baseline_note": "40 of 41 accepted files match; rig-inspection sequence differs with a last-write time predating this session"
+  },
+  "cragstoat_creature_trial_20260921": {
+    "updated_utc": "2026-09-21T11:12:51.293919+00:00",
+    "status": "RAW_MESHY_MODEL_IMPORTED_AND_REVIEWED_AWAITING_OWNER_REMESH_DECISION",
+    "candidate": "art-source/asset-studio/wc_vn_cragstoat/stages/production_r001/candidate.json",
+    "review": "reports/creature-production/wc_vn_cragstoat/production_r001/index.html",
+    "owner_direction": "accepted",
+    "krita_default": "owner_selected_and_executed",
+    "four_view_set": "art-source/asset-studio/wc_vn_cragstoat/inputs/references/four_view_r003/view-set.json",
+    "source_hashes_unchanged": true,
+    "G1": "r007 actual-board comparison captured, acceptance open",
+    "G2": "Owner approved exact four-input trial with alignment tolerance",
+    "G3_to_G8": "G3 raw source and Unreal clay review executed; optimization/UV/materials/rig/motion/audio/package not passed",
+    "meshy_credits_spent": 20,
+    "meshy_jobs_submitted": 1,
+    "reusable_fix": "Reference studio now requests skeletal material usage explicitly",
+    "next_operation": "Historical r001 trial preserved; owner superseded its pending remesh question with a fresh colored/textured/rigged production_r002 request. See cragstoat_animation_ready_20260921.",
+    "request_plan": "art-source/asset-studio/wc_vn_cragstoat/inputs/meshy/production_r001_geometry/request-plan.json",
+    "meshy_task_id": "01a0c39b-95e5-7272-bd62-71bbf465ea8d",
+    "triangle_count": 7819690,
+    "geometry_review": "reports/creature-production/wc_vn_cragstoat/production_r001/geometry-review.json",
+    "unreal_mesh": "/Game/WonderChess/Diagnostics/CragstoatProduction20260921/Geometry_r001/SM_CragstoatRaw.SM_CragstoatRaw",
+    "unreal_level": "/Game/WonderChess/Diagnostics/CragstoatProduction20260921/Geometry_r001/L_GeometryReview",
+    "interactive_review": "reports/creature-production/wc_vn_cragstoat/production_r001/model.html"
+  },
+  "cragstoat_animation_ready_20260921": {
+    "status": "TECHNICALLY_ANIMATION_READY_OWNER_REVIEW_PENDING",
+    "candidate": "art-source/asset-studio/wc_vn_cragstoat/stages/production_r002/candidate.json",
+    "updated_utc": "2026-09-21T12:32:58.750978+00:00",
+    "task_id": "01a0c3f2-d22b-70ee-9ba8-044082f1ee06",
+    "authorized_credit_cap": 40,
+    "current_generation_credits": 30,
+    "workflow_version": "1.3",
+    "rigging_skill": "authored_and_structurally_validated_not_yet_asset_qualified",
+    "geometry_texture_rig_acceptance": false,
+    "no_blender": true,
+    "actual_credits_spent": 30,
+    "triangle_count": 35867,
+    "skin_measurement_helper_build": "WonderChessEditor Win64 Development succeeded 17.52 seconds",
+    "credits_spent": 30,
+    "meshy_rig": "FAILED_NO_CHARGE",
+    "rig_source": "Unreal local skeleton/skin/ControlRig",
+    "bones": 33,
+    "controls": 21,
+    "triangles": 35867,
+    "skin_samples": 601,
+    "minimum_floor_clearance_cm": 0.2999970174978898,
+    "max_planted_slide_cm": 0.057767764352212994,
+    "fbx_export_reimport": "PASS",
+    "owner_acceptance": null,
+    "review": "http://127.0.0.1:8743/reports/creature-production/wc_vn_cragstoat/production_r002/index.html",
+    "handoff": "art-source/asset-studio/wc_vn_cragstoat/stages/production_r002/delivery/README.md"
+  },
+  "silkmother_source_import_20260921": {
+    "status": "SOURCES_ARCHIVED_UNCHANGED",
+    "asset_id": "wc_vn_silkmother",
+    "variants": 4,
+    "inventory": "art-source/asset-studio/wc_vn_silkmother/source-inventory.json",
+    "verification": "reports/creature-production/wc_vn_silkmother/workspace_import_r001/verification.json",
+    "credits_spent": 0,
+    "unreal_imported": false,
+    "owner_acceptance": null
+  },
+  "silkmother_playable_production_20260921": {
+    "status": "PLAYABLE_CANDIDATE_OWNER_REVIEW_PENDING",
+    "plan": "art-source/asset-studio/wc_vn_silkmother/DEVELOPMENT_PLAN.md",
+    "source_review": "reports/creature-production/wc_vn_silkmother/production_r001/unreal-rig/source_review_r002/review.json",
+    "controls": "reports/creature-production/wc_vn_silkmother/production_r001/unreal-rig/controls.json",
+    "native_combat": "reports\\creature-production\\wc_vn_silkmother\\production_r001\\native-combat-r004\\process.json",
+    "confirmed": {
+      "scope": "normal_solo_plus_focused_arena",
+      "skill": "nearest_untrapped_enemy_damage_free_cocoon",
+      "duration_ms": 2000,
+      "range_cells": 4,
+      "cooldown_ms": 8000,
+      "basic": "mouth_silk_shot",
+      "gait": "quicker_spider_steps_staggered_pairs_stable_abdomen",
+      "cast": "brace_weave_mouth_release",
+      "defeat": "gentle_fold_lantern_intact",
+      "effects": "dense_cocoon_stronger_magic",
+      "sound": "soft_leg_taps_silk_tension_warm_lantern_no_voice"
+    },
+    "pending_owner_choices": [],
+    "owner_acceptance": null,
+    "credits_spent": 0,
+    "remaining": [
+      "owner_exact_candidate_appearance_motion_effects_sound_review"
+    ],
+    "updated_utc": "2026-09-21T16:05:04.206179+00:00",
+    "native_scenarios": "reports\\creature-production\\wc_vn_silkmother\\production_r001\\native-scenarios-r004\\process.json",
+    "rig_study": "reports\\creature-production\\wc_vn_silkmother\\production_r001\\unreal-rig\\validation_r001\\validation.json",
+    "clips": "reports\\creature-production\\wc_vn_silkmother\\production_r001\\unreal-rig\\clips_r003.json",
+    "clip_contact": "reports\\creature-production\\wc_vn_silkmother\\production_r001\\unreal-rig\\clip_validation_r003\\validation.json",
+    "runtime": "reports\\creature-production\\wc_vn_silkmother\\production_r001\\packaged-arena-r002\\silkmother-route.json",
+    "audio": "reports\\creature-production\\wc_vn_silkmother\\production_r001\\audio\\source-audit.json",
+    "presentation_assets": "reports\\creature-production\\wc_vn_silkmother\\production_r001\\presentation-assets.json",
+    "package": "builds/WonderChess-Silkmother-r2/Windows/WonderChess.exe",
+    "solo": "reports\\creature-production\\wc_vn_silkmother\\production_r001\\packaged-solo-r002\\solo-visual-exercise.json",
+    "audio_mix": "reports\\creature-production\\wc_vn_silkmother\\production_r001\\audio\\runtime-audit.json",
+    "lods": "reports\\creature-production\\wc_vn_silkmother\\production_r001\\lods.json",
+    "lod1_contact": "reports\\creature-production\\wc_vn_silkmother\\production_r001\\unreal-rig\\lod1_validation_r001\\validation.json",
+    "lod2_contact": "reports\\creature-production\\wc_vn_silkmother\\production_r001\\unreal-rig\\lod2_validation_r002\\validation.json",
+    "review": "http://127.0.0.1:8743/reports/creature-production/wc_vn_silkmother/production_r001/index.html"
   }
 }

@@ -1,7 +1,7 @@
 {
   "schema_version": "wonder_vnext.catalog.1",
   "profile_id": "wonder_vnext",
-  "balance_version": "wonder_vnext_solo_0.1.0",
+  "balance_version": "wonder_vnext_silkmother_0.2.0",
   "rules": {
     "columns": 8,
     "rows": 8,
@@ -769,9 +769,9 @@
     "mana100_v1": {
       "status": "opt_in_unaccepted_experiment",
       "heroes": [
-        "wc_vn_snapvine",
-        "wc_vn_prism_organ",
-        "wc_vn_reefglass"
+        "wc_vn_hookjaw",
+        "wc_vn_prism_scholar",
+        "wc_vn_tide_caller"
       ],
       "maximum": 10000,
       "starting": 0,
@@ -785,9 +785,9 @@
     "mana100_hit20_v1": {
       "status": "opt_in_unaccepted_experiment",
       "heroes": [
-        "wc_vn_snapvine",
-        "wc_vn_prism_organ",
-        "wc_vn_reefglass"
+        "wc_vn_hookjaw",
+        "wc_vn_prism_scholar",
+        "wc_vn_tide_caller"
       ],
       "maximum": 10000,
       "starting": 0,
@@ -805,16 +805,16 @@
     "nearestReachableTarget": true,
     "mobileAttackRecovery": true
   },
-  "source_sha256": "ec031fb21f7ddcce1bd37cc38e3277788208767e78e05f51eead8e71f106d350",
+  "source_sha256": "e776c2cd820726364c66003cb00fba1f372375574e20c7cb32986d6370fd59f2",
   "heroes": [
     {
-      "id": "wc_vn_bellback",
-      "name": "Bellback",
-      "display_name": "Bellback",
-      "race": "beast",
-      "unit_class": "guardian",
+      "id": "wc_vn_shieldbearer",
+      "name": "Shieldbearer",
+      "display_name": "Shieldbearer",
+      "race": "human",
+      "unit_class": "tank",
       "cost": 1,
-      "body_family": "grounded_quadruped",
+      "body_family": "humanoid_medium",
       "role_tags": [
         "frontline"
       ],
@@ -823,12 +823,12 @@
       "production_status": "laboratory_candidate",
       "art_status": "brief_only",
       "dossier": {
-        "form": "Moss-and-bronze grazing giant with a suspended dorsal bell in a wooden mount.",
-        "decision": "Protect a chosen ally through a directional guarded sector.",
-        "positioning": "Put a vulnerable ally behind the guarded shoulder; face Bellback toward likely projectiles.",
-        "allies": "Prism Organ benefits from time to cast; Grandmother Root prolongs the defensive line.",
-        "counterplay": "Flank the guard or displace it away from its protected ally.",
-        "recognition": "The dorsal bell swings within its mount and a short arc of bronze light marks the guarded sector."
+        "form": "Stocky knight in plain plate with one oversized tower shield.",
+        "decision": "Choose which ally stands behind the shield.",
+        "positioning": "Front row, facing the expected attackers, carry directly behind.",
+        "allies": "Any fragile Mage, Sniper or Priest.",
+        "counterplay": "Flank the shield or push him away from the protected ally.",
+        "recognition": "The big shield glows and a short arc marks the guarded side."
       },
       "stats": {
         "health": 95000,
@@ -843,8 +843,8 @@
         "damageType": "physical"
       },
       "ability": {
-        "id": "wc_vn_a_bellback",
-        "name": "Sheltering Bell",
+        "id": "wc_vn_a_shieldbearer",
+        "name": "Shield Wall",
         "mechanic": "directional_guard",
         "effect": "shield",
         "selector": "self",
@@ -872,18 +872,18 @@
         "pulseMs": 0,
         "displacementCells": 0,
         "secondaryDelayMs": 0,
-        "tooltip_en": "Protect a chosen ally through a directional guarded sector. Flank the guard or displace it away from its protected ally.",
-        "tooltip_id": "Lindungi rekan di belakang sektor penjagaan. Serang dari samping atau pisahkan pelindung."
+        "tooltip_en": "Passively reduces eligible incoming attacks aimed at the one ally standing behind his guarded side.",
+        "tooltip_id": "Mengurangi serangan yang mengarah ke satu rekan di belakang sisi perisainya. Serang dari samping atau pisahkan mereka."
       }
     },
     {
-      "id": "wc_vn_cragstoat",
-      "name": "Cragstoat",
-      "display_name": "Cragstoat",
-      "race": "beast",
-      "unit_class": "warrior",
+      "id": "wc_vn_boar_rusher",
+      "name": "Boar Rusher",
+      "display_name": "Boar Rusher",
+      "race": "orc",
+      "unit_class": "fighter",
       "cost": 1,
-      "body_family": "elongated_quadruped",
+      "body_family": "humanoid_large",
       "role_tags": [
         "frontline"
       ],
@@ -892,12 +892,12 @@
       "production_status": "laboratory_candidate",
       "art_status": "brief_only",
       "dossier": {
-        "form": "Long low predator with rocklike shoulder ridges and an elastic, expressive spine.",
-        "decision": "Convert a clear approach into a committed burst of momentum.",
-        "positioning": "Leave a short open approach; a crowded front row denies its charge.",
-        "allies": "Reefglass clears a path; Bellback shelters the charge recovery.",
-        "counterplay": "Screen the intended target and deny free landing cells.",
-        "recognition": "A rising tail and successive footfall sparks count its momentum before the lunge."
+        "form": "Big-shouldered orc with tusks, a boar-skull helm and a heavy club.",
+        "decision": "Build a long run-up into a big first hit.",
+        "positioning": "Far from the target with an open lane.",
+        "allies": "Orcs for health; Fighters for damage.",
+        "counterplay": "Screen or crowd the lane; block the landing cell.",
+        "recognition": "Dust trail grows with momentum, then a streak on the charge."
       },
       "stats": {
         "health": 65000,
@@ -912,8 +912,8 @@
         "damageType": "physical"
       },
       "ability": {
-        "id": "wc_vn_a_cragstoat",
-        "name": "Stonebound Lunge",
+        "id": "wc_vn_a_boar_rusher",
+        "name": "Tusk Charge",
         "mechanic": "momentum_charge",
         "effect": "damage",
         "selector": "current_enemy",
@@ -941,18 +941,18 @@
         "pulseMs": 0,
         "displacementCells": 0,
         "secondaryDelayMs": 0,
-        "tooltip_en": "Convert a clear approach into a committed burst of momentum. Screen the intended target and deny free landing cells.",
-        "tooltip_id": "Bangun momentum dengan bergerak lalu menerjang. Tutup jalur dan petak pendaratan."
+        "tooltip_en": "Movement builds momentum; a clear straight path triggers a charge that turns momentum into a heavy hit.",
+        "tooltip_id": "Bergerak mengumpulkan momentum; jalur lurus yang kosong memicu serudukan yang mengubah momentum menjadi pukulan berat."
       }
     },
     {
-      "id": "wc_vn_grandmother_root",
-      "name": "Grandmother Root",
-      "display_name": "Grandmother Root",
-      "race": "plant",
-      "unit_class": "healer",
+      "id": "wc_vn_grove_druid",
+      "name": "Grove Druid",
+      "display_name": "Grove Druid",
+      "race": "elf",
+      "unit_class": "priest",
       "cost": 2,
-      "body_family": "root_walker",
+      "body_family": "humanoid_medium",
       "role_tags": [
         "support"
       ],
@@ -961,12 +961,12 @@
       "production_status": "laboratory_candidate",
       "art_status": "brief_only",
       "dossier": {
-        "form": "An orchard elder walking on broad roots, with a small sheltered garden in her torso.",
-        "decision": "Establish a healing position that rewards holding ground.",
-        "positioning": "Anchor beside several allies without exposing the whole group to artillery.",
-        "allies": "Bellback protects the grove; Prism Organ turns the protected time into damage.",
-        "counterplay": "Displace or interrupt her; concentrate burst before the grove pulses.",
-        "recognition": "Roots settle, petals open and a restrained ground ring pulses with each heal."
+        "form": "Antlered elf elder in a leaf mantle with a twisted wooden staff.",
+        "decision": "Anchor a healing zone the team fights inside.",
+        "positioning": "Centre of the formation, where she will not need to walk.",
+        "allies": "Tanks and Fighters who hold ground next to her.",
+        "counterplay": "Burst her before the grove establishes, or displace her.",
+        "recognition": "A ring of flowers grows on the healed cells and pulses."
       },
       "stats": {
         "health": 70000,
@@ -981,8 +981,8 @@
         "damageType": "physical"
       },
       "ability": {
-        "id": "wc_vn_a_grandmother_root",
-        "name": "Stay and Blossom",
+        "id": "wc_vn_a_grove_druid",
+        "name": "Sacred Grove",
         "mechanic": "stationary_grove",
         "effect": "heal",
         "selector": "adjacent_allies",
@@ -1010,18 +1010,18 @@
         "pulseMs": 1000,
         "displacementCells": 0,
         "secondaryDelayMs": 0,
-        "tooltip_en": "Establish a healing position that rewards holding ground. Displace or interrupt her; concentrate burst before the grove pulses.",
-        "tooltip_id": "Diam untuk membuat taman penyembuhan. Dorong atau hentikan sebelum penyembuhan."
+        "tooltip_en": "After standing still, establishes a pulsing healing area; moving, displacement, stun or defeat breaks it.",
+        "tooltip_id": "Setelah diam, menciptakan area penyembuhan berdenyut. Bergerak, terdorong, pingsan, atau kalah akan memutusnya."
       }
     },
     {
-      "id": "wc_vn_snapvine",
-      "name": "Snapvine",
-      "display_name": "Snapvine",
-      "race": "plant",
+      "id": "wc_vn_hookjaw",
+      "name": "Hookjaw",
+      "display_name": "Hookjaw",
+      "race": "goblin",
       "unit_class": "assassin",
       "cost": 3,
-      "body_family": "creeping_vine",
+      "body_family": "humanoid_small",
       "role_tags": [
         "damage"
       ],
@@ -1030,12 +1030,12 @@
       "production_status": "laboratory_candidate",
       "art_status": "brief_only",
       "dossier": {
-        "form": "A low creeping flower whose folded petals conceal a thorn-lined jaw.",
-        "decision": "Threaten a distant unit through a screened line strike.",
-        "positioning": "Choose a lane where defenders do not lie between it and the backline.",
-        "allies": "Reefglass removes screens; Cragstoat pressures the intercepted defender.",
-        "counterplay": "Place a durable defender on its strike lane; alter the backline angle.",
-        "recognition": "A thin root line traces the committed path before the jaw snaps along it."
+        "form": "Wiry goblin with a metal jaw-guard and a hooked chain.",
+        "decision": "Reach a distant enemy unless something stands in the way.",
+        "positioning": "On a line with an unscreened enemy carry.",
+        "allies": "Assassins; units that open lanes by pushing.",
+        "counterplay": "Put a defender in the line.",
+        "recognition": "The chain line is shown before the hook flies."
       },
       "stats": {
         "health": 70000,
@@ -1050,8 +1050,8 @@
         "damageType": "physical"
       },
       "ability": {
-        "id": "wc_vn_a_snapvine",
-        "name": "Thornline",
+        "id": "wc_vn_a_hookjaw",
+        "name": "Chain Hook",
         "mechanic": "screened_strike",
         "effect": "damage",
         "selector": "farthest_enemy_adjacent",
@@ -1079,18 +1079,18 @@
         "pulseMs": 0,
         "displacementCells": 0,
         "secondaryDelayMs": 0,
-        "tooltip_en": "Threaten a distant unit through a screened line strike. Place a durable defender on its strike lane; alter the backline angle.",
-        "tooltip_id": "Serang sasaran jauh melalui garis akar. Pelindung di jalur dapat mencegat."
+        "tooltip_en": "Commits toward a distant enemy and hits the first enemy the straight line meets.",
+        "tooltip_id": "Menyerang ke arah musuh jauh dan mengenai musuh pertama yang dilewati garis lurus."
       }
     },
     {
-      "id": "wc_vn_prism_organ",
-      "name": "Prism Organ",
-      "display_name": "Prism Organ",
-      "race": "construct",
+      "id": "wc_vn_prism_scholar",
+      "name": "Prism Scholar",
+      "display_name": "Prism Scholar",
+      "race": "human",
       "unit_class": "mage",
       "cost": 4,
-      "body_family": "floating_assembly",
+      "body_family": "humanoid_medium",
       "role_tags": [
         "damage"
       ],
@@ -1099,12 +1099,12 @@
       "production_status": "laboratory_candidate",
       "art_status": "brief_only",
       "dossier": {
-        "form": "Suspended ceramic organ pipes arranged around a stained-glass resonator.",
-        "decision": "Punish enemies sharing crossing rows and columns.",
-        "positioning": "Protect its long setup while scouting clustered opposing lines.",
-        "allies": "Bellback absorbs approach pressure; Root sustains the protected casting position.",
-        "counterplay": "Spread across rows and columns; interrupt the marked setup.",
-        "recognition": "Two different musical notes and crossing ground lines announce the ordered beams."
+        "form": "Slim scholar in a long coat carrying a large floating crystal.",
+        "decision": "Punish enemies lined up in rows and columns.",
+        "positioning": "Protected back row with a clear view of the enemy cluster.",
+        "allies": "Shieldbearer in front; Mages for the skill-damage bonus.",
+        "counterplay": "Spread across rows and columns; interrupt the unreleased cast.",
+        "recognition": "The crystal splits light into a visible cross before each beam fires."
       },
       "stats": {
         "health": 80000,
@@ -1119,8 +1119,8 @@
         "damageType": "physical"
       },
       "ability": {
-        "id": "wc_vn_a_prism_organ",
-        "name": "Crossing Hymn",
+        "id": "wc_vn_a_prism_scholar",
+        "name": "Crossfire",
         "mechanic": "crossing_beams",
         "effect": "damage",
         "selector": "current_enemy",
@@ -1148,32 +1148,32 @@
         "pulseMs": 0,
         "displacementCells": 0,
         "secondaryDelayMs": 400,
-        "tooltip_en": "Punish enemies sharing crossing rows and columns. Spread across rows and columns; interrupt the marked setup.",
-        "tooltip_id": "Tandai baris dan kolom lalu lepaskan sinar berurutan. Menyebar atau hentikan persiapan."
+        "tooltip_en": "Locks a crossing point, then releases a row beam followed by a column beam.",
+        "tooltip_id": "Mengunci titik silang, lalu melepaskan sinar baris disusul sinar kolom."
       }
     },
     {
-      "id": "wc_vn_reefglass",
-      "name": "Reefglass",
-      "display_name": "Reefglass",
-      "race": "tidekin",
-      "unit_class": "controller",
+      "id": "wc_vn_tide_caller",
+      "name": "Tide Caller",
+      "display_name": "Tide Caller",
+      "race": "elemental",
+      "unit_class": "mage",
       "cost": 5,
-      "body_family": "cuttlefish",
+      "body_family": "elemental_humanoid",
       "role_tags": [
-        "support"
+        "damage"
       ],
       "archetype": "displacement",
       "enabled": true,
       "production_status": "laboratory_candidate",
       "art_status": "brief_only",
       "dossier": {
-        "form": "Glass-shelled cuttlefish drifting on ribbonlike fins, with visible currents inside.",
-        "decision": "Push the first enemy in a directional tide and strike the occupied lane.",
-        "positioning": "Orient toward a contested lane; leave a legal destination if the displacement matters.",
-        "allies": "Snapvine exploits the opened lane; Root opponents lose their stationary setup.",
-        "counterplay": "Stagger formations; block the push destination or attack from another side.",
-        "recognition": "Its fins cup forward, a narrow current marks the lane, then the leading wave breaks."
+        "form": "Water-bodied figure with a wave-shaped crest and trailing droplets.",
+        "decision": "Break a formation by pushing its front unit away.",
+        "positioning": "On the lane holding the enemy's key front-liner.",
+        "allies": "Shieldbearer's counter; allies that punish displaced units.",
+        "counterplay": "Stagger the formation; block the push cell.",
+        "recognition": "A wave rolls down the lane and carries one enemy back."
       },
       "stats": {
         "health": 100000,
@@ -1188,8 +1188,8 @@
         "damageType": "physical"
       },
       "ability": {
-        "id": "wc_vn_a_reefglass",
-        "name": "Leading Tide",
+        "id": "wc_vn_a_tide_caller",
+        "name": "Tidal Wave",
         "mechanic": "tidal_push",
         "effect": "damage",
         "selector": "current_enemy",
@@ -1217,8 +1217,582 @@
         "pulseMs": 0,
         "displacementCells": 2,
         "secondaryDelayMs": 0,
-        "tooltip_en": "Push the first enemy in a directional tide and strike the occupied lane. Stagger formations; block the push destination or attack from another side.",
-        "tooltip_id": "Hantam jalur depan dan dorong musuh pertama. Formasi berselang mengurangi dampaknya."
+        "tooltip_en": "Damages enemies in the facing lane and pushes the first enemy back through free cells.",
+        "tooltip_id": "Melukai musuh di jalur depan dan mendorong musuh pertama ke belakang melalui petak kosong."
+      }
+    },
+    {
+      "id": "wc_vn_soul_jailer",
+      "name": "Soul Jailer",
+      "display_name": "Soul Jailer",
+      "race": "demon",
+      "unit_class": "warlock",
+      "cost": 2,
+      "body_family": "humanoid_horned",
+      "role_tags": [
+        "support"
+      ],
+      "archetype": "single_target_control",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Thin horned demon carrying a hanging iron cage on a chain.",
+        "decision": "Take one enemy out of the fight.",
+        "positioning": "Behind a defender, within reach of approaching enemies.",
+        "allies": "Shieldbearer; allies that focus the caged unit.",
+        "counterplay": "Interrupt the wind-up; pressure him during the long cooldown.",
+        "recognition": "The cage flies out and closes around one enemy."
+      },
+      "stats": {
+        "health": 75000,
+        "attackDamage": 5500,
+        "attackRate": 650,
+        "range": 3,
+        "armor": 15,
+        "resistance": 15,
+        "movementRate": 900,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_soul_jailer",
+        "name": "Soul Cage",
+        "mechanic": "cocoon_projectile",
+        "effect": "stun",
+        "selector": "current_enemy",
+        "damageType": "physical",
+        "firstCastMs": 1500,
+        "cooldownMs": 8000,
+        "castMs": 650,
+        "recoveryMs": 350,
+        "durationMs": 2000,
+        "travelMs": 300,
+        "radius": 0,
+        "range": 4,
+        "maxTargets": 1,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          0,
+          0,
+          0
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Fires a cage at one enemy; on impact it cannot move, attack or cast for a short time. No damage.",
+        "tooltip_id": "Menembakkan kurungan ke satu musuh; sasaran tidak dapat bergerak, menyerang, atau memakai kemampuan sesaat. Tanpa kerusakan."
+      }
+    },
+    {
+      "id": "wc_vn_chapel_healer",
+      "name": "Chapel Healer",
+      "display_name": "Chapel Healer",
+      "race": "human",
+      "unit_class": "priest",
+      "cost": 2,
+      "body_family": "humanoid_medium",
+      "role_tags": [
+        "support"
+      ],
+      "archetype": "positional sustain",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Robed cleric with a tall hood and a large lantern staff.",
+        "decision": "Keep one key ally alive through burst.",
+        "positioning": "Back row, away from Assassin landing cells.",
+        "allies": "Tanks and long-fight Fighters.",
+        "counterplay": "Dive her with Assassins or silence her.",
+        "recognition": "A beam of light links the lantern to the healed ally."
+      },
+      "stats": {
+        "health": 68000,
+        "attackDamage": 4400,
+        "attackRate": 650,
+        "range": 3,
+        "armor": 10,
+        "resistance": 15,
+        "movementRate": 800,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_chapel_healer",
+        "name": "Mending Light",
+        "mechanic": "standard",
+        "effect": "heal",
+        "selector": "lowest_health_ally",
+        "damageType": "magic",
+        "firstCastMs": 3000,
+        "cooldownMs": 7000,
+        "castMs": 350,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 0,
+        "radius": 0,
+        "range": 8,
+        "maxTargets": 1,
+        "maxDash": 0,
+        "allowSelf": true,
+        "magnitude": [
+          16000,
+          26000,
+          42000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Heals the allied unit with the lowest health.",
+        "tooltip_id": "Menyembuhkan rekan dengan nyawa paling rendah."
+      }
+    },
+    {
+      "id": "wc_vn_hammerer",
+      "name": "Hammerer",
+      "display_name": "Hammerer",
+      "race": "dwarf",
+      "unit_class": "fighter",
+      "cost": 1,
+      "body_family": "humanoid_small",
+      "role_tags": [
+        "frontline"
+      ],
+      "archetype": "isolated duels",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Short broad dwarf with a braided beard and a huge two-handed hammer.",
+        "decision": "Lock down the unit in front of him.",
+        "positioning": "Front row opposite a dangerous melee enemy.",
+        "allies": "Dwarves for shields; Fighters for damage.",
+        "counterplay": "Kite him with ranged units.",
+        "recognition": "The hammer glows, then an impact star appears over the target."
+      },
+      "stats": {
+        "health": 70000,
+        "attackDamage": 7000,
+        "attackRate": 950,
+        "range": 1,
+        "armor": 15,
+        "resistance": 15,
+        "movementRate": 1200,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 0,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_hammerer",
+        "name": "Stunning Blow",
+        "mechanic": "standard",
+        "effect": "damage",
+        "selector": "current_enemy",
+        "damageType": "physical",
+        "firstCastMs": 3000,
+        "cooldownMs": 8000,
+        "castMs": 350,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 0,
+        "radius": 0,
+        "range": 1,
+        "maxTargets": 1,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          9000,
+          15000,
+          24000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "effects": [
+          {
+            "effect": "damage",
+            "damageType": "physical",
+            "durationMs": 0,
+            "magnitude": [
+              9000,
+              15000,
+              24000
+            ]
+          },
+          {
+            "effect": "stun",
+            "damageType": "physical",
+            "durationMs": 1000,
+            "magnitude": [
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "tooltip_en": "Strikes the current target and stuns it briefly.",
+        "tooltip_id": "Memukul sasaran saat ini dan membuatnya pingsan sesaat."
+      }
+    },
+    {
+      "id": "wc_vn_earthbreaker",
+      "name": "Earthbreaker",
+      "display_name": "Earthbreaker",
+      "race": "orc",
+      "unit_class": "tank",
+      "cost": 3,
+      "body_family": "humanoid_large",
+      "role_tags": [
+        "frontline"
+      ],
+      "archetype": "displacement",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Massive orc with stone gauntlets and a single shoulder plate.",
+        "decision": "Stop a melee pile-up around him.",
+        "positioning": "Front row where enemies gather.",
+        "allies": "Area damage dealers behind him.",
+        "counterplay": "Do not surround him; use ranged units.",
+        "recognition": "Raised fists, then cracks spread to adjacent cells."
+      },
+      "stats": {
+        "health": 106500,
+        "attackDamage": 6200,
+        "attackRate": 700,
+        "range": 1,
+        "armor": 35,
+        "resistance": 15,
+        "movementRate": 1000,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 0,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_earthbreaker",
+        "name": "Ground Slam",
+        "mechanic": "standard",
+        "effect": "stun",
+        "selector": "adjacent_enemies",
+        "damageType": "physical",
+        "firstCastMs": 3500,
+        "cooldownMs": 9000,
+        "castMs": 400,
+        "recoveryMs": 300,
+        "durationMs": 1250,
+        "travelMs": 0,
+        "radius": 1,
+        "range": 1,
+        "maxTargets": 8,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          0,
+          0,
+          0
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Slams the ground and stuns all adjacent enemies.",
+        "tooltip_id": "Menghantam tanah dan membuat semua musuh di sebelahnya pingsan."
+      }
+    },
+    {
+      "id": "wc_vn_bearguard",
+      "name": "Bearguard",
+      "display_name": "Bearguard",
+      "race": "beastkin",
+      "unit_class": "fighter",
+      "cost": 2,
+      "body_family": "humanoid_large",
+      "role_tags": [
+        "frontline"
+      ],
+      "archetype": "isolated duels",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Round bear-headed bruiser with huge paws and a leather harness.",
+        "decision": "Punish enemies that cluster around him.",
+        "positioning": "Front row.",
+        "allies": "Fighters; Orc Shaman attack speed.",
+        "counterplay": "Fight him one at a time or from range.",
+        "recognition": "A wide claw arc sweeps around him."
+      },
+      "stats": {
+        "health": 73500,
+        "attackDamage": 7400,
+        "attackRate": 950,
+        "range": 1,
+        "armor": 15,
+        "resistance": 15,
+        "movementRate": 1200,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 0,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_bearguard",
+        "name": "Wide Swipe",
+        "mechanic": "standard",
+        "effect": "damage",
+        "selector": "adjacent_enemies",
+        "damageType": "physical",
+        "firstCastMs": 3000,
+        "cooldownMs": 7000,
+        "castMs": 400,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 0,
+        "radius": 1,
+        "range": 1,
+        "maxTargets": 8,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          11000,
+          18000,
+          29000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Hits every adjacent enemy with one swipe.",
+        "tooltip_id": "Mengenai semua musuh di sebelahnya dengan satu sapuan."
+      }
+    },
+    {
+      "id": "wc_vn_bomber",
+      "name": "Bomber",
+      "display_name": "Bomber",
+      "race": "goblin",
+      "unit_class": "engineer",
+      "cost": 1,
+      "body_family": "humanoid_small",
+      "role_tags": [
+        "damage"
+      ],
+      "archetype": "artillery",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Tiny green goblin with big ears carrying a round bomb as large as his torso.",
+        "decision": "Cheap early area damage.",
+        "positioning": "Second row.",
+        "allies": "Engineers; Goblins for gold.",
+        "counterplay": "Spread out; he is fragile.",
+        "recognition": "A lit fuse, an arc, and a small blast circle."
+      },
+      "stats": {
+        "health": 65000,
+        "attackDamage": 5500,
+        "attackRate": 700,
+        "range": 3,
+        "armor": 15,
+        "resistance": 15,
+        "movementRate": 900,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_bomber",
+        "name": "Lobbed Bomb",
+        "mechanic": "standard",
+        "effect": "damage",
+        "selector": "current_enemy_area",
+        "damageType": "magic",
+        "firstCastMs": 3000,
+        "cooldownMs": 7000,
+        "castMs": 400,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 250,
+        "radius": 1,
+        "range": 3,
+        "maxTargets": 9,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          9000,
+          15000,
+          24000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Throws a bomb that damages a small area around the target.",
+        "tooltip_id": "Melempar bom yang melukai area kecil di sekitar sasaran."
+      }
+    },
+    {
+      "id": "wc_vn_ember_wisp",
+      "name": "Ember Wisp",
+      "display_name": "Ember Wisp",
+      "race": "elemental",
+      "unit_class": "priest",
+      "cost": 1,
+      "body_family": "elemental_floating",
+      "role_tags": [
+        "support"
+      ],
+      "archetype": "protected carries",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Small floating flame spirit with two round eyes and tiny arms.",
+        "decision": "Cheap early protection.",
+        "positioning": "Behind the front line.",
+        "allies": "Priests; Elementals.",
+        "counterplay": "Burst through the shield.",
+        "recognition": "A warm bubble surrounds the shielded ally."
+      },
+      "stats": {
+        "health": 65000,
+        "attackDamage": 4200,
+        "attackRate": 650,
+        "range": 3,
+        "armor": 10,
+        "resistance": 15,
+        "movementRate": 800,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_ember_wisp",
+        "name": "Warm Ward",
+        "mechanic": "standard",
+        "effect": "shield",
+        "selector": "lowest_health_ally",
+        "damageType": "magic",
+        "firstCastMs": 2500,
+        "cooldownMs": 7000,
+        "castMs": 350,
+        "recoveryMs": 300,
+        "durationMs": 3000,
+        "travelMs": 0,
+        "radius": 0,
+        "range": 8,
+        "maxTargets": 1,
+        "maxDash": 0,
+        "allowSelf": true,
+        "magnitude": [
+          12000,
+          20000,
+          32000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Places a small shield on the ally with the lowest health.",
+        "tooltip_id": "Memberi perisai kecil pada rekan dengan nyawa paling rendah."
+      }
+    },
+    {
+      "id": "wc_vn_blood_drummer",
+      "name": "Blood Drummer",
+      "display_name": "Blood Drummer",
+      "race": "orc",
+      "unit_class": "shaman",
+      "cost": 2,
+      "body_family": "humanoid_large",
+      "role_tags": [
+        "support"
+      ],
+      "archetype": "momentum rush",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Heavy orc with painted arms beating a large waist drum.",
+        "decision": "Speed up a melee group at the right moment.",
+        "positioning": "Just behind the front line, next to Fighters.",
+        "allies": "Fighters and Beastkin.",
+        "counterplay": "Kill the buffed group's back support; stun during the buff.",
+        "recognition": "Red rings pulse out from the drum."
+      },
+      "stats": {
+        "health": 68000,
+        "attackDamage": 5200,
+        "attackRate": 700,
+        "range": 3,
+        "armor": 10,
+        "resistance": 15,
+        "movementRate": 900,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_blood_drummer",
+        "name": "War Drum",
+        "mechanic": "standard",
+        "effect": "stat_modifier",
+        "selector": "adjacent_allies",
+        "damageType": "physical",
+        "firstCastMs": 2500,
+        "cooldownMs": 9000,
+        "castMs": 350,
+        "recoveryMs": 300,
+        "durationMs": 4000,
+        "travelMs": 0,
+        "radius": 1,
+        "range": 1,
+        "maxTargets": 9,
+        "maxDash": 0,
+        "allowSelf": true,
+        "magnitude": [
+          2500,
+          4000,
+          6000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Raises the attack speed of nearby allies for a few seconds.",
+        "tooltip_id": "Menaikkan kecepatan serang rekan di sekitarnya selama beberapa detik."
       }
     }
   ],
@@ -1226,320 +1800,477 @@
     {
       "id": "wc_vn_r_heavy_bloom",
       "name": "Heavy Bloom",
-      "description": "Greater ability impact after a longer visible commitment.",
-      "compatible_mechanics": [
-        "momentum_charge",
-        "screened_strike",
-        "crossing_beams",
-        "tidal_push"
-      ],
+      "description": "+30% skill power (skill damage, healing and shields).",
+      "compatible_mechanics": [],
       "modifiers": {
-        "magnitudeBp": 12000,
+        "magnitudeBp": 10000,
         "rangeDelta": 0,
         "radiusDelta": 0,
         "durationBp": 10000,
-        "castBp": 15000,
-        "cooldownBp": 10000
+        "castBp": 10000,
+        "cooldownBp": 10000,
+        "healthBp": 0,
+        "attackDamageBp": 0,
+        "attackRateBp": 0,
+        "skillPowerBp": 3000,
+        "allDamageBp": 0,
+        "armorFlat": 0,
+        "resistanceFlat": 0
       },
       "runtime_enabled": true,
       "status": "laboratory_candidate",
       "acceptance": [
-        "At least two compatible hero mechanics.",
-        "Effective ability uses canonical modifiers exactly once.",
-        "Benefit and drawback both affect a compatible formation.",
+        "Fits every hero.",
+        "Stat benefit is applied exactly once per combat.",
         "Selling returns relic; merge survivor keeps own and returns extras."
       ]
     },
     {
       "id": "wc_vn_r_quick_wick",
       "name": "Quick Wick",
-      "description": "More frequent abilities with weaker individual effects.",
-      "compatible_mechanics": [
-        "momentum_charge",
-        "screened_strike",
-        "crossing_beams",
-        "tidal_push",
-        "stationary_grove"
-      ],
+      "description": "Skills come 20% sooner and +10% attack speed.",
+      "compatible_mechanics": [],
       "modifiers": {
-        "magnitudeBp": 8500,
+        "magnitudeBp": 10000,
         "rangeDelta": 0,
         "radiusDelta": 0,
         "durationBp": 10000,
         "castBp": 10000,
-        "cooldownBp": 8000
+        "cooldownBp": 8000,
+        "healthBp": 0,
+        "attackDamageBp": 0,
+        "attackRateBp": 1000,
+        "skillPowerBp": 0,
+        "allDamageBp": 0,
+        "armorFlat": 0,
+        "resistanceFlat": 0
       },
       "runtime_enabled": true,
       "status": "laboratory_candidate",
       "acceptance": [
-        "At least two compatible hero mechanics.",
-        "Effective ability uses canonical modifiers exactly once.",
-        "Benefit and drawback both affect a compatible formation.",
+        "Fits every hero.",
+        "Stat benefit is applied exactly once per combat.",
         "Selling returns relic; merge survivor keeps own and returns extras."
       ]
     },
     {
       "id": "wc_vn_r_long_lens",
       "name": "Long Lens",
-      "description": "One extra cell of reach, with lower impact.",
-      "compatible_mechanics": [
-        "screened_strike",
-        "crossing_beams",
-        "tidal_push"
-      ],
+      "description": "+25% attack damage.",
+      "compatible_mechanics": [],
       "modifiers": {
-        "magnitudeBp": 8500,
-        "rangeDelta": 1,
+        "magnitudeBp": 10000,
+        "rangeDelta": 0,
         "radiusDelta": 0,
         "durationBp": 10000,
         "castBp": 10000,
-        "cooldownBp": 10000
+        "cooldownBp": 10000,
+        "healthBp": 0,
+        "attackDamageBp": 2500,
+        "attackRateBp": 0,
+        "skillPowerBp": 0,
+        "allDamageBp": 0,
+        "armorFlat": 0,
+        "resistanceFlat": 0
       },
       "runtime_enabled": true,
       "status": "laboratory_candidate",
       "acceptance": [
-        "At least two compatible hero mechanics.",
-        "Effective ability uses canonical modifiers exactly once.",
-        "Benefit and drawback both affect a compatible formation.",
+        "Fits every hero.",
+        "Stat benefit is applied exactly once per combat.",
         "Selling returns relic; merge survivor keeps own and returns extras."
       ]
     },
     {
       "id": "wc_vn_r_broad_canopy",
       "name": "Broad Canopy",
-      "description": "A wider supported area with less concentrated potency.",
-      "compatible_mechanics": [
-        "stationary_grove",
-        "crossing_beams",
-        "directional_guard"
-      ],
+      "description": "+25% maximum health.",
+      "compatible_mechanics": [],
       "modifiers": {
-        "magnitudeBp": 7500,
+        "magnitudeBp": 10000,
         "rangeDelta": 0,
-        "radiusDelta": 1,
+        "radiusDelta": 0,
         "durationBp": 10000,
         "castBp": 10000,
-        "cooldownBp": 10000
+        "cooldownBp": 10000,
+        "healthBp": 2500,
+        "attackDamageBp": 0,
+        "attackRateBp": 0,
+        "skillPowerBp": 0,
+        "allDamageBp": 0,
+        "armorFlat": 0,
+        "resistanceFlat": 0
       },
       "runtime_enabled": true,
       "status": "laboratory_candidate",
       "acceptance": [
-        "At least two compatible hero mechanics.",
-        "Effective ability uses canonical modifiers exactly once.",
-        "Benefit and drawback both affect a compatible formation.",
+        "Fits every hero.",
+        "Stat benefit is applied exactly once per combat.",
         "Selling returns relic; merge survivor keeps own and returns extras."
       ]
     },
     {
       "id": "wc_vn_r_close_focus",
       "name": "Close Focus",
-      "description": "A stronger commitment restricted to a shorter lane.",
-      "compatible_mechanics": [
-        "screened_strike",
-        "crossing_beams",
-        "tidal_push"
-      ],
+      "description": "+25% attack speed.",
+      "compatible_mechanics": [],
       "modifiers": {
-        "magnitudeBp": 12000,
-        "rangeDelta": -1,
+        "magnitudeBp": 10000,
+        "rangeDelta": 0,
         "radiusDelta": 0,
         "durationBp": 10000,
         "castBp": 10000,
-        "cooldownBp": 10000
+        "cooldownBp": 10000,
+        "healthBp": 0,
+        "attackDamageBp": 0,
+        "attackRateBp": 2500,
+        "skillPowerBp": 0,
+        "allDamageBp": 0,
+        "armorFlat": 0,
+        "resistanceFlat": 0
       },
       "runtime_enabled": true,
       "status": "laboratory_candidate",
       "acceptance": [
-        "At least two compatible hero mechanics.",
-        "Effective ability uses canonical modifiers exactly once.",
-        "Benefit and drawback both affect a compatible formation.",
+        "Fits every hero.",
+        "Stat benefit is applied exactly once per combat.",
         "Selling returns relic; merge survivor keeps own and returns extras."
       ]
     },
     {
       "id": "wc_vn_r_tight_choir",
       "name": "Tight Choir",
-      "description": "Concentrate power into a smaller area.",
-      "compatible_mechanics": [
-        "stationary_grove",
-        "crossing_beams"
-      ],
+      "description": "+25 armour.",
+      "compatible_mechanics": [],
       "modifiers": {
-        "magnitudeBp": 12500,
+        "magnitudeBp": 10000,
         "rangeDelta": 0,
-        "radiusDelta": -1,
+        "radiusDelta": 0,
         "durationBp": 10000,
         "castBp": 10000,
-        "cooldownBp": 10000
+        "cooldownBp": 10000,
+        "healthBp": 0,
+        "attackDamageBp": 0,
+        "attackRateBp": 0,
+        "skillPowerBp": 0,
+        "allDamageBp": 0,
+        "armorFlat": 25,
+        "resistanceFlat": 0
       },
       "runtime_enabled": true,
       "status": "laboratory_candidate",
       "acceptance": [
-        "At least two compatible hero mechanics.",
-        "Effective ability uses canonical modifiers exactly once.",
-        "Benefit and drawback both affect a compatible formation.",
+        "Fits every hero.",
+        "Stat benefit is applied exactly once per combat.",
         "Selling returns relic; merge survivor keeps own and returns extras."
       ]
     },
     {
       "id": "wc_vn_r_silk_trigger",
       "name": "Silk Trigger",
-      "description": "Release much sooner with reduced damage.",
-      "compatible_mechanics": [
-        "momentum_charge",
-        "screened_strike",
-        "crossing_beams",
-        "tidal_push"
-      ],
+      "description": "+12% attack speed and +12% attack damage.",
+      "compatible_mechanics": [],
       "modifiers": {
-        "magnitudeBp": 8000,
+        "magnitudeBp": 10000,
         "rangeDelta": 0,
         "radiusDelta": 0,
         "durationBp": 10000,
-        "castBp": 5000,
-        "cooldownBp": 10000
+        "castBp": 10000,
+        "cooldownBp": 10000,
+        "healthBp": 0,
+        "attackDamageBp": 1200,
+        "attackRateBp": 1200,
+        "skillPowerBp": 0,
+        "allDamageBp": 0,
+        "armorFlat": 0,
+        "resistanceFlat": 0
       },
       "runtime_enabled": true,
       "status": "laboratory_candidate",
       "acceptance": [
-        "At least two compatible hero mechanics.",
-        "Effective ability uses canonical modifiers exactly once.",
-        "Benefit and drawback both affect a compatible formation.",
+        "Fits every hero.",
+        "Stat benefit is applied exactly once per combat.",
         "Selling returns relic; merge survivor keeps own and returns extras."
       ]
     },
     {
       "id": "wc_vn_r_patient_lantern",
       "name": "Patient Lantern",
-      "description": "Stronger effects separated by longer gaps.",
-      "compatible_mechanics": [
-        "momentum_charge",
-        "screened_strike",
-        "crossing_beams",
-        "tidal_push",
-        "stationary_grove"
-      ],
+      "description": "+25 magic resistance.",
+      "compatible_mechanics": [],
       "modifiers": {
-        "magnitudeBp": 12500,
+        "magnitudeBp": 10000,
         "rangeDelta": 0,
         "radiusDelta": 0,
         "durationBp": 10000,
         "castBp": 10000,
-        "cooldownBp": 13000
+        "cooldownBp": 10000,
+        "healthBp": 0,
+        "attackDamageBp": 0,
+        "attackRateBp": 0,
+        "skillPowerBp": 0,
+        "allDamageBp": 0,
+        "armorFlat": 0,
+        "resistanceFlat": 25
       },
       "runtime_enabled": true,
       "status": "laboratory_candidate",
       "acceptance": [
-        "At least two compatible hero mechanics.",
-        "Effective ability uses canonical modifiers exactly once.",
-        "Benefit and drawback both affect a compatible formation.",
+        "Fits every hero.",
+        "Stat benefit is applied exactly once per combat.",
         "Selling returns relic; merge survivor keeps own and returns extras."
       ]
     },
     {
       "id": "wc_vn_r_far_hourglass",
       "name": "Far Hourglass",
-      "description": "Reach farther but wait longer between casts.",
-      "compatible_mechanics": [
-        "screened_strike",
-        "crossing_beams",
-        "tidal_push"
-      ],
+      "description": "+15% to all damage dealt.",
+      "compatible_mechanics": [],
       "modifiers": {
         "magnitudeBp": 10000,
-        "rangeDelta": 1,
+        "rangeDelta": 0,
         "radiusDelta": 0,
         "durationBp": 10000,
         "castBp": 10000,
-        "cooldownBp": 13000
+        "cooldownBp": 10000,
+        "healthBp": 0,
+        "attackDamageBp": 0,
+        "attackRateBp": 0,
+        "skillPowerBp": 0,
+        "allDamageBp": 1500,
+        "armorFlat": 0,
+        "resistanceFlat": 0
       },
       "runtime_enabled": true,
       "status": "laboratory_candidate",
       "acceptance": [
-        "At least two compatible hero mechanics.",
-        "Effective ability uses canonical modifiers exactly once.",
-        "Benefit and drawback both affect a compatible formation.",
+        "Fits every hero.",
+        "Stat benefit is applied exactly once per combat.",
         "Selling returns relic; merge survivor keeps own and returns extras."
       ]
     },
     {
       "id": "wc_vn_r_wide_hourglass",
       "name": "Wide Hourglass",
-      "description": "Cover a wider area with less frequent activations.",
-      "compatible_mechanics": [
-        "stationary_grove",
-        "crossing_beams"
-      ],
+      "description": "+12% maximum health and +12 armour.",
+      "compatible_mechanics": [],
       "modifiers": {
         "magnitudeBp": 10000,
         "rangeDelta": 0,
-        "radiusDelta": 1,
+        "radiusDelta": 0,
         "durationBp": 10000,
         "castBp": 10000,
-        "cooldownBp": 14000
+        "cooldownBp": 10000,
+        "healthBp": 1200,
+        "attackDamageBp": 0,
+        "attackRateBp": 0,
+        "skillPowerBp": 0,
+        "allDamageBp": 0,
+        "armorFlat": 12,
+        "resistanceFlat": 0
       },
       "runtime_enabled": true,
       "status": "laboratory_candidate",
       "acceptance": [
-        "At least two compatible hero mechanics.",
-        "Effective ability uses canonical modifiers exactly once.",
-        "Benefit and drawback both affect a compatible formation.",
+        "Fits every hero.",
+        "Stat benefit is applied exactly once per combat.",
         "Selling returns relic; merge survivor keeps own and returns extras."
       ]
     },
     {
       "id": "wc_vn_r_narrow_metronome",
       "name": "Narrow Metronome",
-      "description": "Repeat a smaller area effect more frequently.",
-      "compatible_mechanics": [
-        "stationary_grove",
-        "crossing_beams"
-      ],
+      "description": "+15% attack speed and +15% skill power.",
+      "compatible_mechanics": [],
       "modifiers": {
         "magnitudeBp": 10000,
         "rangeDelta": 0,
-        "radiusDelta": -1,
+        "radiusDelta": 0,
         "durationBp": 10000,
         "castBp": 10000,
-        "cooldownBp": 7500
+        "cooldownBp": 10000,
+        "healthBp": 0,
+        "attackDamageBp": 0,
+        "attackRateBp": 1500,
+        "skillPowerBp": 1500,
+        "allDamageBp": 0,
+        "armorFlat": 0,
+        "resistanceFlat": 0
       },
       "runtime_enabled": true,
       "status": "laboratory_candidate",
       "acceptance": [
-        "At least two compatible hero mechanics.",
-        "Effective ability uses canonical modifiers exactly once.",
-        "Benefit and drawback both affect a compatible formation.",
+        "Fits every hero.",
+        "Stat benefit is applied exactly once per combat.",
         "Selling returns relic; merge survivor keeps own and returns extras."
       ]
     },
     {
       "id": "wc_vn_r_urgent_shard",
       "name": "Urgent Shard",
-      "description": "Commit faster now at the cost of a longer following cooldown.",
-      "compatible_mechanics": [
-        "momentum_charge",
-        "screened_strike",
-        "crossing_beams",
-        "tidal_push"
-      ],
+      "description": "+15% attack damage and +15% skill power.",
+      "compatible_mechanics": [],
       "modifiers": {
         "magnitudeBp": 10000,
         "rangeDelta": 0,
         "radiusDelta": 0,
         "durationBp": 10000,
-        "castBp": 7000,
-        "cooldownBp": 12500
+        "castBp": 10000,
+        "cooldownBp": 10000,
+        "healthBp": 0,
+        "attackDamageBp": 1500,
+        "attackRateBp": 0,
+        "skillPowerBp": 1500,
+        "allDamageBp": 0,
+        "armorFlat": 0,
+        "resistanceFlat": 0
       },
       "runtime_enabled": true,
       "status": "laboratory_candidate",
       "acceptance": [
-        "At least two compatible hero mechanics.",
-        "Effective ability uses canonical modifiers exactly once.",
-        "Benefit and drawback both affect a compatible formation.",
+        "Fits every hero.",
+        "Stat benefit is applied exactly once per combat.",
         "Selling returns relic; merge survivor keeps own and returns extras."
       ]
     }
   ],
   "traits": [],
-  "status": "gameplay_laboratory_not_release"
+  "status": "gameplay_laboratory_not_release",
+  "roster_recipe": {
+    "id": "roster_v1",
+    "status": "owner_directed_default_rules",
+    "mana": "mana100_hit20_v1",
+    "mana_heroes": [
+      "wc_vn_hookjaw",
+      "wc_vn_prism_scholar",
+      "wc_vn_tide_caller",
+      "wc_vn_soul_jailer",
+      "wc_vn_chapel_healer",
+      "wc_vn_hammerer",
+      "wc_vn_earthbreaker",
+      "wc_vn_bearguard",
+      "wc_vn_bomber",
+      "wc_vn_ember_wisp",
+      "wc_vn_blood_drummer"
+    ],
+    "passive_heroes": [
+      "wc_vn_shieldbearer",
+      "wc_vn_boar_rusher",
+      "wc_vn_grove_druid"
+    ],
+    "traits": [
+      {
+        "stat": "starting_mana_flat",
+        "scope": "team",
+        "values": [
+          1000,
+          2000
+        ],
+        "id": "human",
+        "kind": "race",
+        "name": "Human",
+        "thresholds": [
+          2,
+          4
+        ],
+        "behavior": "All allies start combat with +10 / +20 mana."
+      },
+      {
+        "stat": "max_health_bonus_bp",
+        "scope": "members",
+        "values": [
+          2000,
+          4000
+        ],
+        "id": "orc",
+        "kind": "race",
+        "name": "Orc",
+        "thresholds": [
+          2,
+          4
+        ],
+        "behavior": "Orcs gain +20% / +40% maximum health."
+      },
+      {
+        "stat": "attack_rate_bonus_bp",
+        "scope": "team",
+        "values": [
+          1000,
+          2000
+        ],
+        "id": "beastkin",
+        "kind": "race",
+        "name": "Beastkin",
+        "thresholds": [
+          2,
+          4
+        ],
+        "behavior": "All allies gain +10% / +20% attack speed."
+      },
+      {
+        "stat": "starting_mana_flat",
+        "scope": "members",
+        "values": [
+          5000,
+          10000
+        ],
+        "id": "dragonkin",
+        "kind": "race",
+        "name": "Dragonkin",
+        "thresholds": [
+          2,
+          4
+        ],
+        "behavior": "Dragonkin start combat with 50% / 100% mana."
+      },
+      {
+        "stat": "physical_armor_flat",
+        "scope": "members",
+        "values": [
+          20,
+          40
+        ],
+        "id": "tank",
+        "kind": "class",
+        "name": "Tank",
+        "thresholds": [
+          2,
+          4
+        ],
+        "behavior": "Tanks gain +20 / +40 armour."
+      },
+      {
+        "stat": "basic_damage_bonus_bp",
+        "scope": "members",
+        "values": [
+          2000,
+          4000
+        ],
+        "id": "fighter",
+        "kind": "class",
+        "name": "Fighter",
+        "thresholds": [
+          2,
+          4
+        ],
+        "behavior": "Fighters gain +20% / +40% attack damage."
+      },
+      {
+        "stat": "ability_damage_bonus_bp",
+        "scope": "team",
+        "values": [
+          2000,
+          4000
+        ],
+        "id": "mage",
+        "kind": "class",
+        "name": "Mage",
+        "thresholds": [
+          2,
+          4
+        ],
+        "behavior": "All allies deal 20% / 40% more skill damage."
+      }
+    ]
+  }
 }

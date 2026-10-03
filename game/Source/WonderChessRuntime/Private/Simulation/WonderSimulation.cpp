@@ -206,7 +206,8 @@ const NeutralWave *Catalog::Wave(int round) const
 }
 bool RelicCompatible(const RelicDef &relic, AbilityMechanic mechanic)
 {
-    return std::find(relic.compatibleMechanics.begin(), relic.compatibleMechanics.end(), mechanic) !=
+    return relic.compatibleMechanics.empty() ||
+           std::find(relic.compatibleMechanics.begin(), relic.compatibleMechanics.end(), mechanic) !=
            relic.compatibleMechanics.end();
 }
 AbilityDef EffectiveAbility(const Catalog &catalog, const UnitDef &unit, int relic)
@@ -271,8 +272,9 @@ std::string Catalog::Validate() const
         const auto &m = a.mana;
         if (m.maximum < 0 || m.maximum > 10000 || m.starting < 0 || m.starting > m.maximum ||
             (m.maximum > 0 && (!vnext || !a.enabled ||
-             (a.mechanic != AbilityMechanic::ScreenedStrike && a.mechanic != AbilityMechanic::CrossingBeams &&
-              a.mechanic != AbilityMechanic::TidalPush) || m.basicAttackGain <= 0 || m.basicAttackGain > 10000 ||
+             a.mechanic == AbilityMechanic::DirectionalGuard || a.mechanic == AbilityMechanic::MomentumCharge ||
+             a.mechanic == AbilityMechanic::StationaryGrove ||
+             m.basicAttackGain <= 0 || m.basicAttackGain > 10000 ||
              m.damageGainAtFullHealth < 0 || m.damageGainAtFullHealth > 100000 || m.damageEventCap <= 0 ||
              m.damageEventCap > m.maximum || m.damageWindowCap < m.damageEventCap || m.damageWindowCap > m.maximum ||
              m.damageWindowMs < r.tickMs || m.damageWindowMs > 10000 || m.damageWindowMs % r.tickMs != 0 ||
@@ -281,7 +283,7 @@ std::string Catalog::Validate() const
             a.firstCastMs < 0 || a.recoveryMs < 0 || a.travelMs < 0 || a.durationMs < 0)) ||
             u.attackWindupMs <= 0)
             return "Invalid ability timing: " + u.id;
-        if (a.mechanic < AbilityMechanic::Standard || a.mechanic > AbilityMechanic::TidalPush ||
+        if (a.mechanic < AbilityMechanic::Standard || a.mechanic > AbilityMechanic::CocoonProjectile ||
             (!vnext && a.mechanic != AbilityMechanic::Standard)) return "Unsupported ability mechanic: " + u.id;
         if (a.mechanic != AbilityMechanic::Standard)
         {
@@ -302,6 +304,10 @@ std::string Catalog::Validate() const
                 return "Invalid crossing beam delay: " + u.id;
             if (a.mechanic == AbilityMechanic::TidalPush &&
                 (a.displacementCells < 1 || a.displacementCells > 2)) return "Invalid displacement: " + u.id;
+            if (a.mechanic == AbilityMechanic::CocoonProjectile &&
+                (a.effect != Effect::Stun || a.maxTargets != 1 || a.radius != 0 ||
+                 a.durationMs < r.tickMs || a.durationMs > 10000 || a.travelMs < r.tickMs ||
+                 a.selector != Selector::CurrentEnemy)) return "Invalid cocoon projectile: " + u.id;
         }
         if (Ticks(u.attackWindupMs, r) >= AttackInterval(r.maxAttackRate, 0, r))
             return "Attack windup leaves no recovery at maximum rate: " + u.id;
@@ -329,12 +335,13 @@ std::string Catalog::Validate() const
     }
     const std::set<std::string> supportedStats{"max_health_bonus_bp", "attack_rate_bonus_bp",
         "physical_armor_flat", "magic_resistance_flat", "all_damage_bonus_bp", "basic_damage_bonus_bp",
-        "ability_damage_bonus_bp", "support_power_bonus_bp", "movement_bonus_bp"};
+        "ability_damage_bonus_bp", "support_power_bonus_bp", "movement_bonus_bp", "starting_mana_flat"};
     std::set<std::string> traitIds;
     for (const auto &trait : traits)
     {
         if (!traitIds.insert(trait.id).second || !supportedStats.count(trait.stat) ||
-            (!vnext && (trait.threshold != 2 || trait.threshold4 != 4 || !trait.tiers.empty())) ||
+            (!vnext && (trait.threshold != 2 || trait.threshold4 != 4 || !trait.tiers.empty() || trait.team ||
+                        trait.stat == "starting_mana_flat")) ||
             trait.value < 0 || trait.value4 < 0)
             return "Invalid trait definition";
         int previous = 0;
@@ -349,13 +356,18 @@ std::string Catalog::Validate() const
     std::set<std::string> relicIds;
     for (const auto &relic : relics)
     {
-        if (relic.id.empty() || !relicIds.insert(relic.id).second || relic.compatibleMechanics.empty() ||
+        for (int stat : {relic.healthBp, relic.attackDamageBp, relic.attackRateBp, relic.skillPowerBp,
+                         relic.allDamageBp})
+            if (stat < 0 || stat > 5000) return "Invalid relic stat bonus";
+        if (relic.armorFlat < 0 || relic.armorFlat > 100 || relic.resistanceFlat < 0 || relic.resistanceFlat > 100)
+            return "Invalid relic stat bonus";
+        if (relic.id.empty() || !relicIds.insert(relic.id).second ||
             relic.magnitudeBp < 5000 || relic.magnitudeBp > 15000 || std::abs(relic.rangeDelta) > 2 ||
             std::abs(relic.radiusDelta) > 2 || relic.durationBp < 5000 || relic.durationBp > 20000 ||
             relic.castBp < 5000 || relic.castBp > 20000 || relic.cooldownBp < 5000 || relic.cooldownBp > 20000)
             return "Invalid relic definition";
         for (auto mechanic : relic.compatibleMechanics)
-            if (mechanic <= AbilityMechanic::Standard || mechanic > AbilityMechanic::TidalPush)
+            if (mechanic <= AbilityMechanic::Standard || mechanic > AbilityMechanic::CocoonProjectile)
                 return "Unsupported relic compatibility";
     }
     if (vnext && r.maximumRelics != 3) return "VNext requires three relic slots";
@@ -458,9 +470,10 @@ Combat::Combat(const Catalog &c, const std::vector<OwnedUnit> &a, const std::vec
                 u.ability = EffectiveAbility(c, d, o.relic);
                 u.armor = d.armor;
                 u.resistance = d.resistance;
-                int healthBonus = 0;
+                int healthBonus = 0, startingMana = 0;
                 for (const auto &t : c.traits)
-                    if (!o.neutral && (t.id == d.race || t.id == d.unitClass) && TraitValue(t, int(counts[t.id].size())) != 0)
+                    if (!o.neutral && (t.team || t.id == d.race || t.id == d.unitClass) &&
+                        TraitValue(t, int(counts[t.id].size())) != 0)
                     {
                         const int value = TraitValue(t, int(counts[t.id].size()));
                         if (t.stat == "max_health_bonus_bp")
@@ -481,7 +494,23 @@ Combat::Combat(const Catalog &c, const std::vector<OwnedUnit> &a, const std::vec
                             u.supportBonus += value;
                         else if (t.stat == "movement_bonus_bp")
                             u.movementBonus += value;
+                        else if (t.stat == "starting_mana_flat")
+                            startingMana += value;
                     }
+                if (!o.neutral && o.relic >= 0)
+                {
+                    const auto &item = c.relics[o.relic];
+                    healthBonus += item.healthBp;
+                    u.basicBonus += item.attackDamageBp;
+                    u.rateBonus += item.attackRateBp;
+                    u.abilityBonus += item.skillPowerBp;
+                    u.supportBonus += item.skillPowerBp;
+                    u.allBonus += item.allDamageBp;
+                    u.armor += item.armorFlat;
+                    u.resistance += item.resistanceFlat;
+                }
+                // Keep the bonus in the unit's own contract so the mana ledger still balances.
+                u.ability.mana.starting = std::min(u.ability.mana.maximum, u.ability.mana.starting + startingMana);
                 u.health = u.maxHealth = StarValue(HalfUp(d.health * o.hpScaleBp, 10000), o.star, healthBonus, c.rules);
                 u.basicDamage = StarValue(HalfUp(d.attackDamage * o.damageScaleBp, 10000), o.star, 0, c.rules);
                 u.cooldownTick = Ticks(u.ability.firstCastMs, c.rules);
@@ -731,9 +760,9 @@ const char *MechanicReasonName(MechanicReason reason)
     const char *names[] = {"ready", "no_living_target", "target_out_of_range", "dash_too_long",
         "no_momentum", "path_occupied", "corner_occupied", "not_established", "no_injured_ally",
         "target_moved", "source_moved", "source_stunned", "source_defeated", "tether_invalidated",
-        "combat_ended", "target_defeated", "resolved"};
+        "combat_ended", "target_defeated", "resolved", "target_already_cocooned"};
     const int index = int(reason);
-    return index >= 0 && index < 17 ? names[index] : "unknown";
+    return index >= 0 && index < 18 ? names[index] : "unknown";
 }
 bool Combat::EnableDiagnostics()
 {
@@ -747,7 +776,8 @@ void Combat::TraceMechanic(int source, MechanicPhase phase, MechanicReason reaso
     if (!diagnosticsEnabled_) return;
     const auto &u = units_[source];
     const auto mechanic = packet ? packet->mechanic : u.ability.mechanic;
-    if (mechanic != AbilityMechanic::MomentumCharge && mechanic != AbilityMechanic::StationaryGrove) return;
+    if (mechanic != AbilityMechanic::MomentumCharge && mechanic != AbilityMechanic::StationaryGrove &&
+        mechanic != AbilityMechanic::CocoonProjectile) return;
     MechanicTrace trace;
     trace.tick = tick_; trace.source = u.id; trace.action = packet ? packet->action :
         phase == MechanicPhase::Attempt ? 0 : u.actionId;
@@ -924,6 +954,7 @@ bool Combat::CommitMechanic(int source, const AbilityDef &a)
         {
             const auto &u = units_[i];
             if (!Alive(u) || u.side == s.side || Distance(s.cell, u.cell) > a.range) continue;
+            if (a.mechanic == AbilityMechanic::CocoonProjectile && u.cocoonExpiry > tick_) continue;
             if (target < 0 || std::make_tuple(a.mechanic == AbilityMechanic::ScreenedStrike ?
                     -Distance(s.cell, u.cell) : Distance(s.cell, u.cell), u.initiative, u.id) <
                 std::make_tuple(a.mechanic == AbilityMechanic::ScreenedStrike ?
@@ -993,7 +1024,21 @@ void Combat::ReleaseMechanic(int source, const AbilityDef &a)
     packet.magnitude = a.magnitude[s.star - 1]; packet.radius = a.radius;
     packet.bonus = s.abilityBonus + s.allBonus; packet.maxTargets = a.maxTargets;
     packet.duration = Ticks(a.durationMs, rules);
-    if (a.mechanic == AbilityMechanic::MomentumCharge)
+    if (a.mechanic == AbilityMechanic::CocoonProjectile)
+    {
+        if (s.target < 0 || !Alive(units_[s.target]))
+        { TraceMechanic(source, MechanicPhase::Cancelled, MechanicReason::TargetDefeated); return; }
+        if (Distance(s.cell, units_[s.target].cell) > a.range)
+        { TraceMechanic(source, MechanicPhase::Cancelled, MechanicReason::TargetOutOfRange); return; }
+        if (units_[s.target].cocoonExpiry > tick_)
+        { TraceMechanic(source, MechanicPhase::Cancelled, MechanicReason::TargetAlreadyCocooned); return; }
+        // Target is locked at windup. Once released, the packet tracks that living
+        // target even if the caster is defeated; it never jumps to another enemy.
+        packet.target = s.target;
+        TraceMechanic(source, MechanicPhase::Released, MechanicReason::Ready);
+        packets_.push_back(packet);
+    }
+    else if (a.mechanic == AbilityMechanic::MomentumCharge)
     {
         Cell landing;
         MechanicReason reason;
@@ -1114,7 +1159,13 @@ std::vector<VisualAction> Combat::VisualActions() const
             packet.maxTargets = ability.maxTargets; packet.effect = ability.effect;
             visual.center = source.abilityAim;
             visual.fixedArea = true;
-            if (ability.mechanic == AbilityMechanic::MomentumCharge)
+            if (ability.mechanic == AbilityMechanic::CocoonProjectile)
+            {
+                visual.fixedArea = false;
+                if (source.target >= 0 && Alive(units_[source.target]))
+                { visual.target = units_[source.target].id; visual.recipients.push_back(visual.target); }
+            }
+            else if (ability.mechanic == AbilityMechanic::MomentumCharge)
             {
                 visual.center = source.destination.column >= 0 ? source.destination : source.cell;
                 visual.cells = LineCells(source.cell, visual.center);
@@ -1330,6 +1381,7 @@ void Combat::Apply(const Packet &p, int target)
             t.manaOnDeath = t.mana;
             t.mana = 0;
             t.state = ActionState::Defeated;
+            t.cocoonExpiry = 0; t.cocoonSource = 0;
             CancelReservation(target);
         }
         break;
@@ -1352,6 +1404,13 @@ void Combat::Apply(const Packet &p, int target)
     case Effect::Stun:
         if (p.duration > 0)
         {
+            if (p.mechanic == AbilityMechanic::CocoonProjectile)
+            {
+                // Simultaneously released webs cannot refresh or stack a cocoon.
+                if (t.cocoonExpiry > tick_) break;
+                t.cocoonExpiry = tick_ + p.duration;
+                t.cocoonSource = e.source;
+            }
             if (t.state == ActionState::CastWindup)
                 TraceMechanic(target, MechanicPhase::Cancelled, MechanicReason::SourceStunned);
             t.stunExpiry = std::max(t.stunExpiry, tick_ + p.duration);
@@ -1478,6 +1537,7 @@ void Combat::Tick()
         auto &u = units_[i];
         if (u.shieldExpiry <= tick_)
             u.shield = 0;
+        if (u.cocoonExpiry <= tick_) { u.cocoonExpiry = 0; u.cocoonSource = 0; }
         u.modifiers.erase(std::remove_if(u.modifiers.begin(), u.modifiers.end(),
                                          [&](const Modifier &m) { return m.expiry <= tick_; }),
                           u.modifiers.end());
@@ -1549,7 +1609,13 @@ void Combat::Tick()
         else if (p.target >= 0)
         {
             const bool alive = Alive(units_[p.target]);
+            const bool alreadyCocooned = units_[p.target].cocoonExpiry > tick_;
             Apply(p, p.target);
+            if (p.mechanic == AbilityMechanic::CocoonProjectile)
+                TraceMechanic(p.source, MechanicPhase::Impact, !alive ? MechanicReason::TargetDefeated :
+                    alreadyCocooned ? MechanicReason::TargetAlreadyCocooned : MechanicReason::Resolved,
+                    &p, alive && !alreadyCocooned ? 1 : 0, 0, 0,
+                    alive && !alreadyCocooned ? events_.back().resolved : 0);
             if (p.mechanic == AbilityMechanic::MomentumCharge)
                 TraceMechanic(p.source, MechanicPhase::Impact, alive ? MechanicReason::Resolved : MechanicReason::TargetDefeated,
                     &p, alive ? 1 : 0, 0, alive ? events_.back().requested : 0, alive ? events_.back().healthLoss : 0);

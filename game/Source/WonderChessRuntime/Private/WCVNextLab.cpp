@@ -1,4 +1,8 @@
 #include "WCVNextLab.h"
+#include "WCBellbackPresentation.h"
+#include "WCSilkmotherPresentation.h"
+#include "WCCragstoatPresentation.h"
+#include "Engine/TextureCube.h"
 #include "WCVNextArtStyle.h"
 #include "Simulation/WonderCombatClarityTests.h"
 #include "Camera/CameraActor.h"
@@ -6,6 +10,7 @@
 #include "Components/DirectionalLightComponent.h"
 #include "Components/InstancedStaticMeshComponent.h"
 #include "Components/SceneComponent.h"
+#include "Components/SkeletalMeshComponent.h"
 #include "Components/SkyLightComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/TextRenderComponent.h"
@@ -13,11 +18,13 @@
 #include "Engine/Engine.h"
 #include "Engine/GameViewportClient.h"
 #include "Engine/SkyLight.h"
+#include "Engine/SkeletalMesh.h"
 #include "Engine/StaticMesh.h"
 #include "Engine/Texture2D.h"
 #include "Engine/World.h"
 #include "Framework/Application/SlateApplication.h"
 #include "Materials/MaterialInstanceDynamic.h"
+#include "Materials/MaterialInterface.h"
 #include "Misc/CommandLine.h"
 #include "Misc/FileHelper.h"
 #include "Misc/Parse.h"
@@ -46,6 +53,8 @@ namespace
 const FLinearColor Ink(.018f, .032f, .042f, .97f), Paper(.89f, .92f, .85f), Gold(.98f, .75f, .34f);
 const FLinearColor Teams[] = {{.13f,.72f,.68f}, {.92f,.36f,.24f}};
 const FLinearColor HeroColors[] = {{.64f,.56f,.28f}, {.42f,.55f,.64f}, {.35f,.55f,.22f}, {.56f,.26f,.34f}, {.42f,.38f,.75f}, {.22f,.70f,.69f}};
+const TCHAR* CragstoatPreviewMeshPath=TEXT("/Game/WonderChess/Diagnostics/CragstoatProduction20260921/AnimationReady_r002/SK_Cragstoat.SK_Cragstoat");
+const TCHAR* CragstoatPreviewMaterialPath=TEXT("/Game/WonderChess/Diagnostics/CragstoatProduction20260921/Color_r002/M_CragstoatPBR.M_CragstoatPBR");
 FString Str(const std::string& Value) { return UTF8_TO_TCHAR(Value.c_str()); }
 FText Txt(const FString& Value) { return FText::FromString(Value); }
 wc::Id OwnedId(wc::Id CombatId) { return CombatId & ((wc::Id(1)<<20)-1); }
@@ -102,11 +111,24 @@ AWCVNextLab::AWCVNextLab()
     ProxyMaterial=Surface.Object;
     static ConstructorHelpers::FObjectFinder<UMaterialInterface> CueSurface(TEXT("/Game/WonderChess/VNext/M_CombatCue.M_CombatCue"));
     CombatCueMaterial=CueSurface.Object;
+    static ConstructorHelpers::FObjectFinder<USkeletalMesh> CragMesh(CragstoatPreviewMeshPath);
+    static ConstructorHelpers::FObjectFinder<UMaterialInterface> CragMaterial(CragstoatPreviewMaterialPath);
+    CragstoatPreviewMesh=CragMesh.Object;
+    CragstoatPreviewMaterial=CragMaterial.Object;
 }
 AWCVNextLab::~AWCVNextLab() = default;
 
 void AWCVNextLab::Initialize()
 {
+    BellbackCandidate=FParse::Param(FCommandLine::Get(),TEXT("WCBellbackCandidate"));
+    SilkmotherCandidate=FParse::Param(FCommandLine::Get(),TEXT("WCSilkmotherCandidate"));
+    CragstoatCandidate=FParse::Param(FCommandLine::Get(),TEXT("WCCragstoatCandidate"));
+    CragstoatExercise=FParse::Param(FCommandLine::Get(),TEXT("WCCragstoatExercise"));
+    CragstoatPreview=FParse::Param(FCommandLine::Get(),TEXT("WCCragstoatPreview"))&&!CragstoatCandidate;
+    if(SilkmotherCandidate||CragstoatCandidate)BellbackCandidate=true;
+    BellbackExercise=FParse::Param(FCommandLine::Get(),TEXT("WCBellbackExercise"));
+    SilkmotherExercise=FParse::Param(FCommandLine::Get(),TEXT("WCSilkmotherExercise"));
+    BellbackPerformance=FParse::Param(FCommandLine::Get(),TEXT("WCBellbackPerformance"));
     ArtSlice = FWCArtSlice::IsEnabled();
     Storybook = FWCArtSlice::IsStorybook();
     if(Storybook){
@@ -139,6 +161,23 @@ void AWCVNextLab::Initialize()
     else if (Catalog.units.size() < 6 || Catalog.rules.columns != 8 || Catalog.rules.rows != 8 || Catalog.rules.deploymentRows != 4)
         LoadError = TEXT("The vNext lab needs its six pilot definitions and an 8 by 8 board with four deployment rows.");
     if(LoadError.IsEmpty()){
+        if(CragstoatPreview&&(!SoloMode||!Storybook))
+            LoadError=TEXT("Cragstoat rest-pose preview requires solo storybook mode.");
+        if(CragstoatPreview&&LoadError.IsEmpty()){
+            auto* PreviewMesh=CragstoatPreviewMesh.Get();
+            auto* PreviewMaterial=CragstoatPreviewMaterial.Get();
+            if(!PreviewMesh||!PreviewMesh->GetSkeleton()||!PreviewMaterial)
+                LoadError=TEXT("Cragstoat preview mesh, skeleton or preserved PBR material is missing.");
+            else UE_LOG(LogTemp,Display,TEXT("WC_CRAGSTOAT_PREVIEW_ASSETS mesh=%s material=%s box_extent=%s"),
+                CragstoatPreviewMeshPath,CragstoatPreviewMaterialPath,*PreviewMesh->GetBounds().BoxExtent.ToString());
+        }
+        if((BellbackExercise||BellbackPerformance)&&(!BellbackCandidate||SoloMode||Exercise||SoloExercise||BellbackExercise==BellbackPerformance))
+            LoadError=TEXT("Bellback routes require candidate laboratory, one route and no other exercise flags.");
+        if(BellbackCandidate&&LoadError.IsEmpty())UWCBellbackPresentationComponent::ValidateAssets(LoadError);
+        if(SilkmotherCandidate&&LoadError.IsEmpty())UWCSilkmotherPresentationComponent::ValidateAssets(LoadError);
+        if(CragstoatCandidate&&LoadError.IsEmpty())UWCCragstoatPresentationComponent::ValidateAssets(LoadError);
+        if(CragstoatExercise&&(!CragstoatCandidate||SoloMode||SilkmotherExercise||BellbackExercise||BellbackPerformance))
+            LoadError=TEXT("Cragstoat exercise requires its candidate laboratory and one exercise route.");
         if(ArtSlice&&(!QuietStoneMaterial||!FWCArtSlice::ResourcesReady()))LoadError=TEXT("The 2D art slice requires its stone material and UI artwork in this package.");
         if(Storybook&&!SanctuaryMaterial)LoadError=TEXT("The storybook sanctuary material is missing from this package.");
         if(Storybook&&!FWCArtSlice::StorybookResourcesReady())LoadError=TEXT("The storybook portraits, ability icons or relic artwork are missing from this package.");
@@ -149,6 +188,12 @@ void AWCVNextLab::Initialize()
     if (LoadError.IsEmpty()) {
         BuildScene();
         if (SoloMode) StartSolo(); else Preset();
+        if(!SoloMode&&SilkmotherCandidate&&FParse::Param(FCommandLine::Get(),TEXT("WCSilkmotherArena"))){
+            const auto Pairs=wc::BuiltinScenarioPairs(Catalog);
+            for(size_t I=0;I<Pairs.size();++I)if(Pairs[I].mechanic==wc::AbilityMechanic::CocoonProjectile){
+                ScenarioIndex=int(I);ApplyFormationScenario(Pairs[I].a,TEXT("Silkmother + Bellback arena. Press Start to test their abilities."));break;
+            }
+        }
         UE_LOG(LogTemp, Display, TEXT("WC_VNEXT_LAB_READY profile=wonder_vnext units=%d digest=%s proxy_art=UNAPPROVED"), int(Catalog.units.size()), *Str(Catalog.contentDigest));
     } else {
         Message = LoadError;
@@ -238,8 +283,8 @@ void AWCVNextLab::BuildScene()
         for(int Edge=0;Edge<4;++Edge){
             const bool Vertical=Edge>1;
             const FVector P=Vertical?FVector(Edge==2?-842:842,0,-2):FVector(0,Edge==0?-842:842,-2);
-            auto* Rim=Mesh(Ground,TEXT("Cube"),P,Vertical?FVector(.80,17.6,.22):FVector(17.6,.80,.22),Paper);
-            Rim->SetMaterial(0,StoneMaterial(FLinearColor(.56f,.53f,.41f)));
+            auto* Rim=Mesh(Ground,TEXT("Cube"),P,Vertical?FVector(.46,17.5,.18):FVector(17.5,.46,.18),Paper);
+            Rim->SetMaterial(0,StoneMaterial(FLinearColor(.58f,.59f,.52f)));
             auto* Inlay=Mesh(Ground,TEXT("Cube"),P+FVector(0,0,13),Vertical?FVector(.04,17.4,.025):FVector(17.4,.04,.025),FLinearColor(.38f,.29f,.12f));
             Inlay->SetCastShadow(false);
         }
@@ -276,7 +321,7 @@ void AWCVNextLab::BuildScene()
         const FLinearColor Color = (Row+Column)%2 ? FLinearColor(.23f,.30f,.25f) : FLinearColor(.32f,.39f,.31f);
         auto* Tile=Mesh(Ground, TEXT("Cube"), P, FVector(Storybook?1.985:1.94,Storybook?1.985:1.94,.12), Color);
         if(ArtSlice)Tile->SetMaterial(0,StoneMaterial(Storybook?
-            ((Row+Column)%2?FLinearColor(.64f,.62f,.52f):FLinearColor(.87f,.82f,.68f)):
+            ((Row+Column)%2?FLinearColor(.61f,.65f,.60f):FLinearColor(.82f,.83f,.77f)):
             ((Row+Column)%2?FLinearColor(.69f,.74f,.67f):FLinearColor(.87f,.89f,.80f))));
         Cells.Add(Tile);
         for (int Edge = 0; Edge < 4; ++Edge) {
@@ -291,12 +336,19 @@ void AWCVNextLab::BuildScene()
     for (int Side=0; Side<2; ++Side)
         Mesh(Ground, TEXT("Cube"), FVector(0, Side ? -826 : 826, Storybook?13:8), FVector(Storybook?2.2:16.8,.12,.1), Teams[Side]);
     auto* Light = GetWorld()->SpawnActor<ADirectionalLight>(FVector(0,0,1000), FRotator(-55,-35,0));
-    Light->GetLightComponent()->SetIntensity(4);
+    Light->GetLightComponent()->SetIntensity(Storybook?3.2f:4.f);
+    if(Storybook)Light->GetLightComponent()->SetLightColor(FLinearColor(1.f,.96f,.89f));
     SceneActors.Add(Light);
     auto* Sky = GetWorld()->SpawnActor<ASkyLight>();
-    Sky->GetLightComponent()->SetIntensity(.75f);
+    Sky->GetLightComponent()->SetIntensity(Storybook?.92f:.75f);
     Sky->GetLightComponent()->SetMobility(EComponentMobility::Movable);
     Sky->GetLightComponent()->bRealTimeCapture = true;
+    if(SilkmotherCandidate){
+        Light->GetLightComponent()->SetIntensity(2.5);Light->GetLightComponent()->SetCastShadows(false);
+        auto* Fill=Sky->GetLightComponent();Fill->bRealTimeCapture=false;Fill->SourceType=SLS_SpecifiedCubemap;
+        Fill->SetCubemap(LoadObject<UTextureCube>(nullptr,TEXT("/Game/WonderChess/VNext/Characters/Silkmother_r003/Environment/T_NeutralLightCube")));
+        Fill->SetIntensity(1.5);Fill->SetCastShadows(false);
+    }
     SceneActors.Add(Sky);
     Camera = GetWorld()->SpawnActor<ACameraActor>();
     Camera->GetCameraComponent()->SetProjectionMode(Storybook?ECameraProjectionMode::Perspective:ECameraProjectionMode::Orthographic);
@@ -305,6 +357,7 @@ void AWCVNextLab::BuildScene()
     Exposure.bOverride_AutoExposureMethod=true;Exposure.AutoExposureMethod=EAutoExposureMethod::AEM_Manual;
     Exposure.bOverride_AutoExposureApplyPhysicalCameraExposure=true;Exposure.AutoExposureApplyPhysicalCameraExposure=false;
     Exposure.bOverride_AutoExposureBias=true;Exposure.AutoExposureBias=0;
+    if(SilkmotherCandidate){Exposure.bOverride_AmbientOcclusionIntensity=true;Exposure.AmbientOcclusionIntensity=0;Exposure.bOverride_BloomIntensity=true;Exposure.BloomIntensity=0;}
     Camera->GetCameraComponent()->PostProcessBlendWeight=1;
     Camera->GetCameraComponent()->bConstrainAspectRatio = false;
     Camera->GetCameraComponent()->bOverrideAspectRatioAxisConstraint = true;
@@ -340,9 +393,9 @@ void AWCVNextLab::UpdateCamera()
     const FVector2D BoardSize(Bounds.Right-Bounds.Left,Bounds.Bottom-Bounds.Top);
     const FVector2D BoardCenter((Bounds.Left+Bounds.Right)*.5,(Bounds.Top+Bounds.Bottom)*.5);
     if(Storybook){
-        const FVector Forward=FVector(0,-2700,-1890).GetSafeNormal(),Right(1,0,0),Up=FVector::CrossProduct(Forward,Right).GetSafeNormal();
+        const FVector Forward=FVector(0,-2400,-2200).GetSafeNormal(),Right(1,0,0),Up=FVector::CrossProduct(Forward,Right).GetSafeNormal();
         const double Tangent=FMath::Tan(FMath::DegreesToRadians(17.)),Focal=Width/(2*Tangent);
-        const FVector2D DesiredCenter(BoardCenter.X,BoardCenter.Y+BoardSize.Y*.055);
+        const FVector2D DesiredCenter(BoardCenter.X,BoardCenter.Y+BoardSize.Y*.035);
         const auto CameraAt=[&](double Distance){
             const double Near=Distance+Forward.Y*800,Far=Distance-Forward.Y*800;
             const double ShiftX=(Width*.5-DesiredCenter.X)*Near/Focal;
@@ -368,7 +421,7 @@ void AWCVNextLab::UpdateCamera()
                 const auto Headroom=Project(FVector(X*780,Y*700,320),Location);
                 if(Headroom.X<Bounds.Left+3||Headroom.X>Bounds.Right-3||Headroom.Y<Bounds.Top+3||Headroom.Y>Bounds.Bottom-3)return false;
             }
-            return Maximum.X-Minimum.X<=BoardSize.X*.93&&Maximum.Y-Minimum.Y<=BoardSize.Y*.82;
+            return Maximum.X-Minimum.X<=BoardSize.X*.97&&Maximum.Y-Minimum.Y<=BoardSize.Y*.90;
         };
         double Low=1800,High=30000;
         for(int I=0;I<24;++I){
@@ -450,7 +503,7 @@ void AWCVNextLab::BuildInterface()
     auto PaletteBox = SNew(SVerticalBox);
     for (int Index=0; Index<FMath::Min(6, int(Catalog.units.size())); ++Index) {
         const auto& Def = Catalog.units[Index];
-        if(ArtSlice&&(Storybook||Def.id=="wc_vn_bellback")){
+        if(ArtSlice&&(Storybook||Def.id=="wc_vn_shieldbearer")){
             PaletteBox->AddSlot().AutoHeight().Padding(0,2)[FWCArtSlice::MakeShopCard([this,Index]{
                 const auto& Unit=Catalog.units[Index];FWCArtCardData Data;
                 Data.UnitId=Str(Unit.id);Data.Name=Str(Unit.displayName);Data.Cost=Unit.cost;
@@ -548,7 +601,7 @@ void AWCVNextLab::BuildInterface()
             [SNew(SVerticalBox)
                 +SVerticalBox::Slot().AutoHeight()[SNew(STextBlock).Font(FCoreStyle::GetDefaultFontStyle(TEXT("Bold"),21)).ColorAndOpacity(Gold).Text(Txt(TEXT("WONDER CHESS  /  TACTICAL LAB")))]
                 +SVerticalBox::Slot().AutoHeight().Padding(0,3)[SNew(STextBlock).Font(SmallFont).ColorAndOpacity(Paper).AutoWrapText(true)
-                    .Text(Txt(TEXT("wonder_vnext  ·  UNAPPROVED GAMEPLAY PROXIES  ·  Formation and combat experiment; not the finished art or full tournament.")))]
+                    .Text(Txt(SilkmotherCandidate?TEXT("Silkmother & Bellback  ·  Creature test arena  ·  Place units, start combat and compare formations."):TEXT("wonder_vnext  ·  UNAPPROVED GAMEPLAY PROXIES  ·  Formation and combat experiment; not the finished art or full tournament.")))]
                 +SVerticalBox::Slot().AutoHeight()[SAssignNew(StatusBlock,STextBlock).Font(BodyFont).ColorAndOpacity(Paper).AutoWrapText(true)]]]
         +SVerticalBox::Slot().FillHeight(1)
         [SNew(SHorizontalBox)
@@ -597,7 +650,59 @@ bool AWCVNextLab::BoardClick(bool Remove)
 {
     if(!Controller||!LoadError.IsEmpty())return false;
     FVector Origin,Direction;
-    if(!Controller->DeprojectMousePositionToWorld(Origin,Direction)||FMath::Abs(Direction.Z)<.0001f)return false;
+    if(!Controller->DeprojectMousePositionToWorld(Origin,Direction))return false;
+    return BoardRayClick(Origin,Direction,Remove);
+}
+bool AWCVNextLab::RayImportedBounds(const FBox& Bounds,const FTransform& Transform,
+    const FVector& Origin,const FVector& Direction,double& Distance)
+{
+    if(!Bounds.IsValid||Direction.IsNearlyZero()||Transform.GetScale3D().GetAbsMin()<UE_SMALL_NUMBER)return false;
+    const FVector O=Transform.InverseTransformPosition(Origin);
+    // Keep the original ray parameter through scale/rotation; do not normalize D.
+    const FVector D=Transform.InverseTransformVector(Direction);
+    double Near=0,Far=TNumericLimits<double>::Max();
+    for(int Axis=0;Axis<3;++Axis){
+        if(FMath::Abs(D[Axis])<1.e-12){if(O[Axis]<Bounds.Min[Axis]||O[Axis]>Bounds.Max[Axis])return false;continue;}
+        double A=(Bounds.Min[Axis]-O[Axis])/D[Axis],B=(Bounds.Max[Axis]-O[Axis])/D[Axis];
+        if(A>B)Swap(A,B);
+        Near=FMath::Max(Near,A);Far=FMath::Min(Far,B);if(Near>Far)return false;
+    }
+    Distance=Near;return true;
+}
+bool AWCVNextLab::BellbackRayHit(const FVector& Origin,const FVector& Direction,uint64& Id,wc::Cell& Cell) const
+{
+    if(!BellbackCandidate)return false;
+    const auto* Combat=CurrentCombat();
+    double Nearest=TNumericLimits<double>::Max();bool Hit=false;
+    for(const auto& Pair:Pieces){
+        const auto& View=Pair.Value;const auto* Actor=View.Actor.Get();
+        if((!View.Bellback&&!View.Silkmother&&!View.Cragstoat)||!Actor||Actor->IsHidden())continue;
+        const auto* Mesh=View.Bellback?View.Bellback->GetMesh():View.Silkmother?View.Silkmother->GetMesh():View.Cragstoat->GetMesh();
+        if(!Mesh||!Mesh->IsVisible()||!Mesh->GetSkeletalMeshAsset())continue;
+        wc::Cell Resolved{-1,-1};bool Found=false;
+        if(Combat){for(const auto& U:Combat->Units())if(U.id==Pair.Key){Resolved=U.cell;Found=true;break;}}
+        else for(int Side=0;Side<2;++Side)for(const auto& U:Formation[Side])if(U.id==Pair.Key){Resolved=wc::EncounterCell(U.cell,Side,Catalog.rules);Found=true;break;}
+        if(!Found)continue;
+        double T=0;
+        // Imported geometry bounds exclude animation padding, labels and FX.
+        // Inverse-transforming the ray retains an oriented box during turns.
+        if(RayImportedBounds(Mesh->GetSkeletalMeshAsset()->GetImportedBounds().GetBox(),Mesh->GetComponentTransform(),Origin,Direction,T)&&
+            (T<Nearest||(T==Nearest&&Pair.Key<Id))){Nearest=T;Id=Pair.Key;Cell=Resolved;Hit=true;}
+    }
+    return Hit;
+}
+bool AWCVNextLab::BoardRayClick(const FVector& Origin,const FVector& Direction,bool Remove)
+{
+    if(!LoadError.IsEmpty())return false;
+    uint64 HitId=0;wc::Cell HitCell{-1,-1};
+    if(BellbackRayHit(Origin,Direction,HitId,HitCell)){
+        if(CurrentCombat()){
+            if(Remove&&!SoloMode){Message=TEXT("Combat is locked. Reset to edit the formation.");return false;}
+            Selected=HitId;return true;
+        }
+        return SoloMode?SoloCell(HitCell):EditCell(HitCell,Remove);
+    }
+    if(FMath::Abs(Direction.Z)<.0001f)return false;
     const double T=-Origin.Z/Direction.Z;
     if(T<0)return false;
     const FVector P=Origin+Direction*T;
@@ -720,6 +825,7 @@ bool AWCVNextLab::Start(bool FromReplay)
         if(Formation[0].empty()||Formation[1].empty()){Message=TEXT("Place at least one creature on each side before Start.");return false;}
         ReplayFormation=Formation;ReplaySeed=Seed;
     }
+    ++BellbackGeneration;
     Fight=std::make_unique<wc::Combat>(Catalog,Formation[0],Formation[1],uint64(Seed),1);
     Paused=false;Accumulator=0;Selected=0;CombatInvariantFailed=false;
     Message=FromReplay?TEXT("Replaying the exact saved formation and seed through authoritative combat."):TEXT("Combat running. Gold outlines show the core's actual pending skill cells. Formation is locked.");
@@ -747,14 +853,54 @@ void AWCVNextLab::Advance()
     }
 }
 
-void AWCVNextLab::AddPieceView(uint64 Id,int Definition,int Side)
+void AWCVNextLab::AddPieceView(uint64 Id,int Definition,int Side,bool Neutral)
 {
     auto* Actor=SceneActor();
     const FLinearColor Color=HeroColors[Definition%6];
-    Mesh(Actor,TEXT("Cylinder"),FVector(0,0,13),FVector(1.16,1.16,.13),Teams[Side]);
+    auto* TeamBase=Mesh(Actor,TEXT("Cylinder"),FVector(0,0,13),FVector(1.16,1.16,.13),Teams[Side]);
     Mesh(Actor,TEXT("Cone"),FVector(0,54,27),FVector(.20,.20,.44),Paper,FRotator(0,0,-90));
     const auto Part=[&](const TCHAR* Shape,FVector P,FVector Scale,FLinearColor C,FRotator R=FRotator::ZeroRotator){return Mesh(Actor,Shape,P,Scale,C,R);};
-    switch(Definition%6){
+    UWCBellbackPresentationComponent* Bellback=nullptr;
+    UWCSilkmotherPresentationComponent* Silkmother=nullptr;
+    UWCCragstoatPresentationComponent* CragProduction=nullptr;
+    USkeletalMeshComponent* Cragstoat=nullptr;
+    if(BellbackCandidate&&!Neutral&&Catalog.Definition(Definition,false).id=="wc_vn_shieldbearer"){
+        Bellback=NewObject<UWCBellbackPresentationComponent>(Actor);
+        Actor->AddInstanceComponent(Bellback);Bellback->SetupAttachment(Actor->GetRootComponent());Bellback->RegisterComponent();
+        Bellback->SetRelativeLocation(FVector(0,0,6));
+        TeamBase->SetRelativeLocation(FVector(0,0,6.1));TeamBase->SetRelativeScale3D(FVector(1.16,1.16,.001));
+        FString Error;if(!Bellback->InitializeCandidate(Error)){LoadError=Error;UE_LOG(LogTemp,Error,TEXT("WC_BELLBACK_REJECTED %s"),*Error);return;}
+        Bellback->GetMesh()->AddTickPrerequisiteActor(this);
+    }
+    if(SilkmotherCandidate&&!Neutral&&Catalog.Definition(Definition,false).id=="wc_vn_soul_jailer"){
+        Silkmother=NewObject<UWCSilkmotherPresentationComponent>(Actor);
+        Actor->AddInstanceComponent(Silkmother);Silkmother->SetupAttachment(Actor->GetRootComponent());Silkmother->RegisterComponent();
+        Silkmother->SetRelativeLocation(FVector(0,0,6));
+        TeamBase->SetRelativeLocation(FVector(0,0,6.1));TeamBase->SetRelativeScale3D(FVector(1.16,1.16,.001));
+        FString Error;if(!Silkmother->InitializeCandidate(Error)){LoadError=Error;UE_LOG(LogTemp,Error,TEXT("WC_SILKMOTHER_REJECTED %s"),*Error);return;}
+        Silkmother->GetMesh()->AddTickPrerequisiteActor(this);
+    }
+    if(CragstoatPreview&&!Neutral&&Catalog.Definition(Definition,false).id=="wc_vn_boar_rusher"){
+        Cragstoat=NewObject<USkeletalMeshComponent>(Actor);
+        Actor->AddInstanceComponent(Cragstoat);Cragstoat->SetupAttachment(Actor->GetRootComponent());
+        Cragstoat->SetSkeletalMeshAsset(CragstoatPreviewMesh);
+        Cragstoat->SetMaterial(0,CragstoatPreviewMaterial);
+        Cragstoat->SetRelativeLocation(FVector(0,0,6.3)); // Bind-pose minimum Z is 0; tile surface is Z 6.
+        Cragstoat->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+        Cragstoat->SetCastShadow(false);
+        Cragstoat->RegisterComponent();
+        TeamBase->SetRelativeLocation(FVector(0,0,6.1));TeamBase->SetRelativeScale3D(FVector(1.16,1.16,.001));
+        UE_LOG(LogTemp,Display,TEXT("WC_CRAGSTOAT_PREVIEW_SPAWN unit=%llu skeletal=1 rest_pose=1"),Id);
+    }
+    if(CragstoatCandidate&&!Neutral&&Catalog.Definition(Definition,false).id=="wc_vn_boar_rusher"){
+        CragProduction=NewObject<UWCCragstoatPresentationComponent>(Actor);
+        Actor->AddInstanceComponent(CragProduction);CragProduction->SetupAttachment(Actor->GetRootComponent());CragProduction->RegisterComponent();
+        CragProduction->SetRelativeLocation(FVector(0,0,6.3));
+        TeamBase->SetRelativeLocation(FVector(0,0,6.1));TeamBase->SetRelativeScale3D(FVector(1.16,1.16,.001));
+        FString Error;if(!CragProduction->InitializeCandidate(Error)){LoadError=Error;UE_LOG(LogTemp,Error,TEXT("WC_CRAGSTOAT_REJECTED %s"),*Error);return;}
+        CragProduction->GetMesh()->AddTickPrerequisiteActor(this);
+    }
+    if(!Bellback&&!Silkmother&&!Cragstoat&&!CragProduction)switch(Definition%6){
     case 0:
         Part(TEXT("Sphere"),FVector(0,0,62),FVector(1.18,1.35,.78),Color);
         Part(TEXT("Cylinder"),FVector(0,0,111),FVector(.40,.40,.15),Gold);
@@ -790,18 +936,24 @@ void AWCVNextLab::AddPieceView(uint64 Id,int Definition,int Side)
         Part(TEXT("Sphere"),FVector(0,40,110),FVector(.19,.19,.19),Gold);
         break;
     }
-    auto* Bar=Mesh(Actor,TEXT("Cube"),FVector(0,0,176),FVector(1.12,.065,.065),Teams[Side]);
+    auto* Bar=Mesh(Actor,TEXT("Cube"),FVector(0,0,Cragstoat?137:176),FVector(1.12,.065,.065),Teams[Side]);
     Bar->SetCastShadow(false);
-    auto* Backing=Mesh(Actor,TEXT("Cube"),FVector(0,0,220),FVector(.03,1.4,.5),FLinearColor(.015f,.022f,.026f));
+    auto* Backing=Mesh(Actor,TEXT("Cube"),FVector(0,0,Cragstoat?181:220),FVector(.03,1.4,.5),FLinearColor(.015f,.022f,.026f));
     Backing->SetCastShadow(false);
     auto* Label=NewObject<UTextRenderComponent>(Actor);
     Actor->AddInstanceComponent(Label);Label->SetupAttachment(Actor->GetRootComponent());
-    Label->SetRelativeLocation(FVector(0,0,220));Label->SetHorizontalAlignment(EHTA_Center);Label->SetVerticalAlignment(EVRTA_TextCenter);Label->SetWorldSize(32);
+    // The candidate's measured posed crown reaches 212 cm including board height.
+    // Leave space for the label's lower half instead of covering the bell crown.
+    Label->SetRelativeLocation(FVector(0,0,Bellback?250:Cragstoat?175:Silkmother?170:205));Label->SetHorizontalAlignment(EHTA_Center);Label->SetVerticalAlignment(EVRTA_TextCenter);Label->SetWorldSize(32);
     Label->SetTextRenderColor(FColor(236,242,217));Label->SetCastShadow(false);Label->RegisterComponent();
-    auto* ManaBar=Mesh(Actor,TEXT("Cube"),FVector(0,0,164),FVector(.001,.045,.045),FLinearColor(.15,.55,1.0));
+    auto* ManaBar=Mesh(Actor,TEXT("Cube"),FVector(0,0,Cragstoat?125:164),FVector(.001,.045,.045),FLinearColor(.15,.55,1.0));
     ManaBar->SetCastShadow(false);ManaBar->SetVisibility(false);
     Pieces.Add(Id,FPieceView{Actor,Bar,Backing,Label,Definition,Side});
     Pieces.FindChecked(Id).Mana=ManaBar;
+    Pieces.FindChecked(Id).Bellback=Bellback;
+    Pieces.FindChecked(Id).Silkmother=Silkmother;
+    Pieces.FindChecked(Id).Cragstoat=CragProduction;
+    Pieces.FindChecked(Id).CragstoatPreview=Cragstoat;
     if(ArtSlice){
         auto& View=Pieces.FindChecked(Id);
         const auto Unlit=[this](UStaticMeshComponent* Component,FLinearColor Tint){
@@ -871,6 +1023,15 @@ void AWCVNextLab::UpdatePreparationPreview()
 void AWCVNextLab::UpdatePresentation(float DeltaSeconds)
 {
     const auto* Combat = CurrentCombat();
+    if(BellbackCandidate){
+        if(Combat!=BellbackCombat||(Combat&&Combat->CurrentTick()<BellbackPreviousTick)){
+            ++BellbackGeneration;BellbackCombat=Combat;BellbackClock=Combat?Combat->CurrentTick()*Catalog.rules.tickMs/1000.:0;
+        }
+        BellbackPreviousTick=Combat?Combat->CurrentTick():-1;
+        if(Combat&&!Combat->Result().complete)BellbackClock=Combat->CurrentTick()*Catalog.rules.tickMs/1000.+
+            ((SoloMode?SoloPaused:Paused)||CapturePhase!=ECapturePhase::None?0:FMath::Clamp(Accumulator,0.,Catalog.rules.tickMs/1000.));
+        else if(CapturePhase==ECapturePhase::None)BellbackClock+=DeltaSeconds;
+    }
     if(Combat!=DefeatClockCombat||(Combat&&Combat->CurrentTick()!=DefeatClockTick)){
         DefeatClockCombat=Combat;
         DefeatClockTick=Combat?Combat->CurrentTick():-1;
@@ -885,16 +1046,19 @@ void AWCVNextLab::UpdatePresentation(float DeltaSeconds)
             if(auto* OldActor=Existing->Actor.Get()){SceneActors.Remove(OldActor);OldActor->Destroy();}
             Pieces.Remove(Id);
         }
-        if(!Pieces.Contains(Id))AddPieceView(Id,Def,Side);
+        if(!Pieces.Contains(Id))AddPieceView(Id,Def,Side,Neutral);
+        if(!Pieces.Contains(Id))return;
         auto& View=Pieces.FindChecked(Id);
+        const bool Imported=View.Bellback||View.Silkmother||View.Cragstoat||View.CragstoatPreview;
         View.Neutral=Neutral;
         auto* Actor=View.Actor.Get();if(!Actor)return;
         float DefeatProgress=0;
-        if(Storybook&&Combat&&Health<=0){
+        if(Storybook&&Combat&&Health<=0&&!Imported){
             const auto Defeated=std::find_if(Combat->Units().begin(),Combat->Units().end(),[&](const auto& Unit){return Unit.id==Id;});
             if(Defeated!=Combat->Units().end())DefeatProgress=FMath::Clamp(DefeatAge(*Defeated)/.72f,0.f,1.f);
         }
-        Actor->SetActorHiddenInGame(Storybook&&Health<=0&&DefeatProgress>=1);
+        Actor->SetActorHiddenInGame((!Imported&&Storybook&&Health<=0&&DefeatProgress>=1)||
+            (View.CragstoatPreview&&Combat&&Health<=0));
         FVector Target=Position(Cell);
         if(Combat&&Health>0){
             const auto Found=std::find_if(Combat->Units().begin(),Combat->Units().end(),[&](const wc::CombatUnit& U){return U.id==Id;});
@@ -902,10 +1066,12 @@ void AWCVNextLab::UpdatePresentation(float DeltaSeconds)
                 const auto& U=*Found;const auto& D=Catalog.Definition(Def,Neutral);
                 if(State==wc::ActionState::Moving&&U.destination.column>=0){
                     const int Duration=wc::MovementInterval(D.movementRate,U.movementBonus,Catalog.rules);
-                    const float Progress=FMath::Clamp(1.f-float(U.movementTick-Combat->CurrentTick())/Duration,0.f,1.f);
+                    const double FractionalTick=Imported&&!(SoloMode?SoloPaused:Paused)&&CapturePhase==ECapturePhase::None?
+                        FMath::Clamp(Accumulator*1000/Catalog.rules.tickMs,0.,1.):0;
+                    const float Progress=FMath::Clamp(1.f-float(U.movementTick-Combat->CurrentTick()-FractionalTick)/Duration,0.f,1.f);
                     Target=FMath::Lerp(Target,Position(U.destination),Progress);
                 }
-                if((State==wc::ActionState::AttackWindup||State==wc::ActionState::AttackRecovery)&&U.target>=0){
+                if(!Imported&&(State==wc::ActionState::AttackWindup||State==wc::ActionState::AttackRecovery)&&U.target>=0){
                     const auto& Enemy=Combat->Units()[U.target];
                     const float SinceRelease=(Combat->CurrentTick()-U.releaseTick)*Catalog.rules.tickMs/1000.f;
                     const float Motion=SinceRelease<0?-10.f:FMath::Max(0.f,1-SinceRelease/.22f)*22;
@@ -914,12 +1080,21 @@ void AWCVNextLab::UpdatePresentation(float DeltaSeconds)
                 if(Def%6==4||Def%6==5)Target.Z=FMath::Sin(Combat->CurrentTick()*.1+Id)*5;
             }
         }
-        const FVector Location=Combat?FMath::VInterpTo(Actor->GetActorLocation(),Target,DeltaSeconds,18):Target;
+        const FVector Location=Combat&&!Imported?FMath::VInterpTo(Actor->GetActorLocation(),Target,DeltaSeconds,18):Target;
         Actor->SetActorLocation(Location);
-        Actor->SetActorRotation(FRotator(0,int(Facing)*90+180,Storybook&&Health<=0?DefeatProgress*22:0));
+        Actor->SetActorRotation(FRotator(0,int(Facing)*90+180,!Imported&&Storybook&&Health<=0?DefeatProgress*22:0));
         const float Remaining=FMath::Max(.001f,1-DefeatProgress*DefeatProgress);
-        Actor->SetActorScale3D(Health>0?FVector(1):Storybook?
+        Actor->SetActorScale3D(Health>0||Imported?FVector(1):Storybook?
             FVector(Remaining,Remaining,Remaining*FMath::Lerp(1.f,.18f,DefeatProgress)):FVector(1,1,.22));
+        if(Imported){
+            FWCBellbackFrame Frame;Frame.Generation=BellbackGeneration;Frame.Combat=Combat;Frame.Id=Id;Frame.Side=Side;
+            Frame.Facing=int(Facing);Frame.TickMs=Catalog.rules.tickMs;Frame.Clock=BellbackClock;Frame.DeltaSeconds=DeltaSeconds;
+            Frame.Paused=SoloMode?SoloPaused:Paused;Frame.AllowSound=CreatureSoundEnabled&&CapturePhase==ECapturePhase::None;
+            if(Combat)for(const auto& U:Combat->Units())if(U.id==Id){Frame.Unit=&U;break;}
+            if(View.Bellback)View.Bellback->Present(Frame);
+            else if(View.Silkmother)View.Silkmother->Present(Frame);
+            else if(View.Cragstoat)View.Cragstoat->Present(Frame);
+        }
         const float Fraction=MaxHealth>0?FMath::Clamp(float(double(Health)/MaxHealth),0.f,1.f):1;
         View.Health->SetRelativeScale3D(FVector(Fraction*1.12,.065,.065));
         View.Health->SetWorldRotation(FRotator::ZeroRotator);
@@ -932,16 +1107,16 @@ void AWCVNextLab::UpdatePresentation(float DeltaSeconds)
         View.Mana->SetWorldRotation(FRotator::ZeroRotator);
         const auto& Definition = Catalog.Definition(Def, Neutral);
         FString Name=Str(Definition.displayName.empty()?Definition.name:Definition.displayName);
-        if(Definition.id=="wc_vn_grandmother_root")Name=TEXT("Root");
-        if(Definition.id=="wc_vn_prism_organ")Name=TEXT("Prism");
+        if(Definition.id=="wc_vn_grove_druid")Name=TEXT("Druid");
+        if(Definition.id=="wc_vn_prism_scholar")Name=TEXT("Scholar");
         const TCHAR* Reach=Definition.projectileTravelMs>0?TEXT("Ranged"):TEXT("Melee");
         const FString ManaLabel=!ArtSlice&&MaximumMana>0?FString::Printf(TEXT("\nMana %.0f/100"),Mana/100.):FString();
-        View.Label->SetText(Txt(ArtSlice?FString::Printf(TEXT("%s\n%s %s"),*Name,Side?TEXT("B"):TEXT("A"),Reach):
+        View.Label->SetText(Txt(ArtSlice?Name:
             FString::Printf(TEXT("%s\n%s *%d %s%s"),*Name,Side?TEXT("B"):TEXT("A"),Star,Reach,*ManaLabel)));
-        View.Label->SetWorldSize(PixelWorld*(ArtSlice?15:18));
+        View.Label->SetWorldSize(PixelWorld*(ArtSlice?14:18));
         const float LabelWidth=View.Label->GetTextLocalSize().Y;
-        const float MaximumLabelWidth=Catalog.rules.tileSizeCm*.90f;
-        if(LabelWidth>MaximumLabelWidth)View.Label->SetWorldSize(PixelWorld*(ArtSlice?15:18)*(MaximumLabelWidth/LabelWidth));
+        const float MaximumLabelWidth=Catalog.rules.tileSizeCm*(ArtSlice?.78f:.90f);
+        if(LabelWidth>MaximumLabelWidth)View.Label->SetWorldSize(PixelWorld*(ArtSlice?14:18)*(MaximumLabelWidth/LabelWidth));
         View.Label->SetVisibility(Health>0);
         View.LabelBacking->SetVisibility(Health>0);
         if(Camera){
@@ -1075,7 +1250,7 @@ FString AWCVNextLab::InspectorText() const
             CombatPiece->state==wc::ActionState::AttackRecovery?TEXT("Recovering from own attack"):
             CombatPiece->state==wc::ActionState::CastWindup?TEXT("Casting skill"):
             CombatPiece->state==wc::ActionState::CastRecovery?TEXT("Recovering from skill"):
-            CombatPiece->state==wc::ActionState::Stunned?TEXT("Stunned"):
+            CombatPiece->state==wc::ActionState::Stunned?(CombatPiece->cocoonExpiry>Combat->CurrentTick()?TEXT("Cocooned: cannot move, attack or cast"):TEXT("Stunned")):
             CombatPiece->health<=0?TEXT("Defeated"):TEXT("Seeking an enemy");
         Result+=FString(TEXT("State: "))+State+TEXT("\n");
         if(CombatPiece->target>=0){const auto& T=Combat->Units()[CombatPiece->target];Result+=FString(TEXT("Target: "))+Str(Catalog.Definition(T.definition,T.neutral).displayName)+TEXT("\n");}
@@ -1087,6 +1262,7 @@ FString AWCVNextLab::InspectorText() const
     case wc::AbilityMechanic::ScreenedStrike:Result+=TEXT("Visual: pink aim line becomes a lash to the first enemy hit.\n");break;
     case wc::AbilityMechanic::CrossingBeams:Result+=TEXT("Visual: violet lane markings precede crossing beam impacts.\n");break;
     case wc::AbilityMechanic::TidalPush:Result+=TEXT("Visual: cyan lane and wave; PUSH appears only on displacement.\n");break;
+    case wc::AbilityMechanic::CocoonProjectile:Result+=TEXT("Visual: mouth-fired web wraps one enemy in cream silk.\n");break;
     default:break;
     }
     const auto A=CombatPiece?CombatPiece->ability:wc::EffectiveAbility(Catalog,D,Relic);
@@ -1105,6 +1281,8 @@ FString AWCVNextLab::InspectorText() const
         Result+=FString::Printf(TEXT("First %.2fs  |  Cooldown %.2fs\nWindup %.2fs  |  Reach %d\n%s %.2f  |  Radius %d"),A.firstCastMs/1000.,A.cooldownMs/1000.,A.castMs/1000.,A.range,A.mechanic==wc::AbilityMechanic::StationaryGrove?TEXT("Heal per pulse"):A.effect==wc::Effect::Heal?TEXT("Heal"):TEXT("Base effect"),A.magnitude[Star-1]/100.,A.radius);
         if(A.mechanic==wc::AbilityMechanic::StationaryGrove)
             Result+=FString::Printf(TEXT("\nPulse interval %.2fs  |  Area duration %.2fs"),A.pulseMs/1000.,A.durationMs/1000.);
+        if(A.mechanic==wc::AbilityMechanic::CocoonProjectile)
+            Result+=FString::Printf(TEXT("\nCocoon %.2fs: cannot move, attack or cast.\nNo skill damage. Chooses nearest enemy not already trapped.\nTravel %.2fs; canceled casts create no cocoon."),A.durationMs/1000.,A.travelMs/1000.);
         if(CombatPiece&&A.mana.maximum==0)Result+=FString::Printf(TEXT("\nNext readiness in %.2fs"),FMath::Max(0,CombatPiece->cooldownTick-Combat->CurrentTick())*Catalog.rules.tickMs/1000.);
     }
     if(CombatPiece)Result+=FString::Printf(TEXT("\nShield %.0f  |  Facing %s"),CombatPiece->shield/100.,FacingName(CombatPiece->facing));
@@ -1160,6 +1338,9 @@ FString AWCVNextLab::Signature() const
 void AWCVNextLab::Tick(float DeltaSeconds)
 {
     Super::Tick(DeltaSeconds);Elapsed+=DeltaSeconds;
+    if(CragstoatExercise){TickCragstoatRoute(DeltaSeconds);return;}
+    if(SilkmotherExercise){TickSilkmotherRoute(DeltaSeconds);return;}
+    if(BellbackExercise||BellbackPerformance){TickBellbackRoute(DeltaSeconds);return;}
     if(!LoadError.IsEmpty())return;
     UpdateCamera();
     if(SoloMode){
@@ -1378,6 +1559,20 @@ void AWCVNextLab::TickSoloVisualExercise()
         Check(TEXT("preparation_has_real_deployed_and_bench_units"),Deployed>=2&&Benched>=1);
         ExerciseChecks->SetNumberField(TEXT("preparation_deployed"),Deployed);
         ExerciseChecks->SetNumberField(TEXT("preparation_benched"),Benched);
+        const auto& Roster=SoloMatch->Seats()[0].roster;
+        const auto BoardUnit=std::find_if(Roster.begin(),Roster.end(),[](const auto& Unit){return Unit.onBoard;});
+        const auto BenchUnit=std::find_if(Roster.begin(),Roster.end(),[](const auto& Unit){return !Unit.onBoard;});
+        if(BoardUnit!=Roster.end()&&BenchUnit!=Roster.end()){
+            const std::string BeforeClick=SoloMatch->SavePreparation();
+            Selected=BoardUnit->id;
+            SelectBench(BenchUnit->bench);
+            Check(TEXT("occupied_bench_click_selects_without_swapping"),
+                Selected==BenchUnit->id&&SoloMatch->SavePreparation()==BeforeClick);
+            Selected=0;
+        }else Check(TEXT("occupied_bench_click_selects_without_swapping"),false);
+        // The prior preparation capture records the automatic shop popup. Show the
+        // unobscured board and bench for the formation capture after that review.
+        ShopOpen=false;ShopDismissedRound=SoloMatch->Round();
         SoloPaused=true;QueueCapture(TEXT("solo-recruited-preparation.png"),204);return;
     }
     if(ExerciseStage==204){

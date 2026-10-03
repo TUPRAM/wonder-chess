@@ -58,7 +58,7 @@ void Contract()
     auto catalog = wcvnext::WonderVNextCatalog();
     const auto error = catalog.Validate();
     if (!error.empty()) throw std::runtime_error(error);
-    Check(catalog.profileId == "wonder_vnext" && catalog.units.size() == 6, "Canonical six hero lab profile");
+    Check(catalog.profileId == "wonder_vnext" && catalog.units.size() == 14, "Seven ported mechanics plus seven standard-ability heroes");
     for (int cost = 1; cost <= 5; ++cost)
         Check(std::any_of(catalog.units.begin(), catalog.units.end(), [&](const auto &u) { return u.cost == cost; }),
               "Every enabled recruitment cost has a source unit");
@@ -351,6 +351,270 @@ void CrowdedEncounters()
     }
     std::cout << "Crowded native synthetic encounters: 32 seeds, " << timeouts << " timeouts.\n";
 }
+void Cocoons()
+{
+    auto catalog = Quiet();
+    auto &a = catalog.units[1].ability;
+    a = {}; a.id = "silkmother_test"; a.name = "Silken Snare";
+    a.mechanic = wc::AbilityMechanic::CocoonProjectile; a.effect = wc::Effect::Stun;
+    a.range = 4; a.maxTargets = 1; a.castMs = 50; a.travelMs = 200;
+    a.durationMs = 2000; a.cooldownMs = 60000; a.recoveryMs = 50;
+    auto successful = [](const wc::Combat &c) {
+        auto result = Events(c, wc::AbilityMechanic::CocoonProjectile, wc::Effect::Stun);
+        result.erase(std::remove_if(result.begin(), result.end(), [](const auto &e) { return e.resolved == 0; }), result.end());
+        return result;
+    };
+    const std::vector<wc::OwnedUnit> allies{Unit(1,1,3,3)};
+    const std::vector<wc::OwnedUnit> enemies{Unit(2,0,4,1),Unit(3,0,0,0)};
+    wc::Combat c(catalog, allies, enemies, 123);
+    Ticks(c,2);
+    const auto actions = c.VisualActions();
+    Check(std::any_of(actions.begin(), actions.end(), [](const auto &v) {
+        return v.mechanic == wc::AbilityMechanic::CocoonProjectile && v.released && !v.fixedArea &&
+            v.target == ((wc::Id(1)<<20)|2) && v.recipients.size()==1;
+    }), "Released cocoon is one tracking projectile to nearest enemy");
+    Check(successful(c).empty(), "Cocoon cannot land before projectile travel finishes");
+    Ticks(c,4);
+    auto hits = successful(c);
+    Check(hits.size()==1 && hits.front().resolved==2000 && hits.front().healthLoss==0,
+        "Single impact applies exactly two seconds of control with zero damage");
+    const auto &target=c.Units()[1];
+    const auto ordinal=target.basicAttackOrdinal; const auto cell=target.cell;
+    const int expiry=target.cocoonExpiry;
+    Check(target.state==wc::ActionState::Stunned && target.cocoonSource==1 && target.health==target.maxHealth,
+        "Cocoon has distinct expiry/source identity and preserves enemy health");
+    while(c.CurrentTick()<expiry-1) {
+        Ticks(c,1);
+        Check(target.state==wc::ActionState::Stunned && target.basicAttackOrdinal==ordinal && target.cell==cell,
+            "Cocoon suppresses attacks, casting and locomotion for its entire duration");
+    }
+    Ticks(c,1); Check(target.state!=wc::ActionState::Stunned,"Cocoon releases at exact expiry tick");
+    wc::Combat replay(catalog,allies,enemies,123);Ticks(replay,c.CurrentTick());
+    Check(successful(replay).front().tick==hits.front().tick && replay.Units()[1].cell==target.cell,
+        "Identical authoritative replay reproduces cocoon timing and outcome");
+
+    // Synthetic short cooldown forces a second selection while the first target is trapped.
+    a.cooldownMs=500;
+    catalog.units[1].attackRate=3500;
+    wc::Combat skip(catalog,allies,enemies,123);Ticks(skip,35);hits=successful(skip);
+    Check(hits.size()==2 && hits[0].target!=hits[1].target,"Next cast skips an existing cocoon");
+    wc::Combat noTargets(catalog,allies,{enemies.front()},123);Ticks(noTargets,30);
+    Check(successful(noTargets).size()==1,"No recast refresh when every eligible target is trapped");
+    a.cooldownMs=60000;
+    wc::Combat doubles(catalog,{Unit(1,1,3,3),Unit(4,1,2,3)},{enemies.front()},123);
+    Ticks(doubles,8);
+    Check(successful(doubles).size()==1,"Concurrent in-flight cocoons do not stack or refresh");
+
+    catalog.units[0].range=1;
+    wc::Combat moving(catalog,allies,{enemies.front()},123);Ticks(moving,6);
+    Check(moving.Units()[1].state==wc::ActionState::Stunned && moving.Units()[1].destination.column<0,
+        "Impact cancels a moving enemy's reserved step");
+    const auto stopped=moving.Units()[1].cell;Ticks(moving,20);
+    Check(moving.Units()[1].cell==stopped,"No reserved movement completes through the cocoon");
+
+    // A generic stun may interrupt Silkmother before release but isn't itself a cocoon.
+    auto &interrupt=catalog.units[0].ability;interrupt={};interrupt.id="interrupt";
+    interrupt.effect=wc::Effect::Stun;interrupt.range=8;interrupt.maxTargets=1;
+    interrupt.castMs=50;interrupt.durationMs=2000;interrupt.cooldownMs=60000;
+    a.castMs=500;
+    wc::Combat cancelled(catalog,allies,{enemies.front()},123);Ticks(cancelled,16);
+    Check(successful(cancelled).empty() && cancelled.Units()[0].cocoonExpiry==0,
+        "Interrupt before release creates no web and generic stun is not marked cocoon");
+    a.castMs=50;interrupt.castMs=150;interrupt.effect=wc::Effect::Damage;
+    interrupt.magnitude={2000000,2000000,2000000};
+    wc::Combat deadCaster(catalog,{Unit(1,1,3,3),Unit(4,2,0,0)},{enemies.front()},123);Ticks(deadCaster,8);
+    Check(deadCaster.Units()[0].health==0 && successful(deadCaster).size()==1,
+        "Released web survives caster defeat while combat continues");
+}
+void CanonicalSilkmotherPlacement()
+{
+    const auto source = wcvnext::WonderVNextCatalog();
+    const auto definition = std::find_if(source.units.begin(), source.units.end(), [](const auto &u) {
+        return u.id == "wc_vn_soul_jailer";
+    });
+    Check(definition != source.units.end(), "Canonical Silkmother exists in the enabled runtime catalogue");
+    const int silk = int(definition - source.units.begin());
+    auto catalog = Quiet();
+    // Isolate formation access while preserving every canonical cocoon timing/range value.
+    // High health, zero basic damage and range-eight basics keep both formations stationary.
+    catalog.units[silk].ability = definition->ability;
+    const std::vector<wc::OwnedUnit> inRange{Unit(1, silk, 3, 3)};
+    const std::vector<wc::OwnedUnit> outOfRange{Unit(1, silk, 0, 0)};
+    const std::vector<wc::OwnedUnit> nearby{Unit(2, 0, 4, 2)};
+    const std::vector<wc::OwnedUnit> distant{Unit(2, 0, 0, 0)};
+    auto successful = [](const wc::Combat &c) {
+        auto events = Events(c, wc::AbilityMechanic::CocoonProjectile, wc::Effect::Stun);
+        events.erase(std::remove_if(events.begin(), events.end(), [](const auto &e) { return e.resolved == 0; }), events.end());
+        return events;
+    };
+    for (wc::Id seed : {7011, 7012, 7013, 7014})
+    {
+        wc::Combat accessible(catalog, inRange, nearby, seed);
+        Check(accessible.EnableDiagnostics(), "Canonical cocoon fixture enables complete diagnostics");
+        Ticks(accessible, 150);
+        const auto hits = successful(accessible);
+        Check(hits.size() == 1 && hits.front().resolved == definition->ability.durationMs &&
+              hits.front().healthLoss == 0, "In-range placement delivers the canonical damage-free control duration");
+        const auto release = std::find_if(accessible.Diagnostics().begin(), accessible.Diagnostics().end(), [](const auto &t) {
+            return t.phase == wc::MechanicPhase::Released;
+        });
+        Check(release != accessible.Diagnostics().end() &&
+              hits.front().tick - release->tick == definition->ability.travelMs / catalog.rules.tickMs,
+              "Canonical web impact follows authored projectile travel after actual release");
+        const int expiry = hits.front().tick + definition->ability.durationMs / catalog.rules.tickMs;
+        wc::Combat expiryCheck(catalog, inRange, nearby, seed);
+        Ticks(expiryCheck, expiry - 1);
+        Check(expiryCheck.Units()[1].cocoonExpiry == expiry &&
+              expiryCheck.Units()[1].state == wc::ActionState::Stunned,
+              "Canonical cocoon retains its target through the tick before exact expiry");
+        Ticks(expiryCheck, 1);
+        Check(expiryCheck.Units()[1].cocoonExpiry == 0 && expiryCheck.Units()[1].cocoonSource == 0 &&
+              expiryCheck.Units()[1].state != wc::ActionState::Stunned,
+              "Canonical expiry clears cocoon identity and permits ordinary action again");
+        wc::Combat mirrored(catalog, nearby, inRange, seed);
+        Ticks(mirrored, 150);
+        const auto mirroredHits = successful(mirrored);
+        Check(mirroredHits.size() == 1 && mirroredHits.front().tick == hits.front().tick &&
+              mirroredHits.front().resolved == hits.front().resolved && mirroredHits.front().target == 2,
+              "Side-swapped canonical Silkmother retains impact timing and the intended opposing recipient");
+        wc::Combat inaccessible(catalog, outOfRange, distant, seed);
+        Ticks(inaccessible, 150);
+        Check(successful(inaccessible).empty(), "Out-of-range stationary placement cannot claim useful cocoon access");
+        auto disabled = catalog;
+        disabled.units[silk].ability.enabled = false;
+        wc::Combat control(disabled, inRange, nearby, seed);
+        Ticks(control, 150);
+        Check(successful(control).empty() && control.Units()[1].cocoonExpiry == 0,
+              "Identical formation with only the skill disabled has no fabricated control effect");
+    }
+    auto &interrupt = catalog.units[0].ability;
+    interrupt = {}; interrupt.id = "canonical_cocoon_interruption_fixture";
+    interrupt.effect = wc::Effect::Stun; interrupt.selector = wc::Selector::CurrentEnemy;
+    interrupt.range = 8; interrupt.maxTargets = 1; interrupt.firstCastMs = definition->ability.firstCastMs + 100;
+    interrupt.castMs = 50; interrupt.durationMs = 2000; interrupt.cooldownMs = 60000;
+    wc::Combat cancelled(catalog, inRange, nearby, 7011);
+    Check(cancelled.EnableDiagnostics(), "Canonical interruption fixture enables complete diagnostics");
+    Ticks(cancelled, 150);
+    Check(successful(cancelled).empty() && HasTrace(cancelled, wc::MechanicPhase::Committed, wc::MechanicReason::Ready) &&
+          HasTrace(cancelled, wc::MechanicPhase::Cancelled, wc::MechanicReason::SourceStunned),
+          "An actual stun inside canonical weaving windup cancels its commitment without a web impact");
+}
+void RosterRecipe()
+{
+    const auto base = wcvnext::WonderVNextCatalog();
+    const auto roster = wcvnext::WonderVNextRosterCatalog();
+    Check(roster.Validate().empty() && roster.contentDigest != base.contentDigest &&
+          roster.balanceVersion != base.balanceVersion, "Roster recipe validates with its own save/replay identity");
+    Check(base.traits.empty() && roster.traits.size() == 7, "Control keeps no traits; recipe carries seven stat traits");
+    for (int i = 0; i < 7; ++i)
+    {
+        const auto &a = base.units[i]; const auto &b = roster.units[i];
+        Check(a.ability.mana.maximum == 0 && b.ability.mana.maximum == (i >= 3 ? 10000 : 0) &&
+              (i < 3 || a.ability.mechanic != wc::AbilityMechanic::Standard),
+              "Cast abilities use mana; guard, charge and grove stay passive");
+        Check(std::tie(a.id, a.cost, a.health, a.attackDamage, a.attackRate, a.range, a.armor, a.resistance) ==
+              std::tie(b.id, b.cost, b.health, b.attackDamage, b.attackRate, b.range, b.armor, b.resistance),
+              "Recipe preserves identities, prices and stats");
+    }
+    const int shield = 0, rusher = 1, hook = 3, scholar = 4, tide = 5, jailer = 6;
+    for (int i = 7; i < int(roster.units.size()); ++i)
+        Check(base.units[i].ability.mechanic == wc::AbilityMechanic::Standard && base.units[i].ability.mana.maximum == 0 &&
+              roster.units[i].ability.mana.maximum == 10000, "Standard-ability heroes use timers in the control and mana in the recipe");
+    const std::vector<wc::OwnedUnit> enemy{Unit(9, rusher, 0, 0)};
+    {
+        wc::Combat pair(roster, {Unit(1, shield, 0, 0), Unit(2, scholar, 1, 0), Unit(3, hook, 2, 0)}, enemy, 1);
+        Check(pair.Units()[1].mana == 1000 && pair.Units()[2].mana == 1000 && pair.Units()[0].mana == 0,
+              "Two Humans give every mana user on the team 10 starting mana; passive heroes hold none");
+        Check(pair.Units()[3].mana == 0 && pair.InvariantError().empty(), "Opponents receive no Human bonus and the mana ledger balances");
+        wc::Combat single(roster, {Unit(2, scholar, 1, 0), Unit(3, hook, 2, 0)}, enemy, 1);
+        Check(single.Units()[0].mana == 0 && single.Units()[1].mana == 0, "One Human activates nothing");
+        wc::Combat copies(roster, {Unit(1, scholar, 0, 0), Unit(2, scholar, 1, 0)}, enemy, 1);
+        Check(copies.Units()[0].mana == 0, "Two copies of one hero count once");
+    }
+    {
+        wc::Combat mages(roster, {Unit(1, scholar, 0, 0), Unit(2, tide, 1, 0), Unit(3, hook, 2, 0)}, enemy, 1);
+        Check(mages.Units()[0].abilityBonus == 2000 && mages.Units()[1].abilityBonus == 2000 &&
+              mages.Units()[2].abilityBonus == 2000 && mages.Units()[3].abilityBonus == 0,
+              "Two Mages give the whole team 20% skill damage and the enemy none");
+        wc::Combat one(roster, {Unit(1, scholar, 0, 0), Unit(3, hook, 2, 0)}, enemy, 1);
+        Check(one.Units()[0].abilityBonus == 0, "One Mage activates nothing");
+    }
+    {
+        auto c = roster;
+        c.units[shield].race = "orc"; c.units[rusher].unitClass = "tank";
+        wc::Combat members(c, {Unit(1, shield, 0, 0), Unit(2, rusher, 1, 0), Unit(3, hook, 2, 0)}, enemy, 1);
+        const auto &u = members.Units();
+        Check(u[0].maxHealth == wc::StarValue(c.units[shield].health, 1, 2000, c.rules) &&
+              u[1].maxHealth == wc::StarValue(c.units[rusher].health, 1, 2000, c.rules) &&
+              u[2].maxHealth == c.units[hook].health, "Two Orcs gain 20% health; a non-Orc ally does not");
+        Check(u[0].armor == c.units[shield].armor + 20 && u[1].armor == c.units[rusher].armor + 20 &&
+              u[2].armor == c.units[hook].armor, "Two Tanks gain 20 armour; a non-Tank ally does not");
+        auto bad = roster; bad.traits[0].stat = "evasion_bp";
+        Check(!bad.Validate().empty(), "Unknown trait stats are rejected");
+        bad = roster; bad.units[shield].ability.mana = roster.units[hook].ability.mana;
+        Check(!bad.Validate().empty(), "A passive guard cannot carry a mana contract");
+    }
+    {
+        auto c = roster;
+        c.traits.clear();
+        for (auto &unit : c.units)
+        {
+            unit.health = 1000000; unit.attackDamage = 0; unit.armor = unit.resistance = 0;
+            unit.range = 8; unit.attackRate = 1000; unit.attackWindupMs = 50; unit.projectileTravelMs = 0;
+            unit.ability.enabled = false;
+        }
+        c.units[jailer].ability = roster.units[jailer].ability;
+        c.units[jailer].attackDamage = 100;
+        wc::Combat fight(c, {Unit(1, jailer, 3, 3)}, {Unit(2, shield, 4, 3)}, 77);
+        Ticks(fight, 70);
+        Check(fight.Units()[0].castsCommitted == 0 && fight.Units()[0].mana > 0 && fight.Units()[0].mana < 10000,
+              "The cage waits for mana instead of its old opening timer");
+        Ticks(fight, 130);
+        const auto cages = Events(fight, wc::AbilityMechanic::CocoonProjectile, wc::Effect::Stun);
+        Check(fight.Units()[0].castsCommitted >= 1 && fight.Units()[0].manaSpent == 10000 * fight.Units()[0].castsCommitted &&
+              !cages.empty() && cages.front().healthLoss == 0, "Full mana releases a real damage-free cage");
+    }
+}
+void UniversalRelics()
+{
+    const auto catalog = wcvnext::WonderVNextRosterCatalog();
+    Check(catalog.relics.size() == 12, "Twelve relics remain in the catalogue");
+    for (const auto &relic : catalog.relics)
+        for (const auto &unit : catalog.units)
+            Check(wc::RelicCompatible(relic, unit.ability.mechanic), "Every relic fits every hero");
+    auto index = [&](const char *id) {
+        for (int i = 0; i < int(catalog.relics.size()); ++i) if (catalog.relics[i].id == id) return i;
+        throw std::runtime_error("Missing relic fixture");
+    };
+    const std::vector<wc::OwnedUnit> enemy{Unit(9, 1, 0, 0)};
+    for (int hero = 0; hero < int(catalog.units.size()); ++hero)
+    {
+        const auto &d = catalog.units[hero];
+        auto holder = Unit(1, hero, 0, 0);
+        wc::Combat plain(catalog, {holder}, enemy, 3);
+        holder.relic = index("wc_vn_r_broad_canopy");
+        wc::Combat canopy(catalog, {holder}, enemy, 3);
+        Check(canopy.Units()[0].maxHealth == wc::StarValue(d.health, 1, 2500, catalog.rules) &&
+              plain.Units()[0].maxHealth == d.health && canopy.Units()[1].maxHealth == plain.Units()[1].maxHealth,
+              "Broad Canopy gives its holder 25% health and nobody else");
+        holder.relic = index("wc_vn_r_tight_choir");
+        wc::Combat choir(catalog, {holder}, enemy, 3);
+        Check(choir.Units()[0].armor == plain.Units()[0].armor + 25, "Tight Choir gives 25 armour");
+        holder.relic = index("wc_vn_r_urgent_shard");
+        wc::Combat shard(catalog, {holder}, enemy, 3);
+        Check(shard.Units()[0].basicBonus == plain.Units()[0].basicBonus + 1500 &&
+              shard.Units()[0].abilityBonus == plain.Units()[0].abilityBonus + 1500 &&
+              shard.Units()[0].supportBonus == plain.Units()[0].supportBonus + 1500,
+              "Urgent Shard gives 15% attack damage and 15% skill power");
+        holder.relic = index("wc_vn_r_quick_wick");
+        wc::Combat wick(catalog, {holder}, enemy, 3);
+        Check(wick.Units()[0].rateBonus == plain.Units()[0].rateBonus + 1000 &&
+              wick.Units()[0].ability.cooldownMs < d.ability.cooldownMs, "Quick Wick shortens the skill and speeds attacks");
+        Check(wick.InvariantError().empty(), "Relic holders keep combat invariants");
+    }
+    auto bad = catalog; bad.relics[0].healthBp = 9000;
+    Check(!bad.Validate().empty(), "Out-of-range relic stats are rejected");
+}
 }
 int main()
 {
@@ -358,7 +622,7 @@ int main()
     {
         assertions += wctest::RunManaContractChecks();
         assertions += wctest::RunCombatClarityChecks();
-        Contract(); Guard(); Screening(); Charge(); Beams(); TideAndGrove(); RelicsAndReplay(); Diagnostics(); CrowdedEncounters();
+        Contract(); Guard(); Screening(); Charge(); Beams(); TideAndGrove(); RelicsAndReplay(); Diagnostics(); Cocoons(); CanonicalSilkmotherPlacement(); CrowdedEncounters(); RosterRecipe(); UniversalRelics();
         std::cout << "PASS vNext native combat: " << assertions << " assertions. Technical synthetic fixtures only; no human art/balance acceptance.\n";
         return 0;
     }

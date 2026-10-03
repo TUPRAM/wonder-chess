@@ -124,6 +124,7 @@ void Relics(const wc::Catalog &canonical)
 void OwnedTeamRelicPolicy(const wc::Catalog &catalog)
 {
     Check(catalog.ownedTeamRelicOffers, "solo candidate declares owned-team relic policy");
+    int guaranteedOffers = 0, naturalFallbacks = 0;
     for (wc::Id seed = 20; seed < 32; ++seed)
     {
         wc::Match original(catalog, seed, 1);
@@ -137,9 +138,19 @@ void OwnedTeamRelicPolicy(const wc::Catalog &catalog)
         const auto offers = original.Seats()[0].relicOffers;
         Check(offers.size() == 3 && std::set<int>(offers.begin(), offers.end()).size() == 3,
               "draft contains three unique options");
-        Check(std::any_of(offers.begin(), offers.end(), [&](int relic) {
+        const bool compatibleAvailable = std::any_of(catalog.relics.begin(), catalog.relics.end(), [&](const auto &relic) {
+            return wc::RelicCompatible(relic, catalog.units[holder.definition].ability.mechanic);
+        });
+        const bool compatibleOffered = std::any_of(offers.begin(), offers.end(), [&](int relic) {
             return wc::RelicCompatible(catalog.relics[relic], catalog.units[holder.definition].ability.mechanic);
-        }), "at least one draft offer fits the actually owned bench creature");
+        });
+        if (compatibleAvailable) {
+            ++guaranteedOffers;
+            Check(compatibleOffered, "available compatible relic guarantees an offer for the owned bench creature");
+        } else {
+            ++naturalFallbacks;
+            Check(!compatibleOffered, "a genuine catalogue compatibility gap uses honest speculative offers");
+        }
         Check(offers == restored.Seats()[0].relicOffers &&
               original.Seats()[0].relicRng.state == restored.Seats()[0].relicRng.state,
               "cold logical resume preserves constrained draft and RNG");
@@ -148,7 +159,11 @@ void OwnedTeamRelicPolicy(const wc::Catalog &catalog)
         Check(original.Seats()[0].relicOffers == offers, "selling holder does not reroll existing offers");
         Check(Send(original, 0, wc::CommandType::ChooseRelic, 0).accepted,
               "now-speculative offer remains a valid choice");
+        Check(original.Seats()[0].ownedRelics.size() == 1 && original.Seats()[0].pendingRelicDrafts == 0 &&
+              original.Seats()[0].relicOffers.empty(), "guaranteed and fallback drafts conserve exactly one selected relic");
     }
+    Check(guaranteedOffers > 0, "normal shop fixtures actually exercise the compatible-offer guarantee");
+    std::cout << "Owned-team draft coverage: " << guaranteedOffers << " compatible guarantees, " << naturalFallbacks << " natural compatibility gaps.\n";
     wc::Match empty(catalog, 50, 1);
     AdvanceTo(empty, 4);
     Check(empty.Seats()[0].roster.empty() && empty.Seats()[0].relicOffers.size() == 3,
@@ -157,9 +172,13 @@ void OwnedTeamRelicPolicy(const wc::Catalog &catalog)
     auto noCompatible = catalog;
     wc::Match preview(catalog, 51, 1);
     const auto openingMechanic = catalog.units[preview.Seats()[0].shop[0]].ability.mechanic;
-    // Restricted catalogue makes a real owned-team compatibility gap without editing a seat.
-    noCompatible.relics.erase(std::remove_if(noCompatible.relics.begin(), noCompatible.relics.end(),
-        [openingMechanic](const wc::RelicDef &r) { return wc::RelicCompatible(r, openingMechanic); }), noCompatible.relics.end());
+    // Canonical relics fit every hero. Bind this fixture's relics to two other mechanics so a real
+    // owned-team compatibility gap exists without editing a seat.
+    for (auto &relic : noCompatible.relics)
+        for (auto mechanic : {wc::AbilityMechanic::DirectionalGuard, wc::AbilityMechanic::MomentumCharge,
+                              wc::AbilityMechanic::StationaryGrove})
+            if (mechanic != openingMechanic && relic.compatibleMechanics.size() < 2)
+                relic.compatibleMechanics.push_back(mechanic);
     Check(!noCompatible.relics.empty(), "fallback fixture retains other-mechanic relics");
     Check(noCompatible.Validate().empty(), "restricted relic fixture is a valid catalog");
     wc::Match gap(noCompatible, 51, 1);
@@ -169,6 +188,9 @@ void OwnedTeamRelicPolicy(const wc::Catalog &catalog)
     Check(std::none_of(gap.Seats()[0].relicOffers.begin(), gap.Seats()[0].relicOffers.end(), [&](int r) {
         return wc::RelicCompatible(noCompatible.relics[r], noCompatible.units[gap.Seats()[0].roster.front().definition].ability.mechanic);
     }), "fallback fixture actually has no compatible owned option");
+    Check(Send(gap, 0, wc::CommandType::ChooseRelic, 0).accepted && gap.Seats()[0].ownedRelics.size() == 1 &&
+          gap.Seats()[0].pendingRelicDrafts == 0 && gap.Seats()[0].relicOffers.empty(),
+          "explicit no-compatible fallback also conserves draft ownership and entitlement");
 }
 void Saves(const wc::Catalog &catalog)
 {
@@ -351,7 +373,8 @@ void Tournaments(const wc::Catalog &catalog, int count, int firstSeed = 1)
             << "\",\"actual_combat_tournaments\":" << count << ",\"first_seed\":" << firstSeed << ",\"encounters\":" << fights
             << ",\"timeouts\":" << timeouts << ",\"relic_choices\":" << drafts << ",\"relic_equips\":" << equips
             << ",\"command_rejects\":" << rejects << ",\"checks\":" << checks
-            << ",\"boundary\":\"Six-hero native prototype; not engine packaging, full roster, human fun or balance acceptance\"}\n";
+            << ",\"enabled_heroes\":" << catalog.units.size()
+            << ",\"boundary\":\"Current enabled native prototype; not engine packaging, full roster, human fun or balance acceptance\"}\n";
     Check(drafts > 0 && equips > 0, "bots actually draft and equip relics through authority");
 }
 }
@@ -367,7 +390,7 @@ int main(int argc, char **argv)
         Check(catalog.Validate().empty(), "canonical successor validates: " + catalog.Validate());
         VNextBotTests(catalog, Check);
         Commands(catalog); Relics(catalog); OwnedTeamRelicPolicy(catalog); Saves(catalog); Tournaments(catalog, count, firstSeed);
-        std::cout << "PASS " << checks << " checks; " << count << " actual six-hero vNext tournaments\n";
+        std::cout << "PASS " << checks << " checks; " << count << " actual " << catalog.units.size() << "-hero vNext tournaments\n";
         return 0;
     }
     catch (const std::exception &error) { std::cerr << "FAIL after " << checks << " checks: " << error.what() << '\n'; return 1; }

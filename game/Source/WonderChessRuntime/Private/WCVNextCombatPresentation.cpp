@@ -1,4 +1,8 @@
 #include "WCVNextLab.h"
+#include "WCSilkmotherPresentation.h"
+#include "WCBellbackPresentation.h"
+#include "Components/InstancedStaticMeshComponent.h"
+#include "Components/SkeletalMeshComponent.h"
 #include "Camera/CameraActor.h"
 #include "Camera/CameraComponent.h"
 #include "Components/StaticMeshComponent.h"
@@ -37,6 +41,45 @@ FLinearColor SkillColor(wc::AbilityMechanic Mechanic)
     default:return Shot;
     }
 }
+}
+
+void AWCVNextLab::SilkLine(FVector A,FVector B,float Width)
+{
+    if(SilkStrandTransforms.Num()>=8192){CueOverflow=true;return;}
+    const FVector D=B-A;if(D.SizeSquared()<.01f)return;
+    SilkStrandTransforms.Emplace(D.Rotation(),(A+B)*.5,FVector(D.Size(),Width,Width)/100);
+}
+void AWCVNextLab::SilkSpark(FVector P,float Radius)
+{
+    if(SilkSparkTransforms.Num()>=512){CueOverflow=true;return;}
+    SilkSparkTransforms.Emplace(FQuat::Identity,P,FVector(Radius/50));
+}
+void AWCVNextLab::FlushSilkEffects()
+{
+    const auto Flush=[&](TObjectPtr<UInstancedStaticMeshComponent>& Component,const TCHAR* Shape,
+        const TArray<FTransform>& Transforms,FLinearColor Color){
+        if(!Component&&Transforms.IsEmpty())return;
+        if(!Component){
+            Component=NewObject<UInstancedStaticMeshComponent>(this);AddInstanceComponent(Component);
+            auto* EffectMesh=LoadObject<UStaticMesh>(nullptr,*(FString(TEXT("/Game/WonderChess/VNext/Characters/Silkmother_r003/Effects/SM_Silk_"))+Shape));
+            Component->SetStaticMesh(EffectMesh);Component->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+            Component->SetCastShadow(false);Component->SetCanEverAffectNavigation(false);
+            auto* SilkMaterial=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/WonderChess/VNext/Characters/Silkmother_r003/Effects/M_SilkEffects"));
+            auto* Material=UMaterialInstanceDynamic::Create(SilkMaterial?SilkMaterial:CombatCueMaterial.Get(),this);
+            Material->SetVectorParameterValue(TEXT("Color"),Color);Component->SetMaterial(0,Material);
+            Component->RegisterComponent();
+        }
+        // A bounded instanced batch keeps dense silk separate from the general cue component pool.
+        Component->ClearInstances();if(!Transforms.IsEmpty())Component->AddInstances(Transforms,false,true,false);
+    };
+    Flush(SilkStrands,TEXT("Cube"),SilkStrandTransforms,FLinearColor(.86f,.73f,.48f));
+    Flush(SilkSparks,TEXT("Sphere"),SilkSparkTransforms,FLinearColor(1.f,.64f,.19f));
+    if(SilkStrands&&SilkStrandTransforms.Num()>=384&&!CueKindsSeen.Contains(TEXT("silk_instance_batch_verified"))){
+        CueKindsSeen.Add(TEXT("silk_instance_batch_verified"));
+        UE_LOG(LogTemp,Display,TEXT("WC_SILK_BATCH instances=%d mesh=%s material=%s visible=%d registered=%d owner_hidden=%d bounds=%s"),
+            SilkStrands->GetInstanceCount(),*GetNameSafe(SilkStrands->GetStaticMesh()),*GetPathNameSafe(SilkStrands->GetMaterial(0)),
+            SilkStrands->IsVisible(),SilkStrands->IsRegistered(),IsHidden(),*SilkStrands->Bounds.ToString());
+    }
 }
 
 void AWCVNextLab::CueMesh(const TCHAR* Shape,FVector Location,FVector Scale,FLinearColor Color,FRotator Rotation)
@@ -213,6 +256,7 @@ float AWCVNextLab::DefeatAge(const wc::CombatUnit& Unit) const
 void AWCVNextLab::UpdateCombatCues()
 {
     CueMeshUsed=CueTextUsed=0;CurrentCueKinds.Reset();
+    SilkStrandTransforms.Reset();SilkSparkTransforms.Reset();
     const auto* Combat=CurrentCombat();
     if(Combat){
         const double Time=Combat->CurrentTick()*Catalog.rules.tickMs/1000.;
@@ -261,7 +305,28 @@ void AWCVNextLab::UpdateCombatCues()
                     }
                 }
             }
-            if(U.state==wc::ActionState::Stunned){
+            if(U.cocoonExpiry>Combat->CurrentTick()){
+                FVector Center=P+FVector(0,0,30),Extent(72,72,105);
+                if(const auto* View=Pieces.Find(U.id)){
+                    auto* Mesh=View->Bellback?View->Bellback->GetMesh():View->Silkmother?View->Silkmother->GetMesh():nullptr;
+                    if(Mesh){Center=Mesh->Bounds.Origin;Extent=Mesh->Bounds.BoxExtent;}
+                }
+                Extent.X+=9;Extent.Y+=9;Extent.Z+=7;
+                // Crossed twelve-turn silk bands enclose the target; the health/name markers remain unobstructed.
+                for(int Hand:{-1,1})for(int I=0;I<192;++I){
+                    const auto Point=[&](float T){
+                        const float A=Hand*T*UE_TWO_PI*12+float(U.id%11),Z=(T*2-1)*.96f;
+                        const float R=FMath::Sqrt(FMath::Max(.02f,1-Z*Z));
+                        return Center+FVector(FMath::Cos(A)*Extent.X*R,FMath::Sin(A)*Extent.Y*R,Z*Extent.Z);
+                    };
+                    SilkLine(Point(I/192.f),Point((I+1)/192.f),5.5f);
+                }
+                for(int I=0;I<10;++I){
+                    const float A=Time*2+I*UE_TWO_PI/10;
+                    SilkSpark(Center+FVector(FMath::Cos(A)*(Extent.X+10),FMath::Sin(A)*(Extent.Y+10),FMath::Sin(A*2)*Extent.Z*.7f),2.4f);
+                }
+                Mark(TEXT("silkmother_dense_cocoon"));
+            }else if(U.state==wc::ActionState::Stunned){
                 // A continuous spiral and orbiting stars exist only while the actual stun is active.
                 const FVector Center=P+FVector(0,0,ArtSlice?242:245);
                 const int SpiralSegments=ArtSlice?18:24;
@@ -296,9 +361,34 @@ void AWCVNextLab::UpdateCombatCues()
             }
         }
         for(const auto& Action:Combat->VisualActions()){
-            const FVector From=Position(Action.origin)+FVector(0,0,75);
+            FVector From=Position(Action.origin)+FVector(0,0,75);
             const FVector To=At(Action.target,Action.center);
             const auto& Def=Catalog.Definition(Action.definition,Action.neutral);
+            if(Def.id=="wc_vn_soul_jailer"){
+                if(const auto* View=Pieces.Find(Action.source);View&&View->Silkmother)From=View->Silkmother->CueLocation(TEXT("mouth"));
+                const float Span=FMath::Max(1,Action.impactTick-Action.releaseTick);
+                const float T=FMath::Clamp((Combat->CurrentTick()-Action.releaseTick)/Span,0.f,1.f);
+                if(Action.released){
+                    const FVector Tip=FMath::Lerp(From,To,T),D=(To-From).GetSafeNormal();
+                    const FVector Across=FVector::CrossProduct(D,FVector::UpVector).GetSafeNormal();
+                    const float Size=Action.basicAttack?4.f:11.f;
+                    for(int I=0;I<(Action.basicAttack?2:6);++I){
+                        const float Angle=I*UE_TWO_PI/6;
+                        const FVector Offset=(Across*FMath::Cos(Angle)+FVector::UpVector*FMath::Sin(Angle))*Size;
+                        SilkLine(FMath::Lerp(From,To,FMath::Max(0.f,T-.13f))+Offset,Tip,Action.basicAttack?2.2f:3.5f);
+                    }
+                    SilkSpark(Tip,Action.basicAttack?3:8);
+                    Mark(Action.basicAttack?TEXT("silkmother_silk_shot"):TEXT("silkmother_web_projectile"));
+                }else if(!Action.basicAttack){
+                    const auto* Source=Find(Action.source);
+                    const float CastMs=Source?FMath::Max(1,Source->ability.castMs):FMath::Max(1,Def.ability.castMs);
+                    const float Age=FMath::Clamp(1-(Action.releaseTick-Combat->CurrentTick())*Catalog.rules.tickMs/CastMs,0.f,1.f);
+                    for(int I=0;I<6;++I){const float A=Time*8+I*UE_TWO_PI/6;
+                        SilkSpark(From+FVector(FMath::Cos(A),FMath::Sin(A),.3f)*18*(1-Age),2+Age*2);}
+                    Mark(TEXT("silkmother_weave_windup"));
+                }
+                continue;
+            }
             const FLinearColor Color=Action.basicAttack?(Def.ability.mechanic==wc::AbilityMechanic::Standard?Shot:SkillColor(Def.ability.mechanic)):SkillColor(Action.mechanic);
             const float Until=(Action.releaseTick-Combat->CurrentTick())*Catalog.rules.tickMs/1000.f;
             if(Action.basicAttack){
@@ -389,13 +479,36 @@ void AWCVNextLab::UpdateCombatCues()
         // Read a bounded recent interval directly: pause, replay and observer changes need no event playback queue.
         const auto& Events=Combat->Events();
         for(auto It=Events.rbegin();It!=Events.rend();++It){
+            const float Age=(Combat->CurrentTick()-It->tick)*Catalog.rules.tickMs/1000.f;
+            if(Age>10.7f)break;
+            if(It->mechanic!=wc::AbilityMechanic::CocoonProjectile||It->effect!=wc::Effect::Stun||It->resolved<=0)continue;
+            const float ReleaseAge=Age-It->resolved/1000.f;
+            const auto* Target=Find(It->target);
+            if(ReleaseAge<0||ReleaseAge>.35f||!Target||Target->health<=0||Target->cocoonExpiry>Combat->CurrentTick())continue;
+            const FVector Center=At(Target->id,Target->cell);const float Life=1-ReleaseAge/.35f;
+            for(int I=0;I<12;++I){
+                const float A=I*UE_TWO_PI/12;
+                const FVector D(FMath::Cos(A),FMath::Sin(A),.35f);
+                SilkLine(Center+D*(65+ReleaseAge*50),Center+D*(78+ReleaseAge*90),2.5f*Life);
+                SilkSpark(Center+D*(78+ReleaseAge*90),3*Life);
+            }
+            Mark(TEXT("silkmother_cocoon_release"));
+        }
+        for(auto It=Events.rbegin();It!=Events.rend();++It){
             const auto& E=*It;
             const float Age=(Combat->CurrentTick()-E.tick)*Catalog.rules.tickMs/1000.f;
             if(Age>.7f)break;
             const auto* Recipient=Find(E.target);
             const FVector From=Position(E.origin)+FVector(0,0,75),To=At(E.target,E.cell);
             const float Life=FMath::Max(.05f,1-Age/.7f);
-            if(E.effect==wc::Effect::Heal&&E.resolved>0&&Recipient&&Recipient->health>0){
+            if(E.mechanic==wc::AbilityMechanic::CocoonProjectile&&E.effect==wc::Effect::Stun&&E.resolved>0&&Recipient&&Recipient->health>0){
+                for(int I=0;I<14;++I){
+                    const float A=I*UE_TWO_PI/14;const FVector D(FMath::Cos(A),FMath::Sin(A),FMath::Sin(A*3)*.5f);
+                    SilkLine(To+D*(10+Age*75),To+D*(23+Age*110),3*Life);
+                    SilkSpark(To+D*(23+Age*110),4*Life);
+                }
+                Mark(TEXT("silkmother_confirmed_catch"));
+            }else if(E.effect==wc::Effect::Heal&&E.resolved>0&&Recipient&&Recipient->health>0){
                 const FVector P=To+FVector(80,0,25+Age*75);
                 CueLine(P-FVector(15,0,0),P+FVector(15,0,0),Heal,8);
                 CueLine(P-FVector(0,0,15),P+FVector(0,0,15),Heal,8);
@@ -494,6 +607,7 @@ void AWCVNextLab::UpdateCombatCues()
         }
     }
     UpdatePlacementCue();
+    FlushSilkEffects();
     for(int I=CueMeshUsed;I<CueMeshes.Num();++I)CueMeshes[I]->SetVisibility(false);
     for(int I=CueTextUsed;I<CueTexts.Num();++I)CueTexts[I]->SetVisibility(false);
     PeakCueMeshes=FMath::Max(PeakCueMeshes,CueMeshUsed);PeakCueTexts=FMath::Max(PeakCueTexts,CueTextUsed);

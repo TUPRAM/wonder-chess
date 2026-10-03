@@ -1,0 +1,78 @@
+{
+  "artifacts": [
+    {
+      "path": "inputs/logo_prompt_r001.txt",
+      "category": "source"
+    },
+    {
+      "path": "inputs/logo_prompt_r002.txt",
+      "category": "source"
+    },
+    {
+      "path": "reports/provenance.json",
+      "category": "report"
+    },
+    {
+      "path": "reports/capabilities.json",
+      "category": "report"
+    },
+    {
+      "path": "inputs/references/r002/wonder-chess-logo.png",
+      "category": "image"
+    }
+  ],
+  "asset_id": "wc_brand_logo",
+  "author": "Codex /root",
+  "checks": [
+    {
+      "evidence": [
+        "reports/provenance.json",
+        "reports/capabilities.json"
+      ],
+      "id": "scope_and_asset_type",
+      "notes": "UI logo reference candidate; no game/stat/roster changes.",
+      "status": "pass"
+    },
+    {
+      "evidence": [
+        "reports/provenance.json",
+        "reports/capabilities.json"
+      ],
+      "id": "rights_and_upload_policy",
+      "notes": "Owner explicitly requested logo creation. Built-in image generation; no third-party source image, upload, paid API call or deployment. Human acceptance remains open.",
+      "status": "pass"
+    },
+    {
+      "evidence": [
+        "reports/provenance.json",
+        "reports/capabilities.json"
+      ],
+      "id": "dimensions_and_camera",
+      "notes": "PNG RGBA 1536x1024; flat frontal title lockup with transparent background.",
+      "status": "pass"
+    },
+    {
+      "evidence": [
+        "reports/provenance.json",
+        "reports/capabilities.json"
+      ],
+      "id": "budgets_and_dependencies",
+      "notes": "Two imagegen calls complete; no code/runtime dependencies. Root owns files; separate read-only visual critique.",
+      "status": "pass"
+    }
+  ],
+  "defects": [],
+  "executed_commands": [
+    "assetctl.py init --workspace art-source/asset-studio/wc_brand_logo --asset-id wc_brand_logo --kind ui --name Wonder Chess Logo",
+    "image_gen.imagegen: initial generation and targeted cleanup",
+    "Read-only Pillow inspection of image size, alpha histogram and content bounds; SHA-256 hashing",
+    "Copy-Item: preserved generated originals into revision-specific workspace folders"
+  ],
+  "method": "Reviewed current owner roster instructions and hero visual standard; generated one neutral game title logo and one cleanup via built-in imagegen; inspected actual output and alpha metadata.",
+  "notes": [
+    "Brief and output candidate only. Human reference/forms/release acceptance open.",
+    "Pixel-size targets are intended uses, not verified engine or small-size readability evidence."
+  ],
+  "schema_version": "1.0.0",
+  "stage": "brief"
+}

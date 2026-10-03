@@ -108,6 +108,9 @@ double SkillBudget(const UnitDef &unit, int star, int capacity, const Catalog &c
         case AbilityMechanic::ScreenedStrike: potential = magnitude; break;
         case AbilityMechanic::CrossingBeams: potential = magnitude * std::min(3, std::max(1, capacity)); break;
         case AbilityMechanic::TidalPush: potential = magnitude * std::min(2, std::max(1, capacity)); break;
+        case AbilityMechanic::CocoonProjectile:
+            potential = basicPerSecond * ability.durationMs / 1000.0;
+            break;
         case AbilityMechanic::Standard: break;
         }
     }
@@ -228,6 +231,10 @@ double SpatialOpportunity(const OwnedUnit &unit, const SeatState &seat, const Pu
     if (!opponent || opponent->deployment.empty()) return 0;
     std::vector<Cell> enemies;
     for (const auto &enemy : opponent->deployment) enemies.push_back(EncounterCell(enemy.cell, 1, catalog.rules));
+    if (ability.mechanic == AbilityMechanic::CocoonProjectile)
+        return std::any_of(enemies.begin(), enemies.end(), [&](Cell enemy) {
+            return Distance(unit.cell, enemy) <= ability.range;
+        }) ? 0.25 : 0.0;
     if (ability.mechanic == AbilityMechanic::TidalPush)
     {
         int aligned = 0;

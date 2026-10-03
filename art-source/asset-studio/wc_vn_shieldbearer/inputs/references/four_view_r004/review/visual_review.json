@@ -1,0 +1,62 @@
+{
+  "hero_id": "wc_vn_shieldbearer",
+  "revision": "four_view_r004",
+  "date": "2026-10-03",
+  "owner_review": "open",
+  "review_type": "assistant_visual_review_not_owner_approval",
+  "status": "twelve_reference_candidates_prepared",
+  "user_direction": "Forearm attachment retained; two character variants and isolated shield four-view set.",
+  "viewed_contact_sheet": "all_twelve_views.png",
+  "full_sources_viewed": true,
+  "five_checks": [
+    {
+      "check": "Same parts and correct hand/attachment",
+      "finding": "Character identity and anatomical-left shield preserved. Isolated rear/edge views show one forearm strap plus one lower grip."
+    },
+    {
+      "check": "Same colours, materials and proportions",
+      "finding": "Broad colours/materials and design match. Minor painted wear, thickness, point-shape and shield dimension differences remain."
+    },
+    {
+      "check": "Same pose, scale and baseline",
+      "finding": "Matching body bases used for both variants. Approximate registration only; shield position/size and fitting geometry vary slightly."
+    },
+    {
+      "check": "Correct side directions",
+      "finding": "Left faces left, right faces right. Shield-only fronts point toward corresponding edge. Sides were generated independently without pixel mirroring."
+    },
+    {
+      "check": "Plain background, no text, no cropping",
+      "finding": "All twelve source PNGs have neutral backgrounds, no text and full subject framing. Contact-sheet labels are separate review annotations."
+    }
+  ],
+  "known_limitations": [
+    "Slight front-biased/oblique side cameras",
+    "Minor shield thickness, lower-point silhouette, fitting-placement and fine-wear differences",
+    "Rear/inner construction inferred from selected frontal design; not exact registered engineering projections"
+  ],
+  "file_validation": {
+    "files": 12,
+    "format": "PNG",
+    "pixels": [
+      1254,
+      1254
+    ],
+    "sha256_records": "file_validation.json",
+    "original_images_unchanged": true
+  },
+  "protected_sources_and_prior_r001_r002_unchanged": true,
+  "sync": {
+    "command": ".venv/Scripts/python.exe tools/vnext/sync_hero_art.py",
+    "exit_code": 0,
+    "reported_complete_sets": 0,
+    "note": "Current sync tool scans four_view_r002 only. It does not ingest this r004 three-set review packet. No tool/source change or deployment made."
+  },
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m unittest discover -s tests",
+    "exit_code": 0,
+    "tests_run": 251,
+    "elapsed_seconds": 7.51,
+    "log": "unittest.log"
+  }
+}

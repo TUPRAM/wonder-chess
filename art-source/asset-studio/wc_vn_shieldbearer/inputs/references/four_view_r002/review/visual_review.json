@@ -1,0 +1,71 @@
+{
+  "hero_id": "wc_vn_shieldbearer",
+  "date": "2026-10-03",
+  "visual_standard_version": 2,
+  "owner_review": "open",
+  "review_kind": "assistant_visual_review_not_owner_approval",
+  "overall_result": "rejected_main_stopped_after_two_attempts",
+  "best_rejected_attempt": "../rejected/main_attempt_002.png",
+  "viewed_images": [
+    "../rejected/main_attempt_001.png",
+    "../rejected/main_attempt_002.png"
+  ],
+  "r001_images_used_as_reference": false,
+  "findings_attempt_2": [
+    "Approximately 6–6.5 helmet-heads tall, not about 4",
+    "Empty arm approximately 20 degrees from vertical rather than about 35",
+    "Dense individual chainmail links and fine surface wear remain",
+    "Background subtly graded"
+  ],
+  "improvements_attempt_2": [
+    "Rectangular shield bottom",
+    "Stockier body",
+    "Improved full-body margins"
+  ],
+  "four_view_consistency_checks": [
+    {
+      "check": "Same part inventory and hand/position in all views",
+      "result": "not_run",
+      "reason": "No other views generated after main failed twice"
+    },
+    {
+      "check": "Same colours, materials and proportions",
+      "result": "not_run",
+      "reason": "No four-view set; main independently fails prescribed proportions/detail limits"
+    },
+    {
+      "check": "Same pose, scale and baseline",
+      "result": "not_run",
+      "reason": "No four-view set; main independently fails prescribed A-pose angle"
+    },
+    {
+      "check": "Side views face correct edge",
+      "result": "not_run",
+      "reason": "Sides not generated"
+    },
+    {
+      "check": "Plain background, no text, nothing cropped",
+      "result": "main_only_failed_background",
+      "observation": "Both main attempts are uncropped and text-free, but background appears subtly graded"
+    }
+  ],
+  "side_by_side_four_view_check_performed": false,
+  "side_by_side_check_reason": "Generation stopped at main view after two failures; four views do not exist",
+  "canonical_view_files_saved": [],
+  "protected_files_and_r001_unchanged": true,
+  "sync": {
+    "preflight_exit_code": 0,
+    "command": ".venv/Scripts/python.exe tools/vnext/sync_hero_art.py",
+    "exit_code": 0,
+    "complete_sets": 0,
+    "hero_in_status": false,
+    "failed_set_published": false
+  },
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m unittest discover -s tests",
+    "exit_code": 0,
+    "tests_run": 251,
+    "elapsed_seconds": 5.566,
+    "log": "unittest.log"
+  }
+}

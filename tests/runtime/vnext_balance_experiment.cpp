@@ -153,8 +153,8 @@ struct Fixture
 };
 void Fixtures(const wc::Catalog& catalog, const std::string& variant)
 {
-    const int bell = Definition(catalog, "wc_vn_bellback"), crag = Definition(catalog, "wc_vn_cragstoat"),
-        root = Definition(catalog, "wc_vn_grandmother_root"), snap = Definition(catalog, "wc_vn_snapvine");
+    const int bell = Definition(catalog, "wc_vn_shieldbearer"), crag = Definition(catalog, "wc_vn_boar_rusher"),
+        root = Definition(catalog, "wc_vn_grove_druid"), snap = Definition(catalog, "wc_vn_hookjaw");
     std::vector<Fixture> fixtures;
     Fixture approach;
     approach.id = "charge_approach"; approach.variable = "crag_row_3_vs_0";
@@ -437,24 +437,25 @@ int main(int argc, char** argv)
         const std::string variant = argc > 1 ? argv[1] : "control";
         const int count = argc > 2 ? std::stoi(argv[2]) : 10, firstSeed = argc > 3 ? std::stoi(argv[3]) : 1;
         const bool diagnostics = argc > 4 && std::string(argv[4]) == "diagnostics";
-        Require(variant == "control" || variant == "root75" || variant == "mana100" || variant == "mana20" || variant == "targeting" || variant == "clarity", "Variant must be control, root75, mana100 or mana20");
+        Require(variant == "control" || variant == "root75" || variant == "mana100" || variant == "mana20" || variant == "targeting" || variant == "clarity" || variant == "roster", "Variant must be control, root75, mana100, mana20 or roster");
         Require(count >= 0 && count <= 1000 && firstSeed >= 1 && firstSeed <= 1000000 - count, "Bounded seed interval");
         auto catalog = wcvnext::WonderVNextCatalog();
         Require(catalog.Validate().empty(), "Canonical catalog validation");
         if (variant == "root75")
         {
-            auto& ability = catalog.units[Definition(catalog, "wc_vn_grandmother_root")].ability;
+            auto& ability = catalog.units[Definition(catalog, "wc_vn_grove_druid")].ability;
             Require(ability.mechanic == wc::AbilityMechanic::StationaryGrove, "Root mechanic identity");
             for (auto& magnitude : ability.magnitude) magnitude = wc::HalfUp(magnitude * 7500, 10000);
         }
         if (variant == "mana100") catalog = wcvnext::WonderVNextManaCatalog();
         if (variant == "mana20") catalog = wcvnext::WonderVNextMana20Catalog();
+        if (variant == "roster") catalog = wcvnext::WonderVNextRosterCatalog();
         if (variant == "targeting" || variant == "clarity") catalog = wcvnext::WonderVNextCombatClarityCatalog(variant == "clarity");
         Require(catalog.Validate().empty(), "Experimental catalog validation");
         std::ofstream identity("variant.json");
         identity << "{\"variant\":\"" << variant << "\",\"origin_catalog_digest\":\"" << catalog.contentDigest
             << "\",\"first_seed\":" << firstSeed << ",\"tournaments\":" << count
-            << ",\"recipe\":\"" << (variant == "root75" ? "Root base pulse magnitudes HalfUp(value*7500/10000) only" : variant == "mana100" ? "Canonical opt-in mana100_v1 recipe; three heroes only" : variant == "mana20" ? "Canonical mana100_hit20_v1 recipe; basic-hit gain20 only" : "Unmodified canonical control")
+            << ",\"recipe\":\"" << (variant == "root75" ? "Root base pulse magnitudes HalfUp(value*7500/10000) only" : variant == "mana100" ? "Canonical opt-in mana100_v1 recipe; three heroes only" : variant == "mana20" ? "Canonical mana100_hit20_v1 recipe; basic-hit gain20 only" : variant == "roster" ? "Canonical roster_v1 recipe; four mana casters and seven stat traits" : "Unmodified canonical control")
             << "\",\"boundary\":\"In-memory experiment; no canonical tuning or human acceptance\"}\n";
         Fixtures(catalog, variant);
         if(variant!="root75") ManaFixtures(catalog,variant);

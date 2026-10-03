@@ -259,8 +259,8 @@ bool ValidateScenarioPair(const Catalog &catalog, const ScenarioPair &pair, std:
 
 std::vector<ScenarioPair> BuiltinScenarioPairs(const Catalog &catalog)
 {
-    const char *bell = "wc_vn_bellback", *crag = "wc_vn_cragstoat", *root = "wc_vn_grandmother_root",
-        *snap = "wc_vn_snapvine", *prism = "wc_vn_prism_organ", *tide = "wc_vn_reefglass";
+    const char *bell = "wc_vn_shieldbearer", *crag = "wc_vn_boar_rusher", *root = "wc_vn_grove_druid",
+        *snap = "wc_vn_hookjaw", *prism = "wc_vn_prism_scholar", *tide = "wc_vn_tide_caller";
     auto unit = [&](Id id, const char *hero, int x, int y) { return Unit(catalog, id, hero, x, y); };
     std::vector<ScenarioPair> pairs;
     auto add = [&](const char *id, const char *name, const char *variable, const char *question, AbilityMechanic mechanic,
@@ -298,6 +298,11 @@ std::vector<ScenarioPair> BuiltinScenarioPairs(const Catalog &catalog)
         AbilityMechanic::TidalPush, {unit(1,tide,3,3),unit(2,bell,2,3)},
         {unit(1,bell,4,3),unit(2,root,4,0),unit(3,crag,1,3)});
     push.b.armies[0][0].facing = Facing::Right; push.changes = {{0,1,false,true}};
+    auto &cocoon = add("F07", "Silkmother and Bellback", "Enemy approach position",
+        "Which approaching enemy is cocooned while Bellback protects Silkmother?",
+        AbilityMechanic::CocoonProjectile, {unit(1,bell,3,3),unit(2,"wc_vn_soul_jailer",3,2)},
+        {unit(1,crag,4,3),unit(2,prism,2,2)});
+    cocoon.b.armies[1][0].cell = {0,0};cocoon.changes = {{1,1001,true,false}};
     for (const auto &pair : pairs)
     {
         std::string error;
@@ -362,6 +367,7 @@ ScenarioRun RunScenario(const Catalog &catalog, const FormationScenario &scenari
         }
         if (event.effect == Effect::Dash && event.mechanic == AbilityMechanic::MomentumCharge) source.chargeLandings++;
         if (event.effect == Effect::Dash && event.mechanic == AbilityMechanic::TidalPush) source.tidePushes++;
+        if (event.effect == Effect::Stun && event.mechanic == AbilityMechanic::CocoonProjectile && event.resolved>0) source.cocoons++;
     }
     for (const auto &unit : combat.Units()) Require(health[unit.id] == unit.health, "Scenario health ledger does not reconcile");
     trace.Number(run.result.complete); trace.Number(run.result.timeout); trace.Number(run.result.winner);
@@ -377,15 +383,16 @@ ScenarioRun RunScenario(const Catalog &catalog, const FormationScenario &scenari
     mechanics << "Observed A/B: guard prevented " << run.sides[0].guardPrevented << "/" << run.sides[1].guardPrevented
         << " health subunits; effective healing " << run.sides[0].healing << "/" << run.sides[1].healing
         << "; released charge hits " << run.sides[0].chargeHits << "/" << run.sides[1].chargeHits
-        << "; tide pushes " << run.sides[0].tidePushes << "/" << run.sides[1].tidePushes << ".";
+        << "; tide pushes " << run.sides[0].tidePushes << "/" << run.sides[1].tidePushes
+        << "; cocoons " << run.sides[0].cocoons << "/" << run.sides[1].cocoons << ".";
     run.findings.push_back(mechanics.str());
     return run;
 }
 
 std::vector<EarlyResponseScenario> BuiltinEarlyResponseScenarios(const Catalog &catalog)
 {
-    const char *bell = "wc_vn_bellback", *crag = "wc_vn_cragstoat", *root = "wc_vn_grandmother_root",
-        *snap = "wc_vn_snapvine", *prism = "wc_vn_prism_organ";
+    const char *bell = "wc_vn_shieldbearer", *crag = "wc_vn_boar_rusher", *root = "wc_vn_grove_druid",
+        *snap = "wc_vn_hookjaw", *prism = "wc_vn_prism_scholar";
     const std::vector<OwnedUnit> defenders{Unit(catalog,1001,bell,4,3),Unit(catalog,1002,root,4,2),Unit(catalog,1003,crag,3,3)};
     std::vector<EarlyResponseScenario> result;
     auto add = [&](const char *id, int level, int budget, int cost, const char *hypothesis, std::vector<OwnedUnit> army) {

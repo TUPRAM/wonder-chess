@@ -33,8 +33,18 @@ inline void VNextBotTests(const wc::Catalog &canonical,
     {
         auto weak = canonical;
         weak.units[hero].ability.magnitude = {};
+        for (auto &effect : weak.units[hero].ability.effects)
+        {
+            effect.magnitude = {};
+            if (effect.effect == wc::Effect::Stun) effect.durationMs = canonical.rules.tickMs;
+        }
         if (weak.units[hero].ability.mechanic == wc::AbilityMechanic::DirectionalGuard)
             weak.units[hero].ability.guardReductionBp = 1;
+        // A damage-free cocoon's authored benefit is control time. Zeroing its
+        // already-zero magnitude does not weaken it; retain a valid one-tick
+        // control fixture so the comparison measures actual utility valuation.
+        if (weak.units[hero].ability.mechanic == wc::AbilityMechanic::CocoonProjectile)
+            weak.units[hero].ability.durationMs = canonical.rules.tickMs;
         const auto low = firstPurchase(weak, hero);
         const auto high = firstPurchase(canonical, hero);
         check(high.features[0] > low.features[0], "authored skill strength changes pilot recruitment value: " + canonical.units[hero].id);

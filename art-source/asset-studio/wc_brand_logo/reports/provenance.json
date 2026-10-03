@@ -1,0 +1,71 @@
+{
+  "asset_id": "wc_brand_logo",
+  "date": "2026-10-03",
+  "author": "Codex /root",
+  "tool": "image_gen.imagegen (built-in)",
+  "model": "not exposed by tool",
+  "seed": "not exposed by tool",
+  "generation_count": 2,
+  "prompts": [
+    "inputs/logo_prompt_r001.txt",
+    "inputs/logo_prompt_r002.txt"
+  ],
+  "selected_candidate": "r002",
+  "human_approval": "open",
+  "integrated": false,
+  "published": false,
+  "artifacts": [
+    {
+      "revision": "r001",
+      "path": "inputs/references/r001/wonder-chess-logo.png",
+      "sha256": "7fa7676679f3c4c5be25f0262544f7a98d0d3f29983edd972a00fcf375efb2e1",
+      "size": [
+        1536,
+        1024
+      ],
+      "format": "PNG",
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "transparent_pixels": 844995,
+      "content_bounds_at_alpha_128": [
+        6,
+        8,
+        1529,
+        990
+      ]
+    },
+    {
+      "revision": "r002",
+      "path": "inputs/references/r002/wonder-chess-logo.png",
+      "sha256": "106e637ef634f007fe301b841c5a09c55124a9a01f264d7fee59ada69e051aad",
+      "size": [
+        1536,
+        1024
+      ],
+      "format": "PNG",
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "transparent_pixels": 966464,
+      "content_bounds_at_alpha_128": [
+        47,
+        36,
+        1495,
+        964
+      ]
+    }
+  ],
+  "observations": [
+    "Both images were visually inspected. WONDER CHESS text is correct.",
+    "r002 retains the gold wordmark, turquoise W-shaped rook and four-point star.",
+    "r002 adds space around the silhouette and makes the O counter transparent.",
+    "Requested 7-8 percent margin was only partially achieved; observed solid-content margins are approximately 3-6 percent. Consumers can reserve additional layout space.",
+    "Transparent pixels retain RGB data. Preserve PNG alpha; do not assess background appearance by discarding alpha.",
+    "Full title lockup; icon-scale usage and engine context not tested."
+  ]
+}

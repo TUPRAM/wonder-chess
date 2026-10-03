@@ -30,7 +30,7 @@ class VNextCatalogTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 CATALOG.validate(source)
         source = copy.deepcopy(self.source)
-        source["experiments"]["mana100_v1"]["heroes"][0] = "wc_vn_grandmother_root"
+        source["experiments"]["mana100_v1"]["heroes"][0] = "wc_vn_grove_druid"
         with self.assertRaisesRegex(ValueError, "control heroes"):
             CATALOG.validate(source)
 
@@ -65,8 +65,10 @@ class VNextCatalogTests(unittest.TestCase):
     def test_unimplemented_candidates_are_not_executable(self):
         outputs = CATALOG.artifacts(self.raw)
         runtime = json.loads(outputs["data/vnext/generated/runtime_catalog.json"])
-        self.assertEqual(len(self.source["heroes"]), 14)
-        self.assertEqual(len(runtime["heroes"]), 6)
+        self.assertEqual(len(self.source["heroes"]), 40)
+        self.assertEqual(len(runtime["heroes"]), 14)
+        for trait in self.source["traits"]:
+            self.assertEqual((len(trait["members"]), trait["thresholds"]), (4, [2, 4]), trait["id"])
         self.assertEqual(runtime["traits"], [])
         self.assertEqual({h["cost"] for h in runtime["heroes"]}, {1, 2, 3, 4, 5})
         for hero in self.source["heroes"]:
@@ -122,20 +124,42 @@ class VNextCatalogTests(unittest.TestCase):
         CATALOG.validate(source)
 
     def test_traits_cannot_silently_enable_unimplemented_behaviors(self):
+        inactive = next(i for i, trait in enumerate(self.source["traits"]) if not trait["runtime_enabled"])
         source = copy.deepcopy(self.source)
-        source["traits"][0]["runtime_enabled"] = True
-        with self.assertRaisesRegex(ValueError, "require an implementation"):
+        source["traits"][inactive]["runtime_enabled"] = True
+        with self.assertRaisesRegex(ValueError, "implemented stat bonus"):
+            CATALOG.validate(source)
+        source = copy.deepcopy(self.source)
+        source["traits"][inactive].update(runtime_enabled=True,
+                                          runtime={"stat": "evasion_bp", "scope": "members", "values": [2000, 4000]})
+        with self.assertRaisesRegex(ValueError, "Unsupported trait stat"):
+            CATALOG.validate(source)
+
+    def test_roster_recipe_adds_mana_and_stat_traits_without_changing_the_control(self):
+        outputs = CATALOG.artifacts(self.raw)
+        runtime = json.loads(outputs["data/vnext/generated/runtime_catalog.json"])
+        self.assertEqual({trait["id"] for trait in runtime["roster_recipe"]["traits"]},
+                         {"human", "orc", "beastkin", "dragonkin", "tank", "fighter", "mage"})
+        self.assertIn("WonderVNextRosterCatalog()", outputs["data/vnext/generated/WonderVNextCatalog.h"])
+        source = copy.deepcopy(self.source)
+        source["roster_recipe"]["mana_heroes"].append("wc_vn_shieldbearer")
+        with self.assertRaises(ValueError):
             CATALOG.validate(source)
 
     def test_relics_require_multiple_compatibilities_and_tradeoffs(self):
         self.assertEqual(len(self.source["relics"]), 12)
+        self.assertTrue(all(relic["compatible_mechanics"] == [] for relic in self.source["relics"]))
         source = copy.deepcopy(self.source)
         source["relics"][0]["compatible_mechanics"] = ["screened_strike"]
         with self.assertRaises(ValueError):
             CATALOG.validate(source)
         source = copy.deepcopy(self.source)
-        source["relics"][0]["modifiers"]["castBp"] = 10000
-        with self.assertRaisesRegex(ValueError, "benefit and a tradeoff"):
+        source["relics"][0]["modifiers"]["skillPowerBp"] = 0
+        with self.assertRaisesRegex(ValueError, "requires a benefit"):
+            CATALOG.validate(source)
+        source = copy.deepcopy(self.source)
+        source["relics"][0]["modifiers"]["radiusDelta"] = 1
+        with self.assertRaisesRegex(ValueError, "may not reshape"):
             CATALOG.validate(source)
 
     def test_neutral_schedule_and_occupancy_are_total(self):

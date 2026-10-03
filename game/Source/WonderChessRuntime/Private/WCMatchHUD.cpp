@@ -2055,29 +2055,33 @@ void AWCMatchHUD::Action(const FString &Id) {
   if (Id.StartsWith(TEXT("unit_")) || Id.StartsWith(TEXT("bench_"))) PreviewOffer = -1;
   if (Id.StartsWith(TEXT("bench_"))) {
     int B = FCString::Atoi(*Id.Mid(6));
-    if (P->SelectedUnit) {
-      P->Intent(wc::CommandType::Move, P->SelectedUnit, B, false);
-      return;
-    }
     for (const auto &V : P->Private->GetArrayField(TEXT("units"))) {
       auto U = V->AsObject();
       if (!U->GetBoolField(TEXT("board")) &&
           int(U->GetNumberField(TEXT("bench"))) == B)
         Select = int64(U->GetNumberField(TEXT("id")));
     }
+    // A click on an occupied bench slot picks that hero. An empty slot can
+    // still receive the currently selected hero; dragging can swap occupants.
+    if (!Select && P->SelectedUnit) {
+      P->Intent(wc::CommandType::Move, P->SelectedUnit, B, false);
+      return;
+    }
   }
   if (Select)
     for (const auto &V : P->Private->GetArrayField(TEXT("units"))) {
       auto U = V->AsObject();
       if (int64(U->GetNumberField(TEXT("id"))) == Select) {
-        if (P->SelectedUnit && P->SelectedUnit != Select) {
+        if (Id.StartsWith(TEXT("unit_")) && P->SelectedUnit &&
+            P->SelectedUnit != Select) {
           P->Intent(wc::CommandType::Move, P->SelectedUnit,
                     int(U->GetNumberField(TEXT("bench"))),
                     U->GetBoolField(TEXT("board")),
                     int(U->GetNumberField(TEXT("col"))),
                     int(U->GetNumberField(TEXT("row"))));
-        } else
+        } else {
           P->SelectedUnit = Select;
+        }
         P->InspectedDefinition = int(U->GetNumberField(TEXT("def")));
         P->InspectedUnitId = Select;
         P->bInspectedCombat = false;

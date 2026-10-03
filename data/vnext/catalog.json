@@ -1,7 +1,7 @@
 {
   "schema_version": "wonder_vnext.catalog.1",
   "profile_id": "wonder_vnext",
-  "balance_version": "wonder_vnext_solo_0.1.0",
+  "balance_version": "wonder_vnext_silkmother_0.2.0",
   "status": "M0_authored_M1_candidate_not_release",
   "target_match_minutes": [
     35,
@@ -167,13 +167,13 @@
   },
   "heroes": [
     {
-      "id": "wc_vn_bellback",
-      "name": "Bellback",
-      "display_name": "Bellback",
-      "race": "beast",
-      "unit_class": "guardian",
+      "id": "wc_vn_shieldbearer",
+      "name": "Shieldbearer",
+      "display_name": "Shieldbearer",
+      "race": "human",
+      "unit_class": "tank",
       "cost": 1,
-      "body_family": "grounded_quadruped",
+      "body_family": "humanoid_medium",
       "role_tags": [
         "frontline"
       ],
@@ -182,12 +182,12 @@
       "production_status": "laboratory_candidate",
       "art_status": "brief_only",
       "dossier": {
-        "form": "Moss-and-bronze grazing giant with a suspended dorsal bell in a wooden mount.",
-        "decision": "Protect a chosen ally through a directional guarded sector.",
-        "positioning": "Put a vulnerable ally behind the guarded shoulder; face Bellback toward likely projectiles.",
-        "allies": "Prism Organ benefits from time to cast; Grandmother Root prolongs the defensive line.",
-        "counterplay": "Flank the guard or displace it away from its protected ally.",
-        "recognition": "The dorsal bell swings within its mount and a short arc of bronze light marks the guarded sector."
+        "form": "Stocky knight in plain plate with one oversized tower shield.",
+        "decision": "Choose which ally stands behind the shield.",
+        "positioning": "Front row, facing the expected attackers, carry directly behind.",
+        "allies": "Any fragile Mage, Sniper or Priest.",
+        "counterplay": "Flank the shield or push him away from the protected ally.",
+        "recognition": "The big shield glows and a short arc marks the guarded side."
       },
       "stats": {
         "health": 95000,
@@ -202,8 +202,8 @@
         "damageType": "physical"
       },
       "ability": {
-        "id": "wc_vn_a_bellback",
-        "name": "Sheltering Bell",
+        "id": "wc_vn_a_shieldbearer",
+        "name": "Shield Wall",
         "mechanic": "directional_guard",
         "effect": "shield",
         "selector": "self",
@@ -231,18 +231,18 @@
         "pulseMs": 0,
         "displacementCells": 0,
         "secondaryDelayMs": 0,
-        "tooltip_en": "Protect a chosen ally through a directional guarded sector. Flank the guard or displace it away from its protected ally.",
-        "tooltip_id": "Lindungi rekan di belakang sektor penjagaan. Serang dari samping atau pisahkan pelindung."
+        "tooltip_en": "Passively reduces eligible incoming attacks aimed at the one ally standing behind his guarded side.",
+        "tooltip_id": "Mengurangi serangan yang mengarah ke satu rekan di belakang sisi perisainya. Serang dari samping atau pisahkan mereka."
       }
     },
     {
-      "id": "wc_vn_cragstoat",
-      "name": "Cragstoat",
-      "display_name": "Cragstoat",
-      "race": "beast",
-      "unit_class": "warrior",
+      "id": "wc_vn_boar_rusher",
+      "name": "Boar Rusher",
+      "display_name": "Boar Rusher",
+      "race": "orc",
+      "unit_class": "fighter",
       "cost": 1,
-      "body_family": "elongated_quadruped",
+      "body_family": "humanoid_large",
       "role_tags": [
         "frontline"
       ],
@@ -251,12 +251,12 @@
       "production_status": "laboratory_candidate",
       "art_status": "brief_only",
       "dossier": {
-        "form": "Long low predator with rocklike shoulder ridges and an elastic, expressive spine.",
-        "decision": "Convert a clear approach into a committed burst of momentum.",
-        "positioning": "Leave a short open approach; a crowded front row denies its charge.",
-        "allies": "Reefglass clears a path; Bellback shelters the charge recovery.",
-        "counterplay": "Screen the intended target and deny free landing cells.",
-        "recognition": "A rising tail and successive footfall sparks count its momentum before the lunge."
+        "form": "Big-shouldered orc with tusks, a boar-skull helm and a heavy club.",
+        "decision": "Build a long run-up into a big first hit.",
+        "positioning": "Far from the target with an open lane.",
+        "allies": "Orcs for health; Fighters for damage.",
+        "counterplay": "Screen or crowd the lane; block the landing cell.",
+        "recognition": "Dust trail grows with momentum, then a streak on the charge."
       },
       "stats": {
         "health": 65000,
@@ -271,8 +271,8 @@
         "damageType": "physical"
       },
       "ability": {
-        "id": "wc_vn_a_cragstoat",
-        "name": "Stonebound Lunge",
+        "id": "wc_vn_a_boar_rusher",
+        "name": "Tusk Charge",
         "mechanic": "momentum_charge",
         "effect": "damage",
         "selector": "current_enemy",
@@ -300,18 +300,18 @@
         "pulseMs": 0,
         "displacementCells": 0,
         "secondaryDelayMs": 0,
-        "tooltip_en": "Convert a clear approach into a committed burst of momentum. Screen the intended target and deny free landing cells.",
-        "tooltip_id": "Bangun momentum dengan bergerak lalu menerjang. Tutup jalur dan petak pendaratan."
+        "tooltip_en": "Movement builds momentum; a clear straight path triggers a charge that turns momentum into a heavy hit.",
+        "tooltip_id": "Bergerak mengumpulkan momentum; jalur lurus yang kosong memicu serudukan yang mengubah momentum menjadi pukulan berat."
       }
     },
     {
-      "id": "wc_vn_grandmother_root",
-      "name": "Grandmother Root",
-      "display_name": "Grandmother Root",
-      "race": "plant",
-      "unit_class": "healer",
+      "id": "wc_vn_grove_druid",
+      "name": "Grove Druid",
+      "display_name": "Grove Druid",
+      "race": "elf",
+      "unit_class": "priest",
       "cost": 2,
-      "body_family": "root_walker",
+      "body_family": "humanoid_medium",
       "role_tags": [
         "support"
       ],
@@ -320,12 +320,12 @@
       "production_status": "laboratory_candidate",
       "art_status": "brief_only",
       "dossier": {
-        "form": "An orchard elder walking on broad roots, with a small sheltered garden in her torso.",
-        "decision": "Establish a healing position that rewards holding ground.",
-        "positioning": "Anchor beside several allies without exposing the whole group to artillery.",
-        "allies": "Bellback protects the grove; Prism Organ turns the protected time into damage.",
-        "counterplay": "Displace or interrupt her; concentrate burst before the grove pulses.",
-        "recognition": "Roots settle, petals open and a restrained ground ring pulses with each heal."
+        "form": "Antlered elf elder in a leaf mantle with a twisted wooden staff.",
+        "decision": "Anchor a healing zone the team fights inside.",
+        "positioning": "Centre of the formation, where she will not need to walk.",
+        "allies": "Tanks and Fighters who hold ground next to her.",
+        "counterplay": "Burst her before the grove establishes, or displace her.",
+        "recognition": "A ring of flowers grows on the healed cells and pulses."
       },
       "stats": {
         "health": 70000,
@@ -340,8 +340,8 @@
         "damageType": "physical"
       },
       "ability": {
-        "id": "wc_vn_a_grandmother_root",
-        "name": "Stay and Blossom",
+        "id": "wc_vn_a_grove_druid",
+        "name": "Sacred Grove",
         "mechanic": "stationary_grove",
         "effect": "heal",
         "selector": "adjacent_allies",
@@ -369,18 +369,18 @@
         "pulseMs": 1000,
         "displacementCells": 0,
         "secondaryDelayMs": 0,
-        "tooltip_en": "Establish a healing position that rewards holding ground. Displace or interrupt her; concentrate burst before the grove pulses.",
-        "tooltip_id": "Diam untuk membuat taman penyembuhan. Dorong atau hentikan sebelum penyembuhan."
+        "tooltip_en": "After standing still, establishes a pulsing healing area; moving, displacement, stun or defeat breaks it.",
+        "tooltip_id": "Setelah diam, menciptakan area penyembuhan berdenyut. Bergerak, terdorong, pingsan, atau kalah akan memutusnya."
       }
     },
     {
-      "id": "wc_vn_snapvine",
-      "name": "Snapvine",
-      "display_name": "Snapvine",
-      "race": "plant",
+      "id": "wc_vn_hookjaw",
+      "name": "Hookjaw",
+      "display_name": "Hookjaw",
+      "race": "goblin",
       "unit_class": "assassin",
       "cost": 3,
-      "body_family": "creeping_vine",
+      "body_family": "humanoid_small",
       "role_tags": [
         "damage"
       ],
@@ -389,12 +389,12 @@
       "production_status": "laboratory_candidate",
       "art_status": "brief_only",
       "dossier": {
-        "form": "A low creeping flower whose folded petals conceal a thorn-lined jaw.",
-        "decision": "Threaten a distant unit through a screened line strike.",
-        "positioning": "Choose a lane where defenders do not lie between it and the backline.",
-        "allies": "Reefglass removes screens; Cragstoat pressures the intercepted defender.",
-        "counterplay": "Place a durable defender on its strike lane; alter the backline angle.",
-        "recognition": "A thin root line traces the committed path before the jaw snaps along it."
+        "form": "Wiry goblin with a metal jaw-guard and a hooked chain.",
+        "decision": "Reach a distant enemy unless something stands in the way.",
+        "positioning": "On a line with an unscreened enemy carry.",
+        "allies": "Assassins; units that open lanes by pushing.",
+        "counterplay": "Put a defender in the line.",
+        "recognition": "The chain line is shown before the hook flies."
       },
       "stats": {
         "health": 70000,
@@ -409,8 +409,8 @@
         "damageType": "physical"
       },
       "ability": {
-        "id": "wc_vn_a_snapvine",
-        "name": "Thornline",
+        "id": "wc_vn_a_hookjaw",
+        "name": "Chain Hook",
         "mechanic": "screened_strike",
         "effect": "damage",
         "selector": "farthest_enemy_adjacent",
@@ -438,18 +438,18 @@
         "pulseMs": 0,
         "displacementCells": 0,
         "secondaryDelayMs": 0,
-        "tooltip_en": "Threaten a distant unit through a screened line strike. Place a durable defender on its strike lane; alter the backline angle.",
-        "tooltip_id": "Serang sasaran jauh melalui garis akar. Pelindung di jalur dapat mencegat."
+        "tooltip_en": "Commits toward a distant enemy and hits the first enemy the straight line meets.",
+        "tooltip_id": "Menyerang ke arah musuh jauh dan mengenai musuh pertama yang dilewati garis lurus."
       }
     },
     {
-      "id": "wc_vn_prism_organ",
-      "name": "Prism Organ",
-      "display_name": "Prism Organ",
-      "race": "construct",
+      "id": "wc_vn_prism_scholar",
+      "name": "Prism Scholar",
+      "display_name": "Prism Scholar",
+      "race": "human",
       "unit_class": "mage",
       "cost": 4,
-      "body_family": "floating_assembly",
+      "body_family": "humanoid_medium",
       "role_tags": [
         "damage"
       ],
@@ -458,12 +458,12 @@
       "production_status": "laboratory_candidate",
       "art_status": "brief_only",
       "dossier": {
-        "form": "Suspended ceramic organ pipes arranged around a stained-glass resonator.",
-        "decision": "Punish enemies sharing crossing rows and columns.",
-        "positioning": "Protect its long setup while scouting clustered opposing lines.",
-        "allies": "Bellback absorbs approach pressure; Root sustains the protected casting position.",
-        "counterplay": "Spread across rows and columns; interrupt the marked setup.",
-        "recognition": "Two different musical notes and crossing ground lines announce the ordered beams."
+        "form": "Slim scholar in a long coat carrying a large floating crystal.",
+        "decision": "Punish enemies lined up in rows and columns.",
+        "positioning": "Protected back row with a clear view of the enemy cluster.",
+        "allies": "Shieldbearer in front; Mages for the skill-damage bonus.",
+        "counterplay": "Spread across rows and columns; interrupt the unreleased cast.",
+        "recognition": "The crystal splits light into a visible cross before each beam fires."
       },
       "stats": {
         "health": 80000,
@@ -478,8 +478,8 @@
         "damageType": "physical"
       },
       "ability": {
-        "id": "wc_vn_a_prism_organ",
-        "name": "Crossing Hymn",
+        "id": "wc_vn_a_prism_scholar",
+        "name": "Crossfire",
         "mechanic": "crossing_beams",
         "effect": "damage",
         "selector": "current_enemy",
@@ -507,32 +507,32 @@
         "pulseMs": 0,
         "displacementCells": 0,
         "secondaryDelayMs": 400,
-        "tooltip_en": "Punish enemies sharing crossing rows and columns. Spread across rows and columns; interrupt the marked setup.",
-        "tooltip_id": "Tandai baris dan kolom lalu lepaskan sinar berurutan. Menyebar atau hentikan persiapan."
+        "tooltip_en": "Locks a crossing point, then releases a row beam followed by a column beam.",
+        "tooltip_id": "Mengunci titik silang, lalu melepaskan sinar baris disusul sinar kolom."
       }
     },
     {
-      "id": "wc_vn_reefglass",
-      "name": "Reefglass",
-      "display_name": "Reefglass",
-      "race": "tidekin",
-      "unit_class": "controller",
+      "id": "wc_vn_tide_caller",
+      "name": "Tide Caller",
+      "display_name": "Tide Caller",
+      "race": "elemental",
+      "unit_class": "mage",
       "cost": 5,
-      "body_family": "cuttlefish",
+      "body_family": "elemental_humanoid",
       "role_tags": [
-        "support"
+        "damage"
       ],
       "archetype": "displacement",
       "enabled": true,
       "production_status": "laboratory_candidate",
       "art_status": "brief_only",
       "dossier": {
-        "form": "Glass-shelled cuttlefish drifting on ribbonlike fins, with visible currents inside.",
-        "decision": "Push the first enemy in a directional tide and strike the occupied lane.",
-        "positioning": "Orient toward a contested lane; leave a legal destination if the displacement matters.",
-        "allies": "Snapvine exploits the opened lane; Root opponents lose their stationary setup.",
-        "counterplay": "Stagger formations; block the push destination or attack from another side.",
-        "recognition": "Its fins cup forward, a narrow current marks the lane, then the leading wave breaks."
+        "form": "Water-bodied figure with a wave-shaped crest and trailing droplets.",
+        "decision": "Break a formation by pushing its front unit away.",
+        "positioning": "On the lane holding the enemy's key front-liner.",
+        "allies": "Shieldbearer's counter; allies that punish displaced units.",
+        "counterplay": "Stagger the formation; block the push cell.",
+        "recognition": "A wave rolls down the lane and carries one enemy back."
       },
       "stats": {
         "health": 100000,
@@ -547,8 +547,8 @@
         "damageType": "physical"
       },
       "ability": {
-        "id": "wc_vn_a_reefglass",
-        "name": "Leading Tide",
+        "id": "wc_vn_a_tide_caller",
+        "name": "Tidal Wave",
         "mechanic": "tidal_push",
         "effect": "damage",
         "selector": "current_enemy",
@@ -576,134 +576,592 @@
         "pulseMs": 0,
         "displacementCells": 2,
         "secondaryDelayMs": 0,
-        "tooltip_en": "Push the first enemy in a directional tide and strike the occupied lane. Stagger formations; block the push destination or attack from another side.",
-        "tooltip_id": "Hantam jalur depan dan dorong musuh pertama. Formasi berselang mengurangi dampaknya."
+        "tooltip_en": "Damages enemies in the facing lane and pushes the first enemy back through free cells.",
+        "tooltip_id": "Melukai musuh di jalur depan dan mendorong musuh pertama ke belakang melalui petak kosong."
       }
     },
     {
-      "id": "wc_vn_silkmother",
-      "name": "Silkmother",
-      "display_name": "Silkmother",
-      "race": "insect",
-      "unit_class": "engineer",
+      "id": "wc_vn_soul_jailer",
+      "name": "Soul Jailer",
+      "display_name": "Soul Jailer",
+      "race": "demon",
+      "unit_class": "warlock",
       "cost": 2,
-      "body_family": "arachnid",
+      "body_family": "humanoid_horned",
       "role_tags": [
         "support"
       ],
-      "archetype": "constructions",
-      "enabled": false,
-      "production_status": "authored_not_implemented",
+      "archetype": "single_target_control",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
       "art_status": "brief_only",
       "dossier": {
-        "form": "Eight-legged silk architect carrying a warm lantern abdomen.",
-        "decision": "Set a finite trip line between two destructible anchors.",
-        "positioning": "Place anchors where an approach is likely without exposing both to one attack.",
-        "allies": "Prism Organ punishes trapped lanes; Bellback keeps anchor approaches protected.",
-        "counterplay": "Use another route or destroy an anchor with ranged attacks.",
-        "recognition": "Silk tightens visibly between two independently selectable lantern stakes."
+        "form": "Thin horned demon carrying a hanging iron cage on a chain.",
+        "decision": "Take one enemy out of the fight.",
+        "positioning": "Behind a defender, within reach of approaching enemies.",
+        "allies": "Shieldbearer; allies that focus the caged unit.",
+        "counterplay": "Interrupt the wind-up; pressure him during the long cooldown.",
+        "recognition": "The cage flies out and closes around one enemy."
       },
-      "planned_ability": {
-        "name": "Twin Lantern Line",
-        "behavior": "Set a finite trip line between two destructible anchors.",
-        "status": "planned_not_executable"
+      "stats": {
+        "health": 75000,
+        "attackDamage": 5500,
+        "attackRate": 650,
+        "range": 3,
+        "armor": 15,
+        "resistance": 15,
+        "movementRate": 900,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_soul_jailer",
+        "name": "Soul Cage",
+        "mechanic": "cocoon_projectile",
+        "effect": "stun",
+        "selector": "current_enemy",
+        "damageType": "physical",
+        "firstCastMs": 1500,
+        "cooldownMs": 8000,
+        "castMs": 650,
+        "recoveryMs": 350,
+        "durationMs": 2000,
+        "travelMs": 300,
+        "radius": 0,
+        "range": 4,
+        "maxTargets": 1,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          0,
+          0,
+          0
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Fires a cage at one enemy; on impact it cannot move, attack or cast for a short time. No damage.",
+        "tooltip_id": "Menembakkan kurungan ke satu musuh; sasaran tidak dapat bergerak, menyerang, atau memakai kemampuan sesaat. Tanpa kerusakan."
       }
     },
     {
-      "id": "wc_vn_manyfoot",
-      "name": "Manyfoot",
-      "display_name": "Manyfoot",
-      "race": "insect",
-      "unit_class": "warrior",
+      "id": "wc_vn_chapel_healer",
+      "name": "Chapel Healer",
+      "display_name": "Chapel Healer",
+      "race": "human",
+      "unit_class": "priest",
       "cost": 2,
-      "body_family": "colony",
+      "body_family": "humanoid_medium",
+      "role_tags": [
+        "support"
+      ],
+      "archetype": "positional sustain",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Robed cleric with a tall hood and a large lantern staff.",
+        "decision": "Keep one key ally alive through burst.",
+        "positioning": "Back row, away from Assassin landing cells.",
+        "allies": "Tanks and long-fight Fighters.",
+        "counterplay": "Dive her with Assassins or silence her.",
+        "recognition": "A beam of light links the lantern to the healed ally."
+      },
+      "stats": {
+        "health": 68000,
+        "attackDamage": 4400,
+        "attackRate": 650,
+        "range": 3,
+        "armor": 10,
+        "resistance": 15,
+        "movementRate": 800,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_chapel_healer",
+        "name": "Mending Light",
+        "mechanic": "standard",
+        "effect": "heal",
+        "selector": "lowest_health_ally",
+        "damageType": "magic",
+        "firstCastMs": 3000,
+        "cooldownMs": 7000,
+        "castMs": 350,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 0,
+        "radius": 0,
+        "range": 8,
+        "maxTargets": 1,
+        "maxDash": 0,
+        "allowSelf": true,
+        "magnitude": [
+          16000,
+          26000,
+          42000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Heals the allied unit with the lowest health.",
+        "tooltip_id": "Menyembuhkan rekan dengan nyawa paling rendah."
+      }
+    },
+    {
+      "id": "wc_vn_hammerer",
+      "name": "Hammerer",
+      "display_name": "Hammerer",
+      "race": "dwarf",
+      "unit_class": "fighter",
+      "cost": 1,
+      "body_family": "humanoid_small",
       "role_tags": [
         "frontline"
       ],
-      "archetype": "momentum rush",
-      "enabled": false,
-      "production_status": "authored_not_implemented",
+      "archetype": "isolated duels",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
       "art_status": "brief_only",
       "dossier": {
-        "form": "A single coordinated colony of iridescent beetles sharing one banner-shaped shell.",
-        "decision": "Flow around a defender and re-form behind it as one logical unit.",
-        "positioning": "Seek a target with a free rear cell and avoid crowded clusters.",
-        "allies": "Cragstoat creates simultaneous pressure from the front.",
-        "counterplay": "Occupy rear cells; concentrated area damage pressures the single shared health pool.",
-        "recognition": "The colony stretches around both sides, with one continuous selection ring and health bar."
+        "form": "Short broad dwarf with a braided beard and a huge two-handed hammer.",
+        "decision": "Lock down the unit in front of him.",
+        "positioning": "Front row opposite a dangerous melee enemy.",
+        "allies": "Dwarves for shields; Fighters for damage.",
+        "counterplay": "Kite him with ranged units.",
+        "recognition": "The hammer glows, then an impact star appears over the target."
       },
-      "planned_ability": {
-        "name": "Pour and Re-form",
-        "behavior": "Flow around a defender and re-form behind it as one logical unit.",
-        "status": "planned_not_executable"
+      "stats": {
+        "health": 70000,
+        "attackDamage": 7000,
+        "attackRate": 950,
+        "range": 1,
+        "armor": 15,
+        "resistance": 15,
+        "movementRate": 1200,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 0,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_hammerer",
+        "name": "Stunning Blow",
+        "mechanic": "standard",
+        "effect": "damage",
+        "selector": "current_enemy",
+        "damageType": "physical",
+        "firstCastMs": 3000,
+        "cooldownMs": 8000,
+        "castMs": 350,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 0,
+        "radius": 0,
+        "range": 1,
+        "maxTargets": 1,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          9000,
+          15000,
+          24000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "effects": [
+          {
+            "effect": "damage",
+            "damageType": "physical",
+            "durationMs": 0,
+            "magnitude": [
+              9000,
+              15000,
+              24000
+            ]
+          },
+          {
+            "effect": "stun",
+            "damageType": "physical",
+            "durationMs": 1000,
+            "magnitude": [
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "tooltip_en": "Strikes the current target and stuns it briefly.",
+        "tooltip_id": "Memukul sasaran saat ini dan membuatnya pingsan sesaat."
       }
     },
     {
-      "id": "wc_vn_kilnback",
-      "name": "Kilnback",
-      "display_name": "Kilnback",
-      "race": "construct",
-      "unit_class": "guardian",
+      "id": "wc_vn_earthbreaker",
+      "name": "Earthbreaker",
+      "display_name": "Earthbreaker",
+      "race": "orc",
+      "unit_class": "tank",
       "cost": 3,
-      "body_family": "tortoise",
+      "body_family": "humanoid_large",
       "role_tags": [
         "frontline"
-      ],
-      "archetype": "protected carries",
-      "enabled": false,
-      "production_status": "authored_not_implemented",
-      "art_status": "brief_only",
-      "dossier": {
-        "form": "A squat glazed furnace-tortoise with hinged shield plates and steam valves.",
-        "decision": "Capture a bounded number of frontal projectiles and vent steam afterward.",
-        "positioning": "Face ranged lanes and put allies outside the vent recovery opening.",
-        "allies": "Dawnkite and Prism Organ gain protected firing time.",
-        "counterplay": "Melee attacks and side lanes bypass its collection arc.",
-        "recognition": "Each captured projectile lights one kiln window; full windows precede the steam vent."
-      },
-      "planned_ability": {
-        "name": "Furnace Count",
-        "behavior": "Capture a bounded number of frontal projectiles and vent steam afterward.",
-        "status": "planned_not_executable"
-      }
-    },
-    {
-      "id": "wc_vn_coilwyrm",
-      "name": "Coilwyrm",
-      "display_name": "Coilwyrm",
-      "race": "dragon",
-      "unit_class": "controller",
-      "cost": 5,
-      "body_family": "serpent",
-      "role_tags": [
-        "support"
       ],
       "archetype": "displacement",
-      "enabled": false,
-      "production_status": "authored_not_implemented",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
       "art_status": "brief_only",
       "dossier": {
-        "form": "A long branch-antlered dragon coiling around a suspended pearl.",
-        "decision": "Create a delayed constricting ring with a safe center.",
-        "positioning": "Aim to divide formations at the edge rather than cover every enemy.",
-        "allies": "Reefglass can move an enemy into the ring edge; artillery punishes grouped safety.",
-        "counterplay": "Spread, occupy the safe center, or interrupt the setup.",
-        "recognition": "The pearl draws a clean circle before the dragon pulls the edge inward."
+        "form": "Massive orc with stone gauntlets and a single shoulder plate.",
+        "decision": "Stop a melee pile-up around him.",
+        "positioning": "Front row where enemies gather.",
+        "allies": "Area damage dealers behind him.",
+        "counterplay": "Do not surround him; use ranged units.",
+        "recognition": "Raised fists, then cracks spread to adjacent cells."
       },
-      "planned_ability": {
-        "name": "Pearl Constriction",
-        "behavior": "Create a delayed constricting ring with a safe center.",
-        "status": "planned_not_executable"
+      "stats": {
+        "health": 106500,
+        "attackDamage": 6200,
+        "attackRate": 700,
+        "range": 1,
+        "armor": 35,
+        "resistance": 15,
+        "movementRate": 1000,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 0,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_earthbreaker",
+        "name": "Ground Slam",
+        "mechanic": "standard",
+        "effect": "stun",
+        "selector": "adjacent_enemies",
+        "damageType": "physical",
+        "firstCastMs": 3500,
+        "cooldownMs": 9000,
+        "castMs": 400,
+        "recoveryMs": 300,
+        "durationMs": 1250,
+        "travelMs": 0,
+        "radius": 1,
+        "range": 1,
+        "maxTargets": 8,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          0,
+          0,
+          0
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Slams the ground and stuns all adjacent enemies.",
+        "tooltip_id": "Menghantam tanah dan membuat semua musuh di sebelahnya pingsan."
       }
     },
     {
-      "id": "wc_vn_dawnkite",
-      "name": "Dawnkite",
-      "display_name": "Dawnkite",
-      "race": "dragon",
-      "unit_class": "ranger",
+      "id": "wc_vn_bearguard",
+      "name": "Bearguard",
+      "display_name": "Bearguard",
+      "race": "beastkin",
+      "unit_class": "fighter",
+      "cost": 2,
+      "body_family": "humanoid_large",
+      "role_tags": [
+        "frontline"
+      ],
+      "archetype": "isolated duels",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Round bear-headed bruiser with huge paws and a leather harness.",
+        "decision": "Punish enemies that cluster around him.",
+        "positioning": "Front row.",
+        "allies": "Fighters; Orc Shaman attack speed.",
+        "counterplay": "Fight him one at a time or from range.",
+        "recognition": "A wide claw arc sweeps around him."
+      },
+      "stats": {
+        "health": 73500,
+        "attackDamage": 7400,
+        "attackRate": 950,
+        "range": 1,
+        "armor": 15,
+        "resistance": 15,
+        "movementRate": 1200,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 0,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_bearguard",
+        "name": "Wide Swipe",
+        "mechanic": "standard",
+        "effect": "damage",
+        "selector": "adjacent_enemies",
+        "damageType": "physical",
+        "firstCastMs": 3000,
+        "cooldownMs": 7000,
+        "castMs": 400,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 0,
+        "radius": 1,
+        "range": 1,
+        "maxTargets": 8,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          11000,
+          18000,
+          29000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Hits every adjacent enemy with one swipe.",
+        "tooltip_id": "Mengenai semua musuh di sebelahnya dengan satu sapuan."
+      }
+    },
+    {
+      "id": "wc_vn_bomber",
+      "name": "Bomber",
+      "display_name": "Bomber",
+      "race": "goblin",
+      "unit_class": "engineer",
+      "cost": 1,
+      "body_family": "humanoid_small",
+      "role_tags": [
+        "damage"
+      ],
+      "archetype": "artillery",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Tiny green goblin with big ears carrying a round bomb as large as his torso.",
+        "decision": "Cheap early area damage.",
+        "positioning": "Second row.",
+        "allies": "Engineers; Goblins for gold.",
+        "counterplay": "Spread out; he is fragile.",
+        "recognition": "A lit fuse, an arc, and a small blast circle."
+      },
+      "stats": {
+        "health": 65000,
+        "attackDamage": 5500,
+        "attackRate": 700,
+        "range": 3,
+        "armor": 15,
+        "resistance": 15,
+        "movementRate": 900,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_bomber",
+        "name": "Lobbed Bomb",
+        "mechanic": "standard",
+        "effect": "damage",
+        "selector": "current_enemy_area",
+        "damageType": "magic",
+        "firstCastMs": 3000,
+        "cooldownMs": 7000,
+        "castMs": 400,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 250,
+        "radius": 1,
+        "range": 3,
+        "maxTargets": 9,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          9000,
+          15000,
+          24000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Throws a bomb that damages a small area around the target.",
+        "tooltip_id": "Melempar bom yang melukai area kecil di sekitar sasaran."
+      }
+    },
+    {
+      "id": "wc_vn_ember_wisp",
+      "name": "Ember Wisp",
+      "display_name": "Ember Wisp",
+      "race": "elemental",
+      "unit_class": "priest",
+      "cost": 1,
+      "body_family": "elemental_floating",
+      "role_tags": [
+        "support"
+      ],
+      "archetype": "protected carries",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Small floating flame spirit with two round eyes and tiny arms.",
+        "decision": "Cheap early protection.",
+        "positioning": "Behind the front line.",
+        "allies": "Priests; Elementals.",
+        "counterplay": "Burst through the shield.",
+        "recognition": "A warm bubble surrounds the shielded ally."
+      },
+      "stats": {
+        "health": 65000,
+        "attackDamage": 4200,
+        "attackRate": 650,
+        "range": 3,
+        "armor": 10,
+        "resistance": 15,
+        "movementRate": 800,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_ember_wisp",
+        "name": "Warm Ward",
+        "mechanic": "standard",
+        "effect": "shield",
+        "selector": "lowest_health_ally",
+        "damageType": "magic",
+        "firstCastMs": 2500,
+        "cooldownMs": 7000,
+        "castMs": 350,
+        "recoveryMs": 300,
+        "durationMs": 3000,
+        "travelMs": 0,
+        "radius": 0,
+        "range": 8,
+        "maxTargets": 1,
+        "maxDash": 0,
+        "allowSelf": true,
+        "magnitude": [
+          12000,
+          20000,
+          32000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Places a small shield on the ally with the lowest health.",
+        "tooltip_id": "Memberi perisai kecil pada rekan dengan nyawa paling rendah."
+      }
+    },
+    {
+      "id": "wc_vn_blood_drummer",
+      "name": "Blood Drummer",
+      "display_name": "Blood Drummer",
+      "race": "orc",
+      "unit_class": "shaman",
+      "cost": 2,
+      "body_family": "humanoid_large",
+      "role_tags": [
+        "support"
+      ],
+      "archetype": "momentum rush",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Heavy orc with painted arms beating a large waist drum.",
+        "decision": "Speed up a melee group at the right moment.",
+        "positioning": "Just behind the front line, next to Fighters.",
+        "allies": "Fighters and Beastkin.",
+        "counterplay": "Kill the buffed group's back support; stun during the buff.",
+        "recognition": "Red rings pulse out from the drum."
+      },
+      "stats": {
+        "health": 68000,
+        "attackDamage": 5200,
+        "attackRate": 700,
+        "range": 3,
+        "armor": 10,
+        "resistance": 15,
+        "movementRate": 900,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_blood_drummer",
+        "name": "War Drum",
+        "mechanic": "standard",
+        "effect": "stat_modifier",
+        "selector": "adjacent_allies",
+        "damageType": "physical",
+        "firstCastMs": 2500,
+        "cooldownMs": 9000,
+        "castMs": 350,
+        "recoveryMs": 300,
+        "durationMs": 4000,
+        "travelMs": 0,
+        "radius": 1,
+        "range": 1,
+        "maxTargets": 9,
+        "maxDash": 0,
+        "allowSelf": true,
+        "magnitude": [
+          2500,
+          4000,
+          6000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Raises the attack speed of nearby allies for a few seconds.",
+        "tooltip_id": "Menaikkan kecepatan serang rekan di sekitarnya selama beberapa detik."
+      }
+    },
+    {
+      "id": "wc_vn_siege_master",
+      "name": "Siege Master",
+      "display_name": "Siege Master",
+      "race": "human",
+      "unit_class": "engineer",
       "cost": 4,
-      "body_family": "winged_dragon",
+      "body_family": "humanoid_medium",
       "role_tags": [
         "damage"
       ],
@@ -712,56 +1170,115 @@
       "production_status": "authored_not_implemented",
       "art_status": "brief_only",
       "dossier": {
-        "form": "A broad-winged dragon with layered dawn-colored membranes and a forked tail.",
-        "decision": "Commit to a sweeping fan attack across a chosen sector.",
-        "positioning": "Protect its back and aim a long diagonal across several threats.",
-        "allies": "Bellback covers its vulnerable approach; Silkmother delays pursuers.",
-        "counterplay": "Close flanks and rear pressure exploit its directional commitment.",
-        "recognition": "Wing membranes open in order, illuminating the fan before the sweep."
+        "form": "Broad artillerist with goggles wheeling a short fat cannon.",
+        "decision": "Reward enemy clumping with area damage.",
+        "positioning": "Far back row; needs time to charge.",
+        "allies": "Tanks that hold enemies together; Engineers for mana.",
+        "counterplay": "Spread out or reach him quickly.",
+        "recognition": "A marked circle appears before the shell lands."
       },
       "planned_ability": {
-        "name": "Dawn Fan",
-        "behavior": "Commit to a sweeping fan attack across a chosen sector.",
+        "name": "Siege Shell",
+        "behavior": "Fires a cannon shell at the largest enemy cluster, damaging an area.",
         "status": "planned_not_executable"
+      },
+      "planned_stats": {
+        "health": 78000,
+        "attackDamage": 6600,
+        "attackRate": 700,
+        "range": 3,
+        "armor": 15,
+        "resistance": 15,
+        "movementRate": 900,
+        "status": "design_target_not_executable"
       }
     },
     {
-      "id": "wc_vn_thimblewake",
-      "name": "Thimblewake",
-      "display_name": "Thimblewake",
-      "race": "fae",
-      "unit_class": "duelist",
-      "cost": 3,
-      "body_family": "flower_mantis",
+      "id": "wc_vn_longbow_scout",
+      "name": "Longbow Scout",
+      "display_name": "Longbow Scout",
+      "race": "elf",
+      "unit_class": "sniper",
+      "cost": 1,
+      "body_family": "humanoid_medium",
       "role_tags": [
         "damage"
       ],
-      "archetype": "isolated duels",
+      "archetype": "backline pressure",
       "enabled": false,
       "production_status": "authored_not_implemented",
       "art_status": "brief_only",
       "dossier": {
-        "form": "A flower-mantis noble with petal armor and needlelike forearms.",
-        "decision": "Challenge an isolated opponent with a short parry and riposte.",
-        "positioning": "Find a side fight away from nearby enemy support.",
-        "allies": "Reefglass separates the duel; Hushlantern repairs the risky commitment.",
-        "counterplay": "Keep support nearby and apply ranged pressure outside the parry window.",
-        "recognition": "Two petals close as a challenge marker; a single bright forearm flick marks the parry."
+        "form": "Slender archer with long ears, a green hood and a bow taller than herself.",
+        "decision": "Line up shots through several enemies.",
+        "positioning": "Back row on a column the enemy fills.",
+        "allies": "Other Snipers; a Tank in front.",
+        "counterplay": "Stagger columns; send Assassins.",
+        "recognition": "The arrow leaves a thin bright trail through its line."
       },
       "planned_ability": {
-        "name": "Petal Challenge",
-        "behavior": "Challenge an isolated opponent with a short parry and riposte.",
+        "name": "Piercing Arrow",
+        "behavior": "Shoots an arrow that damages every enemy in a straight line.",
         "status": "planned_not_executable"
+      },
+      "planned_stats": {
+        "health": 55000,
+        "attackDamage": 7000,
+        "attackRate": 800,
+        "range": 5,
+        "armor": 5,
+        "resistance": 10,
+        "movementRate": 850,
+        "status": "design_target_not_executable"
       }
     },
     {
-      "id": "wc_vn_wren",
-      "name": "Wren",
-      "display_name": "Wren",
-      "race": "human",
-      "unit_class": "engineer",
-      "cost": 1,
-      "body_family": "human_cart",
+      "id": "wc_vn_moonblade",
+      "name": "Moonblade",
+      "display_name": "Moonblade",
+      "race": "elf",
+      "unit_class": "assassin",
+      "cost": 2,
+      "body_family": "humanoid_medium",
+      "role_tags": [
+        "damage"
+      ],
+      "archetype": "backline pressure",
+      "enabled": false,
+      "production_status": "authored_not_implemented",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Lean masked elf with two crescent blades and a short cape.",
+        "decision": "Remove the enemy's farthest back-line unit.",
+        "positioning": "Anywhere; she relocates when her skill fires.",
+        "allies": "Other Assassins to overload the back line.",
+        "counterplay": "Keep a bodyguard near the back-line carry.",
+        "recognition": "A crescent flash at the start cell and behind the target."
+      },
+      "planned_ability": {
+        "name": "Moon Step",
+        "behavior": "Blinks behind the farthest enemy and deals a guaranteed critical strike.",
+        "status": "planned_not_executable"
+      },
+      "planned_stats": {
+        "health": 63000,
+        "attackDamage": 7900,
+        "attackRate": 900,
+        "range": 1,
+        "armor": 10,
+        "resistance": 15,
+        "movementRate": 1200,
+        "status": "design_target_not_executable"
+      }
+    },
+    {
+      "id": "wc_vn_treant_caller",
+      "name": "Treant Caller",
+      "display_name": "Treant Caller",
+      "race": "elf",
+      "unit_class": "summoner",
+      "cost": 4,
+      "body_family": "humanoid_medium",
       "role_tags": [
         "support"
       ],
@@ -770,27 +1287,583 @@
       "production_status": "authored_not_implemented",
       "art_status": "brief_only",
       "dossier": {
-        "form": "A practical itinerant tinkerer accompanying a little walking repair cart.",
-        "decision": "Deploy a limited repair station for nearby allies.",
-        "positioning": "Choose a station site that supports the front without feeding free demolition.",
-        "allies": "Constructs and stationary teams benefit from the protected maintenance position.",
-        "counterplay": "Destroy the station or move the fight outside its service radius.",
-        "recognition": "The cart unfolds a small canopy; repair pulses travel visibly to recipients."
+        "form": "Tall elf in bark armour holding a glowing seed.",
+        "decision": "Add a disposable front-liner that pulls attacks.",
+        "positioning": "Second row so the treant appears in front.",
+        "allies": "Summoners; fragile damage dealers.",
+        "counterplay": "Area damage clears the treant; ignore it with Assassins.",
+        "recognition": "The seed is thrown and a treant bursts from the cell."
       },
       "planned_ability": {
-        "name": "Wayside Workshop",
-        "behavior": "Deploy a limited repair station for nearby allies.",
+        "name": "Call Treant",
+        "behavior": "Summons a treant that taunts nearby enemies.",
         "status": "planned_not_executable"
+      },
+      "planned_stats": {
+        "health": 78000,
+        "attackDamage": 5400,
+        "attackRate": 650,
+        "range": 3,
+        "armor": 10,
+        "resistance": 15,
+        "movementRate": 850,
+        "status": "design_target_not_executable"
       }
     },
     {
-      "id": "wc_vn_hushlantern",
-      "name": "Hushlantern",
-      "display_name": "Hushlantern",
-      "race": "spirit",
-      "unit_class": "healer",
+      "id": "wc_vn_ironwall",
+      "name": "Ironwall",
+      "display_name": "Ironwall",
+      "race": "dwarf",
+      "unit_class": "tank",
+      "cost": 2,
+      "body_family": "humanoid_small",
+      "role_tags": [
+        "frontline"
+      ],
+      "archetype": "protected carries",
+      "enabled": false,
+      "production_status": "authored_not_implemented",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Squat dwarf sealed in thick armour with two bolted shields.",
+        "decision": "Force nearby enemies to hit the toughest unit.",
+        "positioning": "Front and centre.",
+        "allies": "Priests and Warlocks that heal him.",
+        "counterplay": "Skill damage ignores armour; kill his back line first.",
+        "recognition": "Shields slam together and red lines pull enemy attention."
+      },
+      "planned_ability": {
+        "name": "Hold Fast",
+        "behavior": "Taunts adjacent enemies and gains armour for a short time.",
+        "status": "planned_not_executable"
+      },
+      "planned_stats": {
+        "health": 100000,
+        "attackDamage": 5800,
+        "attackRate": 700,
+        "range": 1,
+        "armor": 35,
+        "resistance": 15,
+        "movementRate": 1000,
+        "status": "design_target_not_executable"
+      }
+    },
+    {
+      "id": "wc_vn_rifleman",
+      "name": "Rifleman",
+      "display_name": "Rifleman",
+      "race": "dwarf",
+      "unit_class": "sniper",
+      "cost": 3,
+      "body_family": "humanoid_small",
+      "role_tags": [
+        "damage"
+      ],
+      "archetype": "backline pressure",
+      "enabled": false,
+      "production_status": "authored_not_implemented",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Dwarf with a wide hat and a rifle longer than he is tall.",
+        "decision": "Pressure the enemy back line from safety.",
+        "positioning": "Back corner.",
+        "allies": "Snipers for range; a Tank screen.",
+        "counterplay": "Assassins; put a Tank farthest away as bait.",
+        "recognition": "A long aiming line appears before the shot."
+      },
+      "planned_ability": {
+        "name": "Long Shot",
+        "behavior": "Fires one heavy shot at the farthest enemy.",
+        "status": "planned_not_executable"
+      },
+      "planned_stats": {
+        "health": 61500,
+        "attackDamage": 7800,
+        "attackRate": 800,
+        "range": 5,
+        "armor": 5,
+        "resistance": 10,
+        "movementRate": 850,
+        "status": "design_target_not_executable"
+      }
+    },
+    {
+      "id": "wc_vn_forge_king",
+      "name": "Forge King",
+      "display_name": "Forge King",
+      "race": "dwarf",
+      "unit_class": "engineer",
+      "cost": 5,
+      "body_family": "humanoid_large",
+      "role_tags": [
+        "damage"
+      ],
+      "archetype": "artillery",
+      "enabled": false,
+      "production_status": "authored_not_implemented",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Crowned dwarf riding a chunky walking forge with rocket racks.",
+        "decision": "Late-game area damage across the whole enemy board.",
+        "positioning": "Back row, well protected.",
+        "allies": "Engineers for mana; Dwarves for shields.",
+        "counterplay": "Kill or silence him before the barrage; spread out.",
+        "recognition": "Racks open, rockets arc up and target marks appear."
+      },
+      "planned_ability": {
+        "name": "Rocket Barrage",
+        "behavior": "Launches rockets at several random cells on the enemy side.",
+        "status": "planned_not_executable"
+      },
+      "planned_stats": {
+        "health": 84500,
+        "attackDamage": 7200,
+        "attackRate": 700,
+        "range": 3,
+        "armor": 15,
+        "resistance": 15,
+        "movementRate": 900,
+        "status": "design_target_not_executable"
+      }
+    },
+    {
+      "id": "wc_vn_jinxer",
+      "name": "Jinxer",
+      "display_name": "Jinxer",
+      "race": "goblin",
+      "unit_class": "shaman",
+      "cost": 1,
+      "body_family": "humanoid_small",
+      "role_tags": [
+        "support"
+      ],
+      "archetype": "single_target_control",
+      "enabled": false,
+      "production_status": "authored_not_implemented",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Hunched goblin in a feathered mask shaking a bone rattle.",
+        "decision": "Weaken the enemy's main attacker.",
+        "positioning": "Mid row, facing the enemy carry.",
+        "allies": "Shamans for the opening hex.",
+        "counterplay": "Skill-based damage is unaffected.",
+        "recognition": "A purple mark hangs over the weakened enemy."
+      },
+      "planned_ability": {
+        "name": "Jinx",
+        "behavior": "Reduces the current target's attack damage for a few seconds.",
+        "status": "planned_not_executable"
+      },
+      "planned_stats": {
+        "health": 65000,
+        "attackDamage": 5000,
+        "attackRate": 700,
+        "range": 3,
+        "armor": 10,
+        "resistance": 15,
+        "movementRate": 900,
+        "status": "design_target_not_executable"
+      }
+    },
+    {
+      "id": "wc_vn_dartblower",
+      "name": "Dartblower",
+      "display_name": "Dartblower",
+      "race": "goblin",
+      "unit_class": "sniper",
+      "cost": 2,
+      "body_family": "humanoid_small",
+      "role_tags": [
+        "damage"
+      ],
+      "archetype": "backline pressure",
+      "enabled": false,
+      "production_status": "authored_not_implemented",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Skinny goblin in a leaf cloak with a long blowpipe.",
+        "decision": "Wear down one high-health enemy.",
+        "positioning": "Back row.",
+        "allies": "Snipers; Undead armour reduction.",
+        "counterplay": "Healing outlasts the poison; dive him.",
+        "recognition": "Green bubbles rise from the poisoned unit."
+      },
+      "planned_ability": {
+        "name": "Poison Dart",
+        "behavior": "Poisons the target: damage over time and slower attacks.",
+        "status": "planned_not_executable"
+      },
+      "planned_stats": {
+        "health": 58000,
+        "attackDamage": 7400,
+        "attackRate": 800,
+        "range": 5,
+        "armor": 5,
+        "resistance": 10,
+        "movementRate": 850,
+        "status": "design_target_not_executable"
+      }
+    },
+    {
+      "id": "wc_vn_bonechanter",
+      "name": "Bonechanter",
+      "display_name": "Bonechanter",
+      "race": "orc",
+      "unit_class": "warlock",
       "cost": 4,
-      "body_family": "empty_cloak",
+      "body_family": "humanoid_large",
+      "role_tags": [
+        "damage"
+      ],
+      "archetype": "positional sustain",
+      "enabled": false,
+      "production_status": "authored_not_implemented",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Tall orc in a bone headdress with a skull-topped staff.",
+        "decision": "Sustain himself against grouped enemies.",
+        "positioning": "Second row near the fight.",
+        "allies": "Warlocks for team healing; Tanks.",
+        "counterplay": "Spread out; burst him.",
+        "recognition": "Red threads link him to each drained enemy."
+      },
+      "planned_ability": {
+        "name": "Draining Chain",
+        "behavior": "Drains life from an enemy; the drain chains to nearby enemies and heals him.",
+        "status": "planned_not_executable"
+      },
+      "planned_stats": {
+        "health": 84000,
+        "attackDamage": 6600,
+        "attackRate": 650,
+        "range": 3,
+        "armor": 15,
+        "resistance": 15,
+        "movementRate": 900,
+        "status": "design_target_not_executable"
+      }
+    },
+    {
+      "id": "wc_vn_foxclaw",
+      "name": "Foxclaw",
+      "display_name": "Foxclaw",
+      "race": "beastkin",
+      "unit_class": "assassin",
+      "cost": 1,
+      "body_family": "humanoid_tailed",
+      "role_tags": [
+        "damage"
+      ],
+      "archetype": "backline pressure",
+      "enabled": false,
+      "production_status": "authored_not_implemented",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Small fox-headed fighter with a big tail and two claws.",
+        "decision": "Early back-line pressure.",
+        "positioning": "A flank column.",
+        "allies": "Assassins.",
+        "counterplay": "Guard the back line with a cheap melee unit.",
+        "recognition": "Orange blur on the leap; red drops on the bleeding unit."
+      },
+      "planned_ability": {
+        "name": "Pounce",
+        "behavior": "Leaps onto the target and makes it bleed over time.",
+        "status": "planned_not_executable"
+      },
+      "planned_stats": {
+        "health": 60000,
+        "attackDamage": 7500,
+        "attackRate": 900,
+        "range": 1,
+        "armor": 10,
+        "resistance": 15,
+        "movementRate": 1200,
+        "status": "design_target_not_executable"
+      }
+    },
+    {
+      "id": "wc_vn_wolf_caller",
+      "name": "Wolf Caller",
+      "display_name": "Wolf Caller",
+      "race": "beastkin",
+      "unit_class": "summoner",
+      "cost": 2,
+      "body_family": "humanoid_tailed",
+      "role_tags": [
+        "support"
+      ],
+      "archetype": "constructions",
+      "enabled": false,
+      "production_status": "authored_not_implemented",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Wolf-headed hunter with a fur mantle and a horn.",
+        "decision": "Add bodies to the front line.",
+        "positioning": "Second row with free cells in front.",
+        "allies": "Summoners.",
+        "counterplay": "Area damage clears wolves.",
+        "recognition": "A horn call, then two wolves jump in."
+      },
+      "planned_ability": {
+        "name": "Pack Call",
+        "behavior": "Summons two wolves next to her.",
+        "status": "planned_not_executable"
+      },
+      "planned_stats": {
+        "health": 68000,
+        "attackDamage": 4700,
+        "attackRate": 650,
+        "range": 3,
+        "armor": 10,
+        "resistance": 15,
+        "movementRate": 850,
+        "status": "design_target_not_executable"
+      }
+    },
+    {
+      "id": "wc_vn_owl_seer",
+      "name": "Owl Seer",
+      "display_name": "Owl Seer",
+      "race": "beastkin",
+      "unit_class": "shaman",
+      "cost": 3,
+      "body_family": "humanoid_tailed",
+      "role_tags": [
+        "support"
+      ],
+      "archetype": "single_target_control",
+      "enabled": false,
+      "production_status": "authored_not_implemented",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Owl-headed sage in a feather cloak with a crooked staff.",
+        "decision": "Remove the most dangerous enemy from the fight for a moment.",
+        "positioning": "Mid row within reach of the enemy carry.",
+        "allies": "Shamans; burst damage to finish the hexed unit.",
+        "counterplay": "Bait the hex with a less important unit.",
+        "recognition": "A puff of feathers and a tiny critter in the enemy's place."
+      },
+      "planned_ability": {
+        "name": "Small Fry",
+        "behavior": "Turns one enemy into a harmless critter for a few seconds.",
+        "status": "planned_not_executable"
+      },
+      "planned_stats": {
+        "health": 73000,
+        "attackDamage": 5600,
+        "attackRate": 700,
+        "range": 3,
+        "armor": 10,
+        "resistance": 15,
+        "movementRate": 900,
+        "status": "design_target_not_executable"
+      }
+    },
+    {
+      "id": "wc_vn_hellblade",
+      "name": "Hellblade",
+      "display_name": "Hellblade",
+      "race": "demon",
+      "unit_class": "fighter",
+      "cost": 2,
+      "body_family": "humanoid_horned",
+      "role_tags": [
+        "frontline"
+      ],
+      "archetype": "isolated duels",
+      "enabled": false,
+      "production_status": "authored_not_implemented",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Red horned warrior with one burning greatsword.",
+        "decision": "Deal steady damage in a melee pile.",
+        "positioning": "Front row.",
+        "allies": "Demons; Fighters.",
+        "counterplay": "Keep melee away; focus him.",
+        "recognition": "A ring of flame circles his feet."
+      },
+      "planned_ability": {
+        "name": "Burning Aura",
+        "behavior": "Burns all adjacent enemies every second for a short time.",
+        "status": "planned_not_executable"
+      },
+      "planned_stats": {
+        "health": 73500,
+        "attackDamage": 7400,
+        "attackRate": 950,
+        "range": 1,
+        "armor": 15,
+        "resistance": 15,
+        "movementRate": 1200,
+        "status": "design_target_not_executable"
+      }
+    },
+    {
+      "id": "wc_vn_shadow_fiend",
+      "name": "Shadow Fiend",
+      "display_name": "Shadow Fiend",
+      "race": "demon",
+      "unit_class": "assassin",
+      "cost": 4,
+      "body_family": "humanoid_horned",
+      "role_tags": [
+        "damage"
+      ],
+      "archetype": "backline pressure",
+      "enabled": false,
+      "production_status": "authored_not_implemented",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Dark winged demon with glowing eyes and long claws.",
+        "decision": "Cut through a column of enemies.",
+        "positioning": "On a column the enemy fills.",
+        "allies": "Assassins; Demons.",
+        "counterplay": "Stagger columns.",
+        "recognition": "A dark streak across the dashed cells."
+      },
+      "planned_ability": {
+        "name": "Shadow Dash",
+        "behavior": "Dashes in a straight line and damages every enemy crossed.",
+        "status": "planned_not_executable"
+      },
+      "planned_stats": {
+        "health": 72000,
+        "attackDamage": 9000,
+        "attackRate": 900,
+        "range": 1,
+        "armor": 10,
+        "resistance": 15,
+        "movementRate": 1200,
+        "status": "design_target_not_executable"
+      }
+    },
+    {
+      "id": "wc_vn_pit_lord",
+      "name": "Pit Lord",
+      "display_name": "Pit Lord",
+      "race": "demon",
+      "unit_class": "mage",
+      "cost": 5,
+      "body_family": "humanoid_large",
+      "role_tags": [
+        "damage"
+      ],
+      "archetype": "artillery",
+      "enabled": false,
+      "production_status": "authored_not_implemented",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Huge horned demon with a burning crown and a heavy whip.",
+        "decision": "Deny a large area of the board.",
+        "positioning": "Back row, protected.",
+        "allies": "Mages; Tanks that hold enemies in the area.",
+        "counterplay": "Move out, spread, or silence him.",
+        "recognition": "The area darkens, then fire falls in waves."
+      },
+      "planned_ability": {
+        "name": "Rain of Fire",
+        "behavior": "Calls fire down on a large area for several seconds.",
+        "status": "planned_not_executable"
+      },
+      "planned_stats": {
+        "health": 78000,
+        "attackDamage": 6500,
+        "attackRate": 700,
+        "range": 4,
+        "armor": 10,
+        "resistance": 15,
+        "movementRate": 850,
+        "status": "design_target_not_executable"
+      }
+    },
+    {
+      "id": "wc_vn_bone_archer",
+      "name": "Bone Archer",
+      "display_name": "Bone Archer",
+      "race": "undead",
+      "unit_class": "sniper",
+      "cost": 1,
+      "body_family": "humanoid_medium",
+      "role_tags": [
+        "damage"
+      ],
+      "archetype": "backline pressure",
+      "enabled": false,
+      "production_status": "authored_not_implemented",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Skeleton in a torn hood with a bow made of ribs.",
+        "decision": "Soften a tank for physical damage.",
+        "positioning": "Back row.",
+        "allies": "Snipers and Fighters.",
+        "counterplay": "Assassins; armour matters less against skill damage.",
+        "recognition": "A cracked-shield mark over the target."
+      },
+      "planned_ability": {
+        "name": "Splinter Arrow",
+        "behavior": "Shoots an arrow that reduces the target's armour.",
+        "status": "planned_not_executable"
+      },
+      "planned_stats": {
+        "health": 55000,
+        "attackDamage": 7000,
+        "attackRate": 800,
+        "range": 5,
+        "armor": 5,
+        "resistance": 10,
+        "movementRate": 850,
+        "status": "design_target_not_executable"
+      }
+    },
+    {
+      "id": "wc_vn_curse_weaver",
+      "name": "Curse Weaver",
+      "display_name": "Curse Weaver",
+      "race": "undead",
+      "unit_class": "warlock",
+      "cost": 2,
+      "body_family": "humanoid_medium",
+      "role_tags": [
+        "support"
+      ],
+      "archetype": "single_target_control",
+      "enabled": false,
+      "production_status": "authored_not_implemented",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Veiled ghoul with long sleeves and a floating curse doll.",
+        "decision": "Mark the unit the team should kill next.",
+        "positioning": "Mid row.",
+        "allies": "Any burst damage.",
+        "counterplay": "Shields and healing on the cursed unit.",
+        "recognition": "A doll icon hangs above the cursed enemy."
+      },
+      "planned_ability": {
+        "name": "Hex of Frailty",
+        "behavior": "Curses the target so it takes more damage from all sources.",
+        "status": "planned_not_executable"
+      },
+      "planned_stats": {
+        "health": 73500,
+        "attackDamage": 5800,
+        "attackRate": 650,
+        "range": 3,
+        "armor": 15,
+        "resistance": 15,
+        "movementRate": 900,
+        "status": "design_target_not_executable"
+      }
+    },
+    {
+      "id": "wc_vn_stitcher",
+      "name": "Stitcher",
+      "display_name": "Stitcher",
+      "race": "undead",
+      "unit_class": "engineer",
+      "cost": 3,
+      "body_family": "humanoid_medium",
       "role_tags": [
         "support"
       ],
@@ -799,275 +1872,634 @@
       "production_status": "authored_not_implemented",
       "art_status": "brief_only",
       "dossier": {
-        "form": "An empty rain-cloak with a lantern where a head might be and trailing firefly echoes.",
-        "decision": "Restore a capped part of recent lost health after a delay; never revive.",
-        "positioning": "Stay close enough to a threatened ally while avoiding simultaneous area interruption.",
-        "allies": "Duelists and frontline guardians benefit from surviving the delayed rescue.",
-        "counterplay": "Burst through the delay or interrupt the rescue before release.",
-        "recognition": "A faint health echo and a descending lantern bead show the committed rescue."
+        "form": "Stitched-together surgeon with mismatched arms and a tool belt.",
+        "decision": "Keep a damaged front-liner standing.",
+        "positioning": "Second row.",
+        "allies": "Tanks; Engineers.",
+        "counterplay": "Burst past the shield; dive him.",
+        "recognition": "Thread stitches across the ally and a pale shield appears."
       },
       "planned_ability": {
-        "name": "Remembered Health",
-        "behavior": "Restore a capped part of recent lost health after a delay; never revive.",
+        "name": "Patch Up",
+        "behavior": "Repairs and shields the ally with the lowest health.",
         "status": "planned_not_executable"
+      },
+      "planned_stats": {
+        "health": 73000,
+        "attackDamage": 6200,
+        "attackRate": 700,
+        "range": 3,
+        "armor": 15,
+        "resistance": 15,
+        "movementRate": 900,
+        "status": "design_target_not_executable"
+      }
+    },
+    {
+      "id": "wc_vn_necromancer",
+      "name": "Necromancer",
+      "display_name": "Necromancer",
+      "race": "undead",
+      "unit_class": "summoner",
+      "cost": 4,
+      "body_family": "humanoid_medium",
+      "role_tags": [
+        "support"
+      ],
+      "archetype": "constructions",
+      "enabled": false,
+      "production_status": "authored_not_implemented",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Gaunt robed figure with a crown of candles and a scythe.",
+        "decision": "Grow stronger as the fight goes on.",
+        "positioning": "Back row; long fights favour him.",
+        "allies": "Summoners; Tanks that prolong the fight.",
+        "counterplay": "Kill him early; area damage.",
+        "recognition": "Green light rises from a fallen unit's cell."
+      },
+      "planned_ability": {
+        "name": "Raise Dead",
+        "behavior": "Raises skeletons from fallen units, up to the summon cap.",
+        "status": "planned_not_executable"
+      },
+      "planned_stats": {
+        "health": 78000,
+        "attackDamage": 5400,
+        "attackRate": 650,
+        "range": 3,
+        "armor": 10,
+        "resistance": 15,
+        "movementRate": 850,
+        "status": "design_target_not_executable"
+      }
+    },
+    {
+      "id": "wc_vn_stone_shaper",
+      "name": "Stone Shaper",
+      "display_name": "Stone Shaper",
+      "race": "elemental",
+      "unit_class": "summoner",
+      "cost": 3,
+      "body_family": "elemental_humanoid",
+      "role_tags": [
+        "support"
+      ],
+      "archetype": "constructions",
+      "enabled": false,
+      "production_status": "authored_not_implemented",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Boulder-bodied figure with glowing cracks and oversized fists.",
+        "decision": "Split the enemy formation or block a lane.",
+        "positioning": "Front-centre facing the enemy's approach.",
+        "allies": "Snipers and Mages who gain time.",
+        "counterplay": "Walk around; ranged units ignore it.",
+        "recognition": "Stone pillars rise from marked cells."
+      },
+      "planned_ability": {
+        "name": "Rock Wall",
+        "behavior": "Raises a short rock wall that blocks cells for a few seconds.",
+        "status": "planned_not_executable"
+      },
+      "planned_stats": {
+        "health": 73000,
+        "attackDamage": 5000,
+        "attackRate": 650,
+        "range": 3,
+        "armor": 10,
+        "resistance": 15,
+        "movementRate": 850,
+        "status": "design_target_not_executable"
+      }
+    },
+    {
+      "id": "wc_vn_storm_spirit",
+      "name": "Storm Spirit",
+      "display_name": "Storm Spirit",
+      "race": "elemental",
+      "unit_class": "shaman",
+      "cost": 4,
+      "body_family": "elemental_floating",
+      "role_tags": [
+        "damage"
+      ],
+      "archetype": "artillery",
+      "enabled": false,
+      "production_status": "authored_not_implemented",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Cloud-bodied spirit with lightning arms and a bright core.",
+        "decision": "Punish enemies standing next to each other.",
+        "positioning": "Back row.",
+        "allies": "Mages; Shamans.",
+        "counterplay": "Leave gaps between units.",
+        "recognition": "A bolt visibly jumps from enemy to enemy."
+      },
+      "planned_ability": {
+        "name": "Chain Lightning",
+        "behavior": "Lightning hits the target and jumps to nearby enemies.",
+        "status": "planned_not_executable"
+      },
+      "planned_stats": {
+        "health": 78000,
+        "attackDamage": 6000,
+        "attackRate": 700,
+        "range": 3,
+        "armor": 10,
+        "resistance": 15,
+        "movementRate": 900,
+        "status": "design_target_not_executable"
+      }
+    },
+    {
+      "id": "wc_vn_scaleguard",
+      "name": "Scaleguard",
+      "display_name": "Scaleguard",
+      "race": "dragonkin",
+      "unit_class": "tank",
+      "cost": 3,
+      "body_family": "humanoid_tailed",
+      "role_tags": [
+        "frontline"
+      ],
+      "archetype": "protected carries",
+      "enabled": false,
+      "production_status": "authored_not_implemented",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Broad horned dragonkin with plated scales and a spiked tail.",
+        "decision": "Punish enemies that focus him.",
+        "positioning": "Front row.",
+        "allies": "Priests; Dragonkin for instant mana.",
+        "counterplay": "Stop attacking him while the scales glow; use skill damage.",
+        "recognition": "Scales glow gold and sparks fly back at attackers."
+      },
+      "planned_ability": {
+        "name": "Thorn Scales",
+        "behavior": "For a short time, returns part of the damage he takes to attackers.",
+        "status": "planned_not_executable"
+      },
+      "planned_stats": {
+        "health": 106500,
+        "attackDamage": 6200,
+        "attackRate": 700,
+        "range": 1,
+        "armor": 35,
+        "resistance": 15,
+        "movementRate": 1000,
+        "status": "design_target_not_executable"
+      }
+    },
+    {
+      "id": "wc_vn_dawn_oracle",
+      "name": "Dawn Oracle",
+      "display_name": "Dawn Oracle",
+      "race": "dragonkin",
+      "unit_class": "priest",
+      "cost": 4,
+      "body_family": "humanoid_tailed",
+      "role_tags": [
+        "support"
+      ],
+      "archetype": "positional sustain",
+      "enabled": false,
+      "production_status": "authored_not_implemented",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Slender winged dragonkin in white robes with a sun disc.",
+        "decision": "Reset the whole team's health once.",
+        "positioning": "Back row, protected.",
+        "allies": "Priests; Tanks.",
+        "counterplay": "Burst single targets; reduce healing.",
+        "recognition": "A sunrise glow sweeps across the allied side."
+      },
+      "planned_ability": {
+        "name": "Dawn Chorus",
+        "behavior": "Heals every ally for a moderate amount.",
+        "status": "planned_not_executable"
+      },
+      "planned_stats": {
+        "health": 78000,
+        "attackDamage": 5000,
+        "attackRate": 650,
+        "range": 3,
+        "armor": 10,
+        "resistance": 15,
+        "movementRate": 800,
+        "status": "design_target_not_executable"
+      }
+    },
+    {
+      "id": "wc_vn_flame_regent",
+      "name": "Flame Regent",
+      "display_name": "Flame Regent",
+      "race": "dragonkin",
+      "unit_class": "mage",
+      "cost": 5,
+      "body_family": "humanoid_tailed",
+      "role_tags": [
+        "damage"
+      ],
+      "archetype": "artillery",
+      "enabled": false,
+      "production_status": "authored_not_implemented",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Tall crowned dragonkin with large wings and a red mantle.",
+        "decision": "Late-game cone damage from the second row.",
+        "positioning": "Second row facing the enemy cluster.",
+        "allies": "Dragonkin for instant mana; Mages.",
+        "counterplay": "Flank him; spread wide.",
+        "recognition": "He rears back, then a cone of fire covers marked cells."
+      },
+      "planned_ability": {
+        "name": "Regent's Breath",
+        "behavior": "Breathes fire in a wide cone in front of him.",
+        "status": "planned_not_executable"
+      },
+      "planned_stats": {
+        "health": 78000,
+        "attackDamage": 6500,
+        "attackRate": 700,
+        "range": 4,
+        "armor": 10,
+        "resistance": 15,
+        "movementRate": 850,
+        "status": "design_target_not_executable"
+      }
+    },
+    {
+      "id": "wc_vn_void_wyrm",
+      "name": "Void Wyrm",
+      "display_name": "Void Wyrm",
+      "race": "dragonkin",
+      "unit_class": "warlock",
+      "cost": 5,
+      "body_family": "humanoid_tailed",
+      "role_tags": [
+        "support"
+      ],
+      "archetype": "single_target_control",
+      "enabled": false,
+      "production_status": "authored_not_implemented",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Dark-scaled dragonkin with hollow glowing chest and tattered wings.",
+        "decision": "Shut down an enemy team that relies on skills.",
+        "positioning": "Near the enemy's casters.",
+        "allies": "Warlocks; Assassins.",
+        "counterplay": "Rely on basic attacks; keep casters apart.",
+        "recognition": "Blue wisps are pulled from enemies into his chest."
+      },
+      "planned_ability": {
+        "name": "Mana Devour",
+        "behavior": "Drains mana from nearby enemies and silences them briefly.",
+        "status": "planned_not_executable"
+      },
+      "planned_stats": {
+        "health": 91000,
+        "attackDamage": 7200,
+        "attackRate": 650,
+        "range": 3,
+        "armor": 15,
+        "resistance": 15,
+        "movementRate": 900,
+        "status": "design_target_not_executable"
       }
     }
   ],
   "traits": [
     {
-      "id": "beast",
-      "kind": "race",
-      "name": "Pack momentum",
-      "thresholds": [
-        2,
-        4,
-        6
-      ],
-      "members": [
-        "wc_vn_bellback",
-        "wc_vn_cragstoat"
-      ],
-      "behavior": "Matching creatures gain a brief movement burst when an ally finishes a charge; no recursive triggers.",
-      "runtime_enabled": false,
-      "status": "behavior_authored_not_implemented",
-      "coverage": "recruit_more_distinct_designs",
-      "count_rule": "distinct_deployed_recruited_types",
-      "higher_tier": "replaces",
-      "activation": "combat_snapshot"
-    },
-    {
-      "id": "plant",
-      "kind": "race",
-      "name": "Established ground",
-      "thresholds": [
-        2,
-        3,
-        5
-      ],
-      "members": [
-        "wc_vn_grandmother_root",
-        "wc_vn_snapvine"
-      ],
-      "behavior": "Matching creatures grow a bounded protective layer while stationary; displacement clears growth.",
-      "runtime_enabled": false,
-      "status": "behavior_authored_not_implemented",
-      "coverage": "recruit_more_distinct_designs",
-      "count_rule": "distinct_deployed_recruited_types",
-      "higher_tier": "replaces",
-      "activation": "combat_snapshot"
-    },
-    {
-      "id": "insect",
-      "kind": "race",
-      "name": "Colony routes",
-      "thresholds": [
-        2,
-        4
-      ],
-      "members": [
-        "wc_vn_silkmother",
-        "wc_vn_manyfoot"
-      ],
-      "behavior": "Matching units gain a brief route bonus near friendly constructions, with one refresh per crossing.",
-      "runtime_enabled": false,
-      "status": "behavior_authored_not_implemented",
-      "coverage": "recruit_more_distinct_designs",
-      "count_rule": "distinct_deployed_recruited_types",
-      "higher_tier": "replaces",
-      "activation": "combat_snapshot"
-    },
-    {
-      "id": "construct",
-      "kind": "race",
-      "name": "Stored energy",
-      "thresholds": [
-        2,
-        3,
-        5
-      ],
-      "members": [
-        "wc_vn_prism_organ",
-        "wc_vn_kilnback"
-      ],
-      "behavior": "Matching units store a bounded intercepted or absorbed hit count to shorten the next recovery.",
-      "runtime_enabled": false,
-      "status": "behavior_authored_not_implemented",
-      "coverage": "recruit_more_distinct_designs",
-      "count_rule": "distinct_deployed_recruited_types",
-      "higher_tier": "replaces",
-      "activation": "combat_snapshot"
-    },
-    {
       "id": "human",
       "kind": "race",
-      "name": "Ingenuity",
-      "thresholds": [
-        2,
-        3
-      ],
-      "members": [
-        "wc_vn_wren"
-      ],
-      "behavior": "The first distinct allied station interaction each combat grants a bounded utility charge.",
-      "runtime_enabled": false,
-      "status": "behavior_authored_not_implemented",
-      "coverage": "recruit_more_distinct_designs",
-      "count_rule": "distinct_deployed_recruited_types",
-      "higher_tier": "replaces",
-      "activation": "combat_snapshot"
-    },
-    {
-      "id": "tidekin",
-      "kind": "race",
-      "name": "Changing currents",
+      "name": "Human",
       "thresholds": [
         2,
         4
       ],
       "members": [
-        "wc_vn_reefglass"
+        "wc_vn_shieldbearer",
+        "wc_vn_prism_scholar",
+        "wc_vn_chapel_healer",
+        "wc_vn_siege_master"
       ],
-      "behavior": "Successful displacements leave short directional currents supporting following allies.",
-      "runtime_enabled": false,
-      "status": "behavior_authored_not_implemented",
-      "coverage": "recruit_more_distinct_designs",
+      "behavior": "All allies start combat with +10 / +20 mana.",
+      "runtime_enabled": true,
+      "status": "stat_bonus_executed_in_roster_recipe",
+      "coverage": "four_authored_members",
       "count_rule": "distinct_deployed_recruited_types",
       "higher_tier": "replaces",
-      "activation": "combat_snapshot"
+      "activation": "combat_snapshot",
+      "runtime": {
+        "stat": "starting_mana_flat",
+        "scope": "team",
+        "values": [
+          1000,
+          2000
+        ]
+      }
     },
     {
-      "id": "fae",
+      "id": "elf",
       "kind": "race",
-      "name": "Unshared attention",
-      "thresholds": [
-        2,
-        3
-      ],
-      "members": [
-        "wc_vn_thimblewake"
-      ],
-      "behavior": "Matching units receive a short timing advantage in isolated engagements.",
-      "runtime_enabled": false,
-      "status": "behavior_authored_not_implemented",
-      "coverage": "recruit_more_distinct_designs",
-      "count_rule": "distinct_deployed_recruited_types",
-      "higher_tier": "replaces",
-      "activation": "combat_snapshot"
-    },
-    {
-      "id": "spirit",
-      "kind": "race",
-      "name": "Echo memory",
+      "name": "Elf",
       "thresholds": [
         2,
         4
       ],
       "members": [
-        "wc_vn_hushlantern"
+        "wc_vn_grove_druid",
+        "wc_vn_longbow_scout",
+        "wc_vn_moonblade",
+        "wc_vn_treant_caller"
       ],
-      "behavior": "Matching rescuers retain a bounded recent-damage window; no revival or recursive rescue.",
+      "behavior": "Elves gain 20% / 40% evasion against basic attacks.",
       "runtime_enabled": false,
-      "status": "behavior_authored_not_implemented",
-      "coverage": "recruit_more_distinct_designs",
+      "status": "stat_bonus_authored_not_implemented",
+      "coverage": "four_authored_members",
       "count_rule": "distinct_deployed_recruited_types",
       "higher_tier": "replaces",
       "activation": "combat_snapshot"
     },
     {
-      "id": "dragon",
+      "id": "dwarf",
       "kind": "race",
-      "name": "Committed majesty",
-      "thresholds": [
-        2,
-        3
-      ],
-      "members": [
-        "wc_vn_coilwyrm",
-        "wc_vn_dawnkite"
-      ],
-      "behavior": "Matching dragons extend telegraph commitment in exchange for a stronger spatial effect.",
-      "runtime_enabled": false,
-      "status": "behavior_authored_not_implemented",
-      "coverage": "recruit_more_distinct_designs",
-      "count_rule": "distinct_deployed_recruited_types",
-      "higher_tier": "replaces",
-      "activation": "combat_snapshot"
-    },
-    {
-      "id": "guardian",
-      "kind": "class",
-      "name": "Held line",
+      "name": "Dwarf",
       "thresholds": [
         2,
         4
       ],
       "members": [
-        "wc_vn_bellback",
-        "wc_vn_kilnback"
+        "wc_vn_hammerer",
+        "wc_vn_ironwall",
+        "wc_vn_rifleman",
+        "wc_vn_forge_king"
       ],
-      "behavior": "Guard matching allies in adjacent rear cells using visible directed links.",
+      "behavior": "Dwarves start combat with a shield worth 20% / 40% of their maximum health.",
       "runtime_enabled": false,
-      "status": "behavior_authored_not_implemented",
-      "coverage": "recruit_more_distinct_designs",
+      "status": "stat_bonus_authored_not_implemented",
+      "coverage": "four_authored_members",
       "count_rule": "distinct_deployed_recruited_types",
       "higher_tier": "replaces",
       "activation": "combat_snapshot"
     },
     {
-      "id": "warrior",
-      "kind": "class",
-      "name": "Sustained pressure",
-      "thresholds": [
-        3,
-        6
-      ],
-      "members": [
-        "wc_vn_cragstoat",
-        "wc_vn_manyfoot"
-      ],
-      "behavior": "Matching units build capped pressure while remaining in close engagement; resets after disengagement.",
-      "runtime_enabled": false,
-      "status": "behavior_authored_not_implemented",
-      "coverage": "recruit_more_distinct_designs",
-      "count_rule": "distinct_deployed_recruited_types",
-      "higher_tier": "replaces",
-      "activation": "combat_snapshot"
-    },
-    {
-      "id": "duelist",
-      "kind": "class",
-      "name": "Single challenge",
+      "id": "goblin",
+      "kind": "race",
+      "name": "Goblin",
       "thresholds": [
         2,
         4
       ],
       "members": [
-        "wc_vn_thimblewake"
+        "wc_vn_hookjaw",
+        "wc_vn_bomber",
+        "wc_vn_jinxer",
+        "wc_vn_dartblower"
       ],
-      "behavior": "Matching units obtain a bounded defensive window against an isolated opponent.",
+      "behavior": "Gain +1 / +2 gold after winning a player fight.",
       "runtime_enabled": false,
-      "status": "behavior_authored_not_implemented",
-      "coverage": "recruit_more_distinct_designs",
+      "status": "stat_bonus_authored_not_implemented",
+      "coverage": "four_authored_members",
       "count_rule": "distinct_deployed_recruited_types",
       "higher_tier": "replaces",
       "activation": "combat_snapshot"
     },
     {
-      "id": "ranger",
-      "kind": "class",
-      "name": "Clear firing lanes",
+      "id": "orc",
+      "kind": "race",
+      "name": "Orc",
       "thresholds": [
         2,
-        4,
-        6
+        4
       ],
       "members": [
-        "wc_vn_dawnkite"
+        "wc_vn_boar_rusher",
+        "wc_vn_earthbreaker",
+        "wc_vn_blood_drummer",
+        "wc_vn_bonechanter"
       ],
-      "behavior": "Matching units benefit from protected straight firing lanes, losing the benefit when threatened nearby.",
+      "behavior": "Orcs gain +20% / +40% maximum health.",
+      "runtime_enabled": true,
+      "status": "stat_bonus_executed_in_roster_recipe",
+      "coverage": "four_authored_members",
+      "count_rule": "distinct_deployed_recruited_types",
+      "higher_tier": "replaces",
+      "activation": "combat_snapshot",
+      "runtime": {
+        "stat": "max_health_bonus_bp",
+        "scope": "members",
+        "values": [
+          2000,
+          4000
+        ]
+      }
+    },
+    {
+      "id": "beastkin",
+      "kind": "race",
+      "name": "Beastkin",
+      "thresholds": [
+        2,
+        4
+      ],
+      "members": [
+        "wc_vn_bearguard",
+        "wc_vn_foxclaw",
+        "wc_vn_wolf_caller",
+        "wc_vn_owl_seer"
+      ],
+      "behavior": "All allies gain +10% / +20% attack speed.",
+      "runtime_enabled": true,
+      "status": "stat_bonus_executed_in_roster_recipe",
+      "coverage": "four_authored_members",
+      "count_rule": "distinct_deployed_recruited_types",
+      "higher_tier": "replaces",
+      "activation": "combat_snapshot",
+      "runtime": {
+        "stat": "attack_rate_bonus_bp",
+        "scope": "team",
+        "values": [
+          1000,
+          2000
+        ]
+      }
+    },
+    {
+      "id": "demon",
+      "kind": "race",
+      "name": "Demon",
+      "thresholds": [
+        2,
+        4
+      ],
+      "members": [
+        "wc_vn_soul_jailer",
+        "wc_vn_hellblade",
+        "wc_vn_shadow_fiend",
+        "wc_vn_pit_lord"
+      ],
+      "behavior": "Demons deal +15% / +30% of their damage again as true damage.",
       "runtime_enabled": false,
-      "status": "behavior_authored_not_implemented",
-      "coverage": "recruit_more_distinct_designs",
+      "status": "stat_bonus_authored_not_implemented",
+      "coverage": "four_authored_members",
+      "count_rule": "distinct_deployed_recruited_types",
+      "higher_tier": "replaces",
+      "activation": "combat_snapshot"
+    },
+    {
+      "id": "undead",
+      "kind": "race",
+      "name": "Undead",
+      "thresholds": [
+        2,
+        4
+      ],
+      "members": [
+        "wc_vn_bone_archer",
+        "wc_vn_curse_weaver",
+        "wc_vn_stitcher",
+        "wc_vn_necromancer"
+      ],
+      "behavior": "All enemies lose armour (small / large amount).",
+      "runtime_enabled": false,
+      "status": "stat_bonus_authored_not_implemented",
+      "coverage": "four_authored_members",
+      "count_rule": "distinct_deployed_recruited_types",
+      "higher_tier": "replaces",
+      "activation": "combat_snapshot"
+    },
+    {
+      "id": "elemental",
+      "kind": "race",
+      "name": "Elemental",
+      "thresholds": [
+        2,
+        4
+      ],
+      "members": [
+        "wc_vn_tide_caller",
+        "wc_vn_ember_wisp",
+        "wc_vn_stone_shaper",
+        "wc_vn_storm_spirit"
+      ],
+      "behavior": "All allies take 15% / 30% less skill damage.",
+      "runtime_enabled": false,
+      "status": "stat_bonus_authored_not_implemented",
+      "coverage": "four_authored_members",
+      "count_rule": "distinct_deployed_recruited_types",
+      "higher_tier": "replaces",
+      "activation": "combat_snapshot"
+    },
+    {
+      "id": "dragonkin",
+      "kind": "race",
+      "name": "Dragonkin",
+      "thresholds": [
+        2,
+        4
+      ],
+      "members": [
+        "wc_vn_scaleguard",
+        "wc_vn_dawn_oracle",
+        "wc_vn_flame_regent",
+        "wc_vn_void_wyrm"
+      ],
+      "behavior": "Dragonkin start combat with 50% / 100% mana.",
+      "runtime_enabled": true,
+      "status": "stat_bonus_executed_in_roster_recipe",
+      "coverage": "four_authored_members",
+      "count_rule": "distinct_deployed_recruited_types",
+      "higher_tier": "replaces",
+      "activation": "combat_snapshot",
+      "runtime": {
+        "stat": "starting_mana_flat",
+        "scope": "members",
+        "values": [
+          5000,
+          10000
+        ]
+      }
+    },
+    {
+      "id": "tank",
+      "kind": "class",
+      "name": "Tank",
+      "thresholds": [
+        2,
+        4
+      ],
+      "members": [
+        "wc_vn_shieldbearer",
+        "wc_vn_earthbreaker",
+        "wc_vn_ironwall",
+        "wc_vn_scaleguard"
+      ],
+      "behavior": "Tanks gain +20 / +40 armour.",
+      "runtime_enabled": true,
+      "status": "stat_bonus_executed_in_roster_recipe",
+      "coverage": "four_authored_members",
+      "count_rule": "distinct_deployed_recruited_types",
+      "higher_tier": "replaces",
+      "activation": "combat_snapshot",
+      "runtime": {
+        "stat": "physical_armor_flat",
+        "scope": "members",
+        "values": [
+          20,
+          40
+        ]
+      }
+    },
+    {
+      "id": "fighter",
+      "kind": "class",
+      "name": "Fighter",
+      "thresholds": [
+        2,
+        4
+      ],
+      "members": [
+        "wc_vn_boar_rusher",
+        "wc_vn_hammerer",
+        "wc_vn_bearguard",
+        "wc_vn_hellblade"
+      ],
+      "behavior": "Fighters gain +20% / +40% attack damage.",
+      "runtime_enabled": true,
+      "status": "stat_bonus_executed_in_roster_recipe",
+      "coverage": "four_authored_members",
+      "count_rule": "distinct_deployed_recruited_types",
+      "higher_tier": "replaces",
+      "activation": "combat_snapshot",
+      "runtime": {
+        "stat": "basic_damage_bonus_bp",
+        "scope": "members",
+        "values": [
+          2000,
+          4000
+        ]
+      }
+    },
+    {
+      "id": "assassin",
+      "kind": "class",
+      "name": "Assassin",
+      "thresholds": [
+        2,
+        4
+      ],
+      "members": [
+        "wc_vn_hookjaw",
+        "wc_vn_moonblade",
+        "wc_vn_foxclaw",
+        "wc_vn_shadow_fiend"
+      ],
+      "behavior": "Assassins leap to the enemy back line at combat start and gain 15% / 30% critical-hit chance.",
+      "runtime_enabled": false,
+      "status": "stat_bonus_authored_not_implemented",
+      "coverage": "four_authored_members",
       "count_rule": "distinct_deployed_recruited_types",
       "higher_tier": "replaces",
       "activation": "combat_snapshot"
@@ -1075,58 +2507,51 @@
     {
       "id": "mage",
       "kind": "class",
-      "name": "Prepared magic",
-      "thresholds": [
-        3,
-        5
-      ],
-      "members": [
-        "wc_vn_prism_organ"
-      ],
-      "behavior": "Matching units build cast stability while allies screen nearby approaches.",
-      "runtime_enabled": false,
-      "status": "behavior_authored_not_implemented",
-      "coverage": "recruit_more_distinct_designs",
-      "count_rule": "distinct_deployed_recruited_types",
-      "higher_tier": "replaces",
-      "activation": "combat_snapshot"
-    },
-    {
-      "id": "healer",
-      "kind": "class",
-      "name": "Care network",
-      "thresholds": [
-        2,
-        3
-      ],
-      "members": [
-        "wc_vn_grandmother_root",
-        "wc_vn_hushlantern"
-      ],
-      "behavior": "Matching healers split a bounded fraction of effective rescue to another injured ally.",
-      "runtime_enabled": false,
-      "status": "behavior_authored_not_implemented",
-      "coverage": "recruit_more_distinct_designs",
-      "count_rule": "distinct_deployed_recruited_types",
-      "higher_tier": "replaces",
-      "activation": "combat_snapshot"
-    },
-    {
-      "id": "controller",
-      "kind": "class",
-      "name": "Follow through",
+      "name": "Mage",
       "thresholds": [
         2,
         4
       ],
       "members": [
-        "wc_vn_reefglass",
-        "wc_vn_coilwyrm"
+        "wc_vn_prism_scholar",
+        "wc_vn_tide_caller",
+        "wc_vn_pit_lord",
+        "wc_vn_flame_regent"
       ],
-      "behavior": "Matching control effects expose a short displacement follow-up window, once per target.",
+      "behavior": "All allies deal 20% / 40% more skill damage.",
+      "runtime_enabled": true,
+      "status": "stat_bonus_executed_in_roster_recipe",
+      "coverage": "four_authored_members",
+      "count_rule": "distinct_deployed_recruited_types",
+      "higher_tier": "replaces",
+      "activation": "combat_snapshot",
+      "runtime": {
+        "stat": "ability_damage_bonus_bp",
+        "scope": "team",
+        "values": [
+          2000,
+          4000
+        ]
+      }
+    },
+    {
+      "id": "sniper",
+      "kind": "class",
+      "name": "Sniper",
+      "thresholds": [
+        2,
+        4
+      ],
+      "members": [
+        "wc_vn_longbow_scout",
+        "wc_vn_rifleman",
+        "wc_vn_dartblower",
+        "wc_vn_bone_archer"
+      ],
+      "behavior": "Snipers gain +1 / +2 attack range and bonus attack damage.",
       "runtime_enabled": false,
-      "status": "behavior_authored_not_implemented",
-      "coverage": "recruit_more_distinct_designs",
+      "status": "stat_bonus_authored_not_implemented",
+      "coverage": "four_authored_members",
       "count_rule": "distinct_deployed_recruited_types",
       "higher_tier": "replaces",
       "activation": "combat_snapshot"
@@ -1134,38 +2559,109 @@
     {
       "id": "engineer",
       "kind": "class",
-      "name": "Service radius",
-      "thresholds": [
-        2,
-        3
-      ],
-      "members": [
-        "wc_vn_silkmother",
-        "wc_vn_wren"
-      ],
-      "behavior": "Matching constructions exchange a bounded service charge inside overlapping radii.",
-      "runtime_enabled": false,
-      "status": "behavior_authored_not_implemented",
-      "coverage": "recruit_more_distinct_designs",
-      "count_rule": "distinct_deployed_recruited_types",
-      "higher_tier": "replaces",
-      "activation": "combat_snapshot"
-    },
-    {
-      "id": "assassin",
-      "kind": "class",
-      "name": "Open approach",
+      "name": "Engineer",
       "thresholds": [
         2,
         4
       ],
       "members": [
-        "wc_vn_snapvine"
+        "wc_vn_bomber",
+        "wc_vn_siege_master",
+        "wc_vn_forge_king",
+        "wc_vn_stitcher"
       ],
-      "behavior": "Matching units gain one commitment benefit when reaching an unscreened target.",
+      "behavior": "Engineers gain extra mana every second.",
       "runtime_enabled": false,
-      "status": "behavior_authored_not_implemented",
-      "coverage": "recruit_more_distinct_designs",
+      "status": "stat_bonus_authored_not_implemented",
+      "coverage": "four_authored_members",
+      "count_rule": "distinct_deployed_recruited_types",
+      "higher_tier": "replaces",
+      "activation": "combat_snapshot"
+    },
+    {
+      "id": "warlock",
+      "kind": "class",
+      "name": "Warlock",
+      "thresholds": [
+        2,
+        4
+      ],
+      "members": [
+        "wc_vn_soul_jailer",
+        "wc_vn_bonechanter",
+        "wc_vn_curse_weaver",
+        "wc_vn_void_wyrm"
+      ],
+      "behavior": "All allies heal for 10% / 20% of the damage they deal.",
+      "runtime_enabled": false,
+      "status": "stat_bonus_authored_not_implemented",
+      "coverage": "four_authored_members",
+      "count_rule": "distinct_deployed_recruited_types",
+      "higher_tier": "replaces",
+      "activation": "combat_snapshot"
+    },
+    {
+      "id": "priest",
+      "kind": "class",
+      "name": "Priest",
+      "thresholds": [
+        2,
+        4
+      ],
+      "members": [
+        "wc_vn_grove_druid",
+        "wc_vn_chapel_healer",
+        "wc_vn_ember_wisp",
+        "wc_vn_dawn_oracle"
+      ],
+      "behavior": "All allies regenerate 1.5% / 3% of maximum health per second.",
+      "runtime_enabled": false,
+      "status": "stat_bonus_authored_not_implemented",
+      "coverage": "four_authored_members",
+      "count_rule": "distinct_deployed_recruited_types",
+      "higher_tier": "replaces",
+      "activation": "combat_snapshot"
+    },
+    {
+      "id": "shaman",
+      "kind": "class",
+      "name": "Shaman",
+      "thresholds": [
+        2,
+        4
+      ],
+      "members": [
+        "wc_vn_blood_drummer",
+        "wc_vn_jinxer",
+        "wc_vn_owl_seer",
+        "wc_vn_storm_spirit"
+      ],
+      "behavior": "At combat start, 1 / 2 random enemies are hexed for a few seconds.",
+      "runtime_enabled": false,
+      "status": "stat_bonus_authored_not_implemented",
+      "coverage": "four_authored_members",
+      "count_rule": "distinct_deployed_recruited_types",
+      "higher_tier": "replaces",
+      "activation": "combat_snapshot"
+    },
+    {
+      "id": "summoner",
+      "kind": "class",
+      "name": "Summoner",
+      "thresholds": [
+        2,
+        4
+      ],
+      "members": [
+        "wc_vn_treant_caller",
+        "wc_vn_wolf_caller",
+        "wc_vn_necromancer",
+        "wc_vn_stone_shaper"
+      ],
+      "behavior": "Summoned units gain +30% / +60% health and damage.",
+      "runtime_enabled": false,
+      "status": "stat_bonus_authored_not_implemented",
+      "coverage": "four_authored_members",
       "count_rule": "distinct_deployed_recruited_types",
       "higher_tier": "replaces",
       "activation": "combat_snapshot"
@@ -1175,316 +2671,336 @@
     {
       "id": "wc_vn_r_heavy_bloom",
       "name": "Heavy Bloom",
-      "description": "Greater ability impact after a longer visible commitment.",
-      "compatible_mechanics": [
-        "momentum_charge",
-        "screened_strike",
-        "crossing_beams",
-        "tidal_push"
-      ],
+      "description": "+30% skill power (skill damage, healing and shields).",
+      "compatible_mechanics": [],
       "modifiers": {
-        "magnitudeBp": 12000,
+        "magnitudeBp": 10000,
         "rangeDelta": 0,
         "radiusDelta": 0,
         "durationBp": 10000,
-        "castBp": 15000,
-        "cooldownBp": 10000
+        "castBp": 10000,
+        "cooldownBp": 10000,
+        "healthBp": 0,
+        "attackDamageBp": 0,
+        "attackRateBp": 0,
+        "skillPowerBp": 3000,
+        "allDamageBp": 0,
+        "armorFlat": 0,
+        "resistanceFlat": 0
       },
       "runtime_enabled": true,
       "status": "laboratory_candidate",
       "acceptance": [
-        "At least two compatible hero mechanics.",
-        "Effective ability uses canonical modifiers exactly once.",
-        "Benefit and drawback both affect a compatible formation.",
+        "Fits every hero.",
+        "Stat benefit is applied exactly once per combat.",
         "Selling returns relic; merge survivor keeps own and returns extras."
       ]
     },
     {
       "id": "wc_vn_r_quick_wick",
       "name": "Quick Wick",
-      "description": "More frequent abilities with weaker individual effects.",
-      "compatible_mechanics": [
-        "momentum_charge",
-        "screened_strike",
-        "crossing_beams",
-        "tidal_push",
-        "stationary_grove"
-      ],
+      "description": "Skills come 20% sooner and +10% attack speed.",
+      "compatible_mechanics": [],
       "modifiers": {
-        "magnitudeBp": 8500,
+        "magnitudeBp": 10000,
         "rangeDelta": 0,
         "radiusDelta": 0,
         "durationBp": 10000,
         "castBp": 10000,
-        "cooldownBp": 8000
+        "cooldownBp": 8000,
+        "healthBp": 0,
+        "attackDamageBp": 0,
+        "attackRateBp": 1000,
+        "skillPowerBp": 0,
+        "allDamageBp": 0,
+        "armorFlat": 0,
+        "resistanceFlat": 0
       },
       "runtime_enabled": true,
       "status": "laboratory_candidate",
       "acceptance": [
-        "At least two compatible hero mechanics.",
-        "Effective ability uses canonical modifiers exactly once.",
-        "Benefit and drawback both affect a compatible formation.",
+        "Fits every hero.",
+        "Stat benefit is applied exactly once per combat.",
         "Selling returns relic; merge survivor keeps own and returns extras."
       ]
     },
     {
       "id": "wc_vn_r_long_lens",
       "name": "Long Lens",
-      "description": "One extra cell of reach, with lower impact.",
-      "compatible_mechanics": [
-        "screened_strike",
-        "crossing_beams",
-        "tidal_push"
-      ],
+      "description": "+25% attack damage.",
+      "compatible_mechanics": [],
       "modifiers": {
-        "magnitudeBp": 8500,
-        "rangeDelta": 1,
+        "magnitudeBp": 10000,
+        "rangeDelta": 0,
         "radiusDelta": 0,
         "durationBp": 10000,
         "castBp": 10000,
-        "cooldownBp": 10000
+        "cooldownBp": 10000,
+        "healthBp": 0,
+        "attackDamageBp": 2500,
+        "attackRateBp": 0,
+        "skillPowerBp": 0,
+        "allDamageBp": 0,
+        "armorFlat": 0,
+        "resistanceFlat": 0
       },
       "runtime_enabled": true,
       "status": "laboratory_candidate",
       "acceptance": [
-        "At least two compatible hero mechanics.",
-        "Effective ability uses canonical modifiers exactly once.",
-        "Benefit and drawback both affect a compatible formation.",
+        "Fits every hero.",
+        "Stat benefit is applied exactly once per combat.",
         "Selling returns relic; merge survivor keeps own and returns extras."
       ]
     },
     {
       "id": "wc_vn_r_broad_canopy",
       "name": "Broad Canopy",
-      "description": "A wider supported area with less concentrated potency.",
-      "compatible_mechanics": [
-        "stationary_grove",
-        "crossing_beams",
-        "directional_guard"
-      ],
+      "description": "+25% maximum health.",
+      "compatible_mechanics": [],
       "modifiers": {
-        "magnitudeBp": 7500,
+        "magnitudeBp": 10000,
         "rangeDelta": 0,
-        "radiusDelta": 1,
+        "radiusDelta": 0,
         "durationBp": 10000,
         "castBp": 10000,
-        "cooldownBp": 10000
+        "cooldownBp": 10000,
+        "healthBp": 2500,
+        "attackDamageBp": 0,
+        "attackRateBp": 0,
+        "skillPowerBp": 0,
+        "allDamageBp": 0,
+        "armorFlat": 0,
+        "resistanceFlat": 0
       },
       "runtime_enabled": true,
       "status": "laboratory_candidate",
       "acceptance": [
-        "At least two compatible hero mechanics.",
-        "Effective ability uses canonical modifiers exactly once.",
-        "Benefit and drawback both affect a compatible formation.",
+        "Fits every hero.",
+        "Stat benefit is applied exactly once per combat.",
         "Selling returns relic; merge survivor keeps own and returns extras."
       ]
     },
     {
       "id": "wc_vn_r_close_focus",
       "name": "Close Focus",
-      "description": "A stronger commitment restricted to a shorter lane.",
-      "compatible_mechanics": [
-        "screened_strike",
-        "crossing_beams",
-        "tidal_push"
-      ],
+      "description": "+25% attack speed.",
+      "compatible_mechanics": [],
       "modifiers": {
-        "magnitudeBp": 12000,
-        "rangeDelta": -1,
+        "magnitudeBp": 10000,
+        "rangeDelta": 0,
         "radiusDelta": 0,
         "durationBp": 10000,
         "castBp": 10000,
-        "cooldownBp": 10000
+        "cooldownBp": 10000,
+        "healthBp": 0,
+        "attackDamageBp": 0,
+        "attackRateBp": 2500,
+        "skillPowerBp": 0,
+        "allDamageBp": 0,
+        "armorFlat": 0,
+        "resistanceFlat": 0
       },
       "runtime_enabled": true,
       "status": "laboratory_candidate",
       "acceptance": [
-        "At least two compatible hero mechanics.",
-        "Effective ability uses canonical modifiers exactly once.",
-        "Benefit and drawback both affect a compatible formation.",
+        "Fits every hero.",
+        "Stat benefit is applied exactly once per combat.",
         "Selling returns relic; merge survivor keeps own and returns extras."
       ]
     },
     {
       "id": "wc_vn_r_tight_choir",
       "name": "Tight Choir",
-      "description": "Concentrate power into a smaller area.",
-      "compatible_mechanics": [
-        "stationary_grove",
-        "crossing_beams"
-      ],
+      "description": "+25 armour.",
+      "compatible_mechanics": [],
       "modifiers": {
-        "magnitudeBp": 12500,
+        "magnitudeBp": 10000,
         "rangeDelta": 0,
-        "radiusDelta": -1,
+        "radiusDelta": 0,
         "durationBp": 10000,
         "castBp": 10000,
-        "cooldownBp": 10000
+        "cooldownBp": 10000,
+        "healthBp": 0,
+        "attackDamageBp": 0,
+        "attackRateBp": 0,
+        "skillPowerBp": 0,
+        "allDamageBp": 0,
+        "armorFlat": 25,
+        "resistanceFlat": 0
       },
       "runtime_enabled": true,
       "status": "laboratory_candidate",
       "acceptance": [
-        "At least two compatible hero mechanics.",
-        "Effective ability uses canonical modifiers exactly once.",
-        "Benefit and drawback both affect a compatible formation.",
+        "Fits every hero.",
+        "Stat benefit is applied exactly once per combat.",
         "Selling returns relic; merge survivor keeps own and returns extras."
       ]
     },
     {
       "id": "wc_vn_r_silk_trigger",
       "name": "Silk Trigger",
-      "description": "Release much sooner with reduced damage.",
-      "compatible_mechanics": [
-        "momentum_charge",
-        "screened_strike",
-        "crossing_beams",
-        "tidal_push"
-      ],
+      "description": "+12% attack speed and +12% attack damage.",
+      "compatible_mechanics": [],
       "modifiers": {
-        "magnitudeBp": 8000,
+        "magnitudeBp": 10000,
         "rangeDelta": 0,
         "radiusDelta": 0,
         "durationBp": 10000,
-        "castBp": 5000,
-        "cooldownBp": 10000
+        "castBp": 10000,
+        "cooldownBp": 10000,
+        "healthBp": 0,
+        "attackDamageBp": 1200,
+        "attackRateBp": 1200,
+        "skillPowerBp": 0,
+        "allDamageBp": 0,
+        "armorFlat": 0,
+        "resistanceFlat": 0
       },
       "runtime_enabled": true,
       "status": "laboratory_candidate",
       "acceptance": [
-        "At least two compatible hero mechanics.",
-        "Effective ability uses canonical modifiers exactly once.",
-        "Benefit and drawback both affect a compatible formation.",
+        "Fits every hero.",
+        "Stat benefit is applied exactly once per combat.",
         "Selling returns relic; merge survivor keeps own and returns extras."
       ]
     },
     {
       "id": "wc_vn_r_patient_lantern",
       "name": "Patient Lantern",
-      "description": "Stronger effects separated by longer gaps.",
-      "compatible_mechanics": [
-        "momentum_charge",
-        "screened_strike",
-        "crossing_beams",
-        "tidal_push",
-        "stationary_grove"
-      ],
+      "description": "+25 magic resistance.",
+      "compatible_mechanics": [],
       "modifiers": {
-        "magnitudeBp": 12500,
+        "magnitudeBp": 10000,
         "rangeDelta": 0,
         "radiusDelta": 0,
         "durationBp": 10000,
         "castBp": 10000,
-        "cooldownBp": 13000
+        "cooldownBp": 10000,
+        "healthBp": 0,
+        "attackDamageBp": 0,
+        "attackRateBp": 0,
+        "skillPowerBp": 0,
+        "allDamageBp": 0,
+        "armorFlat": 0,
+        "resistanceFlat": 25
       },
       "runtime_enabled": true,
       "status": "laboratory_candidate",
       "acceptance": [
-        "At least two compatible hero mechanics.",
-        "Effective ability uses canonical modifiers exactly once.",
-        "Benefit and drawback both affect a compatible formation.",
+        "Fits every hero.",
+        "Stat benefit is applied exactly once per combat.",
         "Selling returns relic; merge survivor keeps own and returns extras."
       ]
     },
     {
       "id": "wc_vn_r_far_hourglass",
       "name": "Far Hourglass",
-      "description": "Reach farther but wait longer between casts.",
-      "compatible_mechanics": [
-        "screened_strike",
-        "crossing_beams",
-        "tidal_push"
-      ],
+      "description": "+15% to all damage dealt.",
+      "compatible_mechanics": [],
       "modifiers": {
         "magnitudeBp": 10000,
-        "rangeDelta": 1,
+        "rangeDelta": 0,
         "radiusDelta": 0,
         "durationBp": 10000,
         "castBp": 10000,
-        "cooldownBp": 13000
+        "cooldownBp": 10000,
+        "healthBp": 0,
+        "attackDamageBp": 0,
+        "attackRateBp": 0,
+        "skillPowerBp": 0,
+        "allDamageBp": 1500,
+        "armorFlat": 0,
+        "resistanceFlat": 0
       },
       "runtime_enabled": true,
       "status": "laboratory_candidate",
       "acceptance": [
-        "At least two compatible hero mechanics.",
-        "Effective ability uses canonical modifiers exactly once.",
-        "Benefit and drawback both affect a compatible formation.",
+        "Fits every hero.",
+        "Stat benefit is applied exactly once per combat.",
         "Selling returns relic; merge survivor keeps own and returns extras."
       ]
     },
     {
       "id": "wc_vn_r_wide_hourglass",
       "name": "Wide Hourglass",
-      "description": "Cover a wider area with less frequent activations.",
-      "compatible_mechanics": [
-        "stationary_grove",
-        "crossing_beams"
-      ],
+      "description": "+12% maximum health and +12 armour.",
+      "compatible_mechanics": [],
       "modifiers": {
         "magnitudeBp": 10000,
         "rangeDelta": 0,
-        "radiusDelta": 1,
+        "radiusDelta": 0,
         "durationBp": 10000,
         "castBp": 10000,
-        "cooldownBp": 14000
+        "cooldownBp": 10000,
+        "healthBp": 1200,
+        "attackDamageBp": 0,
+        "attackRateBp": 0,
+        "skillPowerBp": 0,
+        "allDamageBp": 0,
+        "armorFlat": 12,
+        "resistanceFlat": 0
       },
       "runtime_enabled": true,
       "status": "laboratory_candidate",
       "acceptance": [
-        "At least two compatible hero mechanics.",
-        "Effective ability uses canonical modifiers exactly once.",
-        "Benefit and drawback both affect a compatible formation.",
+        "Fits every hero.",
+        "Stat benefit is applied exactly once per combat.",
         "Selling returns relic; merge survivor keeps own and returns extras."
       ]
     },
     {
       "id": "wc_vn_r_narrow_metronome",
       "name": "Narrow Metronome",
-      "description": "Repeat a smaller area effect more frequently.",
-      "compatible_mechanics": [
-        "stationary_grove",
-        "crossing_beams"
-      ],
+      "description": "+15% attack speed and +15% skill power.",
+      "compatible_mechanics": [],
       "modifiers": {
         "magnitudeBp": 10000,
         "rangeDelta": 0,
-        "radiusDelta": -1,
+        "radiusDelta": 0,
         "durationBp": 10000,
         "castBp": 10000,
-        "cooldownBp": 7500
+        "cooldownBp": 10000,
+        "healthBp": 0,
+        "attackDamageBp": 0,
+        "attackRateBp": 1500,
+        "skillPowerBp": 1500,
+        "allDamageBp": 0,
+        "armorFlat": 0,
+        "resistanceFlat": 0
       },
       "runtime_enabled": true,
       "status": "laboratory_candidate",
       "acceptance": [
-        "At least two compatible hero mechanics.",
-        "Effective ability uses canonical modifiers exactly once.",
-        "Benefit and drawback both affect a compatible formation.",
+        "Fits every hero.",
+        "Stat benefit is applied exactly once per combat.",
         "Selling returns relic; merge survivor keeps own and returns extras."
       ]
     },
     {
       "id": "wc_vn_r_urgent_shard",
       "name": "Urgent Shard",
-      "description": "Commit faster now at the cost of a longer following cooldown.",
-      "compatible_mechanics": [
-        "momentum_charge",
-        "screened_strike",
-        "crossing_beams",
-        "tidal_push"
-      ],
+      "description": "+15% attack damage and +15% skill power.",
+      "compatible_mechanics": [],
       "modifiers": {
         "magnitudeBp": 10000,
         "rangeDelta": 0,
         "radiusDelta": 0,
         "durationBp": 10000,
-        "castBp": 7000,
-        "cooldownBp": 12500
+        "castBp": 10000,
+        "cooldownBp": 10000,
+        "healthBp": 0,
+        "attackDamageBp": 1500,
+        "attackRateBp": 0,
+        "skillPowerBp": 1500,
+        "allDamageBp": 0,
+        "armorFlat": 0,
+        "resistanceFlat": 0
       },
       "runtime_enabled": true,
       "status": "laboratory_candidate",
       "acceptance": [
-        "At least two compatible hero mechanics.",
-        "Effective ability uses canonical modifiers exactly once.",
-        "Benefit and drawback both affect a compatible formation.",
+        "Fits every hero.",
+        "Stat benefit is applied exactly once per combat.",
         "Selling returns relic; merge survivor keeps own and returns extras."
       ]
     }
@@ -2102,9 +3618,9 @@
     "mana100_v1": {
       "status": "opt_in_unaccepted_experiment",
       "heroes": [
-        "wc_vn_snapvine",
-        "wc_vn_prism_organ",
-        "wc_vn_reefglass"
+        "wc_vn_hookjaw",
+        "wc_vn_prism_scholar",
+        "wc_vn_tide_caller"
       ],
       "maximum": 10000,
       "starting": 0,
@@ -2118,9 +3634,9 @@
     "mana100_hit20_v1": {
       "status": "opt_in_unaccepted_experiment",
       "heroes": [
-        "wc_vn_snapvine",
-        "wc_vn_prism_organ",
-        "wc_vn_reefglass"
+        "wc_vn_hookjaw",
+        "wc_vn_prism_scholar",
+        "wc_vn_tide_caller"
       ],
       "maximum": 10000,
       "starting": 0,
@@ -2137,5 +3653,28 @@
     "base": "mana100_hit20_v1",
     "nearestReachableTarget": true,
     "mobileAttackRecovery": true
+  },
+  "roster_recipe": {
+    "id": "roster_v1",
+    "status": "owner_directed_default_rules",
+    "mana": "mana100_hit20_v1",
+    "mana_heroes": [
+      "wc_vn_hookjaw",
+      "wc_vn_prism_scholar",
+      "wc_vn_tide_caller",
+      "wc_vn_soul_jailer",
+      "wc_vn_chapel_healer",
+      "wc_vn_hammerer",
+      "wc_vn_earthbreaker",
+      "wc_vn_bearguard",
+      "wc_vn_bomber",
+      "wc_vn_ember_wisp",
+      "wc_vn_blood_drummer"
+    ],
+    "passive_heroes": [
+      "wc_vn_shieldbearer",
+      "wc_vn_boar_rusher",
+      "wc_vn_grove_druid"
+    ]
   }
 }

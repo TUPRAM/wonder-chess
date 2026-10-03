@@ -1,0 +1,56 @@
+{
+  "hero_id": "wc_vn_shieldbearer",
+  "date": "2026-10-03",
+  "visual_standard_version": 2,
+  "revision": "four_view_r002",
+  "image_model": "GPT Image",
+  "model_version": null,
+  "model_version_note": "The built-in image generation tool exposes no exact model version.",
+  "generation_tool": "image_gen.imagegen",
+  "owner_review": "open",
+  "status": "stopped_main_view_failed_two_attempts",
+  "stop_reason": "Main view still violates version 2 proportions, A-pose and medium-detail limits after two total attempts. Stopped before side/back/accessory generation as instructed.",
+  "total_generation_calls": 2,
+  "attempts_per_file": {
+    "main.png": 2,
+    "left.png": 0,
+    "back.png": 0,
+    "right.png": 0,
+    "accessories/tower_shield.png": 0
+  },
+  "best_attempt": "rejected/main_attempt_002.png",
+  "canonical_view_files_saved": [],
+  "reference_images_used": [],
+  "r001_used_as_reference": false,
+  "attempts": [
+    {
+      "file": "main.png",
+      "attempt": 1,
+      "prompt": "Stylized hand-painted fantasy game character for an auto-battler: a grounded fantasy-world hero, not a toy, not chibi, not a cartoon mascot and not photorealistic. Bold readable silhouette with slightly exaggerated shoulders, hands and weapon. Believable materials painted with broad brushwork: worn metal with edge highlights and a few dents, stitched leather, heavy cloth with broad folds. Medium-sized details only (plate edges, rivets, straps, trim); no micro detail, no noisy texture, no text. Rich colours with clear light-and-dark contrast. Full body, neutral A-pose with arms about 35 degrees from the body and legs slightly apart, serious expression looking straight ahead. Straight-on camera at chest height with minimal perspective, even soft light, plain flat light-grey background #E6E6E6, no ground shadow, no scenery, no effects. The whole character is inside the frame with margin on every side. Design: Shieldbearer, a human tank. Stocky knight in plain plate with one oversized tower shield. About 4.0 heads tall; broad and heavy, wide armoured shoulders, planted stance. Dominant colours: worn steel #7E8793, deep royal blue #24468F, aged brass #B8923A; neutral leather, metal and skin tones are allowed beside them. Features: closed great helm with a narrow eye slit, a riveted brass brow band and a short blue horsehair crest; layered steel plate armour with visible plate edges, rivets and a few dents; chainmail at the neck and elbows; weathered blue surcoat with a brass sun emblem on the chest, leather sword belt, heavy gauntlets and sabatons. Right hand: empty gauntlet, relaxed at his side. Left hand: tall rectangular tower shield strapped to the left forearm and held at his left side, face parallel to his chest and pointing forward, bottom edge at shin height off the ground; blue painted face with a brass sun emblem, riveted brass rim, a few battle scratches. FRONT VIEW. The character faces the viewer directly.\nCreate a fresh design from this text only. One square PNG, 1254x1254 or larger. Use heroic four-head proportions and clearly hand-painted fantasy materials, medium detail only. The right arm is relaxed in the neutral A-pose with its empty gauntlet and no sword; 'sword belt' is a leather belt only. The left arm holds the shield beside the body with its outward face precisely parallel to the frontal chest plane; do not turn the shield toward or across the torso. Shield bottom is raised to shin height, with a clearly visible gap above the foot baseline. Both feet are planted on one baseline, pointing straight forward, not staggered. Keep ample framing margins, flat uniform #E6E6E6 background and no ground shadow. No unlisted cape, weapon, pouch or jewellery. Crest is short blue horsehair painted as a few broad masses, and chainmail is simplified into readable broad shapes rather than tiny links.",
+      "reference_image": null,
+      "source_path": "C:/Users/USER/.codex/generated_images/01a1003d-0611-7553-a0c5-92ba9a85da39/exec-8ccd5e74-b8e6-4a4e-a8d5-72481d94cb68.png",
+      "saved_as": "rejected/main_attempt_001.png",
+      "defects": [
+        "Approximately 7–8 helmet-heads tall rather than about 4",
+        "Pointed shield bottom instead of rectangular",
+        "Arms too close to torso for specified A-pose",
+        "Excessive fine chainmail links and surface wear",
+        "Small top margin and shaded background"
+      ]
+    },
+    {
+      "file": "main.png",
+      "attempt": 2,
+      "prompt": "Stylized hand-painted fantasy game character for an auto-battler: a grounded fantasy-world hero, not a toy, not chibi, not a cartoon mascot and not photorealistic. Bold readable silhouette with slightly exaggerated shoulders, hands and weapon. Believable materials painted with broad brushwork: worn metal with edge highlights and a few dents, stitched leather, heavy cloth with broad folds. Medium-sized details only (plate edges, rivets, straps, trim); no micro detail, no noisy texture, no text. Rich colours with clear light-and-dark contrast. Full body, neutral A-pose with arms about 35 degrees from the body and legs slightly apart, serious expression looking straight ahead. Straight-on camera at chest height with minimal perspective, even soft light, plain flat light-grey background #E6E6E6, no ground shadow, no scenery, no effects. The whole character is inside the frame with margin on every side. Design: Shieldbearer, a human tank. Stocky knight in plain plate with one oversized tower shield. About 4.0 heads tall; broad and heavy, wide armoured shoulders, planted stance. Dominant colours: worn steel #7E8793, deep royal blue #24468F, aged brass #B8923A; neutral leather, metal and skin tones are allowed beside them. Features: closed great helm with a narrow eye slit, a riveted brass brow band and a short blue horsehair crest; layered steel plate armour with visible plate edges, rivets and a few dents; chainmail at the neck and elbows; weathered blue surcoat with a brass sun emblem on the chest, leather sword belt, heavy gauntlets and sabatons. Right hand: empty gauntlet, relaxed at his side. Left hand: tall rectangular tower shield strapped to the left forearm and held at his left side, face parallel to his chest and pointing forward, bottom edge at shin height off the ground; blue painted face with a brass sun emblem, riveted brass rim, a few battle scratches. FRONT VIEW. The character faces the viewer directly.\nCRITICAL COMPOSITION FOR THIS GENERATION: one square 1254x1254 PNG. Intentionally stylized adult human knight of FOUR HELMET-HEADS tall, excluding the short crest: large serious helmet/head and compressed broad heroic body, not realistic seven-head anatomy. On this square canvas, helmet approximately y=155 to y=400 (245px tall), broad shoulder line y=420, belt y=685, knees around y=950, soles y=1135; crest remains short above helmet with at least 95px top margin. These proportions are essential. Adult angular great-helm construction and broad hand-painted shading, no round vinyl-toy volumes. Torso broad, legs substantial and short. Neutral straight-arm A-pose, relaxed empty right hand at 35 degrees from torso. Left arm same A-pose supports the shield on its forearm at the body's side, face exactly parallel to chest. Shield is a true tall RECTANGLE with four slightly softened corners and a FLAT HORIZONTAL bottom, never a point or kite shape. Shield bottom around y=990 at shin height, clearly off the ground, with top around y=380. Deep blue shield paint, aged brass rim, brass sun emblem. One belt only, no sword or scabbard. Simplify materials substantially: broad steel light/dark planes and a few restrained edge highlights, just two or three medium dents/scratches per large surface; heavy blue surcoat with three or four broad folds, no speckled wear, no tiny distress chips, no fine grain or leather pores. A few large readable rivets only. Chainmail neck and elbows indicated as dark stylized material masses with very sparse broad link suggestions, not hundreds of links. Keep brass decoration limited and bold; sun emblems use a central disk and a small number of broad rays. Crisp painterly fantasy concept illustration, believable worn steel, cloth and leather, not photorealism or a glossy render. Short horsehair crest painted in large grouped shapes. Both feet point directly forward on one level baseline, plenty of margin, uniform light-grey #E6E6E6 background without shadows. Do not crop anything. Use only this text, no earlier image reference.",
+      "reference_image": null,
+      "source_path": "C:/Users/USER/.codex/generated_images/01a1003d-0611-7553-a0c5-92ba9a85da39/exec-2cba9cf9-425a-426a-9d65-eacf53453149.png",
+      "saved_as": "rejected/main_attempt_002.png",
+      "defects": [
+        "Approximately 6.5 helmet-heads tall rather than about 4",
+        "Arms remain too close to torso for specified A-pose",
+        "Dense individually rendered chainmail and small surface distress remain",
+        "Background subtly shaded rather than a perfectly uniform flat field"
+      ]
+    }
+  ]
+}

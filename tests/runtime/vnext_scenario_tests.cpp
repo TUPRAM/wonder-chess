@@ -271,7 +271,7 @@ void Persistence(const wc::Catalog &catalog, const wc::FormationScenario &source
 void PairContract(const wc::Catalog &catalog, const std::vector<wc::ScenarioPair> &pairs)
 {
     std::string error;
-    Check(pairs.size() == 6, "Six core-mechanic causal pairs exist");
+    Check(pairs.size() == 7, "Seven core-mechanic causal pairs exist");
     std::set<wc::AbilityMechanic> mechanics;
     for (const auto &pair : pairs)
     {
@@ -282,7 +282,7 @@ void PairContract(const wc::Catalog &catalog, const std::vector<wc::ScenarioPair
             Check(wc::ScenarioInvestment(catalog, pair.a.armies[side]) == wc::ScenarioInvestment(catalog, pair.b.armies[side]),
                 "Causal comparison fixes purchase investment including star copies");
     }
-    Check(mechanics.size() == 6, "Every active mechanic has its own pair");
+    Check(mechanics.size() == 7, "Every active mechanic has its own pair");
     auto bad = pairs[0]; bad.b.seed++;
     Check(!wc::ValidateScenarioPair(catalog, bad, error), "Changed causal seed rejected");
     bad = pairs[0]; bad.b.armies[0][1].star++;
@@ -410,6 +410,12 @@ void Row(std::ostream &out, const wc::FormationScenario &scenario, const wc::Sce
 }
 wc::Int MechanicObserved(const wc::ScenarioRun &run, wc::AbilityMechanic mechanic)
 {
+    // This scenario asks which approaching enemy is caught, not how many casts occur.
+    if(mechanic==wc::AbilityMechanic::CocoonProjectile){
+        for(const auto& event:run.events)if(event.mechanic==mechanic&&event.effect==wc::Effect::Stun&&event.resolved>0)
+            return event.target;
+        return 0;
+    }
     wc::Int count = 0;
     for (const auto &side : run.sides)
     {
@@ -419,6 +425,7 @@ wc::Int MechanicObserved(const wc::ScenarioRun &run, wc::AbilityMechanic mechani
         if (mechanic == wc::AbilityMechanic::ScreenedStrike) count += side.strikeHits;
         if (mechanic == wc::AbilityMechanic::CrossingBeams) count += side.beamHits;
         if (mechanic == wc::AbilityMechanic::TidalPush) count += side.tidePushes;
+        if (mechanic == wc::AbilityMechanic::CocoonProjectile) count += side.cocoons;
     }
     return count;
 }
