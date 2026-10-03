@@ -53,5 +53,316 @@
         "Defeat"
       ]
     }
+  },
+  "wc_vn_earthbreaker": {
+    "mesh": "/Game/WonderChess/VNext/Heroes/Earthbreaker_r001/SK_Earthbreaker",
+    "scale": 1.0,
+    "yaw": 0,
+    "label_height": 250,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Heroes/Earthbreaker_r001/Animations/A_Earthbreaker_Library_Idle_3",
+      "Move": "/Game/WonderChess/VNext/Heroes/Earthbreaker_r001/Animations/A_Earthbreaker_Library_Slow_Orc_Walk",
+      "Attack": "/Game/WonderChess/VNext/Heroes/Earthbreaker_r001/Animations/A_Earthbreaker_Library_Punch_Forward_with_Both_Fists",
+      "Cast": "/Game/WonderChess/VNext/Heroes/Earthbreaker_r001/Animations/A_Earthbreaker_Library_Charged_Ground_Slam",
+      "Hit": "/Game/WonderChess/VNext/Heroes/Earthbreaker_r001/Animations/A_Earthbreaker_Library_Hit_Reaction_1",
+      "Defeat": "/Game/WonderChess/VNext/Heroes/Earthbreaker_r001/Animations/A_Earthbreaker_Library_Knock_Down_1"
+    },
+    "rates": {
+      "Attack": 2.8,
+      "Cast": 3.0,
+      "Move": 1.6
+    }
+  },
+  "wc_vn_tide_caller": {
+    "static_mesh": "/Game/WonderChess/VNext/Heroes/TideCaller_r001/SM_TideCaller",
+    "scale": 1.15,
+    "yaw": 0,
+    "label_height": 245
+  },
+  "wc_vn_boar_rusher": {
+    "mesh": "/Game/WonderChess/VNext/Heroes/BoarRusher_r001/SK_BoarRusher_Grip",
+    "scale": 1.0,
+    "yaw": 0,
+    "label_height": 240,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Heroes/BoarRusher_r001/Animations/A_BoarRusher_Library_Idle_4",
+      "Move": "/Game/WonderChess/VNext/Heroes/BoarRusher_r001/Animations/A_BoarRusher_Library_Monster_Walk",
+      "Attack": "/Game/WonderChess/VNext/Heroes/BoarRusher_r001/Animations/A_BoarRusher_Library_Charged_Axe_Chop",
+      "Cast": "/Game/WonderChess/VNext/Heroes/BoarRusher_r001/Animations/A_BoarRusher_Library_Male_Head_Down_Charge",
+      "Hit": "/Game/WonderChess/VNext/Heroes/BoarRusher_r001/Animations/A_BoarRusher_Library_Face_Punch_Reaction",
+      "Defeat": "/Game/WonderChess/VNext/Heroes/BoarRusher_r001/Animations/A_BoarRusher_Library_Knock_Down"
+    },
+    "rates": {
+      "Attack": 5.0,
+      "Cast": 0.8,
+      "Move": 1.5,
+      "Hit": 2.0
+    },
+    "items": [
+      {
+        "mesh": "/Game/WonderChess/VNext/Heroes/BoarRusher_r001/Items/Club/model_urls_glb/StaticMeshes/model_urls_glb",
+        "bone": "RightHand",
+        "location": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": 0.58,
+        "grip": {
+          "tip_axis": [
+            0,
+            0,
+            1
+          ],
+          "point": [
+            0,
+            0,
+            -77
+          ],
+          "rest_direction": [
+            0.98,
+            0.07,
+            -0.2
+          ],
+          "reach": 12,
+          "roll": 0,
+          "palm": [
+            0,
+            -4.5,
+            -1.5
+          ]
+        }
+      }
+    ],
+    "curls": [
+      {
+        "bone": "RightHand",
+        "axis": [
+          -0.21,
+          0.31,
+          -0.93
+        ],
+        "angle": -80
+      },
+      {
+        "bone": "RightFingers1",
+        "axis": [
+          -0.98,
+          -0.07,
+          0.2
+        ],
+        "angle": 65
+      },
+      {
+        "bone": "RightFingers2",
+        "axis": [
+          -0.98,
+          -0.07,
+          0.2
+        ],
+        "angle": 75
+      },
+      {
+        "bone": "RightThumb",
+        "axis": [
+          -0.21,
+          0.31,
+          -0.93
+        ],
+        "angle": 40
+      }
+    ]
+  },
+  "wc_vn_hookjaw": {
+    "mesh": "/Game/WonderChess/VNext/Heroes/Hookjaw_r001/SK_Hookjaw_Grip",
+    "scale": 1.0,
+    "yaw": 0,
+    "label_height": 165,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Heroes/Hookjaw_r001/Animations/A_Hookjaw_Library_Idle_5",
+      "Move": "/Game/WonderChess/VNext/Heroes/Hookjaw_r001/Animations/A_Hookjaw_Library_Sneaky_Walk",
+      "Attack": "/Game/WonderChess/VNext/Heroes/Hookjaw_r001/Animations/A_Hookjaw_Library_Right_Hand_Sword_Slash",
+      "Cast": "/Game/WonderChess/VNext/Heroes/Hookjaw_r001/Animations/A_Hookjaw_Library_Crouch_Pull_and_Throw",
+      "Hit": "/Game/WonderChess/VNext/Heroes/Hookjaw_r001/Animations/A_Hookjaw_Library_Slap_Reaction",
+      "Defeat": "/Game/WonderChess/VNext/Heroes/Hookjaw_r001/Animations/A_Hookjaw_Library_dying_backwards"
+    },
+    "rates": {
+      "Attack": 1.2,
+      "Cast": 4.0,
+      "Hit": 3.0
+    },
+    "items": [
+      {
+        "mesh": "/Game/WonderChess/VNext/Heroes/Hookjaw_r001/Items/Hook/model_urls_glb/StaticMeshes/model_urls_glb",
+        "bone": "RightHand",
+        "location": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": 0.24,
+        "grip": {
+          "tip_axis": [
+            0,
+            0,
+            -1
+          ],
+          "point": [
+            0,
+            0,
+            73
+          ],
+          "rest_direction": [
+            0.92,
+            0.1,
+            -0.37
+          ],
+          "reach": 9.6,
+          "roll": 0,
+          "palm": [
+            0.0,
+            -3.7,
+            -1.0
+          ]
+        }
+      }
+    ],
+    "curls": [
+      {
+        "bone": "RightHand",
+        "axis": [
+          -0.38,
+          0.24,
+          -0.89
+        ],
+        "angle": -80.0
+      },
+      {
+        "bone": "RightFingers1",
+        "axis": [
+          -0.92,
+          -0.1,
+          0.37
+        ],
+        "angle": 65
+      },
+      {
+        "bone": "RightFingers2",
+        "axis": [
+          -0.92,
+          -0.1,
+          0.37
+        ],
+        "angle": 75
+      }
+    ]
+  },
+  "wc_vn_hammerer": {
+    "mesh": "/Game/WonderChess/VNext/Heroes/Hammerer_r001/SK_Hammerer_Grip",
+    "scale": 1.0,
+    "yaw": 0,
+    "label_height": 175,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Heroes/Hammerer_r001/Animations/A_Hammerer_Library_Idle_6",
+      "Move": "/Game/WonderChess/VNext/Heroes/Hammerer_r001/Animations/A_Hammerer_Library_Proud_Strut",
+      "Attack": "/Game/WonderChess/VNext/Heroes/Hammerer_r001/Animations/A_Hammerer_Library_Heavy_Hammer_Swing",
+      "Cast": "/Game/WonderChess/VNext/Heroes/Hammerer_r001/Animations/A_Hammerer_Library_Charged_Slash",
+      "Hit": "/Game/WonderChess/VNext/Heroes/Hammerer_r001/Animations/A_Hammerer_Library_Hit_Reaction",
+      "Defeat": "/Game/WonderChess/VNext/Heroes/Hammerer_r001/Animations/A_Hammerer_Library_Shot_and_Fall_Forward"
+    },
+    "rates": {
+      "Attack": 1.4,
+      "Cast": 2.0,
+      "Move": 1.6
+    },
+    "items": [
+      {
+        "mesh": "/Game/WonderChess/VNext/Heroes/Hammerer_r001/Items/Hammer/model_urls_glb/StaticMeshes/model_urls_glb",
+        "bone": "RightHand",
+        "location": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": 0.58,
+        "grip": {
+          "tip_axis": [
+            0,
+            0,
+            -1
+          ],
+          "point": [
+            0,
+            0,
+            35
+          ],
+          "rest_direction": [
+            0.83,
+            0.15,
+            -0.54
+          ],
+          "reach": 9.9,
+          "roll": 0,
+          "palm": [
+            0.0,
+            -3.8,
+            -1.0
+          ]
+        }
+      }
+    ],
+    "curls": [
+      {
+        "bone": "RightHand",
+        "axis": [
+          -0.56,
+          0.22,
+          -0.8
+        ],
+        "angle": -80.0
+      },
+      {
+        "bone": "RightFingers1",
+        "axis": [
+          -0.83,
+          -0.15,
+          0.54
+        ],
+        "angle": 65
+      },
+      {
+        "bone": "RightFingers2",
+        "axis": [
+          -0.83,
+          -0.15,
+          0.54
+        ],
+        "angle": 75
+      },
+      {
+        "bone": "RightThumb",
+        "axis": [
+          -0.56,
+          0.22,
+          -0.8
+        ],
+        "angle": 40
+      }
+    ]
   }
 }

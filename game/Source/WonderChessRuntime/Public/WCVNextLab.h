@@ -115,6 +115,14 @@ private:
     double DragPressedAt=0;
     TSet<int> DragCells;
     void TickDrag();
+    // The bench is a row of ten real tiles on the player's side of the board, as wide as the board itself;
+    // cell row -1 addresses it and the column is the bench slot.
+    static constexpr double BenchY=1070;
+    static constexpr double BenchPitch=160;
+    static constexpr int BenchSlots=10;
+    static int BenchSlotAt(double X){return FMath::FloorToInt((X+BenchPitch*BenchSlots/2)/BenchPitch);}
+    UStaticMeshComponent* BenchMark=nullptr;
+    int BenchHover=-1;
     // One small off-board stage per modelled hero renders its idle animation for shop cards and portraits.
     UPROPERTY() TMap<FString,TObjectPtr<class UTextureRenderTarget2D>> HeroCardTargets;
     TMap<FString,TSharedPtr<FSlateBrush>> HeroCardBrushes;

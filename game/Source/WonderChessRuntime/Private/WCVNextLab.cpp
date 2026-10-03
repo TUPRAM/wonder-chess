@@ -292,6 +292,7 @@ UStaticMeshComponent* AWCVNextLab::Mesh(AActor* ParentActor, const TCHAR* Shape,
 }
 FVector AWCVNextLab::Position(wc::Cell Cell) const
 {
+    if (Cell.row < 0) return FVector((Cell.column - (BenchSlots - 1) * .5) * BenchPitch, BenchY, 0);
     return FVector((Cell.column - 3.5) * 200, (3.5 - Cell.row) * 200, 0);
 }
 void AWCVNextLab::BuildScene()
@@ -351,7 +352,7 @@ void AWCVNextLab::BuildScene()
             ((Row+Column)%2?FLinearColor(.61f,.65f,.60f):FLinearColor(.82f,.83f,.77f)):
             ((Row+Column)%2?FLinearColor(.69f,.74f,.67f):FLinearColor(.87f,.89f,.80f))));
         if(Courtyard)if(auto* Slab=CourtyardMaterial((Row+Column)%2?TEXT("T_BoardDark"):TEXT("T_BoardLight"),1,1,
-            (Row+Column)%2?FLinearColor(.85f,.85f,.85f):FLinearColor(.62f,.60f,.56f))){
+            (Row+Column)%2?FLinearColor(1.45f,1.45f,1.50f):FLinearColor(.86f,.83f,.77f))){
             // Quarter turns keep sixty-four copies of one slab from reading as a stamp.
             Tile->SetMaterial(0,Slab);Tile->SetRelativeRotation(FRotator(0,((Row*3+Column*5)%4)*90,0));
         }
@@ -364,6 +365,20 @@ void AWCVNextLab::BuildScene()
             Mark->SetCastShadow(false);
             Telegraphs.Add(Mark);
         }
+    }
+    if(SoloMode){
+        // Bench: ten slate tiles in a stone frame. Bought heroes stand here until they are deployed.
+        for(int Slot=0;Slot<BenchSlots;++Slot){
+            auto* Tile=Mesh(Ground,TEXT("Cube"),Position({Slot,-1}),FVector(1.55,1.55,.12),FLinearColor(.27f,.27f,.29f),FRotator(0,(Slot%4)*90,0));
+            if(auto* Slab=CourtyardMaterial(TEXT("T_BoardDark"),1,1,FLinearColor(1.30f,1.32f,1.42f)))Tile->SetMaterial(0,Slab);
+        }
+        const FLinearColor Frame(.50f,.45f,.33f);
+        for(int Edge:{-1,1}){
+            Mesh(Ground,TEXT("Cube"),FVector(0,BenchY+Edge*88,0),FVector(16.6,.16,.2),Frame);
+            Mesh(Ground,TEXT("Cube"),FVector(Edge*822,BenchY,0),FVector(.16,1.92,.2),Frame);
+        }
+        BenchMark=Mesh(Ground,TEXT("Cube"),Position({0,-1})+FVector(0,0,7),FVector(1.5,1.5,.02),Teams[0]);
+        BenchMark->SetCastShadow(false);BenchMark->SetVisibility(false);
     }
     for (int Side=0; Side<2; ++Side)
         Mesh(Ground, TEXT("Cube"), FVector(0, Side ? -826 : 826, Storybook?13:8), FVector(Storybook?2.2:16.8,.12,.1), Teams[Side]);
@@ -456,9 +471,29 @@ void AWCVNextLab::BuildCourtyard(AActor* Ground,ADirectionalLight* Sun,ASkyLight
             Slabs->AddInstance(FTransform(FRotator::ZeroRotator,FVector(X*360,Y*360,-12),FVector(3.5,3.5,.2)));
         }
     }
+    // A Meshy candidate model replaces its blockout shape when the asset exists. Height sets its size and the
+    // model stands with its lowest point at the given place.
+    const auto Prop=[&](const TCHAR* Piece,FVector At,double Tall,double Yaw){
+        auto* Model=LoadObject<UStaticMesh>(nullptr,*FString::Printf(
+            TEXT("/Game/WonderChess/VNext/Environment/Courtyard_r001/Props/%s/SM_%s.SM_%s"),Piece,Piece,Piece));
+        if(!Model)return false;
+        const FBoxSphereBounds Bounds=Model->GetBounds();
+        const double Scale=Tall/(2*Bounds.BoxExtent.Z);
+        const FRotator Turn(0,Yaw,0);
+        auto* Part=NewObject<UStaticMeshComponent>(Ground);
+        Ground->AddInstanceComponent(Part);Part->SetupAttachment(Ground->GetRootComponent());
+        Part->SetStaticMesh(Model);Part->SetMobility(EComponentMobility::Movable);
+        Part->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+        Part->SetRelativeRotation(Turn);Part->SetRelativeScale3D(FVector(Scale));
+        Part->SetRelativeLocation(At-Turn.RotateVector(FVector(Bounds.Origin.X,Bounds.Origin.Y,Bounds.Origin.Z-Bounds.BoxExtent.Z))*Scale);
+        Part->RegisterComponent();
+        return true;
+    };
     // Curtain walls on the far side and both flanks; +Y is the camera side.
     // Close enough that the far wall and both flanks show at the edges of the game camera.
     const double Far=-1180,Flank=1500,Height=900,Base=-10;
+    // Which way the Meshy models' fronts point is fixed by looking at them in the game.
+    const double GatehouseYaw=0,PropsYaw=90;
     const auto Curtain=[&](FVector Center,bool AlongX,double Length){
         Block(Center+FVector(0,0,Height/2+Base),AlongX?FVector(Length/100,2.6,Height/100):FVector(2.6,Length/100,Height/100),Wall);
         Block(Center+FVector(0,0,Base+70),AlongX?FVector(Length/100,3.1,1.4):FVector(3.1,Length/100,1.4),WallShade);
@@ -475,41 +510,58 @@ void AWCVNextLab::BuildCourtyard(AActor* Ground,ADirectionalLight* Sun,ASkyLight
     // Round corner towers with slate roofs.
     for(int Side:{-1,1}){
         const FVector At(Side*Flank,Far,Base);
+        if(Prop(TEXT("round_tower"),At,Height*1.36+560,0))continue;
         Block(At+FVector(0,0,Height*.68),FVector(6.4,6.4,Height*1.36/100),Wall,FRotator::ZeroRotator,TEXT("Cylinder"));
         Block(At+FVector(0,0,Height*1.36+40),FVector(7.4,7.4,.8),WallShade,FRotator::ZeroRotator,TEXT("Cylinder"));
         Block(At+FVector(0,0,Height*1.36+330),FVector(7.8,7.8,5.4),Roof,FRotator::ZeroRotator,TEXT("Cone"));
     }
     // Gatehouse in the far wall: a proud block, a dark arch and a portcullis hint.
-    Block(FVector(0,Far+60,Base+Height*.56),FVector(8.4,3.6,Height*1.12/100),Wall);
-    Block(FVector(0,Far+245,Base+250),FVector(4.4,.3,5),Soot)->SetCastShadow(false);
-    Block(FVector(0,Far+245,Base+500),FVector(4.4,.3,4.4),Soot,FRotator(0,0,90),TEXT("Cylinder"))->SetCastShadow(false);
-    for(int Bar=-2;Bar<=2;++Bar)Block(FVector(Bar*70,Far+262,Base+300),FVector(.12,.12,6),WallShade)->SetCastShadow(false);
+    if(!Prop(TEXT("gatehouse"),FVector(0,Far+150,Base),Height*1.17,GatehouseYaw)){
+        Block(FVector(0,Far+60,Base+Height*.56),FVector(8.4,3.6,Height*1.12/100),Wall);
+        Block(FVector(0,Far+245,Base+250),FVector(4.4,.3,5),Soot)->SetCastShadow(false);
+        Block(FVector(0,Far+245,Base+500),FVector(4.4,.3,4.4),Soot,FRotator(0,0,90),TEXT("Cylinder"))->SetCastShadow(false);
+        for(int Bar=-2;Bar<=2;++Bar)Block(FVector(Bar*70,Far+262,Base+300),FVector(.12,.12,6),WallShade)->SetCastShadow(false);
+    }
     // Banners in the Shieldbearer's blue and brass hang on the far wall and the flanks.
+    auto* BannerCloth=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/WonderChess/VNext/Environment/Courtyard_r001/M_CourtyardCutout.M_CourtyardCutout"));
     const auto Banner=[&](FVector P,bool FacesY){
+        if(BannerCloth){
+            // The painted banner hangs as one flat cut-out panel.
+            auto* Panel=Mesh(Ground,TEXT("Plane"),P,FVector(1.9,4.1,1),FLinearColor::White,FacesY?FRotator(0,0,90):FRotator(0,P.X<0?90:-90,90));
+            Panel->SetMaterial(0,BannerCloth);Panel->SetCastShadow(false);
+            return;
+        }
         Block(P,FacesY?FVector(1.9,.06,4.6):FVector(.06,1.9,4.6),Cloth)->SetCastShadow(false);
         Block(P+FVector(0,0,-205),FacesY?FVector(1.9,.07,.5):FVector(.07,1.9,.5),Brass)->SetCastShadow(false);
         Block(P+FVector(0,0,238),FacesY?FVector(2.3,.1,.14):FVector(.1,2.3,.14),Brass)->SetCastShadow(false);
     };
-    for(int X:{-1050,-560,560,1050})Banner(FVector(X,Far+140,Base+420),true);
+    for(int X:{-1050,-640,640,1050})Banner(FVector(X,Far+140,Base+420),true);
     for(int Side:{-1,1})for(int Y:{-700,0,700})Banner(FVector(Side*(Flank-140),Y,Base+420),false);
     // Braziers at the yard corners give warm local light.
     for(int X:{-1,1})for(int Y:{-1,1}){
         const FVector At(X*1180,Y*1020,Base);
+        if(!Prop(TEXT("brazier"),At,270,0)){
         Block(At+FVector(0,0,70),FVector(.5,.5,1.4),Soot,FRotator::ZeroRotator,TEXT("Cylinder"));
         Block(At+FVector(0,0,150),FVector(1.1,1.1,.3),WallShade,FRotator::ZeroRotator,TEXT("Cylinder"));
         Block(At+FVector(0,0,190),FVector(.7,.7,.5),FLinearColor(1.f,.42f,.08f),FRotator::ZeroRotator,TEXT("Cone"))->SetCastShadow(false);
+        }
         auto* Fire=NewObject<UPointLightComponent>(Ground);
         Ground->AddInstanceComponent(Fire);Fire->SetupAttachment(Ground->GetRootComponent());
         Fire->SetRelativeLocation(At+FVector(0,0,260));Fire->bUseInverseSquaredFalloff=false;Fire->SetLightFalloffExponent(2);
         Fire->SetIntensity(2.2f);Fire->SetAttenuationRadius(1500);Fire->SetLightColor(FLinearColor(1.f,.62f,.30f));
         Fire->SetCastShadows(false);Fire->RegisterComponent();
     }
+    // Barrels, a crate and a weapon rack dress the foot of each flank wall.
+    Prop(TEXT("yard_props"),FVector(-Flank+330,-420,Base),340,PropsYaw);
+    Prop(TEXT("yard_props"),FVector(Flank-330,380,Base),340,PropsYaw+180);
     // Late-afternoon sun with a soft opposite fill so armour and faces do not fall into black.
     // A spawned directional light is stationary, and a stationary light ignores a new rotation at run time.
     Sun->GetLightComponent()->SetMobility(EComponentMobility::Movable);
     Sun->SetActorRotation(FRotator(-52,-105,0));
     Sun->GetLightComponent()->SetIntensity(4.4f);Sun->GetLightComponent()->SetLightColor(FLinearColor(1.f,.93f,.82f));
-    Sky->GetLightComponent()->SetIntensity(1.9f);
+    // Soft shadows: the sun's shadows keep about half their depth so pieces and walls do not sink into black.
+    if(auto* SunLight=Cast<UDirectionalLightComponent>(Sun->GetLightComponent()))SunLight->SetShadowAmount(.5f);
+    Sky->GetLightComponent()->SetIntensity(2.4f);
     // One directional light only: a second one competes with it for forward shading.
     SceneActors.Add(GetWorld()->SpawnActor<ASkyAtmosphere>());
 }
@@ -555,7 +607,7 @@ const FSlateBrush* AWCVNextLab::HeroCardBrush(const FString& HeroId)
 // click would.
 void AWCVNextLab::EndDrag()
 {
-    Dragging=DragArmed=DragFromBench=false;DragCells.Reset();DragHover={-1,-1};DragGhostHero=nullptr;
+    Dragging=DragArmed=DragFromBench=false;DragCells.Reset();DragHover={-1,-1};DragGhostHero=nullptr;BenchHover=-1;
     if(auto* Ghost=DragGhost.Get()){SceneActors.Remove(Ghost);Ghost->Destroy();}
     DragGhost.Reset();
 }
@@ -572,7 +624,7 @@ void AWCVNextLab::TickDrag()
 {
     const bool Down=FSlateApplication::Get().GetPressedMouseButtons().Contains(EKeys::LeftMouseButton);
     FVector Origin,Direction;
-    bool OnBoard=false;wc::Cell Hover{-1,-1};
+    bool OnBoard=false,OnBench=false;wc::Cell Hover{-1,-1};
     // The controller's own mouse position goes stale while a pressed bench button holds mouse capture,
     // so the ray is built from the Slate cursor instead.
     FVector2D Screen=FVector2D::ZeroVector;bool HasCursor=false;
@@ -586,10 +638,13 @@ void AWCVNextLab::TickDrag()
         DragGround=Origin+Direction*(-Origin.Z/Direction.Z);
         Hover={int(FMath::FloorToInt((DragGround.X+800)/200)),int(FMath::FloorToInt((800-DragGround.Y)/200))};
         OnBoard=Hover.column>=0&&Hover.column<8&&Hover.row>=0&&Hover.row<8;
+        OnBench=SoloMode&&FMath::Abs(DragGround.Y-BenchY)<=BenchPitch/2&&FMath::Abs(DragGround.X)<800;
+        if(OnBench)Hover={BenchSlotAt(DragGround.X),-1};
     }
+    BenchHover=OnBench?Hover.column:-1;
     if((Dragging||DragArmed)&&(CurrentCombat()||Selected!=DragId)){EndDrag();return;}
     if(!Dragging){
-        if(DragArmed&&Down&&((OnBoard&&!(Hover==DragOrigin))||Elapsed-DragPressedAt>.18))Dragging=true;
+        if(DragArmed&&Down&&(((OnBoard||OnBench)&&!(Hover==DragOrigin))||Elapsed-DragPressedAt>.18))Dragging=true;
         if(!Down)DragArmed=DragFromBench=false;
     }
     DragCells.Reset();DragHover={-1,-1};
@@ -622,9 +677,10 @@ void AWCVNextLab::TickDrag()
         if(DragGhostHero)DragGhostHero->Present(nullptr,false,GetWorld()->GetDeltaSeconds());
     }
     if(!Down){
-        const bool Drop=OnBoard&&!(Hover==DragOrigin);
+        const bool Drop=OnBoard&&!(Hover==DragOrigin),ToBench=OnBench&&!(Hover==DragOrigin);
         EndDrag();
         if(Drop){if(SoloMode)SoloCell(Hover);else EditCell(Hover,false);}
+        else if(ToBench)SelectBench(Hover.column);
     }
 }
 void AWCVNextLab::UpdateCamera()
@@ -637,7 +693,8 @@ void AWCVNextLab::UpdateCamera()
     if(Storybook){
         const FVector Forward=FVector(0,-2400,Courtyard?-1650:-2200).GetSafeNormal(),Right(1,0,0),Up=FVector::CrossProduct(Forward,Right).GetSafeNormal();
         const double Tangent=FMath::Tan(FMath::DegreesToRadians(17.)),Focal=Width/(2*Tangent);
-        const FVector2D DesiredCenter(BoardCenter.X,BoardCenter.Y+BoardSize.Y*.035);
+        // With the bench row under the board, the board sits a little higher in its area.
+        const FVector2D DesiredCenter(BoardCenter.X,BoardCenter.Y+BoardSize.Y*(SoloMode?-.045:.035));
         const auto CameraAt=[&](double Distance){
             const double Near=Distance+Forward.Y*800,Far=Distance-Forward.Y*800;
             const double ShiftX=(Width*.5-DesiredCenter.X)*Near/Focal;
@@ -658,6 +715,10 @@ void AWCVNextLab::UpdateCamera()
                 const auto P=Project(FVector(X*800,Y*800,0),Location);
                 Minimum.X=FMath::Min(Minimum.X,P.X);Minimum.Y=FMath::Min(Minimum.Y,P.Y);
                 Maximum.X=FMath::Max(Maximum.X,P.X);Maximum.Y=FMath::Max(Maximum.Y,P.Y);
+                if(SoloMode){
+                    const auto Bench=Project(FVector(X*850,BenchY+105,14),Location);
+                    if(Bench.X<Bounds.Left+4||Bench.X>Bounds.Right-4||Bench.Y>Bounds.Bottom-4)return false;
+                }
                 const auto Rim=Project(FVector(X*880,Y*880,14),Location);
                 if(Rim.X<Bounds.Left+4||Rim.X>Bounds.Right-4||Rim.Y<Bounds.Top+4||Rim.Y>Bounds.Bottom-4)return false;
                 const auto Headroom=Project(FVector(X*780,Y*700,320),Location);
@@ -948,6 +1009,16 @@ bool AWCVNextLab::BoardRayClick(const FVector& Origin,const FVector& Direction,b
     const double T=-Origin.Z/Direction.Z;
     if(T<0)return false;
     const FVector P=Origin+Direction*T;
+    if(SoloMode&&FMath::Abs(P.Y-BenchY)<=BenchPitch/2&&FMath::Abs(P.X)<800){
+        // A press on a bench tile selects the hero standing there, or sends the selected hero to that tile.
+        if(CurrentCombat())return false;
+        const int Slot=BenchSlotAt(P.X);
+        SelectBench(Slot);
+        if(SoloMatch&&Selected)for(const auto& Unit:SoloMatch->Seats()[0].roster)if(Unit.id==Selected&&!Unit.onBoard&&Unit.bench==Slot){
+            DragArmed=true;DragFromBench=false;DragId=Selected;DragOrigin={Slot,-1};DragPressedAt=Elapsed;
+        }
+        return true;
+    }
     const wc::Cell Cell{FMath::FloorToInt((P.X+800)/200),FMath::FloorToInt((800-P.Y)/200)};
     if(Cell.column<0||Cell.column>=8||Cell.row<0||Cell.row>=8)return false;
     const bool Handled=SoloMode ? SoloCell(Cell) : EditCell(Cell,Remove);
@@ -1058,6 +1129,10 @@ void AWCVNextLab::Preset()
     ClearFormation();BrushStar=1;BrushFacing=wc::Facing::Forward;
     const wc::Cell Layout[]={{1,2},{3,1},{1,1},{2,3},{5,0},{5,3}};
     for(int Side=0;Side<2;++Side)for(int Hero=0;Hero<6;++Hero){ChooseHero(Hero);EditCell(wc::EncounterCell(Layout[Hero],Side,Catalog.rules),false);}
+    // -WCHeroReviewId=<hero id> puts that hero in the first place so the review route shows it.
+    FString ReviewId;
+    if(HeroReview&&FParse::Value(FCommandLine::Get(),TEXT("WCHeroReviewId="),ReviewId))
+        for(int Hero=0;Hero<int(Catalog.units.size());++Hero)if(Str(Catalog.units[Hero].id)==ReviewId)Formation[0][0].definition=Hero;
     Selected=Formation[0][0].id;Palette=0;
     Message=TEXT("Six distinct pilot creatures per team. Edit freely before Start; no combat commands are accepted during a fight.");
 }
@@ -1106,7 +1181,9 @@ void AWCVNextLab::AddPieceView(uint64 Id,int Definition,int Side,bool Neutral)
     auto* Actor=SceneActor();
     const FLinearColor Color=HeroColors[Definition%6];
     auto* TeamBase=Mesh(Actor,TEXT("Cylinder"),FVector(0,0,13),FVector(1.16,1.16,.13),Teams[Side]);
-    Mesh(Actor,TEXT("Cone"),FVector(0,54,27),FVector(.20,.20,.44),Paper,FRotator(0,0,-90));
+    auto* Pointer=Mesh(Actor,TEXT("Cone"),FVector(0,54,27),FVector(.20,.20,.44),Paper,FRotator(0,0,-90));
+    // The owner asked for no disc under the characters; the courtyard board shows pieces standing on bare stone.
+    if(Courtyard){TeamBase->SetVisibility(false);Pointer->SetVisibility(false);}
     const auto Part=[&](const TCHAR* Shape,FVector P,FVector Scale,FLinearColor C,FRotator R=FRotator::ZeroRotator){return Mesh(Actor,Shape,P,Scale,C,R);};
     UWCBellbackPresentationComponent* Bellback=nullptr;
     UWCSilkmotherPresentationComponent* Silkmother=nullptr;
@@ -1122,7 +1199,7 @@ void AWCVNextLab::AddPieceView(uint64 Id,int Definition,int Side,bool Neutral)
         FString Error;
         if(Hero->InitializeHero(HeroId,Error)){
             TeamBase->SetRelativeLocation(FVector(0,0,6.1));TeamBase->SetRelativeScale3D(FVector(1.16,1.16,.001));
-            Hero->GetMesh()->AddTickPrerequisiteActor(this);
+            if(Hero->GetMesh())Hero->GetMesh()->AddTickPrerequisiteActor(this);
         }else{UE_LOG(LogTemp,Warning,TEXT("WC_HERO_MODEL_REJECTED %s"),*Error);Hero->DestroyComponent();Hero=nullptr;}
     }
     if(BellbackCandidate&&!Neutral&&Catalog.Definition(Definition,false).id=="wc_vn_shieldbearer"){
@@ -1440,6 +1517,19 @@ void AWCVNextLab::UpdatePresentation(float DeltaSeconds)
             Present(U.id,U.definition,Side,U.star,wc::EncounterCell(U.cell,Side,Catalog.rules),Facing,HP,HP,wc::ActionState::Idle,false);
         }
     }
+    // The player's benched heroes stand on the bench tiles in every phase, fights included.
+    if(SoloMode&&SoloMatch){
+        int Marked=Dragging?BenchHover:-1;
+        if(ViewedSeat==0)for(const auto& U:SoloMatch->Seats()[0].roster)if(!U.onBoard&&U.bench>=0&&U.bench<BenchSlots){
+            const auto HP=wc::StarValue(Catalog.units[U.definition].health,U.star,0,Catalog.rules);
+            Present(U.id,U.definition,0,U.star,{U.bench,-1},wc::Facing::Forward,HP,HP,wc::ActionState::Idle,false);
+            if(!Dragging&&U.id==Selected)Marked=U.bench;
+        }
+        if(BenchMark){
+            BenchMark->SetVisibility(Marked>=0);
+            if(Marked>=0)BenchMark->SetWorldLocation(Position({Marked,-1})+FVector(0,0,7));
+        }
+    }
     for(auto It=Pieces.CreateIterator();It;++It)if(!Alive.Contains(It.Key())){
         if(auto* Actor=It.Value().Actor.Get()){SceneActors.Remove(Actor);Actor->Destroy();}
         It.RemoveCurrent();
@@ -1623,7 +1713,9 @@ void AWCVNextLab::TickHeroReview()
         {TEXT("Cast"),false,1.2f,35,TEXT("hero-block.png")},{TEXT("Hit"),false,.5f,35,TEXT("hero-hit.png")},
         {TEXT("Defeat"),false,2.6f,35,TEXT("hero-defeat.png")}};
     const FPieceView* Found=nullptr;
-    for(const auto& Entry:Pieces)if(Entry.Value.Hero&&Entry.Value.Side==0&&Entry.Value.Actor.IsValid()){Found=&Entry.Value;break;}
+    FString ReviewId;FParse::Value(FCommandLine::Get(),TEXT("WCHeroReviewId="),ReviewId);
+    for(const auto& Entry:Pieces)if(Entry.Value.Hero&&Entry.Value.Side==0&&Entry.Value.Actor.IsValid()&&
+        (ReviewId.IsEmpty()||Str(Catalog.units[Entry.Value.Definition].id)==ReviewId)){Found=&Entry.Value;break;}
     if(!Found||!Camera)return;
     const int Index=HeroReviewStage/2;
     static bool Captured=false;
@@ -1637,10 +1729,13 @@ void AWCVNextLab::TickHeroReview()
     const FVector At=Found->Actor->GetActorLocation();
     const FVector Front=Found->Actor->GetActorRotation().RotateVector(FVector(0,1,0));
     const FVector Direction=FRotator(0,Shot.Side,0).RotateVector(Front);
-    const FVector Eye=At+Direction*780+FVector(0,0,260);
+    // -WCHeroReviewDistance= and -WCHeroReviewAim= move the camera in for a close look, for example at a hand.
+    float Distance=780,Aim=105;
+    FParse::Value(FCommandLine::Get(),TEXT("WCHeroReviewDistance="),Distance);FParse::Value(FCommandLine::Get(),TEXT("WCHeroReviewAim="),Aim);
+    const FVector Eye=At+Direction*Distance+FVector(0,0,Aim+Distance*.2f);
     auto* View=Camera->GetCameraComponent();
     View->SetProjectionMode(ECameraProjectionMode::Perspective);View->SetFieldOfView(32);
-    Camera->SetActorLocation(Eye);Camera->SetActorRotation((At+FVector(0,0,105)-Eye).Rotation());
+    Camera->SetActorLocation(Eye);Camera->SetActorRotation((At+FVector(0,0,Aim)-Eye).Rotation());
     if(HeroReviewStage==0&&!Captured){
         // The lab's single top light leaves the camera side in shadow; a fill light on the camera shows the model.
         auto* Fill=NewObject<UPointLightComponent>(Camera);

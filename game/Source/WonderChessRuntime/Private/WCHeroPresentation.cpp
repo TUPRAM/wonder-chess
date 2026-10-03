@@ -59,6 +59,7 @@ struct FHeroAnimProxy : FAnimInstanceProxy
     UAnimSequence* Current = nullptr; UAnimSequence* Previous = nullptr;
     float Time = 0, PreviousTime = 0, Alpha = 1;
     FWCHeldArm Arm; bool bHold = false;
+    TArray<FWCBoneCurl> Curls;
     explicit FHeroAnimProxy(UAnimInstance* Instance) : FAnimInstanceProxy(Instance) {}
     virtual void PreUpdate(UAnimInstance* Instance, float Delta) override
     {
@@ -66,6 +67,7 @@ struct FHeroAnimProxy : FAnimInstanceProxy
         const auto* A = CastChecked<UWCHeroAnimInstance>(Instance);
         Current = A->Current; Previous = A->Previous; Time = A->CurrentSeconds; PreviousTime = A->PreviousSeconds;
         Alpha = A->BlendAlpha; Arm = A->HeldArm; bHold = A->bHoldArm && A->HeldArm.bValid;
+        if (Curls.Num() != A->Curls.Num()) Curls = A->Curls;
     }
     virtual bool Evaluate(FPoseContext& Output) override
     {
@@ -81,6 +83,14 @@ struct FHeroAnimProxy : FAnimInstanceProxy
             FAnimationRuntime::BlendTwoPosesTogetherInPlace(OutData, OldData, Alpha);
         }
         if (bHold) HoldArm(Output.Pose);
+        // The clips carry no finger motion, so the grip bones take their fixed curl here.
+        for (const auto& Curl : Curls)
+        {
+            const auto& Bones = Output.Pose.GetBoneContainer();
+            const int32 MeshBone = Bones.GetReferenceSkeleton().FindBoneIndex(Curl.Bone);
+            const FCompactPoseBoneIndex Bone = MeshBone < 0 ? FCompactPoseBoneIndex(INDEX_NONE) : Bones.MakeCompactPoseIndex(FMeshPoseBoneIndex(MeshBone));
+            if (Bone.GetInt() >= 0) Output.Pose[Bone].SetRotation(Curl.ParentSpace * Output.Pose[Bone].GetRotation());
+        }
         Output.Pose.NormalizeRotations();
         return true;
     }
@@ -120,6 +130,27 @@ bool UWCHeroPresentationComponent::InitializeHero(const FString& HeroId, FString
 {
     const auto Config = HeroConfig(HeroId);
     if (!Config) { Error = TEXT("No hero presentation entry for ") + HeroId; return false; }
+    FString StaticPath;
+    if (Config->TryGetStringField(TEXT("static_mesh"), StaticPath))
+    {
+        auto* Model = LoadAsset<UStaticMesh>(StaticPath);
+        if (!Model) { Error = TEXT("Hero model is missing for ") + HeroId; return false; }
+        Height = Config->GetNumberField(TEXT("label_height"));
+        StaticScale = Config->GetNumberField(TEXT("scale"));
+        StaticYaw = Config->GetNumberField(TEXT("yaw"));
+        // The model's lowest point rests on the tile whatever its pivot is.
+        const FBoxSphereBounds ModelBounds = Model->GetBounds();
+        StaticLift = -(ModelBounds.Origin.Z - ModelBounds.BoxExtent.Z) * StaticScale;
+        StaticBody = NewObject<UStaticMeshComponent>(GetOwner());
+        GetOwner()->AddInstanceComponent(StaticBody);
+        StaticBody->SetupAttachment(this);
+        StaticBody->SetStaticMesh(Model);
+        StaticBody->SetMobility(EComponentMobility::Movable);
+        StaticBody->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+        StaticBody->RegisterComponent();
+        PresentStatic(nullptr, true, 0);
+        return true;
+    }
     auto* Mesh = LoadAsset<USkeletalMesh>(Config->GetStringField(TEXT("mesh")));
     if (!Mesh) { Error = TEXT("Hero mesh is missing for ") + HeroId; return false; }
     Height = Config->GetNumberField(TEXT("label_height"));
@@ -177,6 +208,22 @@ bool UWCHeroPresentationComponent::InitializeHero(const FString& HeroId, FString
     Skeletal->SetAnimInstanceClass(UWCHeroAnimInstance::StaticClass());
     Skeletal->RegisterComponent();
 
+    // "curls": grip bones bent about a mesh-space axis of the reference pose.
+    const TArray<TSharedPtr<FJsonValue>>* CurlList = nullptr;
+    if (Config->TryGetArrayField(TEXT("curls"), CurlList))
+        for (const auto& Value : *CurlList)
+        {
+            const auto Entry = Value->AsObject();
+            FWCBoneCurl Curl;
+            Curl.Bone = FName(*Entry->GetStringField(TEXT("bone")));
+            const FReferenceSkeleton& Reference = Mesh->GetRefSkeleton();
+            const int32 Bone = Reference.FindBoneIndex(Curl.Bone);
+            if (Bone == INDEX_NONE) { UE_LOG(LogTemp, Warning, TEXT("WC_HERO_CURL_BONE_MISSING hero=%s bone=%s"), *HeroId, *Curl.Bone.ToString()); continue; }
+            const FQuat Parent = ReferenceTransform(Reference, Reference.GetParentIndex(Bone)).GetRotation();
+            const FQuat Bend(Vector(Entry, TEXT("axis"), FVector::XAxisVector).GetSafeNormal(), FMath::DegreesToRadians(Entry->GetNumberField(TEXT("angle"))));
+            Curl.ParentSpace = Parent.Inverse() * Bend * Parent;
+            Curls.Add(Curl);
+        }
     const TArray<TSharedPtr<FJsonValue>>* ItemList = nullptr;
     if (Config->TryGetArrayField(TEXT("items"), ItemList))
         for (const auto& Value : *ItemList)
@@ -200,10 +247,46 @@ bool UWCHeroPresentationComponent::InitializeHero(const FString& HeroId, FString
                 Offset.SetLocation(HeldLower.GetLocation() + HeldDirection * Entry->GetNumberField(TEXT("along_forearm")) + Offset.GetLocation());
                 Offset = Offset.GetRelativeTransform(HeldLower);
             }
+            // "grip" items are held in a hand. The weapon is laid out in mesh space for the reference pose (which way
+            // its business end points, which point of the handle sits in the palm) and then follows the hand rigidly.
+            const TSharedPtr<FJsonObject>* Grip = nullptr;
+            const FReferenceSkeleton& Bones = Mesh->GetRefSkeleton();
+            const int32 Hand = Bones.FindBoneIndex(Bone);
+            if (Entry->TryGetObjectField(TEXT("grip"), Grip) && Hand != INDEX_NONE)
+            {
+                const FTransform HandReference = ReferenceTransform(Bones, Hand);
+                const FTransform ArmReference = ReferenceTransform(Bones, Bones.GetParentIndex(Hand));
+                const float ItemScale = Entry->GetNumberField(TEXT("scale"));
+                const FVector Tip = Vector(*Grip, TEXT("tip_axis"), FVector::ZAxisVector).GetSafeNormal();
+                const FVector Direction = Vector(*Grip, TEXT("rest_direction"), FVector::YAxisVector).GetSafeNormal();
+                double Roll = 0, Reach = 8;
+                (*Grip)->TryGetNumberField(TEXT("roll"), Roll);
+                (*Grip)->TryGetNumberField(TEXT("reach"), Reach);
+                const FQuat Aim = FQuat(Direction, FMath::DegreesToRadians(Roll)) * FQuat::FindBetweenNormals(Tip, Direction);
+                // The hand bone sits at the wrist; the palm is a little further along the forearm's line.
+                const FVector Palm = HandReference.GetLocation() +
+                    (HandReference.GetLocation() - ArmReference.GetLocation()).GetSafeNormal() * Reach + Vector(*Grip, TEXT("palm"));
+                Offset = FTransform(Aim, Palm - Aim.RotateVector(Vector(*Grip, TEXT("point")) * ItemScale), FVector(ItemScale))
+                    .GetRelativeTransform(HandReference);
+                FWCGripItem Rod;
+                Rod.Item = Item; Rod.Bone = Bone; Rod.Base = Offset; Rod.Point = Vector(*Grip, TEXT("point")); Rod.Tip = Tip;
+                // The rod runs from the grip to the far end of the model along the tip direction.
+                const FBoxSphereBounds ItemBounds = ItemMesh->GetBounds();
+                const float Far = FVector::DotProduct(ItemBounds.Origin, Tip) + FVector::DotProduct(ItemBounds.BoxExtent, Tip.GetAbs());
+                Rod.Length = FMath::Max(1.f, (Far - FVector::DotProduct(Rod.Point, Tip)) * ItemScale);
+                double Thickness = 6;
+                (*Grip)->TryGetNumberField(TEXT("radius"), Thickness);
+                Rod.Radius = Thickness;
+                Grips.Add(Rod);
+            }
             Item->SetRelativeTransform(Offset);
             Item->RegisterComponent();
             Items.Add(Item);
         }
+    const int32 HeadBone = Mesh->GetRefSkeleton().FindBoneIndex(TEXT("Head"));
+    if (HeadBone != INDEX_NONE) BodyHeight = ReferenceTransform(Mesh->GetRefSkeleton(), HeadBone).GetLocation().Z * 1.1f;
+    double RadiusScale = 1;
+    if (Config->TryGetNumberField(TEXT("body_radius_scale"), RadiusScale)) BodyRadiusScale = RadiusScale;
     Play(TEXT("Idle"), true);
     Advance(0);
     UE_LOG(LogTemp, Display, TEXT("WC_HERO_MODEL hero=%s clips=%d items=%d held_arm=%d"), *HeroId, Clips.Num(), Items.Num(), int(HeldArm.bValid));
@@ -232,6 +315,51 @@ void UWCHeroPresentationComponent::Advance(float DeltaSeconds)
         Instance->Previous = Before.IsNone() ? nullptr : Clips.FindChecked(Before).Get();
         Instance->PreviousSeconds = BeforeSeconds; Instance->BlendAlpha = Blend;
         Instance->HeldArm = HeldArm; Instance->bHoldArm = !FreeArmClips.Contains(Current);
+        Instance->Curls = Curls;
+    }
+    ClearBody(DeltaSeconds);
+}
+
+void UWCHeroPresentationComponent::ClearBody(float DeltaSeconds)
+{
+    if (Grips.IsEmpty()) return;
+    // The hero's body as rounded rods between joints, sized from its height. Poses are those of the last drawn frame.
+    struct FRod { const TCHAR* From; const TCHAR* To; float Radius; };
+    static const FRod Body[] = {
+        {TEXT("Hips"), TEXT("Spine"), .135f}, {TEXT("Spine"), TEXT("Head"), .10f}, {TEXT("Head"), TEXT("head_end"), .085f},
+        {TEXT("LeftUpLeg"), TEXT("LeftLeg"), .08f}, {TEXT("LeftLeg"), TEXT("LeftFoot"), .06f},
+        {TEXT("RightUpLeg"), TEXT("RightLeg"), .08f}, {TEXT("RightLeg"), TEXT("RightFoot"), .06f}};
+    const auto Joint = [this](const TCHAR* Name) { return Skeletal->GetSocketTransform(Name, RTS_Component).GetLocation(); };
+    for (auto& Held : Grips)
+    {
+        const FTransform Hand = Skeletal->GetSocketTransform(Held.Bone, RTS_Component);
+        const FTransform Rest = Held.Base * Hand;
+        const FVector Grip = Rest.TransformPosition(Held.Point);
+        const FVector Along = Rest.TransformVectorNoScale(Held.Tip).GetSafeNormal();
+        FQuat Turn = FQuat::Identity;
+        for (int Pass = 0; Pass < 3; ++Pass)
+            for (const auto& Rod : Body)
+            {
+                const FVector End = Grip + Turn.RotateVector(Along) * Held.Length;
+                FVector OnWeapon, OnBody;
+                FMath::SegmentDistToSegmentSafe(Grip, End, Joint(Rod.From), Joint(Rod.To), OnWeapon, OnBody);
+                const float Clear = Held.Radius + Rod.Radius * BodyHeight * BodyRadiusScale;
+                const FVector Away = OnWeapon - OnBody;
+                const float Lever = FVector::Dist(OnWeapon, Grip);
+                // A weapon touching the body right at the hand cannot be turned clear; the hand itself is there.
+                if (Away.SizeSquared() >= Clear * Clear || Lever < 8) continue;
+                const FVector Axis = FVector::CrossProduct(OnWeapon - Grip, Away.GetSafeNormal()).GetSafeNormal();
+                if (Axis.IsNearlyZero()) continue;
+                Turn = FQuat(Axis, FMath::Min(FMath::Atan2(Clear - Away.Size(), Lever), .5f)) * Turn;
+            }
+        // Kept in the hand's space so the turn rides with the arm, and eased so it never snaps.
+        const FQuat Wanted = Hand.GetRotation().Inverse() * Turn * Hand.GetRotation();
+        Held.Clearance = FQuat::Slerp(Held.Clearance, Wanted, FMath::Clamp(DeltaSeconds * 14, 0.f, 1.f)).GetNormalized();
+        const FQuat Applied = Hand.GetRotation() * Held.Clearance * Hand.GetRotation().Inverse();
+        FTransform Placed = Rest;
+        Placed.SetRotation(Applied * Rest.GetRotation());
+        Placed.SetLocation(Grip + Applied.RotateVector(Rest.GetLocation() - Grip));
+        Held.Item->SetRelativeTransform(Placed.GetRelativeTransform(Hand));
     }
 }
 
@@ -241,8 +369,45 @@ void UWCHeroPresentationComponent::ReviewClip(FName Clip, bool Loop)
     if (Skeletal && Reviewing) Play(Clip, Loop, true);
 }
 
+void UWCHeroPresentationComponent::PresentStatic(const wc::CombatUnit* Unit, bool Paused, float DeltaSeconds)
+{
+    const float Step = Paused ? 0 : DeltaSeconds;
+    Clock += Step; ActionAge += Step;
+    const bool Defeated = Unit && (Unit->health <= 0 || Unit->state == wc::ActionState::Defeated);
+    DefeatAge = Defeated ? DefeatAge + Step : 0;
+    const auto State = Unit ? Unit->state : wc::ActionState::Idle;
+    const bool Casting = State == wc::ActionState::CastWindup || State == wc::ActionState::CastRecovery;
+    const bool Acting = Casting || State == wc::ActionState::AttackWindup || State == wc::ActionState::AttackRecovery;
+    if (!Unit) PlayedAction = 0;
+    else if (Acting && !Defeated && Unit->actionId != PlayedAction) { PlayedAction = Unit->actionId; ActionAge = 0; StaticCasting = Casting; }
+    // One surge per action: out and back over 0.45 s for an attack, a slower swell for a cast.
+    const float Length = StaticCasting ? .7f : .45f;
+    const float Pulse = ActionAge < Length ? FMath::Sin(ActionAge / Length * UE_PI) : 0;
+    FVector Offset(0, 0, StaticLift + 7 + FMath::Sin(Clock * 2.1f) * 5);
+    FVector Scale(StaticScale);
+    // The model faces the actor's +Y. Positive lean tips its top that way.
+    float Lean = FMath::Sin(Clock * 1.3f) * 1.5f, Side = FMath::Sin(Clock * .9f + 1) * 2.5f;
+    if (State == wc::ActionState::Moving) Lean += 9;
+    if (State == wc::ActionState::Stunned) Offset.X += FMath::Sin(Clock * 42) * 3.5f;
+    if (StaticCasting) { Offset.Z += Pulse * 26; Scale *= FVector(1 + Pulse * .14f, 1 + Pulse * .14f, 1 + Pulse * .06f); }
+    else { Offset.Y += Pulse * 48; Lean += Pulse * 14; }
+    if (Defeated)
+    {
+        // The body loses its shape and settles into a low pool.
+        const float Fall = FMath::Clamp(DefeatAge / .8f, 0.f, 1.f);
+        Scale *= FVector(1 + Fall * .35f, 1 + Fall * .35f, FMath::Lerp(1.f, .07f, Fall));
+        Offset.Z = StaticLift * FMath::Lerp(1.f, .07f, Fall);
+        Lean = Side = 0;
+    }
+    StaticBody->SetRelativeLocation(Offset);
+    StaticBody->SetRelativeRotation(FQuat(FVector::XAxisVector, FMath::DegreesToRadians(-Lean)) *
+        FQuat(FVector::YAxisVector, FMath::DegreesToRadians(Side)) * FRotator(0, StaticYaw, 0).Quaternion());
+    StaticBody->SetRelativeScale3D(Scale);
+}
+
 void UWCHeroPresentationComponent::Present(const wc::CombatUnit* Unit, bool Paused, float DeltaSeconds)
 {
+    if (StaticBody) { PresentStatic(Unit, Paused, DeltaSeconds); return; }
     if (!Skeletal) return;
     if (!Reviewing)
     {

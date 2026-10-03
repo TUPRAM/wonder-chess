@@ -1,4 +1,16 @@
 {
+  "courtyard_props_five_heroes_grips_bench_20261003": {
+    "date": "2026-10-03",
+    "status": "MESHY_COURTYARD_PROPS_FIVE_HERO_MODELS_GRIP_RIG_AND_3D_BENCH_IN_GAME_OWNER_SAID_GOOD_FOR_NOW",
+    "owner_feedback": "Owner accepted the courtyard images to build from, authorized Meshy spending without a limit, asked for body and handheld built separately and joined in Unreal, asked for finger bones and weapon collision, a real bench row (kept at ten slots), no disc under characters, a brighter board and softer shadows, then said 'its good for now, merge it'.",
+    "courtyard": "Meshy round tower, gatehouse, brazier and yard props placed in BuildCourtyard when their assets exist; banner as a cut-out panel; wall, floor and board textures from Codex candidates; sun made movable so its heading applies; shadow amount 0.5; sky light 2.4.",
+    "heroes": "Earthbreaker (rigged, six own clips), Tide Caller (static model moved by code), Boar Rusher, Hookjaw and Hammerer (rigged, six own clips each, separate weapon models). Built from Codex candidates that Codex itself left unapproved.",
+    "grip": "tools/unreal/add_grip_fingers.py adds Fingers1, Fingers2 and Thumb bones to a duplicate body mesh and re-weights the hand by position (Hookjaw got no thumb). hero_presentation.json 'curls' bend them and turn the wrist; 'grip' lays the weapon in the palm; ClearBody turns a held weapon about its grip to stay outside torso, head and leg rods.",
+    "bench": "Ten 160 cm tiles at Y=1070 addressed as cell row -1; benched heroes are presented as 3D pieces; click and drag between bench and board through BoardRayClick and TickDrag. benchCapacity unchanged at 10.",
+    "meshy_credits": "2948 -> 2496: courtyard 120, Earthbreaker and Tide Caller 83, three weapon heroes 249. Raw downloads stay local; receipts are committed.",
+    "evidence": "Solo visual exercise passed=1 after each step (support/runs/bench3d_r003 last). Hero review captures under support/runs/hero_review_*. Native combat, scenario and tournament suites PASS and 251 Python tests PASS at the bench step.",
+    "not_done": "Mouse dragging to and from the bench, the weapon clearance pass in motion, and the Tide Caller's fight motions were not watched by the agent. Towers are outside the game camera. No projectile or skill effects for the new heroes. Hands are mitten rigs, not five fingers. No art, balance or release approval."
+  },
   "hud_layout_and_direct_movement_20261003": {
     "date": "2026-10-03",
     "status": "HUD_REWORK_AND_NEAREST_TARGET_DIRECT_MOVEMENT_OWNER_CONFIRMED_WORKING",

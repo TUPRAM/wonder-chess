@@ -995,7 +995,7 @@ void AWCVNextLab::BuildStorybookInterface()
             +SHorizontalBox::Slot().FillWidth(1).Padding(5,0)[SNew(SVerticalBox)
                 +SVerticalBox::Slot().AutoHeight().HAlign(HAlign_Center)[Plaque]
                 +SVerticalBox::Slot().FillHeight(1)[BoardInput.ToSharedRef()]
-                +SVerticalBox::Slot().AutoHeight()[Bottom]]
+                ]
             +SHorizontalBox::Slot().AutoWidth()[SNew(SBox).WidthOverride_Lambda([ViewSize]{return FOptionalSize(FMath::Clamp(float(ViewSize().X)*.16f,200.f,255.f));})
                 [SNew(SVerticalBox)
                     +SVerticalBox::Slot().AutoHeight().Padding(0,0,0,6)[TopButtons]

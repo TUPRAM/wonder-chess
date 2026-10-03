@@ -19,6 +19,28 @@ struct FWCHeldArm
     bool bValid = false;
 };
 
+// A grip bone bent by a fixed amount in every clip, so the hand stays closed around what it holds.
+struct FWCBoneCurl
+{
+    FName Bone;
+    // Rotation in the parent bone's space, applied in front of the bone's own rotation.
+    FQuat ParentSpace = FQuat::Identity;
+};
+
+// A weapon held in a hand, treated as a rod from the grip to its far end for the body-clearance pass.
+struct FWCGripItem
+{
+    TObjectPtr<UStaticMeshComponent> Item;
+    FName Bone;
+    // Placement relative to the hand bone before any clearance turn.
+    FTransform Base;
+    // Grip point and direction to the far end in the item's own space; length and thickness in centimetres.
+    FVector Point = FVector::ZeroVector, Tip = FVector::ZAxisVector;
+    float Length = 0, Radius = 6;
+    // Current clearance turn about the grip point, in the hand bone's space.
+    FQuat Clearance = FQuat::Identity;
+};
+
 // Game-thread inputs are copied into the native proxy before any pose evaluation.
 UCLASS(Transient)
 class WONDERCHESSRUNTIME_API UWCHeroAnimInstance : public UAnimInstance
@@ -30,6 +52,7 @@ public:
     float CurrentSeconds = 0, PreviousSeconds = 0, BlendAlpha = 1;
     FWCHeldArm HeldArm;
     bool bHoldArm = false;
+    TArray<FWCBoneCurl> Curls;
 protected:
     virtual FAnimInstanceProxy* CreateAnimInstanceProxy() override;
     virtual void DestroyAnimInstanceProxy(FAnimInstanceProxy* Proxy) override;
@@ -59,10 +82,21 @@ private:
     TMap<FName, float> Rates;
     TSet<FName> FreeArmClips;
     FWCHeldArm HeldArm;
+    TArray<FWCBoneCurl> Curls;
+    TArray<FWCGripItem> Grips;
+    float BodyHeight = 180, BodyRadiusScale = 1;
+    // Turns each held weapon about its grip just enough to stay outside the hero's own torso, head and legs.
+    void ClearBody(float DeltaSeconds);
     FName Current = NAME_None, Before = NAME_None;
     uint64 PlayedAction = 0;
     bool Reviewing = false, Looping = true;
     float Height = 205, Seconds = 0, BeforeSeconds = 0, Blend = 1;
+    // A hero without a skeleton ("static_mesh" in the config) is one solid model moved by code: it floats and
+    // sways, surges forward to attack, swells to cast, shudders when stunned and collapses when defeated.
+    UPROPERTY() TObjectPtr<UStaticMeshComponent> StaticBody;
+    float StaticScale = 1, StaticYaw = 0, StaticLift = 0, Clock = 0, ActionAge = 10, DefeatAge = 0;
+    bool StaticCasting = false;
+    void PresentStatic(const wc::CombatUnit* Unit, bool Paused, float DeltaSeconds);
     void Play(FName Clip, bool Loop, bool Restart = false);
     void Advance(float DeltaSeconds);
 };
