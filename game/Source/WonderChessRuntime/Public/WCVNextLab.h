@@ -64,6 +64,9 @@ private:
         UTextRenderComponent* Label = nullptr;
         int Definition = -1, Side = 0;
         bool Neutral = false;
+        // Shown body direction; it turns smoothly toward the piece's step or target during combat.
+        float Yaw = 0;
+        bool YawSet = false;
         UStaticMeshComponent* Mana = nullptr;
         UStaticMeshComponent* HealthTrack = nullptr;
         UStaticMeshComponent* ManaTrack = nullptr;
@@ -112,6 +115,11 @@ private:
     double DragPressedAt=0;
     TSet<int> DragCells;
     void TickDrag();
+    // One small off-board stage per modelled hero renders its idle animation for shop cards and portraits.
+    UPROPERTY() TMap<FString,TObjectPtr<class UTextureRenderTarget2D>> HeroCardTargets;
+    TMap<FString,TSharedPtr<FSlateBrush>> HeroCardBrushes;
+    TMap<FString,UWCHeroPresentationComponent*> HeroCardHeroes;
+    const FSlateBrush* HeroCardBrush(const FString& HeroId);
     // A bench piece has no model on the board, so a temporary one follows the cursor while it is dragged.
     bool DragFromBench=false;
     TWeakObjectPtr<AActor> DragGhost;

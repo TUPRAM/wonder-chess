@@ -35,8 +35,9 @@ struct FArtResources : FGCObject
     TMap<FString, TObjectPtr<UTexture2D>> Illustrations;
     TMap<FString, FSlateBrush> IllustrationBrushes;
     FSlateRoundedBoxBrush Panel{Ink, 9.f};
-    FSlateRoundedBoxBrush StoryPanel{FLinearColor(.014f,.029f,.027f,.88f), 10.f,
-        FLinearColor(.47f,.38f,.22f,.65f), 1.f};
+    // Slate panel with a thin brass edge: the castle-courtyard theme.
+    FSlateRoundedBoxBrush StoryPanel{FLinearColor(.035f,.042f,.058f,.93f), 8.f,
+        FLinearColor(.66f,.50f,.19f,.85f), 1.2f};
     FSlateRoundedBoxBrush Parchment{FLinearColor(.84f,.78f,.65f,.97f), 10.f,
         FLinearColor(.52f,.41f,.24f,.70f), 1.f};
     FSlateRoundedBoxBrush Focus{FLinearColor::Transparent, 9.f, Paper, 2.f};
@@ -46,12 +47,12 @@ struct FArtResources : FGCObject
 
     FArtResources()
     {
-        Card.SetNormal(FSlateRoundedBoxBrush(FLinearColor(.014f,.032f,.033f,.92f), 9.f,
-                FLinearColor(.35f,.35f,.27f,.75f), 1.f))
-            .SetHovered(FSlateRoundedBoxBrush(FLinearColor(.035f,.073f,.074f,.96f), 9.f, Paper, 1.5f))
-            .SetPressed(FSlateRoundedBoxBrush(FLinearColor(.009f,.024f,.026f,.98f), 9.f, Paper, 1.5f))
-            .SetDisabled(FSlateRoundedBoxBrush(FLinearColor(.017f,.025f,.025f,.85f), 9.f,
-                FLinearColor(.20f,.23f,.20f,.75f), 1.f))
+        Card.SetNormal(FSlateRoundedBoxBrush(FLinearColor(.050f,.058f,.076f,.95f), 7.f,
+                FLinearColor(.46f,.36f,.16f,.80f), 1.f))
+            .SetHovered(FSlateRoundedBoxBrush(FLinearColor(.085f,.100f,.130f,.97f), 7.f, FLinearColor(.88f,.70f,.30f), 1.5f))
+            .SetPressed(FSlateRoundedBoxBrush(FLinearColor(.030f,.035f,.046f,.98f), 7.f, FLinearColor(.88f,.70f,.30f), 1.5f))
+            .SetDisabled(FSlateRoundedBoxBrush(FLinearColor(.040f,.045f,.055f,.85f), 7.f,
+                FLinearColor(.22f,.22f,.22f,.70f), 1.f))
             .SetNormalPadding(FMargin(8,6)).SetPressedPadding(FMargin(9,7,7,5));
         if(FWCArtSlice::IsEnabled()){
             Portrait=LoadObject<UTexture2D>(nullptr,TEXT("/Game/WonderChess/VNext/ArtSliceR001/T_BellbackPortrait.T_BellbackPortrait"));
@@ -224,8 +225,10 @@ bool FWCArtSlice::StorybookResourcesReady()
 }
 const FSlateBrush* FWCArtSlice::BellbackPortrait() { return &Resources().PortraitBrush; }
 const FSlateBrush* FWCArtSlice::HeavyBloomIcon() { return &Resources().RelicBrush; }
+TFunction<const FSlateBrush*(const FString&)> FWCArtSlice::LivePortrait;
 const FSlateBrush* FWCArtSlice::Portrait(const FString& UnitId)
-{ return UnitId==TEXT("wc_vn_shieldbearer")?BellbackPortrait():Illustration(TEXT("Portrait"),UnitId); }
+{ if(LivePortrait)if(const auto* Live=LivePortrait(UnitId))return Live;
+  return UnitId==TEXT("wc_vn_shieldbearer")?BellbackPortrait():Illustration(TEXT("Portrait"),UnitId); }
 const FSlateBrush* FWCArtSlice::AbilityIcon(const FString& UnitId) { return Illustration(TEXT("Ability"),UnitId); }
 const FSlateBrush* FWCArtSlice::RelicIcon(const FString& RelicId)
 { return RelicId.EndsWith(TEXT("heavy_bloom"))?HeavyBloomIcon():Illustration(TEXT("Relic"),RelicId); }
@@ -283,7 +286,12 @@ TSharedRef<SWidget> FWCArtSlice::MakeShopCard(TFunction<FWCArtCardData()> Data,
                         .Justification(ETextJustify::Center).Text_Lambda([Data,Enabled]{const auto Card=Data();return Text(!Enabled()&&Card.Cost>0?
                             (Card.Availability.IsEmpty()?TEXT("UNAVAILABLE"):Card.Availability):FString());})]]
                 +SVerticalBox::Slot().FillHeight(1)[SNew(SBox).HeightOverride_Lambda(ArtHeight)
-                    [SNew(SScaleBox).Stretch(EStretch::ScaleToFit)[SNew(SImage).Image_Lambda([Data]{return Portrait(Data().UnitId);})]]]
+                    [SNew(SOverlay)
+                        +SOverlay::Slot()[SNew(SScaleBox).Stretch(EStretch::ScaleToFit)[SNew(SImage).Image_Lambda([Data]{return Portrait(Data().UnitId);})]]
+                        +SOverlay::Slot().HAlign(HAlign_Center).VAlign(VAlign_Center)[SNew(STextBlock).Font(HeadingFont(46))
+                            .ColorAndOpacity_Lambda([Data]{return TierColor(Data().Cost).CopyWithNewOpacity(.55f);})
+                            .Text_Lambda([Data]{const auto Card=Data();
+                                return Text(!Card.UnitId.IsEmpty()&&Portrait(Card.UnitId)->DrawAs==ESlateBrushDrawType::NoDrawType?Card.Name.Left(1).ToUpper():FString());})]]]
                 +SVerticalBox::Slot().AutoHeight().Padding(0,4,0,0)[SNew(STextBlock).Font(NameFont)
                     .ColorAndOpacity_Lambda([Data]{return TierColor(Data().Cost);})
                     .Justification(ETextJustify::Center).AutoWrapText(true).Text_Lambda([Data]{return Text(Data().Name);})]

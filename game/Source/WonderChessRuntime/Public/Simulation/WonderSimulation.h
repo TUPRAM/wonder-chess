@@ -189,6 +189,8 @@ struct Rules
     std::vector<int> relicRounds;
     int maximumRelics = 3;
     bool nearestReachableTarget = false, mobileAttackRecovery = false;
+    // Units step straight at their target, diagonally past neighbours when that is the direct way.
+    bool directMovement = false;
 };
 struct NeutralSlot
 {

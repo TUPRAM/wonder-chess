@@ -805,7 +805,7 @@
     "nearestReachableTarget": true,
     "mobileAttackRecovery": true
   },
-  "source_sha256": "e776c2cd820726364c66003cb00fba1f372375574e20c7cb32986d6370fd59f2",
+  "source_sha256": "ac5fafc006fdc02f46127f72594cb1bf90e76fe46a2c5dc590490e6e00a253df",
   "heroes": [
     {
       "id": "wc_vn_shieldbearer",
@@ -2140,6 +2140,10 @@
     "id": "roster_v1",
     "status": "owner_directed_default_rules",
     "mana": "mana100_hit20_v1",
+    "combat_rules": {
+      "nearestReachableTarget": true,
+      "directMovement": true
+    },
     "mana_heroes": [
       "wc_vn_hookjaw",
       "wc_vn_prism_scholar",

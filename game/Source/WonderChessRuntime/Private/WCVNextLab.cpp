@@ -9,6 +9,8 @@
 #include "Camera/CameraActor.h"
 #include "Camera/CameraComponent.h"
 #include "Components/PointLightComponent.h"
+#include "Components/SceneCaptureComponent2D.h"
+#include "Engine/TextureRenderTarget2D.h"
 #include "Components/SkyAtmosphereComponent.h"
 #include "Components/DirectionalLightComponent.h"
 #include "Framework/Application/SlateApplication.h"
@@ -479,6 +481,43 @@ void AWCVNextLab::BuildCourtyard(AActor* Ground,ADirectionalLight* Sun,ASkyLight
     Sky->GetLightComponent()->SetIntensity(1.9f);
     // One directional light only: a second one competes with it for forward shading.
     SceneActors.Add(GetWorld()->SpawnActor<ASkyAtmosphere>());
+}
+const FSlateBrush* AWCVNextLab::HeroCardBrush(const FString& HeroId)
+{
+    if(const auto* Found=HeroCardBrushes.Find(HeroId))return Found->Get();
+    if(!Camera||!UWCHeroPresentationComponent::HasModel(HeroId)){HeroCardBrushes.Add(HeroId,nullptr);return nullptr;}
+    auto* Stage=SceneActor();
+    Stage->SetActorLocation(FVector(0,60000+HeroCardBrushes.Num()*2000,0));
+    auto* Hero=NewObject<UWCHeroPresentationComponent>(Stage);
+    Stage->AddInstanceComponent(Hero);Hero->SetupAttachment(Stage->GetRootComponent());Hero->RegisterComponent();
+    FString Error;
+    if(!Hero->InitializeHero(HeroId,Error)){HeroCardBrushes.Add(HeroId,nullptr);return nullptr;}
+    Mesh(Stage,TEXT("Cube"),FVector(0,-170,120),FVector(9,.1,6),FLinearColor(.10f,.15f,.27f))->SetCastShadow(false);
+    // The stage stands far outside the courtyard, so it carries its own key and rim light.
+    for(int Light=0;Light<2;++Light){
+        auto* Lamp=NewObject<UPointLightComponent>(Stage);
+        Stage->AddInstanceComponent(Lamp);Lamp->SetupAttachment(Stage->GetRootComponent());
+        Lamp->SetRelativeLocation(Light?FVector(-260,-60,300):FVector(260,430,290));
+        Lamp->bUseInverseSquaredFalloff=false;Lamp->SetLightFalloffExponent(1);Lamp->SetIntensity(Light?3.f:7.f);
+        Lamp->SetAttenuationRadius(1400);Lamp->SetLightColor(Light?FLinearColor(.55f,.70f,1.f):FLinearColor(1.f,.93f,.82f));
+        Lamp->SetCastShadows(false);Lamp->RegisterComponent();
+    }
+    Mesh(Stage,TEXT("Cylinder"),FVector(0,0,-3),FVector(1.6,1.6,.05),FLinearColor(.20f,.19f,.17f));
+    auto* Target=NewObject<UTextureRenderTarget2D>(this);
+    Target->RenderTargetFormat=RTF_RGBA8_SRGB;Target->InitAutoFormat(384,384);Target->UpdateResourceImmediate(true);
+    auto* Capture=NewObject<USceneCaptureComponent2D>(Stage);
+    Stage->AddInstanceComponent(Capture);Capture->SetupAttachment(Stage->GetRootComponent());
+    const FVector Eye(160,440,150);
+    Capture->SetRelativeLocation(Eye);Capture->SetRelativeRotation((FVector(0,0,100)-Eye).Rotation());
+    Capture->FOVAngle=23;Capture->TextureTarget=Target;Capture->CaptureSource=SCS_FinalColorLDR;
+    Capture->PrimitiveRenderMode=ESceneCapturePrimitiveRenderMode::PRM_UseShowOnlyList;Capture->ShowOnlyActors.Add(Stage);
+    Capture->bCaptureEveryFrame=true;
+    Capture->PostProcessSettings=Camera->GetCameraComponent()->PostProcessSettings;Capture->PostProcessBlendWeight=1;
+    Capture->RegisterComponent();
+    auto Brush=MakeShared<FSlateBrush>();
+    Brush->SetResourceObject(Target);Brush->ImageSize=FVector2D(384,384);
+    HeroCardTargets.Add(HeroId,Target);HeroCardHeroes.Add(HeroId,Hero);HeroCardBrushes.Add(HeroId,Brush);
+    return &Brush.Get();
 }
 // Mouse dragging during preparation. A press that selects a piece (on its board tile or in its bench slot) arms
 // the drag; holding or moving away lifts the piece. Releasing over a board tile issues the same move a second
@@ -1255,10 +1294,16 @@ void AWCVNextLab::UpdatePresentation(float DeltaSeconds)
         FVector Target=Position(Cell);
         // A dragged piece follows the cursor, lifted off the board.
         if(Dragging&&!Combat&&Id==DragId)Target=FVector(DragGround.X,DragGround.Y,70);
+        float Yaw=int(Facing)*90+180;
+        if(Combat&&View.YawSet)Yaw=View.Yaw;
         if(Combat&&Health>0){
             const auto Found=std::find_if(Combat->Units().begin(),Combat->Units().end(),[&](const wc::CombatUnit& U){return U.id==Id;});
             if(Found!=Combat->Units().end()){
                 const auto& U=*Found;const auto& D=Catalog.Definition(Def,Neutral);
+                wc::Cell Look=U.cell;
+                if(State==wc::ActionState::Moving&&U.destination.column>=0)Look=U.destination;
+                else if(U.target>=0&&Combat->Units()[U.target].health>0)Look=Combat->Units()[U.target].cell;
+                if(!(Look==U.cell))Yaw=FMath::RadiansToDegrees(FMath::Atan2(float(U.cell.row-Look.row),float(Look.column-U.cell.column)))-90;
                 if(State==wc::ActionState::Moving&&U.destination.column>=0){
                     const int Duration=wc::MovementInterval(D.movementRate,U.movementBonus,Catalog.rules);
                     const double FractionalTick=Imported&&!(SoloMode?SoloPaused:Paused)&&CapturePhase==ECapturePhase::None?
@@ -1277,7 +1322,8 @@ void AWCVNextLab::UpdatePresentation(float DeltaSeconds)
         }
         const FVector Location=Combat&&!Imported?FMath::VInterpTo(Actor->GetActorLocation(),Target,DeltaSeconds,18):Target;
         Actor->SetActorLocation(Location);
-        Actor->SetActorRotation(FRotator(0,int(Facing)*90+180,!Imported&&Storybook&&Health<=0?DefeatProgress*22:0));
+        View.Yaw=Combat&&View.YawSet?FMath::FixedTurn(View.Yaw,Yaw,DeltaSeconds*540):Yaw;View.YawSet=true;
+        Actor->SetActorRotation(FRotator(0,View.Yaw,!Imported&&Storybook&&Health<=0?DefeatProgress*22:0));
         const float Remaining=FMath::Max(.001f,1-DefeatProgress*DefeatProgress);
         Actor->SetActorScale3D(Health>0||Imported?FVector(1):Storybook?
             FVector(Remaining,Remaining,Remaining*FMath::Lerp(1.f,.18f,DefeatProgress)):FVector(1,1,.22));
@@ -1592,6 +1638,7 @@ void AWCVNextLab::Tick(float DeltaSeconds)
     UpdateCamera();
     if(HeroReview)TickHeroReview();
     TickDrag();
+    for(const auto& Stage:HeroCardHeroes)Stage.Value->Present(nullptr,false,DeltaSeconds);
     if(SoloMode){
         if(SoloVisualExercise){
             if(CapturePhase==ECapturePhase::None&&!ExerciseDone)TickSoloVisualExercise();
@@ -1613,6 +1660,7 @@ void AWCVNextLab::Tick(float DeltaSeconds)
 }
 void AWCVNextLab::EndPlay(const EEndPlayReason::Type Reason)
 {
+    FWCArtSlice::LivePortrait=nullptr;HeroCardBrushes.Reset();HeroCardHeroes.Reset();HeroCardTargets.Reset();
     if(Interface&&GEngine&&GEngine->GameViewport)GEngine->GameViewport->RemoveViewportWidgetContent(Interface.ToSharedRef());
     Interface.Reset();BoardInput.Reset();
     InspectorBlock.Reset();EventBlock.Reset();StatusBlock.Reset();MessageBlock.Reset();

@@ -23,6 +23,8 @@ struct WONDERCHESSRUNTIME_API FWCArtSlice
     static const FSlateBrush* BellbackPortrait();
     static const FSlateBrush* HeavyBloomIcon();
     static const FSlateBrush* Portrait(const FString& UnitId);
+    // Set by the running game: returns a live 3D view for heroes that have a model, otherwise null.
+    static TFunction<const FSlateBrush*(const FString&)> LivePortrait;
     static const FSlateBrush* AbilityIcon(const FString& UnitId);
     static const FSlateBrush* RelicIcon(const FString& RelicId);
     static const FSlateBrush* PanelBrush(bool Parchment = false);

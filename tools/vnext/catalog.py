@@ -343,6 +343,8 @@ def native_header(runtime, runtime_sha1):
             lines.append(f'for (auto &u : c.units) if (u.id == {literal(identity)}) {{')
             assign("u.ability.mana", runtime["experiments"][recipe["mana"]], ("status", "heroes", "relicTiming"))
             lines.append("}")
+        for rule in ("nearestReachableTarget", "directMovement"):
+            lines.append(f'c.rules.{rule} = {literal(recipe["combat_rules"][rule])};')
         for trait in recipe["traits"]:
             tiers = ",".join(f"{{{count},{value}}}" for count, value in zip(trait["thresholds"], trait["values"]))
             lines.append(f'{{ wc::TraitDef t; t.id = {literal(trait["id"])}; t.stat = {literal(trait["stat"])}; '

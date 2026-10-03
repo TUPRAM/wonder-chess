@@ -1,3 +1,4 @@
+#include "Widgets/Layout/SSpacer.h"
 #include "WCVNextLab.h"
 #include "WCVNextArtStyle.h"
 #include "WCCircularPortrait.h"
@@ -126,7 +127,7 @@ public:
         Active=Args._Active;
         SetCanTick(true);
         SBorder::Construct(SBorder::FArguments().BorderImage(FCoreStyle::Get().GetBrush(TEXT("WhiteBrush")))
-            .BorderBackgroundColor(FLinearColor(.024f,.034f,.025f,.84f)).HAlign(HAlign_Center).VAlign(VAlign_Center)
+            .BorderBackgroundColor(FLinearColor(.008f,.010f,.016f,.66f)).HAlign(HAlign_Center).VAlign(VAlign_Center)
             [Args._Content.Widget]);
     }
     void SynchronizeEnabledState() {SetEnabled(Active());}
@@ -669,6 +670,7 @@ void AWCVNextLab::BuildSoloInterface()
 void AWCVNextLab::BuildStorybookInterface()
 {
     if(!GEngine||!GEngine->GameViewport)return;
+    FWCArtSlice::LivePortrait=[this](const FString& HeroId){return HeroCardBrush(HeroId);};
     const FLinearColor Parchment(.84f,.75f,.57f), Dark(.024f,.034f,.025f);
     const auto Small=FCoreStyle::GetDefaultFontStyle(TEXT("Regular"),10);
     const auto Regular=FCoreStyle::GetDefaultFontStyle(TEXT("Regular"),11);
@@ -732,7 +734,8 @@ void AWCVNextLab::BuildStorybookInterface()
         Add(S(Unit.race),true);Add(S(Unit.unitClass),false);
     }
     for(const auto& Identity:Identities){
-        const FString Name=Identity.Key.Replace(TEXT("_"),TEXT(" "));
+        FString Name=Identity.Key.Replace(TEXT("_"),TEXT(" "));
+        if(!Name.IsEmpty())Name=Name.Left(1).ToUpper()+Name.Mid(1);
         const auto Count=[this,Identity]{
             TSet<int> Distinct;
             if(SoloMatch){const auto Public=SoloMatch->PublicSeats();for(const auto& Unit:Public[ViewedSeat].deployment){
@@ -906,12 +909,9 @@ void AWCVNextLab::BuildStorybookInterface()
         +SHorizontalBox::Slot().FillWidth(1).Padding(4,0)[SoloTagged(Button([]{return TEXT("Sell");},[Command]{Command(wc::CommandType::Sell);},CanEdit),TEXT("WC.Sell"))]
         +SHorizontalBox::Slot().FillWidth(1)[Button([]{return TEXT("Clear");},[this]{Selected=0;PreparationDirty=true;},Always)]];
     Right->AddSlot().AutoHeight().Padding(0,6,0,0)[FWCArtSlice::MakePanel(FormationActions,false,7)];
-    const auto BenchWidth=[ViewSize]{return FOptionalSize(FMath::Clamp(float(ViewSize().X)*.74f,900.f,1420.f));};
+    const auto BenchWidth=[ViewSize]{return FOptionalSize(FMath::Clamp(float(ViewSize().X)*.62f,820.f,1300.f));};
     auto Bottom=SNew(SBox).HAlign(HAlign_Center).Padding(FMargin(0,0,0,4))
         [SNew(SBox).WidthOverride_Lambda(BenchWidth)[Bench]];
-    auto LeftRail=SNew(SVerticalBox)
-        +SVerticalBox::Slot().AutoHeight()[Left]
-        +SVerticalBox::Slot().AutoHeight().Padding(0,6,0,0)[Resources];
     auto ShopPanel=SNew(SVerticalBox)
         +SVerticalBox::Slot().AutoHeight().Padding(0,0,0,10)[SNew(SHorizontalBox)
             +SHorizontalBox::Slot().FillWidth(1).VAlign(VAlign_Center)[SNew(STextBlock).Font(FWCArtSlice::HeadingFont(19)).ColorAndOpacity(Parchment)
@@ -945,28 +945,64 @@ void AWCVNextLab::BuildStorybookInterface()
         else return FReply::Unhandled();
         if(Key==EKeys::Left||Key==EKeys::Right||Key==EKeys::Up||Key==EKeys::Down)Message=SoloKeyboardTargetText();
         return FReply::Handled();});
-    auto Header=FWCArtSlice::MakePanel(SNew(SHorizontalBox)
-        +SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center).Padding(4,0,16,0)[SNew(STextBlock).Font(FWCArtSlice::HeadingFont(17)).ColorAndOpacity(Parchment).Text(T(TEXT("WONDER CHESS")))]
-        +SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center).Padding(0,0,12,0)[SNew(STextBlock).Font(Bold).ColorAndOpacity(Parchment)
-            .Text_Lambda([this]{return T(SoloMatch?FString::Printf(TEXT("ROUND %d"),SoloMatch->Round()):TEXT("ROUND —"));})]
-        +SHorizontalBox::Slot().FillWidth(1).VAlign(VAlign_Center)[SNew(STextBlock).Font(Bold).ColorAndOpacity(Parchment).Justification(ETextJustify::Center)
-            .Text_Lambda([this]{return T(SoloMatch?FString::Printf(TEXT("%s  ·  %d s%s"),PhaseName(SoloMatch->CurrentPhase()),FMath::CeilToInt(SoloMatch->RemainingMs()/1000.f),SoloPaused?TEXT("  ·  PAUSED"):TEXT("")):TEXT("Loading"));})]
-        +SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center).Padding(12,0)[SNew(STextBlock).Font(Bold).ColorAndOpacity(Parchment)
-            .Text_Lambda([this]{return T(SoloMatch?FString::Printf(TEXT("%d g  ·  Lv %d"),SoloMatch->Seats()[0].gold,SoloMatch->Seats()[0].level):TEXT(""));})]
-        +SHorizontalBox::Slot().AutoWidth().Padding(0,0,4,0)[SoloTagged(Button([]{return TEXT("Shop");},[this]{ShopOpen=true;},CanEdit),TEXT("WC.OpenShop"))]
-        +SHorizontalBox::Slot().AutoWidth().Padding(0,0,4,0)[Button([this]{return SoloMatch&&SoloMatch->Seats()[0].ready?TEXT("Ready ✓"):TEXT("Ready");},[Command]{Command(wc::CommandType::Ready);},[this,CanEdit]{return CanEdit()&&!SoloMatch->Seats()[0].ready;})]
-        +SHorizontalBox::Slot().AutoWidth().Padding(0,0,4,0)[Button([this]{return SoloPaused?TEXT("Resume"):TEXT("Pause");},[this]{SoloPaused=!SoloPaused;},[this]{return !AwaitingSaveDecision;})]
-        +SHorizontalBox::Slot().AutoWidth().Padding(0,0,4,0)[SoloTagged(Button([]{return TEXT("Recap");},[RecapOpen]{*RecapOpen=true;},Always),TEXT("WC.OpenRecap"))]
-        +SHorizontalBox::Slot().AutoWidth().Padding(0,0,4,0)[Button([]{return TEXT("Help · F1");},OpenGuide,GuideAvailable)]
-        +SHorizontalBox::Slot().AutoWidth()[OpenMenu],false,4);
+    // Auto Chess-style placement: round plaque top centre, synergies and relics left, captains and the
+    // selected unit right, gold and level bottom left, bench under the board, shop and ready bottom right.
+    const FLinearColor Brass(.86f,.67f,.27f);
+    const auto PhaseFraction=[this]{
+        if(!SoloMatch)return TOptional<float>(0.f);
+        const auto& Rules=Catalog.rules;
+        const int Total=SoloMatch->CurrentPhase()==wc::Phase::Preparation?(SoloMatch->Round()<=1?Rules.firstPreparationMs:Rules.preparationMs):
+            SoloMatch->CurrentPhase()==wc::Phase::Combat?Rules.combatTimeoutMs:Rules.settlementMs;
+        return TOptional<float>(FMath::Clamp(float(SoloMatch->RemainingMs())/FMath::Max(1,Total),0.f,1.f));
+    };
+    auto Plaque=FWCArtSlice::MakePanel(SNew(SBox).WidthOverride(340)[SNew(SVerticalBox)
+        +SVerticalBox::Slot().AutoHeight()[SNew(STextBlock).Font(FWCArtSlice::HeadingFont(16)).ColorAndOpacity(Parchment).Justification(ETextJustify::Center)
+            .Text_Lambda([this]{return T(SoloMatch?FString::Printf(TEXT("ROUND %d  ·  %s"),SoloMatch->Round(),PhaseName(SoloMatch->CurrentPhase())):TEXT("Loading"));})]
+        +SVerticalBox::Slot().AutoHeight().Padding(0,5,0,4)[SNew(SBox).HeightOverride(6)[SNew(SProgressBar)
+            .BarFillStyle(EProgressBarFillStyle::Scale).FillImage(FCoreStyle::Get().GetBrush(TEXT("WhiteBrush")))
+            .BackgroundImage(FCoreStyle::Get().GetBrush(TEXT("BlackBrush"))).BorderPadding(FVector2D::ZeroVector)
+            .Percent_Lambda(PhaseFraction).FillColorAndOpacity(Brass)]]
+        +SVerticalBox::Slot().AutoHeight()[SNew(STextBlock).Font(Small).ColorAndOpacity(Parchment).Justification(ETextJustify::Center)
+            .Text_Lambda([this]{
+                if(!SoloMatch)return T(TEXT(""));
+                int Deployed=0;for(const auto& Unit:SoloMatch->Seats()[0].roster)Deployed+=Unit.onBoard;
+                return T(FString::Printf(TEXT("%d s  ·  Units %d / %d%s"),FMath::CeilToInt(SoloMatch->RemainingMs()/1000.f),Deployed,
+                    SoloMatch->Seats()[0].level,SoloPaused?TEXT("  ·  PAUSED"):TEXT("")));})]],false,8);
+    auto TopButtons=SNew(SVerticalBox)
+        +SVerticalBox::Slot().AutoHeight()[SNew(SHorizontalBox)
+            +SHorizontalBox::Slot().FillWidth(1).Padding(0,0,3,0)[Button([]{return TEXT("Help");},OpenGuide,GuideAvailable)]
+            +SHorizontalBox::Slot().FillWidth(1)[Button([this]{return SoloPaused?TEXT("Resume"):TEXT("Pause");},[this]{SoloPaused=!SoloPaused;},[this]{return !AwaitingSaveDecision;})]]
+        +SVerticalBox::Slot().AutoHeight().Padding(0,3,0,0)[SNew(SHorizontalBox)
+            +SHorizontalBox::Slot().FillWidth(1).Padding(0,0,3,0)[SoloTagged(Button([]{return TEXT("Recap");},[RecapOpen]{*RecapOpen=true;},Always),TEXT("WC.OpenRecap"))]
+            +SHorizontalBox::Slot().FillWidth(1)[OpenMenu]];
+    // Royal blue marks the one action that ends the player's preparation.
+    static const FSlateRoundedBoxBrush ReadyFrame(FLinearColor(.07f,.16f,.50f),7.f,FLinearColor(.36f,.55f,1.f),1.f);
+    auto ActionGrid=SNew(SVerticalBox)
+        +SVerticalBox::Slot().AutoHeight()[SNew(SHorizontalBox)
+            +SHorizontalBox::Slot().FillWidth(1).Padding(0,0,4,0)[Button([this]{return FString::Printf(TEXT("Reroll · %d g"),Catalog.rules.rerollCost);},[Command]{Command(wc::CommandType::Reroll);},CanEdit)]
+            +SHorizontalBox::Slot().FillWidth(1)[Button([this]{return SoloMatch&&SoloMatch->Seats()[0].shopLocked?TEXT("Unlock"):TEXT("Lock");},[Command]{Command(wc::CommandType::ToggleLock);},CanEdit)]]
+        +SVerticalBox::Slot().AutoHeight().Padding(0,4,0,0)[SNew(SHorizontalBox)
+            +SHorizontalBox::Slot().FillWidth(1).Padding(0,0,4,0)[SoloTagged(Button([]{return TEXT("Shop");},[this]{ShopOpen=true;},CanEdit),TEXT("WC.OpenShop"))]
+            +SHorizontalBox::Slot().FillWidth(1)[SNew(SBorder).BorderImage(&ReadyFrame).Padding(2)
+                [Button([this]{return SoloMatch&&SoloMatch->Seats()[0].ready?TEXT("Ready ✓"):TEXT("Ready");},[Command]{Command(wc::CommandType::Ready);},[this,CanEdit]{return CanEdit()&&!SoloMatch->Seats()[0].ready;})]]];
     auto Main=SNew(SVerticalBox).IsEnabled_Lambda([TopModal]{return TopModal()==EStoryModal::None;})
-        +SVerticalBox::Slot().AutoHeight().Padding(7,5,7,3)[Header]
-        +SVerticalBox::Slot().FillHeight(1).Padding(7,0,7,4)[SNew(SHorizontalBox)
-            +SHorizontalBox::Slot().AutoWidth()[SNew(SBox).WidthOverride_Lambda([ViewSize]{return FOptionalSize(FMath::Clamp(float(ViewSize().X)*.115f,140.f,190.f));})[LeftRail]]
-            +SHorizontalBox::Slot().FillWidth(1).Padding(5,0)[BoardInput.ToSharedRef()]
-            +SHorizontalBox::Slot().AutoWidth()[SNew(SBox).WidthOverride_Lambda([ViewSize]{return FOptionalSize(FMath::Clamp(float(ViewSize().X)*.16f,190.f,255.f));})[Right]]]
-        +SVerticalBox::Slot().AutoHeight().Padding(7,0)[Bottom]
-        +SVerticalBox::Slot().AutoHeight().Padding(7,3,7,5)[FWCArtSlice::MakePanel(SNew(SBox).HeightOverride(25)
+        +SVerticalBox::Slot().FillHeight(1).Padding(7,6,7,4)[SNew(SHorizontalBox)
+            +SHorizontalBox::Slot().AutoWidth()[SNew(SBox).WidthOverride_Lambda([ViewSize]{return FOptionalSize(FMath::Clamp(float(ViewSize().X)*.115f,150.f,200.f));})
+                [SNew(SVerticalBox)
+                    +SVerticalBox::Slot().AutoHeight()[Left]
+                    +SVerticalBox::Slot().FillHeight(1)[SNew(SSpacer)]
+                    +SVerticalBox::Slot().AutoHeight()[Resources]]]
+            +SHorizontalBox::Slot().FillWidth(1).Padding(5,0)[SNew(SVerticalBox)
+                +SVerticalBox::Slot().AutoHeight().HAlign(HAlign_Center)[Plaque]
+                +SVerticalBox::Slot().FillHeight(1)[BoardInput.ToSharedRef()]
+                +SVerticalBox::Slot().AutoHeight()[Bottom]]
+            +SHorizontalBox::Slot().AutoWidth()[SNew(SBox).WidthOverride_Lambda([ViewSize]{return FOptionalSize(FMath::Clamp(float(ViewSize().X)*.16f,200.f,255.f));})
+                [SNew(SVerticalBox)
+                    +SVerticalBox::Slot().AutoHeight().Padding(0,0,0,6)[TopButtons]
+                    +SVerticalBox::Slot().AutoHeight()[Right]
+                    +SVerticalBox::Slot().FillHeight(1)[SNew(SSpacer)]
+                    +SVerticalBox::Slot().AutoHeight()[FWCArtSlice::MakePanel(ActionGrid,false,7)]]]]
+        +SVerticalBox::Slot().AutoHeight().Padding(7,0,7,5)[FWCArtSlice::MakePanel(SNew(SBox).HeightOverride(25)
             [SAssignNew(MessageBlock,STextBlock).Font(Small).ColorAndOpacity(Parchment).AutoWrapText(true)
                 .ToolTipText_Lambda([this]{return T(Message);})],false,6)];
 
@@ -1097,9 +1133,20 @@ void AWCVNextLab::BuildStorybookInterface()
         +SVerticalBox::Slot().AutoHeight()[GuideLabel([this]{return SoloGuideBody();})]
         +SVerticalBox::Slot().AutoHeight().Padding(0,12,0,0)[GuideButton([this]{return SoloGuidePhrase(TEXT("Return to game · Esc"),TEXT("Kembali ke permainan · Esc"));},
             [this]{CloseSoloGuide();},Always,TEXT("WC.Guide.CloseBottom"))];
+    auto ShopModal=Modal(ShopPanel,EStoryModal::Shop,1060,TEXT("WCModal.Shop"));
+    const auto ShopShownAt=MakeShared<double>(-1.);
+    ShopModal->SetRenderTransformPivot(FVector2D(.5f,.5f));
+    ShopModal->SetRenderTransform(TAttribute<TOptional<FSlateRenderTransform>>::CreateLambda([TopModal,ShopShownAt]{
+        if(TopModal()!=EStoryModal::Shop){*ShopShownAt=-1;return TOptional<FSlateRenderTransform>();}
+        if(*ShopShownAt<0)*ShopShownAt=FPlatformTime::Seconds();
+        const float Age=FMath::Clamp(float((FPlatformTime::Seconds()-*ShopShownAt)/.32),0.f,1.f);
+        // Ease out with a small overshoot, rising from just below its resting place.
+        const float Back=1+2.2f*FMath::Pow(Age-1,3)+1.2f*FMath::Pow(Age-1,2);
+        return TOptional<FSlateRenderTransform>(FSlateRenderTransform(FScale2D(.82f+.18f*Back),FVector2D(0,(1-Back)*70)));
+    }));
     auto ModalHost=SNew(SWCSoloModalHost)
         +SOverlay::Slot()[Main]
-        +SOverlay::Slot()[Modal(ShopPanel,EStoryModal::Shop,1060,TEXT("WCModal.Shop"))]
+        +SOverlay::Slot()[ShopModal]
         +SOverlay::Slot()[Modal(Recap,EStoryModal::Recap,560,TEXT("WCModal.Recap"))]
         +SOverlay::Slot()[Modal(Menu,EStoryModal::Menu,440,TEXT("WCModal.Menu"))]
         +SOverlay::Slot()[Modal(Collection,EStoryModal::Collection,760,TEXT("WCModal.Collection"))]

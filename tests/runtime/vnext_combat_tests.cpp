@@ -575,6 +575,28 @@ void RosterRecipe()
               !cages.empty() && cages.front().healthLoss == 0, "Full mana releases a real damage-free cage");
     }
 }
+void DirectMovement()
+{
+    const auto base = wcvnext::WonderVNextCatalog();
+    const auto roster = wcvnext::WonderVNextRosterCatalog();
+    Check(!base.rules.directMovement && !base.rules.nearestReachableTarget && roster.rules.directMovement &&
+          roster.rules.nearestReachableTarget, "Only the roster recipe uses nearest targets and direct movement");
+    int walker = -1;
+    for (int i = 0; i < int(roster.units.size()); ++i) if (roster.units[i].id == "wc_vn_hammerer") walker = i;
+    Check(walker >= 0 && roster.units[walker].range == 1, "The movement fixture uses a melee hero");
+    auto firstStep = [&](const wc::Catalog &catalog, std::vector<wc::OwnedUnit> team, wc::Cell enemyWorld) {
+        wc::Combat combat(catalog, team, {Unit(9, walker, 7 - enemyWorld.column, 7 - enemyWorld.row)}, 1);
+        for (int tick = 0; tick < 4 && combat.Units()[0].destination.column < 0; ++tick) combat.Tick();
+        return combat.Units()[0].destination;
+    };
+    Check(firstStep(roster, {Unit(1, walker, 3, 0)}, {3, 6}) == wc::Cell{3, 1}, "A unit walks straight at an enemy directly ahead");
+    Check(firstStep(roster, {Unit(1, walker, 0, 0)}, {5, 5}) == wc::Cell{1, 1}, "A unit walks diagonally at a diagonal enemy");
+    const std::vector<wc::OwnedUnit> flanked{Unit(1, walker, 0, 0), Unit(2, walker, 1, 0), Unit(3, walker, 0, 1)};
+    Check(firstStep(roster, flanked, {5, 5}) == wc::Cell{1, 1}, "Neighbours beside the route do not block a diagonal step");
+    Check(!(firstStep(base, flanked, {5, 5}) == wc::Cell{1, 1}), "The control keeps its blocked-corner rule");
+    Check(firstStep(roster, {Unit(1, walker, 0, 0)}, {4, 1}) == wc::Cell{1, 0} ||
+          firstStep(roster, {Unit(1, walker, 0, 0)}, {4, 1}) == wc::Cell{1, 1}, "A shallow approach heads toward the enemy");
+}
 void UniversalRelics()
 {
     const auto catalog = wcvnext::WonderVNextRosterCatalog();
@@ -622,7 +644,7 @@ int main()
     {
         assertions += wctest::RunManaContractChecks();
         assertions += wctest::RunCombatClarityChecks();
-        Contract(); Guard(); Screening(); Charge(); Beams(); TideAndGrove(); RelicsAndReplay(); Diagnostics(); Cocoons(); CanonicalSilkmotherPlacement(); CrowdedEncounters(); RosterRecipe(); UniversalRelics();
+        Contract(); Guard(); Screening(); Charge(); Beams(); TideAndGrove(); RelicsAndReplay(); Diagnostics(); Cocoons(); CanonicalSilkmotherPlacement(); CrowdedEncounters(); RosterRecipe(); UniversalRelics(); DirectMovement();
         std::cout << "PASS vNext native combat: " << assertions << " assertions. Technical synthetic fixtures only; no human art/balance acceptance.\n";
         return 0;
     }

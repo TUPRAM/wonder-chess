@@ -557,6 +557,56 @@ bool Combat::FindPath(int source, int target, Cell &next, int &length) const
     auto index = [&](Cell p) { return p.row * r.columns + p.column; };
     auto cell = [&](int i) { return Cell{i % r.columns, i / r.columns}; };
     std::deque<Cell> queue;
+    if (r.directMovement)
+    {
+        // Distances are measured outward from every free cell that already reaches the enemy. The first step
+        // is then the neighbour on a shortest route that lies closest to the enemy, so a unit walks straight
+        // or diagonally at its target instead of following whichever route the search met first.
+        const int range = catalog_->Definition(u.definition, u.neutral).range;
+        next = u.cell;
+        length = 0;
+        if (Distance(u.cell, enemy.cell) <= range)
+            return true;
+        for (int i = 0; i < r.rows * r.columns; ++i)
+            if (Distance(cell(i), enemy.cell) <= range && Free(cell(i), source))
+            {
+                dist[i] = 0;
+                queue.push_back(cell(i));
+            }
+        while (!queue.empty() && dist[index(u.cell)] < 0)
+        {
+            const Cell at = queue.front();
+            queue.pop_front();
+            for (int y = -1; y <= 1; ++y)
+                for (int x = -1; x <= 1; ++x)
+                {
+                    const Cell from{at.column + x, at.row + y};
+                    if ((!x && !y) || !Free(from, source) || dist[index(from)] >= 0)
+                        continue;
+                    dist[index(from)] = dist[index(at)] + 1;
+                    queue.push_back(from);
+                }
+        }
+        length = dist[index(u.cell)];
+        if (length < 0)
+            return false;
+        std::tuple<int, int, int> best{9999, 0, 0};
+        for (int y = -1; y <= 1; ++y)
+            for (int x = -1; x <= 1; ++x)
+            {
+                const Cell step{u.cell.column + x, u.cell.row + y};
+                if ((!x && !y) || !Free(step, source) || dist[index(step)] != length - 1)
+                    continue;
+                const int dx = enemy.cell.column - step.column, dy = enemy.cell.row - step.row;
+                const auto key = std::make_tuple(dx * dx + dy * dy, x && y ? 1 : 0, index(step));
+                if (key < best)
+                {
+                    best = key;
+                    next = step;
+                }
+            }
+        return true;
+    }
     queue.push_back(u.cell);
     dist[index(u.cell)] = 0;
     while (!queue.empty())

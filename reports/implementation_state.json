@@ -1,4 +1,13 @@
 {
+  "hud_layout_and_direct_movement_20261003": {
+    "date": "2026-10-03",
+    "status": "HUD_REWORK_AND_NEAREST_TARGET_DIRECT_MOVEMENT_OWNER_CONFIRMED_WORKING",
+    "owner_feedback": "Owner asked for an Auto Chess-style HUD placement in the castle theme with an animated pop-up shop and a live 3D idle model on shop cards, then reported targeting, diagonal movement and body rotation as buggy. After the fixes the owner replied 'it works now'.",
+    "hud": "Round plaque with timer bar top centre; synergies and relics left; gold/level/Buy XP bottom left; captains, unit details and small Help/Pause/Recap/Menu buttons right; Reroll/Lock/Shop/Ready bottom right; bench under the board; slate panels with brass edge. Shop modal scales and rises in over about 0.32 s whenever it opens. Heroes with a model get a live scene-capture portrait (currently only the Shieldbearer); heroes without art show an initial.",
+    "movement": "roster_recipe.combat_rules sets nearestReachableTarget and the new directMovement rule: no blocked-corner restriction, and the first step is the shortest-route neighbour closest to the enemy. Piece bodies turn toward their step or target in presentation only; the rules facing used by guard and push mechanics is unchanged. The control catalogue keeps the old rules.",
+    "evidence": "Native combat suite PASS 29518 assertions including seven new direct-movement checks; scenario and tournament suites PASS; 251 Python tests PASS; catalog --check PASS; solo visual exercise passed=1 under support/runs/hud_r002 and support/runs/movement_r001. 30 native roster tournaments: PvP mean 531 -> 508 ticks, PvP timeouts 2.2% -> 2.7%, ghost timeouts 4.3% -> 2.2%.",
+    "not_done": "Save-file and online native suites not re-run. Own row in the captains list is not highlighted. Pop-up animation and turning were confirmed by the owner in play, not by automated capture. No balance, art or release acceptance."
+  },
   "bench_drag_camera_briefs_20261003": {
     "date": "2026-10-03",
     "status": "BENCH_DRAG_LOWER_CAMERA_AND_COURTYARD_BRIEFS_AUTHORED",

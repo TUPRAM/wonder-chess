@@ -1529,6 +1529,7 @@
         "id",
         "status",
         "mana",
+        "combat_rules",
         "mana_heroes",
         "passive_heroes"
       ],
@@ -1542,6 +1543,22 @@
         },
         "mana": {
           "const": "mana100_hit20_v1"
+        },
+        "combat_rules": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "nearestReachableTarget",
+            "directMovement"
+          ],
+          "properties": {
+            "nearestReachableTarget": {
+              "type": "boolean"
+            },
+            "directMovement": {
+              "type": "boolean"
+            }
+          }
         },
         "mana_heroes": {
           "type": "array",

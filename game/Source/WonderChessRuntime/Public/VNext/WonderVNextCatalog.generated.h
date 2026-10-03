@@ -2,8 +2,8 @@
 #pragma once
 #include "Simulation/WonderSimulation.h"
 namespace wcvnext {
-inline constexpr const char* RuntimeSha1 = "a1ce1f670960eefc82ad708b58f126ec3fedeb03";
-inline constexpr const char* SourceSha256 = "e776c2cd820726364c66003cb00fba1f372375574e20c7cb32986d6370fd59f2";
+inline constexpr const char* RuntimeSha1 = "6befb571d2e30b9ba1b639e4b0c2b3a87deacec7";
+inline constexpr const char* SourceSha256 = "ac5fafc006fdc02f46127f72594cb1bf90e76fe46a2c5dc590490e6e00a253df";
 inline wc::Catalog WonderVNextCatalog() { wc::Catalog c;
 c.profileId = "wonder_vnext";
 c.schemaVersion = "wonder_vnext.catalog.1";
@@ -1258,7 +1258,7 @@ r.resistanceFlat = 0;
 c.relics.push_back(r); }
 return c; }
 inline wc::Catalog WonderVNextManaCatalog() { auto c = WonderVNextCatalog();
-c.contentDigest = "04b62180af7bcee92e5e14703aa19191d8f65020c0d4840e1b4244966ab90cbb";
+c.contentDigest = "0b32d6a532b68901e23791d6dd60edc78f7d53d8a9e99a646e370051e4f2d29a";
 c.balanceVersion += "+mana100_v1";
 for (auto &u : c.units) if (u.id == "wc_vn_hookjaw") {
 u.ability.mana.maximum = 10000;
@@ -1289,7 +1289,7 @@ u.ability.mana.damageWindowMs = 1000;
 }
 return c; }
 inline wc::Catalog WonderVNextMana20Catalog() { auto c = WonderVNextCatalog();
-c.contentDigest = "0baa455921e01be8d81d5d59a63b0afc2575dd2e152ae061c4e18330d35f5828";
+c.contentDigest = "4f8ee5dc068d0548d066a0d1a3b429c92dc8b1d0a8dc65978573204c904e2af8";
 c.balanceVersion += "+mana100_hit20_v1";
 for (auto &u : c.units) if (u.id == "wc_vn_hookjaw") {
 u.ability.mana.maximum = 10000;
@@ -1321,14 +1321,14 @@ u.ability.mana.damageWindowMs = 1000;
 return c; }
 inline wc::Catalog WonderVNextCombatClarityCatalog(bool mobileRecovery = true) { auto c = WonderVNextMana20Catalog();
 if (mobileRecovery) {
-c.contentDigest = "9a4e0c927c112eae0a11af88cdff50a904aa867852bc203273d3ae7cd96b0366"; c.balanceVersion += "+combat_clarity_v1"; }
+c.contentDigest = "3bcda1718cc78859f03c048caea2f52aa09e14960e29451408c7c26eec17f90d"; c.balanceVersion += "+combat_clarity_v1"; }
 else {
-c.contentDigest = "44569a43f93706d04cb39b32dddfa45d9e91cb0ccec661df942aced5bfcda86a"; c.balanceVersion += "+nearest_target_v1"; }
+c.contentDigest = "3859fddcb81549cdbdf0af0c03ec1a0051b8d1d82b6c7e59444fc51f2bf45620"; c.balanceVersion += "+nearest_target_v1"; }
 c.rules.nearestReachableTarget = true;
 c.rules.mobileAttackRecovery = mobileRecovery && true;
 return c; }
 inline wc::Catalog WonderVNextRosterCatalog() { auto c = WonderVNextCatalog();
-c.contentDigest = "d64b3ebea5431752b06ef2e1a17ecb3edce38b4a4f60b173bcdc6385585296e4";
+c.contentDigest = "cb54935316c31d5cb2e6d9eef6019094fe0ab0889af97f97ff736cbf261dc6cf";
 c.balanceVersion += "+roster_v1";
 for (auto &u : c.units) if (u.id == "wc_vn_hookjaw") {
 u.ability.mana.maximum = 10000;
@@ -1429,6 +1429,8 @@ u.ability.mana.damageEventCap = 2000;
 u.ability.mana.damageWindowCap = 4000;
 u.ability.mana.damageWindowMs = 1000;
 }
+c.rules.nearestReachableTarget = true;
+c.rules.directMovement = true;
 { wc::TraitDef t; t.id = "human"; t.stat = "starting_mana_flat"; t.team = true; t.tiers = {{2,1000},{4,2000}}; c.traits.push_back(t); }
 { wc::TraitDef t; t.id = "orc"; t.stat = "max_health_bonus_bp"; t.team = false; t.tiers = {{2,2000},{4,4000}}; c.traits.push_back(t); }
 { wc::TraitDef t; t.id = "beastkin"; t.stat = "attack_rate_bonus_bp"; t.team = true; t.tiers = {{2,1000},{4,2000}}; c.traits.push_back(t); }
