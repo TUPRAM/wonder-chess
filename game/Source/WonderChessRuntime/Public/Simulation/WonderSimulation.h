@@ -331,6 +331,10 @@ struct Catalog
     std::string profileId = "alpha_24";
     std::vector<RelicDef> relics;
     bool ownedTeamRelicOffers = false;
+    // What a bot takes a one-star hero of each cost to be worth, in basis points of a cost-1
+    // hero. A catalogue that carries it also asks bots to plan a line-up for its shape and
+    // traits and to keep their bench free; without it bots value heroes by their numbers alone.
+    std::vector<int> botCostValueBp;
     const UnitDef &Definition(int index, bool neutral = false) const;
     const NeutralWave *Wave(int round) const;
     std::string Validate() const;

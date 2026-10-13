@@ -1995,6 +1995,16 @@
         },
         "bot_spends_surplus": {
           "type": "boolean"
+        },
+        "bot_cost_value_bp": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "items": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100000
+          }
         }
       }
     },

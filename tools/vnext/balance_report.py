@@ -4,6 +4,10 @@ Input: a run directory written by tests/runtime/run_vnext_tournament.ps1 (tourna
 seats.csv, boards.csv, traits.csv, settlements.csv, waves.csv, placements.csv).
 Output: report.json and REPORT.md in --output.
 
+With --power, a run directory written by tests/runtime/run_vnext_hero_power.ps1 (hero_power.csv,
+trait_power.csv) adds each hero's measured strength, ability share and cast timing, and what
+each trait adds, to the same report.
+
 Bot tournaments only. Nothing here is human evidence or balance acceptance.
 """
 from __future__ import annotations
@@ -36,6 +40,34 @@ def preparation_ms(rules: dict, round_number: int) -> int:
         if stage["start"] <= round_number <= stage["end"]:
             return stage["ms"]
     return rules["preparationMs"]
+
+
+def power(run: Path) -> dict:
+    """Measured hero and trait strength from a hero power run."""
+    heroes: dict[str, dict] = {}
+    for r in rows(run / "hero_power.csv"):
+        entry = heroes.setdefault(r["hero"], {"id": r["hero"], "hero": r["name"], "class": r["class"], "cost": int(r["cost"])})
+        entry[f"power_star{r['star']}"] = round(float(r["power"]), 2)
+        if r["star"] == "1":
+            entry.update({
+                "win_rate_vs_plain": round(float(r["win_rate_vs_plain"]), 2),
+                "ability_share": round(float(r["ability_share"]), 2),
+                "ability_per_cast_vs_cost_health": round(float(r["ability_per_cast_vs_cost_health"]), 2),
+                "healing_and_shielding": round(float(r["healing"]) + float(r["shielding"])),
+                "casts_per_fight": round(float(r["casts_per_fight"]), 1),
+                "first_cast_seconds": round(float(r["first_cast_seconds"]), 1),
+            })
+    table_ = sorted(heroes.values(), key=lambda h: (h["cost"], -h["power_star1"]))
+    by_cost: dict[int, list[float]] = defaultdict(list)
+    for hero in table_:
+        by_cost[hero["cost"]].append(hero["power_star1"])
+    for hero in table_:
+        hero["power_vs_cost_mean"] = round(hero["power_star1"] / statistics.fmean(by_cost[hero["cost"]]), 2)
+    traits = [{"trait": r["trait"], "members": int(r["members"]), "gain": round(float(r["trait_gain"]), 3), "squad": r["squad"]}
+              for r in rows(run / "trait_power.csv")] if (run / "trait_power.csv").exists() else []
+    return {"run": run.name, "boundary": "five against five with traits off for heroes; not bot play or human evidence",
+            "cost_mean_power": {cost: round(statistics.fmean(values), 2) for cost, values in sorted(by_cost.items())},
+            "heroes": table_, "traits": traits}
 
 
 def analyse(run: Path, catalog: dict) -> dict:
@@ -92,6 +124,12 @@ def analyse(run: Path, catalog: dict) -> dict:
     slots_by_cost: dict[int, list[int]] = defaultdict(list)
     for hero_id, hero in heroes.items():
         slots_by_cost[hero["cost"]].append(slots_by_hero.get(hero_id, 0))
+    # A weak bot profile drags down every hero it favours. The adjusted figure compares each
+    # seat with what its own bot profile usually places.
+    by_bot: dict[str, list[int]] = defaultdict(list)
+    for r in placements.values():
+        by_bot[r["bot"]].append(int(r["placement"]))
+    bot_mean = {bot: statistics.fmean(values) for bot, values in by_bot.items()}
     hero_table = []
     for hero_id, hero in heroes.items():
         cost_mean = statistics.fmean(slots_by_cost[hero["cost"]]) or 1
@@ -102,6 +140,7 @@ def analyse(run: Path, catalog: dict) -> dict:
             "pick_vs_cost_mean": round(slots_by_hero.get(hero_id, 0) / cost_mean, 2),
             "final_board_share": round(len(finals) / seat_count, 3),
             "placement_on_final_board": mean(int(placements[k]["placement"]) for k in finals),
+            "placement_vs_own_bot": mean(int(placements[k]["placement"]) - bot_mean[placements[k]["bot"]] for k in finals),
             "final_board_samples": len(finals),
             "mean_final_star": mean(stars_by_hero.get(hero_id, [])),
         })
@@ -194,10 +233,11 @@ def markdown(report: dict, baseline: dict | None) -> str:
     else:
         lines += table(["Measure", "Value"], [[label, m[key]] for label, key in keys])
     base_heroes = {h["id"]: h for h in baseline["heroes"]} if baseline else {}
-    lines += ["## Heroes", "", "Placement is the mean final placement of seats that ended with the hero on the board (4.5 is neutral, lower is better).", ""]
-    lines += table(["Cost", "Hero", "Class", "Pick vs cost mean", "Final boards", "Placement", "Samples"] + (["Placement, baseline"] if baseline else []),
+    lines += ["## Heroes", "", "Placement is the mean final placement of seats that ended with the hero on the board (4.5 is neutral, lower is better). "
+              "\"Against own bot\" is the same seats compared with what their bot profile usually places (0 is neutral, negative is better).", ""]
+    lines += table(["Cost", "Hero", "Class", "Pick vs cost mean", "Final boards", "Placement", "Against own bot", "Samples"] + (["Placement, baseline"] if baseline else []),
                    [[h["cost"], h["hero"], h["class"], h["pick_vs_cost_mean"], h["final_board_share"], h["placement_on_final_board"],
-                     h["final_board_samples"]] + ([base_heroes.get(h["id"], {}).get("placement_on_final_board")] if baseline else [])
+                     h.get("placement_vs_own_bot"), h["final_board_samples"]] + ([base_heroes.get(h["id"], {}).get("placement_on_final_board")] if baseline else [])
                     for h in report["heroes"]])
     lines += ["## Traits", ""]
     lines += table(["Trait", "Kind", "Seat-rounds at 2", "Seat-rounds at 4", "Final boards active", "Placement at 2", "Placement at 4"],
@@ -213,6 +253,23 @@ def markdown(report: dict, baseline: dict | None) -> str:
                     for e in report["economy"]])
     lines += ["## Bot profiles", ""]
     lines += table(["Bot", "Seats", "Mean placement"], [[b["bot"], b["seats"], b["mean_placement"]] for b in report["bots"]])
+    measured = report.get("power")
+    if measured:
+        lines += ["## Measured hero strength", "",
+                  f"From `{measured['run']}`: each hero joins a fixed squad of four and fights the same squad joined by a plain fighter, "
+                  "whose health and damage are scaled until the fight is even. Strength 1.0 is a Hammerer of the same star; "
+                  "one star is worth 1.8. Traits are off. Five against five, so it says nothing about full boards.", "",
+                  "Mean strength at one star by cost: " + ", ".join(f"cost {cost}: {value}" for cost, value in measured["cost_mean_power"].items()) + ".", ""]
+        lines += table(["Cost", "Hero", "Class", "Strength, 1 star", "Against cost mean", "Strength, 2 stars", "Wins against plain fighter",
+                        "Ability share of damage", "Ability per cast / cost health", "Healing and shielding", "Casts per fight", "First cast, s"],
+                       [[h["cost"], h["hero"], h["class"], h["power_star1"], h["power_vs_cost_mean"], h.get("power_star2"), h["win_rate_vs_plain"],
+                         h["ability_share"], h["ability_per_cast_vs_cost_health"], h["healing_and_shielding"], h["casts_per_fight"],
+                         h["first_cast_seconds"]] for h in measured["heroes"]])
+        if measured["traits"]:
+            lines += ["## Measured trait strength", "",
+                      "A squad of five that reaches the trait against a fixed squad that reaches none, with traits on and off. "
+                      "Gain is how much stronger the opponent must be to stay even once the trait is on (1.0 is no effect).", ""]
+            lines += table(["Trait", "Members", "Gain", "Squad"], [[t["trait"], t["members"], t["gain"], t["squad"]] for t in measured["traits"]])
     return "\n".join(lines)
 
 
@@ -222,9 +279,12 @@ def main() -> int:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--baseline", type=Path, help="report.json of an earlier run to show beside this one")
     parser.add_argument("--catalog", type=Path, default=ROOT / "data/vnext/catalog.json")
+    parser.add_argument("--power", type=Path, help="hero power run directory to add measured hero and trait strength")
     args = parser.parse_args()
     catalog = json.loads(args.catalog.read_text(encoding="utf-8"))
     report = analyse(args.run, catalog)
+    if args.power:
+        report["power"] = power(args.power)
     baseline = json.loads(args.baseline.read_text(encoding="utf-8")) if args.baseline else None
     args.output.mkdir(parents=True, exist_ok=True)
     (args.output / "report.json").write_text(json.dumps(report, indent=1), encoding="utf-8")

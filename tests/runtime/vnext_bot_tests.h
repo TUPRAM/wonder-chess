@@ -136,7 +136,8 @@ inline void VNextBotRoleTests(const wc::Catalog &roster,
                 const auto *role = roleOf(definition);
                 if (!role) continue;
                 if (role->role == wc::BotRole::Frontline) { ++frontlineSeen; frontlineMisplaced += unit.cell.row < 2; }
-                else if (role->role == wc::BotRole::Damage && definition.range > 1) { ++rangedSeen; rangedMisplaced += unit.cell.row > 1; }
+                // A class the catalogue stands in the front half keeps its row even with a short ranged attack (Hookjaw).
+                else if (role->role == wc::BotRole::Damage && definition.range > 1 && role->row < 2) { ++rangedSeen; rangedMisplaced += unit.cell.row > 1; }
             }
         for (int guard = 0; guard < 20000 && match.CurrentPhase() != wc::Phase::Preparation &&
              match.CurrentPhase() != wc::Phase::Finished; ++guard)
@@ -178,20 +179,80 @@ inline void VNextBotRoleTests(const wc::Catalog &roster,
     auto control = roster;
     control.traits.clear();
     check(wc::TraitWinGold(goblinSeat({hookjaw, bomber}, {}), control) == 0, "without the trait there is no extra gold");
-    // Economy: gold above the interest cap is spent on experience, so levels arrive earlier
-    // than when experience is bought only if one purchase finishes the level.
-    auto levelsAfter = [&](wc::Catalog catalog, int rounds) {
+    // Economy: gold above the interest cap earns nothing, so a bot that may spend it holds less
+    // gold than one that may not. A planning bot levels in both cases, because it counts a level
+    // as an investment; the bench must stay open for either to buy or reroll at all.
+    struct Economy { int gold = 0, levels = 0, fullBenches = 0, locks = 0; };
+    auto economyAfter = [&](wc::Catalog catalog, int rounds) {
         wc::Match run(catalog, 5203, 0);
-        for (int guard = 0; guard < 400000 && run.Round() <= rounds && run.CurrentPhase() != wc::Phase::Finished; ++guard)
-            run.Tick(catalog.rules.tickMs);
-        int levels = 0;
-        for (const auto &seat : run.Seats()) levels += seat.level;
-        return levels;
+        Economy economy;
+        while (run.Round() <= rounds && run.CurrentPhase() != wc::Phase::Finished)
+        {
+            for (int guard = 0; guard < 4000 && run.CurrentPhase() == wc::Phase::Preparation; ++guard)
+                run.Tick(catalog.rules.tickMs);
+            // What each living seat took into the fight.
+            for (const auto &seat : run.Seats())
+            {
+                if (seat.health <= 0) continue;
+                const int benched = int(std::count_if(seat.roster.begin(), seat.roster.end(),
+                                                      [](const wc::OwnedUnit &unit) { return !unit.onBoard; }));
+                ++economy.locks;
+                economy.fullBenches += benched >= catalog.rules.benchCapacity;
+            }
+            for (int guard = 0; guard < 20000 && run.CurrentPhase() != wc::Phase::Preparation &&
+                 run.CurrentPhase() != wc::Phase::Finished; ++guard)
+                run.Tick(catalog.rules.tickMs);
+        }
+        for (const auto &seat : run.Seats()) { economy.gold += seat.gold; economy.levels += seat.level; }
+        return economy;
     };
     auto hoarding = roster;
     hoarding.botSpendsSurplus = false;
     check(roster.botSpendsSurplus, "roster rule set lets bots spend surplus gold");
-    const int spending = levelsAfter(roster, 25), saving = levelsAfter(hoarding, 25);
-    check(spending > saving, "bots that spend surplus gold reach higher levels by round 25: " + std::to_string(spending) +
-          " against " + std::to_string(saving));
+    const auto spending = economyAfter(roster, 25), saving = economyAfter(hoarding, 25);
+    check(spending.gold < saving.gold, "bots that spend surplus gold hold less of it by round 25: " +
+          std::to_string(spending.gold) + " against " + std::to_string(saving.gold));
+    check(spending.levels >= 8 * 8, "bots reach level eight on average by round 25: " + std::to_string(spending.levels) + " levels over eight seats");
+    check(spending.locks > 0 && spending.fullBenches * 20 < spending.locks,
+          "bots keep their bench open: " + std::to_string(spending.fullBenches) + " full benches in " +
+          std::to_string(spending.locks) + " seat-rounds");
+
+    // Worth: a planning bot takes a hero's worth from its cost first, so a cost-4 summoner is
+    // worth more to it than a cost-1 sniper although the sniper has the better basic attack.
+    wc::BotDef even;
+    even.frontline = even.damage = even.support = even.synergy = 1;
+    auto seatOf = [&](std::vector<int> definitions, int level) {
+        wc::SeatState seat;
+        seat.id = 0; seat.level = level;
+        for (int i = 0; i < int(definitions.size()); ++i)
+        {
+            wc::OwnedUnit unit;
+            unit.id = wc::Id(i + 1); unit.definition = definitions[i]; unit.onBoard = i < level; unit.cell = {i, 3};
+            if (!unit.onBoard) unit.bench = i - level;
+            seat.roster.push_back(unit);
+        }
+        return seat;
+    };
+    const int treant = heroIndex("wc_vn_treant_caller"), longbow = heroIndex("wc_vn_longbow_scout");
+    check(treant >= 0 && longbow >= 0, "worth fixture heroes exist");
+    // Level eight, where the sniper's area ability counts three targets in the older valuation.
+    check(wc::BotLineupValue(seatOf({treant}, 8), roster, even) > wc::BotLineupValue(seatOf({longbow}, 8), roster, even),
+          "a planning bot values a cost-4 summoner above a cost-1 sniper");
+    auto legacy = roster;
+    legacy.botCostValueBp.clear();
+    check(wc::BotLineupValue(seatOf({treant}, 8), legacy, even) < wc::BotLineupValue(seatOf({longbow}, 8), legacy, even),
+          "without cost values the same pair is ranked by basic numbers, the other way round");
+
+    // Line-up: with room for three, two tanks and an assassin beat the three strongest units,
+    // because the pair of tanks reaches a trait. The plan must find that line-up.
+    const int shield = heroIndex("wc_vn_shieldbearer"), wall = heroIndex("wc_vn_ironwall"), moon = heroIndex("wc_vn_moonblade");
+    check(shield >= 0 && wall >= 0 && moon >= 0 && dart >= 0, "line-up fixture heroes exist");
+    const double strongest = wc::BotLineupValue(seatOf({moon, dart, wall}, 3), roster, even),
+        withTrait = wc::BotLineupValue(seatOf({shield, wall, moon}, 3), roster, even),
+        planned = wc::BotLineupValue(seatOf({moon, dart, wall, shield}, 3), roster, even);
+    check(withTrait > strongest, "the trait line-up is the better of the two");
+    check(planned >= withTrait - 1e-9, "a planning bot fields the trait line-up rather than its three strongest units");
+    check(wc::BotLineupValue(seatOf({moon, dart, wall, shield}, 3), legacy, even) <
+          wc::BotLineupValue(seatOf({shield, wall, moon}, 3), legacy, even),
+          "without planning the three strongest units are fielded and the trait is lost");
 }

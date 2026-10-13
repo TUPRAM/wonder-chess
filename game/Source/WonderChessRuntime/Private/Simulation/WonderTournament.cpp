@@ -185,10 +185,125 @@ bool IsSupport(const Catalog &c, const UnitDef &d)
     if (const auto *role = RoleOf(c, d)) return role->role == BotRole::Support;
     return d.unitClass == "priest" || (c.profileId == "wonder_vnext" && d.unitClass == "healer");
 }
+// A catalogue that carries cost values asks its bots to plan: see Catalog::botCostValueBp.
+bool Plans(const Catalog &c)
+{
+    return !c.botCostValueBp.empty();
+}
+// What a trait is worth to a bot at a member count.
+double TraitCredit(const TraitDef &t, int count, bool plans)
+{
+    if (!t.tiers.empty())
+    {
+        // Tiered traits: one step for the first tier, two for the second, and a
+        // nudge when one more member reaches the next tier.
+        int reached = 0;
+        for (const auto &tier : t.tiers) reached += count >= tier.first;
+        const bool oneShort = reached < int(t.tiers.size()) && count + 1 == t.tiers[reached].first;
+        // A planning bot rates a trait by what it measured as in a fight (trait_power.csv from
+        // vnext_hero_power): the first tier is worth about a third of a hero, the second a whole one.
+        if (plans) return reached >= 2 ? 1.0 : reached == 1 ? (oneShort ? 0.4 : 0.3) : 0.0;
+        return reached >= 2 ? 2.0 / 6.0 : reached == 1 ? (oneShort ? 1.25 : 1.0) / 6.0 : 0.0;
+    }
+    if (count >= t.threshold4) return 2.0 / 6.0;
+    if (count >= t.threshold) return (count == 3 ? 1.25 : 1.0) / 6.0;
+    return 0.0;
+}
+// How well a line-up covers the three jobs. A planning bot wants about a third of the board in
+// front and a third dealing damage, and the cover matters more as the board grows.
+double RoleCover(const std::array<int, 3> &roles, int fielded, bool plans)
+{
+    const int frontline = roles[int(BotRole::Frontline)], damage = roles[int(BotRole::Damage)],
+        support = roles[int(BotRole::Support)];
+    if (!plans) return (frontline ? 0.6 : 0) + (damage ? 0.3 : 0) + (support ? 0.1 : 0);
+    const int wantFront = std::max(1, (fielded * 35 + 50) / 100), wantDamage = std::max(1, (fielded * 30 + 50) / 100);
+    return (0.6 * std::min(1.0, double(frontline) / wantFront) + 0.3 * std::min(1.0, double(damage) / wantDamage) +
+            (support ? 0.1 : 0)) * std::max(1.0, fielded * 0.25);
+}
+struct Choice
+{
+    double budget = 0;
+    const OwnedUnit *unit = nullptr;
+    // Job (-1: none), and the positions of the unit's race and class among the catalogue's traits (-1: none).
+    int role = -1, race = -1, unitClass = -1;
+};
+// Member counts of each trait and of each job among the first `fielded` choices. Two copies of
+// one hero count once toward a trait.
+void CountLineup(const std::vector<Choice> &choices, int fielded, std::vector<int> &members, std::array<int, 3> &roles)
+{
+    std::fill(members.begin(), members.end(), 0);
+    roles.fill(0);
+    for (int i = 0; i < fielded; ++i)
+    {
+        if (choices[i].role >= 0) ++roles[choices[i].role];
+        bool repeated = false;
+        for (int j = 0; j < i && !repeated; ++j) repeated = choices[j].unit->definition == choices[i].unit->definition;
+        if (repeated) continue;
+        if (choices[i].race >= 0) ++members[choices[i].race];
+        if (choices[i].unitClass >= 0) ++members[choices[i].unitClass];
+    }
+}
+// Starting from the strongest units, swap one fielded unit for one left out for as long as the
+// line-up gains more in job cover and traits than it loses in strength.
+void PlanLineup(std::vector<Choice> &choices, int fielded, const std::vector<const TraitDef *> &traits, double synergy)
+{
+    if (fielded >= int(choices.size())) return;
+    std::vector<int> members(traits.size());
+    std::array<int, 3> roles{};
+    for (int pass = 0; pass < fielded; ++pass)
+    {
+        CountLineup(choices, fielded, members, roles);
+        const double cover = RoleCover(roles, fielded, true);
+        double best = 1e-9;
+        int bestOut = -1, bestIn = -1;
+        for (int out = 0; out < fielded; ++out)
+            for (int in = fielded; in < int(choices.size()); ++in)
+            {
+                double gain = choices[in].budget - choices[out].budget;
+                auto swapped = roles;
+                if (choices[out].role >= 0) --swapped[choices[out].role];
+                if (choices[in].role >= 0) ++swapped[choices[in].role];
+                gain += RoleCover(swapped, fielded, true) - cover;
+                bool outRepeated = false, inRepeated = false;
+                for (int other = 0; other < fielded; ++other)
+                {
+                    if (other == out) continue;
+                    outRepeated |= choices[other].unit->definition == choices[out].unit->definition;
+                    inRepeated |= choices[other].unit->definition == choices[in].unit->definition;
+                }
+                // Up to four traits change: the two the leaving hero held and the two the arriving one brings.
+                std::array<std::pair<int, int>, 4> changes{{{-1, 0}, {-1, 0}, {-1, 0}, {-1, 0}}};
+                auto change = [&](int trait, int by) {
+                    if (trait < 0) return;
+                    for (auto &entry : changes)
+                        if (entry.first == trait || entry.first < 0) { entry.first = trait; entry.second += by; return; }
+                };
+                if (!outRepeated) { change(choices[out].race, -1); change(choices[out].unitClass, -1); }
+                if (!inRepeated) { change(choices[in].race, 1); change(choices[in].unitClass, 1); }
+                for (const auto &entry : changes)
+                    if (entry.first >= 0 && entry.second != 0)
+                        gain += synergy * (TraitCredit(*traits[entry.first], members[entry.first] + entry.second, true) -
+                                           TraitCredit(*traits[entry.first], members[entry.first], true));
+                if (gain > best) { best = gain; bestOut = out; bestIn = in; }
+            }
+        if (bestOut < 0) return;
+        std::swap(choices[bestOut], choices[bestIn]);
+    }
+}
 Features Evaluate(const SeatState &s, const Catalog &c, const BotDef &b)
 {
     Features f;
-    std::vector<std::pair<double, const OwnedUnit *>> choices;
+    const bool plans = Plans(c);
+    // A trait with several parts is still one trait to a bot.
+    std::vector<const TraitDef *> traits;
+    for (const auto &t : c.traits)
+        if (std::none_of(traits.begin(), traits.end(), [&](const TraitDef *seen) { return seen->id == t.id; }))
+            traits.push_back(&t);
+    auto traitOf = [&](const std::string &identity) {
+        for (int i = 0; i < int(traits.size()); ++i) if (traits[i]->id == identity) return i;
+        return -1;
+    };
+    std::vector<Choice> choices;
     std::map<int, int> copies;
     for (const auto &u : s.roster)
     {
@@ -199,57 +314,62 @@ Features Evaluate(const SeatState &s, const Catalog &c, const BotDef &b)
                         : d.unitClass == "guardian" ? b.frontline
                         : IsSupport(c, d) ? b.support
                                           : b.damage;
-        double budget = (double(StarValue(d.health, u.star, 0, c.rules)) / 100000.0 +
-                         double(StarValue(d.attackDamage, u.star, 0, c.rules)) * d.attackRate / 10000000.0 +
-                          SkillBudget(d, u.star, s.level, c, u.relic)) *
-                        weight;
-        choices.push_back({budget, &u});
+        double budget = double(StarValue(d.health, u.star, 0, c.rules)) / 100000.0 +
+                        double(StarValue(d.attackDamage, u.star, 0, c.rules)) * d.attackRate / 10000000.0 +
+                        SkillBudget(d, u.star, s.level, c, u.relic);
+        // A planning bot takes nearly all of a hero's worth from its cost and star, so that no class
+        // is passed over because its strength is in its ability, and a little from its numbers.
+        if (plans)
+            budget = 0.85 * c.botCostValueBp[std::clamp(d.cost, 1, int(c.botCostValueBp.size())) - 1] / 10000.0 *
+                         double(StarValue(10000, u.star, 0, c.rules)) / 10000.0 +
+                     0.15 * budget;
+        Choice choice;
+        choice.budget = budget * weight;
+        choice.unit = &u;
+        if (IsFrontline(c, d)) choice.role = int(BotRole::Frontline);
+        else if (IsSupport(c, d)) choice.role = int(BotRole::Support);
+        else if (role || d.unitClass == "ranger" || d.unitClass == "mage" || d.unitClass == "rogue" ||
+                 (c.profileId == "wonder_vnext" && (d.unitClass == "assassin" || d.unitClass == "controller")))
+            choice.role = int(BotRole::Damage);
+        choice.race = traitOf(d.race);
+        choice.unitClass = traitOf(d.unitClass);
+        choices.push_back(choice);
         copies[u.definition] += CountCopies(u.star);
-        f.upgrades += u.star == 3 ? 1.0 : u.star == 2 ? 1.0 / 3.0 : 0.0;
+        if (!plans) f.upgrades += u.star == 3 ? 1.0 : u.star == 2 ? 1.0 / 3.0 : 0.0;
         if (!u.onBoard)
             f.bench += 1.0 / c.rules.benchCapacity;
     }
     std::stable_sort(choices.begin(), choices.end(),
-                     [](const auto &a, const auto &b) { return a.first > b.first; });
-    std::map<std::string, std::set<int>> counts;
-    bool frontline = false, damage = false, support = false;
-    for (int i = 0; i < std::min(s.level, int(choices.size())); ++i)
+                     [](const Choice &a, const Choice &b) { return a.budget > b.budget; });
+    const int fielded = std::min(s.level, int(choices.size()));
+    if (plans) PlanLineup(choices, fielded, traits, b.synergy);
+    for (int i = 0; i < fielded; ++i)
     {
-        auto &u = *choices[i].second;
-        auto &d = c.units[u.definition];
-        f.budget += choices[i].first;
-        counts[d.race].insert(u.definition);
-        counts[d.unitClass].insert(u.definition);
-        frontline |= IsFrontline(c, d);
-        support |= IsSupport(c, d);
-        if (const auto *role = RoleOf(c, d)) damage |= role->role == BotRole::Damage;
-        else damage |= d.unitClass == "ranger" || d.unitClass == "mage" || d.unitClass == "rogue" ||
-            (c.profileId == "wonder_vnext" && (d.unitClass == "assassin" || d.unitClass == "controller"));
+        f.budget += choices[i].budget;
+        // A planning bot credits an upgrade only where it is fielded; a star on the bench wins nothing.
+        if (plans) f.upgrades += choices[i].unit->star == 3 ? 1.0 : choices[i].unit->star == 2 ? 1.0 / 3.0 : 0.0;
     }
-    std::set<std::string> scored;
-    for (const auto &t : c.traits)
-    {
-        // A trait with several parts is still one trait to a bot.
-        if (!scored.insert(t.id).second) continue;
-        const int count = int(counts[t.id].size());
-        if (!t.tiers.empty())
-        {
-            // Tiered traits: one step for the first tier, two for the second, and a
-            // nudge when one more member reaches the next tier.
-            int reached = 0;
-            for (const auto &tier : t.tiers) reached += count >= tier.first;
-            const bool oneShort = reached < int(t.tiers.size()) && count + 1 == t.tiers[reached].first;
-            if (reached >= 2) f.traits += 2.0 / 6.0;
-            else if (reached == 1) f.traits += (oneShort ? 1.25 : 1.0) / 6.0;
-            continue;
-        }
-        if (count >= t.threshold4) f.traits += 2.0 / 6.0;
-        else if (count >= t.threshold) f.traits += (count == 3 ? 1.25 : 1.0) / 6.0;
-    }
+    std::vector<int> members(traits.size());
+    std::array<int, 3> roles{};
+    CountLineup(choices, fielded, members, roles);
+    for (int i = 0; i < int(traits.size()); ++i)
+        f.traits += TraitCredit(*traits[i], members[i], plans);
+    // A lone copy is a small start and a pair is one purchase from an upgrade; a planning bot
+    // holds pairs and lets lone copies go first.
     for (auto pair : copies)
-        f.pairs += std::min(2, pair.second % 3) / 6.0;
-    f.roles = (frontline ? 0.6 : 0) + (damage ? 0.3 : 0) + (support ? 0.1 : 0);
+        f.pairs += plans ? (pair.second % 3 == 2 ? 2.5 : pair.second % 3 == 1 ? 0.5 : 0.0) / 6.0
+                         : std::min(2, pair.second % 3) / 6.0;
+    f.roles = RoleCover(roles, fielded, plans);
     return f;
+}
+// A planning bot keeps two bench slots free, so that it can always buy and reroll. A bench with
+// one free slot presses a little and a full bench twice as much.
+double BenchPressure(const SeatState &s, const Catalog &c)
+{
+    if (!Plans(c)) return 0;
+    const int benched =
+        int(std::count_if(s.roster.begin(), s.roster.end(), [](const OwnedUnit &u) { return !u.onBoard; }));
+    return std::max(0, benched + 2 - c.rules.benchCapacity) * 0.3;
 }
 Cell FacingDirection(Facing facing)
 {
@@ -1488,7 +1608,9 @@ void Match::BotTurn(int seat)
             const auto *role = RoleOf(catalog_, d);
             if (!role) continue;
             const bool frontline = role->role == BotRole::Frontline;
-            const bool wrongHalf = frontline ? u.cell.row < 2 : role->role == BotRole::Damage && d.range > 1 && u.cell.row > 1;
+            // A ranged class that the catalogue stands in the front half, such as an assassin with a short reach, is left there.
+            const bool wrongHalf = frontline ? u.cell.row < 2
+                : role->role == BotRole::Damage && d.range > 1 && role->row < 2 && u.cell.row > 1;
             if (!wrongHalf) continue;
             const Cell target = FormationCell(s, u);
             if (frontline != (target.row >= 2)) continue; // no free cell in the right half
@@ -1517,6 +1639,17 @@ void Match::BotTurn(int seat)
                                 auto value = Evaluate(formation, catalog_, bot);
                                 return value.budget + value.roles + value.traits * bot.synergy;
                             };
+                            // The newcomer takes the old unit's cell. Where that is the wrong half for
+                            // its class, a second move must follow, so there has to be a command and
+                            // time left for it.
+                            if (const auto *role = RoleOf(catalog_, catalog_.units[bench.definition]))
+                            {
+                                const bool wrongHalf = role->role == BotRole::Frontline ? board.cell.row < 2
+                                    : role->role == BotRole::Damage && catalog_.units[bench.definition].range > 1 && role->row < 2 && board.cell.row > 1;
+                                if (wrongHalf && (botCommands_[seat] >= bot.maxCommands - 2 ||
+                                                  remainingMs_ <= catalog_.rules.botRepositionCutoffMs + 2 * bot.decisionIntervalMs))
+                                    continue;
+                            }
                             SeatState pending = s;
                             Command replacement;
                             replacement.type = CommandType::Move;
@@ -1542,7 +1675,13 @@ void Match::BotTurn(int seat)
         if (chosen.type == CommandType::Ready)
         {
             auto before = Evaluate(s, catalog_, bot);
-            const int interestReserve = catalog_.rules.interestCap * catalog_.rules.interestDivisor;
+            const bool plans = Plans(catalog_);
+            int interestReserve = catalog_.rules.interestCap * catalog_.rules.interestDivisor;
+            // Gold saved for interest is no use to a seat about to fall: a planning bot keeps
+            // half of it two losses from the end and none of it one loss from the end.
+            if (plans && s.health <= 20) interestReserve = 0;
+            else if (plans && s.health <= 40) interestReserve /= 2;
+            const double benchPressure = BenchPressure(s, catalog_);
             std::vector<Command> candidates;
             for (int i = 0; i < int(s.shop.size()); ++i)
                 if (s.shop[i] >= 0)
@@ -1555,7 +1694,21 @@ void Match::BotTurn(int seat)
             Command xp;
             xp.type = CommandType::BuyXp;
             candidates.push_back(xp);
-            if (int(s.roster.size()) > s.level + 4)
+            // A planning bot with a crowded bench may let any benched unit go; the scoring below
+            // picks the one it loses least by.
+            if (plans)
+            {
+                if (benchPressure > 0)
+                    for (const auto &unit : s.roster)
+                        if (!unit.onBoard)
+                        {
+                            Command sell;
+                            sell.type = CommandType::Sell;
+                            sell.unit = unit.id;
+                            candidates.push_back(sell);
+                        }
+            }
+            else if (int(s.roster.size()) > s.level + 4)
                 for (const auto &unit : s.roster)
                     if (!unit.onBoard && unit.star == 1 &&
                         std::count_if(s.roster.begin(), s.roster.end(), [&](const OwnedUnit &other) {
@@ -1602,11 +1755,36 @@ void Match::BotTurn(int seat)
                 double score = urgency * (3 * f[0] + 2 * f[1] * bot.upgrade + 1.5 * f[2] * bot.synergy +
                                           f[3] + 0.6 * f[4] * bot.upgrade) -
                                0.35 * f[5] * bot.save - 0.25 * f[6] * bot.save - 0.25 * f[7];
+                if (plans)
+                {
+                    score -= BenchPressure(pending, catalog_) - benchPressure;
+                    // Of the units it could let go, the least valuable goes first.
+                    if (candidate.type == CommandType::Sell)
+                    {
+                        SeatState alone;
+                        alone.level = 1;
+                        alone.roster = {*std::find_if(s.roster.begin(), s.roster.end(),
+                                                      [&](const OwnedUnit &unit) { return unit.id == candidate.unit; })};
+                        score -= 0.05 * Evaluate(alone, catalog_, bot).budget;
+                    }
+                }
                 if (candidate.type == CommandType::BuyXp)
                 {
                     score += double(pending.level - s.level) * 0.24 * bot.level;
                     if (s.xp + catalog_.rules.buyXpAmount >= catalog_.rules.xpToNext.at(s.level))
                         score += 0.04;
+                    // A planning bot counts each purchase as its share of what the next level brings:
+                    // one more fielded unit, and whatever that does for traits and cover.
+                    else if (plans)
+                    {
+                        SeatState raised = s;
+                        ++raised.level;
+                        const auto levelled = Evaluate(raised, catalog_, bot);
+                        const double gain = 3 * (levelled.budget - before.budget) / std::max(1.0, double(s.level)) +
+                                            1.5 * (levelled.traits - before.traits) * bot.synergy + (levelled.roles - before.roles);
+                        score += double(catalog_.rules.buyXpAmount) / catalog_.rules.xpToNext.at(s.level) *
+                                 (0.24 * bot.level + 0.6 * std::max(0.0, gain));
+                    }
                     // Credit progress toward the next level, or experience is only ever bought
                     // when a single purchase finishes the level.
                     else if (catalog_.botSpendsSurplus)
@@ -1678,8 +1856,30 @@ void Match::BotTurn(int seat)
                         }
             }
             const bool surplusReroll = catalog_.botSpendsSurplus &&
-                s.gold >= catalog_.rules.interestCap * catalog_.rules.interestDivisor + catalog_.rules.rerollCost;
-            if (chosen.type == CommandType::Ready && s.gold >= catalog_.rules.rerollCost + 10 &&
+                s.gold >= interestReserve + catalog_.rules.rerollCost;
+            if (plans)
+            {
+                // A planning bot rerolls only with gold it does not need for interest, and weighs a
+                // reroll against experience: each pair it holds is one copy from an upgrade.
+                if (surplusReroll && int(s.roster.size()) < s.level + catalog_.rules.benchCapacity &&
+                    (chosen.type == CommandType::Ready || chosen.type == CommandType::BuyXp))
+                {
+                    std::map<int, int> copies;
+                    for (const auto &unit : s.roster) copies[unit.definition] += CountCopies(unit.star);
+                    const int pairsHeld = int(std::count_if(copies.begin(), copies.end(),
+                                                            [](const auto &entry) { return entry.second % 3 == 2; }));
+                    const double rerollScore = std::min(0.08, 0.02 + 0.015 * pairsHeld);
+                    if (chosen.type == CommandType::Ready || rerollScore > best)
+                    {
+                        chosen = Command{};
+                        chosen.type = CommandType::Reroll;
+                        features = {};
+                        action = "bounded_reroll";
+                        best = rerollScore;
+                    }
+                }
+            }
+            else if (chosen.type == CommandType::Ready && s.gold >= catalog_.rules.rerollCost + 10 &&
                 (surplusReroll || botRerolls_[seat] < bot.maxRerolls) &&
                 int(s.roster.size()) < s.level + catalog_.rules.benchCapacity)
             {

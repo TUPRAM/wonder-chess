@@ -27,6 +27,10 @@ rounds). Bosses use their own base stats and the multiplier of their round.
 | Health × | 1.0 | 1.4 | 1.8 | 2.2 | 2.6 | 3.0 | 3.4 | 3.8 | 4.2 | 4.6 | 5.0 | 5.4 |
 | Damage × | 1.0 | 1.25 | 1.5 | 1.75 | 2.0 | 2.25 | 2.5 | 2.75 | 3.0 | 3.25 | 3.5 | 3.75 |
 
+Measured change, 2026-10-13 (balance 0.15.0): round 40 no longer follows this line. Its health is ×1.5 and its damage ×5.2,
+because at ×3.8 / ×2.75 the boss and its three healers could not be beaten inside the 45-second fight limit (96% of
+those fights ran out of time). The clear rate by bots stayed the same (about 85%). Details: `docs/vnext/adoption/README.md`.
+
 Rounds 50–60 are meant as the closing stretch: a team that is still alive there should find these rounds hard.
 
 ## 2. Ordinary monsters (11)

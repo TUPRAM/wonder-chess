@@ -2,12 +2,12 @@
 #pragma once
 #include "Simulation/WonderSimulation.h"
 namespace wcvnext {
-inline constexpr const char* RuntimeSha1 = "613bf142692cc15f18d02149d07bdbef6d895c43";
-inline constexpr const char* SourceSha256 = "6723d701d5f0bf890283db13cdd48d377443f136435bca817ae2035c52489dcb";
+inline constexpr const char* RuntimeSha1 = "cc312ff375719848e88345ada6d2419b357cd6c2";
+inline constexpr const char* SourceSha256 = "64c319c034baa3425e7745cb38e85dea27ba4002931afeb4ec6a46203153efcc";
 inline wc::Catalog WonderVNextCatalog() { wc::Catalog c;
 c.profileId = "wonder_vnext";
 c.schemaVersion = "wonder_vnext.catalog.1";
-c.balanceVersion = "wonder_vnext_silkmother_0.13.0";
+c.balanceVersion = "wonder_vnext_silkmother_0.15.0";
 c.contentDigest = SourceSha256;
 c.ownedTeamRelicOffers = true;
 c.rules.columns = 8;
@@ -2643,8 +2643,8 @@ c.waves.push_back(w); }
 w.id = "wc_vn_wave_40";
 w.name = "Grandmother Root";
 w.round = 40;
-w.hpScaleBp = 38000;
-w.damageScaleBp = 27500;
+w.hpScaleBp = 15000;
+w.damageScaleBp = 52000;
 w.slots.push_back({13,{3,1}});
 w.slots.push_back({5,{1,2}});
 w.slots.push_back({5,{5,2}});
@@ -2707,9 +2707,9 @@ c.waves.push_back(w); }
 { wc::BotDef b;
 b.id = "wc_vn_bot_1";
 b.label = "Hearthkeeper";
-b.frontline = 1.4;
+b.frontline = 1.16;
 b.damage = 1;
-b.support = 1.2;
+b.support = 1.08;
 b.upgrade = 1.1;
 b.synergy = 1;
 b.level = 0.8;
@@ -2723,9 +2723,9 @@ c.bots.push_back(b); }
 { wc::BotDef b;
 b.id = "wc_vn_bot_2";
 b.label = "Pathfinder";
-b.frontline = 0.8;
-b.damage = 1.5;
-b.support = 0.7;
+b.frontline = 0.92;
+b.damage = 1.2;
+b.support = 0.88;
 b.upgrade = 1.2;
 b.synergy = 0.8;
 b.level = 0.9;
@@ -2741,7 +2741,7 @@ b.id = "wc_vn_bot_3";
 b.label = "Orchard Tender";
 b.frontline = 1;
 b.damage = 1;
-b.support = 1.5;
+b.support = 1.2;
 b.upgrade = 1;
 b.synergy = 1.2;
 b.level = 0.8;
@@ -2756,8 +2756,8 @@ c.bots.push_back(b); }
 b.id = "wc_vn_bot_4";
 b.label = "Glass Listener";
 b.frontline = 1;
-b.damage = 1.4;
-b.support = 1.1;
+b.damage = 1.16;
+b.support = 1.04;
 b.upgrade = 1;
 b.synergy = 1.1;
 b.level = 1.2;
@@ -2771,9 +2771,9 @@ c.bots.push_back(b); }
 { wc::BotDef b;
 b.id = "wc_vn_bot_5";
 b.label = "Patient Tinkerer";
-b.frontline = 1.2;
-b.damage = 0.9;
-b.support = 1.1;
+b.frontline = 1.08;
+b.damage = 0.96;
+b.support = 1.04;
 b.upgrade = 1.4;
 b.synergy = 0.8;
 b.level = 0.8;
@@ -2787,9 +2787,9 @@ c.bots.push_back(b); }
 { wc::BotDef b;
 b.id = "wc_vn_bot_6";
 b.label = "Current Reader";
-b.frontline = 0.9;
-b.damage = 1.2;
-b.support = 1.4;
+b.frontline = 0.96;
+b.damage = 1.08;
+b.support = 1.16;
 b.upgrade = 1;
 b.synergy = 0.9;
 b.level = 1.1;
@@ -2804,7 +2804,7 @@ c.bots.push_back(b); }
 b.id = "wc_vn_bot_7";
 b.label = "Night Wanderer";
 b.frontline = 1;
-b.damage = 1.2;
+b.damage = 1.08;
 b.support = 1;
 b.upgrade = 1.1;
 b.synergy = 1;
@@ -3034,7 +3034,7 @@ r.resistanceFlat = 0;
 c.relics.push_back(r); }
 return c; }
 inline wc::Catalog WonderVNextManaCatalog() { auto c = WonderVNextCatalog();
-c.contentDigest = "f0b5df3c96a6a247a808d7c813bf1bf59a675c9361508e6efdab61d550b0a014";
+c.contentDigest = "128b43743c686323c33fbb49f56ecf784cdc8b1ed51c46eba0fec8ceba51e0e2";
 c.balanceVersion += "+mana100_v1";
 for (auto &u : c.units) if (u.id == "wc_vn_hookjaw") {
 u.ability.mana.maximum = 10000;
@@ -3065,7 +3065,7 @@ u.ability.mana.damageWindowMs = 1000;
 }
 return c; }
 inline wc::Catalog WonderVNextMana20Catalog() { auto c = WonderVNextCatalog();
-c.contentDigest = "4a841e92d29e9f9d8d727eeb5bc565899137930f8bb577ea659d3793df411ac8";
+c.contentDigest = "148bb69f1163d0ef23ef1ee86a07842386363836f8b18431eed02483e623b3f5";
 c.balanceVersion += "+mana100_hit20_v1";
 for (auto &u : c.units) if (u.id == "wc_vn_hookjaw") {
 u.ability.mana.maximum = 10000;
@@ -3097,14 +3097,14 @@ u.ability.mana.damageWindowMs = 1000;
 return c; }
 inline wc::Catalog WonderVNextCombatClarityCatalog(bool mobileRecovery = true) { auto c = WonderVNextMana20Catalog();
 if (mobileRecovery) {
-c.contentDigest = "8e35e9b9f9d3e26ac7b62d6b7f57c19f5a70b9b6983c60c2b8cd01f3efd32fd2"; c.balanceVersion += "+combat_clarity_v1"; }
+c.contentDigest = "1abacc789b09e4ccba0d3e25c02f51a3287ce1ed499f3b6f6368bff290ec7d37"; c.balanceVersion += "+combat_clarity_v1"; }
 else {
-c.contentDigest = "3a88a96154a950c3c8264c86432c0ada4f0ecd887c5a8a3215123f3c0ffab4a7"; c.balanceVersion += "+nearest_target_v1"; }
+c.contentDigest = "a77cf88a4e86494088ba2edf8a4b4c1ccf8f37de7770d1bd2bf281ed43d08328"; c.balanceVersion += "+nearest_target_v1"; }
 c.rules.nearestReachableTarget = true;
 c.rules.mobileAttackRecovery = mobileRecovery && true;
 return c; }
 inline wc::Catalog WonderVNextRosterCatalog() { auto c = WonderVNextCatalog();
-c.contentDigest = "0f931d6df5b8a72af168a7b40aa42128af4b645d360a5c341e27c1589d28397e";
+c.contentDigest = "e7c4e61eabcde5333c1cd06cefae78274626ff5fd50a0a093f2b762fa52a11db";
 c.balanceVersion += "+roster_v1";
 for (auto &u : c.units) if (u.id == "wc_vn_hookjaw") {
 u.ability.mana.maximum = 10000;
@@ -3465,6 +3465,7 @@ c.rules.chargeReturns = true;
 { wc::TraitDef t; t.id = "shaman"; t.stat = "enemy_hex_count"; t.team = false; t.durationMs = 3000; t.tiers = {{2,1},{4,2}}; c.traits.push_back(t); }
 { wc::TraitDef t; t.id = "summoner"; t.stat = "summon_power_bonus_bp"; t.team = false; t.tiers = {{2,3000},{4,6000}}; c.traits.push_back(t); }
 c.botSpendsSurplus = true;
+c.botCostValueBp = {10000,10800,12000,13000,13800};
 c.classRoles.push_back({"tank", wc::BotRole::Frontline, 3, false});
 c.classRoles.push_back({"fighter", wc::BotRole::Frontline, 3, false});
 c.classRoles.push_back({"assassin", wc::BotRole::Damage, 2, true});

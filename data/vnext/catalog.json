@@ -1,7 +1,7 @@
 {
   "schema_version": "wonder_vnext.catalog.1",
   "profile_id": "wonder_vnext",
-  "balance_version": "wonder_vnext_silkmother_0.13.0",
+  "balance_version": "wonder_vnext_silkmother_0.15.0",
   "status": "M0_authored_M1_candidate_not_release",
   "target_match_minutes": [
     35,
@@ -5484,8 +5484,8 @@
       "id": "wc_vn_wave_40",
       "name": "Grandmother Root",
       "round": 40,
-      "hpScaleBp": 38000,
-      "damageScaleBp": 27500,
+      "hpScaleBp": 15000,
+      "damageScaleBp": 52000,
       "slots": [
         {
           "definition": 13,
@@ -5690,9 +5690,9 @@
     {
       "id": "wc_vn_bot_1",
       "label": "Hearthkeeper",
-      "frontline": 1.4,
+      "frontline": 1.16,
       "damage": 1,
-      "support": 1.2,
+      "support": 1.08,
       "upgrade": 1.1,
       "synergy": 1,
       "level": 0.8,
@@ -5707,9 +5707,9 @@
     {
       "id": "wc_vn_bot_2",
       "label": "Pathfinder",
-      "frontline": 0.8,
-      "damage": 1.5,
-      "support": 0.7,
+      "frontline": 0.92,
+      "damage": 1.2,
+      "support": 0.88,
       "upgrade": 1.2,
       "synergy": 0.8,
       "level": 0.9,
@@ -5726,7 +5726,7 @@
       "label": "Orchard Tender",
       "frontline": 1,
       "damage": 1,
-      "support": 1.5,
+      "support": 1.2,
       "upgrade": 1,
       "synergy": 1.2,
       "level": 0.8,
@@ -5742,8 +5742,8 @@
       "id": "wc_vn_bot_4",
       "label": "Glass Listener",
       "frontline": 1,
-      "damage": 1.4,
-      "support": 1.1,
+      "damage": 1.16,
+      "support": 1.04,
       "upgrade": 1,
       "synergy": 1.1,
       "level": 1.2,
@@ -5758,9 +5758,9 @@
     {
       "id": "wc_vn_bot_5",
       "label": "Patient Tinkerer",
-      "frontline": 1.2,
-      "damage": 0.9,
-      "support": 1.1,
+      "frontline": 1.08,
+      "damage": 0.96,
+      "support": 1.04,
       "upgrade": 1.4,
       "synergy": 0.8,
       "level": 0.8,
@@ -5775,9 +5775,9 @@
     {
       "id": "wc_vn_bot_6",
       "label": "Current Reader",
-      "frontline": 0.9,
-      "damage": 1.2,
-      "support": 1.4,
+      "frontline": 0.96,
+      "damage": 1.08,
+      "support": 1.16,
       "upgrade": 1,
       "synergy": 0.9,
       "level": 1.1,
@@ -5793,7 +5793,7 @@
       "id": "wc_vn_bot_7",
       "label": "Night Wanderer",
       "frontline": 1,
-      "damage": 1.2,
+      "damage": 1.08,
       "support": 1,
       "upgrade": 1.1,
       "synergy": 1,
@@ -5879,6 +5879,13 @@
       "chargeReturns": true
     },
     "bot_spends_surplus": true,
+    "bot_cost_value_bp": [
+      10000,
+      10800,
+      12000,
+      13000,
+      13800
+    ],
     "class_roles": [
       {
         "id": "tank",

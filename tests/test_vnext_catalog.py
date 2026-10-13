@@ -394,6 +394,19 @@ class VNextCatalogTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Bot roles must name every class"):
             CATALOG.validate(source)
 
+    def test_roster_recipe_tells_bots_what_each_cost_is_worth(self):
+        worth = self.source["roster_recipe"]["bot_cost_value_bp"]
+        self.assertEqual((len(worth), worth[0]), (5, 10000))
+        self.assertEqual(worth, sorted(worth))
+        header = CATALOG.artifacts(self.raw)["data/vnext/generated/WonderVNextCatalog.h"]
+        self.assertIn("c.botCostValueBp = {" + ",".join(str(value) for value in worth) + "};", header)
+        # Only the roster rule set carries the table; the control catalogue's bots keep the older valuation.
+        self.assertEqual(header.count("botCostValueBp"), 1)
+        source = copy.deepcopy(self.source)
+        source["roster_recipe"]["bot_cost_value_bp"] = [10000, 9000, 12000, 13000, 14000]
+        with self.assertRaisesRegex(ValueError, "Bot cost values name the five costs in rising order"):
+            CATALOG.validate(source)
+
     def test_relics_require_multiple_compatibilities_and_tradeoffs(self):
         self.assertEqual(len(self.source["relics"]), 12)
         self.assertTrue(all(relic["compatible_mechanics"] == [] for relic in self.source["relics"]))

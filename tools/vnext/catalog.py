@@ -280,6 +280,9 @@ def validate(source):
         classes = [trait["id"] for trait in source["traits"] if trait["kind"] == "class"]
         if sorted(role["id"] for role in recipe["class_roles"]) != sorted(classes):
             raise ValueError("Bot roles must name every class exactly once")
+        worth = recipe.get("bot_cost_value_bp")
+        if worth is not None and (len(worth) != 5 or worth != sorted(worth)):
+            raise ValueError("Bot cost values name the five costs in rising order")
     unique(source["relics"], "relics")
     for relic in source["relics"]:
         mechanics = relic["compatible_mechanics"]
@@ -520,6 +523,8 @@ def native_header(runtime, runtime_sha1):
                          + (f't.durationMs = {trait["durationMs"]}; ' if "durationMs" in trait else "")
                          + f't.tiers = {{{tiers}}}; c.traits.push_back(t); }}')
         lines.append(f'c.botSpendsSurplus = {literal(recipe["bot_spends_surplus"])};')
+        if "bot_cost_value_bp" in recipe:
+            lines.append(f'c.botCostValueBp = {{{",".join(str(value) for value in recipe["bot_cost_value_bp"])}}};')
         for role in recipe["class_roles"]:
             lines.append(f'c.classRoles.push_back({{{literal(role["id"])}, wc::BotRole::{role["role"].capitalize()}, '
                          f'{role["row"]}, {literal(role["flank"])}}});')
