@@ -1,0 +1,47 @@
+{
+  "date": "2026-09-17",
+  "status": "ALL_MISSING_SOURCE_RECOVERED_TEN_HISTORICAL_ARCHIVES_UNRESOLVED",
+  "report": "reports/backup-recovery-20260917/README.md",
+  "backup": "D:/Wonder Chess",
+  "backup_modified": false,
+  "this_recovery": {
+    "backup": "D:\\Wonder Chess",
+    "destination": "C:\\Users\\USER\\Documents\\Wonder Chess",
+    "target_count": 285,
+    "counts": {
+      "backup_mismatch": 1,
+      "backup_missing": 9,
+      "restored_exact": 275
+    },
+    "backup_modified": false,
+    "backup_manifest_matches_original": true
+  },
+  "original_missing_files": 709,
+  "cumulative_exact_recoveries": 699,
+  "remaining_original_archives": 10,
+  "missing_source_files_remaining": 0,
+  "authoring_checks": "PASS_ALL_FOUR_400_DATA_CHECKS",
+  "python_tests": {
+    "attempted": 230,
+    "passed": 229,
+    "failures": 1,
+    "errors": 0,
+    "remaining_failure": "Windows PowerShell Restricted execution policy blocks launcher fixture"
+  },
+  "storybook_launcher": "VALIDATE_ONLY_PASS_NOT_LAUNCHED",
+  "compiler_sdk_smoke": {
+    "checked_utc": "2026-09-16T23:39:42.4638494Z",
+    "vs_installation": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools",
+    "vs_version": "17.14.37710.0",
+    "msvc_directories": [
+      "14.44.35207"
+    ],
+    "windows_sdk": "10.0.22621.0",
+    "exit_code": 0,
+    "passed": true,
+    "scope": "Isolated C++20 compile, Windows SDK link, and executable run only; no Wonder Chess or Unreal build."
+  },
+  "unreal_57_installed": false,
+  "actual_game_build": "NOT_RUN_MATCHING_ENGINE_UNAVAILABLE",
+  "product_acceptance_changed": false
+}

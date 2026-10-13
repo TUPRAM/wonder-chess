@@ -1,0 +1,32 @@
+{
+  "created_utc": "2026-09-16T13:45:30.292947+00:00",
+  "original_missing_count": 709,
+  "exact_recoveries_recorded": 424,
+  "recovery_source_counts": {
+    "manifest_identical_local_copy": 244,
+    "git_blob": 178,
+    "git_blob_newline_reconstruction": 1,
+    "git_existing_object_ref_bytes": 1
+  },
+  "final_status_counts": {
+    "restored_exact": 423,
+    "missing": 284,
+    "restored_then_intentionally_updated_by_main_agent": 1,
+    "newly_generated_cache_not_recovered": 1
+  },
+  "unresolved_original_payload_count": 285,
+  "unresolved_active_source_count": 9,
+  "restored_groups": {
+    "support": 195,
+    "tools": 151,
+    "tests": 77,
+    ".git": 1
+  },
+  "unresolved_groups": {
+    "support": 210,
+    "tests": 46,
+    "tools": 29
+  },
+  "git_fsck_exit_code": 0,
+  "scope": "Original 709 missing paths only; this is not a new full-manifest audit. Every recovery matched the immutable transfer size/SHA256 before and after writing. Existing files were never overwritten by recovery."
+}

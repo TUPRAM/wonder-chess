@@ -9,7 +9,7 @@ namespace wc
 namespace
 {
 constexpr std::size_t MaxSaveBytes = 4 * 1024 * 1024;
-constexpr const char *SaveMagic = "WCVNEXT-PREPARATION-3";
+constexpr const char *SaveMagic = "WCVNEXT-PREPARATION-4";
 Id Checksum(const std::string &bytes)
 {
     Id hash = 14695981039346656037ULL;
@@ -150,7 +150,7 @@ void ValidateObservations(const std::vector<PublicSeat> &observations, const Cat
 
 std::string Match::SavePreparation() const
 {
-    if (catalog_.profileId != "wonder_vnext" || phase_ != Phase::Preparation || networked_ ||
+    if (catalog_.profileId != "wonder_vnext" || phase_ != Phase::Preparation || networked_ || guided_ ||
         !InvariantError().empty())
         return {};
     Writer out;
@@ -167,7 +167,7 @@ std::string Match::SavePreparation() const
         out.Boolean(seat.shopLocked); out.Text(seat.label); out.Number(seat.revision & 0xffffffffULL);
         out.Number(seat.sequence); out.Number(seat.shopRng.state); out.Number(seat.botRng.state);
         out.Number(seat.relicRng.state); out.Integer(seat.neutralWins); out.Integer(seat.neutralLosses);
-        out.Integer(seat.neutralDraws); out.Integer(seat.pendingRelicDrafts);
+        out.Integer(seat.neutralDraws); out.Integer(seat.pendingRelicDrafts); out.Integer(seat.streak);
         out.List(seat.shop, [&](int value) { out.Integer(value); });
         out.List(seat.roster, [&](const OwnedUnit &unit) { WriteUnit(out, unit); });
         out.List(seat.ownedRelics, [&](int value) { out.Integer(value); });
@@ -232,7 +232,9 @@ bool Match::RestorePreparation(const std::string &bytes, std::string &error)
         if (pending.nextUnit_ == 0 || pending.nextUnit_ >= (Id(1) << 20)) throw std::runtime_error("Invalid next unit identity");
         pending.round_ = in.Integer(1, catalog_.rules.maxRounds);
         pending.pvpRoundIndex_ = in.Integer(0, pending.round_);
-        pending.remainingMs_ = in.Integer(0, std::max(catalog_.rules.firstPreparationMs, catalog_.rules.preparationMs));
+        int longestPreparation = std::max(catalog_.rules.firstPreparationMs, catalog_.rules.preparationMs);
+        for (const auto &stage : catalog_.rules.preparationStages) longestPreparation = std::max(longestPreparation, stage.ms);
+        pending.remainingMs_ = in.Integer(0, longestPreparation);
         pending.elapsedMs_ = in.Integer(0, 1000000000); pending.accumulatorMs_ = in.Integer(0, 1000000);
         pending.previousGhost_ = in.Integer(-1, 7); pending.capped_ = in.Boolean();
         in.Count(8, [&] {
@@ -253,6 +255,7 @@ bool Match::RestorePreparation(const std::string &bytes, std::string &error)
             seat.neutralLosses = in.Integer(0, catalog_.rules.maxRounds);
             seat.neutralDraws = in.Integer(0, catalog_.rules.maxRounds);
             seat.pendingRelicDrafts = in.Integer(0, catalog_.rules.maximumRelics);
+            seat.streak = in.Integer(-catalog_.rules.maxRounds, catalog_.rules.maxRounds);
             in.Count(catalog_.rules.shopSlots, [&] { seat.shop.push_back(in.Integer(-1, int(catalog_.units.size()) - 1)); });
             if (int(seat.shop.size()) != catalog_.rules.shopSlots) throw std::runtime_error("Save shop size mismatch");
             in.Count(catalog_.rules.maximumLevel + catalog_.rules.benchCapacity, [&] { seat.roster.push_back(ReadUnit(in)); });

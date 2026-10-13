@@ -1,0 +1,52 @@
+{
+  "status": "PASS",
+  "baseline": "PASS_DOCUMENTATION_INTEGRITY",
+  "scope": "In-memory document faults only; no art or runtime validation.",
+  "faults_rejected": 11,
+  "cases": [
+    {
+      "case": "false_completion",
+      "rejected_as_expected": true
+    },
+    {
+      "case": "false_stage_evidence",
+      "rejected_as_expected": true
+    },
+    {
+      "case": "invented_approval",
+      "rejected_as_expected": true
+    },
+    {
+      "case": "default_spending",
+      "rejected_as_expected": true
+    },
+    {
+      "case": "invented_job",
+      "rejected_as_expected": true
+    },
+    {
+      "case": "paid_job_cap",
+      "rejected_as_expected": true
+    },
+    {
+      "case": "invented_look_approval",
+      "rejected_as_expected": true
+    },
+    {
+      "case": "malformed_json",
+      "rejected_as_expected": true
+    },
+    {
+      "case": "fabricated_csv_result",
+      "rejected_as_expected": true
+    },
+    {
+      "case": "duplicate_csv_column",
+      "rejected_as_expected": true
+    },
+    {
+      "case": "broken_local_link",
+      "rejected_as_expected": true
+    }
+  ]
+}

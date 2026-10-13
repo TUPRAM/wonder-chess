@@ -74,23 +74,59 @@
     }
   },
   "wc_vn_tide_caller": {
-    "static_mesh": "/Game/WonderChess/VNext/Heroes/TideCaller_r001/SM_TideCaller",
-    "scale": 1.15,
+    "mesh": "/Game/WonderChess/VNext/Heroes/TideCaller_r002/SK_TideCaller",
+    "scale": 1.0,
     "yaw": 0,
-    "label_height": 245
+    "label_height": 245,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Heroes/TideCaller_r002/Animations/A_TideCaller_Idle",
+      "Move": "/Game/WonderChess/VNext/Heroes/TideCaller_r002/Animations/A_TideCaller_Move",
+      "Attack": "/Game/WonderChess/VNext/Heroes/TideCaller_r002/Animations/A_TideCaller_Attack",
+      "Cast": "/Game/WonderChess/VNext/Heroes/TideCaller_r002/Animations/A_TideCaller_Cast",
+      "Hit": "/Game/WonderChess/VNext/Heroes/TideCaller_r002/Animations/A_TideCaller_Hit",
+      "Defeat": "/Game/WonderChess/VNext/Heroes/TideCaller_r002/Animations/A_TideCaller_Defeat"
+    },
+    "rates": {
+      "Attack": 1.0,
+      "Cast": 2.5,
+      "Move": 1.0,
+      "Hit": 1.0,
+      "Defeat": 1.0
+    },
+    "items": [],
+    "shots": {
+      "basic": {
+        "mesh": "WaterOrb",
+        "scale": 2.0,
+        "arc": 45,
+        "spin": [
+          300,
+          0,
+          0
+        ],
+        "trail": "drip",
+        "impact": "splash",
+        "lead_ms": 150,
+        "from_bone": "RightHand"
+      }
+    }
   },
   "wc_vn_boar_rusher": {
-    "mesh": "/Game/WonderChess/VNext/Heroes/BoarRusher_r001/SK_BoarRusher_Grip",
+    "mesh": "/Game/WonderChess/VNext/Heroes/BoarRusher_r002/SK_BoarRusher_Detail2",
     "scale": 1.0,
     "yaw": 0,
     "label_height": 240,
     "clips": {
-      "Idle": "/Game/WonderChess/VNext/Heroes/BoarRusher_r001/Animations/A_BoarRusher_Library_Idle_4",
-      "Move": "/Game/WonderChess/VNext/Heroes/BoarRusher_r001/Animations/A_BoarRusher_Library_Monster_Walk",
-      "Attack": "/Game/WonderChess/VNext/Heroes/BoarRusher_r001/Animations/A_BoarRusher_Library_Charged_Axe_Chop",
-      "Cast": "/Game/WonderChess/VNext/Heroes/BoarRusher_r001/Animations/A_BoarRusher_Library_Male_Head_Down_Charge",
-      "Hit": "/Game/WonderChess/VNext/Heroes/BoarRusher_r001/Animations/A_BoarRusher_Library_Face_Punch_Reaction",
-      "Defeat": "/Game/WonderChess/VNext/Heroes/BoarRusher_r001/Animations/A_BoarRusher_Library_Knock_Down"
+      "Idle": "/Game/WonderChess/VNext/Heroes/BoarRusher_r002/Animations/A_BoarRusher_Library_Idle_4",
+      "Move": "/Game/WonderChess/VNext/Heroes/BoarRusher_r002/Animations/A_BoarRusher_Library_Monster_Walk",
+      "Attack": "/Game/WonderChess/VNext/Heroes/BoarRusher_r002/Animations/A_BoarRusher_Library_Charged_Axe_Chop",
+      "Cast": "/Game/WonderChess/VNext/Heroes/BoarRusher_r002/Animations/A_BoarRusher_Library_Male_Head_Down_Charge",
+      "Hit": "/Game/WonderChess/VNext/Heroes/BoarRusher_r002/Animations/A_BoarRusher_Library_Face_Punch_Reaction",
+      "Defeat": "/Game/WonderChess/VNext/Heroes/BoarRusher_r002/Animations/A_BoarRusher_Library_Knock_Down",
+      "Attack2": "/Game/WonderChess/VNext/Heroes/BoarRusher_r002/Animations/A_BoarRusher_Library_Heavy_Hammer_Swing",
+      "Taunt": "/Game/WonderChess/VNext/Heroes/BoarRusher_r002/Animations/A_BoarRusher_Library_Chest_Pound_Taunt",
+      "Stomp": "/Game/WonderChess/VNext/Heroes/BoarRusher_r002/Animations/A_BoarRusher_Library_Angry_Ground_Stomp",
+      "Run": "/Game/WonderChess/VNext/Heroes/BoarRusher_r002/Animations/A_BoarRusher_Run"
     },
     "rates": {
       "Attack": 5.0,
@@ -100,7 +136,7 @@
     },
     "items": [
       {
-        "mesh": "/Game/WonderChess/VNext/Heroes/BoarRusher_r001/Items/Club/model_urls_glb/StaticMeshes/model_urls_glb",
+        "mesh": "/Game/WonderChess/VNext/Heroes/BoarRusher_r002/Items/Club/model_urls_glb/StaticMeshes/model_urls_glb",
         "bone": "RightHand",
         "location": [
           0,
@@ -122,59 +158,293 @@
           "point": [
             0,
             0,
-            -77
+            -62
           ],
           "rest_direction": [
-            0.98,
-            0.07,
-            -0.2
+            -0.048,
+            0.853,
+            0.52
           ],
-          "reach": 12,
+          "reach": 14.5,
           "roll": 0,
           "palm": [
-            0,
-            -4.5,
-            -1.5
+            5.8,
+            1.5,
+            -2.0
           ]
         }
       }
     ],
     "curls": [
       {
-        "bone": "RightHand",
+        "bone": "RightThumb1",
         "axis": [
-          -0.21,
-          0.31,
-          -0.93
+          -0.045,
+          -0.721,
+          -0.691
         ],
-        "angle": -80
+        "angle": 20
       },
       {
-        "bone": "RightFingers1",
+        "bone": "RightThumb2",
         "axis": [
-          -0.98,
-          -0.07,
-          0.2
+          -0.045,
+          -0.721,
+          -0.691
         ],
-        "angle": 65
+        "angle": 30
       },
       {
-        "bone": "RightFingers2",
+        "bone": "RightThumb3",
         "axis": [
-          -0.98,
-          -0.07,
-          0.2
+          -0.045,
+          -0.721,
+          -0.691
         ],
-        "angle": 75
+        "angle": 25
       },
       {
-        "bone": "RightThumb",
+        "bone": "RightPinky1",
         "axis": [
-          -0.21,
-          0.31,
-          -0.93
+          0.073,
+          -0.88,
+          -0.47
         ],
-        "angle": 40
+        "angle": 70
+      },
+      {
+        "bone": "RightPinky2",
+        "axis": [
+          0.073,
+          -0.88,
+          -0.47
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightPinky3",
+        "axis": [
+          0.073,
+          -0.88,
+          -0.47
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightRing1",
+        "axis": [
+          0.023,
+          -0.822,
+          -0.57
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightRing2",
+        "axis": [
+          0.023,
+          -0.822,
+          -0.57
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightRing3",
+        "axis": [
+          0.023,
+          -0.822,
+          -0.57
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightMiddle1",
+        "axis": [
+          0.042,
+          -0.845,
+          -0.533
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightMiddle2",
+        "axis": [
+          0.042,
+          -0.845,
+          -0.533
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightMiddle3",
+        "axis": [
+          0.042,
+          -0.845,
+          -0.533
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightIndex1",
+        "axis": [
+          0.094,
+          -0.901,
+          -0.425
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightIndex2",
+        "axis": [
+          0.094,
+          -0.901,
+          -0.425
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightIndex3",
+        "axis": [
+          0.094,
+          -0.901,
+          -0.425
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "LeftThumb1",
+        "axis": [
+          0.047,
+          0.816,
+          0.576
+        ],
+        "angle": 6
+      },
+      {
+        "bone": "LeftThumb2",
+        "axis": [
+          0.047,
+          0.816,
+          0.576
+        ],
+        "angle": 10
+      },
+      {
+        "bone": "LeftThumb3",
+        "axis": [
+          0.047,
+          0.816,
+          0.576
+        ],
+        "angle": 8
+      },
+      {
+        "bone": "LeftPinky1",
+        "axis": [
+          0.09,
+          0.871,
+          0.483
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftPinky2",
+        "axis": [
+          0.09,
+          0.871,
+          0.483
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftPinky3",
+        "axis": [
+          0.09,
+          0.871,
+          0.483
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftRing1",
+        "axis": [
+          0.061,
+          0.836,
+          0.545
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftRing2",
+        "axis": [
+          0.061,
+          0.836,
+          0.545
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftRing3",
+        "axis": [
+          0.061,
+          0.836,
+          0.545
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftMiddle1",
+        "axis": [
+          0.103,
+          0.886,
+          0.451
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftMiddle2",
+        "axis": [
+          0.103,
+          0.886,
+          0.451
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftMiddle3",
+        "axis": [
+          0.103,
+          0.886,
+          0.451
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftIndex1",
+        "axis": [
+          0.101,
+          0.884,
+          0.457
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftIndex2",
+        "axis": [
+          0.101,
+          0.884,
+          0.457
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftIndex3",
+        "axis": [
+          0.101,
+          0.884,
+          0.457
+        ],
+        "angle": 14
       }
     ]
   },
@@ -265,20 +535,39 @@
         ],
         "angle": 75
       }
-    ]
+    ],
+    "shots": {
+      "basic": {
+        "mesh": "Hook",
+        "scale": 1.2,
+        "arc": 10,
+        "spin": [
+          0,
+          0,
+          0
+        ],
+        "trail": "chain",
+        "impact": "sparks",
+        "from_bone": "RightHand",
+        "hide_item": 0,
+        "lead_ms": 150
+      }
+    }
   },
   "wc_vn_hammerer": {
-    "mesh": "/Game/WonderChess/VNext/Heroes/Hammerer_r001/SK_Hammerer_Grip",
+    "mesh": "/Game/WonderChess/VNext/Heroes/Hammerer_r002/SK_Hammerer_Detail3",
     "scale": 1.0,
     "yaw": 0,
-    "label_height": 175,
+    "label_height": 165,
     "clips": {
-      "Idle": "/Game/WonderChess/VNext/Heroes/Hammerer_r001/Animations/A_Hammerer_Library_Idle_6",
-      "Move": "/Game/WonderChess/VNext/Heroes/Hammerer_r001/Animations/A_Hammerer_Library_Proud_Strut",
-      "Attack": "/Game/WonderChess/VNext/Heroes/Hammerer_r001/Animations/A_Hammerer_Library_Heavy_Hammer_Swing",
-      "Cast": "/Game/WonderChess/VNext/Heroes/Hammerer_r001/Animations/A_Hammerer_Library_Charged_Slash",
-      "Hit": "/Game/WonderChess/VNext/Heroes/Hammerer_r001/Animations/A_Hammerer_Library_Hit_Reaction",
-      "Defeat": "/Game/WonderChess/VNext/Heroes/Hammerer_r001/Animations/A_Hammerer_Library_Shot_and_Fall_Forward"
+      "Idle": "/Game/WonderChess/VNext/Heroes/Hammerer_r002/Animations/A_Hammerer_Library_Idle_6",
+      "Move": "/Game/WonderChess/VNext/Heroes/Hammerer_r002/Animations/A_Hammerer_Library_Proud_Strut",
+      "Attack": "/Game/WonderChess/VNext/Heroes/Hammerer_r002/Animations/A_Hammerer_Library_Heavy_Hammer_Swing",
+      "Cast": "/Game/WonderChess/VNext/Heroes/Hammerer_r002/Animations/A_Hammerer_Library_Charged_Slash",
+      "Hit": "/Game/WonderChess/VNext/Heroes/Hammerer_r002/Animations/A_Hammerer_Library_Hit_Reaction",
+      "Defeat": "/Game/WonderChess/VNext/Heroes/Hammerer_r002/Animations/A_Hammerer_Library_Shot_and_Fall_Forward",
+      "Taunt": "/Game/WonderChess/VNext/Heroes/Hammerer_r002/Animations/A_Hammerer_Library_Sword_Shout",
+      "Run": "/Game/WonderChess/VNext/Heroes/Hammerer_r002/Animations/A_Hammerer_Run"
     },
     "rates": {
       "Attack": 1.4,
@@ -287,7 +576,7 @@
     },
     "items": [
       {
-        "mesh": "/Game/WonderChess/VNext/Heroes/Hammerer_r001/Items/Hammer/model_urls_glb/StaticMeshes/model_urls_glb",
+        "mesh": "/Game/WonderChess/VNext/Heroes/Hammerer_r002/Items/Hammer/model_urls_glb/StaticMeshes/model_urls_glb",
         "bone": "RightHand",
         "location": [
           0,
@@ -299,7 +588,1390 @@
           0,
           0
         ],
-        "scale": 0.58,
+        "scale": 0.63,
+        "grip": {
+          "tip_axis": [
+            0,
+            0,
+            1
+          ],
+          "point": [
+            0,
+            0,
+            -38
+          ],
+          "rest_direction": [
+            -0.29,
+            0.927,
+            0.239
+          ],
+          "reach": 9.6,
+          "roll": 0,
+          "palm": [
+            3.3,
+            1.3,
+            -1.1
+          ],
+          "second_hand": {
+            "upper": "LeftArm",
+            "lower": "LeftForeArm",
+            "hand": "LeftHand",
+            "point": [
+              0,
+              0,
+              -78
+            ],
+            "clips": [
+              "Attack",
+              "Cast"
+            ]
+          }
+        }
+      }
+    ],
+    "curls": [
+      {
+        "bone": "RightThumb1",
+        "axis": [
+          0.18,
+          -0.855,
+          -0.486
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "RightThumb2",
+        "axis": [
+          0.18,
+          -0.855,
+          -0.486
+        ],
+        "angle": 30
+      },
+      {
+        "bone": "RightThumb3",
+        "axis": [
+          0.18,
+          -0.855,
+          -0.486
+        ],
+        "angle": 25
+      },
+      {
+        "bone": "RightPinky1",
+        "axis": [
+          0.302,
+          -0.93,
+          -0.21
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightPinky2",
+        "axis": [
+          0.302,
+          -0.93,
+          -0.21
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightPinky3",
+        "axis": [
+          0.302,
+          -0.93,
+          -0.21
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightRing1",
+        "axis": [
+          0.285,
+          -0.925,
+          -0.253
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightRing2",
+        "axis": [
+          0.285,
+          -0.925,
+          -0.253
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightRing3",
+        "axis": [
+          0.285,
+          -0.925,
+          -0.253
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightMiddle1",
+        "axis": [
+          0.284,
+          -0.924,
+          -0.255
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightMiddle2",
+        "axis": [
+          0.284,
+          -0.924,
+          -0.255
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightMiddle3",
+        "axis": [
+          0.284,
+          -0.924,
+          -0.255
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightIndex1",
+        "axis": [
+          0.285,
+          -0.924,
+          -0.254
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightIndex2",
+        "axis": [
+          0.285,
+          -0.924,
+          -0.254
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightIndex3",
+        "axis": [
+          0.285,
+          -0.924,
+          -0.254
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "LeftThumb1",
+        "axis": [
+          0.271,
+          0.841,
+          0.468
+        ],
+        "angle": 6
+      },
+      {
+        "bone": "LeftThumb2",
+        "axis": [
+          0.271,
+          0.841,
+          0.468
+        ],
+        "angle": 10
+      },
+      {
+        "bone": "LeftThumb3",
+        "axis": [
+          0.271,
+          0.841,
+          0.468
+        ],
+        "angle": 8
+      },
+      {
+        "bone": "LeftPinky1",
+        "axis": [
+          0.412,
+          0.911,
+          0.033
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftPinky2",
+        "axis": [
+          0.412,
+          0.911,
+          0.033
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftPinky3",
+        "axis": [
+          0.412,
+          0.911,
+          0.033
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftRing1",
+        "axis": [
+          0.306,
+          0.871,
+          0.385
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftRing2",
+        "axis": [
+          0.306,
+          0.871,
+          0.385
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftRing3",
+        "axis": [
+          0.306,
+          0.871,
+          0.385
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftMiddle1",
+        "axis": [
+          0.353,
+          0.901,
+          0.25
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftMiddle2",
+        "axis": [
+          0.353,
+          0.901,
+          0.25
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftMiddle3",
+        "axis": [
+          0.353,
+          0.901,
+          0.25
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftIndex1",
+        "axis": [
+          0.197,
+          0.762,
+          0.617
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftIndex2",
+        "axis": [
+          0.197,
+          0.762,
+          0.617
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftIndex3",
+        "axis": [
+          0.197,
+          0.762,
+          0.617
+        ],
+        "angle": 14
+      }
+    ],
+    "shots": {
+      "melee": {
+        "item": 0,
+        "width": 18,
+        "color": [
+          1.4,
+          1.5,
+          1.7
+        ],
+        "impact": "hammer",
+        "impact_scale": 1.0
+      }
+    }
+  },
+  "wc_vn_grove_druid": {
+    "mesh": "/Game/WonderChess/VNext/Heroes/GroveDruid_r001/SK_GroveDruid_Detail3",
+    "scale": 1.0,
+    "yaw": 0,
+    "label_height": 215,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Heroes/GroveDruid_r001/Animations/A_GroveDruid_Library_Idle_7",
+      "Move": "/Game/WonderChess/VNext/Heroes/GroveDruid_r001/Animations/A_GroveDruid_Library_Thoughtful_Walk",
+      "Attack": "/Game/WonderChess/VNext/Heroes/GroveDruid_r001/Animations/A_GroveDruid_Library_mage_soell_cast",
+      "Cast": "/Game/WonderChess/VNext/Heroes/GroveDruid_r001/Animations/A_GroveDruid_Library_Charged_Spell_Cast",
+      "Hit": "/Game/WonderChess/VNext/Heroes/GroveDruid_r001/Animations/A_GroveDruid_Library_Face_Punch_Reaction_2",
+      "Defeat": "/Game/WonderChess/VNext/Heroes/GroveDruid_r001/Animations/A_GroveDruid_Library_Fall_Dead_from_Abdominal_Injury",
+      "Run": "/Game/WonderChess/VNext/Heroes/GroveDruid_r001/Animations/A_GroveDruid_Run"
+    },
+    "rates": {
+      "Attack": 1.8,
+      "Cast": 2.0,
+      "Move": 1.5,
+      "Hit": 3.5
+    },
+    "items": [
+      {
+        "mesh": "/Game/WonderChess/VNext/Heroes/GroveDruid_r001/Items/Staff/model_urls_glb/StaticMeshes/model_urls_glb",
+        "bone": "RightHand",
+        "location": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": 1.08,
+        "grip": {
+          "tip_axis": [
+            0,
+            0,
+            1
+          ],
+          "point": [
+            0,
+            0,
+            8
+          ],
+          "rest_direction": [
+            0,
+            0.12,
+            1
+          ],
+          "reach": 10.6,
+          "palm": [
+            3.0,
+            2.6,
+            -0.6
+          ],
+          "roll": 0,
+          "radius": 4,
+          "upright": true
+        }
+      }
+    ],
+    "held_arm": {
+      "chest": "Spine02",
+      "upper": "RightArm",
+      "lower": "RightForeArm",
+      "hand": "RightHand",
+      "upper_direction": [
+        -0.55,
+        0.05,
+        -1.0
+      ],
+      "lower_direction": [
+        -0.75,
+        0.45,
+        0.3
+      ],
+      "free_clips": [
+        "Attack",
+        "Cast",
+        "Defeat"
+      ]
+    },
+    "curls": [
+      {
+        "bone": "RightPinky1",
+        "axis": [
+          0.378,
+          -0.617,
+          -0.69
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightPinky2",
+        "axis": [
+          0.378,
+          -0.617,
+          -0.69
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightPinky3",
+        "axis": [
+          0.378,
+          -0.617,
+          -0.69
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightRing1",
+        "axis": [
+          0.432,
+          -0.663,
+          -0.612
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightRing2",
+        "axis": [
+          0.432,
+          -0.663,
+          -0.612
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightRing3",
+        "axis": [
+          0.432,
+          -0.663,
+          -0.612
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightMiddle1",
+        "axis": [
+          0.398,
+          -0.635,
+          -0.662
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightMiddle2",
+        "axis": [
+          0.398,
+          -0.635,
+          -0.662
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightMiddle3",
+        "axis": [
+          0.398,
+          -0.635,
+          -0.662
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightIndex1",
+        "axis": [
+          0.414,
+          -0.648,
+          -0.64
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightIndex2",
+        "axis": [
+          0.414,
+          -0.648,
+          -0.64
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightIndex3",
+        "axis": [
+          0.414,
+          -0.648,
+          -0.64
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "LeftPinky1",
+        "axis": [
+          0.368,
+          0.589,
+          0.719
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftPinky2",
+        "axis": [
+          0.368,
+          0.589,
+          0.719
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftPinky3",
+        "axis": [
+          0.368,
+          0.589,
+          0.719
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftRing1",
+        "axis": [
+          0.447,
+          0.663,
+          0.601
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftRing2",
+        "axis": [
+          0.447,
+          0.663,
+          0.601
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftRing3",
+        "axis": [
+          0.447,
+          0.663,
+          0.601
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftMiddle1",
+        "axis": [
+          0.444,
+          0.66,
+          0.606
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftMiddle2",
+        "axis": [
+          0.444,
+          0.66,
+          0.606
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftMiddle3",
+        "axis": [
+          0.444,
+          0.66,
+          0.606
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftIndex1",
+        "axis": [
+          0.47,
+          0.683,
+          0.559
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftIndex2",
+        "axis": [
+          0.47,
+          0.683,
+          0.559
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftIndex3",
+        "axis": [
+          0.47,
+          0.683,
+          0.559
+        ],
+        "angle": 14
+      }
+    ],
+    "shots": {
+      "basic": {
+        "mesh": "LeafSeed",
+        "scale": 2.1,
+        "arc": 40,
+        "spin": [
+          0,
+          900,
+          0
+        ],
+        "trail": "leaf",
+        "impact": "leaf",
+        "lead_ms": 150
+      }
+    }
+  },
+  "wc_vn_prism_scholar": {
+    "mesh": "/Game/WonderChess/VNext/Heroes/PrismScholar_r001/SK_PrismScholar_Detail",
+    "scale": 1.0,
+    "yaw": 0,
+    "label_height": 195,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Heroes/PrismScholar_r001/Animations/A_PrismScholar_Calm",
+      "Move": "/Game/WonderChess/VNext/Heroes/PrismScholar_r001/Animations/A_PrismScholar_Library_Confident_Walk",
+      "Attack": "/Game/WonderChess/VNext/Heroes/PrismScholar_r001/Animations/A_PrismScholar_Library_mage_soell_cast_3",
+      "Cast": "/Game/WonderChess/VNext/Heroes/PrismScholar_r001/Animations/A_PrismScholar_Library_Charged_Spell_Cast_1",
+      "Hit": "/Game/WonderChess/VNext/Heroes/PrismScholar_r001/Animations/A_PrismScholar_Library_Face_Punch_Reaction_1",
+      "Defeat": "/Game/WonderChess/VNext/Heroes/PrismScholar_r001/Animations/A_PrismScholar_Library_Shot_and_Fall_Backward",
+      "Run": "/Game/WonderChess/VNext/Heroes/PrismScholar_r001/Animations/A_PrismScholar_Run"
+    },
+    "rates": {
+      "Attack": 2.6,
+      "Cast": 3.0,
+      "Move": 1.8,
+      "Hit": 3.0
+    },
+    "held_arm": {
+      "chest": "Spine02",
+      "upper": "RightArm",
+      "lower": "RightForeArm",
+      "hand": "RightHand",
+      "upper_direction": [
+        -0.35,
+        0.12,
+        -1.0
+      ],
+      "lower_direction": [
+        -0.35,
+        0.55,
+        0.75
+      ],
+      "free_clips": [
+        "Attack",
+        "Cast",
+        "Defeat",
+        "Hit"
+      ]
+    },
+    "items": [
+      {
+        "mesh": "/Game/WonderChess/VNext/Heroes/PrismScholar_r001/Items/Crystal/model_urls_glb/StaticMeshes/model_urls_glb",
+        "bone": "Hips",
+        "location": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": 0.13,
+        "float": {
+          "at": [
+            -66,
+            26,
+            158
+          ],
+          "bob": 3.5,
+          "spin": 28.0,
+          "phase": 0.0
+        }
+      },
+      {
+        "mesh": "/Game/WonderChess/VNext/Heroes/PrismScholar_r001/Items/Crystal/model_urls_glb/StaticMeshes/model_urls_glb",
+        "bone": "Hips",
+        "location": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": 0.12,
+        "float": {
+          "at": [
+            -32,
+            -30,
+            150
+          ],
+          "bob": 3.5,
+          "spin": 40.6,
+          "phase": 2.1
+        }
+      },
+      {
+        "mesh": "/Game/WonderChess/VNext/Heroes/PrismScholar_r001/Items/Crystal/model_urls_glb/StaticMeshes/model_urls_glb",
+        "bone": "Hips",
+        "location": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": 0.12,
+        "float": {
+          "at": [
+            32,
+            -30,
+            150
+          ],
+          "bob": 3.5,
+          "spin": 53.2,
+          "phase": 4.2
+        }
+      }
+    ],
+    "curls": [
+      {
+        "bone": "RightThumb1",
+        "axis": [
+          -0.045,
+          -0.917,
+          -0.397
+        ],
+        "angle": 6
+      },
+      {
+        "bone": "RightThumb2",
+        "axis": [
+          -0.045,
+          -0.917,
+          -0.397
+        ],
+        "angle": 10
+      },
+      {
+        "bone": "RightThumb3",
+        "axis": [
+          -0.045,
+          -0.917,
+          -0.397
+        ],
+        "angle": 8
+      },
+      {
+        "bone": "RightPinky1",
+        "axis": [
+          0.217,
+          -0.976,
+          0.028
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "RightPinky2",
+        "axis": [
+          0.217,
+          -0.976,
+          0.028
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "RightPinky3",
+        "axis": [
+          0.217,
+          -0.976,
+          0.028
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "RightRing1",
+        "axis": [
+          0.163,
+          -0.984,
+          -0.067
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "RightRing2",
+        "axis": [
+          0.163,
+          -0.984,
+          -0.067
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "RightRing3",
+        "axis": [
+          0.163,
+          -0.984,
+          -0.067
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "RightMiddle1",
+        "axis": [
+          0.165,
+          -0.984,
+          -0.064
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "RightMiddle2",
+        "axis": [
+          0.165,
+          -0.984,
+          -0.064
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "RightMiddle3",
+        "axis": [
+          0.165,
+          -0.984,
+          -0.064
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "RightIndex1",
+        "axis": [
+          0.163,
+          -0.984,
+          -0.066
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "RightIndex2",
+        "axis": [
+          0.163,
+          -0.984,
+          -0.066
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "RightIndex3",
+        "axis": [
+          0.163,
+          -0.984,
+          -0.066
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftThumb1",
+        "axis": [
+          -0.05,
+          0.912,
+          0.406
+        ],
+        "angle": 6
+      },
+      {
+        "bone": "LeftThumb2",
+        "axis": [
+          -0.05,
+          0.912,
+          0.406
+        ],
+        "angle": 10
+      },
+      {
+        "bone": "LeftThumb3",
+        "axis": [
+          -0.05,
+          0.912,
+          0.406
+        ],
+        "angle": 8
+      },
+      {
+        "bone": "LeftPinky1",
+        "axis": [
+          0.232,
+          0.971,
+          -0.064
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftPinky2",
+        "axis": [
+          0.232,
+          0.971,
+          -0.064
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftPinky3",
+        "axis": [
+          0.232,
+          0.971,
+          -0.064
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftRing1",
+        "axis": [
+          0.169,
+          0.984,
+          0.049
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftRing2",
+        "axis": [
+          0.169,
+          0.984,
+          0.049
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftRing3",
+        "axis": [
+          0.169,
+          0.984,
+          0.049
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftMiddle1",
+        "axis": [
+          0.187,
+          0.982,
+          0.018
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftMiddle2",
+        "axis": [
+          0.187,
+          0.982,
+          0.018
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftMiddle3",
+        "axis": [
+          0.187,
+          0.982,
+          0.018
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftIndex1",
+        "axis": [
+          0.137,
+          0.985,
+          0.106
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftIndex2",
+        "axis": [
+          0.137,
+          0.985,
+          0.106
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftIndex3",
+        "axis": [
+          0.137,
+          0.985,
+          0.106
+        ],
+        "angle": 14
+      }
+    ],
+    "straighten": {
+      "clips": [
+        "Idle"
+      ],
+      "weight": 0.85,
+      "bones": [
+        "Hips",
+        "Spine02",
+        "Spine01",
+        "Spine",
+        "neck",
+        "Head",
+        "LeftUpLeg",
+        "LeftLeg",
+        "LeftFoot",
+        "LeftToeBase",
+        "RightUpLeg",
+        "RightLeg",
+        "RightFoot",
+        "RightToeBase",
+        "LeftShoulder",
+        "RightShoulder"
+      ]
+    },
+    "shots": {
+      "basic": {
+        "mesh": "CrystalShard",
+        "scale": 1.8,
+        "arc": 0,
+        "spin": [
+          0,
+          700,
+          0
+        ],
+        "trail": "glint",
+        "impact": "crystal",
+        "lead_ms": 150
+      }
+    }
+  },
+  "wc_vn_soul_jailer": {
+    "mesh": "/Game/WonderChess/VNext/Heroes/SoulJailer_r001/SK_SoulJailer_Detail",
+    "scale": 1.0,
+    "yaw": 0,
+    "label_height": 225,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Heroes/SoulJailer_r001/Animations/A_SoulJailer_Library_Idle_9",
+      "Move": "/Game/WonderChess/VNext/Heroes/SoulJailer_r001/Animations/A_SoulJailer_Library_walking_2",
+      "Attack": "/Game/WonderChess/VNext/Heroes/SoulJailer_r001/Animations/A_SoulJailer_Library_mage_soell_cast_1",
+      "Cast": "/Game/WonderChess/VNext/Heroes/SoulJailer_r001/Animations/A_SoulJailer_Library_mage_soell_cast_4",
+      "Hit": "/Game/WonderChess/VNext/Heroes/SoulJailer_r001/Animations/A_SoulJailer_Library_Gunshot_Reaction",
+      "Defeat": "/Game/WonderChess/VNext/Heroes/SoulJailer_r001/Animations/A_SoulJailer_Library_Strangled_and_Fall_Forward",
+      "Run": "/Game/WonderChess/VNext/Heroes/SoulJailer_r001/Animations/A_SoulJailer_Run"
+    },
+    "rates": {
+      "Attack": 2.6,
+      "Cast": 2.0,
+      "Move": 1.0,
+      "Hit": 2.5,
+      "Defeat": 3.0
+    },
+    "curls": [
+      {
+        "bone": "RightThumb1",
+        "axis": [
+          0.61,
+          -0.733,
+          -0.302
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "RightThumb2",
+        "axis": [
+          0.61,
+          -0.733,
+          -0.302
+        ],
+        "angle": 30
+      },
+      {
+        "bone": "RightThumb3",
+        "axis": [
+          0.61,
+          -0.733,
+          -0.302
+        ],
+        "angle": 25
+      },
+      {
+        "bone": "RightPinky1",
+        "axis": [
+          0.704,
+          -0.705,
+          0.091
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightPinky2",
+        "axis": [
+          0.704,
+          -0.705,
+          0.091
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightPinky3",
+        "axis": [
+          0.704,
+          -0.705,
+          0.091
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightRing1",
+        "axis": [
+          0.605,
+          -0.732,
+          -0.312
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightRing2",
+        "axis": [
+          0.605,
+          -0.732,
+          -0.312
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightRing3",
+        "axis": [
+          0.605,
+          -0.732,
+          -0.312
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightMiddle1",
+        "axis": [
+          0.605,
+          -0.732,
+          -0.313
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightMiddle2",
+        "axis": [
+          0.605,
+          -0.732,
+          -0.313
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightMiddle3",
+        "axis": [
+          0.605,
+          -0.732,
+          -0.313
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightIndex1",
+        "axis": [
+          0.634,
+          -0.737,
+          -0.235
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightIndex2",
+        "axis": [
+          0.634,
+          -0.737,
+          -0.235
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightIndex3",
+        "axis": [
+          0.634,
+          -0.737,
+          -0.235
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "LeftThumb1",
+        "axis": [
+          0.599,
+          0.748,
+          0.284
+        ],
+        "angle": 6
+      },
+      {
+        "bone": "LeftThumb2",
+        "axis": [
+          0.599,
+          0.748,
+          0.284
+        ],
+        "angle": 10
+      },
+      {
+        "bone": "LeftThumb3",
+        "axis": [
+          0.599,
+          0.748,
+          0.284
+        ],
+        "angle": 8
+      },
+      {
+        "bone": "LeftPinky1",
+        "axis": [
+          0.669,
+          0.739,
+          -0.079
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftPinky2",
+        "axis": [
+          0.669,
+          0.739,
+          -0.079
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftPinky3",
+        "axis": [
+          0.669,
+          0.739,
+          -0.079
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftRing1",
+        "axis": [
+          0.649,
+          0.756,
+          0.087
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftRing2",
+        "axis": [
+          0.649,
+          0.756,
+          0.087
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftRing3",
+        "axis": [
+          0.649,
+          0.756,
+          0.087
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftMiddle1",
+        "axis": [
+          0.653,
+          0.755,
+          0.06
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftMiddle2",
+        "axis": [
+          0.653,
+          0.755,
+          0.06
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftMiddle3",
+        "axis": [
+          0.653,
+          0.755,
+          0.06
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftIndex1",
+        "axis": [
+          0.654,
+          0.754,
+          0.055
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftIndex2",
+        "axis": [
+          0.654,
+          0.754,
+          0.055
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftIndex3",
+        "axis": [
+          0.654,
+          0.754,
+          0.055
+        ],
+        "angle": 14
+      }
+    ],
+    "items": [
+      {
+        "mesh": "/Game/WonderChess/VNext/Heroes/SoulJailer_r001/Items/Cage/model_urls_glb/StaticMeshes/model_urls_glb",
+        "bone": "RightHand",
+        "location": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": 0.32,
         "grip": {
           "tip_axis": [
             0,
@@ -309,59 +1981,6007 @@
           "point": [
             0,
             0,
-            35
+            92
           ],
           "rest_direction": [
-            0.83,
-            0.15,
-            -0.54
+            -0.593,
+            0.729,
+            0.342
           ],
-          "reach": 9.9,
-          "roll": 0,
+          "reach": 8.8,
           "palm": [
+            2.4,
+            2.3,
+            -0.7
+          ],
+          "roll": 0,
+          "radius": 5,
+          "hang": true
+        },
+        "light": {
+          "at": [
+            0,
+            0,
+            -45
+          ],
+          "color": [
+            0.3,
+            1.0,
+            0.5
+          ],
+          "intensity": 3.0,
+          "radius": 230
+        }
+      }
+    ],
+    "held_arm": {
+      "chest": "Spine02",
+      "upper": "RightArm",
+      "lower": "RightForeArm",
+      "hand": "RightHand",
+      "upper_direction": [
+        -0.42,
+        0.12,
+        -1.0
+      ],
+      "lower_direction": [
+        -0.3,
+        0.25,
+        -1.0
+      ],
+      "free_clips": [
+        "Attack",
+        "Cast",
+        "Defeat",
+        "Hit"
+      ]
+    },
+    "shots": {
+      "basic": {
+        "mesh": "SoulWisp",
+        "scale": 1.0,
+        "arc": 25,
+        "spin": [
+          0,
+          0,
+          0
+        ],
+        "trail": "wisp",
+        "impact": "soul",
+        "lead_ms": 150
+      }
+    }
+  },
+  "wc_vn_chapel_healer": {
+    "mesh": "/Game/WonderChess/VNext/Heroes/ChapelHealer_r001/SK_ChapelHealer_Detail",
+    "scale": 1.0,
+    "yaw": 0,
+    "label_height": 200,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Heroes/ChapelHealer_r001/Animations/A_ChapelHealer_Library_Idle_10",
+      "Move": "/Game/WonderChess/VNext/Heroes/ChapelHealer_r001/Animations/A_ChapelHealer_Library_Casual_Walk",
+      "Attack": "/Game/WonderChess/VNext/Heroes/ChapelHealer_r001/Animations/A_ChapelHealer_Library_mage_soell_cast_2",
+      "Cast": "/Game/WonderChess/VNext/Heroes/ChapelHealer_r001/Animations/A_ChapelHealer_Library_mage_soell_cast_5",
+      "Hit": "/Game/WonderChess/VNext/Heroes/ChapelHealer_r001/Animations/A_ChapelHealer_Library_Hit_Reaction",
+      "Defeat": "/Game/WonderChess/VNext/Heroes/ChapelHealer_r001/Animations/A_ChapelHealer_Library_Shot_and_Slow_Fall_Backward",
+      "Run": "/Game/WonderChess/VNext/Heroes/ChapelHealer_r001/Animations/A_ChapelHealer_Run"
+    },
+    "rates": {
+      "Attack": 2.4,
+      "Cast": 5.0,
+      "Move": 1.5
+    },
+    "curls": [
+      {
+        "bone": "RightPinky1",
+        "axis": [
+          -0.258,
+          -0.926,
+          -0.276
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightPinky2",
+        "axis": [
+          -0.258,
+          -0.926,
+          -0.276
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightPinky3",
+        "axis": [
+          -0.258,
+          -0.926,
+          -0.276
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightRing1",
+        "axis": [
+          -0.258,
+          -0.926,
+          -0.276
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightRing2",
+        "axis": [
+          -0.258,
+          -0.926,
+          -0.276
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightRing3",
+        "axis": [
+          -0.258,
+          -0.926,
+          -0.276
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightMiddle1",
+        "axis": [
+          -0.215,
+          -0.945,
+          -0.247
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightMiddle2",
+        "axis": [
+          -0.215,
+          -0.945,
+          -0.247
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightMiddle3",
+        "axis": [
+          -0.215,
+          -0.945,
+          -0.247
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightIndex1",
+        "axis": [
+          -0.16,
+          -0.964,
+          -0.21
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightIndex2",
+        "axis": [
+          -0.16,
+          -0.964,
+          -0.21
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightIndex3",
+        "axis": [
+          -0.16,
+          -0.964,
+          -0.21
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "LeftThumb1",
+        "axis": [
+          -0.129,
+          0.961,
+          0.243
+        ],
+        "angle": 6
+      },
+      {
+        "bone": "LeftThumb2",
+        "axis": [
+          -0.129,
+          0.961,
+          0.243
+        ],
+        "angle": 10
+      },
+      {
+        "bone": "LeftThumb3",
+        "axis": [
+          -0.129,
+          0.961,
+          0.243
+        ],
+        "angle": 8
+      },
+      {
+        "bone": "LeftPinky1",
+        "axis": [
+          -0.334,
+          0.864,
+          0.376
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftPinky2",
+        "axis": [
+          -0.334,
+          0.864,
+          0.376
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftPinky3",
+        "axis": [
+          -0.334,
+          0.864,
+          0.376
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftRing1",
+        "axis": [
+          -0.222,
+          0.926,
+          0.305
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftRing2",
+        "axis": [
+          -0.222,
+          0.926,
+          0.305
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftRing3",
+        "axis": [
+          -0.222,
+          0.926,
+          0.305
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftMiddle1",
+        "axis": [
+          -0.184,
+          0.942,
+          0.28
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftMiddle2",
+        "axis": [
+          -0.184,
+          0.942,
+          0.28
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftMiddle3",
+        "axis": [
+          -0.184,
+          0.942,
+          0.28
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftIndex1",
+        "axis": [
+          -0.167,
+          0.949,
+          0.268
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftIndex2",
+        "axis": [
+          -0.167,
+          0.949,
+          0.268
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftIndex3",
+        "axis": [
+          -0.167,
+          0.949,
+          0.268
+        ],
+        "angle": 14
+      }
+    ],
+    "items": [
+      {
+        "mesh": "/Game/WonderChess/VNext/Heroes/ChapelHealer_r001/Items/Staff/model_urls_glb/StaticMeshes/model_urls_glb",
+        "bone": "RightHand",
+        "location": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": 0.92,
+        "grip": {
+          "tip_axis": [
+            0,
+            0,
+            1
+          ],
+          "point": [
+            0,
+            0,
+            10
+          ],
+          "rest_direction": [
+            0.226,
+            0.94,
+            0.254
+          ],
+          "reach": 8.4,
+          "palm": [
+            1.8,
+            0.3,
+            -2.6
+          ],
+          "roll": 0,
+          "radius": 4,
+          "upright": true
+        },
+        "light": {
+          "at": [
+            0,
+            0,
+            78
+          ],
+          "color": [
+            1.0,
+            0.78,
+            0.4
+          ],
+          "intensity": 4.0,
+          "radius": 280
+        }
+      }
+    ],
+    "held_arm": {
+      "chest": "Spine02",
+      "upper": "RightArm",
+      "lower": "RightForeArm",
+      "hand": "RightHand",
+      "upper_direction": [
+        -0.55,
+        0.05,
+        -1.0
+      ],
+      "lower_direction": [
+        -0.75,
+        0.45,
+        0.3
+      ],
+      "free_clips": [
+        "Attack",
+        "Cast",
+        "Defeat"
+      ]
+    },
+    "straighten": {
+      "clips": [
+        "Idle"
+      ],
+      "weight": 0.8,
+      "bones": [
+        "Hips",
+        "Spine02",
+        "Spine01",
+        "Spine",
+        "neck",
+        "Head",
+        "LeftUpLeg",
+        "LeftLeg",
+        "LeftFoot",
+        "LeftToeBase",
+        "RightUpLeg",
+        "RightLeg",
+        "RightFoot",
+        "RightToeBase",
+        "LeftShoulder",
+        "RightShoulder"
+      ]
+    },
+    "shots": {
+      "basic": {
+        "mesh": "FlameDrop",
+        "scale": 2.3,
+        "arc": 30,
+        "spin": [
+          0,
+          500,
+          0
+        ],
+        "trail": "holy",
+        "impact": "flame",
+        "impact_scale": 0.8,
+        "lead_ms": 150
+      }
+    }
+  },
+  "wc_vn_bomber": {
+    "mesh": "/Game/WonderChess/VNext/Heroes/Bomber_r001/SK_Bomber_Detail",
+    "scale": 1.0,
+    "yaw": 0,
+    "label_height": 150,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Heroes/Bomber_r001/Animations/A_Bomber_Library_Idle_11",
+      "Move": "/Game/WonderChess/VNext/Heroes/Bomber_r001/Animations/A_Bomber_Library_Funky_Walk",
+      "Attack": "/Game/WonderChess/VNext/Heroes/Bomber_r001/Animations/A_Bomber_Library_Crouch_Pull_and_Throw",
+      "Cast": "/Game/WonderChess/VNext/Heroes/Bomber_r001/Animations/A_Bomber_Library_mage_soell_cast_6",
+      "Hit": "/Game/WonderChess/VNext/Heroes/Bomber_r001/Animations/A_Bomber_Library_Face_Punch_Reaction",
+      "Defeat": "/Game/WonderChess/VNext/Heroes/Bomber_r001/Animations/A_Bomber_Library_Shot_and_Blown_Back",
+      "Run": "/Game/WonderChess/VNext/Heroes/Bomber_r001/Animations/A_Bomber_Run"
+    },
+    "rates": {
+      "Attack": 5.0,
+      "Cast": 2.2,
+      "Move": 1.2,
+      "Hit": 2.5
+    },
+    "curls": [
+      {
+        "bone": "RightThumb1",
+        "axis": [
+          -0.645,
+          -0.76,
+          -0.084
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "RightThumb2",
+        "axis": [
+          -0.645,
+          -0.76,
+          -0.084
+        ],
+        "angle": 30
+      },
+      {
+        "bone": "RightThumb3",
+        "axis": [
+          -0.645,
+          -0.76,
+          -0.084
+        ],
+        "angle": 25
+      },
+      {
+        "bone": "RightPinky1",
+        "axis": [
+          -0.325,
+          -0.8,
+          0.504
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightPinky2",
+        "axis": [
+          -0.325,
+          -0.8,
+          0.504
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightPinky3",
+        "axis": [
+          -0.325,
+          -0.8,
+          0.504
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightRing1",
+        "axis": [
+          -0.582,
+          -0.809,
+          0.085
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightRing2",
+        "axis": [
+          -0.582,
+          -0.809,
+          0.085
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightRing3",
+        "axis": [
+          -0.582,
+          -0.809,
+          0.085
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightMiddle1",
+        "axis": [
+          -0.595,
+          -0.802,
+          0.054
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightMiddle2",
+        "axis": [
+          -0.595,
+          -0.802,
+          0.054
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightMiddle3",
+        "axis": [
+          -0.595,
+          -0.802,
+          0.054
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightIndex1",
+        "axis": [
+          -0.431,
+          -0.827,
+          0.362
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightIndex2",
+        "axis": [
+          -0.431,
+          -0.827,
+          0.362
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightIndex3",
+        "axis": [
+          -0.431,
+          -0.827,
+          0.362
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "LeftThumb1",
+        "axis": [
+          -0.646,
+          0.755,
+          0.112
+        ],
+        "angle": 6
+      },
+      {
+        "bone": "LeftThumb2",
+        "axis": [
+          -0.646,
+          0.755,
+          0.112
+        ],
+        "angle": 10
+      },
+      {
+        "bone": "LeftThumb3",
+        "axis": [
+          -0.646,
+          0.755,
+          0.112
+        ],
+        "angle": 8
+      },
+      {
+        "bone": "LeftPinky1",
+        "axis": [
+          -0.364,
+          0.81,
+          -0.459
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftPinky2",
+        "axis": [
+          -0.364,
+          0.81,
+          -0.459
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftPinky3",
+        "axis": [
+          -0.364,
+          0.81,
+          -0.459
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftRing1",
+        "axis": [
+          -0.534,
+          0.826,
+          -0.181
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftRing2",
+        "axis": [
+          -0.534,
+          0.826,
+          -0.181
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftRing3",
+        "axis": [
+          -0.534,
+          0.826,
+          -0.181
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftMiddle1",
+        "axis": [
+          -0.589,
+          0.806,
+          -0.058
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftMiddle2",
+        "axis": [
+          -0.589,
+          0.806,
+          -0.058
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftMiddle3",
+        "axis": [
+          -0.589,
+          0.806,
+          -0.058
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftIndex1",
+        "axis": [
+          -0.383,
+          0.816,
+          -0.433
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftIndex2",
+        "axis": [
+          -0.383,
+          0.816,
+          -0.433
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftIndex3",
+        "axis": [
+          -0.383,
+          0.816,
+          -0.433
+        ],
+        "angle": 14
+      }
+    ],
+    "items": [
+      {
+        "mesh": "/Game/WonderChess/VNext/Heroes/Bomber_r001/Items/Bomb/model_urls_glb/StaticMeshes/model_urls_glb",
+        "bone": "Hips",
+        "location": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": 0.3,
+        "ground": {
+          "at": [
+            -44,
+            6,
+            28.5
+          ],
+          "roll_rate": 200
+        }
+      },
+      {
+        "mesh": "/Game/WonderChess/VNext/Effects/Props/PipeBomb/SM_PipeBomb",
+        "bone": "RightHand",
+        "location": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": 0.8,
+        "grip": {
+          "tip_axis": [
+            0,
+            1,
+            0
+          ],
+          "point": [
+            0,
+            0,
+            0
+          ],
+          "rest_direction": [
+            0.574,
+            0.812,
+            -0.104
+          ],
+          "reach": 7.7,
+          "palm": [
+            2.1,
+            -1.6,
+            -1.3
+          ],
+          "roll": 0,
+          "radius": 5
+        }
+      }
+    ],
+    "held_arm": {
+      "chest": "Spine02",
+      "upper": "RightArm",
+      "lower": "RightForeArm",
+      "hand": "RightHand",
+      "upper_direction": [
+        -0.5,
+        0.15,
+        -1.0
+      ],
+      "lower_direction": [
+        -0.35,
+        0.6,
+        0.55
+      ],
+      "free_clips": [
+        "Attack",
+        "Cast",
+        "Defeat",
+        "Hit"
+      ]
+    },
+    "shots": {
+      "basic": {
+        "mesh": "PipeBomb",
+        "scale": 1.0,
+        "arc": 85,
+        "spin": [
+          900,
+          0,
+          0
+        ],
+        "trail": "fuse",
+        "impact": "bomb",
+        "impact_scale": 0.8,
+        "from_bone": "RightHand",
+        "hide_item": 1,
+        "lead_ms": 150
+      },
+      "skill": {
+        "mesh": "/Game/WonderChess/VNext/Heroes/Bomber_r001/Items/Bomb/model_urls_glb/StaticMeshes/model_urls_glb",
+        "scale": 0.3,
+        "arc": 170,
+        "spin": [
+          260,
+          0,
+          0
+        ],
+        "trail": "fuse",
+        "impact": "bomb",
+        "impact_scale": 1.6,
+        "from_bone": "RightHand",
+        "hide_item": 0,
+        "lead_ms": 300
+      }
+    }
+  },
+  "wc_vn_blood_drummer": {
+    "mesh": "/Game/WonderChess/VNext/Heroes/BloodDrummer_r001/SK_BloodDrummer_Detail",
+    "scale": 1.0,
+    "yaw": 0,
+    "label_height": 230,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Heroes/BloodDrummer_r001/Animations/A_BloodDrummer_Library_Idle_12",
+      "Move": "/Game/WonderChess/VNext/Heroes/BloodDrummer_r001/Animations/A_BloodDrummer_Move",
+      "Attack": "/Game/WonderChess/VNext/Heroes/BloodDrummer_r001/Animations/A_BloodDrummer_Library_Punch_Combo_1",
+      "Cast": "/Game/WonderChess/VNext/Heroes/BloodDrummer_r001/Animations/A_BloodDrummer_Library_Angry_Ground_Stomp",
+      "Hit": "/Game/WonderChess/VNext/Heroes/BloodDrummer_r001/Animations/A_BloodDrummer_Library_Hit_Reaction_1",
+      "Defeat": "/Game/WonderChess/VNext/Heroes/BloodDrummer_r001/Animations/A_BloodDrummer_Library_Electrocuted_Fall",
+      "Taunt": "/Game/WonderChess/VNext/Heroes/BloodDrummer_r001/Animations/A_BloodDrummer_Library_Chest_Pound_Taunt",
+      "Run": "/Game/WonderChess/VNext/Heroes/BloodDrummer_r001/Animations/A_BloodDrummer_Run"
+    },
+    "rates": {
+      "Attack": 1.6,
+      "Cast": 1.0,
+      "Move": 1.0,
+      "Defeat": 2.5
+    },
+    "curls": [
+      {
+        "bone": "RightThumb1",
+        "axis": [
+          -0.188,
+          -0.487,
+          -0.853
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "RightThumb2",
+        "axis": [
+          -0.188,
+          -0.487,
+          -0.853
+        ],
+        "angle": 30
+      },
+      {
+        "bone": "RightThumb3",
+        "axis": [
+          -0.188,
+          -0.487,
+          -0.853
+        ],
+        "angle": 25
+      },
+      {
+        "bone": "RightPinky1",
+        "axis": [
+          -0.011,
+          -0.953,
+          -0.304
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightPinky2",
+        "axis": [
+          -0.011,
+          -0.953,
+          -0.304
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightPinky3",
+        "axis": [
+          -0.011,
+          -0.953,
+          -0.304
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightRing1",
+        "axis": [
+          -0.041,
+          -0.913,
+          -0.406
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightRing2",
+        "axis": [
+          -0.041,
+          -0.913,
+          -0.406
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightRing3",
+        "axis": [
+          -0.041,
+          -0.913,
+          -0.406
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightMiddle1",
+        "axis": [
+          -0.013,
+          -0.95,
+          -0.312
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightMiddle2",
+        "axis": [
+          -0.013,
+          -0.95,
+          -0.312
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightMiddle3",
+        "axis": [
+          -0.013,
+          -0.95,
+          -0.312
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightIndex1",
+        "axis": [
+          -0.048,
+          -0.9,
+          -0.433
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightIndex2",
+        "axis": [
+          -0.048,
+          -0.9,
+          -0.433
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightIndex3",
+        "axis": [
+          -0.048,
+          -0.9,
+          -0.433
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "LeftThumb1",
+        "axis": [
+          -0.171,
+          0.407,
+          0.897
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftThumb2",
+        "axis": [
+          -0.171,
+          0.407,
+          0.897
+        ],
+        "angle": 30
+      },
+      {
+        "bone": "LeftThumb3",
+        "axis": [
+          -0.171,
+          0.407,
+          0.897
+        ],
+        "angle": 25
+      },
+      {
+        "bone": "LeftPinky1",
+        "axis": [
+          -0.022,
+          0.941,
+          0.336
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "LeftPinky2",
+        "axis": [
+          -0.022,
+          0.941,
+          0.336
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "LeftPinky3",
+        "axis": [
+          -0.022,
+          0.941,
+          0.336
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "LeftRing1",
+        "axis": [
+          -0.035,
+          0.919,
+          0.392
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "LeftRing2",
+        "axis": [
+          -0.035,
+          0.919,
+          0.392
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "LeftRing3",
+        "axis": [
+          -0.035,
+          0.919,
+          0.392
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "LeftMiddle1",
+        "axis": [
+          -0.026,
+          0.935,
+          0.354
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "LeftMiddle2",
+        "axis": [
+          -0.026,
+          0.935,
+          0.354
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "LeftMiddle3",
+        "axis": [
+          -0.026,
+          0.935,
+          0.354
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "LeftIndex1",
+        "axis": [
+          -0.049,
+          0.893,
+          0.448
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "LeftIndex2",
+        "axis": [
+          -0.049,
+          0.893,
+          0.448
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "LeftIndex3",
+        "axis": [
+          -0.049,
+          0.893,
+          0.448
+        ],
+        "angle": 45
+      }
+    ],
+    "items": [
+      {
+        "mesh": "/Game/WonderChess/VNext/Heroes/BloodDrummer_r001/Items/Stick/model_urls_glb/StaticMeshes/model_urls_glb",
+        "bone": "RightHand",
+        "location": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": 0.24,
+        "grip": {
+          "tip_axis": [
+            0,
+            0,
+            1
+          ],
+          "point": [
+            0,
+            0,
+            -62
+          ],
+          "rest_direction": [
+            0.037,
+            0.919,
+            0.392
+          ],
+          "reach": 12.2,
+          "palm": [
+            4.5,
+            0.3,
+            -1.2
+          ],
+          "roll": 0,
+          "radius": 3
+        }
+      },
+      {
+        "mesh": "/Game/WonderChess/VNext/Heroes/BloodDrummer_r001/Items/Stick/model_urls_glb/StaticMeshes/model_urls_glb",
+        "bone": "LeftHand",
+        "location": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": 0.24,
+        "grip": {
+          "tip_axis": [
+            0,
+            0,
+            1
+          ],
+          "point": [
+            0,
+            0,
+            -62
+          ],
+          "rest_direction": [
+            -0.04,
+            0.911,
+            0.41
+          ],
+          "reach": 11.6,
+          "palm": [
+            -4.3,
+            0.2,
+            -0.9
+          ],
+          "roll": 0,
+          "radius": 3
+        }
+      },
+      {
+        "mesh": "/Game/WonderChess/VNext/Heroes/BloodDrummer_r001/Items/Drum/model_urls_glb/StaticMeshes/model_urls_glb",
+        "bone": "Spine02",
+        "location": [
+          0,
+          27,
+          108
+        ],
+        "rotation": [
+          14,
+          0,
+          0
+        ],
+        "scale": 0.45,
+        "mesh_space": true
+      }
+    ],
+    "reaches": [
+      {
+        "upper": "RightArm",
+        "lower": "RightForeArm",
+        "hand": "RightHand",
+        "carrier": "Spine02",
+        "point": [
+          -17,
+          34,
+          126
+        ],
+        "beat_axis": [
+          0,
+          -0.2,
+          1
+        ],
+        "beat": 20,
+        "rate": 2.6,
+        "phase": 0.0,
+        "clips": [
+          "Attack",
+          "Cast"
+        ]
+      },
+      {
+        "upper": "LeftArm",
+        "lower": "LeftForeArm",
+        "hand": "LeftHand",
+        "carrier": "Spine02",
+        "point": [
+          17,
+          34,
+          126
+        ],
+        "beat_axis": [
+          0,
+          -0.2,
+          1
+        ],
+        "beat": 20,
+        "rate": 2.6,
+        "phase": 3.1416,
+        "clips": [
+          "Attack",
+          "Cast"
+        ]
+      }
+    ],
+    "shots": {
+      "basic": {
+        "mesh": "SoundRing",
+        "scale": 0.8,
+        "arc": 0,
+        "spin": [
+          0,
+          0,
+          0
+        ],
+        "grow": 2.2,
+        "impact": "thump",
+        "from_bone": "Spine02",
+        "lead_ms": 150
+      }
+    }
+  },
+  "wc_vn_siege_master": {
+    "mesh": "/Game/WonderChess/VNext/Heroes/SiegeMaster_r001/SK_SiegeMaster_Detail",
+    "scale": 1.0,
+    "yaw": 0,
+    "label_height": 215,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Heroes/SiegeMaster_r001/Animations/A_SiegeMaster_Library_Idle_13",
+      "Move": "/Game/WonderChess/VNext/Heroes/SiegeMaster_r001/Animations/A_SiegeMaster_Move",
+      "Attack": "/Game/WonderChess/VNext/Heroes/SiegeMaster_r001/Animations/A_SiegeMaster_Library_Idle_13",
+      "Cast": "/Game/WonderChess/VNext/Heroes/SiegeMaster_r001/Animations/A_SiegeMaster_Library_Step_Forward_and_Push",
+      "Hit": "/Game/WonderChess/VNext/Heroes/SiegeMaster_r001/Animations/A_SiegeMaster_Library_Hit_Reaction",
+      "Defeat": "/Game/WonderChess/VNext/Heroes/SiegeMaster_r001/Animations/A_SiegeMaster_Library_Knock_Down_1",
+      "Push": "/Game/WonderChess/VNext/Heroes/SiegeMaster_r001/Animations/A_SiegeMaster_Library_Push_and_Walk_Forward",
+      "Run": "/Game/WonderChess/VNext/Heroes/SiegeMaster_r001/Animations/A_SiegeMaster_Run"
+    },
+    "rates": {
+      "Attack": 1.0,
+      "Cast": 1.6,
+      "Move": 1.0,
+      "Hit": 2.5
+    },
+    "curls": [
+      {
+        "bone": "RightThumb1",
+        "axis": [
+          -0.141,
+          -0.183,
+          -0.973
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "RightThumb2",
+        "axis": [
+          -0.141,
+          -0.183,
+          -0.973
+        ],
+        "angle": 30
+      },
+      {
+        "bone": "RightThumb3",
+        "axis": [
+          -0.141,
+          -0.183,
+          -0.973
+        ],
+        "angle": 25
+      },
+      {
+        "bone": "RightPinky1",
+        "axis": [
+          0.348,
+          -0.605,
+          -0.716
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightPinky2",
+        "axis": [
+          0.348,
+          -0.605,
+          -0.716
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightPinky3",
+        "axis": [
+          0.348,
+          -0.605,
+          -0.716
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightRing1",
+        "axis": [
+          0.405,
+          -0.643,
+          -0.65
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightRing2",
+        "axis": [
+          0.405,
+          -0.643,
+          -0.65
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightRing3",
+        "axis": [
+          0.405,
+          -0.643,
+          -0.65
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightMiddle1",
+        "axis": [
+          0.486,
+          -0.688,
+          -0.539
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightMiddle2",
+        "axis": [
+          0.486,
+          -0.688,
+          -0.539
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightMiddle3",
+        "axis": [
+          0.486,
+          -0.688,
+          -0.539
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightIndex1",
+        "axis": [
+          0.391,
+          -0.633,
+          -0.668
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightIndex2",
+        "axis": [
+          0.391,
+          -0.633,
+          -0.668
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightIndex3",
+        "axis": [
+          0.391,
+          -0.633,
+          -0.668
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "LeftThumb1",
+        "axis": [
+          -0.2,
+          0.183,
+          0.963
+        ],
+        "angle": 6
+      },
+      {
+        "bone": "LeftThumb2",
+        "axis": [
+          -0.2,
+          0.183,
+          0.963
+        ],
+        "angle": 10
+      },
+      {
+        "bone": "LeftThumb3",
+        "axis": [
+          -0.2,
+          0.183,
+          0.963
+        ],
+        "angle": 8
+      },
+      {
+        "bone": "LeftPinky1",
+        "axis": [
+          0.389,
+          0.695,
+          0.604
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftPinky2",
+        "axis": [
+          0.389,
+          0.695,
+          0.604
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftPinky3",
+        "axis": [
+          0.389,
+          0.695,
+          0.604
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftRing1",
+        "axis": [
+          0.362,
+          0.679,
+          0.639
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftRing2",
+        "axis": [
+          0.362,
+          0.679,
+          0.639
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftRing3",
+        "axis": [
+          0.362,
+          0.679,
+          0.639
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftMiddle1",
+        "axis": [
+          0.454,
+          0.729,
+          0.512
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftMiddle2",
+        "axis": [
+          0.454,
+          0.729,
+          0.512
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftMiddle3",
+        "axis": [
+          0.454,
+          0.729,
+          0.512
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftIndex1",
+        "axis": [
+          0.379,
+          0.69,
+          0.616
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftIndex2",
+        "axis": [
+          0.379,
+          0.69,
+          0.616
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftIndex3",
+        "axis": [
+          0.379,
+          0.69,
+          0.616
+        ],
+        "angle": 14
+      }
+    ],
+    "items": [
+      {
+        "mesh": "/Game/WonderChess/VNext/Heroes/SiegeMaster_r001/Items/Ramrod/model_urls_glb/StaticMeshes/model_urls_glb",
+        "bone": "RightHand",
+        "location": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": 0.9,
+        "grip": {
+          "tip_axis": [
+            0,
+            0,
+            1
+          ],
+          "point": [
+            0,
+            0,
+            5
+          ],
+          "rest_direction": [
+            -0.447,
+            0.667,
+            0.596
+          ],
+          "reach": 10.5,
+          "palm": [
+            2.8,
+            2.7,
+            -0.9
+          ],
+          "roll": 0,
+          "radius": 4,
+          "upright": true,
+          "touch": {
+            "item": 1,
+            "at": [
+              60.0,
+              0,
+              62
+            ],
+            "clips": [
+              "Attack",
+              "Cast"
+            ]
+          },
+          "flame": {
+            "at": [
+              0,
+              0,
+              96
+            ],
+            "size": 0.9
+          }
+        },
+        "light": {
+          "at": [
+            0,
+            0,
+            96
+          ],
+          "color": [
+            1.0,
+            0.6,
+            0.25
+          ],
+          "intensity": 3.0,
+          "radius": 220
+        }
+      },
+      {
+        "mesh": "/Game/WonderChess/VNext/Heroes/SiegeMaster_r001/Items/Cannon/model_urls_glb/StaticMeshes/model_urls_glb",
+        "bone": "Hips",
+        "location": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          -90.0,
+          0
+        ],
+        "scale": 0.5,
+        "ground": {
+          "at": [
+            -82,
+            34,
+            42.5
+          ],
+          "roll_rate": 0
+        }
+      }
+    ],
+    "held_arm": {
+      "chest": "Spine02",
+      "upper": "RightArm",
+      "lower": "RightForeArm",
+      "hand": "RightHand",
+      "upper_direction": [
+        -0.55,
+        0.05,
+        -1.0
+      ],
+      "lower_direction": [
+        -0.75,
+        0.45,
+        0.3
+      ],
+      "free_clips": [
+        "Defeat"
+      ],
+      "clip_poses": {
+        "Attack": {
+          "upper_direction": [
+            -0.55,
+            0.35,
+            -0.75
+          ],
+          "lower_direction": [
+            -0.35,
+            0.75,
+            -0.55
+          ]
+        },
+        "Cast": {
+          "upper_direction": [
+            -0.55,
+            0.35,
+            -0.75
+          ],
+          "lower_direction": [
+            -0.35,
+            0.75,
+            -0.55
+          ]
+        }
+      }
+    },
+    "shots": {
+      "basic": {
+        "mesh": "Cannonball",
+        "scale": 1.0,
+        "arc": 55,
+        "spin": [
+          500,
+          0,
+          0
+        ],
+        "impact": "rock",
+        "launch": "cannon",
+        "from_item": 1,
+        "from_forward": 60,
+        "from_up": 20,
+        "lead_ms": 150
+      }
+    }
+  },
+  "wc_vn_longbow_scout": {
+    "mesh": "/Game/WonderChess/VNext/Heroes/LongbowScout_r001/SK_LongbowScout_Detail",
+    "scale": 1.0,
+    "yaw": 0,
+    "label_height": 210,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Heroes/LongbowScout_r001/Animations/A_LongbowScout_Library_Idle_14",
+      "Move": "/Game/WonderChess/VNext/Heroes/LongbowScout_r001/Animations/A_LongbowScout_Library_Quick_Walk",
+      "Attack": "/Game/WonderChess/VNext/Heroes/LongbowScout_r001/Animations/A_LongbowScout_Library_Archery_Shot",
+      "Cast": "/Game/WonderChess/VNext/Heroes/LongbowScout_r001/Animations/A_LongbowScout_Library_Draw_and_Shoot_from_Back_2",
+      "Hit": "/Game/WonderChess/VNext/Heroes/LongbowScout_r001/Animations/A_LongbowScout_Library_Hit_Reaction_with_Bow",
+      "Defeat": "/Game/WonderChess/VNext/Heroes/LongbowScout_r001/Animations/A_LongbowScout_Library_Shot_and_Fall_Backward",
+      "Run": "/Game/WonderChess/VNext/Heroes/LongbowScout_r001/Animations/A_LongbowScout_Run"
+    },
+    "rates": {
+      "Attack": 2.2,
+      "Cast": 2.0,
+      "Move": 1.4,
+      "Hit": 2.5
+    },
+    "curls": [
+      {
+        "bone": "RightPinky1",
+        "axis": [
+          -0.123,
+          -0.908,
+          -0.399
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "RightPinky2",
+        "axis": [
+          -0.123,
+          -0.908,
+          -0.399
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "RightPinky3",
+        "axis": [
+          -0.123,
+          -0.908,
+          -0.399
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "RightRing1",
+        "axis": [
+          -0.083,
+          -0.96,
+          -0.268
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "RightRing2",
+        "axis": [
+          -0.083,
+          -0.96,
+          -0.268
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "RightRing3",
+        "axis": [
+          -0.083,
+          -0.96,
+          -0.268
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "RightMiddle1",
+        "axis": [
+          -0.093,
+          -0.949,
+          -0.3
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "RightMiddle2",
+        "axis": [
+          -0.093,
+          -0.949,
+          -0.3
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "RightMiddle3",
+        "axis": [
+          -0.093,
+          -0.949,
+          -0.3
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "RightIndex1",
+        "axis": [
+          -0.039,
+          -0.991,
+          -0.126
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "RightIndex2",
+        "axis": [
+          -0.039,
+          -0.991,
+          -0.126
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "RightIndex3",
+        "axis": [
+          -0.039,
+          -0.991,
+          -0.126
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftPinky1",
+        "axis": [
+          -0.094,
+          0.932,
+          0.349
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "LeftPinky2",
+        "axis": [
+          -0.094,
+          0.932,
+          0.349
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "LeftPinky3",
+        "axis": [
+          -0.094,
+          0.932,
+          0.349
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "LeftRing1",
+        "axis": [
+          -0.059,
+          0.974,
+          0.219
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "LeftRing2",
+        "axis": [
+          -0.059,
+          0.974,
+          0.219
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "LeftRing3",
+        "axis": [
+          -0.059,
+          0.974,
+          0.219
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "LeftMiddle1",
+        "axis": [
+          -0.059,
+          0.974,
+          0.219
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "LeftMiddle2",
+        "axis": [
+          -0.059,
+          0.974,
+          0.219
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "LeftMiddle3",
+        "axis": [
+          -0.059,
+          0.974,
+          0.219
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "LeftIndex1",
+        "axis": [
+          -0.017,
+          0.998,
+          0.062
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "LeftIndex2",
+        "axis": [
+          -0.017,
+          0.998,
+          0.062
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "LeftIndex3",
+        "axis": [
+          -0.017,
+          0.998,
+          0.062
+        ],
+        "angle": 45
+      }
+    ],
+    "items": [
+      {
+        "mesh": "/Game/WonderChess/VNext/Heroes/LongbowScout_r001/Items/Bow/model_urls_glb/StaticMeshes/model_urls_glb",
+        "bone": "LeftHand",
+        "location": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": 0.8,
+        "grip": {
+          "tip_axis": [
+            0,
+            0,
+            1
+          ],
+          "point": [
+            0,
+            0,
+            0
+          ],
+          "rest_direction": [
+            -0.067,
+            0.966,
+            0.249
+          ],
+          "reach": 7.7,
+          "palm": [
+            -2.8,
+            -0.0,
+            -0.8
+          ],
+          "roll": 0,
+          "radius": 3,
+          "upright": true
+        }
+      }
+    ],
+    "held_arm": {
+      "chest": "Spine02",
+      "upper": "LeftArm",
+      "lower": "LeftForeArm",
+      "hand": "LeftHand",
+      "upper_direction": [
+        0.3,
+        0.1,
+        -1.0
+      ],
+      "lower_direction": [
+        0.15,
+        0.9,
+        -0.35
+      ],
+      "free_clips": [
+        "Attack",
+        "Cast",
+        "Defeat",
+        "Hit"
+      ]
+    },
+    "shots": {
+      "basic": {
+        "mesh": "Arrow",
+        "scale": 2.3,
+        "arc": 22,
+        "spin": [
+          0,
+          0,
+          0
+        ],
+        "impact": "stick",
+        "from_bone": "LeftHand",
+        "lead_ms": 150
+      }
+    }
+  },
+  "wc_vn_moonblade": {
+    "mesh": "/Game/WonderChess/VNext/Heroes/Moonblade_r001/SK_Moonblade_Detail",
+    "scale": 1.0,
+    "yaw": 0,
+    "label_height": 200,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Heroes/Moonblade_r001/Animations/A_Moonblade_Library2_Idle_8",
+      "Move": "/Game/WonderChess/VNext/Heroes/Moonblade_r001/Animations/A_Moonblade_Library_Sneaky_Walk",
+      "Attack": "/Game/WonderChess/VNext/Heroes/Moonblade_r001/Animations/A_Moonblade_Library_Thrust_Slash",
+      "Attack2": "/Game/WonderChess/VNext/Heroes/Moonblade_r001/Animations/A_Moonblade_Library_Counterstrike",
+      "Cast": "/Game/WonderChess/VNext/Heroes/Moonblade_r001/Animations/A_Moonblade_Library_Double_Combo_Attack",
+      "Hit": "/Game/WonderChess/VNext/Heroes/Moonblade_r001/Animations/A_Moonblade_Library_Slap_Reaction",
+      "Defeat": "/Game/WonderChess/VNext/Heroes/Moonblade_r001/Animations/A_Moonblade_Library_dying_backwards",
+      "Run": "/Game/WonderChess/VNext/Heroes/Moonblade_r001/Animations/A_Moonblade_Run"
+    },
+    "rates": {
+      "Attack": 1.8,
+      "Cast": 1.6,
+      "Move": 1.6,
+      "Hit": 2.5
+    },
+    "curls": [
+      {
+        "bone": "RightThumb1",
+        "axis": [
+          -0.168,
+          -0.771,
+          -0.614
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "RightThumb2",
+        "axis": [
+          -0.168,
+          -0.771,
+          -0.614
+        ],
+        "angle": 30
+      },
+      {
+        "bone": "RightThumb3",
+        "axis": [
+          -0.168,
+          -0.771,
+          -0.614
+        ],
+        "angle": 25
+      },
+      {
+        "bone": "RightPinky1",
+        "axis": [
+          0.085,
+          -0.977,
+          -0.197
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightPinky2",
+        "axis": [
+          0.085,
+          -0.977,
+          -0.197
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightPinky3",
+        "axis": [
+          0.085,
+          -0.977,
+          -0.197
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightRing1",
+        "axis": [
+          0.074,
+          -0.974,
+          -0.216
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightRing2",
+        "axis": [
+          0.074,
+          -0.974,
+          -0.216
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightRing3",
+        "axis": [
+          0.074,
+          -0.974,
+          -0.216
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightMiddle1",
+        "axis": [
+          0.041,
+          -0.96,
+          -0.277
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightMiddle2",
+        "axis": [
+          0.041,
+          -0.96,
+          -0.277
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightMiddle3",
+        "axis": [
+          0.041,
+          -0.96,
+          -0.277
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightIndex1",
+        "axis": [
+          0.0,
+          -0.938,
+          -0.347
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightIndex2",
+        "axis": [
+          0.0,
+          -0.938,
+          -0.347
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightIndex3",
+        "axis": [
+          0.0,
+          -0.938,
+          -0.347
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "LeftThumb1",
+        "axis": [
+          -0.21,
+          0.722,
+          0.659
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftThumb2",
+        "axis": [
+          -0.21,
+          0.722,
+          0.659
+        ],
+        "angle": 30
+      },
+      {
+        "bone": "LeftThumb3",
+        "axis": [
+          -0.21,
+          0.722,
+          0.659
+        ],
+        "angle": 25
+      },
+      {
+        "bone": "LeftPinky1",
+        "axis": [
+          0.078,
+          0.982,
+          0.173
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "LeftPinky2",
+        "axis": [
+          0.078,
+          0.982,
+          0.173
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "LeftPinky3",
+        "axis": [
+          0.078,
+          0.982,
+          0.173
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "LeftRing1",
+        "axis": [
+          0.051,
+          0.973,
+          0.224
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "LeftRing2",
+        "axis": [
+          0.051,
+          0.973,
+          0.224
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "LeftRing3",
+        "axis": [
+          0.051,
+          0.973,
+          0.224
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "LeftMiddle1",
+        "axis": [
+          0.043,
+          0.97,
+          0.239
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "LeftMiddle2",
+        "axis": [
+          0.043,
+          0.97,
+          0.239
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "LeftMiddle3",
+        "axis": [
+          0.043,
+          0.97,
+          0.239
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "LeftIndex1",
+        "axis": [
+          0.041,
+          0.969,
+          0.243
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "LeftIndex2",
+        "axis": [
+          0.041,
+          0.969,
+          0.243
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "LeftIndex3",
+        "axis": [
+          0.041,
+          0.969,
+          0.243
+        ],
+        "angle": 45
+      }
+    ],
+    "items": [
+      {
+        "mesh": "/Game/WonderChess/VNext/Heroes/Moonblade_r001/Items/Blade/model_urls_glb/StaticMeshes/model_urls_glb",
+        "bone": "RightHand",
+        "location": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": 0.3,
+        "grip": {
+          "tip_axis": [
+            0,
+            0,
+            1
+          ],
+          "point": [
+            0,
+            0,
+            -72
+          ],
+          "rest_direction": [
+            0.03,
+            -0.955,
+            -0.296
+          ],
+          "reach": 8.1,
+          "palm": [
+            2.7,
+            0.5,
+            -1.4
+          ],
+          "roll": 0,
+          "radius": 3
+        }
+      },
+      {
+        "mesh": "/Game/WonderChess/VNext/Heroes/Moonblade_r001/Items/Blade/model_urls_glb/StaticMeshes/model_urls_glb",
+        "bone": "LeftHand",
+        "location": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": 0.3,
+        "grip": {
+          "tip_axis": [
+            0,
+            0,
+            1
+          ],
+          "point": [
+            0,
+            0,
+            -72
+          ],
+          "rest_direction": [
+            -0.02,
+            -0.96,
+            -0.281
+          ],
+          "reach": 7.9,
+          "palm": [
+            -2.7,
+            0.4,
+            -1.3
+          ],
+          "roll": 0,
+          "radius": 3
+        }
+      }
+    ]
+  },
+  "wc_vn_treant_caller": {
+    "mesh": "/Game/WonderChess/VNext/Heroes/TreantCaller_r001/SK_TreantCaller_Detail",
+    "scale": 1.0,
+    "yaw": 0,
+    "label_height": 215,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Heroes/TreantCaller_r001/Animations/A_TreantCaller_Library_Idle_02",
+      "Move": "/Game/WonderChess/VNext/Heroes/TreantCaller_r001/Animations/A_TreantCaller_Library_Thoughtful_Walk",
+      "Attack": "/Game/WonderChess/VNext/Heroes/TreantCaller_r001/Animations/A_TreantCaller_Library_mage_soell_cast_1",
+      "Cast": "/Game/WonderChess/VNext/Heroes/TreantCaller_r001/Animations/A_TreantCaller_Library_Charged_Spell_Cast",
+      "Hit": "/Game/WonderChess/VNext/Heroes/TreantCaller_r001/Animations/A_TreantCaller_Library_Face_Punch_Reaction_2",
+      "Defeat": "/Game/WonderChess/VNext/Heroes/TreantCaller_r001/Animations/A_TreantCaller_Library_Fall_Dead_from_Abdominal_Injury",
+      "Run": "/Game/WonderChess/VNext/Heroes/TreantCaller_r001/Animations/A_TreantCaller_Run"
+    },
+    "rates": {
+      "Attack": 2.4,
+      "Cast": 2.0,
+      "Move": 1.5,
+      "Hit": 3.0
+    },
+    "curls": [
+      {
+        "bone": "RightThumb1",
+        "axis": [
+          -0.464,
+          -0.804,
+          -0.371
+        ],
+        "angle": 6
+      },
+      {
+        "bone": "RightThumb2",
+        "axis": [
+          -0.464,
+          -0.804,
+          -0.371
+        ],
+        "angle": 10
+      },
+      {
+        "bone": "RightThumb3",
+        "axis": [
+          -0.464,
+          -0.804,
+          -0.371
+        ],
+        "angle": 8
+      },
+      {
+        "bone": "RightPinky1",
+        "axis": [
+          -0.399,
+          -0.901,
+          -0.173
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "RightPinky2",
+        "axis": [
+          -0.399,
+          -0.901,
+          -0.173
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "RightPinky3",
+        "axis": [
+          -0.399,
+          -0.901,
+          -0.173
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "RightRing1",
+        "axis": [
+          -0.305,
+          -0.951,
+          0.049
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "RightRing2",
+        "axis": [
+          -0.305,
+          -0.951,
+          0.049
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "RightRing3",
+        "axis": [
+          -0.305,
+          -0.951,
+          0.049
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "RightMiddle1",
+        "axis": [
+          -0.324,
+          -0.946,
+          0.007
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "RightMiddle2",
+        "axis": [
+          -0.324,
+          -0.946,
+          0.007
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "RightMiddle3",
+        "axis": [
+          -0.324,
+          -0.946,
+          0.007
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "RightIndex1",
+        "axis": [
+          -0.263,
+          -0.955,
+          0.137
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "RightIndex2",
+        "axis": [
+          -0.263,
+          -0.955,
+          0.137
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "RightIndex3",
+        "axis": [
+          -0.263,
+          -0.955,
+          0.137
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftThumb1",
+        "axis": [
+          -0.487,
+          0.597,
+          0.637
+        ],
+        "angle": 6
+      },
+      {
+        "bone": "LeftThumb2",
+        "axis": [
+          -0.487,
+          0.597,
+          0.637
+        ],
+        "angle": 10
+      },
+      {
+        "bone": "LeftThumb3",
+        "axis": [
+          -0.487,
+          0.597,
+          0.637
+        ],
+        "angle": 8
+      },
+      {
+        "bone": "LeftPinky1",
+        "axis": [
+          -0.385,
+          0.906,
+          0.175
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftPinky2",
+        "axis": [
+          -0.385,
+          0.906,
+          0.175
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftPinky3",
+        "axis": [
+          -0.385,
+          0.906,
+          0.175
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftRing1",
+        "axis": [
+          -0.287,
+          0.955,
+          -0.078
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftRing2",
+        "axis": [
+          -0.287,
+          0.955,
+          -0.078
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftRing3",
+        "axis": [
+          -0.287,
+          0.955,
+          -0.078
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftMiddle1",
+        "axis": [
+          -0.29,
+          0.954,
+          -0.072
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftMiddle2",
+        "axis": [
+          -0.29,
+          0.954,
+          -0.072
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftMiddle3",
+        "axis": [
+          -0.29,
+          0.954,
+          -0.072
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftIndex1",
+        "axis": [
+          -0.294,
+          0.954,
+          -0.063
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftIndex2",
+        "axis": [
+          -0.294,
+          0.954,
+          -0.063
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftIndex3",
+        "axis": [
+          -0.294,
+          0.954,
+          -0.063
+        ],
+        "angle": 14
+      }
+    ],
+    "items": [],
+    "shots": {
+      "basic": {
+        "mesh": "Acorn",
+        "scale": 2.5,
+        "arc": 60,
+        "spin": [
+          700,
+          0,
+          0
+        ],
+        "trail": "leaf",
+        "impact": "leaf",
+        "from_bone": "LeftHand",
+        "lead_ms": 150
+      }
+    }
+  },
+  "wc_vn_ironwall": {
+    "mesh": "/Game/WonderChess/VNext/Heroes/Ironwall_r001/SK_Ironwall_Detail",
+    "scale": 1.0,
+    "yaw": 0,
+    "label_height": 170,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Heroes/Ironwall_r001/Animations/A_Ironwall_Library2_Idle",
+      "Move": "/Game/WonderChess/VNext/Heroes/Ironwall_r001/Animations/A_Ironwall_Library_Slow_Orc_Walk",
+      "Attack": "/Game/WonderChess/VNext/Heroes/Ironwall_r001/Animations/A_Ironwall_Library_Shield_Push_Left",
+      "Cast": "/Game/WonderChess/VNext/Heroes/Ironwall_r001/Animations/A_Ironwall_Library_Block1",
+      "Hit": "/Game/WonderChess/VNext/Heroes/Ironwall_r001/Animations/A_Ironwall_Library_Face_Punch_Reaction",
+      "Defeat": "/Game/WonderChess/VNext/Heroes/Ironwall_r001/Animations/A_Ironwall_Library_Knock_Down",
+      "Run": "/Game/WonderChess/VNext/Heroes/Ironwall_r001/Animations/A_Ironwall_Run"
+    },
+    "rates": {
+      "Attack": 1.8,
+      "Cast": 1.5,
+      "Move": 1.6,
+      "Hit": 2.5
+    },
+    "curls": [
+      {
+        "bone": "RightThumb1",
+        "axis": [
+          -0.329,
+          -0.649,
+          -0.686
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "RightThumb2",
+        "axis": [
+          -0.329,
+          -0.649,
+          -0.686
+        ],
+        "angle": 30
+      },
+      {
+        "bone": "RightThumb3",
+        "axis": [
+          -0.329,
+          -0.649,
+          -0.686
+        ],
+        "angle": 25
+      },
+      {
+        "bone": "RightPinky1",
+        "axis": [
+          0.004,
+          -0.967,
+          -0.255
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightPinky2",
+        "axis": [
+          0.004,
+          -0.967,
+          -0.255
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightPinky3",
+        "axis": [
+          0.004,
+          -0.967,
+          -0.255
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightRing1",
+        "axis": [
+          -0.038,
+          -0.948,
+          -0.315
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightRing2",
+        "axis": [
+          -0.038,
+          -0.948,
+          -0.315
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightRing3",
+        "axis": [
+          -0.038,
+          -0.948,
+          -0.315
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightMiddle1",
+        "axis": [
+          -0.06,
+          -0.936,
+          -0.346
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightMiddle2",
+        "axis": [
+          -0.06,
+          -0.936,
+          -0.346
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightMiddle3",
+        "axis": [
+          -0.06,
+          -0.936,
+          -0.346
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightIndex1",
+        "axis": [
+          -0.048,
+          -0.943,
+          -0.329
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightIndex2",
+        "axis": [
+          -0.048,
+          -0.943,
+          -0.329
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightIndex3",
+        "axis": [
+          -0.048,
+          -0.943,
+          -0.329
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "LeftThumb1",
+        "axis": [
+          -0.276,
+          0.696,
+          0.663
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftThumb2",
+        "axis": [
+          -0.276,
+          0.696,
+          0.663
+        ],
+        "angle": 30
+      },
+      {
+        "bone": "LeftThumb3",
+        "axis": [
+          -0.276,
+          0.696,
+          0.663
+        ],
+        "angle": 25
+      },
+      {
+        "bone": "LeftPinky1",
+        "axis": [
+          -0.022,
+          0.951,
+          0.307
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "LeftPinky2",
+        "axis": [
+          -0.022,
+          0.951,
+          0.307
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "LeftPinky3",
+        "axis": [
+          -0.022,
+          0.951,
+          0.307
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "LeftRing1",
+        "axis": [
+          -0.038,
+          0.942,
+          0.332
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "LeftRing2",
+        "axis": [
+          -0.038,
+          0.942,
+          0.332
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "LeftRing3",
+        "axis": [
+          -0.038,
+          0.942,
+          0.332
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "LeftMiddle1",
+        "axis": [
+          -0.054,
+          0.933,
+          0.356
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "LeftMiddle2",
+        "axis": [
+          -0.054,
+          0.933,
+          0.356
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "LeftMiddle3",
+        "axis": [
+          -0.054,
+          0.933,
+          0.356
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "LeftIndex1",
+        "axis": [
+          -0.013,
+          0.956,
+          0.293
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "LeftIndex2",
+        "axis": [
+          -0.013,
+          0.956,
+          0.293
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "LeftIndex3",
+        "axis": [
+          -0.013,
+          0.956,
+          0.293
+        ],
+        "angle": 45
+      }
+    ],
+    "items": [
+      {
+        "mesh": "/Game/WonderChess/VNext/Heroes/Ironwall_r001/Items/Shield/model_urls_glb/StaticMeshes/model_urls_glb",
+        "bone": "LeftHand",
+        "location": [
+          42.6,
+          12.7,
+          82.1
+        ],
+        "rotation": [
+          45,
+          0,
+          0
+        ],
+        "scale": 0.4,
+        "mesh_space": true
+      },
+      {
+        "mesh": "/Game/WonderChess/VNext/Heroes/Ironwall_r001/Items/Shield/model_urls_glb/StaticMeshes/model_urls_glb",
+        "bone": "RightHand",
+        "location": [
+          -41.4,
+          12.2,
+          83.0
+        ],
+        "rotation": [
+          -45,
+          0,
+          0
+        ],
+        "scale": 0.4,
+        "mesh_space": true
+      }
+    ]
+  },
+  "wc_vn_rifleman": {
+    "mesh": "/Game/WonderChess/VNext/Heroes/Rifleman_r001/SK_Rifleman_Detail",
+    "scale": 1.0,
+    "yaw": 0,
+    "label_height": 160,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Heroes/Rifleman_r001/Animations/A_Rifleman_Library_Idle_3",
+      "Move": "/Game/WonderChess/VNext/Heroes/Rifleman_r001/Animations/A_Rifleman_Library_Confident_Walk",
+      "Attack": "/Game/WonderChess/VNext/Heroes/Rifleman_r001/Animations/A_Rifleman_Library_Draw_and_Shoot_from_Back",
+      "Cast": "/Game/WonderChess/VNext/Heroes/Rifleman_r001/Animations/A_Rifleman_Library_Draw_and_Shoot_from_Back",
+      "Hit": "/Game/WonderChess/VNext/Heroes/Rifleman_r001/Animations/A_Rifleman_Library_Gunshot_Reaction",
+      "Defeat": "/Game/WonderChess/VNext/Heroes/Rifleman_r001/Animations/A_Rifleman_Library_Shot_and_Fall_Forward",
+      "Run": "/Game/WonderChess/VNext/Heroes/Rifleman_r001/Animations/A_Rifleman_Run"
+    },
+    "rates": {
+      "Attack": 2.4,
+      "Cast": 1.2,
+      "Move": 1.4,
+      "Hit": 2.5
+    },
+    "curls": [
+      {
+        "bone": "RightThumb1",
+        "axis": [
+          -0.502,
+          -0.446,
+          -0.741
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "RightThumb2",
+        "axis": [
+          -0.502,
+          -0.446,
+          -0.741
+        ],
+        "angle": 30
+      },
+      {
+        "bone": "RightThumb3",
+        "axis": [
+          -0.502,
+          -0.446,
+          -0.741
+        ],
+        "angle": 25
+      },
+      {
+        "bone": "RightPinky1",
+        "axis": [
+          -0.046,
+          -0.995,
+          -0.09
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightPinky2",
+        "axis": [
+          -0.046,
+          -0.995,
+          -0.09
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightPinky3",
+        "axis": [
+          -0.046,
+          -0.995,
+          -0.09
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightRing1",
+        "axis": [
+          -0.097,
+          -0.982,
+          -0.164
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightRing2",
+        "axis": [
+          -0.097,
+          -0.982,
+          -0.164
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightRing3",
+        "axis": [
+          -0.097,
+          -0.982,
+          -0.164
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightMiddle1",
+        "axis": [
+          -0.134,
+          -0.967,
+          -0.218
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightMiddle2",
+        "axis": [
+          -0.134,
+          -0.967,
+          -0.218
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightMiddle3",
+        "axis": [
+          -0.134,
+          -0.967,
+          -0.218
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightIndex1",
+        "axis": [
+          -0.063,
+          -0.991,
+          -0.115
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightIndex2",
+        "axis": [
+          -0.063,
+          -0.991,
+          -0.115
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightIndex3",
+        "axis": [
+          -0.063,
+          -0.991,
+          -0.115
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "LeftThumb1",
+        "axis": [
+          -0.435,
+          0.491,
+          0.755
+        ],
+        "angle": 6
+      },
+      {
+        "bone": "LeftThumb2",
+        "axis": [
+          -0.435,
+          0.491,
+          0.755
+        ],
+        "angle": 10
+      },
+      {
+        "bone": "LeftThumb3",
+        "axis": [
+          -0.435,
+          0.491,
+          0.755
+        ],
+        "angle": 8
+      },
+      {
+        "bone": "LeftPinky1",
+        "axis": [
+          -0.075,
+          0.984,
+          0.159
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftPinky2",
+        "axis": [
+          -0.075,
+          0.984,
+          0.159
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftPinky3",
+        "axis": [
+          -0.075,
+          0.984,
+          0.159
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftRing1",
+        "axis": [
+          -0.139,
+          0.954,
+          0.267
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftRing2",
+        "axis": [
+          -0.139,
+          0.954,
+          0.267
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftRing3",
+        "axis": [
+          -0.139,
+          0.954,
+          0.267
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftMiddle1",
+        "axis": [
+          -0.159,
+          0.941,
+          0.3
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftMiddle2",
+        "axis": [
+          -0.159,
+          0.941,
+          0.3
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftMiddle3",
+        "axis": [
+          -0.159,
+          0.941,
+          0.3
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftIndex1",
+        "axis": [
+          -0.073,
+          0.985,
+          0.157
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftIndex2",
+        "axis": [
+          -0.073,
+          0.985,
+          0.157
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftIndex3",
+        "axis": [
+          -0.073,
+          0.985,
+          0.157
+        ],
+        "angle": 14
+      }
+    ],
+    "items": [
+      {
+        "mesh": "/Game/WonderChess/VNext/Heroes/Rifleman_r001/Items/Rifle/model_urls_glb/StaticMeshes/model_urls_glb",
+        "bone": "RightHand",
+        "location": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": 0.66,
+        "grip": {
+          "tip_axis": [
+            0,
+            0,
+            1
+          ],
+          "point": [
+            0,
+            0,
+            -30
+          ],
+          "rest_direction": [
+            0.106,
+            0.979,
+            0.176
+          ],
+          "reach": 10.0,
+          "palm": [
+            3.1,
             0.0,
-            -3.8,
-            -1.0
+            -2.2
+          ],
+          "roll": 0,
+          "radius": 4,
+          "aim_clips": [
+            "Attack",
+            "Cast"
+          ],
+          "second_hand": {
+            "upper": "LeftArm",
+            "lower": "LeftForeArm",
+            "hand": "LeftHand",
+            "point": [
+              0,
+              0,
+              20
+            ],
+            "clips": [
+              "Attack",
+              "Cast"
+            ]
+          }
+        }
+      }
+    ],
+    "held_arm": {
+      "chest": "Spine02",
+      "upper": "RightArm",
+      "lower": "RightForeArm",
+      "hand": "RightHand",
+      "upper_direction": [
+        -0.3,
+        0.1,
+        -1.0
+      ],
+      "lower_direction": [
+        -0.15,
+        0.9,
+        -0.35
+      ],
+      "free_clips": [
+        "Defeat",
+        "Hit"
+      ],
+      "clip_poses": {
+        "Attack": {
+          "upper_direction": [
+            -0.25,
+            0.5,
+            -0.65
+          ],
+          "lower_direction": [
+            0.35,
+            0.8,
+            0.3
+          ]
+        },
+        "Cast": {
+          "upper_direction": [
+            -0.25,
+            0.5,
+            -0.65
+          ],
+          "lower_direction": [
+            0.35,
+            0.8,
+            0.3
+          ]
+        }
+      }
+    },
+    "shots": {
+      "basic": {
+        "mesh": "Bullet",
+        "scale": 1.2,
+        "arc": 0,
+        "spin": [
+          0,
+          0,
+          0
+        ],
+        "trail": "tracer",
+        "impact": "sparks",
+        "launch": "gun",
+        "lead_ms": 150
+      }
+    }
+  },
+  "wc_vn_jinxer": {
+    "mesh": "/Game/WonderChess/VNext/Heroes/Jinxer_r001/SK_Jinxer_Detail",
+    "scale": 1.0,
+    "yaw": 0,
+    "label_height": 150,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Heroes/Jinxer_r001/Animations/A_Jinxer_Library_Idle_5",
+      "Move": "/Game/WonderChess/VNext/Heroes/Jinxer_r001/Animations/A_Jinxer_Library_Funky_Walk",
+      "Attack": "/Game/WonderChess/VNext/Heroes/Jinxer_r001/Animations/A_Jinxer_Library_mage_soell_cast_3",
+      "Cast": "/Game/WonderChess/VNext/Heroes/Jinxer_r001/Animations/A_Jinxer_Library_Step_Hip_Hop_Dance",
+      "Hit": "/Game/WonderChess/VNext/Heroes/Jinxer_r001/Animations/A_Jinxer_Library_Face_Punch_Reaction_1",
+      "Defeat": "/Game/WonderChess/VNext/Heroes/Jinxer_r001/Animations/A_Jinxer_Library_Electrocuted_Fall",
+      "Run": "/Game/WonderChess/VNext/Heroes/Jinxer_r001/Animations/A_Jinxer_Run"
+    },
+    "rates": {
+      "Attack": 2.4,
+      "Cast": 1.4,
+      "Move": 1.2,
+      "Hit": 2.5
+    },
+    "curls": [
+      {
+        "bone": "RightThumb1",
+        "axis": [
+          -0.438,
+          -0.878,
+          -0.195
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "RightThumb2",
+        "axis": [
+          -0.438,
+          -0.878,
+          -0.195
+        ],
+        "angle": 30
+      },
+      {
+        "bone": "RightThumb3",
+        "axis": [
+          -0.438,
+          -0.878,
+          -0.195
+        ],
+        "angle": 25
+      },
+      {
+        "bone": "RightPinky1",
+        "axis": [
+          -0.138,
+          -0.947,
+          0.29
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightPinky2",
+        "axis": [
+          -0.138,
+          -0.947,
+          0.29
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightPinky3",
+        "axis": [
+          -0.138,
+          -0.947,
+          0.29
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightRing1",
+        "axis": [
+          -0.323,
+          -0.946,
+          0.013
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightRing2",
+        "axis": [
+          -0.323,
+          -0.946,
+          0.013
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightRing3",
+        "axis": [
+          -0.323,
+          -0.946,
+          0.013
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightMiddle1",
+        "axis": [
+          -0.363,
+          -0.93,
+          -0.056
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightMiddle2",
+        "axis": [
+          -0.363,
+          -0.93,
+          -0.056
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightMiddle3",
+        "axis": [
+          -0.363,
+          -0.93,
+          -0.056
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightIndex1",
+        "axis": [
+          -0.376,
+          -0.923,
+          -0.078
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightIndex2",
+        "axis": [
+          -0.376,
+          -0.923,
+          -0.078
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightIndex3",
+        "axis": [
+          -0.376,
+          -0.923,
+          -0.078
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "LeftThumb1",
+        "axis": [
+          -0.413,
+          0.892,
+          0.183
+        ],
+        "angle": 6
+      },
+      {
+        "bone": "LeftThumb2",
+        "axis": [
+          -0.413,
+          0.892,
+          0.183
+        ],
+        "angle": 10
+      },
+      {
+        "bone": "LeftThumb3",
+        "axis": [
+          -0.413,
+          0.892,
+          0.183
+        ],
+        "angle": 8
+      },
+      {
+        "bone": "LeftPinky1",
+        "axis": [
+          -0.181,
+          0.959,
+          -0.219
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftPinky2",
+        "axis": [
+          -0.181,
+          0.959,
+          -0.219
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftPinky3",
+        "axis": [
+          -0.181,
+          0.959,
+          -0.219
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftRing1",
+        "axis": [
+          -0.32,
+          0.948,
+          0.006
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftRing2",
+        "axis": [
+          -0.32,
+          0.948,
+          0.006
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftRing3",
+        "axis": [
+          -0.32,
+          0.948,
+          0.006
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftMiddle1",
+        "axis": [
+          -0.344,
+          0.938,
+          0.05
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftMiddle2",
+        "axis": [
+          -0.344,
+          0.938,
+          0.05
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftMiddle3",
+        "axis": [
+          -0.344,
+          0.938,
+          0.05
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftIndex1",
+        "axis": [
+          -0.359,
+          0.93,
+          0.078
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftIndex2",
+        "axis": [
+          -0.359,
+          0.93,
+          0.078
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftIndex3",
+        "axis": [
+          -0.359,
+          0.93,
+          0.078
+        ],
+        "angle": 14
+      }
+    ],
+    "items": [
+      {
+        "mesh": "/Game/WonderChess/VNext/Heroes/Jinxer_r001/Items/Rattle/model_urls_glb/StaticMeshes/model_urls_glb",
+        "bone": "RightHand",
+        "location": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": 0.26,
+        "grip": {
+          "tip_axis": [
+            0,
+            0,
+            1
+          ],
+          "point": [
+            0,
+            0,
+            -62
+          ],
+          "rest_direction": [
+            0.35,
+            0.936,
+            0.033
+          ],
+          "reach": 9.4,
+          "palm": [
+            2.9,
+            -1.0,
+            -1.9
+          ],
+          "roll": 0,
+          "radius": 3
+        }
+      }
+    ],
+    "held_arm": {
+      "chest": "Spine02",
+      "upper": "RightArm",
+      "lower": "RightForeArm",
+      "hand": "RightHand",
+      "upper_direction": [
+        -0.6,
+        0.1,
+        -1.0
+      ],
+      "lower_direction": [
+        -0.45,
+        0.45,
+        0.8
+      ],
+      "free_clips": [
+        "Attack",
+        "Cast",
+        "Defeat",
+        "Hit"
+      ]
+    },
+    "shots": {
+      "basic": {
+        "mesh": "BoneCharm",
+        "scale": 2.2,
+        "arc": 50,
+        "spin": [
+          800,
+          0,
+          0
+        ],
+        "impact": "hex",
+        "from_bone": "RightHand",
+        "lead_ms": 150
+      }
+    }
+  },
+  "wc_vn_dartblower": {
+    "mesh": "/Game/WonderChess/VNext/Heroes/Dartblower_r001/SK_Dartblower_Detail",
+    "scale": 1.0,
+    "yaw": 0,
+    "label_height": 150,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Heroes/Dartblower_r001/Animations/A_Dartblower_Library_Idle_11",
+      "Move": "/Game/WonderChess/VNext/Heroes/Dartblower_r001/Animations/A_Dartblower_Library_Stylish_Walk",
+      "Attack": "/Game/WonderChess/VNext/Heroes/Dartblower_r001/Animations/A_Dartblower_Library_mage_soell_cast_4",
+      "Cast": "/Game/WonderChess/VNext/Heroes/Dartblower_r001/Animations/A_Dartblower_Library_mage_soell_cast_6",
+      "Hit": "/Game/WonderChess/VNext/Heroes/Dartblower_r001/Animations/A_Dartblower_Library_Slap_Reaction",
+      "Defeat": "/Game/WonderChess/VNext/Heroes/Dartblower_r001/Animations/A_Dartblower_Library_Shot_and_Slow_Fall_Backward",
+      "Run": "/Game/WonderChess/VNext/Heroes/Dartblower_r001/Animations/A_Dartblower_Run"
+    },
+    "rates": {
+      "Attack": 2.4,
+      "Cast": 2.0,
+      "Move": 1.3,
+      "Hit": 2.5
+    },
+    "curls": [
+      {
+        "bone": "RightThumb1",
+        "axis": [
+          -0.541,
+          -0.594,
+          -0.595
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "RightThumb2",
+        "axis": [
+          -0.541,
+          -0.594,
+          -0.595
+        ],
+        "angle": 30
+      },
+      {
+        "bone": "RightThumb3",
+        "axis": [
+          -0.541,
+          -0.594,
+          -0.595
+        ],
+        "angle": 25
+      },
+      {
+        "bone": "RightPinky1",
+        "axis": [
+          -0.363,
+          -0.842,
+          -0.399
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightPinky2",
+        "axis": [
+          -0.363,
+          -0.842,
+          -0.399
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightPinky3",
+        "axis": [
+          -0.363,
+          -0.842,
+          -0.399
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightRing1",
+        "axis": [
+          -0.345,
+          -0.859,
+          -0.379
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightRing2",
+        "axis": [
+          -0.345,
+          -0.859,
+          -0.379
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightRing3",
+        "axis": [
+          -0.345,
+          -0.859,
+          -0.379
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightMiddle1",
+        "axis": [
+          -0.374,
+          -0.831,
+          -0.411
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightMiddle2",
+        "axis": [
+          -0.374,
+          -0.831,
+          -0.411
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightMiddle3",
+        "axis": [
+          -0.374,
+          -0.831,
+          -0.411
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightIndex1",
+        "axis": [
+          -0.215,
+          -0.948,
+          -0.236
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightIndex2",
+        "axis": [
+          -0.215,
+          -0.948,
+          -0.236
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightIndex3",
+        "axis": [
+          -0.215,
+          -0.948,
+          -0.236
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "LeftThumb1",
+        "axis": [
+          -0.638,
+          0.357,
+          0.682
+        ],
+        "angle": 6
+      },
+      {
+        "bone": "LeftThumb2",
+        "axis": [
+          -0.638,
+          0.357,
+          0.682
+        ],
+        "angle": 10
+      },
+      {
+        "bone": "LeftThumb3",
+        "axis": [
+          -0.638,
+          0.357,
+          0.682
+        ],
+        "angle": 8
+      },
+      {
+        "bone": "LeftPinky1",
+        "axis": [
+          -0.38,
+          0.831,
+          0.406
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftPinky2",
+        "axis": [
+          -0.38,
+          0.831,
+          0.406
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftPinky3",
+        "axis": [
+          -0.38,
+          0.831,
+          0.406
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftRing1",
+        "axis": [
+          -0.372,
+          0.839,
+          0.397
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftRing2",
+        "axis": [
+          -0.372,
+          0.839,
+          0.397
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftRing3",
+        "axis": [
+          -0.372,
+          0.839,
+          0.397
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftMiddle1",
+        "axis": [
+          -0.41,
+          0.8,
+          0.438
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftMiddle2",
+        "axis": [
+          -0.41,
+          0.8,
+          0.438
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftMiddle3",
+        "axis": [
+          -0.41,
+          0.8,
+          0.438
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftIndex1",
+        "axis": [
+          -0.217,
+          0.948,
+          0.232
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftIndex2",
+        "axis": [
+          -0.217,
+          0.948,
+          0.232
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftIndex3",
+        "axis": [
+          -0.217,
+          0.948,
+          0.232
+        ],
+        "angle": 14
+      }
+    ],
+    "items": [
+      {
+        "mesh": "/Game/WonderChess/VNext/Heroes/Dartblower_r001/Items/Blowpipe/model_urls_glb/StaticMeshes/model_urls_glb",
+        "bone": "RightHand",
+        "location": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": 0.72,
+        "grip": {
+          "tip_axis": [
+            0,
+            0,
+            1
+          ],
+          "point": [
+            0,
+            0,
+            -55
+          ],
+          "rest_direction": [
+            0.342,
+            0.861,
+            0.376
+          ],
+          "reach": 9.1,
+          "palm": [
+            2.6,
+            -0.0,
+            -2.3
+          ],
+          "roll": 0,
+          "radius": 3,
+          "upright": true,
+          "aim_clips": [
+            "Attack",
+            "Cast"
           ]
         }
       }
     ],
+    "held_arm": {
+      "chest": "Spine02",
+      "upper": "RightArm",
+      "lower": "RightForeArm",
+      "hand": "RightHand",
+      "upper_direction": [
+        -0.55,
+        0.05,
+        -1.0
+      ],
+      "lower_direction": [
+        -0.75,
+        0.45,
+        0.3
+      ],
+      "free_clips": [
+        "Defeat"
+      ],
+      "clip_poses": {
+        "Attack": {
+          "upper_direction": [
+            -0.3,
+            0.65,
+            -0.3
+          ],
+          "lower_direction": [
+            0.6,
+            0.3,
+            0.75
+          ]
+        },
+        "Cast": {
+          "upper_direction": [
+            -0.3,
+            0.65,
+            -0.3
+          ],
+          "lower_direction": [
+            0.6,
+            0.3,
+            0.75
+          ]
+        }
+      }
+    },
+    "shots": {
+      "basic": {
+        "mesh": "Dart",
+        "scale": 2.6,
+        "arc": 8,
+        "spin": [
+          0,
+          700,
+          0
+        ],
+        "impact": "stick",
+        "lead_ms": 150
+      }
+    }
+  },
+  "wc_vn_bonechanter": {
+    "mesh": "/Game/WonderChess/VNext/Heroes/Bonechanter_r001/SK_Bonechanter_Detail",
+    "scale": 1.0,
+    "yaw": 0,
+    "label_height": 240,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Heroes/Bonechanter_r001/Animations/A_Bonechanter_Library_Idle_7",
+      "Move": "/Game/WonderChess/VNext/Heroes/Bonechanter_r001/Animations/A_Bonechanter_Library_Monster_Walk",
+      "Attack": "/Game/WonderChess/VNext/Heroes/Bonechanter_r001/Animations/A_Bonechanter_Library_mage_soell_cast_2",
+      "Cast": "/Game/WonderChess/VNext/Heroes/Bonechanter_r001/Animations/A_Bonechanter_Library_Charged_Spell_Cast_1",
+      "Hit": "/Game/WonderChess/VNext/Heroes/Bonechanter_r001/Animations/A_Bonechanter_Library_Hit_Reaction_1",
+      "Defeat": "/Game/WonderChess/VNext/Heroes/Bonechanter_r001/Animations/A_Bonechanter_Library_Strangled_and_Fall_Forward",
+      "Run": "/Game/WonderChess/VNext/Heroes/Bonechanter_r001/Animations/A_Bonechanter_Run"
+    },
+    "rates": {
+      "Attack": 2.4,
+      "Cast": 2.4,
+      "Move": 1.4,
+      "Hit": 2.5,
+      "Defeat": 2.5
+    },
     "curls": [
       {
+        "bone": "RightThumb1",
+        "axis": [
+          -0.557,
+          -0.686,
+          -0.469
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "RightThumb2",
+        "axis": [
+          -0.557,
+          -0.686,
+          -0.469
+        ],
+        "angle": 30
+      },
+      {
+        "bone": "RightThumb3",
+        "axis": [
+          -0.557,
+          -0.686,
+          -0.469
+        ],
+        "angle": 25
+      },
+      {
+        "bone": "RightPinky1",
+        "axis": [
+          -0.28,
+          -0.949,
+          0.142
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightPinky2",
+        "axis": [
+          -0.28,
+          -0.949,
+          0.142
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightPinky3",
+        "axis": [
+          -0.28,
+          -0.949,
+          0.142
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightRing1",
+        "axis": [
+          -0.331,
+          -0.942,
+          0.056
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightRing2",
+        "axis": [
+          -0.331,
+          -0.942,
+          0.056
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightRing3",
+        "axis": [
+          -0.331,
+          -0.942,
+          0.056
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightMiddle1",
+        "axis": [
+          -0.312,
+          -0.946,
+          0.089
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightMiddle2",
+        "axis": [
+          -0.312,
+          -0.946,
+          0.089
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightMiddle3",
+        "axis": [
+          -0.312,
+          -0.946,
+          0.089
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "RightIndex1",
+        "axis": [
+          -0.291,
+          -0.949,
+          0.125
+        ],
+        "angle": 70
+      },
+      {
+        "bone": "RightIndex2",
+        "axis": [
+          -0.291,
+          -0.949,
+          0.125
+        ],
+        "angle": 80
+      },
+      {
+        "bone": "RightIndex3",
+        "axis": [
+          -0.291,
+          -0.949,
+          0.125
+        ],
+        "angle": 45
+      },
+      {
+        "bone": "LeftThumb1",
+        "axis": [
+          -0.452,
+          0.871,
+          0.191
+        ],
+        "angle": 6
+      },
+      {
+        "bone": "LeftThumb2",
+        "axis": [
+          -0.452,
+          0.871,
+          0.191
+        ],
+        "angle": 10
+      },
+      {
+        "bone": "LeftThumb3",
+        "axis": [
+          -0.452,
+          0.871,
+          0.191
+        ],
+        "angle": 8
+      },
+      {
+        "bone": "LeftPinky1",
+        "axis": [
+          -0.294,
+          0.946,
+          -0.137
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftPinky2",
+        "axis": [
+          -0.294,
+          0.946,
+          -0.137
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftPinky3",
+        "axis": [
+          -0.294,
+          0.946,
+          -0.137
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftRing1",
+        "axis": [
+          -0.384,
+          0.922,
+          0.038
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftRing2",
+        "axis": [
+          -0.384,
+          0.922,
+          0.038
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftRing3",
+        "axis": [
+          -0.384,
+          0.922,
+          0.038
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftMiddle1",
+        "axis": [
+          -0.322,
+          0.943,
+          -0.085
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftMiddle2",
+        "axis": [
+          -0.322,
+          0.943,
+          -0.085
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftMiddle3",
+        "axis": [
+          -0.322,
+          0.943,
+          -0.085
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftIndex1",
+        "axis": [
+          -0.316,
+          0.944,
+          -0.095
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftIndex2",
+        "axis": [
+          -0.316,
+          0.944,
+          -0.095
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftIndex3",
+        "axis": [
+          -0.316,
+          0.944,
+          -0.095
+        ],
+        "angle": 14
+      }
+    ],
+    "items": [
+      {
+        "mesh": "/Game/WonderChess/VNext/Heroes/Bonechanter_r001/Items/Staff/model_urls_glb/StaticMeshes/model_urls_glb",
         "bone": "RightHand",
-        "axis": [
-          -0.56,
-          0.22,
-          -0.8
+        "location": [
+          0,
+          0,
+          0
         ],
-        "angle": -80.0
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": 1.08,
+        "grip": {
+          "tip_axis": [
+            0,
+            0,
+            1
+          ],
+          "point": [
+            0,
+            0,
+            10
+          ],
+          "rest_direction": [
+            0.329,
+            0.942,
+            -0.059
+          ],
+          "reach": 10.4,
+          "palm": [
+            3.2,
+            -1.2,
+            -2.0
+          ],
+          "roll": 0,
+          "radius": 4,
+          "upright": true
+        },
+        "light": {
+          "at": [
+            0,
+            0,
+            86
+          ],
+          "color": [
+            0.55,
+            1.0,
+            0.45
+          ],
+          "intensity": 2.5,
+          "radius": 220
+        }
+      }
+    ],
+    "held_arm": {
+      "chest": "Spine02",
+      "upper": "RightArm",
+      "lower": "RightForeArm",
+      "hand": "RightHand",
+      "upper_direction": [
+        -0.55,
+        0.05,
+        -1.0
+      ],
+      "lower_direction": [
+        -0.75,
+        0.45,
+        0.3
+      ],
+      "free_clips": [
+        "Attack",
+        "Cast",
+        "Defeat"
+      ]
+    },
+    "shots": {
+      "basic": {
+        "mesh": "Skull",
+        "scale": 1.1,
+        "arc": 20,
+        "spin": [
+          0,
+          0,
+          0
+        ],
+        "trail": "wisp",
+        "impact": "soul",
+        "lead_ms": 150
+      }
+    }
+  },
+  "wc_vn_foxclaw": {
+    "mesh": "/Game/WonderChess/VNext/Heroes/Foxclaw_r001/SK_Foxclaw_Detail",
+    "scale": 1.0,
+    "yaw": 0,
+    "label_height": 205,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Heroes/Foxclaw_r001/Animations/A_Foxclaw_Library_Idle_6",
+      "Move": "/Game/WonderChess/VNext/Heroes/Foxclaw_r001/Animations/A_Foxclaw_Library_Quick_Walk",
+      "Attack": "/Game/WonderChess/VNext/Heroes/Foxclaw_r001/Animations/A_Foxclaw_Library_Punch_Combo",
+      "Cast": "/Game/WonderChess/VNext/Heroes/Foxclaw_r001/Animations/A_Foxclaw_Library2_Male_Head_Down_Charge",
+      "Attack2": "/Game/WonderChess/VNext/Heroes/Foxclaw_r001/Animations/A_Foxclaw_Library2_Charged_Slash",
+      "Hit": "/Game/WonderChess/VNext/Heroes/Foxclaw_r001/Animations/A_Foxclaw_Library_Face_Punch_Reaction_2",
+      "Defeat": "/Game/WonderChess/VNext/Heroes/Foxclaw_r001/Animations/A_Foxclaw_Library_Shot_and_Blown_Back",
+      "Run": "/Game/WonderChess/VNext/Heroes/Foxclaw_r001/Animations/A_Foxclaw_Run"
+    },
+    "rates": {
+      "Attack": 2.0,
+      "Cast": 1.6,
+      "Move": 1.5,
+      "Hit": 2.5
+    },
+    "curls": [
+      {
+        "bone": "RightThumb1",
+        "axis": [
+          0.745,
+          -0.662,
+          -0.085
+        ],
+        "angle": 6
       },
       {
-        "bone": "RightFingers1",
+        "bone": "RightThumb2",
         "axis": [
-          -0.83,
-          -0.15,
-          0.54
+          0.745,
+          -0.662,
+          -0.085
         ],
-        "angle": 65
+        "angle": 10
       },
       {
-        "bone": "RightFingers2",
+        "bone": "RightThumb3",
         "axis": [
-          -0.83,
-          -0.15,
-          0.54
+          0.745,
+          -0.662,
+          -0.085
         ],
-        "angle": 75
+        "angle": 8
       },
       {
-        "bone": "RightThumb",
+        "bone": "RightPinky1",
         "axis": [
-          -0.56,
-          0.22,
-          -0.8
+          0.573,
+          -0.637,
+          -0.515
         ],
-        "angle": 40
+        "angle": 16
+      },
+      {
+        "bone": "RightPinky2",
+        "axis": [
+          0.573,
+          -0.637,
+          -0.515
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "RightPinky3",
+        "axis": [
+          0.573,
+          -0.637,
+          -0.515
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "RightRing1",
+        "axis": [
+          0.672,
+          -0.667,
+          -0.321
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "RightRing2",
+        "axis": [
+          0.672,
+          -0.667,
+          -0.321
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "RightRing3",
+        "axis": [
+          0.672,
+          -0.667,
+          -0.321
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "RightMiddle1",
+        "axis": [
+          0.656,
+          -0.664,
+          -0.36
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "RightMiddle2",
+        "axis": [
+          0.656,
+          -0.664,
+          -0.36
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "RightMiddle3",
+        "axis": [
+          0.656,
+          -0.664,
+          -0.36
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "RightIndex1",
+        "axis": [
+          0.676,
+          -0.667,
+          -0.312
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "RightIndex2",
+        "axis": [
+          0.676,
+          -0.667,
+          -0.312
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "RightIndex3",
+        "axis": [
+          0.676,
+          -0.667,
+          -0.312
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftThumb1",
+        "axis": [
+          0.709,
+          0.663,
+          0.242
+        ],
+        "angle": 6
+      },
+      {
+        "bone": "LeftThumb2",
+        "axis": [
+          0.709,
+          0.663,
+          0.242
+        ],
+        "angle": 10
+      },
+      {
+        "bone": "LeftThumb3",
+        "axis": [
+          0.709,
+          0.663,
+          0.242
+        ],
+        "angle": 8
+      },
+      {
+        "bone": "LeftPinky1",
+        "axis": [
+          0.673,
+          0.658,
+          0.339
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftPinky2",
+        "axis": [
+          0.673,
+          0.658,
+          0.339
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftPinky3",
+        "axis": [
+          0.673,
+          0.658,
+          0.339
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftRing1",
+        "axis": [
+          0.692,
+          0.661,
+          0.289
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftRing2",
+        "axis": [
+          0.692,
+          0.661,
+          0.289
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftRing3",
+        "axis": [
+          0.692,
+          0.661,
+          0.289
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftMiddle1",
+        "axis": [
+          0.693,
+          0.661,
+          0.287
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftMiddle2",
+        "axis": [
+          0.693,
+          0.661,
+          0.287
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftMiddle3",
+        "axis": [
+          0.693,
+          0.661,
+          0.287
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftIndex1",
+        "axis": [
+          0.75,
+          0.656,
+          0.083
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftIndex2",
+        "axis": [
+          0.75,
+          0.656,
+          0.083
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftIndex3",
+        "axis": [
+          0.75,
+          0.656,
+          0.083
+        ],
+        "angle": 14
+      }
+    ],
+    "items": [
+      {
+        "mesh": "/Game/WonderChess/VNext/Heroes/Foxclaw_r001/Items/Claw/model_urls_glb/StaticMeshes/model_urls_glb",
+        "bone": "LeftHand",
+        "location": [
+          48.8,
+          5.2,
+          78.7
+        ],
+        "rotation": [
+          -135,
+          0,
+          0
+        ],
+        "scale": 0.2,
+        "mesh_space": true
+      },
+      {
+        "mesh": "/Game/WonderChess/VNext/Heroes/Foxclaw_r001/Items/Claw/model_urls_glb/StaticMeshes/model_urls_glb",
+        "bone": "RightHand",
+        "location": [
+          -47.7,
+          4.8,
+          79.8
+        ],
+        "rotation": [
+          135,
+          0,
+          0
+        ],
+        "scale": 0.2,
+        "mesh_space": true
+      }
+    ]
+  },
+  "wc_vn_bearguard": {
+    "mesh": "/Game/WonderChess/VNext/Heroes/Bearguard_r002/SK_Bearguard_Detail",
+    "scale": 0.88,
+    "yaw": 0,
+    "label_height": 235,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Heroes/Bearguard_r002/Animations/A_Bearguard_Library_Idle_4",
+      "Move": "/Game/WonderChess/VNext/Heroes/Bearguard_r002/Animations/A_Bearguard_Library_Monster_Walk",
+      "Attack": "/Game/WonderChess/VNext/Heroes/Bearguard_r002/Animations/A_Bearguard_Library_Punch_Combo_2",
+      "Cast": "/Game/WonderChess/VNext/Heroes/Bearguard_r002/Animations/A_Bearguard_Library_Charged_Slash",
+      "Taunt": "/Game/WonderChess/VNext/Heroes/Bearguard_r002/Animations/A_Bearguard_Library_Chest_Pound_Taunt",
+      "Roar": "/Game/WonderChess/VNext/Heroes/Bearguard_r002/Animations/A_Bearguard_Library_Sword_Shout",
+      "Hit": "/Game/WonderChess/VNext/Heroes/Bearguard_r002/Animations/A_Bearguard_Library_Hit_Reaction",
+      "Defeat": "/Game/WonderChess/VNext/Heroes/Bearguard_r002/Animations/A_Bearguard_Library_Knock_Down_1",
+      "Run": "/Game/WonderChess/VNext/Heroes/Bearguard_r002/Animations/A_Bearguard_Run"
+    },
+    "rates": {
+      "Attack": 1.8,
+      "Cast": 1.8,
+      "Move": 1.4,
+      "Hit": 2.5
+    },
+    "curls": [
+      {
+        "bone": "RightThumb1",
+        "axis": [
+          -0.471,
+          -0.852,
+          -0.228
+        ],
+        "angle": 6
+      },
+      {
+        "bone": "RightThumb2",
+        "axis": [
+          -0.471,
+          -0.852,
+          -0.228
+        ],
+        "angle": 10
+      },
+      {
+        "bone": "RightThumb3",
+        "axis": [
+          -0.471,
+          -0.852,
+          -0.228
+        ],
+        "angle": 8
+      },
+      {
+        "bone": "RightPinky1",
+        "axis": [
+          -0.512,
+          -0.728,
+          -0.456
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "RightPinky2",
+        "axis": [
+          -0.512,
+          -0.728,
+          -0.456
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "RightPinky3",
+        "axis": [
+          -0.512,
+          -0.728,
+          -0.456
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "RightRing1",
+        "axis": [
+          -0.483,
+          -0.828,
+          -0.284
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "RightRing2",
+        "axis": [
+          -0.483,
+          -0.828,
+          -0.284
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "RightRing3",
+        "axis": [
+          -0.483,
+          -0.828,
+          -0.284
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "RightMiddle1",
+        "axis": [
+          -0.499,
+          -0.787,
+          -0.362
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "RightMiddle2",
+        "axis": [
+          -0.499,
+          -0.787,
+          -0.362
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "RightMiddle3",
+        "axis": [
+          -0.499,
+          -0.787,
+          -0.362
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "RightIndex1",
+        "axis": [
+          -0.177,
+          -0.861,
+          0.477
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "RightIndex2",
+        "axis": [
+          -0.177,
+          -0.861,
+          0.477
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "RightIndex3",
+        "axis": [
+          -0.177,
+          -0.861,
+          0.477
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftThumb1",
+        "axis": [
+          -0.425,
+          0.884,
+          0.192
+        ],
+        "angle": 6
+      },
+      {
+        "bone": "LeftThumb2",
+        "axis": [
+          -0.425,
+          0.884,
+          0.192
+        ],
+        "angle": 10
+      },
+      {
+        "bone": "LeftThumb3",
+        "axis": [
+          -0.425,
+          0.884,
+          0.192
+        ],
+        "angle": 8
+      },
+      {
+        "bone": "LeftPinky1",
+        "axis": [
+          -0.471,
+          0.761,
+          0.446
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftPinky2",
+        "axis": [
+          -0.471,
+          0.761,
+          0.446
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftPinky3",
+        "axis": [
+          -0.471,
+          0.761,
+          0.446
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftRing1",
+        "axis": [
+          -0.439,
+          0.863,
+          0.251
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftRing2",
+        "axis": [
+          -0.439,
+          0.863,
+          0.251
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftRing3",
+        "axis": [
+          -0.439,
+          0.863,
+          0.251
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftMiddle1",
+        "axis": [
+          -0.419,
+          0.892,
+          0.169
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftMiddle2",
+        "axis": [
+          -0.419,
+          0.892,
+          0.169
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftMiddle3",
+        "axis": [
+          -0.419,
+          0.892,
+          0.169
+        ],
+        "angle": 14
+      },
+      {
+        "bone": "LeftIndex1",
+        "axis": [
+          -0.362,
+          0.932,
+          -0.027
+        ],
+        "angle": 16
+      },
+      {
+        "bone": "LeftIndex2",
+        "axis": [
+          -0.362,
+          0.932,
+          -0.027
+        ],
+        "angle": 20
+      },
+      {
+        "bone": "LeftIndex3",
+        "axis": [
+          -0.362,
+          0.932,
+          -0.027
+        ],
+        "angle": 14
+      }
+    ],
+    "items": []
+  },
+  "wc_vn_ember_wisp": {
+    "static_mesh": "/Game/WonderChess/VNext/Heroes/EmberWisp_r001/SM_EmberWisp",
+    "scale": 0.5,
+    "yaw": 0,
+    "label_height": 175,
+    "motion": "flame",
+    "light": {
+      "at": [
+        0,
+        0,
+        0
+      ],
+      "color": [
+        1.0,
+        0.5,
+        0.18
+      ],
+      "intensity": 5.0,
+      "radius": 320
+    },
+    "shots": {
+      "basic": {
+        "mesh": "Fireball",
+        "scale": 0.9,
+        "arc": 35,
+        "spin": [
+          0,
+          400,
+          0
+        ],
+        "trail": "ember",
+        "impact": "flame",
+        "lead_ms": 150
+      }
+    }
+  },
+  "wc_vn_forge_king": {
+    "static_mesh": "/Game/WonderChess/VNext/Heroes/ForgeKing_r001/SM_ForgeKing",
+    "scale": 0.78,
+    "yaw": 0,
+    "label_height": 215,
+    "motion": "walker",
+    "light": {
+      "at": [
+        0,
+        70,
+        -10
+      ],
+      "color": [
+        1.0,
+        0.5,
+        0.15
+      ],
+      "intensity": 3.0,
+      "radius": 200
+    },
+    "shots": {
+      "basic": {
+        "mesh": "Rocket",
+        "scale": 1.9,
+        "arc": 90,
+        "spin": [
+          0,
+          500,
+          0
+        ],
+        "trail": "rocket",
+        "impact": "bomb",
+        "impact_scale": 0.7,
+        "lead_ms": 150,
+        "from_item": 0,
+        "from_forward": 4,
+        "from_up": 118,
+        "from_side": 62
+      }
+    }
+  },
+  "wc_vn_n_slate_ram": {
+    "mesh": "/Game/WonderChess/VNext/Monsters/SlateRam_k001/SK_SlateRam",
+    "scale": 0.72,
+    "yaw": 0,
+    "label_height": 150,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Monsters/SlateRam_k001/Animations/A_SlateRam_Idle",
+      "Move": "/Game/WonderChess/VNext/Monsters/SlateRam_k001/Animations/A_SlateRam_Move",
+      "Attack": "/Game/WonderChess/VNext/Monsters/SlateRam_k001/Animations/A_SlateRam_Attack",
+      "Cast": "/Game/WonderChess/VNext/Monsters/SlateRam_k001/Animations/A_SlateRam_Cast",
+      "Hit": "/Game/WonderChess/VNext/Monsters/SlateRam_k001/Animations/A_SlateRam_Hit",
+      "Defeat": "/Game/WonderChess/VNext/Monsters/SlateRam_k001/Animations/A_SlateRam_Defeat"
+    },
+    "rates": {
+      "Attack": 1.0,
+      "Cast": 1.0,
+      "Move": 1.0,
+      "Hit": 1.0,
+      "Defeat": 1.0
+    },
+    "items": [],
+    "glows": [
+      {
+        "bone": "Head",
+        "at": [
+          19.8,
+          130,
+          105
+        ],
+        "color": [
+          0.5,
+          1.6,
+          2.6
+        ],
+        "size": 18
+      },
+      {
+        "bone": "Head",
+        "at": [
+          -19.8,
+          130,
+          105
+        ],
+        "color": [
+          0.5,
+          1.6,
+          2.6
+        ],
+        "size": 18
+      }
+    ]
+  },
+  "wc_vn_n_seedpod": {
+    "mesh": "/Game/WonderChess/VNext/Monsters/Seedpod_k001/SK_Seedpod",
+    "scale": 1.0,
+    "yaw": 0,
+    "label_height": 95,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Monsters/Seedpod_k001/Animations/A_Seedpod_Idle",
+      "Move": "/Game/WonderChess/VNext/Monsters/Seedpod_k001/Animations/A_Seedpod_Move",
+      "Attack": "/Game/WonderChess/VNext/Monsters/Seedpod_k001/Animations/A_Seedpod_Attack",
+      "Cast": "/Game/WonderChess/VNext/Monsters/Seedpod_k001/Animations/A_Seedpod_Cast",
+      "Hit": "/Game/WonderChess/VNext/Monsters/Seedpod_k001/Animations/A_Seedpod_Hit",
+      "Defeat": "/Game/WonderChess/VNext/Monsters/Seedpod_k001/Animations/A_Seedpod_Defeat"
+    },
+    "rates": {
+      "Attack": 1.0,
+      "Cast": 1.0,
+      "Move": 1.0,
+      "Hit": 1.0,
+      "Defeat": 1.0
+    },
+    "items": [],
+    "glows": [
+      {
+        "bone": "Body",
+        "at": [
+          0,
+          14,
+          33
+        ],
+        "color": [
+          2.4,
+          1.4,
+          0.3
+        ],
+        "size": 26
+      }
+    ]
+  },
+  "wc_vn_n_reed_archer": {
+    "mesh": "/Game/WonderChess/VNext/Monsters/ReedArcher_k001/SK_ReedArcher",
+    "scale": 1.0,
+    "yaw": 0,
+    "label_height": 175,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Monsters/ReedArcher_k001/Animations/A_ReedArcher_Idle",
+      "Move": "/Game/WonderChess/VNext/Monsters/ReedArcher_k001/Animations/A_ReedArcher_Move",
+      "Attack": "/Game/WonderChess/VNext/Monsters/ReedArcher_k001/Animations/A_ReedArcher_Attack",
+      "Cast": "/Game/WonderChess/VNext/Monsters/ReedArcher_k001/Animations/A_ReedArcher_Cast",
+      "Hit": "/Game/WonderChess/VNext/Monsters/ReedArcher_k001/Animations/A_ReedArcher_Hit",
+      "Defeat": "/Game/WonderChess/VNext/Monsters/ReedArcher_k001/Animations/A_ReedArcher_Defeat"
+    },
+    "rates": {
+      "Attack": 1.0,
+      "Cast": 1.0,
+      "Move": 1.0,
+      "Hit": 1.0,
+      "Defeat": 1.0
+    },
+    "items": [],
+    "glows": []
+  },
+  "wc_vn_n_lantern_bulb": {
+    "mesh": "/Game/WonderChess/VNext/Monsters/LanternBulb_k001/SK_LanternBulb",
+    "scale": 0.95,
+    "yaw": 0,
+    "label_height": 135,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Monsters/LanternBulb_k001/Animations/A_LanternBulb_Idle",
+      "Move": "/Game/WonderChess/VNext/Monsters/LanternBulb_k001/Animations/A_LanternBulb_Move",
+      "Attack": "/Game/WonderChess/VNext/Monsters/LanternBulb_k001/Animations/A_LanternBulb_Attack",
+      "Cast": "/Game/WonderChess/VNext/Monsters/LanternBulb_k001/Animations/A_LanternBulb_Cast",
+      "Hit": "/Game/WonderChess/VNext/Monsters/LanternBulb_k001/Animations/A_LanternBulb_Hit",
+      "Defeat": "/Game/WonderChess/VNext/Monsters/LanternBulb_k001/Animations/A_LanternBulb_Defeat"
+    },
+    "rates": {
+      "Attack": 1.0,
+      "Cast": 1.0,
+      "Move": 1.0,
+      "Hit": 1.0,
+      "Defeat": 1.0
+    },
+    "items": [],
+    "glows": [
+      {
+        "bone": "Seed",
+        "at": [
+          0,
+          31,
+          86
+        ],
+        "color": [
+          2.6,
+          2.0,
+          0.6
+        ],
+        "size": 30
+      },
+      {
+        "bone": "Body",
+        "at": [
+          0,
+          0,
+          40
+        ],
+        "color": [
+          2.2,
+          1.1,
+          0.2
+        ],
+        "size": 70
+      }
+    ]
+  },
+  "wc_vn_n_glass_moth": {
+    "mesh": "/Game/WonderChess/VNext/Monsters/GlassMoth_k001/SK_GlassMoth",
+    "scale": 0.8,
+    "yaw": 0,
+    "label_height": 150,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Monsters/GlassMoth_k001/Animations/A_GlassMoth_Idle",
+      "Move": "/Game/WonderChess/VNext/Monsters/GlassMoth_k001/Animations/A_GlassMoth_Move",
+      "Attack": "/Game/WonderChess/VNext/Monsters/GlassMoth_k001/Animations/A_GlassMoth_Attack",
+      "Cast": "/Game/WonderChess/VNext/Monsters/GlassMoth_k001/Animations/A_GlassMoth_Cast",
+      "Hit": "/Game/WonderChess/VNext/Monsters/GlassMoth_k001/Animations/A_GlassMoth_Hit",
+      "Defeat": "/Game/WonderChess/VNext/Monsters/GlassMoth_k001/Animations/A_GlassMoth_Defeat"
+    },
+    "rates": {
+      "Attack": 1.0,
+      "Cast": 1.0,
+      "Move": 1.0,
+      "Hit": 1.0,
+      "Defeat": 1.0
+    },
+    "items": [],
+    "glows": []
+  },
+  "wc_vn_n_root_sentinel": {
+    "mesh": "/Game/WonderChess/VNext/Monsters/RootSentinel_k001/SK_RootSentinel",
+    "scale": 0.85,
+    "yaw": 0,
+    "label_height": 235,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Monsters/RootSentinel_k001/Animations/A_RootSentinel_Idle",
+      "Move": "/Game/WonderChess/VNext/Monsters/RootSentinel_k001/Animations/A_RootSentinel_Move",
+      "Attack": "/Game/WonderChess/VNext/Monsters/RootSentinel_k001/Animations/A_RootSentinel_Attack",
+      "Cast": "/Game/WonderChess/VNext/Monsters/RootSentinel_k001/Animations/A_RootSentinel_Cast",
+      "Hit": "/Game/WonderChess/VNext/Monsters/RootSentinel_k001/Animations/A_RootSentinel_Hit",
+      "Defeat": "/Game/WonderChess/VNext/Monsters/RootSentinel_k001/Animations/A_RootSentinel_Defeat"
+    },
+    "rates": {
+      "Attack": 1.0,
+      "Cast": 1.0,
+      "Move": 1.0,
+      "Hit": 1.0,
+      "Defeat": 1.0
+    },
+    "items": [],
+    "glows": [
+      {
+        "bone": "Head",
+        "at": [
+          0,
+          33,
+          183
+        ],
+        "color": [
+          0.6,
+          2.4,
+          0.5
+        ],
+        "size": 24
+      }
+    ]
+  },
+  "wc_vn_n_bramble_hound": {
+    "mesh": "/Game/WonderChess/VNext/Monsters/BrambleHound_k001/SK_BrambleHound",
+    "scale": 1.0,
+    "yaw": 0,
+    "label_height": 130,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Monsters/BrambleHound_k001/Animations/A_BrambleHound_Idle",
+      "Move": "/Game/WonderChess/VNext/Monsters/BrambleHound_k001/Animations/A_BrambleHound_Move",
+      "Attack": "/Game/WonderChess/VNext/Monsters/BrambleHound_k001/Animations/A_BrambleHound_Attack",
+      "Cast": "/Game/WonderChess/VNext/Monsters/BrambleHound_k001/Animations/A_BrambleHound_Cast",
+      "Hit": "/Game/WonderChess/VNext/Monsters/BrambleHound_k001/Animations/A_BrambleHound_Hit",
+      "Defeat": "/Game/WonderChess/VNext/Monsters/BrambleHound_k001/Animations/A_BrambleHound_Defeat"
+    },
+    "rates": {
+      "Attack": 1.0,
+      "Cast": 1.0,
+      "Move": 1.0,
+      "Hit": 1.0,
+      "Defeat": 1.0
+    },
+    "items": [],
+    "glows": [
+      {
+        "bone": "Head",
+        "at": [
+          6.2,
+          70,
+          89
+        ],
+        "color": [
+          2.6,
+          0.3,
+          0.2
+        ],
+        "size": 10
+      },
+      {
+        "bone": "Head",
+        "at": [
+          -6.2,
+          70,
+          89
+        ],
+        "color": [
+          2.6,
+          0.3,
+          0.2
+        ],
+        "size": 10
+      }
+    ]
+  },
+  "wc_vn_n_spore_cap": {
+    "mesh": "/Game/WonderChess/VNext/Monsters/SporeCap_k001/SK_SporeCap",
+    "scale": 1.0,
+    "yaw": 0,
+    "label_height": 120,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Monsters/SporeCap_k001/Animations/A_SporeCap_Idle",
+      "Move": "/Game/WonderChess/VNext/Monsters/SporeCap_k001/Animations/A_SporeCap_Move",
+      "Attack": "/Game/WonderChess/VNext/Monsters/SporeCap_k001/Animations/A_SporeCap_Attack",
+      "Cast": "/Game/WonderChess/VNext/Monsters/SporeCap_k001/Animations/A_SporeCap_Cast",
+      "Hit": "/Game/WonderChess/VNext/Monsters/SporeCap_k001/Animations/A_SporeCap_Hit",
+      "Defeat": "/Game/WonderChess/VNext/Monsters/SporeCap_k001/Animations/A_SporeCap_Defeat"
+    },
+    "rates": {
+      "Attack": 1.0,
+      "Cast": 1.0,
+      "Move": 1.0,
+      "Hit": 1.0,
+      "Defeat": 1.0
+    },
+    "items": [],
+    "glows": []
+  },
+  "wc_vn_n_gutter_gargoyle": {
+    "mesh": "/Game/WonderChess/VNext/Monsters/GutterGargoyle_k001/SK_GutterGargoyle",
+    "scale": 0.8,
+    "yaw": 0,
+    "label_height": 215,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Monsters/GutterGargoyle_k001/Animations/A_GutterGargoyle_Idle",
+      "Move": "/Game/WonderChess/VNext/Monsters/GutterGargoyle_k001/Animations/A_GutterGargoyle_Move",
+      "Attack": "/Game/WonderChess/VNext/Monsters/GutterGargoyle_k001/Animations/A_GutterGargoyle_Attack",
+      "Cast": "/Game/WonderChess/VNext/Monsters/GutterGargoyle_k001/Animations/A_GutterGargoyle_Cast",
+      "Hit": "/Game/WonderChess/VNext/Monsters/GutterGargoyle_k001/Animations/A_GutterGargoyle_Hit",
+      "Defeat": "/Game/WonderChess/VNext/Monsters/GutterGargoyle_k001/Animations/A_GutterGargoyle_Defeat"
+    },
+    "rates": {
+      "Attack": 1.0,
+      "Cast": 1.0,
+      "Move": 1.0,
+      "Hit": 1.0,
+      "Defeat": 1.0
+    },
+    "items": [],
+    "glows": [
+      {
+        "bone": "Head",
+        "at": [
+          12.5,
+          69.5,
+          186
+        ],
+        "color": [
+          0.8,
+          1.6,
+          2.6
+        ],
+        "size": 12
+      },
+      {
+        "bone": "Head",
+        "at": [
+          -12.5,
+          69.5,
+          186
+        ],
+        "color": [
+          0.8,
+          1.6,
+          2.6
+        ],
+        "size": 12
+      }
+    ]
+  },
+  "wc_vn_n_bog_toad": {
+    "mesh": "/Game/WonderChess/VNext/Monsters/BogToad_k001/SK_BogToad",
+    "scale": 0.85,
+    "yaw": 0,
+    "label_height": 120,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Monsters/BogToad_k001/Animations/A_BogToad_Idle",
+      "Move": "/Game/WonderChess/VNext/Monsters/BogToad_k001/Animations/A_BogToad_Move",
+      "Attack": "/Game/WonderChess/VNext/Monsters/BogToad_k001/Animations/A_BogToad_Attack",
+      "Cast": "/Game/WonderChess/VNext/Monsters/BogToad_k001/Animations/A_BogToad_Cast",
+      "Hit": "/Game/WonderChess/VNext/Monsters/BogToad_k001/Animations/A_BogToad_Hit",
+      "Defeat": "/Game/WonderChess/VNext/Monsters/BogToad_k001/Animations/A_BogToad_Defeat"
+    },
+    "rates": {
+      "Attack": 1.0,
+      "Cast": 1.0,
+      "Move": 1.0,
+      "Hit": 1.0,
+      "Defeat": 1.0
+    },
+    "items": [],
+    "glows": []
+  },
+  "wc_vn_n_old_tusk": {
+    "mesh": "/Game/WonderChess/VNext/Monsters/OldTusk_k001/SK_OldTusk",
+    "scale": 1.15,
+    "yaw": 0,
+    "label_height": 300,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Monsters/OldTusk_k001/Animations/A_OldTusk_Idle",
+      "Move": "/Game/WonderChess/VNext/Monsters/OldTusk_k001/Animations/A_OldTusk_Move",
+      "Attack": "/Game/WonderChess/VNext/Monsters/OldTusk_k001/Animations/A_OldTusk_Attack",
+      "Cast": "/Game/WonderChess/VNext/Monsters/OldTusk_k001/Animations/A_OldTusk_Cast",
+      "Hit": "/Game/WonderChess/VNext/Monsters/OldTusk_k001/Animations/A_OldTusk_Hit",
+      "Defeat": "/Game/WonderChess/VNext/Monsters/OldTusk_k001/Animations/A_OldTusk_Defeat"
+    },
+    "rates": {
+      "Attack": 1.0,
+      "Cast": 1.0,
+      "Move": 1.0,
+      "Hit": 1.0,
+      "Defeat": 1.0
+    },
+    "items": [],
+    "glows": [
+      {
+        "bone": "Head",
+        "at": [
+          19.8,
+          130,
+          105
+        ],
+        "color": [
+          0.5,
+          1.6,
+          2.6
+        ],
+        "size": 22
+      }
+    ]
+  },
+  "wc_vn_n_glass_queen": {
+    "mesh": "/Game/WonderChess/VNext/Monsters/GlassQueen_k001/SK_GlassQueen",
+    "scale": 0.42,
+    "yaw": 0,
+    "label_height": 240,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Monsters/GlassQueen_k001/Animations/A_GlassQueen_Idle",
+      "Move": "/Game/WonderChess/VNext/Monsters/GlassQueen_k001/Animations/A_GlassQueen_Move",
+      "Attack": "/Game/WonderChess/VNext/Monsters/GlassQueen_k001/Animations/A_GlassQueen_Attack",
+      "Cast": "/Game/WonderChess/VNext/Monsters/GlassQueen_k001/Animations/A_GlassQueen_Cast",
+      "Hit": "/Game/WonderChess/VNext/Monsters/GlassQueen_k001/Animations/A_GlassQueen_Hit",
+      "Defeat": "/Game/WonderChess/VNext/Monsters/GlassQueen_k001/Animations/A_GlassQueen_Defeat"
+    },
+    "rates": {
+      "Attack": 1.0,
+      "Cast": 1.0,
+      "Move": 1.0,
+      "Hit": 1.0,
+      "Defeat": 1.0
+    },
+    "items": [],
+    "glows": [
+      {
+        "bone": "WingLeft",
+        "at": [
+          170,
+          37.4,
+          268.8
+        ],
+        "color": [
+          2.4,
+          2.2,
+          1.6
+        ],
+        "size": 60
+      },
+      {
+        "bone": "WingRight",
+        "at": [
+          -170,
+          37.4,
+          268.8
+        ],
+        "color": [
+          2.4,
+          2.2,
+          1.6
+        ],
+        "size": 60
+      }
+    ]
+  },
+  "wc_vn_n_hollow_bellkeeper": {
+    "mesh": "/Game/WonderChess/VNext/Monsters/HollowBellkeeper_k001/SK_HollowBellkeeper",
+    "scale": 0.95,
+    "yaw": 0,
+    "label_height": 345,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Monsters/HollowBellkeeper_k001/Animations/A_HollowBellkeeper_Idle",
+      "Move": "/Game/WonderChess/VNext/Monsters/HollowBellkeeper_k001/Animations/A_HollowBellkeeper_Move",
+      "Attack": "/Game/WonderChess/VNext/Monsters/HollowBellkeeper_k001/Animations/A_HollowBellkeeper_Attack",
+      "Cast": "/Game/WonderChess/VNext/Monsters/HollowBellkeeper_k001/Animations/A_HollowBellkeeper_Cast",
+      "Hit": "/Game/WonderChess/VNext/Monsters/HollowBellkeeper_k001/Animations/A_HollowBellkeeper_Hit",
+      "Defeat": "/Game/WonderChess/VNext/Monsters/HollowBellkeeper_k001/Animations/A_HollowBellkeeper_Defeat"
+    },
+    "rates": {
+      "Attack": 1.0,
+      "Cast": 1.0,
+      "Move": 1.0,
+      "Hit": 1.0,
+      "Defeat": 1.0
+    },
+    "items": [],
+    "glows": [
+      {
+        "bone": "Bell",
+        "at": [
+          0,
+          34,
+          190
+        ],
+        "color": [
+          2.4,
+          1.5,
+          0.4
+        ],
+        "size": 50
+      }
+    ]
+  },
+  "wc_vn_n_grandmother_root": {
+    "mesh": "/Game/WonderChess/VNext/Monsters/GrandmotherRoot_k001/SK_GrandmotherRoot",
+    "scale": 0.9,
+    "yaw": 0,
+    "label_height": 300,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Monsters/GrandmotherRoot_k001/Animations/A_GrandmotherRoot_Idle",
+      "Move": "/Game/WonderChess/VNext/Monsters/GrandmotherRoot_k001/Animations/A_GrandmotherRoot_Move",
+      "Attack": "/Game/WonderChess/VNext/Monsters/GrandmotherRoot_k001/Animations/A_GrandmotherRoot_Attack",
+      "Cast": "/Game/WonderChess/VNext/Monsters/GrandmotherRoot_k001/Animations/A_GrandmotherRoot_Cast",
+      "Hit": "/Game/WonderChess/VNext/Monsters/GrandmotherRoot_k001/Animations/A_GrandmotherRoot_Hit",
+      "Defeat": "/Game/WonderChess/VNext/Monsters/GrandmotherRoot_k001/Animations/A_GrandmotherRoot_Defeat"
+    },
+    "rates": {
+      "Attack": 1.0,
+      "Cast": 1.0,
+      "Move": 1.0,
+      "Hit": 1.0,
+      "Defeat": 1.0
+    },
+    "items": [],
+    "glows": []
+  },
+  "wc_vn_n_mire_mother": {
+    "mesh": "/Game/WonderChess/VNext/Monsters/MireMother_k001/SK_MireMother",
+    "scale": 1.9,
+    "yaw": 0,
+    "label_height": 290,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Monsters/MireMother_k001/Animations/A_MireMother_Idle",
+      "Move": "/Game/WonderChess/VNext/Monsters/MireMother_k001/Animations/A_MireMother_Move",
+      "Attack": "/Game/WonderChess/VNext/Monsters/MireMother_k001/Animations/A_MireMother_Attack",
+      "Cast": "/Game/WonderChess/VNext/Monsters/MireMother_k001/Animations/A_MireMother_Cast",
+      "Hit": "/Game/WonderChess/VNext/Monsters/MireMother_k001/Animations/A_MireMother_Hit",
+      "Defeat": "/Game/WonderChess/VNext/Monsters/MireMother_k001/Animations/A_MireMother_Defeat"
+    },
+    "rates": {
+      "Attack": 1.0,
+      "Cast": 1.0,
+      "Move": 1.0,
+      "Hit": 1.0,
+      "Defeat": 1.0
+    },
+    "items": [],
+    "glows": [
+      {
+        "bone": "Throat",
+        "at": [
+          0,
+          50,
+          25
+        ],
+        "color": [
+          0.7,
+          2.2,
+          0.6
+        ],
+        "size": 36
+      }
+    ]
+  },
+  "wc_vn_n_wonder_heart": {
+    "mesh": "/Game/WonderChess/VNext/Monsters/WonderHeart_k001/SK_WonderHeart",
+    "scale": 0.8,
+    "yaw": 0,
+    "label_height": 270,
+    "clips": {
+      "Idle": "/Game/WonderChess/VNext/Monsters/WonderHeart_k001/Animations/A_WonderHeart_Idle",
+      "Move": "/Game/WonderChess/VNext/Monsters/WonderHeart_k001/Animations/A_WonderHeart_Move",
+      "Attack": "/Game/WonderChess/VNext/Monsters/WonderHeart_k001/Animations/A_WonderHeart_Attack",
+      "Cast": "/Game/WonderChess/VNext/Monsters/WonderHeart_k001/Animations/A_WonderHeart_Cast",
+      "Hit": "/Game/WonderChess/VNext/Monsters/WonderHeart_k001/Animations/A_WonderHeart_Hit",
+      "Defeat": "/Game/WonderChess/VNext/Monsters/WonderHeart_k001/Animations/A_WonderHeart_Defeat"
+    },
+    "rates": {
+      "Attack": 1.0,
+      "Cast": 1.0,
+      "Move": 1.0,
+      "Hit": 1.0,
+      "Defeat": 1.0
+    },
+    "items": [],
+    "glows": [
+      {
+        "bone": "Seed",
+        "at": [
+          0,
+          36,
+          190
+        ],
+        "color": [
+          2.4,
+          2.6,
+          0.8
+        ],
+        "size": 110
+      },
+      {
+        "bone": "Seed",
+        "at": [
+          0,
+          4,
+          190
+        ],
+        "color": [
+          2.0,
+          2.4,
+          0.6
+        ],
+        "size": 150
       }
     ]
   }

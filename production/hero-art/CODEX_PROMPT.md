@@ -1,52 +1,77 @@
 # Prompt for Codex — hero reference images
 
-Paste everything in the block below into Codex, opened in this repository root. Change the hero list on the last line when you want a different batch.
+One prompt for the whole roster. Paste everything in the block below into Codex, opened in this repository root. It can be pasted again at any time: finished heroes are skipped and the run continues where it stopped.
 
 ```text
-You are producing 2D reference images for Wonder Chess heroes with your image generation tool (GPT Image). These images are later uploaded to Meshy as its Main / Left / Back / Right inputs, so the four views of one hero must show exactly the same design.
+You are producing the 2D reference images for the Wonder Chess hero roster with your image generation tool (GPT Image). Do the whole roster in this one run, hero after hero, without waiting for me between heroes. The images are later uploaded to Meshy as its Main / Left / Back / Right inputs, so the four views of one subject must show exactly the same design.
 
-Read first, in this order:
+STYLE ANCHOR
+The owner has chosen the style. The anchor image is:
+art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r004/with_shield/main.png
+Open it and look at it before you start. Give it to the image tool as a style reference for every hero's first image so the roster looks like one game. Copy its rendering style, level of realism and detail, lighting, framing and background only. Never copy the Shieldbearer's armour, colours, sun emblem or body shape onto another hero.
+
+READ FIRST, IN THIS ORDER
 1. AGENTS.md — the section "Owner roster rework — 2026-10-03".
-2. production/hero-art/VISUAL_STANDARD.md — the style and view rules. Follow them exactly.
-3. production/hero-art/BRIEFS.md — one section per hero with its folder, colours, design description, a ready prompt for each view, and its accessory list.
+2. production/hero-art/VISUAL_STANDARD.md — the look, the three kinds of set, the pose, the four views and the consistency checks. Follow it exactly.
+3. production/hero-art/HERO_LOOKS.md — what every hero looks like, the shared look of each race, and the list of sets and image counts per hero.
+4. production/hero-art/BRIEFS.md — per hero: the folder and the ready prompt for every single image. Use these prompts as written; you may append a short correction when a retry needs one.
 
-For each hero in the batch, in order:
-1. Generate main.png from the hero's "main.png" prompt. Look at the result. If it breaks the visual standard (too much detail or texture, extra parts, wrong colours, cropped, text, scenery), regenerate before continuing.
-2. Generate left.png, back.png and right.png using main.png as the image reference together with that view's prompt, so the design, colours, proportions and pose stay identical. The left view faces the left edge of the image; the right view faces the right edge. Never mirror one side view to make the other.
-3. Generate each accessory listed for the hero, using main.png as the style reference, one item per image.
-4. Run the five consistency checks in VISUAL_STANDARD.md by actually viewing all four images side by side. Regenerate any view that fails. If two attempts at the same view still fail, stop that hero, keep the best attempt in a "rejected" subfolder, and report the defect instead of saving it as a view.
-5. Save the files as PNG, square, at least 1024x1024, all four views the same size, exactly here:
-   art-source/asset-studio/<hero_id>/inputs/references/four_view_r002/main.png
-   art-source/asset-studio/<hero_id>/inputs/references/four_view_r002/left.png
-   art-source/asset-studio/<hero_id>/inputs/references/four_view_r002/back.png
-   art-source/asset-studio/<hero_id>/inputs/references/four_view_r002/right.png
-   art-source/asset-studio/<hero_id>/inputs/references/four_view_r002/accessories/<name>.png
-6. In the same folder write provenance.json with: hero_id, date, the image model you used, the exact prompt used for every file, which file was used as the image reference, and the number of attempts per file. Do not invent values you do not know.
+WHERE EVERYTHING GOES
+For each hero, the folder is art-source/asset-studio/<hero_id>/inputs/references/four_view_r001/ and inside it:
+  full/main.png  full/left.png  full/back.png  full/right.png      the complete hero with items
+  body/main.png  body/left.png  body/back.png  body/right.png      the same hero without items
+  items/<name>/main.png  left.png  back.png  right.png             one item or summon alone
+  provenance.json                                                  see "Records"
+  review/full_views.png and review/all_views.png                   review sheets
+  rejected/                                                        failed attempts you kept
+The exact paths are in BRIEFS.md. PNG, square, at least 1024x1024, the same pixel size for every image of one hero. Keep the generated pixels unchanged; do not crop, mirror, upscale or repaint them afterwards.
 
-After the batch:
+WHAT IS ALREADY DONE (resume rule)
+Before each hero, look at its folder.
+- If full/ already has all four views, pass 1 is done for that hero: skip it. The same applies to a body/ or items/<name>/ folder in pass 2.
+- If a set has one to three views, finish it: keep the existing files and generate only the missing views, using the existing main.png as the image reference.
+- Never overwrite or delete an existing image. Shieldbearer (four_view_r004) is finished: do not touch anything under art-source/asset-studio/wc_vn_shieldbearer.
+
+PASS 1 — the four full views of all 39 remaining heroes (156 images)
+Go through the heroes in the order of BRIEFS.md, sections 02 to 40. For each hero:
+1. Generate full/main.png from its prompt with the style anchor as the style reference. Look at the result yourself. Check it against HERO_LOOKS.md (every listed part present, nothing added, right hand and left hand correct — left and right are the hero's own, so an item in the hero's right hand is on the viewer's left) and against the anchor (same realism, materials, light, background; not cartoon or toy). Regenerate until it passes, up to three attempts.
+2. Generate full/left.png, full/back.png and full/right.png, each from its own prompt with this hero's full/main.png as the image reference, so design, colours, proportions, pose and scale stay identical. The left view faces the left edge of the image; the right view faces the right edge. Generate each side separately; never mirror one to make the other, because the two sides of most heroes differ. Use the "Seen from behind" sentence in the prompt for the back view instead of inventing the back.
+3. View all four images side by side and run the six consistency checks in VISUAL_STANDARD.md. Regenerate any view that fails, up to three attempts per file.
+4. If a file still fails after three attempts, move the best attempt to rejected/ with the defect in its file name, write the defect in the run log, leave that view missing, and go on to the next hero. Do not save a failed image as a view.
+5. Save the four files, write provenance.json, and save review/full_views.png: the four views in one row in the order main, left, right, back, each labelled.
+6. After every five heroes, run:  .venv/Scripts/python.exe tools/vnext/sync_hero_art.py
+   It validates the files and writes 768 px copies of the full views to web/catalogue/art/<hero_id>/ for the catalogue site. "PENDING" lines for body and item sets are expected during pass 1. Fix any "FAIL" line before continuing.
+
+PASS 2 — body and item sets (264 images), only after pass 1 has been attempted for every hero
+Same hero order. Skip heroes whose HERO_LOOKS.md entry lists only "full". For each remaining hero whose full/ set is complete:
+1. body/: make each view by editing the matching full/ view (body/main.png from full/main.png, and so on): remove only the held, strapped, standing or floating items named in the brief and reveal the hand, arm and body behind them, empty and relaxed. Everything worn stays exactly the same, at the same position and scale. If the brief's separate items are not in the full image at all and the hands are already empty (for example a summon), copy the four full views into body/ unchanged and record them as copies.
+2. items/<name>/: generate the four views of each item or summon alone from its prompts, with full/main.png as the image reference so it has the same design, colours and materials. Main shows its front face, back its rear or inner side.
+3. Check body/ beside full/ view by view, and each item set's four views together. Same three-attempt limit and the same handling of failures as pass 1.
+4. Update provenance.json and save review/all_views.png: one labelled row per set (full, body, each item).
+
+RECORDS
+- provenance.json per hero: hero_id, date, the image model you used (write null for anything the tool does not tell you — do not invent values), and for every file: the exact prompt, the image references used, the number of attempts, and whether it is a generation, an edit or a copy. Add "owner_review": "open".
+- Run log: production/hero-art/RUN_LOG.md. Append one line per hero per pass as you finish it: hero id, pass, files saved, attempts, any defect you can still see. This is what you read first when the prompt is pasted again.
+
+WHEN YOU MUST STOP EARLY
+If you run out of image quota, time or context, stop at the end of the current hero — never in the middle of a set if you can avoid it — run the sync tool, update the run log, and tell me the last finished hero. I will paste this prompt again to continue.
+
+AT THE END
 1. Run:  .venv/Scripts/python.exe tools/vnext/sync_hero_art.py
-   It validates the files, writes 768 px copies to web/catalogue/art/<hero_id>/, updates production/hero-art/status.json and regenerates web/catalogue/data/catalogue.json. Fix anything it reports and run it again.
 2. Run:  .venv/Scripts/python.exe -m unittest discover -s tests
-3. Report, per hero: the files saved, attempts used, and any remaining visible defect. Show me the four views of each hero.
+   One Blender launcher test (test_blender_mcp_workflow) already fails on this PC because PowerShell script execution is disabled. Report it; do not fix it or change the policy.
+3. Report in a table, per hero: sets saved, images saved, total attempts, and every defect still visible. List separately the heroes with a missing or rejected view. Be exact: report only what you actually generated and actually looked at.
 
-Rules:
-- Do not edit data/vnext/catalog.json, production/hero-art/hero_art.json, BRIEFS.md or any game source. If a brief is unclear or wrong, stop and tell me.
-- Do not overwrite an existing four_view_r002 set. If one exists, stop and ask; a redo goes in four_view_r003.
-- Do not mark anything approved. In status.json the owner review stays "open"; I review the images myself.
-- No Meshy upload, no 3D generation, no paid service other than the image generation I asked for, no deployment, no git push.
+RULES
+- Do not edit data/vnext/catalog.json, production/hero-art/hero_art.json, HERO_LOOKS.md, BRIEFS.md, VISUAL_STANDARD.md or any game source. If a brief contradicts itself or cannot be drawn as written, skip that hero, note why in the run log and the report, and continue with the next.
+- Do not mark anything approved or accepted anywhere. Owner review stays "open"; I review every image myself. Passing your own checks is not approval.
+- No Meshy upload, no 3D generation, no paid service other than the image generation I asked for here, no deployment or site publishing, no git commit or push.
 - Leave unrelated uncommitted changes alone.
-
-This is the second attempt at the style. The first attempt (visual standard version 1, folder four_view_r001) was judged too cartoonish and toy-like; do not use any r001 image as a reference. Follow version 2 of the visual standard: a stylized hand-painted fantasy hero with believable materials.
-
-Batch: wc_vn_shieldbearer only. Stop after this one hero so I can review the style before you continue.
 ```
 
-## Later batches
+## Notes for the owner
 
-After the Shieldbearer set is accepted, replace the last line. Suggested order — the heroes already in the game first:
-
-1. `wc_vn_boar_rusher, wc_vn_grove_druid, wc_vn_hookjaw, wc_vn_prism_scholar, wc_vn_tide_caller, wc_vn_soul_jailer`
-2. `wc_vn_chapel_healer, wc_vn_hammerer, wc_vn_earthbreaker, wc_vn_bearguard, wc_vn_bomber, wc_vn_ember_wisp, wc_vn_blood_drummer`
-3. The remaining 26 planned heroes, six or seven at a time, in the order of `BRIEFS.md`.
-
-For later batches add this line to the prompt: "Use art-source/asset-studio/wc_vn_shieldbearer/inputs/references/four_view_r002/main.png as an additional style reference for every hero, so the whole roster shares one look."
+- The run is 420 images: 156 in pass 1 (what the catalogue site shows) and 264 in pass 2 (bodies, items and summons for Meshy). [HERO_LOOKS.md](HERO_LOOKS.md) lists the count per hero.
+- To review the looks before the body and item sets are made, delete the "PASS 2" block before pasting; paste the full prompt later to add them.
+- To redo one hero after review, change its description in `hero_art.json`, run `tools/vnext/build_hero_art_briefs.py`, and ask Codex for that hero in a new `four_view_r002` folder. Earlier sets are kept.
+- After a run, `tools/vnext/publish_site.py` pushes the new images to the public catalogue site.

@@ -256,7 +256,7 @@ Ability: **War Drum** (`standard`); art: `brief_only`.
 
 ## Siege Master
 
-`wc_vn_siege_master` | human / engineer | cost 4 | authored_not_implemented
+`wc_vn_siege_master` | human / engineer | cost 4 | laboratory_candidate
 
 **Form:** Broad artillerist with goggles wheeling a short fat cannon.
 
@@ -270,13 +270,11 @@ Ability: **War Drum** (`standard`); art: `brief_only`.
 
 **Recognition:** A marked circle appears before the shell lands.
 
-Planned ability: **Siege Shell** — Fires a cannon shell at the largest enemy cluster, damaging an area.
-
-Authored future design. No executable ability, stats, model, or runtime acceptance.
+Ability: **Siege Shell** (`standard`); art: `brief_only`.
 
 ## Longbow Scout
 
-`wc_vn_longbow_scout` | elf / sniper | cost 1 | authored_not_implemented
+`wc_vn_longbow_scout` | elf / sniper | cost 1 | laboratory_candidate
 
 **Form:** Slender archer with long ears, a green hood and a bow taller than herself.
 
@@ -290,13 +288,11 @@ Authored future design. No executable ability, stats, model, or runtime acceptan
 
 **Recognition:** The arrow leaves a thin bright trail through its line.
 
-Planned ability: **Piercing Arrow** — Shoots an arrow that damages every enemy in a straight line.
-
-Authored future design. No executable ability, stats, model, or runtime acceptance.
+Ability: **Piercing Arrow** (`standard`); art: `brief_only`.
 
 ## Moonblade
 
-`wc_vn_moonblade` | elf / assassin | cost 2 | authored_not_implemented
+`wc_vn_moonblade` | elf / assassin | cost 2 | laboratory_candidate
 
 **Form:** Lean masked elf with two crescent blades and a short cape.
 
@@ -310,13 +306,11 @@ Authored future design. No executable ability, stats, model, or runtime acceptan
 
 **Recognition:** A crescent flash at the start cell and behind the target.
 
-Planned ability: **Moon Step** — Blinks behind the farthest enemy and deals a guaranteed critical strike.
-
-Authored future design. No executable ability, stats, model, or runtime acceptance.
+Ability: **Moon Step** (`standard`); art: `brief_only`.
 
 ## Treant Caller
 
-`wc_vn_treant_caller` | elf / summoner | cost 4 | authored_not_implemented
+`wc_vn_treant_caller` | elf / summoner | cost 4 | laboratory_candidate
 
 **Form:** Tall elf in bark armour holding a glowing seed.
 
@@ -330,13 +324,11 @@ Authored future design. No executable ability, stats, model, or runtime acceptan
 
 **Recognition:** The seed is thrown and a treant bursts from the cell.
 
-Planned ability: **Call Treant** — Summons a treant that taunts nearby enemies.
-
-Authored future design. No executable ability, stats, model, or runtime acceptance.
+Ability: **Call Treant** (`standard`); art: `brief_only`.
 
 ## Ironwall
 
-`wc_vn_ironwall` | dwarf / tank | cost 2 | authored_not_implemented
+`wc_vn_ironwall` | dwarf / tank | cost 2 | laboratory_candidate
 
 **Form:** Squat dwarf sealed in thick armour with two bolted shields.
 
@@ -350,13 +342,11 @@ Authored future design. No executable ability, stats, model, or runtime acceptan
 
 **Recognition:** Shields slam together and red lines pull enemy attention.
 
-Planned ability: **Hold Fast** — Taunts adjacent enemies and gains armour for a short time.
-
-Authored future design. No executable ability, stats, model, or runtime acceptance.
+Ability: **Hold Fast** (`standard`); art: `brief_only`.
 
 ## Rifleman
 
-`wc_vn_rifleman` | dwarf / sniper | cost 3 | authored_not_implemented
+`wc_vn_rifleman` | dwarf / sniper | cost 3 | laboratory_candidate
 
 **Form:** Dwarf with a wide hat and a rifle longer than he is tall.
 
@@ -370,13 +360,11 @@ Authored future design. No executable ability, stats, model, or runtime acceptan
 
 **Recognition:** A long aiming line appears before the shot.
 
-Planned ability: **Long Shot** — Fires one heavy shot at the farthest enemy.
-
-Authored future design. No executable ability, stats, model, or runtime acceptance.
+Ability: **Long Shot** (`standard`); art: `brief_only`.
 
 ## Forge King
 
-`wc_vn_forge_king` | dwarf / engineer | cost 5 | authored_not_implemented
+`wc_vn_forge_king` | dwarf / engineer | cost 5 | laboratory_candidate
 
 **Form:** Crowned dwarf riding a chunky walking forge with rocket racks.
 
@@ -390,13 +378,11 @@ Authored future design. No executable ability, stats, model, or runtime acceptan
 
 **Recognition:** Racks open, rockets arc up and target marks appear.
 
-Planned ability: **Rocket Barrage** — Launches rockets at several random cells on the enemy side.
-
-Authored future design. No executable ability, stats, model, or runtime acceptance.
+Ability: **Rocket Barrage** (`standard`); art: `brief_only`.
 
 ## Jinxer
 
-`wc_vn_jinxer` | goblin / shaman | cost 1 | authored_not_implemented
+`wc_vn_jinxer` | goblin / shaman | cost 1 | laboratory_candidate
 
 **Form:** Hunched goblin in a feathered mask shaking a bone rattle.
 
@@ -410,13 +396,11 @@ Authored future design. No executable ability, stats, model, or runtime acceptan
 
 **Recognition:** A purple mark hangs over the weakened enemy.
 
-Planned ability: **Jinx** — Reduces the current target's attack damage for a few seconds.
-
-Authored future design. No executable ability, stats, model, or runtime acceptance.
+Ability: **Jinx** (`standard`); art: `brief_only`.
 
 ## Dartblower
 
-`wc_vn_dartblower` | goblin / sniper | cost 2 | authored_not_implemented
+`wc_vn_dartblower` | goblin / sniper | cost 2 | laboratory_candidate
 
 **Form:** Skinny goblin in a leaf cloak with a long blowpipe.
 
@@ -430,13 +414,11 @@ Authored future design. No executable ability, stats, model, or runtime acceptan
 
 **Recognition:** Green bubbles rise from the poisoned unit.
 
-Planned ability: **Poison Dart** — Poisons the target: damage over time and slower attacks.
-
-Authored future design. No executable ability, stats, model, or runtime acceptance.
+Ability: **Poison Dart** (`standard`); art: `brief_only`.
 
 ## Bonechanter
 
-`wc_vn_bonechanter` | orc / warlock | cost 4 | authored_not_implemented
+`wc_vn_bonechanter` | orc / warlock | cost 4 | laboratory_candidate
 
 **Form:** Tall orc in a bone headdress with a skull-topped staff.
 
@@ -450,13 +432,11 @@ Authored future design. No executable ability, stats, model, or runtime acceptan
 
 **Recognition:** Red threads link him to each drained enemy.
 
-Planned ability: **Draining Chain** — Drains life from an enemy; the drain chains to nearby enemies and heals him.
-
-Authored future design. No executable ability, stats, model, or runtime acceptance.
+Ability: **Draining Chain** (`standard`); art: `brief_only`.
 
 ## Foxclaw
 
-`wc_vn_foxclaw` | beastkin / assassin | cost 1 | authored_not_implemented
+`wc_vn_foxclaw` | beastkin / assassin | cost 1 | laboratory_candidate
 
 **Form:** Small fox-headed fighter with a big tail and two claws.
 
@@ -470,13 +450,11 @@ Authored future design. No executable ability, stats, model, or runtime acceptan
 
 **Recognition:** Orange blur on the leap; red drops on the bleeding unit.
 
-Planned ability: **Pounce** — Leaps onto the target and makes it bleed over time.
-
-Authored future design. No executable ability, stats, model, or runtime acceptance.
+Ability: **Pounce** (`standard`); art: `brief_only`.
 
 ## Wolf Caller
 
-`wc_vn_wolf_caller` | beastkin / summoner | cost 2 | authored_not_implemented
+`wc_vn_wolf_caller` | beastkin / summoner | cost 2 | laboratory_candidate
 
 **Form:** Wolf-headed hunter with a fur mantle and a horn.
 
@@ -490,13 +468,11 @@ Authored future design. No executable ability, stats, model, or runtime acceptan
 
 **Recognition:** A horn call, then two wolves jump in.
 
-Planned ability: **Pack Call** — Summons two wolves next to her.
-
-Authored future design. No executable ability, stats, model, or runtime acceptance.
+Ability: **Pack Call** (`standard`); art: `brief_only`.
 
 ## Owl Seer
 
-`wc_vn_owl_seer` | beastkin / shaman | cost 3 | authored_not_implemented
+`wc_vn_owl_seer` | beastkin / shaman | cost 3 | laboratory_candidate
 
 **Form:** Owl-headed sage in a feather cloak with a crooked staff.
 
@@ -510,13 +486,11 @@ Authored future design. No executable ability, stats, model, or runtime acceptan
 
 **Recognition:** A puff of feathers and a tiny critter in the enemy's place.
 
-Planned ability: **Small Fry** — Turns one enemy into a harmless critter for a few seconds.
-
-Authored future design. No executable ability, stats, model, or runtime acceptance.
+Ability: **Small Fry** (`standard`); art: `brief_only`.
 
 ## Hellblade
 
-`wc_vn_hellblade` | demon / fighter | cost 2 | authored_not_implemented
+`wc_vn_hellblade` | demon / fighter | cost 2 | laboratory_candidate
 
 **Form:** Red horned warrior with one burning greatsword.
 
@@ -530,13 +504,11 @@ Authored future design. No executable ability, stats, model, or runtime acceptan
 
 **Recognition:** A ring of flame circles his feet.
 
-Planned ability: **Burning Aura** — Burns all adjacent enemies every second for a short time.
-
-Authored future design. No executable ability, stats, model, or runtime acceptance.
+Ability: **Burning Aura** (`standard`); art: `brief_only`.
 
 ## Shadow Fiend
 
-`wc_vn_shadow_fiend` | demon / assassin | cost 4 | authored_not_implemented
+`wc_vn_shadow_fiend` | demon / assassin | cost 4 | laboratory_candidate
 
 **Form:** Dark winged demon with glowing eyes and long claws.
 
@@ -550,13 +522,11 @@ Authored future design. No executable ability, stats, model, or runtime acceptan
 
 **Recognition:** A dark streak across the dashed cells.
 
-Planned ability: **Shadow Dash** — Dashes in a straight line and damages every enemy crossed.
-
-Authored future design. No executable ability, stats, model, or runtime acceptance.
+Ability: **Shadow Dash** (`standard`); art: `brief_only`.
 
 ## Pit Lord
 
-`wc_vn_pit_lord` | demon / mage | cost 5 | authored_not_implemented
+`wc_vn_pit_lord` | demon / mage | cost 5 | laboratory_candidate
 
 **Form:** Huge horned demon with a burning crown and a heavy whip.
 
@@ -570,13 +540,11 @@ Authored future design. No executable ability, stats, model, or runtime acceptan
 
 **Recognition:** The area darkens, then fire falls in waves.
 
-Planned ability: **Rain of Fire** — Calls fire down on a large area for several seconds.
-
-Authored future design. No executable ability, stats, model, or runtime acceptance.
+Ability: **Rain of Fire** (`standard`); art: `brief_only`.
 
 ## Bone Archer
 
-`wc_vn_bone_archer` | undead / sniper | cost 1 | authored_not_implemented
+`wc_vn_bone_archer` | undead / sniper | cost 1 | laboratory_candidate
 
 **Form:** Skeleton in a torn hood with a bow made of ribs.
 
@@ -590,13 +558,11 @@ Authored future design. No executable ability, stats, model, or runtime acceptan
 
 **Recognition:** A cracked-shield mark over the target.
 
-Planned ability: **Splinter Arrow** — Shoots an arrow that reduces the target's armour.
-
-Authored future design. No executable ability, stats, model, or runtime acceptance.
+Ability: **Splinter Arrow** (`standard`); art: `brief_only`.
 
 ## Curse Weaver
 
-`wc_vn_curse_weaver` | undead / warlock | cost 2 | authored_not_implemented
+`wc_vn_curse_weaver` | undead / warlock | cost 2 | laboratory_candidate
 
 **Form:** Veiled ghoul with long sleeves and a floating curse doll.
 
@@ -610,13 +576,11 @@ Authored future design. No executable ability, stats, model, or runtime acceptan
 
 **Recognition:** A doll icon hangs above the cursed enemy.
 
-Planned ability: **Hex of Frailty** — Curses the target so it takes more damage from all sources.
-
-Authored future design. No executable ability, stats, model, or runtime acceptance.
+Ability: **Hex of Frailty** (`standard`); art: `brief_only`.
 
 ## Stitcher
 
-`wc_vn_stitcher` | undead / engineer | cost 3 | authored_not_implemented
+`wc_vn_stitcher` | undead / engineer | cost 3 | laboratory_candidate
 
 **Form:** Stitched-together surgeon with mismatched arms and a tool belt.
 
@@ -630,13 +594,11 @@ Authored future design. No executable ability, stats, model, or runtime acceptan
 
 **Recognition:** Thread stitches across the ally and a pale shield appears.
 
-Planned ability: **Patch Up** — Repairs and shields the ally with the lowest health.
-
-Authored future design. No executable ability, stats, model, or runtime acceptance.
+Ability: **Patch Up** (`standard`); art: `brief_only`.
 
 ## Necromancer
 
-`wc_vn_necromancer` | undead / summoner | cost 4 | authored_not_implemented
+`wc_vn_necromancer` | undead / summoner | cost 4 | laboratory_candidate
 
 **Form:** Gaunt robed figure with a crown of candles and a scythe.
 
@@ -650,13 +612,11 @@ Authored future design. No executable ability, stats, model, or runtime acceptan
 
 **Recognition:** Green light rises from a fallen unit's cell.
 
-Planned ability: **Raise Dead** — Raises skeletons from fallen units, up to the summon cap.
-
-Authored future design. No executable ability, stats, model, or runtime acceptance.
+Ability: **Raise Dead** (`standard`); art: `brief_only`.
 
 ## Stone Shaper
 
-`wc_vn_stone_shaper` | elemental / summoner | cost 3 | authored_not_implemented
+`wc_vn_stone_shaper` | elemental / summoner | cost 3 | laboratory_candidate
 
 **Form:** Boulder-bodied figure with glowing cracks and oversized fists.
 
@@ -670,13 +630,11 @@ Authored future design. No executable ability, stats, model, or runtime acceptan
 
 **Recognition:** Stone pillars rise from marked cells.
 
-Planned ability: **Rock Wall** — Raises a short rock wall that blocks cells for a few seconds.
-
-Authored future design. No executable ability, stats, model, or runtime acceptance.
+Ability: **Rock Wall** (`standard`); art: `brief_only`.
 
 ## Storm Spirit
 
-`wc_vn_storm_spirit` | elemental / shaman | cost 4 | authored_not_implemented
+`wc_vn_storm_spirit` | elemental / shaman | cost 4 | laboratory_candidate
 
 **Form:** Cloud-bodied spirit with lightning arms and a bright core.
 
@@ -690,13 +648,11 @@ Authored future design. No executable ability, stats, model, or runtime acceptan
 
 **Recognition:** A bolt visibly jumps from enemy to enemy.
 
-Planned ability: **Chain Lightning** — Lightning hits the target and jumps to nearby enemies.
-
-Authored future design. No executable ability, stats, model, or runtime acceptance.
+Ability: **Chain Lightning** (`standard`); art: `brief_only`.
 
 ## Scaleguard
 
-`wc_vn_scaleguard` | dragonkin / tank | cost 3 | authored_not_implemented
+`wc_vn_scaleguard` | dragonkin / tank | cost 3 | laboratory_candidate
 
 **Form:** Broad horned dragonkin with plated scales and a spiked tail.
 
@@ -710,13 +666,11 @@ Authored future design. No executable ability, stats, model, or runtime acceptan
 
 **Recognition:** Scales glow gold and sparks fly back at attackers.
 
-Planned ability: **Thorn Scales** — For a short time, returns part of the damage he takes to attackers.
-
-Authored future design. No executable ability, stats, model, or runtime acceptance.
+Ability: **Thorn Scales** (`standard`); art: `brief_only`.
 
 ## Dawn Oracle
 
-`wc_vn_dawn_oracle` | dragonkin / priest | cost 4 | authored_not_implemented
+`wc_vn_dawn_oracle` | dragonkin / priest | cost 4 | laboratory_candidate
 
 **Form:** Slender winged dragonkin in white robes with a sun disc.
 
@@ -730,13 +684,11 @@ Authored future design. No executable ability, stats, model, or runtime acceptan
 
 **Recognition:** A sunrise glow sweeps across the allied side.
 
-Planned ability: **Dawn Chorus** — Heals every ally for a moderate amount.
-
-Authored future design. No executable ability, stats, model, or runtime acceptance.
+Ability: **Dawn Chorus** (`standard`); art: `brief_only`.
 
 ## Flame Regent
 
-`wc_vn_flame_regent` | dragonkin / mage | cost 5 | authored_not_implemented
+`wc_vn_flame_regent` | dragonkin / mage | cost 5 | laboratory_candidate
 
 **Form:** Tall crowned dragonkin with large wings and a red mantle.
 
@@ -750,13 +702,11 @@ Authored future design. No executable ability, stats, model, or runtime acceptan
 
 **Recognition:** He rears back, then a cone of fire covers marked cells.
 
-Planned ability: **Regent's Breath** — Breathes fire in a wide cone in front of him.
-
-Authored future design. No executable ability, stats, model, or runtime acceptance.
+Ability: **Regent's Breath** (`standard`); art: `brief_only`.
 
 ## Void Wyrm
 
-`wc_vn_void_wyrm` | dragonkin / warlock | cost 5 | authored_not_implemented
+`wc_vn_void_wyrm` | dragonkin / warlock | cost 5 | laboratory_candidate
 
 **Form:** Dark-scaled dragonkin with hollow glowing chest and tattered wings.
 
@@ -770,6 +720,4 @@ Authored future design. No executable ability, stats, model, or runtime acceptan
 
 **Recognition:** Blue wisps are pulled from enemies into his chest.
 
-Planned ability: **Mana Devour** — Drains mana from nearby enemies and silences them briefly.
-
-Authored future design. No executable ability, stats, model, or runtime acceptance.
+Ability: **Mana Devour** (`standard`); art: `brief_only`.

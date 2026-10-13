@@ -1,6 +1,6 @@
 # Local Wonder Chess support
 
-This directory replaces the old external `Documents/Project Support/Wonder Chess` location for the owner-requested portable project. Plans, review material, original production kits, project tool sources and migration evidence are versioned. Packaged study builds, Python environments, machine preferences/state, Git-internal recovery snapshots and the duplicate historical checkout remain local. Copy the whole folder for the complete transfer; see the [publication scope](../reports/repository-sync/20260915/PUBLISHING_REPORT.md).
+This directory replaces the old external `Documents/Project Support/Wonder Chess` location for the owner-requested portable project. Its payload is ignored by Git and must be copied with the project folder.
 
 | Path | Contents |
 |---|---|

@@ -10,6 +10,8 @@
 #include "Camera/CameraComponent.h"
 #include "Components/PointLightComponent.h"
 #include "Components/SceneCaptureComponent2D.h"
+#include "Components/ExponentialHeightFogComponent.h"
+#include "Engine/ExponentialHeightFog.h"
 #include "Engine/TextureRenderTarget2D.h"
 #include "Components/SkyAtmosphereComponent.h"
 #include "Components/DirectionalLightComponent.h"
@@ -80,6 +82,9 @@ const TCHAR* EffectName(wc::Effect Effect)
     case wc::Effect::Damage: return TEXT("damage"); case wc::Effect::Heal: return TEXT("heal");
     case wc::Effect::Shield: return TEXT("shield"); case wc::Effect::Stun: return TEXT("stun");
     case wc::Effect::Dash: return TEXT("move"); case wc::Effect::StatModifier: return TEXT("modifier");
+    case wc::Effect::Hex: return TEXT("hex"); case wc::Effect::Silence: return TEXT("silence");
+    case wc::Effect::Taunt: return TEXT("taunt"); case wc::Effect::ManaDrain: return TEXT("mana drain");
+    case wc::Effect::Blink: return TEXT("blink"); case wc::Effect::Summon: return TEXT("summon");
     }
     return TEXT("effect");
 }
@@ -374,9 +379,17 @@ void AWCVNextLab::BuildScene()
         }
         const FLinearColor Frame(.50f,.45f,.33f);
         for(int Edge:{-1,1}){
-            Mesh(Ground,TEXT("Cube"),FVector(0,BenchY+Edge*88,0),FVector(16.6,.16,.2),Frame);
-            Mesh(Ground,TEXT("Cube"),FVector(Edge*822,BenchY,0),FVector(.16,1.92,.2),Frame);
+            BenchFrame.Add(Mesh(Ground,TEXT("Cube"),FVector(0,BenchY+Edge*88,0),FVector(16.6,.16,.2),Frame));
+            BenchFrame.Add(Mesh(Ground,TEXT("Cube"),FVector(Edge*822,BenchY,0),FVector(.16,1.92,.2),Frame));
         }
+        // While a hero is held, a glowing outline marks the half of the board it may stand on.
+        const double Depth=Catalog.rules.deploymentRows*200;
+        for(int Edge:{-1,1}){
+            DeployFrame.Add(Mesh(Ground,TEXT("Cube"),FVector(0,800-Depth/2+Edge*Depth/2,9),FVector(16.1,.05,.03),Teams[0]));
+            DeployFrame.Add(Mesh(Ground,TEXT("Cube"),FVector(Edge*802,800-Depth/2,9),FVector(.05,Depth/100,.03),Teams[0]));
+        }
+        for(auto* Edge:DeployFrame){Edge->SetCastShadow(false);Edge->SetVisibility(false);
+            if(CombatCueMaterial){auto* Glow=UMaterialInstanceDynamic::Create(CombatCueMaterial,this);Glow->SetVectorParameterValue(TEXT("Color"),Teams[0]*1.6f);Edge->SetMaterial(0,Glow);}}
         BenchMark=Mesh(Ground,TEXT("Cube"),Position({0,-1})+FVector(0,0,7),FVector(1.5,1.5,.02),Teams[0]);
         BenchMark->SetCastShadow(false);BenchMark->SetVisibility(false);
     }
@@ -476,7 +489,7 @@ void AWCVNextLab::BuildCourtyard(AActor* Ground,ADirectionalLight* Sun,ASkyLight
     const auto Prop=[&](const TCHAR* Piece,FVector At,double Tall,double Yaw){
         auto* Model=LoadObject<UStaticMesh>(nullptr,*FString::Printf(
             TEXT("/Game/WonderChess/VNext/Environment/Courtyard_r001/Props/%s/SM_%s.SM_%s"),Piece,Piece,Piece));
-        if(!Model)return false;
+        if(!Model)return static_cast<UStaticMeshComponent*>(nullptr);
         const FBoxSphereBounds Bounds=Model->GetBounds();
         const double Scale=Tall/(2*Bounds.BoxExtent.Z);
         const FRotator Turn(0,Yaw,0);
@@ -487,7 +500,7 @@ void AWCVNextLab::BuildCourtyard(AActor* Ground,ADirectionalLight* Sun,ASkyLight
         Part->SetRelativeRotation(Turn);Part->SetRelativeScale3D(FVector(Scale));
         Part->SetRelativeLocation(At-Turn.RotateVector(FVector(Bounds.Origin.X,Bounds.Origin.Y,Bounds.Origin.Z-Bounds.BoxExtent.Z))*Scale);
         Part->RegisterComponent();
-        return true;
+        return Part;
     };
     // Curtain walls on the far side and both flanks; +Y is the camera side.
     // Close enough that the far wall and both flanks show at the edges of the game camera.
@@ -516,7 +529,9 @@ void AWCVNextLab::BuildCourtyard(AActor* Ground,ADirectionalLight* Sun,ASkyLight
         Block(At+FVector(0,0,Height*1.36+330),FVector(7.8,7.8,5.4),Roof,FRotator::ZeroRotator,TEXT("Cone"));
     }
     // Gatehouse in the far wall: a proud block, a dark arch and a portcullis hint.
-    if(!Prop(TEXT("gatehouse"),FVector(0,Far+150,Base),Height*1.17,GatehouseYaw)){
+    GateModel=Prop(TEXT("gatehouse"),FVector(0,Far+150,Base),Height*1.17,GatehouseYaw);
+    if(GateModel)GateHome=GateModel->GetRelativeLocation();
+    if(!GateModel){
         Block(FVector(0,Far+60,Base+Height*.56),FVector(8.4,3.6,Height*1.12/100),Wall);
         Block(FVector(0,Far+245,Base+250),FVector(4.4,.3,5),Soot)->SetCastShadow(false);
         Block(FVector(0,Far+245,Base+500),FVector(4.4,.3,4.4),Soot,FRotator(0,0,90),TEXT("Cylinder"))->SetCastShadow(false);
@@ -529,6 +544,8 @@ void AWCVNextLab::BuildCourtyard(AActor* Ground,ADirectionalLight* Sun,ASkyLight
             // The painted banner hangs as one flat cut-out panel.
             auto* Panel=Mesh(Ground,TEXT("Plane"),P,FVector(1.9,4.1,1),FLinearColor::White,FacesY?FRotator(0,0,90):FRotator(0,P.X<0?90:-90,90));
             Panel->SetMaterial(0,BannerCloth);Panel->SetCastShadow(false);
+            FBannerSway Sway;Sway.Panel=Panel;Sway.Top=P+FVector(0,0,205);Sway.FacesY=FacesY;Sway.Yaw=FacesY?0:P.X<0?90:-90;
+            Sway.Phase=BannerSways.Num()*1.9f;BannerSways.Add(Sway);
             return;
         }
         Block(P,FacesY?FVector(1.9,.06,4.6):FVector(.06,1.9,4.6),Cloth)->SetCastShadow(false);
@@ -550,10 +567,57 @@ void AWCVNextLab::BuildCourtyard(AActor* Ground,ADirectionalLight* Sun,ASkyLight
         Fire->SetRelativeLocation(At+FVector(0,0,260));Fire->bUseInverseSquaredFalloff=false;Fire->SetLightFalloffExponent(2);
         Fire->SetIntensity(2.2f);Fire->SetAttenuationRadius(1500);Fire->SetLightColor(FLinearColor(1.f,.62f,.30f));
         Fire->SetCastShadows(false);Fire->RegisterComponent();
+        // Living fire: three nested flame tongues and a few rising sparks, animated in TickCourtyard.
+        FBrazierFire Flame;Flame.Light=Fire;Flame.Top=At+FVector(0,0,272);Flame.Phase=BrazierFires.Num()*2.3f;
+        const FLinearColor Tongues[]={FLinearColor(1.f,.36f,.05f),FLinearColor(1.f,.62f,.10f),FLinearColor(1.f,.90f,.45f)};
+        for(int Tongue=0;Tongue<3;++Tongue){
+            auto* Part=Mesh(Ground,TEXT("Cone"),Flame.Top,FVector(.46f-Tongue*.12f,.46f-Tongue*.12f,.80f-Tongue*.18f),Tongues[Tongue]);
+            Part->SetCastShadow(false);
+            if(CombatCueMaterial){auto* Glow=UMaterialInstanceDynamic::Create(CombatCueMaterial,this);Glow->SetVectorParameterValue(TEXT("Color"),Tongues[Tongue]*3);Part->SetMaterial(0,Glow);}
+            Flame.Flames.Add(Part);
+        }
+        for(int Spark=0;Spark<4;++Spark){
+            auto* Part=Mesh(Ground,TEXT("Sphere"),Flame.Top,FVector(.035f),FLinearColor(1.f,.75f,.25f));
+            Part->SetCastShadow(false);
+            if(CombatCueMaterial){auto* Glow=UMaterialInstanceDynamic::Create(CombatCueMaterial,this);Glow->SetVectorParameterValue(TEXT("Color"),FLinearColor(4.f,2.2f,.6f));Part->SetMaterial(0,Glow);}
+            Flame.Sparks.Add(Part);
+        }
+        BrazierFires.Add(Flame);
     }
-    // Barrels, a crate and a weapon rack dress the foot of each flank wall.
+    // Barrels, crates and weapon racks dress the foot of the flank walls and the gate.
     Prop(TEXT("yard_props"),FVector(-Flank+330,-420,Base),340,PropsYaw);
     Prop(TEXT("yard_props"),FVector(Flank-330,380,Base),340,PropsYaw+180);
+    Prop(TEXT("yard_props"),FVector(-Flank+330,560,Base),300,PropsYaw+20);
+    Prop(TEXT("yard_props"),FVector(Flank-330,-600,Base),300,PropsYaw+160);
+    Prop(TEXT("yard_props"),FVector(-760,Far+330,Base),280,0);
+    Prop(TEXT("yard_props"),FVector(780,Far+330,Base),280,180);
+    // Sky: the painted late-afternoon sky stands far behind the wall, wide enough for the look-around.
+    {
+        const TCHAR* Folder=TEXT("/Game/WonderChess/VNext/Environment/Courtyard_r001");
+        auto* Painted=LoadObject<UMaterialInterface>(nullptr,*FString::Printf(TEXT("%s/M_CourtyardSky.M_CourtyardSky"),Folder));
+        auto* Image=LoadObject<UTexture2D>(nullptr,*FString::Printf(TEXT("%s/T_Sky.T_Sky"),Folder));
+        if(Painted&&Image){
+            auto* Canvas=UMaterialInstanceDynamic::Create(Painted,this);
+            Canvas->SetTextureParameterValue(TEXT("Texture"),Image);Canvas->SetVectorParameterValue(TEXT("Color"),FLinearColor(.95f,.95f,.95f));
+            Canvas->SetScalarParameterValue(TEXT("TilingU"),1);Canvas->SetScalarParameterValue(TEXT("TilingV"),1);
+            SkyPlate=Mesh(Ground,TEXT("Plane"),FVector(0,-9000,2300),FVector(220,105,1),FLinearColor::White,FRotator(0,0,90));
+            SkyPlate->SetMaterial(0,Canvas);SkyPlate->SetCastShadow(false);
+        }
+    }
+    // Dust motes drifting in the sun over the yard.
+    Motes=NewObject<UInstancedStaticMeshComponent>(Ground);
+    Ground->AddInstanceComponent(Motes);Motes->SetupAttachment(Ground->GetRootComponent());
+    Motes->SetStaticMesh(ProxyMeshes.FindChecked(TEXT("Sphere")));Motes->SetMobility(EComponentMobility::Movable);
+    Motes->SetCollisionEnabled(ECollisionEnabled::NoCollision);Motes->SetCastShadow(false);
+    if(CombatCueMaterial){auto* Glow=UMaterialInstanceDynamic::Create(CombatCueMaterial,this);Glow->SetVectorParameterValue(TEXT("Color"),FLinearColor(1.6f,1.4f,1.0f));Motes->SetMaterial(0,Glow);}
+    Motes->RegisterComponent();
+    for(int Mote=0;Mote<44;++Mote)Motes->AddInstance(FTransform(FVector(0,0,-500)));
+    // A light warm haze gives the far wall some distance.
+    if(auto* Haze=GetWorld()->SpawnActor<AExponentialHeightFog>()){
+        Haze->GetComponent()->SetFogDensity(.006f);Haze->GetComponent()->SetFogHeightFalloff(.12f);
+        Haze->GetComponent()->SetFogInscatteringColor(FLinearColor(.55f,.47f,.38f));Haze->GetComponent()->SetStartDistance(2400);
+        SceneActors.Add(Haze);
+    }
     // Late-afternoon sun with a soft opposite fill so armour and faces do not fall into black.
     // A spawned directional light is stationary, and a stationary light ignores a new rotation at run time.
     Sun->GetLightComponent()->SetMobility(EComponentMobility::Movable);
@@ -601,6 +665,81 @@ const FSlateBrush* AWCVNextLab::HeroCardBrush(const FString& HeroId)
     Brush->SetResourceObject(Target);Brush->ImageSize=FVector2D(384,384);
     HeroCardTargets.Add(HeroId,Target);HeroCardHeroes.Add(HeroId,Hero);HeroCardBrushes.Add(HeroId,Brush);
     return &Brush.Get();
+}
+void AWCVNextLab::CameraWheel(float Delta)
+{
+    // Wheel up moves in: wide (0), normal (1), close (2).
+    CamZoomLevel=FMath::Clamp(CamZoomLevel+(Delta>0?1:-1),0,2);
+}
+void AWCVNextLab::TickCourtyard(float DeltaSeconds)
+{
+    const float Time=float(Elapsed);
+    // Fire and wind play under everything once the solo yard is up.
+    if(SoloMode&&!AmbienceStarted&&Elapsed>1){AmbienceStarted=true;PlayCue(TEXT("fire_loop"),.30f);PlayCue(TEXT("wind_loop"),.25f);}
+    // Reactions: braziers flare and the gate rattles when a fight starts, banners snap when it ends, and an
+    // area skill landing shakes the camera.
+    const auto* Combat=CurrentCombat();
+    if(Combat&&!CourtyardSawCombat){FlareAt=Elapsed;GateRattleAt=Elapsed;CamPush=1;}
+    const bool Finished=Combat&&Combat->Result().complete;
+    if(Finished&&!CourtyardSawResult){BannerSnapAt=Elapsed;CamPush=FMath::Max(CamPush,.5f);}
+    CourtyardSawCombat=Combat!=nullptr;CourtyardSawResult=Finished;
+    if(Combat&&!Finished)for(const auto& Unit:Combat->Units())
+        if(Unit.health>0&&Unit.state==wc::ActionState::CastRecovery&&Unit.ability.radius>0&&Combat->CurrentTick()-Unit.releaseTick<=1)CamShake=1;
+    const float Flare=FMath::Clamp(1-float(Elapsed-FlareAt)/1.6f,0.f,1.f);
+    for(auto& Fire:BrazierFires){
+        for(int Tongue=0;Tongue<Fire.Flames.Num();++Tongue){
+            const float Lick=1+.20f*FMath::Sin(Time*(9+Tongue*3)+Fire.Phase+Tongue*1.7f)+.11f*FMath::Sin(Time*23+Fire.Phase*2+Tongue);
+            const float Wide=.46f-Tongue*.12f,Tall=(.80f-Tongue*.18f)*Lick*(1+Flare*.9f);
+            Fire.Flames[Tongue]->SetRelativeScale3D(FVector(Wide*(1.1f-.1f*Lick)*(1+Flare*.3f),Wide*(1.1f-.1f*Lick)*(1+Flare*.3f),Tall));
+            Fire.Flames[Tongue]->SetRelativeLocation(Fire.Top+FVector(FMath::Sin(Time*7+Fire.Phase+Tongue)*2.5f,FMath::Cos(Time*6+Fire.Phase)*2.5f,Tall*50-12));
+        }
+        for(int Spark=0;Spark<Fire.Sparks.Num();++Spark){
+            const float Rise=FMath::Fmod(Time*(70+Spark*14)+Spark*53+Fire.Phase*20,210.f);
+            Fire.Sparks[Spark]->SetRelativeLocation(Fire.Top+FVector(FMath::Sin(Time*2.1f+Spark*2+Fire.Phase)*(8+Rise*.12f),FMath::Cos(Time*1.7f+Spark)*(8+Rise*.12f),20+Rise));
+            Fire.Sparks[Spark]->SetRelativeScale3D(FVector(.04f*(1-Rise/210)));
+        }
+        if(Fire.Light)Fire.Light->SetIntensity(2.2f*(1+.16f*FMath::Sin(Time*11+Fire.Phase)+.09f*FMath::Sin(Time*27+Fire.Phase*3))+Flare*3);
+    }
+    const float Snap=FMath::Clamp(1-float(Elapsed-BannerSnapAt)/1.4f,0.f,1.f);
+    for(const auto& Banner:BannerSways){
+        const float Angle=FMath::DegreesToRadians(2.4f*FMath::Sin(Time*1.15f+Banner.Phase)+1.1f*FMath::Sin(Time*2.7f+Banner.Phase*1.7f)+Snap*9*FMath::Sin(Time*10+Banner.Phase));
+        // The panel hangs from its rod: it swings about the top edge, out from the wall and back.
+        const FVector Out=Banner.FacesY?FVector(0,1,0):FVector(Banner.Yaw>0?1:-1,0,0);
+        Banner.Panel->SetRelativeLocation(Banner.Top+Out*FMath::Abs(FMath::Sin(Angle))*205-FVector(0,0,FMath::Cos(Angle)*205));
+        Banner.Panel->SetRelativeRotation(FRotator(0,Banner.Yaw,90+FMath::RadiansToDegrees(FMath::Abs(Angle))));
+    }
+    if(GateModel){
+        const float Rattle=FMath::Clamp(1-float(Elapsed-GateRattleAt)/.7f,0.f,1.f);
+        GateModel->SetRelativeLocation(GateHome+FVector(FMath::Sin(Time*58)*3*Rattle,0,FMath::Abs(FMath::Sin(Time*41))*4*Rattle));
+    }
+    if(Motes)for(int Mote=0;Mote<Motes->GetInstanceCount();++Mote){
+        const float Grain=Mote*12.9898f;
+        const FVector Home(FMath::Fmod(Grain*37,1900.f)-950,FMath::Fmod(Grain*61,2100.f)-950,70+FMath::Fmod(Grain*17,460.f));
+        const FVector Drift(FMath::Sin(Time*.21f+Grain)*45,FMath::Sin(Time*.17f+Grain*2)*35,FMath::Sin(Time*.31f+Grain*3)*26);
+        Motes->UpdateInstanceTransform(Mote,FTransform(FRotator::ZeroRotator,Home+Drift,FVector(.022f+.012f*FMath::Sin(Grain))),false,Mote+1==Motes->GetInstanceCount());
+    }
+    // The painted sky drifts very slowly sideways.
+    if(SkyPlate)SkyPlate->SetRelativeLocation(FVector(FMath::Sin(Time*.012f)*900,-9000,2300));
+}
+void AWCVNextLab::Puff(FVector Where)
+{
+    // A small pale disc that spreads and vanishes where a piece lands.
+    FPuff* Free=nullptr;
+    for(auto& Entry:Puffs)if(Elapsed-Entry.At>.4){Free=&Entry;break;}
+    if(!Free&&Puffs.Num()<10){
+        FPuff Made;Made.Disc=Mesh(SceneActor(),TEXT("Cylinder"),FVector(0,0,-500),FVector(.4,.4,.004),FLinearColor(.80f,.74f,.62f));
+        Made.Disc->SetCastShadow(false);
+        if(CombatCueMaterial){auto* Dust=UMaterialInstanceDynamic::Create(CombatCueMaterial,this);Dust->SetVectorParameterValue(TEXT("Color"),FLinearColor(.80f,.74f,.62f));Made.Disc->SetMaterial(0,Dust);}
+        Free=&Puffs[Puffs.Add(Made)];
+    }
+    if(Free){Free->At=Elapsed;Free->Where=Where;}
+    PlayCue(TEXT("place"),.45f);
+}
+int AWCVNextLab::SellPrice(uint64 Unit) const
+{
+    if(SoloMatch)for(const auto& Owned:SoloMatch->Seats()[0].roster)if(Owned.id==Unit)
+        return Catalog.units[Owned.definition].cost*(Owned.star==3?9:Owned.star==2?3:1);
+    return 0;
 }
 // Mouse dragging during preparation. A press that selects a piece (on its board tile or in its bench slot) arms
 // the drag; holding or moving away lifts the piece. Releasing over a board tile issues the same move a second
@@ -678,9 +817,15 @@ void AWCVNextLab::TickDrag()
     }
     if(!Down){
         const bool Drop=OnBoard&&!(Hover==DragOrigin),ToBench=OnBench&&!(Hover==DragOrigin);
+        const bool Sell=SoloMode&&SellZone.IsValid()&&SellZone->GetCachedGeometry().IsUnderLocation(FSlateApplication::Get().GetCursorPos());
+        const uint64 Held=DragId;
         EndDrag();
-        if(Drop){if(SoloMode)SoloCell(Hover);else EditCell(Hover,false);}
-        else if(ToBench)SelectBench(Hover.column);
+        if(Sell){wc::Command Order;Order.type=wc::CommandType::Sell;Order.unit=Held;if(SoloCommand(Order))Puff(FVector(DragGround.X,DragGround.Y,8));}
+        else if(Drop){if(SoloMode)SoloCell(Hover);else EditCell(Hover,false);}
+        else if(ToBench){
+            // The rules swap two heroes when the destination is taken, on the bench as on the board.
+            wc::Command Order;Order.type=wc::CommandType::Move;Order.unit=Held;Order.slot=Hover.column;Order.toBoard=false;SoloCommand(Order);
+        }
     }
 }
 void AWCVNextLab::UpdateCamera()
@@ -691,8 +836,12 @@ void AWCVNextLab::UpdateCamera()
     const FVector2D BoardSize(Bounds.Right-Bounds.Left,Bounds.Bottom-Bounds.Top);
     const FVector2D BoardCenter((Bounds.Left+Bounds.Right)*.5,(Bounds.Top+Bounds.Bottom)*.5);
     if(Storybook){
-        const FVector Forward=FVector(0,-2400,Courtyard?-1650:-2200).GetSafeNormal(),Right(1,0,0),Up=FVector::CrossProduct(Forward,Right).GetSafeNormal();
-        const double Tangent=FMath::Tan(FMath::DegreesToRadians(17.)),Focal=Width/(2*Tangent);
+        // The solo courtyard uses a lower, wider view so the battlements, tower tops and a band of sky show.
+        const bool Yard=Courtyard&&SoloMode;
+        const FVector Forward=FVector(0,-2400,Yard?-1180:Courtyard?-1650:-2200).GetSafeNormal(),Right(1,0,0),Up=FVector::CrossProduct(Forward,Right).GetSafeNormal();
+        const double HalfAngle=Yard?24.:17.;
+        Camera->GetCameraComponent()->SetFieldOfView(2*HalfAngle);
+        const double Tangent=FMath::Tan(FMath::DegreesToRadians(HalfAngle)),Focal=Width/(2*Tangent);
         // With the bench row under the board, the board sits a little higher in its area.
         const FVector2D DesiredCenter(BoardCenter.X,BoardCenter.Y+BoardSize.Y*(SoloMode?-.045:.035));
         const auto CameraAt=[&](double Distance){
@@ -731,8 +880,32 @@ void AWCVNextLab::UpdateCamera()
             const double Mid=(Low+High)*.5;
             if(Fits(Mid))High=Mid;else Low=Mid;
         }
-        const FVector Location=CameraAt(High);
-        Camera->SetActorLocation(Location);Camera->SetActorRotation(Forward.Rotation());
+        FVector Location=CameraAt(High);
+        FRotator View=Forward.Rotation();
+        // -WCCamPreview holds the wide step with the view raised, so captures can check the wall tops and sky.
+        static const bool Preview=FParse::Param(FCommandLine::Get(),TEXT("WCCamPreview"));
+        if(Yard&&(Preview||(!SoloVisualExercise&&!HeroReview))){
+            const float Step=GetWorld()->GetDeltaSeconds();
+            CamZoom=FMath::FInterpTo(CamZoom,CamZoomLevel==0?1.24f:CamZoomLevel==2?.74f:1.f,Step,6);
+            // Right mouse button: look around while held, spring back on release.
+            const FVector2D Cursor=FSlateApplication::Get().GetCursorPos();
+            const bool Held=FSlateApplication::Get().GetPressedMouseButtons().Contains(EKeys::RightMouseButton);
+            if(Held&&CamLooking){
+                CamLookTarget.X=FMath::Clamp(CamLookTarget.X+float(Cursor.X-CamCursor.X)*.05f,-15.f,15.f);
+                CamLookTarget.Y=FMath::Clamp(CamLookTarget.Y-float(Cursor.Y-CamCursor.Y)*.04f,-4.f,10.f);
+            }
+            if(!Held)CamLookTarget=FVector2D::ZeroVector;
+            CamLooking=Held;CamCursor=Cursor;
+            CamLook=FMath::Vector2DInterpTo(CamLook,CamLookTarget,Step,Held?16:5);
+            CamPush=FMath::FInterpTo(CamPush,0,Step,2.4f);CamShake=FMath::FInterpTo(CamShake,0,Step,7);CamSwing=FMath::FInterpTo(CamSwing,0,Step,4);
+            if(Preview){CamZoom=1.24f;CamLook=FVector2D(0,9);}
+            Location=CameraAt(High*CamZoom*(1-.07*CamPush));
+            // The close step leans toward the player's half of the board.
+            Location+=FVector(0,300,0)*FMath::Clamp((1-CamZoom)/.26f,0.f,1.f);
+            Location+=FVector(FMath::Sin(Elapsed*71),FMath::Sin(Elapsed*53+1),FMath::Sin(Elapsed*97+2))*7*CamShake;
+            View.Yaw+=CamLook.X+CamSwing*16;View.Pitch+=CamLook.Y;
+        }
+        Camera->SetActorLocation(Location);Camera->SetActorRotation(View);
         Camera->GetCameraComponent()->SetOrthoWidth(2*High*Tangent);
         if(SanctuaryBackdrop){
             const double Depth=High+5000,PlateWidth=2*Depth*Tangent;
@@ -1131,7 +1304,7 @@ void AWCVNextLab::Preset()
     for(int Side=0;Side<2;++Side)for(int Hero=0;Hero<6;++Hero){ChooseHero(Hero);EditCell(wc::EncounterCell(Layout[Hero],Side,Catalog.rules),false);}
     // -WCHeroReviewId=<hero id> puts that hero in the first place so the review route shows it.
     FString ReviewId;
-    if(HeroReview&&FParse::Value(FCommandLine::Get(),TEXT("WCHeroReviewId="),ReviewId))
+    if((HeroReview||FParse::Param(FCommandLine::Get(),TEXT("WCFrameRec")))&&FParse::Value(FCommandLine::Get(),TEXT("WCHeroReviewId="),ReviewId))
         for(int Hero=0;Hero<int(Catalog.units.size());++Hero)if(Str(Catalog.units[Hero].id)==ReviewId)Formation[0][0].definition=Hero;
     Selected=Formation[0][0].id;Palette=0;
     Message=TEXT("Six distinct pilot creatures per team. Edit freely before Start; no combat commands are accepted during a fight.");
@@ -1191,8 +1364,14 @@ void AWCVNextLab::AddPieceView(uint64 Id,int Definition,int Side,bool Neutral)
     USkeletalMeshComponent* Cragstoat=nullptr;
     // Imported race/class hero models replace the proxy shapes wherever one is listed.
     UWCHeroPresentationComponent* Hero=nullptr;
-    const FString HeroId=Str(Catalog.Definition(Definition,Neutral).id);
-    if(!Neutral&&!BellbackCandidate&&UWCHeroPresentationComponent::HasModel(HeroId)){
+    FString HeroId=Str(Catalog.Definition(Definition,Neutral).id);
+    // -WCHeroReviewLook=<hero id> dresses the reviewed piece as a hero that is not playable yet, so its model can be checked.
+    {
+        FString Look;
+        if((HeroReview||FParse::Param(FCommandLine::Get(),TEXT("WCFrameRec")))&&Side==0&&!Neutral&&!Formation[0].empty()&&Definition==Formation[0][0].definition&&FParse::Value(FCommandLine::Get(),TEXT("WCHeroReviewLook="),Look))HeroId=Look;
+    }
+    // Monsters use the same presentation as heroes once a model is listed for them.
+    if(!BellbackCandidate&&UWCHeroPresentationComponent::HasModel(HeroId)){
         Hero=NewObject<UWCHeroPresentationComponent>(Actor);
         Actor->AddInstanceComponent(Hero);Hero->SetupAttachment(Actor->GetRootComponent());Hero->RegisterComponent();
         Hero->SetRelativeLocation(FVector(0,0,6));
@@ -1287,8 +1466,22 @@ void AWCVNextLab::AddPieceView(uint64 Id,int Definition,int Side,bool Neutral)
     Label->SetTextRenderColor(FColor(236,242,217));Label->SetCastShadow(false);Label->RegisterComponent();
     auto* ManaBar=Mesh(Actor,TEXT("Cube"),FVector(0,0,Cragstoat?125:164+Lift),FVector(.001,.045,.045),FLinearColor(.15,.55,1.0));
     ManaBar->SetCastShadow(false);ManaBar->SetVisibility(false);
-    Pieces.Add(Id,FPieceView{Actor,Bar,Backing,Label,Definition,Side});
+    Pieces.Add(Id,FPieceView{Actor,Bar,Backing,nullptr,nullptr,Label,Definition,Side});
     Pieces.FindChecked(Id).Mana=ManaBar;
+    // Race and class badges ride beside the name plate in the solo game.
+    if(ArtSlice&&SoloMode&&!SoloVisualExercise&&!Neutral&&Definition>=0&&Definition<int(Catalog.units.size())){
+        auto* Cutout=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/WonderChess/VNext/Environment/Courtyard_r001/M_CourtyardCutout.M_CourtyardCutout"));
+        const auto Badge=[&](const std::string& Trait)->UStaticMeshComponent*{
+            const FString Icon=Str(Trait).ToLower();
+            auto* Image=LoadObject<UTexture2D>(nullptr,*FString::Printf(TEXT("/Game/WonderChess/VNext/UI/HudKit_r001/T_icon_%s.T_icon_%s"),*Icon,*Icon));
+            if(!Cutout||!Image)return nullptr;
+            auto* Plate=Mesh(Actor,TEXT("Plane"),FVector::ZeroVector,FVector(.2),FLinearColor::White);
+            auto* Look=UMaterialInstanceDynamic::Create(Cutout,this);Look->SetTextureParameterValue(TEXT("Texture"),Image);
+            Plate->SetMaterial(0,Look);Plate->SetCastShadow(false);return Plate;
+        };
+        Pieces.FindChecked(Id).RaceIcon=Badge(Catalog.units[Definition].race);
+        Pieces.FindChecked(Id).ClassIcon=Badge(Catalog.units[Definition].unitClass);
+    }
     Pieces.FindChecked(Id).Bellback=Bellback;
     Pieces.FindChecked(Id).Hero=Hero;
     Pieces.FindChecked(Id).Silkmother=Silkmother;
@@ -1402,6 +1595,7 @@ void AWCVNextLab::UpdatePresentation(float DeltaSeconds)
         FVector Target=Position(Cell);
         // A dragged piece follows the cursor, lifted off the board.
         if(Dragging&&!Combat&&Id==DragId)Target=FVector(DragGround.X,DragGround.Y,70);
+        if(Combat)if(const FVector* Knock=KnockOffsets.Find(Id))Target+=*Knock;
         float Yaw=int(Facing)*90+180;
         if(Combat&&View.YawSet)Yaw=View.Yaw;
         if(Combat&&Health>0){
@@ -1412,12 +1606,26 @@ void AWCVNextLab::UpdatePresentation(float DeltaSeconds)
                 if(State==wc::ActionState::Moving&&U.destination.column>=0)Look=U.destination;
                 else if(U.target>=0&&Combat->Units()[U.target].health>0)Look=Combat->Units()[U.target].cell;
                 if(!(Look==U.cell))Yaw=FMath::RadiansToDegrees(FMath::Atan2(float(U.cell.row-Look.row),float(Look.column-U.cell.column)))-90;
+                // The far side's pieces come in from the gate during the first moments of a fight.
+                if(SoloMode&&!SoloVisualExercise&&Cell.row>=4&&Combat->CurrentTick()<12)Target+=FVector(0,-430,0)*FMath::Square(1-Combat->CurrentTick()/12.f);
                 if(State==wc::ActionState::Moving&&U.destination.column>=0){
                     const int Duration=wc::MovementInterval(D.movementRate,U.movementBonus,Catalog.rules);
                     const double FractionalTick=Imported&&!(SoloMode?SoloPaused:Paused)&&CapturePhase==ECapturePhase::None?
                         FMath::Clamp(Accumulator*1000/Catalog.rules.tickMs,0.,1.):0;
                     const float Progress=FMath::Clamp(1.f-float(U.movementTick-Combat->CurrentTick()-FractionalTick)/Duration,0.f,1.f);
                     Target=FMath::Lerp(Target,Position(U.destination),Progress);
+                }
+                if(Catalog.rules.chargeReturns&&D.ability.mechanic==wc::AbilityMechanic::MomentumCharge&&U.abilityAim.column>=0&&
+                    (State==wc::ActionState::CastWindup||State==wc::ActionState::CastRecovery)){
+                    // Out to where the bodies touch in 0.10 s, a beat of contact, back home in 0.15 s; a short
+                    // step backward winds it up before the release.
+                    const FVector Line=Position(U.abilityAim)-Position(Cell);
+                    const float Reach=FMath::Max(0.f,float(Line.Size2D())-120);
+                    const double Smooth=!(SoloMode?SoloPaused:Paused)&&CapturePhase==ECapturePhase::None?FMath::Clamp(Accumulator*1000/Catalog.rules.tickMs,0.,1.):0;
+                    const float Since=float(Combat->CurrentTick()+Smooth-U.releaseTick)*Catalog.rules.tickMs/1000.f;
+                    const float Out=State==wc::ActionState::CastWindup?-18/FMath::Max(Reach,18.f)*FMath::Clamp(1+Since/.3f,0.f,1.f):
+                        Since<.10f?Since/.10f:Since<.15f?1:FMath::Max(0.f,1-(Since-.15f)/.15f);
+                    Target+=Line.GetSafeNormal2D()*Reach*Out;
                 }
                 if(!Imported&&(State==wc::ActionState::AttackWindup||State==wc::ActionState::AttackRecovery)&&U.target>=0){
                     const auto& Enemy=Combat->Units()[U.target];
@@ -1428,19 +1636,41 @@ void AWCVNextLab::UpdatePresentation(float DeltaSeconds)
                 if(Def%6==4||Def%6==5)Target.Z=FMath::Sin(Combat->CurrentTick()*.1+Id)*5;
             }
         }
-        const FVector Location=Combat&&!Imported?FMath::VInterpTo(Actor->GetActorLocation(),Target,DeltaSeconds,18):Target;
+        FVector Location=Combat&&!Imported?FMath::VInterpTo(Actor->GetActorLocation(),Target,DeltaSeconds,18):Target;
+        static const bool PlacementProbe=FParse::Param(FCommandLine::Get(),TEXT("WCPlacementProbe"));
+        if(!Combat&&SoloMode&&(!SoloVisualExercise||PlacementProbe)){
+            const bool Held=Dragging&&Id==DragId;
+            // A new piece drops onto its tile; a moved one glides there. Both land with a puff and a small hop.
+            // Pieces never hop or drop (owner's choice). A first entrance onto the bench, a move to another tile or a
+            // release from the hand glides into place and raises a small dust puff; a rebuilt model just appears.
+            if(!View.Placed){
+                View.Placed=true;View.PlacedCell=Cell;
+                const bool Entrance=Cell.row<0&&!EnteredUnits.Contains(Id);
+                EnteredUnits.Add(Id);
+                View.Travelling=Entrance;
+                Actor->SetActorLocation(Target);
+            }
+            if(!(View.PlacedCell==Cell)){View.PlacedCell=Cell;View.Travelling=true;}
+            if(!Held){
+                const FVector From=Actor->GetActorLocation();
+                Location=FMath::VInterpTo(From,Target,DeltaSeconds,13);
+                if(View.Travelling&&FVector::Dist(Location,Target)<5){View.Travelling=false;View.LandedAt=Elapsed;Puff(FVector(Target.X,Target.Y,8));
+                    if(PlacementProbe)UE_LOG(LogTemp,Display,TEXT("WC_PIECE_LANDED id=%llu at=%.2f from=%s target=%s"),Id,Elapsed,*From.ToString(),*Target.ToString());}
+            }else View.Travelling=true;
+        }else View.Placed=true;
         Actor->SetActorLocation(Location);
         View.Yaw=Combat&&View.YawSet?FMath::FixedTurn(View.Yaw,Yaw,DeltaSeconds*540):Yaw;View.YawSet=true;
         Actor->SetActorRotation(FRotator(0,View.Yaw,!Imported&&Storybook&&Health<=0?DefeatProgress*22:0));
         const float Remaining=FMath::Max(.001f,1-DefeatProgress*DefeatProgress);
-        Actor->SetActorScale3D(Health>0||Imported?FVector(1):Storybook?
+        // Two- and three-star heroes stand visibly larger.
+        Actor->SetActorScale3D(Health>0||Imported?FVector(Star>=3?1.25f:Star==2?1.12f:1.f):Storybook?
             FVector(Remaining,Remaining,Remaining*FMath::Lerp(1.f,.18f,DefeatProgress)):FVector(1,1,.22));
         if(Imported){
             FWCBellbackFrame Frame;Frame.Generation=BellbackGeneration;Frame.Combat=Combat;Frame.Id=Id;Frame.Side=Side;
             Frame.Facing=int(Facing);Frame.TickMs=Catalog.rules.tickMs;Frame.Clock=BellbackClock;Frame.DeltaSeconds=DeltaSeconds;
             Frame.Paused=SoloMode?SoloPaused:Paused;Frame.AllowSound=CreatureSoundEnabled&&CapturePhase==ECapturePhase::None;
             if(Combat)for(const auto& U:Combat->Units())if(U.id==Id){Frame.Unit=&U;break;}
-            if(View.Hero)View.Hero->Present(Frame.Unit,Frame.Paused,DeltaSeconds);
+            if(View.Hero){View.Hero->bCelebrate=Combat&&Combat->Result().complete&&Health>0;View.Hero->Present(Frame.Unit,Frame.Paused,DeltaSeconds);}
             else if(View.Bellback)View.Bellback->Present(Frame);
             else if(View.Silkmother)View.Silkmother->Present(Frame);
             else if(View.Cragstoat)View.Cragstoat->Present(Frame);
@@ -1453,6 +1683,60 @@ void AWCVNextLab::UpdatePresentation(float DeltaSeconds)
         if(Combat){for(const auto& U:Combat->Units())if(U.id==Id){Mana=U.mana;MaximumMana=U.ability.mana.maximum;break;}}
         else if(!Neutral){MaximumMana=Catalog.units[Def].ability.mana.maximum;Mana=Catalog.units[Def].ability.mana.starting;}
         View.Mana->SetVisibility(Health>0&&MaximumMana>0);
+        // Lights that belong to a model: eyes, lantern seeds, the glow inside a split seed.
+        if(FxLive&&View.Hero&&Health>0)
+            View.Hero->GlowPoints([&](const FVector& At,const FLinearColor& Tint,float Size){
+                FxEmit(0,At,FVector::ZeroVector,Tint*(.85f+.15f*FMath::Sin(Elapsed*5+Id)),Size,Size,0);});
+        // Swing trails: while a melee hero swings, the far end of its weapon leaves a fading ribbon of light.
+        if(FxLive&&View.Hero&&Health>0&&Combat){
+            const FShotLook* Blow=Neutral?nullptr:MeleeLook(Catalog.units[Def].id);
+            const FName Clip=View.Hero->ClipName();
+            if(Blow&&Blow->FromItem>=0&&(Clip==TEXT("Attack")||Clip==TEXT("Attack2")||Clip==TEXT("Cast"))){
+                const FVector Tip=View.Hero->ItemTip(Blow->FromItem);
+                if(const FVector* Last=SwingLast.Find(Id)){
+                    const float Moved=float(FVector::Dist(*Last,Tip));
+                    if(Moved>3&&Moved<140){
+                        const FLinearColor Tone(Blow->Spin.X,Blow->Spin.Y,Blow->Spin.Z);
+                        const float Width=FMath::Max(4.f,Blow->Scale);
+                        FxEmit(3,(*Last+Tip)*.5,(Tip-*Last).GetSafeNormal()*.01,Tone,Width,Width*.3f,.24f,0,0,0,Moved/Width*1.15f);
+                        FxEmit(3,(*Last+Tip)*.5,(Tip-*Last).GetSafeNormal()*.01,FLinearColor(3.f,3.f,3.f),Width*.35f,Width*.1f,.14f,0,0,0,Moved/(Width*.35f)*1.15f);
+                    }
+                }
+                SwingLast.Add(Id,Tip);
+            }else SwingLast.Remove(Id);
+        }
+        // Fires carried on held items: a real flame shape that flickers, a glow, and a spark now and then.
+        if(FxLive&&View.Hero&&Health>0)
+            View.Hero->FlamePoints([&](const FVector& At,float Size){
+                const float Flicker=1+.18f*FMath::Sin(Elapsed*23+Id)+.1f*FMath::Sin(Elapsed*37);
+                PropEmit(TEXT("FlameDrop"),At+FVector(0,0,5*Size),FVector::ZeroVector,FRotationMatrix::MakeFromY(FVector(.06f*FMath::Sin(Elapsed*9),0,1)).ToQuat(),FVector::ZeroVector,Size*Flicker,Size*Flicker,0);
+                FxEmit(0,At+FVector(0,0,6*Size),FVector::ZeroVector,FLinearColor(3.f,1.5f,.4f)*(.5f+.1f*Flicker),40*Size,40*Size,0);
+                if(FMath::FRand()<.08f)PropEmit(TEXT("Ember"),At,FVector(FMath::FRandRange(-20.f,20.f),FMath::FRandRange(-20.f,20.f),FMath::FRandRange(40.f,90.f)),FQuat::Identity,FVector::ZeroVector,.8f,.2f,.6f,60);});
+        // Tide Caller is living water: drops fly off its crest and hands, run down the body and splash at its foot;
+        // a wet sheen of mist hangs round the base. More is thrown off while it moves.
+        if(FxLive&&View.Hero&&View.Hero->GetMesh()&&Health>0&&!Neutral&&Catalog.units[Def].id=="wc_vn_tide_caller"){
+            auto* Mesh=View.Hero->GetMesh();
+            const bool Moving=View.Hero->ClipName()==TEXT("Move");
+            const float Rate=Moving?1.f:.45f;
+            static const FName Springs[]={TEXT("Head"),TEXT("LeftHand"),TEXT("RightHand"),TEXT("Chest"),TEXT("Skirt2")};
+            for(const FName& Bone:Springs){
+                if(FMath::FRand()>.22f*Rate)continue;
+                const FVector At=Mesh->GetSocketLocation(Bone)+FVector(FMath::FRandRange(-14.f,14.f),FMath::FRandRange(-14.f,14.f),FMath::FRandRange(-6.f,18.f));
+                const FVector Fly=FVector(FMath::FRandRange(-45.f,45.f),FMath::FRandRange(-45.f,45.f),FMath::FRandRange(40.f,120.f))*(Moving?1.5f:1.f);
+                PropEmit(TEXT("Droplet"),At,Fly,FQuat::Identity,FVector(FMath::FRandRange(-300.f,300.f),0,0),FMath::FRandRange(.5f,1.0f),.3f,FMath::FRandRange(.6f,.9f),900);
+            }
+            const FVector Foot=View.Actor->GetActorLocation()+FVector(0,0,8);
+            if(FMath::FRand()<.5f*Rate)FxEmit(2,Foot+FVector(FMath::FRandRange(-30.f,30.f),FMath::FRandRange(-30.f,30.f),0),FVector::ZeroVector,FLinearColor(.5f,1.0f,1.8f,.5f),20,90,.6f);
+            FxEmit(0,Foot+FVector(0,0,12),FVector::ZeroVector,FLinearColor(.35f,.8f,1.4f)*(.35f+.08f*FMath::Sin(Elapsed*4+Id)),150,150,0);
+            if(FMath::FRand()<.3f*Rate)FxEmit(1,Foot+FVector(FMath::FRandRange(-40.f,40.f),FMath::FRandRange(-40.f,40.f),6),FVector(0,0,18),FLinearColor(.75f,.9f,1.f,.25f),36,90,1.1f,-6,.5f);
+        }
+        // Ember Wisp is a living flame: it glows from within and sheds small flames all the time.
+        if(FxLive&&View.Hero&&Health>0&&!Neutral&&Catalog.units[Def].id=="wc_vn_ember_wisp"){
+            const FVector Core=View.Hero->MuzzleLocation(0)-FVector(0,0,110);
+            FxEmit(0,Core,FVector::ZeroVector,FLinearColor(2.4f,1.f,.25f)*(.35f+.08f*FMath::Sin(Elapsed*9+Id)),120,120,0);
+            if(FMath::FRand()<.5f)FxEmit(0,Core+FVector(FMath::FRandRange(-28.f,28.f),FMath::FRandRange(-28.f,28.f),FMath::FRandRange(-30.f,40.f)),
+                FVector(FMath::FRandRange(-15.f,15.f),FMath::FRandRange(-15.f,15.f),FMath::FRandRange(60.f,130.f)),FLinearColor(3.f,1.5f,.35f),FMath::FRandRange(16.f,30.f),3,FMath::FRandRange(.4f,.8f));
+        }
         View.Mana->SetRelativeScale3D(FVector(FMath::Max(.015f,MaximumMana>0?float(Mana)/MaximumMana*1.12f:0.f),.045,.045));
         View.Mana->SetWorldRotation(FRotator::ZeroRotator);
         const auto& Definition = Catalog.Definition(Def, Neutral);
@@ -1465,7 +1749,7 @@ void AWCVNextLab::UpdatePresentation(float DeltaSeconds)
             FString::Printf(TEXT("%s\n%s *%d %s%s"),*Name,Side?TEXT("B"):TEXT("A"),Star,Reach,*ManaLabel)));
         View.Label->SetWorldSize(PixelWorld*(ArtSlice?14:18));
         const float LabelWidth=View.Label->GetTextLocalSize().Y;
-        const float MaximumLabelWidth=Catalog.rules.tileSizeCm*(ArtSlice?.78f:.90f);
+        const float MaximumLabelWidth=Catalog.rules.tileSizeCm*(View.RaceIcon||View.ClassIcon?.56f:ArtSlice?.78f:.90f);
         if(LabelWidth>MaximumLabelWidth)View.Label->SetWorldSize(PixelWorld*(ArtSlice?14:18)*(MaximumLabelWidth/LabelWidth));
         View.Label->SetVisibility(Health>0);
         View.LabelBacking->SetVisibility(Health>0);
@@ -1476,6 +1760,18 @@ void AWCVNextLab::UpdatePresentation(float DeltaSeconds)
             View.LabelBacking->SetWorldRotation(Rotation);
             View.LabelBacking->SetWorldLocation(View.Label->GetComponentLocation()-Rotation.Vector()*3);
             View.LabelBacking->SetWorldScale3D(FVector(.03,(Size.Y+PixelWorld*8)/100,(Size.Z+PixelWorld*4)/100));
+            if(View.RaceIcon||View.ClassIcon){
+                const float Badge=Size.Z*1.3f;
+                const FRotator Facing=FRotationMatrix::MakeFromZY(Rotation.Vector(),Rotation.RotateVector(FVector(0,0,1))).Rotator();
+                int Index=0;
+                for(auto* Icon:{View.RaceIcon,View.ClassIcon}){
+                    const float Sign=Index++?1.f:-1.f;
+                    if(!Icon)continue;
+                    Icon->SetVisibility(Health>0);Icon->SetWorldRotation(Facing);Icon->SetWorldScale3D(FVector(Badge/100));
+                    Icon->SetWorldLocation(View.Label->GetComponentLocation()+Rotation.RotateVector(FVector(1,Sign*(Size.Y*.5f+Badge*.62f),0)));
+                }
+                View.LabelBacking->SetWorldScale3D(FVector(.03,(Size.Y+Badge*2.5f+PixelWorld*6)/100,(Badge+PixelWorld*3)/100));
+            }
             if(MaximumMana>0){
                 View.Mana->SetWorldRotation(Rotation);
                 View.Mana->SetWorldLocation(View.Label->GetComponentLocation()+Rotation.RotateVector(FVector(2,0,Size.Z*.5f+PixelWorld*5)));
@@ -1497,6 +1793,13 @@ void AWCVNextLab::UpdatePresentation(float DeltaSeconds)
                     Fill->SetVisibility(Visible&&Value>0);
                 };
                 Bar(View.Health,View.HealthTrack,Fraction,Top,5,Health>0);
+                View.GhostHealth=Combat?FMath::Max(Fraction,View.GhostHealth-DeltaSeconds*.45f):Fraction;
+                if(View.GhostHealth>Fraction+.004f&&Health>0){
+                    FGhostBar Ghost;Ghost.Rotation=Rotation;
+                    Ghost.Location=LabelPosition+Rotation.RotateVector(FVector(2,((Fraction+View.GhostHealth)*.5f-.5f)*BarWidth,Top));
+                    Ghost.Scale=FVector(.012,(View.GhostHealth-Fraction)*BarWidth/100,PixelWorld*5/100);
+                    GhostBars.Add(Ghost);
+                }
                 Bar(View.Mana,View.ManaTrack,MaximumMana>0?float(Mana)/MaximumMana:0,Top+PixelWorld*8,3,Health>0&&MaximumMana>0);
                 for(int I=0;I<View.TierPips.Num();++I){
                     auto* Pip=View.TierPips[I];
@@ -1517,14 +1820,22 @@ void AWCVNextLab::UpdatePresentation(float DeltaSeconds)
             Present(U.id,U.definition,Side,U.star,wc::EncounterCell(U.cell,Side,Catalog.rules),Facing,HP,HP,wc::ActionState::Idle,false);
         }
     }
+    for(auto& Entry:Puffs){
+        const float Age=float(Elapsed-Entry.At)/.32f;
+        Entry.Disc->SetVisibility(Age>=0&&Age<1);
+        if(Age>=0&&Age<1){Entry.Disc->SetWorldLocation(Entry.Where);Entry.Disc->SetWorldScale3D(FVector(.5f+Age*1.2f,.5f+Age*1.2f,.004f*(1-Age)+.0005f));}
+    }
     // The player's benched heroes stand on the bench tiles in every phase, fights included.
     if(SoloMode&&SoloMatch){
         int Marked=Dragging?BenchHover:-1;
         if(ViewedSeat==0)for(const auto& U:SoloMatch->Seats()[0].roster)if(!U.onBoard&&U.bench>=0&&U.bench<BenchSlots){
             const auto HP=wc::StarValue(Catalog.units[U.definition].health,U.star,0,Catalog.rules);
-            Present(U.id,U.definition,0,U.star,{U.bench,-1},wc::Facing::Forward,HP,HP,wc::ActionState::Idle,false);
+            Present(U.id,U.definition,0,U.star,{U.bench,-1},wc::Facing::Backward,HP,HP,wc::ActionState::Idle,false);
             if(!Dragging&&U.id==Selected)Marked=U.bench;
         }
+        const bool Full=Elapsed-BenchFullAt<.6&&FMath::Fmod(Elapsed-BenchFullAt,.2)<.1;
+        for(auto* Edge:BenchFrame)Edge->SetMaterial(0,Material(Full?FLinearColor(.85f,.12f,.08f):FLinearColor(.50f,.45f,.33f)));
+        for(auto* Edge:DeployFrame)Edge->SetVisibility(Dragging&&!Combat&&ViewedSeat==0);
         if(BenchMark){
             BenchMark->SetVisibility(Marked>=0);
             if(Marked>=0)BenchMark->SetWorldLocation(Position({Marked,-1})+FVector(0,0,7));
@@ -1607,7 +1918,7 @@ FString AWCVNextLab::InspectorText() const
     if(const auto* Full=Metadata.Units.Find(Str(D.id));Full&&Full->IsValid()){
         const TSharedPtr<FJsonObject>* Ability=nullptr;
         FString Tooltip;
-        if((*Full)->TryGetObjectField(TEXT("ability"),Ability)&&Ability&&(*Ability)->TryGetStringField(TEXT("tooltip_en"),Tooltip))Result+=Tooltip+TEXT("\n");
+        if((*Full)->TryGetObjectField(TEXT("ability"),Ability)&&Ability&&(*Ability)->TryGetStringField(SoloGuideIndonesian?TEXT("tooltip_id"):TEXT("tooltip_en"),Tooltip))Result+=Tooltip+TEXT("\n");
     }
     Result+=FString::Printf(TEXT("%s basic attack · %.2fs between attacks\n"),D.projectileTravelMs>0?TEXT("Ranged projectile"):TEXT("Melee strike"),wc::AttackInterval(D.attackRate,CombatPiece?CombatPiece->rateBonus:0,Catalog.rules)*Catalog.rules.tickMs/1000.);
     if(CombatPiece){
@@ -1724,11 +2035,15 @@ void AWCVNextLab::TickHeroReview()
         if(!Captured){Captured=true;UE_LOG(LogTemp,Display,TEXT("WC_HERO_REVIEW_COMPLETE"));}
         HeroReviewStage=0;return;
     }
-    const auto& Shot=Shots[Index];
+    auto Shot=Shots[Index];
+    // -WCHeroReviewAttackWait= moves the attack screenshot to that many seconds into the swing.
+    if(FCString::Strcmp(Shot.Clip,TEXT("Attack"))==0)FParse::Value(FCommandLine::Get(),TEXT("WCHeroReviewAttackWait="),Shot.Wait);
     // The hero's own front is local +Y; Side turns the camera around it from that front.
     const FVector At=Found->Actor->GetActorLocation();
     const FVector Front=Found->Actor->GetActorRotation().RotateVector(FVector(0,1,0));
-    const FVector Direction=FRotator(0,Shot.Side,0).RotateVector(Front);
+    // -WCHeroReviewTurn= swings every shot's camera around the hero by that many degrees.
+    float Turn=0;FParse::Value(FCommandLine::Get(),TEXT("WCHeroReviewTurn="),Turn);
+    const FVector Direction=FRotator(0,Shot.Side+Turn,0).RotateVector(Front);
     // -WCHeroReviewDistance= and -WCHeroReviewAim= move the camera in for a close look, for example at a hand.
     float Distance=780,Aim=105;
     FParse::Value(FCommandLine::Get(),TEXT("WCHeroReviewDistance="),Distance);FParse::Value(FCommandLine::Get(),TEXT("WCHeroReviewAim="),Aim);
@@ -1764,6 +2079,128 @@ void AWCVNextLab::Tick(float DeltaSeconds)
     UpdateCamera();
     if(HeroReview)TickHeroReview();
     TickDrag();
+    if(Courtyard)TickCourtyard(DeltaSeconds);
+    {
+        // -WCLabAutoStart begins the preset six-against-six fight by itself, for unattended effect captures.
+        static const bool AutoStart=FParse::Param(FCommandLine::Get(),TEXT("WCLabAutoStart"));
+        static bool Started=false;
+        if(AutoStart&&!Started&&!SoloMode&&Elapsed>2&&!Fight){
+            Started=true;
+            // -WCLabAltHeroes puts the Earthbreaker and Hammerer into the front line of each side.
+            if(FParse::Param(FCommandLine::Get(),TEXT("WCLabAltHeroes")))for(int Hero=0;Hero<int(Catalog.units.size());++Hero){
+                const FString Id=Str(Catalog.units[Hero].id);
+                for(int Team=0;Team<2;++Team)if(Formation[Team].size()>3){
+                    if(Id==TEXT("wc_vn_earthbreaker"))Formation[Team][1].definition=Hero;
+                    if(Id==TEXT("wc_vn_hammerer"))Formation[Team][3].definition=Hero;
+                }
+            }
+            // -WCRecDuel=<hero a>,<hero b>[,<rows apart>] replaces the preset with one hero a side, facing each other.
+            FString Duel;
+            if(FParse::Value(FCommandLine::Get(),TEXT("WCRecDuel="),Duel,false)){
+                TArray<FString> Parts;Duel.ParseIntoArray(Parts,TEXT(","));
+                const int Gap=Parts.Num()>2?FMath::Clamp(FCString::Atoi(*Parts[2]),1,6):1;
+                for(int Team=0;Team<2&&Team<Parts.Num();++Team)if(!Formation[Team].empty()){
+                    Formation[Team].resize(1);
+                    for(int Hero=0;Hero<int(Catalog.units.size());++Hero)if(Str(Catalog.units[Hero].id)==Parts[Team])Formation[Team][0].definition=Hero;
+                    // Side A stands on row 3 of its half; side B is placed so the two are Gap rows apart in the same column.
+                    Formation[Team][0].cell=Team?wc::Cell{4,FMath::Clamp(4-Gap,0,3)}:wc::Cell{3,3};
+                }
+                Selected=0;
+            }
+            PreparationDirty=true;Start(false);
+        }
+    }
+    {
+        // -WCShotAt=62,70,95 saves a screenshot with the interface at each of those seconds of play, for checking
+        // moments that only happen in a running match.
+        static TArray<float> Shots;static bool Parsed=false;static int NextShot=0;
+        if(!Parsed){
+            Parsed=true;FString List;
+            if(FParse::Value(FCommandLine::Get(),TEXT("WCShotAt="),List,false)){TArray<FString> Parts;List.ParseIntoArray(Parts,TEXT(","));for(const auto& Part:Parts)Shots.Add(FCString::Atof(*Part));}
+        }
+        if(NextShot<Shots.Num()&&Elapsed>=Shots[NextShot]&&!FScreenshotRequest::IsScreenshotRequested()){
+            IFileManager::Get().MakeDirectory(*EvidenceDirectory,true);
+            FScreenshotRequest::RequestScreenshot(EvidenceDirectory/FString::Printf(TEXT("moment-%03d.png"),int(Shots[NextShot])),true,false);
+            UE_LOG(LogTemp,Display,TEXT("WC_MOMENT_SHOT %d"),int(Shots[NextShot]));
+            ++NextShot;
+        }
+    }
+    {
+        // Frame recorder (-WCFrameRec): with the engine on a fixed clock (-benchmark -fps=30) it saves every frame of a
+        // time window as an image and writes one line of state per frame, so motion can be inspected frame by frame.
+        //   -WCRecStart= -WCRecEnd=   window in seconds of play        -WCRecUI=1        keep the interface in the images
+        //   -WCRecFocus=<hero id>     camera on that hero              -WCRecDistance= -WCRecAim= -WCRecSide=   its framing
+        //   -WCRecClip=<clip>         hold that clip on the focus hero from the start of the window (no fight needed)
+        static const bool Recording=FParse::Param(FCommandLine::Get(),TEXT("WCFrameRec"));
+        if(Recording){
+            static float Start=3,End=5,Distance=640,Aim=100,SideAngle=35;static int WithInterface=0,Pending=-1,Frame=0,LastTick=-1;
+            static FString Focus,Clip;static bool Parsed=false,Finished=false,ClipStarted=false;
+            if(!Parsed){
+                Parsed=true;
+                FParse::Value(FCommandLine::Get(),TEXT("WCRecStart="),Start);FParse::Value(FCommandLine::Get(),TEXT("WCRecEnd="),End);
+                FParse::Value(FCommandLine::Get(),TEXT("WCRecDistance="),Distance);FParse::Value(FCommandLine::Get(),TEXT("WCRecAim="),Aim);
+                FParse::Value(FCommandLine::Get(),TEXT("WCRecSide="),SideAngle);FParse::Value(FCommandLine::Get(),TEXT("WCRecUI="),WithInterface);
+                FParse::Value(FCommandLine::Get(),TEXT("WCRecFocus="),Focus);FParse::Value(FCommandLine::Get(),TEXT("WCRecClip="),Clip);
+                IFileManager::Get().MakeDirectory(*EvidenceDirectory,true);
+                IFileManager::Get().Delete(*(EvidenceDirectory/TEXT("frames.jsonl")));
+            }
+            const FPieceView* Subject=nullptr;
+            if(!Focus.IsEmpty())for(const auto& Entry:Pieces)if(Entry.Value.Side==0&&Entry.Value.Actor.IsValid()&&Str(Catalog.Definition(Entry.Value.Definition,Entry.Value.Neutral).id)==Focus){Subject=&Entry.Value;break;}
+            if(Subject&&Camera){
+                // The subject's own front is local +Y; the camera stands SideAngle degrees round from it.
+                const FVector At=Subject->Actor->GetActorLocation();
+                const FVector Front=Clip.IsEmpty()?FVector(0,1,0):Subject->Actor->GetActorRotation().RotateVector(FVector(0,1,0));
+                const FVector Eye=At+FRotator(0,SideAngle,0).RotateVector(Front)*Distance+FVector(0,0,Aim+Distance*.2f);
+                Camera->GetCameraComponent()->SetProjectionMode(ECameraProjectionMode::Perspective);Camera->GetCameraComponent()->SetFieldOfView(32);
+                Camera->SetActorLocation(Eye);Camera->SetActorRotation((FVector(At.X,At.Y,Aim)-Eye).Rotation());
+                static bool Lit=false;
+                if(!Lit){
+                    // A soft lamp on the camera, so the subject is readable from any side.
+                    Lit=true;
+                    auto* Fill=NewObject<UPointLightComponent>(Camera);
+                    Fill->SetupAttachment(Camera->GetRootComponent());
+                    Fill->bUseInverseSquaredFalloff=false;Fill->SetLightFalloffExponent(1);Fill->SetIntensity(4);
+                    Fill->SetAttenuationRadius(4000);Fill->SetCastShadows(false);Fill->RegisterComponent();
+                }
+            }
+            const auto* Combat=CurrentCombat();
+            if(Pending>=0){
+                // The state now is what the image requested last frame shows.
+                const auto Point=[](const FVector& P){return FString::Printf(TEXT("[%.1f,%.1f,%.1f]"),P.X,P.Y,P.Z);};
+                FString Line=FString::Printf(TEXT("{\"frame\":%d,\"time\":%.4f,\"tick\":%d,\"particles\":%d,\"units\":["),Pending,Elapsed-DeltaSeconds,Combat?Combat->CurrentTick():-1,Fx.Num());
+                bool First=true;
+                for(const auto& Entry:Pieces){
+                    const auto& View=Entry.Value;if(!View.Actor.IsValid())continue;
+                    int State=-1;double Health=-1;
+                    if(Combat)for(const auto& U:Combat->Units())if(U.id==Entry.Key){State=int(U.state);Health=U.health/100.;break;}
+                    Line+=FString::Printf(TEXT("%s{\"id\":%llu,\"hero\":\"%s\",\"side\":%d,\"at\":%s,\"yaw\":%.1f,\"state\":%d,\"health\":%.0f,\"hidden\":%d"),First?TEXT(""):TEXT(","),Entry.Key,
+                        *Str(Catalog.Definition(View.Definition,View.Neutral).id),View.Side,*Point(View.Actor->GetActorLocation()),View.Actor->GetActorRotation().Yaw,State,Health,int(View.Actor->IsHidden()));
+                    if(View.Hero)Line+=TEXT(",")+View.Hero->Describe();
+                    Line+=TEXT("}");First=false;
+                }
+                Line+=TEXT("],\"events\":[");First=true;
+                if(Combat){
+                    for(auto It=Combat->Events().rbegin();It!=Combat->Events().rend()&&It->tick>LastTick;++It){
+                        Line+=FString::Printf(TEXT("%s{\"tick\":%d,\"effect\":%d,\"source\":%llu,\"target\":%llu,\"basic\":%d,\"amount\":%.0f}"),First?TEXT(""):TEXT(","),
+                            It->tick,int(It->effect),It->source,It->target,int(It->basicAttack),It->resolved/100.);First=false;
+                    }
+                    LastTick=Combat->CurrentTick();
+                }
+                Line+=TEXT("]}\n");
+                FFileHelper::SaveStringToFile(Line,*(EvidenceDirectory/TEXT("frames.jsonl")),FFileHelper::EEncodingOptions::ForceUTF8WithoutBOM,&IFileManager::Get(),FILEWRITE_Append);
+                Pending=-1;
+            }
+            if(!Finished&&Elapsed>=Start){
+                if(!Clip.IsEmpty()&&!ClipStarted&&Subject&&Subject->Hero){ClipStarted=true;Subject->Hero->ReviewClip(FName(*Clip),false);}
+                if(Elapsed<End){
+                    if(!FScreenshotRequest::IsScreenshotRequested()){
+                        FScreenshotRequest::RequestScreenshot(EvidenceDirectory/FString::Printf(TEXT("frame-%04d.png"),Frame),WithInterface!=0,false);
+                        Pending=Frame++;
+                    }
+                }else{Finished=true;UE_LOG(LogTemp,Display,TEXT("WC_FRAMEREC_COMPLETE frames=%d"),Frame);}
+            }else if(Finished&&Elapsed>End+.4f)FPlatformMisc::RequestExit(false);
+        }
+    }
     for(const auto& Stage:HeroCardHeroes)Stage.Value->Present(nullptr,false,DeltaSeconds);
     if(SoloMode){
         if(SoloVisualExercise){
@@ -1771,7 +2208,12 @@ void AWCVNextLab::Tick(float DeltaSeconds)
             SoloPaused=true;TickSolo(0);
             UpdatePresentation(DeltaSeconds);UpdateInterfaceText();TickCapture();return;
         }
-        TickSolo(DeltaSeconds);UpdatePresentation(DeltaSeconds);UpdateInterfaceText();return;
+        TickSolo(DeltaSeconds);
+        static const bool AutoPlay=FParse::Param(FCommandLine::Get(),TEXT("WCSoloAutoPlay"));
+        static const bool GuideAutoPlay=FParse::Param(FCommandLine::Get(),TEXT("WCGuideAutoPlay"));
+        if(AutoPlay)TickSoloAutoPlay();
+        if(GuideAutoPlay)TickGuideAutoPlay();
+        UpdatePresentation(DeltaSeconds);UpdateInterfaceText();return;
     }
     if(Exercise&&!ExerciseDone){if(CapturePhase==ECapturePhase::None)TickExercise();}
     else if(CapturePhase==ECapturePhase::None&&Fight&&!Paused&&!Fight->Result().complete){

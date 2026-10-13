@@ -116,6 +116,18 @@ FString SkillTarget(const AWCMatchController* P, const wc::AbilityDef& Skill) {
     return T(P, TEXT("Move beside the current enemy"), TEXT("Pindah ke sebelah musuh saat ini"));
   case wc::Selector::FarthestEnemyAdjacent:
     return T(P, TEXT("Move beside the farthest enemy"), TEXT("Pindah ke sebelah musuh terjauh"));
+  case wc::Selector::FarthestEnemy: return T(P, TEXT("Farthest enemy"), TEXT("Musuh terjauh"));
+  case wc::Selector::LowestHealthEnemy: return T(P, TEXT("Enemy with lowest HP %"), TEXT("Musuh dengan % HP terendah"));
+  case wc::Selector::AllAllies: return T(P, TEXT("All allies"), TEXT("Semua sekutu"));
+  case wc::Selector::DensestEnemyArea: return T(P, TEXT("Largest group of enemies"), TEXT("Kelompok musuh terbesar"));
+  case wc::Selector::RandomEnemyAreas: return T(P, TEXT("Random enemy positions"), TEXT("Posisi musuh acak"));
+  case wc::Selector::EnemyLine: return T(P, TEXT("Enemies in a line"), TEXT("Musuh dalam satu garis"));
+  case wc::Selector::EnemyCone: return T(P, TEXT("Enemies in a cone"), TEXT("Musuh dalam kerucut"));
+  case wc::Selector::ChainFromCurrentEnemy: return T(P, TEXT("Current enemy, then nearby enemies"), TEXT("Musuh saat ini, lalu musuh di dekatnya"));
+  case wc::Selector::CellBesideTarget: return T(P, TEXT("Cell beside the target"), TEXT("Petak di sebelah sasaran"));
+  case wc::Selector::CellBehindTarget: return T(P, TEXT("Cell behind the target"), TEXT("Petak di belakang sasaran"));
+  case wc::Selector::CellThroughTarget: return T(P, TEXT("Cell past the target"), TEXT("Petak melewati sasaran"));
+  case wc::Selector::FallenUnits: return T(P, TEXT("Where units have fallen"), TEXT("Tempat unit gugur"));
   }
   return FString();
 }
@@ -1239,6 +1251,17 @@ void AWCMatchHUD::DrawHUD() {
             Magnitude = LocalizedPrintf(P, TEXT("Attack rate %+g%%"), TEXT("Laju serangan %+g%%"), Power / 100.0);
           else if (Effect.effect == wc::Effect::Stun)
             Magnitude = LocalizedPrintf(P, TEXT("Stun %gs"), TEXT("Lumpuh %gdtk"), Effect.durationMs / 1000.0);
+          else if (wc::IsStatusEffect(Effect.effect))
+            Magnitude = FString::Printf(TEXT("%s %g%s"),
+                *(Effect.effect == wc::Effect::Hex ? T(P, TEXT("Hex"), TEXT("Kutukan"))
+                  : Effect.effect == wc::Effect::Silence ? T(P, TEXT("Silence"), TEXT("Bungkam")) : T(P, TEXT("Taunt"), TEXT("Pancing"))),
+                Power / 1000.0, *T(P, TEXT("s"), TEXT("dtk")));
+          else if (Effect.effect == wc::Effect::ManaDrain)
+            Magnitude = FString::Printf(TEXT("%s %g"), *T(P, TEXT("Drains mana"), TEXT("Menguras mana")), Power / 100.0);
+          else if (Effect.effect == wc::Effect::Blink)
+            Magnitude = T(P, TEXT("Blinks to the target"), TEXT("Berpindah ke sasaran"));
+          else if (Effect.effect == wc::Effect::Summon)
+            Magnitude = FString::Printf(TEXT("%s %d"), *T(P, TEXT("Summons"), TEXT("Memanggil")), Effect.count);
           else if (Effect.effect == wc::Effect::Dash)
             Magnitude = LocalizedPrintf(P, TEXT("Dash up to %d tiles"), TEXT("Dash hingga %d petak"), Skill.maxDash);
           else if (Effect.effect == wc::Effect::Damage)
@@ -1247,7 +1270,7 @@ void AWCMatchHUD::DrawHUD() {
             Magnitude = FString::Printf(TEXT("%s %g HP"),
                 *T(P, Effect.effect == wc::Effect::Heal ? TEXT("Heal") : TEXT("Shield"),
                       Effect.effect == wc::Effect::Heal ? TEXT("Pulihkan") : TEXT("Perisai")), Power / 100.0);
-          if (Effect.durationMs > 0 && Effect.effect != wc::Effect::Stun)
+          if (Effect.durationMs > 0 && Effect.effect != wc::Effect::Stun && !wc::IsStatusEffect(Effect.effect))
             Magnitude += LocalizedPrintf(P, TEXT(" · %gs"), TEXT(" · %gdtk"), Effect.durationMs / 1000.0);
           if (Index > 0) {
             Magnitude = T(P, TEXT("Then: "), TEXT("Lalu: ")) + Magnitude;

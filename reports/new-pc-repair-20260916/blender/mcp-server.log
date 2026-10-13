@@ -1,0 +1,66 @@
+<frozen runpy>:128: RuntimeWarning: 'blender_mcp.server' found in sys.modules after import of package 'blender_mcp', but prior to execution of 'blender_mcp.server'; this may result in unpredictable behaviour
+2026-09-16 21:41:11,635 - BlenderMCPServer - INFO - BlenderMCP server starting up
+2026-09-16 21:41:11,636 - BlenderMCPServer - INFO - Blender addon on disk is current (protocol 5).
+2026-09-16 21:41:11,638 - blender-mcp-telemetry - WARNING - Telemetry disabled via environment variable
+2026-09-16 21:41:11,639 - BlenderMCPServer - INFO - Connected to Blender at 127.0.0.1:9876
+2026-09-16 21:41:11,639 - BlenderMCPServer - INFO - Created new persistent connection to Blender
+2026-09-16 21:41:11,639 - BlenderMCPServer - INFO - Sending command: get_addon_info with params: None
+2026-09-16 21:41:11,639 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-16 21:41:11,692 - BlenderMCPServer - INFO - Received complete response (358 bytes)
+2026-09-16 21:41:11,692 - BlenderMCPServer - INFO - Received 358 bytes of data
+2026-09-16 21:41:11,692 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-16 21:41:11,692 - BlenderMCPServer - INFO - Blender addon up to date (protocol 5, addon [1, 6], Blender 5.2.1 LTS)
+2026-09-16 21:41:11,692 - BlenderMCPServer - INFO - Successfully connected to Blender on startup
+2026-09-16 21:41:11,695 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-09-16 21:41:11,696 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-09-16 21:41:11,696 - BlenderMCPServer - INFO - Sending command: get_addon_info with params: None
+2026-09-16 21:41:11,696 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-16 21:41:11,746 - BlenderMCPServer - INFO - Received complete response (358 bytes)
+2026-09-16 21:41:11,746 - BlenderMCPServer - INFO - Received 358 bytes of data
+2026-09-16 21:41:11,746 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-16 21:41:11,746 - BlenderMCPServer - INFO - Blender addon up to date (protocol 5, addon [1, 6], Blender 5.2.1 LTS)
+2026-09-16 21:41:11,746 - BlenderMCPServer - INFO - Connected to Blender at 127.0.0.1:9876
+2026-09-16 21:41:11,746 - BlenderMCPServer - INFO - Created new persistent connection to Blender
+2026-09-16 21:41:11,746 - BlenderMCPServer - INFO - Sending command: get_addon_info with params: None
+2026-09-16 21:41:11,746 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-16 21:41:11,799 - BlenderMCPServer - INFO - Received complete response (358 bytes)
+2026-09-16 21:41:11,799 - BlenderMCPServer - INFO - Received 358 bytes of data
+2026-09-16 21:41:11,799 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-16 21:41:11,799 - BlenderMCPServer - INFO - Blender addon up to date (protocol 5, addon [1, 6], Blender 5.2.1 LTS)
+2026-09-16 21:41:11,799 - BlenderMCPServer - INFO - Sending command: get_telemetry_consent with params: None
+2026-09-16 21:41:11,799 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-16 21:41:11,851 - BlenderMCPServer - INFO - Received complete response (51 bytes)
+2026-09-16 21:41:11,851 - BlenderMCPServer - INFO - Received 51 bytes of data
+2026-09-16 21:41:11,851 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-16 21:41:11,853 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-09-16 21:41:11,853 - BlenderMCPServer - INFO - Sending command: get_scene_info with params: None
+2026-09-16 21:41:11,854 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-16 21:41:11,904 - BlenderMCPServer - INFO - Received complete response (305 bytes)
+2026-09-16 21:41:11,904 - BlenderMCPServer - INFO - Received 305 bytes of data
+2026-09-16 21:41:11,904 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-16 21:41:11,907 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-09-16 21:41:11,907 - BlenderMCPServer - INFO - Sending command: execute_code with params: {'code': "import bpy\nobj=bpy.data.objects.new('WC_MCP_ConnectionProof', None)\nbpy.context.scene.collection.objects.link(obj)\nobj.location=(1,2,3)\nprint(obj.name, list(obj.location))"}
+2026-09-16 21:41:11,907 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-16 21:41:11,957 - BlenderMCPServer - INFO - Received complete response (105 bytes)
+2026-09-16 21:41:11,957 - BlenderMCPServer - INFO - Received 105 bytes of data
+2026-09-16 21:41:11,957 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-16 21:41:11,959 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-09-16 21:41:11,959 - BlenderMCPServer - INFO - Sending command: get_object_info with params: {'name': 'WC_MCP_ConnectionProof'}
+2026-09-16 21:41:11,959 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-16 21:41:12,012 - BlenderMCPServer - INFO - Received complete response (202 bytes)
+2026-09-16 21:41:12,012 - BlenderMCPServer - INFO - Received 202 bytes of data
+2026-09-16 21:41:12,012 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-16 21:41:12,014 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-09-16 21:41:12,015 - BlenderMCPServer - INFO - Sending command: execute_code with params: {'code': "import bpy\nobj=bpy.data.objects.get('WC_MCP_ConnectionProof')\nbpy.data.objects.remove(obj, do_unlink=True)\nprint('WC marker removed')"}
+2026-09-16 21:41:12,015 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-16 21:41:12,067 - BlenderMCPServer - INFO - Received complete response (84 bytes)
+2026-09-16 21:41:12,067 - BlenderMCPServer - INFO - Received 84 bytes of data
+2026-09-16 21:41:12,067 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-16 21:41:12,070 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-09-16 21:41:12,070 - BlenderMCPServer - INFO - Sending command: execute_code with params: {'code': "import bpy\nbpy.ops.wm.open_mainfile(filepath='C:/Users/USER/Documents/Wonder Chess/support/diagnostics/new-pc-20260916/blender/WC_ConnectionProbe.blend', use_scripts=False)\nprint(bpy.data.filepath)"}
+2026-09-16 21:41:12,070 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-16 21:41:12,150 - BlenderMCPServer - INFO - Received complete response (181 bytes)
+2026-09-16 21:41:12,150 - BlenderMCPServer - INFO - Received 181 bytes of data
+2026-09-16 21:41:12,150 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-16 21:41:12,152 - BlenderMCPServer - INFO - Disconnecting from Blender on shutdown
+2026-09-16 21:41:12,152 - BlenderMCPServer - INFO - BlenderMCP server shut down

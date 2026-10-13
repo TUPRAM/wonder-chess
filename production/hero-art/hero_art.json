@@ -1,24 +1,23 @@
 {
-  "schema": "wc-hero-art-2",
-  "note": "Art-only description per hero. Gameplay identity, names and skills come from data/vnext/catalog.json. Edit here, then run tools/vnext/build_hero_art_briefs.py.",
+  "schema": "wc-hero-art-4",
+  "note": "Art-only description per hero. Gameplay identity, names and skills come from data/vnext/catalog.json. Edit here, then run tools/vnext/build_hero_art_briefs.py. Optional per hero: 'extra' (a floating or standing object beside the hero), 'pose' (replaces the standard A-pose sentence), 'expression', and 'reference' (an existing set whose folders predate the full/body/items layout). An accessory is [name, description] or [name, description, 'creature'] for a summon.",
+  "races": {
+    "human": "natural human skin tones; practical medieval kingdom gear of steel, wool and leather with brass fittings",
+    "elf": "tall and slender with long pointed ears swept back; elegant gear with leaf, bark and silver motifs",
+    "dwarf": "short and very broad with big hands, a big nose and a heavy beard; chunky riveted iron, copper and brass gear",
+    "goblin": "small and wiry with yellow-green skin, very large pointed ears, a long nose and sharp teeth; scavenged, patched gear and bare feet",
+    "orc": "big and heavy with green skin, a heavy brow and two lower tusks; tribal gear of hide, fur, bone and stone",
+    "beastkin": "upright humanoid body covered in fur or feathers with a full animal head and clawed hands; simple tribal leather and cloth",
+    "demon": "horned, with red or purple skin and glowing eyes; black iron gear and one glowing accent colour",
+    "undead": "bone, grey pallor and stitches; torn, faded cloth and a cold glow in the eyes",
+    "elemental": "the body is made of the element itself, with no clothing, two simple glowing eyes and no mouth",
+    "dragonkin": "upright dragon-headed humanoid with scales, horns, a tail and clawed digitigrade feet; regal bearing"
+  },
   "heroes": {
     "wc_vn_shieldbearer": {
-      "heads": 4.0,
+      "heads": 5.5,
       "build": "broad and heavy, wide armoured shoulders, planted stance",
-      "colors": [
-        [
-          "worn steel",
-          "#7E8793"
-        ],
-        [
-          "deep royal blue",
-          "#24468F"
-        ],
-        [
-          "aged brass",
-          "#B8923A"
-        ]
-      ],
+      "colors": [["worn steel", "#7E8793"], ["deep royal blue", "#24468F"], ["aged brass", "#B8923A"]],
       "features": [
         "closed great helm with a narrow eye slit, a riveted brass brow band and a short blue horsehair crest",
         "layered steel plate armour with visible plate edges, rivets and a few dents; chainmail at the neck and elbows",
@@ -26,1232 +25,606 @@
       ],
       "right_hand": "empty gauntlet, relaxed at his side",
       "left_hand": "tall rectangular tower shield strapped to the left forearm and held at his left side, face parallel to his chest and pointing forward, bottom edge at shin height off the ground; blue painted face with a brass sun emblem, riveted brass rim, a few battle scratches",
-      "accessories": [
-        [
-          "tower_shield",
-          "the tower shield alone: front face, and inner side with a leather arm strap and grip"
-        ]
-      ]
+      "back": "plain blue surcoat back panel under the belt, plate backs of the pauldrons and legs, the crest seen edge-on",
+      "accessories": [["tower_shield", "the tower shield alone: front face, and inner side with a leather arm strap and grip"]],
+      "reference": {"set": "four_view_r004", "full": "with_shield", "body": "without_shield", "items": {"tower_shield": "shield_only"}}
     },
     "wc_vn_boar_rusher": {
-      "heads": 4.5,
-      "build": "huge shoulders and arms, small waist, bare chest",
-      "colors": [
-        [
-          "moss green skin",
-          "#6E9A4B"
-        ],
-        [
-          "dark brown leather",
-          "#5A3E2B"
-        ],
-        [
-          "bone white",
-          "#E8E0CC"
-        ]
-      ],
+      "heads": 6.0,
+      "build": "huge shoulders and arms, deep bare chest, narrower waist, thick neck",
+      "colors": [["moss green skin", "#6E9A4B"], ["dark brown leather", "#5A3E2B"], ["bone white", "#E8E0CC"]],
       "features": [
-        "boar-skull helmet with two large upward tusks covering the top of his head",
-        "two short lower tusks from his own jaw",
-        "brown fur shoulder mantle, leather belt and kilt, bare feet with wraps"
+        "weathered, cracked boar-skull helmet worn over the top of his head, its two large curved tusks sweeping up and forward, tied under the chin with leather lashings",
+        "scarred orc face with a heavy brow and two short lower tusks from his own jaw",
+        "coarse dark-brown boar-fur mantle across both shoulders, held by a leather chest strap with an iron ring",
+        "wide leather belt with a bone buckle, knee-length kilt of stitched hide panels, leather wraps on the forearms and shins, bare feet"
       ],
-      "right_hand": "heavy wooden club with three bone studs, resting head-down",
-      "left_hand": "empty fist",
-      "accessories": [
-        [
-          "bone_club",
-          "the studded wooden club alone"
-        ],
-        [
-          "boar_skull_helm",
-          "the boar-skull helmet alone"
-        ]
-      ]
+      "right_hand": "heavy gnarled wooden club as long as his arm, bound with two iron bands and set with three large bone studs, held head-down at his right side, clear of the leg",
+      "left_hand": "empty clenched fist",
+      "back": "the fur mantle covers the upper back; the rear of the boar skull and its lashings; the back panel of the kilt",
+      "accessories": [["bone_club", "the iron-banded wooden club with three bone studs alone"]]
     },
     "wc_vn_grove_druid": {
-      "heads": 4.0,
-      "build": "slim elder, slightly hunched, long robe to the ground",
-      "colors": [
-        [
-          "leaf green",
-          "#5E9E55"
-        ],
-        [
-          "bark brown",
-          "#7A5A3A"
-        ],
-        [
-          "cream",
-          "#F0E6C8"
-        ]
-      ],
+      "heads": 5.5,
+      "build": "slim elderly elf woman, slightly stooped, robe to the ground",
+      "colors": [["leaf green", "#5E9E55"], ["bark brown", "#7A5A3A"], ["cream", "#F0E6C8"]],
       "features": [
-        "long pointed elf ears and a long cream braid over one shoulder",
-        "pair of small branching antlers",
-        "mantle made of large overlapping leaves over a plain cream robe"
+        "kind lined face, long pointed elf ears and a long cream-white braid hanging over her right shoulder",
+        "pair of small branching antlers growing from her brow, wound with a thin vine",
+        "mantle of large overlapping green leaves across the shoulders down to the elbows, pinned with a wooden toggle",
+        "cream linen robe with a woven bark-brown belt and a green embroidered hem; feet hidden by the robe"
       ],
-      "right_hand": "twisted wooden staff taller than her, ending in a spiral holding one glowing green seed",
+      "right_hand": "staff of twisted living wood taller than she is, standing upright on the ground at her right side; the top curls into a spiral that cradles one softly glowing green seed",
       "left_hand": "empty, open palm",
-      "accessories": [
-        [
-          "grove_staff",
-          "the twisted staff with the glowing seed alone"
-        ]
-      ]
+      "back": "layers of the leaf mantle across the upper back, the plain robe below, the antlers from behind",
+      "accessories": [["grove_staff", "the twisted wooden staff with the glowing green seed in its spiral top alone"]]
     },
     "wc_vn_hookjaw": {
-      "heads": 3.5,
-      "build": "small wiry goblin, long arms, crouched knees",
-      "colors": [
-        [
-          "goblin green skin",
-          "#8DB84A"
-        ],
-        [
-          "rust red cloth",
-          "#B5472E"
-        ],
-        [
-          "dull iron",
-          "#6F747A"
-        ]
-      ],
+      "heads": 4.5,
+      "build": "small wiry goblin, long arms, slightly bent knees",
+      "colors": [["goblin green skin", "#8DB84A"], ["rust red cloth", "#B5472E"], ["dull iron", "#6F747A"]],
       "features": [
-        "big head with very large pointed ears",
-        "bolted iron jaw-guard covering his chin and mouth",
-        "rust-red hood and scarf, patched trousers, bare feet"
+        "big head with very large pointed, notched ears and narrow yellow eyes",
+        "bolted dull-iron jaw-guard covering his chin and mouth, riveted and scratched, held by leather straps around the head",
+        "rust-red hood worn up with the ears through slits, and a ragged red scarf",
+        "patched leather jerkin, dark trousers with knee patches, cloth-wrapped bare feet"
       ],
-      "right_hand": "large iron hook the size of his head",
-      "left_hand": "coil of thick chain attached to the hook",
-      "accessories": [
-        [
-          "chain_hook",
-          "the iron hook with one metre of chain alone"
-        ]
-      ]
+      "right_hand": "large iron hook the size of his head, held by its shank at his right side, its heavy chain wound in three loops around the right forearm",
+      "left_hand": "empty, clawed fingers",
+      "back": "the back of the hood and the scarf tails, the jaw-guard straps, the jerkin's patched back",
+      "accessories": [["chain_hook", "the large iron hook with one metre of heavy chain alone"]]
     },
     "wc_vn_prism_scholar": {
-      "heads": 4.0,
-      "build": "slim, narrow shoulders, long coat to the ankles",
-      "colors": [
-        [
-          "deep violet coat",
-          "#5B3FA0"
-        ],
-        [
-          "cream",
-          "#F2E9D0"
-        ],
-        [
-          "crystal cyan",
-          "#5FD6E8"
-        ]
-      ],
+      "heads": 5.5,
+      "build": "slim woman, narrow shoulders, long coat to the ankles",
+      "colors": [["deep violet coat", "#5B3FA0"], ["cream", "#F2E9D0"], ["crystal cyan", "#5FD6E8"]],
       "features": [
-        "round glasses and short tidy hair under a flat scholar's cap",
-        "long violet coat with a high collar and cream cuffs",
-        "satchel of scrolls on the left hip"
+        "round brass-rimmed glasses and short tidy brown hair under a flat violet scholar's cap with a brass pin",
+        "long deep-violet wool coat with a high collar, cream cuffs and lining, brass buttons and a slightly worn hem",
+        "cream shirt, dark trousers and brown leather boots",
+        "leather satchel of rolled scrolls on the left hip, its strap crossing the chest"
       ],
-      "right_hand": "empty hand raised slightly, palm up",
-      "left_hand": "empty",
-      "extra": "one large faceted cyan crystal, as big as her head, floats beside her right shoulder, clearly separated from the body",
-      "accessories": [
-        [
-          "prism_crystal",
-          "the large faceted cyan crystal alone"
-        ]
-      ]
+      "right_hand": "empty, raised slightly with the palm up",
+      "left_hand": "empty, relaxed",
+      "extra": "one large faceted cyan crystal, as big as her head and faintly glowing, floats beside her right shoulder, clearly separated from the body",
+      "back": "the coat's back with a centre seam and a buttoned half-belt, the satchel strap running diagonally",
+      "accessories": [["prism_crystal", "the large faceted cyan crystal alone"]]
     },
     "wc_vn_tide_caller": {
-      "heads": 4.0,
-      "build": "smooth water-bodied humanoid, no feet: the legs merge into one rounded water base touching the ground",
-      "colors": [
-        [
-          "ocean blue",
-          "#2E7FD0"
-        ],
-        [
-          "foam white",
-          "#EAF6FF"
-        ],
-        [
-          "deep teal",
-          "#1F5F78"
-        ]
-      ],
+      "heads": 5.5,
+      "build": "smooth water-bodied humanoid with no feet: the legs merge into one rounded water base touching the ground",
+      "pose": "Full body, upright and symmetrical with the arms slightly away from the body, looking straight ahead.",
+      "colors": [["ocean blue", "#2E7FD0"], ["foam white", "#EAF6FF"], ["deep teal", "#1F5F78"]],
       "features": [
-        "head topped with a large curling wave crest that leans forward",
+        "body of dense translucent sea water: deep teal inside, lighter blue at the surface, with soft highlights",
+        "head topped with a large curling wave crest that leans forward, white foam on its lip",
         "two simple glowing white eyes, no mouth",
-        "white foam collar and foam cuffs; three large droplets orbit the waist"
+        "white foam collar around the shoulders and foam cuffs at the wrists; three large water droplets hang in the air around the waist, clearly separated from the body"
       ],
       "right_hand": "empty, fingers together like a paddle",
-      "left_hand": "empty",
+      "left_hand": "empty, fingers together like a paddle",
+      "back": "the wave crest curls away from the viewer; the foam collar continues around the back",
       "accessories": []
     },
     "wc_vn_soul_jailer": {
-      "heads": 4.0,
-      "build": "tall, thin, long arms, narrow chest",
-      "colors": [
-        [
-          "ash purple skin",
-          "#7B5A8C"
-        ],
-        [
-          "black iron",
-          "#2E2B33"
-        ],
-        [
-          "ghost green",
-          "#8CF0A0"
-        ]
-      ],
+      "heads": 5.5,
+      "build": "tall and thin, long arms, narrow chest",
+      "colors": [["ash purple skin", "#7B5A8C"], ["black iron", "#2E2B33"], ["ghost green", "#8CF0A0"]],
       "features": [
-        "two long horns curving backwards",
-        "tattered dark hooded cloak open at the front",
-        "ring of keys on the belt"
+        "gaunt face with faintly glowing pale-green eyes and two long ridged horns curving backwards",
+        "tattered charcoal hooded cloak open at the front, the hood lying down behind the horns",
+        "black iron collar and a riveted iron chest harness over bare skin; ragged dark trousers and iron-shod boots",
+        "heavy belt with a large iron ring of five keys on the left hip"
       ],
-      "right_hand": "short chain holding a square iron cage the size of his torso, hanging at knee height, with a small green ghost flame inside",
+      "right_hand": "short heavy chain from which a square iron-barred cage, nearly as large as his torso, hangs at knee height at his right side, clear of the leg; a small ghost-green flame burns inside",
       "left_hand": "empty, long fingers",
-      "accessories": [
-        [
-          "soul_cage",
-          "the square iron cage with the green flame alone"
-        ]
-      ]
+      "back": "the cloak hangs to the calves with a torn hem; the hood lies between the shoulder blades; the horns sweep back over it",
+      "accessories": [["soul_cage", "the square iron-barred cage on its short chain with the small green flame inside alone"]]
     },
     "wc_vn_chapel_healer": {
-      "heads": 4.0,
-      "build": "medium, soft rounded shape, robe to the ground",
-      "colors": [
-        [
-          "white robe",
-          "#F4F1E8"
-        ],
-        [
-          "sky blue trim",
-          "#6FB1E3"
-        ],
-        [
-          "warm gold",
-          "#E3B94A"
-        ]
-      ],
+      "heads": 5.5,
+      "build": "medium woman, soft rounded shape, robe to the ground",
+      "colors": [["white robe", "#F4F1E8"], ["sky blue trim", "#6FB1E3"], ["warm gold", "#E3B94A"]],
       "features": [
-        "tall pointed hood with a blue band",
-        "simple white robe with a wide blue stole",
-        "kind round face, hair hidden"
+        "tall pointed white hood with a sky-blue band; warm, kind round face, hair hidden",
+        "layered white wool robe to the ground with a slightly frayed hem",
+        "wide sky-blue stole over both shoulders hanging to the knees, a gold embroidered sun at each end",
+        "leather belt with a small book pouch"
       ],
-      "right_hand": "tall staff topped with a large round lantern that glows gold",
+      "right_hand": "tall wooden staff standing upright on the ground at her right side, topped with a large round iron-and-glass lantern that glows warm gold",
       "left_hand": "empty, open palm",
-      "accessories": [
-        [
-          "lantern_staff",
-          "the lantern staff alone"
-        ]
-      ]
+      "back": "the hood's point and back, the stole crossing behind the neck, the plain robe",
+      "accessories": [["lantern_staff", "the tall wooden staff with the round glowing lantern alone"]]
     },
     "wc_vn_siege_master": {
-      "heads": 4.0,
-      "build": "broad, barrel chest, thick arms",
-      "colors": [
-        [
-          "navy coat",
-          "#2B3F66"
-        ],
-        [
-          "brass",
-          "#C9A04A"
-        ],
-        [
-          "soot grey",
-          "#4A4E55"
-        ]
-      ],
+      "heads": 5.5,
+      "build": "broad man, barrel chest, thick forearms",
+      "colors": [["navy coat", "#2B3F66"], ["brass", "#C9A04A"], ["soot grey", "#4A4E55"]],
       "features": [
-        "big round brass goggles pushed over a leather cap",
-        "thick moustache",
-        "navy coat with rolled sleeves and a tool belt"
+        "leather cap with big round brass goggles pushed up onto it; thick grey-brown moustache",
+        "navy wool coat with rolled sleeves, brass buttons and soot stains",
+        "leather tool belt with a hammer and a powder flask; soot-grey trousers and heavy boots"
       ],
-      "right_hand": "long ramrod held upright like a staff",
-      "left_hand": "resting on the short fat cannon beside him",
-      "extra": "a short, very fat brass-banded cannon on two small wheels stands at his left side, barrel pointing forward, as high as his waist",
+      "right_hand": "long wooden ramrod with a wool sponge head, held upright like a staff at his right side",
+      "left_hand": "resting on the cannon beside him",
+      "extra": "a short, very fat bronze cannon with brass bands on a small two-wheeled wooden carriage stands at his left side, barrel pointing forward, as high as his waist",
+      "back": "the coat's back with a centre vent, the tool belt and the goggle strap around the cap",
       "accessories": [
-        [
-          "field_cannon",
-          "the short fat wheeled cannon alone"
-        ]
+        ["field_cannon", "the short fat brass-banded cannon on its two-wheeled wooden carriage alone"],
+        ["ramrod", "the long wooden ramrod with the wool sponge head alone"]
       ]
     },
     "wc_vn_longbow_scout": {
-      "heads": 4.0,
-      "build": "slender, long legs",
-      "colors": [
-        [
-          "forest green",
-          "#3F7D4E"
-        ],
-        [
-          "tan leather",
-          "#B98A5A"
-        ],
-        [
-          "pale gold hair",
-          "#EBD58A"
-        ]
-      ],
+      "heads": 5.5,
+      "build": "slender woman, long legs",
+      "colors": [["forest green", "#3F7D4E"], ["tan leather", "#B98A5A"], ["pale gold hair", "#EBD58A"]],
       "features": [
-        "long pointed elf ears through a green hood",
-        "short cape, leather bracers and tall boots",
-        "quiver with three large arrows on her back"
+        "long pointed elf ears through slits in a forest-green hood; pale gold hair in a side braid",
+        "short green cape to the middle of the back, fitted tan leather jerkin over a green tunic, leather bracers",
+        "dark leggings and tall soft tan boots",
+        "leather quiver with three fletched arrows on her back behind the right shoulder, its strap crossing the chest"
       ],
-      "right_hand": "empty",
-      "left_hand": "simple longbow taller than she is, held upright",
-      "accessories": [
-        [
-          "longbow",
-          "the longbow alone"
-        ],
-        [
-          "quiver",
-          "the quiver with three arrows alone"
-        ]
-      ]
+      "right_hand": "empty, relaxed",
+      "left_hand": "longbow of pale wood taller than she is, with a leather grip, held upright at her left side with the lower tip near the ground",
+      "back": "the short cape with the quiver over it, arrows rising behind the right shoulder",
+      "accessories": [["longbow", "the tall pale-wood longbow with its leather grip and string alone"]]
     },
     "wc_vn_moonblade": {
-      "heads": 4.0,
-      "build": "lean, narrow, athletic",
-      "colors": [
-        [
-          "midnight blue",
-          "#27325E"
-        ],
-        [
-          "silver",
-          "#C9D2DC"
-        ],
-        [
-          "pale lilac skin",
-          "#C9B8E0"
-        ]
-      ],
+      "heads": 5.5,
+      "build": "lean, narrow and athletic",
+      "colors": [["midnight blue", "#27325E"], ["silver", "#C9D2DC"], ["pale lilac skin", "#C9B8E0"]],
       "features": [
-        "smooth silver half-mask covering eyes and nose, long pointed ears",
-        "short dark-blue cape reaching the waist",
-        "tight wrapped sleeves and soft boots"
+        "smooth silver half-mask covering the eyes and nose with a crescent engraved on the brow; pale lilac skin, long pointed ears, white hair tied in a short tail",
+        "short midnight-blue cape reaching the waist, fastened with a silver crescent clasp",
+        "fitted dark-blue leather armour with silver trim, tightly wrapped sleeves, a cloth sash and soft boots"
       ],
-      "right_hand": "crescent-shaped silver blade pointing down",
-      "left_hand": "matching crescent blade pointing down",
-      "accessories": [
-        [
-          "crescent_blade",
-          "one crescent blade alone"
-        ]
-      ]
+      "right_hand": "crescent-shaped silver blade with a wrapped grip, held pointing down at the right side",
+      "left_hand": "matching crescent blade held pointing down at the left side",
+      "back": "the short cape to the waist, the hair tail over it, the sash knot at the back",
+      "accessories": [["crescent_blade", "one crescent-shaped silver blade with its wrapped grip alone"]]
     },
     "wc_vn_treant_caller": {
-      "heads": 4.5,
+      "heads": 6.0,
       "build": "tall, straight, calm posture",
-      "colors": [
-        [
-          "bark brown armour",
-          "#6B4A2E"
-        ],
-        [
-          "spring green",
-          "#7FBF5A"
-        ],
-        [
-          "amber",
-          "#F0B13C"
-        ]
-      ],
+      "colors": [["bark brown armour", "#6B4A2E"], ["spring green", "#7FBF5A"], ["amber", "#F0B13C"]],
       "features": [
-        "long pointed ears and long green hair tied back",
-        "chest plate and shoulder guards made of smooth bark plates",
-        "crown of three large leaves"
+        "long pointed ears and long green hair tied back; a crown of three large leaves at the brow",
+        "chest plate, shoulder guards and bracers made of layered bark plates with moss in the seams, over a spring-green tunic",
+        "brown leggings, bark greaves and a leather belt with a seed pouch"
       ],
-      "right_hand": "empty",
-      "left_hand": "holding one glowing amber seed the size of an apple at chest height",
-      "accessories": [
-        [
-          "amber_seed",
-          "the glowing seed alone"
-        ],
-        [
-          "treant_summon",
-          "the summoned treant: a chunky two-legged tree creature as tall as the caller with two branch arms, a simple hollow face and a small leaf crown, front view only"
-        ]
-      ]
+      "right_hand": "empty, relaxed",
+      "left_hand": "one softly glowing amber seed the size of an apple resting on the open palm, held out at waist height away from the body",
+      "back": "the bark back plate, the long tied hair down the spine",
+      "accessories": [["treant_summon", "the summoned treant: a sturdy two-legged tree creature as tall as the caller, with a thick trunk body of rough bark, two heavy branch arms, hollow knot-hole eyes and mouth, a small crown of spring-green leaves, moss on the shoulders and root-like feet", "creature"]]
     },
     "wc_vn_hammerer": {
-      "heads": 3.5,
+      "heads": 4.5,
       "build": "short and very wide, huge hands",
-      "colors": [
-        [
-          "burnt orange beard",
-          "#D9762B"
-        ],
-        [
-          "iron grey",
-          "#70777F"
-        ],
-        [
-          "dark red cloth",
-          "#8E2F2A"
-        ]
-      ],
+      "colors": [["burnt orange beard", "#D9762B"], ["iron grey", "#70777F"], ["dark red cloth", "#8E2F2A"]],
       "features": [
-        "huge braided beard in two thick braids reaching the belt",
-        "round iron helmet with a nose guard",
-        "dark-red tunic, thick belt, heavy boots"
+        "huge burnt-orange beard in two thick braids bound with iron rings, reaching the belt; big nose and heavy brows",
+        "round dented iron helmet with a nose guard and a riveted rim",
+        "dark-red quilted tunic with short chainmail sleeves, a thick leather belt with a square iron buckle, leather bracers",
+        "heavy iron-capped boots"
       ],
-      "right_hand": "two-handed war hammer with a block head as big as his torso, head resting on the ground",
-      "left_hand": "also on the hammer handle",
-      "accessories": [
-        [
-          "war_hammer",
-          "the block-headed war hammer alone"
-        ]
-      ]
+      "right_hand": "war hammer with a block-shaped iron head as big as his chest and a long leather-wrapped oak haft, held upright at his right side with the head resting on the ground beside his right foot",
+      "left_hand": "empty fist",
+      "back": "the helmet's back with its rim, the quilted tunic and belt",
+      "accessories": [["war_hammer", "the block-headed iron war hammer with its long oak haft alone"]]
     },
     "wc_vn_ironwall": {
-      "heads": 3.5,
+      "heads": 4.5,
       "build": "squat, almost square, fully armoured",
-      "colors": [
-        [
-          "dark steel",
-          "#5C6670"
-        ],
-        [
-          "copper",
-          "#C27B4A"
-        ],
-        [
-          "cream beard",
-          "#EDE3CC"
-        ]
-      ],
+      "colors": [["dark steel", "#5C6670"], ["copper", "#C27B4A"], ["cream beard", "#EDE3CC"]],
       "features": [
-        "closed barrel helmet with a narrow slit; only a short cream beard shows below",
-        "thick plate armour with large copper rivets",
-        "wide flat boots"
+        "closed riveted barrel helmet with a narrow eye slit; only a short cream beard shows below it",
+        "thick dark-steel plate armour with large copper rivets and copper trim, layered pauldrons and chainmail at the joints",
+        "wide flat sabatons"
       ],
-      "right_hand": "round-topped bolted shield, as tall as his chest",
-      "left_hand": "identical bolted shield",
-      "accessories": [
-        [
-          "bolted_shield",
-          "one bolted shield alone, front and inner side"
-        ]
-      ]
+      "right_hand": "round-topped bolted steel shield as tall as his chest with copper rivets, held at his right side, face pointing forward, clear of the body",
+      "left_hand": "identical bolted shield held at his left side, face pointing forward",
+      "back": "the plain back plate with copper rivets; the inner sides of both shields with their grips",
+      "accessories": [["bolted_shield", "one round-topped bolted steel shield alone: front face, and inner side with a grip"]]
     },
     "wc_vn_rifleman": {
-      "heads": 3.5,
+      "heads": 4.5,
       "build": "short, stout, relaxed stance",
-      "colors": [
-        [
-          "olive green coat",
-          "#6B7A3A"
-        ],
-        [
-          "brown leather",
-          "#7A5233"
-        ],
-        [
-          "brass",
-          "#C9A04A"
-        ]
-      ],
+      "colors": [["olive green coat", "#6B7A3A"], ["brown leather", "#7A5233"], ["brass", "#C9A04A"]],
       "features": [
-        "very wide-brimmed hat with one feather",
-        "short brown beard and one eyepatch-style monocle lens",
-        "olive coat with a bandolier of three big cartridges"
+        "very wide-brimmed weathered brown leather hat with one long feather",
+        "short brown beard and a brass-rimmed monocle lens strapped over the right eye",
+        "olive wool coat with brass buttons and a leather bandolier of three big brass cartridges across the chest",
+        "leather belt with two pouches, heavy boots"
       ],
-      "right_hand": "rifle longer than he is tall, held upright with the stock on the ground",
-      "left_hand": "empty, thumb in belt",
-      "accessories": [
-        [
-          "long_rifle",
-          "the long rifle alone"
-        ]
-      ]
+      "right_hand": "long rifle, longer than he is tall, with a wooden stock and brass fittings, held upright at his right side with the stock on the ground",
+      "left_hand": "empty, relaxed",
+      "back": "the hat brim from behind, the bandolier crossing the back, the coat's tail",
+      "accessories": [["long_rifle", "the long brass-fitted rifle alone"]]
     },
     "wc_vn_forge_king": {
-      "heads": 5.0,
-      "build": "small crowned dwarf seated on top of a chunky two-legged walking forge",
-      "colors": [
-        [
-          "furnace orange",
-          "#F08A2C"
-        ],
-        [
-          "dark iron",
-          "#3F4349"
-        ],
-        [
-          "royal gold",
-          "#E2B93B"
-        ]
-      ],
+      "heads": 7.0,
+      "build": "small crowned dwarf seated on top of a heavy two-legged walking forge; the whole is as tall and wide as the largest heroes",
+      "pose": "Full subject, the walker standing straight and symmetrical with its legs slightly apart, the rider seated upright and looking straight ahead.",
+      "colors": [["furnace orange", "#F08A2C"], ["dark iron", "#3F4349"], ["royal gold", "#E2B93B"]],
       "features": [
-        "dwarf with a white beard and a simple gold crown sits in an open seat on top",
-        "the forge body is a rounded iron furnace with a glowing orange grate as a face, on two short thick legs",
-        "one rocket rack with four rockets on each shoulder of the forge"
+        "the forge body is a rounded furnace of riveted dark iron plates with a glowing orange grate as its face and a short chimney pipe at the back",
+        "two short thick piston legs with wide flat iron feet; no arms",
+        "one rocket rack holding four red-tipped rockets on each shoulder of the forge",
+        "a dwarf with a long white beard, a plain gold crown and a fur-collared coat sits in an open seat on top"
       ],
-      "right_hand": "holding a control lever",
-      "left_hand": "holding a control lever",
-      "accessories": [
-        [
-          "rocket",
-          "one rocket alone"
-        ],
-        [
-          "forge_walker",
-          "the walking forge without the rider, front view"
-        ]
-      ]
+      "right_hand": "on a brass control lever",
+      "left_hand": "on a brass control lever",
+      "back": "the chimney pipe, the back of the seat and the rider's coat, the rear of both rocket racks",
+      "accessories": []
     },
     "wc_vn_bomber": {
-      "heads": 3.0,
+      "heads": 4.0,
       "build": "tiny, round belly, thin limbs",
-      "colors": [
-        [
-          "bright green skin",
-          "#9BCB4E"
-        ],
-        [
-          "black bomb",
-          "#2C2C30"
-        ],
-        [
-          "yellow",
-          "#F2C230"
-        ]
-      ],
+      "expression": "a wide toothy grin",
+      "colors": [["bright green skin", "#9BCB4E"], ["black bomb", "#2C2C30"], ["yellow", "#F2C230"]],
       "features": [
         "huge pointed ears and a wide toothy grin",
-        "leather aviator cap with yellow goggles",
-        "short patched vest and shorts, bare feet"
+        "leather aviator cap with a chin strap and yellow-lensed brass goggles on the forehead",
+        "patched, soot-stained leather vest, short trousers with a rope belt, a coil of fuse cord on the belt, bare feet"
       ],
-      "right_hand": "both hands hold one round black bomb as large as his torso against his chest, with a short lit fuse",
-      "left_hand": "supporting the bomb",
-      "accessories": [
-        [
-          "round_bomb",
-          "the round bomb with fuse alone"
-        ]
-      ]
+      "right_hand": "resting on top of one round black iron bomb as large as his torso that stands on the ground at his right side, with a short fuse and a small spark",
+      "left_hand": "empty",
+      "back": "the cap's back strap, the vest's patched back, the fuse coil on the belt",
+      "accessories": [["round_bomb", "the round black iron bomb with its short sparking fuse alone"]]
     },
     "wc_vn_jinxer": {
-      "heads": 3.5,
+      "heads": 4.5,
       "build": "small, hunched, long arms",
-      "colors": [
-        [
-          "olive green skin",
-          "#7C9A45"
-        ],
-        [
-          "purple",
-          "#7B4BB0"
-        ],
-        [
-          "bone white",
-          "#E9E2CF"
-        ]
-      ],
+      "colors": [["olive green skin", "#7C9A45"], ["purple", "#7B4BB0"], ["bone white", "#E9E2CF"]],
       "features": [
-        "wooden mask with two round eye holes and three large purple feathers on top; big ears stick out at the sides",
-        "purple shawl and a necklace of five large teeth",
-        "bare feet with ankle beads"
+        "carved wooden mask with two round eye holes and white painted streaks, topped with three large purple feathers; big ears stick out at the sides",
+        "purple woven shawl with a frayed edge and a necklace of five large teeth",
+        "hide loincloth, bare feet with ankle beads"
       ],
-      "right_hand": "bone rattle with a round head",
+      "right_hand": "bone rattle: a long bone handle with a round dried-gourd head and two small feathers tied below it",
       "left_hand": "empty, clawed fingers spread",
-      "accessories": [
-        [
-          "bone_rattle",
-          "the bone rattle alone"
-        ],
-        [
-          "feather_mask",
-          "the feathered mask alone"
-        ]
-      ]
+      "back": "the mask's cord tied behind the head, the feathers from behind, the shawl's back",
+      "accessories": [["bone_rattle", "the bone rattle with its round gourd head alone"]]
     },
     "wc_vn_dartblower": {
-      "heads": 3.5,
+      "heads": 4.5,
       "build": "skinny, long neck, light stance",
-      "colors": [
-        [
-          "yellow-green skin",
-          "#A9C653"
-        ],
-        [
-          "leaf green cloak",
-          "#4F8A45"
-        ],
-        [
-          "poison purple",
-          "#9B4FC2"
-        ]
-      ],
+      "colors": [["yellow-green skin", "#A9C653"], ["leaf green cloak", "#4F8A45"], ["poison purple", "#9B4FC2"]],
       "features": [
-        "big ears and a pointed nose",
-        "cloak made of three large leaves with a leaf hood",
-        "belt with three purple darts"
+        "big ears and a long pointed nose",
+        "cloak of three large overlapping leaves with a leaf hood, stitched with twine",
+        "leather chest strap and belt holding three purple-fletched darts; cloth wraps on the shins, bare feet"
       ],
-      "right_hand": "blowpipe as long as he is tall, held upright",
+      "right_hand": "cane blowpipe as long as he is tall, bound with cord, held upright at his right side",
       "left_hand": "empty",
-      "accessories": [
-        [
-          "blowpipe",
-          "the long blowpipe alone"
-        ],
-        [
-          "poison_dart",
-          "one purple-tipped dart alone"
-        ]
-      ]
+      "back": "the three leaves of the cloak overlapping down the back, the leaf hood",
+      "accessories": [["blowpipe", "the long cord-bound cane blowpipe alone"]]
     },
     "wc_vn_blood_drummer": {
-      "heads": 4.5,
-      "build": "heavy, big belly and thick arms",
-      "colors": [
-        [
-          "olive green skin",
-          "#6F8F4A"
-        ],
-        [
-          "blood red paint",
-          "#B5312C"
-        ],
-        [
-          "hide tan",
-          "#C9A878"
-        ]
-      ],
+      "heads": 6.0,
+      "build": "heavy, big belly and thick arms, bare torso",
+      "colors": [["olive green skin", "#6F8F4A"], ["blood red paint", "#B5312C"], ["hide tan", "#C9A878"]],
       "features": [
-        "two short tusks and a topknot",
-        "red painted stripes on both arms and across the face",
-        "large round drum strapped at his waist in front, drum skin facing forward"
+        "two short tusks and black hair in a topknot bound with a bone ring",
+        "blood-red war-paint stripes on both arms and across the face",
+        "leather shoulder strap, bone-bead necklace, hide kilt, leg wraps, bare feet",
+        "large round war drum with a wooden shell, tan hide skin and rope tensioning, strapped at his waist in front with the skin facing forward"
       ],
-      "right_hand": "thick drumstick with a round head",
-      "left_hand": "matching drumstick",
+      "right_hand": "thick drumstick with a round leather-wrapped head, held at his right side",
+      "left_hand": "matching drumstick held at his left side",
+      "back": "the drum's strap crossing the back, the topknot, the kilt's back",
       "accessories": [
-        [
-          "war_drum",
-          "the round war drum alone"
-        ],
-        [
-          "drumstick",
-          "one drumstick alone"
-        ]
+        ["war_drum", "the round rope-tensioned war drum with its strap alone"],
+        ["drumstick", "one thick drumstick with a round leather-wrapped head alone"]
       ]
     },
     "wc_vn_earthbreaker": {
-      "heads": 5.0,
-      "build": "massive, the widest hero, short legs",
-      "colors": [
-        [
-          "grey-green skin",
-          "#7A9070"
-        ],
-        [
-          "stone grey",
-          "#8B8B86"
-        ],
-        [
-          "dark brown",
-          "#4E3A2A"
-        ]
-      ],
+      "heads": 7.0,
+      "build": "massive, the widest hero, short legs, enormous arms",
+      "colors": [["grey-green skin", "#7A9070"], ["stone grey", "#8B8B86"], ["dark brown", "#4E3A2A"]],
       "features": [
-        "bald head with two large tusks and a heavy brow",
-        "single huge stone plate on the right shoulder",
-        "leather harness and loincloth, bare feet"
+        "bald scarred head with two large lower tusks and a heavy brow",
+        "one huge slab of rough stone strapped onto the right shoulder with leather",
+        "leather cross harness with iron rings, hide loincloth with a wide belt, leg wraps, bare feet",
+        "both forearms and fists are encased in oversized rough-hewn stone gauntlets bound with iron bands, each twice the size of a normal fist"
       ],
-      "right_hand": "oversized stone gauntlet, twice the size of a normal fist",
-      "left_hand": "matching stone gauntlet",
-      "accessories": [
-        [
-          "stone_gauntlet",
-          "one stone gauntlet alone"
-        ]
-      ]
+      "right_hand": "stone gauntlet fist, hanging at his side",
+      "left_hand": "matching stone gauntlet fist",
+      "back": "the harness crossing the broad back, the stone shoulder slab from behind",
+      "accessories": []
     },
     "wc_vn_bonechanter": {
-      "heads": 4.5,
+      "heads": 6.0,
       "build": "tall, lean for an orc, straight back",
-      "colors": [
-        [
-          "dusty green skin",
-          "#7E9665"
-        ],
-        [
-          "bone white",
-          "#ECE5D2"
-        ],
-        [
-          "dark crimson",
-          "#7A1F2B"
-        ]
-      ],
+      "colors": [["dusty green skin", "#7E9665"], ["bone white", "#ECE5D2"], ["dark crimson", "#7A1F2B"]],
       "features": [
-        "headdress made of a large horned animal skull with three long feathers",
-        "crimson robe open at the chest with a rib-bone chest piece",
-        "bone bracelets"
+        "headdress made of a large horned animal skull worn over the head, with three long dark feathers behind it; lean face with small tusks",
+        "dark-crimson robe to the ankles, open at the chest, with a rib-bone chest piece laced on with leather",
+        "bone bracelets and a leather belt hung with small bone charms; bare feet"
       ],
-      "right_hand": "staff topped with a small skull whose eyes glow red",
+      "right_hand": "tall wooden staff standing upright at his right side, topped with a small skull whose eye sockets glow red",
       "left_hand": "empty, raised slightly",
-      "accessories": [
-        [
-          "skull_staff",
-          "the skull-topped staff alone"
-        ]
-      ]
+      "back": "the skull headdress and its three feathers from behind, the plain back of the robe",
+      "accessories": [["skull_staff", "the tall wooden staff topped with the small red-eyed skull alone"]]
     },
     "wc_vn_foxclaw": {
-      "heads": 4.0,
+      "heads": 5.5,
       "build": "small, light, digitigrade legs",
-      "colors": [
-        [
-          "fox orange fur",
-          "#E2792F"
-        ],
-        [
-          "cream fur",
-          "#F5E9D2"
-        ],
-        [
-          "dark teal cloth",
-          "#2F6F73"
-        ]
-      ],
+      "colors": [["fox orange fur", "#E2792F"], ["cream fur", "#F5E9D2"], ["dark teal cloth", "#2F6F73"]],
       "features": [
-        "fox head with large upright ears and a cream muzzle",
+        "fox head with large upright black-tipped ears, a cream muzzle and amber eyes",
+        "orange fur over the body with a cream chest and dark fur on the forearms and lower legs",
         "very large bushy tail with a cream tip",
-        "teal sash and arm wraps"
+        "dark-teal sash around the waist, teal arm wraps and a leather chest strap"
       ],
-      "right_hand": "three-bladed claw weapon strapped over the hand",
-      "left_hand": "matching claw weapon",
-      "accessories": [
-        [
-          "hand_claw",
-          "one three-bladed hand claw alone"
-        ]
-      ]
+      "right_hand": "three-bladed steel claw on a leather bracer strapped over the back of the hand",
+      "left_hand": "matching three-bladed claw",
+      "back": "the big tail hangs behind the legs; the sash knot and the chest strap across the back",
+      "accessories": [["hand_claw", "one three-bladed steel hand claw on its leather bracer alone"]]
     },
     "wc_vn_bearguard": {
-      "heads": 4.5,
+      "heads": 6.0,
       "build": "round, heavy, short thick legs",
-      "colors": [
-        [
-          "chestnut brown fur",
-          "#7A4F2E"
-        ],
-        [
-          "tan muzzle",
-          "#D9B88A"
-        ],
-        [
-          "forest green",
-          "#3F6B45"
-        ]
-      ],
+      "colors": [["chestnut brown fur", "#7A4F2E"], ["tan muzzle", "#D9B88A"], ["forest green", "#3F6B45"]],
       "features": [
-        "bear head with small round ears and a tan muzzle",
-        "leather chest harness with one round green shoulder pad",
-        "short stub tail"
+        "bear head with small round ears, a tan muzzle, a dark nose and small eyes",
+        "thick chestnut fur over the whole body, lighter tan on the chest and belly",
+        "leather chest harness with an iron buckle and one round forest-green shoulder pad on the left shoulder",
+        "green cloth waist wrap under a leather belt; short stub tail; bare bear feet"
       ],
-      "right_hand": "bare huge paw with four thick claws",
-      "left_hand": "bare huge paw with four thick claws",
+      "right_hand": "bare huge paw with four thick dark claws",
+      "left_hand": "bare huge paw with four thick dark claws",
+      "back": "the harness straps crossing the back, the stub tail above the waist wrap",
       "accessories": []
     },
     "wc_vn_wolf_caller": {
-      "heads": 4.0,
-      "build": "lean, upright, alert",
-      "colors": [
-        [
-          "grey fur",
-          "#8A8F98"
-        ],
-        [
-          "white fur",
-          "#F0F0EE"
-        ],
-        [
-          "ice blue",
-          "#7FC4E8"
-        ]
-      ],
+      "heads": 5.5,
+      "build": "lean woman, upright, alert, digitigrade legs",
+      "colors": [["grey fur", "#8A8F98"], ["white fur", "#F0F0EE"], ["ice blue", "#7FC4E8"]],
       "features": [
-        "wolf head with tall ears and a white muzzle",
-        "thick white fur mantle over the shoulders",
+        "wolf head with tall ears, a white muzzle and ice-blue eyes",
+        "grey fur over the body; a thick white fur mantle over the shoulders fastened with a bone toggle",
+        "leather hunter's jerkin, belt with a pouch and an ice-blue cloth waist wrap",
         "long bushy grey tail"
       ],
-      "right_hand": "large curved hunting horn with an ice-blue band",
+      "right_hand": "large curved hunting horn with an ice-blue band and a carved bone mouthpiece, held at her right side",
       "left_hand": "empty",
+      "back": "the fur mantle across the upper back, the tail hanging behind the legs",
       "accessories": [
-        [
-          "hunting_horn",
-          "the curved horn alone"
-        ],
-        [
-          "wolf_summon",
-          "one summoned wolf: a small chunky grey wolf on four legs with a white muzzle, side view facing left"
-        ]
+        ["hunting_horn", "the large curved hunting horn with the ice-blue band alone"],
+        ["wolf_summon", "one summoned wolf: a lean grey wolf standing still on four legs, with a white muzzle and chest and ice-blue eyes", "creature"]
       ]
     },
     "wc_vn_owl_seer": {
-      "heads": 4.0,
+      "heads": 5.5,
       "build": "rounded, short neck, cloak to the ground",
-      "colors": [
-        [
-          "tawny brown feathers",
-          "#9A6B3F"
-        ],
-        [
-          "cream feathers",
-          "#F2E6C9"
-        ],
-        [
-          "indigo",
-          "#3D3A8C"
-        ]
-      ],
+      "colors": [["tawny brown feathers", "#9A6B3F"], ["cream feathers", "#F2E6C9"], ["indigo", "#3D3A8C"]],
       "features": [
-        "owl head with very large round yellow eyes and two ear tufts",
-        "cloak of large layered feathers closed at the front",
-        "small indigo scarf"
+        "owl head with very large round yellow eyes, a cream facial disc, two ear tufts and a small hooked beak",
+        "cloak of large layered tawny feathers closed at the front and reaching the ground, cream feathers at the collar",
+        "small indigo scarf; taloned feet just visible at the hem"
       ],
-      "right_hand": "crooked wooden staff with a hanging indigo charm",
+      "right_hand": "feathered taloned hand emerging from the cloak, holding a crooked wooden staff with a hanging indigo charm, upright at the right side",
       "left_hand": "hidden inside the cloak",
+      "back": "rows of large layered feathers down the whole back, the ear tufts from behind",
       "accessories": [
-        [
-          "crooked_staff",
-          "the crooked staff alone"
-        ],
-        [
-          "hex_critter",
-          "the hex critter: a tiny round chick-like creature with big eyes, front view"
-        ]
+        ["crooked_staff", "the crooked wooden staff with the hanging indigo charm alone"],
+        ["hex_critter", "the hex critter: a tiny round fluffy chick-like bird with big dark eyes and stubby wings", "creature"]
       ]
     },
     "wc_vn_hellblade": {
-      "heads": 4.5,
-      "build": "muscular, wide stance",
-      "colors": [
-        [
-          "crimson skin",
-          "#B5302E"
-        ],
-        [
-          "black iron",
-          "#2B2A2E"
-        ],
-        [
-          "flame orange",
-          "#F58A1F"
-        ]
-      ],
+      "heads": 6.0,
+      "build": "muscular, wide stance, bare chest",
+      "colors": [["crimson skin", "#B5302E"], ["black iron", "#2B2A2E"], ["flame orange", "#F58A1F"]],
       "features": [
-        "two short thick horns curving upward",
-        "black iron shoulder guards and belt, bare chest",
+        "two short thick horns curving upward, yellow eyes and a sharp jaw",
+        "black iron shoulder guards, bracers and a wide belt; scarred bare chest",
+        "dark leather war-skirt with iron plates, iron greaves",
         "short pointed tail"
       ],
-      "right_hand": "greatsword as long as he is tall, point on the ground, with a simple flame shape along the blade edge",
+      "right_hand": "greatsword as long as he is tall with a black iron blade, the cutting edge glowing flame orange with low flames along it, held upright at his right side with the point on the ground",
       "left_hand": "empty fist",
-      "accessories": [
-        [
-          "flame_greatsword",
-          "the greatsword alone"
-        ]
-      ]
+      "back": "the bare back between the shoulder guards, the tail, the back of the war-skirt",
+      "accessories": [["flame_greatsword", "the black iron greatsword with the flame-orange glowing edge alone"]]
     },
     "wc_vn_shadow_fiend": {
-      "heads": 4.5,
+      "heads": 6.0,
       "build": "thin, sharp, long limbs",
-      "colors": [
-        [
-          "charcoal black",
-          "#26242B"
-        ],
-        [
-          "deep violet",
-          "#4B2F7A"
-        ],
-        [
-          "glowing magenta",
-          "#F03FA8"
-        ]
-      ],
+      "colors": [["charcoal black", "#26242B"], ["deep violet", "#4B2F7A"], ["glowing magenta", "#F03FA8"]],
       "features": [
-        "smooth dark head with two swept-back horns and two glowing magenta eyes, no other face detail",
-        "pair of medium bat wings folded half open behind the shoulders",
-        "long thin tail"
+        "smooth charcoal-black body like polished obsidian with a faint violet sheen, no clothing",
+        "smooth head with two swept-back horns and two glowing magenta eyes, no other face detail",
+        "pair of medium bat wings half open behind the shoulders, with deep-violet membranes between black fingers",
+        "long thin whip-like tail"
       ],
       "right_hand": "four long claws",
       "left_hand": "four long claws",
+      "back": "the wing roots at the shoulder blades, the wings half open, the tail from the base of the spine",
       "accessories": []
     },
     "wc_vn_pit_lord": {
-      "heads": 5.0,
+      "heads": 7.0,
       "build": "huge, towering, heavy upper body",
-      "colors": [
-        [
-          "dark red skin",
-          "#8E2222"
-        ],
-        [
-          "black iron",
-          "#2A282C"
-        ],
-        [
-          "lava orange",
-          "#FF7A1A"
-        ]
-      ],
+      "colors": [["dark red skin", "#8E2222"], ["black iron", "#2A282C"], ["lava orange", "#FF7A1A"]],
       "features": [
-        "two massive horns curving forward and a crown of fire floating between them",
-        "black iron chest plate with one glowing lava crack down the middle",
-        "hooved feet and a thick tail"
+        "two massive horns curving forward with a crown of fire floating between them; heavy jaw and glowing orange eyes",
+        "black iron chest plate with one glowing lava crack down the middle, iron pauldrons, a heavy belt and hanging loin plates",
+        "shaggy dark fur on the lower legs, hooved feet and a thick tail"
       ],
-      "right_hand": "heavy coiled whip that glows orange",
+      "right_hand": "heavy whip of black braided leather that glows lava orange, held coiled at his right side",
       "left_hand": "empty clawed hand",
-      "accessories": [
-        [
-          "fire_whip",
-          "the coiled fire whip alone"
-        ]
-      ]
+      "back": "the back plate and pauldrons, the thick tail, the horns curving forward away from the viewer",
+      "accessories": [["fire_whip", "the heavy coiled whip glowing lava orange alone"]]
     },
     "wc_vn_bone_archer": {
-      "heads": 4.0,
-      "build": "thin skeleton, simple thick bones",
-      "colors": [
-        [
-          "bone white",
-          "#ECE6D4"
-        ],
-        [
-          "faded teal cloth",
-          "#4F7F82"
-        ],
-        [
-          "dark brown",
-          "#4A3828"
-        ]
-      ],
+      "heads": 5.5,
+      "build": "thin skeleton with sturdy, aged bones",
+      "colors": [["bone white", "#ECE6D4"], ["faded teal cloth", "#4F7F82"], ["dark brown", "#4A3828"]],
       "features": [
-        "round skull with two glowing teal eye dots",
-        "torn teal hood and short ragged cape",
-        "visible rib cage simplified to four thick ribs"
+        "weathered skull with two glowing teal points in the eye sockets",
+        "torn faded-teal hood and a short ragged cape",
+        "open rib cage and spine with a leather chest strap; tattered loincloth on a leather belt",
+        "small hip quiver with two arrows on the right hip; cloth wraps on the shins"
       ],
       "right_hand": "empty bony hand",
-      "left_hand": "bow made from two curved ribs, held upright",
-      "accessories": [
-        [
-          "rib_bow",
-          "the rib bow alone"
-        ]
-      ]
+      "left_hand": "bow made from two long curved ribs lashed together at the centre with a leather grip, held upright at the left side",
+      "back": "the ragged cape over the shoulder blades, the spine and pelvis below it",
+      "accessories": [["rib_bow", "the bow made of two lashed curved ribs alone"]]
     },
     "wc_vn_curse_weaver": {
-      "heads": 4.0,
-      "build": "thin, floating-looking robe that hides the feet",
-      "colors": [
-        [
-          "pale grey skin",
-          "#B9BDC2"
-        ],
-        [
-          "plum robe",
-          "#6A2F6B"
-        ],
-        [
-          "sickly yellow",
-          "#D8D455"
-        ]
-      ],
+      "heads": 5.5,
+      "build": "thin woman in a robe whose ragged hem hides the feet",
+      "colors": [["pale grey skin", "#B9BDC2"], ["plum robe", "#6A2F6B"], ["sickly yellow", "#D8D455"]],
       "features": [
-        "black veil covering the eyes, only the mouth visible",
-        "very long sleeves hanging past the hands",
-        "a stitched rag doll with button eyes floats beside the left shoulder"
+        "black lace veil covering the eyes; only the pale mouth and chin are visible",
+        "plum robe with a ragged hem, sickly-yellow stitched trim and a rope belt",
+        "very long sleeves hanging past the hands"
       ],
-      "right_hand": "hidden in the sleeve, holding a large needle",
+      "right_hand": "pale fingers just visible at the sleeve, holding a long bone needle with a trailing yellow thread, pointing down",
       "left_hand": "hidden in the sleeve",
+      "extra": "a stitched rag doll with button eyes and three pins floats beside her left shoulder, clearly separated from the body",
+      "back": "the veil tied behind the head over dark hair, the robe's plain back with yellow trim at the hem",
       "accessories": [
-        [
-          "curse_doll",
-          "the stitched rag doll alone"
-        ],
-        [
-          "curse_needle",
-          "the large needle alone"
-        ]
+        ["curse_doll", "the stitched rag doll with button eyes and three pins alone"],
+        ["curse_needle", "the long bone needle with the yellow thread alone"]
       ]
     },
     "wc_vn_stitcher": {
-      "heads": 4.5,
-      "build": "lopsided: right arm thick and long, left arm thin",
-      "colors": [
-        [
-          "grey-green skin",
-          "#8FA58B"
-        ],
-        [
-          "stained white coat",
-          "#E6E2D6"
-        ],
-        [
-          "rust brown",
-          "#8A4B2E"
-        ]
-      ],
+      "heads": 6.0,
+      "build": "lopsided: the right arm is thick and long, the left arm thin",
+      "colors": [["grey-green skin", "#8FA58B"], ["stained white coat", "#E6E2D6"], ["rust brown", "#8A4B2E"]],
       "features": [
-        "bald head with a big stitched seam across the forehead and one larger eye",
-        "white surgeon's coat with rolled sleeves and a leather apron",
-        "tool belt with a saw and a spool of thick thread"
+        "bald head with a big stitched seam across the forehead and one eye larger than the other",
+        "stitches around the right shoulder where the mismatched arm is attached",
+        "stained white surgeon's coat with rolled sleeves under a rust-brown leather apron",
+        "tool belt with a bone saw and a spool of thick thread; heavy boots"
       ],
-      "right_hand": "giant curved needle threaded with thick thread",
+      "right_hand": "giant curved steel needle threaded with thick thread, held pointing down",
       "left_hand": "small wrench",
-      "accessories": [
-        [
-          "giant_needle",
-          "the giant curved needle with thread alone"
-        ]
-      ]
+      "back": "the coat's back with the apron ties, the tool belt",
+      "accessories": [["giant_needle", "the giant curved steel needle with its thick thread alone"]]
     },
     "wc_vn_necromancer": {
-      "heads": 4.5,
+      "heads": 6.0,
       "build": "gaunt, tall, robe to the ground",
-      "colors": [
-        [
-          "black robe",
-          "#232228"
-        ],
-        [
-          "bone white",
-          "#ECE6D4"
-        ],
-        [
-          "ghost green",
-          "#7CF09A"
-        ]
-      ],
+      "colors": [["black robe", "#232228"], ["bone white", "#ECE6D4"], ["ghost green", "#7CF09A"]],
       "features": [
-        "skull-like thin face under a crown of five lit candles",
-        "high collar and wide sleeves",
+        "thin skull-like face with sunken, faintly green-glowing eyes",
+        "iron circlet holding a crown of five lit candles with dripping wax",
+        "black robe to the ground with a high collar, wide sleeves, a tattered hem and bone-white trim",
         "belt of three small skulls"
       ],
-      "right_hand": "long scythe with a green glowing blade",
-      "left_hand": "open hand with a small green flame above it",
+      "right_hand": "long scythe with a dark wooden haft and a ghost-green glowing blade, held upright at his right side, the blade above head height pointing away from the body",
+      "left_hand": "open palm with a small green flame above it",
+      "back": "the high collar and the plain robe; the candles from behind",
       "accessories": [
-        [
-          "scythe",
-          "the scythe alone"
-        ],
-        [
-          "skeleton_summon",
-          "one summoned skeleton: a small simple skeleton warrior with a round shield, front view"
-        ]
+        ["scythe", "the long scythe with the green glowing blade alone"],
+        ["skeleton_summon", "one summoned skeleton: a small skeleton warrior with a round wooden shield with an iron boss on the left arm, a short rusty sword in the right hand and a faint green glow in the eyes", "creature"]
       ]
     },
     "wc_vn_ember_wisp": {
-      "heads": 3.0,
-      "build": "small floating teardrop-shaped flame body, no legs, hovering just above the ground",
-      "colors": [
-        [
-          "flame orange",
-          "#F5892A"
-        ],
-        [
-          "warm yellow",
-          "#FFD45A"
-        ],
-        [
-          "soft red",
-          "#E0452B"
-        ]
-      ],
+      "heads": 4.0,
+      "build": "small floating teardrop-shaped flame body with no legs, hovering just above the ground",
+      "pose": "Whole body, upright and symmetrical, hovering a short gap above the ground, looking straight ahead.",
+      "colors": [["flame orange", "#F5892A"], ["warm yellow", "#FFD45A"], ["soft red", "#E0452B"]],
       "features": [
-        "body is one smooth flame shape with a curled tip on top",
+        "the body is one living flame: warm yellow at the core, orange outside, soft red at the edges, with a curled tip on top",
         "two large round white eyes, no mouth",
-        "two tiny stubby arms"
+        "two tiny stubby flame arms"
       ],
       "right_hand": "empty stub",
       "left_hand": "empty stub",
+      "back": "the same flame shape with no eyes; the curled tip leans the same way",
       "accessories": []
     },
     "wc_vn_stone_shaper": {
-      "heads": 4.0,
-      "build": "boulder body made of five large rounded rocks, short legs",
-      "colors": [
-        [
-          "warm grey stone",
-          "#8D8A83"
-        ],
-        [
-          "moss green",
-          "#6E9A4B"
-        ],
-        [
-          "glowing amber",
-          "#F2A93B"
-        ]
-      ],
+      "heads": 5.5,
+      "build": "body built of five large rounded boulders, short thick stone legs",
+      "colors": [["warm grey stone", "#8D8A83"], ["moss green", "#6E9A4B"], ["glowing amber", "#F2A93B"]],
       "features": [
-        "head is one rounded rock with two glowing amber eyes",
-        "amber glowing cracks between the rocks",
-        "patch of moss on the left shoulder"
+        "weathered, chipped boulders with specks of lichen form the chest, shoulders and hips",
+        "the head is one rounded rock with two glowing amber eyes and no mouth",
+        "amber light glows in the cracks between the rocks",
+        "a patch of moss and a small tuft of grass on the left shoulder"
       ],
       "right_hand": "oversized rock fist",
       "left_hand": "oversized rock fist",
-      "accessories": [
-        [
-          "rock_wall",
-          "one section of the summoned rock wall: three chunky stone pillars side by side, front view"
-        ]
-      ]
+      "back": "the boulders of the back with amber cracks between them; the moss on the left shoulder",
+      "accessories": [["rock_wall", "one section of the summoned rock wall: three thick rough stone pillars side by side with amber glowing cracks"]]
     },
     "wc_vn_storm_spirit": {
-      "heads": 4.0,
-      "build": "floating cloud-bodied humanoid, body tapers to a wisp instead of legs",
-      "colors": [
-        [
-          "storm grey-blue",
-          "#5F6F8F"
-        ],
-        [
-          "cloud white",
-          "#EEF2F7"
-        ],
-        [
-          "lightning yellow",
-          "#FFE14A"
-        ]
-      ],
+      "heads": 5.5,
+      "build": "floating cloud-bodied humanoid whose body tapers to a wisp instead of legs",
+      "pose": "Whole body, upright and symmetrical with the arms slightly away from the body, hovering a short gap above the ground, looking straight ahead.",
+      "colors": [["storm grey-blue", "#5F6F8F"], ["cloud white", "#EEF2F7"], ["lightning yellow", "#FFE14A"]],
       "features": [
-        "head and torso are rounded cloud puffs",
-        "two bright yellow eyes and a glowing yellow core in the chest",
-        "arms are jagged lightning bolts"
+        "head and torso made of dense rounded storm-cloud puffs, white on top and dark grey-blue underneath",
+        "two bright yellow eyes and a glowing yellow core visible in the chest",
+        "both arms are jagged lightning bolts"
       ],
       "right_hand": "lightning-bolt arm ending in a point",
       "left_hand": "lightning-bolt arm ending in a point",
+      "back": "the cloud puffs of the back; the chest core shows only as a faint glow",
       "accessories": []
     },
     "wc_vn_scaleguard": {
-      "heads": 4.5,
+      "heads": 6.0,
       "build": "broad, heavy, thick tail",
-      "colors": [
-        [
-          "bronze scales",
-          "#B07A3A"
-        ],
-        [
-          "cream belly",
-          "#EFE2C2"
-        ],
-        [
-          "dark green cloth",
-          "#2F5A45"
-        ]
-      ],
+      "colors": [["bronze scales", "#B07A3A"], ["cream belly", "#EFE2C2"], ["dark green cloth", "#2F5A45"]],
       "features": [
-        "dragon head with a short snout and two horns sweeping back",
-        "large overlapping scale plates on shoulders, forearms and tail",
-        "thick tail ending in three blunt spikes"
+        "dragon head with a short snout, amber eyes and two horns sweeping back",
+        "bronze scales over the body, with large overlapping scale plates on the shoulders, forearms and tail; cream belly scales from throat to waist",
+        "dark-green cloth waist wrap under a leather belt with a bronze buckle",
+        "thick tail ending in three blunt spikes; clawed feet"
       ],
       "right_hand": "empty clawed fist",
       "left_hand": "empty clawed fist",
+      "back": "a ridge of larger scales down the spine onto the tail, the back of the waist wrap",
       "accessories": []
     },
     "wc_vn_dawn_oracle": {
-      "heads": 4.5,
-      "build": "slender, graceful, upright",
-      "colors": [
-        [
-          "pearl white scales",
-          "#F1EEE6"
-        ],
-        [
-          "sunrise gold",
-          "#F0B840"
-        ],
-        [
-          "soft rose",
-          "#E79AA0"
-        ]
-      ],
+      "heads": 6.0,
+      "build": "slender woman, graceful, upright",
+      "colors": [["pearl white scales", "#F1EEE6"], ["sunrise gold", "#F0B840"], ["soft rose", "#E79AA0"]],
       "features": [
-        "dragon head with a narrow snout and two thin gold horns",
-        "pair of small feathered wings folded behind the shoulders",
-        "white robe with a gold sash; slim tail"
+        "dragon head with a narrow snout and two thin gold horns swept back; pearl-white scales with a soft rose tint on the cheeks",
+        "pair of small white feathered wings with rose tips, folded behind the shoulders",
+        "white robe with a gold sash and gold-trimmed hem; slim tail"
       ],
       "right_hand": "empty, raised palm",
       "left_hand": "empty",
-      "extra": "a flat gold sun disc as large as her head floats behind her head like a halo",
-      "accessories": [
-        [
-          "sun_disc",
-          "the gold sun disc alone"
-        ]
-      ]
+      "extra": "a flat gold sun disc as large as her head, with short engraved rays, floats behind her head like a halo",
+      "back": "the folded feathered wings, the sun disc in front of them behind the head, the tail below the robe",
+      "accessories": [["sun_disc", "the flat engraved gold sun disc alone"]]
     },
     "wc_vn_flame_regent": {
-      "heads": 5.0,
+      "heads": 7.0,
       "build": "tall, proud, chest out",
-      "colors": [
-        [
-          "crimson scales",
-          "#B8322B"
-        ],
-        [
-          "gold",
-          "#E4B93C"
-        ],
-        [
-          "deep red mantle",
-          "#7A1C24"
-        ]
-      ],
+      "colors": [["crimson scales", "#B8322B"], ["gold", "#E4B93C"], ["deep red mantle", "#7A1C24"]],
       "features": [
-        "dragon head with a long snout, simple gold crown between two tall horns",
-        "pair of large wings half open",
-        "long red mantle from the shoulders to the ground; long tail"
+        "dragon head with a long snout and a plain gold crown between two tall horns; crimson scales with a paler throat",
+        "pair of large wings half open, with deep-red membranes",
+        "broad gold collar and gold belt; a long deep-red mantle with gold trim from the shoulders to the ground",
+        "long tail"
       ],
-      "right_hand": "gold sceptre with a flame-shaped tip",
+      "right_hand": "gold sceptre with a flame-shaped tip, held upright at his right side",
       "left_hand": "empty clawed hand",
-      "accessories": [
-        [
-          "flame_sceptre",
-          "the gold sceptre alone"
-        ]
-      ]
+      "back": "the mantle falls between the two wing roots to the ground; the tail shows below it",
+      "accessories": [["flame_sceptre", "the gold sceptre with the flame-shaped tip alone"]]
     },
     "wc_vn_void_wyrm": {
-      "heads": 5.0,
+      "heads": 7.0,
       "build": "lean, hunched, long neck",
-      "colors": [
-        [
-          "near-black scales",
-          "#24222E"
-        ],
-        [
-          "void purple",
-          "#6A3FB8"
-        ],
-        [
-          "glowing blue",
-          "#5FB8FF"
-        ]
-      ],
+      "colors": [["near-black scales", "#24222E"], ["void purple", "#6A3FB8"], ["glowing blue", "#5FB8FF"]],
       "features": [
-        "dragon head with a narrow snout and two jagged horns; two glowing blue eyes",
+        "dragon head with a narrow snout, two jagged horns and two glowing blue eyes",
+        "near-black scales with a void-purple sheen on the throat, wing membranes and tail tip",
         "hollow round opening in the chest glowing blue",
-        "pair of tattered wings with torn edges; long thin tail"
+        "pair of tattered wings with torn edges, half open; long thin tail"
       ],
       "right_hand": "empty long claws",
       "left_hand": "empty long claws",
+      "back": "the tattered wings from behind, a ridge of jagged scales down the spine; the chest opening is not visible",
       "accessories": []
     }
   }

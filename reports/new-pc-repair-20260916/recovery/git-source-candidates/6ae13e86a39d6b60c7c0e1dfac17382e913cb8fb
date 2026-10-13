@@ -1,0 +1,33 @@
+[CmdletBinding()]
+param(
+    [ValidateSet('Solo','Lab')][string]$Mode = 'Solo',
+    [string]$Executable = '',
+    [ValidateRange(1,2147483647)][int]$Seed = 314159,
+    [ValidateRange(960,7680)][int]$Width = 1600,
+    [ValidateRange(720,4320)][int]$Height = 1000,
+    [switch]$Exercise,
+    [string]$SavePath = '',
+    [string]$EvidenceDirectory = ''
+)
+Set-StrictMode -Version Latest
+$ErrorActionPreference = 'Stop'
+$projectRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../..'))
+if (-not $Executable) { $Executable = Join-Path $projectRoot 'builds/WonderChess-Milestones-r5/Windows/WonderChess.exe' }
+$gamePath = [IO.Path]::GetFullPath($Executable)
+if (-not (Test-Path -LiteralPath $gamePath -PathType Leaf)) { throw "Package executable missing: $gamePath" }
+if ([IO.Path]::GetExtension($gamePath) -ne '.exe') { throw 'Choose a packaged Windows executable.' }
+if (-not $EvidenceDirectory) { $EvidenceDirectory = Join-Path $projectRoot ('reports/vnext/milestones/launch-' + [DateTime]::UtcNow.ToString('yyyyMMddTHHmmssfffZ')) }
+$evidenceRoot = [IO.Path]::GetFullPath($EvidenceDirectory)
+if (Test-Path -LiteralPath $evidenceRoot) { throw 'Use a fresh evidence directory to preserve earlier results.' }
+New-Item -ItemType Directory -Path $evidenceRoot -Force | Out-Null
+$arguments = @($(if ($Mode -eq 'Solo') {'-WCSolo'} else {'-WCLab'}), '-WCProfileName=wonder_vnext',
+    "-WCSeed=$Seed", '-windowed', "-ResX=$Width", "-ResY=$Height", '-nosplash', '-UDPMESSAGING_TRANSPORT_ENABLE=0',
+    ('-WCEvidenceDir="' + $evidenceRoot + '"'), ('-abslog="' + (Join-Path $evidenceRoot 'engine.log') + '"'))
+if ($SavePath) { $arguments += ('-WCSavePath="' + [IO.Path]::GetFullPath($SavePath) + '"') }
+if ($Exercise) { $arguments += @($(if ($Mode -eq 'Solo') {'-WCSoloExercise'} else {'-WCLabExercise'}), '-unattended') }
+$process = Start-Process -FilePath $gamePath -ArgumentList $arguments -WorkingDirectory (Split-Path $gamePath) -WindowStyle Hidden -PassThru
+[ordered]@{utc=[DateTime]::UtcNow.ToString('o');pid=$process.Id;mode=$Mode;exercise=[bool]$Exercise;
+    executable=$gamePath;bootstrap_sha256=(Get-FileHash -LiteralPath $gamePath -Algorithm SHA256).Hash.ToLowerInvariant();
+    arguments=$arguments;boundary='Launched only. This is a six-creature study candidate with proxy art. Inspect process, logs, input evidence and exercise result separately.'
+} | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath (Join-Path $evidenceRoot 'launch.json') -Encoding utf8
+Write-Output "$Mode candidate launched with PID $($process.Id). Evidence: $evidenceRoot"

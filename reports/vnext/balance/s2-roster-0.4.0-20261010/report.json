@@ -1,0 +1,747 @@
+{
+ "run": "s2-roster-0.4.0-20261010",
+ "balance_version": "wonder_vnext_silkmother_0.4.0+roster_v1",
+ "catalog_digest": "834e2417861ff4b14ff4c9e35d6ffb7a14597df419431ee782804f1c9efee4c1",
+ "boundary": "bot tournaments only; not human or balance acceptance",
+ "match": {
+  "matches": 200,
+  "median_rounds": 48.0,
+  "rounds_p10_p90": [
+   44,
+   53
+  ],
+  "median_simulated_minutes": 29.2,
+  "median_combat_minutes": 22.5,
+  "median_player_time_ceiling_minutes": 62.6,
+  "share_ceiling_in_target": 0.0,
+  "timeout_rate": 0.0221,
+  "capped_matches": 0
+ },
+ "heroes": [
+  {
+   "hero": "Boar Rusher",
+   "id": "wc_vn_boar_rusher",
+   "cost": 1,
+   "class": "fighter",
+   "race": "orc",
+   "board_slots": 43336,
+   "pick_vs_cost_mean": 1.53,
+   "final_board_share": 0.708,
+   "placement_on_final_board": 4.367,
+   "final_board_samples": 1132,
+   "mean_final_star": 1.795
+  },
+  {
+   "hero": "Bomber",
+   "id": "wc_vn_bomber",
+   "cost": 1,
+   "class": "engineer",
+   "race": "goblin",
+   "board_slots": 26790,
+   "pick_vs_cost_mean": 0.95,
+   "final_board_share": 0.497,
+   "placement_on_final_board": 4.545,
+   "final_board_samples": 795,
+   "mean_final_star": 1.994
+  },
+  {
+   "hero": "Bone Archer",
+   "id": "wc_vn_bone_archer",
+   "cost": 1,
+   "class": "sniper",
+   "race": "undead",
+   "board_slots": 23520,
+   "pick_vs_cost_mean": 0.83,
+   "final_board_share": 0.439,
+   "placement_on_final_board": 3.982,
+   "final_board_samples": 703,
+   "mean_final_star": 2.001
+  },
+  {
+   "hero": "Ember Wisp",
+   "id": "wc_vn_ember_wisp",
+   "cost": 1,
+   "class": "priest",
+   "race": "elemental",
+   "board_slots": 10624,
+   "pick_vs_cost_mean": 0.38,
+   "final_board_share": 0.22,
+   "placement_on_final_board": 4.849,
+   "final_board_samples": 352,
+   "mean_final_star": 2.008
+  },
+  {
+   "hero": "Foxclaw",
+   "id": "wc_vn_foxclaw",
+   "cost": 1,
+   "class": "assassin",
+   "race": "beastkin",
+   "board_slots": 34450,
+   "pick_vs_cost_mean": 1.22,
+   "final_board_share": 0.581,
+   "placement_on_final_board": 4.455,
+   "final_board_samples": 930,
+   "mean_final_star": 1.926
+  },
+  {
+   "hero": "Hammerer",
+   "id": "wc_vn_hammerer",
+   "cost": 1,
+   "class": "fighter",
+   "race": "dwarf",
+   "board_slots": 37997,
+   "pick_vs_cost_mean": 1.34,
+   "final_board_share": 0.63,
+   "placement_on_final_board": 4.36,
+   "final_board_samples": 1008,
+   "mean_final_star": 1.905
+  },
+  {
+   "hero": "Jinxer",
+   "id": "wc_vn_jinxer",
+   "cost": 1,
+   "class": "shaman",
+   "race": "goblin",
+   "board_slots": 20965,
+   "pick_vs_cost_mean": 0.74,
+   "final_board_share": 0.401,
+   "placement_on_final_board": 4.654,
+   "final_board_samples": 642,
+   "mean_final_star": 2.0
+  },
+  {
+   "hero": "Longbow Scout",
+   "id": "wc_vn_longbow_scout",
+   "cost": 1,
+   "class": "sniper",
+   "race": "elf",
+   "board_slots": 19330,
+   "pick_vs_cost_mean": 0.68,
+   "final_board_share": 0.35,
+   "placement_on_final_board": 4.016,
+   "final_board_samples": 560,
+   "mean_final_star": 2.008
+  },
+  {
+   "hero": "Shieldbearer",
+   "id": "wc_vn_shieldbearer",
+   "cost": 1,
+   "class": "tank",
+   "race": "human",
+   "board_slots": 37608,
+   "pick_vs_cost_mean": 1.33,
+   "final_board_share": 0.634,
+   "placement_on_final_board": 4.161,
+   "final_board_samples": 1015,
+   "mean_final_star": 1.862
+  },
+  {
+   "hero": "Bearguard",
+   "id": "wc_vn_bearguard",
+   "cost": 2,
+   "class": "fighter",
+   "race": "beastkin",
+   "board_slots": 41380,
+   "pick_vs_cost_mean": 3.3,
+   "final_board_share": 0.612,
+   "placement_on_final_board": 4.285,
+   "final_board_samples": 979,
+   "mean_final_star": 1.599
+  },
+  {
+   "hero": "Blood Drummer",
+   "id": "wc_vn_blood_drummer",
+   "cost": 2,
+   "class": "shaman",
+   "race": "orc",
+   "board_slots": 8120,
+   "pick_vs_cost_mean": 0.65,
+   "final_board_share": 0.168,
+   "placement_on_final_board": 4.446,
+   "final_board_samples": 269,
+   "mean_final_star": 1.924
+  },
+  {
+   "hero": "Chapel Healer",
+   "id": "wc_vn_chapel_healer",
+   "cost": 2,
+   "class": "priest",
+   "race": "human",
+   "board_slots": 5121,
+   "pick_vs_cost_mean": 0.41,
+   "final_board_share": 0.114,
+   "placement_on_final_board": 4.951,
+   "final_board_samples": 183,
+   "mean_final_star": 1.979
+  },
+  {
+   "hero": "Curse Weaver",
+   "id": "wc_vn_curse_weaver",
+   "cost": 2,
+   "class": "warlock",
+   "race": "undead",
+   "board_slots": 7040,
+   "pick_vs_cost_mean": 0.56,
+   "final_board_share": 0.147,
+   "placement_on_final_board": 4.294,
+   "final_board_samples": 235,
+   "mean_final_star": 1.976
+  },
+  {
+   "hero": "Dartblower",
+   "id": "wc_vn_dartblower",
+   "cost": 2,
+   "class": "sniper",
+   "race": "goblin",
+   "board_slots": 6386,
+   "pick_vs_cost_mean": 0.51,
+   "final_board_share": 0.126,
+   "placement_on_final_board": 3.91,
+   "final_board_samples": 201,
+   "mean_final_star": 1.971
+  },
+  {
+   "hero": "Grove Druid",
+   "id": "wc_vn_grove_druid",
+   "cost": 2,
+   "class": "priest",
+   "race": "elf",
+   "board_slots": 14565,
+   "pick_vs_cost_mean": 1.16,
+   "final_board_share": 0.247,
+   "placement_on_final_board": 4.486,
+   "final_board_samples": 395,
+   "mean_final_star": 1.856
+  },
+  {
+   "hero": "Ironwall",
+   "id": "wc_vn_ironwall",
+   "cost": 2,
+   "class": "tank",
+   "race": "dwarf",
+   "board_slots": 9439,
+   "pick_vs_cost_mean": 0.75,
+   "final_board_share": 0.177,
+   "placement_on_final_board": 3.887,
+   "final_board_samples": 283,
+   "mean_final_star": 1.946
+  },
+  {
+   "hero": "Moonblade",
+   "id": "wc_vn_moonblade",
+   "cost": 2,
+   "class": "assassin",
+   "race": "elf",
+   "board_slots": 16744,
+   "pick_vs_cost_mean": 1.34,
+   "final_board_share": 0.302,
+   "placement_on_final_board": 5.186,
+   "final_board_samples": 484,
+   "mean_final_star": 1.762
+  },
+  {
+   "hero": "Soul Jailer",
+   "id": "wc_vn_soul_jailer",
+   "cost": 2,
+   "class": "warlock",
+   "race": "demon",
+   "board_slots": 3956,
+   "pick_vs_cost_mean": 0.32,
+   "final_board_share": 0.092,
+   "placement_on_final_board": 4.926,
+   "final_board_samples": 148,
+   "mean_final_star": 2.0
+  },
+  {
+   "hero": "Earthbreaker",
+   "id": "wc_vn_earthbreaker",
+   "cost": 3,
+   "class": "tank",
+   "race": "orc",
+   "board_slots": 27534,
+   "pick_vs_cost_mean": 1.77,
+   "final_board_share": 0.466,
+   "placement_on_final_board": 3.929,
+   "final_board_samples": 745,
+   "mean_final_star": 1.591
+  },
+  {
+   "hero": "Hookjaw",
+   "id": "wc_vn_hookjaw",
+   "cost": 3,
+   "class": "assassin",
+   "race": "goblin",
+   "board_slots": 23993,
+   "pick_vs_cost_mean": 1.54,
+   "final_board_share": 0.413,
+   "placement_on_final_board": 4.812,
+   "final_board_samples": 661,
+   "mean_final_star": 1.745
+  },
+  {
+   "hero": "Rifleman",
+   "id": "wc_vn_rifleman",
+   "cost": 3,
+   "class": "sniper",
+   "race": "dwarf",
+   "board_slots": 5828,
+   "pick_vs_cost_mean": 0.38,
+   "final_board_share": 0.136,
+   "placement_on_final_board": 3.826,
+   "final_board_samples": 218,
+   "mean_final_star": 1.866
+  },
+  {
+   "hero": "Stitcher",
+   "id": "wc_vn_stitcher",
+   "cost": 3,
+   "class": "engineer",
+   "race": "undead",
+   "board_slots": 4794,
+   "pick_vs_cost_mean": 0.31,
+   "final_board_share": 0.126,
+   "placement_on_final_board": 4.089,
+   "final_board_samples": 202,
+   "mean_final_star": 1.896
+  },
+  {
+   "hero": "Bonechanter",
+   "id": "wc_vn_bonechanter",
+   "cost": 4,
+   "class": "warlock",
+   "race": "orc",
+   "board_slots": 8103,
+   "pick_vs_cost_mean": 1.27,
+   "final_board_share": 0.249,
+   "placement_on_final_board": 4.897,
+   "final_board_samples": 398,
+   "mean_final_star": 1.254
+  },
+  {
+   "hero": "Prism Scholar",
+   "id": "wc_vn_prism_scholar",
+   "cost": 4,
+   "class": "mage",
+   "race": "human",
+   "board_slots": 9583,
+   "pick_vs_cost_mean": 1.5,
+   "final_board_share": 0.296,
+   "placement_on_final_board": 4.709,
+   "final_board_samples": 474,
+   "mean_final_star": 1.23
+  },
+  {
+   "hero": "Siege Master",
+   "id": "wc_vn_siege_master",
+   "cost": 4,
+   "class": "engineer",
+   "race": "human",
+   "board_slots": 7436,
+   "pick_vs_cost_mean": 1.17,
+   "final_board_share": 0.234,
+   "placement_on_final_board": 4.992,
+   "final_board_samples": 375,
+   "mean_final_star": 1.283
+  },
+  {
+   "hero": "Treant Caller",
+   "id": "wc_vn_treant_caller",
+   "cost": 4,
+   "class": "summoner",
+   "race": "elf",
+   "board_slots": 401,
+   "pick_vs_cost_mean": 0.06,
+   "final_board_share": 0.019,
+   "placement_on_final_board": 3.323,
+   "final_board_samples": 31,
+   "mean_final_star": 1.935
+  },
+  {
+   "hero": "Forge King",
+   "id": "wc_vn_forge_king",
+   "cost": 5,
+   "class": "engineer",
+   "race": "dwarf",
+   "board_slots": 2014,
+   "pick_vs_cost_mean": 0.86,
+   "final_board_share": 0.098,
+   "placement_on_final_board": 4.293,
+   "final_board_samples": 157,
+   "mean_final_star": 1.101
+  },
+  {
+   "hero": "Tide Caller",
+   "id": "wc_vn_tide_caller",
+   "cost": 5,
+   "class": "mage",
+   "race": "elemental",
+   "board_slots": 2674,
+   "pick_vs_cost_mean": 1.14,
+   "final_board_share": 0.123,
+   "placement_on_final_board": 4.34,
+   "final_board_samples": 197,
+   "mean_final_star": 1.074
+  }
+ ],
+ "traits": [
+  {
+   "trait": "Human",
+   "kind": "race",
+   "seat_round_share_tier1": 0.2,
+   "seat_round_share_tier2": 0.002,
+   "final_board_share_active": 0.372,
+   "placement_tier1": 4.578,
+   "placement_tier2": 5.75,
+   "samples_tier1": 588,
+   "samples_tier2": 8
+  },
+  {
+   "trait": "Orc",
+   "kind": "race",
+   "seat_round_share_tier1": 0.453,
+   "seat_round_share_tier2": 0.003,
+   "final_board_share_active": 0.611,
+   "placement_tier1": 4.258,
+   "placement_tier2": 3.5,
+   "samples_tier1": 965,
+   "samples_tier2": 12
+  },
+  {
+   "trait": "Beastkin",
+   "kind": "race",
+   "seat_round_share_tier1": 0.318,
+   "seat_round_share_tier2": 0.0,
+   "final_board_share_active": 0.372,
+   "placement_tier1": 4.166,
+   "placement_tier2": null,
+   "samples_tier1": 596,
+   "samples_tier2": 0
+  },
+  {
+   "trait": "Undead",
+   "kind": "race",
+   "seat_round_share_tier1": 0.101,
+   "seat_round_share_tier2": 0.0,
+   "final_board_share_active": 0.152,
+   "placement_tier1": 3.799,
+   "placement_tier2": null,
+   "samples_tier1": 244,
+   "samples_tier2": 0
+  },
+  {
+   "trait": "Dragonkin",
+   "kind": "race",
+   "seat_round_share_tier1": 0.0,
+   "seat_round_share_tier2": 0.0,
+   "final_board_share_active": 0.0,
+   "placement_tier1": null,
+   "placement_tier2": null,
+   "samples_tier1": 0,
+   "samples_tier2": 0
+  },
+  {
+   "trait": "Tank",
+   "kind": "class",
+   "seat_round_share_tier1": 0.345,
+   "seat_round_share_tier2": 0.0,
+   "final_board_share_active": 0.43,
+   "placement_tier1": 3.863,
+   "placement_tier2": null,
+   "samples_tier1": 688,
+   "samples_tier2": 0
+  },
+  {
+   "trait": "Fighter",
+   "kind": "class",
+   "seat_round_share_tier1": 0.636,
+   "seat_round_share_tier2": 0.0,
+   "final_board_share_active": 0.712,
+   "placement_tier1": 4.271,
+   "placement_tier2": null,
+   "samples_tier1": 1139,
+   "samples_tier2": 0
+  },
+  {
+   "trait": "Mage",
+   "kind": "class",
+   "seat_round_share_tier1": 0.024,
+   "seat_round_share_tier2": 0.0,
+   "final_board_share_active": 0.076,
+   "placement_tier1": 4.221,
+   "placement_tier2": null,
+   "samples_tier1": 122,
+   "samples_tier2": 0
+  }
+ ],
+ "waves": [
+  {
+   "round": 1,
+   "wave": "wc_vn_wave_01",
+   "fights": 1600,
+   "clear_rate": 1.0,
+   "draw_rate": 0.0,
+   "timeout_rate": 0.0,
+   "median_seconds": 1.9
+  },
+  {
+   "round": 2,
+   "wave": "wc_vn_wave_02",
+   "fights": 1600,
+   "clear_rate": 1.0,
+   "draw_rate": 0.0,
+   "timeout_rate": 0.0,
+   "median_seconds": 5.0
+  },
+  {
+   "round": 3,
+   "wave": "wc_vn_wave_03",
+   "fights": 1600,
+   "clear_rate": 1.0,
+   "draw_rate": 0.0,
+   "timeout_rate": 0.0,
+   "median_seconds": 6.8
+  },
+  {
+   "round": 5,
+   "wave": "wc_vn_wave_05",
+   "fights": 1600,
+   "clear_rate": 1.0,
+   "draw_rate": 0.0,
+   "timeout_rate": 0.0,
+   "median_seconds": 9.6
+  },
+  {
+   "round": 10,
+   "wave": "wc_vn_wave_10",
+   "fights": 1600,
+   "clear_rate": 0.995,
+   "draw_rate": 0.0,
+   "timeout_rate": 0.004,
+   "median_seconds": 21.6
+  },
+  {
+   "round": 15,
+   "wave": "wc_vn_wave_15",
+   "fights": 1600,
+   "clear_rate": 1.0,
+   "draw_rate": 0.0,
+   "timeout_rate": 0.0,
+   "median_seconds": 9.1
+  },
+  {
+   "round": 20,
+   "wave": "wc_vn_wave_20",
+   "fights": 1600,
+   "clear_rate": 0.35,
+   "draw_rate": 0.001,
+   "timeout_rate": 0.047,
+   "median_seconds": 31.8
+  },
+  {
+   "round": 25,
+   "wave": "wc_vn_wave_25",
+   "fights": 1573,
+   "clear_rate": 1.0,
+   "draw_rate": 0.0,
+   "timeout_rate": 0.0,
+   "median_seconds": 17.4
+  },
+  {
+   "round": 30,
+   "wave": "wc_vn_wave_30",
+   "fights": 1364,
+   "clear_rate": 0.955,
+   "draw_rate": 0.001,
+   "timeout_rate": 0.182,
+   "median_seconds": 36.6
+  },
+  {
+   "round": 35,
+   "wave": "wc_vn_wave_35",
+   "fights": 1038,
+   "clear_rate": 0.998,
+   "draw_rate": 0.0,
+   "timeout_rate": 0.0,
+   "median_seconds": 20.7
+  },
+  {
+   "round": 40,
+   "wave": "wc_vn_wave_40",
+   "fights": 735,
+   "clear_rate": 0.14,
+   "draw_rate": 0.0,
+   "timeout_rate": 0.554,
+   "median_seconds": 45.0
+  },
+  {
+   "round": 45,
+   "wave": "wc_vn_wave_45",
+   "fights": 371,
+   "clear_rate": 0.992,
+   "draw_rate": 0.0,
+   "timeout_rate": 0.005,
+   "median_seconds": 26.8
+  },
+  {
+   "round": 50,
+   "wave": "wc_vn_wave_50",
+   "fights": 105,
+   "clear_rate": 0.0,
+   "draw_rate": 0.0,
+   "timeout_rate": 0.0,
+   "median_seconds": 23.9
+  },
+  {
+   "round": 55,
+   "wave": "wc_vn_wave_55",
+   "fights": 14,
+   "clear_rate": 0.0,
+   "draw_rate": 0.0,
+   "timeout_rate": 0.0,
+   "median_seconds": 27.3
+  }
+ ],
+ "economy": [
+  {
+   "round": 1,
+   "seats": 1600,
+   "median_gold": 0.0,
+   "median_level": 4.0,
+   "median_deployed": 4.0,
+   "median_board_cost": 5.0
+  },
+  {
+   "round": 3,
+   "seats": 1600,
+   "median_gold": 1.0,
+   "median_level": 5.0,
+   "median_deployed": 5.0,
+   "median_board_cost": 9.0
+  },
+  {
+   "round": 5,
+   "seats": 1600,
+   "median_gold": 7.0,
+   "median_level": 5.0,
+   "median_deployed": 5.0,
+   "median_board_cost": 11.0
+  },
+  {
+   "round": 10,
+   "seats": 1600,
+   "median_gold": 20.0,
+   "median_level": 6.0,
+   "median_deployed": 6.0,
+   "median_board_cost": 20.0
+  },
+  {
+   "round": 15,
+   "seats": 1600,
+   "median_gold": 45.0,
+   "median_level": 7.0,
+   "median_deployed": 7.0,
+   "median_board_cost": 24.0
+  },
+  {
+   "round": 20,
+   "seats": 1600,
+   "median_gold": 61.0,
+   "median_level": 8.0,
+   "median_deployed": 8.0,
+   "median_board_cost": 30.0
+  },
+  {
+   "round": 25,
+   "seats": 1573,
+   "median_gold": 78,
+   "median_level": 9,
+   "median_deployed": 9,
+   "median_board_cost": 35
+  },
+  {
+   "round": 30,
+   "seats": 1364,
+   "median_gold": 103.0,
+   "median_level": 9.0,
+   "median_deployed": 9.0,
+   "median_board_cost": 38.0
+  },
+  {
+   "round": 35,
+   "seats": 1038,
+   "median_gold": 135.0,
+   "median_level": 10.0,
+   "median_deployed": 10.0,
+   "median_board_cost": 42.0
+  },
+  {
+   "round": 40,
+   "seats": 735,
+   "median_gold": 184,
+   "median_level": 10,
+   "median_deployed": 10,
+   "median_board_cost": 45
+  },
+  {
+   "round": 45,
+   "seats": 371,
+   "median_gold": 235,
+   "median_level": 10,
+   "median_deployed": 10,
+   "median_board_cost": 47
+  },
+  {
+   "round": 50,
+   "seats": 105,
+   "median_gold": 289,
+   "median_level": 10,
+   "median_deployed": 10,
+   "median_board_cost": 47
+  },
+  {
+   "round": 55,
+   "seats": 14,
+   "median_gold": 342.0,
+   "median_level": 10.0,
+   "median_deployed": 10.0,
+   "median_board_cost": 45.5
+  }
+ ],
+ "bots": [
+  {
+   "bot": "wc_vn_bot_1",
+   "seats": 400,
+   "mean_placement": 4.205
+  },
+  {
+   "bot": "wc_vn_bot_2",
+   "seats": 200,
+   "mean_placement": 6.015
+  },
+  {
+   "bot": "wc_vn_bot_3",
+   "seats": 200,
+   "mean_placement": 4.455
+  },
+  {
+   "bot": "wc_vn_bot_4",
+   "seats": 200,
+   "mean_placement": 4.375
+  },
+  {
+   "bot": "wc_vn_bot_5",
+   "seats": 200,
+   "mean_placement": 4.165
+  },
+  {
+   "bot": "wc_vn_bot_6",
+   "seats": 200,
+   "mean_placement": 4.48
+  },
+  {
+   "bot": "wc_vn_bot_7",
+   "seats": 200,
+   "mean_placement": 4.09
+  }
+ ]
+}

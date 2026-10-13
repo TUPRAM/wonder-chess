@@ -1,0 +1,60 @@
+<frozen runpy>:128: RuntimeWarning: 'blender_mcp.server' found in sys.modules after import of package 'blender_mcp', but prior to execution of 'blender_mcp.server'; this may result in unpredictable behaviour
+2026-09-16 21:42:01,385 - BlenderMCPServer - INFO - BlenderMCP server starting up
+2026-09-16 21:42:01,387 - BlenderMCPServer - INFO - Blender addon on disk is current (protocol 5).
+2026-09-16 21:42:01,387 - blender-mcp-telemetry - WARNING - Telemetry disabled via environment variable
+2026-09-16 21:42:01,389 - BlenderMCPServer - INFO - Connected to Blender at 127.0.0.1:9876
+2026-09-16 21:42:01,389 - BlenderMCPServer - INFO - Created new persistent connection to Blender
+2026-09-16 21:42:01,389 - BlenderMCPServer - INFO - Sending command: get_addon_info with params: None
+2026-09-16 21:42:01,389 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-16 21:42:01,432 - BlenderMCPServer - INFO - Received complete response (358 bytes)
+2026-09-16 21:42:01,432 - BlenderMCPServer - INFO - Received 358 bytes of data
+2026-09-16 21:42:01,432 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-16 21:42:01,432 - BlenderMCPServer - INFO - Blender addon up to date (protocol 5, addon [1, 6], Blender 5.2.1 LTS)
+2026-09-16 21:42:01,432 - BlenderMCPServer - INFO - Successfully connected to Blender on startup
+2026-09-16 21:42:01,435 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-09-16 21:42:01,437 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-09-16 21:42:01,437 - BlenderMCPServer - INFO - Sending command: get_addon_info with params: None
+2026-09-16 21:42:01,437 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-16 21:42:01,485 - BlenderMCPServer - INFO - Received complete response (358 bytes)
+2026-09-16 21:42:01,485 - BlenderMCPServer - INFO - Received 358 bytes of data
+2026-09-16 21:42:01,485 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-16 21:42:01,485 - BlenderMCPServer - INFO - Blender addon up to date (protocol 5, addon [1, 6], Blender 5.2.1 LTS)
+2026-09-16 21:42:01,485 - BlenderMCPServer - INFO - Connected to Blender at 127.0.0.1:9876
+2026-09-16 21:42:01,485 - BlenderMCPServer - INFO - Created new persistent connection to Blender
+2026-09-16 21:42:01,485 - BlenderMCPServer - INFO - Sending command: get_addon_info with params: None
+2026-09-16 21:42:01,485 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-16 21:42:01,538 - BlenderMCPServer - INFO - Received complete response (358 bytes)
+2026-09-16 21:42:01,538 - BlenderMCPServer - INFO - Received 358 bytes of data
+2026-09-16 21:42:01,538 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-16 21:42:01,538 - BlenderMCPServer - INFO - Blender addon up to date (protocol 5, addon [1, 6], Blender 5.2.1 LTS)
+2026-09-16 21:42:01,538 - BlenderMCPServer - INFO - Sending command: get_telemetry_consent with params: None
+2026-09-16 21:42:01,539 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-16 21:42:01,592 - BlenderMCPServer - INFO - Received complete response (51 bytes)
+2026-09-16 21:42:01,592 - BlenderMCPServer - INFO - Received 51 bytes of data
+2026-09-16 21:42:01,592 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-16 21:42:01,595 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-09-16 21:42:01,595 - BlenderMCPServer - INFO - Sending command: execute_code with params: {'code': 'import bpy\nimport json\nprint(json.dumps({"file": bpy.data.filepath, "version": bpy.app.version_string, "dirty": bpy.data.is_dirty, "objects": [{"name": o.name, "type": o.type} for o in bpy.context.scene.objects]}))'}
+2026-09-16 21:42:01,595 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-16 21:42:01,644 - BlenderMCPServer - INFO - Received complete response (332 bytes)
+2026-09-16 21:42:01,644 - BlenderMCPServer - INFO - Received 332 bytes of data
+2026-09-16 21:42:01,644 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-16 21:42:01,645 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-09-16 21:42:01,645 - BlenderMCPServer - INFO - Sending command: get_scene_info with params: None
+2026-09-16 21:42:01,645 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-16 21:42:01,697 - BlenderMCPServer - INFO - Received complete response (181 bytes)
+2026-09-16 21:42:01,697 - BlenderMCPServer - INFO - Received 181 bytes of data
+2026-09-16 21:42:01,697 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-16 21:42:01,697 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-09-16 21:42:01,697 - BlenderMCPServer - INFO - Sending command: get_object_info with params: {'name': 'WC_ConnectionProbe'}
+2026-09-16 21:42:01,697 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-16 21:42:01,750 - BlenderMCPServer - INFO - Received complete response (310 bytes)
+2026-09-16 21:42:01,750 - BlenderMCPServer - INFO - Received 310 bytes of data
+2026-09-16 21:42:01,750 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-16 21:42:01,750 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-09-16 21:42:01,750 - BlenderMCPServer - INFO - Sending command: get_viewport_screenshot with params: {'max_size': 1400, 'filepath': 'C:\\Users\\USER\\AppData\\Local\\Temp\\blender_screenshot_2912.png', 'format': 'png'}
+2026-09-16 21:42:01,750 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-16 21:42:02,075 - BlenderMCPServer - INFO - Received complete response (185 bytes)
+2026-09-16 21:42:02,075 - BlenderMCPServer - INFO - Received 185 bytes of data
+2026-09-16 21:42:02,075 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-16 21:42:02,086 - BlenderMCPServer - INFO - Disconnecting from Blender on shutdown
+2026-09-16 21:42:02,087 - BlenderMCPServer - INFO - BlenderMCP server shut down

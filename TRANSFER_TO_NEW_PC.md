@@ -1,10 +1,14 @@
 # Move Wonder Chess to the new Windows PC
 
+## Verified destination update — 17 September 2026
+
+The active repository is `C:\Users\USER\Documents\Wonder Chess`. The owner selected this PC's installed Unreal **5.8.2** and Blender **5.2.1 LTS** after compatibility verification. Use [LOCAL_TOOLCHAIN.md](docs/LOCAL_TOOLCHAIN.md) for the current setup, build commands, evidence and rollback location. Version 5.7/5.1 references below describe the preserved original transfer baseline. All 709 initially missing transfer files were recovered; see `reports/github-check-20260917/` and the implementation ledger. Intentional repairs and the toolchain migration change the original manifest comparison; retain that historical inventory.
+
 ## 1. Copy the complete folder
 
 Close Wonder Chess, Blender, Unreal Editor and any builds before copying. Copy this entire `Wonder Chess` directory, including hidden `.git`, local `builds`, and `support`. Use an NTFS destination with at least 100 GB available for this snapshot, plus separate room for Unreal, development tools and future builds. A short destination such as `C:\Projects\WonderChess` helps with the deep archived art paths.
 
-Use the complete folder copy for transfer. GitHub contains the published source/assets/evidence checkpoint, while packaged builds, generated environments/caches, duplicate historical archives and machine recovery state remain local. Keep the original until the destination passes verification.
+Do not use a GitHub ZIP or a fresh clone as the transfer payload: important uncommitted work, packages, support material and recovery evidence are local. Keep the original until the destination passes verification.
 
 From PowerShell on the original PC, an example copy to a mounted transfer drive is:
 
@@ -27,7 +31,7 @@ git status --short --branch
 
 `verify_transfer.py` checks all captured payload files against `TRANSFER_MANIFEST.jsonl`, including Git objects and refs. The mutable Git index, reflogs and temporary Git lock files are excluded. Extra files are permitted; missing or changed captured files fail. A completion record detects truncated/incomplete inventories. The manifest is an integrity comparison, not an authenticity signature.
 
-There should be one registered checkout at the new location. The branch is `codex/milestones-b0-m7-20260912`. The consolidation originally preserved uncommitted work; the later owner-requested [GitHub publication](reports/repository-sync/20260915/PUBLISHING_REPORT.md) commits that checkpoint. Use `git status` to identify any changes made afterward. If moving only this standalone root, no external worktree repair is needed. Repo-local `core.longpaths=true` was set and travels in `.git/config`.
+There should be one registered checkout at the new location. The branch is `codex/milestones-b0-m7-20260912`; existing uncommitted changes are expected. No commit, push or release was performed by the consolidation. If moving only this standalone root, no external worktree repair is needed. Repo-local `core.longpaths=true` was set and travels in `.git/config`.
 
 If you intentionally change project files before copying, keep the old manifest and capture a fresh one with a different name after closing writers:
 

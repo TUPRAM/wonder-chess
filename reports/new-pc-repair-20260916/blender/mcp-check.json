@@ -1,0 +1,150 @@
+{
+  "initialize": {
+    "meta": null,
+    "protocolVersion": "2025-11-25",
+    "capabilities": {
+      "experimental": {},
+      "logging": null,
+      "prompts": {
+        "listChanged": false
+      },
+      "resources": {
+        "subscribe": false,
+        "listChanged": false
+      },
+      "tools": {
+        "listChanged": false
+      },
+      "completions": null,
+      "tasks": null
+    },
+    "serverInfo": {
+      "name": "BlenderMCP",
+      "title": null,
+      "version": "1.30.0",
+      "websiteUrl": null,
+      "icons": null
+    },
+    "instructions": null
+  },
+  "tool_names": [
+    "get_addon_status",
+    "disable_telemetry",
+    "get_scene_info",
+    "get_object_info",
+    "get_viewport_screenshot",
+    "execute_blender_code",
+    "get_polyhaven_categories",
+    "search_polyhaven_assets",
+    "download_polyhaven_asset",
+    "set_texture",
+    "get_polyhaven_status",
+    "get_hyper3d_status",
+    "get_sketchfab_status",
+    "search_sketchfab_models",
+    "get_sketchfab_model_preview",
+    "download_sketchfab_model",
+    "get_polypizza_status",
+    "search_polypizza_models",
+    "download_polypizza_model",
+    "generate_hyper3d_model_via_text",
+    "generate_hyper3d_model_via_images",
+    "poll_rodin_job_status",
+    "import_generated_asset",
+    "get_hunyuan3d_status",
+    "generate_hunyuan3d_model",
+    "poll_hunyuan_job_status",
+    "import_generated_asset_hunyuan",
+    "record_trajectory_feedback"
+  ],
+  "get_addon_status": {
+    "meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"up_to_date\": true,\n  \"protocol_version\": 5,\n  \"expected_protocol_version\": 5,\n  \"addon_version\": [\n    1,\n    6\n  ],\n  \"capabilities\": [\n    \"drain_human_activity\",\n    \"execute_code\",\n    \"get_addon_info\",\n    \"get_object_info\",\n    \"get_scene_info\",\n    \"get_telemetry_consent\",\n    \"get_viewport_screenshot\",\n    \"get_world_state_snapshot\",\n    \"set_telemetry_consent\"\n  ],\n  \"blender_version\": \"5.2.1 LTS\",\n  \"source\": \"native\",\n  \"warning\": null,\n  \"telemetry_consent\": false,\n  \"update_command\": \"uvx blender-mcp install-addon\",\n  \"after_install\": \"If the addon file was updated: in Blender, Preferences \\u2192 Add-ons \\u2192 disable/enable 'Interface: Blender MCP', or restart Blender, then Start MCP Server.\"\n}",
+        "annotations": null,
+        "meta": null
+      }
+    ],
+    "structuredContent": {
+      "result": "{\n  \"up_to_date\": true,\n  \"protocol_version\": 5,\n  \"expected_protocol_version\": 5,\n  \"addon_version\": [\n    1,\n    6\n  ],\n  \"capabilities\": [\n    \"drain_human_activity\",\n    \"execute_code\",\n    \"get_addon_info\",\n    \"get_object_info\",\n    \"get_scene_info\",\n    \"get_telemetry_consent\",\n    \"get_viewport_screenshot\",\n    \"get_world_state_snapshot\",\n    \"set_telemetry_consent\"\n  ],\n  \"blender_version\": \"5.2.1 LTS\",\n  \"source\": \"native\",\n  \"warning\": null,\n  \"telemetry_consent\": false,\n  \"update_command\": \"uvx blender-mcp install-addon\",\n  \"after_install\": \"If the addon file was updated: in Blender, Preferences \\u2192 Add-ons \\u2192 disable/enable 'Interface: Blender MCP', or restart Blender, then Start MCP Server.\"\n}"
+    },
+    "isError": false
+  },
+  "get_scene_info": {
+    "meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"name\": \"Scene\",\n  \"object_count\": 3,\n  \"objects\": [\n    {\n      \"name\": \"Cube\",\n      \"type\": \"MESH\",\n      \"location\": [\n        0.0,\n        0.0,\n        0.0\n      ]\n    },\n    {\n      \"name\": \"Light\",\n      \"type\": \"LIGHT\",\n      \"location\": [\n        4.08,\n        1.01,\n        5.9\n      ]\n    },\n    {\n      \"name\": \"Camera\",\n      \"type\": \"CAMERA\",\n      \"location\": [\n        7.36,\n        -6.93,\n        4.96\n      ]\n    }\n  ],\n  \"materials_count\": 2\n}",
+        "annotations": null,
+        "meta": null
+      }
+    ],
+    "structuredContent": {
+      "result": "{\n  \"name\": \"Scene\",\n  \"object_count\": 3,\n  \"objects\": [\n    {\n      \"name\": \"Cube\",\n      \"type\": \"MESH\",\n      \"location\": [\n        0.0,\n        0.0,\n        0.0\n      ]\n    },\n    {\n      \"name\": \"Light\",\n      \"type\": \"LIGHT\",\n      \"location\": [\n        4.08,\n        1.01,\n        5.9\n      ]\n    },\n    {\n      \"name\": \"Camera\",\n      \"type\": \"CAMERA\",\n      \"location\": [\n        7.36,\n        -6.93,\n        4.96\n      ]\n    }\n  ],\n  \"materials_count\": 2\n}"
+    },
+    "isError": false
+  },
+  "execute_blender_code": {
+    "meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "Code executed successfully: WC_MCP_ConnectionProof [1.0, 2.0, 3.0]\n",
+        "annotations": null,
+        "meta": null
+      }
+    ],
+    "structuredContent": {
+      "result": "Code executed successfully: WC_MCP_ConnectionProof [1.0, 2.0, 3.0]\n"
+    },
+    "isError": false
+  },
+  "get_object_info": {
+    "meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"name\": \"WC_MCP_ConnectionProof\",\n  \"type\": \"EMPTY\",\n  \"location\": [\n    1.0,\n    2.0,\n    3.0\n  ],\n  \"rotation\": [\n    0.0,\n    0.0,\n    0.0\n  ],\n  \"scale\": [\n    1.0,\n    1.0,\n    1.0\n  ],\n  \"visible\": true,\n  \"materials\": []\n}",
+        "annotations": null,
+        "meta": null
+      }
+    ],
+    "structuredContent": {
+      "result": "{\n  \"name\": \"WC_MCP_ConnectionProof\",\n  \"type\": \"EMPTY\",\n  \"location\": [\n    1.0,\n    2.0,\n    3.0\n  ],\n  \"rotation\": [\n    0.0,\n    0.0,\n    0.0\n  ],\n  \"scale\": [\n    1.0,\n    1.0,\n    1.0\n  ],\n  \"visible\": true,\n  \"materials\": []\n}"
+    },
+    "isError": false
+  },
+  "cleanup": {
+    "meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "Code executed successfully: WC marker removed\n",
+        "annotations": null,
+        "meta": null
+      }
+    ],
+    "structuredContent": {
+      "result": "Code executed successfully: WC marker removed\n"
+    },
+    "isError": false
+  },
+  "open_diagnostic_scene": {
+    "meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "Code executed successfully: C:\\Users\\USER\\Documents\\Wonder Chess\\support\\diagnostics\\new-pc-20260916\\blender\\WC_ConnectionProbe.blend\n",
+        "annotations": null,
+        "meta": null
+      }
+    ],
+    "structuredContent": {
+      "result": "Code executed successfully: C:\\Users\\USER\\Documents\\Wonder Chess\\support\\diagnostics\\new-pc-20260916\\blender\\WC_ConnectionProbe.blend\n"
+    },
+    "isError": false
+  }
+}

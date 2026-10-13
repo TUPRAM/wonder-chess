@@ -1,5 +1,15 @@
 # Milestone status and resume queue
 
+
+## Current scoped parallel slice — 1 October 2026
+
+The owner requested parallel work followed by one combined result. The separate SoloSlice20261001r1 Development package contains the modal-close keyboard-focus fix and passes 237 packaged synthetic recovery criteria across 9 runs, including all three resolutions. Its 141-source/50-payload identity and 250 Python tests pass. Launch Play Solo Slice 20261001.cmd in the repository root; the frozen September 30 r4 package and accepted 31 Cragstoat palette/tail plus 98 Silkmother Attack/Hit files remain preserved.
+
+Cragstoat rear/major shoulder folds improve in a private cold-qualified skin candidate, while underarm/folds hold visual quality; the RAW-reference diagnostic failed before any reference capture. Prism and Reefglass have new coherent construction views and a bounded Reef curve correction, with glass/ornament/joins still held. A three-master Wondergrove pilot has actual interface/camera diagnostics but dark lit props and unintegrated supports. None of these art candidates is promoted into the package. Physical input is 0/42 this run because native app control is unavailable; normal-speed pacing, external-player studies, full production rigs, clean-machine/hardware, multiplayer and release gates remain open. Browser report rendering is a separate successful scope.
+
+[Combined review and handoff](../../../reports/parallel-slice-20261001/README.md) · [48-row progress snapshot](../../../reports/parallel-slice-20261001/progress-snapshot.csv) · [Canonical execution ledger](../../../reports/implementation_state.json). Sections below retain their dated candidate and historical numerical scopes; their results do not certify this new candidate.
+
+
 ## Latest presentation checkpoint — Storybook r20, 13 September 2026
 
 The owner explicitly approved the preceding r15 slice ("I approve the slice") and authorized the larger current collection plus a native interface following the original REF02 image. The r20 candidate now contains all six portrait studies, six ability icons, twelve relic illustrations, matching live panels, a separate sanctuary painting, a perspective board, hero-specific cues and true merge/death presentation. Eight packaged graphical runs, two packaged contract suites, 230 Python tests/authoring checks, exact 122-source/49-payload identity and scoped physical input pass. Eighteen frozen gameplay/control files remain unchanged. All portraits/abilities/relics were viewed at native sizes. Expanded owner acceptance remains open; the 3D creatures are still proxies. This advances M2/B3 without closing B0–M7 acceptance, pacing or external studies. [Readout and launchers](../art/STORYBOOK_READOUT.md), [verification](../../../reports/vnext/milestones/storybook-20260913/verification.json).

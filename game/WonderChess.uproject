@@ -1,12 +1,17 @@
 {
   "FileVersion": 3,
-  "EngineAssociation": "5.7",
+  "EngineAssociation": "5.8",
   "Category": "Games",
   "Description": "Wonder Chess - eight-seat fantasy auto-battler",
   "Modules": [
     {
       "Name": "WonderChessRuntime",
       "Type": "Runtime",
+      "LoadingPhase": "Default"
+    },
+    {
+      "Name": "WonderChessArtTools",
+      "Type": "Editor",
       "LoadingPhase": "Default"
     }
   ],
@@ -28,6 +33,52 @@
     {
       "Name": "AndroidFileServer",
       "Enabled": false
+    },
+    {
+      "Name": "GeometryScripting",
+      "Enabled": true,
+      "TargetAllowList": [
+        "Editor"
+      ]
+    },
+    {
+      "Name": "MeshModelingToolset",
+      "Enabled": true,
+      "TargetAllowList": [
+        "Editor"
+      ]
+    },
+    {
+      "Name": "ControlRig",
+      "Enabled": true,
+      "TargetAllowList": [
+        "Editor"
+      ]
+    },
+    {
+      "Name": "ModelingToolsEditorMode",
+      "Enabled": true,
+      "TargetAllowList": ["Editor"]
+    },
+    {
+      "Name": "UVEditor",
+      "Enabled": true,
+      "TargetAllowList": ["Editor"]
+    },
+    {
+      "Name": "SkeletalMeshModelingTools",
+      "Enabled": true,
+      "TargetAllowList": ["Editor"]
+    },
+    {
+      "Name": "SequencerScripting",
+      "Enabled": true,
+      "TargetAllowList": ["Editor"]
+    },
+    {
+      "Name": "DataValidation",
+      "Enabled": true,
+      "TargetAllowList": ["Editor"]
     }
   ]
 }

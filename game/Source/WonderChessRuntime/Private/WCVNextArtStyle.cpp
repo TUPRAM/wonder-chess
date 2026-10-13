@@ -34,6 +34,8 @@ struct FArtResources : FGCObject
     FSlateBrush PortraitBrush, RelicBrush;
     TMap<FString, TObjectPtr<UTexture2D>> Illustrations;
     TMap<FString, FSlateBrush> IllustrationBrushes;
+    TMap<FString, TObjectPtr<UTexture2D>> Kit;
+    TMap<FString, FSlateBrush> KitBrushes;
     FSlateRoundedBoxBrush Panel{Ink, 9.f};
     // Slate panel with a thin brass edge: the castle-courtyard theme.
     FSlateRoundedBoxBrush StoryPanel{FLinearColor(.035f,.042f,.058f,.93f), 8.f,
@@ -90,13 +92,44 @@ struct FArtResources : FGCObject
             for(const TCHAR* Id:{TEXT("quick_wick"),TEXT("long_lens"),TEXT("broad_canopy"),TEXT("close_focus"),TEXT("tight_choir"),TEXT("silk_trigger"),
                 TEXT("patient_lantern"),TEXT("far_hourglass"),TEXT("wide_hourglass"),TEXT("narrow_metronome"),TEXT("urgent_shard")})Load(TEXT("Relic"),Id);
         }
+        // HUD kit: nine-slice frames, buttons and the icon set. Absent textures leave the plain brushes in place.
+        struct FKitPiece{const TCHAR* Name;float Margin,Width,Height;};
+        static const FKitPiece Frames[]={{TEXT("panel"),40,128,128},{TEXT("panel_parchment"),40,128,128},{TEXT("card"),36,128,128},{TEXT("button"),16,96,48},{TEXT("button_hover"),16,96,48},
+            {TEXT("button_pressed"),16,96,48},{TEXT("button_disabled"),16,96,48},{TEXT("button_gold"),16,96,48},{TEXT("button_blue"),16,96,48},{TEXT("row_own"),14,96,48},{TEXT("plaque"),0,256,96}};
+        const auto LoadKit=[&](const FString& Name)->UTexture2D*{
+            auto* Texture=LoadObject<UTexture2D>(nullptr,*FString::Printf(TEXT("/Game/WonderChess/VNext/UI/HudKit_r001/T_%s.T_%s"),*Name,*Name));
+            if(Texture)Kit.Add(Name,Texture);
+            return Texture;
+        };
+        if(FWCArtSlice::IsStorybook()){
+            for(const auto& Piece:Frames)if(auto* Texture=LoadKit(Piece.Name)){
+                FSlateBrush Brush;Brush.SetResourceObject(Texture);Brush.ImageSize=FVector2f(Piece.Width,Piece.Height);
+                Brush.DrawAs=ESlateBrushDrawType::Box;
+                Brush.Margin=Piece.Margin>0?FMargin(Piece.Margin/Piece.Width,Piece.Margin/Piece.Height):FMargin(64.f/256,30.f/96);
+                KitBrushes.Add(Piece.Name,Brush);
+            }
+            for(const TCHAR* Name:{TEXT("human"),TEXT("elf"),TEXT("dwarf"),TEXT("goblin"),TEXT("orc"),TEXT("beastkin"),TEXT("demon"),TEXT("undead"),TEXT("elemental"),TEXT("dragonkin"),
+                TEXT("tank"),TEXT("fighter"),TEXT("assassin"),TEXT("mage"),TEXT("priest"),TEXT("warlock"),TEXT("sniper"),TEXT("engineer"),TEXT("shaman"),TEXT("summoner"),
+                TEXT("attack"),TEXT("speed"),TEXT("range"),TEXT("armor"),TEXT("resist"),TEXT("health"),TEXT("mana"),TEXT("gold"),TEXT("xp"),TEXT("streak"),TEXT("star"),TEXT("interest")}){
+                const FString Key=FString(TEXT("icon_"))+Name;
+                if(auto* Texture=LoadKit(Key)){
+                    FSlateBrush Brush;Brush.SetResourceObject(Texture);Brush.ImageSize=FVector2f(96,96);Brush.DrawAs=ESlateBrushDrawType::Image;
+                    KitBrushes.Add(Key,Brush);
+                }
+            }
+            if(KitBrushes.Contains(TEXT("button")))
+                Card.SetNormal(KitBrushes[TEXT("button")]).SetHovered(KitBrushes[TEXT("button_hover")]).SetPressed(KitBrushes[TEXT("button_pressed")])
+                    .SetDisabled(KitBrushes[TEXT("button_disabled")]).SetNormalPadding(FMargin(10,7)).SetPressedPadding(FMargin(10,8,10,6));
+            UE_LOG(LogTemp,Display,TEXT("WC_HUD_KIT pieces=%d"),KitBrushes.Num());
+        }
         UE_LOG(LogTemp,Display,TEXT("WC_ART_SLICE_UI portrait=%d portrait_size=%dx%d heavy_bloom=%d heavy_bloom_size=%dx%d"),
             Portrait!=nullptr,Portrait?Portrait->GetSizeX():0,Portrait?Portrait->GetSizeY():0,
             Relic!=nullptr,Relic?Relic->GetSizeX():0,Relic?Relic->GetSizeY():0);
     }
     virtual void AddReferencedObjects(FReferenceCollector& Collector) override
     { Collector.AddReferencedObject(Portrait);Collector.AddReferencedObject(Relic);
-        for(auto& Entry:Illustrations)Collector.AddReferencedObject(Entry.Value); }
+        for(auto& Entry:Illustrations)Collector.AddReferencedObject(Entry.Value);
+        for(auto& Entry:Kit)Collector.AddReferencedObject(Entry.Value); }
     virtual FString GetReferencerName() const override { return TEXT("FWCArtSliceResources"); }
 };
 FArtResources& Resources() { static FArtResources Value;return Value; }
@@ -127,7 +160,7 @@ public:
     void Construct(const FArguments& Args)
     {
         SBorder::Construct(SBorder::FArguments().BorderImage(FWCArtSlice::PanelBrush(Args._Parchment))
-            .Padding(Args._Padding)[Args._Content.Widget]);
+            .Padding(Args._Padding+(FWCArtSlice::KitBrush(TEXT("panel"))->DrawAs==ESlateBrushDrawType::Box?6.f:0.f))[Args._Content.Widget]);
     }
     virtual int32 OnPaint(const FPaintArgs& Args,const FGeometry& Geometry,const FSlateRect& Culling,
         FSlateWindowElementList& Elements,int32 Layer,const FWidgetStyle& WidgetStyle,bool ParentEnabled) const override
@@ -160,6 +193,11 @@ public:
     virtual int32 OnPaint(const FPaintArgs&,const FGeometry& Geometry,const FSlateRect&,
         FSlateWindowElementList& Elements,int32 Layer,const FWidgetStyle& WidgetStyle,bool) const override
     {
+        if(const FSlateBrush* Icon=Resources().KitBrushes.Find(TEXT("icon_")+Id)){
+            FSlateDrawElement::MakeBox(Elements,Layer,Geometry.ToPaintGeometry(),Icon,ESlateDrawEffect::None,
+                (Active()?FLinearColor(1.f,.80f,.34f):FLinearColor(.48f,.46f,.42f))*WidgetStyle.GetColorAndOpacityTint());
+            return Layer;
+        }
         const FLinearColor Gold=(Active()?FLinearColor(.78f,.57f,.26f):FLinearColor(.36f,.31f,.20f))*WidgetStyle.GetColorAndOpacityTint();
         const FVector2f Scale=FVector2f(Geometry.GetLocalSize())/32.f;
         const auto Line=[&](TArray<FVector2f> Points,float Width=1.6f){for(auto& Point:Points)Point*=Scale;
@@ -232,7 +270,21 @@ const FSlateBrush* FWCArtSlice::Portrait(const FString& UnitId)
 const FSlateBrush* FWCArtSlice::AbilityIcon(const FString& UnitId) { return Illustration(TEXT("Ability"),UnitId); }
 const FSlateBrush* FWCArtSlice::RelicIcon(const FString& RelicId)
 { return RelicId.EndsWith(TEXT("heavy_bloom"))?HeavyBloomIcon():Illustration(TEXT("Relic"),RelicId); }
-const FSlateBrush* FWCArtSlice::PanelBrush(bool Parchment) { return Parchment?&Resources().Parchment:&Resources().StoryPanel; }
+const FSlateBrush* FWCArtSlice::PanelBrush(bool Parchment)
+{
+    if(const FSlateBrush* Frame=Resources().KitBrushes.Find(Parchment?TEXT("panel_parchment"):TEXT("panel")))return Frame;
+    return Parchment?&Resources().Parchment:&Resources().StoryPanel;
+}
+const FSlateBrush* FWCArtSlice::KitBrush(const FString& Name,const FSlateBrush* Fallback)
+{
+    const FSlateBrush* Found=Resources().KitBrushes.Find(Name);
+    return Found?Found:Fallback?Fallback:FCoreStyle::Get().GetBrush(TEXT("NoBrush"));
+}
+TSharedRef<SWidget> FWCArtSlice::MakeIcon(TFunction<FString()> Name,float Size,FLinearColor Tint,const FString& Tooltip)
+{
+    return SNew(SBox).WidthOverride(Size).HeightOverride(Size).ToolTipText(Text(Tooltip))
+        [SNew(SImage).ColorAndOpacity(Tint).Image_Lambda([Name]{return KitBrush(TEXT("icon_")+Name().ToLower());})];
+}
 const FButtonStyle* FWCArtSlice::ButtonStyle() { return &Resources().Card; }
 FSlateFontInfo FWCArtSlice::HeadingFont(int Size,bool Bold)
 {
@@ -273,7 +325,7 @@ TSharedRef<SWidget> FWCArtSlice::MakeShopCard(TFunction<FWCArtCardData()> Data,
         const auto CardSmall=FCoreStyle::GetDefaultFontStyle(TEXT("Regular"),12);
         const auto NameFont=HeadingFont(14);
         const auto CostFont=HeadingFont(13);
-        const auto ArtHeight=[] {return FOptionalSize(FMath::Clamp(float(ViewportSlateSize().Y)*.15f,88.f,144.f));};
+        const auto ArtHeight=[] {return FOptionalSize(FMath::Clamp(float(ViewportSlateSize().Y)*.24f,150.f,250.f));};
         return SNew(SWCArtButton).ButtonStyle(&Resources().Card).ContentPadding(FMargin(6,5))
             .IsEnabled_Lambda([Enabled]{return Enabled();}).ToolTipText_Lambda([Data]{return Text(Data().Tooltip+TEXT("\n")+Data().Detail);})
             .OnClicked_Lambda([Action]{Action();return FReply::Handled();})
@@ -288,6 +340,10 @@ TSharedRef<SWidget> FWCArtSlice::MakeShopCard(TFunction<FWCArtCardData()> Data,
                 +SVerticalBox::Slot().FillHeight(1)[SNew(SBox).HeightOverride_Lambda(ArtHeight)
                     [SNew(SOverlay)
                         +SOverlay::Slot()[SNew(SScaleBox).Stretch(EStretch::ScaleToFit)[SNew(SImage).Image_Lambda([Data]{return Portrait(Data().UnitId);})]]
+                        +SOverlay::Slot().HAlign(HAlign_Center).VAlign(VAlign_Top)[SNew(SBorder).BorderImage(FCoreStyle::Get().GetBrush(TEXT("WhiteBrush")))
+                            .BorderBackgroundColor(FLinearColor(.95f,.72f,.20f)).Padding(FMargin(8,2))
+                            .Visibility_Lambda([Data]{return Data().Footer.Contains(TEXT("MERGE"))?EVisibility::HitTestInvisible:EVisibility::Collapsed;})
+                            [SNew(STextBlock).Font(HeadingFont(11)).ColorAndOpacity(FLinearColor(.05f,.04f,.02f)).Text(Text(TEXT("UPGRADE")))]]
                         +SOverlay::Slot().HAlign(HAlign_Center).VAlign(VAlign_Center)[SNew(STextBlock).Font(HeadingFont(46))
                             .ColorAndOpacity_Lambda([Data]{return TierColor(Data().Cost).CopyWithNewOpacity(.55f);})
                             .Text_Lambda([Data]{const auto Card=Data();
@@ -295,10 +351,13 @@ TSharedRef<SWidget> FWCArtSlice::MakeShopCard(TFunction<FWCArtCardData()> Data,
                 +SVerticalBox::Slot().AutoHeight().Padding(0,4,0,0)[SNew(STextBlock).Font(NameFont)
                     .ColorAndOpacity_Lambda([Data]{return TierColor(Data().Cost);})
                     .Justification(ETextJustify::Center).AutoWrapText(true).Text_Lambda([Data]{return Text(Data().Name);})]
-                +SVerticalBox::Slot().AutoHeight()[SNew(STextBlock).Font(CardSmall).ColorAndOpacity(FLinearColor(.68f,.72f,.66f))
-                    .Justification(ETextJustify::Center).AutoWrapText(true).Text_Lambda([Data]{
-                        FString Detail=Data().Detail;const int Newline=Detail.Find(TEXT("\n"));
-                        if(Newline>=0)Detail=Detail.Left(Newline);return Text(Detail);})]
+                +SVerticalBox::Slot().AutoHeight().HAlign(HAlign_Center).Padding(0,3,0,0)[SNew(SHorizontalBox)
+                    +SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center)[MakeIcon([Data]{FString Race,Rest;Data().Detail.Split(TEXT(" / "),&Race,&Rest);return Race;},22,FLinearColor(1.f,.80f,.34f),TEXT("Race"))]
+                    +SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center).Padding(3,0)[SNew(STextBlock).Font(CardSmall).ColorAndOpacity(FLinearColor(.80f,.82f,.76f))
+                        .Text_Lambda([Data]{FString Detail=Data().Detail;const int Newline=Detail.Find(TEXT("\n"));
+                            if(Newline>=0)Detail=Detail.Left(Newline);return Text(Detail.Replace(TEXT(" / "),TEXT("  ·  ")).Replace(TEXT("_"),TEXT(" ")));})]
+                    +SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center)[MakeIcon([Data]{FString Race,Rest;Data().Detail.Split(TEXT(" / "),&Race,&Rest);
+                        const int Newline=Rest.Find(TEXT("\n"));return Newline>=0?Rest.Left(Newline):Rest;},22,FLinearColor(1.f,.80f,.34f),TEXT("Class"))]]
                 +SVerticalBox::Slot().AutoHeight().Padding(0,4,0,0)[SNew(SHorizontalBox)
                     +SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center)[SNew(SBox).WidthOverride(24).HeightOverride(24)
                         [SNew(SImage).Image_Lambda([Data]{return AbilityIcon(Data().UnitId);})]]

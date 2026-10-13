@@ -90,7 +90,8 @@ void WriteEvent(Writer &out, const CombatEvent &event)
     out.Number(event.cell.column); out.Number(event.cell.row); out.Number(event.absorbedFrom);
     out.Number(int(event.damageType)); out.Number(event.basicAttack); out.Number(event.radius);
     out.Number(int(event.mechanic)); out.Number(event.origin.column); out.Number(event.origin.row);
-    out.Number(event.guardedBy); out.Number(event.prevented);
+    out.Number(event.guardedBy); out.Number(event.prevented); out.Number(int(event.stat));
+    out.Number(event.evaded); out.Number(event.critical); out.Number(event.secondary);
 }
 Int Copies(int star) { return star == 3 ? 9 : star == 2 ? 3 : 1; }
 } // namespace
@@ -335,9 +336,10 @@ ScenarioRun RunScenario(const Catalog &catalog, const FormationScenario &scenari
     }
     ScenarioRun run;
     run.result = combat.Result(); run.events = combat.Events();
+    for (const auto &unit : combat.Units()) sides.emplace(unit.id, unit.side); // units summoned during the fight
     for (int side = 0; side < 2; ++side) run.sides[side].investment = ScenarioInvestment(catalog, scenario.armies[side]);
     for (const auto &unit : combat.Units())
-        if (unit.health > 0) run.sides[unit.side].survivorInvestment += catalog.units[unit.definition].cost * Copies(unit.star);
+        if (unit.health > 0 && !unit.summoned) run.sides[unit.side].survivorInvestment += catalog.units[unit.definition].cost * Copies(unit.star);
     Writer trace;
     for (const auto &event : run.events)
     {
@@ -364,6 +366,12 @@ ScenarioRun RunScenario(const Catalog &catalog, const FormationScenario &scenari
             target.healing += event.resolved; target.deliveredOverheal += event.requested - event.resolved;
             target.healingEvents++; health[event.target] += event.resolved;
             if (event.mechanic == AbilityMechanic::StationaryGrove) source.grovePulses++;
+        }
+        if (event.effect == Effect::Summon)
+        {
+            // A summon arrives with its full health; when its time is up it leaves with what it had left.
+            if (event.source != event.target) health[event.target] = event.resolved;
+            else health[event.target] -= event.healthLoss;
         }
         if (event.effect == Effect::Dash && event.mechanic == AbilityMechanic::MomentumCharge) source.chargeLandings++;
         if (event.effect == Effect::Dash && event.mechanic == AbilityMechanic::TidalPush) source.tidePushes++;

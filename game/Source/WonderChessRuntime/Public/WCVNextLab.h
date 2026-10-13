@@ -61,12 +61,21 @@ private:
         TWeakObjectPtr<AActor> Actor;
         UStaticMeshComponent* Health = nullptr;
         UStaticMeshComponent* LabelBacking = nullptr;
+        // Race and class badges beside the name plate (solo game only).
+        UStaticMeshComponent* RaceIcon = nullptr;
+        UStaticMeshComponent* ClassIcon = nullptr;
         UTextRenderComponent* Label = nullptr;
         int Definition = -1, Side = 0;
         bool Neutral = false;
         // Shown body direction; it turns smoothly toward the piece's step or target during combat.
         float Yaw = 0;
         bool YawSet = false;
+        // Placement feel outside combat: a new piece drops in, a moved piece glides and lands with a small hop.
+        bool Placed = false, Travelling = false;
+        double LandedAt = -100;
+        wc::Cell PlacedCell;
+        // The health shown a moment ago; the gap to the real bar drains away so a hit's size can be read.
+        float GhostHealth = 1;
         UStaticMeshComponent* Mana = nullptr;
         UStaticMeshComponent* HealthTrack = nullptr;
         UStaticMeshComponent* ManaTrack = nullptr;
@@ -123,6 +132,88 @@ private:
     static int BenchSlotAt(double X){return FMath::FloorToInt((X+BenchPitch*BenchSlots/2)/BenchPitch);}
     UStaticMeshComponent* BenchMark=nullptr;
     int BenchHover=-1;
+    // Player camera, layered on the fitted view: three zoom steps on the wheel, a spring-back look-around on the
+    // right mouse button, and short pushes and shakes on fight moments.
+    int CamZoomLevel=1;
+    float CamZoom=1,CamPush=0,CamShake=0,CamSwing=0;
+    FVector2D CamLook=FVector2D::ZeroVector,CamLookTarget=FVector2D::ZeroVector,CamCursor=FVector2D::ZeroVector;
+    bool CamLooking=false;
+    void CameraWheel(float Delta);
+    // Courtyard life: flickering brazier fires, swaying banners, drifting dust and reactions to the fight.
+    struct FBrazierFire{TArray<UStaticMeshComponent*> Flames,Sparks;class UPointLightComponent* Light=nullptr;FVector Top=FVector::ZeroVector;float Phase=0;};
+    struct FBannerSway{UStaticMeshComponent* Panel=nullptr;FVector Top=FVector::ZeroVector;float Yaw=0,Phase=0;bool FacesY=true;};
+    TArray<FBrazierFire> BrazierFires;
+    TArray<FBannerSway> BannerSways;
+    class UInstancedStaticMeshComponent* Motes=nullptr;
+    UStaticMeshComponent* SkyPlate=nullptr;
+    UStaticMeshComponent* GateModel=nullptr;
+    FVector GateHome=FVector::ZeroVector;
+    double FlareAt=-100,BannerSnapAt=-100,GateRattleAt=-100;
+    bool CourtyardSawCombat=false,CourtyardSawResult=false;
+    void TickCourtyard(float DeltaSeconds);
+    // Bench and placement feedback.
+    struct FPuff{UStaticMeshComponent* Disc=nullptr;double At=-100;FVector Where=FVector::ZeroVector;};
+    TArray<FPuff> Puffs;
+    // Units that have already made their entrance; a rebuilt model for one of them must not drop in again.
+    TSet<uint64> EnteredUnits;
+    TArray<UStaticMeshComponent*> BenchFrame,DeployFrame;
+    double BenchFullAt=-100,UnitLimitAt=-100;
+    TSharedPtr<SWidget> SellZone;
+    void Puff(FVector Where);
+    // Fight feel: see DrawFeedback.
+    struct FGhostBar{FVector Location=FVector::ZeroVector;FRotator Rotation=FRotator::ZeroRotator;FVector Scale=FVector::OneVector;};
+    TArray<FGhostBar> GhostBars;
+    TMap<uint64,FVector> KnockOffsets;
+    const wc::Combat* FeedbackCombat=nullptr;
+    int FeedbackTick=-1,FeedbackFallen=0;
+    void DrawFeedback(const wc::Combat* Combat);
+    // Particle effects: see TickFx.
+    struct FFx{FVector P=FVector::ZeroVector,V=FVector::ZeroVector;FLinearColor Color=FLinearColor::White;
+        float Gravity=0,Drag=0,Age=0,Life=1,Size0=10,Size1=10,Stretch=1,Spin=0;uint8 Kind=0;};
+    struct FEarthCrack{FVector Where=FVector::ZeroVector;double At=0;};
+    TArray<FFx> Fx;
+    TArray<FEarthCrack> EarthCracks;
+    class UInstancedStaticMeshComponent* FxBatches[5]={nullptr,nullptr,nullptr,nullptr,nullptr};
+    TArray<class UPointLightComponent*> FxLights;
+    TArray<double> FxLightAt;
+    TArray<float> FxLightLife,FxLightPower;
+    void FxEmit(uint8 Kind,FVector P,FVector V,FLinearColor Color,float Size0,float Size1,float Life,float Gravity=0,float Drag=0,float Delay=0,float Stretch=1);
+    void FxFlash(FVector P,FLinearColor Color,float Intensity,float Life);
+    void TickFx(float Dt);
+    // True in normal play: particle effects replace the older line-drawn cues.
+    bool FxLive=false;
+    // Handmade effect pieces: modelled projectiles, debris, smoke and blast shapes, drawn as instanced meshes.
+    struct FProp{FString Mesh;FVector P=FVector::ZeroVector,V=FVector::ZeroVector,Spin=FVector::ZeroVector;FQuat R=FQuat::Identity;
+        float Scale0=1,Scale1=1,Life=0,Age=0,Gravity=0;bool Bounce=false;};
+    TArray<FProp> Props;
+    TMap<FString,class UInstancedStaticMeshComponent*> PropBatches;
+    void PropEmit(const FString& Mesh,FVector P,FVector V,FQuat R,FVector Spin,float Scale0,float Scale1,float Life,float Gravity=0,bool Bounce=false,float Delay=0);
+    void TickProps(float Dt);
+    // How a hero's shot looks in flight and when it lands, read from hero_presentation.json ("shots").
+    struct FShotLook{FString Mesh,Trail,Impact,FromBone,Launch;float Scale=1,Arc=0,ImpactScale=1,LeadMs=0,FromForward=0,FromUp=0,FromSide=0,Grow=1;
+        FVector Spin=FVector::ZeroVector;int HideItem=-1,FromItem=-1;bool Valid=false;};
+    TSet<uint64> ShotLaunched;
+    TMap<FString,TPair<FShotLook,FShotLook>> ShotLooks;
+    const FShotLook* ShotLook(const std::string& Id,bool Basic);
+    // A melee hero's blow: which held item swings (its tip leaves a trail), the trail colour and width, and the impact.
+    TMap<FString,FShotLook> MeleeLooks;
+    const FShotLook* MeleeLook(const std::string& Id);
+    TMap<uint64,FVector> SwingLast;
+    void ShotImpact(const FShotLook& Look,FVector At,FVector Ground,FVector Line);
+    // Round moments: a title card for fight start and result, the next opponent, streaks, captain damage
+    // flashes, the income line and the generated sound cues.
+    double TitleAt=-100,GoldFlashAt=-100;
+    FString TitleText,TitleSub;
+    FLinearColor TitleColor=FLinearColor::White;
+    int SoloStreak=0,GoldAtFight=0;
+    bool LastFightWon=false,AmbienceStarted=false;
+    int SeatHealthSeen[8]={0,0,0,0,0,0,0,0};
+    double SeatFlashAt[8]={-100,-100,-100,-100,-100,-100,-100,-100};
+    UPROPERTY() TMap<FName,TObjectPtr<class USoundBase>> SynthSounds;
+    void ShowTitle(const FString& Text,const FString& Sub,FLinearColor Color);
+    void PlayCue(const TCHAR* Name,float Volume=1.f);
+    FString NextOpponentText() const;
+    int SellPrice(uint64 Unit) const;
     // One small off-board stage per modelled hero renders its idle animation for shop cards and portraits.
     UPROPERTY() TMap<FString,TObjectPtr<class UTextureRenderTarget2D>> HeroCardTargets;
     TMap<FString,TSharedPtr<FSlateBrush>> HeroCardBrushes;
@@ -336,6 +427,8 @@ private:
     bool WriteEvidence(bool Passed);
 
     const wc::Combat* CurrentCombat() const;
+    // Which side of the current fight the viewed seat is on: the second seat of a pairing is side 1.
+    int ViewedSide() const;
     void BuildSoloInterface();
     void BuildStorybookInterface();
     void StartSolo();
@@ -356,6 +449,36 @@ private:
     FString BenchText(int Slot) const;
     FString RelicText(int Slot, bool Offer) const;
     void TickSoloExercise();
+    void TickSoloAutoPlay();
+    // Live fight chart: 0 damage dealt, 1 damage taken, 2 healing.
+    struct FDamageRow{FString Name;int Star=1;double Value=0;double Parts[3]={0,0,0};};
+    TArray<FDamageRow> DamageRows;
+    // Mode: dealt, taken, healed, blocked. Theirs shows the other side of the fight instead of the viewer's.
+    int DamageMode=0,DamageRowsTick=-2;
+    bool DamageTheirs=false;
+    void RefreshDamageRows();
+    // The captain's last fight as text, kept for the Recap after the fight is gone.
+    FString LastFightChart;
+    FString FightChartText(const wc::Combat& Combat,int Side) const;
+    // The guided first match. GuideStage is the lesson being played, or -1; GuideStep the step within it.
+    // GuideOffer shows the first-run invitation and GuideDone the closing card.
+    wc::Tutorial GuideScript;
+    int GuideStage=-1,GuideStep=0;
+    bool GuideOffer=false,GuideDone=false;
+    double GuideStageDoneAt=-1;
+    TSharedPtr<FString> SoloTraitFocus;
+    void StartGuide(int Stage);
+    void LeaveGuide();
+    void TickGuide();
+    void TickGuideAutoPlay();
+    FString GuideHeading() const;
+    FString GuideText() const;
+    // One small file beside the save: the next lesson to play. Its absence means the guide was never offered.
+    FString GuideProfilePath() const;
+    int LoadGuideProfile() const;
+    void SaveGuideProfile(int Stage) const;
+    TSet<FString> MetOpponents;
+    double WipeAt=-100;
     void NextScenario();
     void LoadScenarioVariant(bool Alternative);
     void CompareScenario();

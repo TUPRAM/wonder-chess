@@ -96,7 +96,10 @@
         "neutralLossDamage",
         "neutralOpeningDamage",
         "relicRounds",
-        "maximumRelics"
+        "maximumRelics",
+        "preparationStages",
+        "streakIncome",
+        "autoDeploy"
       ],
       "additionalProperties": false,
       "properties": {
@@ -273,11 +276,60 @@
           "items": {
             "type": "integer"
           },
-          "minItems": 3,
-          "maxItems": 3
+          "minItems": 1
         },
         "maximumRelics": {
           "type": "integer"
+        },
+        "preparationStages": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "start",
+              "end",
+              "ms"
+            ],
+            "properties": {
+              "start": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "end": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "ms": {
+                "type": "integer",
+                "minimum": 1
+              }
+            }
+          }
+        },
+        "streakIncome": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "length",
+              "gold"
+            ],
+            "properties": {
+              "length": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "gold": {
+                "type": "integer",
+                "minimum": 1
+              }
+            }
+          }
+        },
+        "autoDeploy": {
+          "type": "boolean"
         }
       }
     },
@@ -561,7 +613,13 @@
                       "heal",
                       "shield",
                       "stun",
-                      "stat_modifier"
+                      "stat_modifier",
+                      "hex",
+                      "silence",
+                      "taunt",
+                      "mana_drain",
+                      "blink",
+                      "summon"
                     ]
                   },
                   "selector": {
@@ -572,7 +630,19 @@
                       "farthest_enemy_adjacent",
                       "adjacent_enemies",
                       "lowest_health_ally",
-                      "current_enemy_area"
+                      "current_enemy_area",
+                      "farthest_enemy",
+                      "lowest_health_enemy",
+                      "all_allies",
+                      "densest_enemy_area",
+                      "random_enemy_areas",
+                      "enemy_line",
+                      "enemy_cone",
+                      "chain_from_current_enemy",
+                      "cell_beside_target",
+                      "cell_behind_target",
+                      "cell_through_target",
+                      "fallen_units"
                     ]
                   },
                   "damageType": {
@@ -654,8 +724,8 @@
                   },
                   "effects": {
                     "type": "array",
-                    "minItems": 2,
-                    "maxItems": 2,
+                    "minItems": 1,
+                    "maxItems": 4,
                     "items": {
                       "type": "object",
                       "additionalProperties": false,
@@ -669,7 +739,16 @@
                         "effect": {
                           "enum": [
                             "damage",
-                            "stun"
+                            "heal",
+                            "shield",
+                            "stun",
+                            "stat_modifier",
+                            "hex",
+                            "silence",
+                            "taunt",
+                            "mana_drain",
+                            "blink",
+                            "summon"
                           ]
                         },
                         "damageType": {
@@ -690,11 +769,56 @@
                           },
                           "minItems": 3,
                           "maxItems": 3
+                        },
+                        "delayMs": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 10000
+                        },
+                        "selector": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "stat": {
+                          "enum": [
+                            "attack_rate",
+                            "attack_damage",
+                            "armor",
+                            "resistance",
+                            "damage_dealt",
+                            "damage_taken",
+                            "movement",
+                            "reflect"
+                          ]
+                        },
+                        "repeatMs": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 10000
+                        },
+                        "follow": {
+                          "type": "boolean"
+                        },
+                        "critical": {
+                          "type": "boolean"
+                        },
+                        "summon": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "count": {
+                          "type": "integer",
+                          "minimum": 1,
+                          "maximum": 8
                         }
                       }
                     }
                   }
                 }
+              },
+              "design_intent": {
+                "type": "string",
+                "minLength": 1
               }
             }
           },
@@ -976,7 +1100,9 @@
               "scope": {
                 "enum": [
                   "members",
-                  "team"
+                  "team",
+                  "enemies",
+                  "summons"
                 ]
               },
               "values": {
@@ -987,6 +1113,52 @@
                   "maximum": 10000
                 },
                 "minItems": 1
+              },
+              "durationMs": {
+                "type": "integer",
+                "minimum": 50,
+                "maximum": 10000
+              }
+            }
+          },
+          "runtime_extra": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "stat",
+                "scope",
+                "values"
+              ],
+              "properties": {
+                "stat": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "scope": {
+                  "enum": [
+                    "members",
+                    "team",
+                    "enemies",
+                    "summons"
+                  ]
+                },
+                "values": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 10000
+                  },
+                  "minItems": 1
+                },
+                "durationMs": {
+                  "type": "integer",
+                  "minimum": 50,
+                  "maximum": 10000
+                }
               }
             }
           }
@@ -1197,7 +1369,211 @@
             }
           },
           "ability": {
-            "type": "null"
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "required": [
+                  "id",
+                  "name",
+                  "mechanic",
+                  "effect",
+                  "selector",
+                  "damageType",
+                  "firstCastMs",
+                  "cooldownMs",
+                  "castMs",
+                  "recoveryMs",
+                  "durationMs",
+                  "travelMs",
+                  "radius",
+                  "range",
+                  "maxTargets",
+                  "maxDash",
+                  "allowSelf",
+                  "magnitude",
+                  "guardReductionBp",
+                  "momentumPerStepBp",
+                  "maxMomentumSteps",
+                  "stationaryMs",
+                  "pulseMs",
+                  "displacementCells",
+                  "secondaryDelayMs",
+                  "tooltip_en",
+                  "tooltip_id"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "mechanic": {
+                    "enum": [
+                      "directional_guard",
+                      "momentum_charge",
+                      "stationary_grove",
+                      "screened_strike",
+                      "crossing_beams",
+                      "tidal_push",
+                      "cocoon_projectile",
+                      "standard"
+                    ]
+                  },
+                  "effect": {
+                    "enum": [
+                      "damage",
+                      "heal",
+                      "shield",
+                      "stun",
+                      "stat_modifier",
+                      "hex",
+                      "silence",
+                      "taunt",
+                      "mana_drain",
+                      "blink",
+                      "summon"
+                    ]
+                  },
+                  "selector": {
+                    "enum": [
+                      "self",
+                      "current_enemy",
+                      "adjacent_allies",
+                      "farthest_enemy_adjacent",
+                      "adjacent_enemies",
+                      "lowest_health_ally",
+                      "current_enemy_area"
+                    ]
+                  },
+                  "damageType": {
+                    "enum": [
+                      "physical",
+                      "magic",
+                      "true"
+                    ]
+                  },
+                  "firstCastMs": {
+                    "type": "integer"
+                  },
+                  "cooldownMs": {
+                    "type": "integer"
+                  },
+                  "castMs": {
+                    "type": "integer"
+                  },
+                  "recoveryMs": {
+                    "type": "integer"
+                  },
+                  "durationMs": {
+                    "type": "integer"
+                  },
+                  "travelMs": {
+                    "type": "integer"
+                  },
+                  "radius": {
+                    "type": "integer"
+                  },
+                  "range": {
+                    "type": "integer"
+                  },
+                  "maxTargets": {
+                    "type": "integer"
+                  },
+                  "maxDash": {
+                    "type": "integer"
+                  },
+                  "allowSelf": {
+                    "type": "boolean"
+                  },
+                  "magnitude": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                  },
+                  "guardReductionBp": {
+                    "type": "integer"
+                  },
+                  "momentumPerStepBp": {
+                    "type": "integer"
+                  },
+                  "maxMomentumSteps": {
+                    "type": "integer"
+                  },
+                  "stationaryMs": {
+                    "type": "integer"
+                  },
+                  "pulseMs": {
+                    "type": "integer"
+                  },
+                  "displacementCells": {
+                    "type": "integer"
+                  },
+                  "secondaryDelayMs": {
+                    "type": "integer"
+                  },
+                  "tooltip_en": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "tooltip_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "effects": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "effect",
+                        "damageType",
+                        "durationMs",
+                        "magnitude"
+                      ],
+                      "properties": {
+                        "effect": {
+                          "enum": [
+                            "damage",
+                            "stun"
+                          ]
+                        },
+                        "damageType": {
+                          "enum": [
+                            "physical",
+                            "magic",
+                            "true"
+                          ]
+                        },
+                        "durationMs": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "magnitude": {
+                          "type": "array",
+                          "items": {
+                            "type": "integer"
+                          },
+                          "minItems": 3,
+                          "maxItems": 3
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
           }
         }
       }
@@ -1531,7 +1907,9 @@
         "mana",
         "combat_rules",
         "mana_heroes",
-        "passive_heroes"
+        "passive_heroes",
+        "class_roles",
+        "bot_spends_surplus"
       ],
       "properties": {
         "id": {
@@ -1549,13 +1927,17 @@
           "additionalProperties": false,
           "required": [
             "nearestReachableTarget",
-            "directMovement"
+            "directMovement",
+            "chargeReturns"
           ],
           "properties": {
             "nearestReachableTarget": {
               "type": "boolean"
             },
             "directMovement": {
+              "type": "boolean"
+            },
+            "chargeReturns": {
               "type": "boolean"
             }
           }
@@ -1575,6 +1957,550 @@
             "minLength": 1
           },
           "uniqueItems": true
+        },
+        "class_roles": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "role",
+              "row",
+              "flank"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "role": {
+                "enum": [
+                  "frontline",
+                  "damage",
+                  "support"
+                ]
+              },
+              "row": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 3
+              },
+              "flank": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "bot_spends_surplus": {
+          "type": "boolean"
+        }
+      }
+    },
+    "summons": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "display_name",
+          "footprint_cells",
+          "production_status",
+          "stats",
+          "ability"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "display_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "footprint_cells": {
+            "type": "integer"
+          },
+          "production_status": {
+            "type": "string",
+            "minLength": 1
+          },
+          "stats": {
+            "type": "object",
+            "required": [
+              "health",
+              "attackDamage",
+              "attackRate",
+              "range",
+              "armor",
+              "resistance",
+              "movementRate",
+              "attackWindupMs",
+              "projectileTravelMs",
+              "damageType"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "health": {
+                "type": "integer"
+              },
+              "attackDamage": {
+                "type": "integer"
+              },
+              "attackRate": {
+                "type": "integer"
+              },
+              "range": {
+                "type": "integer"
+              },
+              "armor": {
+                "type": "integer"
+              },
+              "resistance": {
+                "type": "integer"
+              },
+              "movementRate": {
+                "type": "integer"
+              },
+              "attackWindupMs": {
+                "type": "integer"
+              },
+              "projectileTravelMs": {
+                "type": "integer"
+              },
+              "damageType": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "ability": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "required": [
+                  "id",
+                  "name",
+                  "mechanic",
+                  "effect",
+                  "selector",
+                  "damageType",
+                  "firstCastMs",
+                  "cooldownMs",
+                  "castMs",
+                  "recoveryMs",
+                  "durationMs",
+                  "travelMs",
+                  "radius",
+                  "range",
+                  "maxTargets",
+                  "maxDash",
+                  "allowSelf",
+                  "magnitude",
+                  "guardReductionBp",
+                  "momentumPerStepBp",
+                  "maxMomentumSteps",
+                  "stationaryMs",
+                  "pulseMs",
+                  "displacementCells",
+                  "secondaryDelayMs",
+                  "tooltip_en",
+                  "tooltip_id"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "mechanic": {
+                    "enum": [
+                      "directional_guard",
+                      "momentum_charge",
+                      "stationary_grove",
+                      "screened_strike",
+                      "crossing_beams",
+                      "tidal_push",
+                      "cocoon_projectile",
+                      "standard"
+                    ]
+                  },
+                  "effect": {
+                    "enum": [
+                      "damage",
+                      "heal",
+                      "shield",
+                      "stun",
+                      "stat_modifier",
+                      "hex",
+                      "silence",
+                      "taunt",
+                      "mana_drain",
+                      "blink",
+                      "summon"
+                    ]
+                  },
+                  "selector": {
+                    "enum": [
+                      "self",
+                      "current_enemy",
+                      "adjacent_allies",
+                      "farthest_enemy_adjacent",
+                      "adjacent_enemies",
+                      "lowest_health_ally",
+                      "current_enemy_area"
+                    ]
+                  },
+                  "damageType": {
+                    "enum": [
+                      "physical",
+                      "magic",
+                      "true"
+                    ]
+                  },
+                  "firstCastMs": {
+                    "type": "integer"
+                  },
+                  "cooldownMs": {
+                    "type": "integer"
+                  },
+                  "castMs": {
+                    "type": "integer"
+                  },
+                  "recoveryMs": {
+                    "type": "integer"
+                  },
+                  "durationMs": {
+                    "type": "integer"
+                  },
+                  "travelMs": {
+                    "type": "integer"
+                  },
+                  "radius": {
+                    "type": "integer"
+                  },
+                  "range": {
+                    "type": "integer"
+                  },
+                  "maxTargets": {
+                    "type": "integer"
+                  },
+                  "maxDash": {
+                    "type": "integer"
+                  },
+                  "allowSelf": {
+                    "type": "boolean"
+                  },
+                  "magnitude": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                  },
+                  "guardReductionBp": {
+                    "type": "integer"
+                  },
+                  "momentumPerStepBp": {
+                    "type": "integer"
+                  },
+                  "maxMomentumSteps": {
+                    "type": "integer"
+                  },
+                  "stationaryMs": {
+                    "type": "integer"
+                  },
+                  "pulseMs": {
+                    "type": "integer"
+                  },
+                  "displacementCells": {
+                    "type": "integer"
+                  },
+                  "secondaryDelayMs": {
+                    "type": "integer"
+                  },
+                  "tooltip_en": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "tooltip_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "effects": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "effect",
+                        "damageType",
+                        "durationMs",
+                        "magnitude"
+                      ],
+                      "properties": {
+                        "effect": {
+                          "enum": [
+                            "damage",
+                            "stun"
+                          ]
+                        },
+                        "damageType": {
+                          "enum": [
+                            "physical",
+                            "magic",
+                            "true"
+                          ]
+                        },
+                        "durationMs": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "magnitude": {
+                          "type": "array",
+                          "items": {
+                            "type": "integer"
+                          },
+                          "minItems": 3,
+                          "maxItems": 3
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "inert": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "tutorial": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "stages"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "minLength": 1
+        },
+        "stages": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "title_en",
+              "title_id",
+              "round",
+              "gold",
+              "level",
+              "streak",
+              "fight",
+              "relic_draft",
+              "board",
+              "bench",
+              "shop",
+              "opponent",
+              "steps"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "title_en": {
+                "type": "string",
+                "minLength": 1
+              },
+              "title_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "round": {
+                "type": "integer"
+              },
+              "gold": {
+                "type": "integer"
+              },
+              "level": {
+                "type": "integer"
+              },
+              "streak": {
+                "type": "integer"
+              },
+              "fight": {
+                "type": "boolean"
+              },
+              "relic_draft": {
+                "type": "boolean"
+              },
+              "board": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "hero",
+                    "star",
+                    "column",
+                    "row"
+                  ],
+                  "properties": {
+                    "hero": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "star": {
+                      "type": "integer"
+                    },
+                    "column": {
+                      "type": "integer"
+                    },
+                    "row": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              },
+              "bench": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "hero",
+                    "star"
+                  ],
+                  "properties": {
+                    "hero": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "star": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              },
+              "shop": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "opponent": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "hero",
+                    "star",
+                    "column",
+                    "row"
+                  ],
+                  "properties": {
+                    "hero": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "star": {
+                      "type": "integer"
+                    },
+                    "column": {
+                      "type": "integer"
+                    },
+                    "row": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              },
+              "steps": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "text_en",
+                    "text_id",
+                    "done",
+                    "allow"
+                  ],
+                  "properties": {
+                    "text_en": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "text_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "highlight": {
+                      "type": "string"
+                    },
+                    "done": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "type"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "hero": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "trait": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "value": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "allow": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

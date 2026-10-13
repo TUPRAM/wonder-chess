@@ -15,6 +15,12 @@ The intended product is an eight-seat Windows Unreal auto-battler about extraord
 
 ## Reading and execution
 
+For the current planning baseline and prioritized work, read [the development plans and goals](planning/DEVELOPMENT_PLAN_2026_09_30.md). It reconciles the later seven-creature r29 checkpoint with the preserved milestone gates; new planning targets are identified separately from existing requirements.
+
+For new creature art, use the owner-adopted [Meshy-to-Unreal production handbook](../../production/creature-pipeline/README.md)
+and `$wc-creature-production`. It changes the art route and visual standard only;
+canonical gameplay and programme acceptance remain governed by this successor contract.
+
 Read [the gameplay contract](PRODUCT_AND_COMBAT.md), [the art/UI production contract](ART_UI_PRODUCTION.md), and [the validation and rollout gates](VALIDATION_AND_ROLLOUT.md). Generated [hero dossiers](generated/hero_dossiers.md), [trait coverage](generated/coverage.json), and [relic catalogue](generated/relic_catalogue.md) are derived views and must not be edited independently.
 
 Use the [laboratory play guide](LAB_PLAYGUIDE.md) for the packaged six-creature experiment and the [implementation matrix](IMPLEMENTATION_MATRIX.md) for the exact boundary between this checkpoint and the complete programme.

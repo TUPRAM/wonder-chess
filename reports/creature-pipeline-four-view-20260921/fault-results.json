@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "scope": "Documentation/template faults only; no actual image or 3D validation.",
+  "existing_faults_rejected": 11,
+  "four_view_faults_rejected": 8,
+  "cases": [
+    {
+      "case": "missing_view",
+      "rejected_as_expected": true
+    },
+    {
+      "case": "duplicate_slot",
+      "rejected_as_expected": true
+    },
+    {
+      "case": "wrong_anatomical_side",
+      "rejected_as_expected": true
+    },
+    {
+      "case": "invalid_view_records",
+      "rejected_as_expected": true
+    },
+    {
+      "case": "invented_approval",
+      "rejected_as_expected": true
+    },
+    {
+      "case": "false_readiness",
+      "rejected_as_expected": true
+    },
+    {
+      "case": "invented_input",
+      "rejected_as_expected": true
+    },
+    {
+      "case": "single_image_default",
+      "rejected_as_expected": true
+    }
+  ]
+}

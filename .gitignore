@@ -41,15 +41,8 @@ __pycache__/
 /art-source/asset-studio/wc_u_human_guardian/stages/body-costume/BW1/r001/source-quarantine/*.incomplete
 # Keep canonical data, generated catalog, docs and source assets versioned.
 
-# Keep transferable support sources/reviews versioned; bulky/generated/private state stays local.
-/support/archives/previous-checkout-20260915/
-/support/local-state/
-/support/external/study-builds/
-/support/external/blender-mcp-1.9.1/pre-install/
-/support/external/validation/**/*.obj
-/support/external/validation/**/*.exe
-/support/operations/migration-20260915/git-main-before/
-/support/operations/migration-20260915/git-linked-before/
-/support/operations/github-20260915/
+# Local transfer payloads travel with the folder, outside the source commit set.
+/support/*
+!/support/README.md
 /TRANSFER_MANIFEST*.jsonl
 /.venv-mcp/

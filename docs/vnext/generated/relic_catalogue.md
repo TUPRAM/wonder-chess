@@ -2,7 +2,7 @@
 
 Source: `data/vnext/catalog.json`. Untuned; balance and human acceptance are not established.
 
-Draft after rounds 3, 15 and 25; three offers; three equipped per team; one per hero. Surviving players receive the choice regardless of neutral victory.
+Draft after each boss round (10, 20, 30, 40, 50, 60); three offers; three equipped per team; one per hero. Surviving players receive the choice regardless of neutral victory.
 
 ## Heavy Bloom
 

@@ -1,0 +1,115 @@
+Processing c:\users\user\documents\wonder chess\support\external\blender-mcp-1.9.1\blender-mcp-main
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting jsonschema==4.26.0 (from -r requirements-tools.txt (line 1))
+  Downloading jsonschema-4.26.0-py3-none-any.whl.metadata (7.6 kB)
+Collecting Pillow==12.3.0 (from -r requirements-tools.txt (line 2))
+  Downloading pillow-12.3.0-cp312-cp312-win_amd64.whl.metadata (9.3 kB)
+Collecting attrs>=22.2.0 (from jsonschema==4.26.0->-r requirements-tools.txt (line 1))
+  Downloading attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+Collecting jsonschema-specifications>=2023.03.6 (from jsonschema==4.26.0->-r requirements-tools.txt (line 1))
+  Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+Collecting referencing>=0.28.4 (from jsonschema==4.26.0->-r requirements-tools.txt (line 1))
+  Downloading referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)
+Collecting rpds-py>=0.25.0 (from jsonschema==4.26.0->-r requirements-tools.txt (line 1))
+  Downloading rpds_py-2026.6.3-cp312-cp312-win_amd64.whl.metadata (4.2 kB)
+Collecting mcp<2,>=1.9.0 (from blender-mcp==1.9.1)
+  Downloading mcp-1.30.0-py3-none-any.whl.metadata (9.3 kB)
+Collecting httpx>=0.27.0 (from blender-mcp==1.9.1)
+  Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+Collecting anyio (from httpx>=0.27.0->blender-mcp==1.9.1)
+  Downloading anyio-4.15.1-py3-none-any.whl.metadata (4.7 kB)
+Collecting certifi (from httpx>=0.27.0->blender-mcp==1.9.1)
+  Downloading certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)
+Collecting httpcore==1.* (from httpx>=0.27.0->blender-mcp==1.9.1)
+  Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+Collecting idna (from httpx>=0.27.0->blender-mcp==1.9.1)
+  Downloading idna-3.19-py3-none-any.whl.metadata (9.2 kB)
+Collecting h11>=0.16 (from httpcore==1.*->httpx>=0.27.0->blender-mcp==1.9.1)
+  Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting httpx-sse>=0.4 (from mcp<2,>=1.9.0->blender-mcp==1.9.1)
+  Downloading httpx_sse-0.4.3-py3-none-any.whl.metadata (9.7 kB)
+Collecting pydantic-settings>=2.5.2 (from mcp<2,>=1.9.0->blender-mcp==1.9.1)
+  Downloading pydantic_settings-2.15.0-py3-none-any.whl.metadata (3.9 kB)
+Collecting pydantic<3.0.0,>=2.11.0 (from mcp<2,>=1.9.0->blender-mcp==1.9.1)
+  Downloading pydantic-2.13.5-py3-none-any.whl.metadata (110 kB)
+Collecting pyjwt>=2.10.1 (from pyjwt[crypto]>=2.10.1->mcp<2,>=1.9.0->blender-mcp==1.9.1)
+  Downloading pyjwt-2.14.0-py3-none-any.whl.metadata (3.4 kB)
+Collecting python-multipart>=0.0.9 (from mcp<2,>=1.9.0->blender-mcp==1.9.1)
+  Downloading python_multipart-0.0.32-py3-none-any.whl.metadata (2.1 kB)
+Collecting pywin32>=310 (from mcp<2,>=1.9.0->blender-mcp==1.9.1)
+  Downloading pywin32-312-cp312-cp312-win_amd64.whl.metadata (11 kB)
+Collecting sse-starlette>=1.6.1 (from mcp<2,>=1.9.0->blender-mcp==1.9.1)
+  Downloading sse_starlette-3.4.11-py3-none-any.whl.metadata (15 kB)
+Collecting starlette>=0.27 (from mcp<2,>=1.9.0->blender-mcp==1.9.1)
+  Downloading starlette-1.6.0-py3-none-any.whl.metadata (6.4 kB)
+Collecting typing-extensions>=4.9.0 (from mcp<2,>=1.9.0->blender-mcp==1.9.1)
+  Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting typing-inspection>=0.4.1 (from mcp<2,>=1.9.0->blender-mcp==1.9.1)
+  Downloading typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+Collecting uvicorn>=0.31.1 (from mcp<2,>=1.9.0->blender-mcp==1.9.1)
+  Downloading uvicorn-0.53.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting annotated-types>=0.6.0 (from pydantic<3.0.0,>=2.11.0->mcp<2,>=1.9.0->blender-mcp==1.9.1)
+  Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.46.5 (from pydantic<3.0.0,>=2.11.0->mcp<2,>=1.9.0->blender-mcp==1.9.1)
+  Downloading pydantic_core-2.46.5-cp312-cp312-win_amd64.whl.metadata (6.7 kB)
+Collecting python-dotenv>=0.21.0 (from pydantic-settings>=2.5.2->mcp<2,>=1.9.0->blender-mcp==1.9.1)
+  Downloading python_dotenv-1.2.3-py3-none-any.whl.metadata (29 kB)
+Collecting cryptography>=3.4.0 (from pyjwt[crypto]>=2.10.1->mcp<2,>=1.9.0->blender-mcp==1.9.1)
+  Downloading cryptography-50.0.1-cp311-abi3-win_amd64.whl.metadata (4.3 kB)
+Collecting click>=7.0 (from uvicorn>=0.31.1->mcp<2,>=1.9.0->blender-mcp==1.9.1)
+  Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+Collecting cffi>=2.0.0 (from cryptography>=3.4.0->pyjwt[crypto]>=2.10.1->mcp<2,>=1.9.0->blender-mcp==1.9.1)
+  Downloading cffi-2.1.1-cp312-cp312-win_amd64.whl.metadata (2.6 kB)
+Collecting pycparser (from cffi>=2.0.0->cryptography>=3.4.0->pyjwt[crypto]>=2.10.1->mcp<2,>=1.9.0->blender-mcp==1.9.1)
+  Downloading pycparser-3.0-py3-none-any.whl.metadata (8.2 kB)
+Downloading jsonschema-4.26.0-py3-none-any.whl (90 kB)
+Downloading pillow-12.3.0-cp312-cp312-win_amd64.whl (7.2 MB)
+   ---------------------------------------- 7.2/7.2 MB 24.8 MB/s eta 0:00:00
+Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+Downloading mcp-1.30.0-py3-none-any.whl (234 kB)
+Downloading referencing-0.37.0-py3-none-any.whl (26 kB)
+Downloading rpds_py-2026.6.3-cp312-cp312-win_amd64.whl (220 kB)
+Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+Downloading httpx_sse-0.4.3-py3-none-any.whl (9.0 kB)
+Downloading idna-3.19-py3-none-any.whl (68 kB)
+Downloading pydantic-2.13.5-py3-none-any.whl (472 kB)
+Downloading pydantic_core-2.46.5-cp312-cp312-win_amd64.whl (2.0 MB)
+   ---------------------------------------- 2.0/2.0 MB 38.7 MB/s eta 0:00:00
+Downloading pydantic_settings-2.15.0-py3-none-any.whl (69 kB)
+Downloading pyjwt-2.14.0-py3-none-any.whl (32 kB)
+Downloading python_multipart-0.0.32-py3-none-any.whl (30 kB)
+Downloading pywin32-312-cp312-cp312-win_amd64.whl (6.9 MB)
+   ---------------------------------------- 6.9/6.9 MB 35.4 MB/s eta 0:00:00
+Downloading sse_starlette-3.4.11-py3-none-any.whl (17 kB)
+Downloading starlette-1.6.0-py3-none-any.whl (75 kB)
+Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+Downloading uvicorn-0.53.0-py3-none-any.whl (87 kB)
+Downloading certifi-2026.7.22-py3-none-any.whl (136 kB)
+Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+Downloading click-8.5.0-py3-none-any.whl (125 kB)
+Downloading cryptography-50.0.1-cp311-abi3-win_amd64.whl (3.8 MB)
+   ---------------------------------------- 3.8/3.8 MB 32.9 MB/s eta 0:00:00
+Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+Downloading python_dotenv-1.2.3-py3-none-any.whl (22 kB)
+Downloading cffi-2.1.1-cp312-cp312-win_amd64.whl (185 kB)
+Downloading pycparser-3.0-py3-none-any.whl (48 kB)
+Building wheels for collected packages: blender-mcp
+  Building wheel for blender-mcp (pyproject.toml): started
+  Building wheel for blender-mcp (pyproject.toml): finished with status 'done'
+  Created wheel for blender-mcp: filename=blender_mcp-1.9.1-py3-none-any.whl size=110227 sha256=a8f08e6e4a7f46bcf4feaa7cb081e00722b94a5f9a3befe75e47c036210e4002
+  Stored in directory: c:\users\user\appdata\local\pip\cache\wheels\77\91\0f\e81403f3879196c7c726756a325a85300a7c76bb87762b50c4
+Successfully built blender-mcp
+Installing collected packages: typing-extensions, rpds-py, pywin32, python-multipart, python-dotenv, pyjwt, pycparser, Pillow, idna, httpx-sse, h11, click, certifi, attrs, annotated-types, uvicorn, typing-inspection, referencing, pydantic-core, httpcore, cffi, anyio, starlette, pydantic, jsonschema-specifications, httpx, cryptography, sse-starlette, pydantic-settings, jsonschema, mcp, blender-mcp
+Successfully installed Pillow-12.3.0 annotated-types-0.8.0 anyio-4.15.1 attrs-26.1.0 blender-mcp-1.9.1 certifi-2026.7.22 cffi-2.1.1 click-8.5.0 cryptography-50.0.1 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 httpx-sse-0.4.3 idna-3.19 jsonschema-4.26.0 jsonschema-specifications-2025.9.1 mcp-1.30.0 pycparser-3.0 pydantic-2.13.5 pydantic-core-2.46.5 pydantic-settings-2.15.0 pyjwt-2.14.0 python-dotenv-1.2.3 python-multipart-0.0.32 pywin32-312 referencing-0.37.0 rpds-py-2026.6.3 sse-starlette-3.4.11 starlette-1.6.0 typing-extensions-4.16.0 typing-inspection-0.4.4 uvicorn-0.53.0
+
+[notice] A new release of pip is available: 25.0.1 -> 26.2.1
+[notice] To update, run: C:\Users\USER\Documents\Wonder Chess\.venv\Scripts\python.exe -m pip install --upgrade pip

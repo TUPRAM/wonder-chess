@@ -1,4 +1,7 @@
-param([ValidateRange(1,10000)][int]$Tournaments = 10, [string]$OutputDirectory = '', [ValidateRange(1,10000)][int]$FirstSeed = 1)
+param([ValidateRange(1,10000)][int]$Tournaments = 10, [string]$OutputDirectory = '', [ValidateRange(1,10000)][int]$FirstSeed = 1,
+    [ValidateSet('control','roster')][string]$RuleSet = 'control',
+    # Measurement only: loss damage per stage, such as '2,4,6,9'. The catalogue is not changed.
+    [ValidatePattern('^(\d+(,\d+)*)?$')][string]$LossDamage = '')
 $ErrorActionPreference = 'Stop'
 if ($FirstSeed + $Tournaments - 1 -gt 10000) { throw 'The final seed must not exceed 10000.' }
 $projectRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../..'))
@@ -36,7 +39,8 @@ try {
     & cmd /c $compilerScript 2>&1 | Tee-Object -FilePath 'compile.log'
     $compileExit = $LASTEXITCODE
     if ($compileExit -ne 0) { throw "Native compilation failed: $compileExit" }
-    & $executable $Tournaments $FirstSeed 2>&1 | Tee-Object -FilePath 'tests.log'
+    if ($LossDamage) { & $executable $Tournaments $FirstSeed $RuleSet $LossDamage 2>&1 | Tee-Object -FilePath 'tests.log' }
+    else { & $executable $Tournaments $FirstSeed $RuleSet 2>&1 | Tee-Object -FilePath 'tests.log' }
     $testExit = $LASTEXITCODE
     $hashes = [ordered]@{}
     foreach ($source in $identityFiles) {
@@ -44,7 +48,7 @@ try {
     }
     $sourceStable = @($identityFiles | Where-Object { $hashes[$_] -ne $inputHashes[$_] }).Count -eq 0
     [ordered]@{ started_utc=$started; ended_utc=[DateTime]::UtcNow.ToString('o'); compile_exit=$compileExit;
-        process_exit=$testExit; requested_tournaments=$Tournaments; first_seed=$FirstSeed; source_hashes=$inputHashes; source_stable=$sourceStable;
+        process_exit=$testExit; requested_tournaments=$Tournaments; first_seed=$FirstSeed; rule_set=$RuleSet; loss_damage_override=$LossDamage; source_hashes=$inputHashes; source_stable=$sourceStable;
         executable_sha256=(Get-FileHash -LiteralPath $executable -Algorithm SHA256).Hash.ToLowerInvariant()
     } | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath 'process.json' -Encoding utf8
     if ($testExit -ne 0) { throw "Native successor tests failed: $testExit" }

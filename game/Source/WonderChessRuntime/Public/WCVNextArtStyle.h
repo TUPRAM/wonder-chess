@@ -28,6 +28,11 @@ struct WONDERCHESSRUNTIME_API FWCArtSlice
     static const FSlateBrush* AbilityIcon(const FString& UnitId);
     static const FSlateBrush* RelicIcon(const FString& RelicId);
     static const FSlateBrush* PanelBrush(bool Parchment = false);
+    // A piece of the HUD kit by name ("plaque", "button_blue", "icon_orc", "icon_attack"...), or Fallback when
+    // the kit textures are not present.
+    static const FSlateBrush* KitBrush(const FString& Name, const FSlateBrush* Fallback = nullptr);
+    // A kit icon with a plain-words tooltip. Name may change over time (a selected hero's race, for example).
+    static TSharedRef<SWidget> MakeIcon(TFunction<FString()> Name, float Size, FLinearColor Tint, const FString& Tooltip = FString());
     static const FButtonStyle* ButtonStyle();
     static FSlateFontInfo HeadingFont(int Size, bool Bold = true);
     static FVector2D ViewportSlateSize();

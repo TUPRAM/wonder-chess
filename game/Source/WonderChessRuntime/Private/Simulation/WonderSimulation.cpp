@@ -48,6 +48,34 @@ std::vector<Cell> LineCells(Cell from, Cell to)
     }
     return cells;
 }
+// The line from one cell through another, carried on to the edge of the board.
+std::vector<Cell> LineToEdge(Cell from, Cell through, const Rules &rules)
+{
+    const int reach = rules.columns + rules.rows;
+    const Cell far{from.column + (through.column - from.column) * reach, from.row + (through.row - from.row) * reach};
+    std::vector<Cell> cells;
+    for (Cell cell : LineCells(from, far))
+    {
+        if (cell.column < 0 || cell.column >= rules.columns || cell.row < 0 || cell.row >= rules.rows) break;
+        cells.push_back(cell);
+    }
+    return cells;
+}
+// Cells within `radius` of the origin and within 45 degrees of the direction toward `toward`.
+std::vector<Cell> ConeCells(Cell origin, Cell toward, int radius, const Rules &rules)
+{
+    std::vector<Cell> cells;
+    const int vx = toward.column - origin.column, vy = toward.row - origin.row;
+    for (int row = 0; row < rules.rows; ++row)
+        for (int column = 0; column < rules.columns; ++column)
+        {
+            const int wx = column - origin.column, wy = row - origin.row;
+            if (std::max(std::abs(wx), std::abs(wy)) > radius || (wx == 0 && wy == 0)) continue;
+            const int along = vx * wx + vy * wy;
+            if (along > 0 && std::abs(vx * wy - vy * wx) <= along) cells.push_back({column, row});
+        }
+    return cells;
+}
 std::vector<Cell> BeamCells(Cell center, int radius, bool vertical, const Rules &rules)
 {
     std::vector<Cell> cells;
@@ -134,8 +162,24 @@ Int HalfUp(Int n, Int d)
 }
 Int ResolveDamage(Int raw, DamageType type, int armor, int resistance, int bonusBp)
 {
-    const int defense = type == DamageType::Physical ? armor : type == DamageType::Magic ? resistance : 0;
-    return HalfUp(raw * (10000 + bonusBp) * 100, Int(10000) * (100 + defense));
+    const int defense = std::max(-75, type == DamageType::Physical ? armor : type == DamageType::Magic ? resistance : 0);
+    const Int scaled = raw * std::max(0, 10000 + bonusBp);
+    // Below zero the curve mirrors: -25 defence adds 20% where +25 removes 20%.
+    if (defense < 0) return HalfUp(scaled * (100 - 2 * defense), Int(10000) * (100 - defense));
+    return HalfUp(scaled * 100, Int(10000) * (100 + defense));
+}
+// Sum of a unit's active timed modifiers for one stat.
+int ModifierSum(const CombatUnit &unit, ModifierStat stat)
+{
+    Int total = 0;
+    for (const auto &modifier : unit.modifiers)
+        if (modifier.stat == stat) total += modifier.magnitude;
+    return int(total);
+}
+// A unit's basic attack reach, with any trait bonus.
+int AttackRange(const Catalog &catalog, const CombatUnit &unit)
+{
+    return catalog.Definition(unit.definition, unit.neutral).range + unit.rangeBonus;
 }
 Int StarValue(Int base, int star, int bonusBp, const Rules &r)
 {
@@ -189,6 +233,20 @@ int TraitValue(const TraitDef &trait, int count)
     if (trait.threshold4 > trait.threshold && count >= trait.threshold4 && trait.value4 != 0)
         return trait.value4;
     return count >= trait.threshold ? trait.value : 0;
+}
+int PreparationMs(const Rules &rules, int round)
+{
+    if (round <= 1) return rules.firstPreparationMs;
+    for (const auto &stage : rules.preparationStages)
+        if (round >= stage.start && round <= stage.end) return stage.ms;
+    return rules.preparationMs;
+}
+int StreakIncome(const Rules &rules, int streak)
+{
+    int gold = 0;
+    for (const auto &step : rules.streakIncome)
+        if (std::abs(streak) >= step.length) gold = step.gold;
+    return gold;
 }
 bool IsNeutralRound(int round, const Rules &rules)
 {
@@ -254,6 +312,7 @@ std::string Catalog::Validate() const
     if (r.maxHealth <= 0 || r.maxHealth > 100000000 || r.maxRawDamage <= 0 || r.maxRawDamage > 10000000 ||
         r.maxArmor < 0 || r.maxArmor > 10000)
         return "Unsafe integer bounds";
+    if (summonLimit < 0 || summonLimit > 8) return "Invalid summon limit";
     if (vnext && std::any_of(units.begin(), units.end(), [](const UnitDef &u) { return u.cost < 1; }))
         return "Recruited heroes must have a positive cost";
     std::set<std::string> ids, abilities;
@@ -313,11 +372,18 @@ std::string Catalog::Validate() const
             return "Attack windup leaves no recovery at maximum rate: " + u.id;
         auto effects = a.effects;
         if (effects.empty() && a.enabled) effects.push_back({a.effect, a.damageType, a.durationMs, a.magnitude});
-        if (effects.size() > 2 || (effects.size() == 2 &&
-            (effects[0].effect != Effect::Damage || effects[1].effect != Effect::Stun)))
-            return "Unsupported effect list: " + u.id;
+        if (a.enabled && IsCellSelector(a.selector)) return "A cell selector belongs to a blink: " + u.id;
+        if (a.enabled && a.selector == Selector::FallenUnits) return "Fallen units are chosen by a summon: " + u.id;
+        if (effects.size() > 4) return "Unsupported effect list: " + u.id;
         for (const auto &effect : effects)
         {
+            if (effect.effect == Effect::Dash && effects.size() > 1) return "Dash cannot be chained: " + u.id;
+            if (effect.delayMs < 0 || effect.delayMs > 10000) return "Invalid effect delay: " + u.id;
+            if (effect.repeatMs != 0 &&
+                (effect.repeatMs < r.tickMs || effect.durationMs < effect.repeatMs || effect.durationMs / effect.repeatMs > 32 ||
+                 (effect.effect != Effect::Damage && effect.effect != Effect::Heal)))
+                return "Invalid repeating effect: " + u.id;
+            if (effect.follow && effect.repeatMs == 0) return "Only a repeating effect follows its caster: " + u.id;
             if (effect.durationMs < 0) return "Invalid effect duration: " + u.id;
             for (auto magnitude : effect.magnitude)
             {
@@ -327,7 +393,28 @@ std::string Catalog::Validate() const
                     return "Negative non-stat effect magnitude: " + u.id;
                 if ((effect.effect == Effect::Dash || effect.effect == Effect::Stun) && magnitude != 0)
                     return "Dash and stun cannot carry hidden magnitude: " + u.id;
+                if (IsStatusEffect(effect.effect) && (magnitude < r.tickMs || magnitude > 10000 || magnitude % r.tickMs != 0))
+                    return "Invalid status duration: " + u.id;
+                if (effect.effect == Effect::ManaDrain && magnitude > 10000) return "Invalid mana drain: " + u.id;
             }
+            if (IsStatusEffect(effect.effect) && effect.durationMs != effect.magnitude[0])
+                return "A status repeats its one-star duration: " + u.id;
+            if (effect.effect == Effect::ManaDrain && effect.durationMs != 0) return "Invalid mana drain: " + u.id;
+            if (effect.effect == Effect::Blink
+                    ? (!effect.ownSelector || !IsCellSelector(effect.selector) || effect.durationMs != 0 || effect.delayMs != 0 ||
+                       effect.magnitude != std::array<Int, 3>{} ||
+                       (effect.selector == Selector::CellThroughTarget && (a.maxDash < 1 || a.maxDash > 8)))
+                    : (effect.ownSelector && IsCellSelector(effect.selector)))
+                return "Invalid blink: " + u.id;
+            if (effect.critical && (effect.effect != Effect::Damage || effect.repeatMs != 0))
+                return "Only a direct hit can be a guaranteed critical: " + u.id;
+            const bool fallen = effect.ownSelector && effect.selector == Selector::FallenUnits;
+            if (effect.effect == Effect::Summon
+                    ? (effect.summon < 0 || effect.summon >= int(neutrals.size()) || effect.count < 1 || effect.count > 8 ||
+                       effect.magnitude != std::array<Int, 3>{} || effect.delayMs != 0 || (effect.ownSelector && !fallen) ||
+                       summonLimit < 1)
+                    : (effect.summon >= 0 || effect.count != 1 || fallen))
+                return "Invalid summon: " + u.id;
         }
         for (int star = 1; star <= 3; ++star)
             if (StarValue(u.health, star, 10000, r) > r.maxHealth)
@@ -335,15 +422,22 @@ std::string Catalog::Validate() const
     }
     const std::set<std::string> supportedStats{"max_health_bonus_bp", "attack_rate_bonus_bp",
         "physical_armor_flat", "magic_resistance_flat", "all_damage_bonus_bp", "basic_damage_bonus_bp",
-        "ability_damage_bonus_bp", "support_power_bonus_bp", "movement_bonus_bp", "starting_mana_flat"};
+        "ability_damage_bonus_bp", "support_power_bonus_bp", "movement_bonus_bp", "starting_mana_flat",
+        "enemy_armor_reduction_flat", "start_shield_health_bp", "health_regen_bp", "mana_per_second_flat",
+        "range_bonus_flat", "ability_damage_taken_reduction_bp", "win_gold_flat", "evasion_bp", "crit_chance_bp",
+        "lifesteal_bp", "bonus_true_damage_bp", "enemy_hex_count", "start_leap", "summon_power_bonus_bp"};
     std::set<std::string> traitIds;
     for (const auto &trait : traits)
     {
-        if (!traitIds.insert(trait.id).second || !supportedStats.count(trait.stat) ||
+        if (!traitIds.insert(trait.id + ":" + trait.stat).second || !supportedStats.count(trait.stat) ||
             (!vnext && (trait.threshold != 2 || trait.threshold4 != 4 || !trait.tiers.empty() || trait.team ||
                         trait.stat == "starting_mana_flat")) ||
             trait.value < 0 || trait.value4 < 0)
             return "Invalid trait definition";
+        if (trait.stat == "enemy_hex_count"
+                ? (trait.durationMs < r.tickMs || trait.durationMs > 10000 || trait.durationMs % r.tickMs != 0)
+                : trait.durationMs != 0)
+            return "Invalid trait duration";
         int previous = 0;
         for (const auto &tier : trait.tiers)
         {
@@ -353,6 +447,22 @@ std::string Catalog::Validate() const
         }
     }
     if (!vnext && (!relics.empty() || !r.relicRounds.empty())) return "Relics require wonder_vnext";
+    if (!vnext && (!r.preparationStages.empty() || !r.streakIncome.empty() || r.autoDeploy))
+        return "Staged preparation, streak income and auto-deploy require wonder_vnext";
+    int stageEnd = 0;
+    for (const auto &stage : r.preparationStages)
+    {
+        if (stage.start <= stageEnd || stage.end < stage.start || stage.ms < r.tickMs || stage.ms > 600000 ||
+            stage.ms % r.tickMs != 0) return "Invalid preparation stages";
+        stageEnd = stage.end;
+    }
+    int streakLength = 1, streakGold = 0;
+    for (const auto &step : r.streakIncome)
+    {
+        if (step.length <= streakLength || step.gold <= streakGold || step.gold > 100) return "Invalid streak income";
+        streakLength = step.length;
+        streakGold = step.gold;
+    }
     std::set<std::string> relicIds;
     for (const auto &relic : relics)
     {
@@ -436,6 +546,10 @@ Combat::Combat(const Catalog &c, const std::vector<OwnedUnit> &a, const std::vec
                Id encounterId)
     : catalog_(&c)
 {
+    encounterId_ = encounterId;
+    std::array<int, 2> enemyArmorLoss{}, enemyHexCount{}, enemyHexTicks{};
+    std::array<std::string, 2> enemyHexTrait;
+    std::vector<int> leapers;
     for (int side = 0; side < 2; ++side)
     {
         const auto &formation = side ? b : a;
@@ -447,6 +561,21 @@ Combat::Combat(const Catalog &c, const std::vector<OwnedUnit> &a, const std::vec
                 counts[d.race].insert(o.definition);
                 counts[d.unitClass].insert(o.definition);
             }
+        // Some traits act on the other side; collect them here and apply once both sides exist.
+        for (const auto &t : c.traits)
+        {
+            const int value = TraitValue(t, int(counts[t.id].size()));
+            if (t.stat == "enemy_armor_reduction_flat")
+                enemyArmorLoss[side] += value;
+            else if (t.stat == "summon_power_bonus_bp")
+                summonBonusBp_[side] += value;
+            else if (t.stat == "enemy_hex_count" && value > 0)
+            {
+                enemyHexCount[side] += value;
+                enemyHexTicks[side] = std::max(enemyHexTicks[side], Ticks(t.durationMs, c.rules));
+                enemyHexTrait[side] = t.id;
+            }
+        }
         for (const auto &o : formation)
             if (o.onBoard)
             {
@@ -470,7 +599,8 @@ Combat::Combat(const Catalog &c, const std::vector<OwnedUnit> &a, const std::vec
                 u.ability = EffectiveAbility(c, d, o.relic);
                 u.armor = d.armor;
                 u.resistance = d.resistance;
-                int healthBonus = 0, startingMana = 0;
+                int healthBonus = 0, startingMana = 0, startShieldBp = 0;
+                bool leaps = false;
                 for (const auto &t : c.traits)
                     if (!o.neutral && (t.team || t.id == d.race || t.id == d.unitClass) &&
                         TraitValue(t, int(counts[t.id].size())) != 0)
@@ -496,6 +626,26 @@ Combat::Combat(const Catalog &c, const std::vector<OwnedUnit> &a, const std::vec
                             u.movementBonus += value;
                         else if (t.stat == "starting_mana_flat")
                             startingMana += value;
+                        else if (t.stat == "start_shield_health_bp")
+                            startShieldBp += value;
+                        else if (t.stat == "health_regen_bp")
+                            u.regenBp += value;
+                        else if (t.stat == "mana_per_second_flat")
+                            u.manaPerSecond += value;
+                        else if (t.stat == "range_bonus_flat")
+                            u.rangeBonus += value;
+                        else if (t.stat == "ability_damage_taken_reduction_bp")
+                            u.abilityReductionBp += value;
+                        else if (t.stat == "evasion_bp") // sources combine as 1 - (1 - a)(1 - b)
+                            u.evasionBp = int(10000 - HalfUp(Int(10000 - u.evasionBp) * (10000 - value), 10000));
+                        else if (t.stat == "crit_chance_bp")
+                            u.critChanceBp += value;
+                        else if (t.stat == "lifesteal_bp")
+                            u.lifestealBp += value;
+                        else if (t.stat == "bonus_true_damage_bp")
+                            u.bonusTrueDamageBp += value;
+                        else if (t.stat == "start_leap")
+                            leaps = true;
                     }
                 if (!o.neutral && o.relic >= 0)
                 {
@@ -513,11 +663,22 @@ Combat::Combat(const Catalog &c, const std::vector<OwnedUnit> &a, const std::vec
                 u.ability.mana.starting = std::min(u.ability.mana.maximum, u.ability.mana.starting + startingMana);
                 u.health = u.maxHealth = StarValue(HalfUp(d.health * o.hpScaleBp, 10000), o.star, healthBonus, c.rules);
                 u.basicDamage = StarValue(HalfUp(d.attackDamage * o.damageScaleBp, 10000), o.star, 0, c.rules);
+                if (startShieldBp > 0)
+                {
+                    // Lasts the whole fight; a larger shield cast later replaces it as usual.
+                    u.shield = HalfUp(u.maxHealth * startShieldBp, 10000);
+                    u.shieldExpiry = 1 << 30;
+                    u.shieldSource = u.id;
+                    u.shieldKey = "trait_start_shield";
+                }
                 u.cooldownTick = Ticks(u.ability.firstCastMs, c.rules);
                 u.mana = u.ability.mana.starting;
+                if (leaps) leapers.push_back(int(units_.size()));
                 units_.push_back(u);
             }
     }
+    for (auto &u : units_) u.armor = std::max(-75, u.armor - enemyArmorLoss[1 - u.side]);
+    chance_ = Random{seed ^ 0x9E3779B97F4A7C15ull};
     Random rng{seed};
     std::vector<int> order(units_.size());
     std::iota(order.begin(), order.end(), 0);
@@ -525,7 +686,133 @@ Combat::Combat(const Catalog &c, const std::vector<OwnedUnit> &a, const std::vec
         std::swap(order[i], order[rng.Below(i + 1)]);
     for (int i = 0; i < int(order.size()); ++i)
         units_[order[i]].initiative = i;
+    // Trait leaps: one at a time in initiative order, each landing behind the enemy farthest from it.
+    std::sort(leapers.begin(), leapers.end(), [&](int x, int y) { return units_[x].initiative < units_[y].initiative; });
+    for (int leaper : leapers)
+    {
+        int target = -1;
+        for (int i = 0; i < int(units_.size()); ++i)
+            if (units_[i].side != units_[leaper].side &&
+                (target < 0 || std::make_tuple(-Distance(units_[leaper].cell, units_[i].cell), units_[i].initiative) <
+                                   std::make_tuple(-Distance(units_[leaper].cell, units_[target].cell), units_[target].initiative)))
+                target = i;
+        if (target >= 0 && Blink(leaper, target, Selector::CellBehindTarget, 0)) units_[leaper].target = target;
+    }
+    // Traits that hex random enemies as the fight starts, drawn from the fight's stream.
+    for (int side = 0; side < 2; ++side)
+    {
+        std::vector<int> candidates;
+        Id source = 0;
+        for (int i = 0; i < int(units_.size()); ++i)
+        {
+            const auto &u = units_[i];
+            if (u.side != side) candidates.push_back(i);
+            else if (!source && !u.neutral && (c.units[u.definition].race == enemyHexTrait[side] ||
+                                               c.units[u.definition].unitClass == enemyHexTrait[side]))
+                source = u.id;
+        }
+        for (int count = 0; count < enemyHexCount[side] && !candidates.empty(); ++count)
+        {
+            ++chanceDraws_;
+            const int pick = chance_.Below(int(candidates.size()));
+            auto &u = units_[candidates[pick]];
+            candidates.erase(candidates.begin() + pick);
+            u.statuses[int(UnitStatus::Hex)] = {enemyHexTicks[side], -1};
+            CombatEvent e;
+            e.source = source;
+            e.target = u.id;
+            e.effect = Effect::Hex;
+            e.cell = e.origin = u.cell;
+            e.requested = e.resolved = Int(enemyHexTicks[side]) * c.rules.tickMs;
+            events_.push_back(e);
+        }
+    }
     Assess(false);
+}
+bool Combat::Inert(const CombatUnit &unit) const
+{
+    return catalog_->Definition(unit.definition, unit.neutral).inert;
+}
+int Combat::LivingSummons(int side) const
+{
+    int count = 0;
+    for (const auto &u : units_) count += Alive(u) && u.summoned && u.side == side;
+    return count;
+}
+// Queued summons arrive here, at one fixed point of the tick, so nothing holds a reference into
+// the unit list while it grows. Each takes the free cell nearest its anchor.
+void Combat::ServeSpawns()
+{
+    const auto &rules = catalog_->rules;
+    const auto requests = std::move(spawns_);
+    spawns_.clear();
+    if (draining_) return;
+    for (const auto &spawn : requests)
+    {
+        const int side = units_[spawn.owner].side;
+        bool found = false;
+        Cell cell;
+        std::tuple<int, int, int> best{};
+        if (LivingSummons(side) < catalog_->summonLimit)
+            for (int row = 0; row < rules.rows; ++row)
+                for (int column = 0; column < rules.columns; ++column)
+                {
+                    const Cell candidate{column, row};
+                    if (!Free(candidate)) continue;
+                    const auto key = std::make_tuple(Distance(spawn.anchor, candidate), Distance(spawn.toward, candidate),
+                                                     row * rules.columns + column);
+                    if (!found || key < best) { best = key; cell = candidate; found = true; }
+                }
+        if (!found) { ++summonsRefused_; continue; }
+        const auto &d = catalog_->neutrals[spawn.definition];
+        CombatUnit u;
+        u.neutral = u.summoned = true;
+        u.owner = spawn.owner;
+        u.hpScaleBp = u.damageScaleBp = 10000 + summonBonusBp_[side];
+        // Identities count down from the top of the instance range, past any already in use.
+        Id instance = 0;
+        bool taken = true;
+        while (taken)
+        {
+            instance = (Id(1) << 20) - 1 - nextSummon_++;
+            taken = false;
+            for (const auto &other : units_) taken = taken || (other.side == side && (other.id & ((Id(1) << 20) - 1)) == instance);
+        }
+        u.id = (encounterId_ << 21) | (Id(side) << 20) | instance;
+        u.definition = spawn.definition;
+        u.side = side;
+        u.star = spawn.star;
+        u.cell = cell;
+        u.facing = units_[spawn.owner].facing;
+        u.ability = EffectiveAbility(*catalog_, d, -1);
+        u.armor = d.armor;
+        u.resistance = d.resistance;
+        u.health = u.maxHealth = StarValue(HalfUp(d.health * u.hpScaleBp, 10000), u.star, 0, rules);
+        u.basicDamage = StarValue(HalfUp(d.attackDamage * u.damageScaleBp, 10000), u.star, 0, rules);
+        u.cooldownTick = tick_ + Ticks(u.ability.firstCastMs, rules);
+        u.mana = u.ability.mana.starting;
+        u.initiative = int(units_.size());
+        u.lastMovementTick = tick_;
+        u.expiryTick = spawn.lifetime > 0 ? tick_ + spawn.lifetime : 0;
+        CombatEvent e;
+        e.tick = tick_;
+        e.source = units_[spawn.owner].id;
+        e.target = u.id;
+        e.action = spawn.action;
+        e.effect = Effect::Summon;
+        e.cell = cell;
+        e.origin = units_[spawn.owner].cell;
+        e.requested = e.resolved = u.maxHealth;
+        units_.push_back(u);
+        events_.push_back(e);
+    }
+}
+bool Combat::Afflicted(const CombatUnit &unit, UnitStatus status) const
+{
+    const auto &state = unit.statuses[int(status)];
+    if (state.expiry <= tick_) return false;
+    // A taunt holds only while the unit that cast it lives.
+    return status != UnitStatus::Taunt || (state.source >= 0 && Alive(units_[state.source]));
 }
 bool Combat::Free(Cell cell, int except) const
 {
@@ -562,7 +849,7 @@ bool Combat::FindPath(int source, int target, Cell &next, int &length) const
         // Distances are measured outward from every free cell that already reaches the enemy. The first step
         // is then the neighbour on a shortest route that lies closest to the enemy, so a unit walks straight
         // or diagonally at its target instead of following whichever route the search met first.
-        const int range = catalog_->Definition(u.definition, u.neutral).range;
+        const int range = AttackRange(*catalog_, u);
         next = u.cell;
         length = 0;
         if (Distance(u.cell, enemy.cell) <= range)
@@ -614,7 +901,7 @@ bool Combat::FindPath(int source, int target, Cell &next, int &length) const
         Cell at = queue.front();
         queue.pop_front();
         const int p = index(at);
-        if (Distance(at, enemy.cell) <= catalog_->Definition(u.definition, u.neutral).range)
+        if (Distance(at, enemy.cell) <= AttackRange(*catalog_, u))
         {
             length = dist[p];
             next = u.cell;
@@ -650,9 +937,15 @@ bool Combat::FindPath(int source, int target, Cell &next, int &length) const
 int Combat::ChooseEnemy(int source, Cell &next, int &length) const
 {
     const auto &u = units_[source];
+    // A taunted unit goes for whoever taunted it, as long as it can get there.
+    if (Afflicted(u, UnitStatus::Taunt))
+    {
+        const int taunter = u.statuses[int(UnitStatus::Taunt)].source;
+        if (units_[taunter].side != u.side && FindPath(source, taunter, next, length)) return taunter;
+    }
     if (u.target >= 0 && Alive(units_[u.target]) && units_[u.target].side != u.side &&
         (!catalog_->rules.nearestReachableTarget ||
-         Distance(u.cell, units_[u.target].cell) <= catalog_->Definition(u.definition, u.neutral).range) &&
+         Distance(u.cell, units_[u.target].cell) <= AttackRange(*catalog_, u)) &&
         FindPath(source, u.target, next, length))
         return u.target;
     int best = -1;
@@ -694,7 +987,19 @@ std::vector<int> Combat::Select(int source, const AbilityDef &a) const
             break;
         case Selector::CurrentEnemy:
         case Selector::CurrentEnemyArea:
+        case Selector::EnemyLine:
+        case Selector::EnemyCone:
+        case Selector::ChainFromCurrentEnemy:
             valid = i == s.target && t.side != s.side && Distance(s.cell, t.cell) <= a.range;
+            break;
+        case Selector::FarthestEnemy:
+        case Selector::LowestHealthEnemy:
+        case Selector::DensestEnemyArea:
+        case Selector::RandomEnemyAreas:
+            valid = t.side != s.side && Distance(s.cell, t.cell) <= a.range;
+            break;
+        case Selector::AllAllies:
+            valid = t.side == s.side && (i != source || a.allowSelf);
             break;
         case Selector::AdjacentEnemies:
             valid = t.side != s.side && Distance(s.cell, t.cell) <= a.radius;
@@ -730,14 +1035,16 @@ std::vector<int> Combat::Select(int source, const AbilityDef &a) const
         {
             auto rate = [&](const CombatUnit &u) {
                 int bonus = u.rateBonus;
-                for (const auto &m : u.modifiers) bonus += int(m.magnitude);
+                bonus += ModifierSum(u, ModifierStat::AttackRate);
                 return std::clamp<Int>(HalfUp(Int(catalog_->Definition(u.definition, u.neutral).attackRate) *
                     std::max(0, 10000 + bonus), 10000), catalog_->rules.minAttackRate, catalog_->rules.maxAttackRate);
             };
             return std::make_tuple(-rate(l), Distance(s.cell,l.cell), l.id) <
                    std::make_tuple(-rate(r), Distance(s.cell,r.cell), r.id);
         }
-        if (a.selector == Selector::LowestHealthAlly)
+        if (a.selector == Selector::FarthestEnemy && Distance(s.cell, l.cell) != Distance(s.cell, r.cell))
+            return Distance(s.cell, l.cell) > Distance(s.cell, r.cell);
+        if (a.selector == Selector::LowestHealthAlly || a.selector == Selector::LowestHealthEnemy)
         {
             auto crossA = l.health * r.maxHealth, crossB = r.health * l.maxHealth;
             if (crossA != crossB)
@@ -747,10 +1054,54 @@ std::vector<int> Combat::Select(int source, const AbilityDef &a) const
         }
         return std::tie(l.initiative, l.id) < std::tie(r.initiative, r.id);
     });
-    const int max = (a.selector == Selector::LowestHealthAlly || a.selector == Selector::HighestAttackRateEnemy) ? 1 : a.maxTargets;
+    const bool single = a.selector == Selector::LowestHealthAlly || a.selector == Selector::HighestAttackRateEnemy ||
+                        a.selector == Selector::FarthestEnemy || a.selector == Selector::LowestHealthEnemy;
+    // Area and random selectors pick their own recipients later; they only need to know who is in reach.
+    const bool pool = a.selector == Selector::DensestEnemyArea || a.selector == Selector::RandomEnemyAreas;
+    const int max = single ? 1 : pool ? int(units_.size()) : a.maxTargets;
     if (int(selected.size()) > max)
         selected.resize(max);
     return selected;
+}
+// Moves a unit at once to a cell chosen relative to its target. False when no legal cell exists.
+bool Combat::Blink(int source, int target, Selector rule, Id action)
+{
+    auto &s = units_[source];
+    const Cell from = s.cell, at = units_[target].cell;
+    bool found = false;
+    Cell landing;
+    if (rule == Selector::CellThroughTarget)
+    {
+        // The farthest free cell on the line through the target, within the dash length.
+        int steps = 0;
+        for (Cell cell : LineToEdge(from, at, catalog_->rules))
+        {
+            if (++steps > s.ability.maxDash) break;
+            if (Free(cell, source)) { landing = cell; found = true; }
+        }
+    }
+    else if (rule == Selector::CellBehindTarget || Distance(from, at) > 1)
+    {
+        const int dx = at.column - from.column, dy = at.row - from.row;
+        std::tuple<int, int, int> best{};
+        for (int row = -1; row <= 1; ++row)
+            for (int column = -1; column <= 1; ++column)
+            {
+                const Cell cell{at.column + column, at.row + row};
+                if ((!row && !column) || !Free(cell, source)) continue;
+                // Behind: as far past the target as possible, then the straightest. Beside: the nearest to the caster.
+                const int order = cell.row * catalog_->rules.columns + cell.column;
+                const auto key = rule == Selector::CellBehindTarget
+                    ? std::make_tuple(-(column * dx + row * dy), std::abs(column * dy - row * dx), order)
+                    : std::make_tuple(Distance(from, cell), std::abs(cell.column - from.column) + std::abs(cell.row - from.row), order);
+                if (!found || key < best) { best = key; landing = cell; found = true; }
+            }
+    }
+    if (!found || landing == from) return false;
+    MoveUnit(source, landing, AbilityMechanic::Standard, action, source);
+    if (!events_.empty() && events_.back().effect == Effect::Dash && events_.back().target == s.id && events_.back().tick == tick_)
+        events_.back().effect = Effect::Blink;
+    return true;
 }
 bool Combat::DashLanding(int source, const AbilityDef &a, int &target, Cell &cell) const
 {
@@ -781,7 +1132,7 @@ bool Combat::DashLanding(int source, const AbilityDef &a, int &target, Cell &cel
                 continue;
             if (a.selector == Selector::RetreatFromCurrentEnemy)
             {
-                if (separation <= original || separation > catalog_->Definition(s.definition, s.neutral).range)
+                if (separation <= original || separation > AttackRange(*catalog_, s))
                     continue;
             }
             else if (separation != 1 ||
@@ -886,6 +1237,15 @@ bool Combat::CommitAbility(int source)
     }
     else if (Select(source, a).empty())
         return false;
+    for (const auto &effect : a.effects)
+        if (effect.effect == Effect::Summon)
+        {
+            // Hold the cast while it could not add a unit: the side is at its limit, or nobody has fallen yet.
+            int waiting = 0;
+            for (const auto &spawn : spawns_) waiting += units_[spawn.owner].side == s.side;
+            if (LivingSummons(s.side) + waiting >= catalog_->summonLimit) return false;
+            if (effect.ownSelector && effect.selector == Selector::FallenUnits && graves_.empty()) return false;
+        }
     s.actionId = nextAction_++;
     s.state = ActionState::CastWindup;
     s.releaseTick = tick_ + Ticks(a.castMs, catalog_->rules);
@@ -908,7 +1268,7 @@ void Combat::GainMana(int unit, Int amount, bool incoming, Id action)
 {
     auto &u = units_[unit];
     const auto &m = u.ability.mana;
-    if (m.maximum == 0 || !Alive(u) || tick_ < u.manaResumeTick || amount <= 0) return;
+    if (m.maximum == 0 || !Alive(u) || tick_ < u.manaResumeTick || amount <= 0 || Afflicted(u, UnitStatus::Hex)) return;
     if (!incoming)
     {
         if (u.lastManaAttackAction == action) return;
@@ -1101,7 +1461,7 @@ void Combat::ReleaseMechanic(int source, const AbilityDef &a)
         const int steps = std::min(a.maxMomentumSteps, s.momentumSteps + Distance(s.cell, landing));
         packet.bonus += steps * a.momentumPerStepBp;
         TraceMechanic(source, MechanicPhase::Released, MechanicReason::Ready);
-        MoveUnit(source, landing, a.mechanic, s.actionId, source);
+        if (!rules.chargeReturns) MoveUnit(source, landing, a.mechanic, s.actionId, source);
         CancelReservation(source);
         s.momentumSteps = 0;
         packet.target = s.target;
@@ -1286,13 +1646,13 @@ void Combat::Release(int source)
     if (s.state == ActionState::AttackWindup)
     {
         s.state = ActionState::AttackRecovery;
-        if (s.target < 0 || !Alive(units_[s.target]) || Distance(s.cell, units_[s.target].cell) > d.range)
+        if (s.target < 0 || !Alive(units_[s.target]) || Distance(s.cell, units_[s.target].cell) > AttackRange(*catalog_, s))
             return;
         p.effect = Effect::Damage;
         p.basicAttack = true;
         p.damageType = d.damageType;
-        p.magnitude = s.basicDamage;
-        p.bonus = s.basicBonus + s.allBonus;
+        p.magnitude = HalfUp(s.basicDamage * std::max(0, 10000 + ModifierSum(s, ModifierStat::AttackDamage)), 10000);
+        p.bonus = s.basicBonus + s.allBonus + ModifierSum(s, ModifierStat::DamageDealt);
         p.target = s.target;
         p.due += Ticks(d.projectileTravelMs, r);
         packets_.push_back(p);
@@ -1326,6 +1686,45 @@ void Combat::Release(int source)
     for (std::size_t order = 0; order < effects.size(); ++order)
     {
         const auto &effect = effects[order];
+        if (effect.effect == Effect::Summon)
+        {
+            // Only queued here; the units appear at the start of the next tick.
+            Spawn spawn;
+            spawn.owner = source;
+            spawn.definition = effect.summon;
+            spawn.star = s.star;
+            spawn.lifetime = Ticks(effect.durationMs, r);
+            spawn.action = s.actionId;
+            if (effect.ownSelector && effect.selector == Selector::FallenUnits)
+            {
+                spawn.toward = s.cell;
+                for (int count = 0; count < effect.count && !graves_.empty(); ++count)
+                {
+                    spawn.anchor = graves_.back();
+                    graves_.pop_back();
+                    spawns_.push_back(spawn);
+                }
+            }
+            else
+            {
+                // Around the ability's target: beside the caster toward its enemy, or beside an enemy on the caster's side.
+                const int anchor = targets.front();
+                spawn.anchor = units_[anchor].cell;
+                spawn.toward = anchor != source ? s.cell : s.target >= 0 ? units_[s.target].cell : s.cell;
+                for (int count = 0; count < effect.count; ++count) spawns_.push_back(spawn);
+            }
+            continue;
+        }
+        if (effect.effect == Effect::Blink)
+        {
+            // Skipped when no legal cell exists; the rest of the chain still runs.
+            if (Blink(source, targets.front(), effect.selector, s.actionId))
+            {
+                p.origin = s.cell;
+                if (effect.selector != Selector::CellThroughTarget) s.target = targets.front();
+            }
+            continue;
+        }
         p.effectOrder = int(order);
         p.effect = effect.effect;
         p.damageType = effect.damageType;
@@ -1335,22 +1734,136 @@ void Combat::Release(int source)
         p.magnitude = effect.magnitude[s.star - 1];
         if (s.neutral && (effect.effect == Effect::Damage || effect.effect == Effect::Shield))
             p.magnitude = HalfUp(p.magnitude * (effect.effect == Effect::Shield ? s.hpScaleBp : s.damageScaleBp), 10000);
-        p.duration = Ticks(effect.durationMs, r);
-        p.due = tick_ + Ticks(a.travelMs, r);
-        p.bonus = s.abilityBonus + s.allBonus;
+        // A status lasts its magnitude in milliseconds at this star.
+        p.duration = Ticks(IsStatusEffect(effect.effect) ? int(p.magnitude) : effect.durationMs, r);
+        p.due = tick_ + Ticks(a.travelMs + effect.delayMs, r);
+        p.bonus = s.abilityBonus + s.allBonus + (effect.effect == Effect::Damage ? ModifierSum(s, ModifierStat::DamageDealt) : 0);
+        p.stat = effect.stat;
+        p.critical = effect.critical;
         if (effect.effect == Effect::Heal || effect.effect == Effect::Shield ||
             (effect.effect == Effect::StatModifier && p.magnitude > 0))
             p.magnitude = HalfUp(p.magnitude * (10000 + s.supportBonus), 10000);
-        if (a.selector == Selector::CurrentEnemyArea)
+        // A chained effect may choose its own targets; they are picked now, at release.
+        auto chosen = targets;
+        Selector selector = a.selector;
+        if (effect.ownSelector)
+        {
+            auto own = a;
+            own.selector = selector = effect.selector;
+            chosen = Select(source, own);
+            if (chosen.empty()) continue;
+        }
+        p.area = false;
+        p.periodic = effect.repeatMs > 0;
+        p.follow = false;
+        const int pulses = p.periodic ? effect.durationMs / effect.repeatMs : 1;
+        const int every = p.periodic ? Ticks(effect.repeatMs, r) : 0;
+        const int first = p.due;
+        // Casting a repeating effect again replaces what is still pending from the same ability,
+        // so it refreshes rather than doubles.
+        auto replace = [&](int target) {
+            packets_.erase(std::remove_if(packets_.begin(), packets_.end(), [&](const Packet &old) {
+                return old.periodic && old.source == source && old.key == p.key && old.effectOrder == p.effectOrder &&
+                       (target < 0 ? old.area : !old.area && old.target == target);
+            }), packets_.end());
+        };
+        auto queue = [&]() {
+            for (int pulse = 0; pulse < pulses; ++pulse)
+            {
+                p.due = first + (p.periodic ? (pulse + 1) * every : 0);
+                packets_.push_back(p);
+            }
+        };
+        const bool aura = p.periodic && effect.follow;
+        p.cells.clear();
+        if (selector == Selector::CurrentEnemyArea || aura)
         {
             p.area = true;
-            p.center = units_[targets.front()].cell;
-            packets_.push_back(p);
+            p.follow = aura;
+            p.center = aura ? s.cell : units_[chosen.front()].cell;
+            if (p.periodic) replace(-1);
+            queue();
         }
-        else for (int target : targets)
+        else if (selector == Selector::DensestEnemyArea)
+        {
+            // The cell in reach whose surroundings hold the most enemies; nearer the caster on a tie.
+            Cell best = units_[chosen.front()].cell;
+            int bestCount = -1, bestDistance = 0;
+            for (int row = 0; row < r.rows; ++row)
+                for (int column = 0; column < r.columns; ++column)
+                {
+                    const Cell cell{column, row};
+                    if (Distance(s.cell, cell) > a.range) continue;
+                    int count = 0;
+                    for (int enemy : chosen) count += Distance(cell, units_[enemy].cell) <= a.radius;
+                    if (count > bestCount || (count == bestCount && Distance(s.cell, cell) < bestDistance))
+                    { best = cell; bestCount = count; bestDistance = Distance(s.cell, cell); }
+                }
+            p.area = true;
+            p.center = best;
+            if (p.periodic) replace(-1);
+            queue();
+        }
+        else if (selector == Selector::RandomEnemyAreas)
+        {
+            // Each shot lands on the cell of a different enemy, chosen from the fight's stream.
+            auto candidates = chosen;
+            p.area = true;
+            p.maxTargets = int(units_.size());
+            if (p.periodic) replace(-1);
+            for (int shot = 0; shot < a.maxTargets && !candidates.empty(); ++shot)
+            {
+                ++chanceDraws_;
+                const int pick = chance_.Below(int(candidates.size()));
+                p.center = units_[candidates[pick]].cell;
+                candidates.erase(candidates.begin() + pick);
+                queue();
+            }
+        }
+        else if (selector == Selector::EnemyLine || selector == Selector::EnemyCone)
+        {
+            const Cell toward = units_[chosen.front()].cell;
+            p.area = true;
+            p.center = toward;
+            p.cells = selector == Selector::EnemyLine ? LineToEdge(s.cell, toward, r) : ConeCells(s.cell, toward, a.radius, r);
+            // A line cast together with a dash is only as long as the dash.
+            if (selector == Selector::EnemyLine && a.maxDash > 0 && int(p.cells.size()) > a.maxDash) p.cells.resize(a.maxDash);
+            if (p.periodic) replace(-1);
+            queue();
+            p.cells.clear();
+        }
+        else if (selector == Selector::ChainFromCurrentEnemy)
+        {
+            std::vector<int> links{chosen.front()};
+            while (int(links.size()) < a.maxTargets)
+            {
+                int next = -1;
+                for (int i = 0; i < int(units_.size()); ++i)
+                {
+                    const auto &u = units_[i];
+                    if (!Alive(u) || u.side == s.side || std::find(links.begin(), links.end(), i) != links.end() ||
+                        Distance(units_[links.back()].cell, u.cell) > a.radius) continue;
+                    if (next < 0 || std::make_tuple(Distance(units_[links.back()].cell, u.cell), u.initiative, u.id) <
+                        std::make_tuple(Distance(units_[links.back()].cell, units_[next].cell), units_[next].initiative, units_[next].id))
+                        next = i;
+                }
+                if (next < 0) break;
+                links.push_back(next);
+            }
+            // Each jump lands a moment after the one before it.
+            const int base = p.due;
+            for (std::size_t link = 0; link < links.size(); ++link)
+            {
+                p.target = links[link];
+                p.due = base + int(link) * 2;
+                packets_.push_back(p);
+            }
+        }
+        else for (int target : chosen)
         {
             p.target = target;
-            packets_.push_back(p);
+            if (p.periodic) replace(target);
+            queue();
         }
     }
 }
@@ -1373,10 +1886,40 @@ void Combat::Apply(const Packet &p, int target)
     e.origin = p.origin;
     e.visualCells = p.cells;
     e.mechanic = p.mechanic;
+    e.secondary = p.secondary;
+    e.periodic = p.periodic;
     switch (p.effect)
     {
     case Effect::Damage: {
-        e.resolved = ResolveDamage(p.magnitude, p.damageType, t.armor, t.resistance, p.bonus);
+        // A basic attack can be dodged outright; then it can crit. Both draw from the fight's stream.
+        if (p.basicAttack && !p.secondary && t.evasionBp > 0 && Roll(t.evasionBp))
+        {
+            e.evaded = true;
+            events_.push_back(e);
+            return;
+        }
+        Int magnitude = p.magnitude;
+        if (p.basicAttack && !p.secondary && units_[p.source].critChanceBp > 0 &&
+            Roll(std::min(10000, units_[p.source].critChanceBp)))
+        {
+            magnitude = HalfUp(magnitude * 15000, 10000);
+            e.critical = true;
+            e.requested = magnitude;
+        }
+        else if (p.critical && !p.secondary)
+        {
+            // An ability hit authored as a guaranteed critical.
+            magnitude = HalfUp(magnitude * 15000, 10000);
+            e.critical = true;
+            e.requested = magnitude;
+        }
+        // Defence and damage-taken modifiers are read when the hit lands.
+        e.resolved = ResolveDamage(magnitude, p.damageType, t.armor + ModifierSum(t, ModifierStat::Armor),
+                                   t.resistance + ModifierSum(t, ModifierStat::Resistance),
+                                   p.bonus + ModifierSum(t, ModifierStat::DamageTaken));
+        // Ability damage shrugged off by a trait, after defence and before any guard.
+        if (!p.basicAttack && !p.secondary && t.abilityReductionBp > 0)
+            e.resolved = HalfUp(e.resolved * (10000 - std::min(9000, t.abilityReductionBp)), 10000);
         int guard = -1;
         for (int i = 0; i < int(units_.size()); ++i)
         {
@@ -1428,6 +1971,7 @@ void Combat::Apply(const Packet &p, int target)
         {
             if (t.state == ActionState::CastWindup)
                 TraceMechanic(target, MechanicPhase::Cancelled, MechanicReason::SourceDefeated);
+            if (!t.summoned) graves_.push_back(t.cell);
             t.manaOnDeath = t.mana;
             t.mana = 0;
             t.state = ActionState::Defeated;
@@ -1474,11 +2018,12 @@ void Combat::Apply(const Packet &p, int target)
     case Effect::StatModifier:
         if (p.duration > 0 && p.magnitude != 0)
         {
+            e.stat = p.stat;
             auto it = std::find_if(t.modifiers.begin(), t.modifiers.end(),
-                                   [&](const Modifier &m) { return m.key == p.key; });
+                                   [&](const Modifier &m) { return m.key == p.key && m.stat == p.stat; });
             if (it == t.modifiers.end())
             {
-                t.modifiers.push_back({p.key, p.magnitude, tick_ + p.duration});
+                t.modifiers.push_back({p.key, p.magnitude, tick_ + p.duration, p.stat});
                 e.resolved = p.magnitude;
             }
             else if ((p.magnitude > 0 && p.magnitude >= it->magnitude) ||
@@ -1495,7 +2040,41 @@ void Combat::Apply(const Packet &p, int target)
             }
         }
         break;
+    case Effect::Hex:
+    case Effect::Silence:
+    case Effect::Taunt:
+        if (p.duration > 0)
+        {
+            const UnitStatus kind = p.effect == Effect::Hex ? UnitStatus::Hex : p.effect == Effect::Silence ? UnitStatus::Silence : UnitStatus::Taunt;
+            auto &status = t.statuses[int(kind)];
+            if (!Afflicted(t, kind) || tick_ + p.duration >= status.expiry)
+            {
+                status.expiry = tick_ + p.duration;
+                status.source = p.source;
+                e.resolved = Int(p.duration) * catalog_->rules.tickMs;
+            }
+            // A cast in progress is lost to a hex or a silence; a swing in progress is lost to a hex.
+            if (kind != UnitStatus::Taunt && t.state == ActionState::CastWindup)
+            {
+                TraceMechanic(target, MechanicPhase::Cancelled, MechanicReason::SourceStunned);
+                CancelReservation(target);
+                t.state = ActionState::CastRecovery;
+            }
+            else if (kind == UnitStatus::Hex && t.state == ActionState::AttackWindup)
+                t.state = ActionState::AttackRecovery;
+        }
+        break;
+    case Effect::ManaDrain:
+    {
+        const int drained = int(std::min<Int>(p.magnitude, t.mana));
+        t.mana -= drained;
+        t.manaDrained += drained;
+        e.resolved = drained;
+        break;
+    }
     case Effect::Dash:
+    case Effect::Blink:
+    case Effect::Summon:
         break;
     }
     events_.push_back(e);
@@ -1521,13 +2100,95 @@ void Combat::Apply(const Packet &p, int target)
             else if (t.state == ActionState::CastWindup) t.state = ActionState::CastRecovery;
         }
     }
+    if (p.effect == Effect::Damage && !p.secondary && e.healthLoss > 0 && units_[p.source].side != t.side)
+    {
+        // Follow-on effects of a hit. None of them can cause another.
+        const Int lost = e.healthLoss;
+        const int source = p.source;
+        if (Alive(units_[source]) && units_[source].lifestealBp > 0 && units_[source].health < units_[source].maxHealth)
+        {
+            auto &healer = units_[source];
+            CombatEvent heal;
+            heal.tick = tick_;
+            heal.source = heal.target = healer.id;
+            heal.action = p.action;
+            heal.effect = Effect::Heal;
+            heal.cell = heal.origin = healer.cell;
+            heal.secondary = true;
+            heal.requested = HalfUp(lost * healer.lifestealBp, 10000);
+            heal.resolved = std::min(heal.requested, healer.maxHealth - healer.health);
+            healer.health += heal.resolved;
+            events_.push_back(heal);
+        }
+        Packet follow = p;
+        follow.secondary = true;
+        follow.basicAttack = follow.area = false;
+        follow.damageType = DamageType::True;
+        follow.bonus = 0;
+        follow.displacementCells = 0;
+        follow.cells.clear();
+        if (units_[source].bonusTrueDamageBp > 0 && Alive(t))
+        {
+            follow.magnitude = HalfUp(lost * units_[source].bonusTrueDamageBp, 10000);
+            Apply(follow, target);
+        }
+        const int reflect = ModifierSum(t, ModifierStat::Reflect);
+        if (reflect > 0 && Alive(units_[source]))
+        {
+            follow.source = target;
+            follow.origin = t.cell;
+            follow.magnitude = HalfUp(lost * reflect, 10000);
+            Apply(follow, source);
+        }
+    }
+}
+std::vector<ZoneView> Combat::Zones() const
+{
+    std::vector<ZoneView> zones;
+    for (const auto &p : packets_)
+    {
+        if (!p.periodic || !p.area) continue;
+        const Cell center = p.follow ? units_[p.source].cell : p.center;
+        auto found = std::find_if(zones.begin(), zones.end(), [&](const ZoneView &zone) {
+            return zone.action == p.action && zone.source == units_[p.source].id && zone.center == center && zone.radius == p.radius;
+        });
+        if (found == zones.end())
+        {
+            ZoneView zone;
+            zone.source = units_[p.source].id; zone.action = p.action; zone.center = center; zone.radius = p.radius;
+            zone.side = units_[p.source].side; zone.damageType = p.damageType; zone.follow = p.follow;
+            zones.push_back(zone);
+            found = zones.end() - 1;
+        }
+        found->untilTick = std::max(found->untilTick, p.due);
+    }
+    return zones;
+}
+std::vector<int> Combat::PeriodicTargets() const
+{
+    std::vector<int> targets;
+    for (const auto &p : packets_)
+        if (p.periodic && !p.area && p.effect == Effect::Damage && p.target >= 0 && Alive(units_[p.target]) &&
+            std::find(targets.begin(), targets.end(), p.target) == targets.end())
+            targets.push_back(p.target);
+    return targets;
+}
+bool Combat::Roll(int chanceBp)
+{
+    ++chanceDraws_;
+    return chance_.Below(10000) < chanceBp;
 }
 void Combat::Assess(bool timeout)
 {
     result_.survivors = {};
+    // Summoned units keep a fight going but are not survivors; a wall alone does not keep it going.
+    std::array<int, 2> fighting{};
     for (const auto &u : units_)
         if (Alive(u))
-            ++result_.survivors[u.side];
+        {
+            if (!u.summoned) ++result_.survivors[u.side];
+            if (!Inert(u)) ++fighting[u.side];
+        }
     result_.ticks = tick_;
     if (timeout)
     {
@@ -1550,11 +2211,11 @@ void Combat::Assess(bool timeout)
         packets_.clear();
         return;
     }
-    if (result_.survivors[0] && result_.survivors[1])
+    if (fighting[0] && fighting[1])
         return;
-    if (result_.survivors[0] || result_.survivors[1])
+    if (fighting[0] || fighting[1])
     {
-        const int livingSide = result_.survivors[0] ? 0 : 1;
+        const int livingSide = fighting[0] ? 0 : 1;
         for (const auto &p : packets_)
             if (p.effect == Effect::Damage && units_[p.source].side != livingSide)
             {
@@ -1569,7 +2230,7 @@ void Combat::Assess(bool timeout)
                 }
             }
     }
-    result_.winner = result_.survivors[0] ? 0 : result_.survivors[1] ? 1 : -1;
+    result_.winner = fighting[0] ? 0 : fighting[1] ? 1 : -1;
     result_.complete = true;
     TraceCompletion();
 }
@@ -1578,6 +2239,25 @@ void Combat::Tick()
     if (result_.complete)
         return;
     ++tick_;
+    // Summons whose time is up leave, then queued summons arrive, before this tick's order is built.
+    for (std::size_t i = 0; i < units_.size(); ++i)
+    {
+        auto &u = units_[i];
+        if (!Alive(u) || !u.summoned || u.expiryTick == 0 || u.expiryTick > tick_ || draining_) continue;
+        CombatEvent e;
+        e.tick = tick_;
+        e.source = e.target = u.id;
+        e.effect = Effect::Summon;
+        e.cell = e.origin = u.cell;
+        e.healthLoss = u.health;
+        u.health = 0;
+        u.manaOnDeath = u.mana;
+        u.mana = 0;
+        u.state = ActionState::Defeated;
+        CancelReservation(int(i));
+        events_.push_back(e);
+    }
+    ServeSpawns();
     std::vector<int> order(units_.size());
     std::iota(order.begin(), order.end(), 0);
     std::sort(order.begin(), order.end(),
@@ -1596,6 +2276,31 @@ void Combat::Tick()
         if (!Alive(u) || draining_)
             CancelReservation(i);
     }
+    // Once a second: trait regeneration and mana income.
+    if (!draining_ && tick_ % std::max(1, 1000 / catalog_->rules.tickMs) == 0)
+        for (int i : order)
+        {
+            auto &u = units_[i];
+            if (!Alive(u)) continue;
+            if (u.regenBp > 0 && u.health < u.maxHealth)
+            {
+                CombatEvent e;
+                e.tick = tick_;
+                e.source = e.target = u.id;
+                e.effect = Effect::Heal;
+                e.cell = e.origin = u.cell;
+                e.requested = HalfUp(u.maxHealth * u.regenBp, 10000);
+                e.resolved = std::min(e.requested, u.maxHealth - u.health);
+                u.health += e.resolved;
+                events_.push_back(e);
+            }
+            if (u.manaPerSecond > 0 && u.ability.mana.maximum > 0 && tick_ >= u.manaResumeTick && !Afflicted(u, UnitStatus::Hex))
+            {
+                const int gained = std::min(u.manaPerSecond, u.ability.mana.maximum - u.mana);
+                u.mana += gained;
+                u.manaFromRegen += gained;
+            }
+        }
     if (!draining_)
         for (int i : order)
         {
@@ -1622,6 +2327,12 @@ void Combat::Tick()
                std::make_tuple(b.due, units_[b.source].initiative, b.action, b.effectOrder,
                                b.target < 0 ? -1 : units_[b.target].initiative);
     });
+    // A zone that follows its caster is centred where the caster stands now, and ends with it.
+    packets_.erase(std::remove_if(packets_.begin(), packets_.end(),
+                                  [&](const Packet &p) { return p.follow && !Alive(units_[p.source]); }),
+                   packets_.end());
+    for (auto &p : packets_)
+        if (p.follow && p.due <= tick_) p.center = units_[p.source].cell;
     std::vector<Packet> future;
     for (const auto &p : packets_)
     {
@@ -1679,7 +2390,7 @@ void Combat::Tick()
     for (int i : order)
     {
         auto &u = units_[i];
-        if (!Alive(u) || u.state == ActionState::Stunned || u.state == ActionState::Moving ||
+        if (!Alive(u) || Inert(u) || u.state == ActionState::Stunned || u.state == ActionState::Moving ||
             u.state == ActionState::AttackWindup || u.state == ActionState::CastWindup)
             continue;
         if ((u.state == ActionState::CastRecovery ||
@@ -1690,15 +2401,16 @@ void Combat::Tick()
         Cell next;
         int length = 0;
         u.target = ChooseEnemy(i, next, length);
-        if (!basicRecovering && CommitAbility(i))
+        // A hexed unit may only walk; a silenced one attacks but may not cast.
+        const bool hexed = Afflicted(u, UnitStatus::Hex);
+        if (!hexed && !Afflicted(u, UnitStatus::Silence) && !basicRecovering && CommitAbility(i))
             continue;
         const auto &d = catalog_->Definition(u.definition, u.neutral);
         if (u.target >= 0 && length == 0)
         {
-            if (basicRecovering) { u.state = ActionState::AttackRecovery; continue; }
+            if (basicRecovering || hexed) { u.state = ActionState::AttackRecovery; continue; }
             int rateBonus = u.rateBonus;
-            for (const auto &m : u.modifiers)
-                rateBonus += int(m.magnitude);
+            rateBonus += ModifierSum(u, ModifierStat::AttackRate);
             u.state = ActionState::AttackWindup;
             u.actionId = nextAction_++;
             ++u.basicAttackOrdinal;
@@ -1710,7 +2422,8 @@ void Combat::Tick()
         {
             u.state = ActionState::Moving;
             u.destination = next;
-            u.movementTick = tick_ + MovementInterval(d.movementRate, u.movementBonus, catalog_->rules);
+            u.movementTick = tick_ + MovementInterval(d.movementRate, u.movementBonus + ModifierSum(u, ModifierStat::Movement),
+                                                      catalog_->rules);
         }
         else
         {
@@ -1728,7 +2441,8 @@ std::string Combat::InvariantError() const
         if (!ids.insert(u.id).second)
             return "Duplicate combat identity";
         if (u.mana < 0 || u.mana > u.ability.mana.maximum ||
-            u.manaFromAttacks + u.manaFromDamage + u.ability.mana.starting != u.mana + u.manaSpent + u.manaOnDeath)
+            u.manaFromAttacks + u.manaFromDamage + u.manaFromRegen + u.ability.mana.starting !=
+                u.mana + u.manaSpent + u.manaOnDeath + u.manaDrained)
             return "Invalid mana accounting";
         if (u.health < 0 || u.health > u.maxHealth || u.shield < 0)
             return "Invalid health/shield";

@@ -1,0 +1,165 @@
+{
+  "started_utc": "2026-09-16T13:42:00.925364+00:00",
+  "expected_blend": "C:\\Users\\USER\\Documents\\Wonder Chess\\support\\diagnostics\\new-pc-20260916\\blender\\WC_ConnectionProbe.blend",
+  "source_sha256_before": "16f563e6a86c4cb41f8da9b3b2540030e02974e1af6dac306b4cbd00199b6c92",
+  "user_prompt": "Do these: recover missing files, repair Blender\u2019s connection, and establish the compatible build tools. Also check and try the connection of blender and unreal engine",
+  "passed": true,
+  "failures": [],
+  "visual_review": "not_run; actual viewport image must be inspected separately",
+  "initialize": {
+    "meta": null,
+    "protocolVersion": "2025-11-25",
+    "capabilities": {
+      "experimental": {},
+      "logging": null,
+      "prompts": {
+        "listChanged": false
+      },
+      "resources": {
+        "subscribe": false,
+        "listChanged": false
+      },
+      "tools": {
+        "listChanged": false
+      },
+      "completions": null,
+      "tasks": null
+    },
+    "serverInfo": {
+      "name": "BlenderMCP",
+      "title": null,
+      "version": "1.30.0",
+      "websiteUrl": null,
+      "icons": null
+    },
+    "instructions": null
+  },
+  "advertised_tools": [
+    "get_addon_status",
+    "disable_telemetry",
+    "get_scene_info",
+    "get_object_info",
+    "get_viewport_screenshot",
+    "execute_blender_code",
+    "get_polyhaven_categories",
+    "search_polyhaven_assets",
+    "download_polyhaven_asset",
+    "set_texture",
+    "get_polyhaven_status",
+    "get_hyper3d_status",
+    "get_sketchfab_status",
+    "search_sketchfab_models",
+    "get_sketchfab_model_preview",
+    "download_sketchfab_model",
+    "get_polypizza_status",
+    "search_polypizza_models",
+    "download_polypizza_model",
+    "generate_hyper3d_model_via_text",
+    "generate_hyper3d_model_via_images",
+    "poll_rodin_job_status",
+    "import_generated_asset",
+    "get_hunyuan3d_status",
+    "generate_hunyuan3d_model",
+    "poll_hunyuan_job_status",
+    "import_generated_asset_hunyuan",
+    "record_trajectory_feedback"
+  ],
+  "codex_enabled_tools": [
+    "get_addon_status",
+    "get_scene_info",
+    "get_object_info",
+    "get_viewport_screenshot",
+    "execute_blender_code"
+  ],
+  "get_addon_status": {
+    "meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"up_to_date\": true,\n  \"protocol_version\": 5,\n  \"expected_protocol_version\": 5,\n  \"addon_version\": [\n    1,\n    6\n  ],\n  \"capabilities\": [\n    \"drain_human_activity\",\n    \"execute_code\",\n    \"get_addon_info\",\n    \"get_object_info\",\n    \"get_scene_info\",\n    \"get_telemetry_consent\",\n    \"get_viewport_screenshot\",\n    \"get_world_state_snapshot\",\n    \"set_telemetry_consent\"\n  ],\n  \"blender_version\": \"5.2.1 LTS\",\n  \"source\": \"native\",\n  \"warning\": null,\n  \"telemetry_consent\": false,\n  \"update_command\": \"uvx blender-mcp install-addon\",\n  \"after_install\": \"If the addon file was updated: in Blender, Preferences \\u2192 Add-ons \\u2192 disable/enable 'Interface: Blender MCP', or restart Blender, then Start MCP Server.\"\n}",
+        "annotations": null,
+        "meta": null
+      }
+    ],
+    "structuredContent": {
+      "result": "{\n  \"up_to_date\": true,\n  \"protocol_version\": 5,\n  \"expected_protocol_version\": 5,\n  \"addon_version\": [\n    1,\n    6\n  ],\n  \"capabilities\": [\n    \"drain_human_activity\",\n    \"execute_code\",\n    \"get_addon_info\",\n    \"get_object_info\",\n    \"get_scene_info\",\n    \"get_telemetry_consent\",\n    \"get_viewport_screenshot\",\n    \"get_world_state_snapshot\",\n    \"set_telemetry_consent\"\n  ],\n  \"blender_version\": \"5.2.1 LTS\",\n  \"source\": \"native\",\n  \"warning\": null,\n  \"telemetry_consent\": false,\n  \"update_command\": \"uvx blender-mcp install-addon\",\n  \"after_install\": \"If the addon file was updated: in Blender, Preferences \\u2192 Add-ons \\u2192 disable/enable 'Interface: Blender MCP', or restart Blender, then Start MCP Server.\"\n}"
+    },
+    "isError": false
+  },
+  "execute_blender_code": {
+    "meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "Code executed successfully: {\"file\": \"C:\\\\Users\\\\USER\\\\Documents\\\\Wonder Chess\\\\support\\\\diagnostics\\\\new-pc-20260916\\\\blender\\\\WC_ConnectionProbe.blend\", \"version\": \"5.2.1 LTS\", \"dirty\": false, \"objects\": [{\"name\": \"WC_ConnectionProbe\", \"type\": \"MESH\"}]}\n",
+        "annotations": null,
+        "meta": null
+      }
+    ],
+    "structuredContent": {
+      "result": "Code executed successfully: {\"file\": \"C:\\\\Users\\\\USER\\\\Documents\\\\Wonder Chess\\\\support\\\\diagnostics\\\\new-pc-20260916\\\\blender\\\\WC_ConnectionProbe.blend\", \"version\": \"5.2.1 LTS\", \"dirty\": false, \"objects\": [{\"name\": \"WC_ConnectionProbe\", \"type\": \"MESH\"}]}\n"
+    },
+    "isError": false
+  },
+  "live_snapshot": {
+    "file": "C:\\Users\\USER\\Documents\\Wonder Chess\\support\\diagnostics\\new-pc-20260916\\blender\\WC_ConnectionProbe.blend",
+    "version": "5.2.1 LTS",
+    "dirty": false,
+    "objects": [
+      {
+        "name": "WC_ConnectionProbe",
+        "type": "MESH"
+      }
+    ]
+  },
+  "get_scene_info": {
+    "meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"name\": \"Scene\",\n  \"object_count\": 1,\n  \"objects\": [\n    {\n      \"name\": \"WC_ConnectionProbe\",\n      \"type\": \"MESH\",\n      \"location\": [\n        0.0,\n        0.0,\n        0.5\n      ]\n    }\n  ],\n  \"materials_count\": 1\n}",
+        "annotations": null,
+        "meta": null
+      }
+    ],
+    "structuredContent": {
+      "result": "{\n  \"name\": \"Scene\",\n  \"object_count\": 1,\n  \"objects\": [\n    {\n      \"name\": \"WC_ConnectionProbe\",\n      \"type\": \"MESH\",\n      \"location\": [\n        0.0,\n        0.0,\n        0.5\n      ]\n    }\n  ],\n  \"materials_count\": 1\n}"
+    },
+    "isError": false
+  },
+  "inspected_object": "WC_ConnectionProbe",
+  "get_object_info": {
+    "meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"name\": \"WC_ConnectionProbe\",\n  \"type\": \"MESH\",\n  \"location\": [\n    0.0,\n    0.0,\n    0.5\n  ],\n  \"rotation\": [\n    0.0,\n    0.0,\n    0.0\n  ],\n  \"scale\": [\n    1.0,\n    1.0,\n    1.0\n  ],\n  \"visible\": true,\n  \"materials\": [],\n  \"world_bounding_box\": [\n    [\n      -0.5,\n      -0.5,\n      0.0\n    ],\n    [\n      0.5,\n      0.5,\n      1.0\n    ]\n  ],\n  \"mesh\": {\n    \"vertices\": 8,\n    \"edges\": 12,\n    \"polygons\": 6\n  }\n}",
+        "annotations": null,
+        "meta": null
+      }
+    ],
+    "structuredContent": {
+      "result": "{\n  \"name\": \"WC_ConnectionProbe\",\n  \"type\": \"MESH\",\n  \"location\": [\n    0.0,\n    0.0,\n    0.5\n  ],\n  \"rotation\": [\n    0.0,\n    0.0,\n    0.0\n  ],\n  \"scale\": [\n    1.0,\n    1.0,\n    1.0\n  ],\n  \"visible\": true,\n  \"materials\": [],\n  \"world_bounding_box\": [\n    [\n      -0.5,\n      -0.5,\n      0.0\n    ],\n    [\n      0.5,\n      0.5,\n      1.0\n    ]\n  ],\n  \"mesh\": {\n    \"vertices\": 8,\n    \"edges\": 12,\n    \"polygons\": 6\n  }\n}"
+    },
+    "isError": false
+  },
+  "get_viewport_screenshot": {
+    "meta": null,
+    "content": [
+      {
+        "type": "image",
+        "mimeType": "image/png",
+        "annotations": null,
+        "meta": null,
+        "saved_path": "C:\\Users\\USER\\Documents\\Wonder Chess\\reports\\new-pc-repair-20260916\\blender\\live-verification\\viewport.png",
+        "sha256": "379fc3e0589737df4fd2af45797b1dd62fcbc963a407a29a3da1c434447131f7"
+      }
+    ],
+    "structuredContent": null,
+    "isError": false
+  },
+  "viewport_path": "C:\\Users\\USER\\Documents\\Wonder Chess\\reports\\new-pc-repair-20260916\\blender\\live-verification\\viewport.png",
+  "source_sha256_after": "16f563e6a86c4cb41f8da9b3b2540030e02974e1af6dac306b4cbd00199b6c92",
+  "source_unchanged": true,
+  "finished_utc": "2026-09-16T13:42:02.135389+00:00"
+}

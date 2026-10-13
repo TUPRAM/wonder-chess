@@ -1,0 +1,22 @@
+<frozen runpy>:128: RuntimeWarning: 'blender_mcp.server' found in sys.modules after import of package 'blender_mcp', but prior to execution of 'blender_mcp.server'; this may result in unpredictable behaviour
+2026-09-17 14:39:07,468 - BlenderMCPServer - INFO - BlenderMCP server starting up
+2026-09-17 14:39:07,470 - BlenderMCPServer - INFO - Blender addon on disk is current (protocol 5).
+2026-09-17 14:39:07,471 - blender-mcp-telemetry - WARNING - Telemetry disabled via environment variable
+2026-09-17 14:39:07,472 - BlenderMCPServer - INFO - Connected to Blender at 127.0.0.1:9877
+2026-09-17 14:39:07,472 - BlenderMCPServer - INFO - Created new persistent connection to Blender
+2026-09-17 14:39:07,472 - BlenderMCPServer - INFO - Sending command: get_addon_info with params: None
+2026-09-17 14:39:07,472 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-17 14:39:07,502 - BlenderMCPServer - INFO - Received complete response (358 bytes)
+2026-09-17 14:39:07,502 - BlenderMCPServer - INFO - Received 358 bytes of data
+2026-09-17 14:39:07,502 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-17 14:39:07,502 - BlenderMCPServer - INFO - Blender addon up to date (protocol 5, addon [1, 6], Blender 5.2.1 LTS)
+2026-09-17 14:39:07,502 - BlenderMCPServer - INFO - Successfully connected to Blender on startup
+2026-09-17 14:39:07,507 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-09-17 14:39:07,510 - BlenderMCPServer - INFO - Sending command: execute_code with params: {'code': "import bpy, json\nassert bpy.data.filepath.endswith('transport-test.blend'), 'Wrong Blender session'\nmeshes=[o for o in bpy.context.scene.objects if o.type=='MESH']\nassert len(meshes)==2, 'Expected original plus actual bridge import'\nassert all(abs(d-1.0)<0.001 for o in meshes for d in o.dimensions), 'Scale mismatch'\nbpy.ops.object.select_all(action='DESELECT')\nfor o in meshes:\n    if o.name!='WC_OneMeter_Original':\n        o.select_set(True)\n        bpy.context.view_layer.objects.active=o\nbpy.ops.export_scene.fbx(filepath='C:/Users/USER/Documents/Wonder Chess/reports/meshy-setup-20260917/bridge-calibration.fbx',use_selection=True,object_types={'MESH'},axis_forward='-Z',axis_up='Y',apply_unit_scale=True,add_leaf_bones=False,bake_anim=False)\nbpy.ops.wm.save_as_mainfile(filepath='C:/Users/USER/Documents/Wonder Chess/reports/meshy-setup-20260917/bridge-imported.blend')\nprint(json.dumps({'objects':[{'name':o.name,'dimensions':list(o.dimensions),'vertices':len(o.data.vertices),'materials':len(o.data.materials)} for o in meshes],'file':bpy.data.filepath}))\n"}
+2026-09-17 14:39:07,510 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-09-17 14:39:07,714 - BlenderMCPServer - INFO - Received complete response (641 bytes)
+2026-09-17 14:39:07,714 - BlenderMCPServer - INFO - Received 641 bytes of data
+2026-09-17 14:39:07,714 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-09-17 14:39:07,717 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-09-17 14:39:07,721 - BlenderMCPServer - INFO - Disconnecting from Blender on shutdown
+2026-09-17 14:39:07,721 - BlenderMCPServer - INFO - BlenderMCP server shut down

@@ -1,7 +1,18 @@
-param([Parameter(Mandatory = $true)][ValidateNotNullOrEmpty()][string]$BlendFile)
+param(
+    [Parameter(Mandatory = $true)][ValidateNotNullOrEmpty()][string]$BlendFile,
+    [string]$BlenderExe = $env:BLENDER_EXE
+)
 $ErrorActionPreference = 'Stop'
 $repoRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
-$blenderExe = 'C:\Program Files\Blender Foundation\Blender 5.1\blender.exe'
+if (-not $BlenderExe) {
+    $BlenderExe = @(
+        'C:\Program Files\Blender Foundation\Blender 5.2\blender.exe',
+        'C:\Program Files\Blender Foundation\Blender 5.1\blender.exe'
+    ) | Where-Object { Test-Path -LiteralPath $_ -PathType Leaf } | Select-Object -First 1
+}
+if (-not $BlenderExe -or -not (Test-Path -LiteralPath $BlenderExe -PathType Leaf)) {
+    throw 'Blender executable not found. Pass -BlenderExe or set BLENDER_EXE to the installed blender.exe.'
+}
 if (Get-Process blender -ErrorAction SilentlyContinue) {
     throw 'Blender is already open. Use its MCP for Blender sidebar to start port 9876; this launcher preserves the existing session.'
 }

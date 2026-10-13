@@ -84,7 +84,10 @@ double SkillBudget(const UnitDef &unit, int star, int capacity, const Catalog &c
                              std::max(catalog.rules.tickMs, ability.cooldownMs);
     const bool area = ability.selector == Selector::CurrentEnemyArea ||
                       ability.selector == Selector::AdjacentEnemies ||
-                      ability.selector == Selector::AdjacentAllies;
+                      ability.selector == Selector::AdjacentAllies ||
+                      ability.selector == Selector::AllAllies || ability.selector == Selector::DensestEnemyArea ||
+                      ability.selector == Selector::RandomEnemyAreas || ability.selector == Selector::EnemyLine ||
+                      ability.selector == Selector::EnemyCone || ability.selector == Selector::ChainFromCurrentEnemy;
     const double recipients = area ? std::min({3, std::max(1, capacity), ability.maxTargets}) : 1;
     const double basicPerSecond = double(StarValue(unit.attackDamage, star, 0, catalog.rules)) *
                                   unit.attackRate / 1000.0;
@@ -119,23 +122,68 @@ double SkillBudget(const UnitDef &unit, int star, int capacity, const Catalog &c
         const double magnitude = double(effect.magnitude[star - 1]);
         switch (effect.effect)
         {
-        case Effect::Damage: potential += magnitude * recipients; break;
+        case Effect::Damage:
+            potential += magnitude * recipients * (effect.repeatMs > 0 ? effect.durationMs / effect.repeatMs : 1) *
+                         (effect.critical ? 1.5 : 1.0);
+            break;
         case Effect::Heal:
         case Effect::Shield: potential += magnitude * recipients * 0.6; break;
         case Effect::Stun:
             potential += basicPerSecond * effect.durationMs / 1000.0 * recipients;
             break;
         case Effect::StatModifier:
-            potential += basicPerSecond * std::abs(magnitude) / 10000.0 *
+            // Armour and resistance are flat points, worth about one percent each; the rest are basis points.
+            potential += basicPerSecond * std::abs(magnitude) /
+                         (effect.stat == ModifierStat::Armor || effect.stat == ModifierStat::Resistance ? 100.0 : 10000.0) *
                          effect.durationMs / 1000.0 * recipients;
             break;
         case Effect::Dash:
             potential += basicPerSecond * std::min(2, ability.maxDash) * 0.25;
             break;
+        // A status is worth the basic attacks it takes away; magnitude is its duration in milliseconds.
+        case Effect::Hex:
+            potential += basicPerSecond * magnitude / 1000.0 * recipients;
+            break;
+        case Effect::Silence:
+        case Effect::Taunt:
+            potential += basicPerSecond * magnitude / 1000.0 * recipients * 0.5;
+            break;
+        case Effect::ManaDrain: // a full bar is about three seconds of basic attacks
+            potential += basicPerSecond * 3.0 * magnitude / 10000.0 * recipients;
+            break;
+        case Effect::Blink: // reaching a target at once saves about half a second of walking
+            potential += basicPerSecond * 0.5;
+            break;
+        case Effect::Summon:
+        {
+            // About four seconds of each summoned unit's attacks, plus a tenth of its health as cover.
+            const auto &summon = catalog.neutrals[effect.summon];
+            potential += effect.count * (double(StarValue(summon.attackDamage, star, 0, catalog.rules)) * summon.attackRate / 1000.0 * 4.0 +
+                                         double(StarValue(summon.health, star, 0, catalog.rules)) * 0.1);
+            break;
+        }
         }
     }
     const double occupied = basicPerSecond * (ability.castMs + ability.recoveryMs) / 1000.0;
     return std::max(0.0, potential * 0.75 - occupied) * casts / (horizon * 10.0);
+}
+// Bot hints for a unit's class, or null when the catalogue carries none and the
+// legacy class names below still apply.
+const ClassRole *RoleOf(const Catalog &c, const UnitDef &d)
+{
+    for (const auto &role : c.classRoles)
+        if (role.id == d.unitClass) return &role;
+    return nullptr;
+}
+bool IsFrontline(const Catalog &c, const UnitDef &d)
+{
+    if (const auto *role = RoleOf(c, d)) return role->role == BotRole::Frontline;
+    return d.unitClass == "guardian" || d.unitClass == "warrior";
+}
+bool IsSupport(const Catalog &c, const UnitDef &d)
+{
+    if (const auto *role = RoleOf(c, d)) return role->role == BotRole::Support;
+    return d.unitClass == "priest" || (c.profileId == "wonder_vnext" && d.unitClass == "healer");
 }
 Features Evaluate(const SeatState &s, const Catalog &c, const BotDef &b)
 {
@@ -145,10 +193,12 @@ Features Evaluate(const SeatState &s, const Catalog &c, const BotDef &b)
     for (const auto &u : s.roster)
     {
         const auto &d = c.units[u.definition];
-        const bool successor = c.profileId == "wonder_vnext";
-        double weight = d.unitClass == "guardian" ? b.frontline
-                        : d.unitClass == "priest" || (successor && d.unitClass == "healer") ? b.support
-                                                  : b.damage;
+        const auto *role = RoleOf(c, d);
+        double weight = role ? (role->role == BotRole::Frontline ? b.frontline
+                                : role->role == BotRole::Support ? b.support : b.damage)
+                        : d.unitClass == "guardian" ? b.frontline
+                        : IsSupport(c, d) ? b.support
+                                          : b.damage;
         double budget = (double(StarValue(d.health, u.star, 0, c.rules)) / 100000.0 +
                          double(StarValue(d.attackDamage, u.star, 0, c.rules)) * d.attackRate / 10000000.0 +
                           SkillBudget(d, u.star, s.level, c, u.relic)) *
@@ -170,14 +220,29 @@ Features Evaluate(const SeatState &s, const Catalog &c, const BotDef &b)
         f.budget += choices[i].first;
         counts[d.race].insert(u.definition);
         counts[d.unitClass].insert(u.definition);
-        frontline |= d.unitClass == "guardian" || d.unitClass == "warrior";
-        support |= d.unitClass == "priest" || (c.profileId == "wonder_vnext" && d.unitClass == "healer");
-        damage |= d.unitClass == "ranger" || d.unitClass == "mage" || d.unitClass == "rogue" ||
+        frontline |= IsFrontline(c, d);
+        support |= IsSupport(c, d);
+        if (const auto *role = RoleOf(c, d)) damage |= role->role == BotRole::Damage;
+        else damage |= d.unitClass == "ranger" || d.unitClass == "mage" || d.unitClass == "rogue" ||
             (c.profileId == "wonder_vnext" && (d.unitClass == "assassin" || d.unitClass == "controller"));
     }
+    std::set<std::string> scored;
     for (const auto &t : c.traits)
     {
+        // A trait with several parts is still one trait to a bot.
+        if (!scored.insert(t.id).second) continue;
         const int count = int(counts[t.id].size());
+        if (!t.tiers.empty())
+        {
+            // Tiered traits: one step for the first tier, two for the second, and a
+            // nudge when one more member reaches the next tier.
+            int reached = 0;
+            for (const auto &tier : t.tiers) reached += count >= tier.first;
+            const bool oneShort = reached < int(t.tiers.size()) && count + 1 == t.tiers[reached].first;
+            if (reached >= 2) f.traits += 2.0 / 6.0;
+            else if (reached == 1) f.traits += (oneShort ? 1.25 : 1.0) / 6.0;
+            continue;
+        }
         if (count >= t.threshold4) f.traits += 2.0 / 6.0;
         else if (count >= t.threshold) f.traits += (count == 3 ? 1.25 : 1.0) / 6.0;
     }
@@ -287,11 +352,10 @@ double TacticalScore(const SeatState &seat, const PublicSeat *opponent, const Ca
             continue;
         ++deployed;
         const auto &definition = catalog.units[unit.definition];
-        const bool frontline = definition.unitClass == "guardian" || definition.unitClass == "warrior";
+        const bool frontline = IsFrontline(catalog, definition);
         if (frontline)
             score += double(unit.cell.row) / 3.0;
-        else if (definition.unitClass == "priest" ||
-                 (catalog.profileId == "wonder_vnext" && definition.unitClass == "healer"))
+        else if (IsSupport(catalog, definition))
         {
             int supportRecipients = 0;
             for (const auto &ally : seat.roster)
@@ -307,8 +371,7 @@ double TacticalScore(const SeatState &seat, const PublicSeat *opponent, const Ca
             for (const auto &ally : seat.roster)
                 if (ally.onBoard && ally.cell.row > unit.cell.row &&
                     std::abs(ally.cell.column - unit.cell.column) <= 1 &&
-                    (catalog.units[ally.definition].unitClass == "guardian" ||
-                     catalog.units[ally.definition].unitClass == "warrior"))
+                    IsFrontline(catalog, catalog.units[ally.definition]))
                 {
                     score += 0.4;
                     break;
@@ -364,6 +427,7 @@ void Match::Restart(Id seed, int humans, bool networked)
     accumulatorMs_ = 0;
     previousGhost_ = -1;
     capped_ = false;
+    guided_ = false;
     seats_.clear();
     pairs_.clear();
     encounters_.clear();
@@ -375,6 +439,7 @@ void Match::Restart(Id seed, int humans, bool networked)
     ghostCounts_.fill(0);
     lastWon_.fill(false);
     pendingRewards_.fill(0);
+    for (auto &placed : autoDeployed_) placed.clear();
     botObserveNextMs_.fill(0);
     botObservationRevision_.fill(0);
     for (auto &observation : botObservations_)
@@ -857,7 +922,8 @@ void Match::Prepare()
 {
     ++round_;
     phase_ = Phase::Preparation;
-    remainingMs_ = round_ == 1 ? catalog_.rules.firstPreparationMs : catalog_.rules.preparationMs;
+    remainingMs_ = PreparationMs(catalog_.rules, round_);
+    for (auto &placed : autoDeployed_) placed.clear();
     botCommands_.fill(0);
     botRerolls_.fill(0);
     botNextMs_.fill(elapsedMs_);
@@ -867,7 +933,7 @@ void Match::Prepare()
         {
             if (round_ > 1)
             {
-                s.gold += catalog_.rules.baseIncome + pendingRewards_[s.id] +
+                s.gold += catalog_.rules.baseIncome + pendingRewards_[s.id] + StreakIncome(catalog_.rules, s.streak) +
                           std::min(catalog_.rules.interestCap, s.lockGold / catalog_.rules.interestDivisor);
                 GainXp(s, catalog_.rules.passiveXp);
                 pendingRewards_[s.id] = 0;
@@ -896,6 +962,140 @@ void Match::Prepare()
         Pair();
     }
 }
+void Match::BeginGuidedStage(const GuidedStage &stage)
+{
+    const auto &r = catalog_.rules;
+    guided_ = true;
+    phase_ = Phase::Preparation;
+    round_ = stage.round;
+    pvpRoundIndex_ = 0;
+    for (int round = 1; round <= round_; ++round) pvpRoundIndex_ += !IsNeutralRound(round, r);
+    remainingMs_ = PreparationMs(r, round_);
+    encounters_.clear(); records_.clear(); pairs_.clear(); previousPairs_.clear(); meetings_.clear();
+    pendingRewards_.fill(0); lastWon_.fill(false); botCommands_.fill(0); botRerolls_.fill(0);
+    for (auto &placed : autoDeployed_) placed.clear();
+    const auto fill = [&](SeatState &seat, const std::vector<GuidedUnit> &board, const std::vector<GuidedUnit> &bench) {
+        seat.roster.clear();
+        int slot = 0;
+        for (int benched = 0; benched < 2; ++benched)
+            for (const auto &unit : benched ? bench : board)
+            {
+                OwnedUnit owned;
+                owned.id = nextUnit_++;
+                owned.definition = unit.definition;
+                owned.star = unit.star;
+                owned.onBoard = !benched;
+                if (benched) owned.bench = slot++;
+                else owned.cell = unit.cell;
+                seat.roster.push_back(owned);
+            }
+    };
+    for (auto &seat : seats_)
+    {
+        seat.ready = seat.shopLocked = false;
+        seat.lockGold = seat.xp = seat.streak = seat.pendingRelicDrafts = 0;
+        seat.relicOffers.clear();
+        seat.ownedRelics.clear();
+        ++seat.revision;
+        // Only the captain and one opponent play; the others are out and hold the last places.
+        seat.health = seat.id < 2 ? r.startingHealth : 0;
+        seat.placement = seat.id < 2 ? 0 : seat.id + 1;
+        if (seat.id >= 2) seat.roster.clear();
+    }
+    auto &captain = seats_[0];
+    auto &opponent = seats_[1];
+    captain.gold = stage.gold;
+    captain.level = stage.level;
+    captain.streak = stage.streak;
+    fill(captain, stage.board, stage.bench);
+    captain.shop = stage.shop;
+    captain.shop.resize(r.shopSlots, -1);
+    if (stage.relicDraft)
+    {
+        captain.pendingRelicDrafts = 1;
+        OfferRelics(catalog_, captain);
+    }
+    opponent.gold = 0;
+    opponent.level = std::clamp(int(stage.opponent.size()), r.startingLevel, r.maximumLevel);
+    fill(opponent, stage.opponent, {});
+    opponent.shop.assign(r.shopSlots, -1);
+    opponent.ready = true;
+    if (IsNeutralRound(round_, r))
+    {
+        if (const auto *wave = CurrentWave())
+            for (int seat = 0; seat < 2; ++seat) pairs_.push_back({seat, -1, false, EncounterKind::Neutral, wave->id});
+    }
+    else pairs_.push_back({0, 1, false, EncounterKind::Pvp, {}});
+}
+bool Match::GuidedStepDone(const GuidedStep &step, const GuidedView &view) const
+{
+    const auto &captain = seats_[0];
+    const auto owns = [&](auto &&test) {
+        return std::any_of(captain.roster.begin(), captain.roster.end(),
+                           [&](const OwnedUnit &unit) { return unit.definition == step.definition && test(unit); });
+    };
+    if (step.done == "deployed_at_least")
+        return std::count_if(captain.roster.begin(), captain.roster.end(), [](const OwnedUnit &unit) { return unit.onBoard; }) >= step.value;
+    if (step.done == "ready") return captain.ready || phase_ != Phase::Preparation;
+    if (step.done == "fight_over") return !records_.empty();
+    if (step.done == "shop_open") return view.shopOpen;
+    if (step.done == "trait_focus") return view.traitFocus == step.trait;
+    if (step.done == "owns") return owns([](const OwnedUnit &) { return true; });
+    if (step.done == "star_at_least") return owns([&](const OwnedUnit &unit) { return unit.star >= step.value; });
+    if (step.done == "row_at_least") return owns([&](const OwnedUnit &unit) { return unit.onBoard && unit.cell.row >= step.value; });
+    if (step.done == "row_at_most") return owns([&](const OwnedUnit &unit) { return unit.onBoard && unit.cell.row <= step.value; });
+    if (step.done == "level_at_least") return captain.level >= step.value;
+    if (step.done == "gold_at_least") return captain.gold >= step.value;
+    if (step.done == "shop_locked") return captain.shopLocked;
+    if (step.done == "relic_owned") return int(captain.ownedRelics.size()) >= step.value;
+    if (step.done == "relic_equipped")
+        return std::any_of(captain.roster.begin(), captain.roster.end(), [](const OwnedUnit &unit) { return unit.relic >= 0; });
+    if (step.done == "trait_at_least")
+    {
+        std::set<int> members;
+        for (const auto &unit : captain.roster)
+            if (unit.onBoard && (catalog_.units[unit.definition].race == step.trait || catalog_.units[unit.definition].unitClass == step.trait))
+                members.insert(unit.definition);
+        return int(members.size()) >= step.value;
+    }
+    return false;
+}
+// Fills free board places from the bench, lowest bench slot first. Each unit takes the free cell
+// nearest the middle of the back row, so a unit nobody placed is at least not in front.
+void Match::AutoDeploy(SeatState &s)
+{
+    int deployed = 0;
+    std::vector<OwnedUnit *> bench;
+    for (auto &u : s.roster)
+    {
+        if (u.onBoard) ++deployed;
+        else bench.push_back(&u);
+    }
+    std::sort(bench.begin(), bench.end(), [](const OwnedUnit *l, const OwnedUnit *r) { return l->bench < r->bench; });
+    const auto &r = catalog_.rules;
+    for (auto *unit : bench)
+    {
+        if (deployed >= s.level) break;
+        bool found = false;
+        Cell best;
+        std::tuple<int, int, int> bestKey{};
+        for (int row = 0; row < r.deploymentRows; ++row)
+            for (int column = 0; column < r.columns; ++column)
+            {
+                const Cell cell{column, row};
+                if (std::any_of(s.roster.begin(), s.roster.end(), [&](const OwnedUnit &v) { return v.onBoard && v.cell == cell; }))
+                    continue;
+                const auto key = std::make_tuple(row, std::abs(2 * column - (r.columns - 1)), column);
+                if (!found || key < bestKey) { bestKey = key; best = cell; found = true; }
+            }
+        if (!found) break;
+        unit->onBoard = true;
+        unit->cell = best;
+        unit->bench = -1;
+        ++deployed;
+        autoDeployed_[s.id].push_back(unit->id);
+    }
+}
 void Match::Lock()
 {
     if (phase_ != Phase::Preparation)
@@ -906,6 +1106,7 @@ void Match::Lock()
     for (auto &s : seats_)
         if (s.health > 0)
         {
+            if (catalog_.rules.autoDeploy) AutoDeploy(s);
             s.lockGold = s.gold;
             ++s.revision;
         }
@@ -965,6 +1166,7 @@ Id Match::StateHash() const
         add(Id(s.level));
         add(Id(s.wins));
         add(Id(s.neutralWins)); add(Id(s.neutralLosses)); add(Id(s.neutralDraws));
+        if (catalog_.profileId == "wonder_vnext") add(Id(static_cast<Int>(s.streak)));
         add(Id(pendingRewards_[s.id]));
         add(Id(s.placement));
         add(Id(s.lockGold));
@@ -1073,8 +1275,10 @@ void Match::Settle()
             else
             {
                 lastWon_[seat] = win;
+                auto &streak = seats_[seat].streak;
+                streak = r.winner < 0 ? 0 : win ? std::max(streak, 0) + 1 : std::min(streak, 0) - 1;
                 if (win) ++seats_[seat].wins;
-                pendingRewards_[seat] = win ? catalog_.rules.winIncome : 0;
+                pendingRewards_[seat] = win ? catalog_.rules.winIncome + TraitWinGold(seats_[seat], catalog_) : 0;
                 record.damage[seat] = r.winner < 0 ? catalog_.rules.drawDamage
                                       : win ? 0 : base + r.survivors[1 - side];
             }
@@ -1132,13 +1336,15 @@ void Match::Settle()
 Cell Match::FormationCell(const SeatState &s, const OwnedUnit &u) const
 {
     const auto &d = catalog_.units[u.definition];
-    int preferred = d.unitClass == "guardian"  ? 3
+    const auto *role = RoleOf(catalog_, d);
+    int preferred = role ? role->row
+                    : d.unitClass == "guardian"  ? 3
                     : d.unitClass == "warrior" ? 3
                     : d.unitClass == "rogue"   ? 2
                     : d.unitClass == "priest"  ? 1
                                                : 0;
     std::array<int, 8> columns{3, 4, 2, 5, 1, 6, 0, 7};
-    if (d.unitClass == "rogue")
+    if (role ? role->flank : d.unitClass == "rogue")
         columns = {0, 7, 1, 6, 2, 5, 3, 4};
     for (int delta = 0; delta < 4; ++delta)
     {
@@ -1153,10 +1359,28 @@ Cell Match::FormationCell(const SeatState &s, const OwnedUnit &u) const
     }
     return {};
 }
+int TraitWinGold(const SeatState &s, const Catalog &c)
+{
+    std::map<std::string, std::set<int>> counts;
+    for (const auto &u : s.roster)
+        if (u.onBoard)
+        {
+            counts[c.units[u.definition].race].insert(u.definition);
+            counts[c.units[u.definition].unitClass].insert(u.definition);
+        }
+    int gold = 0;
+    for (const auto &t : c.traits)
+        if (t.stat == "win_gold_flat") gold += TraitValue(t, int(counts[t.id].size()));
+    return gold;
+}
+double BotLineupValue(const SeatState &s, const Catalog &c, const BotDef &b)
+{
+    auto f = Evaluate(s, c, b);
+    return f.budget + f.roles + f.traits * b.synergy;
+}
 double Match::FormationScore(const SeatState &s, const BotDef &b) const
 {
-    auto f = Evaluate(s, catalog_, b);
-    return f.budget + f.roles + f.traits * b.synergy;
+    return BotLineupValue(s, catalog_, b);
 }
 void Match::BotTurn(int seat)
 {
@@ -1253,6 +1477,29 @@ void Match::BotTurn(int seat)
             action = "deploy";
         }
     }
+    // A unit swapped in from the bench inherits the replaced unit's cell and can stand in the
+    // wrong half for its class. Only catalogues that carry class roles ask for this.
+    if (chosen.type == CommandType::Ready && botCommands_[seat] < bot.maxCommands - 1 &&
+        remainingMs_ > catalog_.rules.botRepositionCutoffMs)
+        for (const auto &u : s.roster)
+        {
+            if (!u.onBoard) continue;
+            const auto &d = catalog_.units[u.definition];
+            const auto *role = RoleOf(catalog_, d);
+            if (!role) continue;
+            const bool frontline = role->role == BotRole::Frontline;
+            const bool wrongHalf = frontline ? u.cell.row < 2 : role->role == BotRole::Damage && d.range > 1 && u.cell.row > 1;
+            if (!wrongHalf) continue;
+            const Cell target = FormationCell(s, u);
+            if (frontline != (target.row >= 2)) continue; // no free cell in the right half
+            chosen.type = CommandType::Move;
+            chosen.unit = u.id;
+            chosen.toBoard = true;
+            chosen.cell = target;
+            best = 0.3;
+            action = "formation_correction";
+            break;
+        }
     if (chosen.type == CommandType::Ready && botCommands_[seat] < bot.maxCommands - 1)
     {
         // A stronger benched unit can replace a board unit without changing capacity.
@@ -1295,6 +1542,7 @@ void Match::BotTurn(int seat)
         if (chosen.type == CommandType::Ready)
         {
             auto before = Evaluate(s, catalog_, bot);
+            const int interestReserve = catalog_.rules.interestCap * catalog_.rules.interestDivisor;
             std::vector<Command> candidates;
             for (int i = 0; i < int(s.shop.size()); ++i)
                 if (s.shop[i] >= 0)
@@ -1335,13 +1583,16 @@ void Match::BotTurn(int seat)
                 if (!ApplyCommand(pending, candidate, next, reject))
                     continue;
                 auto after = Evaluate(pending, catalog_, bot);
+                // Gold above the interest cap earns nothing, so spending it is not a saving loss.
+                const int spent = s.gold - pending.gold;
+                const int fromSurplus = catalog_.botSpendsSurplus ? std::clamp(s.gold - interestReserve, 0, std::max(0, spent)) : 0;
                 std::array<double, 8> f{
                     std::clamp((after.budget - before.budget) / std::max(1.0, double(s.level)), -1.0, 1.0),
                     std::clamp(after.upgrades - before.upgrades, -1.0, 1.0),
                     std::clamp(after.traits - before.traits, -1.0, 1.0),
                     after.roles - before.roles,
                     std::clamp(after.pairs - before.pairs, -1.0, 1.0),
-                    double(s.gold - pending.gold) / std::max(10, s.gold),
+                    double(spent - fromSurplus) / std::max(10, s.gold),
                     double(
                         std::min(catalog_.rules.interestCap, s.gold / catalog_.rules.interestDivisor) -
                         std::min(catalog_.rules.interestCap, pending.gold / catalog_.rules.interestDivisor)) /
@@ -1356,6 +1607,10 @@ void Match::BotTurn(int seat)
                     score += double(pending.level - s.level) * 0.24 * bot.level;
                     if (s.xp + catalog_.rules.buyXpAmount >= catalog_.rules.xpToNext.at(s.level))
                         score += 0.04;
+                    // Credit progress toward the next level, or experience is only ever bought
+                    // when a single purchase finishes the level.
+                    else if (catalog_.botSpendsSurplus)
+                        score += double(catalog_.rules.buyXpAmount) / catalog_.rules.xpToNext.at(s.level) * 0.24 * bot.level;
                 }
                 score += (double(s.botRng.Below(20001)) - 10000.0) / 10000.0 * bot.noiseBp / 10000.0;
                 if (score > best + 0.01)
@@ -1422,8 +1677,10 @@ void Match::BotTurn(int seat)
                             }
                         }
             }
+            const bool surplusReroll = catalog_.botSpendsSurplus &&
+                s.gold >= catalog_.rules.interestCap * catalog_.rules.interestDivisor + catalog_.rules.rerollCost;
             if (chosen.type == CommandType::Ready && s.gold >= catalog_.rules.rerollCost + 10 &&
-                botRerolls_[seat] < bot.maxRerolls &&
+                (surplusReroll || botRerolls_[seat] < bot.maxRerolls) &&
                 int(s.roster.size()) < s.level + catalog_.rules.benchCapacity)
             {
                 chosen.type = CommandType::Reroll;
@@ -1465,7 +1722,8 @@ void Match::Tick(int ms)
     {
         accumulatorMs_ -= catalog_.rules.tickMs;
         elapsedMs_ += catalog_.rules.tickMs;
-        remainingMs_ -= catalog_.rules.tickMs;
+        // A guided lesson holds the preparation clock: the captain takes as long as the step needs.
+        if (!(guided_ && phase_ == Phase::Preparation)) remainingMs_ -= catalog_.rules.tickMs;
         if (phase_ == Phase::Preparation)
         {
             // Snapshot all bot observations before any policy acts on this tick.
@@ -1496,7 +1754,7 @@ void Match::Tick(int ms)
                             [](const Encounter &e) { return e.combat.Result().complete; }))
                 Settle();
         }
-        else if (phase_ == Phase::Settlement && remainingMs_ <= 0)
+        else if (phase_ == Phase::Settlement && remainingMs_ <= 0 && !guided_)
             Prepare();
     }
 }

@@ -1,7 +1,7 @@
 {
   "schema_version": "wonder_vnext.catalog.1",
   "profile_id": "wonder_vnext",
-  "balance_version": "wonder_vnext_silkmother_0.2.0",
+  "balance_version": "wonder_vnext_silkmother_0.13.0",
   "rules": {
     "columns": 8,
     "rows": 8,
@@ -20,9 +20,9 @@
     ],
     "seatCount": 8,
     "startingHealth": 100,
-    "maxRounds": 45,
+    "maxRounds": 60,
     "firstPreparationMs": 60000,
-    "preparationMs": 45000,
+    "preparationMs": 35000,
     "combatTimeoutMs": 45000,
     "settlementMs": 5000,
     "drawDamage": 2,
@@ -30,22 +30,22 @@
       {
         "start": 1,
         "end": 9,
-        "damage": 1
+        "damage": 3
       },
       {
         "start": 10,
         "end": 19,
-        "damage": 3
+        "damage": 6
       },
       {
         "start": 20,
         "end": 29,
-        "damage": 5
+        "damage": 9
       },
       {
         "start": 30,
-        "end": 45,
-        "damage": 8
+        "end": 60,
+        "damage": 12
       }
     ],
     "startingGold": 10,
@@ -108,24 +108,24 @@
       ],
       "8": [
         1500,
-        2000,
-        3500,
         2500,
-        500
+        3500,
+        2200,
+        300
       ],
       "9": [
-        1000,
-        1500,
+        1200,
+        2000,
         3000,
-        3500,
-        1000
+        3200,
+        600
       ],
       "10": [
-        500,
         1000,
+        1500,
         2500,
-        4000,
-        2000
+        3800,
+        1200
       ]
     },
     "botObservationMs": 1000,
@@ -136,17 +136,55 @@
     "neutralLossDamage": 2,
     "neutralOpeningDamage": 0,
     "relicRounds": [
-      3,
-      15,
-      25
+      10,
+      20,
+      30,
+      40,
+      50,
+      60
     ],
-    "maximumRelics": 3
+    "maximumRelics": 3,
+    "preparationStages": [
+      {
+        "start": 1,
+        "end": 5,
+        "ms": 25000
+      },
+      {
+        "start": 6,
+        "end": 20,
+        "ms": 30000
+      },
+      {
+        "start": 21,
+        "end": 60,
+        "ms": 35000
+      }
+    ],
+    "streakIncome": [
+      {
+        "length": 3,
+        "gold": 1
+      },
+      {
+        "length": 5,
+        "gold": 2
+      },
+      {
+        "length": 7,
+        "gold": 3
+      }
+    ],
+    "autoDeploy": true
   },
   "relic_policy": {
     "draft_rounds": [
-      3,
-      15,
-      25
+      10,
+      20,
+      30,
+      40,
+      50,
+      60
     ],
     "offer_count": 3,
     "team_equipped_limit": 3,
@@ -336,7 +374,39 @@
         "projectileTravelMs": 200,
         "damageType": "physical"
       },
-      "ability": null
+      "ability": {
+        "id": "wc_vn_na_lantern_bulb",
+        "name": "Lantern Glow",
+        "mechanic": "standard",
+        "effect": "shield",
+        "selector": "lowest_health_ally",
+        "damageType": "magic",
+        "firstCastMs": 2500,
+        "cooldownMs": 7000,
+        "castMs": 350,
+        "recoveryMs": 300,
+        "durationMs": 3000,
+        "travelMs": 0,
+        "radius": 0,
+        "range": 8,
+        "maxTargets": 1,
+        "maxDash": 0,
+        "allowSelf": true,
+        "magnitude": [
+          6000,
+          6000,
+          6000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Shields the monster with the lowest health.",
+        "tooltip_id": "Shields the monster with the lowest health."
+      }
     },
     {
       "id": "wc_vn_n_slate_ram",
@@ -356,7 +426,39 @@
         "projectileTravelMs": 0,
         "damageType": "physical"
       },
-      "ability": null
+      "ability": {
+        "id": "wc_vn_na_slate_ram",
+        "name": "Rock Charge",
+        "mechanic": "momentum_charge",
+        "effect": "damage",
+        "selector": "current_enemy",
+        "damageType": "physical",
+        "firstCastMs": 1500,
+        "cooldownMs": 6000,
+        "castMs": 350,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 0,
+        "radius": 0,
+        "range": 4,
+        "maxTargets": 1,
+        "maxDash": 3,
+        "allowSelf": false,
+        "magnitude": [
+          9000,
+          9000,
+          9000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 1500,
+        "maxMomentumSteps": 4,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Charges its target.",
+        "tooltip_id": "Charges its target."
+      }
     },
     {
       "id": "wc_vn_n_glass_moth",
@@ -396,17 +498,121 @@
         "projectileTravelMs": 0,
         "damageType": "physical"
       },
-      "ability": null
+      "ability": {
+        "id": "wc_vn_na_root_sentinel",
+        "name": "Root Slam",
+        "mechanic": "standard",
+        "effect": "stun",
+        "selector": "adjacent_enemies",
+        "damageType": "physical",
+        "firstCastMs": 3500,
+        "cooldownMs": 9000,
+        "castMs": 400,
+        "recoveryMs": 300,
+        "durationMs": 1250,
+        "travelMs": 0,
+        "radius": 1,
+        "range": 1,
+        "maxTargets": 8,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          0,
+          0,
+          0
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Slams the ground and stuns every enemy next to it.",
+        "tooltip_id": "Slams the ground and stuns every enemy next to it."
+      }
     },
     {
       "id": "wc_vn_n_hollow_bellkeeper",
-      "name": "Hollow Bellkeeper",
-      "display_name": "Hollow Bellkeeper",
+      "name": "The Hollow Bellkeeper",
+      "display_name": "The Hollow Bellkeeper",
       "footprint_cells": 1,
       "production_status": "basic_combat_lab_only",
       "stats": {
-        "health": 220000,
+        "health": 550000,
         "attackDamage": 10000,
+        "attackRate": 800,
+        "range": 3,
+        "armor": 20,
+        "resistance": 30,
+        "movementRate": 900,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_na_hollow_bellkeeper",
+        "name": "Toll",
+        "mechanic": "standard",
+        "effect": "stun",
+        "selector": "adjacent_enemies",
+        "damageType": "physical",
+        "firstCastMs": 3500,
+        "cooldownMs": 9000,
+        "castMs": 400,
+        "recoveryMs": 300,
+        "durationMs": 1250,
+        "travelMs": 0,
+        "radius": 2,
+        "range": 1,
+        "maxTargets": 24,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          0,
+          0,
+          0
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Strikes the bell in his chest; every enemy within two tiles is stunned.",
+        "tooltip_id": "Strikes the bell in his chest; every enemy within two tiles is stunned."
+      }
+    },
+    {
+      "id": "wc_vn_n_bramble_hound",
+      "name": "Bramble Hound",
+      "display_name": "Bramble Hound",
+      "footprint_cells": 1,
+      "production_status": "basic_combat_lab_only",
+      "stats": {
+        "health": 32000,
+        "attackDamage": 4500,
+        "attackRate": 1000,
+        "range": 1,
+        "armor": 10,
+        "resistance": 10,
+        "movementRate": 1300,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 0,
+        "damageType": "physical"
+      },
+      "ability": null
+    },
+    {
+      "id": "wc_vn_n_spore_cap",
+      "name": "Spore Cap",
+      "display_name": "Spore Cap",
+      "footprint_cells": 1,
+      "production_status": "basic_combat_lab_only",
+      "stats": {
+        "health": 38000,
+        "attackDamage": 2000,
         "attackRate": 800,
         "range": 3,
         "armor": 10,
@@ -416,7 +622,516 @@
         "projectileTravelMs": 200,
         "damageType": "physical"
       },
+      "ability": {
+        "id": "wc_vn_na_spore_cap",
+        "name": "Mending Spores",
+        "mechanic": "standard",
+        "effect": "heal",
+        "selector": "lowest_health_ally",
+        "damageType": "magic",
+        "firstCastMs": 3000,
+        "cooldownMs": 7000,
+        "castMs": 350,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 0,
+        "radius": 0,
+        "range": 8,
+        "maxTargets": 1,
+        "maxDash": 0,
+        "allowSelf": true,
+        "magnitude": [
+          9000,
+          9000,
+          9000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Heals the monster with the lowest health.",
+        "tooltip_id": "Heals the monster with the lowest health."
+      }
+    },
+    {
+      "id": "wc_vn_n_gutter_gargoyle",
+      "name": "Gutter Gargoyle",
+      "display_name": "Gutter Gargoyle",
+      "footprint_cells": 1,
+      "production_status": "basic_combat_lab_only",
+      "stats": {
+        "health": 90000,
+        "attackDamage": 5000,
+        "attackRate": 800,
+        "range": 3,
+        "armor": 30,
+        "resistance": 10,
+        "movementRate": 900,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_na_gutter_gargoyle",
+        "name": "Stone Wings",
+        "mechanic": "directional_guard",
+        "effect": "shield",
+        "selector": "self",
+        "damageType": "physical",
+        "firstCastMs": 1500,
+        "cooldownMs": 6000,
+        "castMs": 350,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 0,
+        "radius": 1,
+        "range": 1,
+        "maxTargets": 1,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          0,
+          0,
+          0
+        ],
+        "guardReductionBp": 3000,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Opens its wings and guards the monsters behind it.",
+        "tooltip_id": "Opens its wings and guards the monsters behind it."
+      }
+    },
+    {
+      "id": "wc_vn_n_bog_toad",
+      "name": "Bog Toad",
+      "display_name": "Bog Toad",
+      "footprint_cells": 1,
+      "production_status": "basic_combat_lab_only",
+      "stats": {
+        "health": 70000,
+        "attackDamage": 4000,
+        "attackRate": 800,
+        "range": 3,
+        "armor": 10,
+        "resistance": 10,
+        "movementRate": 900,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_na_bog_toad",
+        "name": "Mud Spit",
+        "mechanic": "standard",
+        "effect": "damage",
+        "selector": "current_enemy_area",
+        "damageType": "magic",
+        "firstCastMs": 3000,
+        "cooldownMs": 7000,
+        "castMs": 400,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 250,
+        "radius": 1,
+        "range": 3,
+        "maxTargets": 9,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          7000,
+          7000,
+          7000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Spits mud that damages a small area around its target.",
+        "tooltip_id": "Spits mud that damages a small area around its target."
+      }
+    },
+    {
+      "id": "wc_vn_n_old_tusk",
+      "name": "Old Tusk, the Slate King",
+      "display_name": "Old Tusk, the Slate King",
+      "footprint_cells": 1,
+      "production_status": "basic_combat_lab_only",
+      "stats": {
+        "health": 450000,
+        "attackDamage": 9000,
+        "attackRate": 800,
+        "range": 1,
+        "armor": 30,
+        "resistance": 10,
+        "movementRate": 900,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 0,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_na_old_tusk",
+        "name": "Rockslide Charge",
+        "mechanic": "momentum_charge",
+        "effect": "damage",
+        "selector": "current_enemy",
+        "damageType": "physical",
+        "firstCastMs": 1500,
+        "cooldownMs": 6000,
+        "castMs": 350,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 0,
+        "radius": 0,
+        "range": 4,
+        "maxTargets": 1,
+        "maxDash": 3,
+        "allowSelf": false,
+        "magnitude": [
+          22000,
+          22000,
+          22000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 1500,
+        "maxMomentumSteps": 4,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Lowers his head and charges his target.",
+        "tooltip_id": "Lowers his head and charges his target."
+      }
+    },
+    {
+      "id": "wc_vn_n_glass_queen",
+      "name": "The Glass Queen",
+      "display_name": "The Glass Queen",
+      "footprint_cells": 1,
+      "production_status": "basic_combat_lab_only",
+      "stats": {
+        "health": 500000,
+        "attackDamage": 11000,
+        "attackRate": 800,
+        "range": 4,
+        "armor": 10,
+        "resistance": 10,
+        "movementRate": 900,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_na_glass_queen",
+        "name": "Rose Window",
+        "mechanic": "crossing_beams",
+        "effect": "damage",
+        "selector": "current_enemy",
+        "damageType": "magic",
+        "firstCastMs": 1500,
+        "cooldownMs": 6000,
+        "castMs": 1000,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 0,
+        "radius": 3,
+        "range": 6,
+        "maxTargets": 20,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          15000,
+          15000,
+          15000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 400,
+        "tooltip_en": "Two beams of coloured light cross the board through her target.",
+        "tooltip_id": "Two beams of coloured light cross the board through her target."
+      }
+    },
+    {
+      "id": "wc_vn_n_grandmother_root",
+      "name": "Grandmother Root",
+      "display_name": "Grandmother Root",
+      "footprint_cells": 1,
+      "production_status": "basic_combat_lab_only",
+      "stats": {
+        "health": 650000,
+        "attackDamage": 12000,
+        "attackRate": 800,
+        "range": 1,
+        "armor": 30,
+        "resistance": 20,
+        "movementRate": 600,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 0,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_na_grandmother_root",
+        "name": "Deep Grove",
+        "mechanic": "stationary_grove",
+        "effect": "heal",
+        "selector": "adjacent_allies",
+        "damageType": "physical",
+        "firstCastMs": 1500,
+        "cooldownMs": 6000,
+        "castMs": 350,
+        "recoveryMs": 300,
+        "durationMs": 4000,
+        "travelMs": 0,
+        "radius": 2,
+        "range": 1,
+        "maxTargets": 10,
+        "maxDash": 0,
+        "allowSelf": true,
+        "magnitude": [
+          9000,
+          9000,
+          9000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 1500,
+        "pulseMs": 1000,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Grass spreads around her and heals every monster standing on it.",
+        "tooltip_id": "Grass spreads around her and heals every monster standing on it."
+      }
+    },
+    {
+      "id": "wc_vn_n_mire_mother",
+      "name": "The Mire Mother",
+      "display_name": "The Mire Mother",
+      "footprint_cells": 1,
+      "production_status": "basic_combat_lab_only",
+      "stats": {
+        "health": 700000,
+        "attackDamage": 13000,
+        "attackRate": 800,
+        "range": 3,
+        "armor": 20,
+        "resistance": 20,
+        "movementRate": 700,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_na_mire_mother",
+        "name": "Flood",
+        "mechanic": "tidal_push",
+        "effect": "damage",
+        "selector": "current_enemy",
+        "damageType": "magic",
+        "firstCastMs": 1500,
+        "cooldownMs": 6000,
+        "castMs": 350,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 0,
+        "radius": 0,
+        "range": 6,
+        "maxTargets": 8,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          16000,
+          16000,
+          16000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 2,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "A wave rolls down her lane, damaging and pushing back every enemy in it.",
+        "tooltip_id": "A wave rolls down her lane, damaging and pushing back every enemy in it."
+      }
+    },
+    {
+      "id": "wc_vn_n_wonder_heart",
+      "name": "The Wonder Heart",
+      "display_name": "The Wonder Heart",
+      "footprint_cells": 1,
+      "production_status": "basic_combat_lab_only",
+      "stats": {
+        "health": 800000,
+        "attackDamage": 15000,
+        "attackRate": 800,
+        "range": 4,
+        "armor": 30,
+        "resistance": 30,
+        "movementRate": 700,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_na_wonder_heart",
+        "name": "Heartlight",
+        "mechanic": "crossing_beams",
+        "effect": "damage",
+        "selector": "current_enemy",
+        "damageType": "magic",
+        "firstCastMs": 1500,
+        "cooldownMs": 6000,
+        "castMs": 1000,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 0,
+        "radius": 3,
+        "range": 6,
+        "maxTargets": 20,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          24000,
+          24000,
+          24000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 400,
+        "tooltip_en": "Two beams of the grove's light cross the board through its target.",
+        "tooltip_id": "Two beams of the grove's light cross the board through its target."
+      }
+    },
+    {
+      "id": "wc_vn_s_wolf",
+      "name": "Pack Wolf",
+      "display_name": "Pack Wolf",
+      "footprint_cells": 1,
+      "production_status": "basic_combat_lab_only",
+      "stats": {
+        "health": 22000,
+        "attackDamage": 2800,
+        "attackRate": 800,
+        "range": 1,
+        "armor": 5,
+        "resistance": 5,
+        "movementRate": 1200,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 0,
+        "damageType": "physical"
+      },
       "ability": null
+    },
+    {
+      "id": "wc_vn_s_treant",
+      "name": "Treant",
+      "display_name": "Treant",
+      "footprint_cells": 1,
+      "production_status": "basic_combat_lab_only",
+      "stats": {
+        "health": 60000,
+        "attackDamage": 4000,
+        "attackRate": 600,
+        "range": 1,
+        "armor": 20,
+        "resistance": 10,
+        "movementRate": 800,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 0,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_sa_treant",
+        "name": "Grasping Roots",
+        "mechanic": "standard",
+        "effect": "taunt",
+        "selector": "adjacent_enemies",
+        "damageType": "physical",
+        "firstCastMs": 1000,
+        "cooldownMs": 6000,
+        "castMs": 300,
+        "recoveryMs": 300,
+        "durationMs": 2000,
+        "travelMs": 0,
+        "radius": 1,
+        "range": 1,
+        "maxTargets": 8,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          2000,
+          2500,
+          3000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Taunts adjacent enemies: they must attack the treant.",
+        "tooltip_id": "Memancing musuh di sebelahnya: mereka harus menyerang treant."
+      }
+    },
+    {
+      "id": "wc_vn_s_skeleton",
+      "name": "Skeleton",
+      "display_name": "Skeleton",
+      "footprint_cells": 1,
+      "production_status": "basic_combat_lab_only",
+      "stats": {
+        "health": 25000,
+        "attackDamage": 4000,
+        "attackRate": 800,
+        "range": 1,
+        "armor": 5,
+        "resistance": 5,
+        "movementRate": 1000,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 0,
+        "damageType": "physical"
+      },
+      "ability": null
+    },
+    {
+      "id": "wc_vn_s_rock_wall",
+      "name": "Rock Wall",
+      "display_name": "Rock Wall",
+      "footprint_cells": 1,
+      "production_status": "basic_combat_lab_only",
+      "stats": {
+        "health": 40000,
+        "attackDamage": 0,
+        "attackRate": 500,
+        "range": 1,
+        "armor": 30,
+        "resistance": 30,
+        "movementRate": 500,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 0,
+        "damageType": "physical"
+      },
+      "ability": null,
+      "inert": true
     }
   ],
   "waves": [
@@ -429,7 +1144,7 @@
       "slots": [
         {
           "definition": 0,
-          "column": 2,
+          "column": 3,
           "row": 2
         }
       ],
@@ -445,12 +1160,12 @@
       "slots": [
         {
           "definition": 0,
-          "column": 2,
+          "column": 3,
           "row": 2
         },
         {
           "definition": 1,
-          "column": 3,
+          "column": 4,
           "row": 0
         }
       ],
@@ -470,6 +1185,11 @@
           "row": 2
         },
         {
+          "definition": 0,
+          "column": 5,
+          "row": 2
+        },
+        {
           "definition": 1,
           "column": 3,
           "row": 0
@@ -477,7 +1197,7 @@
         {
           "definition": 2,
           "column": 4,
-          "row": 2
+          "row": 1
         }
       ],
       "teaching_status": "layout_authored_teaching_not_human_verified",
@@ -485,7 +1205,7 @@
     },
     {
       "id": "wc_vn_wave_05",
-      "name": "Wondergrove Trial 5",
+      "name": "The Quarry Gate",
       "round": 5,
       "hpScaleBp": 10000,
       "damageScaleBp": 10000,
@@ -496,14 +1216,14 @@
           "row": 2
         },
         {
-          "definition": 4,
-          "column": 3,
+          "definition": 3,
+          "column": 5,
           "row": 2
         },
         {
-          "definition": 5,
+          "definition": 4,
           "column": 4,
-          "row": 2
+          "row": 0
         }
       ],
       "teaching_status": "layout_authored_teaching_not_human_verified",
@@ -511,170 +1231,225 @@
     },
     {
       "id": "wc_vn_wave_10",
-      "name": "Wondergrove Trial 10",
+      "name": "Old Tusk, the Slate King",
       "round": 10,
       "hpScaleBp": 14000,
       "damageScaleBp": 12500,
       "slots": [
         {
-          "definition": 3,
-          "column": 2,
-          "row": 2
-        },
-        {
-          "definition": 4,
+          "definition": 11,
           "column": 3,
           "row": 2
         },
         {
-          "definition": 5,
-          "column": 4,
+          "definition": 3,
+          "column": 1,
+          "row": 2
+        },
+        {
+          "definition": 3,
+          "column": 5,
           "row": 2
         }
       ],
       "teaching_status": "layout_authored_teaching_not_human_verified",
-      "boss_mechanics": "not_applicable"
+      "boss_mechanics": "boss_with_borrowed_hero_skill"
     },
     {
       "id": "wc_vn_wave_15",
-      "name": "Wondergrove Trial 15",
+      "name": "Thorn Run",
       "round": 15,
       "hpScaleBp": 18000,
       "damageScaleBp": 15000,
       "slots": [
         {
-          "definition": 3,
-          "column": 2,
+          "definition": 7,
+          "column": 1,
           "row": 2
         },
         {
-          "definition": 4,
+          "definition": 7,
+          "column": 2,
+          "row": 3
+        },
+        {
+          "definition": 7,
           "column": 3,
           "row": 2
         },
         {
-          "definition": 5,
+          "definition": 7,
           "column": 4,
+          "row": 3
+        },
+        {
+          "definition": 7,
+          "column": 5,
           "row": 2
+        },
+        {
+          "definition": 8,
+          "column": 3,
+          "row": 0
         }
       ],
       "teaching_status": "layout_authored_teaching_not_human_verified",
-      "boss_mechanics": "planned"
+      "boss_mechanics": "not_applicable"
     },
     {
       "id": "wc_vn_wave_20",
-      "name": "Wondergrove Trial 20",
+      "name": "The Glass Queen",
       "round": 20,
       "hpScaleBp": 22000,
       "damageScaleBp": 17500,
       "slots": [
         {
-          "definition": 3,
+          "definition": 12,
+          "column": 3,
+          "row": 1
+        },
+        {
+          "definition": 4,
+          "column": 0,
+          "row": 0
+        },
+        {
+          "definition": 4,
+          "column": 5,
+          "row": 0
+        },
+        {
+          "definition": 4,
+          "column": 7,
+          "row": 1
+        },
+        {
+          "definition": 2,
           "column": 2,
           "row": 2
         },
         {
-          "definition": 4,
-          "column": 3,
-          "row": 2
-        },
-        {
-          "definition": 5,
+          "definition": 2,
           "column": 4,
           "row": 2
         }
       ],
       "teaching_status": "layout_authored_teaching_not_human_verified",
-      "boss_mechanics": "not_applicable"
+      "boss_mechanics": "boss_with_borrowed_hero_skill"
     },
     {
       "id": "wc_vn_wave_25",
-      "name": "Wondergrove Trial 25",
+      "name": "The Wet Wall",
       "round": 25,
       "hpScaleBp": 26000,
       "damageScaleBp": 20000,
       "slots": [
         {
-          "definition": 3,
+          "definition": 9,
           "column": 2,
           "row": 2
         },
         {
-          "definition": 4,
-          "column": 3,
-          "row": 2
-        },
-        {
-          "definition": 5,
-          "column": 4,
-          "row": 2
-        },
-        {
-          "definition": 6,
+          "definition": 9,
           "column": 5,
           "row": 2
-        }
-      ],
-      "teaching_status": "layout_authored_teaching_not_human_verified",
-      "boss_mechanics": "planned"
-    },
-    {
-      "id": "wc_vn_wave_30",
-      "name": "Wondergrove Trial 30",
-      "round": 30,
-      "hpScaleBp": 30000,
-      "damageScaleBp": 22500,
-      "slots": [
-        {
-          "definition": 3,
-          "column": 2,
-          "row": 2
         },
         {
-          "definition": 4,
+          "definition": 10,
+          "column": 1,
+          "row": 0
+        },
+        {
+          "definition": 10,
+          "column": 6,
+          "row": 0
+        },
+        {
+          "definition": 8,
           "column": 3,
-          "row": 2
-        },
-        {
-          "definition": 5,
-          "column": 4,
-          "row": 2
-        },
-        {
-          "definition": 6,
-          "column": 5,
-          "row": 2
+          "row": 0
         }
       ],
       "teaching_status": "layout_authored_teaching_not_human_verified",
       "boss_mechanics": "not_applicable"
     },
     {
+      "id": "wc_vn_wave_30",
+      "name": "The Hollow Bellkeeper",
+      "round": 30,
+      "hpScaleBp": 30000,
+      "damageScaleBp": 22500,
+      "slots": [
+        {
+          "definition": 6,
+          "column": 3,
+          "row": 1
+        },
+        {
+          "definition": 0,
+          "column": 1,
+          "row": 3
+        },
+        {
+          "definition": 0,
+          "column": 5,
+          "row": 3
+        },
+        {
+          "definition": 1,
+          "column": 0,
+          "row": 0
+        },
+        {
+          "definition": 1,
+          "column": 6,
+          "row": 0
+        },
+        {
+          "definition": 8,
+          "column": 4,
+          "row": 0
+        }
+      ],
+      "teaching_status": "layout_authored_teaching_not_human_verified",
+      "boss_mechanics": "boss_with_borrowed_hero_skill"
+    },
+    {
       "id": "wc_vn_wave_35",
-      "name": "Wondergrove Trial 35",
+      "name": "Moth Light",
       "round": 35,
       "hpScaleBp": 34000,
       "damageScaleBp": 25000,
       "slots": [
         {
-          "definition": 3,
-          "column": 2,
-          "row": 2
-        },
-        {
-          "definition": 4,
+          "definition": 5,
           "column": 3,
           "row": 2
         },
         {
-          "definition": 5,
-          "column": 4,
-          "row": 2
+          "definition": 4,
+          "column": 0,
+          "row": 0
         },
         {
-          "definition": 6,
+          "definition": 4,
+          "column": 3,
+          "row": 0
+        },
+        {
+          "definition": 4,
+          "column": 7,
+          "row": 0
+        },
+        {
+          "definition": 2,
+          "column": 2,
+          "row": 1
+        },
+        {
+          "definition": 2,
           "column": 5,
-          "row": 2
+          "row": 1
         }
       ],
       "teaching_status": "layout_authored_teaching_not_human_verified",
@@ -682,65 +1457,208 @@
     },
     {
       "id": "wc_vn_wave_40",
-      "name": "Wondergrove Trial 40",
+      "name": "Grandmother Root",
       "round": 40,
       "hpScaleBp": 38000,
       "damageScaleBp": 27500,
       "slots": [
         {
-          "definition": 3,
-          "column": 2,
-          "row": 2
+          "definition": 13,
+          "column": 3,
+          "row": 1
         },
         {
-          "definition": 4,
-          "column": 3,
+          "definition": 5,
+          "column": 1,
           "row": 2
         },
         {
           "definition": 5,
-          "column": 4,
+          "column": 5,
           "row": 2
         },
         {
-          "definition": 6,
-          "column": 5,
-          "row": 2
+          "definition": 8,
+          "column": 2,
+          "row": 0
+        },
+        {
+          "definition": 8,
+          "column": 4,
+          "row": 0
+        },
+        {
+          "definition": 8,
+          "column": 6,
+          "row": 0
         }
       ],
       "teaching_status": "layout_authored_teaching_not_human_verified",
-      "boss_mechanics": "planned"
+      "boss_mechanics": "boss_with_borrowed_hero_skill"
     },
     {
       "id": "wc_vn_wave_45",
-      "name": "Wondergrove Trial 45",
+      "name": "The Whole Grove",
       "round": 45,
       "hpScaleBp": 42000,
       "damageScaleBp": 30000,
       "slots": [
         {
-          "definition": 3,
-          "column": 2,
-          "row": 2
-        },
-        {
-          "definition": 4,
+          "definition": 5,
           "column": 3,
           "row": 2
         },
         {
-          "definition": 5,
+          "definition": 3,
+          "column": 1,
+          "row": 3
+        },
+        {
+          "definition": 3,
+          "column": 6,
+          "row": 3
+        },
+        {
+          "definition": 10,
+          "column": 1,
+          "row": 0
+        },
+        {
+          "definition": 8,
           "column": 4,
+          "row": 0
+        },
+        {
+          "definition": 1,
+          "column": 7,
+          "row": 1
+        }
+      ],
+      "teaching_status": "layout_authored_teaching_not_human_verified",
+      "boss_mechanics": "not_applicable"
+    },
+    {
+      "id": "wc_vn_wave_50",
+      "name": "The Mire Mother",
+      "round": 50,
+      "hpScaleBp": 46000,
+      "damageScaleBp": 32500,
+      "slots": [
+        {
+          "definition": 14,
+          "column": 3,
+          "row": 1
+        },
+        {
+          "definition": 10,
+          "column": 0,
+          "row": 0
+        },
+        {
+          "definition": 10,
+          "column": 5,
+          "row": 0
+        },
+        {
+          "definition": 10,
+          "column": 7,
+          "row": 0
+        },
+        {
+          "definition": 9,
+          "column": 2,
           "row": 2
         },
         {
-          "definition": 6,
+          "definition": 9,
           "column": 5,
           "row": 2
         }
       ],
       "teaching_status": "layout_authored_teaching_not_human_verified",
+      "boss_mechanics": "boss_with_borrowed_hero_skill"
+    },
+    {
+      "id": "wc_vn_wave_55",
+      "name": "Last Bloom",
+      "round": 55,
+      "hpScaleBp": 50000,
+      "damageScaleBp": 35000,
+      "slots": [
+        {
+          "definition": 5,
+          "column": 2,
+          "row": 2
+        },
+        {
+          "definition": 5,
+          "column": 5,
+          "row": 2
+        },
+        {
+          "definition": 9,
+          "column": 0,
+          "row": 3
+        },
+        {
+          "definition": 9,
+          "column": 7,
+          "row": 3
+        },
+        {
+          "definition": 4,
+          "column": 3,
+          "row": 0
+        },
+        {
+          "definition": 8,
+          "column": 4,
+          "row": 1
+        }
+      ],
+      "teaching_status": "layout_authored_teaching_not_human_verified",
       "boss_mechanics": "not_applicable"
+    },
+    {
+      "id": "wc_vn_wave_60",
+      "name": "The Wonder Heart",
+      "round": 60,
+      "hpScaleBp": 54000,
+      "damageScaleBp": 37500,
+      "slots": [
+        {
+          "definition": 15,
+          "column": 3,
+          "row": 1
+        },
+        {
+          "definition": 5,
+          "column": 1,
+          "row": 2
+        },
+        {
+          "definition": 9,
+          "column": 5,
+          "row": 2
+        },
+        {
+          "definition": 4,
+          "column": 0,
+          "row": 0
+        },
+        {
+          "definition": 4,
+          "column": 7,
+          "row": 0
+        },
+        {
+          "definition": 8,
+          "column": 4,
+          "row": 0
+        }
+      ],
+      "teaching_status": "layout_authored_teaching_not_human_verified",
+      "boss_mechanics": "boss_with_borrowed_hero_skill"
     }
   ],
   "world": {
@@ -765,6 +1683,7 @@
       "profile.label": "Laboratorium permainan Wonder vNext"
     }
   },
+  "summon_limit_per_side": 4,
   "experiments": {
     "mana100_v1": {
       "status": "opt_in_unaccepted_experiment",
@@ -799,13 +1718,639 @@
       "relicTiming": "inverse_gain"
     }
   },
+  "tutorial": {
+    "status": "guided_first_match_six_stages_untested_with_players",
+    "stages": [
+      {
+        "id": "field",
+        "title_en": "1. Field your team",
+        "title_id": "1. Turunkan timmu",
+        "round": 4,
+        "gold": 0,
+        "level": 3,
+        "streak": 0,
+        "fight": true,
+        "relic_draft": false,
+        "board": [],
+        "bench": [
+          {
+            "hero": "wc_vn_shieldbearer",
+            "star": 1
+          },
+          {
+            "hero": "wc_vn_hammerer",
+            "star": 1
+          },
+          {
+            "hero": "wc_vn_longbow_scout",
+            "star": 1
+          }
+        ],
+        "shop": [],
+        "opponent": [
+          {
+            "hero": "wc_vn_foxclaw",
+            "star": 1,
+            "column": 3,
+            "row": 3
+          },
+          {
+            "hero": "wc_vn_bomber",
+            "star": 1,
+            "column": 4,
+            "row": 1
+          }
+        ],
+        "steps": [
+          {
+            "text_en": "Drag each hero from the bench onto your half of the board. Your level (3) is how many heroes you may field.",
+            "text_id": "Seret setiap hero dari bangku cadangan ke separuh papanmu. Levelmu (3) adalah jumlah hero yang boleh kamu turunkan.",
+            "highlight": "WC.Bench",
+            "done": {
+              "type": "deployed_at_least",
+              "value": 3
+            },
+            "allow": [
+              "move"
+            ]
+          },
+          {
+            "text_en": "Press Ready to start the fight.",
+            "text_id": "Tekan Siap untuk memulai pertarungan.",
+            "highlight": "WC.Ready",
+            "done": {
+              "type": "ready"
+            },
+            "allow": [
+              "ready",
+              "move"
+            ]
+          },
+          {
+            "text_en": "Watch the fight. Heroes move, attack and use their skills by themselves.",
+            "text_id": "Saksikan pertarungan. Hero bergerak, menyerang, dan memakai skill dengan sendirinya.",
+            "done": {
+              "type": "fight_over"
+            },
+            "allow": []
+          }
+        ]
+      },
+      {
+        "id": "grow",
+        "title_en": "2. Grow your team",
+        "title_id": "2. Kembangkan timmu",
+        "round": 6,
+        "gold": 6,
+        "level": 3,
+        "streak": 0,
+        "fight": true,
+        "relic_draft": false,
+        "board": [
+          {
+            "hero": "wc_vn_shieldbearer",
+            "star": 1,
+            "column": 3,
+            "row": 3
+          },
+          {
+            "hero": "wc_vn_hammerer",
+            "star": 1,
+            "column": 4,
+            "row": 3
+          },
+          {
+            "hero": "wc_vn_longbow_scout",
+            "star": 1,
+            "column": 3,
+            "row": 0
+          }
+        ],
+        "bench": [
+          {
+            "hero": "wc_vn_ember_wisp",
+            "star": 1
+          }
+        ],
+        "shop": [
+          "wc_vn_hammerer",
+          "wc_vn_hammerer",
+          "wc_vn_jinxer",
+          "wc_vn_bomber",
+          "wc_vn_foxclaw"
+        ],
+        "opponent": [
+          {
+            "hero": "wc_vn_boar_rusher",
+            "star": 1,
+            "column": 3,
+            "row": 3
+          },
+          {
+            "hero": "wc_vn_jinxer",
+            "star": 1,
+            "column": 4,
+            "row": 1
+          },
+          {
+            "hero": "wc_vn_bone_archer",
+            "star": 1,
+            "column": 2,
+            "row": 0
+          }
+        ],
+        "steps": [
+          {
+            "text_en": "Open the shop.",
+            "text_id": "Buka toko.",
+            "highlight": "WC.OpenShop",
+            "done": {
+              "type": "shop_open"
+            },
+            "allow": []
+          },
+          {
+            "text_en": "Buy both Hammerers. Three copies of the same hero merge into one two-star hero.",
+            "text_id": "Beli kedua Hammerer. Tiga hero yang sama bergabung menjadi satu hero bintang dua.",
+            "done": {
+              "type": "star_at_least",
+              "hero": "wc_vn_hammerer",
+              "value": 2
+            },
+            "allow": [
+              "buy"
+            ]
+          },
+          {
+            "text_en": "Close the shop and buy experience to reach level 4. A higher level fields more heroes and shows stronger heroes in the shop.",
+            "text_id": "Tutup toko dan beli pengalaman untuk mencapai level 4. Level lebih tinggi menurunkan lebih banyak hero dan menampilkan hero lebih kuat di toko.",
+            "highlight": "WC.BuyXp",
+            "done": {
+              "type": "level_at_least",
+              "value": 4
+            },
+            "allow": [
+              "buy_xp"
+            ]
+          },
+          {
+            "text_en": "Field your fourth hero from the bench.",
+            "text_id": "Turunkan hero keempatmu dari bangku cadangan.",
+            "highlight": "WC.Bench",
+            "done": {
+              "type": "deployed_at_least",
+              "value": 4
+            },
+            "allow": [
+              "move"
+            ]
+          },
+          {
+            "text_en": "Press Ready to start the fight.",
+            "text_id": "Tekan Siap untuk memulai pertarungan.",
+            "highlight": "WC.Ready",
+            "done": {
+              "type": "ready"
+            },
+            "allow": [
+              "ready",
+              "move"
+            ]
+          },
+          {
+            "text_en": "Watch the fight.",
+            "text_id": "Saksikan pertarungan.",
+            "done": {
+              "type": "fight_over"
+            },
+            "allow": []
+          }
+        ]
+      },
+      {
+        "id": "synergy",
+        "title_en": "3. Synergies",
+        "title_id": "3. Sinergi",
+        "round": 7,
+        "gold": 2,
+        "level": 4,
+        "streak": 0,
+        "fight": true,
+        "relic_draft": false,
+        "board": [
+          {
+            "hero": "wc_vn_shieldbearer",
+            "star": 1,
+            "column": 3,
+            "row": 3
+          },
+          {
+            "hero": "wc_vn_hammerer",
+            "star": 2,
+            "column": 4,
+            "row": 3
+          },
+          {
+            "hero": "wc_vn_longbow_scout",
+            "star": 1,
+            "column": 3,
+            "row": 0
+          }
+        ],
+        "bench": [],
+        "shop": [
+          "wc_vn_ironwall",
+          "wc_vn_jinxer",
+          "wc_vn_bomber",
+          "wc_vn_boar_rusher",
+          "wc_vn_foxclaw"
+        ],
+        "opponent": [
+          {
+            "hero": "wc_vn_bearguard",
+            "star": 1,
+            "column": 3,
+            "row": 3
+          },
+          {
+            "hero": "wc_vn_boar_rusher",
+            "star": 1,
+            "column": 4,
+            "row": 3
+          },
+          {
+            "hero": "wc_vn_bone_archer",
+            "star": 1,
+            "column": 3,
+            "row": 0
+          },
+          {
+            "hero": "wc_vn_jinxer",
+            "star": 1,
+            "column": 4,
+            "row": 1
+          }
+        ],
+        "steps": [
+          {
+            "text_en": "Open the shop and buy Ironwall. He is a Tank, like your Shieldbearer.",
+            "text_id": "Buka toko dan beli Ironwall. Ia seorang Tank, seperti Shieldbearer milikmu.",
+            "highlight": "WC.OpenShop",
+            "done": {
+              "type": "owns",
+              "hero": "wc_vn_ironwall"
+            },
+            "allow": [
+              "buy"
+            ]
+          },
+          {
+            "text_en": "Close the shop and field Ironwall. Two different Tanks switch on the Tank synergy: more armour for both.",
+            "text_id": "Tutup toko dan turunkan Ironwall. Dua Tank yang berbeda mengaktifkan sinergi Tank: armor lebih besar untuk keduanya.",
+            "highlight": "WC.Bench",
+            "done": {
+              "type": "trait_at_least",
+              "trait": "tank",
+              "value": 2
+            },
+            "allow": [
+              "move"
+            ]
+          },
+          {
+            "text_en": "Click Tank in the synergy list to read its bonus.",
+            "text_id": "Klik Tank di daftar sinergi untuk membaca bonusnya.",
+            "highlight": "WC.Synergies",
+            "done": {
+              "type": "trait_focus",
+              "trait": "tank"
+            },
+            "allow": []
+          },
+          {
+            "text_en": "Press Ready to start the fight.",
+            "text_id": "Tekan Siap untuk memulai pertarungan.",
+            "highlight": "WC.Ready",
+            "done": {
+              "type": "ready"
+            },
+            "allow": [
+              "ready",
+              "move"
+            ]
+          },
+          {
+            "text_en": "Watch the fight. The panel on the right shows who deals and takes damage.",
+            "text_id": "Saksikan pertarungan. Panel di kanan menunjukkan siapa yang memberi dan menerima kerusakan.",
+            "highlight": "WC.Chart",
+            "done": {
+              "type": "fight_over"
+            },
+            "allow": []
+          }
+        ]
+      },
+      {
+        "id": "position",
+        "title_en": "4. Positions",
+        "title_id": "4. Posisi",
+        "round": 8,
+        "gold": 0,
+        "level": 4,
+        "streak": 0,
+        "fight": true,
+        "relic_draft": false,
+        "board": [
+          {
+            "hero": "wc_vn_longbow_scout",
+            "star": 1,
+            "column": 3,
+            "row": 3
+          },
+          {
+            "hero": "wc_vn_ember_wisp",
+            "star": 1,
+            "column": 4,
+            "row": 3
+          },
+          {
+            "hero": "wc_vn_shieldbearer",
+            "star": 1,
+            "column": 3,
+            "row": 0
+          },
+          {
+            "hero": "wc_vn_hammerer",
+            "star": 2,
+            "column": 4,
+            "row": 0
+          }
+        ],
+        "bench": [],
+        "shop": [],
+        "opponent": [
+          {
+            "hero": "wc_vn_foxclaw",
+            "star": 1,
+            "column": 3,
+            "row": 3
+          },
+          {
+            "hero": "wc_vn_boar_rusher",
+            "star": 1,
+            "column": 4,
+            "row": 3
+          },
+          {
+            "hero": "wc_vn_bearguard",
+            "star": 1,
+            "column": 2,
+            "row": 3
+          },
+          {
+            "hero": "wc_vn_bone_archer",
+            "star": 1,
+            "column": 3,
+            "row": 0
+          }
+        ],
+        "steps": [
+          {
+            "text_en": "Your archer stands in front and your tank at the back. Move Shieldbearer to the front row, the one nearest the enemy.",
+            "text_id": "Pemanahmu berdiri di depan dan tank-mu di belakang. Pindahkan Shieldbearer ke baris depan, baris yang paling dekat dengan musuh.",
+            "highlight": "WC.Board",
+            "done": {
+              "type": "row_at_least",
+              "hero": "wc_vn_shieldbearer",
+              "value": 3
+            },
+            "allow": [
+              "move"
+            ]
+          },
+          {
+            "text_en": "Move Longbow Scout to one of the two back rows, where melee enemies reach her last.",
+            "text_id": "Pindahkan Longbow Scout ke salah satu dari dua baris belakang, tempat musuh jarak dekat paling lambat mencapainya.",
+            "highlight": "WC.Board",
+            "done": {
+              "type": "row_at_most",
+              "hero": "wc_vn_longbow_scout",
+              "value": 1
+            },
+            "allow": [
+              "move"
+            ]
+          },
+          {
+            "text_en": "Press Ready to start the fight.",
+            "text_id": "Tekan Siap untuk memulai pertarungan.",
+            "highlight": "WC.Ready",
+            "done": {
+              "type": "ready"
+            },
+            "allow": [
+              "ready",
+              "move"
+            ]
+          },
+          {
+            "text_en": "Watch the fight.",
+            "text_id": "Saksikan pertarungan.",
+            "done": {
+              "type": "fight_over"
+            },
+            "allow": []
+          }
+        ]
+      },
+      {
+        "id": "gold",
+        "title_en": "5. Gold and the boss",
+        "title_id": "5. Emas dan bos",
+        "round": 10,
+        "gold": 9,
+        "level": 5,
+        "streak": 3,
+        "fight": true,
+        "relic_draft": false,
+        "board": [
+          {
+            "hero": "wc_vn_shieldbearer",
+            "star": 2,
+            "column": 3,
+            "row": 3
+          },
+          {
+            "hero": "wc_vn_ironwall",
+            "star": 2,
+            "column": 4,
+            "row": 3
+          },
+          {
+            "hero": "wc_vn_hammerer",
+            "star": 2,
+            "column": 2,
+            "row": 3
+          },
+          {
+            "hero": "wc_vn_longbow_scout",
+            "star": 2,
+            "column": 3,
+            "row": 0
+          },
+          {
+            "hero": "wc_vn_ember_wisp",
+            "star": 2,
+            "column": 4,
+            "row": 0
+          }
+        ],
+        "bench": [
+          {
+            "hero": "wc_vn_jinxer",
+            "star": 1
+          }
+        ],
+        "shop": [
+          "wc_vn_bomber",
+          "wc_vn_foxclaw",
+          "wc_vn_boar_rusher",
+          "wc_vn_bone_archer",
+          "wc_vn_jinxer"
+        ],
+        "opponent": [],
+        "steps": [
+          {
+            "text_en": "You have 9 gold. Every 10 gold you hold pays 1 more gold each round. Select Jinxer on your bench and sell it to reach 10. Winning or losing 3 fights in a row also pays extra.",
+            "text_id": "Kamu punya 9 emas. Setiap 10 emas yang kamu simpan memberi 1 emas tambahan tiap ronde. Pilih Jinxer di bangku cadangan dan jual untuk mencapai 10. Menang atau kalah 3 kali berturut-turut juga memberi emas tambahan.",
+            "highlight": "WC.Sell",
+            "done": {
+              "type": "gold_at_least",
+              "value": 10
+            },
+            "allow": [
+              "sell"
+            ]
+          },
+          {
+            "text_en": "Lock the shop to keep these offers for the next round.",
+            "text_id": "Kunci toko agar tawaran ini tetap ada di ronde berikutnya.",
+            "highlight": "WC.Lock",
+            "done": {
+              "type": "shop_locked"
+            },
+            "allow": [
+              "lock"
+            ]
+          },
+          {
+            "text_en": "Every tenth round is a boss. Press Ready.",
+            "text_id": "Setiap ronde kesepuluh adalah bos. Tekan Siap.",
+            "highlight": "WC.Ready",
+            "done": {
+              "type": "ready"
+            },
+            "allow": [
+              "ready",
+              "move"
+            ]
+          },
+          {
+            "text_en": "Watch the fight.",
+            "text_id": "Saksikan pertarungan.",
+            "done": {
+              "type": "fight_over"
+            },
+            "allow": []
+          }
+        ]
+      },
+      {
+        "id": "relic",
+        "title_en": "6. Relics",
+        "title_id": "6. Relik",
+        "round": 11,
+        "gold": 10,
+        "level": 5,
+        "streak": 4,
+        "fight": false,
+        "relic_draft": true,
+        "board": [
+          {
+            "hero": "wc_vn_shieldbearer",
+            "star": 2,
+            "column": 3,
+            "row": 3
+          },
+          {
+            "hero": "wc_vn_ironwall",
+            "star": 2,
+            "column": 4,
+            "row": 3
+          },
+          {
+            "hero": "wc_vn_hammerer",
+            "star": 2,
+            "column": 2,
+            "row": 3
+          },
+          {
+            "hero": "wc_vn_longbow_scout",
+            "star": 2,
+            "column": 3,
+            "row": 0
+          },
+          {
+            "hero": "wc_vn_ember_wisp",
+            "star": 2,
+            "column": 4,
+            "row": 0
+          }
+        ],
+        "bench": [],
+        "shop": [],
+        "opponent": [
+          {
+            "hero": "wc_vn_foxclaw",
+            "star": 1,
+            "column": 3,
+            "row": 3
+          }
+        ],
+        "steps": [
+          {
+            "text_en": "A boss round is followed by a relic. Choose one of the three.",
+            "text_id": "Ronde bos diikuti sebuah relik. Pilih satu dari tiga.",
+            "done": {
+              "type": "relic_owned",
+              "value": 1
+            },
+            "allow": [
+              "choose_relic"
+            ]
+          },
+          {
+            "text_en": "Select one of your heroes, then equip the relic from the relic panel. That is the end of the guide.",
+            "text_id": "Pilih salah satu hero-mu, lalu pasang relik dari panel relik. Panduan selesai di sini.",
+            "highlight": "WC.Relics",
+            "done": {
+              "type": "relic_equipped"
+            },
+            "allow": [
+              "equip_relic"
+            ]
+          }
+        ]
+      }
+    ]
+  },
   "combat_clarity": {
     "status": "opt_in_unaccepted_experiment",
     "base": "mana100_hit20_v1",
     "nearestReachableTarget": true,
     "mobileAttackRecovery": true
   },
-  "source_sha256": "ac5fafc006fdc02f46127f72594cb1bf90e76fe46a2c5dc590490e6e00a253df",
+  "source_sha256": "6723d701d5f0bf890283db13cdd48d377443f136435bca817ae2035c52489dcb",
   "heroes": [
     {
       "id": "wc_vn_shieldbearer",
@@ -1176,7 +2721,7 @@
         "recognition": "A wave rolls down the lane and carries one enemy back."
       },
       "stats": {
-        "health": 100000,
+        "health": 107000,
         "attackDamage": 6500,
         "attackRate": 800,
         "range": 3,
@@ -1794,6 +3339,2190 @@
         "tooltip_en": "Raises the attack speed of nearby allies for a few seconds.",
         "tooltip_id": "Menaikkan kecepatan serang rekan di sekitarnya selama beberapa detik."
       }
+    },
+    {
+      "id": "wc_vn_siege_master",
+      "name": "Siege Master",
+      "display_name": "Siege Master",
+      "race": "human",
+      "unit_class": "engineer",
+      "cost": 4,
+      "body_family": "humanoid_medium",
+      "role_tags": [
+        "damage"
+      ],
+      "archetype": "artillery",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "design_intent": "Siege Shell: Fires a cannon shell at the largest enemy cluster, damaging an area.",
+      "dossier": {
+        "form": "Broad artillerist with goggles wheeling a short fat cannon.",
+        "decision": "Reward enemy clumping with area damage.",
+        "positioning": "Far back row; needs time to charge.",
+        "allies": "Tanks that hold enemies together; Engineers for mana.",
+        "counterplay": "Spread out or reach him quickly.",
+        "recognition": "A marked circle appears before the shell lands."
+      },
+      "stats": {
+        "health": 78000,
+        "attackDamage": 6600,
+        "attackRate": 700,
+        "range": 3,
+        "armor": 15,
+        "resistance": 15,
+        "movementRate": 900,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_siege_master",
+        "name": "Siege Shell",
+        "mechanic": "standard",
+        "effect": "damage",
+        "selector": "densest_enemy_area",
+        "damageType": "magic",
+        "firstCastMs": 3000,
+        "cooldownMs": 8000,
+        "castMs": 400,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 300,
+        "radius": 1,
+        "range": 6,
+        "maxTargets": 9,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          13000,
+          21000,
+          34000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Lobs a shell at the largest group of enemies in reach, dealing magic damage to everyone within 1 cell.",
+        "tooltip_id": "Melontarkan peluru ke kelompok musuh terbesar dalam jangkauan, memberi kerusakan sihir kepada semua dalam 1 petak."
+      }
+    },
+    {
+      "id": "wc_vn_longbow_scout",
+      "name": "Longbow Scout",
+      "display_name": "Longbow Scout",
+      "race": "elf",
+      "unit_class": "sniper",
+      "cost": 1,
+      "body_family": "humanoid_medium",
+      "role_tags": [
+        "damage"
+      ],
+      "archetype": "backline pressure",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "design_intent": "Piercing Arrow: Shoots an arrow that damages every enemy in a straight line.",
+      "dossier": {
+        "form": "Slender archer with long ears, a green hood and a bow taller than herself.",
+        "decision": "Line up shots through several enemies.",
+        "positioning": "Back row on a column the enemy fills.",
+        "allies": "Other Snipers; a Tank in front.",
+        "counterplay": "Stagger columns; send Assassins.",
+        "recognition": "The arrow leaves a thin bright trail through its line."
+      },
+      "stats": {
+        "health": 55000,
+        "attackDamage": 7000,
+        "attackRate": 800,
+        "range": 5,
+        "armor": 5,
+        "resistance": 10,
+        "movementRate": 850,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_longbow_scout",
+        "name": "Piercing Arrow",
+        "mechanic": "standard",
+        "effect": "damage",
+        "selector": "enemy_line",
+        "damageType": "physical",
+        "firstCastMs": 3000,
+        "cooldownMs": 7000,
+        "castMs": 350,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 200,
+        "radius": 0,
+        "range": 5,
+        "maxTargets": 8,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          12000,
+          20000,
+          32000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Shoots an arrow through the current target that damages every enemy in that line.",
+        "tooltip_id": "Menembakkan panah menembus target saat ini yang melukai setiap musuh di garis itu."
+      }
+    },
+    {
+      "id": "wc_vn_moonblade",
+      "name": "Moonblade",
+      "display_name": "Moonblade",
+      "race": "elf",
+      "unit_class": "assassin",
+      "cost": 2,
+      "body_family": "humanoid_medium",
+      "role_tags": [
+        "damage"
+      ],
+      "archetype": "backline pressure",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "design_intent": "Moon Step: Blinks behind the farthest enemy and deals a guaranteed critical strike.",
+      "dossier": {
+        "form": "Lean masked elf with two crescent blades and a short cape.",
+        "decision": "Remove the enemy's farthest back-line unit.",
+        "positioning": "Anywhere; she relocates when her skill fires.",
+        "allies": "Other Assassins to overload the back line.",
+        "counterplay": "Keep a bodyguard near the back-line carry.",
+        "recognition": "A crescent flash at the start cell and behind the target."
+      },
+      "stats": {
+        "health": 63000,
+        "attackDamage": 7900,
+        "attackRate": 900,
+        "range": 1,
+        "armor": 10,
+        "resistance": 15,
+        "movementRate": 1200,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 0,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_moonblade",
+        "name": "Moon Step",
+        "mechanic": "standard",
+        "effect": "damage",
+        "selector": "farthest_enemy",
+        "damageType": "physical",
+        "firstCastMs": 2500,
+        "cooldownMs": 7000,
+        "castMs": 250,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 0,
+        "radius": 0,
+        "range": 8,
+        "maxTargets": 1,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          15000,
+          24000,
+          38000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Blinks behind the farthest enemy and strikes it with a guaranteed critical hit (150% damage).",
+        "tooltip_id": "Berpindah ke belakang musuh terjauh dan menebasnya dengan serangan kritis yang pasti (150% kerusakan).",
+        "effects": [
+          {
+            "effect": "blink",
+            "damageType": "physical",
+            "durationMs": 0,
+            "magnitude": [
+              0,
+              0,
+              0
+            ],
+            "selector": "cell_behind_target"
+          },
+          {
+            "effect": "damage",
+            "damageType": "physical",
+            "durationMs": 0,
+            "magnitude": [
+              15000,
+              24000,
+              38000
+            ],
+            "critical": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "wc_vn_treant_caller",
+      "name": "Treant Caller",
+      "display_name": "Treant Caller",
+      "race": "elf",
+      "unit_class": "summoner",
+      "cost": 4,
+      "body_family": "humanoid_medium",
+      "role_tags": [
+        "support"
+      ],
+      "archetype": "constructions",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "design_intent": "Call Treant: Summons a treant that taunts nearby enemies.",
+      "dossier": {
+        "form": "Tall elf in bark armour holding a glowing seed.",
+        "decision": "Add a disposable front-liner that pulls attacks.",
+        "positioning": "Second row so the treant appears in front.",
+        "allies": "Summoners; fragile damage dealers.",
+        "counterplay": "Area damage clears the treant; ignore it with Assassins.",
+        "recognition": "The seed is thrown and a treant bursts from the cell."
+      },
+      "stats": {
+        "health": 78000,
+        "attackDamage": 5400,
+        "attackRate": 650,
+        "range": 3,
+        "armor": 10,
+        "resistance": 15,
+        "movementRate": 850,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_treant_caller",
+        "name": "Call Treant",
+        "mechanic": "standard",
+        "effect": "summon",
+        "selector": "self",
+        "damageType": "physical",
+        "firstCastMs": 3000,
+        "cooldownMs": 8000,
+        "castMs": 400,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 0,
+        "radius": 0,
+        "range": 1,
+        "maxTargets": 1,
+        "maxDash": 0,
+        "allowSelf": true,
+        "magnitude": [
+          0,
+          0,
+          0
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Summons a treant beside her. It fights until it falls and taunts the enemies next to it.",
+        "tooltip_id": "Memanggil treant di sebelahnya. Ia bertarung sampai gugur dan memancing musuh di sebelahnya.",
+        "effects": [
+          {
+            "effect": "summon",
+            "damageType": "physical",
+            "durationMs": 0,
+            "magnitude": [
+              0,
+              0,
+              0
+            ],
+            "summon": "wc_vn_s_treant",
+            "count": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "wc_vn_ironwall",
+      "name": "Ironwall",
+      "display_name": "Ironwall",
+      "race": "dwarf",
+      "unit_class": "tank",
+      "cost": 2,
+      "body_family": "humanoid_small",
+      "role_tags": [
+        "frontline"
+      ],
+      "archetype": "protected carries",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "design_intent": "Hold Fast: Taunts adjacent enemies and gains armour for a short time.",
+      "dossier": {
+        "form": "Squat dwarf sealed in thick armour with two bolted shields.",
+        "decision": "Force nearby enemies to hit the toughest unit.",
+        "positioning": "Front and centre.",
+        "allies": "Priests and Warlocks that heal him.",
+        "counterplay": "Skill damage ignores armour; kill his back line first.",
+        "recognition": "Shields slam together and red lines pull enemy attention."
+      },
+      "stats": {
+        "health": 85000,
+        "attackDamage": 5800,
+        "attackRate": 700,
+        "range": 1,
+        "armor": 35,
+        "resistance": 15,
+        "movementRate": 1000,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 0,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_ironwall",
+        "name": "Hold Fast",
+        "mechanic": "standard",
+        "effect": "stat_modifier",
+        "selector": "self",
+        "damageType": "physical",
+        "firstCastMs": 2500,
+        "cooldownMs": 8000,
+        "castMs": 300,
+        "recoveryMs": 300,
+        "durationMs": 4000,
+        "travelMs": 0,
+        "radius": 1,
+        "range": 1,
+        "maxTargets": 8,
+        "maxDash": 0,
+        "allowSelf": true,
+        "magnitude": [
+          30,
+          45,
+          70
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Braces for 4 seconds, gaining armour, and taunts adjacent enemies for 2 / 2.5 / 3 seconds: they must attack him.",
+        "tooltip_id": "Bertahan selama 4 detik dan mendapat armor tambahan, serta memancing musuh di sebelahnya selama 2 / 2,5 / 3 detik: mereka harus menyerangnya.",
+        "effects": [
+          {
+            "effect": "stat_modifier",
+            "damageType": "physical",
+            "durationMs": 4000,
+            "magnitude": [
+              30,
+              45,
+              70
+            ],
+            "stat": "armor"
+          },
+          {
+            "effect": "taunt",
+            "damageType": "physical",
+            "durationMs": 2000,
+            "magnitude": [
+              2000,
+              2500,
+              3000
+            ],
+            "selector": "adjacent_enemies"
+          }
+        ]
+      }
+    },
+    {
+      "id": "wc_vn_rifleman",
+      "name": "Rifleman",
+      "display_name": "Rifleman",
+      "race": "dwarf",
+      "unit_class": "sniper",
+      "cost": 3,
+      "body_family": "humanoid_small",
+      "role_tags": [
+        "damage"
+      ],
+      "archetype": "backline pressure",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "design_intent": "Long Shot: Fires one heavy shot at the farthest enemy.",
+      "dossier": {
+        "form": "Dwarf with a wide hat and a rifle longer than he is tall.",
+        "decision": "Pressure the enemy back line from safety.",
+        "positioning": "Back corner.",
+        "allies": "Snipers for range; a Tank screen.",
+        "counterplay": "Assassins; put a Tank farthest away as bait.",
+        "recognition": "A long aiming line appears before the shot."
+      },
+      "stats": {
+        "health": 61500,
+        "attackDamage": 7800,
+        "attackRate": 800,
+        "range": 5,
+        "armor": 5,
+        "resistance": 10,
+        "movementRate": 850,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_rifleman",
+        "name": "Long Shot",
+        "mechanic": "standard",
+        "effect": "damage",
+        "selector": "farthest_enemy",
+        "damageType": "physical",
+        "firstCastMs": 3500,
+        "cooldownMs": 8000,
+        "castMs": 500,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 150,
+        "radius": 0,
+        "range": 8,
+        "maxTargets": 1,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          20000,
+          32000,
+          50000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Fires one heavy shot at the farthest enemy for physical damage.",
+        "tooltip_id": "Menembakkan satu tembakan berat ke musuh terjauh dengan kerusakan fisik."
+      }
+    },
+    {
+      "id": "wc_vn_forge_king",
+      "name": "Forge King",
+      "display_name": "Forge King",
+      "race": "dwarf",
+      "unit_class": "engineer",
+      "cost": 5,
+      "body_family": "humanoid_large",
+      "role_tags": [
+        "damage"
+      ],
+      "archetype": "artillery",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "design_intent": "Rocket Barrage: Launches rockets at several random cells on the enemy side.",
+      "dossier": {
+        "form": "Crowned dwarf riding a chunky walking forge with rocket racks.",
+        "decision": "Late-game area damage across the whole enemy board.",
+        "positioning": "Back row, well protected.",
+        "allies": "Engineers for mana; Dwarves for shields.",
+        "counterplay": "Kill or silence him before the barrage; spread out.",
+        "recognition": "Racks open, rockets arc up and target marks appear."
+      },
+      "stats": {
+        "health": 105000,
+        "attackDamage": 7200,
+        "attackRate": 700,
+        "range": 3,
+        "armor": 15,
+        "resistance": 15,
+        "movementRate": 900,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_forge_king",
+        "name": "Rocket Barrage",
+        "mechanic": "standard",
+        "effect": "damage",
+        "selector": "random_enemy_areas",
+        "damageType": "magic",
+        "firstCastMs": 3000,
+        "cooldownMs": 7000,
+        "castMs": 400,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 350,
+        "radius": 1,
+        "range": 8,
+        "maxTargets": 3,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          9000,
+          14500,
+          23000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Launches 3 rockets at the positions of random enemies. Each deals magic damage to everyone within 1 cell.",
+        "tooltip_id": "Meluncurkan 3 roket ke posisi musuh acak. Tiap roket memberi kerusakan sihir kepada semua dalam 1 petak."
+      }
+    },
+    {
+      "id": "wc_vn_jinxer",
+      "name": "Jinxer",
+      "display_name": "Jinxer",
+      "race": "goblin",
+      "unit_class": "shaman",
+      "cost": 1,
+      "body_family": "humanoid_small",
+      "role_tags": [
+        "support"
+      ],
+      "archetype": "single_target_control",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "design_intent": "Jinx: Reduces the current target's attack damage for a few seconds.",
+      "dossier": {
+        "form": "Hunched goblin in a feathered mask shaking a bone rattle.",
+        "decision": "Weaken the enemy's main attacker.",
+        "positioning": "Mid row, facing the enemy carry.",
+        "allies": "Shamans for the opening hex.",
+        "counterplay": "Skill-based damage is unaffected.",
+        "recognition": "A purple mark hangs over the weakened enemy."
+      },
+      "stats": {
+        "health": 65000,
+        "attackDamage": 5000,
+        "attackRate": 700,
+        "range": 3,
+        "armor": 10,
+        "resistance": 15,
+        "movementRate": 900,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_jinxer",
+        "name": "Jinx",
+        "mechanic": "standard",
+        "effect": "damage",
+        "selector": "current_enemy",
+        "damageType": "magic",
+        "firstCastMs": 3000,
+        "cooldownMs": 8000,
+        "castMs": 350,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 200,
+        "radius": 0,
+        "range": 3,
+        "maxTargets": 1,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          6000,
+          10000,
+          16000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "effects": [
+          {
+            "effect": "damage",
+            "damageType": "magic",
+            "durationMs": 0,
+            "magnitude": [
+              6000,
+              10000,
+              16000
+            ]
+          },
+          {
+            "effect": "stat_modifier",
+            "damageType": "physical",
+            "durationMs": 4000,
+            "magnitude": [
+              -2500,
+              -3500,
+              -5000
+            ],
+            "stat": "attack_damage"
+          }
+        ],
+        "tooltip_en": "Hits the current target for magic damage and lowers its attack damage for 4 seconds.",
+        "tooltip_id": "Menyerang target saat ini dengan kerusakan sihir dan menurunkan kerusakan serangannya selama 4 detik."
+      }
+    },
+    {
+      "id": "wc_vn_dartblower",
+      "name": "Dartblower",
+      "display_name": "Dartblower",
+      "race": "goblin",
+      "unit_class": "sniper",
+      "cost": 2,
+      "body_family": "humanoid_small",
+      "role_tags": [
+        "damage"
+      ],
+      "archetype": "backline pressure",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "design_intent": "Poison Dart: Poisons the target: damage over time and slower attacks.",
+      "dossier": {
+        "form": "Skinny goblin in a leaf cloak with a long blowpipe.",
+        "decision": "Wear down one high-health enemy.",
+        "positioning": "Back row.",
+        "allies": "Snipers; Undead armour reduction.",
+        "counterplay": "Healing outlasts the poison; dive him.",
+        "recognition": "Green bubbles rise from the poisoned unit."
+      },
+      "stats": {
+        "health": 58000,
+        "attackDamage": 7400,
+        "attackRate": 800,
+        "range": 5,
+        "armor": 5,
+        "resistance": 10,
+        "movementRate": 850,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_dartblower",
+        "name": "Poison Dart",
+        "mechanic": "standard",
+        "effect": "damage",
+        "selector": "current_enemy",
+        "damageType": "magic",
+        "firstCastMs": 2500,
+        "cooldownMs": 6000,
+        "castMs": 300,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 200,
+        "radius": 0,
+        "range": 5,
+        "maxTargets": 1,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          4000,
+          6500,
+          10500
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Poisons the current target for 4 seconds: magic damage every second, and it attacks more slowly.",
+        "tooltip_id": "Meracuni target saat ini selama 4 detik: kerusakan sihir setiap detik, dan serangannya melambat.",
+        "effects": [
+          {
+            "effect": "damage",
+            "damageType": "magic",
+            "durationMs": 4000,
+            "magnitude": [
+              4000,
+              6500,
+              10500
+            ],
+            "repeatMs": 1000
+          },
+          {
+            "effect": "stat_modifier",
+            "damageType": "physical",
+            "durationMs": 4000,
+            "magnitude": [
+              -2000,
+              -3000,
+              -4000
+            ],
+            "stat": "attack_rate"
+          }
+        ]
+      }
+    },
+    {
+      "id": "wc_vn_bonechanter",
+      "name": "Bonechanter",
+      "display_name": "Bonechanter",
+      "race": "orc",
+      "unit_class": "warlock",
+      "cost": 4,
+      "body_family": "humanoid_large",
+      "role_tags": [
+        "damage"
+      ],
+      "archetype": "positional sustain",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "design_intent": "Draining Chain: Drains life from an enemy; the drain chains to nearby enemies and heals him.",
+      "dossier": {
+        "form": "Tall orc in a bone headdress with a skull-topped staff.",
+        "decision": "Sustain himself against grouped enemies.",
+        "positioning": "Second row near the fight.",
+        "allies": "Warlocks for team healing; Tanks.",
+        "counterplay": "Spread out; burst him.",
+        "recognition": "Red threads link him to each drained enemy."
+      },
+      "stats": {
+        "health": 84000,
+        "attackDamage": 6600,
+        "attackRate": 650,
+        "range": 3,
+        "armor": 15,
+        "resistance": 15,
+        "movementRate": 900,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_bonechanter",
+        "name": "Draining Chain",
+        "mechanic": "standard",
+        "effect": "damage",
+        "selector": "chain_from_current_enemy",
+        "damageType": "magic",
+        "firstCastMs": 3000,
+        "cooldownMs": 8000,
+        "castMs": 400,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 250,
+        "radius": 2,
+        "range": 3,
+        "maxTargets": 3,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          10000,
+          16000,
+          26000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Drains the current target, then up to 2 more enemies within 2 cells of each one hit, for magic damage, and heals himself.",
+        "tooltip_id": "Menguras target saat ini, lalu hingga 2 musuh lain dalam 2 petak dari tiap korban, dengan kerusakan sihir, dan menyembuhkan dirinya.",
+        "effects": [
+          {
+            "effect": "damage",
+            "damageType": "magic",
+            "durationMs": 0,
+            "magnitude": [
+              10000,
+              16000,
+              26000
+            ]
+          },
+          {
+            "effect": "heal",
+            "damageType": "magic",
+            "durationMs": 0,
+            "magnitude": [
+              8000,
+              13000,
+              21000
+            ],
+            "selector": "self"
+          }
+        ]
+      }
+    },
+    {
+      "id": "wc_vn_foxclaw",
+      "name": "Foxclaw",
+      "display_name": "Foxclaw",
+      "race": "beastkin",
+      "unit_class": "assassin",
+      "cost": 1,
+      "body_family": "humanoid_tailed",
+      "role_tags": [
+        "damage"
+      ],
+      "archetype": "backline pressure",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "design_intent": "Pounce: Leaps onto the target and makes it bleed over time.",
+      "dossier": {
+        "form": "Small fox-headed fighter with a big tail and two claws.",
+        "decision": "Early back-line pressure.",
+        "positioning": "A flank column.",
+        "allies": "Assassins.",
+        "counterplay": "Guard the back line with a cheap melee unit.",
+        "recognition": "Orange blur on the leap; red drops on the bleeding unit."
+      },
+      "stats": {
+        "health": 60000,
+        "attackDamage": 7500,
+        "attackRate": 900,
+        "range": 1,
+        "armor": 10,
+        "resistance": 15,
+        "movementRate": 1200,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 0,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_foxclaw",
+        "name": "Pounce",
+        "mechanic": "standard",
+        "effect": "damage",
+        "selector": "current_enemy",
+        "damageType": "physical",
+        "firstCastMs": 2500,
+        "cooldownMs": 6000,
+        "castMs": 250,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 0,
+        "radius": 0,
+        "range": 4,
+        "maxTargets": 1,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          12000,
+          20000,
+          32000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Leaps onto the current target from up to 4 cells away, strikes it for physical damage and makes it bleed for 4 seconds.",
+        "tooltip_id": "Melompat ke target saat ini dari jarak hingga 4 petak, menyerangnya dengan kerusakan fisik, dan membuatnya berdarah selama 4 detik.",
+        "effects": [
+          {
+            "effect": "blink",
+            "damageType": "physical",
+            "durationMs": 0,
+            "magnitude": [
+              0,
+              0,
+              0
+            ],
+            "selector": "cell_beside_target"
+          },
+          {
+            "effect": "damage",
+            "damageType": "physical",
+            "durationMs": 0,
+            "magnitude": [
+              12000,
+              20000,
+              32000
+            ]
+          },
+          {
+            "effect": "damage",
+            "damageType": "physical",
+            "durationMs": 4000,
+            "magnitude": [
+              2000,
+              3500,
+              5500
+            ],
+            "repeatMs": 1000
+          }
+        ]
+      }
+    },
+    {
+      "id": "wc_vn_wolf_caller",
+      "name": "Wolf Caller",
+      "display_name": "Wolf Caller",
+      "race": "beastkin",
+      "unit_class": "summoner",
+      "cost": 2,
+      "body_family": "humanoid_tailed",
+      "role_tags": [
+        "support"
+      ],
+      "archetype": "constructions",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "design_intent": "Pack Call: Summons two wolves next to her.",
+      "dossier": {
+        "form": "Wolf-headed hunter with a fur mantle and a horn.",
+        "decision": "Add bodies to the front line.",
+        "positioning": "Second row with free cells in front.",
+        "allies": "Summoners.",
+        "counterplay": "Area damage clears wolves.",
+        "recognition": "A horn call, then two wolves jump in."
+      },
+      "stats": {
+        "health": 68000,
+        "attackDamage": 4700,
+        "attackRate": 650,
+        "range": 3,
+        "armor": 10,
+        "resistance": 15,
+        "movementRate": 850,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_wolf_caller",
+        "name": "Pack Call",
+        "mechanic": "standard",
+        "effect": "summon",
+        "selector": "self",
+        "damageType": "physical",
+        "firstCastMs": 3000,
+        "cooldownMs": 9000,
+        "castMs": 400,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 0,
+        "radius": 0,
+        "range": 1,
+        "maxTargets": 1,
+        "maxDash": 0,
+        "allowSelf": true,
+        "magnitude": [
+          0,
+          0,
+          0
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Summons 2 wolves beside her. They fight until they fall. A side may have 4 summoned units at once.",
+        "tooltip_id": "Memanggil 2 serigala di sebelahnya. Mereka bertarung sampai gugur. Satu pihak boleh memiliki 4 unit panggilan sekaligus.",
+        "effects": [
+          {
+            "effect": "summon",
+            "damageType": "physical",
+            "durationMs": 0,
+            "magnitude": [
+              0,
+              0,
+              0
+            ],
+            "summon": "wc_vn_s_wolf",
+            "count": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": "wc_vn_owl_seer",
+      "name": "Owl Seer",
+      "display_name": "Owl Seer",
+      "race": "beastkin",
+      "unit_class": "shaman",
+      "cost": 3,
+      "body_family": "humanoid_tailed",
+      "role_tags": [
+        "support"
+      ],
+      "archetype": "single_target_control",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "design_intent": "Small Fry: Turns one enemy into a harmless critter for a few seconds.",
+      "dossier": {
+        "form": "Owl-headed sage in a feather cloak with a crooked staff.",
+        "decision": "Remove the most dangerous enemy from the fight for a moment.",
+        "positioning": "Mid row within reach of the enemy carry.",
+        "allies": "Shamans; burst damage to finish the hexed unit.",
+        "counterplay": "Bait the hex with a less important unit.",
+        "recognition": "A puff of feathers and a tiny critter in the enemy's place."
+      },
+      "stats": {
+        "health": 73000,
+        "attackDamage": 5600,
+        "attackRate": 700,
+        "range": 3,
+        "armor": 10,
+        "resistance": 15,
+        "movementRate": 900,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_owl_seer",
+        "name": "Small Fry",
+        "mechanic": "standard",
+        "effect": "hex",
+        "selector": "current_enemy",
+        "damageType": "magic",
+        "firstCastMs": 3000,
+        "cooldownMs": 9000,
+        "castMs": 350,
+        "recoveryMs": 300,
+        "durationMs": 2500,
+        "travelMs": 200,
+        "radius": 0,
+        "range": 3,
+        "maxTargets": 1,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          2500,
+          3500,
+          5000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Turns the current target into a harmless critter for 2.5 / 3.5 / 5 seconds. It can walk, but cannot attack, cast or gain mana.",
+        "tooltip_id": "Mengubah target saat ini menjadi hewan kecil yang tak berbahaya selama 2,5 / 3,5 / 5 detik. Ia bisa berjalan, tetapi tidak bisa menyerang, memakai skill, atau mendapat mana."
+      }
+    },
+    {
+      "id": "wc_vn_hellblade",
+      "name": "Hellblade",
+      "display_name": "Hellblade",
+      "race": "demon",
+      "unit_class": "fighter",
+      "cost": 2,
+      "body_family": "humanoid_horned",
+      "role_tags": [
+        "frontline"
+      ],
+      "archetype": "isolated duels",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "design_intent": "Burning Aura: Burns all adjacent enemies every second for a short time.",
+      "dossier": {
+        "form": "Red horned warrior with one burning greatsword.",
+        "decision": "Deal steady damage in a melee pile.",
+        "positioning": "Front row.",
+        "allies": "Demons; Fighters.",
+        "counterplay": "Keep melee away; focus him.",
+        "recognition": "A ring of flame circles his feet."
+      },
+      "stats": {
+        "health": 73500,
+        "attackDamage": 7400,
+        "attackRate": 950,
+        "range": 1,
+        "armor": 15,
+        "resistance": 15,
+        "movementRate": 1200,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 0,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_hellblade",
+        "name": "Burning Aura",
+        "mechanic": "standard",
+        "effect": "damage",
+        "selector": "adjacent_enemies",
+        "damageType": "magic",
+        "firstCastMs": 3000,
+        "cooldownMs": 8000,
+        "castMs": 400,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 0,
+        "radius": 1,
+        "range": 1,
+        "maxTargets": 8,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          3500,
+          5500,
+          9000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Ignites for 4 seconds: every second, all adjacent enemies take magic damage. The fire moves with him.",
+        "tooltip_id": "Menyala selama 4 detik: setiap detik, semua musuh di sebelahnya menerima kerusakan sihir. Api mengikuti dirinya.",
+        "effects": [
+          {
+            "effect": "damage",
+            "damageType": "magic",
+            "durationMs": 4000,
+            "magnitude": [
+              3500,
+              5500,
+              9000
+            ],
+            "repeatMs": 1000,
+            "follow": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "wc_vn_shadow_fiend",
+      "name": "Shadow Fiend",
+      "display_name": "Shadow Fiend",
+      "race": "demon",
+      "unit_class": "assassin",
+      "cost": 4,
+      "body_family": "humanoid_horned",
+      "role_tags": [
+        "damage"
+      ],
+      "archetype": "backline pressure",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "design_intent": "Shadow Dash: Dashes in a straight line and damages every enemy crossed.",
+      "dossier": {
+        "form": "Dark winged demon with glowing eyes and long claws.",
+        "decision": "Cut through a column of enemies.",
+        "positioning": "On a column the enemy fills.",
+        "allies": "Assassins; Demons.",
+        "counterplay": "Stagger columns.",
+        "recognition": "A dark streak across the dashed cells."
+      },
+      "stats": {
+        "health": 72000,
+        "attackDamage": 9000,
+        "attackRate": 900,
+        "range": 1,
+        "armor": 10,
+        "resistance": 15,
+        "movementRate": 1200,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 0,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_shadow_fiend",
+        "name": "Shadow Dash",
+        "mechanic": "standard",
+        "effect": "damage",
+        "selector": "current_enemy",
+        "damageType": "physical",
+        "firstCastMs": 2500,
+        "cooldownMs": 7000,
+        "castMs": 250,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 0,
+        "radius": 0,
+        "range": 3,
+        "maxTargets": 8,
+        "maxDash": 4,
+        "allowSelf": false,
+        "magnitude": [
+          14000,
+          22500,
+          36000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Dashes up to 4 cells in a straight line through the current target, dealing physical damage to every enemy on that line.",
+        "tooltip_id": "Menerjang hingga 4 petak dalam garis lurus melewati target saat ini, memberi kerusakan fisik kepada setiap musuh di garis itu.",
+        "effects": [
+          {
+            "effect": "damage",
+            "damageType": "physical",
+            "durationMs": 0,
+            "magnitude": [
+              14000,
+              22500,
+              36000
+            ],
+            "selector": "enemy_line"
+          },
+          {
+            "effect": "blink",
+            "damageType": "physical",
+            "durationMs": 0,
+            "magnitude": [
+              0,
+              0,
+              0
+            ],
+            "selector": "cell_through_target"
+          }
+        ]
+      }
+    },
+    {
+      "id": "wc_vn_pit_lord",
+      "name": "Pit Lord",
+      "display_name": "Pit Lord",
+      "race": "demon",
+      "unit_class": "mage",
+      "cost": 5,
+      "body_family": "humanoid_large",
+      "role_tags": [
+        "damage"
+      ],
+      "archetype": "artillery",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "design_intent": "Rain of Fire: Calls fire down on a large area for several seconds.",
+      "dossier": {
+        "form": "Huge horned demon with a burning crown and a heavy whip.",
+        "decision": "Deny a large area of the board.",
+        "positioning": "Back row, protected.",
+        "allies": "Mages; Tanks that hold enemies in the area.",
+        "counterplay": "Move out, spread, or silence him.",
+        "recognition": "The area darkens, then fire falls in waves."
+      },
+      "stats": {
+        "health": 78000,
+        "attackDamage": 6500,
+        "attackRate": 700,
+        "range": 4,
+        "armor": 10,
+        "resistance": 15,
+        "movementRate": 850,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_pit_lord",
+        "name": "Rain of Fire",
+        "mechanic": "standard",
+        "effect": "damage",
+        "selector": "current_enemy_area",
+        "damageType": "magic",
+        "firstCastMs": 3000,
+        "cooldownMs": 9000,
+        "castMs": 400,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 300,
+        "radius": 2,
+        "range": 4,
+        "maxTargets": 12,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          9000,
+          14500,
+          23000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Calls fire down around the current target for 4 seconds: every second, enemies within 2 cells of that spot take magic damage.",
+        "tooltip_id": "Menurunkan hujan api di sekitar target saat ini selama 4 detik: setiap detik, musuh dalam 2 petak dari titik itu menerima kerusakan sihir.",
+        "effects": [
+          {
+            "effect": "damage",
+            "damageType": "magic",
+            "durationMs": 4000,
+            "magnitude": [
+              9000,
+              14500,
+              23000
+            ],
+            "repeatMs": 1000
+          }
+        ]
+      }
+    },
+    {
+      "id": "wc_vn_bone_archer",
+      "name": "Bone Archer",
+      "display_name": "Bone Archer",
+      "race": "undead",
+      "unit_class": "sniper",
+      "cost": 1,
+      "body_family": "humanoid_medium",
+      "role_tags": [
+        "damage"
+      ],
+      "archetype": "backline pressure",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "design_intent": "Splinter Arrow: Shoots an arrow that reduces the target's armour.",
+      "dossier": {
+        "form": "Skeleton in a torn hood with a bow made of ribs.",
+        "decision": "Soften a tank for physical damage.",
+        "positioning": "Back row.",
+        "allies": "Snipers and Fighters.",
+        "counterplay": "Assassins; armour matters less against skill damage.",
+        "recognition": "A cracked-shield mark over the target."
+      },
+      "stats": {
+        "health": 55000,
+        "attackDamage": 7000,
+        "attackRate": 800,
+        "range": 5,
+        "armor": 5,
+        "resistance": 10,
+        "movementRate": 850,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_bone_archer",
+        "name": "Splinter Arrow",
+        "mechanic": "standard",
+        "effect": "damage",
+        "selector": "current_enemy",
+        "damageType": "physical",
+        "firstCastMs": 3000,
+        "cooldownMs": 7000,
+        "castMs": 350,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 200,
+        "radius": 0,
+        "range": 5,
+        "maxTargets": 1,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          9000,
+          15000,
+          24000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Shoots the current target for physical damage and lowers its armour for 5 seconds.",
+        "tooltip_id": "Menembak target saat ini dengan kerusakan fisik dan menurunkan armornya selama 5 detik.",
+        "effects": [
+          {
+            "effect": "damage",
+            "damageType": "physical",
+            "durationMs": 0,
+            "magnitude": [
+              9000,
+              15000,
+              24000
+            ]
+          },
+          {
+            "effect": "stat_modifier",
+            "damageType": "physical",
+            "durationMs": 5000,
+            "magnitude": [
+              -10,
+              -15,
+              -25
+            ],
+            "stat": "armor"
+          }
+        ]
+      }
+    },
+    {
+      "id": "wc_vn_curse_weaver",
+      "name": "Curse Weaver",
+      "display_name": "Curse Weaver",
+      "race": "undead",
+      "unit_class": "warlock",
+      "cost": 2,
+      "body_family": "humanoid_medium",
+      "role_tags": [
+        "support"
+      ],
+      "archetype": "single_target_control",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "design_intent": "Hex of Frailty: Curses the target so it takes more damage from all sources.",
+      "dossier": {
+        "form": "Veiled ghoul with long sleeves and a floating curse doll.",
+        "decision": "Mark the unit the team should kill next.",
+        "positioning": "Mid row.",
+        "allies": "Any burst damage.",
+        "counterplay": "Shields and healing on the cursed unit.",
+        "recognition": "A doll icon hangs above the cursed enemy."
+      },
+      "stats": {
+        "health": 73500,
+        "attackDamage": 5800,
+        "attackRate": 650,
+        "range": 3,
+        "armor": 15,
+        "resistance": 15,
+        "movementRate": 900,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_curse_weaver",
+        "name": "Hex of Frailty",
+        "mechanic": "standard",
+        "effect": "damage",
+        "selector": "current_enemy",
+        "damageType": "magic",
+        "firstCastMs": 3000,
+        "cooldownMs": 8000,
+        "castMs": 350,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 200,
+        "radius": 0,
+        "range": 3,
+        "maxTargets": 1,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          8000,
+          13000,
+          21000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Curses the current target: magic damage, and it takes more damage from every source for 5 seconds.",
+        "tooltip_id": "Mengutuk target saat ini: kerusakan sihir, dan target menerima kerusakan lebih besar dari semua sumber selama 5 detik.",
+        "effects": [
+          {
+            "effect": "damage",
+            "damageType": "magic",
+            "durationMs": 0,
+            "magnitude": [
+              8000,
+              13000,
+              21000
+            ]
+          },
+          {
+            "effect": "stat_modifier",
+            "damageType": "physical",
+            "durationMs": 5000,
+            "magnitude": [
+              2000,
+              3000,
+              4500
+            ],
+            "stat": "damage_taken"
+          }
+        ]
+      }
+    },
+    {
+      "id": "wc_vn_stitcher",
+      "name": "Stitcher",
+      "display_name": "Stitcher",
+      "race": "undead",
+      "unit_class": "engineer",
+      "cost": 3,
+      "body_family": "humanoid_medium",
+      "role_tags": [
+        "support"
+      ],
+      "archetype": "positional sustain",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "dossier": {
+        "form": "Stitched-together surgeon with mismatched arms and a tool belt.",
+        "decision": "Keep a damaged front-liner standing.",
+        "positioning": "Second row.",
+        "allies": "Tanks; Engineers.",
+        "counterplay": "Burst past the shield; dive him.",
+        "recognition": "Thread stitches across the ally and a pale shield appears."
+      },
+      "stats": {
+        "health": 73000,
+        "attackDamage": 6200,
+        "attackRate": 700,
+        "range": 3,
+        "armor": 15,
+        "resistance": 15,
+        "movementRate": 900,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_stitcher",
+        "name": "Patch Up",
+        "mechanic": "standard",
+        "effect": "heal",
+        "selector": "lowest_health_ally",
+        "damageType": "magic",
+        "firstCastMs": 3000,
+        "cooldownMs": 8000,
+        "castMs": 350,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 0,
+        "radius": 0,
+        "range": 8,
+        "maxTargets": 1,
+        "maxDash": 0,
+        "allowSelf": true,
+        "magnitude": [
+          11000,
+          18000,
+          29000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Heals the allied unit with the lowest health, then gives it a shield for 4 seconds.",
+        "tooltip_id": "Menyembuhkan rekan dengan nyawa paling rendah, lalu memberinya perisai selama 4 detik.",
+        "effects": [
+          {
+            "effect": "heal",
+            "damageType": "magic",
+            "durationMs": 0,
+            "magnitude": [
+              11000,
+              18000,
+              29000
+            ]
+          },
+          {
+            "effect": "shield",
+            "damageType": "magic",
+            "durationMs": 4000,
+            "magnitude": [
+              11000,
+              18000,
+              29000
+            ],
+            "delayMs": 250
+          }
+        ]
+      },
+      "design_intent": "Patch Up: Repairs and shields the ally with the lowest health."
+    },
+    {
+      "id": "wc_vn_necromancer",
+      "name": "Necromancer",
+      "display_name": "Necromancer",
+      "race": "undead",
+      "unit_class": "summoner",
+      "cost": 4,
+      "body_family": "humanoid_medium",
+      "role_tags": [
+        "support"
+      ],
+      "archetype": "constructions",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "design_intent": "Raise Dead: Raises skeletons from fallen units, up to the summon cap.",
+      "dossier": {
+        "form": "Gaunt robed figure with a crown of candles and a scythe.",
+        "decision": "Grow stronger as the fight goes on.",
+        "positioning": "Back row; long fights favour him.",
+        "allies": "Summoners; Tanks that prolong the fight.",
+        "counterplay": "Kill him early; area damage.",
+        "recognition": "Green light rises from a fallen unit's cell."
+      },
+      "stats": {
+        "health": 78000,
+        "attackDamage": 5400,
+        "attackRate": 650,
+        "range": 3,
+        "armor": 10,
+        "resistance": 15,
+        "movementRate": 850,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_necromancer",
+        "name": "Raise Dead",
+        "mechanic": "standard",
+        "effect": "summon",
+        "selector": "self",
+        "damageType": "physical",
+        "firstCastMs": 3000,
+        "cooldownMs": 9000,
+        "castMs": 400,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 0,
+        "radius": 0,
+        "range": 1,
+        "maxTargets": 1,
+        "maxDash": 0,
+        "allowSelf": true,
+        "magnitude": [
+          0,
+          0,
+          0
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Raises up to 2 skeletons where heroes or monsters have fallen. He waits until someone has fallen. A side may have 4 summoned units at once.",
+        "tooltip_id": "Membangkitkan hingga 2 kerangka di tempat hero atau monster gugur. Ia menunggu sampai ada yang gugur. Satu pihak boleh memiliki 4 unit panggilan sekaligus.",
+        "effects": [
+          {
+            "effect": "summon",
+            "damageType": "physical",
+            "durationMs": 0,
+            "magnitude": [
+              0,
+              0,
+              0
+            ],
+            "summon": "wc_vn_s_skeleton",
+            "count": 2,
+            "selector": "fallen_units"
+          }
+        ]
+      }
+    },
+    {
+      "id": "wc_vn_stone_shaper",
+      "name": "Stone Shaper",
+      "display_name": "Stone Shaper",
+      "race": "elemental",
+      "unit_class": "summoner",
+      "cost": 3,
+      "body_family": "elemental_humanoid",
+      "role_tags": [
+        "support"
+      ],
+      "archetype": "constructions",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "design_intent": "Rock Wall: Raises a short rock wall that blocks cells for a few seconds.",
+      "dossier": {
+        "form": "Boulder-bodied figure with glowing cracks and oversized fists.",
+        "decision": "Split the enemy formation or block a lane.",
+        "positioning": "Front-centre facing the enemy's approach.",
+        "allies": "Snipers and Mages who gain time.",
+        "counterplay": "Walk around; ranged units ignore it.",
+        "recognition": "Stone pillars rise from marked cells."
+      },
+      "stats": {
+        "health": 73000,
+        "attackDamage": 5000,
+        "attackRate": 650,
+        "range": 3,
+        "armor": 10,
+        "resistance": 15,
+        "movementRate": 850,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_stone_shaper",
+        "name": "Rock Wall",
+        "mechanic": "standard",
+        "effect": "summon",
+        "selector": "current_enemy",
+        "damageType": "physical",
+        "firstCastMs": 3000,
+        "cooldownMs": 9000,
+        "castMs": 400,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 0,
+        "radius": 0,
+        "range": 4,
+        "maxTargets": 1,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          0,
+          0,
+          0
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Raises 3 rock walls next to the current target for 4 seconds. Walls block cells and can be attacked, but do nothing themselves.",
+        "tooltip_id": "Mendirikan 3 dinding batu di sebelah target saat ini selama 4 detik. Dinding menghalangi petak dan bisa diserang, tetapi tidak berbuat apa-apa.",
+        "effects": [
+          {
+            "effect": "summon",
+            "damageType": "physical",
+            "durationMs": 4000,
+            "magnitude": [
+              0,
+              0,
+              0
+            ],
+            "summon": "wc_vn_s_rock_wall",
+            "count": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "wc_vn_storm_spirit",
+      "name": "Storm Spirit",
+      "display_name": "Storm Spirit",
+      "race": "elemental",
+      "unit_class": "shaman",
+      "cost": 4,
+      "body_family": "elemental_floating",
+      "role_tags": [
+        "damage"
+      ],
+      "archetype": "artillery",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "design_intent": "Chain Lightning: Lightning hits the target and jumps to nearby enemies.",
+      "dossier": {
+        "form": "Cloud-bodied spirit with lightning arms and a bright core.",
+        "decision": "Punish enemies standing next to each other.",
+        "positioning": "Back row.",
+        "allies": "Mages; Shamans.",
+        "counterplay": "Leave gaps between units.",
+        "recognition": "A bolt visibly jumps from enemy to enemy."
+      },
+      "stats": {
+        "health": 78000,
+        "attackDamage": 6000,
+        "attackRate": 700,
+        "range": 3,
+        "armor": 10,
+        "resistance": 15,
+        "movementRate": 900,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_storm_spirit",
+        "name": "Chain Lightning",
+        "mechanic": "standard",
+        "effect": "damage",
+        "selector": "chain_from_current_enemy",
+        "damageType": "magic",
+        "firstCastMs": 3000,
+        "cooldownMs": 7000,
+        "castMs": 400,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 100,
+        "radius": 2,
+        "range": 3,
+        "maxTargets": 4,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          11000,
+          18000,
+          29000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Strikes the current target with lightning that jumps to up to 3 more enemies within 2 cells of each one hit.",
+        "tooltip_id": "Menyambar target saat ini dengan petir yang melompat ke hingga 3 musuh lain dalam 2 petak dari tiap korban."
+      }
+    },
+    {
+      "id": "wc_vn_scaleguard",
+      "name": "Scaleguard",
+      "display_name": "Scaleguard",
+      "race": "dragonkin",
+      "unit_class": "tank",
+      "cost": 3,
+      "body_family": "humanoid_tailed",
+      "role_tags": [
+        "frontline"
+      ],
+      "archetype": "protected carries",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "design_intent": "Thorn Scales: For a short time, returns part of the damage he takes to attackers.",
+      "dossier": {
+        "form": "Broad horned dragonkin with plated scales and a spiked tail.",
+        "decision": "Punish enemies that focus him.",
+        "positioning": "Front row.",
+        "allies": "Priests; Dragonkin for instant mana.",
+        "counterplay": "Stop attacking him while the scales glow; use skill damage.",
+        "recognition": "Scales glow gold and sparks fly back at attackers."
+      },
+      "stats": {
+        "health": 106500,
+        "attackDamage": 6200,
+        "attackRate": 700,
+        "range": 1,
+        "armor": 35,
+        "resistance": 15,
+        "movementRate": 1000,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 0,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_scaleguard",
+        "name": "Thorn Scales",
+        "mechanic": "standard",
+        "effect": "stat_modifier",
+        "selector": "self",
+        "damageType": "physical",
+        "firstCastMs": 2500,
+        "cooldownMs": 8000,
+        "castMs": 300,
+        "recoveryMs": 300,
+        "durationMs": 4000,
+        "travelMs": 0,
+        "radius": 0,
+        "range": 1,
+        "maxTargets": 1,
+        "maxDash": 0,
+        "allowSelf": true,
+        "magnitude": [
+          3000,
+          4500,
+          6500
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Raises thorned scales for 4 seconds: attackers take 30% / 45% / 65% of the damage they deal back as true damage.",
+        "tooltip_id": "Menegakkan sisik berduri selama 4 detik: penyerang menerima kembali 30% / 45% / 65% dari kerusakan yang mereka berikan sebagai kerusakan murni.",
+        "effects": [
+          {
+            "effect": "stat_modifier",
+            "damageType": "physical",
+            "durationMs": 4000,
+            "magnitude": [
+              3000,
+              4500,
+              6500
+            ],
+            "stat": "reflect"
+          }
+        ]
+      }
+    },
+    {
+      "id": "wc_vn_dawn_oracle",
+      "name": "Dawn Oracle",
+      "display_name": "Dawn Oracle",
+      "race": "dragonkin",
+      "unit_class": "priest",
+      "cost": 4,
+      "body_family": "humanoid_tailed",
+      "role_tags": [
+        "support"
+      ],
+      "archetype": "positional sustain",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "design_intent": "Dawn Chorus: Heals every ally for a moderate amount.",
+      "dossier": {
+        "form": "Slender winged dragonkin in white robes with a sun disc.",
+        "decision": "Reset the whole team's health once.",
+        "positioning": "Back row, protected.",
+        "allies": "Priests; Tanks.",
+        "counterplay": "Burst single targets; reduce healing.",
+        "recognition": "A sunrise glow sweeps across the allied side."
+      },
+      "stats": {
+        "health": 78000,
+        "attackDamage": 5000,
+        "attackRate": 650,
+        "range": 3,
+        "armor": 10,
+        "resistance": 15,
+        "movementRate": 800,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_dawn_oracle",
+        "name": "Dawn Chorus",
+        "mechanic": "standard",
+        "effect": "heal",
+        "selector": "all_allies",
+        "damageType": "magic",
+        "firstCastMs": 3000,
+        "cooldownMs": 9000,
+        "castMs": 400,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 0,
+        "radius": 0,
+        "range": 8,
+        "maxTargets": 10,
+        "maxDash": 0,
+        "allowSelf": true,
+        "magnitude": [
+          9000,
+          14500,
+          23000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Heals every wounded ally, herself included.",
+        "tooltip_id": "Menyembuhkan setiap sekutu yang terluka, termasuk dirinya."
+      }
+    },
+    {
+      "id": "wc_vn_flame_regent",
+      "name": "Flame Regent",
+      "display_name": "Flame Regent",
+      "race": "dragonkin",
+      "unit_class": "mage",
+      "cost": 5,
+      "body_family": "humanoid_tailed",
+      "role_tags": [
+        "damage"
+      ],
+      "archetype": "artillery",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "design_intent": "Regent's Breath: Breathes fire in a wide cone in front of him.",
+      "dossier": {
+        "form": "Tall crowned dragonkin with large wings and a red mantle.",
+        "decision": "Late-game cone damage from the second row.",
+        "positioning": "Second row facing the enemy cluster.",
+        "allies": "Dragonkin for instant mana; Mages.",
+        "counterplay": "Flank him; spread wide.",
+        "recognition": "He rears back, then a cone of fire covers marked cells."
+      },
+      "stats": {
+        "health": 78000,
+        "attackDamage": 6500,
+        "attackRate": 700,
+        "range": 4,
+        "armor": 10,
+        "resistance": 15,
+        "movementRate": 850,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_flame_regent",
+        "name": "Regent's Breath",
+        "mechanic": "standard",
+        "effect": "damage",
+        "selector": "enemy_cone",
+        "damageType": "magic",
+        "firstCastMs": 3000,
+        "cooldownMs": 8000,
+        "castMs": 400,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 100,
+        "radius": 3,
+        "range": 4,
+        "maxTargets": 8,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          17000,
+          27000,
+          43000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Breathes fire toward the current target, dealing magic damage to every enemy in a wide cone 3 cells long.",
+        "tooltip_id": "Menyemburkan api ke arah target saat ini, memberi kerusakan sihir kepada setiap musuh dalam kerucut lebar sepanjang 3 petak."
+      }
+    },
+    {
+      "id": "wc_vn_void_wyrm",
+      "name": "Void Wyrm",
+      "display_name": "Void Wyrm",
+      "race": "dragonkin",
+      "unit_class": "warlock",
+      "cost": 5,
+      "body_family": "humanoid_tailed",
+      "role_tags": [
+        "support"
+      ],
+      "archetype": "single_target_control",
+      "enabled": true,
+      "production_status": "laboratory_candidate",
+      "art_status": "brief_only",
+      "design_intent": "Mana Devour: Drains mana from nearby enemies and silences them briefly.",
+      "dossier": {
+        "form": "Dark-scaled dragonkin with hollow glowing chest and tattered wings.",
+        "decision": "Shut down an enemy team that relies on skills.",
+        "positioning": "Near the enemy's casters.",
+        "allies": "Warlocks; Assassins.",
+        "counterplay": "Rely on basic attacks; keep casters apart.",
+        "recognition": "Blue wisps are pulled from enemies into his chest."
+      },
+      "stats": {
+        "health": 91000,
+        "attackDamage": 7200,
+        "attackRate": 650,
+        "range": 3,
+        "armor": 15,
+        "resistance": 15,
+        "movementRate": 900,
+        "attackWindupMs": 150,
+        "projectileTravelMs": 200,
+        "damageType": "physical"
+      },
+      "ability": {
+        "id": "wc_vn_a_void_wyrm",
+        "name": "Mana Devour",
+        "mechanic": "standard",
+        "effect": "mana_drain",
+        "selector": "adjacent_enemies",
+        "damageType": "magic",
+        "firstCastMs": 3000,
+        "cooldownMs": 10000,
+        "castMs": 400,
+        "recoveryMs": 300,
+        "durationMs": 0,
+        "travelMs": 0,
+        "radius": 3,
+        "range": 3,
+        "maxTargets": 8,
+        "maxDash": 0,
+        "allowSelf": false,
+        "magnitude": [
+          5000,
+          7500,
+          10000
+        ],
+        "guardReductionBp": 0,
+        "momentumPerStepBp": 0,
+        "maxMomentumSteps": 0,
+        "stationaryMs": 0,
+        "pulseMs": 0,
+        "displacementCells": 0,
+        "secondaryDelayMs": 0,
+        "tooltip_en": "Devours 50 / 75 / 100 mana from every enemy within 3 cells and silences them for 2.5 / 3.5 / 5 seconds. A silenced hero still attacks but cannot cast.",
+        "tooltip_id": "Melahap 50 / 75 / 100 mana dari setiap musuh dalam 3 petak dan membungkam mereka selama 2,5 / 3,5 / 5 detik. Hero yang dibungkam tetap menyerang tetapi tidak bisa memakai skill.",
+        "effects": [
+          {
+            "effect": "mana_drain",
+            "damageType": "magic",
+            "durationMs": 0,
+            "magnitude": [
+              5000,
+              7500,
+              10000
+            ]
+          },
+          {
+            "effect": "silence",
+            "damageType": "magic",
+            "durationMs": 2500,
+            "magnitude": [
+              2500,
+              3500,
+              5000
+            ]
+          }
+        ]
+      }
     }
   ],
   "relics": [
@@ -2142,8 +5871,72 @@
     "mana": "mana100_hit20_v1",
     "combat_rules": {
       "nearestReachableTarget": true,
-      "directMovement": true
+      "directMovement": true,
+      "chargeReturns": true
     },
+    "bot_spends_surplus": true,
+    "class_roles": [
+      {
+        "id": "tank",
+        "role": "frontline",
+        "row": 3,
+        "flank": false
+      },
+      {
+        "id": "fighter",
+        "role": "frontline",
+        "row": 3,
+        "flank": false
+      },
+      {
+        "id": "assassin",
+        "role": "damage",
+        "row": 2,
+        "flank": true
+      },
+      {
+        "id": "priest",
+        "role": "support",
+        "row": 1,
+        "flank": false
+      },
+      {
+        "id": "shaman",
+        "role": "support",
+        "row": 1,
+        "flank": false
+      },
+      {
+        "id": "mage",
+        "role": "damage",
+        "row": 0,
+        "flank": false
+      },
+      {
+        "id": "sniper",
+        "role": "damage",
+        "row": 0,
+        "flank": false
+      },
+      {
+        "id": "engineer",
+        "role": "damage",
+        "row": 0,
+        "flank": false
+      },
+      {
+        "id": "warlock",
+        "role": "damage",
+        "row": 0,
+        "flank": false
+      },
+      {
+        "id": "summoner",
+        "role": "damage",
+        "row": 0,
+        "flank": false
+      }
+    ],
     "mana_heroes": [
       "wc_vn_hookjaw",
       "wc_vn_prism_scholar",
@@ -2155,7 +5948,33 @@
       "wc_vn_bearguard",
       "wc_vn_bomber",
       "wc_vn_ember_wisp",
-      "wc_vn_blood_drummer"
+      "wc_vn_blood_drummer",
+      "wc_vn_siege_master",
+      "wc_vn_longbow_scout",
+      "wc_vn_moonblade",
+      "wc_vn_treant_caller",
+      "wc_vn_ironwall",
+      "wc_vn_rifleman",
+      "wc_vn_forge_king",
+      "wc_vn_jinxer",
+      "wc_vn_dartblower",
+      "wc_vn_bonechanter",
+      "wc_vn_foxclaw",
+      "wc_vn_stitcher",
+      "wc_vn_bone_archer",
+      "wc_vn_curse_weaver",
+      "wc_vn_scaleguard",
+      "wc_vn_hellblade",
+      "wc_vn_pit_lord",
+      "wc_vn_dawn_oracle",
+      "wc_vn_flame_regent",
+      "wc_vn_storm_spirit",
+      "wc_vn_owl_seer",
+      "wc_vn_void_wyrm",
+      "wc_vn_shadow_fiend",
+      "wc_vn_wolf_caller",
+      "wc_vn_necromancer",
+      "wc_vn_stone_shaper"
     ],
     "passive_heroes": [
       "wc_vn_shieldbearer",
@@ -2178,6 +5997,54 @@
           4
         ],
         "behavior": "All allies start combat with +10 / +20 mana."
+      },
+      {
+        "stat": "evasion_bp",
+        "scope": "members",
+        "values": [
+          2000,
+          4000
+        ],
+        "id": "elf",
+        "kind": "race",
+        "name": "Elf",
+        "thresholds": [
+          2,
+          4
+        ],
+        "behavior": "Elves have a 20% / 40% chance to dodge basic attacks."
+      },
+      {
+        "stat": "start_shield_health_bp",
+        "scope": "members",
+        "values": [
+          2000,
+          4000
+        ],
+        "id": "dwarf",
+        "kind": "race",
+        "name": "Dwarf",
+        "thresholds": [
+          2,
+          4
+        ],
+        "behavior": "Dwarves start each fight with a shield worth 20% / 40% of their maximum health."
+      },
+      {
+        "stat": "win_gold_flat",
+        "scope": "members",
+        "values": [
+          1,
+          2
+        ],
+        "id": "goblin",
+        "kind": "race",
+        "name": "Goblin",
+        "thresholds": [
+          2,
+          4
+        ],
+        "behavior": "Winning a fight against another player pays +1 / +2 gold."
       },
       {
         "stat": "max_health_bonus_bp",
@@ -2210,6 +6077,54 @@
           4
         ],
         "behavior": "All allies gain +10% / +20% attack speed."
+      },
+      {
+        "stat": "bonus_true_damage_bp",
+        "scope": "members",
+        "values": [
+          1500,
+          3000
+        ],
+        "id": "demon",
+        "kind": "race",
+        "name": "Demon",
+        "thresholds": [
+          2,
+          4
+        ],
+        "behavior": "Demons deal +15% / +30% of their damage again as true damage."
+      },
+      {
+        "stat": "enemy_armor_reduction_flat",
+        "scope": "enemies",
+        "values": [
+          10,
+          20
+        ],
+        "id": "undead",
+        "kind": "race",
+        "name": "Undead",
+        "thresholds": [
+          2,
+          4
+        ],
+        "behavior": "All enemies lose 10 / 20 armour."
+      },
+      {
+        "stat": "ability_damage_taken_reduction_bp",
+        "scope": "team",
+        "values": [
+          1500,
+          3000
+        ],
+        "id": "elemental",
+        "kind": "race",
+        "name": "Elemental",
+        "thresholds": [
+          2,
+          4
+        ],
+        "behavior": "All allies take 15% / 30% less damage from abilities."
       },
       {
         "stat": "starting_mana_flat",
@@ -2260,6 +6175,38 @@
         "behavior": "Fighters gain +20% / +40% attack damage."
       },
       {
+        "stat": "crit_chance_bp",
+        "scope": "members",
+        "values": [
+          1500,
+          3000
+        ],
+        "id": "assassin",
+        "kind": "class",
+        "name": "Assassin",
+        "thresholds": [
+          2,
+          4
+        ],
+        "behavior": "Assassins gain 15% / 30% critical-hit chance on basic attacks and leap behind the farthest enemy when the fight starts."
+      },
+      {
+        "stat": "start_leap",
+        "scope": "members",
+        "values": [
+          1,
+          1
+        ],
+        "id": "assassin",
+        "kind": "class",
+        "name": "Assassin",
+        "thresholds": [
+          2,
+          4
+        ],
+        "behavior": "Assassins gain 15% / 30% critical-hit chance on basic attacks and leap behind the farthest enemy when the fight starts."
+      },
+      {
         "stat": "ability_damage_bonus_bp",
         "scope": "team",
         "values": [
@@ -2274,6 +6221,119 @@
           4
         ],
         "behavior": "All allies deal 20% / 40% more skill damage."
+      },
+      {
+        "stat": "range_bonus_flat",
+        "scope": "members",
+        "values": [
+          1,
+          2
+        ],
+        "id": "sniper",
+        "kind": "class",
+        "name": "Sniper",
+        "thresholds": [
+          2,
+          4
+        ],
+        "behavior": "Snipers gain +1 / +2 attack range and +10% / +20% basic attack damage."
+      },
+      {
+        "stat": "basic_damage_bonus_bp",
+        "scope": "members",
+        "values": [
+          1000,
+          2000
+        ],
+        "id": "sniper",
+        "kind": "class",
+        "name": "Sniper",
+        "thresholds": [
+          2,
+          4
+        ],
+        "behavior": "Snipers gain +1 / +2 attack range and +10% / +20% basic attack damage."
+      },
+      {
+        "stat": "mana_per_second_flat",
+        "scope": "team",
+        "values": [
+          300,
+          600
+        ],
+        "id": "engineer",
+        "kind": "class",
+        "name": "Engineer",
+        "thresholds": [
+          2,
+          4
+        ],
+        "behavior": "All allies gain 3 / 6 extra mana every second."
+      },
+      {
+        "stat": "lifesteal_bp",
+        "scope": "team",
+        "values": [
+          1000,
+          2000
+        ],
+        "id": "warlock",
+        "kind": "class",
+        "name": "Warlock",
+        "thresholds": [
+          2,
+          4
+        ],
+        "behavior": "All allies heal for 10% / 20% of the damage they deal."
+      },
+      {
+        "stat": "health_regen_bp",
+        "scope": "team",
+        "values": [
+          150,
+          300
+        ],
+        "id": "priest",
+        "kind": "class",
+        "name": "Priest",
+        "thresholds": [
+          2,
+          4
+        ],
+        "behavior": "All allies regenerate 1.5% / 3% of their maximum health every second."
+      },
+      {
+        "stat": "enemy_hex_count",
+        "scope": "enemies",
+        "values": [
+          1,
+          2
+        ],
+        "durationMs": 3000,
+        "id": "shaman",
+        "kind": "class",
+        "name": "Shaman",
+        "thresholds": [
+          2,
+          4
+        ],
+        "behavior": "At combat start, 1 / 2 random enemies are hexed for 3 seconds: they can walk but cannot attack, cast or gain mana."
+      },
+      {
+        "stat": "summon_power_bonus_bp",
+        "scope": "summons",
+        "values": [
+          3000,
+          6000
+        ],
+        "id": "summoner",
+        "kind": "class",
+        "name": "Summoner",
+        "thresholds": [
+          2,
+          4
+        ],
+        "behavior": "Summoned units gain +30% / +60% health and damage."
       }
     ]
   }

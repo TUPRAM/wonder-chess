@@ -1,0 +1,80 @@
+{
+  "source": {
+    "unit_scale_m": 1,
+    "forward": "+Y",
+    "up": "+Z",
+    "disk_sources_unchanged": true
+  },
+  "normalization": {
+    "method": "temporary independent object/data/action copies",
+    "mesh_vertex_multiplier": 100,
+    "armature_rest_translation_multiplier": 100,
+    "animation_location_curve_multiplier": 100,
+    "object_scale": [
+      1,
+      1,
+      1
+    ],
+    "export_scene_scale_length": 0.01
+  },
+  "operator": {
+    "use_selection": true,
+    "global_scale": 1,
+    "apply_unit_scale": true,
+    "apply_scale_options": "FBX_SCALE_UNITS",
+    "axis_forward": "-Y",
+    "axis_up": "Z",
+    "use_mesh_modifiers": true,
+    "mesh_smooth_type": "FACE",
+    "use_tspace": false,
+    "add_leaf_bones": false,
+    "use_armature_deform_only": true,
+    "bake_anim_use_all_bones": true,
+    "bake_anim_use_nla_strips": false,
+    "bake_anim_use_all_actions": false,
+    "bake_anim_force_startend_keying": true,
+    "bake_anim_step": 1,
+    "bake_anim_simplify_factor": 0,
+    "path_mode": "COPY",
+    "embed_textures": false
+  },
+  "unreal_import": {
+    "importer": "legacy FBX",
+    "convert_scene": true,
+    "convert_scene_unit": true,
+    "force_front_x_axis": false,
+    "import_rotation_named_yaw_degrees": 90,
+    "preserve_local_transform": false,
+    "import_uniform_scale": 1
+  },
+  "calibration_status": "measured_pass_scoped_compatibility",
+  "scope": "Six preserved alpha rig families, seven clips each, imported into isolated Unreal diagnostic content; not whole-roster visual acceptance.",
+  "blender_version": "5.2.1 LTS",
+  "unreal_version": "5.8.2-56702186+++UE5+Release-5.8",
+  "supersedes_settings": false,
+  "settings_identical_to": "tools/blender/profiles/fbx_skeletal_cm_v1.json",
+  "reference_measurements": {
+    "families": [
+      "wc_u_dragonkin_guardian",
+      "wc_u_dwarf_guardian",
+      "wc_u_elf_ranger",
+      "wc_u_halfling_warrior",
+      "wc_u_human_guardian",
+      "wc_u_orc_warrior"
+    ],
+    "clips": 42,
+    "pose_evaluations": 1260,
+    "max_reference_height_error_cm": 2.2498038227070083e-05,
+    "root_scales_unit_within_tolerance": true
+  },
+  "evidence": [
+    "reports/toolchain-upgrade-20260917/blender-source-compatibility.json",
+    "reports/toolchain-upgrade-20260917/unreal-skeletal-compatibility.json"
+  ],
+  "not_proven": [
+    "full-roster fresh reimport",
+    "continuous visual animation quality",
+    "final art acceptance",
+    "remote machine compatibility"
+  ]
+}

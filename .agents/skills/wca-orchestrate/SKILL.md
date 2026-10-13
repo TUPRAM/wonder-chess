@@ -7,6 +7,12 @@ description: "Route new or revised Wonder Chess assets through AS1; do not redes
 
 ## Inputs and scope
 
+For the owner-selected Meshy-to-Unreal creature route, load
+[wc-creature-production](../wc-creature-production/SKILL.md) and its handbook.
+Its unchanged-Meshy-color, soft-lighting and Blender-free source rules supersede
+the older Blender-specific assumptions for that route. AS1 evidence, ownership and
+actual human review still apply; the handbook does not authorize paid jobs.
+
 Read the repository instructions, `production/asset-studio/docs/00_SYSTEM.md`, the active asset manifest, current source and direct gate dependencies. Confirm ownership and actual tools. Do not load every manual or modify unrelated gameplay.
 
 ## Procedure

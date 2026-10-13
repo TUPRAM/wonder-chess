@@ -1,8 +1,13 @@
+#include "Kismet/GameplayStatics.h"
+#include "Sound/SoundBase.h"
 #include "Widgets/Layout/SSpacer.h"
 #include "WCVNextLab.h"
 #include "WCVNextArtStyle.h"
 #include "WCCircularPortrait.h"
 #include "Simulation/WonderSaveFile.h"
+#include "Simulation/WonderDamageChart.h"
+#include "VNext/WonderVNextCatalog.generated.h"
+#include "Widgets/SCanvas.h"
 #include "Brushes/SlateRoundedBoxBrush.h"
 #include "Engine/Engine.h"
 #include "Engine/GameViewportClient.h"
@@ -99,10 +104,11 @@ class SWCSoloBoard : public SBorder
 {
 public:
     SLATE_BEGIN_ARGS(SWCSoloBoard) {} SLATE_ARGUMENT(TFunction<void()>, Click)
+        SLATE_ARGUMENT(TFunction<void(float)>, Wheel)
         SLATE_ARGUMENT(TFunction<FReply(const FKeyEvent&)>, Key) SLATE_END_ARGS()
     void Construct(const FArguments& Args)
     {
-        Click=Args._Click;Key=Args._Key;
+        Click=Args._Click;Key=Args._Key;Wheel=Args._Wheel;
         SBorder::Construct(SBorder::FArguments().BorderImage(FCoreStyle::Get().GetBrush(TEXT("WhiteBrush")))
             .BorderBackgroundColor(FLinearColor::Transparent));
     }
@@ -114,8 +120,10 @@ public:
     }
     virtual FReply OnKeyDown(const FGeometry&,const FKeyEvent& Event) override
     { return Key?Key(Event):FReply::Unhandled(); }
+    virtual FReply OnMouseWheel(const FGeometry&,const FPointerEvent& Event) override
+    { if(!Wheel)return FReply::Unhandled();Wheel(Event.GetWheelDelta());return FReply::Handled(); }
 private:
-    TFunction<void()> Click;TFunction<FReply(const FKeyEvent&)> Key;
+    TFunction<void()> Click;TFunction<FReply(const FKeyEvent&)> Key;TFunction<void(float)> Wheel;
 };
 class SWCSoloModal : public SBorder
 {
@@ -207,8 +215,8 @@ FString AWCVNextLab::SoloGuideBody() const
             TEXT("Pilih slot bangku yang berisi makhluk, lalu klik petak yang sah di bagian dekat papan Anda. Tujuan yang sah dan pratinjau kemampuan makhluk terpilih membantu penempatan. Jumlah makhluk di papan dibatasi oleh level Anda.\n\nKlik makhluk di papan untuk memilihnya. Klik tujuan lain untuk memindahkannya; tujuan yang sudah terisi dapat menukar makhluk. Pemindahan yang berhasil menghapus pilihan. Untuk mengembalikan makhluk ke bangku, pilih di papan lalu klik slot bangku kosong. Klik slot bangku yang terisi untuk memilih penghuninya.\n\nGunakan Rotate selected untuk mengubah arah. Periksa pratinjau sebelum menetapkan posisi: perlindungan, jalur dan lintasan serbuan mengikuti kemampuan yang sebenarnya. Penempatan dan pembelian terkunci saat pertempuran."));
     case 2:
         return SoloGuidePhrase(
-            TEXT("Click a captain in the standings to scout that public formation. Check whose board is shown. Opponent shops, benches and draft choices stay private. Return to Your board before issuing your orders.\n\nReady ends your preparation decision when the round is ready to proceed; editing cancels your readiness. The shared preparation clock also ends the phase. Combat then runs automatically.\n\nWatch who acts, where the ability commits, and which creature is actually affected. Healing shows effective restoration; a push requires a changed position. Recap records battle facts and captain health lost. Use those facts to choose a practical formation or recruitment change after a loss. Trait counts are visible, but trait bonuses are inactive in this candidate."),
-            TEXT("Klik kapten pada daftar peringkat untuk mengamati formasi publiknya. Periksa papan siapa yang sedang ditampilkan. Toko, bangku dan pilihan draf lawan tetap pribadi. Kembali ke Your board sebelum memberi perintah.\n\nReady menyelesaikan keputusan persiapan saat ronde siap berlanjut; perubahan membatalkan kesiapan Anda. Waktu persiapan bersama juga mengakhiri fase. Pertempuran kemudian berjalan otomatis.\n\nAmati siapa yang bertindak, tempat kemampuan ditetapkan dan makhluk yang benar-benar terkena. Penyembuhan menunjukkan pemulihan efektif; dorongan harus mengubah posisi. Recap mencatat fakta pertempuran dan kesehatan kapten yang hilang. Gunakan fakta tersebut untuk mengubah formasi atau rekrutmen setelah kalah. Jumlah trait ditampilkan, tetapi bonus trait belum aktif pada kandidat ini."));
+            TEXT("Click a captain in the standings to scout that public formation. Check whose board is shown. Opponent shops, benches and draft choices stay private. Return to Your board before issuing your orders.\n\nReady ends your preparation decision when the round is ready to proceed; editing cancels your readiness. The shared preparation clock also ends the phase. Combat then runs automatically.\n\nWatch who acts, where the ability commits, and which creature is actually affected. Healing shows effective restoration; a push requires a changed position. Recap records battle facts and captain health lost. Use those facts to choose a practical formation or recruitment change after a loss. Some synergy bonuses apply at 2 and 4 different heroes of a race or class; the synergy list shows which are active."),
+            TEXT("Klik kapten pada daftar peringkat untuk mengamati formasi publiknya. Periksa papan siapa yang sedang ditampilkan. Toko, bangku dan pilihan draf lawan tetap pribadi. Kembali ke Your board sebelum memberi perintah.\n\nReady menyelesaikan keputusan persiapan saat ronde siap berlanjut; perubahan membatalkan kesiapan Anda. Waktu persiapan bersama juga mengakhiri fase. Pertempuran kemudian berjalan otomatis.\n\nAmati siapa yang bertindak, tempat kemampuan ditetapkan dan makhluk yang benar-benar terkena. Penyembuhan menunjukkan pemulihan efektif; dorongan harus mengubah posisi. Recap mencatat fakta pertempuran dan kesehatan kapten yang hilang. Gunakan fakta tersebut untuk mengubah formasi atau rekrutmen setelah kalah. Sebagian bonus sinergi berlaku pada 2 dan 4 hero berbeda dari ras atau kelas yang sama; daftar sinergi menunjukkan mana yang aktif."));
     case 3:
         if(SoloGuideIndonesian)return FString::Printf(
             TEXT("Saat draf relik muncul, pilih salah satu tawaran yang tersedia. Baca efek, kekurangan dan kecocokannya. Pilih makhluk milik Anda, lalu pilih relik dalam inventaris untuk memasangnya saat persiapan. Satu tim dapat memasang paling banyak %d relik, satu pada setiap makhluk. Unequip selected melepas relik makhluk terpilih.\n\nGunakan Menu > Save preparation pada fase persiapan yang sah. Memuat memulihkan persiapan tersimpan, bukan pertempuran setelahnya. Simpanan yang sudah ada meminta pilihan untuk memuat atau memulai turnamen baru. Baca pesan pemulihan sebelum mencoba lagi; simpanan yang sah harus dipertahankan.\n\nTersingkirnya Anda berbeda dari penentuan pemenang akhir. Anda dapat mengamati kapten yang masih hidup selama turnamen berlanjut. Hasil akhir menunjukkan peringkat; New tournament memulai dari awal."),
@@ -249,6 +257,13 @@ const wc::Combat* AWCVNextLab::CurrentCombat() const
     return nullptr;
 }
 
+int AWCVNextLab::ViewedSide() const
+{
+    if(SoloMode&&SoloMatch)for(const auto& E:SoloMatch->Encounters())
+        if(E.pairing.a!=ViewedSeat&&E.kind==wc::EncounterKind::Pvp&&E.pairing.b==ViewedSeat)return 1;
+    return 0;
+}
+
 void AWCVNextLab::StartSolo()
 {
     if(!LoadError.IsEmpty()||!Catalog.Validate().empty()){Message=TEXT("Cannot start: the requested content is invalid.");return;}
@@ -269,6 +284,11 @@ void AWCVNextLab::StartSolo()
         Message=TEXT("A saved preparation is available. Load it to continue, or choose New tournament. Your save has not been overwritten.");
     }
     SyncSoloFormation();
+    // A first-time player (no guide file, no save to resume) is offered the guided first match; the clock waits.
+    GuideStage=-1;GuideDone=false;
+    GuideOffer=!AwaitingSaveDecision&&!SoloExercise&&!SoloVisualExercise&&LoadGuideProfile()<0&&
+        !FParse::Param(FCommandLine::Get(),TEXT("WCSoloAutoPlay"))&&!FParse::Param(FCommandLine::Get(),TEXT("WCGuideAutoPlay"));
+    if(GuideOffer)SoloPaused=true;
 }
 
 void AWCVNextLab::SyncSoloFormation()
@@ -295,6 +315,13 @@ bool AWCVNextLab::SoloCommand(wc::Command Command)
     if(!SoloMatch)return false;
     if(AwaitingSaveDecision){Message=TEXT("Load the saved preparation or choose New tournament before giving orders.");return false;}
     if(ViewedSeat!=0){Message=TEXT("Scouting is read-only. Return to your board before giving an order.");return false;}
+    if(GuideStage>=0&&SoloMatch->Guided()&&GuideStage<int(GuideScript.stages.size())){
+        const auto& Steps=GuideScript.stages[GuideStage].steps;
+        if(GuideStep>=int(Steps.size())||!wc::GuidedAllows(Steps[GuideStep],Command.type)){
+            Message=FString(SoloGuideIndonesian?TEXT("Panduan: lakukan dulu langkah yang ditunjukkan. "):TEXT("Guide: do the step shown first. "))+GuideText();
+            return false;
+        }
+    }
     const auto& Captain=SoloMatch->Seats()[0];
     const int GoldBefore=Captain.gold, LevelBefore=Captain.level;
     const auto RosterBefore=Command.type==wc::CommandType::Buy?Captain.roster:std::vector<wc::OwnedUnit>();
@@ -308,7 +335,11 @@ bool AWCVNextLab::SoloCommand(wc::Command Command)
     Command.seat=0;Command.sequence=Captain.sequence+1;Command.revision=Captain.revision;Command.requestId=Command.sequence;
     const auto Reply=SoloMatch->Submit(0,Command);
     if(Reply.accepted&&Command.type==wc::CommandType::Buy)RecordRosterUpgrades(RosterBefore);
-    if(!Reply.accepted)Message=TEXT("Order rejected: ")+S(Reply.reason);
+    if(!Reply.accepted){
+        Message=TEXT("Order rejected: ")+S(Reply.reason);
+        if(Command.type==wc::CommandType::Buy&&GoldBefore>=0&&Definition>=0&&Captain.gold>=Catalog.units[Definition].cost)BenchFullAt=Elapsed;
+        if(Command.type==wc::CommandType::Move&&Command.toBoard)UnitLimitAt=Elapsed;
+    }
     else switch(Command.type){
     case wc::CommandType::Buy:{
         Message=FString::Printf(TEXT("Recruited %s for %dg. Select its bench card, then a near-half cell to deploy."),*Creature,GoldBefore-Captain.gold);
@@ -330,6 +361,9 @@ bool AWCVNextLab::SoloCommand(wc::Command Command)
     default:Message=TEXT("Order accepted.");break;
     }
     UE_LOG(LogTemp,Display,TEXT("WC_SOLO_COMMAND type=%d accepted=%d reason=%s sequence=%llu"),int(Command.type),Reply.accepted,*S(Reply.reason),Command.sequence);
+    if(Reply.accepted&&(Command.type==wc::CommandType::Buy||Command.type==wc::CommandType::Sell))PlayCue(TEXT("coin"),.55f);
+    if(Reply.accepted&&Command.type==wc::CommandType::Reroll)PlayCue(TEXT("reroll"),.5f);
+    if(Reply.accepted&&Command.type==wc::CommandType::BuyXp&&Captain.level>LevelBefore)PlayCue(TEXT("levelup"),.6f);
     if(Reply.accepted){
         if(Command.type==wc::CommandType::Move){Selected=0;PreparationDirty=true;}
         SyncSoloFormation();SaveSolo(true);
@@ -405,7 +439,7 @@ FString AWCVNextLab::SoloKeyboardTargetText() const
 void AWCVNextLab::SaveSolo(bool Automatic)
 {
     if(AwaitingSaveDecision){if(!Automatic)Message=TEXT("Load the saved preparation or choose New tournament first. Your saved game is preserved.");return;}
-    if(!SoloMatch||SoloMatch->CurrentPhase()!=wc::Phase::Preparation)return;
+    if(!SoloMatch||SoloMatch->CurrentPhase()!=wc::Phase::Preparation||SoloMatch->Guided())return;
     const auto Result=wc::SavePreparationFile(*SoloMatch,std::filesystem::path(*SavePath));
     if(!Automatic||!Result.Succeeded())Message=S(Result.message);
     UE_LOG(LogTemp,Display,TEXT("WC_SOLO_SAVE success=%d status=%d"),Result.Succeeded(),int(Result.status));
@@ -428,9 +462,36 @@ void AWCVNextLab::ResumeSolo()
     UE_LOG(LogTemp,Display,TEXT("WC_SOLO_RESUME success=%d status=%d round=%d"),Result.Succeeded(),int(Result.status),SoloMatch->Round());
 }
 
+void AWCVNextLab::ShowTitle(const FString& Text,const FString& Sub,FLinearColor Color)
+{
+    // Automated captures compare stable frames, so the moving card stays out of them.
+    if(SoloVisualExercise||SoloExercise)return;
+    TitleText=Text;TitleSub=Sub;TitleColor=Color;TitleAt=Elapsed;
+}
+void AWCVNextLab::PlayCue(const TCHAR* Name,float Volume)
+{
+    if(SoloVisualExercise||SoloExercise)return;
+    auto& Sound=SynthSounds.FindOrAdd(Name);
+    if(!Sound)Sound=LoadObject<USoundBase>(nullptr,*FString::Printf(TEXT("/Game/WonderChess/VNext/Audio/Synth_r001/S_%s.S_%s"),Name,Name));
+    if(Sound)UGameplayStatics::PlaySound2D(this,Sound,Volume);
+}
+FString AWCVNextLab::NextOpponentText() const
+{
+    if(!SoloMatch)return FString();
+    const auto Public=SoloMatch->PublicSeats();
+    for(const auto& Pair:SoloMatch->Pairings()){
+        if(Pair.a!=0&&Pair.b!=0)continue;
+        if(Pair.kind!=wc::EncounterKind::Pvp)return TEXT("Next: monsters");
+        const int Other=Pair.a==0?Pair.b:Pair.a;
+        if(Other>=0&&Other<int(Public.size()))return FString::Printf(TEXT("Next: %s  ·  %d HP"),*S(Public[Other].label),Public[Other].health);
+    }
+    return FString();
+}
+
 void AWCVNextLab::ScoutSolo(int Seat)
 {
     ClearUpgradePresentation();
+    CamSwing=Seat>ViewedSeat?1.f:Seat<ViewedSeat?-1.f:0.f;
     ViewedSeat=FMath::Clamp(Seat,0,7);Selected=0;LastSoloRevision=~wc::Id(0);SyncSoloFormation();
     Message=ViewedSeat?TEXT("Live public view. Shops, benches and relic choices stay private."):TEXT("Your board. Select a creature to change your formation.");
 }
@@ -503,7 +564,7 @@ FString AWCVNextLab::SoloSummaryText() const
         else Result+=TEXT("\nCombat A = ")+S(Public[Pair.a].label)+TEXT("; B = ")+(Pair.kind==wc::EncounterKind::Neutral?TEXT("neutral wave"):S(Public[Pair.b].label));
         break;
     }
-    Result+=Catalog.traits.empty()?TEXT("\n\nTraits are inactive in this study candidate."):TEXT("\n\nHuman, Orc, Beastkin, Dragonkin, Tank, Fighter and Mage bonuses are active at 2 / 4 distinct heroes.");
+    Result+=Catalog.traits.empty()?TEXT("\n\nTraits are inactive in this study candidate."):TEXT("\n\nSynergy bonuses are active at 2 / 4 distinct heroes of a race or class. The synergy list shows which ones.");
     Result+=TEXT(" Relics shown on inspected deployed creatures are public.");
     if(SoloMatch->CurrentPhase()==wc::Phase::Finished){Result+=TEXT("\n\nFINAL PLACEMENTS\n");for(int Place=1;Place<=8;++Place)for(const auto& Seat:Public)if(Seat.placement==Place)Result+=FString::Printf(TEXT("%d. %s\n"),Place,*S(Seat.label));}
     return Result;
@@ -517,14 +578,47 @@ void AWCVNextLab::TickSolo(float DeltaSeconds)
         Accumulator+=DeltaSeconds;
         for(int CatchUp=0;Accumulator>=.05&&CatchUp<20;++CatchUp){SoloMatch->Tick(50);Accumulator-=.05;}
     }
+    TickGuide();
     const FString Invariant=S(SoloMatch->InvariantError());
     if(!Invariant.IsEmpty()){SoloPaused=true;Message=TEXT("Tournament stopped: ")+Invariant;UE_LOG(LogTemp,Error,TEXT("WC_SOLO_INVARIANT %s"),*Invariant);}
     const auto Phase=SoloMatch->CurrentPhase();const int Round=SoloMatch->Round();
     const auto Revision=PublicIdentity(SoloMatch->PublicSeats());
     if(Phase!=LastSoloPhase||Round!=LastSoloRound){
         Selected=0;SyncSoloFormation();
+        // The match keeps the streak now (player fights only), so a resumed match shows the right one.
+        SoloStreak=SoloMatch->Seats()[0].streak;
         UE_LOG(LogTemp,Display,TEXT("WC_SOLO_PHASE round=%d phase=%d remaining_ms=%d"),Round,int(Phase),SoloMatch->RemainingMs());
         if(Phase==wc::Phase::Preparation){SaveSolo(true);if(SoloMatch->Seats()[0].health<=0)Message=TEXT("You are eliminated. Scout surviving captains to spectate, restart, or exit.");}
+        if(Phase==wc::Phase::Combat){
+            GoldAtFight=SoloMatch->Seats()[0].gold;
+            bool Monsters=false;
+            for(const auto& Pair:SoloMatch->Pairings())if(Pair.a==0||Pair.b==0)Monsters=Pair.kind!=wc::EncounterKind::Pvp;
+            FString Versus=NextOpponentText();Versus.RemoveFromStart(TEXT("Next: "));
+            {int Cut=INDEX_NONE;if(Versus.FindChar(TCHAR(0xB7),Cut))Versus=Versus.Left(Cut).TrimEnd();}
+            const bool Rematch=MetOpponents.Contains(Versus);MetOpponents.Add(Versus);
+            Versus+=Rematch?TEXT("  ·  rematch"):TEXT("  ·  first encounter");
+            if(!SoloVisualExercise&&!SoloExercise)WipeAt=Elapsed;
+            ShowTitle(Monsters?FString::Printf(TEXT("MONSTER ROUND %d"),Round):FString::Printf(TEXT("ROUND %d  —  FIGHT"),Round),Monsters?FString(TEXT("Clear the creatures")):TEXT("against ")+Versus,FLinearColor(.96f,.80f,.40f));
+            PlayCue(Monsters?TEXT("horn_monster"):TEXT("horn_fight"),.8f);
+            if(const auto& Placed=SoloMatch->AutoDeployed(0);!Placed.empty()){
+                FString Names;
+                for(const auto Id:Placed)for(const auto& Unit:SoloMatch->Seats()[0].roster)if(Unit.id==Id)
+                    Names+=(Names.IsEmpty()?TEXT(""):TEXT(", "))+S(Catalog.units[Unit.definition].displayName);
+                Message=(SoloGuideIndonesian?TEXT("Ditempatkan dari bangku cadangan: "):TEXT("Placed from your bench: "))+Names;
+            }
+        }
+        if(Phase==wc::Phase::Preparation&&Round>1&&SoloMatch->Seats()[0].health>0&&!SoloMatch->Guided()){
+            // Income between rounds, split into the parts the rules pay.
+            const int Gain=SoloMatch->Seats()[0].gold-GoldAtFight;
+            if(Gain>0){
+                const int Base=FMath::Min(Gain,Catalog.rules.baseIncome),Win=LastFightWon?FMath::Min(Gain-Base,Catalog.rules.winIncome):0;
+                const int Streak=FMath::Min(Gain-Base-Win,wc::StreakIncome(Catalog.rules,SoloMatch->Seats()[0].streak));
+                Message=SoloGuideIndonesian?
+                    FString::Printf(TEXT("+%d emas  ·  dasar %d  ·  menang %d  ·  beruntun %d  ·  bunga dan bonus %d"),Gain,Base,Win,Streak,Gain-Base-Win-Streak):
+                    FString::Printf(TEXT("+%d gold  ·  base %d  ·  win %d  ·  streak %d  ·  interest and bonuses %d"),Gain,Base,Win,Streak,Gain-Base-Win-Streak);
+                GoldFlashAt=Elapsed;PlayCue(TEXT("coin"),.7f);
+            }
+        }
         LastSoloRound=Round;LastSoloPhase=Phase;
     }
     if(Revision!=LastSoloRevision){if(Phase==wc::Phase::Preparation)SyncSoloFormation();LastSoloRevision=Revision;}
@@ -535,10 +629,34 @@ void AWCVNextLab::TickSolo(float DeltaSeconds)
         for(const auto& E:Record.encounters)if(E.pairing.a==0||(E.kind==wc::EncounterKind::Pvp&&E.pairing.b==0)){
             const int Side=E.pairing.a==0?0:1;const auto& R=E.result;
             SoloRecap=FString::Printf(TEXT("Your last battle · round %d: %s in %.2fs.\nCaptain HP lost: %d; HP remaining: %d.\nYou dealt %.0f creature health damage and received %.0f effective healing.\n%s\nSurvivors: you %d, opponent %d. Look at positioning and the recorded events before changing your plan."),Record.round,R.winner<0?TEXT("draw"):R.winner==Side?TEXT("you won"):TEXT("you lost"),R.ticks*Catalog.rules.tickMs/1000.,Record.damage[0],Record.health[0],E.healthLoss[1-Side]/100.,E.healing[Side]/100.,R.timeout?TEXT("Deadline fallback: summed remaining-health fractions decide the result; cost and stars do not weight that score."):TEXT("Combat resolved by elimination."),R.survivors[Side],R.survivors[1-Side]);
+            for(const auto& Live:SoloMatch->Encounters())
+                if(Record.round==SoloMatch->Round()&&(Live.pairing.a==0||(Live.kind==wc::EncounterKind::Pvp&&Live.pairing.b==0)))
+                    LastFightChart=FightChartText(Live.combat,Live.pairing.a==0?0:1);
+            {
+                const bool Won=R.winner==Side,Draw=R.winner<0;
+                LastFightWon=Won;
+                SoloStreak=SoloMatch->Seats()[0].streak;
+                const int Other=Side==0?E.pairing.b:E.pairing.a;
+                const auto Seats=SoloMatch->PublicSeats();
+                const FString Line=!Won?FString::Printf(TEXT("You lose %d health  ·  %d left"),Record.damage[0],Record.health[0]):
+                    E.kind==wc::EncounterKind::Pvp&&Other>=0&&Other<int(Seats.size())?FString::Printf(TEXT("%s loses %d health"),*S(Seats[Other].label),Record.damage[Other]):FString(TEXT("The creatures are cleared"));
+                ShowTitle(Draw?TEXT("DRAW"):Won?TEXT("VICTORY"):TEXT("DEFEAT"),Draw?FString():Line,Won?FLinearColor(.98f,.83f,.40f):FLinearColor(.92f,.30f,.24f));
+                if(!Draw)PlayCue(Won?TEXT("victory"):TEXT("defeat"),.8f);
+            }
             Found=true;break;
         }
         }
         LastSoloRecord=int(SoloMatch->Records().size());
+    }
+    {
+        const auto Seats=SoloMatch->PublicSeats();
+        for(int Seat=0;Seat<8&&Seat<int(Seats.size());++Seat){
+            if(SeatHealthSeen[Seat]>0&&Seats[Seat].health<SeatHealthSeen[Seat]){
+                SeatFlashAt[Seat]=Elapsed;
+                if(Seats[Seat].health<=0&&Seat!=0&&!SoloMatch->Guided())Message=S(Seats[Seat].label)+TEXT(" is eliminated.");
+            }
+            SeatHealthSeen[Seat]=Seats[Seat].health;
+        }
     }
     if(SoloSummaryBlock)SoloSummaryBlock->SetText(T(SoloSummaryText()));
 }
@@ -683,6 +801,9 @@ void AWCVNextLab::BuildStorybookInterface()
     const auto Button=[](TFunction<FString()> Label,TFunction<void()> Action,TFunction<bool()> Enabled)->TSharedRef<SWidget>{
         return FWCArtSlice::MakeButton(Label,Action,Enabled);
     };
+    const auto Heading=[Bold,Parchment](const FString& Value)->TSharedRef<SWidget>{
+        return SNew(STextBlock).Font(Bold).ColorAndOpacity(Parchment).Text(T(Value));
+    };
     const auto Label=[Regular,Parchment](const FString& Value)->TSharedRef<SWidget>{
         return SNew(STextBlock).Font(Regular).ColorAndOpacity(Parchment).AutoWrapText(true).Text(T(Value));
     };
@@ -723,9 +844,16 @@ void AWCVNextLab::BuildStorybookInterface()
         const auto& Captain=SoloMatch->Seats()[0];const auto& Items=Offer?Captain.relicOffers:Captain.ownedRelics;
         return Slot<int(Items.size())?S(Catalog.relics[Items[Slot]].id):FString();
     };
+    // Synergies: icon, name, how many are fielded against the steps, lit once a step is reached. Click one for its card.
+    const auto TraitFocus=MakeShared<FString>();
+    SoloTraitFocus=TraitFocus;
+    const auto InFight=[this]{return CurrentCombat()!=nullptr;};
     auto Traits=SNew(SVerticalBox);
-    Traits->AddSlot().AutoHeight().Padding(0,0,0,8)[SNew(STextBlock).Font(Bold).ColorAndOpacity(Parchment).Text(T(TEXT("TRAITS")))];
-    Traits->AddSlot().AutoHeight().Padding(0,0,0,7)[Label(Catalog.traits.empty()?TEXT("Deployed counts · bonuses inactive"):TEXT("Deployed counts · stat bonuses active at 2 / 4"))];
+    Traits->SetTag(TEXT("WC.Synergies"));
+    Traits->AddSlot().AutoHeight().Padding(0,0,0,6)[SNew(STextBlock).Font(Bold).ColorAndOpacity(Parchment).Text(T(TEXT("SYNERGIES")))];
+    Traits->AddSlot().AutoHeight()[SNew(SBox)
+        .Visibility_Lambda([this]{return SoloMatch&&!SoloMatch->PublicSeats()[ViewedSeat].deployment.empty()?EVisibility::Collapsed:EVisibility::Visible;})
+        [SNew(STextBlock).Font(Small).ColorAndOpacity(Parchment).AutoWrapText(true).Text(T(TEXT("Field heroes that share a race or a class to light these up.")))]];
     TArray<TPair<FString,bool>> Identities;
     for(const auto& Unit:Catalog.units){
         const auto Add=[&Identities](const FString& Id,bool Race){
@@ -733,6 +861,13 @@ void AWCVNextLab::BuildStorybookInterface()
         };
         Add(S(Unit.race),true);Add(S(Unit.unitClass),false);
     }
+    const auto Steps=[this](const FString& Id){
+        TArray<int> Out;
+        for(const auto& Trait:Catalog.traits)if(S(Trait.id)==Id)for(const auto& Tier:Trait.tiers)Out.AddUnique(Tier.first);
+        if(Out.IsEmpty()){Out.Add(2);Out.Add(4);}
+        return Out;
+    };
+    const FLinearColor Lit(.98f,.80f,.36f),Dim(.42f,.44f,.40f);
     for(const auto& Identity:Identities){
         FString Name=Identity.Key.Replace(TEXT("_"),TEXT(" "));
         if(!Name.IsEmpty())Name=Name.Left(1).ToUpper()+Name.Mid(1);
@@ -744,16 +879,119 @@ void AWCVNextLab::BuildStorybookInterface()
             }}
             return Distinct.Num();
         };
-        Traits->AddSlot().AutoHeight().Padding(0,2)[SNew(SBox)
-            .Visibility_Lambda([Count]{return Count()>0?EVisibility::Visible:EVisibility::Collapsed;})[SNew(SHorizontalBox)
-            +SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center)[FWCArtSlice::MakeTraitGlyph(Identity.Key,29,[Count]{return Count()>0;})]
-            +SHorizontalBox::Slot().FillWidth(1).VAlign(VAlign_Center).Padding(6,0)[SNew(STextBlock).Font(Small).AutoWrapText(true)
-                .ColorAndOpacity_Lambda([Count,Parchment]{return Count()>0?Parchment:FLinearColor(.34f,.37f,.30f);}).Text(T(Name))]
-            +SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center)[SNew(STextBlock).Font(Bold).ColorAndOpacity(Parchment)
-                .Text_Lambda([Count]{return T(FString::FromInt(Count()));})]]];
+        const TArray<int> Needed=Steps(Identity.Key);
+        const auto Active=[Count,Needed]{return Count()>=Needed[0];};
+        FString StepText;for(int Step:Needed)StepText+=(StepText.IsEmpty()?TEXT(""):TEXT(" / "))+FString::FromInt(Step);
+        Traits->AddSlot().AutoHeight().Padding(0,1)[SNew(SBox)
+            .Visibility_Lambda([Count]{return Count()>0?EVisibility::Visible:EVisibility::Collapsed;})
+            [SNew(SButton).ButtonStyle(FWCArtSlice::ButtonStyle()).ContentPadding(FMargin(4,2))
+                .ToolTipText(T(TEXT("Click to see which heroes belong here and what each step gives.")))
+                .OnClicked_Lambda([TraitFocus,Identity]{*TraitFocus=*TraitFocus==Identity.Key?FString():Identity.Key;return FReply::Handled();})
+                [SNew(SHorizontalBox)
+                    +SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center)[FWCArtSlice::MakeTraitGlyph(Identity.Key,27,Active)]
+                    +SHorizontalBox::Slot().FillWidth(1).VAlign(VAlign_Center).Padding(6,0)[SNew(STextBlock).Font(Regular)
+                        .ColorAndOpacity_Lambda([Active,Lit,Dim]{return FSlateColor(Active()?Lit:Dim);}).Text(T(Name))]
+                    +SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center)[SNew(STextBlock).Font(Bold)
+                        .ColorAndOpacity_Lambda([Active,Lit,Parchment]{return FSlateColor(Active()?Lit:Parchment);})
+                        .Text_Lambda([Count]{return T(FString::FromInt(Count()));})]
+                    +SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center).Padding(5,0,0,0)[SNew(STextBlock).Font(Small).ColorAndOpacity(Dim)
+                        .Text(T(TEXT("of ")+StepText))]]]];
     }
+    auto TraitCard=SNew(SBox).Visibility_Lambda([TraitFocus,InFight]{return TraitFocus->IsEmpty()||InFight()?EVisibility::Collapsed:EVisibility::Visible;})
+        [FWCArtSlice::MakePanel(SNew(SVerticalBox)
+            +SVerticalBox::Slot().AutoHeight()[SNew(STextBlock).Font(Bold).ColorAndOpacity(Lit)
+                .Text_Lambda([TraitFocus]{return T(TraitFocus->ToUpper().Replace(TEXT("_"),TEXT(" ")));})]
+            +SVerticalBox::Slot().AutoHeight().Padding(0,4)[SNew(STextBlock).Font(Small).ColorAndOpacity(Parchment).AutoWrapText(true)
+                .Text_Lambda([this,TraitFocus]{
+                    for(const auto& Trait:Catalog.traits)if(S(Trait.id)==*TraitFocus){
+                        FString Out;
+                        for(const auto& Tier:Trait.tiers){
+                            FString Stat=S(Trait.stat).Replace(TEXT("_bonus_bp"),TEXT("")).Replace(TEXT("_flat"),TEXT("")).Replace(TEXT("_bp"),TEXT("")).Replace(TEXT("_count"),TEXT("")).Replace(TEXT("_"),TEXT(" "));
+                            const bool Percent=S(Trait.stat).EndsWith(TEXT("_bp"));
+                            const bool Mana=S(Trait.stat).Contains(TEXT("mana"));
+                            Out+=FString::Printf(TEXT("%d heroes: +%d%s %s\n"),Tier.first,Percent||Mana?Tier.second/100:Tier.second,Percent?TEXT("%"):TEXT(""),*Stat);
+                        }
+                        return T(Out+(Trait.team?TEXT("Applies to your whole team."):S(Trait.stat).StartsWith(TEXT("enemy_"))?TEXT("Applies to the enemy team."):TEXT("Applies to its own members.")));
+                    }
+                    return T(TEXT("This synergy's bonus is designed but not active in the game yet."));})]
+            +SVerticalBox::Slot().AutoHeight().Padding(0,2)[SNew(STextBlock).Font(Small).ColorAndOpacity(Lit).AutoWrapText(true)
+                .Text_Lambda([this,TraitFocus]{
+                    FString Fielded;
+                    if(SoloMatch)for(const auto& Unit:SoloMatch->PublicSeats()[ViewedSeat].deployment){
+                        const auto& Def=Catalog.units[Unit.definition];
+                        if((S(Def.race)==*TraitFocus||S(Def.unitClass)==*TraitFocus)&&!Fielded.Contains(S(Def.displayName)))Fielded+=(Fielded.IsEmpty()?TEXT(""):TEXT(", "))+S(Def.displayName);
+                    }
+                    return T(TEXT("Fielded: ")+(Fielded.IsEmpty()?FString(TEXT("none")):Fielded));})]
+            +SVerticalBox::Slot().AutoHeight().Padding(0,2)[SNew(STextBlock).Font(Small).ColorAndOpacity(Dim).AutoWrapText(true)
+                .Text_Lambda([this,TraitFocus]{
+                    FString All;
+                    for(const auto& Def:Catalog.units)if(S(Def.race)==*TraitFocus||S(Def.unitClass)==*TraitFocus)All+=(All.IsEmpty()?TEXT(""):TEXT(", "))+S(Def.displayName);
+                    return T(TEXT("All members: ")+All);})],false,9)];
+    // During a fight the same space shows who is doing the work: damage dealt, damage taken or healing per hero.
+    auto Damage=SNew(SVerticalBox);
+    Damage->SetTag(TEXT("WC.Chart"));
+    const auto ModeButton=[this,Small,Lit,Parchment](const TCHAR* English,const TCHAR* Indonesian,int Mode)->TSharedRef<SWidget>{
+        return SNew(SButton).ButtonStyle(FWCArtSlice::ButtonStyle()).ContentPadding(FMargin(5,2))
+            .OnClicked_Lambda([this,Mode]{DamageMode=Mode;DamageRowsTick=-2;return FReply::Handled();})
+            [SNew(STextBlock).Font(Small).ColorAndOpacity_Lambda([this,Mode,Lit,Parchment]{return FSlateColor(DamageMode==Mode?Lit:Parchment);})
+                .Text_Lambda([this,English,Indonesian]{return T(SoloGuideIndonesian?Indonesian:English);})];
+    };
+    Damage->AddSlot().AutoHeight().Padding(0,0,0,2)[SNew(SHorizontalBox)
+        +SHorizontalBox::Slot().FillWidth(1).Padding(0,0,2,0)[SoloTagged(ModeButton(TEXT("Dealt"),TEXT("Beri"),0),TEXT("WC.Chart.Dealt"))]
+        +SHorizontalBox::Slot().FillWidth(1)[SoloTagged(ModeButton(TEXT("Taken"),TEXT("Terima"),1),TEXT("WC.Chart.Taken"))]];
+    Damage->AddSlot().AutoHeight().Padding(0,0,0,4)[SNew(SHorizontalBox)
+        +SHorizontalBox::Slot().FillWidth(1).Padding(0,0,2,0)[SoloTagged(ModeButton(TEXT("Healed"),TEXT("Pulih"),2),TEXT("WC.Chart.Healed"))]
+        +SHorizontalBox::Slot().FillWidth(1)[SoloTagged(ModeButton(TEXT("Blocked"),TEXT("Tahan"),3),TEXT("WC.Chart.Blocked"))]];
+    // Whose heroes the rows list, and what the colours of a damage bar mean.
+    Damage->AddSlot().AutoHeight().Padding(0,0,0,6)[SNew(SHorizontalBox)
+        +SHorizontalBox::Slot().AutoWidth().Padding(0,0,6,0)[SoloTagged(SNew(SButton).ButtonStyle(FWCArtSlice::ButtonStyle()).ContentPadding(FMargin(6,2))
+            .OnClicked_Lambda([this]{DamageTheirs=!DamageTheirs;DamageRowsTick=-2;return FReply::Handled();})
+            [SNew(STextBlock).Font(Small).ColorAndOpacity(Lit).Text_Lambda([this]{
+                return T(DamageTheirs?(SoloGuideIndonesian?TEXT("Lawan"):TEXT("Theirs")):(SoloGuideIndonesian?TEXT("Milikku"):TEXT("Mine")));})],TEXT("WC.Chart.Side"))]
+        +SHorizontalBox::Slot().FillWidth(1).VAlign(VAlign_Center)[SNew(SHorizontalBox)
+            .Visibility_Lambda([this]{return DamageMode<2?EVisibility::Visible:EVisibility::Hidden;})
+            +SHorizontalBox::Slot().AutoWidth().Padding(0,0,7,0)[SNew(STextBlock).Font(Small).ColorAndOpacity(FLinearColor(.95f,.60f,.22f))
+                .Text_Lambda([this]{return T(SoloGuideIndonesian?TEXT("fisik"):TEXT("physical"));})]
+            +SHorizontalBox::Slot().AutoWidth().Padding(0,0,7,0)[SNew(STextBlock).Font(Small).ColorAndOpacity(FLinearColor(.36f,.58f,1.f))
+                .Text_Lambda([this]{return T(SoloGuideIndonesian?TEXT("sihir"):TEXT("magic"));})]
+            +SHorizontalBox::Slot().AutoWidth()[SNew(STextBlock).Font(Small).ColorAndOpacity(FLinearColor(.96f,.96f,.92f))
+                .Text_Lambda([this]{return T(SoloGuideIndonesian?TEXT("murni"):TEXT("true"));})]]];
+    // A bar is as long as the row's share of the largest row. Damage is cut into physical, magic and true; healing
+    // and blocked damage are one colour.
+    const auto Segments=[this](int Row)->TSharedRef<SWidget>{
+        const auto Share=[this,Row](int Part){
+            if(Row>=DamageRows.Num()||DamageRows[0].Value<=0)return Part==3?1.f:0.f;
+            const float Top=float(DamageRows[0].Value);
+            return Part==3?FMath::Max(0.f,1.f-float(DamageRows[Row].Value)/Top):float(DamageRows[Row].Parts[Part])/Top;
+        };
+        auto Bar=SNew(SHorizontalBox);
+        for(int Part=0;Part<4;++Part)
+            Bar->AddSlot().FillWidth(TAttribute<float>::CreateLambda([Share,Part]{return Share(Part);}))[SNew(SBorder)
+                .BorderImage(FCoreStyle::Get().GetBrush(TEXT("WhiteBrush"))).Padding(0)
+                .BorderBackgroundColor_Lambda([this,Part]{
+                    if(Part==3)return FSlateColor(FLinearColor(0,0,0,.55f));
+                    if(DamageMode==2)return FSlateColor(FLinearColor(.35f,.80f,.40f));
+                    if(DamageMode==3)return FSlateColor(FLinearColor(.55f,.72f,.95f));
+                    return FSlateColor(Part==0?FLinearColor(.95f,.60f,.22f):Part==1?FLinearColor(.36f,.58f,1.f):FLinearColor(.96f,.96f,.92f));})];
+        return Bar;
+    };
+    for(int Row=0;Row<8;++Row){
+        Damage->AddSlot().AutoHeight().Padding(0,2)[SNew(SBox)
+            .Visibility_Lambda([this,Row]{RefreshDamageRows();return Row<DamageRows.Num()?EVisibility::Visible:EVisibility::Collapsed;})
+            [SNew(SVerticalBox)
+                +SVerticalBox::Slot().AutoHeight()[SNew(SHorizontalBox)
+                    +SHorizontalBox::Slot().FillWidth(1)[SNew(STextBlock).Font(Small).ColorAndOpacity(Parchment)
+                        .Text_Lambda([this,Row]{return T(Row<DamageRows.Num()?DamageRows[Row].Name+TEXT(" ")+FString::ChrN(DamageRows[Row].Star,TCHAR('*')):FString());})]
+                    +SHorizontalBox::Slot().AutoWidth()[SNew(STextBlock).Font(Bold).ColorAndOpacity(Lit)
+                        .Text_Lambda([this,Row]{return T(Row<DamageRows.Num()?FString::Printf(TEXT("%.0f"),DamageRows[Row].Value):FString());})]]
+                +SVerticalBox::Slot().AutoHeight().Padding(0,2,0,0)[SNew(SBox).HeightOverride(6)[Segments(Row)]]]];
+    }
+    auto SidePanel=FWCArtSlice::MakePanel(SNew(SVerticalBox)
+        +SVerticalBox::Slot().AutoHeight()[SNew(SBox).Visibility_Lambda([InFight]{return InFight()?EVisibility::Collapsed:EVisibility::Visible;})[Traits]]
+        +SVerticalBox::Slot().AutoHeight()[SNew(SBox).Visibility_Lambda([InFight]{return InFight()?EVisibility::Visible:EVisibility::Collapsed;})[Damage]],false,10);
     auto Inventory=SNew(SVerticalBox);
-    Inventory->AddSlot().AutoHeight().Padding(0,10,0,5)[Label(TEXT("RELICS"))];
+    Inventory->SetTag(TEXT("WC.Relics"));
+    Inventory->AddSlot().AutoHeight().Padding(0,10,0,5)[Heading(TEXT("RELICS"))];
     Inventory->AddSlot().AutoHeight().Padding(0,0,0,3)[SNew(SBox)
         .Visibility_Lambda([this]{return !SoloMatch||ViewedSeat!=0||SoloMatch->Seats()[0].ownedRelics.empty()?EVisibility::Visible:EVisibility::Collapsed;})
         [Label(TEXT("No relics owned"))]];
@@ -778,66 +1016,146 @@ void AWCVNextLab::BuildStorybookInterface()
     Inventory->AddSlot().AutoHeight().Padding(0,4)[SNew(SBox)
         .Visibility_Lambda([this]{return SoloMatch&&ViewedSeat==0&&!SoloMatch->Seats()[0].ownedRelics.empty()?EVisibility::Visible:EVisibility::Collapsed;})
         [Button([]{return TEXT("Unequip selected");},[Command]{Command(wc::CommandType::UnequipRelic);},CanEdit)]];
-    auto Left=FWCArtSlice::MakePanel(SNew(SScrollBox)+SScrollBox::Slot()[SNew(SVerticalBox)
-        +SVerticalBox::Slot().AutoHeight()[Traits]+SVerticalBox::Slot().AutoHeight()[Inventory]],false,12);
 
+    // Captains, strongest first: level, gold and wins on each row, and the player's own row framed in blue.
+    static const FSlateRoundedBoxBrush OwnRow(FLinearColor(.06f,.14f,.42f,.9f),5.f,FLinearColor(.36f,.55f,1.f),1.2f);
+    const auto Ranked=[this](int Row){
+        if(!SoloMatch)return Row;
+        const auto Public=SoloMatch->PublicSeats();
+        TArray<int> Order;for(int Seat=0;Seat<int(Public.size());++Seat)Order.Add(Seat);
+        Order.StableSort([&Public](int A,int B){return Public[A].health>Public[B].health;});
+        return Order.IsValidIndex(Row)?Order[Row]:Row;
+    };
     auto Standings=SNew(SVerticalBox);
-    Standings->AddSlot().AutoHeight().Padding(0,0,0,5)[Label(TEXT("CAPTAINS  ·  CLICK TO SCOUT"))];
-    for(int Seat=0;Seat<Catalog.rules.seatCount;++Seat){
-        Standings->AddSlot().AutoHeight().Padding(0,1)[SNew(SButton).ButtonStyle(FWCArtSlice::ButtonStyle()).ContentPadding(FMargin(4,3))
-            .ToolTipText_Lambda([this,Seat]{if(!SoloMatch)return T(TEXT("No tournament"));const auto Public=SoloMatch->PublicSeats();
-                return T(S(Public[Seat].label)+TEXT(" · public formation\nHealth ")+FString::FromInt(Public[Seat].health)+TEXT(" · level ")+FString::FromInt(Public[Seat].level));})
-            .OnClicked_Lambda([this,Seat]{ScoutSolo(Seat);return FReply::Handled();})
+    Standings->AddSlot().AutoHeight().Padding(0,0,0,5)[Heading(TEXT("CAPTAINS"))];
+    for(int Row=0;Row<Catalog.rules.seatCount;++Row){
+        Standings->AddSlot().AutoHeight().Padding(0,1)[SNew(SBorder).Padding(1)
+            // A guided lesson has only the captain and one opponent; the seats that sit out are not listed.
+            .Visibility_Lambda([this,Ranked,Row]{return SoloMatch&&SoloMatch->Guided()&&SoloMatch->PublicSeats()[Ranked(Row)].health<=0?EVisibility::Collapsed:EVisibility::Visible;})
+            .BorderImage_Lambda([this,Ranked,Row]{return Ranked(Row)==0?FWCArtSlice::KitBrush(TEXT("row_own"),&OwnRow):FCoreStyle::Get().GetBrush(TEXT("NoBrush"));})
+            [SNew(SButton).ButtonStyle(FWCArtSlice::ButtonStyle()).ContentPadding(FMargin(4,3))
+            .ToolTipText(T(TEXT("Look at this captain's board. Shops and benches stay private.")))
+            .OnClicked_Lambda([this,Ranked,Row]{ScoutSolo(Ranked(Row));return FReply::Handled();})
             [SNew(SHorizontalBox)
-                +SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center).Padding(1,0,6,0)[SNew(SBox).WidthOverride(24).HeightOverride(24)
-                    [SNew(SBorder).BorderImage_Lambda([this,Seat]{return CaptainBadge(Seat==ViewedSeat);}).Padding(0)
+                +SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center).Padding(1,0,6,0)[SNew(SBox).WidthOverride(26).HeightOverride(26)
+                    [SNew(SBorder).BorderImage_Lambda([this,Ranked,Row]{return CaptainBadge(Ranked(Row)==ViewedSeat);}).Padding(0)
                         .HAlign(HAlign_Center).VAlign(VAlign_Center)
                         [SNew(STextBlock).Font(Bold).ColorAndOpacity(Parchment)
-                            .Text_Lambda([this,Seat]{
+                            .Text_Lambda([this,Ranked,Row]{
                                 if(!SoloMatch)return T(TEXT("?"));
+                                const int Seat=Ranked(Row);
                                 const FString Name=Seat==0?TEXT("You"):S(SoloMatch->PublicSeats()[Seat].label);
                                 return T(Name.IsEmpty()?TEXT("?"):Name.Left(1).ToUpper());})]]]
                 +SHorizontalBox::Slot().FillWidth(1)[SNew(SVerticalBox)
-                    +SVerticalBox::Slot().AutoHeight()[SNew(STextBlock).Font(Small).ColorAndOpacity(Parchment)
-                        .Text_Lambda([this,Seat]{if(!SoloMatch)return T(TEXT("—"));const auto Public=SoloMatch->PublicSeats();
-                            return T(Seat==0?TEXT("You"):S(Public[Seat].label));})]
-                    +SVerticalBox::Slot().AutoHeight().Padding(0,3,0,0)[SNew(SBox).HeightOverride(5)[SNew(SProgressBar)
+                    +SVerticalBox::Slot().AutoHeight()[SNew(SHorizontalBox)
+                        +SHorizontalBox::Slot().FillWidth(1)[SNew(STextBlock).Font(Small).ColorAndOpacity(Parchment)
+                            .Text_Lambda([this,Ranked,Row]{if(!SoloMatch)return T(TEXT("—"));const int Seat=Ranked(Row);
+                                return T(Seat==0?FString(TEXT("You")):S(SoloMatch->PublicSeats()[Seat].label));})]
+                        +SHorizontalBox::Slot().AutoWidth()[SNew(STextBlock).Font(Small).ColorAndOpacity(FLinearColor(.86f,.67f,.27f))
+                            .Text_Lambda([this,Ranked,Row]{if(!SoloMatch)return T(TEXT(""));const int Seat=Ranked(Row);const auto& Captain=SoloMatch->Seats()[Seat];
+                                return T(FString::Printf(TEXT("L%d  %dg"),Captain.level,Captain.gold));})]]
+                    +SVerticalBox::Slot().AutoHeight().Padding(0,3,0,0)[SNew(SBox).HeightOverride(6)[SNew(SProgressBar)
                         .BarFillStyle(EProgressBarFillStyle::Scale).FillImage(FCoreStyle::Get().GetBrush(TEXT("WhiteBrush")))
                         .BackgroundImage(FCoreStyle::Get().GetBrush(TEXT("BlackBrush")))
                         .BorderPadding(FVector2D::ZeroVector)
-                        .Percent_Lambda([this,Seat]{if(!SoloMatch)return TOptional<float>(0.f);return TOptional<float>(FMath::Clamp(
-                            float(SoloMatch->PublicSeats()[Seat].health)/FMath::Max(1,Catalog.rules.startingHealth),0.f,1.f));})
-                        .FillColorAndOpacity(FLinearColor(.49f,.63f,.37f))]]]
-                +SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center).Padding(8,0,0,0)[SNew(STextBlock).Font(Regular).ColorAndOpacity(Parchment)
-                    .Text_Lambda([this,Seat]{if(!SoloMatch)return T(TEXT("—"));const auto Public=SoloMatch->PublicSeats();return T(Public[Seat].health>0?
-                        FString::FromInt(Public[Seat].health):TEXT("OUT"));})]]];
+                        .Percent_Lambda([this,Ranked,Row]{if(!SoloMatch)return TOptional<float>(0.f);return TOptional<float>(FMath::Clamp(
+                            float(SoloMatch->PublicSeats()[Ranked(Row)].health)/FMath::Max(1,Catalog.rules.startingHealth),0.f,1.f));})
+                        .FillColorAndOpacity_Lambda([this,Ranked,Row]{
+                            const int Health=SoloMatch?SoloMatch->PublicSeats()[Ranked(Row)].health:100;
+                            return FSlateColor(Health>50?FLinearColor(.45f,.72f,.36f):Health>25?FLinearColor(.90f,.70f,.25f):FLinearColor(.88f,.30f,.24f));})]]]
+                +SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center).Padding(8,0,0,0)[SNew(STextBlock).Font(Bold)
+                    .ColorAndOpacity_Lambda([this,Ranked,Row,Parchment]{const int Seat=Ranked(Row);
+                        return FSlateColor(Seat<8&&Elapsed-SeatFlashAt[Seat]<1.2&&FMath::Fmod(Elapsed-SeatFlashAt[Seat],.3)<.18?FLinearColor(1.f,.25f,.2f):Parchment);})
+                    .Text_Lambda([this,Ranked,Row]{if(!SoloMatch)return T(TEXT("—"));const auto Public=SoloMatch->PublicSeats();const int Seat=Ranked(Row);
+                        return T(Public[Seat].health>0?FString::FromInt(Public[Seat].health):TEXT("OUT"));})]]]];
     }
+    auto Left=FWCArtSlice::MakePanel(Standings,false,9);
+    // Hero card for whatever is selected: who it is, its bars, its numbers, its skill, and a sell button with the price.
+    struct FPick{int Def=-1,Star=1;double Health=0,MaxHealth=0,Mana=0,MaxMana=0;bool Mine=false;};
+    const auto Pick=[this]{
+        FPick P;
+        if(const auto* Combat=CurrentCombat()){
+            for(const auto& U:Combat->Units())if(U.id==Selected&&!U.neutral){
+                P.Def=U.definition;P.Star=U.star;P.Health=U.health/100.;P.MaxHealth=U.maxHealth/100.;P.Mana=U.mana/100.;P.MaxMana=U.ability.mana.maximum/100.;}
+            return P;
+        }
+        const wc::OwnedUnit* Owned=nullptr;
+        if(SoloMatch&&ViewedSeat==0)for(const auto& U:SoloMatch->Seats()[0].roster)if(U.id==Selected){Owned=&U;P.Mine=true;}
+        if(!Owned)Owned=SelectedPiece();
+        if(Owned){
+            P.Def=Owned->definition;P.Star=Owned->star;
+            P.MaxHealth=P.Health=wc::StarValue(Catalog.units[P.Def].health,P.Star,0,Catalog.rules)/100.;
+            P.MaxMana=Catalog.units[P.Def].ability.mana.maximum/100.;
+        }
+        return P;
+    };
+    const auto Meter=[](TFunction<float()> Fraction,FLinearColor Color,TFunction<FString()> Text)->TSharedRef<SWidget>{
+        return SNew(SOverlay)
+            +SOverlay::Slot()[SNew(SBox).HeightOverride(15)[SNew(SProgressBar).BarFillStyle(EProgressBarFillStyle::Scale)
+                .FillImage(FCoreStyle::Get().GetBrush(TEXT("WhiteBrush"))).BackgroundImage(FCoreStyle::Get().GetBrush(TEXT("BlackBrush")))
+                .BorderPadding(FVector2D::ZeroVector).Percent_Lambda([Fraction]{return TOptional<float>(Fraction());}).FillColorAndOpacity(Color)]]
+            +SOverlay::Slot().HAlign(HAlign_Center).VAlign(VAlign_Center)[SNew(STextBlock).Font(FCoreStyle::GetDefaultFontStyle(TEXT("Bold"),9))
+                .ColorAndOpacity(FLinearColor::White).ShadowOffset(FVector2D(1,1)).ShadowColorAndOpacity(FLinearColor(0,0,0,.8f)).Text_Lambda([Text]{return T(Text());})];
+    };
+    const FLinearColor InkTint(.16f,.12f,.06f);
+    const auto Stat=[Bold,Dark,InkTint](const TCHAR* Icon,TFunction<FString()> Value,const TCHAR* Meaning)->TSharedRef<SWidget>{
+        const FString Name(Icon);
+        return SNew(SHorizontalBox).ToolTipText(T(Meaning))
+            +SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center)[FWCArtSlice::MakeIcon([Name]{return Name;},20,InkTint,Meaning)]
+            +SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center).Padding(5,0,0,0)[SNew(STextBlock).Font(Bold).ColorAndOpacity(Dark).Text_Lambda([Value]{return T(Value());})];
+    };
     auto Inspector=SNew(SBox).Visibility_Lambda([SelectedDefinition]{return SelectedDefinition()>=0?EVisibility::Visible:EVisibility::Collapsed;})
-        .HeightOverride_Lambda([ViewSize,SelectedDefinition]{return FOptionalSize(
-        SelectedDefinition()>=0?FMath::Clamp(float(ViewSize().Y)*.33f,210.f,340.f):44.f);})
+        .MaxDesiredHeight_Lambda([ViewSize]{return FOptionalSize(FMath::Clamp(float(ViewSize().Y)*.42f,250.f,400.f));})
         [FWCArtSlice::MakePanel(SNew(SScrollBox)+SScrollBox::Slot()[SNew(SVerticalBox)
-        +SVerticalBox::Slot().AutoHeight()[SNew(SBox).HeightOverride_Lambda([ViewSize]{return FOptionalSize(FMath::Clamp(float(ViewSize().Y)*.11f,72.f,120.f));})
-            .Visibility_Lambda([SelectedDefinition]{return SelectedDefinition()>=0?EVisibility::Visible:EVisibility::Collapsed;})
-            [SNew(SScaleBox).Stretch(EStretch::ScaleToFit)[SNew(SImage).Image_Lambda([SelectedId]{return FWCArtSlice::Portrait(SelectedId());})]]]
-        +SVerticalBox::Slot().AutoHeight().Padding(0,4)[SNew(STextBlock).Font(Bold).ColorAndOpacity(Dark).AutoWrapText(true)
-            .Text_Lambda([this,SelectedDefinition]{const int Def=SelectedDefinition();return T(Def>=0?S(Catalog.units[Def].displayName):TEXT("Select a creature"));})]
-        +SVerticalBox::Slot().AutoHeight().Padding(0,2)[SNew(SBox)
-            .Visibility_Lambda([SelectedDefinition]{return SelectedDefinition()>=0?EVisibility::Visible:EVisibility::Collapsed;})[SNew(SHorizontalBox)
-            +SHorizontalBox::Slot().AutoWidth()[SNew(SBox).WidthOverride(38).HeightOverride(38)
-                .Visibility_Lambda([SelectedDefinition]{return SelectedDefinition()>=0?EVisibility::Visible:EVisibility::Collapsed;})
-                [SNew(SImage).Image_Lambda([SelectedId]{return FWCArtSlice::AbilityIcon(SelectedId());})]]
-            +SHorizontalBox::Slot().FillWidth(1).VAlign(VAlign_Center).Padding(5,0)[SNew(STextBlock).Font(Small).ColorAndOpacity(Dark).AutoWrapText(true)
-                .Text_Lambda([this,SelectedDefinition]{const int Def=SelectedDefinition();if(Def<0)return T(TEXT("Inspect a bench or board creature to see its ability and stats."));
-                    const auto& Unit=Catalog.units[Def];return T(S(Unit.ability.name)+TEXT("\n")+(Unit.range<=1?TEXT("Melee"):TEXT("Ranged")));})]]]
-        +SVerticalBox::Slot().AutoHeight().Padding(0,5)[SNew(SBox)
-            .Visibility_Lambda([SelectedDefinition]{return SelectedDefinition()>=0?EVisibility::Visible:EVisibility::Collapsed;})
-            [SNew(STextBlock).Font(Small).ColorAndOpacity(Dark).AutoWrapText(true)
-                .Text_Lambda([this]{return T(InspectorText().Replace(TEXT(" in this lab"),TEXT("")));})]]],true,10)];
+        +SVerticalBox::Slot().AutoHeight()[SNew(SHorizontalBox)
+            +SHorizontalBox::Slot().AutoWidth()[SNew(SBox).WidthOverride(72).HeightOverride(72)
+                [SNew(SScaleBox).Stretch(EStretch::ScaleToFit)[SNew(SImage).Image_Lambda([SelectedId]{return FWCArtSlice::Portrait(SelectedId());})]]]
+            +SHorizontalBox::Slot().FillWidth(1).VAlign(VAlign_Center).Padding(7,0,0,0)[SNew(SVerticalBox)
+                +SVerticalBox::Slot().AutoHeight()[SNew(STextBlock).Font(Bold).ColorAndOpacity(Dark).AutoWrapText(true)
+                    .Text_Lambda([this,Pick]{const auto P=Pick();return T(P.Def>=0?S(Catalog.units[P.Def].displayName)+TEXT("  ")+FString::ChrN(P.Star,TCHAR('*')):FString());})]
+                +SVerticalBox::Slot().AutoHeight().Padding(0,3)[SNew(SHorizontalBox)
+                    +SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center)[FWCArtSlice::MakeIcon([this,Pick]{const auto P=Pick();return P.Def<0?FString():S(Catalog.units[P.Def].race);},24,InkTint,TEXT("Race. Field two or four of a race for its bonus."))]
+                    +SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center).Padding(4,0,8,0)[SNew(STextBlock).Font(Small).ColorAndOpacity(Dark)
+                        .Text_Lambda([this,Pick]{const auto P=Pick();return T(P.Def<0?FString():S(Catalog.units[P.Def].race).Replace(TEXT("_"),TEXT(" ")));})]
+                    +SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center)[FWCArtSlice::MakeIcon([this,Pick]{const auto P=Pick();return P.Def<0?FString():S(Catalog.units[P.Def].unitClass);},24,InkTint,TEXT("Class. Field two or four of a class for its bonus."))]
+                    +SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center).Padding(4,0,0,0)[SNew(STextBlock).Font(Small).ColorAndOpacity(Dark)
+                        .Text_Lambda([this,Pick]{const auto P=Pick();return T(P.Def<0?FString():S(Catalog.units[P.Def].unitClass).Replace(TEXT("_"),TEXT(" ")));})]]]]
+        +SVerticalBox::Slot().AutoHeight().Padding(0,6,0,0)[Meter([Pick]{const auto P=Pick();return P.MaxHealth>0?float(P.Health/P.MaxHealth):0.f;},FLinearColor(.30f,.62f,.28f),
+            [Pick]{const auto P=Pick();return FString::Printf(TEXT("%.0f / %.0f"),P.Health,P.MaxHealth);})]
+        +SVerticalBox::Slot().AutoHeight().Padding(0,3,0,0)[SNew(SBox).Visibility_Lambda([Pick]{return Pick().MaxMana>0?EVisibility::Visible:EVisibility::Collapsed;})
+            [Meter([Pick]{const auto P=Pick();return P.MaxMana>0?float(P.Mana/P.MaxMana):0.f;},FLinearColor(.20f,.45f,.85f),
+                [Pick]{const auto P=Pick();return FString::Printf(TEXT("%.0f / %.0f mana"),P.Mana,P.MaxMana);})]]
+        +SVerticalBox::Slot().AutoHeight().Padding(0,7,0,0)[SNew(SVerticalBox)
+            +SVerticalBox::Slot().AutoHeight()[SNew(SHorizontalBox)
+                +SHorizontalBox::Slot().FillWidth(1)[Stat(TEXT("attack"),[this,Pick]{const auto P=Pick();return P.Def<0?FString():FString::Printf(TEXT("%.0f"),wc::StarValue(Catalog.units[P.Def].attackDamage,P.Star,0,Catalog.rules)/100.);},
+                    TEXT("Attack: the damage of each basic hit."))]
+                +SHorizontalBox::Slot().FillWidth(1)[Stat(TEXT("speed"),[this,Pick]{const auto P=Pick();return P.Def<0?FString():FString::Printf(TEXT("%.2f"),Catalog.units[P.Def].attackRate/1000.);},
+                    TEXT("Attack speed: basic hits per second."))]
+                +SHorizontalBox::Slot().FillWidth(1)[Stat(TEXT("range"),[this,Pick]{const auto P=Pick();return P.Def<0?FString():FString::FromInt(Catalog.units[P.Def].range);},
+                    TEXT("Range: how many tiles away it can hit. 1 means it fights up close."))]]
+            +SVerticalBox::Slot().AutoHeight().Padding(0,4,0,0)[SNew(SHorizontalBox)
+                +SHorizontalBox::Slot().FillWidth(1)[Stat(TEXT("armor"),[this,Pick]{const auto P=Pick();return P.Def<0?FString():FString::FromInt(Catalog.units[P.Def].armor);},
+                    TEXT("Armour: reduces physical damage taken."))]
+                +SHorizontalBox::Slot().FillWidth(1)[Stat(TEXT("resist"),[this,Pick]{const auto P=Pick();return P.Def<0?FString():FString::FromInt(Catalog.units[P.Def].resistance);},
+                    TEXT("Resistance: reduces magic damage taken."))]
+                +SHorizontalBox::Slot().FillWidth(1)[Stat(TEXT("gold"),[this,Pick]{const auto P=Pick();return P.Def<0?FString():FString::FromInt(Catalog.units[P.Def].cost);},
+                    TEXT("Cost in gold. Selling returns the gold spent on its copies."))]]]
+        +SVerticalBox::Slot().AutoHeight().Padding(0,6,0,0)[SNew(SHorizontalBox)
+            +SHorizontalBox::Slot().AutoWidth()[SNew(SBox).WidthOverride(34).HeightOverride(34)[SNew(SImage).Image_Lambda([SelectedId]{return FWCArtSlice::AbilityIcon(SelectedId());})]]
+            +SHorizontalBox::Slot().FillWidth(1).VAlign(VAlign_Center).Padding(6,0)[SNew(STextBlock).Font(Bold).ColorAndOpacity(Dark).AutoWrapText(true)
+                .Text_Lambda([this,Pick]{const auto P=Pick();return T(P.Def>=0?S(Catalog.units[P.Def].ability.name):FString());})]]
+        +SVerticalBox::Slot().AutoHeight().Padding(0,4)[SNew(STextBlock).Font(Small).ColorAndOpacity(Dark).AutoWrapText(true)
+            .Text_Lambda([this]{return T(InspectorText().Replace(TEXT(" in this lab"),TEXT("")));})]
+        +SVerticalBox::Slot().AutoHeight().Padding(0,4,0,0)[SNew(SBox).Visibility_Lambda([Pick,CanEdit]{return Pick().Mine&&CanEdit()?EVisibility::Visible:EVisibility::Collapsed;})
+            [Button([this]{return FString::Printf(TEXT("Sell  ·  +%d gold"),SellPrice(Selected));},[Command]{Command(wc::CommandType::Sell);},CanEdit)]]],true,10)];
     auto Right=SNew(SVerticalBox)
-        +SVerticalBox::Slot().AutoHeight()[FWCArtSlice::MakePanel(Standings,false,9)]
-        +SVerticalBox::Slot().AutoHeight().Padding(0,6,0,0)[Inspector];
+        +SVerticalBox::Slot().AutoHeight()[SidePanel]
+        +SVerticalBox::Slot().AutoHeight().Padding(0,5,0,0)[TraitCard]
+        +SVerticalBox::Slot().AutoHeight().Padding(0,5,0,0)[FWCArtSlice::MakePanel(Inventory,false,8)]
+        +SVerticalBox::Slot().AutoHeight().Padding(0,5,0,0)[Inspector];
 
     auto Bench=SNew(SHorizontalBox);
+    Bench->SetTag(TEXT("WC.Bench"));
     for(int Slot=0;Slot<Catalog.rules.benchCapacity;++Slot){
         const auto Piece=[this,Slot]() -> const wc::OwnedUnit* {
             if(SoloMatch&&ViewedSeat==0)for(const auto& Unit:SoloMatch->Seats()[0].roster)if(!Unit.onBoard&&Unit.bench==Slot)return &Unit;
@@ -886,20 +1204,41 @@ void AWCVNextLab::BuildStorybookInterface()
         }),FName(*FString::Printf(TEXT("WC.Shop.Slot%d"),Slot)))];
     }
     const auto BuyXp=Button([this]{return FString::Printf(TEXT("+%d XP · %d g"),Catalog.rules.buyXpAmount,Catalog.rules.buyXpGold);},[Command]{Command(wc::CommandType::BuyXp);},CanEdit);
+    BuyXp->SetTag(TEXT("WC.BuyXp"));
     auto Resources=FWCArtSlice::MakePanel(SNew(SVerticalBox)
-        +SVerticalBox::Slot().AutoHeight()[SNew(STextBlock).Font(FWCArtSlice::HeadingFont(20)).ColorAndOpacity(Parchment).Justification(ETextJustify::Center)
-            .Text_Lambda([this]{return T(SoloMatch?FString::Printf(TEXT("%d  GOLD"),SoloMatch->Seats()[0].gold):TEXT("—"));})]
+        +SVerticalBox::Slot().AutoHeight().HAlign(HAlign_Center)[SNew(SHorizontalBox)
+            +SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center)[FWCArtSlice::MakeIcon([]{return FString(TEXT("gold"));},30,FLinearColor(1.f,.80f,.34f),TEXT("Gold. Buys heroes, rerolls and experience. Every 10 saved pays 1 interest each round."))]
+            +SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center).Padding(8,0,0,0)[SNew(STextBlock).Font(FWCArtSlice::HeadingFont(24)).ColorAndOpacity(FLinearColor(1.f,.86f,.50f))
+                .ColorAndOpacity_Lambda([this]{return FSlateColor(Elapsed-GoldFlashAt<.8?FLinearColor(1.f,1.f,.75f):FLinearColor(1.f,.86f,.50f));})
+                .Text_Lambda([this]{return T(SoloMatch?FString::FromInt(SoloMatch->Seats()[0].gold):TEXT("—"));})]]
         +SVerticalBox::Slot().AutoHeight().Padding(0,4)[SNew(STextBlock).Font(Bold).ColorAndOpacity(Parchment).Justification(ETextJustify::Center)
             .Text_Lambda([this]{return T(SoloMatch?FString::Printf(TEXT("LEVEL %d"),SoloMatch->Seats()[0].level):TEXT("—"));})]
         +SVerticalBox::Slot().AutoHeight()[SNew(STextBlock).Font(Small).ColorAndOpacity(Parchment).Justification(ETextJustify::Center)
             .Text_Lambda([this]{if(!SoloMatch)return T(TEXT("—"));const auto& Captain=SoloMatch->Seats()[0];const auto Next=Catalog.rules.xpToNext.find(Captain.level);
                 return T(Next==Catalog.rules.xpToNext.end()?TEXT("Maximum level"):FString::Printf(TEXT("%d / %d XP"),Captain.xp,Next->second));})]
-        +SVerticalBox::Slot().AutoHeight().Padding(0,6,0,0)[BuyXp],false,10);
+        +SVerticalBox::Slot().AutoHeight().Padding(0,4,0,0)[SNew(SBox).HeightOverride(6)[SNew(SProgressBar)
+            .BarFillStyle(EProgressBarFillStyle::Scale).FillImage(FCoreStyle::Get().GetBrush(TEXT("WhiteBrush")))
+            .BackgroundImage(FCoreStyle::Get().GetBrush(TEXT("BlackBrush"))).BorderPadding(FVector2D::ZeroVector)
+            .Percent_Lambda([this]{if(!SoloMatch)return TOptional<float>(0.f);const auto& Captain=SoloMatch->Seats()[0];const auto Next=Catalog.rules.xpToNext.find(Captain.level);
+                return TOptional<float>(Next==Catalog.rules.xpToNext.end()?1.f:float(Captain.xp)/FMath::Max(1,Next->second));})
+            .FillColorAndOpacity(FLinearColor(.36f,.55f,1.f))]]
+        +SVerticalBox::Slot().AutoHeight().Padding(0,6,0,0)[BuyXp]
+        +SVerticalBox::Slot().AutoHeight().Padding(0,6,0,0)[SNew(STextBlock).Font(Small).ColorAndOpacity(FLinearColor(.98f,.80f,.36f)).Justification(ETextJustify::Center).AutoWrapText(true)
+            .Text_Lambda([this]{
+                if(!SoloMatch)return T(TEXT(""));
+                const auto& Captain=SoloMatch->Seats()[0];const int Divisor=FMath::Max(1,Catalog.rules.interestDivisor);
+                const int Interest=FMath::Min(Catalog.rules.interestCap,Captain.gold/Divisor);
+                FString Line=FString::Printf(TEXT("Interest +%d"),Interest);
+                if(Interest<Catalog.rules.interestCap)Line+=FString::Printf(TEXT("  (next at %d g)"),(Interest+1)*Divisor);
+                const int StreakGold=wc::StreakIncome(Catalog.rules,SoloStreak);
+                if(SoloStreak>=2)Line+=FString::Printf(TEXT("\nWin streak %d  (+%d g)"),SoloStreak,StreakGold);
+                else if(SoloStreak<=-2)Line+=FString::Printf(TEXT("\nLoss streak %d  (+%d g)"),-SoloStreak,StreakGold);
+                return T(Line);})],false,10);
     auto ShopActions=SNew(SHorizontalBox)
         +SHorizontalBox::Slot().AutoWidth().Padding(0,0,5,0)[Button([this]{return FString::Printf(TEXT("REROLL · %d g"),Catalog.rules.rerollCost);},[Command]{Command(wc::CommandType::Reroll);},CanEdit)]
         +SHorizontalBox::Slot().AutoWidth().Padding(0,0,7,0)[Button([this]{return SoloMatch&&SoloMatch->Seats()[0].shopLocked?TEXT("UNLOCK SHOP"):TEXT("LOCK SHOP");},[Command]{Command(wc::CommandType::ToggleLock);},CanEdit)];
     auto FormationActions=SNew(SVerticalBox)
-        +SVerticalBox::Slot().AutoHeight().VAlign(VAlign_Center)[SNew(STextBlock).Font(Small).ColorAndOpacity(Parchment)
+        +SVerticalBox::Slot().AutoHeight().VAlign(VAlign_Center)[SNew(STextBlock).Font(Bold).ColorAndOpacity(Parchment)
             .Text_Lambda([this]{if(!SoloMatch)return T(TEXT("BENCH"));int Deployed=0;for(const auto& Unit:SoloMatch->Seats()[0].roster)Deployed+=Unit.onBoard;
                 return T(ViewedSeat?TEXT("SCOUTING · public board only"):FString::Printf(TEXT("DEPLOYED %d / %d"),Deployed,SoloMatch->Seats()[0].level));})]
         +SVerticalBox::Slot().AutoHeight().Padding(0,5,0,0)[SNew(SHorizontalBox)
@@ -912,6 +1251,24 @@ void AWCVNextLab::BuildStorybookInterface()
     const auto BenchWidth=[ViewSize]{return FOptionalSize(FMath::Clamp(float(ViewSize().X)*.62f,820.f,1300.f));};
     auto Bottom=SNew(SBox).HAlign(HAlign_Center).Padding(FMargin(0,0,0,4))
         [SNew(SBox).WidthOverride_Lambda(BenchWidth)[Bench]];
+    // Shop odds for the captain's level as coloured chips, with what the next round will pay.
+    auto OddsRow=SNew(SHorizontalBox)
+        +SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center).Padding(0,0,10,0)[SNew(STextBlock).Font(Regular).ColorAndOpacity(Parchment)
+            .Text_Lambda([this]{return T(SoloMatch?FString::Printf(TEXT("Level %d odds"),SoloMatch->Seats()[0].level):FString());})];
+    static const FSlateRoundedBoxBrush OddsChip(FLinearColor::White,9.f,FLinearColor(.35f,.30f,.22f),1.5f);
+    for(int Tier=0;Tier<5;++Tier)OddsRow->AddSlot().AutoWidth().Padding(0,0,6,0)[SNew(SBorder)
+        .BorderImage(&OddsChip).BorderBackgroundColor(FWCArtSlice::TierColor(Tier+1).CopyWithNewOpacity(.9f)).Padding(FMargin(10,3))
+        [SNew(STextBlock).Font(FCoreStyle::GetDefaultFontStyle(TEXT("Bold"),11)).ColorAndOpacity(FLinearColor(.02f,.03f,.04f))
+            .Text_Lambda([this,Tier]{
+                if(!SoloMatch)return T(TEXT(""));
+                const auto It=Catalog.rules.shopWeights.find(SoloMatch->Seats()[0].level);
+                return T(FString::Printf(TEXT("%d-cost  %d%%"),Tier+1,It!=Catalog.rules.shopWeights.end()?It->second[Tier]/100:0));})]];
+    OddsRow->AddSlot().FillWidth(1).HAlign(HAlign_Right).VAlign(VAlign_Center)[SNew(STextBlock).Font(Regular).ColorAndOpacity(FLinearColor(.98f,.80f,.36f))
+        .Text_Lambda([this]{
+            if(!SoloMatch)return T(TEXT(""));
+            const auto& Captain=SoloMatch->Seats()[0];
+            const int Interest=FMath::Min(Catalog.rules.interestCap,Captain.gold/FMath::Max(1,Catalog.rules.interestDivisor));
+            return T(FString::Printf(TEXT("%d gold   ·   next round: +%d base  +%d interest  (+%d for a win)"),Captain.gold,Catalog.rules.baseIncome,Interest,Catalog.rules.winIncome));})];
     auto ShopPanel=SNew(SVerticalBox)
         +SVerticalBox::Slot().AutoHeight().Padding(0,0,0,10)[SNew(SHorizontalBox)
             +SHorizontalBox::Slot().FillWidth(1).VAlign(VAlign_Center)[SNew(STextBlock).Font(FWCArtSlice::HeadingFont(19)).ColorAndOpacity(Parchment)
@@ -922,19 +1279,10 @@ void AWCVNextLab::BuildStorybookInterface()
                 if(SoloMatch)ShopDismissedRound=SoloMatch->Round();ShopOpen=false;
             },Always),TEXT("WC.Shop.Close"))]]
         +SVerticalBox::Slot().AutoHeight()[Shop]
-        +SVerticalBox::Slot().AutoHeight().Padding(3,10,3,0)[SNew(STextBlock).Font(FCoreStyle::GetDefaultFontStyle(TEXT("Regular"),13)).ColorAndOpacity(Parchment)
-            .Text_Lambda([this]{
-                if(!SoloMatch)return T(TEXT(""));
-                const auto& Captain=SoloMatch->Seats()[0];
-                FString Odds=FString::Printf(TEXT("%d gold  ·  Level %d shop odds"),Captain.gold,Captain.level);
-                const auto It=Catalog.rules.shopWeights.find(Captain.level);
-                if(It!=Catalog.rules.shopWeights.end())for(int Tier=0;Tier<5;++Tier)
-                    Odds+=FString::Printf(TEXT("     %d-cost %d%%"),Tier+1,It->second[Tier]/100);
-                return T(Odds);
-            })];
+        +SVerticalBox::Slot().AutoHeight().Padding(3,10,3,0)[OddsRow];
 
     BoardInput=SNew(SWCSoloBoard).IsEnabled_Lambda([this,TopModal]{return SoloMatch&&TopModal()==EStoryModal::None;})
-        .Click([this]{BoardClick(false);}).Key([this](const FKeyEvent& Event){
+        .Click([this]{BoardClick(false);}).Wheel([this](float Delta){CameraWheel(Delta);}).Key([this](const FKeyEvent& Event){
         const auto Key=Event.GetKey();
         if(Key==EKeys::Left)KeyboardColumn=FMath::Max(0,KeyboardColumn-1);
         else if(Key==EKeys::Right)KeyboardColumn=FMath::Min(Catalog.rules.columns-1,KeyboardColumn+1);
@@ -951,23 +1299,31 @@ void AWCVNextLab::BuildStorybookInterface()
     const auto PhaseFraction=[this]{
         if(!SoloMatch)return TOptional<float>(0.f);
         const auto& Rules=Catalog.rules;
-        const int Total=SoloMatch->CurrentPhase()==wc::Phase::Preparation?(SoloMatch->Round()<=1?Rules.firstPreparationMs:Rules.preparationMs):
+        const int Total=SoloMatch->CurrentPhase()==wc::Phase::Preparation?wc::PreparationMs(Rules,SoloMatch->Round()):
             SoloMatch->CurrentPhase()==wc::Phase::Combat?Rules.combatTimeoutMs:Rules.settlementMs;
         return TOptional<float>(FMath::Clamp(float(SoloMatch->RemainingMs())/FMath::Max(1,Total),0.f,1.f));
     };
-    auto Plaque=FWCArtSlice::MakePanel(SNew(SBox).WidthOverride(340)[SNew(SVerticalBox)
+    TSharedRef<SWidget> Plaque=SNew(SBorder).BorderImage(FWCArtSlice::KitBrush(TEXT("plaque"),FWCArtSlice::PanelBrush())).Padding(FMargin(52,13,52,14))[SNew(SBox).WidthOverride(330)[SNew(SVerticalBox)
         +SVerticalBox::Slot().AutoHeight()[SNew(STextBlock).Font(FWCArtSlice::HeadingFont(16)).ColorAndOpacity(Parchment).Justification(ETextJustify::Center)
             .Text_Lambda([this]{return T(SoloMatch?FString::Printf(TEXT("ROUND %d  ·  %s"),SoloMatch->Round(),PhaseName(SoloMatch->CurrentPhase())):TEXT("Loading"));})]
         +SVerticalBox::Slot().AutoHeight().Padding(0,5,0,4)[SNew(SBox).HeightOverride(6)[SNew(SProgressBar)
             .BarFillStyle(EProgressBarFillStyle::Scale).FillImage(FCoreStyle::Get().GetBrush(TEXT("WhiteBrush")))
             .BackgroundImage(FCoreStyle::Get().GetBrush(TEXT("BlackBrush"))).BorderPadding(FVector2D::ZeroVector)
             .Percent_Lambda(PhaseFraction).FillColorAndOpacity(Brass)]]
-        +SVerticalBox::Slot().AutoHeight()[SNew(STextBlock).Font(Small).ColorAndOpacity(Parchment).Justification(ETextJustify::Center)
+        +SVerticalBox::Slot().AutoHeight()[SNew(STextBlock).Font(Small).Justification(ETextJustify::Center)
+            .ColorAndOpacity_Lambda([this,Parchment]{return FSlateColor(Elapsed-UnitLimitAt<.7&&FMath::Fmod(Elapsed-UnitLimitAt,.24)<.12?FLinearColor(1.f,.32f,.25f):Parchment);})
             .Text_Lambda([this]{
                 if(!SoloMatch)return T(TEXT(""));
                 int Deployed=0;for(const auto& Unit:SoloMatch->Seats()[0].roster)Deployed+=Unit.onBoard;
                 return T(FString::Printf(TEXT("%d s  ·  Units %d / %d%s"),FMath::CeilToInt(SoloMatch->RemainingMs()/1000.f),Deployed,
-                    SoloMatch->Seats()[0].level,SoloPaused?TEXT("  ·  PAUSED"):TEXT("")));})]],false,8);
+                    SoloMatch->Seats()[0].level,SoloPaused?TEXT("  ·  PAUSED"):SoloMatch->CurrentPhase()==wc::Phase::Preparation&&SoloMatch->Seats()[0].ready?TEXT("  ·  waiting for other captains"):TEXT("")));})]
+        +SVerticalBox::Slot().AutoHeight().Padding(0,3,0,0)[SNew(STextBlock).Font(Small).ColorAndOpacity(FLinearColor(.86f,.67f,.27f)).Justification(ETextJustify::Center)
+            .Visibility_Lambda([this]{return SoloMatch&&SoloMatch->CurrentPhase()==wc::Phase::Preparation?EVisibility::Visible:EVisibility::Collapsed;})
+            .Text_Lambda([this]{
+                FString Line=NextOpponentText();
+                if(SoloStreak>=2)Line+=FString::Printf(TEXT("   ·   Win streak %d"),SoloStreak);
+                else if(SoloStreak<=-2)Line+=FString::Printf(TEXT("   ·   Loss streak %d"),-SoloStreak);
+                return T(Line);})]]];
     auto TopButtons=SNew(SVerticalBox)
         +SVerticalBox::Slot().AutoHeight()[SNew(SHorizontalBox)
             +SHorizontalBox::Slot().FillWidth(1).Padding(0,0,3,0)[Button([]{return TEXT("Help");},OpenGuide,GuideAvailable)]
@@ -975,33 +1331,52 @@ void AWCVNextLab::BuildStorybookInterface()
         +SVerticalBox::Slot().AutoHeight().Padding(0,3,0,0)[SNew(SHorizontalBox)
             +SHorizontalBox::Slot().FillWidth(1).Padding(0,0,3,0)[SoloTagged(Button([]{return TEXT("Recap");},[RecapOpen]{*RecapOpen=true;},Always),TEXT("WC.OpenRecap"))]
             +SHorizontalBox::Slot().FillWidth(1)[OpenMenu]];
+    // Shown over the action buttons while a hero is held: drop here to sell it.
+    static const FSlateRoundedBoxBrush SellFrame(FLinearColor(.34f,.09f,.07f,.96f),7.f,FLinearColor(.95f,.66f,.30f),1.5f);
     // Royal blue marks the one action that ends the player's preparation.
     static const FSlateRoundedBoxBrush ReadyFrame(FLinearColor(.07f,.16f,.50f),7.f,FLinearColor(.36f,.55f,1.f),1.f);
+    TSharedPtr<SBorder> ReadyPlate;
     auto ActionGrid=SNew(SVerticalBox)
         +SVerticalBox::Slot().AutoHeight()[SNew(SHorizontalBox)
-            +SHorizontalBox::Slot().FillWidth(1).Padding(0,0,4,0)[Button([this]{return FString::Printf(TEXT("Reroll · %d g"),Catalog.rules.rerollCost);},[Command]{Command(wc::CommandType::Reroll);},CanEdit)]
-            +SHorizontalBox::Slot().FillWidth(1)[Button([this]{return SoloMatch&&SoloMatch->Seats()[0].shopLocked?TEXT("Unlock"):TEXT("Lock");},[Command]{Command(wc::CommandType::ToggleLock);},CanEdit)]]
+            +SHorizontalBox::Slot().FillWidth(1).Padding(0,0,4,0)[SoloTagged(Button([this]{return FString::Printf(TEXT("Reroll · %d g"),Catalog.rules.rerollCost);},[Command]{Command(wc::CommandType::Reroll);},CanEdit),TEXT("WC.Reroll"))]
+            +SHorizontalBox::Slot().FillWidth(1)[SoloTagged(Button([this]{return SoloMatch&&SoloMatch->Seats()[0].shopLocked?TEXT("Unlock"):TEXT("Lock");},[Command]{Command(wc::CommandType::ToggleLock);},CanEdit),TEXT("WC.Lock"))]]
         +SVerticalBox::Slot().AutoHeight().Padding(0,4,0,0)[SNew(SHorizontalBox)
             +SHorizontalBox::Slot().FillWidth(1).Padding(0,0,4,0)[SoloTagged(Button([]{return TEXT("Shop");},[this]{ShopOpen=true;},CanEdit),TEXT("WC.OpenShop"))]
-            +SHorizontalBox::Slot().FillWidth(1)[SNew(SBorder).BorderImage(&ReadyFrame).Padding(2)
+            +SHorizontalBox::Slot().FillWidth(1)[SAssignNew(ReadyPlate,SBorder).BorderImage(FWCArtSlice::KitBrush(TEXT("button_blue"),&ReadyFrame)).Padding(3)
                 [Button([this]{return SoloMatch&&SoloMatch->Seats()[0].ready?TEXT("Ready ✓"):TEXT("Ready");},[Command]{Command(wc::CommandType::Ready);},[this,CanEdit]{return CanEdit()&&!SoloMatch->Seats()[0].ready;})]]];
+    ReadyPlate->SetTag(TEXT("WC.Ready"));
+    Resources->SetTag(TEXT("WC.Gold"));
+    BoardInput->SetTag(TEXT("WC.Board"));
     auto Main=SNew(SVerticalBox).IsEnabled_Lambda([TopModal]{return TopModal()==EStoryModal::None;})
         +SVerticalBox::Slot().FillHeight(1).Padding(7,6,7,4)[SNew(SHorizontalBox)
-            +SHorizontalBox::Slot().AutoWidth()[SNew(SBox).WidthOverride_Lambda([ViewSize]{return FOptionalSize(FMath::Clamp(float(ViewSize().X)*.115f,150.f,200.f));})
+            +SHorizontalBox::Slot().AutoWidth()[SNew(SBox).WidthOverride_Lambda([ViewSize]{return FOptionalSize(FMath::Clamp(float(ViewSize().X)*.165f,215.f,270.f));})
                 [SNew(SVerticalBox)
                     +SVerticalBox::Slot().AutoHeight()[Left]
                     +SVerticalBox::Slot().FillHeight(1)[SNew(SSpacer)]
                     +SVerticalBox::Slot().AutoHeight()[Resources]]]
             +SHorizontalBox::Slot().FillWidth(1).Padding(5,0)[SNew(SVerticalBox)
                 +SVerticalBox::Slot().AutoHeight().HAlign(HAlign_Center)[Plaque]
-                +SVerticalBox::Slot().FillHeight(1)[BoardInput.ToSharedRef()]
+                +SVerticalBox::Slot().FillHeight(1)[SNew(SOverlay)
+                    +SOverlay::Slot()[BoardInput.ToSharedRef()]
+                    +SOverlay::Slot().HAlign(HAlign_Center).VAlign(VAlign_Center)[SNew(STextBlock).Font(FWCArtSlice::HeadingFont(58))
+                        .Visibility_Lambda([this,TopModal]{return SoloMatch&&ViewedSeat==0&&!CurrentCombat()&&SoloMatch->CurrentPhase()==wc::Phase::Preparation&&TopModal()==EStoryModal::None?EVisibility::HitTestInvisible:EVisibility::Collapsed;})
+                        .ColorAndOpacity_Lambda([this]{int Deployed=0;if(SoloMatch)for(const auto& Unit:SoloMatch->Seats()[0].roster)Deployed+=Unit.onBoard;
+                            const bool Full=SoloMatch&&Deployed>=SoloMatch->Seats()[0].level;
+                            return FSlateColor((Elapsed-UnitLimitAt<.7?FLinearColor(1.f,.3f,.25f):Full?FLinearColor(.45f,.95f,.45f):FLinearColor(1.f,1.f,1.f)).CopyWithNewOpacity(.42f));})
+                        .Text_Lambda([this]{int Deployed=0;if(SoloMatch)for(const auto& Unit:SoloMatch->Seats()[0].roster)Deployed+=Unit.onBoard;
+                            return T(SoloMatch?FString::Printf(TEXT("%d / %d"),Deployed,SoloMatch->Seats()[0].level):FString());})]]
                 ]
-            +SHorizontalBox::Slot().AutoWidth()[SNew(SBox).WidthOverride_Lambda([ViewSize]{return FOptionalSize(FMath::Clamp(float(ViewSize().X)*.16f,200.f,255.f));})
+            +SHorizontalBox::Slot().AutoWidth()[SNew(SBox).WidthOverride_Lambda([ViewSize]{return FOptionalSize(FMath::Clamp(float(ViewSize().X)*.165f,215.f,270.f));})
                 [SNew(SVerticalBox)
                     +SVerticalBox::Slot().AutoHeight().Padding(0,0,0,6)[TopButtons]
                     +SVerticalBox::Slot().AutoHeight()[Right]
                     +SVerticalBox::Slot().FillHeight(1)[SNew(SSpacer)]
-                    +SVerticalBox::Slot().AutoHeight()[FWCArtSlice::MakePanel(ActionGrid,false,7)]]]]
+                    +SVerticalBox::Slot().AutoHeight()[SNew(SOverlay)
+                        +SOverlay::Slot()[FWCArtSlice::MakePanel(ActionGrid,false,7)]
+                        +SOverlay::Slot()[SAssignNew(SellZone,SBorder).BorderImage(&SellFrame).HAlign(HAlign_Center).VAlign(VAlign_Center)
+                            .Visibility_Lambda([this]{return Dragging&&SoloMatch&&ViewedSeat==0&&!CurrentCombat()?EVisibility::HitTestInvisible:EVisibility::Collapsed;})
+                            [SNew(STextBlock).Font(FWCArtSlice::HeadingFont(15)).ColorAndOpacity(Parchment)
+                                .Text_Lambda([this]{return T(FString::Printf(TEXT("SELL  ·  +%d gold"),SellPrice(DragId)));})]]]]]]
         +SVerticalBox::Slot().AutoHeight().Padding(7,0,7,5)[FWCArtSlice::MakePanel(SNew(SBox).HeightOverride(25)
             [SAssignNew(MessageBlock,STextBlock).Font(Small).ColorAndOpacity(Parchment).AutoWrapText(true)
                 .ToolTipText_Lambda([this]{return T(Message);})],false,6)];
@@ -1012,6 +1387,8 @@ void AWCVNextLab::BuildStorybookInterface()
     OpenCollection->SetTag(TEXT("WC.OpenCollection"));
     Menu->AddSlot().AutoHeight().Padding(0,0,0,8)[OpenCollection];
     Menu->AddSlot().AutoHeight().Padding(0,0,0,8)[Button([]{return TEXT("How to play / Guide settings · F1");},OpenGuide,GuideAvailable)];
+    Menu->AddSlot().AutoHeight().Padding(0,0,0,8)[SoloTagged(Button([this]{return FString(SoloGuideIndonesian?TEXT("Pertandingan pertama terpandu"):TEXT("Guided first match"));},
+        [this,MenuOpen]{*MenuOpen=false;const int Reached=LoadGuideProfile();StartGuide(Reached<0?0:Reached);},Always),TEXT("WC.Menu.Guide"))];
     Menu->AddSlot().AutoHeight()[Button([this]{return SoloPaused?TEXT("Resume clock"):TEXT("Pause clock");},[this]{SoloPaused=!SoloPaused;},[this]{return !AwaitingSaveDecision;})];
     Menu->AddSlot().AutoHeight().Padding(0,5)[Button([]{return TEXT("Save preparation");},[this]{SaveSolo();},[this]{return SoloMatch&&SoloMatch->CurrentPhase()==wc::Phase::Preparation&&!AwaitingSaveDecision;})];
     Menu->AddSlot().AutoHeight()[SoloTagged(Button([]{return TEXT("Load saved preparation");},[this,MenuOpen]{ResumeSolo();*MenuOpen=false;},Always),TEXT("WC.Menu.Load"))];
@@ -1028,7 +1405,7 @@ void AWCVNextLab::BuildStorybookInterface()
         FString Description=S(Unit.race)+TEXT(" / ")+S(Unit.unitClass)+TEXT("  ·  ")+S(Unit.ability.name);
         if(const auto* Full=Metadata.Units.Find(Id);Full&&Full->IsValid()){
             const TSharedPtr<FJsonObject>* Ability=nullptr;FString Tooltip;
-            if((*Full)->TryGetObjectField(TEXT("ability"),Ability)&&Ability&&(*Ability)->TryGetStringField(TEXT("tooltip_en"),Tooltip))Description+=TEXT("\n")+Tooltip;
+            if((*Full)->TryGetObjectField(TEXT("ability"),Ability)&&Ability&&(*Ability)->TryGetStringField(SoloGuideIndonesian?TEXT("tooltip_id"):TEXT("tooltip_en"),Tooltip))Description+=TEXT("\n")+Tooltip;
         }
         Collection->AddSlot().AutoHeight().Padding(0,4)[FWCArtSlice::MakePanel(SNew(SHorizontalBox)
             +SHorizontalBox::Slot().AutoWidth()[SNew(SBox).WidthOverride(80).HeightOverride(80)[SNew(SImage).Image(FWCArtSlice::Portrait(Id))]]
@@ -1049,15 +1426,35 @@ void AWCVNextLab::BuildStorybookInterface()
                 +SVerticalBox::Slot().AutoHeight().Padding(0,5)[SNew(STextBlock).Font(Regular).ColorAndOpacity(Parchment).AutoWrapText(true).Text(T(S(Relic.description)))]],false,8)];
     }
     Collection->AddSlot().AutoHeight().Padding(0,12,0,0)[Button([]{return TEXT("Return to board");},[CollectionOpen]{*CollectionOpen=false;},Always)];
-    auto Draft=SNew(SVerticalBox);
-    Draft->AddSlot().AutoHeight().Padding(0,0,0,12)[Label(TEXT("CHOOSE A RELIC\nOne permanent choice. Equip it on a compatible creature during preparation."))];
-    for(int Slot=0;Slot<3;++Slot)Draft->AddSlot().AutoHeight().Padding(0,4)[SNew(SButton).ButtonStyle(FWCArtSlice::ButtonStyle()).ContentPadding(8)
-        .IsEnabled_Lambda([this,Slot,CanEdit]{return CanEdit()&&Slot<int(SoloMatch->Seats()[0].relicOffers.size());})
-        .OnClicked_Lambda([this,Slot]{wc::Command C;C.type=wc::CommandType::ChooseRelic;C.slot=Slot;SoloCommand(C);return FReply::Handled();})
-        [SNew(SHorizontalBox)
-            +SHorizontalBox::Slot().AutoWidth()[SNew(SBox).WidthOverride(64).HeightOverride(64)[SNew(SImage).Image_Lambda([RelicId,Slot]{return FWCArtSlice::RelicIcon(RelicId(Slot,true));})]]
-            +SHorizontalBox::Slot().FillWidth(1).VAlign(VAlign_Center).Padding(10,0)[SNew(STextBlock).Font(Regular).ColorAndOpacity(Parchment).AutoWrapText(true)
-                .Text_Lambda([this,Slot]{return T(RelicText(Slot,true));})]]];
+    // Relic draft: three large cards and a fourth that picks one for you.
+    static const FSlateRoundedBoxBrush DraftCard(FLinearColor(.05f,.06f,.085f,.97f),8.f,FLinearColor(.66f,.50f,.19f),1.5f);
+    auto DraftRow=SNew(SHorizontalBox);
+    for(int Slot=0;Slot<4;++Slot){
+        const bool Random=Slot==3;
+        DraftRow->AddSlot().FillWidth(1).Padding(5,0)[SNew(SBorder).BorderImage(FWCArtSlice::KitBrush(TEXT("card"),&DraftCard)).Padding(18)[SNew(SVerticalBox)
+            +SVerticalBox::Slot().AutoHeight().HAlign(HAlign_Center)[SNew(SBox).WidthOverride(84).HeightOverride(84)
+                [Random?StaticCastSharedRef<SWidget>(SNew(STextBlock).Font(FWCArtSlice::HeadingFont(46)).ColorAndOpacity(FLinearColor(.86f,.67f,.27f)).Justification(ETextJustify::Center).Text(T(TEXT("?")))):
+                    StaticCastSharedRef<SWidget>(SNew(SImage).Image_Lambda([RelicId,Slot]{return FWCArtSlice::RelicIcon(RelicId(Slot,true));}))]]
+            +SVerticalBox::Slot().AutoHeight().Padding(0,8,0,4)[SNew(STextBlock).Font(FWCArtSlice::HeadingFont(14)).ColorAndOpacity(FLinearColor(.98f,.80f,.36f)).Justification(ETextJustify::Center).AutoWrapText(true)
+                .Text_Lambda([this,Slot,Random]{
+                    if(Random)return T(TEXT("Leave it to fate"));
+                    if(!SoloMatch)return T(TEXT(""));const auto& Offers=SoloMatch->Seats()[0].relicOffers;
+                    return T(Slot<int(Offers.size())?S(Catalog.relics[Offers[Slot]].name):FString());})]
+            +SVerticalBox::Slot().FillHeight(1)[SNew(SBox).MinDesiredHeight(96)[SNew(STextBlock).Font(Small).ColorAndOpacity(Parchment).AutoWrapText(true)
+                .Justification(ETextJustify::Center).Text_Lambda([this,Slot,Random]{
+                    if(Random)return T(TEXT("Take one of the three at random."));
+                    // The card already shows the relic's name above; keep only what it does.
+                    FString Body=RelicText(Slot,true);int Cut=0;if(Body.FindChar(TEXT('\n'),Cut))Body=Body.Mid(Cut+1);return T(Body);})]]
+            +SVerticalBox::Slot().AutoHeight().Padding(0,8,0,0)[Button([]{return TEXT("Choose");},[this,Slot,Random]{
+                    if(!SoloMatch)return;
+                    const int Offers=int(SoloMatch->Seats()[0].relicOffers.size());if(Offers<=0)return;
+                    wc::Command C;C.type=wc::CommandType::ChooseRelic;C.slot=Random?FMath::RandRange(0,Offers-1):Slot;SoloCommand(C);},
+                [this,Slot,Random,CanEdit]{return CanEdit()&&(Random||Slot<int(SoloMatch->Seats()[0].relicOffers.size()));})]]];
+    }
+    auto Draft=SNew(SVerticalBox)
+        +SVerticalBox::Slot().AutoHeight().Padding(0,0,0,12)[SNew(SVerticalBox)+SVerticalBox::Slot().AutoHeight()[SNew(STextBlock).Font(FWCArtSlice::HeadingFont(18)).ColorAndOpacity(FLinearColor(.98f,.80f,.36f)).Text(T(TEXT("CHOOSE A RELIC")))]
+            +SVerticalBox::Slot().AutoHeight().Padding(0,3,0,0)[Label(TEXT("One permanent choice. Give it to any hero during preparation."))]]
+        +SVerticalBox::Slot().AutoHeight()[DraftRow];
     auto SaveDecision=SNew(SVerticalBox)
         +SVerticalBox::Slot().AutoHeight().Padding(0,0,0,12)[Label(TEXT("CONTINUE YOUR JOURNEY\nA saved preparation is available. Choose how to begin."))]
         +SVerticalBox::Slot().AutoHeight()[SoloTagged(Button([]{return TEXT("Load saved preparation");},[this]{ResumeSolo();},Always),TEXT("WC.Save.Load"))]
@@ -1088,6 +1485,9 @@ void AWCVNextLab::BuildStorybookInterface()
     auto Recap=SNew(SVerticalBox)
         +SVerticalBox::Slot().AutoHeight()[Label(TEXT("BATTLE RECAP"))]
         +SVerticalBox::Slot().AutoHeight().Padding(0,12)[SNew(STextBlock).Font(Regular).ColorAndOpacity(Parchment).AutoWrapText(true).Text_Lambda([this]{return T(SoloRecap);})]
+        +SVerticalBox::Slot().AutoHeight().Padding(0,0,0,8)[SNew(STextBlock).Font(Small).ColorAndOpacity(Parchment).AutoWrapText(true)
+            .Visibility_Lambda([this]{return LastFightChart.IsEmpty()?EVisibility::Collapsed:EVisibility::Visible;})
+            .Text_Lambda([this]{return T(LastFightChart);})]
         +SVerticalBox::Slot().AutoHeight()[SNew(STextBlock).Font(Small).ColorAndOpacity(Parchment).AutoWrapText(true).Text_Lambda([this]{return T(EventText());})]
         +SVerticalBox::Slot().AutoHeight().Padding(0,10)[SoloTagged(Button([]{return TEXT("Return to board");},[RecapOpen]{*RecapOpen=false;},Always),TEXT("WC.Recap.Return"))];
     const auto GuideLabel=[this,Parchment](TFunction<FString()> Value,bool Heading=false)->TSharedRef<SWidget>{
@@ -1144,16 +1544,87 @@ void AWCVNextLab::BuildStorybookInterface()
         const float Back=1+2.2f*FMath::Pow(Age-1,3)+1.2f*FMath::Pow(Age-1,2);
         return TOptional<FSlateRenderTransform>(FSlateRenderTransform(FScale2D(.82f+.18f*Back),FVector2D(0,(1-Back)*70)));
     }));
+    // Title card for fight start and fight result: slides in, holds, slides out.
+    static const FSlateRoundedBoxBrush TitlePlate(FLinearColor(.015f,.02f,.035f,.86f),10.f,FLinearColor(.66f,.50f,.19f,.9f),1.5f);
+    auto TitleCard=SNew(SVerticalBox)
+        +SVerticalBox::Slot().AutoHeight().HAlign(HAlign_Center)[SNew(STextBlock).Font(FWCArtSlice::HeadingFont(40))
+            .ShadowOffset(FVector2D(2,3)).ShadowColorAndOpacity(FLinearColor(0,0,0,.75f))
+            .ColorAndOpacity_Lambda([this]{const float Age=float(Elapsed-TitleAt);
+                return FSlateColor(TitleColor.CopyWithNewOpacity(FMath::Clamp(Age/.25f,0.f,1.f)*(1-FMath::Clamp((Age-1.9f)/.5f,0.f,1.f))));})
+            .Text_Lambda([this]{return T(TitleText);})]
+        +SVerticalBox::Slot().AutoHeight().HAlign(HAlign_Center).Padding(0,6,0,0)[SNew(STextBlock).Font(FWCArtSlice::HeadingFont(18))
+            .ShadowOffset(FVector2D(1,2)).ShadowColorAndOpacity(FLinearColor(0,0,0,.75f))
+            .ColorAndOpacity_Lambda([this,Parchment]{const float Age=float(Elapsed-TitleAt);
+                return FSlateColor(Parchment.CopyWithNewOpacity(FMath::Clamp((Age-.15f)/.3f,0.f,1.f)*(1-FMath::Clamp((Age-1.9f)/.5f,0.f,1.f))));})
+            .Text_Lambda([this]{return T(TitleSub);})];
+    TitleCard->SetRenderTransformPivot(FVector2D(.5f,.5f));
+    TitleCard->SetRenderTransform(TAttribute<TOptional<FSlateRenderTransform>>::CreateLambda([this]{
+        const float Age=float(Elapsed-TitleAt),In=FMath::Clamp(Age/.35f,0.f,1.f),Out=FMath::Clamp((Age-1.9f)/.5f,0.f,1.f);
+        return TOptional<FSlateRenderTransform>(FSlateRenderTransform(FScale2D(.88f+.12f*In),FVector2D(-(1-In)*(1-In)*460+Out*Out*460,0)));
+    }));
+    // The guided first match: a card with the current step under the round plaque, and a pulsing frame around the
+    // control that step points at.
+    static const FSlateRoundedBoxBrush GuidePlate(FLinearColor(.02f,.035f,.07f,.95f),9.f,FLinearColor(.86f,.67f,.27f),1.5f);
+    static const FSlateRoundedBoxBrush GuideFrame(FLinearColor(0,0,0,0),7.f,FLinearColor(1.f,.82f,.30f),3.f);
+    const auto LeaveArmedAt=MakeShared<double>(-10.);
+    // The heading and the way out share one line, so the card stays two or three lines tall and clear of the board.
+    const auto LeaveButton=SoloTagged(Button([this,LeaveArmedAt]{
+            if(GuideOffer)return FString(SoloGuideIndonesian?TEXT("Nanti saja"):TEXT("Not now"));
+            if(Elapsed-*LeaveArmedAt<3)return FString(SoloGuideIndonesian?TEXT("Klik lagi untuk keluar"):TEXT("Click again to leave"));
+            return FString(SoloGuideIndonesian?TEXT("Keluar dari panduan"):TEXT("Leave the guide"));},
+        [this,LeaveArmedAt]{
+            if(GuideOffer){GuideOffer=false;SoloPaused=false;SaveGuideProfile(0);return;}
+            if(Elapsed-*LeaveArmedAt<3){*LeaveArmedAt=-10;LeaveGuide();}else *LeaveArmedAt=Elapsed;},Always),TEXT("WC.Guide.Leave"));
+    const auto StartButton=SoloTagged(Button([this]{return FString(GuideDone?(SoloGuideIndonesian?TEXT("Mulai pertandingan sungguhan"):TEXT("Start a real match")):
+            (SoloGuideIndonesian?TEXT("Mulai panduan"):TEXT("Start the guide")));},
+        [this]{if(GuideDone){GuideDone=false;NewSolo();}else StartGuide(0);},Always),TEXT("WC.Guide.Start"));
+    auto GuideCard=SNew(SBorder).BorderImage(&GuidePlate).Padding(FMargin(14,8))
+        .Visibility_Lambda([this]{return SoloMatch&&(GuideStage>=0||GuideOffer||GuideDone)?EVisibility::Visible:EVisibility::Collapsed;})
+        [SNew(SBox).WidthOverride(640)[SNew(SVerticalBox)
+            +SVerticalBox::Slot().AutoHeight()[SNew(SHorizontalBox)
+                +SHorizontalBox::Slot().FillWidth(1).VAlign(VAlign_Center)[SNew(STextBlock).Font(Bold).ColorAndOpacity(Lit).Text_Lambda([this]{return T(GuideHeading());})]
+                +SHorizontalBox::Slot().AutoWidth().Padding(6,0,0,0)[SNew(SBox).MinDesiredWidth(190).Visibility_Lambda([this]{return GuideOffer||GuideDone?EVisibility::Visible:EVisibility::Collapsed;})[StartButton]]
+                +SHorizontalBox::Slot().AutoWidth().Padding(6,0,0,0)[SNew(SBox).MinDesiredWidth(150).Visibility_Lambda([this]{return GuideDone?EVisibility::Collapsed:EVisibility::Visible;})[LeaveButton]]]
+            +SVerticalBox::Slot().AutoHeight().Padding(0,5,0,0)[SNew(STextBlock).Font(Regular).ColorAndOpacity(Parchment).AutoWrapText(true).Text_Lambda([this]{return T(GuideText());})]]];
+    const auto GuideHost=MakeShared<TWeakPtr<SWidget>>();
+    const auto GuideRect=[this,GuideHost]()->TOptional<FSlateRect>{
+        if(GuideStage<0||!SoloMatch||GuideStage>=int(GuideScript.stages.size()))return {};
+        const auto& Steps=GuideScript.stages[GuideStage].steps;
+        if(GuideStep>=int(Steps.size())||Steps[GuideStep].highlight.empty())return {};
+        // The bench and the board are in the yard, not on the interface: they are pointed at there instead.
+        if(Steps[GuideStep].highlight=="WC.Bench"||Steps[GuideStep].highlight=="WC.Board")return {};
+        const auto Host=GuideHost->Pin();
+        if(!Host)return {};
+        const auto Found=SoloFindTag(Host.ToSharedRef(),FName(UTF8_TO_TCHAR(Steps[GuideStep].highlight.c_str())));
+        if(!Found)return {};
+        const FGeometry Outer=Host->GetTickSpaceGeometry(),Inner=Found->GetTickSpaceGeometry();
+        const FVector2D A(Outer.AbsoluteToLocal(Inner.LocalToAbsolute(FVector2D::ZeroVector))),B(Outer.AbsoluteToLocal(Inner.LocalToAbsolute(FVector2D(Inner.GetLocalSize()))));
+        return FSlateRect(float(A.X)-5,float(A.Y)-5,float(B.X)+5,float(B.Y)+5);
+    };
+    auto GuidePointer=SNew(SCanvas).Visibility(EVisibility::HitTestInvisible)
+        +SCanvas::Slot().Position(TAttribute<FVector2D>::CreateLambda([GuideRect]{const auto R=GuideRect();return R?FVector2D(R->Left,R->Top):FVector2D(-100,-100);}))
+            .Size(TAttribute<FVector2D>::CreateLambda([GuideRect]{const auto R=GuideRect();return R?FVector2D(R->Right-R->Left,R->Bottom-R->Top):FVector2D::ZeroVector;}))
+            [SNew(SBorder).BorderImage(&GuideFrame).BorderBackgroundColor_Lambda([this]{return FSlateColor(FLinearColor(1,1,1,.55f+.45f*FMath::Sin(float(Elapsed)*6)));})];
     auto ModalHost=SNew(SWCSoloModalHost)
         +SOverlay::Slot()[Main]
+        +SOverlay::Slot().HAlign(HAlign_Center).VAlign(VAlign_Top).Padding(0,104,0,0)[SNew(SBorder).BorderImage(&TitlePlate).Padding(FMargin(70,12))
+            .Visibility_Lambda([this]{return Elapsed-TitleAt<2.4?EVisibility::HitTestInvisible:EVisibility::Collapsed;})
+            .BorderBackgroundColor_Lambda([this]{const float Age=float(Elapsed-TitleAt);return FSlateColor(FLinearColor(1,1,1,FMath::Clamp(Age/.2f,0.f,1.f)*(1-FMath::Clamp((Age-1.9f)/.5f,0.f,1.f))));})[TitleCard]]
+        // A quick pale wash covers the switch between the yard at rest and the fight.
+        +SOverlay::Slot()[SNew(SBorder).BorderImage(FCoreStyle::Get().GetBrush(TEXT("WhiteBrush")))
+            .Visibility_Lambda([this]{return Elapsed-WipeAt<.7?EVisibility::HitTestInvisible:EVisibility::Collapsed;})
+            .BorderBackgroundColor_Lambda([this]{const float Age=float(Elapsed-WipeAt)/.7f;return FSlateColor(FLinearColor(.93f,.94f,.97f,FMath::Sin(FMath::Clamp(Age,0.f,1.f)*UE_PI)*.8f));})]
         +SOverlay::Slot()[ShopModal]
         +SOverlay::Slot()[Modal(Recap,EStoryModal::Recap,560,TEXT("WCModal.Recap"))]
         +SOverlay::Slot()[Modal(Menu,EStoryModal::Menu,440,TEXT("WCModal.Menu"))]
         +SOverlay::Slot()[Modal(Collection,EStoryModal::Collection,760,TEXT("WCModal.Collection"))]
         +SOverlay::Slot()[Modal(Guide,EStoryModal::Guide,660,TEXT("WCModal.Guide"))]
-        +SOverlay::Slot()[Modal(Draft,EStoryModal::Draft,570,TEXT("WCModal.Draft"))]
+        +SOverlay::Slot()[Modal(Draft,EStoryModal::Draft,980,TEXT("WCModal.Draft"))]
         +SOverlay::Slot()[Modal(Results,EStoryModal::Results,440,TEXT("WCModal.Results"))]
-        +SOverlay::Slot()[Modal(SaveDecision,EStoryModal::Save,470,TEXT("WCModal.Save"))];
+        +SOverlay::Slot()[Modal(SaveDecision,EStoryModal::Save,470,TEXT("WCModal.Save"))]
+        +SOverlay::Slot()[GuidePointer]
+        +SOverlay::Slot().HAlign(HAlign_Center).VAlign(VAlign_Top).Padding(0,112,0,0)[GuideCard];
+    *GuideHost=ModalHost;
     ModalHost->SetKeyHandler([this,OpenGuide,GuideAvailable](const FKeyEvent& Event){
         if(Event.GetKey()==EKeys::F1){
             if(SoloGuideOpen)CloseSoloGuide();else if(GuideAvailable())OpenGuide();
@@ -1574,5 +2045,295 @@ void AWCVNextLab::TickSoloExercise()
         FString Json;auto Writer=TJsonWriterFactory<>::Create(&Json);FJsonSerializer::Serialize(ExerciseChecks.ToSharedRef(),Writer);
         IFileManager::Get().MakeDirectory(*EvidenceDirectory,true);FFileHelper::SaveStringToFile(Json,*(EvidenceDirectory/TEXT("solo-exercise.json")),FFileHelper::EEncodingOptions::ForceUTF8WithoutBOM);
         ExerciseDone=true;SoloPaused=true;UE_LOG(LogTemp,Display,TEXT("WC_SOLO_EXERCISE_COMPLETE"));
+    }
+}
+
+// -WCSoloAutoPlay: a simple scripted captain plays seat 0 through the same commands a player gives, so a whole
+// match can be watched and measured unattended. It drafts and equips relics, buys (upgrades first), buys XP,
+// fills the board front-to-back, and readies. It logs every round and saves screenshots at fixed moments.
+void AWCVNextLab::TickSoloAutoPlay()
+{
+    if(!SoloMatch||AwaitingSaveDecision)return;
+    static int Rounds=10;static bool Parsed=false,Finished=false;
+    static int SeenRound=-1,SeenPhase=-1,Stage=0,ShotCombat=-1,LoggedRecord=0;static double StageAt=0,PhaseAt=0;
+    if(!Parsed){Parsed=true;FParse::Value(FCommandLine::Get(),TEXT("WCAutoRounds="),Rounds);IFileManager::Get().MakeDirectory(*EvidenceDirectory,true);}
+    const auto Shot=[this](const FString& Name){
+        if(!FScreenshotRequest::IsScreenshotRequested())FScreenshotRequest::RequestScreenshot(EvidenceDirectory/Name,true,false);
+    };
+    const auto& Captain=SoloMatch->Seats()[0];
+    const int Round=SoloMatch->Round();const auto Phase=SoloMatch->CurrentPhase();
+    const auto Names=[this](bool Board){
+        FString Out;
+        for(const auto& Unit:SoloMatch->Seats()[0].roster)if(Unit.onBoard==Board)Out+=FString::Printf(TEXT("%s*%d "),*S(Catalog.units[Unit.definition].displayName),Unit.star);
+        return Out;
+    };
+    if(Round!=SeenRound||int(Phase)!=SeenPhase){
+        SeenRound=Round;SeenPhase=int(Phase);Stage=0;StageAt=PhaseAt=Elapsed;
+        FString Standing;
+        for(const auto& Seat:SoloMatch->PublicSeats())Standing+=FString::Printf(TEXT("%d "),Seat.health);
+        UE_LOG(LogTemp,Display,TEXT("WC_AUTO phase round=%d phase=%d at=%.1f gold=%d level=%d health=%d standings=[%s] board=[%s] bench=[%s]"),
+            Round,int(Phase),Elapsed,Captain.gold,Captain.level,Captain.health,*Standing,*Names(true),*Names(false));
+    }
+    for(;LoggedRecord<int(SoloMatch->Records().size());++LoggedRecord){
+        const auto& Record=SoloMatch->Records()[LoggedRecord];
+        for(const auto& E:Record.encounters)if(E.pairing.a==0||(E.kind==wc::EncounterKind::Pvp&&E.pairing.b==0)){
+            const int Side=E.pairing.a==0?0:1;
+            UE_LOG(LogTemp,Display,TEXT("WC_AUTO result round=%d kind=%d outcome=%s seconds=%.1f timeout=%d survivors=%d:%d damage_taken=%d dealt=%.0f"),
+                Record.round,int(E.kind),E.result.winner<0?TEXT("draw"):E.result.winner==Side?TEXT("win"):TEXT("loss"),E.result.ticks*Catalog.rules.tickMs/1000.,
+                int(E.result.timeout),E.result.survivors[Side],E.result.survivors[1-Side],Record.damage[0],E.healthLoss[1-Side]/100.);
+        }
+    }
+    if(Finished)return;
+    if(Round>Rounds||Captain.health<=0){
+        Finished=true;Shot(TEXT("auto-final.png"));
+        UE_LOG(LogTemp,Display,TEXT("WC_AUTO_COMPLETE round=%d health=%d seconds=%.0f"),Round,Captain.health,Elapsed);
+        return;
+    }
+    if(Phase==wc::Phase::Combat){
+        // One picture early in the fight and one later.
+        const int Mark=Elapsed-PhaseAt>9?3:Elapsed-PhaseAt>3.5?2:Elapsed-PhaseAt>1.3?1:0;
+        if(Mark&&ShotCombat!=Round*4+Mark){ShotCombat=Round*4+Mark;Shot(FString::Printf(TEXT("auto-r%02d-fight%d.png"),Round,Mark-1));}
+        return;
+    }
+    if(Phase!=wc::Phase::Preparation){
+        if(Stage==0&&Elapsed-PhaseAt>1.2){Stage=1;Shot(FString::Printf(TEXT("auto-r%02d-result.png"),Round));}
+        return;
+    }
+    if(ViewedSeat!=0||Elapsed-StageAt<.35)return;
+    StageAt=Elapsed;
+    const auto Order=[this](wc::CommandType Type,int Slot=-1,wc::Id Unit=0){wc::Command C;C.type=Type;C.slot=Slot;C.unit=Unit;return SoloCommand(C);};
+    if(!Captain.relicOffers.empty()){
+        if(Stage==0){Stage=1;Shot(FString::Printf(TEXT("auto-r%02d-relic.png"),Round));return;}
+        Order(wc::CommandType::ChooseRelic,0);Stage=0;return;
+    }
+    if(Stage==0){Stage=1;return;}
+    if(Stage==1){Stage=2;Shot(FString::Printf(TEXT("auto-r%02d-shop.png"),Round));return;}
+    if(Stage==2){
+        // Buy: upgrades first, then new heroes while there is room and the purse stays above a small reserve.
+        int Best=-1,BestScore=-1,Owned=int(Captain.roster.size());
+        for(int Slot=0;Slot<int(Captain.shop.size());++Slot){
+            wc::Command Buy;Buy.type=wc::CommandType::Buy;Buy.slot=Slot;
+            const auto Preview=wc::PreviewRosterCommand(Catalog,Captain,Buy);
+            if(!Preview.accepted)continue;
+            int Copies=0;for(const auto& Unit:Captain.roster)Copies+=Unit.definition==Captain.shop[Slot];
+            const int Score=(Preview.mergeSteps.empty()?0:100)+Copies*10+Catalog.units[Captain.shop[Slot]].cost;
+            if(Copies==0&&Owned>=Captain.level+2)continue;
+            if(Score>BestScore){Best=Slot;BestScore=Score;}
+        }
+        if(Best>=0&&Order(wc::CommandType::Buy,Best))return;
+        Stage=3;return;
+    }
+    if(Stage==3){
+        if(Round>=3&&Captain.level<Catalog.rules.maximumLevel&&Captain.gold>=Catalog.rules.buyXpGold+6&&Order(wc::CommandType::BuyXp))return;
+        Stage=4;return;
+    }
+    if(Stage==4){
+        // Fill the board: melee heroes in the front row of the half, ranged ones two rows behind.
+        int Count=0;for(const auto& Unit:Captain.roster)Count+=Unit.onBoard;
+        if(Count<Captain.level){
+            const wc::OwnedUnit* Pick=nullptr;
+            for(const auto& Unit:Captain.roster)if(!Unit.onBoard&&(!Pick||Unit.star>Pick->star||(Unit.star==Pick->star&&Catalog.units[Unit.definition].cost>Catalog.units[Pick->definition].cost)))Pick=&Unit;
+            if(Pick){
+                const bool Ranged=Catalog.units[Pick->definition].range>1;
+                static const int Columns[]={3,4,2,5,1,6,0,7};
+                for(int Row:{Ranged?1:3,Ranged?0:2,Ranged?2:1,Ranged?3:0})for(int Column:Columns){
+                    const wc::Cell Cell{Column,Row};
+                    bool Taken=false;for(const auto& Unit:Captain.roster)Taken|=Unit.onBoard&&Unit.cell==Cell;
+                    if(Taken)continue;
+                    wc::Command Move;Move.type=wc::CommandType::Move;Move.unit=Pick->id;Move.toBoard=true;Move.cell=Cell;
+                    if(SoloCommand(Move))return;
+                }
+            }
+        }
+        Stage=5;return;
+    }
+    if(Stage==5){
+        // Give each owned relic to a deployed hero that has none.
+        for(const int Relic:Captain.ownedRelics){
+            bool Worn=false;for(const auto& Unit:Captain.roster)Worn|=Unit.relic==Relic;
+            if(Worn)continue;
+            for(const auto& Unit:Captain.roster)if(Unit.onBoard&&Unit.relic<0){if(Order(wc::CommandType::EquipRelic,Relic,Unit.id))return;}
+        }
+        Stage=6;return;
+    }
+    if(Stage==6){ShopDismissedRound=Round;ShopOpen=false;Selected=0;Stage=7;return;}
+    if(Stage==7){Stage=8;Shot(FString::Printf(TEXT("auto-r%02d-board.png"),Round));return;}
+    if(Stage==8){Stage=9;if(!Captain.ready)Order(wc::CommandType::Ready);}
+}
+
+void AWCVNextLab::RefreshDamageRows()
+{
+    // One pass over the fight's events per combat tick, shared by the eight rows of the chart.
+    const auto* Combat=CurrentCombat();
+    if(!Combat){DamageRowsTick=-2;return;}
+    if(Combat->CurrentTick()==DamageRowsTick)return;
+    DamageRowsTick=Combat->CurrentTick();
+    const int Side=ViewedSide();
+    DamageRows.Reset();
+    for(const auto& Line:wc::FightChart(*Combat,DamageTheirs?1-Side:Side,wc::ChartMode(FMath::Clamp(DamageMode,0,3)))){
+        if(DamageRows.Num()==8)break;
+        FDamageRow Row;Row.Name=S(Catalog.Definition(Line.definition,Line.neutral).displayName);Row.Star=Line.star;
+        Row.Value=Line.total/100.;
+        for(int Part=0;Part<3;++Part)Row.Parts[Part]=Line.parts[Part]/100.;
+        DamageRows.Add(Row);
+    }
+}
+
+FString AWCVNextLab::FightChartText(const wc::Combat& Combat,int Side) const
+{
+    // The four views of the chart for one side, five heroes each, as plain lines for the Recap.
+    const bool Indo=SoloGuideIndonesian;
+    const TCHAR* Titles[]={Indo?TEXT("Kerusakan diberikan"):TEXT("Damage dealt"),Indo?TEXT("Kerusakan diterima"):TEXT("Damage taken"),
+        Indo?TEXT("Pemulihan"):TEXT("Healing"),Indo?TEXT("Ditahan perisai dan penjaga"):TEXT("Blocked by shields and guards")};
+    FString Out;
+    for(int Mode=0;Mode<4;++Mode){
+        FString Lines;int Listed=0;
+        for(const auto& Line:wc::FightChart(Combat,Side,wc::ChartMode(Mode))){
+            if(Line.total<=0||Listed++==5)break;
+            Lines+=TEXT("\n   ")+S(Catalog.Definition(Line.definition,Line.neutral).displayName)+FString::Printf(TEXT("  %.0f"),Line.total/100.);
+            if(Mode<2)Lines+=Indo?FString::Printf(TEXT("  (fisik %.0f, sihir %.0f, murni %.0f)"),Line.parts[0]/100.,Line.parts[1]/100.,Line.parts[2]/100.):
+                FString::Printf(TEXT("  (physical %.0f, magic %.0f, true %.0f)"),Line.parts[0]/100.,Line.parts[1]/100.,Line.parts[2]/100.);
+        }
+        if(!Lines.IsEmpty())Out+=(Out.IsEmpty()?TEXT(""):TEXT("\n"))+FString(Titles[Mode])+Lines;
+    }
+    return Out;
+}
+
+// ---------------------------------------------------------------------------------------------------------------
+// The guided first match: six prepared lessons played in the real solo screen. The match holds the clock and
+// checks each step; this side shows the step, points at the control it needs and turns away other orders.
+FString AWCVNextLab::GuideProfilePath() const { return FPaths::GetPath(SavePath)/TEXT("guide-progress.txt"); }
+int AWCVNextLab::LoadGuideProfile() const
+{
+    FString Text;
+    return FFileHelper::LoadFileToString(Text,*GuideProfilePath())?FMath::Max(0,FCString::Atoi(*Text)):-1;
+}
+void AWCVNextLab::SaveGuideProfile(int Stage) const { FFileHelper::SaveStringToFile(FString::FromInt(Stage),*GuideProfilePath()); }
+
+void AWCVNextLab::StartGuide(int Stage)
+{
+    if(!SoloMatch)return;
+    if(GuideScript.stages.empty())GuideScript=wcvnext::WonderVNextTutorial();
+    if(GuideScript.stages.empty())return;
+    if(Stage<0||Stage>=int(GuideScript.stages.size()))Stage=0;
+    const auto& Lesson=GuideScript.stages[Stage];
+    SoloMatch->BeginGuidedStage(Lesson);
+    GuideStage=Stage;GuideStep=0;GuideStageDoneAt=-1;GuideOffer=GuideDone=false;
+    SoloPaused=false;AwaitingSaveDecision=false;ViewedSeat=0;Selected=0;ShopOpen=false;ShopDismissedRound=Lesson.round;Accumulator=0;
+    LastSoloRecord=0;LastSoloRound=-1;LastSoloPhase=wc::Phase::Aborted;LastSoloRevision=~wc::Id(0);LastFightChart.Reset();
+    if(SoloTraitFocus)SoloTraitFocus->Reset();
+    SoloRecap=SoloGuideIndonesian?TEXT("Pelajaran terpandu. Belum ada pertarungan di pelajaran ini."):TEXT("A guided lesson. No fight in this lesson yet.");
+    Message=GuideHeading();
+    SaveGuideProfile(Stage);
+    SyncSoloFormation();
+    UE_LOG(LogTemp,Display,TEXT("WC_GUIDE stage=%d id=%s steps=%d"),Stage,*S(Lesson.id),int(Lesson.steps.size()));
+}
+
+void AWCVNextLab::LeaveGuide()
+{
+    const int Reached=GuideStage;
+    GuideStage=-1;GuideDone=false;GuideOffer=false;
+    if(Reached>=0)SaveGuideProfile(Reached);
+    UE_LOG(LogTemp,Display,TEXT("WC_GUIDE left stage=%d"),Reached);
+    NewSolo();
+}
+
+void AWCVNextLab::TickGuide()
+{
+    if(GuideStage<0||!SoloMatch||!SoloMatch->Guided()||GuideStage>=int(GuideScript.stages.size()))return;
+    const auto& Lesson=GuideScript.stages[GuideStage];
+    wc::GuidedView View;
+    View.shopOpen=ShopOpen;
+    if(SoloTraitFocus)View.traitFocus=TCHAR_TO_UTF8(**SoloTraitFocus);
+    while(GuideStep<int(Lesson.steps.size())&&SoloMatch->GuidedStepDone(Lesson.steps[GuideStep],View)){
+        ++GuideStep;PlayCue(TEXT("levelup"),.35f);
+        UE_LOG(LogTemp,Display,TEXT("WC_GUIDE step_done stage=%d step=%d"),GuideStage,GuideStep);
+    }
+    if(GuideStep<int(Lesson.steps.size()))return;
+    // The lesson is finished: leave its result on screen for a moment, then move on.
+    if(GuideStageDoneAt<0)GuideStageDoneAt=Elapsed;
+    if(Elapsed-GuideStageDoneAt<(Lesson.fight?3.5:1.5))return;
+    if(GuideStage+1<int(GuideScript.stages.size())){StartGuide(GuideStage+1);return;}
+    SaveGuideProfile(int(GuideScript.stages.size()));
+    GuideStage=-1;GuideDone=true;SoloPaused=true;
+    UE_LOG(LogTemp,Display,TEXT("WC_GUIDE_COMPLETE"));
+}
+
+FString AWCVNextLab::GuideHeading() const
+{
+    const bool Indo=SoloGuideIndonesian;
+    if(GuideDone)return Indo?TEXT("Panduan selesai"):TEXT("Guide complete");
+    if(GuideStage<0||GuideStage>=int(GuideScript.stages.size()))return Indo?TEXT("Pertandingan pertama terpandu"):TEXT("Guided first match");
+    const auto& Lesson=GuideScript.stages[GuideStage];
+    const int Steps=int(Lesson.steps.size());
+    return (Indo?TEXT("PANDUAN  ·  "):TEXT("GUIDE  ·  "))+S(Indo?Lesson.titleId:Lesson.titleEn)+
+        (Indo?FString::Printf(TEXT("  ·  langkah %d dari %d"),FMath::Min(GuideStep+1,Steps),Steps):FString::Printf(TEXT("  ·  step %d of %d"),FMath::Min(GuideStep+1,Steps),Steps));
+}
+
+FString AWCVNextLab::GuideText() const
+{
+    const bool Indo=SoloGuideIndonesian;
+    if(GuideDone)return Indo?TEXT("Kamu sudah menyelesaikan panduan. Mulailah pertandingan sungguhan melawan tujuh bot kapan pun kamu siap."):
+        TEXT("You have finished the guide. Start a real match against seven bots whenever you are ready.");
+    if(GuideStage<0||GuideStage>=int(GuideScript.stages.size()))
+        return Indo?TEXT("Baru di sini? Enam pelajaran singkat mengajarkan cara menurunkan hero, toko, sinergi, posisi, emas, dan relik. Kamu bisa keluar kapan saja."):
+            TEXT("New here? Six short lessons teach fielding heroes, the shop, synergies, positions, gold and relics. You can leave at any time.");
+    const auto& Lesson=GuideScript.stages[GuideStage];
+    if(GuideStep>=int(Lesson.steps.size()))
+        return GuideStage+1<int(GuideScript.stages.size())?(Indo?TEXT("Bagus. Pelajaran berikutnya segera dimulai."):TEXT("Well done. The next lesson starts in a moment.")):
+            (Indo?TEXT("Bagus. Itu pelajaran terakhir."):TEXT("Well done. That was the last lesson."));
+    return S(Indo?Lesson.steps[GuideStep].textId:Lesson.steps[GuideStep].textEn);
+}
+
+// -WCGuideAutoPlay: plays the guide by itself through the same orders a player gives, with a picture of every step.
+void AWCVNextLab::TickGuideAutoPlay()
+{
+    static double NextAt=2;static int ShotStage=-1,ShotStep=-1,Began=0,SeenStage=-1;static bool Finished=false;
+    if(!SoloMatch||Finished||Elapsed<NextAt)return;
+    const auto Shot=[this](const FString& Name){
+        if(!FScreenshotRequest::IsScreenshotRequested())FScreenshotRequest::RequestScreenshot(EvidenceDirectory/Name,true,false);
+    };
+    if(Began==0){IFileManager::Get().MakeDirectory(*EvidenceDirectory,true);GuideOffer=true;Began=1;NextAt=Elapsed+1;return;}
+    if(Began==1){Shot(TEXT("guide-0-offer.png"));Began=2;NextAt=Elapsed+1;return;}
+    if(GuideDone){Shot(TEXT("guide-7-complete.png"));Finished=true;UE_LOG(LogTemp,Display,TEXT("WC_AUTO_COMPLETE guide"));return;}
+    if(GuideStage<0){StartGuide(0);NextAt=Elapsed+1.2;return;}
+    const auto& Lesson=GuideScript.stages[GuideStage];
+    if(GuideStep>=int(Lesson.steps.size()))return;
+    // Let a new lesson's pieces settle before its first picture.
+    if(SeenStage!=GuideStage){SeenStage=GuideStage;NextAt=Elapsed+1.8;return;}
+    const auto& Step=Lesson.steps[GuideStep];
+    if(ShotStage!=GuideStage||ShotStep!=GuideStep){
+        ShotStage=GuideStage;ShotStep=GuideStep;
+        Shot(FString::Printf(TEXT("guide-%d-%d.png"),GuideStage+1,GuideStep+1));NextAt=Elapsed+.7;return;
+    }
+    NextAt=Elapsed+.8;
+    const auto& Captain=SoloMatch->Seats()[0];
+    const auto Order=[this](wc::CommandType Type,int Slot=-1,wc::Id Unit=0){wc::Command C;C.type=Type;C.slot=Slot;C.unit=Unit;return SoloCommand(C);};
+    const auto Move=[this,&Captain](wc::Id Unit,wc::Cell Cell){
+        if(Cell.column<0)for(int Row=Catalog.rules.deploymentRows-1;Row>=0&&Cell.column<0;--Row)for(int Column=0;Column<Catalog.rules.columns&&Cell.column<0;++Column){
+            bool Taken=false;
+            for(const auto& Other:Captain.roster)Taken|=Other.onBoard&&Other.cell==wc::Cell{Column,Row};
+            if(!Taken)Cell={Column,Row};
+        }
+        wc::Command C;C.type=wc::CommandType::Move;C.unit=Unit;C.toBoard=true;C.cell=Cell;return SoloCommand(C);
+    };
+    const bool Shopping=Step.done=="shop_open"||Step.done=="owns"||Step.done=="star_at_least";
+    if(!Shopping&&ShopOpen){ShopOpen=false;ShopDismissedRound=SoloMatch->Round();return;}
+    if(Step.done=="shop_open"||(Shopping&&!ShopOpen)){ShopOpen=true;return;}
+    if(Step.done=="trait_focus"){if(SoloTraitFocus)*SoloTraitFocus=S(Step.trait);return;}
+    if(Step.done=="ready"){Order(wc::CommandType::Ready);return;}
+    if(Step.done=="level_at_least"){Order(wc::CommandType::BuyXp);return;}
+    if(Step.done=="shop_locked"){Order(wc::CommandType::ToggleLock);return;}
+    if(Step.done=="relic_owned"){Order(wc::CommandType::ChooseRelic,0);return;}
+    if(Step.done=="relic_equipped"){if(!Captain.ownedRelics.empty()&&!Captain.roster.empty())Order(wc::CommandType::EquipRelic,Captain.ownedRelics.front(),Captain.roster.front().id);return;}
+    if(Step.done=="owns"||Step.done=="star_at_least"){
+        for(int Slot=0;Slot<int(Captain.shop.size());++Slot)if(Captain.shop[Slot]==Step.definition){Order(wc::CommandType::Buy,Slot);return;}
+        return;
+    }
+    for(const auto& Unit:Captain.roster){
+        const auto& Hero=Catalog.units[Unit.definition];
+        if((Step.done=="deployed_at_least"||(Step.done=="trait_at_least"&&(Hero.race==Step.trait||Hero.unitClass==Step.trait)))&&!Unit.onBoard){Move(Unit.id,wc::Cell{});return;}
+        if((Step.done=="row_at_least"||Step.done=="row_at_most")&&Unit.definition==Step.definition){Move(Unit.id,wc::Cell{Unit.cell.column,Step.value});return;}
+        if(Step.done=="gold_at_least"&&!Unit.onBoard){Order(wc::CommandType::Sell,-1,Unit.id);return;}
     }
 }

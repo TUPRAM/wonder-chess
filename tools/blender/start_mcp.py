@@ -2,6 +2,12 @@
 import json
 import addon_utils
 import bpy
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from project_paths import relink_missing_images
+path_repair = relink_missing_images(Path(__file__).resolve().parents[2])
 
 # Create the add-on's preference entry in memory without persisting factory defaults.
 bpy.context.preferences.use_preferences_save = False
@@ -23,4 +29,5 @@ print("WONDER_CHESS_MCP_READY " + json.dumps({
     "telemetry_consent": preferences.telemetry_consent,
     "preferences_auto_save": bpy.context.preferences.use_preferences_save,
     "running": bpy.types.blendermcp_server.running,
+    "image_paths": path_repair,
 }), flush=True)

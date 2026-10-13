@@ -1,50 +1,46 @@
 {
-  "generated_utc": "2026-09-06T04:46:04.110254+00:00",
-  "system": "Linux",
-  "machine": "x86_64",
-  "python_version": "3.13.5",
+  "generated_utc": "2026-09-17T00:21:06.230202+00:00",
+  "system": "Windows",
+  "machine": "AMD64",
+  "python_version": "3.12.14",
+  "project_root": "C:\\Users\\USER\\Documents\\Wonder Chess",
+  "status": "verified_local_build_package_and_editor_connections",
   "tools": {
-    "python": {
-      "status": "located_execution_unverified",
-      "executable_basename": "python",
-      "probe_exit_code": 0,
-      "version_output": "Python 3.13.5"
-    },
-    "git": {
-      "status": "located_execution_unverified",
-      "executable_basename": "git",
-      "probe_exit_code": 0,
-      "version_output": "git version 2.47.3"
-    },
-    "cpp_compiler": {
-      "status": "located_execution_unverified",
-      "executable_basename": "g++"
+    "unreal": {
+      "version": "5.8.2-56702186+++UE5+Release-5.8",
+      "path": "C:/Program Files/Epic Games/UE_5.8",
+      "editor_build": "PASS",
+      "game_build_package": "PASS"
     },
     "blender": {
-      "status": "not_located",
-      "executable_basename": null
+      "version": "5.2.1 LTS",
+      "path": "C:/Program Files/Blender Foundation/Blender 5.2/blender.exe",
+      "mcp_loopback": "127.0.0.1:9876",
+      "live_verification": "PASS"
     },
-    "unreal_editor": {
-      "status": "not_located",
-      "executable_basename": null
+    "msvc": {
+      "version": "14.44.35229",
+      "family": "14.44.35207",
+      "visual_studio": "Build Tools 2022 17.14.37710.0"
     },
-    "unreal_uat": {
-      "status": "not_located",
-      "executable_basename": null
+    "windows_sdk": {
+      "version": "10.0.22621.0",
+      "compile_link_run": "PASS"
     },
-    "powershell": {
-      "status": "not_located",
-      "executable_basename": null
+    "net_framework": {
+      "version": "4.8",
+      "sdk_and_targeting_pack": "installed; actual editor build PASS"
+    },
+    "python": {
+      "path": "C:\\Users\\USER\\Documents\\Wonder Chess\\.venv\\Scripts\\python.exe",
+      "version": "3.12.14"
+    },
+    "windows_powershell": {
+      "current_user_execution_policy": "RemoteSigned",
+      "machine_and_group_policy_changed": false
     }
   },
-  "claims": {
-    "blender_execution_verified": false,
-    "unreal_execution_verified": false,
-    "windows_package_verified": false
-  },
-  "notes": [
-    "Not located does not prove software is absent from every disk location.",
-    "Set explicit environment paths locally; this script deliberately does not scan private directories.",
-    "Compiler and editor presence does not establish compatible SDKs or successful builds."
-  ]
+  "evidence": "reports/toolchain-upgrade-20260917/REPORT.md",
+  "historical_environment": "support/archives/pre-ue58-20260917/reports/environment.json",
+  "product_acceptance_changed": false
 }
