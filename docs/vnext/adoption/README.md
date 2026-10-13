@@ -29,8 +29,12 @@ design files), not on the plan's first guesses, several of which turned out to b
 | S9: summoned units, limit, lifetime, walls, fallen units; Summoner trait | Implemented 2026-10-10 | `Summons` in `tests/runtime/vnext_combat_tests.cpp`; catalogue test; run `s9-roster-0.11.0-20261010` |
 | Phase 4: streak income, staged preparation time, auto-deploy | Implemented 2026-10-11; loss damage measured, not changed | `Economy` in `tests/runtime/vnext_tournament_tests.cpp`; catalogue test; run `p4-roster-0.12.0-20261011` and four `p4-loss-*` runs (table below) |
 | Phase 5, Part A: fight chart gaps | Implemented 2026-10-11 | `FightCharts` in `tests/runtime/vnext_combat_tests.cpp` (includes the viewer-is-second-seat case); chart seen in the running game through autoplay screenshots |
-| Phase 5, Part B: cues for S5-S9 mechanics | Implemented 2026-10-11 | `PresentationViews` in `tests/runtime/vnext_combat_tests.cpp`; zone outline seen in autoplay screenshots; status, blink and summon cues compile but were not caught in a screenshot |
+| Phase 5, Part B: cues for S5-S9 mechanics | Implemented 2026-10-11 | `PresentationViews` in `tests/runtime/vnext_combat_tests.cpp`; zone outline seen in autoplay screenshots; status, blink and summon cues were first seen on 2026-10-13 (`reports/vnext/cues-20261013/`) |
 | Phase 5, Part C: guided first match | Implemented 2026-10-11 | `Guided` in `tests/runtime/vnext_tournament_tests.cpp` plays all six lessons and wins every fight; catalogue test; the scripted run `-WCGuideAutoPlay` completes the guide in the running game with a screenshot of each step |
+
+| Bots: open bench, planned line-up, worth by cost, levelling as an investment | Implemented 2026-10-13 (balance 0.14.0) | Bot checks in `tests/runtime/vnext_bot_tests.h`; catalogue test; run `b14-roster-0.14.0-20261013` (section "Bots and the first tuning pass") |
+| Phase 6, first pass: measured hero and trait strength; round-40 boss | Implemented 2026-10-13 (balance 0.15.0) | `tests/runtime/vnext_hero_power.cpp`; runs `t15-roster-0.15.0-20261013` and `power-0.15.0-20261013`, both in `reports/vnext/balance/t15-roster-0.15.0-20261013/REPORT.md` |
+| Summoned units' models; summon, status and blink cues looked at | Candidates built and imported 2026-10-13 | `tools/blender/build_summons.py`; screenshots under `reports/vnext/cues-20261013/` |
 
 Phase 4 match length, 200 bot tournaments each on balance 0.12.0 (staged timer, streak income and auto-deploy on in every row). The ceiling assumes a player uses all of every preparation timer.
 
@@ -46,6 +50,104 @@ Phase 4 match length, 200 bot tournaments each on balance 0.12.0 (staged timer, 
 The two candidates named in the design (2 / 4 / 6 / 9 and 2 / 4 / 7 / 10) do not reach the round-38 goal. 3 / 6 / 9 / 12 and 4 / 7 / 10 / 14 bracket it. With either stronger option almost no seat reaches the round-50 boss, and only about one seat in ten (3 / 6 / 9 / 12) or one in thirty (4 / 7 / 10 / 14) reaches the round-40 boss.
 
 **Owner decision, 2026-10-11: 3 / 6 / 9 / 12**, applied as balance version 0.13.0. The confirming run `p4-roster-0.13.0-20261011` repeats the measurement: 39 median rounds (36-43), 40.9-minute ceiling, 87% of matches inside 35-45 minutes, 0.9% of fights ending by timeout.
+
+### Bots and the first tuning pass (2026-10-13)
+
+The 0.13.0 run showed that the bots, not the heroes, explained most of what looked wrong. Every bot's
+bench was full from round 10 on, which stopped it buying and rerolling, so it kept two-star cost-1
+boards and piled up gold. Its worth for a hero came from health and basic attack, which put a cost-1
+fighter above most cost-3 and cost-4 casters. Balance 0.14.0 changes the bots only; 0.15.0 changes
+the round-40 boss only. 200 bot tournaments each; bot play, not human evidence.
+
+| Measure | 0.13.0 | 0.14.0 (bots) | 0.15.0 (round-40 boss) |
+|---|---|---|---|
+| Median gold held at round 30 / round 40 | 125 / 223 | 25 / 1 | 25 / 1 |
+| Median board cost at round 30 / round 40 | 34 / 39 | 48 / 54 | 48 / 54 |
+| Share of fielded units that cost 1, round 30 | 59% | 45% | 45% |
+| Heroes picked at under half their cost's mean | 13 | 6 | 6 |
+| Bot profiles, best and worst mean placement | 4.01 / 6.05 | 4.05 / 4.96 | 4.05 / 4.96 |
+| Round-20 boss cleared | 49% | 85% | 85% |
+| Round-40 boss cleared / ended by the time limit | 29% / 61% | 81% / 96% | 85% / 2% |
+| Median rounds; player-time ceiling, minutes | 39; 40.9 | 38; 42.4 | 38; 42.4 |
+| Matches with the ceiling inside 35-45 minutes | 87% | 73% | 73% |
+| Fights ending by timeout | 0.9% | 2.0% | 1.6% |
+
+What the bots do now (roster rule set only; the control catalogue's bots are unchanged):
+
+- **Worth.** A hero's worth is mostly its cost and star (`roster_recipe.bot_cost_value_bp`,
+  10000 / 10800 / 12000 / 13000 / 13800), and a little its numbers. The table is the measured mean
+  strength of each cost at one star (below). Re-measure it when the cost curve changes.
+- **Line-up.** A bot starts from its strongest units and swaps one for another while that gains more
+  in traits and in cover (about a third of the board in front, a third dealing damage, one supporter)
+  than it loses in strength. Trait credit follows the measured trait strength: 0.3 of a hero at two
+  members, 1.0 at four.
+- **Bench.** A bot keeps two bench slots free and sells the unit it loses least by. A lone copy is
+  worth little, a pair much more.
+- **Gold.** Rerolls use only gold above the interest reserve. The reserve is 50, halved at 40 health
+  or less and dropped at 20 or less. A purchase of experience counts as its share of what the next
+  level brings (one more fielded unit), so bots level before they are rich.
+- **Profiles.** The seven profiles' class weights were narrowed toward 1 (for example Pathfinder's
+  frontline 0.8 / damage 1.5 became 0.92 / 1.2). Before, Pathfinder fielded 6% tanks and placed 6.05.
+
+Measured hero strength (`tests/runtime/run_vnext_hero_power.ps1`; five against five, traits off; 1.0 is
+a Hammerer of the same star and one star is worth 1.8):
+
+| Cost | 1 | 2 | 3 | 4 | 5 |
+|---|---|---|---|---|---|
+| Mean strength at one star | 0.98 | 1.06 | 1.17 | 1.29 | 1.36 |
+
+- **The cost curve is flat.** A two-star cost-1 hero (1.8) is stronger than any one-star cost-5 hero
+  (1.13 to 1.58), and a three-star cost-1 (3.2) is stronger than a two-star cost-5 (about 2.4). Bots
+  that play to win therefore end on two-star cost-1 to cost-3 boards, and cost-4 and cost-5 heroes are
+  about 5% of the units on final boards. This is the main open balance question.
+- **Hookjaw is not weak.** It is the strongest cost-3 hero in the measurement (1.44), and with the
+  repaired bots it places 4.93, inside the 4.0-5.0 band. The 5.37 of the 0.13.0 run came from the
+  Pathfinder profile, which favoured assassins and lost for other reasons. No number was changed.
+- **Outside the placement band with the repaired bots:** strong: Bone Archer 3.85, Longbow Scout 3.87,
+  Rifleman 3.92 (snipers measure 1.22 at cost 1 against a mean of 0.98), Grove Druid 3.91, Ironwall
+  3.90, Scaleguard 3.64, Dawn Oracle 3.75, and on few samples Necromancer 3.16, Treant Caller 3.11 and
+  Forge King 3.59. Weak: Soul Jailer 5.27, Jinxer 5.02. Shamans measure low for their cost (Jinxer
+  0.85, Blood Drummer 0.89, Owl Seer 0.88), as do Void Wyrm (1.13) and Flame Regent (1.14) at cost 5.
+- **Abilities are light.** A hero casts about once in a 26-second fight, mostly first at 5 to 10
+  seconds. The five plain single-target damage abilities (Hammerer, Bone Archer, Foxclaw, Jinxer, Curse
+  Weaver) are authored at 9% to 18% of a same-cost health bar, against the third decided on
+  2026-10-10. Measured across all its targets and after armour, one cast takes 4% (Flame Regent) to
+  39% (Pit Lord) of a same-cost health bar, with a median of 18%; only Pit Lord, Prism Scholar and
+  Necromancer (through its skeletons) reach a third.
+- **Traits** (`trait_power.csv`; how much stronger the enemy must be to stay even): two members add
+  0% to 7%, four add up to 26%. Strongest at four: Elf 1.26, Summoner 1.21, Tank 1.17, Orc 1.17, Dwarf
+  1.16. No measurable effect: Human at two, Elemental and Dragonkin at both tiers (Goblin pays gold
+  and is not meant to). Four members means every hero of that race or class, because each has exactly
+  four; for Mage that is one cost-4 and three cost-5 heroes, which is why bots hardly reach it.
+- **Round-40 boss.** With 39,000 health and three healers the fight could not end in 45 seconds. Its
+  health scale went from 3.8 to 1.5 and its damage scale from 2.75 to 5.2, chosen with a probe that
+  replays real bot boards against the wave: the clear rate stays where it was and 2% of fights reach
+  the time limit. A monster's healing scales with the damage scale, so the damage scale could not be
+  left alone.
+- **Bosses against the proposed bands** (bosses 40-70% cleared, falling with the round): rounds 10 and
+  30 are cleared almost every time and round 20 is cleared 85% of the time, so with the repaired bots every
+  boss is easier than the band. Nothing was changed for these: the bands were to be proposed after
+  measurement, and making bosses harder is the owner's choice.
+- **Match length moved.** Stronger boards make fights longer (18.1 against 16.5 minutes of fighting per
+  match), so the ceiling rose from 40.9 to 42.4 minutes and fewer matches fall inside 35-45 minutes.
+
+Notes on this step:
+
+- A test changed its claim: "bots that spend surplus gold reach higher levels by round 25" no longer
+  holds, because bots now level whether or not they may spend surplus. It became "hold less gold",
+  with new checks for the open bench, the worth of a cost-4 summoner against a cost-1 sniper, and the
+  trait line-up.
+- The formation rule "ranged damage stands in the back half" now leaves alone a class the catalogue
+  stands in the front half (assassins on row 2), in the engine and in its test. Hookjaw, an assassin
+  with reach 2, had never been fielded in that test's six rounds before.
+- `tools/vnext/balance_report.py` gained "against own bot" (a seat's placement against what its bot
+  profile usually places) and `--power`, which adds the hero and trait strength tables.
+- The summoned units have models from `tools/blender/build_summons.py` (the scripted monster kit),
+  imported to `/Game/WonderChess/VNext/Summons/`. Candidates, not approved art.
+- The summon, hex, silence, taunt, blink and dash-line cues and the four summon models were looked at
+  in the running game through short lab fights; the screenshots and what each shows are in
+  `reports/vnext/cues-20261013/`. The lab's `-WCRecDuel` option now takes several heroes a side joined
+  by `+`, which the Necromancer needed (it raises skeletons only where a unit has fallen).
 
 Deviations from the design so far:
 

@@ -2095,15 +2095,21 @@ void AWCVNextLab::Tick(float DeltaSeconds)
                 }
             }
             // -WCRecDuel=<hero a>,<hero b>[,<rows apart>] replaces the preset with one hero a side, facing each other.
+            // A side may name several heroes joined by "+" (up to the preset's six); they stand beside one another.
             FString Duel;
             if(FParse::Value(FCommandLine::Get(),TEXT("WCRecDuel="),Duel,false)){
                 TArray<FString> Parts;Duel.ParseIntoArray(Parts,TEXT(","));
                 const int Gap=Parts.Num()>2?FMath::Clamp(FCString::Atoi(*Parts[2]),1,6):1;
                 for(int Team=0;Team<2&&Team<Parts.Num();++Team)if(!Formation[Team].empty()){
-                    Formation[Team].resize(1);
-                    for(int Hero=0;Hero<int(Catalog.units.size());++Hero)if(Str(Catalog.units[Hero].id)==Parts[Team])Formation[Team][0].definition=Hero;
-                    // Side A stands on row 3 of its half; side B is placed so the two are Gap rows apart in the same column.
-                    Formation[Team][0].cell=Team?wc::Cell{4,FMath::Clamp(4-Gap,0,3)}:wc::Cell{3,3};
+                    TArray<FString> Names;Parts[Team].ParseIntoArray(Names,TEXT("+"));
+                    Formation[Team].resize(FMath::Clamp(Names.Num(),1,int(Formation[Team].size())));
+                    for(int Slot=0;Slot<int(Formation[Team].size());++Slot){
+                        for(int Hero=0;Hero<int(Catalog.units.size());++Hero)if(Str(Catalog.units[Hero].id)==Names[Slot])Formation[Team][Slot].definition=Hero;
+                        // Side A stands on row 3 of its half; side B is placed so the two are Gap rows apart, the
+                        // first hero of each side in the same column and the others alternately to either side.
+                        const int Aside=(Slot+1)/2*(Slot%2?1:-1);
+                        Formation[Team][Slot].cell=Team?wc::Cell{4-Aside,FMath::Clamp(4-Gap,0,3)}:wc::Cell{3+Aside,3};
+                    }
                 }
                 Selected=0;
             }
