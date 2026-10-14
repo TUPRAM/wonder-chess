@@ -14,30 +14,9 @@
   const FILTERS = ['race', 'class', 'cost', 'status', 'sort'];
   const SVG = 'http://www.w3.org/2000/svg';
 
-  // One 24-unit line drawing per race and class, plus a gem for relics.
-  const ring = (cx, cy, r) => 'M' + (cx - r) + ' ' + cy + 'a' + r + ' ' + r + ' 0 1 0 ' + 2 * r + ' 0a' + r + ' ' + r + ' 0 1 0 ' + -2 * r + ' 0';
-  const dot = (x, y) => 'M' + x + ' ' + y + 'h.01';
+  // The relic gem is a 24-unit line drawing; races and classes use the colour badges in art/traits
+  // (drawn by tools/production/build_trait_icons.py).
   const ICONS = {
-    human: 'M4 19h16M4 19L3 8l5 4 4-7 4 7 5-4-1 11',
-    elf: 'M5 19C5 11 10 5 19 5c0 9-6 14-14 14zM5 19l8-8',
-    dwarf: 'M3 7h13v2c0 2-2 3-4 3v3h3v4H6v-4h3v-3C6 12 3 10 3 7zM16 7h5',
-    goblin: ring(12, 12, 8) + 'M12 8l3 4-3 4-3-4z',
-    orc: 'M5 20L15 6M12 5c3-2 7-1 8 3-2 2-5 2-7 1z',
-    beastkin: ring(6, 10, 1.5) + ring(10, 6, 1.5) + ring(14, 6, 1.5) + ring(18, 10, 1.5) + 'M12 12c-3 0-5 3-5 5s2 2 5 2 5 0 5-2-2-5-5-5z',
-    demon: 'M7 11v2a5 5 0 0 0 10 0v-2zM7 11C5 9 4 6 5 3M17 11c2-2 3-5 2-8',
-    undead: 'M12 3a7 7 0 0 0-7 7c0 3 1 4 3 5v4h8v-4c2-1 3-2 3-5a7 7 0 0 0-7-7zM10 19v-2M14 19v-2' + dot(9.5, 10.5) + dot(14.5, 10.5),
-    elemental: 'M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z',
-    dragonkin: 'M12 3l5 5-5 5-5-5zM7 12l5 5 5-5M7 16l5 5 5-5',
-    tank: 'M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z',
-    fighter: 'M20 4l-1 5-8 8-3-3 8-8zM6 12l6 6M8 16l-4 4',
-    assassin: 'M12 21l-2.5-9h5zM8 12h8M12 12V6' + ring(12, 4.5, 1.5),
-    mage: 'M12 3l2 7 7 2-7 2-2 7-2-7-7-2 7-2z',
-    sniper: ring(12, 12, 6) + 'M12 2v6M12 16v6M2 12h6M16 12h6',
-    engineer: ring(12, 12, 3) + ring(12, 12, 6.5) + 'M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1',
-    warlock: 'M19 14A8 8 0 1 1 10 5a6 6 0 0 0 9 9z',
-    priest: ring(12, 12, 9) + 'M12 7v10M7 12h10',
-    shaman: 'M13 2L5 14h6l-1 8 8-12h-6z',
-    summoner: ring(12, 12, 9) + ring(12, 12, 5) + dot(12, 12),
     relic: 'M6 4h12l4 6-10 11L2 10zM2 10h20M9 10l3 11 3-11M6 4l3 6 3-6 3 6 3-6',
   };
 
@@ -102,9 +81,17 @@
   const traits = new Map();
   const slug = (hero) => hero.id.replace('wc_vn_', '');
 
+  function badge(id) {
+    const img = el('img', 'badge');
+    img.src = 'art/traits/' + id + '.svg';
+    img.alt = '';
+    img.width = 20; img.height = 20;
+    return img;
+  }
+
   function traitLabel(id) {
     const label = el('span', 'trait-label');
-    label.appendChild(icon(id));
+    label.appendChild(badge(id));
     label.appendChild(document.createTextNode(traits.get(id).name));
     return label;
   }
