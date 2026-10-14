@@ -94,6 +94,7 @@ button { font: inherit; color: inherit; }
 
 .icon { width: 1.1em; height: 1.1em; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .trait-label { display: inline-flex; align-items: center; gap: 5px; }
+.badge { width: 1.35em; height: 1.35em; flex: none; }
 
 .tag { display: inline-block; font-size: 0.72rem; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); white-space: nowrap; }
 .tag.live { background: var(--good-soft); color: var(--good); }
@@ -108,7 +109,7 @@ button { font: inherit; color: inherit; }
 .traits { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
 .trait { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
 .trait-head { display: flex; align-items: center; gap: 8px; font-weight: 650; }
-.trait-head .icon { width: 1.3em; height: 1.3em; color: var(--accent); }
+.trait-head .badge { width: 1.8em; height: 1.8em; }
 .trait-head .tag { margin-left: auto; }
 .steps-at { font-size: 0.8rem; font-weight: 600; color: var(--muted); }
 .trait p { margin: 6px 0 10px; font-size: 0.92rem; }

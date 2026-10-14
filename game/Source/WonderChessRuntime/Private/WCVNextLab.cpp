@@ -1473,7 +1473,9 @@ void AWCVNextLab::AddPieceView(uint64 Id,int Definition,int Side,bool Neutral)
         auto* Cutout=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/WonderChess/VNext/Environment/Courtyard_r001/M_CourtyardCutout.M_CourtyardCutout"));
         const auto Badge=[&](const std::string& Trait)->UStaticMeshComponent*{
             const FString Icon=Str(Trait).ToLower();
-            auto* Image=LoadObject<UTexture2D>(nullptr,*FString::Printf(TEXT("/Game/WonderChess/VNext/UI/HudKit_r001/T_icon_%s.T_icon_%s"),*Icon,*Icon));
+            // The colour badge when it is imported, otherwise the older one-colour kit icon.
+            auto* Image=LoadObject<UTexture2D>(nullptr,*FString::Printf(TEXT("/Game/WonderChess/VNext/UI/TraitIcons_r001/T_trait_%s.T_trait_%s"),*Icon,*Icon));
+            if(!Image)Image=LoadObject<UTexture2D>(nullptr,*FString::Printf(TEXT("/Game/WonderChess/VNext/UI/HudKit_r001/T_icon_%s.T_icon_%s"),*Icon,*Icon));
             if(!Cutout||!Image)return nullptr;
             auto* Plate=Mesh(Actor,TEXT("Plane"),FVector::ZeroVector,FVector(.2),FLinearColor::White);
             auto* Look=UMaterialInstanceDynamic::Create(Cutout,this);Look->SetTextureParameterValue(TEXT("Texture"),Image);

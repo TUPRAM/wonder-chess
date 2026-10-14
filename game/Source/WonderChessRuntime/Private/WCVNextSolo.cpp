@@ -881,6 +881,7 @@ void AWCVNextLab::BuildStorybookInterface()
         };
         const TArray<int> Needed=Steps(Identity.Key);
         const auto Active=[Count,Needed]{return Count()>=Needed[0];};
+        const auto Reached=[Count,Needed]{int Steps=0;for(const int Need:Needed)Steps+=Count()>=Need;return Steps;};
         FString StepText;for(int Step:Needed)StepText+=(StepText.IsEmpty()?TEXT(""):TEXT(" / "))+FString::FromInt(Step);
         Traits->AddSlot().AutoHeight().Padding(0,1)[SNew(SBox)
             .Visibility_Lambda([Count]{return Count()>0?EVisibility::Visible:EVisibility::Collapsed;})
@@ -888,7 +889,7 @@ void AWCVNextLab::BuildStorybookInterface()
                 .ToolTipText(T(TEXT("Click to see which heroes belong here and what each step gives.")))
                 .OnClicked_Lambda([TraitFocus,Identity]{*TraitFocus=*TraitFocus==Identity.Key?FString():Identity.Key;return FReply::Handled();})
                 [SNew(SHorizontalBox)
-                    +SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center)[FWCArtSlice::MakeTraitGlyph(Identity.Key,27,Active)]
+                    +SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center)[FWCArtSlice::MakeTraitGlyph(Identity.Key,27,Active,Reached)]
                     +SHorizontalBox::Slot().FillWidth(1).VAlign(VAlign_Center).Padding(6,0)[SNew(STextBlock).Font(Regular)
                         .ColorAndOpacity_Lambda([Active,Lit,Dim]{return FSlateColor(Active()?Lit:Dim);}).Text(T(Name))]
                     +SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center)[SNew(STextBlock).Font(Bold)

@@ -37,7 +37,9 @@ struct WONDERCHESSRUNTIME_API FWCArtSlice
     static FSlateFontInfo HeadingFont(int Size, bool Bold = true);
     static FVector2D ViewportSlateSize();
     static TSharedRef<SWidget> MakePanel(TSharedRef<SWidget> Content, bool Parchment = false, float Padding = 8);
-    static TSharedRef<SWidget> MakeTraitGlyph(const FString& Id, float Size, TFunction<bool()> Active);
+    // A race or class badge for the synergy list. Step, when given, is how many bonus steps are reached
+    // (0 dims the badge, 1 adds a silver rim, 2 a gold one); otherwise Active alone decides between dim and silver.
+    static TSharedRef<SWidget> MakeTraitGlyph(const FString& Id, float Size, TFunction<bool()> Active, TFunction<int()> Step = nullptr);
     static TSharedRef<SWidget> MakeButton(TFunction<FString()> Label, TFunction<void()> Action,
         TFunction<bool()> Enabled, int FontSize = 11);
     static FLinearColor TierColor(int Cost);

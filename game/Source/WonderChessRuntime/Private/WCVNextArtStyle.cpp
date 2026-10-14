@@ -36,6 +36,10 @@ struct FArtResources : FGCObject
     TMap<FString, FSlateBrush> IllustrationBrushes;
     TMap<FString, TObjectPtr<UTexture2D>> Kit;
     TMap<FString, FSlateBrush> KitBrushes;
+    // Race and class badges in their own colours, and the outline laid round a badge when its trait is active.
+    TMap<FString, FSlateBrush> TraitBrushes;
+    FSlateBrush RaceRim, ClassRim;
+    TSet<FString> Races;
     FSlateRoundedBoxBrush Panel{Ink, 9.f};
     // Slate panel with a thin brass edge: the castle-courtyard theme.
     FSlateRoundedBoxBrush StoryPanel{FLinearColor(.035f,.042f,.058f,.93f), 8.f,
@@ -117,6 +121,23 @@ struct FArtResources : FGCObject
                     KitBrushes.Add(Key,Brush);
                 }
             }
+            // Race and class badges (tools/production/build_trait_icons.py): drawn untinted, in their own colours.
+            const auto LoadBadge=[&](const FString& Name,FSlateBrush& Brush)->bool{
+                auto* Texture=LoadObject<UTexture2D>(nullptr,*FString::Printf(TEXT("/Game/WonderChess/VNext/UI/TraitIcons_r001/T_%s.T_%s"),*Name,*Name));
+                if(!Texture)return false;
+                Kit.Add(Name,Texture);
+                Brush.SetResourceObject(Texture);Brush.ImageSize=FVector2f(256,256);Brush.DrawAs=ESlateBrushDrawType::Image;
+                return true;
+            };
+            for(const TCHAR* Name:{TEXT("human"),TEXT("elf"),TEXT("dwarf"),TEXT("goblin"),TEXT("orc"),TEXT("beastkin"),TEXT("demon"),TEXT("undead"),TEXT("elemental"),TEXT("dragonkin")})
+                Races.Add(Name);
+            for(const TCHAR* Name:{TEXT("human"),TEXT("elf"),TEXT("dwarf"),TEXT("goblin"),TEXT("orc"),TEXT("beastkin"),TEXT("demon"),TEXT("undead"),TEXT("elemental"),TEXT("dragonkin"),
+                TEXT("tank"),TEXT("fighter"),TEXT("assassin"),TEXT("mage"),TEXT("priest"),TEXT("warlock"),TEXT("sniper"),TEXT("engineer"),TEXT("shaman"),TEXT("summoner")}){
+                FSlateBrush Brush;
+                if(LoadBadge(FString(TEXT("trait_"))+Name,Brush))TraitBrushes.Add(Name,Brush);
+            }
+            LoadBadge(TEXT("rim_race"),RaceRim);LoadBadge(TEXT("rim_class"),ClassRim);
+            UE_LOG(LogTemp,Display,TEXT("WC_TRAIT_BADGES badges=%d"),TraitBrushes.Num());
             if(KitBrushes.Contains(TEXT("button")))
                 Card.SetNormal(KitBrushes[TEXT("button")]).SetHovered(KitBrushes[TEXT("button_hover")]).SetPressed(KitBrushes[TEXT("button_pressed")])
                     .SetDisabled(KitBrushes[TEXT("button_disabled")]).SetNormalPadding(FMargin(10,7)).SetPressedPadding(FMargin(10,8,10,6));
@@ -133,6 +154,12 @@ struct FArtResources : FGCObject
     virtual FString GetReferencerName() const override { return TEXT("FWCArtSliceResources"); }
 };
 FArtResources& Resources() { static FArtResources Value;return Value; }
+const FSlateBrush* TraitBadge(const FString& Id) { return Resources().TraitBrushes.Find(Id.ToLower()); }
+const FSlateBrush* TraitRim(const FString& Id)
+{
+    const FSlateBrush& Rim=Resources().Races.Contains(Id.ToLower())?Resources().RaceRim:Resources().ClassRim;
+    return Rim.GetResourceObject()?&Rim:nullptr;
+}
 
 class SWCArtButton : public SButton
 {
@@ -187,12 +214,23 @@ class SWCTraitGlyph : public SLeafWidget
 {
 public:
     SLATE_BEGIN_ARGS(SWCTraitGlyph) {} SLATE_ARGUMENT(FString,Id) SLATE_ARGUMENT(float,Size)
-        SLATE_ARGUMENT(TFunction<bool()>,Active) SLATE_END_ARGS()
-    void Construct(const FArguments& Args) { Id=Args._Id.ToLower();Size=Args._Size;Active=Args._Active; }
+        SLATE_ARGUMENT(TFunction<bool()>,Active) SLATE_ARGUMENT(TFunction<int()>,Step) SLATE_END_ARGS()
+    void Construct(const FArguments& Args) { Id=Args._Id.ToLower();Size=Args._Size;Active=Args._Active;Step=Args._Step; }
     virtual FVector2D ComputeDesiredSize(float) const override {return FVector2D(Size,Size);}
     virtual int32 OnPaint(const FPaintArgs&,const FGeometry& Geometry,const FSlateRect&,
         FSlateWindowElementList& Elements,int32 Layer,const FWidgetStyle& WidgetStyle,bool) const override
     {
+        // A colour badge: dimmed until the first step, then a silver rim, and a gold rim at the second step.
+        if(const FSlateBrush* Badge=TraitBadge(Id)){
+            const int Reached=Step?Step():(Active&&Active()?1:0);
+            const FLinearColor Tint=WidgetStyle.GetColorAndOpacityTint();
+            FSlateDrawElement::MakeBox(Elements,Layer,Geometry.ToPaintGeometry(),Badge,ESlateDrawEffect::None,
+                (Reached>0?FLinearColor::White:FLinearColor(.30f,.30f,.33f,.65f))*Tint);
+            if(Reached>0)if(const FSlateBrush* Rim=TraitRim(Id))
+                FSlateDrawElement::MakeBox(Elements,Layer+1,Geometry.ToPaintGeometry(),Rim,ESlateDrawEffect::None,
+                    FLinearColor(Reached>=2?FColor(245,194,76):FColor(217,223,232))*Tint);
+            return Layer+1;
+        }
         if(const FSlateBrush* Icon=Resources().KitBrushes.Find(TEXT("icon_")+Id)){
             FSlateDrawElement::MakeBox(Elements,Layer,Geometry.ToPaintGeometry(),Icon,ESlateDrawEffect::None,
                 (Active()?FLinearColor(1.f,.80f,.34f):FLinearColor(.48f,.46f,.42f))*WidgetStyle.GetColorAndOpacityTint());
@@ -237,7 +275,7 @@ public:
         return Layer;
     }
 private:
-    FString Id;float Size=28;TFunction<bool()> Active;
+    FString Id;float Size=28;TFunction<bool()> Active;TFunction<int()> Step;
 };
 const FSlateBrush* Illustration(const FString& Kind,FString Id)
 {
@@ -283,7 +321,10 @@ const FSlateBrush* FWCArtSlice::KitBrush(const FString& Name,const FSlateBrush* 
 TSharedRef<SWidget> FWCArtSlice::MakeIcon(TFunction<FString()> Name,float Size,FLinearColor Tint,const FString& Tooltip)
 {
     return SNew(SBox).WidthOverride(Size).HeightOverride(Size).ToolTipText(Text(Tooltip))
-        [SNew(SImage).ColorAndOpacity(Tint).Image_Lambda([Name]{return KitBrush(TEXT("icon_")+Name().ToLower());})];
+        [SNew(SImage)
+            // A race or class badge keeps its own colours; the one-colour kit icons take the tint.
+            .ColorAndOpacity_Lambda([Name,Tint]{return FSlateColor(TraitBadge(Name())?FLinearColor::White:Tint);})
+            .Image_Lambda([Name]{const FString Key=Name().ToLower();if(const FSlateBrush* Badge=TraitBadge(Key))return Badge;return KitBrush(TEXT("icon_")+Key);})];
 }
 const FButtonStyle* FWCArtSlice::ButtonStyle() { return &Resources().Card; }
 FSlateFontInfo FWCArtSlice::HeadingFont(int Size,bool Bold)
@@ -300,8 +341,8 @@ FVector2D FWCArtSlice::ViewportSlateSize()
 }
 TSharedRef<SWidget> FWCArtSlice::MakePanel(TSharedRef<SWidget> Content,bool Parchment,float Padding)
 { return SNew(SWCStoryPanel).Parchment(Parchment).Padding(Padding)[Content]; }
-TSharedRef<SWidget> FWCArtSlice::MakeTraitGlyph(const FString& Id,float Size,TFunction<bool()> Active)
-{ return SNew(SWCTraitGlyph).Id(Id).Size(Size).Active(Active); }
+TSharedRef<SWidget> FWCArtSlice::MakeTraitGlyph(const FString& Id,float Size,TFunction<bool()> Active,TFunction<int()> Step)
+{ return SNew(SWCTraitGlyph).Id(Id).Size(Size).Active(Active).Step(Step); }
 TSharedRef<SWidget> FWCArtSlice::MakeButton(TFunction<FString()> Label,TFunction<void()> Action,TFunction<bool()> Enabled,int FontSize)
 {
     return SNew(SWCArtButton).ButtonStyle(ButtonStyle()).IsEnabled_Lambda([Enabled]{return Enabled();})
