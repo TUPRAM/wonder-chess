@@ -2857,7 +2857,7 @@
     "clips": {
       "Idle": "/Game/WonderChess/VNext/Heroes/BloodDrummer_r001/Animations/A_BloodDrummer_Library_Idle_12",
       "Move": "/Game/WonderChess/VNext/Heroes/BloodDrummer_r001/Animations/A_BloodDrummer_Move",
-      "Attack": "/Game/WonderChess/VNext/Heroes/BloodDrummer_r001/Animations/A_BloodDrummer_Library_Punch_Combo_1",
+      "Attack": "/Game/WonderChess/VNext/Heroes/BloodDrummer_r001/Animations/A_BloodDrummer_Library_Idle_12",
       "Cast": "/Game/WonderChess/VNext/Heroes/BloodDrummer_r001/Animations/A_BloodDrummer_Library_Angry_Ground_Stomp",
       "Hit": "/Game/WonderChess/VNext/Heroes/BloodDrummer_r001/Animations/A_BloodDrummer_Library_Hit_Reaction_1",
       "Defeat": "/Game/WonderChess/VNext/Heroes/BloodDrummer_r001/Animations/A_BloodDrummer_Library_Electrocuted_Fall",
@@ -3168,11 +3168,6 @@
             0,
             -62
           ],
-          "rest_direction": [
-            0.037,
-            0.919,
-            0.392
-          ],
           "reach": 12.2,
           "palm": [
             4.5,
@@ -3180,7 +3175,50 @@
             -1.2
           ],
           "roll": 0,
-          "radius": 3
+          "radius": 3,
+          "strike": {
+            "item": 2,
+            "at": [
+              -14,
+              18,
+              8
+            ],
+            "clips": [
+              "Attack",
+              "Cast"
+            ],
+            "snap": 1.7
+          },
+          "rest_direction": [
+            0.037,
+            0.919,
+            0.392
+          ],
+          "wrist": {
+            "rest_bend": [
+              0,
+              0.6,
+              0
+            ],
+            "rest_max": 40,
+            "strike_max": 90,
+            "rest_clips": [
+              "Idle",
+              "Move",
+              "Run",
+              "Attack",
+              "Cast",
+              "Hit",
+              "Taunt"
+            ]
+          },
+          "wrap": {
+            "radius": 4.5,
+            "seat": [
+              4.0,
+              2.1
+            ]
+          }
         }
       },
       {
@@ -3208,11 +3246,6 @@
             0,
             -62
           ],
-          "rest_direction": [
-            -0.04,
-            0.911,
-            0.41
-          ],
           "reach": 11.6,
           "palm": [
             -4.3,
@@ -3220,7 +3253,50 @@
             -0.9
           ],
           "roll": 0,
-          "radius": 3
+          "radius": 3,
+          "strike": {
+            "item": 2,
+            "at": [
+              14,
+              18,
+              8
+            ],
+            "clips": [
+              "Attack",
+              "Cast"
+            ],
+            "snap": 1.7
+          },
+          "rest_direction": [
+            -0.04,
+            0.911,
+            0.41
+          ],
+          "wrist": {
+            "rest_bend": [
+              0,
+              0.6,
+              0
+            ],
+            "rest_max": 40,
+            "strike_max": 90,
+            "rest_clips": [
+              "Idle",
+              "Move",
+              "Run",
+              "Attack",
+              "Cast",
+              "Hit",
+              "Taunt"
+            ]
+          },
+          "wrap": {
+            "radius": 4.5,
+            "seat": [
+              4.0,
+              2.1
+            ]
+          }
         }
       },
       {
@@ -3232,12 +3308,26 @@
           108
         ],
         "rotation": [
-          14,
+          0,
           0,
           0
         ],
         "scale": 0.45,
-        "mesh_space": true
+        "mesh_space": true,
+        "solid": {
+          "from": [
+            0,
+            -14,
+            -55
+          ],
+          "to": [
+            0,
+            0,
+            8
+          ],
+          "radius": 50,
+          "limb_margin": 6
+        }
       }
     ],
     "reaches": [
@@ -3247,16 +3337,16 @@
         "hand": "RightHand",
         "carrier": "Spine02",
         "point": [
-          -17,
-          34,
-          126
+          -33,
+          8,
+          124
         ],
         "beat_axis": [
           0,
           -0.2,
           1
         ],
-        "beat": 20,
+        "beat": 21,
         "rate": 2.6,
         "phase": 0.0,
         "clips": [
@@ -3270,16 +3360,16 @@
         "hand": "LeftHand",
         "carrier": "Spine02",
         "point": [
-          17,
-          34,
-          126
+          33,
+          8,
+          124
         ],
         "beat_axis": [
           0,
           -0.2,
           1
         ],
-        "beat": 20,
+        "beat": 21,
         "rate": 2.6,
         "phase": 3.1416,
         "clips": [
@@ -3303,6 +3393,240 @@
         "from_bone": "Spine02",
         "lead_ms": 150
       }
+    },
+    "straighten": {
+      "clips": [
+        "Cast"
+      ],
+      "weight": 0.6,
+      "bones": [
+        "Spine",
+        "Spine01",
+        "Spine02",
+        "neck",
+        "Head",
+        "LeftShoulder",
+        "RightShoulder"
+      ]
+    },
+    "stance": {
+      "clips": [
+        "Idle",
+        "Move",
+        "Run",
+        "Attack",
+        "Cast",
+        "Hit",
+        "Taunt"
+      ],
+      "breathe_rate": 0.4,
+      "bones": [
+        {
+          "bone": "RightShoulder",
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "angle": 10,
+          "breathe": 2.5
+        },
+        {
+          "bone": "LeftShoulder",
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "angle": -10,
+          "breathe": -2.5
+        },
+        {
+          "bone": "RightShoulder",
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "angle": -7
+        },
+        {
+          "bone": "LeftShoulder",
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "angle": 7
+        },
+        {
+          "bone": "RightArm",
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "angle": 20,
+          "breathe": 3.25
+        },
+        {
+          "bone": "LeftArm",
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "angle": -20,
+          "breathe": -3.25
+        },
+        {
+          "bone": "RightForeArm",
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "angle": 14
+        },
+        {
+          "bone": "LeftForeArm",
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "angle": 14
+        },
+        {
+          "bone": "Spine01",
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "angle": -5.3999999999999995,
+          "breathe": -1.0
+        },
+        {
+          "bone": "Spine02",
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "angle": -3.6,
+          "breathe": -0.75
+        },
+        {
+          "bone": "neck",
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "angle": 4.5
+        },
+        {
+          "bone": "Head",
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "angle": 3.0
+        },
+        {
+          "bone": "RightUpLeg",
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "angle": 4
+        },
+        {
+          "bone": "LeftUpLeg",
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "angle": -4
+        },
+        {
+          "bone": "RightFoot",
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "angle": -4
+        },
+        {
+          "bone": "LeftFoot",
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "angle": 4
+        },
+        {
+          "bone": "RightUpLeg",
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "angle": 9
+        },
+        {
+          "bone": "LeftUpLeg",
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "angle": 9
+        },
+        {
+          "bone": "RightLeg",
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "angle": -18
+        },
+        {
+          "bone": "LeftLeg",
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "angle": -18
+        },
+        {
+          "bone": "RightFoot",
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "angle": 9
+        },
+        {
+          "bone": "LeftFoot",
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "angle": 9
+        }
+      ],
+      "plant_feet": true
     }
   },
   "wc_vn_siege_master": {

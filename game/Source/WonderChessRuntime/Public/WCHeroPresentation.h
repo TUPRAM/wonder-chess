@@ -36,6 +36,38 @@ struct FWCBoneCurl
     FQuat ParentSpace = FQuat::Identity;
 };
 
+// One bone of a stance laid over the clips: turned about a mesh-space axis of the reference pose before arm reaches
+// are solved, so spread arms, hunched shoulders or a wide footing carry into every listed clip. Breathe swings the
+// angle slowly back and forth by that many degrees.
+struct FWCStanceBend
+{
+    FName Bone;
+    // The turn axis in the parent bone's reference space.
+    FVector Axis = FVector::XAxisVector;
+    float Angle = 0, Breathe = 0;
+};
+
+// A solid round shape carried on a bone, such as a drum: hands, forearms and held items are kept outside it.
+struct FWCSolid
+{
+    FName Carrier;
+    // Centre of the bottom face and the unit axis towards the top face, in the carrier bone's space; centimetres.
+    FVector Base = FVector::ZeroVector, Axis = FVector::ZAxisVector;
+    float Height = 0, Radius = 0, LimbMargin = 6;
+};
+
+// A stick held in a fist. The wrist turns so the stick points where it should (cocked down at rest, at the strike
+// spot while drumming), so the handle stays in the closed hand instead of turning inside it.
+struct FWCWristAim
+{
+    FName Hand, Carrier;
+    // Grip point and stick direction in the hand bone's space; the strike spot in the carrier bone's space.
+    FVector Grip = FVector::ZeroVector, Tip = FVector::ZAxisVector, Spot = FVector::ZeroVector;
+    // At rest the stick points along the forearm plus this component-space bend; turns are capped in degrees.
+    FVector RestBend = FVector::ZeroVector;
+    float RestMax = 0, StrikeMax = 0, Snap = 0, RestWeight = 0, StrikeWeight = 0;
+};
+
 // A weapon held in a hand, treated as a rod from the grip to its far end for the body-clearance pass.
 struct FWCGripItem
 {
@@ -57,7 +89,23 @@ struct FWCGripItem
     TSet<FName> TouchClips;
     int TouchItem = -1;
     FVector TouchAt = FVector::ZeroVector;
+    // A drumstick: during these clips its head is aimed at a spot on another listed item (item space), and the aim
+    // rises Snap times as far as the hand's beat lifts, so the head flicks up and comes down on the spot.
+    TSet<FName> StrikeClips;
+    int StrikeItem = -1;
+    FVector StrikeAt = FVector::ZeroVector;
+    float StrikeSnap = 0, StrikeWeight = 0;
     // A small fire burning on the item (item space), such as a lit match cord.
+    // "wrist": the hand turns to point this item (see FWCWristAim); the clips where it is cocked at rest.
+    // "wrap": the fingers of this hand close round the handle, touching a cylinder of WrapRadius about its axis.
+    float WrapRadius = 0;
+    // "seat": [out, down] places the handle along the knuckle line, this far out from the knuckles towards the
+    // curled fingers and this far back towards the wrist, before the fingers wrap it.
+    FVector2D WrapSeat = FVector2D::ZeroVector;
+    bool bWrist = false;
+    FVector WristBend = FVector::ZeroVector;
+    float WristRestMax = 40, WristStrikeMax = 70;
+    TSet<FName> WristRestClips;
     bool bFlame = false;
     FVector Flame = FVector::ZeroVector;
     float FlameSize = 1;
@@ -112,6 +160,11 @@ public:
     float ReachTime = 0;
     TArray<FName> StraightBones;
     float StraightWeight = 0;
+    TArray<FWCStanceBend> Stance;
+    float StanceWeight = 0, StanceRate = 0, StanceLower = 0;
+    bool bStancePlant = false;
+    TArray<FWCSolid> Solids;
+    TArray<FWCWristAim> Wrists;
 protected:
     virtual FAnimInstanceProxy* CreateAnimInstanceProxy() override;
     virtual void DestroyAnimInstanceProxy(FAnimInstanceProxy* Proxy) override;
@@ -174,9 +227,19 @@ private:
     TArray<FName> StraightBones;
     TSet<FName> StraightClips;
     float StraightAmount = 0, StraightNow = 0;
+    TArray<FWCStanceBend> Stance;
+    TSet<FName> StanceClips;
+    float StanceNow = 0, StanceRate = 0, StanceLower = 0;
+    bool bStancePlant = false;
+    TArray<FWCSolid> Solids;
+    TArray<FWCWristAim> Wrists;
+    // Which grip each wrist aim belongs to.
+    TArray<int32> WristGrips;
     float BodyHeight = 180, BodyRadiusScale = 1;
     // Turns each held weapon about its grip just enough to stay outside the hero's own torso, head and legs.
     void ClearBody(float DeltaSeconds);
+    // Aims drumsticks at their spots from the frame's final bones (called when the skeleton finishes each frame).
+    void PlaceStrikes();
     FName Current = NAME_None, Before = NAME_None;
     uint64 PlayedAction = 0;
     bool Reviewing = false, Looping = true;

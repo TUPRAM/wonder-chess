@@ -55,6 +55,31 @@ FTransform ReferenceTransform(const FReferenceSkeleton& Skeleton, int32 Bone)
     return Result;
 }
 
+// How far, and which way, a point must move to leave a solid cylinder (zero when it is already outside).
+FVector OutOfSolid(const FVector& Point, const FVector& Base, const FVector& Axis, double Height, double Radius)
+{
+    const FVector Offset = Point - Base;
+    const double Along = FVector::DotProduct(Offset, Axis);
+    if (Along <= 0 || Along >= Height) return FVector::ZeroVector;
+    const FVector Radial = Offset - Axis * Along;
+    const double Distance = Radial.Size();
+    if (Distance >= Radius) return FVector::ZeroVector;
+    FVector Best = (Distance > 1e-3 ? Radial / Distance : FVector::CrossProduct(Axis, FVector::YAxisVector).GetSafeNormal()) * (Radius - Distance);
+    const FVector Top = Axis * (Height - Along), Bottom = -Axis * Along;
+    if (Top.SizeSquared() < Best.SizeSquared()) Best = Top;
+    if (Bottom.SizeSquared() < Best.SizeSquared()) Best = Bottom;
+    return Best;
+}
+// A turn shortened to at most MaxDegrees about the same axis.
+FQuat Capped(const FQuat& Turn, float MaxDegrees)
+{
+    FVector Axis; float Angle;
+    Turn.ToAxisAndAngle(Axis, Angle);
+    if (Angle > UE_PI) { Angle = UE_TWO_PI - Angle; Axis = -Axis; }
+    const float Max = FMath::DegreesToRadians(MaxDegrees);
+    return Angle <= Max ? Turn : FQuat(Axis, Max);
+}
+
 struct FHeroAnimProxy : FAnimInstanceProxy
 {
     UAnimSequence* Current = nullptr; UAnimSequence* Previous = nullptr;
@@ -66,6 +91,11 @@ struct FHeroAnimProxy : FAnimInstanceProxy
     float ReachTime = 0;
     TArray<FName> StraightBones;
     float StraightWeight = 0;
+    TArray<FWCStanceBend> Stance;
+    float StanceWeight = 0, StanceRate = 0, StanceLower = 0;
+    bool bStancePlant = false;
+    TArray<FWCSolid> Solids;
+    TArray<FWCWristAim> Wrists;
     explicit FHeroAnimProxy(UAnimInstance* Instance) : FAnimInstanceProxy(Instance) {}
     virtual void PreUpdate(UAnimInstance* Instance, float Delta) override
     {
@@ -78,6 +108,10 @@ struct FHeroAnimProxy : FAnimInstanceProxy
         Reaches = A->Reaches; ReachTime = A->ReachTime;
         StraightWeight = A->StraightWeight;
         if (StraightBones.Num() != A->StraightBones.Num()) StraightBones = A->StraightBones;
+        if (Stance.Num() != A->Stance.Num()) Stance = A->Stance;
+        StanceWeight = A->StanceWeight; StanceRate = A->StanceRate; StanceLower = A->StanceLower; bStancePlant = A->bStancePlant;
+        if (Solids.Num() != A->Solids.Num()) Solids = A->Solids;
+        Wrists = A->Wrists;
     }
     virtual bool Evaluate(FPoseContext& Output) override
     {
@@ -94,9 +128,12 @@ struct FHeroAnimProxy : FAnimInstanceProxy
         }
         if (StraightWeight > .01f) Straighten(Output.Pose);
         if (bHold) HoldArm(Output.Pose);
+        if (StanceWeight > .01f) Stand(Output.Pose);
         LockRoot(Output.Pose);
         if (Second.bValid && Second.Weight > .01f) ReachSecondHand(Output.Pose, Second);
         for (const auto& Reach : Reaches) if (Reach.Weight > .01f) ReachSecondHand(Output.Pose, Reach);
+        if (Solids.Num()) KeepArmsOut(Output.Pose);
+        for (const auto& Wrist : Wrists) if (Wrist.RestWeight > .01f || Wrist.StrikeWeight > .01f) AimWrist(Output.Pose, Wrist);
         // The clips carry no finger motion, so the grip bones take their fixed curl here.
         for (const auto& Curl : Curls)
         {
@@ -140,12 +177,29 @@ struct FHeroAnimProxy : FAnimInstanceProxy
             for (; Bone.GetInt() != INDEX_NONE; Bone = Pose.GetParentBoneIndex(Bone)) Result = Result * Pose[Bone];
             return Result;
         };
-        const FTransform Parent = World(Pose.GetParentBoneIndex(Upper));
+        const FVector C = (Pose[Hand] * Pose[Lower] * Pose[Upper] * World(Pose.GetParentBoneIndex(Upper))).GetLocation();
+        const float Lift = Limb.Beat * FMath::Max(0.f, FMath::Sin(ReachTime * Limb.Rate * UE_TWO_PI + Limb.Phase));
+        SolveArm(Pose, Upper, Lower, Hand, FMath::Lerp(C, World(Carrier).TransformPosition(Limb.Target + Limb.Axis * Lift), Limb.Weight));
+    }
+    FCompactPoseBoneIndex Find(const FCompactPose& Pose, FName Name) const
+    {
+        const auto& Bones = Pose.GetBoneContainer();
+        const int32 MeshBone = Bones.GetReferenceSkeleton().FindBoneIndex(Name);
+        return MeshBone < 0 ? FCompactPoseBoneIndex(INDEX_NONE) : Bones.MakeCompactPoseIndex(FMeshPoseBoneIndex(MeshBone));
+    }
+    static FTransform WorldOf(const FCompactPose& Pose, FCompactPoseBoneIndex Bone)
+    {
+        FTransform Result = FTransform::Identity;
+        for (; Bone.GetInt() != INDEX_NONE; Bone = Pose.GetParentBoneIndex(Bone)) Result = Result * Pose[Bone];
+        return Result;
+    }
+    // Two-bone reach of the hand to Wanted (component space), keeping the elbow on its present side.
+    void SolveArm(FCompactPose& Pose, FCompactPoseBoneIndex Upper, FCompactPoseBoneIndex Lower, FCompactPoseBoneIndex Hand, const FVector& Wanted) const
+    {
+        const FTransform Parent = WorldOf(Pose, Pose.GetParentBoneIndex(Upper));
         FTransform UpperWorld = Pose[Upper] * Parent, LowerWorld = Pose[Lower] * UpperWorld;
         const FTransform HandWorld = Pose[Hand] * LowerWorld;
         const FVector A = UpperWorld.GetLocation(), B = LowerWorld.GetLocation(), C = HandWorld.GetLocation();
-        const float Lift = Limb.Beat * FMath::Max(0.f, FMath::Sin(ReachTime * Limb.Rate * UE_TWO_PI + Limb.Phase));
-        const FVector Wanted = FMath::Lerp(C, World(Carrier).TransformPosition(Limb.Target + Limb.Axis * Lift), Limb.Weight);
         const double First = FVector::Dist(A, B), Next = FVector::Dist(B, C);
         const double Reach = FMath::Clamp(FVector::Dist(A, Wanted), FMath::Abs(First - Next) + .5, First + Next - .5);
         const FVector Line = (Wanted - A).GetSafeNormal();
@@ -176,6 +230,102 @@ struct FHeroAnimProxy : FAnimInstanceProxy
             Pose[Bone].SetRotation(FQuat::Slerp(Pose[Bone].GetRotation(), Rest.GetRotation(), StraightWeight));
             Pose[Bone].SetLocation(FMath::Lerp(Pose[Bone].GetLocation(), Rest.GetLocation(), StraightWeight));
         }
+    }
+    // Lays the stance over the clip: each listed bone turns about its axis, swinging slowly with the breath.
+    void Stand(FCompactPose& Pose) const
+    {
+        const auto& Bones = Pose.GetBoneContainer();
+        const auto Index = [&](const TCHAR* Name) {
+            const int32 MeshBone = Bones.GetReferenceSkeleton().FindBoneIndex(Name);
+            return MeshBone < 0 ? FCompactPoseBoneIndex(INDEX_NONE) : Bones.MakeCompactPoseIndex(FMeshPoseBoneIndex(MeshBone));
+        };
+        const auto World = [&](FCompactPoseBoneIndex Bone) {
+            FTransform Result = FTransform::Identity;
+            for (; Bone.GetInt() != INDEX_NONE; Bone = Pose.GetParentBoneIndex(Bone)) Result = Result * Pose[Bone];
+            return Result;
+        };
+        // "plant_feet": the lower foot stays at the height the clip gave it, however the stance bends the legs.
+        const FCompactPoseBoneIndex LeftFoot = Index(TEXT("LeftFoot")), RightFoot = Index(TEXT("RightFoot"));
+        const bool bPlant = bStancePlant && LeftFoot.GetInt() >= 0 && RightFoot.GetInt() >= 0;
+        const auto Lowest = [&] { return FMath::Min(World(LeftFoot).GetLocation().Z, World(RightFoot).GetLocation().Z); };
+        const double Planted = bPlant ? Lowest() : 0;
+        const float Breath = FMath::Sin(ReachTime * StanceRate * UE_TWO_PI);
+        for (const auto& Bend : Stance)
+        {
+            const int32 MeshBone = Bones.GetReferenceSkeleton().FindBoneIndex(Bend.Bone);
+            const FCompactPoseBoneIndex Bone = MeshBone < 0 ? FCompactPoseBoneIndex(INDEX_NONE) : Bones.MakeCompactPoseIndex(FMeshPoseBoneIndex(MeshBone));
+            if (Bone.GetInt() < 0) continue;
+            const float Degrees = (Bend.Angle + Bend.Breathe * Breath) * StanceWeight;
+            Pose[Bone].SetRotation((FQuat(Bend.Axis, FMath::DegreesToRadians(Degrees)) * Pose[Bone].GetRotation()).GetNormalized());
+        }
+        // A crouch: the hips come straight down by "lower", and by however far bent knees lifted the planted foot.
+        const FCompactPoseBoneIndex Hips = Index(TEXT("Hips"));
+        const double Drop = StanceLower * StanceWeight + (bPlant ? Lowest() - Planted : 0);
+        if (Drop == 0 || Hips.GetInt() < 0) return;
+        const FTransform Parent = World(Pose.GetParentBoneIndex(Hips));
+        FTransform Lowered = Pose[Hips] * Parent;
+        Lowered.AddToTranslation(FVector(0, 0, -Drop));
+        Pose[Hips] = Lowered.GetRelativeTransform(Parent);
+    }
+    // Hands and forearms are pushed out of solid items (a drum): the hand moves just far enough for the palm, wrist
+    // and middle of the forearm to clear it, and the arm reaches there.
+    void KeepArmsOut(FCompactPose& Pose) const
+    {
+        for (const auto& Limb : Reaches)
+        {
+            const auto Upper = Find(Pose, Limb.Upper), Lower = Find(Pose, Limb.Lower), Hand = Find(Pose, Limb.Hand);
+            if (Upper.GetInt() < 0 || Lower.GetInt() < 0 || Hand.GetInt() < 0) continue;
+            for (int Pass = 0; Pass < 2; ++Pass)
+            {
+                const FVector Elbow = WorldOf(Pose, Lower).GetLocation(), Wrist = WorldOf(Pose, Hand).GetLocation();
+                const FVector Palm = Wrist + (Wrist - Elbow).GetSafeNormal() * 10;
+                FVector Push = FVector::ZeroVector;
+                for (const auto& Solid : Solids)
+                {
+                    const auto Carrier = Find(Pose, Solid.Carrier);
+                    if (Carrier.GetInt() < 0) continue;
+                    const FTransform Body = WorldOf(Pose, Carrier);
+                    const FVector Axis = Body.TransformVectorNoScale(Solid.Axis).GetSafeNormal();
+                    const FVector Base = Body.TransformPosition(Solid.Base) - Axis * Solid.LimbMargin;
+                    for (const FVector& Point : {Palm, Wrist, (Elbow + Wrist) * .5})
+                    {
+                        const FVector Out = OutOfSolid(Point, Base, Axis, Solid.Height + 2 * Solid.LimbMargin, Solid.Radius + Solid.LimbMargin);
+                        if (Out.SizeSquared() > Push.SizeSquared()) Push = Out;
+                    }
+                }
+                if (Push.SizeSquared() < .01) break;
+                SolveArm(Pose, Upper, Lower, Hand, Wrist + Push);
+            }
+        }
+    }
+    // Turns the hand so its stick points along the forearm plus the rest bend, or at the strike spot while drumming,
+    // each turn capped like a wrist; the fingers stay closed round the handle.
+    void AimWrist(FCompactPose& Pose, const FWCWristAim& Wrist) const
+    {
+        const auto Hand = Find(Pose, Wrist.Hand);
+        if (Hand.GetInt() < 0) return;
+        const auto Lower = Pose.GetParentBoneIndex(Hand);
+        const FTransform Parent = WorldOf(Pose, Lower);
+        FTransform HandWorld = Pose[Hand] * Parent;
+        // While striking, the wrist starts from straight (its rest on the forearm) rather than whatever the clip does
+        // with it, so a stomping or twisting clip cannot leave the stick pointing far from the drum.
+        if (Wrist.StrikeWeight > .01f)
+            HandWorld.SetRotation(FQuat::Slerp(HandWorld.GetRotation(), Parent.GetRotation() * Pose.GetBoneContainer().GetRefPoseTransform(Hand).GetRotation(), Wrist.StrikeWeight).GetNormalized());
+        const FVector Along = HandWorld.TransformVectorNoScale(Wrist.Tip).GetSafeNormal();
+        const FVector Forearm = (HandWorld.GetLocation() - Parent.GetLocation()).GetSafeNormal();
+        FQuat Turn = FQuat::Slerp(FQuat::Identity, Capped(FQuat::FindBetweenNormals(Along, (Forearm + Wrist.RestBend).GetSafeNormal()), Wrist.RestMax), Wrist.RestWeight);
+        const auto Carrier = Find(Pose, Wrist.Carrier);
+        if (Wrist.StrikeWeight > .01f && Carrier.GetInt() >= 0)
+        {
+            float Lift = 0;
+            for (const auto& Reach : Reaches)
+                if (Reach.Hand == Wrist.Hand) Lift = Reach.Weight * Reach.Beat * FMath::Max(0.f, FMath::Sin(ReachTime * Reach.Rate * UE_TWO_PI + Reach.Phase));
+            const FVector Spot = WorldOf(Pose, Carrier).TransformPosition(Wrist.Spot) + FVector(0, 0, Lift * Wrist.Snap);
+            const FQuat Strike = Capped(FQuat::FindBetweenNormals(Along, (Spot - HandWorld.TransformPosition(Wrist.Grip)).GetSafeNormal()), Wrist.StrikeMax);
+            Turn = FQuat::Slerp(Turn, Strike, Wrist.StrikeWeight);
+        }
+        HandWorld.SetRotation((Turn * HandWorld.GetRotation()).GetNormalized());
+        Pose[Hand] = HandWorld.GetRelativeTransform(Parent);
     }
     // Replaces the animated arm with the held pose, turned with the chest so it follows leans and twists.
     void HoldArm(FCompactPose& Pose) const
@@ -393,6 +543,34 @@ bool UWCHeroPresentationComponent::InitializeHero(const FString& HeroId, FString
         if ((*Stand)->TryGetArrayField(TEXT("clips"), Names)) for (const auto& Name : *Names) StraightClips.Add(FName(*Name->AsString()));
         StraightAmount = (*Stand)->GetNumberField(TEXT("weight"));
     }
+    // "stance": {"clips", "breathe_rate", "lower", "plant_feet", "bones": [{bone, axis, angle, breathe}]}, a pose laid over those clips
+    // before arm reaches are solved, such as arms held out from the body. Axes are mesh space on the standing body.
+    const TSharedPtr<FJsonObject>* Pose = nullptr;
+    if (Config->TryGetObjectField(TEXT("stance"), Pose))
+    {
+        const FReferenceSkeleton& Reference = Mesh->GetRefSkeleton();
+        const TArray<TSharedPtr<FJsonValue>>* Names = nullptr;
+        if ((*Pose)->TryGetArrayField(TEXT("clips"), Names)) for (const auto& Name : *Names) StanceClips.Add(FName(*Name->AsString()));
+        double Rate = 0;
+        if ((*Pose)->TryGetNumberField(TEXT("breathe_rate"), Rate)) StanceRate = Rate;
+        if ((*Pose)->TryGetNumberField(TEXT("lower"), Rate)) StanceLower = Rate;
+        (*Pose)->TryGetBoolField(TEXT("plant_feet"), bStancePlant);
+        if ((*Pose)->TryGetArrayField(TEXT("bones"), Names))
+            for (const auto& Value : *Names)
+            {
+                const auto Entry = Value->AsObject();
+                FWCStanceBend Bend;
+                Bend.Bone = FName(*Entry->GetStringField(TEXT("bone")));
+                const int32 Bone = Reference.FindBoneIndex(Bend.Bone);
+                if (Bone == INDEX_NONE) { UE_LOG(LogTemp, Warning, TEXT("WC_HERO_STANCE_BONE_MISSING hero=%s bone=%s"), *HeroId, *Bend.Bone.ToString()); continue; }
+                const FQuat Parent = ReferenceTransform(Reference, Reference.GetParentIndex(Bone)).GetRotation();
+                Bend.Axis = Parent.Inverse().RotateVector(Vector(Entry, TEXT("axis"), FVector::XAxisVector).GetSafeNormal());
+                Bend.Angle = Entry->GetNumberField(TEXT("angle"));
+                double Breathe = 0;
+                if (Entry->TryGetNumberField(TEXT("breathe"), Breathe)) Bend.Breathe = Breathe;
+                Stance.Add(Bend);
+            }
+    }
     // "reaches": arms bent so a hand meets a point on the body or on something it carries, optionally beating.
     const TArray<TSharedPtr<FJsonValue>>* ReachList = nullptr;
     if (Config->TryGetArrayField(TEXT("reaches"), ReachList))
@@ -454,7 +632,11 @@ bool UWCHeroPresentationComponent::InitializeHero(const FString& HeroId, FString
                 const FTransform ArmReference = ReferenceTransform(Bones, Bones.GetParentIndex(Hand));
                 const float ItemScale = Entry->GetNumberField(TEXT("scale"));
                 const FVector Tip = Vector(*Grip, TEXT("tip_axis"), FVector::ZAxisVector).GetSafeNormal();
-                const FVector Direction = Vector(*Grip, TEXT("rest_direction"), FVector::YAxisVector).GetSafeNormal();
+                FVector Direction = Vector(*Grip, TEXT("rest_direction"), FVector::YAxisVector).GetSafeNormal();
+                // "rest_forearm": the item continues the forearm's line in the reference pose, bent by this mesh-space
+                // offset, so it hangs down beside a lowered arm the way a club or mallet is carried.
+                if ((*Grip)->HasField(TEXT("rest_forearm")))
+                    Direction = ((HandReference.GetLocation() - ArmReference.GetLocation()).GetSafeNormal() + Vector(*Grip, TEXT("rest_forearm"))).GetSafeNormal();
                 double Roll = 0, Reach = 8;
                 (*Grip)->TryGetNumberField(TEXT("roll"), Roll);
                 (*Grip)->TryGetNumberField(TEXT("reach"), Reach);
@@ -484,6 +666,36 @@ bool UWCHeroPresentationComponent::InitializeHero(const FString& HeroId, FString
                     Rod.TouchAt = Vector(*Touch, TEXT("at"));
                     const TArray<TSharedPtr<FJsonValue>>* During = nullptr;
                     if ((*Touch)->TryGetArrayField(TEXT("clips"), During)) for (const auto& Name : *During) Rod.TouchClips.Add(FName(*Name->AsString()));
+                }
+                // "wrap": {"radius"}: the hand's fingers bend round the handle (see WrapFingers).
+                const TSharedPtr<FJsonObject>* Wrap = nullptr;
+                if ((*Grip)->TryGetObjectField(TEXT("wrap"), Wrap))
+                {
+                    Rod.WrapRadius = (*Wrap)->GetNumberField(TEXT("radius"));
+                    const TArray<TSharedPtr<FJsonValue>>* Seat = nullptr;
+                    if ((*Wrap)->TryGetArrayField(TEXT("seat"), Seat) && Seat->Num() == 2) Rod.WrapSeat = FVector2D((*Seat)[0]->AsNumber(), (*Seat)[1]->AsNumber());
+                }
+                // "wrist": {"rest_bend", "rest_max", "strike_max", "rest_clips"}: the hand turns to point the item.
+                const TSharedPtr<FJsonObject>* Hold = nullptr;
+                if ((*Grip)->TryGetObjectField(TEXT("wrist"), Hold))
+                {
+                    Rod.bWrist = true;
+                    Rod.WristBend = Vector(*Hold, TEXT("rest_bend"));
+                    double Degrees = 0;
+                    if ((*Hold)->TryGetNumberField(TEXT("rest_max"), Degrees)) Rod.WristRestMax = Degrees;
+                    if ((*Hold)->TryGetNumberField(TEXT("strike_max"), Degrees)) Rod.WristStrikeMax = Degrees;
+                    const TArray<TSharedPtr<FJsonValue>>* During = nullptr;
+                    if ((*Hold)->TryGetArrayField(TEXT("rest_clips"), During)) for (const auto& Name : *During) Rod.WristRestClips.Add(FName(*Name->AsString()));
+                }
+                const TSharedPtr<FJsonObject>* Strike = nullptr;
+                if ((*Grip)->TryGetObjectField(TEXT("strike"), Strike))
+                {
+                    Rod.StrikeItem = int((*Strike)->GetNumberField(TEXT("item")));
+                    Rod.StrikeAt = Vector(*Strike, TEXT("at"));
+                    double Snap = 0;
+                    if ((*Strike)->TryGetNumberField(TEXT("snap"), Snap)) Rod.StrikeSnap = Snap;
+                    const TArray<TSharedPtr<FJsonValue>>* During = nullptr;
+                    if ((*Strike)->TryGetArrayField(TEXT("clips"), During)) for (const auto& Name : *During) Rod.StrikeClips.Add(FName(*Name->AsString()));
                 }
                 const TSharedPtr<FJsonObject>* Fire = nullptr;
                 if ((*Grip)->TryGetObjectField(TEXT("flame"), Fire))
@@ -540,6 +752,21 @@ bool UWCHeroPresentationComponent::InitializeHero(const FString& HeroId, FString
             if (Entry->TryGetBoolField(TEXT("mesh_space"), bMeshSpace) && bMeshSpace && Hand != INDEX_NONE)
                 Offset = Offset.GetRelativeTransform(ReferenceTransform(Bones, Hand));
             Item->SetRelativeTransform(Offset);
+            // "solid": {"from", "to", "radius", "limb_margin"}, a cylinder in item space that arms and held items keep out of.
+            const TSharedPtr<FJsonObject>* Solid = nullptr;
+            if (Entry->TryGetObjectField(TEXT("solid"), Solid) && Hand != INDEX_NONE)
+            {
+                FWCSolid Shape;
+                Shape.Carrier = Bone;
+                Shape.Base = Offset.TransformPosition(Vector(*Solid, TEXT("from")));
+                const FVector Top = Offset.TransformPosition(Vector(*Solid, TEXT("to")));
+                Shape.Axis = (Top - Shape.Base).GetSafeNormal();
+                Shape.Height = FVector::Dist(Top, Shape.Base);
+                Shape.Radius = (*Solid)->GetNumberField(TEXT("radius")) * Offset.GetScale3D().X;
+                double Margin = 0;
+                if ((*Solid)->TryGetNumberField(TEXT("limb_margin"), Margin)) Shape.LimbMargin = Margin;
+                Solids.Add(Shape);
+            }
             // "light": a small lamp carried by the item, such as a lantern's flame.
             const TSharedPtr<FJsonObject>* Lamp = nullptr;
             if (Entry->TryGetObjectField(TEXT("light"), Lamp))
@@ -559,6 +786,119 @@ bool UWCHeroPresentationComponent::InitializeHero(const FString& HeroId, FString
             Item->RegisterComponent();
             Items.Add(Item);
         }
+    // Fingers that wrap the handle. On the standing body, each joint of each finger of the hand (a chain of curled
+    // bones starting at a child of the hand) bends from straight until the next joint, or the fingertip for the last
+    // one, touches a cylinder of the wrap radius round the stick's axis; a joint whose finger never reaches the
+    // handle keeps its configured curl. The bends replace that hand's curls.
+    const TArray<TSharedPtr<FJsonValue>>* CurlConfig = nullptr;
+    if (Config->TryGetArrayField(TEXT("curls"), CurlConfig))
+        for (auto& Holding : Grips)
+        {
+            if (Holding.WrapRadius <= 0) continue;
+            const FReferenceSkeleton& Reference = Mesh->GetRefSkeleton();
+            const int32 HandBone = Reference.FindBoneIndex(Holding.Bone);
+            if (HandBone == INDEX_NONE) continue;
+            TMap<int32, TPair<FVector, float>> Bendable;
+            for (const auto& Value : *CurlConfig)
+            {
+                const auto Entry = Value->AsObject();
+                const int32 Bone = Reference.FindBoneIndex(FName(*Entry->GetStringField(TEXT("bone"))));
+                if (Bone != INDEX_NONE) Bendable.Add(Bone, {Vector(Entry, TEXT("axis"), FVector::XAxisVector).GetSafeNormal(), float(Entry->GetNumberField(TEXT("angle")))});
+            }
+            const FTransform HandReference = ReferenceTransform(Reference, HandBone);
+            if (!Holding.WrapSeat.IsZero())
+            {
+                // Seat the handle in the fist: along the line from the little finger's knuckle to the index finger's,
+                // out from the knuckles the way the fingers curl and back towards the wrist.
+                FVector Knuckles = FVector::ZeroVector, Fingers = FVector::ZeroVector, Curl = FVector::ZeroVector, IndexKnuckle, PinkyKnuckle;
+                int32 Count = 0;
+                bool bIndex = false, bPinky = false;
+                for (const auto& First : Bendable)
+                {
+                    const FString Name = Reference.GetBoneName(First.Key).ToString();
+                    if (Reference.GetParentIndex(First.Key) != HandBone || Name.Contains(TEXT("Thumb"))) continue;
+                    int32 Child = INDEX_NONE;
+                    for (const auto& Next : Bendable) if (Reference.GetParentIndex(Next.Key) == First.Key) Child = Next.Key;
+                    if (Child == INDEX_NONE) continue;
+                    const FVector Knuckle = ReferenceTransform(Reference, First.Key).GetLocation();
+                    const FVector Finger = (ReferenceTransform(Reference, Child).GetLocation() - Knuckle).GetSafeNormal();
+                    Knuckles += Knuckle; Fingers += Finger; Curl += FQuat(First.Value.Key, UE_HALF_PI).RotateVector(Finger); ++Count;
+                    if (Name.Contains(TEXT("Index"))) { IndexKnuckle = Knuckle; bIndex = true; }
+                    if (Name.Contains(TEXT("Pinky"))) { PinkyKnuckle = Knuckle; bPinky = true; }
+                }
+                if (Count >= 2 && bIndex && bPinky)
+                {
+                    const FVector Line = (IndexKnuckle - PinkyKnuckle).GetSafeNormal();
+                    const FVector Center = Knuckles / Count + Curl.GetSafeNormal() * Holding.WrapSeat.X - Fingers.GetSafeNormal() * Holding.WrapSeat.Y;
+                    const float Scale = Holding.Base.GetScale3D().X;
+                    const FQuat Aim = FQuat::FindBetweenNormals(Holding.Tip, Line);
+                    Holding.Base = FTransform(Aim, Center - Aim.RotateVector(Holding.Point * Scale), FVector(Scale)).GetRelativeTransform(HandReference);
+                    Holding.Item->SetRelativeTransform(Holding.Base);
+                }
+            }
+            const FVector AxisPoint = HandReference.TransformPosition(Holding.Base.TransformPosition(Holding.Point));
+            const FVector AxisLine = HandReference.TransformVectorNoScale(Holding.Base.TransformVectorNoScale(Holding.Tip)).GetSafeNormal();
+            const auto FromHandle = [&](const FVector& Point) {
+                const FVector Offset = Point - AxisPoint;
+                return (Offset - AxisLine * FVector::DotProduct(Offset, AxisLine)).Size();
+            };
+            for (const auto& First : Bendable)
+            {
+                if (Reference.GetParentIndex(First.Key) != HandBone) continue;
+                TArray<int32> Chain = {First.Key};
+                for (bool bMore = true; bMore;)
+                {
+                    bMore = false;
+                    for (const auto& Next : Bendable)
+                        if (Reference.GetParentIndex(Next.Key) == Chain.Last()) { Chain.Add(Next.Key); bMore = true; break; }
+                }
+                TArray<FVector> Points, Axes;
+                for (const int32 Bone : Chain) { Points.Add(ReferenceTransform(Reference, Bone).GetLocation()); Axes.Add(Bendable[Bone].Key); }
+                const FVector Last = Points.Num() > 1 ? Points.Last() - Points[Points.Num() - 2] : FVector::ZeroVector;
+                Points.Add(Points.Last() + Last * .8f);
+                FString Report;
+                for (int32 Joint = 0; Joint < Chain.Num(); ++Joint)
+                {
+                    float Angle = Bendable[Chain[Joint]].Value;
+                    bool bTouch = false;
+                    // A joint already against the handle while straight (a thumb whose base the handle passes) keeps
+                    // its configured curl.
+                    const bool bAgainst = FromHandle(Points[Joint + 1]) <= Holding.WrapRadius;
+                    for (float Trial = 2; Trial <= 110 && !bAgainst; Trial += 2)
+                        if (FromHandle(Points[Joint] + FQuat(Axes[Joint], FMath::DegreesToRadians(Trial)).RotateVector(Points[Joint + 1] - Points[Joint])) <= Holding.WrapRadius)
+                        { Angle = Trial; bTouch = true; break; }
+                    const FQuat Bend(Axes[Joint], FMath::DegreesToRadians(Angle));
+                    for (int32 Later = Joint + 1; Later < Points.Num(); ++Later) Points[Later] = Points[Joint] + Bend.RotateVector(Points[Later] - Points[Joint]);
+                    for (int32 Later = Joint + 1; Later < Axes.Num(); ++Later) Axes[Later] = Bend.RotateVector(Axes[Later]);
+                    const FQuat Parent = ReferenceTransform(Reference, Reference.GetParentIndex(Chain[Joint])).GetRotation();
+                    for (auto& Curl : Curls)
+                        if (Curl.Bone == Reference.GetBoneName(Chain[Joint]))
+                            Curl.ParentSpace = Parent.Inverse() * FQuat(Bendable[Chain[Joint]].Key, FMath::DegreesToRadians(Angle)) * Parent;
+                    Report += FString::Printf(TEXT(" %s=%.0f%s"), *Reference.GetBoneName(Chain[Joint]).ToString(), Angle, bTouch ? TEXT("") : bAgainst ? TEXT("(against)") : TEXT("(no touch)"));
+                }
+                UE_LOG(LogTemp, Display, TEXT("WC_HERO_WRAP hero=%s%s"), *HeroId, *Report);
+            }
+        }
+    for (int32 Index = 0; Index < Grips.Num(); ++Index)
+    {
+        const auto& Gripped = Grips[Index];
+        if (!Gripped.bWrist) continue;
+        FWCWristAim Wrist;
+        Wrist.Hand = Gripped.Bone;
+        Wrist.Grip = Gripped.Base.TransformPosition(Gripped.Point);
+        Wrist.Tip = Gripped.Base.TransformVectorNoScale(Gripped.Tip).GetSafeNormal();
+        Wrist.RestBend = Gripped.WristBend; Wrist.RestMax = Gripped.WristRestMax; Wrist.StrikeMax = Gripped.WristStrikeMax;
+        if (Items.IsValidIndex(Gripped.StrikeItem))
+        {
+            Wrist.Carrier = Items[Gripped.StrikeItem]->GetAttachSocketName();
+            Wrist.Spot = Items[Gripped.StrikeItem]->GetRelativeTransform().TransformPosition(Gripped.StrikeAt);
+            Wrist.Snap = Gripped.StrikeSnap;
+        }
+        Wrists.Add(Wrist); WristGrips.Add(Index);
+    }
+    if (Grips.ContainsByPredicate([](const FWCGripItem& Held) { return Held.StrikeItem >= 0; }))
+        Skeletal->RegisterOnBoneTransformsFinalizedDelegate(
+            FOnBoneTransformsFinalizedMultiCast::FDelegate::CreateUObject(this, &UWCHeroPresentationComponent::PlaceStrikes));
     const int32 HeadBone = Mesh->GetRefSkeleton().FindBoneIndex(TEXT("Head"));
     if (HeadBone != INDEX_NONE) BodyHeight = ReferenceTransform(Mesh->GetRefSkeleton(), HeadBone).GetLocation().Z * 1.1f;
     double RadiusScale = 1;
@@ -599,6 +939,15 @@ void UWCHeroPresentationComponent::Advance(float DeltaSeconds)
         Instance->Reaches = Reaches; Instance->ReachTime = Clock;
         StraightNow = FMath::FInterpTo(StraightNow, StraightClips.Contains(Current) ? StraightAmount : 0.f, DeltaSeconds, 7);
         Instance->StraightBones = StraightBones; Instance->StraightWeight = StraightNow;
+        StanceNow = FMath::FInterpTo(StanceNow, StanceClips.Contains(Current) ? 1.f : 0.f, DeltaSeconds, 5);
+        Instance->Stance = Stance; Instance->StanceWeight = StanceNow; Instance->StanceRate = StanceRate; Instance->StanceLower = StanceLower; Instance->bStancePlant = bStancePlant;
+        for (int32 Index = 0; Index < Wrists.Num(); ++Index)
+        {
+            const auto& Held = Grips[WristGrips[Index]];
+            Wrists[Index].RestWeight = FMath::FInterpTo(Wrists[Index].RestWeight, Held.WristRestClips.Contains(Current) ? 1.f : 0.f, DeltaSeconds, 6);
+            Wrists[Index].StrikeWeight = Held.StrikeWeight;
+        }
+        Instance->Solids = Solids; Instance->Wrists = Wrists;
     }
     ClearBody(DeltaSeconds);
     Clock += DeltaSeconds;
@@ -667,6 +1016,12 @@ void UWCHeroPresentationComponent::ClearBody(float DeltaSeconds)
             Held.Item->SetRelativeTransform(Placed.GetRelativeTransform(Hand));
             continue;
         }
+        if (Held.StrikeClips.Num() && Items.IsValidIndex(Held.StrikeItem))
+        {
+            Held.StrikeWeight = FMath::FInterpTo(Held.StrikeWeight, Held.StrikeClips.Contains(Current) ? 1.f : 0.f, DeltaSeconds, 12);
+            // While striking, PlaceStrikes places it once this frame's bones are final.
+            if (Held.StrikeWeight > .01f) { Held.Clearance = FQuat::Identity; continue; }
+        }
         if (Held.AimClips.Contains(Current))
         {
             // Levelled at the enemy: the item points straight ahead of the hero, pivoting about the grip.
@@ -702,6 +1057,24 @@ void UWCHeroPresentationComponent::ClearBody(float DeltaSeconds)
                 if (Axis.IsNearlyZero()) continue;
                 Turn = FQuat(Axis, FMath::Min(FMath::Atan2(Clear - Away.Size(), Lever), .5f)) * Turn;
             }
+        // Solid items (a drum): the deepest of a few points along the item decides a turn about the grip.
+        for (int Pass = 0; Pass < 2; ++Pass)
+            for (const auto& Solid : Solids)
+            {
+                const FTransform Carried = Skeletal->GetSocketTransform(Solid.Carrier, RTS_Component);
+                const FVector Axis = Carried.TransformVectorNoScale(Solid.Axis).GetSafeNormal(), Base = Carried.TransformPosition(Solid.Base);
+                FVector Deepest = FVector::ZeroVector, At = Grip;
+                for (int Step = 1; Step <= 6; ++Step)
+                {
+                    const FVector Point = Grip + Turn.RotateVector(Along) * Held.Length * Step / 6.f;
+                    const FVector Out = OutOfSolid(Point, Base, Axis, Solid.Height, Solid.Radius + Held.Radius);
+                    if (Out.SizeSquared() > Deepest.SizeSquared()) { Deepest = Out; At = Point; }
+                }
+                const float Lever = FVector::Dist(At, Grip);
+                if (Deepest.IsNearlyZero() || Lever < 8) continue;
+                const FVector Hinge = FVector::CrossProduct(At - Grip, Deepest.GetSafeNormal()).GetSafeNormal();
+                if (!Hinge.IsNearlyZero()) Turn = FQuat(Hinge, FMath::Min(FMath::Atan2(Deepest.Size(), Lever), .6f)) * Turn;
+            }
         // Kept in the hand's space so the turn rides with the arm, and eased so it never snaps.
         const FQuat Wanted = Hand.GetRotation().Inverse() * Turn * Hand.GetRotation();
         Held.Clearance = FQuat::Slerp(Held.Clearance, Wanted, FMath::Clamp(DeltaSeconds * 14, 0.f, 1.f)).GetNormalized();
@@ -709,6 +1082,34 @@ void UWCHeroPresentationComponent::ClearBody(float DeltaSeconds)
         FTransform Placed = Rest;
         Placed.SetRotation(Applied * Rest.GetRotation());
         Placed.SetLocation(Grip + Applied.RotateVector(Rest.GetLocation() - Grip));
+        Held.Item->SetRelativeTransform(Placed.GetRelativeTransform(Hand));
+    }
+}
+
+void UWCHeroPresentationComponent::PlaceStrikes()
+{
+    // Runs when this frame's bones are final. Placing a drumstick from the last frame's hand would let a quick
+    // wrist turn of the arm reach swing the stick away from the drum for a frame or two.
+    const auto* Instance = Skeletal ? Cast<UWCHeroAnimInstance>(Skeletal->GetAnimInstance()) : nullptr;
+    if (!Instance) return;
+    for (auto& Held : Grips)
+    {
+        if (Held.StrikeWeight <= .01f || !Items.IsValidIndex(Held.StrikeItem)) continue;
+        const FTransform Hand = Skeletal->GetSocketTransform(Held.Bone, RTS_Component);
+        const FTransform Rest = Held.Base * Hand;
+        const FVector Grip = Rest.TransformPosition(Held.Point);
+        const FVector Along = Rest.TransformVectorNoScale(Held.Tip).GetSafeNormal();
+        // The head is aimed at the spot, lifted with this hand's beat so the stick flicks up between strikes.
+        float Lift = 0;
+        for (const auto& Reach : Instance->Reaches)
+            if (Reach.Hand == Held.Bone) Lift = Reach.Weight * Reach.Beat * FMath::Max(0.f, FMath::Sin(Instance->ReachTime * Reach.Rate * UE_TWO_PI + Reach.Phase));
+        const UStaticMeshComponent* Target = Items[Held.StrikeItem];
+        const FTransform Carried = Target->GetRelativeTransform() * Skeletal->GetSocketTransform(Target->GetAttachSocketName(), RTS_Component);
+        const FVector Spot = Carried.TransformPosition(Held.StrikeAt) + FVector(0, 0, Lift * Held.StrikeSnap);
+        const FQuat Aim = FQuat::Slerp(FQuat::Identity, FQuat::FindBetweenNormals(Along, (Spot - Grip).GetSafeNormal()), Held.StrikeWeight);
+        FTransform Placed = Rest;
+        Placed.SetRotation(Aim * Rest.GetRotation());
+        Placed.SetLocation(Grip + Aim.RotateVector(Rest.GetLocation() - Grip));
         Held.Item->SetRelativeTransform(Placed.GetRelativeTransform(Hand));
     }
 }
@@ -756,6 +1157,13 @@ FString UWCHeroPresentationComponent::Describe() const
         FMath::SegmentDistToSegmentSafe(Grip + (Tip - Grip) * .25f, Tip, Skeletal->GetSocketLocation(TEXT("Hips")), Skeletal->GetSocketLocation(TEXT("Head")), OnWeapon, OnBody);
         Out += FString::Printf(TEXT("%s{\"bone\":\"%s\",\"gap\":%.2f,\"grip\":%s,\"tip\":%s,\"spine_clearance\":%.1f}"), First ? TEXT("") : TEXT(","),
             *Held.Bone.ToString(), FVector::Dist(Grip, Hand), *Point(Grip), *Point(Tip), FVector::Dist(OnWeapon, OnBody));
+        // How far the item has turned in the hand away from its grip there, in degrees (0: held as gripped).
+        const FVector Rigid = (Held.Base * Skeletal->GetSocketTransform(Held.Bone)).TransformVectorNoScale(Held.Tip).GetSafeNormal();
+        Out.InsertAt(Out.Len() - 1, FString::Printf(TEXT(",\"slip\":%.1f"), FMath::RadiansToDegrees(FMath::Acos(FMath::Clamp(
+            FVector::DotProduct(Rigid, Item.TransformVectorNoScale(Held.Tip).GetSafeNormal()), -1., 1.)))));
+        // A drumstick also reports the spot its head is aimed at, so strikes can be checked against the drum.
+        if (Items.IsValidIndex(Held.StrikeItem))
+            Out.InsertAt(Out.Len() - 1, TEXT(",\"spot\":") + Point(Items[Held.StrikeItem]->GetComponentTransform().TransformPosition(Held.StrikeAt)));
         First = false;
     }
     for (const auto& Drift : Floats)
@@ -763,7 +1171,21 @@ FString UWCHeroPresentationComponent::Describe() const
         Out += FString::Printf(TEXT("%s{\"float\":%s}"), First ? TEXT("") : TEXT(","), *Point(Drift.Item->GetComponentLocation()));
         First = false;
     }
-    return Out + TEXT("]");
+    Out += TEXT("]");
+    if (Solids.Num())
+    {
+        Out += TEXT(",\"solids\":[");
+        for (int32 Index = 0; Index < Solids.Num(); ++Index)
+        {
+            const FTransform Body = Skeletal->GetSocketTransform(Solids[Index].Carrier);
+            Out += FString::Printf(TEXT("%s{\"base\":%s,\"top\":%s,\"radius\":%.1f}"), Index ? TEXT(",") : TEXT(""),
+                *Point(Body.TransformPosition(Solids[Index].Base)),
+                *Point(Body.TransformPosition(Solids[Index].Base) + Body.TransformVectorNoScale(Solids[Index].Axis) * Solids[Index].Height),
+                Solids[Index].Radius * Skeletal->GetComponentScale().X);
+        }
+        Out += TEXT("]");
+    }
+    return Out;
 }
 
 void UWCHeroPresentationComponent::ReviewClip(FName Clip, bool Loop)

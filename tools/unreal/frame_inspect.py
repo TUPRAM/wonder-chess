@@ -9,7 +9,8 @@ contact sheets and a GIF from the frames, and checks the state lines for likely 
   frame_inspect.py fight                          the preset six-against-six fight, board camera
   frame_inspect.py solo                           a real solo match from the first second, with the interface
 
-Common options: --start --end (seconds of play), --fps, --distance --aim --side (camera on the focus hero),
+Common options: --start --end (seconds of play), --fps, --distance --aim --side (camera on the focus hero), --bone (centre
+the camera on one bone of the focus hero, such as RightHand),
 --gap (rows between duellists), --alt (Earthbreaker and Hammerer in the six-against-six), --tag (output folder name),
 --every (contact-sheet step), --ui.
 
@@ -191,6 +192,7 @@ def main():
     parser.add_argument("--gap", type=int, default=1)
     parser.add_argument("--alt", action="store_true")
     parser.add_argument("--look", help="clip scenario: full id of the model to show on the focus piece")
+    parser.add_argument("--bone", help="clip and duel scenarios: centre the camera on this bone of the focus hero")
     parser.add_argument("--ui", action="store_true")
     parser.add_argument("--every", type=int, default=3)
     parser.add_argument("--tag")
@@ -222,6 +224,8 @@ def main():
         extra = ["-WCSolo", "-WCSeed=417031", f"-WCSavePath={ROOT / 'support/runs/frames/solo-save.json'}"]
         start, end, tag = 1.0, 6.0, "solo"
         args.ui = True
+    if args.bone and focus:
+        extra.append(f"-WCRecBone={args.bone}")
     args.start = start if args.start is None else args.start
     args.end = end if args.end is None else args.end
     out = ROOT / "support/runs/frames" / (args.tag or tag)

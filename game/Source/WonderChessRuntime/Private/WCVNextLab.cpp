@@ -2139,16 +2139,18 @@ void AWCVNextLab::Tick(float DeltaSeconds)
         //   -WCRecStart= -WCRecEnd=   window in seconds of play        -WCRecUI=1        keep the interface in the images
         //   -WCRecFocus=<hero id>     camera on that hero              -WCRecDistance= -WCRecAim= -WCRecSide=   its framing
         //   -WCRecClip=<clip>         hold that clip on the focus hero from the start of the window (no fight needed)
+        //   -WCRecBone=<bone>         centre the camera on that bone of the focus hero, such as a hand
         static const bool Recording=FParse::Param(FCommandLine::Get(),TEXT("WCFrameRec"));
         if(Recording){
             static float Start=3,End=5,Distance=640,Aim=100,SideAngle=35;static int WithInterface=0,Pending=-1,Frame=0,LastTick=-1;
-            static FString Focus,Clip;static bool Parsed=false,Finished=false,ClipStarted=false;
+            static FString Focus,Clip,Bone;static bool Parsed=false,Finished=false,ClipStarted=false;
             if(!Parsed){
                 Parsed=true;
                 FParse::Value(FCommandLine::Get(),TEXT("WCRecStart="),Start);FParse::Value(FCommandLine::Get(),TEXT("WCRecEnd="),End);
                 FParse::Value(FCommandLine::Get(),TEXT("WCRecDistance="),Distance);FParse::Value(FCommandLine::Get(),TEXT("WCRecAim="),Aim);
                 FParse::Value(FCommandLine::Get(),TEXT("WCRecSide="),SideAngle);FParse::Value(FCommandLine::Get(),TEXT("WCRecUI="),WithInterface);
                 FParse::Value(FCommandLine::Get(),TEXT("WCRecFocus="),Focus);FParse::Value(FCommandLine::Get(),TEXT("WCRecClip="),Clip);
+                FParse::Value(FCommandLine::Get(),TEXT("WCRecBone="),Bone);
                 IFileManager::Get().MakeDirectory(*EvidenceDirectory,true);
                 IFileManager::Get().Delete(*(EvidenceDirectory/TEXT("frames.jsonl")));
             }
@@ -2158,9 +2160,17 @@ void AWCVNextLab::Tick(float DeltaSeconds)
                 // The subject's own front is local +Y; the camera stands SideAngle degrees round from it.
                 const FVector At=Subject->Actor->GetActorLocation();
                 const FVector Front=Clip.IsEmpty()?FVector(0,1,0):Subject->Actor->GetActorRotation().RotateVector(FVector(0,1,0));
-                const FVector Eye=At+FRotator(0,SideAngle,0).RotateVector(Front)*Distance+FVector(0,0,Aim+Distance*.2f);
+                FVector Look(At.X,At.Y,Aim);
+                FVector Eye=At+FRotator(0,SideAngle,0).RotateVector(Front)*Distance+FVector(0,0,Aim+Distance*.2f);
+                if(!Bone.IsEmpty()&&Subject->Hero&&Subject->Hero->GetMesh()){
+                    // Follow the bone, eased so the beat of a hand does not shake the picture.
+                    static FVector Held=FVector::ZeroVector;
+                    const FVector Target=Subject->Hero->GetMesh()->GetSocketLocation(FName(*Bone));
+                    Held=Held.IsZero()?Target:FMath::Lerp(Held,Target,.15f);Look=Held;
+                    Eye=Look+FRotator(0,SideAngle,0).RotateVector(Front)*Distance+FVector(0,0,Distance*.2f);
+                }
                 Camera->GetCameraComponent()->SetProjectionMode(ECameraProjectionMode::Perspective);Camera->GetCameraComponent()->SetFieldOfView(32);
-                Camera->SetActorLocation(Eye);Camera->SetActorRotation((FVector(At.X,At.Y,Aim)-Eye).Rotation());
+                Camera->SetActorLocation(Eye);Camera->SetActorRotation((Look-Eye).Rotation());
                 static bool Lit=false;
                 if(!Lit){
                     // A soft lamp on the camera, so the subject is readable from any side.
